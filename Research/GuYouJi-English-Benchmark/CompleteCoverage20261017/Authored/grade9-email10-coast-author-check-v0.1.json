@@ -1,0 +1,542 @@
+{
+  "version": "0.1",
+  "id": "grade9-email10-coast",
+  "grade": 9,
+  "questions": 10,
+  "candidate_sha256": "7dde8ad9cec4a8dab81b057af27c171d16f6c3c8bcb786b55ee4a0f9bde4af84",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade9-email10-coast-manuscript-v0.1.json",
+    "sha256": "4cfb9654f496a334d557ffcd2694f40d1367e7e563352fdc78f04e8d6d994e62"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolEmailReadingSourceBindings-v0.1.json",
+    "sha256": "4d95ac99e829431a79fd0187aa3b2e5afddb83b1f98037d2f629534059a7bc08"
+  },
+  "source_binding": "grade9-chengdu2025-21cnjy23208601.reading.complete_section10.binding",
+  "school_complete_reading_section": true,
+  "email_chain_study_reading10": true,
+  "emails": [
+    {
+      "from": "Mina",
+      "to": [
+        "Owen",
+        "Tao"
+      ],
+      "sent": "2027-07-06T09:05",
+      "subject": "Hello both",
+      "body": "Hi Owen and Tao, shall we organise a short trip together? We should choose soon, or the small guest houses may all be booked. I am working throughout August. September or the first week of October would work for me. We said we wanted somewhere by the sea. Have you found a place?"
+    },
+    {
+      "from": "Owen",
+      "to": [
+        "Mina",
+        "Tao"
+      ],
+      "sent": "2027-07-06T09:18",
+      "subject": "A quick reply",
+      "body": "Hi Mina and Tao, I would like to go to Seabrook. A friend showed me photos of its quiet beach and walking paths, and they made me want to visit. I cannot travel in August or September because of family commitments. The first week of October is free. Could that suit you?"
+    },
+    {
+      "from": "Tao",
+      "to": [
+        "Mina",
+        "Owen"
+      ],
+      "sent": "2027-07-06T12:10",
+      "subject": "Another date",
+      "body": "Hello both, Seabrook sounds good. I will be away with my family in August and on a course in September. The first week of October is free for me too. Mina, can you confirm it? We can meet next Wednesday to choose a guest house and discuss how to get there."
+    },
+    {
+      "from": "Mina",
+      "to": [
+        "Owen",
+        "Tao"
+      ],
+      "sent": "2027-07-06T12:25",
+      "subject": "That works",
+      "body": "Yes, let us go to Seabrook in the first week of October. That date works for all three of us. Next Wednesday we will discuss the guest house and transport, rather than choose a different destination. I will bring a map, and we can compare places to stay."
+    }
+  ],
+  "study": {
+    "hypothesis_not_proven_cause": true,
+    "age_estimate_not_exact": true,
+    "individual_record_not_all_tropical_trees": true,
+    "not_human_storm_safety_instruction": true,
+    "hypothesis": "The researchers proposed an explanation. Electric current might move through connected branches and vines to nearby plants, instead of remaining in the large tree. This could reduce the damage to that tree. The report presented the idea as a possibility that needed testing, not an electrical process the observers had directly measured.",
+    "benefit": "One tree in the records was easy to recognise. Its thick trunk rose well above the surrounding plants, and its broad crown spread over a gap in the forest. With fewer living vines and fewer nearby competitors, it had more access to light and space after the storm.",
+    "appearance": "One tree in the records was easy to recognise. Its thick trunk rose well above the surrounding plants, and its broad crown spread over a gap in the forest. With fewer living vines and fewer nearby competitors, it had more access to light and space after the storm.",
+    "age_limit": "How old was it? The team could offer only an estimate. The wood they examined did not show a complete sequence of clear annual rings, so simply counting visible lines could not give an exact age for this individual. Its large size alone did not supply the missing information."
+  },
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "A组 · Who sent the earliest email?",
+      "options": [
+        [
+          "A",
+          "Mina"
+        ],
+        [
+          "B",
+          "Owen"
+        ],
+        [
+          "C",
+          "Tao"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：09:05最早；B：09:18晚于09:05；C：12:10晚于前两封",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_earliest_sender"
+    },
+    {
+      "number": 2,
+      "stem": "A组 · Why does Mina want to organise the trip soon?",
+      "options": [
+        [
+          "A",
+          "Guest houses may become fully booked."
+        ],
+        [
+          "B",
+          "The course begins next Wednesday."
+        ],
+        [
+          "C",
+          "Owen has already bought the tickets."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：首封担心小旅馆全订满；B：周三是见面计划，非课程开始；C：未有Owen买票情节",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_booking_concern"
+    },
+    {
+      "number": 3,
+      "stem": "A组 · Why does Owen suggest Seabrook?",
+      "options": [
+        [
+          "A",
+          "His friend’s photos made it attractive."
+        ],
+        [
+          "B",
+          "He has a family commitment there."
+        ],
+        [
+          "C",
+          "Mina has already reserved a room there."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：朋友海滩步道照片引起兴趣；B：家庭安排是时间限制，未说在当地；C：尚待周三讨论住处",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_destination_reason"
+    },
+    {
+      "number": 4,
+      "stem": "A组 · What have they finally agreed to do?",
+      "options": [
+        [
+          "A",
+          "Choose their destination next Wednesday."
+        ],
+        [
+          "B",
+          "Visit Seabrook in the first week of October."
+        ],
+        [
+          "C",
+          "Travel together throughout August."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：周三只讨论住宿交通，非再选目的地；B：末封确认三人同意目的地和日期；C：三人八月各有安排，非最终约定",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_final_agreement"
+    },
+    {
+      "number": 5,
+      "stem": "A组 · Which subject best covers the whole email exchange?",
+      "options": [
+        [
+          "A",
+          "Starting a guest-house business"
+        ],
+        [
+          "B",
+          "Applying for the same course"
+        ],
+        [
+          "C",
+          "Planning a trip together"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：未计划经营旅馆；B：课程仅为一个人的时间限制；C：四封协商共同旅行",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_thread_subject"
+    },
+    {
+      "number": 6,
+      "stem": "B组 · According to the proposed explanation, why might the large tree survive?",
+      "options": [
+        [
+          "A",
+          "Every neighboring tree blocks all current."
+        ],
+        [
+          "B",
+          "Current may pass from it to nearby plants."
+        ],
+        [
+          "C",
+          "Its height prevents it from being struck."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：未称邻树能阻挡全部电流；B：假说称电流可能向邻近植物传递；C：是在雷击后幸存，非高度阻止雷击",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_proposed_explanation"
+    },
+    {
+      "number": 7,
+      "stem": "B组 · What benefit did the surviving tree have after the storm?",
+      "options": [
+        [
+          "A",
+          "An exact record of its year of growth."
+        ],
+        [
+          "B",
+          "Less competition for light and space."
+        ],
+        [
+          "C",
+          "More living vines covering its crown."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：树龄仍不精确；B：藤蔓及周围竞争者减少带来光空间；C：活藤减少而非增加",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_competition_benefit"
+    },
+    {
+      "number": 8,
+      "stem": "B组 · Which description fits the tree in the records?",
+      "options": [
+        [
+          "A",
+          "Short, with no branches above the ground."
+        ],
+        [
+          "B",
+          "Thin, with a crown hidden under smaller plants."
+        ],
+        [
+          "C",
+          "Tall, with a thick trunk and broad crown."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：与高树宽冠冲突；B：与粗干突出林冠冲突；C：原文明述高于周围、粗干宽冠",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_appearance_detail"
+    },
+    {
+      "number": 9,
+      "stem": "B组 · Why could the researchers not give this tree’s exact age?",
+      "options": [
+        [
+          "A",
+          "They had measured only the vines’ colours."
+        ],
+        [
+          "B",
+          "They knew that large trees were always young."
+        ],
+        [
+          "C",
+          "They could not count a complete series of annual rings."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：明确检查了树木木材，非只看藤色；B：体大不说明年轻，未有总断言；C：取样未呈完整清楚年轮序列",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_age_uncertainty"
+    },
+    {
+      "number": 10,
+      "stem": "B组 · Which newspaper section would best suit the account?",
+      "options": [
+        [
+          "A",
+          "Nature"
+        ],
+        [
+          "B",
+          "Book reviews"
+        ],
+        [
+          "C",
+          "Cooking"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：围绕森林树木、雷击及解释研究；B：不是评价一本书；C：无烹饪食谱内容",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_publication_section"
+    }
+  ],
+  "canonical_response_block_sha256": "311416c9c00794cce7a3c0b64c9ef5aad7c1b26a0a49fb71921fa132fde6faba",
+  "student_passage": "### A组（第1—5题）\n\n#### A1\n\nFrom: Mina\n\nTo: Owen; Tao\n\nSent: 06 July 2027, 09:05\n\nSubject: Hello both\n\nHi Owen and Tao, shall we organise a short trip together? We should choose soon, or the small guest houses may all be booked. I am working throughout August. September or the first week of October would work for me. We said we wanted somewhere by the sea. Have you found a place?\n\n#### A2\n\nFrom: Owen\n\nTo: Mina; Tao\n\nSent: 06 July 2027, 09:18\n\nSubject: A quick reply\n\nHi Mina and Tao, I would like to go to Seabrook. A friend showed me photos of its quiet beach and walking paths, and they made me want to visit. I cannot travel in August or September because of family commitments. The first week of October is free. Could that suit you?\n\n#### A3\n\nFrom: Tao\n\nTo: Mina; Owen\n\nSent: 06 July 2027, 12:10\n\nSubject: Another date\n\nHello both, Seabrook sounds good. I will be away with my family in August and on a course in September. The first week of October is free for me too. Mina, can you confirm it? We can meet next Wednesday to choose a guest house and discuss how to get there.\n\n#### A4\n\nFrom: Mina\n\nTo: Owen; Tao\n\nSent: 06 July 2027, 12:25\n\nSubject: That works\n\nYes, let us go to Seabrook in the first week of October. That date works for all three of us. Next Wednesday we will discuss the guest house and transport, rather than choose a different destination. I will bring a map, and we can compare places to stay.\n\n### B组（第6—10题）\n\n#### B1\n\nAfter a storm in a remote forest, a field team noticed something unexpected. One kind of large tree remained alive, although several nearby trees had died. Some climbing vines on its branches were dead too. The team began recording these cases rather than assuming that a strike had the same effect on every tree.\n\nThe researchers proposed an explanation. Electric current might move through connected branches and vines to nearby plants, instead of remaining in the large tree. This could reduce the damage to that tree. The report presented the idea as a possibility that needed testing, not an electrical process the observers had directly measured.\n\nOne tree in the records was easy to recognise. Its thick trunk rose well above the surrounding plants, and its broad crown spread over a gap in the forest. With fewer living vines and fewer nearby competitors, it had more access to light and space after the storm.\n\nHow old was it? The team could offer only an estimate. The wood they examined did not show a complete sequence of clear annual rings, so simply counting visible lines could not give an exact age for this individual. Its large size alone did not supply the missing information.\n\nThe account shows how a surprising event can lead to further questions about a forest. It describes observations and a proposed explanation, while leaving the exact process and the tree’s precise age unresolved.",
+  "body_load_text": "From: Mina\n\nTo: Owen; Tao\n\nSent: 06 July 2027, 09:05\n\nSubject: Hello both\n\nHi Owen and Tao, shall we organise a short trip together? We should choose soon, or the small guest houses may all be booked. I am working throughout August. September or the first week of October would work for me. We said we wanted somewhere by the sea. Have you found a place?\n\nFrom: Owen\n\nTo: Mina; Tao\n\nSent: 06 July 2027, 09:18\n\nSubject: A quick reply\n\nHi Mina and Tao, I would like to go to Seabrook. A friend showed me photos of its quiet beach and walking paths, and they made me want to visit. I cannot travel in August or September because of family commitments. The first week of October is free. Could that suit you?\n\nFrom: Tao\n\nTo: Mina; Owen\n\nSent: 06 July 2027, 12:10\n\nSubject: Another date\n\nHello both, Seabrook sounds good. I will be away with my family in August and on a course in September. The first week of October is free for me too. Mina, can you confirm it? We can meet next Wednesday to choose a guest house and discuss how to get there.\n\nFrom: Mina\n\nTo: Owen; Tao\n\nSent: 06 July 2027, 12:25\n\nSubject: That works\n\nYes, let us go to Seabrook in the first week of October. That date works for all three of us. Next Wednesday we will discuss the guest house and transport, rather than choose a different destination. I will bring a map, and we can compare places to stay.\n\nAfter a storm in a remote forest, a field team noticed something unexpected. One kind of large tree remained alive, although several nearby trees had died. Some climbing vines on its branches were dead too. The team began recording these cases rather than assuming that a strike had the same effect on every tree.\n\nThe researchers proposed an explanation. Electric current might move through connected branches and vines to nearby plants, instead of remaining in the large tree. This could reduce the damage to that tree. The report presented the idea as a possibility that needed testing, not an electrical process the observers had directly measured.\n\nOne tree in the records was easy to recognise. Its thick trunk rose well above the surrounding plants, and its broad crown spread over a gap in the forest. With fewer living vines and fewer nearby competitors, it had more access to light and space after the storm.\n\nHow old was it? The team could offer only an estimate. The wood they examined did not show a complete sequence of clear annual rings, so simply counting visible lines could not give an exact age for this individual. Its large size alone did not supply the missing information.\n\nThe account shows how a surprising event can lead to further questions about a forest. It describes observations and a proposed explanation, while leaving the exact process and the tree’s precise age unresolved.",
+  "question_candidate_audit": [
+    {
+      "number": 1,
+      "label": "A",
+      "text": "Mina",
+      "reason": "09:05最早",
+      "is_best": true
+    },
+    {
+      "number": 1,
+      "label": "B",
+      "text": "Owen",
+      "reason": "09:18晚于09:05",
+      "is_best": false
+    },
+    {
+      "number": 1,
+      "label": "C",
+      "text": "Tao",
+      "reason": "12:10晚于前两封",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "A",
+      "text": "Guest houses may become fully booked.",
+      "reason": "首封担心小旅馆全订满",
+      "is_best": true
+    },
+    {
+      "number": 2,
+      "label": "B",
+      "text": "The course begins next Wednesday.",
+      "reason": "周三是见面计划，非课程开始",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "C",
+      "text": "Owen has already bought the tickets.",
+      "reason": "未有Owen买票情节",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "A",
+      "text": "His friend’s photos made it attractive.",
+      "reason": "朋友海滩步道照片引起兴趣",
+      "is_best": true
+    },
+    {
+      "number": 3,
+      "label": "B",
+      "text": "He has a family commitment there.",
+      "reason": "家庭安排是时间限制，未说在当地",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "C",
+      "text": "Mina has already reserved a room there.",
+      "reason": "尚待周三讨论住处",
+      "is_best": false
+    },
+    {
+      "number": 4,
+      "label": "A",
+      "text": "Choose their destination next Wednesday.",
+      "reason": "周三只讨论住宿交通，非再选目的地",
+      "is_best": false
+    },
+    {
+      "number": 4,
+      "label": "B",
+      "text": "Visit Seabrook in the first week of October.",
+      "reason": "末封确认三人同意目的地和日期",
+      "is_best": true
+    },
+    {
+      "number": 4,
+      "label": "C",
+      "text": "Travel together throughout August.",
+      "reason": "三人八月各有安排，非最终约定",
+      "is_best": false
+    },
+    {
+      "number": 5,
+      "label": "A",
+      "text": "Starting a guest-house business",
+      "reason": "未计划经营旅馆",
+      "is_best": false
+    },
+    {
+      "number": 5,
+      "label": "B",
+      "text": "Applying for the same course",
+      "reason": "课程仅为一个人的时间限制",
+      "is_best": false
+    },
+    {
+      "number": 5,
+      "label": "C",
+      "text": "Planning a trip together",
+      "reason": "四封协商共同旅行",
+      "is_best": true
+    },
+    {
+      "number": 6,
+      "label": "A",
+      "text": "Every neighboring tree blocks all current.",
+      "reason": "未称邻树能阻挡全部电流",
+      "is_best": false
+    },
+    {
+      "number": 6,
+      "label": "B",
+      "text": "Current may pass from it to nearby plants.",
+      "reason": "假说称电流可能向邻近植物传递",
+      "is_best": true
+    },
+    {
+      "number": 6,
+      "label": "C",
+      "text": "Its height prevents it from being struck.",
+      "reason": "是在雷击后幸存，非高度阻止雷击",
+      "is_best": false
+    },
+    {
+      "number": 7,
+      "label": "A",
+      "text": "An exact record of its year of growth.",
+      "reason": "树龄仍不精确",
+      "is_best": false
+    },
+    {
+      "number": 7,
+      "label": "B",
+      "text": "Less competition for light and space.",
+      "reason": "藤蔓及周围竞争者减少带来光空间",
+      "is_best": true
+    },
+    {
+      "number": 7,
+      "label": "C",
+      "text": "More living vines covering its crown.",
+      "reason": "活藤减少而非增加",
+      "is_best": false
+    },
+    {
+      "number": 8,
+      "label": "A",
+      "text": "Short, with no branches above the ground.",
+      "reason": "与高树宽冠冲突",
+      "is_best": false
+    },
+    {
+      "number": 8,
+      "label": "B",
+      "text": "Thin, with a crown hidden under smaller plants.",
+      "reason": "与粗干突出林冠冲突",
+      "is_best": false
+    },
+    {
+      "number": 8,
+      "label": "C",
+      "text": "Tall, with a thick trunk and broad crown.",
+      "reason": "原文明述高于周围、粗干宽冠",
+      "is_best": true
+    },
+    {
+      "number": 9,
+      "label": "A",
+      "text": "They had measured only the vines’ colours.",
+      "reason": "明确检查了树木木材，非只看藤色",
+      "is_best": false
+    },
+    {
+      "number": 9,
+      "label": "B",
+      "text": "They knew that large trees were always young.",
+      "reason": "体大不说明年轻，未有总断言",
+      "is_best": false
+    },
+    {
+      "number": 9,
+      "label": "C",
+      "text": "They could not count a complete series of annual rings.",
+      "reason": "取样未呈完整清楚年轮序列",
+      "is_best": true
+    },
+    {
+      "number": 10,
+      "label": "A",
+      "text": "Nature",
+      "reason": "围绕森林树木、雷击及解释研究",
+      "is_best": true
+    },
+    {
+      "number": 10,
+      "label": "B",
+      "text": "Book reviews",
+      "reason": "不是评价一本书",
+      "is_best": false
+    },
+    {
+      "number": 10,
+      "label": "C",
+      "text": "Cooking",
+      "reason": "无烹饪食谱内容",
+      "is_best": false
+    }
+  ],
+  "subgroup_response_counts": [
+    5,
+    5
+  ],
+  "subgroup_material_units": [
+    4,
+    1
+  ],
+  "load_measure": {
+    "body_English_words": 481,
+    "body_Han_characters": 0,
+    "stem_English_words": 91,
+    "stem_Han_characters": 10,
+    "options_English_words_with_repeated_bank": 163,
+    "options_Han_characters": 0,
+    "output_response_positions": 10,
+    "output_requirement_English_words": 5,
+    "output_requirement_Han_characters": 69,
+    "email_header_fields": 16,
+    "email_header_English_words": 41
+  },
+  "source_original_key_not_gold": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false
+}

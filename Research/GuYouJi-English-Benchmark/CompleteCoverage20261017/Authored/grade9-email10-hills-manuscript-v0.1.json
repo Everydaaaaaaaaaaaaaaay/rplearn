@@ -1,0 +1,409 @@
+{
+  "id": "grade9-email10-hills",
+  "title": "初三两篇十题：山城假期邮件与林冠空隙",
+  "grade": 9,
+  "family": "reading_choice",
+  "source_group_id": "grade9-chengdu2025-21cnjy23208601.reading.complete_section10",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolEmailReadingSourceBindings-v0.1.json",
+    "sha256": "4d95ac99e829431a79fd0187aa3b2e5afddb83b1f98037d2f629534059a7bc08"
+  },
+  "source_binding": "grade9-chengdu2025-21cnjy23208601.reading.complete_section10.binding",
+  "instruction": "阅读A组四封完整邮件和B组研究说明，回答第1至第10题；每题从A、B、C三个选项中选出最合适的一项。每题2分，共20分。人物、地点、邮件和研究内容均为虚构；邮件时间采用同一当地时间。",
+  "source_notice": "参照成都标签初三公开文字的大题九：两篇各5共10三选，各2分共20分；A四封完整邮件（From/To/Sent/Subject与正文）协商日期、原因和最终约定，B树木研究说明含假说、资源竞争、外貌、树龄不确定及报刊分类。大题八判断5另立且已三稿，不并入本组或把本组算整阅读30分。原校施测身份/原PDF图像层未认证，原键非gold；源37booking担忧释义、38A缺句点及科学泛化风险保留。新邮件人物地点行程、森林观察与数据均虚构，非真实通信或真实研究复现；不把能量路径假说写成已验证机理，不泛化所有热带树木没有年轮，仅说本个体取样无可数完整年轮序列。源科学伴随核读Cary作者机构发布和2025论文表明电学/结构生存特征仍待研究，故新6题明确问proposed/suggested解释，不当已证事实或人类雷雨安全规则。新稿保留观察到的竞争变化与未定机理/年龄区别，不引用虚构结果为现实科学证据。四封均同一当地时间，日期窗口仅属所给行程选择。照片在邮件叙述中提及，必要信息全由文字给出，无另需图片/录音；三稿同一源模式与主题家族，非三独立来源或教研/学生/商用/生产验证。",
+  "sections": [
+    {
+      "label": "A",
+      "genre": "four_email_planning_chain_with_full_headers",
+      "units": [
+        "From: Rosa\n\nTo: Ben; Ivy\n\nSent: 12 April 2027, 10:02\n\nSubject: A thought\n\nHello Ben and Ivy, could we arrange a few days away together? Let us decide early before all the rooms in the small hotels are taken. I cannot travel in May because I am working. June and the last week of July are possible. We wanted somewhere with walks in the hills, did we not?",
+        "From: Ben\n\nTo: Rosa; Ivy\n\nSent: 12 April 2027, 10:16\n\nSubject: Hello again\n\nHi both, I suggest Hillford. I saw photos that my cousin took there, and the green paths looked lovely. May is free for me, but I will be visiting family throughout June. The last week of July would also work. Ivy, are either of those dates possible for you?",
+        "From: Ivy\n\nTo: Rosa; Ben\n\nSent: 12 April 2027, 13:04\n\nSubject: My dates\n\nHello, Hillford would be a good place for us. May is busy with a festival, and I have promised to help at a club throughout June. I am free in the last week of July. Rosa, does that still suit you? We could meet on Friday to discuss hotels and train times.",
+        "From: Rosa\n\nTo: Ben; Ivy\n\nSent: 12 April 2027, 13:19\n\nSubject: Agreed\n\nYes, Hillford in the last week of July is agreed. We have found a date that works for everyone. On Friday we can compare hotels and train journeys; the place and week are already settled. I will bring some hotel information so that we can make the remaining arrangements."
+      ],
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "label": "B",
+      "genre": "tropical_tree_lightning_study_explanation",
+      "units": [
+        "A forest report began with an unusual survivor: a large tree stood green after lightning had struck it, while several smaller plants nearby were badly damaged. The field workers found similar cases and asked how surviving a strike might change the competition around a tree.\n\nOne suggested explanation involved the route taken by the electric current. It might travel along touching branches and climbing vines and then reach neighbouring plants. If less energy stayed in the large tree, the damage to it might be smaller. The team had not directly measured this route, so the report treated it as an explanation to investigate.\n\nThe tree chosen as an example had a wide crown high above the surrounding growth. Its trunk was much thicker than the saplings around it. After the strike, dead vines no longer covered many of its branches, and some nearby competitors were gone. More light could now reach its remaining leaves.\n\nThe researchers did not know its exact age. The piece of wood they examined lacked an unbroken set of clearly annual rings. They could not turn a count of those visible lines into a reliable birthday. The report described the tree as old without claiming a precise year in which it began growing.\n\nThe study account focuses on plants living together and the effects of a sudden disturbance. Its observations raise questions about survival and competition, rather than establishing that every tree will respond in the same way."
+      ],
+      "response_numbers": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "number": 1,
+      "stem": "A组 · Who wrote the first email?",
+      "options": [
+        [
+          "A",
+          "Ben"
+        ],
+        [
+          "B",
+          "Rosa"
+        ],
+        [
+          "C",
+          "Ivy"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：10:16较晚；B：10:02为最早时刻；C：13:04较晚",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_earliest_sender"
+    },
+    {
+      "number": 2,
+      "stem": "A组 · What concern makes Rosa want an early decision?",
+      "options": [
+        [
+          "A",
+          "The train has already been cancelled."
+        ],
+        [
+          "B",
+          "The festival will take place in Hillford."
+        ],
+        [
+          "C",
+          "Small hotels may have no rooms left."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：没有列车取消信息；B：节日仅为Ivy五月忙的理由，未说地点；C：担心小旅馆客房被订光",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_booking_concern"
+    },
+    {
+      "number": 3,
+      "stem": "A组 · What led Ben to suggest Hillford?",
+      "options": [
+        [
+          "A",
+          "His cousin’s photos of the paths."
+        ],
+        [
+          "B",
+          "A promise to work there in May."
+        ],
+        [
+          "C",
+          "Ivy’s earlier hotel booking."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：堂亲照片中的步道吸引他；B：Ben五月空闲，非当地工作承诺；C：Ivy未提前订房",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_destination_reason"
+    },
+    {
+      "number": 4,
+      "stem": "A组 · What is the final plan?",
+      "options": [
+        [
+          "A",
+          "Spend the whole of June helping at a club together."
+        ],
+        [
+          "B",
+          "Choose between May and June on Friday."
+        ],
+        [
+          "C",
+          "Go to Hillford in the last week of July."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：六月帮俱乐部是Ivy个人限制，非共同旅行；B：最终日期已定，周五仅安排细节；C：末封明确地点及七月最后一周",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_final_agreement"
+    },
+    {
+      "number": 5,
+      "stem": "A组 · Which subject best describes the email thread?",
+      "options": [
+        [
+          "A",
+          "Arranging a shared holiday"
+        ],
+        [
+          "B",
+          "Finding work at a hill hotel"
+        ],
+        [
+          "C",
+          "Organising a club festival"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：邮件共同商议假期地点和日期；B：未寻找旅馆工作；C：俱乐部和节日只是时间冲突背景",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_thread_subject"
+    },
+    {
+      "number": 6,
+      "stem": "B组 · What does the suggested explanation say about the current?",
+      "options": [
+        [
+          "A",
+          "It cannot reach a tree with a wide crown."
+        ],
+        [
+          "B",
+          "It may move to other plants through connected growth."
+        ],
+        [
+          "C",
+          "It is known to remain entirely inside the tall tree."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：已知例树受击幸存，非无法到达；B：假说经接触枝藤到其他植物；C：并非已知全留树内，恰为相反假说",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_proposed_explanation"
+    },
+    {
+      "number": 7,
+      "stem": "B组 · How did the changed surroundings benefit the tree?",
+      "options": [
+        [
+          "A",
+          "Many new vines shaded every remaining leaf."
+        ],
+        [
+          "B",
+          "The missing growth rings became visible again."
+        ],
+        [
+          "C",
+          "Fewer vines and competitors blocked its light."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：活藤减少，并非全叶新遮蔽；B：后段说明年轮序列依旧不完整；C：藤和竞争者减少，叶片获更多光",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_competition_benefit"
+    },
+    {
+      "number": 8,
+      "stem": "B组 · What did the example tree look like?",
+      "options": [
+        [
+          "A",
+          "A thick trunk supporting a high, wide crown."
+        ],
+        [
+          "B",
+          "A young sapling below all nearby branches."
+        ],
+        [
+          "C",
+          "A low plant without any leaves after the strike."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：粗干、高而宽的冠；B：树比周围幼树粗高；C：仍绿有叶，非矮小无叶",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_appearance_detail"
+    },
+    {
+      "number": 9,
+      "stem": "B组 · Why was its age uncertain?",
+      "options": [
+        [
+          "A",
+          "Its wood lacked a complete clear sequence of yearly rings."
+        ],
+        [
+          "B",
+          "The workers had lost its planted birthday label."
+        ],
+        [
+          "C",
+          "Every thick tree must have grown in the same year."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：木片缺连续清楚年轮；B：未提种植生日标签；C：没有同年长成的规则",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_age_uncertainty"
+    },
+    {
+      "number": 10,
+      "stem": "B组 · Where would this account most naturally appear in a newspaper?",
+      "options": [
+        [
+          "A",
+          "Fashion"
+        ],
+        [
+          "B",
+          "Nature"
+        ],
+        [
+          "C",
+          "Sport"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：不涉及服饰潮流；B：论植物关系、干扰和生存；C：不涉及体育比赛",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_publication_section"
+    }
+  ],
+  "emails": [
+    {
+      "from": "Rosa",
+      "to": [
+        "Ben",
+        "Ivy"
+      ],
+      "sent": "2027-04-12T10:02",
+      "subject": "A thought",
+      "body": "Hello Ben and Ivy, could we arrange a few days away together? Let us decide early before all the rooms in the small hotels are taken. I cannot travel in May because I am working. June and the last week of July are possible. We wanted somewhere with walks in the hills, did we not?"
+    },
+    {
+      "from": "Ben",
+      "to": [
+        "Rosa",
+        "Ivy"
+      ],
+      "sent": "2027-04-12T10:16",
+      "subject": "Hello again",
+      "body": "Hi both, I suggest Hillford. I saw photos that my cousin took there, and the green paths looked lovely. May is free for me, but I will be visiting family throughout June. The last week of July would also work. Ivy, are either of those dates possible for you?"
+    },
+    {
+      "from": "Ivy",
+      "to": [
+        "Rosa",
+        "Ben"
+      ],
+      "sent": "2027-04-12T13:04",
+      "subject": "My dates",
+      "body": "Hello, Hillford would be a good place for us. May is busy with a festival, and I have promised to help at a club throughout June. I am free in the last week of July. Rosa, does that still suit you? We could meet on Friday to discuss hotels and train times."
+    },
+    {
+      "from": "Rosa",
+      "to": [
+        "Ben",
+        "Ivy"
+      ],
+      "sent": "2027-04-12T13:19",
+      "subject": "Agreed",
+      "body": "Yes, Hillford in the last week of July is agreed. We have found a date that works for everyone. On Friday we can compare hotels and train journeys; the place and week are already settled. I will bring some hotel information so that we can make the remaining arrangements."
+    }
+  ],
+  "email_times_same_time_zone": true,
+  "proposed_windows": [
+    "May",
+    "June",
+    "the last week of July"
+  ],
+  "availability": {
+    "Rosa": [
+      "June",
+      "the last week of July"
+    ],
+    "Ben": [
+      "May",
+      "the last week of July"
+    ],
+    "Ivy": [
+      "the last week of July"
+    ]
+  },
+  "agreed_window": "the last week of July",
+  "availability_scope_only_proposed_windows": true,
+  "final_agreement_answer_text": "Go to Hillford in the last week of July.",
+  "final_agreement_evidence": "Yes, Hillford in the last week of July is agreed. We have found a date that works for everyone. On Friday we can compare hotels and train journeys; the place and week are already settled. I will bring some hotel information so that we can make the remaining arrangements.",
+  "destination_reason_evidence": "Hi both, I suggest Hillford. I saw photos that my cousin took there, and the green paths looked lovely. May is free for me, but I will be visiting family throughout June. The last week of July would also work. Ivy, are either of those dates possible for you?",
+  "fictional_mail_places_study_data_not_real_correspondence": true,
+  "study": {
+    "hypothesis_not_proven_cause": true,
+    "age_estimate_not_exact": true,
+    "individual_record_not_all_tropical_trees": true,
+    "not_human_storm_safety_instruction": true,
+    "hypothesis": "One suggested explanation involved the route taken by the electric current. It might travel along touching branches and climbing vines and then reach neighbouring plants. If less energy stayed in the large tree, the damage to it might be smaller. The team had not directly measured this route, so the report treated it as an explanation to investigate.",
+    "benefit": "The tree chosen as an example had a wide crown high above the surrounding growth. Its trunk was much thicker than the saplings around it. After the strike, dead vines no longer covered many of its branches, and some nearby competitors were gone. More light could now reach its remaining leaves.",
+    "appearance": "The tree chosen as an example had a wide crown high above the surrounding growth. Its trunk was much thicker than the saplings around it. After the strike, dead vines no longer covered many of its branches, and some nearby competitors were gone. More light could now reach its remaining leaves.",
+    "age_limit": "The researchers did not know its exact age. The piece of wood they examined lacked an unbroken set of clearly annual rings. They could not turn a count of those visible lines into a reliable birthday. The report described the tree as old without claiming a precise year in which it began growing."
+  },
+  "answer_evidence": [
+    {
+      "number": 1,
+      "best_text": "Rosa",
+      "evidence": "From: Rosa\n\nTo: Ben; Ivy\n\nSent: 12 April 2027, 10:02\n\nSubject: A thought\n\nHello Ben and Ivy, could we arrange a few days away together? Let us decide early before all the rooms in the small hotels are taken. I cannot travel in May because I am working. June and the last week of July are possible. We wanted somewhere with walks in the hills, did we not?"
+    },
+    {
+      "number": 2,
+      "best_text": "Small hotels may have no rooms left.",
+      "evidence": "From: Rosa\n\nTo: Ben; Ivy\n\nSent: 12 April 2027, 10:02\n\nSubject: A thought\n\nHello Ben and Ivy, could we arrange a few days away together? Let us decide early before all the rooms in the small hotels are taken. I cannot travel in May because I am working. June and the last week of July are possible. We wanted somewhere with walks in the hills, did we not?"
+    },
+    {
+      "number": 3,
+      "best_text": "His cousin’s photos of the paths.",
+      "evidence": "From: Ben\n\nTo: Rosa; Ivy\n\nSent: 12 April 2027, 10:16\n\nSubject: Hello again\n\nHi both, I suggest Hillford. I saw photos that my cousin took there, and the green paths looked lovely. May is free for me, but I will be visiting family throughout June. The last week of July would also work. Ivy, are either of those dates possible for you?"
+    },
+    {
+      "number": 4,
+      "best_text": "Go to Hillford in the last week of July.",
+      "evidence": "From: Rosa\n\nTo: Ben; Ivy\n\nSent: 12 April 2027, 13:19\n\nSubject: Agreed\n\nYes, Hillford in the last week of July is agreed. We have found a date that works for everyone. On Friday we can compare hotels and train journeys; the place and week are already settled. I will bring some hotel information so that we can make the remaining arrangements."
+    },
+    {
+      "number": 5,
+      "best_text": "Arranging a shared holiday",
+      "evidence": "From: Rosa\n\nTo: Ben; Ivy\n\nSent: 12 April 2027, 13:19\n\nSubject: Agreed\n\nYes, Hillford in the last week of July is agreed. We have found a date that works for everyone. On Friday we can compare hotels and train journeys; the place and week are already settled. I will bring some hotel information so that we can make the remaining arrangements."
+    },
+    {
+      "number": 6,
+      "best_text": "It may move to other plants through connected growth.",
+      "evidence": "One suggested explanation involved the route taken by the electric current. It might travel along touching branches and climbing vines and then reach neighbouring plants. If less energy stayed in the large tree, the damage to it might be smaller. The team had not directly measured this route, so the report treated it as an explanation to investigate."
+    },
+    {
+      "number": 7,
+      "best_text": "Fewer vines and competitors blocked its light.",
+      "evidence": "The tree chosen as an example had a wide crown high above the surrounding growth. Its trunk was much thicker than the saplings around it. After the strike, dead vines no longer covered many of its branches, and some nearby competitors were gone. More light could now reach its remaining leaves."
+    },
+    {
+      "number": 8,
+      "best_text": "A thick trunk supporting a high, wide crown.",
+      "evidence": "The tree chosen as an example had a wide crown high above the surrounding growth. Its trunk was much thicker than the saplings around it. After the strike, dead vines no longer covered many of its branches, and some nearby competitors were gone. More light could now reach its remaining leaves."
+    },
+    {
+      "number": 9,
+      "best_text": "Its wood lacked a complete clear sequence of yearly rings.",
+      "evidence": "The researchers did not know its exact age. The piece of wood they examined lacked an unbroken set of clearly annual rings. They could not turn a count of those visible lines into a reliable birthday. The report described the tree as old without claiming a precise year in which it began growing."
+    },
+    {
+      "number": 10,
+      "best_text": "Nature",
+      "evidence": "The study account focuses on plants living together and the effects of a sudden disturbance. Its observations raise questions about survival and competition, rather than establishing that every tree will respond in the same way."
+    }
+  ],
+  "format_summary": "完整大题九 / A四封完整邮件+B研究说明 / 两篇各5共10题 / 每题三选 / 各2分共20分，非判断另立在内30分"
+}

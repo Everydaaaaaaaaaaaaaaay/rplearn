@@ -1,0 +1,409 @@
+{
+  "id": "grade9-email10-lake",
+  "title": "初三两篇十题：湖镇行程邮件与古树年龄",
+  "grade": 9,
+  "family": "reading_choice",
+  "source_group_id": "grade9-chengdu2025-21cnjy23208601.reading.complete_section10",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolEmailReadingSourceBindings-v0.1.json",
+    "sha256": "4d95ac99e829431a79fd0187aa3b2e5afddb83b1f98037d2f629534059a7bc08"
+  },
+  "source_binding": "grade9-chengdu2025-21cnjy23208601.reading.complete_section10.binding",
+  "instruction": "阅读A组四封完整邮件和B组研究说明，回答第1至第10题；每题从A、B、C三个选项中选出最合适的一项。每题2分，共20分。人物、地点、邮件和研究内容均为虚构；邮件时间采用同一当地时间。",
+  "source_notice": "参照成都标签初三公开文字的大题九：两篇各5共10三选，各2分共20分；A四封完整邮件（From/To/Sent/Subject与正文）协商日期、原因和最终约定，B树木研究说明含假说、资源竞争、外貌、树龄不确定及报刊分类。大题八判断5另立且已三稿，不并入本组或把本组算整阅读30分。原校施测身份/原PDF图像层未认证，原键非gold；源37booking担忧释义、38A缺句点及科学泛化风险保留。新邮件人物地点行程、森林观察与数据均虚构，非真实通信或真实研究复现；不把能量路径假说写成已验证机理，不泛化所有热带树木没有年轮，仅说本个体取样无可数完整年轮序列。源科学伴随核读Cary作者机构发布和2025论文表明电学/结构生存特征仍待研究，故新6题明确问proposed/suggested解释，不当已证事实或人类雷雨安全规则。新稿保留观察到的竞争变化与未定机理/年龄区别，不引用虚构结果为现实科学证据。四封均同一当地时间，日期窗口仅属所给行程选择。照片在邮件叙述中提及，必要信息全由文字给出，无另需图片/录音；三稿同一源模式与主题家族，非三独立来源或教研/学生/商用/生产验证。",
+  "sections": [
+    {
+      "label": "A",
+      "genre": "four_email_planning_chain_with_full_headers",
+      "units": [
+        "From: Sam\n\nTo: Zoe; Lei\n\nSent: 08 February 2027, 08:40\n\nSubject: Hello\n\nHi Zoe and Lei, shall we finally plan our short holiday? We should not leave it too late, because places to stay may be fully booked. I will be working in March, but April or the first week of May is possible. We wanted a quiet place near a lake. What do you think?",
+        "From: Zoe\n\nTo: Sam; Lei\n\nSent: 08 February 2027, 09:03\n\nSubject: An idea\n\nHello both, how about Lakehaven? A friend sent me pictures of the lake and the walking route beside it, and I would love to see them myself. March would work for me, but I will be away with my family all through April. The first week of May is also free.",
+        "From: Lei\n\nTo: Sam; Zoe\n\nSent: 08 February 2027, 11:12\n\nSubject: A reply\n\nHello Sam and Zoe, Lakehaven sounds just right. I cannot travel in March because of a project, or in April because of a course. The first week of May is free for me. Sam, can you confirm that week? We could meet on Monday to look at places to stay and compare bus times.",
+        "From: Sam\n\nTo: Zoe; Lei\n\nSent: 08 February 2027, 11:36\n\nSubject: That is settled\n\nLet us book a trip to Lakehaven in the first week of May. We have all confirmed that week now. Monday is for choosing accommodation and transport; we do not need to choose the destination again. I will bring the bus timetable and a list of guest houses near the walking route."
+      ],
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "label": "B",
+      "genre": "tropical_tree_lightning_study_explanation",
+      "units": [
+        "During a forest survey, researchers noticed a very tall tree that remained alive after a lightning strike. Some smaller trees and climbing vines around it had died. The team recorded the damage and considered why a dangerous event might leave a survivor with fewer competitors.\n\nThe report offered a possible explanation for the survival. Electric current might pass away from the large tree through touching branches and vines. In that case, less energy would remain in the tree itself. This was a proposed route, not something the team had measured directly, and other explanations still needed investigation.\n\nThe recorded tree had a broad crown that rose above the surrounding plants. Its thick trunk stood in a newly opened gap. With fewer vines on its branches and fewer trees crowding beside it, the survivor had more space and could receive more light. The report did not claim that lightning benefits every tree.\n\nIts precise age remained unknown. The wood examined by the researchers did not contain a continuous sequence of identifiable annual rings. Counting the marks they could see would therefore not provide a complete age. They could describe a long-lived tree without knowing the exact year it had started growing.\n\nThis account asks readers to consider how plants respond to a disturbance and how neighbours compete for resources. It also shows why an observation can support a new question before the explanation has been fully established."
+      ],
+      "response_numbers": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "number": 1,
+      "stem": "A组 · Which person sent the earliest email?",
+      "options": [
+        [
+          "A",
+          "Zoe"
+        ],
+        [
+          "B",
+          "Lei"
+        ],
+        [
+          "C",
+          "Sam"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：09:03晚于08:40；B：11:12晚于前两封；C：08:40最早",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_earliest_sender"
+    },
+    {
+      "number": 2,
+      "stem": "A组 · Why does Sam want to plan before it is too late?",
+      "options": [
+        [
+          "A",
+          "Accommodation may become fully booked."
+        ],
+        [
+          "B",
+          "The walking route is closing in April."
+        ],
+        [
+          "C",
+          "Zoe has already chosen a bus for everyone."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：首封担忧住宿订满；B：未说路线四月关闭；C：尚待周一比较公交时间",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_booking_concern"
+    },
+    {
+      "number": 3,
+      "stem": "A组 · Why does Zoe propose Lakehaven?",
+      "options": [
+        [
+          "A",
+          "Sam has already paid for a guest house there."
+        ],
+        [
+          "B",
+          "Pictures from a friend made her want to visit."
+        ],
+        [
+          "C",
+          "Her course will take place beside the lake."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：尚未确定住宿付款；B：朋友湖与步道照片吸引她；C：课程是Lei限制，未说当地举办",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_destination_reason"
+    },
+    {
+      "number": 4,
+      "stem": "A组 · What have the three finally settled?",
+      "options": [
+        [
+          "A",
+          "A new destination to be chosen on Monday."
+        ],
+        [
+          "B",
+          "A March holiday after Sam finishes work."
+        ],
+        [
+          "C",
+          "A Lakehaven trip in the first week of May."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：末封明确目的地无需重选；B：Sam三月工作，非约定月份；C：末封确认地点和五月首周",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_final_agreement"
+    },
+    {
+      "number": 5,
+      "stem": "A组 · Which subject would best cover all four messages?",
+      "options": [
+        [
+          "A",
+          "Making holiday plans together"
+        ],
+        [
+          "B",
+          "Advertising a new guest-house business"
+        ],
+        [
+          "C",
+          "Applying for a lake survey project"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：四封共同安排假期；B：未经营或宣传新旅馆；C：项目仅为Lei的时间限制",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "email_thread_subject"
+    },
+    {
+      "number": 6,
+      "stem": "B组 · According to the proposed explanation, what may protect the survivor from greater damage?",
+      "options": [
+        [
+          "A",
+          "Its crown preventing all lightning strikes."
+        ],
+        [
+          "B",
+          "The exact age being known before the storm."
+        ],
+        [
+          "C",
+          "Current passing away through connected plants."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：例树已受击，非防止全部雷击；B：树龄未知也非电损伤机理；C：假说经相连植物把电流向外传递",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_proposed_explanation"
+    },
+    {
+      "number": 7,
+      "stem": "B组 · What advantage followed the loss of nearby plants?",
+      "options": [
+        [
+          "A",
+          "A complete annual record inside the trunk."
+        ],
+        [
+          "B",
+          "More light and space with fewer competitors."
+        ],
+        [
+          "C",
+          "A greater number of vines covering the branches."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：年轮记录仍不完整；B：邻近植物和藤减少竞争带来光空间；C：藤减少而不是更多",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_competition_benefit"
+    },
+    {
+      "number": 8,
+      "stem": "B组 · How is the recorded tree described?",
+      "options": [
+        [
+          "A",
+          "Very tall, with a thick trunk and broad crown."
+        ],
+        [
+          "B",
+          "A thin stem with no crown above it."
+        ],
+        [
+          "C",
+          "A small plant hidden beneath all its neighbours."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：高大粗干宽冠；B：文中有粗干及宽冠；C：高于周边，并非矮小隐藏",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_appearance_detail"
+    },
+    {
+      "number": 9,
+      "stem": "B组 · Why could the researchers not state its precise age?",
+      "options": [
+        [
+          "A",
+          "They had proved that all tall trees were the same age."
+        ],
+        [
+          "B",
+          "An unbroken identifiable sequence of annual rings was missing."
+        ],
+        [
+          "C",
+          "The tree had stopped casting a shadow."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：未证同高树均同龄；B：缺可识别完整连续年轮序列；C：没有影子消失的描述",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_age_uncertainty"
+    },
+    {
+      "number": 10,
+      "stem": "B组 · Which newspaper section is the best home for this passage?",
+      "options": [
+        [
+          "A",
+          "Nature"
+        ],
+        [
+          "B",
+          "Cooking"
+        ],
+        [
+          "C",
+          "Entertainment reviews"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：植物、生存及竞争属自然观察；B：无烹饪内容；C：不是文娱作品评论",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "study_publication_section"
+    }
+  ],
+  "emails": [
+    {
+      "from": "Sam",
+      "to": [
+        "Zoe",
+        "Lei"
+      ],
+      "sent": "2027-02-08T08:40",
+      "subject": "Hello",
+      "body": "Hi Zoe and Lei, shall we finally plan our short holiday? We should not leave it too late, because places to stay may be fully booked. I will be working in March, but April or the first week of May is possible. We wanted a quiet place near a lake. What do you think?"
+    },
+    {
+      "from": "Zoe",
+      "to": [
+        "Sam",
+        "Lei"
+      ],
+      "sent": "2027-02-08T09:03",
+      "subject": "An idea",
+      "body": "Hello both, how about Lakehaven? A friend sent me pictures of the lake and the walking route beside it, and I would love to see them myself. March would work for me, but I will be away with my family all through April. The first week of May is also free."
+    },
+    {
+      "from": "Lei",
+      "to": [
+        "Sam",
+        "Zoe"
+      ],
+      "sent": "2027-02-08T11:12",
+      "subject": "A reply",
+      "body": "Hello Sam and Zoe, Lakehaven sounds just right. I cannot travel in March because of a project, or in April because of a course. The first week of May is free for me. Sam, can you confirm that week? We could meet on Monday to look at places to stay and compare bus times."
+    },
+    {
+      "from": "Sam",
+      "to": [
+        "Zoe",
+        "Lei"
+      ],
+      "sent": "2027-02-08T11:36",
+      "subject": "That is settled",
+      "body": "Let us book a trip to Lakehaven in the first week of May. We have all confirmed that week now. Monday is for choosing accommodation and transport; we do not need to choose the destination again. I will bring the bus timetable and a list of guest houses near the walking route."
+    }
+  ],
+  "email_times_same_time_zone": true,
+  "proposed_windows": [
+    "March",
+    "April",
+    "the first week of May"
+  ],
+  "availability": {
+    "Sam": [
+      "April",
+      "the first week of May"
+    ],
+    "Zoe": [
+      "March",
+      "the first week of May"
+    ],
+    "Lei": [
+      "the first week of May"
+    ]
+  },
+  "agreed_window": "the first week of May",
+  "availability_scope_only_proposed_windows": true,
+  "final_agreement_answer_text": "A Lakehaven trip in the first week of May.",
+  "final_agreement_evidence": "Let us book a trip to Lakehaven in the first week of May. We have all confirmed that week now. Monday is for choosing accommodation and transport; we do not need to choose the destination again. I will bring the bus timetable and a list of guest houses near the walking route.",
+  "destination_reason_evidence": "Hello both, how about Lakehaven? A friend sent me pictures of the lake and the walking route beside it, and I would love to see them myself. March would work for me, but I will be away with my family all through April. The first week of May is also free.",
+  "fictional_mail_places_study_data_not_real_correspondence": true,
+  "study": {
+    "hypothesis_not_proven_cause": true,
+    "age_estimate_not_exact": true,
+    "individual_record_not_all_tropical_trees": true,
+    "not_human_storm_safety_instruction": true,
+    "hypothesis": "The report offered a possible explanation for the survival. Electric current might pass away from the large tree through touching branches and vines. In that case, less energy would remain in the tree itself. This was a proposed route, not something the team had measured directly, and other explanations still needed investigation.",
+    "benefit": "The recorded tree had a broad crown that rose above the surrounding plants. Its thick trunk stood in a newly opened gap. With fewer vines on its branches and fewer trees crowding beside it, the survivor had more space and could receive more light. The report did not claim that lightning benefits every tree.",
+    "appearance": "The recorded tree had a broad crown that rose above the surrounding plants. Its thick trunk stood in a newly opened gap. With fewer vines on its branches and fewer trees crowding beside it, the survivor had more space and could receive more light. The report did not claim that lightning benefits every tree.",
+    "age_limit": "Its precise age remained unknown. The wood examined by the researchers did not contain a continuous sequence of identifiable annual rings. Counting the marks they could see would therefore not provide a complete age. They could describe a long-lived tree without knowing the exact year it had started growing."
+  },
+  "answer_evidence": [
+    {
+      "number": 1,
+      "best_text": "Sam",
+      "evidence": "From: Sam\n\nTo: Zoe; Lei\n\nSent: 08 February 2027, 08:40\n\nSubject: Hello\n\nHi Zoe and Lei, shall we finally plan our short holiday? We should not leave it too late, because places to stay may be fully booked. I will be working in March, but April or the first week of May is possible. We wanted a quiet place near a lake. What do you think?"
+    },
+    {
+      "number": 2,
+      "best_text": "Accommodation may become fully booked.",
+      "evidence": "From: Sam\n\nTo: Zoe; Lei\n\nSent: 08 February 2027, 08:40\n\nSubject: Hello\n\nHi Zoe and Lei, shall we finally plan our short holiday? We should not leave it too late, because places to stay may be fully booked. I will be working in March, but April or the first week of May is possible. We wanted a quiet place near a lake. What do you think?"
+    },
+    {
+      "number": 3,
+      "best_text": "Pictures from a friend made her want to visit.",
+      "evidence": "From: Zoe\n\nTo: Sam; Lei\n\nSent: 08 February 2027, 09:03\n\nSubject: An idea\n\nHello both, how about Lakehaven? A friend sent me pictures of the lake and the walking route beside it, and I would love to see them myself. March would work for me, but I will be away with my family all through April. The first week of May is also free."
+    },
+    {
+      "number": 4,
+      "best_text": "A Lakehaven trip in the first week of May.",
+      "evidence": "From: Sam\n\nTo: Zoe; Lei\n\nSent: 08 February 2027, 11:36\n\nSubject: That is settled\n\nLet us book a trip to Lakehaven in the first week of May. We have all confirmed that week now. Monday is for choosing accommodation and transport; we do not need to choose the destination again. I will bring the bus timetable and a list of guest houses near the walking route."
+    },
+    {
+      "number": 5,
+      "best_text": "Making holiday plans together",
+      "evidence": "From: Sam\n\nTo: Zoe; Lei\n\nSent: 08 February 2027, 11:36\n\nSubject: That is settled\n\nLet us book a trip to Lakehaven in the first week of May. We have all confirmed that week now. Monday is for choosing accommodation and transport; we do not need to choose the destination again. I will bring the bus timetable and a list of guest houses near the walking route."
+    },
+    {
+      "number": 6,
+      "best_text": "Current passing away through connected plants.",
+      "evidence": "The report offered a possible explanation for the survival. Electric current might pass away from the large tree through touching branches and vines. In that case, less energy would remain in the tree itself. This was a proposed route, not something the team had measured directly, and other explanations still needed investigation."
+    },
+    {
+      "number": 7,
+      "best_text": "More light and space with fewer competitors.",
+      "evidence": "The recorded tree had a broad crown that rose above the surrounding plants. Its thick trunk stood in a newly opened gap. With fewer vines on its branches and fewer trees crowding beside it, the survivor had more space and could receive more light. The report did not claim that lightning benefits every tree."
+    },
+    {
+      "number": 8,
+      "best_text": "Very tall, with a thick trunk and broad crown.",
+      "evidence": "The recorded tree had a broad crown that rose above the surrounding plants. Its thick trunk stood in a newly opened gap. With fewer vines on its branches and fewer trees crowding beside it, the survivor had more space and could receive more light. The report did not claim that lightning benefits every tree."
+    },
+    {
+      "number": 9,
+      "best_text": "An unbroken identifiable sequence of annual rings was missing.",
+      "evidence": "Its precise age remained unknown. The wood examined by the researchers did not contain a continuous sequence of identifiable annual rings. Counting the marks they could see would therefore not provide a complete age. They could describe a long-lived tree without knowing the exact year it had started growing."
+    },
+    {
+      "number": 10,
+      "best_text": "Nature",
+      "evidence": "This account asks readers to consider how plants respond to a disturbance and how neighbours compete for resources. It also shows why an observation can support a new question before the explanation has been fully established."
+    }
+  ],
+  "format_summary": "完整大题九 / A四封完整邮件+B研究说明 / 两篇各5共10题 / 每题三选 / 各2分共20分，非判断另立在内30分"
+}
