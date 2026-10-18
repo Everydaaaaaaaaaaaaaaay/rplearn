@@ -95,6 +95,9 @@ def validate(d,b,s):
     if c.get('necessary_images'):
         from senior_graph_reading_contract import validate as validate_graph
         validate_graph(d,s)
+    if s.get('native14_author_gate'):
+        from senior_care14_reading_contract import validate as validate_care14
+        validate_care14(d,s)
     if c['required_tables']:
         assert c['required_tables']==['A.fee_table'] and not c['required_lists']
         table=d['required_table'];assert table['id']=='A.fee_table'
@@ -179,6 +182,9 @@ def check(g,a,b,s):
         check_rendered(g,a,d)
     if d.get('job_notice'):
         from senior_job_reading_contract import check_rendered
+        check_rendered(g,a,d)
+    if d.get('source_bound_care_notice14_section'):
+        from senior_care14_reading_contract import check_rendered
         check_rendered(g,a,d)
     if d.get('program_policy'):
         assert a['program_policy']==d['program_policy'] and a['program_match']==d['program_match']

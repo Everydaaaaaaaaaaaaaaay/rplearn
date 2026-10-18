@@ -20,6 +20,10 @@ def validate(source,binding):
     assert source['responses']==binding['responses'] and source['options_each']==binding['options_each']==4
     assert source['source_full_inputs_verified'] and not source['source_key_is_gold']
     assert source['source_count_increment']==binding['new_source_count']==0
+    native14=bool(source.get('source_native14_review'))
+    if native14:
+        from school_reading_native_binding import validate as validate_native_binding
+        validate_native_binding(source)
     c=source['configuration'];h=source['whole_objective_header'];raw=load_ref(h['source']).read_text()
     header=raw[h['start_offset']:h['end_offset']]
     assert header==h['text'] and digest(header)==h['sha256']
@@ -31,7 +35,8 @@ def validate(source,binding):
     assert selected_text==selected['text'] and digest(selected_text)==selected['sha256']
     assert int(re.search(r'共\s*(\d+)\s*小题',selected_text)[1])==source['responses']
     assert float(re.search(r'每小题\s*([0-9.]+)\s*分',selected_text)[1])==c['points_each']
-    assert float(re.search(r'满分\s*([0-9.]+)\s*分',selected_text)[1])==c['selected_objective_points']
+    points_pattern=r'(?:满分|共)\s*([0-9.]+)\s*分' if native14 else r'满分\s*([0-9.]+)\s*分'
+    assert float(re.search(points_pattern,selected_text)[1])==c['selected_objective_points']
     assert source['responses']*c['points_each']==c['selected_objective_points']
     assert c['all_selected_subgroups_mandatory'] and not c['shared_candidates']
     assert not c['necessary_audio']
@@ -50,13 +55,20 @@ def validate(source,binding):
     previous_end=h['end_offset'];numbers=[];bodies={}
     for i,(sp,ob,sub)in enumerate(zip(source['source_spans'],source['source_observations'],c['subgroups'])):
         assert sp['label']==sub['label']=='ABCD'[i]
-        assert sp['source']==ob['source_text_ref']==h['source']
+        if native14:
+            assert sp['source']==h['source']
+        else:
+            assert sp['source']==ob['source_text_ref']==h['source']
         assert sp['source_member_id']==ob['id']
         assert ob['paper_id']==source['source_observations'][0]['paper_id']
         assert ob['shape']['grade']==source['level'] and ob['shape']['family']=='reading_choice'
         assert ob['shape']['responses']==sub['responses']==len(sp['question_numbers'])
         assert ob['shape']['options_each']==4
-        if source.get('source_visual_input_confirmations'):
+        if native14:
+            # The native wrapper above preserves every unknown observation and
+            # checks the whole projection against frozen original-page pointers.
+            assert ob['necessary_input_complete'] is None
+        elif source.get('source_visual_input_confirmations'):
             # Whole visual recovery is checked above against frozen observations,
             # preview provenance and per-member confirmations, including known False.
             assert c['necessary_images']
@@ -198,6 +210,17 @@ def run(bindings_path):
                 'phrase_truncated':lambda x:x['necessary_input_overlay'].__setitem__('B_unnamed_underlined_phrase','white-knuckling'),
                 'visual_key_upgraded':lambda x:x['source_visual_input_confirmations'][0].__setitem__('source_key_is_gold',True),
                 'visual_selected_header_wrong':lambda x:x.__setitem__('selected_objective_header',x['whole_objective_header']),
+            })
+        if s.get('source_native14_review'):
+            cases.update({
+                'native_old_unknown_overwritten':lambda x:x['source_observations'][0].__setitem__('necessary_input_complete',True),
+                'native_gate_wrong':lambda x:x.__setitem__('native14_author_gate','grade11_not_implemented'),
+                'native_source_key_repaired':lambda x:x['source_keys']['items'][0].__setitem__('published_answer','A'),
+                'native_source_gold_upgraded':lambda x:x['source_keys'].__setitem__('independent_gold',True),
+                'native14_as15':lambda x:x.__setitem__('responses',15),
+                'native_wrong_distribution':lambda x:x['configuration'].__setitem__('response_distribution',[3,4,4,3]),
+                'native_whole38_as28':lambda x:x.__setitem__('selected_objective_header',x['whole_objective_header']),
+                'native_lexical_shortened':lambda x:x['lexical_target_spans'][0].__setitem__('whitespace_normalized','no strings'),
             })
         rejected=[]
         for name,mutate in cases.items():

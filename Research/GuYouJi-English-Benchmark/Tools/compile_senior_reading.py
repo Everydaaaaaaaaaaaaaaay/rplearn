@@ -33,6 +33,13 @@ def compile_author(manuscript, version='0.1'):
         audit['load_measure'].update(graph_label_English_words=words(' '.join([model['title'],model['x_axis'],model['y_axis'],'Low High']+model['point_labels'])),
                                     graph_alt_English_words=words(graph_alt(model)),necessary_curve_graphs=1,
                                     graph_markup_excluded_from_body_count=True)
+    if d.get('source_bound_care_notice14_section'):
+        audit.update(source_bound_care_notice14_section=True,care_notice=d['care_notice'],
+                     experience_options=d['experience_options'],narrative_evidence=d['narrative_evidence'],
+                     answer_evidence=d['answer_evidence'])
+        audit['load_measure'].update(notice_required_fields=5,research_accounts=2,
+                                    output_requirement_Han_characters=len(re.findall('[\u3400-\u9fff]',d['instruction'])),
+                                    stem_Han_characters=sum(len(re.findall('[\u3400-\u9fff]',q['stem']))for q in qs))
     if d.get('credit_notice'):
         from senior_credit_reading_contract import format_credit
         policy=d['credit_notice']
