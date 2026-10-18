@@ -1,0 +1,769 @@
+{
+  "version": "0.1",
+  "previous_reconciliation": {
+    "path": "CompleteCoverage20261017/SchoolReadingConfigurationReconciliation-v0.26.json",
+    "sha256": "9074bc58ea89395cde37657f1a4abe7a6857a4b58f84536166098d5b2abb8395"
+  },
+  "records": [
+    {
+      "level": 7,
+      "source_count_increment": 0,
+      "new_author_groups": 0,
+      "source_key_is_gold": false,
+      "original_unknown_observations_retained": true,
+      "full_body_and_all_candidates_context_read": true,
+      "requires_source_binding_and_specific_author_contract": true,
+      "authors_genre_model_ready": false,
+      "grade_exclusivity_established": false,
+      "id": "suzhou-changshu2019-grade7-upper.reading.complete_section15",
+      "paper_id": "suzhou-changshu2019-grade7-upper",
+      "kind": "reading_choice",
+      "responses": 15,
+      "options_each": 4,
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/suzhou-changshu2019-visible-text.txt",
+        "sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684"
+      },
+      "source_parent_html": {
+        "path": "build/english-benchmark-research-20261012/raw/suzhou-changshu2019-grade7-upper.html",
+        "sha256": "acbeb10da17abf6320413e97ae61d2e11a92e237f24efc763cd033bc854be5d6"
+      },
+      "source_observations": [
+        {
+          "id": "g7.2019.readingA",
+          "paper_id": "suzhou-changshu2019-grade7-upper",
+          "shape": {
+            "grade": 7,
+            "family": "reading_choice",
+            "responses": 3,
+            "options_each": 4,
+            "details": {
+              "input": "calendar_and_text"
+            }
+          },
+          "layer": "baseline_selected117",
+          "necessary_input_complete": null,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "g7.2019.readingB",
+          "paper_id": "suzhou-changshu2019-grade7-upper",
+          "shape": {
+            "grade": 7,
+            "family": "reading_choice",
+            "responses": 3,
+            "options_each": 4,
+            "details": {
+              "input": "image_and_text"
+            }
+          },
+          "layer": "baseline_selected117",
+          "necessary_input_complete": null,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        }
+      ],
+      "source_section": {
+        "source": {
+          "path": "build/english-benchmark-research-20261012/suzhou-changshu2019-visible-text.txt",
+          "sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684"
+        },
+        "start_offset": 8600,
+        "end_offset": 15006,
+        "sha256": "0e7eb945531e3ba994dff627e8bd8b98b742ccf4c5698791d2a010efc8e449f7"
+      },
+      "subgroups": [
+        {
+          "label": "A",
+          "body": {
+            "source": {
+              "path": "build/english-benchmark-research-20261012/suzhou-changshu2019-visible-text.txt",
+              "sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684"
+            },
+            "start_offset": 8693,
+            "end_offset": 9324,
+            "sha256": "dbc40f529fd181bd572ebd0f4bf84d2645b4c93e3dbcefa26b68b7d13a8ad8f7"
+          },
+          "question_block": {
+            "source": {
+              "path": "build/english-benchmark-research-20261012/suzhou-changshu2019-visible-text.txt",
+              "sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684"
+            },
+            "start_offset": 9324,
+            "end_offset": 9875,
+            "sha256": "f36d30641ab75e97e265f257ddf6dcb82f4a57a52e8b914c9a002cf733d25429"
+          },
+          "question_numbers": [
+            46,
+            47,
+            48
+          ],
+          "responses": 3,
+          "material_units": 1,
+          "genre": "calendar_plus_family_holiday_information"
+        },
+        {
+          "label": "B",
+          "body": {
+            "source": {
+              "path": "build/english-benchmark-research-20261012/suzhou-changshu2019-visible-text.txt",
+              "sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684"
+            },
+            "start_offset": 9877,
+            "end_offset": 10609,
+            "sha256": "026ebb62456a8f614c5f74cd5b552bb4f98e0194b5f022f973ba6d62576cde16"
+          },
+          "question_block": {
+            "source": {
+              "path": "build/english-benchmark-research-20261012/suzhou-changshu2019-visible-text.txt",
+              "sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684"
+            },
+            "start_offset": 10609,
+            "end_offset": 11089,
+            "sha256": "5a5bde9dcfcfc8f8c554864c9257445f6a8d68c6fa350b4e1540354c0de059cb"
+          },
+          "question_numbers": [
+            49,
+            50,
+            51
+          ],
+          "responses": 3,
+          "material_units": 1,
+          "genre": "school_and_teachers_description_with_four_picture_candidates"
+        },
+        {
+          "label": "C",
+          "body": {
+            "source": {
+              "path": "build/english-benchmark-research-20261012/suzhou-changshu2019-visible-text.txt",
+              "sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684"
+            },
+            "start_offset": 11091,
+            "end_offset": 11972,
+            "sha256": "f559c66444321f4a1da41b603e5ac720bd6ce4f2f5e9b762e629c0045186a166"
+          },
+          "question_block": {
+            "source": {
+              "path": "build/english-benchmark-research-20261012/suzhou-changshu2019-visible-text.txt",
+              "sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684"
+            },
+            "start_offset": 11972,
+            "end_offset": 12772,
+            "sha256": "32987c1bc9bd929fa4d875b8c6225af91a309e20f06f925a165ef361305e93f2"
+          },
+          "question_numbers": [
+            52,
+            53,
+            54,
+            55
+          ],
+          "responses": 4,
+          "material_units": 1,
+          "genre": "memory_and_language_learning_explanation"
+        },
+        {
+          "label": "D",
+          "body": {
+            "source": {
+              "path": "build/english-benchmark-research-20261012/suzhou-changshu2019-visible-text.txt",
+              "sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684"
+            },
+            "start_offset": 12774,
+            "end_offset": 14259,
+            "sha256": "f86fd2002df389dbe74e8cb68f86e248c659cbb69119047aa4f4f5c62e28cb34"
+          },
+          "question_block": {
+            "source": {
+              "path": "build/english-benchmark-research-20261012/suzhou-changshu2019-visible-text.txt",
+              "sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684"
+            },
+            "start_offset": 14259,
+            "end_offset": 15006,
+            "sha256": "5b5a0c2a8582c721034d968901bcc054c892259a30b9a234eecc93fbaaa54dfb"
+          },
+          "question_numbers": [
+            56,
+            57,
+            58,
+            59,
+            60
+          ],
+          "responses": 5,
+          "material_units": 3,
+          "genre": "three_numbered_family_poems_with_glossary"
+        }
+      ],
+      "configuration": {
+        "passage_count": 4,
+        "subgroup_count": 4,
+        "text_unit_count": 6,
+        "material_unit_distribution": [
+          1,
+          1,
+          1,
+          3
+        ],
+        "response_distribution": [
+          3,
+          3,
+          4,
+          5
+        ],
+        "responses": 15,
+        "options_each": 4,
+        "points_each": 2,
+        "selected_objective_points": 30,
+        "shared_candidates": false,
+        "necessary_audio": false,
+        "required_images": [
+          "A.June2019calendar",
+          "B.Q51four_picture_candidates"
+        ],
+        "required_tables": [
+          "A.month_calendar"
+        ],
+        "required_lists": [
+          "D.three_numbered_poems",
+          "D.four_entry_word_glossary"
+        ],
+        "all_selected_subgroups_mandatory": true
+      },
+      "source_calendar": {
+        "path": "build/english-benchmark-research-20261012/raw/suzhou-changshu2019-image05.jpg",
+        "sha256": "a641b8aa7748c37e84fc0d69cd9a4a94cd965ab6175a12b4e9eb5ed1fadeb5d6"
+      },
+      "source_picture_candidates": {
+        "path": "build/english-benchmark-research-20261012/raw/suzhou-changshu2019-image06.jpg",
+        "sha256": "67b205ab3bcbbe13a1481b45c4cdb7956a93d98f7690ba8c05bb45cf77469ca4"
+      },
+      "published_key_image": {
+        "path": "build/english-benchmark-research-20261012/raw/suzhou-changshu2019-image07.jpg",
+        "sha256": "331bfb55ce6f8883af49dac2a3d1f06d84e0a2be6f61edc6b5366b2bef7a98e6"
+      },
+      "published_keys": [
+        {
+          "number": 46,
+          "published_answer": "C"
+        },
+        {
+          "number": 47,
+          "published_answer": "B"
+        },
+        {
+          "number": 48,
+          "published_answer": "C"
+        },
+        {
+          "number": 49,
+          "published_answer": "B"
+        },
+        {
+          "number": 50,
+          "published_answer": "D"
+        },
+        {
+          "number": 51,
+          "published_answer": "A"
+        },
+        {
+          "number": 52,
+          "published_answer": "B"
+        },
+        {
+          "number": 53,
+          "published_answer": "D"
+        },
+        {
+          "number": 54,
+          "published_answer": "B"
+        },
+        {
+          "number": 55,
+          "published_answer": "D"
+        },
+        {
+          "number": 56,
+          "published_answer": "D"
+        },
+        {
+          "number": 57,
+          "published_answer": "D"
+        },
+        {
+          "number": 58,
+          "published_answer": "C"
+        },
+        {
+          "number": 59,
+          "published_answer": "A"
+        },
+        {
+          "number": 60,
+          "published_answer": "D"
+        }
+      ],
+      "D_poems": 3,
+      "D_glossary": [
+        "feed v.喂养",
+        "fur n.皮毛",
+        "sweep v.打扫",
+        "count v.数数"
+      ],
+      "source_image_panel_order": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "C",
+          "D"
+        ]
+      ],
+      "source_full_inputs_verified": true,
+      "full_input_verification_scope": "publisher HTML selected text plus all embedded calendar/picture-candidate/key assets;low-resolution visual details and original school administration not certified",
+      "calendar_observation": {
+        "month": "June",
+        "year": 2019,
+        "columns": 7,
+        "first_date_column1based": 7,
+        "thirdSunday_day": 16,
+        "weekday_headers_low_resolution_not_transcribed": true,
+        "Gregorian_consistency_checked_separately_not_original_redraw": true
+      },
+      "source_title": "\n\t苏州市教育科学研究院门户网站-常熟市2018－2019学年第一学期期末质量监测卷                     初一英语\n",
+      "source_quality_risks": [
+        "A source study and family/gender assertions unverified;not universal developmental or parenting evidence.",
+        "Acalendar month/year and dated grid acquired;weekday header pixels dark/lowresolution,not guessed as transcribed labels.",
+        "B source says always us without a reporting verb;do not silently repair original. Four picture candidates are a small composite JPEG;exact eyewear detail not certified gold.",
+        "C memory/language-learning simplifications are source claims,not causal developmental evidence.",
+        "D source retains lone/emery/rooming/Now ask you and other spelling/wording;do not copy as normative forms or silently fix source."
+      ],
+      "existing_partial_authors": [
+        "grade7-calendar-reading-v0.1",
+        "grade7-kite-day-calendar",
+        "grade7-music-day-calendar"
+      ],
+      "same_specific_whole_section_authors": 0
+    },
+    {
+      "level": 7,
+      "source_count_increment": 0,
+      "new_author_groups": 0,
+      "source_key_is_gold": false,
+      "original_unknown_observations_retained": true,
+      "full_body_and_all_candidates_context_read": true,
+      "requires_source_binding_and_specific_author_contract": true,
+      "authors_genre_model_ready": false,
+      "grade_exclusivity_established": false,
+      "id": "grade7-xicheng2025-public-paper-key20261014.reading.closed_mixed_section11",
+      "paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "kind": "mixed_closed_reading",
+      "responses": 11,
+      "options_each": null,
+      "source_projection": {
+        "path": "build/english-benchmark-authority-20261017/xicheng7-closed-reading-source-projection-v0.1.json",
+        "sha256": "c02feeb03a5da2372dedc73cddb79a34a442eea0a49277e8a599b9099c7e52ce"
+      },
+      "source_PDF": {
+        "path": "build/english-benchmark-research-20261012/raw/grade7-xicheng2025-public-paper-key20261014.pdf",
+        "sha256": "5d302d564efc6ba5973bfbe6d9cce42e27a65323878ec655563a08473f393d70"
+      },
+      "source_pages": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-05.png",
+          "sha256": "26571e80114403151ae2e4a060e01bc780b4b431518eaaf16cd3a186ba6f2750"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-06.png",
+          "sha256": "dacfad0845bf0f13febd3375f6fbce729f1c79fa510fd0ca7992b0475f5ceed5"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-07.png",
+          "sha256": "837be63044fec4be6885c27aa34846c70a1f9ab217e248b39066079e6c20ca8f"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-08.png",
+          "sha256": "a84280613b85fb844cd937376dcd89cd6c90538e6cace9d4deac86d57e4b6702"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-09.png",
+          "sha256": "5a4baea89e1bd34719afe7b70c61a00e6c5d2c45c654c5a308990c06278773b7"
+        }
+      ],
+      "source_key_pages": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-13.png",
+          "sha256": "b100774a8d6e2a828f1b6e033a4ece2b5fcad43d2bb9f4af26a2e05895e3e702"
+        }
+      ],
+      "source_observations": [
+        {
+          "id": "g7.xicheng2025.readingB",
+          "paper_id": "grade7-xicheng2025-public-paper-key20261014",
+          "shape": {
+            "grade": 7,
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 3,
+            "details": {
+              "input": "text"
+            }
+          },
+          "layer": "baseline_selected117",
+          "necessary_input_complete": null,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "g7.xicheng2025.readingC",
+          "paper_id": "grade7-xicheng2025-public-paper-key20261014",
+          "shape": {
+            "grade": 7,
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 3,
+            "details": {
+              "input": "text"
+            }
+          },
+          "layer": "baseline_selected117",
+          "necessary_input_complete": null,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        }
+      ],
+      "additional_existing_sibling_member": "g7.xicheng2025.matchingA",
+      "configuration": {
+        "passage_count": 3,
+        "subgroup_count": 3,
+        "text_unit_count": 9,
+        "material_unit_distribution": [
+          7,
+          1,
+          1
+        ],
+        "response_distribution": [
+          3,
+          4,
+          4
+        ],
+        "responses": 11,
+        "options_each_by_subgroup": [
+          4,
+          3,
+          3
+        ],
+        "candidate_rule_by_subgroup": [
+          "one_shared_four_activity_bank",
+          "independent_three_per_question",
+          "independent_three_per_question"
+        ],
+        "points_each": 2,
+        "selected_objective_points": 22,
+        "umbrella_reading_points30_not_selected22": true,
+        "shared_candidates_only_A": true,
+        "necessary_audio": false,
+        "required_images": [
+          "A.four_activity_pictograms_and_three_profile_faces",
+          "B.apple_picking_illustration",
+          "B.pot_stove_illustrated_gloss"
+        ],
+        "required_tables": [
+          "A.two_by_two_activity_cards"
+        ],
+        "required_lists": [
+          "C.two_printed_subheadings_and_42placeholder"
+        ],
+        "all_selected_subgroups_mandatory": true,
+        "A_activity_cards": 4,
+        "A_profiles": 3,
+        "A_extra_candidates": 1,
+        "A_each_entry_once_explicit": false,
+        "A_observed_key_distinct": true
+      },
+      "subgroups": [
+        {
+          "label": "A",
+          "responses": 3,
+          "material_units": 7,
+          "genre": "four_activity_cards_three_profile_shared_matching",
+          "question_numbers": [
+            33,
+            34,
+            35
+          ],
+          "projection_keys": [
+            "A_instruction",
+            "A_banner",
+            "cards",
+            "profiles"
+          ]
+        },
+        {
+          "label": "B",
+          "responses": 4,
+          "material_units": 1,
+          "genre": "family_unplanned_success_narrative_with_illustrated_gloss",
+          "question_numbers": [
+            36,
+            37,
+            38,
+            39
+          ],
+          "projection_keys": [
+            "B_title",
+            "B_paragraphs",
+            "B_questions",
+            "B_illustrated_glosses",
+            "B_narrative_illustration"
+          ]
+        },
+        {
+          "label": "C",
+          "responses": 4,
+          "material_units": 1,
+          "genre": "secret_explanation_with_subheadings_inline42_and_underlined_phrase",
+          "question_numbers": [
+            40,
+            41,
+            42,
+            43
+          ],
+          "projection_keys": [
+            "C_intro",
+            "C_sections",
+            "C_underlined_phrase",
+            "C_questions"
+          ]
+        }
+      ],
+      "published_keys": [
+        {
+          "number": 33,
+          "published_answer": "C"
+        },
+        {
+          "number": 34,
+          "published_answer": "A"
+        },
+        {
+          "number": 35,
+          "published_answer": "D"
+        },
+        {
+          "number": 36,
+          "published_answer": "A"
+        },
+        {
+          "number": 37,
+          "published_answer": "C"
+        },
+        {
+          "number": 38,
+          "published_answer": "C"
+        },
+        {
+          "number": 39,
+          "published_answer": "B"
+        },
+        {
+          "number": 40,
+          "published_answer": "C"
+        },
+        {
+          "number": 41,
+          "published_answer": "A"
+        },
+        {
+          "number": 42,
+          "published_answer": "A"
+        },
+        {
+          "number": 43,
+          "published_answer": "B"
+        }
+      ],
+      "source_full_inputs_verified": true,
+      "full_input_verification_scope": "complete selected original PDF pages plus manual text projection and original key pages;not school administration authentication or content validity",
+      "source_C_paragraphs": 5,
+      "source_C_underlined_phrase": "strengthen the bond with",
+      "source_C_heading_blank42": true,
+      "source_C_friendship_grow_preserved": true,
+      "source_quality_risks": [
+        "Aoneextraexplicit but no explicit eachentryonce/reuse rule;threepublishedkeys distinct does not justify imposing a new global reuse ban. Time/room text present,not a time-conflict test.",
+        "B pot/stove image-gloss and separate narrative illustration are present;source must not become text-only accidentally. Source ending predicts winning,does not show actual competition result.",
+        "C generic secret/health consequences and personal disclosure suggestions not established clinical/safeguarding advice;only source reading structure,not universal guidance. friendship grow retained.",
+        "Open44to47 is separate section6,contains free preference/reason and remains paused;not part of22points."
+      ],
+      "existing_partial_matching_authors": [
+        "grade7-workshop-matching",
+        "grade7-garden-workshops-matching",
+        "grade7-neighbourhood-workshops"
+      ],
+      "existing_matching3not_whole11": true,
+      "same_specific_whole_section_authors": 0,
+      "projection_field_sha256": {
+        "A_instruction": "2f1d930eca672d0574577afaf153f971e04ab686e89652b5b99717d93902b7c3",
+        "A_banner": "f98f457089dfe4d7afdc342ea32f020ef80114a3b891e1167e647901b97b0e72",
+        "cards": "619c9d0c72349a592d15ff870f92d7c0beadce69866b9737e75ce2b222378ebe",
+        "profiles": "6df67a117d47c7af6cf4e8146b5c435bda0c08007e5be7c6ee93fdd2b6a1a8fe",
+        "B_title": "75842237496ef57e9894f9dedbdc0ce996f0959d137331eb420a1714f1a5cc04",
+        "B_paragraphs": "4bc4067b61668e6df69fc5c26e4635bbe8635a93460d8e463d443411ca98e288",
+        "B_questions": "23ac21814d3301c6017e597196dbdb6d6a2c3d6a65ad2c65552cbdeceb638d29",
+        "B_illustrated_glosses": "d9bdeb45f006cd77f52c1c74f2aea643a50e414fd71e9567b80d3d30f09d0ae9",
+        "B_narrative_illustration": "98d230b9aeb3b09a2318273fb7cb93b8e324b2d2f550dd22abbc06137ce0ade0",
+        "C_intro": "47fc9190507baec30f52061f6ac793d5087b0bc735e4f5629fc7d0df828ef62d",
+        "C_sections": "1b43a4fce12dd3bcd311f640e106270126fdf7d9f5005c7cbeaeb33e17b6c16c",
+        "C_underlined_phrase": "e2452903ff21c3fb7a27af5aa18f56fda08a62e23fe3cb586625f2e0c3c7be1f",
+        "C_questions": "ebbf7daeb3ed9fea73933673207ec6b9694b30ff0565504ffea34cfa1e4511a5"
+      }
+    },
+    {
+      "level": 7,
+      "source_count_increment": 0,
+      "new_author_groups": 0,
+      "source_key_is_gold": false,
+      "original_unknown_observations_retained": true,
+      "full_body_and_all_candidates_context_read": true,
+      "requires_source_binding_and_specific_author_contract": true,
+      "authors_genre_model_ready": false,
+      "grade_exclusivity_established": false,
+      "id": "grade7-xicheng2025-public-paper-key20261014.reading.optional_section3",
+      "paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "kind": "reading_choice",
+      "responses": 3,
+      "options_each": 3,
+      "source_projection": {
+        "path": "build/english-benchmark-authority-20261017/xicheng7-closed-reading-source-projection-v0.1.json",
+        "sha256": "c02feeb03a5da2372dedc73cddb79a34a442eea0a49277e8a599b9099c7e52ce"
+      },
+      "source_PDF": {
+        "path": "build/english-benchmark-research-20261012/raw/grade7-xicheng2025-public-paper-key20261014.pdf",
+        "sha256": "5d302d564efc6ba5973bfbe6d9cce42e27a65323878ec655563a08473f393d70"
+      },
+      "source_pages": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-11.png",
+          "sha256": "c438012d27d34c68fb80c300d3c1b19297e1402a246cfb3f7aa8544f17cac3fb"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-12.png",
+          "sha256": "7b07a2f21b90737dee029413da5d827588aa276d690a09b1bc0dbe34009324ad"
+        }
+      ],
+      "source_key_pages": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-14.png",
+          "sha256": "35925c52ae2a4ba2bcbd227d86ae2ef67bec8bc952039942d7090075b058d03b"
+        }
+      ],
+      "source_observations": [
+        {
+          "id": "g7.xicheng2025.optionalReading",
+          "paper_id": "grade7-xicheng2025-public-paper-key20261014",
+          "shape": {
+            "grade": 7,
+            "family": "reading_choice",
+            "responses": 3,
+            "options_each": 3,
+            "details": {
+              "input": "text"
+            }
+          },
+          "layer": "baseline_selected117",
+          "necessary_input_complete": null,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        }
+      ],
+      "configuration": {
+        "passage_count": 1,
+        "subgroup_count": 1,
+        "text_unit_count": 1,
+        "material_unit_distribution": [
+          1
+        ],
+        "response_distribution": [
+          3
+        ],
+        "responses": 3,
+        "options_each": 3,
+        "points_each": 2,
+        "selected_objective_points": 6,
+        "optional_umbrella10_not_selected6": true,
+        "separate_grammar56to59_not_included": true,
+        "shared_candidates": false,
+        "necessary_audio": false,
+        "required_images": [],
+        "required_tables": [],
+        "required_lists": [],
+        "all_selected_subgroups_mandatory": true,
+        "report_paragraphs": 6,
+        "source_sample_size": 3595,
+        "source_recall_window_months": 3
+      },
+      "subgroups": [
+        {
+          "label": "XI",
+          "responses": 3,
+          "material_units": 1,
+          "genre": "optional_sixparagraph_research_report",
+          "question_numbers": [
+            60,
+            61,
+            62
+          ],
+          "projection_keys": [
+            "optional_reading_header",
+            "optional_paragraphs",
+            "optional_questions"
+          ]
+        }
+      ],
+      "published_keys": [
+        {
+          "number": 60,
+          "published_answer": "B"
+        },
+        {
+          "number": 61,
+          "published_answer": "B"
+        },
+        {
+          "number": 62,
+          "published_answer": "A"
+        }
+      ],
+      "source_full_inputs_verified": true,
+      "full_input_verification_scope": "complete selected original PDF pages plus manual text projection and original key pages;not school administration authentication or content validity",
+      "source_quality_risks": [
+        "Source report is not independent medical evidence or diagnostic instruction. Definitions,health risks and causal wording are source assertions only.",
+        "3595teenagers/last3months/14yearolds and sixparagraph structure are distinct;population or causal conclusions not broadened.",
+        "Q62publishedA argueswithgoodfriend extends explicit arguingwithparents to a new interpersonal case;retain inference-risk,do not upgrade A to independently validated gold or silently replace parent with friend.",
+        "Optional6points not optional10 or main11;grammar fourresponses has a separate header and is excluded."
+      ],
+      "same_specific_whole_section_authors": 0,
+      "projection_field_sha256": {
+        "optional_reading_header": "0a97f4c24143776531740a61f5910efd0f712d96c037378393208c821dba6d43",
+        "optional_paragraphs": "6c8dc46ac23cfc1880a12c32918d66ea4808534e53eb4c291af57265af8a2abe",
+        "optional_questions": "0401152bda4effe0cd27cd9690b3ff9eb95d9f9a4665fa97bfa8e126ee41f834"
+      }
+    }
+  ],
+  "new_classified_old_reading_records": 5,
+  "additional_sibling_members_not_added_to_old127": [
+    "changshu.C",
+    "changshu.D",
+    "g7.xicheng2025.matchingA"
+  ],
+  "source_records_total_unchanged": 127,
+  "old_structure306_and_parentlabels41_unchanged": true,
+  "new_downloads": 0,
+  "new_rendered_pages": 0,
+  "all_selected_texts_candidates_and_necessary_media_context_read": true,
+  "source_key_is_not_gold": true,
+  "new_authors": 0,
+  "known_same_specific_whole_original_gap": 9,
+  "all_required_types_complete": false
+}
