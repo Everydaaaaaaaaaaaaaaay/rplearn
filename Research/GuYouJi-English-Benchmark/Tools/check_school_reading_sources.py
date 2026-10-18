@@ -34,7 +34,14 @@ def validate(source,binding):
     assert float(re.search(r'满分\s*([0-9.]+)\s*分',selected_text)[1])==c['selected_objective_points']
     assert source['responses']*c['points_each']==c['selected_objective_points']
     assert c['all_selected_subgroups_mandatory'] and not c['shared_candidates']
-    assert not c['necessary_audio'] and not c['necessary_images']
+    assert not c['necessary_audio']
+    if c['necessary_images']:
+        from school_reading_visual_source_contract import validate as validate_visual
+        validate_visual(source)
+    else:
+        assert not source.get('necessary_input_overlay')
+        assert not source.get('source_visual_input_confirmations')
+        assert not c.get('required_images')
     assert c['subgroup_count']==c['passage_count']==len(c['subgroups'])
     assert c['response_distribution']==[s['responses']for s in c['subgroups']]
     assert sum(c['response_distribution'])==source['responses']
@@ -49,7 +56,11 @@ def validate(source,binding):
         assert ob['shape']['grade']==source['level'] and ob['shape']['family']=='reading_choice'
         assert ob['shape']['responses']==sub['responses']==len(sp['question_numbers'])
         assert ob['shape']['options_each']==4
-        if source.get('source_member_input_confirmations'):
+        if source.get('source_visual_input_confirmations'):
+            # Whole visual recovery is checked above against frozen observations,
+            # preview provenance and per-member confirmations, including known False.
+            assert c['necessary_images']
+        elif source.get('source_member_input_confirmations'):
             # A new readthrough can resolve an old unknown, not erase a known gap.
             confirmations=source['source_member_input_confirmations']
             assert len(confirmations)==len(source['source_observations'])
@@ -170,6 +181,23 @@ def run(bindings_path):
                 'advert_heading_SHA_wrong':lambda x:x['A_required_subheadings'][3].__setitem__('sha256','0'*64),
                 'license_endpoint_excluded':lambda x:x['qualification_fields'].__setitem__('license_endpoint_inclusive_not_over3',False),
                 'preferred_as_mandatory':lambda x:x['qualification_fields'].__setitem__('preferred_experience_not_mandatory',False),
+            })
+        if s.get('source_visual_input_confirmations'):
+            cases.update({
+                'required_graph_dropped':lambda x:x['configuration'].__setitem__('necessary_images',False),
+                'required_graph_reference_dropped':lambda x:x['configuration'].__setitem__('required_images',[]),
+                'visual_overlay_dropped':lambda x:x.pop('necessary_input_overlay'),
+                'visual_confirmation_dropped':lambda x:x['source_visual_input_confirmations'].pop(),
+                'known_false_overwritten':lambda x:x['source_observations'][0].__setitem__('necessary_input_complete',True),
+                'old_unknown_overwritten':lambda x:x['source_observations'][1].__setitem__('necessary_input_complete',True),
+                'visual_preview_SHA_wrong':lambda x:x['necessary_input_overlay']['new_visual_input_evidence'][0].__setitem__('sha256','0'*64),
+                'visual_confirmation_SHA_wrong':lambda x:x['source_visual_input_confirmations'][0].__setitem__('body_sha256','0'*64),
+                'graph_peak_changed':lambda x:x['necessary_input_overlay'].__setitem__('graph_answer_pointC_visible_at_catch_curve_peak',False),
+                'stock_curve_invented':lambda x:x['necessary_input_overlay'].__setitem__('only_catch_curve_clearly_drawn_and_stock_label_floating_no_stock_line_inferred',False),
+                'graph_bounds_changed':lambda x:x['necessary_input_overlay'].__setitem__('graph_box_pixels',[0,0,1,1]),
+                'phrase_truncated':lambda x:x['necessary_input_overlay'].__setitem__('B_unnamed_underlined_phrase','white-knuckling'),
+                'visual_key_upgraded':lambda x:x['source_visual_input_confirmations'][0].__setitem__('source_key_is_gold',True),
+                'visual_selected_header_wrong':lambda x:x.__setitem__('selected_objective_header',x['whole_objective_header']),
             })
         rejected=[]
         for name,mutate in cases.items():

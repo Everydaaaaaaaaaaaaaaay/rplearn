@@ -6,7 +6,7 @@ from compile_short_dialogue_listening import ref
 from grade_mode_evidence import load_ref
 from quality_review_contract import response_markdown
 from compile_school_reading import words
-from senior_reading_contract import validate,digest,body_text,table_markup
+from senior_reading_contract import validate,digest,body_text,table_markup,unit_load_text
 
 
 def compile_author(manuscript, version='0.1'):
@@ -23,7 +23,16 @@ def compile_author(manuscript, version='0.1'):
         reasons=dict(x.split('：',1)for x in q['rationale'].split('；'))
         for label,text in q['options']:
             audits.append(dict(number=q['number'],label=label,text=text,is_best=label==q['answer'],reason=reasons[label],material_label=q['materialLabel']))
-    audit=dict(version=version,id=d['id'],grade=d['grade'],questions=len(qs),candidate_sha256=ref(cp)['sha256'],manuscript=ref(mp),source_bindings=ref(bp),source_binding=b['id'],school_complete_senior_reading_section=True,review_response_tasks=qs,canonical_response_block_sha256=digest(block),student_passage=passage,body_load_text=body,question_candidate_audit=audits,subgroup_response_counts=c['response_distribution'],subgroup_material_units=[x['material_units']for x in c['subgroups']],material_unit_load=[dict(label=x['label'],intro_words=words(x.get('intro','')),words=[words(u)for u in x['units']])for x in d['sections']],load_measure=dict(body_English_words=words(body),body_Han_characters=len(re.findall('[\u3400-\u9fff]',body)),stem_English_words=sum(words(q['stem'])for q in qs),options_English_words_with_repeated_bank=sum(words(t)for q in qs for _,t in q['options']),options_Han_characters=0,output_response_positions=len(qs),output_requirement_English_words=words(d['instruction']),display_material_label_English_words=len(d['sections'])+c['text_unit_count']),source_original_key_not_gold=True,source_count_increment=0,authored_student_inputs_complete=True,independent_teacher_student_commercial_production_validated=False)
+    audit=dict(version=version,id=d['id'],grade=d['grade'],questions=len(qs),candidate_sha256=ref(cp)['sha256'],manuscript=ref(mp),source_bindings=ref(bp),source_binding=b['id'],school_complete_senior_reading_section=True,review_response_tasks=qs,canonical_response_block_sha256=digest(block),student_passage=passage,body_load_text=body,question_candidate_audit=audits,subgroup_response_counts=c['response_distribution'],subgroup_material_units=[x['material_units']for x in c['subgroups']],material_unit_load=[dict(label=x['label'],intro_words=words(x.get('intro','')),words=[words(unit_load_text(d,u))for u in x['units']])for x in d['sections']],load_measure=dict(body_English_words=words(body),body_Han_characters=len(re.findall('[\u3400-\u9fff]',body)),stem_English_words=sum(words(q['stem'])for q in qs),options_English_words_with_repeated_bank=sum(words(t)for q in qs for _,t in q['options']),options_Han_characters=0,output_response_positions=len(qs),output_requirement_English_words=words(d['instruction']),display_material_label_English_words=len(d['sections'])+c['text_unit_count']),source_original_key_not_gold=True,source_count_increment=0,authored_student_inputs_complete=True,independent_teacher_student_commercial_production_validated=False)
+    if d.get('source_bound_graph_reading_section'):
+        from senior_graph_reading_contract import graph_alt
+        model=d['graph_model']
+        audit.update(source_bound_graph_reading_section=True,graph_asset=d['graph_asset'],
+                     graph_model=model,mechanism_evidence=d['mechanism_evidence'],
+                     hearing_evidence=d['hearing_evidence'],answer_evidence=d['answer_evidence'])
+        audit['load_measure'].update(graph_label_English_words=words(' '.join([model['title'],model['x_axis'],model['y_axis'],'Low High']+model['point_labels'])),
+                                    graph_alt_English_words=words(graph_alt(model)),necessary_curve_graphs=1,
+                                    graph_markup_excluded_from_body_count=True)
     if d.get('credit_notice'):
         from senior_credit_reading_contract import format_credit
         policy=d['credit_notice']

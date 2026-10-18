@@ -92,6 +92,9 @@ def validate(d,b,s):
     if c['subgroups'][0]['genre']=='job_qualification_advertisement_with_subheadings':
         from senior_job_reading_contract import validate as validate_job
         validate_job(d,s)
+    if c.get('necessary_images'):
+        from senior_graph_reading_contract import validate as validate_graph
+        validate_graph(d,s)
     if c['required_tables']:
         assert c['required_tables']==['A.fee_table'] and not c['required_lists']
         table=d['required_table'];assert table['id']=='A.fee_table'
@@ -140,14 +143,24 @@ def render(sections,c):
 
 
 def body_text(d):
-    return '\n\n'.join(t for sec in d['sections']for t in ([sec['intro']]if sec.get('intro')else [])+sec['units'])
+    return '\n\n'.join(unit_load_text(d,t) for sec in d['sections']for t in ([sec['intro']]if sec.get('intro')else [])+sec['units'])
+
+
+def unit_load_text(d,text):
+    # Opt in for graph manuscripts only; keep all frozen text-only counts intact.
+    return re.sub(r'^!\[[^\]]+\]\([^)]+\)\s*$', '', text, flags=re.M) if d.get('source_bound_graph_reading_section') else text
 
 
 def check(g,a,b,s):
     d=json.loads(load_ref(a['manuscript']).read_text());passage=validate(d,b,s)
     assert a['school_complete_senior_reading_section'] and passage==a['student_passage']
     assert a['body_load_text']==body_text(d)
-    assert g['questions']==d['questions'] and not g['requiredPassageImages']
+    assert g['questions']==d['questions']
+    if d.get('source_bound_graph_reading_section'):
+        from senior_graph_reading_contract import check_rendered
+        check_rendered(g,a,d)
+    else:
+        assert not g['requiredPassageImages']
     assert len(a['question_candidate_audit'])==s['responses']*4
     for q in d['questions']:
         rows=[x for x in a['question_candidate_audit']if x['number']==q['number']]
