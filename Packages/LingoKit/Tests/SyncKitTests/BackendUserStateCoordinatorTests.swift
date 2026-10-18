@@ -64,7 +64,20 @@ struct BackendUserStateCoordinatorTests {
         private var ticketSource = "purchase"
         private var version = 1
         private(set) var mutationHeaders: [String?] = []
+        private(set) var profileBodies: [Data] = []
         private(set) var snapshotRequestCount = 0
+        private var remoteChange = false
+        private var snapshotFailures = 0
+        private var changePageFailures = 0
+        private(set) var requestedCursors: [String] = []
+
+        func changeRemoteProfile(failingSnapshot: Bool) {
+            coins = 700
+            currentRegion = "newyork"
+            remoteChange = true
+            snapshotFailures = failingSnapshot ? 1 : 0
+            changePageFailures = failingSnapshot ? 0 : 1
+        }
 
         func data(for request: URLRequest) async throws -> BackendTransportResponse {
             switch (request.httpMethod, request.url?.path) {
@@ -83,12 +96,30 @@ struct BackendUserStateCoordinatorTests {
                     """
                 )
             case ("GET", "/v1/sync/changes"):
+                let cursor = URLComponents(url: request.url!, resolvingAgainstBaseURL: false)?
+                    .queryItems?.first { $0.name == "cursor" }?.value ?? ""
+                requestedCursors.append(cursor)
+                if remoteChange, cursor == "page-1", changePageFailures > 0 {
+                    changePageFailures -= 1
+                    throw BackendClientError.transport("second page unavailable")
+                }
+                if remoteChange, cursor == "cursor" {
+                    return json(#"{"changes":[{"eventType":"profile.updated","commandId":"019c0123-4567-789a-8bcd-ef0123456791","eventId":"019c0123-4567-789a-8bcd-ef0123456792","occurredAt":"2026-07-26T00:00:00.000Z","sequence":"1"}],"nextCursor":"page-1","hasMore":true}"#)
+                }
+                if remoteChange {
+                    return json(#"{"changes":[],"nextCursor":"updated-cursor","hasMore":false}"#)
+                }
                 return json(#"{"changes":[],"nextCursor":"same-cursor","hasMore":false}"#)
             case ("GET", "/v1/sync/snapshot"):
                 snapshotRequestCount += 1
+                if snapshotFailures > 0 {
+                    snapshotFailures -= 1
+                    throw BackendClientError.transport("snapshot unavailable")
+                }
                 return json(snapshotJSON())
             case ("PATCH", "/v1/me"):
                 mutationHeaders.append(request.value(forHTTPHeaderField: "idempotency-key"))
+                profileBodies.append(request.httpBody ?? Data())
                 let body = try JSONDecoder().decode(
                     ProfileBody.self,
                     from: request.httpBody ?? Data()
@@ -101,7 +132,8 @@ struct BackendUserStateCoordinatorTests {
                 placementCompletedAt = body.placementCompletedAt ?? placementCompletedAt
                 placementScore = body.placementScore ?? placementScore
                 proficiencySource = body.proficiencySource ?? proficiencySource
-                studyStage = body.studyStage ?? studyStage
+                let fields = try JSONSerialization.jsonObject(with: request.httpBody ?? Data()) as? [String: Any]
+                if fields?["studyStage"] != nil { studyStage = body.studyStage }
                 version += 1
                 return json(profileJSON())
             case ("POST", "/v1/economy/tickets/purchase"):
@@ -180,7 +212,8 @@ struct BackendUserStateCoordinatorTests {
                 }
                 """
             } ?? ""
-            return #"{"cursor":"cursor","state":{"firstArrivals":[\#(firstArrivalValues)],"profile":\#(profileJSON()),"tickets":[\#(ticketValues)]}}"#
+            let cursor = remoteChange ? "updated-cursor" : "cursor"
+            return #"{"cursor":"\#(cursor)","state":{"firstArrivals":[\#(firstArrivalValues)],"profile":\#(profileJSON()),"tickets":[\#(ticketValues)]}}"#
         }
 
         private func profileJSON() -> String {
@@ -311,6 +344,34 @@ struct BackendUserStateCoordinatorTests {
         #expect(headers.allSatisfy { $0?.isEmpty == false })
     }
 
+    @Test("分页或快照失败不确认同步游标，恢复后重新同步资产", arguments: [false, true])
+    func failedSynchronizationReplaysChanges(failingSnapshot: Bool) async throws {
+        let userID = UUID()
+        let transport = StateTransport()
+        let client = BackendClient(configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentials(userID: userID), transport: transport)
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let economy = EconomyStore(modelContainer: container)
+        let suiteName = "sync-replay.\(UUID())"
+        let coordinator = BackendUserStateCoordinator(backend: client,
+            accountCache: AccountCacheStore(modelContainer: container), economyCache: economy,
+            itemCache: ItemStore(modelContainer: container), ticketStubCache: TicketStubStore(modelContainer: container),
+            defaults: try #require(UserDefaults(suiteName: suiteName)))
+        _ = try await coordinator.activate(userID: userID)
+        await transport.changeRemoteProfile(failingSnapshot: failingSnapshot)
+
+        await #expect(throws: BackendClientError.self) { try await coordinator.synchronize() }
+        let key = "backend.sync.cursor.v1.\(userID.uuidString.lowercased())"
+        #expect(UserDefaults(suiteName: suiteName)?.string(forKey: key) == "cursor")
+        #expect(try await economy.profile().coins == 500)
+
+        try await coordinator.synchronize()
+        #expect(await transport.requestedCursors == ["cursor", "page-1", "cursor", "page-1"])
+        #expect(UserDefaults(suiteName: suiteName)?.string(forKey: key) == "updated-cursor")
+        #expect(try await economy.profile().coins == 700)
+        #expect(try await economy.profile().currentRegionID == "newyork")
+    }
+
     @Test("切换游客空间会隔离账号权威缓存")
     func guestActivationClearsAccountCache() async throws {
         let userID = UUID(uuidString: "019c0123-4567-789a-8bcd-ef0123456790")!
@@ -401,6 +462,35 @@ struct BackendUserStateCoordinatorTests {
         #expect(updated.difficultyLevel == .primary2)
         #expect(try await economy.profile().difficultyLevel == .primary2)
         #expect(await transport.mutationHeaders.count == 1)
+    }
+
+    @Test("学段支持设置、保留和明确清空，重进后仍以云端为准")
+    func studyStageCanBeCleared() async throws {
+        let userID = UUID()
+        let transport = StateTransport()
+        let client = BackendClient(configuration: BackendConfiguration(baseURL: URL(string: "https://api.example.com")!),
+            credentialStore: MemoryCredentials(userID: userID), transport: transport)
+        let container = try ModelContainerFactory.makeContainer(inMemory: true)
+        let economy = EconomyStore(modelContainer: container)
+        let suiteName = "clear-stage.\(UUID())"
+        func coordinator() -> BackendUserStateCoordinator {
+            BackendUserStateCoordinator(backend: client, accountCache: AccountCacheStore(modelContainer: container),
+                economyCache: economy, itemCache: ItemStore(modelContainer: container),
+                ticketStubCache: TicketStubStore(modelContainer: container), defaults: UserDefaults(suiteName: suiteName)!)
+        }
+        let active = coordinator()
+        _ = try await active.activate(userID: userID)
+        #expect(try await active.updateProfile { $0.studyStage = .seniorHigh }.studyStage == .seniorHigh)
+        #expect(try await active.updateProfile { $0.displayName = "小咕" }.studyStage == .seniorHigh)
+        #expect(try await active.updateProfile { $0.studyStage = nil }.studyStage == nil)
+        let bodies = await transport.profileBodies
+        try #require(bodies.count == 3)
+        let retained = try #require(JSONSerialization.jsonObject(with: bodies[1]) as? [String: Any])
+        let cleared = try #require(JSONSerialization.jsonObject(with: bodies[2]) as? [String: Any])
+        #expect(retained["studyStage"] == nil)
+        #expect(cleared["studyStage"] is NSNull)
+        _ = try await coordinator().activate(userID: userID)
+        #expect(try await economy.profile().studyStage == nil)
     }
 
     @Test("首次登录保留游客内容以便后续上传")

@@ -32,7 +32,8 @@ public actor BackendUserStateCoordinator:
         let placementCompletedAt: String?
         let placementScore: Int?
         let proficiencySource: String?
-        let studyStage: String?
+        // nil 表示不修改；.null 明确清空已有学段。
+        let studyStage: BackendJSONValue?
     }
 
     private struct TicketPurchase: Encodable, Sendable {
@@ -253,7 +254,7 @@ public actor BackendUserStateCoordinator:
                 == (current.proficiencySource ?? ProficiencySource.selfReported.rawValue)
                 ? nil : desired.proficiencySource.rawValue,
             studyStage: desired.studyStage?.rawValue == current.studyStage
-                ? nil : desired.studyStage?.rawValue
+                ? nil : desired.studyStage.map { .string($0.rawValue) } ?? .null
         )
         guard patch.difficulty != nil
             || patch.displayName != nil
@@ -279,7 +280,7 @@ public actor BackendUserStateCoordinator:
             patch.placementCompletedAt ?? "-",
             patch.placementScore.map { String($0) } ?? "-",
             patch.proficiencySource ?? "-",
-            patch.studyStage ?? "-",
+            try patch.studyStage?.encodedJSON() ?? "-",
         ]
         let intent = intentParts.joined(separator: ":")
         let commandID = pendingCommandID(for: intent)
@@ -460,7 +461,6 @@ public actor BackendUserStateCoordinator:
                 )
                 foundChanges = foundChanges || !page.changes.isEmpty
                 nextCursor = page.nextCursor
-                setCursor(nextCursor, for: userID)
                 if !page.hasMore { break }
             } while true
         } catch let error as BackendClientError {
@@ -471,7 +471,10 @@ public actor BackendUserStateCoordinator:
             throw error
         }
         if foundChanges || snapshot == nil {
+            // 只有完整快照应用成功才能确认变更；失败时保留旧游标以便重放。
             try await refreshSnapshot(for: userID)
+        } else {
+            setCursor(nextCursor, for: userID)
         }
     }
 
