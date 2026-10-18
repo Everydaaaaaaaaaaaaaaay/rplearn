@@ -1,0 +1,75 @@
+{
+  "version": "0.1",
+  "scope": "primary_common_family_classification_and_audit_evidence_links",
+  "report": {
+    "path": "CompleteCoverage20261017/PrimaryCommonFamilyRepresentativeRecheck-v0.2.json",
+    "sha256": "998c173b1bf2ccf263fa1198ee7abc0bb50da1200c2796adceb4bf131494ffa2"
+  },
+  "scope_policy": {
+    "path": "CompleteCoverage20261017/CommonTypeScope-v0.10.json",
+    "sha256": "19cf99463b0bff13a736587a756e3affd026894bf594d6f0c20485f918a0379e"
+  },
+  "inventory": {
+    "path": "CompleteCoverage20261017/CommonTypeReviewInventory-v0.11.json",
+    "sha256": "45607c97bae7a09953f7dce5441db0bf7a01802f3151168f74039a6942d6270b"
+  },
+  "focused_checks": {
+    "path": "build/english-benchmark-authority-20261017/primary-family772-evidence-check-v0.1.json",
+    "sha256": "fda3b37f61fd51ad9290770cf497a683de04381337a7adc7ee02c377c851e733"
+  },
+  "browser_nine_family_notices": {
+    "path": "build/english-benchmark-authority-20261017/primary-family772-browser-v0.1.json",
+    "sha256": "ff98463dc57521b42e7c3907c2809f7627a0e1286cafc03b75611c3546433fc5"
+  },
+  "browser_compact_audit": {
+    "path": "build/english-benchmark-authority-20261017/primary-family772-audit-browser-v0.2.json",
+    "sha256": "08d42093037eb1f3b4bfbc8f3fa1f94b09109125a1231e02f9d4fe041aa9b738"
+  },
+  "screenshot": {
+    "path": "build/english-benchmark-authority-20261017/primary-family772-view-v0.2.png",
+    "sha256": "97a2bbf1205ee079a85a0e825d36dc2b56c6ee76ccc51125dc7854300df86142"
+  },
+  "incremental_archive": {
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.242.json",
+    "sha256": "0bb645b282ec4b64ec669179a5a65a252301f5aecf94efe8ec847ca915186c51"
+  },
+  "targeted_restores": [
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/p4-jianye2025-representative-headings-v0.2.json",
+        "sha256": "e4a63cb5dffcbdf17b9c5bb3956ecbfc74fabe500f5006cb5685a4883d5b0caf"
+      },
+      "restored_SHA_verified": true,
+      "independent_file_copy": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/primary-family772-view-v0.2.png",
+        "sha256": "97a2bbf1205ee079a85a0e825d36dc2b56c6ee76ccc51125dc7854300df86142"
+      },
+      "restored_SHA_verified": true,
+      "independent_file_copy": true
+    }
+  ],
+  "reviewed_retained_cells": 9,
+  "new_context_rechecks": 7,
+  "reused_complete_choice_proofs": 2,
+  "remaining_primary3to6_classifications": 40,
+  "remaining_is_not_new_author_or_exact_mode_queue": true,
+  "all772payloads_unchanged": true,
+  "main_groups": 634,
+  "main_responses": 5090,
+  "main_cells": 141,
+  "reference_only_groups": 138,
+  "new_source_parents": 0,
+  "new_authored_groups": 0,
+  "new_required_families": 0,
+  "new_required_exact_modes": 0,
+  "source_missing_inputs_and_key_not_promoted": true,
+  "new_archive_objects": 12,
+  "new_archive_bytes": 293100,
+  "new_full_snapshots": 0,
+  "commonness_review_complete": false,
+  "independent_teacher_student_commercial_production": false,
+  "backend_fixedsix_unchanged": true
+}

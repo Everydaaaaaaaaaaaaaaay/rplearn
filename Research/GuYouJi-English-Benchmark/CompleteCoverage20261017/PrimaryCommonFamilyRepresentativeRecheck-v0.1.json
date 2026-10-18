@@ -1,0 +1,221 @@
+{
+  "version": "0.1",
+  "scope": "primary_common_family_representative_recheck_not_exact_mode_expansion",
+  "current_scope": {
+    "path": "CompleteCoverage20261017/CommonTypeScope-v0.9.json",
+    "sha256": "b30341c45ff8fd8b166abbaddaaf5cbb0f08a34089464b265f00ac9a6d48e86e"
+  },
+  "cases": [
+    {
+      "level": "primary3",
+      "family": "sentence_choice",
+      "label": "单项选择",
+      "decision": "retain_common_family_with_representative_occurrence_checked",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/p3-yancheng2025-representative-reader-v0.1.json",
+          "sha256": "2fb7c76d49ef7f0fcccce3248cd13d5439e81a759a356293cbba6427051858f8"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonChoiceOriginalVerification-v0.1.json",
+          "sha256": "21bf8af58f9fa72c08b3a70359cd277e9539b2c8649ee33ff3c641e6d52e75d7"
+        }
+      ],
+      "observed": "盐城标题卷正文三年级2025春，十题ABC单选独立题节；旧核读复用。",
+      "boundary": "刊键未取、源歧义未抄；三原创完整组已有，不重复统计。",
+      "earlier_reconfirmation_reused": true,
+      "national_prevalence_established": false,
+      "new_specific_mode_required": false,
+      "new_authors_required_from_this_observation": false
+    },
+    {
+      "level": "primary3",
+      "family": "dialogue_matching",
+      "label": "问答/对话配对",
+      "decision": "retain_common_family_with_representative_occurrence_checked",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/p3-yancheng2025-representative-reader-v0.1.json",
+          "sha256": "2fb7c76d49ef7f0fcccce3248cd13d5439e81a759a356293cbba6427051858f8"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/wujiang-school-analysis.html",
+          "sha256": "b546df0e043c1658c389228bea9a22c16a08b40c3d64e3e5d6109752e7a78c81"
+        }
+      ],
+      "observed": "盐城正文情景应答，首组A—D四句应答/11—14；校方分析也提情景交际。",
+      "boundary": "第二组15—16后公开预览截断；只支持家族出现，不将4/4或未知后半组新增为必补。",
+      "earlier_reconfirmation_reused": false,
+      "national_prevalence_established": false,
+      "new_specific_mode_required": false,
+      "new_authors_required_from_this_observation": false
+    },
+    {
+      "level": "primary4",
+      "family": "sentence_choice",
+      "label": "单项选择",
+      "decision": "retain_common_family_with_representative_occurrence_checked",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-jianye2025-representative-headings-v0.2.json",
+          "sha256": "e4a63cb5dffcbdf17b9c5bb3956ecbfc74fabe500f5006cb5685a4883d5b0caf"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonChoiceOriginalVerification-v0.1.json",
+          "sha256": "21bf8af58f9fa72c08b3a70359cd277e9539b2c8649ee33ff3c641e6d52e75d7"
+        }
+      ],
+      "observed": "建邺标题卷正文四下2025.6读一读第二节十题ABC单选。",
+      "boundary": "此前完整节与三稿验证复用，非新下载或新作者。",
+      "earlier_reconfirmation_reused": true,
+      "national_prevalence_established": false,
+      "new_specific_mode_required": false,
+      "new_authors_required_from_this_observation": false
+    },
+    {
+      "level": "primary4",
+      "family": "shared_bank",
+      "label": "选词填空",
+      "decision": "retain_common_family_with_representative_occurrence_checked",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-jianye2025-representative-headings-v0.2.json",
+          "sha256": "e4a63cb5dffcbdf17b9c5bb3956ecbfc74fabe500f5006cb5685a4883d5b0caf"
+        }
+      ],
+      "observed": "读一读第三节A选词5+B选短语5+C选句子5，整体15回应。",
+      "boundary": "三子组不是三个独立样本；未明说每项限一次则不补禁令。只核家族，不强制此混合15配置另编三稿。",
+      "earlier_reconfirmation_reused": false,
+      "national_prevalence_established": false,
+      "new_specific_mode_required": false,
+      "new_authors_required_from_this_observation": false
+    },
+    {
+      "level": "primary4",
+      "family": "dialogue_matching",
+      "label": "问答/对话配对",
+      "decision": "retain_common_family_with_representative_occurrence_checked",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-jianye2025-representative-headings-v0.2.json",
+          "sha256": "e4a63cb5dffcbdf17b9c5bb3956ecbfc74fabe500f5006cb5685a4883d5b0caf"
+        }
+      ],
+      "observed": "上述第三节C为共享五句候选、对话五回应。",
+      "boundary": "C属于同一15回应大节，不以子组五题冒充整节15，也不将其列成新题型。",
+      "earlier_reconfirmation_reused": false,
+      "national_prevalence_established": false,
+      "new_specific_mode_required": false,
+      "new_authors_required_from_this_observation": false
+    },
+    {
+      "level": "primary4",
+      "family": "reading_tf",
+      "label": "阅读判断",
+      "decision": "retain_common_family_with_representative_occurrence_checked",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-jianye2025-representative-headings-v0.2.json",
+          "sha256": "e4a63cb5dffcbdf17b9c5bb3956ecbfc74fabe500f5006cb5685a4883d5b0caf"
+        }
+      ],
+      "observed": "读一读第四节A为电话对话材料及5判断。",
+      "boundary": "属于A/B/C三子组整节；出现不证明原键/全部推断正确，也不证明现有稿等值。",
+      "earlier_reconfirmation_reused": false,
+      "national_prevalence_established": false,
+      "new_specific_mode_required": false,
+      "new_authors_required_from_this_observation": false
+    },
+    {
+      "level": "primary4",
+      "family": "reading_choice",
+      "label": "阅读理解（含图表与配对）",
+      "decision": "retain_common_family_with_representative_occurrence_checked",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-jianye2025-representative-headings-v0.2.json",
+          "sha256": "e4a63cb5dffcbdf17b9c5bb3956ecbfc74fabe500f5006cb5685a4883d5b0caf"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/wujiang-school-analysis.html",
+          "sha256": "b546df0e043c1658c389228bea9a22c16a08b40c3d64e3e5d6109752e7a78c81"
+        }
+      ],
+      "observed": "读一读第四节B为服饰颜色/尺码/价格表及5个ABC选择；校方分析四年级也有阅读选择。",
+      "boundary": "同节C为短文后图片排序，不把A/B/C拆三独立来源，不把20分算20回应；必要图片未取得，不新增配置任务。",
+      "earlier_reconfirmation_reused": false,
+      "national_prevalence_established": false,
+      "new_specific_mode_required": false,
+      "new_authors_required_from_this_observation": false
+    },
+    {
+      "level": "primary4",
+      "family": "listening_picture_ordering",
+      "label": "听短文图片排序",
+      "decision": "retain_common_family_with_representative_occurrence_checked",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-jianye2025-representative-headings-v0.2.json",
+          "sha256": "e4a63cb5dffcbdf17b9c5bb3956ecbfc74fabe500f5006cb5685a4883d5b0caf"
+        }
+      ],
+      "observed": "听一听第二节给图片排序，两遍，印5分。",
+      "boundary": "仅有节指令，图/原音/键未完整获取，不能从5分直接证明所有输入或判分。",
+      "earlier_reconfirmation_reused": false,
+      "national_prevalence_established": false,
+      "new_specific_mode_required": false,
+      "new_authors_required_from_this_observation": false
+    },
+    {
+      "level": "primary4",
+      "family": "listening_dialogue_choice",
+      "label": "听对话回答问题",
+      "decision": "retain_common_family_with_representative_occurrence_checked",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-jianye2025-representative-headings-v0.2.json",
+          "sha256": "e4a63cb5dffcbdf17b9c5bb3956ecbfc74fabe500f5006cb5685a4883d5b0caf"
+        }
+      ],
+      "observed": "听一听第四节听对话回答问题，两遍，5分。",
+      "boundary": "第一题候选图在文字层缺失；只核家族出现，不升级五题全输入/原键。",
+      "earlier_reconfirmation_reused": false,
+      "national_prevalence_established": false,
+      "new_specific_mode_required": false,
+      "new_authors_required_from_this_observation": false
+    }
+  ],
+  "reviewed_retained_cells": 9,
+  "new_family_context_rechecks": 7,
+  "earlier_complete_choice_rechecks_reused": 2,
+  "distinct_existing_public_paper_labels": 2,
+  "new_independent_source_parents_counted": 0,
+  "new_complete_source_papers": 0,
+  "new_authors": 0,
+  "new_responses": 0,
+  "new_required_families": 0,
+  "new_required_exact_modes": 0,
+  "school_analysis": {
+    "path": "build/english-benchmark-authority-20261017/wujiang-school-analysis.html",
+    "sha256": "b546df0e043c1658c389228bea9a22c16a08b40c3d64e3e5d6109752e7a78c81"
+  },
+  "one_paper_multiple_family_occurrences_not_independent_samples": true,
+  "unread_or_truncated_sections_unknown_not_absent": true,
+  "known_regional_forms_not_claimed_nationally_exclusive": true,
+  "new_observed_details_reference_only": [
+    {
+      "level": "primary4",
+      "detail": "读一读第一节看图配书面音近词5候选；普通卷所见具体编排，不自动开新家族/三稿任务。"
+    },
+    {
+      "level": "primary4",
+      "detail": "读一读第四节ABC含判断/图表选择/读文图片排序，子组绑定不拆卷。"
+    },
+    {
+      "level": "primary3",
+      "detail": "盐城情景应答公开部分未读全后半组，不从候选数补齐响应。"
+    }
+  ],
+  "all_primary_commonness_review_complete": false,
+  "independent_teacher_student_commercial_production": false
+}

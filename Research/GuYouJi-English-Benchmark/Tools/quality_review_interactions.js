@@ -399,7 +399,12 @@ const families=[...new Set(catalogCells.map(c=>c.family))];
 if(el('coverage-audit')){
  const audit=reviewData.display_coverage_audit||reviewData.coverage_audit;
  el('coverage-audit').hidden=!audit;
- if(audit)el('coverage-audit-body').innerHTML='<p>'+escapeText(audit.scope_notice)+'</p><ul>'+audit.issues.map(i=>'<li>'+escapeText(i.levels.map(l=>labels[l]||l).join('、')+'：'+i.label+' — '+i.state_label+'。'+i.detail)+'</li>').join('')+'</ul>';
+ if(audit)el('coverage-audit-body').innerHTML='<p>'+escapeText(audit.scope_notice)+'</p><ul>'+audit.issues.map(i=>{
+  const refs=(i.evidence||[]).filter(r=>r&&typeof r.path==='string'&&/^[a-f0-9]{64}$/.test(r.sha256||''));
+  const links=refs.map((r,n)=>'<a href="'+escapeText(candidateHref(r))+'" target="_blank" rel="noopener" title="'+escapeText(r.path)+'">依据'+(n+1)+'</a>').join(' · ');
+  const levelScope=i.levels.length===reviewData.grades.length&&reviewData.grades.every(l=>i.levels.includes(l))?'全部档位':i.levels.map(l=>labels[l]||l).join('、');
+  return '<li>'+escapeText(levelScope+'：'+i.label+' — '+i.state_label+'。'+i.detail)+(links?' <span class="footnote">'+links+'</span>':'')+'</li>';
+ }).join('')+'</ul>';
 }
 el('matrix-body').innerHTML=families.map(f=>'<tr><th scope="row">'+escapeText(catalogCells.find(c=>c.family===f).label)+'</th>'+reviewData.grades.map(grade=>{const c=catalogCells.find(c=>c.grade===grade&&c.family===f);if(!c)return '<td class="unknown" aria-label="不在当前档位范围">—</td>';return '<td><button type="button" data-grade="'+grade+'" data-family="'+f+'" class="'+(c.state==='author_prototype_source_mode_pending'?'pending':c.groupId?'ready':!c.observed?'unknown':'pending')+'">'+titleState(c)+'</button></td>';}).join('')+'</tr>').join('');
 el('matrix-body').onclick=e=>{const b=e.target.closest('button[data-grade]');if(b)select(reviewData.grades.find(g=>String(g)===b.dataset.grade),b.dataset.family);};
