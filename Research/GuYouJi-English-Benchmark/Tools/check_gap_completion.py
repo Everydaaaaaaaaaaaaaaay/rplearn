@@ -46,6 +46,9 @@ def check(data, plan):
             if b.get('task_mode') == 'school_complete_reading_section':
                 from school_reading_contract import check as check_school_reading
                 check_school_reading(g,a,b,source)
+            if b.get('task_mode') == 'school_calendar_picture_poem_reading15':
+                from visual_poem_reading_contract import check as check_visual_poem
+                check_visual_poem(g,a,b,source)
             if b.get('task_mode') == 'school_senior_caves_friendship_river_forecast15':
                 from senior_river_reading_contract import check as check_senior_river
                 check_senior_river(g,a,b,source)
@@ -410,7 +413,7 @@ def check(data, plan):
         assert g['instruction'] == meta['instruction'] and g['sourceFormNotice'] == meta['source_form_notice']
         if meta.get('format_summary'):
             assert g['formatSummary']==meta['format_summary']
-        if a.get('illustrated_listening'):
+        if a.get('illustrated_listening') or a.get('school_visual_poem_reading15'):
             from quality_review_images import check_option_images,without_derived_images
             check_option_images(g)
             assert without_derived_images(g['questions'])==a['review_response_tasks']

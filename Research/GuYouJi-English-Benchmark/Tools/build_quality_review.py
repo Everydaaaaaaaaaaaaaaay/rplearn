@@ -157,6 +157,9 @@ def full_markdown_candidate(meta):
         raise ValueError('Missing or duplicated audited graph input')
     if len(audio_tracks) != len(audio_assets):
         raise ValueError('Missing or duplicated original listening input')
+    if audit.get('school_visual_poem_reading15'):
+        from visual_poem_reading_contract import render_poem_lines
+        passage_html = render_poem_lines(passage_html, audit)
     teacher_html = material_view(teacher)
     if '\n' in closing:
         teacher_html = teacher_html.replace(html.escape(closing), html.escape(closing).replace('\n', '<br>'))

@@ -1,0 +1,992 @@
+{
+  "version": "0.2",
+  "id": "grade7-visual15-neighbours",
+  "grade": 7,
+  "questions": 15,
+  "candidate_sha256": "7a00165648ebcf8bcdb0fde51f234b792fc91f45b477e9e52ae92ace7e7d3f48",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-visual15-neighbours-manuscript-v0.2.json",
+    "sha256": "016c52f08bb306c3b81c2a0f6f5e66602510fa19fcc2364498f50ef7e8763744"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/VisualPoemReadingSourceBindings-v0.1.json",
+    "sha256": "acadde14d5c8ecdccd7802cdbc16cd97dc9c819c277bcf0bfbc79c88280a3cee"
+  },
+  "source_binding": "suzhou-changshu2019-grade7-upper.reading.complete_section15.binding",
+  "school_complete_reading_section": true,
+  "school_visual_poem_reading15": true,
+  "poems": [
+    {
+      "stanzas": [
+        [
+          "Your small hand leaves the wooden train;",
+          "The evening room is warm and still.",
+          "I close the curtain against the rain;",
+          "A moonbeam rests upon the sill."
+        ],
+        [
+          "Your little shoes can rest below;",
+          "The blanket keeps your shoulders warm.",
+          "I stay beside you as you slow,",
+          "And night lies quiet round your arm."
+        ]
+      ]
+    },
+    {
+      "stanzas": [
+        [
+          "Dear Mother, when you feed me near",
+          "The garden wall, I hear your song.",
+          "You stroke my fur and keep me close."
+        ],
+        [
+          "I kiss your nose before I rest;",
+          "It is my last small kiss each night.",
+          "Your gentle care is what I know."
+        ]
+      ]
+    },
+    {
+      "stanzas": [
+        [
+          "I count the cups before our meal,",
+          "And sweep the crumbs beneath the chair.",
+          "I take clean plates with careful hands."
+        ],
+        [
+          "I fold the towels and put them right,",
+          "Then bring a cushion for us to share.",
+          "I like to help at home tonight."
+        ]
+      ]
+    }
+  ],
+  "scene_options": {
+    "A": {
+      "branch_person": "sports",
+      "glasses_person": "maths",
+      "palette": {
+        "maths": "#8eacac",
+        "sports": "#b8b189",
+        "english": "#c29d8d",
+        "pupil": "#9eacc5"
+      }
+    },
+    "B": {
+      "branch_person": "maths",
+      "glasses_person": "maths",
+      "palette": {
+        "maths": "#8eacac",
+        "sports": "#b8b189",
+        "english": "#c29d8d",
+        "pupil": "#9eacc5"
+      }
+    },
+    "C": {
+      "branch_person": "english",
+      "glasses_person": "maths",
+      "palette": {
+        "maths": "#8eacac",
+        "sports": "#b8b189",
+        "english": "#c29d8d",
+        "pupil": "#9eacc5"
+      }
+    },
+    "D": {
+      "branch_person": "pupil",
+      "glasses_person": "maths",
+      "palette": {
+        "maths": "#8eacac",
+        "sports": "#b8b189",
+        "english": "#c29d8d",
+        "pupil": "#9eacc5"
+      }
+    }
+  },
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "A组 · Use the calendar. When is Cedar Hall’s Neighbours’ Day?",
+      "options": [
+        [
+          "A",
+          "April 8."
+        ],
+        [
+          "B",
+          "April 22."
+        ],
+        [
+          "C",
+          "April 1."
+        ],
+        [
+          "D",
+          "April 15."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：是第二星期日；B：四月第四个星期日计算；C：是首个星期日；D：是第三星期日，亦OakLane日期",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "calendar_ordinal_weekday"
+    },
+    {
+      "number": 2,
+      "stem": "A组 · Who does “They” mean in the second paragraph?",
+      "options": [
+        [
+          "A",
+          "The families listening in their seats."
+        ],
+        [
+          "B",
+          "The speakers arriving to tell stories."
+        ],
+        [
+          "C",
+          "The organisers."
+        ],
+        [
+          "D",
+          "The cups borrowed for the meal."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：段落讲组织者准备非听众；B：准备者早于故事开始，非此处讲者代指；C：前句organisers准备椅杯和迎宾，后句他们提前工作；D：杯子不是工作的人",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "calendar_text_pronoun"
+    },
+    {
+      "number": 3,
+      "stem": "A组 · Which statement is true of the events?",
+      "options": [
+        [
+          "A",
+          "Cedar asks each family for a costly present."
+        ],
+        [
+          "B",
+          "The two halls celebrate on different dates."
+        ],
+        [
+          "C",
+          "Oak Lane uses the fourth Sunday too."
+        ],
+        [
+          "D",
+          "Both halls use April 15."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：明确不需昂贵礼物；B：第四星期日不同于15日；C：OakLane是15日；D：Cedar为第四星期日",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "calendar_crossplace_detail"
+    },
+    {
+      "number": 4,
+      "stem": "B组 · Which fact about the school is stated?",
+      "options": [
+        [
+          "A",
+          "It has no English teacher."
+        ],
+        [
+          "B",
+          "It has more than twelve classes."
+        ],
+        [
+          "C",
+          "It has a fence round the grass play area."
+        ],
+        [
+          "D",
+          "It has four classes outside the town."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：MsDale教英语；B：明确四班；C：草地无围墙；D：开头镇外四班",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "school_detail"
+    },
+    {
+      "number": 5,
+      "stem": "B组 · What does the bold “They” refer to?",
+      "options": [
+        [
+          "A",
+          "The shapes used in maths games."
+        ],
+        [
+          "B",
+          "The teachers standing outside."
+        ],
+        [
+          "C",
+          "The songs and short stories."
+        ],
+        [
+          "D",
+          "The trees at the edge of the wood."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：数学形状在前段非最近两名词；B：非该句材料代指；C：两种材料让英语课好玩且助记词；D：树在后句，非代指",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "school_text_pronoun"
+    },
+    {
+      "number": 6,
+      "stem": "B组 · Which picture shows the people as described?",
+      "options": [
+        [
+          "A",
+          ""
+        ],
+        [
+          "B",
+          ""
+        ],
+        [
+          "C",
+          ""
+        ],
+        [
+          "D",
+          ""
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：体育教师枝上、墨镜数学教师在地、女教师孩子树下；B：墨镜数学教师在枝而非体育教师；C：英语女教师上枝，非树下；D：戴帽孩子上枝，与作者树下矛盾",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "four_scene_picture_choice",
+      "pictureColumns": 2,
+      "optionImageAssets": {
+        "A": {
+          "path": "build/english-benchmark-authority-20261017/visual-poem748-media-v0.1/grade7-visual15-neighbours-A.svg",
+          "sha256": "675d6c51722137eae16359734f3e7654ab23c493260745e967d3b13a5d6224d0"
+        },
+        "B": {
+          "path": "build/english-benchmark-authority-20261017/visual-poem748-media-v0.1/grade7-visual15-neighbours-B.svg",
+          "sha256": "af9d29c1535d7320ea0bcb924725bb6a8723a08d242fc944ae252e013cc8f4dd"
+        },
+        "C": {
+          "path": "build/english-benchmark-authority-20261017/visual-poem748-media-v0.1/grade7-visual15-neighbours-C.svg",
+          "sha256": "cd00eed729fd3277a8234e21808e011080d2519e7118eec0a9b231f3dd4b2d13"
+        },
+        "D": {
+          "path": "build/english-benchmark-authority-20261017/visual-poem748-media-v0.1/grade7-visual15-neighbours-D.svg",
+          "sha256": "09b8dd44492015f439ac153b6c18492f174a8c65125a601434463754d7ff7440"
+        }
+      }
+    },
+    {
+      "number": 7,
+      "stem": "C组 · What comes before saying a new word in this routine?",
+      "options": [
+        [
+          "A",
+          "Copy a full printed page."
+        ],
+        [
+          "B",
+          "Listen and remember the sound."
+        ],
+        [
+          "C",
+          "Start with a spelling test."
+        ],
+        [
+          "D",
+          "Speak before hearing the sound."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：未要求先抄整页；B：先听并记声音，随后才说；C：未要求先做拼写测验；D：与先听顺序相反",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "learning_listening_before_speaking"
+    },
+    {
+      "number": 8,
+      "stem": "C组 · How does the club practise familiar words?",
+      "options": [
+        [
+          "A",
+          "Avoid all picture activities."
+        ],
+        [
+          "B",
+          "Expect instant learning for everyone."
+        ],
+        [
+          "C",
+          "Look at a list only once."
+        ],
+        [
+          "D",
+          "Repeat words on different days."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：没有禁止全部图像活动的安排；B：未声称人人单次即时学会；C：与重复练习相反；D：不同日短练复现词语",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "learning_repeated_practice"
+    },
+    {
+      "number": 9,
+      "stem": "C组 · When did Nico and May begin hearing two home languages?",
+      "options": [
+        [
+          "A",
+          "After leaving primary school."
+        ],
+        [
+          "B",
+          "Only after joining the club."
+        ],
+        [
+          "C",
+          "As young children, before school."
+        ],
+        [
+          "D",
+          "After learning to write stories."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：文中before入小学而非小学毕业后；B：家庭语言接触早于社团；C：文中两名儿童幼时入小学前已听家庭语言；D：未以前会写故事为条件",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "learning_early_language_time"
+    },
+    {
+      "number": 10,
+      "stem": "C组 · Why do some members have less time for the new language during the week?",
+      "options": [
+        [
+          "A",
+          "Other lessons fill their timetable."
+        ],
+        [
+          "B",
+          "Repeated practice is forbidden."
+        ],
+        [
+          "C",
+          "No language club exists."
+        ],
+        [
+          "D",
+          "They listen only once a year."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：其他课程占用课表时间；B：社团安排复练，非禁止；C：文中正有社团；D：没有一年仅听一次的规则",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "learning_limited_practice_reason"
+    },
+    {
+      "number": 11,
+      "stem": "D组 · When would the first poem usually be spoken?",
+      "options": [
+        [
+          "A",
+          "At night."
+        ],
+        [
+          "B",
+          "At noon."
+        ],
+        [
+          "C",
+          "In the morning."
+        ],
+        [
+          "D",
+          "In the afternoon."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：夜灯、月亮、盖毯与入睡支持夜间；B：非中午；C：与夜晚睡前场景不同；D：非午后",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "poem_bedtime"
+    },
+    {
+      "number": 12,
+      "stem": "D组 · Who is most likely listening to the first poem?",
+      "options": [
+        [
+          "A",
+          "A gardener."
+        ],
+        [
+          "B",
+          "A traveller."
+        ],
+        [
+          "C",
+          "A small child."
+        ],
+        [
+          "D",
+          "A teacher."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：不是园丁劳作情境；B：玩具和卧室非旅客出行场景；C：小手、玩具、睡床等指向孩子；D：没有成人教师上课情境",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "poem_addressee"
+    },
+    {
+      "number": 13,
+      "stem": "D组 · What is the last thing kissed at night in the second poem?",
+      "options": [
+        [
+          "A",
+          "The mother’s hand."
+        ],
+        [
+          "B",
+          "The mother’s forehead."
+        ],
+        [
+          "C",
+          "The mother’s cheek."
+        ],
+        [
+          "D",
+          "The mother’s nose."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：此处明确亲吻nose，非该身体部位；B：此处明确亲吻nose，非该身体部位；C：此处明确亲吻nose，非该身体部位；D：诗句明确最后亲吻鼻子",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "poem_contact_detail"
+    },
+    {
+      "number": 14,
+      "stem": "D组 · Which word best describes the speaker of the third poem?",
+      "options": [
+        [
+          "A",
+          "Careless."
+        ],
+        [
+          "B",
+          "Helpful."
+        ],
+        [
+          "C",
+          "Angry."
+        ],
+        [
+          "D",
+          "Unwilling."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：细心整理而非粗心；B：主动扫地、摆器皿和整理表达愿帮助；C：未呈愤怒；D：主动愿意，非不愿",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "poem_helpful_character"
+    },
+    {
+      "number": 15,
+      "stem": "D组 · What are the three poems mainly about together?",
+      "options": [
+        [
+          "A",
+          "Care and love at home."
+        ],
+        [
+          "B",
+          "School tests."
+        ],
+        [
+          "C",
+          "Travel and cities."
+        ],
+        [
+          "D",
+          "Sports and games."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：哄睡、母亲照料和家务帮助共同家庭关爱；B：不是三首共同测验主题；C：不是三首共同旅行主题；D：不是三首共同体育游戏主题",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "three_poems_shared_theme"
+    }
+  ],
+  "canonical_response_block_sha256": "3dc47fb22bcd1d68bd6971db7ab38337339a6f689ce0068c98a2f7feffff046d",
+  "student_passage": "### A组（第1—3题）\n\n#### A1\n\nCedar Hall holds its Neighbours’ Day on the fourth Sunday in April 2029. The hall in Oak Lane uses April 15 for its own event. Both are fictional local celebrations. Families at Cedar will share short stories about someone who helped them during the year, and the children may draw a picture to go with a story.\n\nThe organisers borrow chairs, put out cups and check that new visitors can find the hall. They do much of this work before the stories begin. A quiet helper may be easy to miss when everybody is listening to a speaker. This year a large notice will name each organiser and describe one useful thing that person did. No family needs to bring a costly present.\n\n#### April 2029\n\n| Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |\n|---|---|---|---|---|---|---|\n| 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n| 8 | 9 | 10 | 11 | 12 | 13 | 14 |\n| 15 | 16 | 17 | 18 | 19 | 20 | 21 |\n| 22 | 23 | 24 | 25 | 26 | 27 | 28 |\n| 29 | 30 |  |  |  |  |  |\n\n### B组（第4—6题）\n\n#### B1\n\nMy school is beside a wood outside the town. It has four classes, and its grass play area has no fence. Mr West, our maths teacher, uses games about shapes to make us think. We like working out where to stand to make a circle. He is friendly enough for us to call him Uncle West.\n\nMs Dale is our English teacher. Her songs and short stories make lessons enjoyable. **They** also help us remember new English words, because we hear the words in a familiar setting. We sometimes ask her to tell the same story again. Our PE teacher, Mr Lake, likes the trees near the play area.\n\nHere is a picture of all four of us. Mr Lake sits on a low branch. Mr West is the man wearing dark sunglasses. Ms Dale and I stand below the tree. I have a small cap and am shorter than each of the teachers. No one has an umbrella in the picture.\n\n### C组（第7—10题）\n\n#### C1\n\nA language club in our story teaches a sound routine. When a word is new, the member hears it more than once and remembers its sound before trying to say it. The teacher explains that the printed shape is not the only thing to learn. The club wants members to connect a sound with a meaning they can use.\n\nIts games return to familiar words on different days. Children listen, find the right picture and use the word again. This repeated practice is part of the club’s routine, rather than a promise that every word will be remembered after one try. The account describes this group, not a test proving how all children develop memory.\n\nNico and May heard two home languages when they were little, before they entered primary school. Some other members hear their new language mainly in the club. Their many other school lessons leave less time for it during the week. The club uses short opportunities to practise again, instead of asking them to remember a long list after a single look.\n\n### D组（第11—15题）\n\nRead the three poems below.\n\n#### D1\n\nYour small hand leaves the wooden train;\nThe evening room is warm and still.\nI close the curtain against the rain;\nA moonbeam rests upon the sill.\n\nYour little shoes can rest below;\nThe blanket keeps your shoulders warm.\nI stay beside you as you slow,\nAnd night lies quiet round your arm.\n\n#### D2\n\nDear Mother, when you feed me near\nThe garden wall, I hear your song.\nYou stroke my fur and keep me close.\n\nI kiss your nose before I rest;\nIt is my last small kiss each night.\nYour gentle care is what I know.\n\n#### D3\n\nI count the cups before our meal,\nAnd sweep the crumbs beneath the chair.\nI take clean plates with careful hands.\n\nI fold the towels and put them right,\nThen bring a cushion for us to share.\nI like to help at home tonight.\n\n#### Word help\n\n| Word | Meaning |\n|---|---|\n| feed | v. 给……食物 |\n| fur | n. 皮毛 |\n| sweep | v. 打扫 |\n| count | v. 数数 |",
+  "body_load_text": "Cedar Hall holds its Neighbours’ Day on the fourth Sunday in April 2029. The hall in Oak Lane uses April 15 for its own event. Both are fictional local celebrations. Families at Cedar will share short stories about someone who helped them during the year, and the children may draw a picture to go with a story.\n\nThe organisers borrow chairs, put out cups and check that new visitors can find the hall. They do much of this work before the stories begin. A quiet helper may be easy to miss when everybody is listening to a speaker. This year a large notice will name each organiser and describe one useful thing that person did. No family needs to bring a costly present.\n\nMy school is beside a wood outside the town. It has four classes, and its grass play area has no fence. Mr West, our maths teacher, uses games about shapes to make us think. We like working out where to stand to make a circle. He is friendly enough for us to call him Uncle West.\n\nMs Dale is our English teacher. Her songs and short stories make lessons enjoyable. **They** also help us remember new English words, because we hear the words in a familiar setting. We sometimes ask her to tell the same story again. Our PE teacher, Mr Lake, likes the trees near the play area.\n\nHere is a picture of all four of us. Mr Lake sits on a low branch. Mr West is the man wearing dark sunglasses. Ms Dale and I stand below the tree. I have a small cap and am shorter than each of the teachers. No one has an umbrella in the picture.\n\nA language club in our story teaches a sound routine. When a word is new, the member hears it more than once and remembers its sound before trying to say it. The teacher explains that the printed shape is not the only thing to learn. The club wants members to connect a sound with a meaning they can use.\n\nIts games return to familiar words on different days. Children listen, find the right picture and use the word again. This repeated practice is part of the club’s routine, rather than a promise that every word will be remembered after one try. The account describes this group, not a test proving how all children develop memory.\n\nNico and May heard two home languages when they were little, before they entered primary school. Some other members hear their new language mainly in the club. Their many other school lessons leave less time for it during the week. The club uses short opportunities to practise again, instead of asking them to remember a long list after a single look.\n\nRead the three poems below.\n\nYour small hand leaves the wooden train;\nThe evening room is warm and still.\nI close the curtain against the rain;\nA moonbeam rests upon the sill.\n\nYour little shoes can rest below;\nThe blanket keeps your shoulders warm.\nI stay beside you as you slow,\nAnd night lies quiet round your arm.\n\nDear Mother, when you feed me near\nThe garden wall, I hear your song.\nYou stroke my fur and keep me close.\n\nI kiss your nose before I rest;\nIt is my last small kiss each night.\nYour gentle care is what I know.\n\nI count the cups before our meal,\nAnd sweep the crumbs beneath the chair.\nI take clean plates with careful hands.\n\nI fold the towels and put them right,\nThen bring a cushion for us to share.\nI like to help at home tonight.\n\nfeed v. 给……食物\nfur n. 皮毛\nsweep v. 打扫\ncount v. 数数",
+  "question_candidate_audit": [
+    {
+      "number": 1,
+      "label": "A",
+      "text": "April 8.",
+      "reason": "是第二星期日",
+      "is_best": false
+    },
+    {
+      "number": 1,
+      "label": "B",
+      "text": "April 22.",
+      "reason": "四月第四个星期日计算",
+      "is_best": true
+    },
+    {
+      "number": 1,
+      "label": "C",
+      "text": "April 1.",
+      "reason": "是首个星期日",
+      "is_best": false
+    },
+    {
+      "number": 1,
+      "label": "D",
+      "text": "April 15.",
+      "reason": "是第三星期日，亦OakLane日期",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "A",
+      "text": "The families listening in their seats.",
+      "reason": "段落讲组织者准备非听众",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "B",
+      "text": "The speakers arriving to tell stories.",
+      "reason": "准备者早于故事开始，非此处讲者代指",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "C",
+      "text": "The organisers.",
+      "reason": "前句organisers准备椅杯和迎宾，后句他们提前工作",
+      "is_best": true
+    },
+    {
+      "number": 2,
+      "label": "D",
+      "text": "The cups borrowed for the meal.",
+      "reason": "杯子不是工作的人",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "A",
+      "text": "Cedar asks each family for a costly present.",
+      "reason": "明确不需昂贵礼物",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "B",
+      "text": "The two halls celebrate on different dates.",
+      "reason": "第四星期日不同于15日",
+      "is_best": true
+    },
+    {
+      "number": 3,
+      "label": "C",
+      "text": "Oak Lane uses the fourth Sunday too.",
+      "reason": "OakLane是15日",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "D",
+      "text": "Both halls use April 15.",
+      "reason": "Cedar为第四星期日",
+      "is_best": false
+    },
+    {
+      "number": 4,
+      "label": "A",
+      "text": "It has no English teacher.",
+      "reason": "MsDale教英语",
+      "is_best": false
+    },
+    {
+      "number": 4,
+      "label": "B",
+      "text": "It has more than twelve classes.",
+      "reason": "明确四班",
+      "is_best": false
+    },
+    {
+      "number": 4,
+      "label": "C",
+      "text": "It has a fence round the grass play area.",
+      "reason": "草地无围墙",
+      "is_best": false
+    },
+    {
+      "number": 4,
+      "label": "D",
+      "text": "It has four classes outside the town.",
+      "reason": "开头镇外四班",
+      "is_best": true
+    },
+    {
+      "number": 5,
+      "label": "A",
+      "text": "The shapes used in maths games.",
+      "reason": "数学形状在前段非最近两名词",
+      "is_best": false
+    },
+    {
+      "number": 5,
+      "label": "B",
+      "text": "The teachers standing outside.",
+      "reason": "非该句材料代指",
+      "is_best": false
+    },
+    {
+      "number": 5,
+      "label": "C",
+      "text": "The songs and short stories.",
+      "reason": "两种材料让英语课好玩且助记词",
+      "is_best": true
+    },
+    {
+      "number": 5,
+      "label": "D",
+      "text": "The trees at the edge of the wood.",
+      "reason": "树在后句，非代指",
+      "is_best": false
+    },
+    {
+      "number": 6,
+      "label": "A",
+      "text": "",
+      "reason": "体育教师枝上、墨镜数学教师在地、女教师孩子树下",
+      "is_best": true
+    },
+    {
+      "number": 6,
+      "label": "B",
+      "text": "",
+      "reason": "墨镜数学教师在枝而非体育教师",
+      "is_best": false
+    },
+    {
+      "number": 6,
+      "label": "C",
+      "text": "",
+      "reason": "英语女教师上枝，非树下",
+      "is_best": false
+    },
+    {
+      "number": 6,
+      "label": "D",
+      "text": "",
+      "reason": "戴帽孩子上枝，与作者树下矛盾",
+      "is_best": false
+    },
+    {
+      "number": 7,
+      "label": "A",
+      "text": "Copy a full printed page.",
+      "reason": "未要求先抄整页",
+      "is_best": false
+    },
+    {
+      "number": 7,
+      "label": "B",
+      "text": "Listen and remember the sound.",
+      "reason": "先听并记声音，随后才说",
+      "is_best": true
+    },
+    {
+      "number": 7,
+      "label": "C",
+      "text": "Start with a spelling test.",
+      "reason": "未要求先做拼写测验",
+      "is_best": false
+    },
+    {
+      "number": 7,
+      "label": "D",
+      "text": "Speak before hearing the sound.",
+      "reason": "与先听顺序相反",
+      "is_best": false
+    },
+    {
+      "number": 8,
+      "label": "A",
+      "text": "Avoid all picture activities.",
+      "reason": "没有禁止全部图像活动的安排",
+      "is_best": false
+    },
+    {
+      "number": 8,
+      "label": "B",
+      "text": "Expect instant learning for everyone.",
+      "reason": "未声称人人单次即时学会",
+      "is_best": false
+    },
+    {
+      "number": 8,
+      "label": "C",
+      "text": "Look at a list only once.",
+      "reason": "与重复练习相反",
+      "is_best": false
+    },
+    {
+      "number": 8,
+      "label": "D",
+      "text": "Repeat words on different days.",
+      "reason": "不同日短练复现词语",
+      "is_best": true
+    },
+    {
+      "number": 9,
+      "label": "A",
+      "text": "After leaving primary school.",
+      "reason": "文中before入小学而非小学毕业后",
+      "is_best": false
+    },
+    {
+      "number": 9,
+      "label": "B",
+      "text": "Only after joining the club.",
+      "reason": "家庭语言接触早于社团",
+      "is_best": false
+    },
+    {
+      "number": 9,
+      "label": "C",
+      "text": "As young children, before school.",
+      "reason": "文中两名儿童幼时入小学前已听家庭语言",
+      "is_best": true
+    },
+    {
+      "number": 9,
+      "label": "D",
+      "text": "After learning to write stories.",
+      "reason": "未以前会写故事为条件",
+      "is_best": false
+    },
+    {
+      "number": 10,
+      "label": "A",
+      "text": "Other lessons fill their timetable.",
+      "reason": "其他课程占用课表时间",
+      "is_best": true
+    },
+    {
+      "number": 10,
+      "label": "B",
+      "text": "Repeated practice is forbidden.",
+      "reason": "社团安排复练，非禁止",
+      "is_best": false
+    },
+    {
+      "number": 10,
+      "label": "C",
+      "text": "No language club exists.",
+      "reason": "文中正有社团",
+      "is_best": false
+    },
+    {
+      "number": 10,
+      "label": "D",
+      "text": "They listen only once a year.",
+      "reason": "没有一年仅听一次的规则",
+      "is_best": false
+    },
+    {
+      "number": 11,
+      "label": "A",
+      "text": "At night.",
+      "reason": "夜灯、月亮、盖毯与入睡支持夜间",
+      "is_best": true
+    },
+    {
+      "number": 11,
+      "label": "B",
+      "text": "At noon.",
+      "reason": "非中午",
+      "is_best": false
+    },
+    {
+      "number": 11,
+      "label": "C",
+      "text": "In the morning.",
+      "reason": "与夜晚睡前场景不同",
+      "is_best": false
+    },
+    {
+      "number": 11,
+      "label": "D",
+      "text": "In the afternoon.",
+      "reason": "非午后",
+      "is_best": false
+    },
+    {
+      "number": 12,
+      "label": "A",
+      "text": "A gardener.",
+      "reason": "不是园丁劳作情境",
+      "is_best": false
+    },
+    {
+      "number": 12,
+      "label": "B",
+      "text": "A traveller.",
+      "reason": "玩具和卧室非旅客出行场景",
+      "is_best": false
+    },
+    {
+      "number": 12,
+      "label": "C",
+      "text": "A small child.",
+      "reason": "小手、玩具、睡床等指向孩子",
+      "is_best": true
+    },
+    {
+      "number": 12,
+      "label": "D",
+      "text": "A teacher.",
+      "reason": "没有成人教师上课情境",
+      "is_best": false
+    },
+    {
+      "number": 13,
+      "label": "A",
+      "text": "The mother’s hand.",
+      "reason": "此处明确亲吻nose，非该身体部位",
+      "is_best": false
+    },
+    {
+      "number": 13,
+      "label": "B",
+      "text": "The mother’s forehead.",
+      "reason": "此处明确亲吻nose，非该身体部位",
+      "is_best": false
+    },
+    {
+      "number": 13,
+      "label": "C",
+      "text": "The mother’s cheek.",
+      "reason": "此处明确亲吻nose，非该身体部位",
+      "is_best": false
+    },
+    {
+      "number": 13,
+      "label": "D",
+      "text": "The mother’s nose.",
+      "reason": "诗句明确最后亲吻鼻子",
+      "is_best": true
+    },
+    {
+      "number": 14,
+      "label": "A",
+      "text": "Careless.",
+      "reason": "细心整理而非粗心",
+      "is_best": false
+    },
+    {
+      "number": 14,
+      "label": "B",
+      "text": "Helpful.",
+      "reason": "主动扫地、摆器皿和整理表达愿帮助",
+      "is_best": true
+    },
+    {
+      "number": 14,
+      "label": "C",
+      "text": "Angry.",
+      "reason": "未呈愤怒",
+      "is_best": false
+    },
+    {
+      "number": 14,
+      "label": "D",
+      "text": "Unwilling.",
+      "reason": "主动愿意，非不愿",
+      "is_best": false
+    },
+    {
+      "number": 15,
+      "label": "A",
+      "text": "Care and love at home.",
+      "reason": "哄睡、母亲照料和家务帮助共同家庭关爱",
+      "is_best": true
+    },
+    {
+      "number": 15,
+      "label": "B",
+      "text": "School tests.",
+      "reason": "不是三首共同测验主题",
+      "is_best": false
+    },
+    {
+      "number": 15,
+      "label": "C",
+      "text": "Travel and cities.",
+      "reason": "不是三首共同旅行主题",
+      "is_best": false
+    },
+    {
+      "number": 15,
+      "label": "D",
+      "text": "Sports and games.",
+      "reason": "不是三首共同体育游戏主题",
+      "is_best": false
+    }
+  ],
+  "subgroup_response_counts": [
+    3,
+    3,
+    4,
+    5
+  ],
+  "subgroup_material_units": [
+    1,
+    1,
+    1,
+    3
+  ],
+  "load_measure": {
+    "body_English_words": 613,
+    "body_Han_characters": 9,
+    "stem_English_words": 148,
+    "stem_Han_characters": 15,
+    "options_English_words_with_repeated_bank": 226,
+    "options_Han_characters": 0,
+    "output_response_positions": 15,
+    "output_requirement_English_words": 9,
+    "output_requirement_Han_characters": 72,
+    "calendar_label_English_words": 8,
+    "calendar_numeric_days": 30,
+    "picture_candidates": 4,
+    "picture_visible_English_words": 0,
+    "poems": 3,
+    "poem_lines": 20,
+    "glossary_entries": 4,
+    "glossary_already_in_body_not_added_twice": true
+  },
+  "source_original_key_not_gold": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false
+}
