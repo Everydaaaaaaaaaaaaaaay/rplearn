@@ -1,0 +1,185 @@
+{
+  "version": "0.1",
+  "id": "grade7-optional3-projecttabs",
+  "grade": 7,
+  "questions": 3,
+  "candidate_sha256": "fdb1c7dd0ca4da566ae8254fc4fd7b409f6eedf9ce321e491c4c243f1cbe8aa6",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-optional3-projecttabs-manuscript-v0.1.json",
+    "sha256": "020b870e9f178330de4c08453373fd194d145f7351b57e670ec7b2b3bf31b9e5"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/OptionalReportReadingSourceBindings-v0.1.json",
+    "sha256": "92d6f8bcb898d711daf24cd75623254cfb4b0faf20e49e2152ded5421148223d"
+  },
+  "source_binding": "grade7-xicheng2025-public-paper-key20261014.reading.optional_section3.binding",
+  "school_complete_reading_section": true,
+  "school_optional_report_reading3": true,
+  "study": {
+    "sample_size": 2472,
+    "recall_window_months": 3,
+    "definition_evidence": [
+      "opened a page for the current project and later forgot where to find it among the tabs",
+      "spent at least five minutes opening the same search results again to recover it"
+    ],
+    "third_paragraph_purpose_evidence": "Learning more about lost-tab searching could help teachers plan useful support for organising sources.",
+    "reporting_not_causal": "This was an association in reported behaviour, not proof that naming a link caused faster searching.",
+    "limitation": "The present study did not perform that test or measure its effect.",
+    "application_evidence": [
+      "opened a page for the current project and later forgot where to find it among the tabs",
+      "spent at least five minutes opening the same search results again to recover it"
+    ]
+  },
+  "report_paragraphs": 6,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What cost of lost-tab searching is described in the report?",
+      "options": [
+        [
+          "A",
+          "It requires teachers to record every click."
+        ],
+        [
+          "B",
+          "It makes every saved link lead to a different page."
+        ],
+        [
+          "C",
+          "It leaves less class time for examining information."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：教师未录每次点击，亦未要求必须如此；B：没有说保存链接的目标被更改；C：重搜占用本可用于阅读比较讨论的时间",
+      "materialLabel": "XI",
+      "points": 2,
+      "operation": "report_detail"
+    },
+    {
+      "number": 2,
+      "stem": "What is the main job of Paragraph 3?",
+      "options": [
+        [
+          "A",
+          "To explain the value of studying this searching pattern."
+        ],
+        [
+          "B",
+          "To show the effect of a completed link-naming experiment."
+        ],
+        [
+          "C",
+          "To describe how students estimated their search time."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：从时间代价到组织支持说明调查价值；B：命名试验为未来建议未实施；C：估计时间的收集是第4段，非第3段",
+      "materialLabel": "XI",
+      "points": 2,
+      "operation": "paragraph3_main_purpose"
+    },
+    {
+      "number": 3,
+      "stem": "Which student fits BOTH features of lost-tab searching?",
+      "options": [
+        [
+          "A",
+          "Dan keeps ten tabs open and finds the needed page in a few seconds."
+        ],
+        [
+          "B",
+          "Ivy loses a project page among her tabs and repeats searches for six minutes to find it."
+        ],
+        [
+          "C",
+          "Sara spends six minutes searching for a page she has never opened."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：多标签本身不算，快速找到明确排除；B：忘记已开的当前项目页，恢复它重搜六分钟达到五分钟门槛；C：超过五分钟但并非恢复遗忘已开项目页，未满足首条件",
+      "materialLabel": "XI",
+      "points": 2,
+      "operation": "bounded_report_application"
+    }
+  ],
+  "canonical_response_block_sha256": "3edd8a15a19ecec30f3a2eed7971820c809b667717c782f88ac2dc2825a3c2ab",
+  "student_passage": "When a class begins an online project, one useful page may lead to another. Soon a student can have many tabs open across the top of the screen. Some tabs are useful references, while others are forgotten. A school report looked at a pattern it called ‘lost-tab searching’. It did not treat every screen with many open tabs as a problem.\n\nThe report required two features together. A student opened a page for the current project and later forgot where to find it among the tabs. The student then spent at least five minutes opening the same search results again to recover it. Keeping ten tabs open did not count if the student could still find the needed page quickly.\n\nRepeated searches take time that a class could use to read, compare ideas or discuss evidence. A student may finish with plenty of links but little time to examine them. Learning more about lost-tab searching could help teachers plan useful support for organising sources. The purpose is to improve access to information, rather than to reward students simply for opening fewer pages.\n\nThe fictional research team asked 2472 students about their work during the last three months. Students recalled how often they lost a project page and how long their repeat searches took. Teachers also described the project tasks. They did not record every click, so the study relied on students’ estimates for the time spent searching again.\n\nStudents who reported giving saved links clear names also reported less lost-tab searching. Those who relied only on remembering the order of tabs reported more. This was an association in reported behaviour, not proof that naming a link caused faster searching. Project length and students’ previous experience could also be related to the difference between the two groups.\n\nThe team suggested testing a short link-naming activity in a later project. Teachers could compare the time needed to recover a page before and after that activity. The present study did not perform that test or measure its effect. Its findings describe these reported school projects, not all online reading or a proven method for improving memory.",
+  "body_load_text": "When a class begins an online project, one useful page may lead to another. Soon a student can have many tabs open across the top of the screen. Some tabs are useful references, while others are forgotten. A school report looked at a pattern it called ‘lost-tab searching’. It did not treat every screen with many open tabs as a problem.\n\nThe report required two features together. A student opened a page for the current project and later forgot where to find it among the tabs. The student then spent at least five minutes opening the same search results again to recover it. Keeping ten tabs open did not count if the student could still find the needed page quickly.\n\nRepeated searches take time that a class could use to read, compare ideas or discuss evidence. A student may finish with plenty of links but little time to examine them. Learning more about lost-tab searching could help teachers plan useful support for organising sources. The purpose is to improve access to information, rather than to reward students simply for opening fewer pages.\n\nThe fictional research team asked 2472 students about their work during the last three months. Students recalled how often they lost a project page and how long their repeat searches took. Teachers also described the project tasks. They did not record every click, so the study relied on students’ estimates for the time spent searching again.\n\nStudents who reported giving saved links clear names also reported less lost-tab searching. Those who relied only on remembering the order of tabs reported more. This was an association in reported behaviour, not proof that naming a link caused faster searching. Project length and students’ previous experience could also be related to the difference between the two groups.\n\nThe team suggested testing a short link-naming activity in a later project. Teachers could compare the time needed to recover a page before and after that activity. The present study did not perform that test or measure its effect. Its findings describe these reported school projects, not all online reading or a proven method for improving memory.",
+  "question_candidate_audit": [
+    {
+      "number": 1,
+      "label": "A",
+      "text": "It requires teachers to record every click.",
+      "reason": "教师未录每次点击，亦未要求必须如此",
+      "is_best": false
+    },
+    {
+      "number": 1,
+      "label": "B",
+      "text": "It makes every saved link lead to a different page.",
+      "reason": "没有说保存链接的目标被更改",
+      "is_best": false
+    },
+    {
+      "number": 1,
+      "label": "C",
+      "text": "It leaves less class time for examining information.",
+      "reason": "重搜占用本可用于阅读比较讨论的时间",
+      "is_best": true
+    },
+    {
+      "number": 2,
+      "label": "A",
+      "text": "To explain the value of studying this searching pattern.",
+      "reason": "从时间代价到组织支持说明调查价值",
+      "is_best": true
+    },
+    {
+      "number": 2,
+      "label": "B",
+      "text": "To show the effect of a completed link-naming experiment.",
+      "reason": "命名试验为未来建议未实施",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "C",
+      "text": "To describe how students estimated their search time.",
+      "reason": "估计时间的收集是第4段，非第3段",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "A",
+      "text": "Dan keeps ten tabs open and finds the needed page in a few seconds.",
+      "reason": "多标签本身不算，快速找到明确排除",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "B",
+      "text": "Ivy loses a project page among her tabs and repeats searches for six minutes to find it.",
+      "reason": "忘记已开的当前项目页，恢复它重搜六分钟达到五分钟门槛",
+      "is_best": true
+    },
+    {
+      "number": 3,
+      "label": "C",
+      "text": "Sara spends six minutes searching for a page she has never opened.",
+      "reason": "超过五分钟但并非恢复遗忘已开项目页，未满足首条件",
+      "is_best": false
+    }
+  ],
+  "load_measure": {
+    "body_English_words": 356,
+    "stem_English_words": 27,
+    "options_English_words_with_repeated_bank": 95,
+    "output_response_positions": 3,
+    "output_requirement_English_words": 3,
+    "output_requirement_Han_characters": 63
+  },
+  "source_original_key_not_gold": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false
+}

@@ -1,0 +1,185 @@
+{
+  "version": "0.1",
+  "id": "grade7-optional3-bookqueue",
+  "grade": 7,
+  "questions": 3,
+  "candidate_sha256": "8ce499dc32c55cfe6ca09cc22668ea946dad677e2a5e4f9fd3d8a44da481038f",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-optional3-bookqueue-manuscript-v0.1.json",
+    "sha256": "837e86b15a1308d98f8bba2cf8b377e4a359997dfef42c82b2e058ef497c792c"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/OptionalReportReadingSourceBindings-v0.1.json",
+    "sha256": "92d6f8bcb898d711daf24cd75623254cfb4b0faf20e49e2152ded5421148223d"
+  },
+  "source_binding": "grade7-xicheng2025-public-paper-key20261014.reading.optional_section3.binding",
+  "school_complete_reading_section": true,
+  "school_optional_report_reading3": true,
+  "study": {
+    "sample_size": 2184,
+    "recall_window_months": 3,
+    "definition_evidence": [
+      "borrows more books than the student plans to read before the return date",
+      "returns at least one of them without opening it"
+    ],
+    "third_paragraph_purpose_evidence": "Understanding the habit could help libraries design fairer borrowing arrangements.",
+    "reporting_not_causal": "These are connections in the reports, not proof that following a friend causes the habit.",
+    "limitation": "The study did not test that card, so it cannot tell us whether the idea works.",
+    "application_evidence": [
+      "borrows more books than the student plans to read before the return date",
+      "returns at least one of them without opening it"
+    ]
+  },
+  "report_paragraphs": 6,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What problem with book piling does the report describe?",
+      "options": [
+        [
+          "A",
+          "Students need longer books to fill their bags."
+        ],
+        [
+          "B",
+          "The library loses the dates of returned books."
+        ],
+        [
+          "C",
+          "Books may be unavailable to waiting readers."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：并未把书长或填满书包列为问题；B：记录仍显示借还日期，未说日期遗失；C：未打开的借书占用使等候读者无法取得",
+      "materialLabel": "XI",
+      "points": 2,
+      "operation": "report_detail"
+    },
+    {
+      "number": 2,
+      "stem": "What is the main purpose of Paragraph 3?",
+      "options": [
+        [
+          "A",
+          "To report the results of the reading-plan trial."
+        ],
+        [
+          "B",
+          "To describe how the students answered questions."
+        ],
+        [
+          "C",
+          "To explain why the habit is worth studying."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：未试用计划卡，更无该试验结果；B：问答收集方法是第4段，非第3段；C：本段先述共享问题再讲调查意义",
+      "materialLabel": "XI",
+      "points": 2,
+      "operation": "paragraph3_main_purpose"
+    },
+    {
+      "number": 3,
+      "stem": "Which student meets BOTH features of book piling in this report?",
+      "options": [
+        [
+          "A",
+          "May borrows four books and reads all four before returning them."
+        ],
+        [
+          "B",
+          "Ben borrows one long book and opens it each evening."
+        ],
+        [
+          "C",
+          "Jo plans to read two books, borrows four and returns one unopened."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：全读完未满足未打开退回条件；B：长书本身不足，且有打开，未满足双条件；C：超出所计划阅读数量，且至少一本未打开退回，双条件满足",
+      "materialLabel": "XI",
+      "points": 2,
+      "operation": "bounded_report_application"
+    }
+  ],
+  "canonical_response_block_sha256": "8f24ba12753053ab56e5e71ec2b2492bc81c1aa33b727909c78732df33fff404",
+  "student_passage": "Have you ever borrowed more library books than you could read? A large pile can look exciting on the first afternoon. A week later, however, some books may still be closed while other readers are waiting for them. In a report about several school libraries, students used the name ‘book piling’ for a particular borrowing habit. The name describes a habit in the report, not every large pile of books.\n\nThe report uses two features together. First, a student borrows more books than the student plans to read before the return date. Second, that student returns at least one of them without opening it. Simply borrowing a long book is not enough. A keen reader who opens and reads every borrowed book does not meet this definition, even when the reader carries a heavy bag.\n\nWhy investigate this habit? A book lying unopened in one bag cannot reach a classmate who needs it. The waiting list may grow although enough reading time is available elsewhere. Understanding the habit could help libraries design fairer borrowing arrangements. The aim is to make books easier to share, rather than to decide which students are good or bad readers.\n\nFor this fictional study, the team asked 2184 students about the previous three months. Students reported how many books they had borrowed, how many they had opened and why they had chosen them. The team also compared these reports with the dates on library records. The records showed borrowing and returning, but could not show whether a page had actually been read.\n\nStudents who reported borrowing books mainly because friends chose them also reported more book piling. Those who made a short reading plan reported less. These are connections in the reports, not proof that following a friend causes the habit. Some students may also remember their reading less clearly than others, so the figures need careful interpretation.\n\nThe team suggested trying a small reading-plan card before changing any borrowing limit. A library could then check whether books reached waiting readers sooner. The study did not test that card, so it cannot tell us whether the idea works. Its findings describe the surveyed libraries and should not be treated as a rule for all young readers.",
+  "body_load_text": "Have you ever borrowed more library books than you could read? A large pile can look exciting on the first afternoon. A week later, however, some books may still be closed while other readers are waiting for them. In a report about several school libraries, students used the name ‘book piling’ for a particular borrowing habit. The name describes a habit in the report, not every large pile of books.\n\nThe report uses two features together. First, a student borrows more books than the student plans to read before the return date. Second, that student returns at least one of them without opening it. Simply borrowing a long book is not enough. A keen reader who opens and reads every borrowed book does not meet this definition, even when the reader carries a heavy bag.\n\nWhy investigate this habit? A book lying unopened in one bag cannot reach a classmate who needs it. The waiting list may grow although enough reading time is available elsewhere. Understanding the habit could help libraries design fairer borrowing arrangements. The aim is to make books easier to share, rather than to decide which students are good or bad readers.\n\nFor this fictional study, the team asked 2184 students about the previous three months. Students reported how many books they had borrowed, how many they had opened and why they had chosen them. The team also compared these reports with the dates on library records. The records showed borrowing and returning, but could not show whether a page had actually been read.\n\nStudents who reported borrowing books mainly because friends chose them also reported more book piling. Those who made a short reading plan reported less. These are connections in the reports, not proof that following a friend causes the habit. Some students may also remember their reading less clearly than others, so the figures need careful interpretation.\n\nThe team suggested trying a small reading-plan card before changing any borrowing limit. A library could then check whether books reached waiting readers sooner. The study did not test that card, so it cannot tell us whether the idea works. Its findings describe the surveyed libraries and should not be treated as a rule for all young readers.",
+  "question_candidate_audit": [
+    {
+      "number": 1,
+      "label": "A",
+      "text": "Students need longer books to fill their bags.",
+      "reason": "并未把书长或填满书包列为问题",
+      "is_best": false
+    },
+    {
+      "number": 1,
+      "label": "B",
+      "text": "The library loses the dates of returned books.",
+      "reason": "记录仍显示借还日期，未说日期遗失",
+      "is_best": false
+    },
+    {
+      "number": 1,
+      "label": "C",
+      "text": "Books may be unavailable to waiting readers.",
+      "reason": "未打开的借书占用使等候读者无法取得",
+      "is_best": true
+    },
+    {
+      "number": 2,
+      "label": "A",
+      "text": "To report the results of the reading-plan trial.",
+      "reason": "未试用计划卡，更无该试验结果",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "B",
+      "text": "To describe how the students answered questions.",
+      "reason": "问答收集方法是第4段，非第3段",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "C",
+      "text": "To explain why the habit is worth studying.",
+      "reason": "本段先述共享问题再讲调查意义",
+      "is_best": true
+    },
+    {
+      "number": 3,
+      "label": "A",
+      "text": "May borrows four books and reads all four before returning them.",
+      "reason": "全读完未满足未打开退回条件",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "B",
+      "text": "Ben borrows one long book and opens it each evening.",
+      "reason": "长书本身不足，且有打开，未满足双条件",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "C",
+      "text": "Jo plans to read two books, borrows four and returns one unopened.",
+      "reason": "超出所计划阅读数量，且至少一本未打开退回，双条件满足",
+      "is_best": true
+    }
+  ],
+  "load_measure": {
+    "body_English_words": 371,
+    "stem_English_words": 27,
+    "options_English_words_with_repeated_bank": 80,
+    "output_response_positions": 3,
+    "output_requirement_English_words": 3,
+    "output_requirement_Han_characters": 63
+  },
+  "source_original_key_not_gold": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false
+}

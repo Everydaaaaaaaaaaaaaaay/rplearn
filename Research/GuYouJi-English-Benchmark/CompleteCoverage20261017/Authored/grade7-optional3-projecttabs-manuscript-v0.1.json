@@ -1,0 +1,135 @@
+{
+  "id": "grade7-optional3-projecttabs",
+  "title": "初一独立选做阅读三题：项目标签页调查",
+  "grade": 7,
+  "family": "reading_choice",
+  "source_group_id": "grade7-xicheng2025-public-paper-key20261014.reading.optional_section3",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/OptionalReportReadingSourceBindings-v0.1.json",
+    "sha256": "92d6f8bcb898d711daf24cd75623254cfb4b0faf20e49e2152ded5421148223d"
+  },
+  "source_binding": "grade7-xicheng2025-public-paper-key20261014.reading.optional_section3.binding",
+  "instruction": "独立选做阅读：阅读全部六段，回答3题；每题从A、B、C中选出最合适的一项。每题2分，共6分。文中学校调查和数据均为虚构，请只依据本文定义、材料及其明确限制作答。",
+  "source_notice": "参照西城标签2025初一公开原PDF十一独立选做阅读：六段研究报告、三题各自A/B/C三选，各2分共6分；不并入主阅读11题22分、不含前节四道语法，也不是选做总10分。原题页及键页已核存，原校施测身份未独立认证，原键非gold；源3595人/过去3个月及第62题由父母争执扩至朋友的推理风险保留，不当医学诊断或因果实证。新稿改写为虚构学校借书/社团预约/项目页调查，保留双特征定义、第三段研究意义、六段报告及受约束应用推断，明确样本、回忆窗口、关联与未试验建议的边界；并非源健康研究的复现或难度等值。每题三候选逐项理由为作者自审，非独立教研、学生、商用或生产验证。",
+  "paragraphs": [
+    "When a class begins an online project, one useful page may lead to another. Soon a student can have many tabs open across the top of the screen. Some tabs are useful references, while others are forgotten. A school report looked at a pattern it called ‘lost-tab searching’. It did not treat every screen with many open tabs as a problem.",
+    "The report required two features together. A student opened a page for the current project and later forgot where to find it among the tabs. The student then spent at least five minutes opening the same search results again to recover it. Keeping ten tabs open did not count if the student could still find the needed page quickly.",
+    "Repeated searches take time that a class could use to read, compare ideas or discuss evidence. A student may finish with plenty of links but little time to examine them. Learning more about lost-tab searching could help teachers plan useful support for organising sources. The purpose is to improve access to information, rather than to reward students simply for opening fewer pages.",
+    "The fictional research team asked 2472 students about their work during the last three months. Students recalled how often they lost a project page and how long their repeat searches took. Teachers also described the project tasks. They did not record every click, so the study relied on students’ estimates for the time spent searching again.",
+    "Students who reported giving saved links clear names also reported less lost-tab searching. Those who relied only on remembering the order of tabs reported more. This was an association in reported behaviour, not proof that naming a link caused faster searching. Project length and students’ previous experience could also be related to the difference between the two groups.",
+    "The team suggested testing a short link-naming activity in a later project. Teachers could compare the time needed to recover a page before and after that activity. The present study did not perform that test or measure its effect. Its findings describe these reported school projects, not all online reading or a proven method for improving memory."
+  ],
+  "questions": [
+    {
+      "number": 1,
+      "stem": "What cost of lost-tab searching is described in the report?",
+      "options": [
+        [
+          "A",
+          "It requires teachers to record every click."
+        ],
+        [
+          "B",
+          "It makes every saved link lead to a different page."
+        ],
+        [
+          "C",
+          "It leaves less class time for examining information."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：教师未录每次点击，亦未要求必须如此；B：没有说保存链接的目标被更改；C：重搜占用本可用于阅读比较讨论的时间",
+      "materialLabel": "XI",
+      "points": 2,
+      "operation": "report_detail"
+    },
+    {
+      "number": 2,
+      "stem": "What is the main job of Paragraph 3?",
+      "options": [
+        [
+          "A",
+          "To explain the value of studying this searching pattern."
+        ],
+        [
+          "B",
+          "To show the effect of a completed link-naming experiment."
+        ],
+        [
+          "C",
+          "To describe how students estimated their search time."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：从时间代价到组织支持说明调查价值；B：命名试验为未来建议未实施；C：估计时间的收集是第4段，非第3段",
+      "materialLabel": "XI",
+      "points": 2,
+      "operation": "paragraph3_main_purpose"
+    },
+    {
+      "number": 3,
+      "stem": "Which student fits BOTH features of lost-tab searching?",
+      "options": [
+        [
+          "A",
+          "Dan keeps ten tabs open and finds the needed page in a few seconds."
+        ],
+        [
+          "B",
+          "Ivy loses a project page among her tabs and repeats searches for six minutes to find it."
+        ],
+        [
+          "C",
+          "Sara spends six minutes searching for a page she has never opened."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：多标签本身不算，快速找到明确排除；B：忘记已开的当前项目页，恢复它重搜六分钟达到五分钟门槛；C：超过五分钟但并非恢复遗忘已开项目页，未满足首条件",
+      "materialLabel": "XI",
+      "points": 2,
+      "operation": "bounded_report_application"
+    }
+  ],
+  "study": {
+    "sample_size": 2472,
+    "recall_window_months": 3,
+    "definition_evidence": [
+      "opened a page for the current project and later forgot where to find it among the tabs",
+      "spent at least five minutes opening the same search results again to recover it"
+    ],
+    "third_paragraph_purpose_evidence": "Learning more about lost-tab searching could help teachers plan useful support for organising sources.",
+    "reporting_not_causal": "This was an association in reported behaviour, not proof that naming a link caused faster searching.",
+    "limitation": "The present study did not perform that test or measure its effect.",
+    "application_evidence": [
+      "opened a page for the current project and later forgot where to find it among the tabs",
+      "spent at least five minutes opening the same search results again to recover it"
+    ]
+  },
+  "answer_evidence": [
+    {
+      "number": 1,
+      "best_text": "It leaves less class time for examining information.",
+      "evidence": [
+        "Repeated searches take time that a class could use to read, compare ideas or discuss evidence."
+      ]
+    },
+    {
+      "number": 2,
+      "best_text": "To explain the value of studying this searching pattern.",
+      "evidence": [
+        "Learning more about lost-tab searching could help teachers plan useful support for organising sources."
+      ]
+    },
+    {
+      "number": 3,
+      "best_text": "Ivy loses a project page among her tabs and repeats searches for six minutes to find it.",
+      "evidence": [
+        "opened a page for the current project and later forgot where to find it among the tabs",
+        "spent at least five minutes opening the same search results again to recover it"
+      ]
+    }
+  ],
+  "fictional_study_not_real_population_or_causal_evidence": true,
+  "separate_optional6_not10_or_main22": true,
+  "format_summary": "独立选做阅读：完整六段一篇 / 3题各三选 / 双特征定义、段3研究意义、限定应用 / 各2分共6分，非选做总10分"
+}

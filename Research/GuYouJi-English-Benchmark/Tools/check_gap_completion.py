@@ -49,6 +49,9 @@ def check(data, plan):
             if b.get('task_mode') == 'school_calendar_picture_poem_reading15':
                 from visual_poem_reading_contract import check as check_visual_poem
                 check_visual_poem(g,a,b,source)
+            if b.get('task_mode') == 'school_optional_report_reading3':
+                from optional_report_reading_contract import check as check_optional_report
+                check_optional_report(g,a,b,source)
             if b.get('task_mode') == 'school_senior_caves_friendship_river_forecast15':
                 from senior_river_reading_contract import check as check_senior_river
                 check_senior_river(g,a,b,source)

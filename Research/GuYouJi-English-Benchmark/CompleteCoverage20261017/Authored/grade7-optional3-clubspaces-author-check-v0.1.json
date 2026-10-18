@@ -1,0 +1,185 @@
+{
+  "version": "0.1",
+  "id": "grade7-optional3-clubspaces",
+  "grade": 7,
+  "questions": 3,
+  "candidate_sha256": "3cd0a246fd4723fa821c232bbb09c1a73d548cbd05c34b0210d03a70a8c3bf72",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-optional3-clubspaces-manuscript-v0.1.json",
+    "sha256": "88420a8ee67c32b43c59aa1127348f751a74d21c0a3bab1aedabbc2b56c570ce"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/OptionalReportReadingSourceBindings-v0.1.json",
+    "sha256": "92d6f8bcb898d711daf24cd75623254cfb4b0faf20e49e2152ded5421148223d"
+  },
+  "source_binding": "grade7-xicheng2025-public-paper-key20261014.reading.optional_section3.binding",
+  "school_complete_reading_section": true,
+  "school_optional_report_reading3": true,
+  "study": {
+    "sample_size": 1926,
+    "recall_window_months": 3,
+    "definition_evidence": [
+      "kept bookings for two clubs that met at the same time",
+      "missed one meeting without cancelling the booking beforehand"
+    ],
+    "third_paragraph_purpose_evidence": "Studying unused holding could help organisers understand when places remain unavailable and plan a better release system.",
+    "reporting_not_causal": "The survey found an association, not evidence that a timetable check by itself prevents missed meetings.",
+    "limitation": "No such trial was included in this survey.",
+    "application_evidence": [
+      "kept bookings for two clubs that met at the same time",
+      "missed one meeting without cancelling the booking beforehand"
+    ]
+  },
+  "report_paragraphs": 6,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What difficulty can unused holding create for other students?",
+      "options": [
+        [
+          "A",
+          "It makes students attend two meetings at once."
+        ],
+        [
+          "B",
+          "It can keep an interested student from getting a place."
+        ],
+        [
+          "C",
+          "It prevents organisers from knowing meeting times."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：未说强迫别人同时参会，占位也非实际双参会；B：名额仍占用，其他有兴趣的学生不能参加；C：安排者知道时间，问题不是时间未知",
+      "materialLabel": "XI",
+      "points": 2,
+      "operation": "report_detail"
+    },
+    {
+      "number": 2,
+      "stem": "What does Paragraph 3 mainly explain?",
+      "options": [
+        [
+          "A",
+          "How the team collected the attendance lists."
+        ],
+        [
+          "B",
+          "Why every absent student should lose a booking."
+        ],
+        [
+          "C",
+          "Why unused holding deserves investigation."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：收集方法在第4段，非第3段；B：段尾明确不能把所有缺席归于粗心，未提必取消；C：材料准备与他人名额受影响，说明研究意义",
+      "materialLabel": "XI",
+      "points": 2,
+      "operation": "paragraph3_main_purpose"
+    },
+    {
+      "number": 3,
+      "stem": "Which case fits BOTH features of unused holding?",
+      "options": [
+        [
+          "A",
+          "Lee keeps two Tuesday 4 p.m. club places and misses one without cancelling."
+        ],
+        [
+          "B",
+          "Rae books art on Monday and music on Thursday, then attends both."
+        ],
+        [
+          "C",
+          "Tom books only one club but misses it when his bus is late."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：两社团同一时刻且未提前取消缺席其一，双条件满足；B：时间不重叠且均参加，未满足；C：没有同时刻第二预约，原定义明确排除此例",
+      "materialLabel": "XI",
+      "points": 2,
+      "operation": "bounded_report_application"
+    }
+  ],
+  "canonical_response_block_sha256": "018e764809f508f7220f60364855ae00e1b5b89e446c35483a869ec7ebca6847",
+  "student_passage": "A school club may look full on its booking page while several chairs remain empty at the meeting. Students waiting outside cannot always take those places, because the organiser needs time to prepare materials. A group of schools wanted to understand why this happened. Their report gave a name to one booking pattern: ‘unused holding’. Not every absence belonged to that pattern.\n\nTwo features had to appear together. A student kept bookings for two clubs that met at the same time. That student then missed one meeting without cancelling the booking beforehand. Booking two clubs on different days did not count. Neither did missing a single meeting because a bus was late, if the student had no second booking for that time.\n\nEmpty places can waste paper, tools and volunteers’ preparation time. They can also stop an interested student from joining an activity. Studying unused holding could help organisers understand when places remain unavailable and plan a better release system. It would not tell them that every absent student was careless: there can be many other reasons for missing a meeting.\n\nIn this fictional survey, 1926 students answered questions about the past three months. They listed bookings, meeting times and any cancellations. Organisers supplied attendance lists for the same period. The team compared the lists with the students’ answers, but did not observe why each student made a choice. Students were asked to report their choices, not explain their friends’ behaviour.\n\nStudents who said they booked quickly before reading meeting times reported more unused holding. Students who checked their weekly timetable reported less. The survey found an association, not evidence that a timetable check by itself prevents missed meetings. The two groups may differ in other ways, such as how often their transport arrangements change after school.\n\nThe team proposed a reminder showing both club names when meeting times overlap. A future trial could examine whether the reminder helps places become available earlier. No such trial was included in this survey. Its results concern the participating schools, so organisers elsewhere would need to check their own booking patterns before changing local arrangements.",
+  "body_load_text": "A school club may look full on its booking page while several chairs remain empty at the meeting. Students waiting outside cannot always take those places, because the organiser needs time to prepare materials. A group of schools wanted to understand why this happened. Their report gave a name to one booking pattern: ‘unused holding’. Not every absence belonged to that pattern.\n\nTwo features had to appear together. A student kept bookings for two clubs that met at the same time. That student then missed one meeting without cancelling the booking beforehand. Booking two clubs on different days did not count. Neither did missing a single meeting because a bus was late, if the student had no second booking for that time.\n\nEmpty places can waste paper, tools and volunteers’ preparation time. They can also stop an interested student from joining an activity. Studying unused holding could help organisers understand when places remain unavailable and plan a better release system. It would not tell them that every absent student was careless: there can be many other reasons for missing a meeting.\n\nIn this fictional survey, 1926 students answered questions about the past three months. They listed bookings, meeting times and any cancellations. Organisers supplied attendance lists for the same period. The team compared the lists with the students’ answers, but did not observe why each student made a choice. Students were asked to report their choices, not explain their friends’ behaviour.\n\nStudents who said they booked quickly before reading meeting times reported more unused holding. Students who checked their weekly timetable reported less. The survey found an association, not evidence that a timetable check by itself prevents missed meetings. The two groups may differ in other ways, such as how often their transport arrangements change after school.\n\nThe team proposed a reminder showing both club names when meeting times overlap. A future trial could examine whether the reminder helps places become available earlier. No such trial was included in this survey. Its results concern the participating schools, so organisers elsewhere would need to check their own booking patterns before changing local arrangements.",
+  "question_candidate_audit": [
+    {
+      "number": 1,
+      "label": "A",
+      "text": "It makes students attend two meetings at once.",
+      "reason": "未说强迫别人同时参会，占位也非实际双参会",
+      "is_best": false
+    },
+    {
+      "number": 1,
+      "label": "B",
+      "text": "It can keep an interested student from getting a place.",
+      "reason": "名额仍占用，其他有兴趣的学生不能参加",
+      "is_best": true
+    },
+    {
+      "number": 1,
+      "label": "C",
+      "text": "It prevents organisers from knowing meeting times.",
+      "reason": "安排者知道时间，问题不是时间未知",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "A",
+      "text": "How the team collected the attendance lists.",
+      "reason": "收集方法在第4段，非第3段",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "B",
+      "text": "Why every absent student should lose a booking.",
+      "reason": "段尾明确不能把所有缺席归于粗心，未提必取消",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "C",
+      "text": "Why unused holding deserves investigation.",
+      "reason": "材料准备与他人名额受影响，说明研究意义",
+      "is_best": true
+    },
+    {
+      "number": 3,
+      "label": "A",
+      "text": "Lee keeps two Tuesday 4 p.m. club places and misses one without cancelling.",
+      "reason": "两社团同一时刻且未提前取消缺席其一，双条件满足",
+      "is_best": true
+    },
+    {
+      "number": 3,
+      "label": "B",
+      "text": "Rae books art on Monday and music on Thursday, then attends both.",
+      "reason": "时间不重叠且均参加，未满足",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "C",
+      "text": "Tom books only one club but misses it when his bus is late.",
+      "reason": "没有同时刻第二预约，原定义明确排除此例",
+      "is_best": false
+    }
+  ],
+  "load_measure": {
+    "body_English_words": 351,
+    "stem_English_words": 22,
+    "options_English_words_with_repeated_bank": 83,
+    "output_response_positions": 3,
+    "output_requirement_English_words": 3,
+    "output_requirement_Han_characters": 63
+  },
+  "source_original_key_not_gold": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false
+}
