@@ -1,0 +1,177 @@
+{
+  "version": "0.4",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeOriginalVerification-v0.3.json",
+    "sha256": "e24fa32b0172bc0c559326232e1d7d0e9228b9df6c2e144ed66a77a23365fb4a"
+  },
+  "batch": {
+    "path": "CompleteCoverage20261017/SchoolClozeOriginalBatch-v0.6.json",
+    "sha256": "7fecc7f9dfc0ab78b41f9194d05acb5eb456112782e9a1297f6df8267c7c9471"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceBindings-v0.1.json",
+    "sha256": "335bcc7985422197890e25b4f892ecb1a318948a8264437a58f7aa3d8f4edc54"
+  },
+  "pending_index": {
+    "path": "CompleteCoverage20261017/PendingObservedModes-v0.63.json",
+    "sha256": "c7537283553acd549c0d3f5eaff5f70099f354e7569ebf13c7052f565ab9ed07"
+  },
+  "inventory": {
+    "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.115.json",
+    "sha256": "f286f98756eb64bede3691a58441f84c0d588de2bc56f0922b37b018d1b0ad4e"
+  },
+  "contract": {
+    "path": "build/english-benchmark-authority-20261017/cloze673-contract-v0.3.json",
+    "sha256": "1918afbf7458d984b8b85a881bc6a44c0920de1f3f4e01b668264e47082dd8e9"
+  },
+  "source_option_layout": {
+    "path": "build/english-benchmark-authority-20261017/cloze673-source-layout-v0.1.json",
+    "sha256": "8b3b6a00f967947e5779c3cdc3e16429760c96e4c6e57c8fa19a1deedfb4b82e"
+  },
+  "browser": {
+    "path": "build/english-benchmark-authority-20261017/cloze673-browser-v0.1.json",
+    "sha256": "b0e48669283ac90be81e93b5b79a8a74fa7a0b7f32d941dd22eb5e9bea942eb9"
+  },
+  "family_load": {
+    "path": "build/english-benchmark-authority-20261017/cloze673-family-load-review-v0.1.json",
+    "sha256": "da0ebff483975466d746aa26f43192572764a7b0c423c31e87b75c9b58635330"
+  },
+  "final_check": {
+    "path": "build/english-benchmark-authority-20261017/cloze673-final-check-v0.2.json",
+    "sha256": "fd4a8f557aa7ad407e7037fe50dcf6a64bd8acd4dd8b133adcb821db1c7d2450"
+  },
+  "archive": {
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.185.json",
+    "sha256": "c6368c71fec3084d55b5904347f6e933af44414eabd8ba906f8eb66db619e4bb"
+  },
+  "targeted_restores": [
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/review673-school-cloze-delta-v0.1.json",
+        "sha256": "33bd178bffa2c59df00438594a8416ee46cb452027efd7f9a757923a16bae56b"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/cloze673-browser-v0.1.json",
+        "sha256": "b0e48669283ac90be81e93b5b79a8a74fa7a0b7f32d941dd22eb5e9bea942eb9"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/cloze673-review-v0.1.png",
+        "sha256": "30cf641c5eb21cc9d08ff374bd492de86ebafcb2c8c7260e7d43bc2a62b9eca9"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/review673-school-cloze-title-delta-v0.1.json",
+        "sha256": "8471d6263eea7eac1347ce7cea2d861f90fc9a1ae513311d3d31e8dca7b72a73"
+      },
+      "restored_SHA_verified": true
+    }
+  ],
+  "candidate_HTTP_links": [
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade10-cloze15-cloudy-starwatch-v0.1.md",
+        "sha256": "d336491194a865b4b42fb37eea7fb12ccc58d475eadf5f6744cab8e989b639ed"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    },
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade10-cloze15-shy-dog-v0.1.md",
+        "sha256": "298fbdf44882dc42fb51277e72af7efe6bc9b3e0c1e94380c5e7b328450c695e"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    },
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade10-cloze15-family-teapot-v0.2.md",
+        "sha256": "39a9021747ef9d68ae833df278146bf4fb95ad23b9c288b2498eabb85e277243"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    }
+  ],
+  "browser_MD_open_not_claimed": true,
+  "screenshot": {
+    "path": "build/english-benchmark-authority-20261017/cloze673-review-v0.1.png",
+    "sha256": "30cf641c5eb21cc9d08ff374bd492de86ebafcb2c8c7260e7d43bc2a62b9eca9"
+  },
+  "affected_rules": [
+    {
+      "path": "Tools/school_cloze_contract.py",
+      "sha256": "62bb6ddf4e1c9ef07b20178eb24efad4b185868ca21d30ba249333ca1df1e451"
+    },
+    {
+      "path": "Tools/check_school_cloze_contract.py",
+      "sha256": "455a0895af7ba41abecf8c43a0d634b6770dcb06e503b026f54f5886d15cdfcb"
+    },
+    {
+      "path": "Tools/compile_school_cloze.py",
+      "sha256": "be2c7c8e909a8c90f30f3e72afb08d1ce5d6bde53dd4f36d9ebe9fcf58edc384"
+    }
+  ],
+  "current_groups": 673,
+  "current_responses": 4631,
+  "populated_family_cells": 195,
+  "new_groups": 3,
+  "new_responses": 45,
+  "new_full_candidate_substitutions": 180,
+  "new_contract_negative_controls": 48,
+  "previous6_contract_negative_controls": 96,
+  "all9_contract_negative_controls": 144,
+  "all9_full_candidate_substitutions": 600,
+  "source_layout_positive_controls": 3,
+  "source_layout_negative_controls": 3,
+  "raw_source_original_SHA_unchanged": true,
+  "source44_compact_spacing_not_removed_from_historical_record": true,
+  "actual_UI_correct_responses": 45,
+  "actual_UI_wrong_blank_controls": 6,
+  "actual_UI_candidate_positions": 180,
+  "actual_teacher_reset_groups": 3,
+  "source_selected_body_words": 302,
+  "authored_body_words": [
+    322,
+    328,
+    349
+  ],
+  "no_biographical_medical_source_claims_copied": true,
+  "no_grade_wordload_difficulty_time_equivalence": true,
+  "unpublished_shydog_manuscript0_1_preserved_not_admitted": true,
+  "source_downloads": 0,
+  "new_authenticated_school_papers": 0,
+  "archive_new_objects": 15,
+  "archive_new_bytes": 265344,
+  "new_full_snapshots": 0,
+  "now_pending_restored_cloze_modes": 11,
+  "now_missing_restored_cloze_originals": 33,
+  "old670_payloads_and45pins_preserved": true,
+  "other_family_concrete_configuration_reconciliation_still_required": true,
+  "all_required_types_complete": false,
+  "independent_teacher_student_commercial_production": false,
+  "title_browser": {
+    "path": "build/english-benchmark-authority-20261017/cloze673-title-browser-v0.1.json",
+    "sha256": "3a0df61c0635dda2d7b83d359b1b69ebbc16d0e3f01c808025d84173fc2fc21f"
+  },
+  "title_only_correction": true,
+  "whole_input_questions_options_answers_rationales_exactly_unchanged": true,
+  "full45response_UI_proof_reused_by_exact_payload_equality": true,
+  "author_revisions": {
+    "path": "CompleteCoverage20261017/AuthoredRevisions-v0.14.json",
+    "sha256": "5b8a55dd455fd097e4e131105441dcc26e30f9852da706e376a3304839951b89"
+  },
+  "current_pinned_revisions": 46,
+  "prior_archive": {
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.184.json",
+    "sha256": "45d3c8862e045eb04a4a9ab138938df25f41b311db50e7a6edc48a14206b9efd"
+  },
+  "archive_scope": "logical_batch_plus_title_followup"
+}

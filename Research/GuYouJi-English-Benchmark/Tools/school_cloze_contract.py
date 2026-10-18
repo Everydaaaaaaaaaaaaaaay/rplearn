@@ -9,6 +9,16 @@ def digest(value):
     return hashlib.sha256(value.encode()).hexdigest()
 
 
+def source_option_rows(selected):
+    # Some preserved public texts print 44.A.complained, without spaces.
+    # Accept that layout while retaining literal numbering and all option labels.
+    result=[]
+    for match in re.finditer(r'(?m)^(\d+)\.?\s*A\..*$',selected):
+        row=re.sub(r'^\d+\.?\s*','',match[0])
+        result.append((int(match[1]),re.findall(r'(?:^|\s)([A-D])\.',row)))
+    return result
+
+
 def validate(draft, binding, source):
     assert draft['grade'] == binding['level'] == source['level']
     assert draft['family'] == binding['family'] == source['kind'] == 'choice_cloze'
@@ -28,10 +38,9 @@ def validate(draft, binding, source):
         raw = load_ref(span['source']).read_text()
         selected = raw[span['start_offset']:span['end_offset']]
         assert digest(selected) == span['sha256']
-        nums = re.findall(r'(?m)^(\d+)\.?\s+A\.',selected)
-        assert list(map(int,nums)) == span['question_numbers']
-        for line in re.findall(r'(?m)^\d+\.?\s+A\..*$',selected):
-            assert re.findall(r'(?:^|\s)([A-D])\.',line) == list('ABCD'[:options])
+        rows = source_option_rows(selected)
+        assert [number for number,labels in rows] == span['question_numbers']
+        assert all(labels == list('ABCD'[:options]) for number,labels in rows)
         assert span['instruction'] in raw and span['instruction_sha256'] == digest(span['instruction'])
     passage = '\n\n'.join(s['passage'] for s in sections)
     assert re.findall(r'\((\d+)\) ____',passage) == list(map(str,range(1,count+1)))

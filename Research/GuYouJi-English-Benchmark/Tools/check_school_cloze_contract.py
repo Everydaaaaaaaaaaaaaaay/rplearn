@@ -7,10 +7,14 @@ from pathlib import Path
 from check_all_levels_review import extract
 from grade_mode_evidence import load_ref
 from review_run_plan import resolve_plan
-from school_cloze_contract import check, validate
+from school_cloze_contract import check, validate, source_option_rows
 
 
 def run(page):
+    assert source_option_rows('44.A.complained B. declared C. suggested D. wondered') == [(44,list('ABCD'))]
+    assert source_option_rows('44. A. complained B. declared C. suggested D. wondered') == [(44,list('ABCD'))]
+    assert source_option_rows('44 A. complained B. declared C. suggested D. wondered') == [(44,list('ABCD'))]
+    assert source_option_rows('44.A.complained B. declared B. suggested D. wondered') == [(44,list('ABBD'))]
     data = extract(page)
     _,plan = resolve_plan(data['active_run_plan'])
     idx = json.loads(load_ref(plan['current_gap_completion']).read_text())
