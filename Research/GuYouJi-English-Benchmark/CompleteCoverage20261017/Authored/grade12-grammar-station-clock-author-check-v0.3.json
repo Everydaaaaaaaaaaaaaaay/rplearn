@@ -1,0 +1,293 @@
+{
+  "version": "0.3",
+  "id": "grade12-grammar-station-clock",
+  "grade": 12,
+  "questions": 10,
+  "candidate_sha256": "ae9e638b5491ea26d5f2fb7677fa412362d9c0b8dac19d82e9216046ece855ff",
+  "source_binding": "seniorgrammar12",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/GrammarSourceBindings-v0.1.json",
+    "sha256": "2c14f01b24af4abfbf284c833df2d14dbf8d0cf2ceba5d73e83f5b98603194f3"
+  },
+  "source_group_id": "g12.2025anshan.grammar",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "why",
+        "when",
+        "how"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "that"
+        ]
+      },
+      "rationale": "缺少确切停钟原因/时间/过程，全文调查故障兼容why/when/how三种嵌入问句，不强行只收预期why。",
+      "givenLemma": null
+    },
+    {
+      "number": 2,
+      "stem": "第2空（care）",
+      "options": [],
+      "acceptedAnswers": [
+        "careful"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "carefully"
+        ]
+      },
+      "rationale": "inspection前描述谨慎的形容词，careful符合后文细致操作；未列别的词形待复核。",
+      "givenLemma": "care"
+    },
+    {
+      "number": 3,
+      "stem": "第3空（label）",
+      "options": [],
+      "acceptedAnswers": [
+        "labelled",
+        "labeled"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "英美过去分词作diagrams定语，两种拼写均可。",
+      "givenLemma": "label"
+    },
+    {
+      "number": 4,
+      "stem": "第4空（wheel）",
+      "options": [],
+      "acceptedAnswers": [
+        "wheels"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "wheel"
+        ]
+      },
+      "rationale": "本句 removed the smaller ... and placed them on a cloth 中，them回指取下并放在布上的多个齿轮，wheels用复数；上一句several限定的是diagrams，不能把它当作本空的直接限定词。",
+      "givenLemma": "wheel"
+    },
+    {
+      "number": 5,
+      "stem": "第5空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "which"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "where"
+        ]
+      },
+      "rationale": "in which结构中which作介词宾语；where不能接在in后重复地点成分。",
+      "givenLemma": null
+    },
+    {
+      "number": 6,
+      "stem": "第6空（use）",
+      "options": [],
+      "acceptedAnswers": [
+        "using",
+        "having used"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "to use"
+        ]
+      },
+      "rationale": "after后动名词及完成动名词均表示使用干刷先于询问；不用avoid+完成式这一含混时间关系凑变体。",
+      "givenLemma": "use"
+    },
+    {
+      "number": 7,
+      "stem": "第7空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "but",
+        "only",
+        "just"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "but构成not X, but Y的目的对照；only或just可把后一to不定式限定为真正目的，not to make the clock look new, only/just to make it work均合当前语境。三种一词形式都接受；不因原参考仅列but排除。原and显式排除缺少充分唯一性论证，移为未列形式待复核，不认定它已被核实正确。",
+      "givenLemma": null
+    },
+    {
+      "number": 8,
+      "stem": "第8空（prepare）",
+      "options": [],
+      "acceptedAnswers": [
+        "had prepared",
+        "had been preparing"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "has prepared"
+        ]
+      },
+      "rationale": "by the time specialist visited且准备先于来访，过去完成形式。 过去完成进行式也能表示截至该过去时点已经持续进行的活动；不以原预期仅列完成式排除。",
+      "givenLemma": "prepare"
+    },
+    {
+      "number": 9,
+      "stem": "第9空（send）",
+      "options": [],
+      "acceptedAnswers": [
+        "have sent",
+        "have been sending"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "has sent"
+        ]
+      },
+      "rationale": "since April允许完成及完成进行；visitors复数。",
+      "givenLemma": "send"
+    },
+    {
+      "number": 10,
+      "stem": "第10空（receive）",
+      "options": [],
+      "acceptedAnswers": [
+        "to receive",
+        "to have received"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "receive"
+        ]
+      },
+      "rationale": "delighted后普通/完成不定式均与已收到的补充材料相容。",
+      "givenLemma": "receive"
+    }
+  ],
+  "canonical_response_block_sha256": "7e716633a1d2adcd9b20afe93659967c2e4540753a16a753260a64f66de63121",
+  "student_passage": "The clock above the entrance to our disused railway station had stopped at ten past four. Nobody knew exactly (1) ____ it had stopped, so a local history group decided to investigate. The work began with a (2) ____ (care) inspection of the mechanism. Inside the case were several (3) ____ (label) diagrams that an earlier repairer had left behind. Their presence suggested that somebody had already tried to understand the fault.\n\nTwo volunteers removed the smaller (4) ____ (wheel) and placed them on a cloth. Each component was numbered before it was cleaned. One volunteer recorded the order in (5) ____ the parts had been removed, while the other checked the teeth for damage. After (6) ____ (use) a dry brush to remove the dust, they asked a specialist about the material before trying any cleaning liquid. Their aim was not to make the clock look new, (7) ____ to make it work without destroying evidence of earlier repairs.\n\nBy the time the specialist visited, the group (8) ____ (prepare) a complete set of photographs. She used these to identify a bent pin hidden behind the main dial. Since the clock began running again in April, visitors (9) ____ (send) the group several old station photographs. The volunteers are delighted (10) ____ (receive) these unexpected additions to the story. The clock now tells the time, but the display beside it also records how a careful sequence of small decisions brought it back into use.",
+  "author_answer_vector": [
+    [
+      "why",
+      "when",
+      "how"
+    ],
+    [
+      "careful"
+    ],
+    [
+      "labelled",
+      "labeled"
+    ],
+    [
+      "wheels"
+    ],
+    [
+      "which"
+    ],
+    [
+      "using",
+      "having used"
+    ],
+    [
+      "but",
+      "only",
+      "just"
+    ],
+    [
+      "had prepared",
+      "had been preparing"
+    ],
+    [
+      "have sent",
+      "have been sending"
+    ],
+    [
+      "to receive",
+      "to have received"
+    ]
+  ],
+  "authored_student_inputs_complete": true,
+  "mixed_given_ungiven_grammar": true,
+  "subgroup_counts": [
+    10
+  ],
+  "given_positions": [
+    2,
+    3,
+    4,
+    6,
+    8,
+    9,
+    10
+  ],
+  "filled_passage": "The clock above the entrance to our disused railway station had stopped at ten past four. Nobody knew exactly (1) why it had stopped, so a local history group decided to investigate. The work began with a (2) careful (care) inspection of the mechanism. Inside the case were several (3) labelled (label) diagrams that an earlier repairer had left behind. Their presence suggested that somebody had already tried to understand the fault.\n\nTwo volunteers removed the smaller (4) wheels (wheel) and placed them on a cloth. Each component was numbered before it was cleaned. One volunteer recorded the order in (5) which the parts had been removed, while the other checked the teeth for damage. After (6) using (use) a dry brush to remove the dust, they asked a specialist about the material before trying any cleaning liquid. Their aim was not to make the clock look new, (7) but to make it work without destroying evidence of earlier repairs.\n\nBy the time the specialist visited, the group (8) had prepared (prepare) a complete set of photographs. She used these to identify a bent pin hidden behind the main dial. Since the clock began running again in April, visitors (9) have sent (send) the group several old station photographs. The volunteers are delighted (10) to receive (receive) these unexpected additions to the story. The clock now tells the time, but the display beside it also records how a careful sequence of small decisions brought it back into use.",
+  "load_measure": {
+    "body_English_words": 225,
+    "stem_English_words": 7,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "full_fill_variant_combinations": 288,
+  "source_level_equivalence_established": false,
+  "previous_author_check": {
+    "path": "CompleteCoverage20261017/Authored/grade12-grammar-station-clock-author-check-v0.2.json",
+    "sha256": "3ae6bade672103f07529fd9b3962a9b5ba8dc7cc3d3a6336b9212b330021f1a8"
+  },
+  "revision_reason": "Correct Q4 local grammatical evidence; admit but/only/just at Q7, and move unverified and exclusion to review. Source form, body, all stems, and remaining answers unchanged."
+}
