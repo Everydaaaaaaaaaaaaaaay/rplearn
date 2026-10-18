@@ -37,6 +37,9 @@ def check(data, plan):
                     load_ref(source[key])
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
+            if b.get('task_mode') == 'school_complete_cloze':
+                from school_cloze_contract import check as check_school_cloze
+                check_school_cloze(g,a,b,source)
             if b.get('task_mode') == 'unhinted_word_editing':
                 from word_editing_contract import check as check_word_editing
                 check_word_editing(g,a,b,source)
@@ -382,7 +385,10 @@ def check(data, plan):
             for key in ['parent_document', 'transcription']:
                 load_ref(b['source_reference'][key])
         assert b['new_source_count'] == a['source_count_increment'] == 0
-        assert b.get('source_original_key_not_gold') or (b.get('source_script_audio_and_key_missing') and source.get('source_key_acquired') is False)
+        if b.get('task_mode') == 'school_complete_cloze':
+            assert source['source_key_is_gold'] is False
+        else:
+            assert b.get('source_original_key_not_gold') or (b.get('source_script_audio_and_key_missing') and source.get('source_key_acquired') is False)
         assert b['source_group_id'] in g['anchor_group_ids']
         assert g['grade'] == a['grade'] == b['level'] == meta['grade']
         assert g['kind'] == b['family'] == meta['family']

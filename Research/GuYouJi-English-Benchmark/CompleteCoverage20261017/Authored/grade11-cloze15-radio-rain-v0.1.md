@@ -1,0 +1,151 @@
+# 高二十五空：广播剧里的雨声
+
+## 学生题面
+
+阅读下面完整短文，为第1—15空各选一个最合适的选项。每空有四个独立候选，不是共享词库。
+
+For our school radio play, I wanted the leading role. Instead, I was asked to produce the sound effects. I took the decision as a (1) ____: someone else would receive the applause while I stayed behind a curtain. At the first rehearsal, I barely listened to the actors. When rain was mentioned, I shook a tin of dry peas without waiting for the director's (2) ____. The noise drowned out a crucial line.
+Afterwards, the youngest actor approached me. I expected a (3) ____, but she asked how I had made the rain. She had imagined real water falling into a bucket. Her curiosity (4) ____ me enough to explain the trick. As we experimented together, I noticed that a gentle movement produced a shower, while a rapid one suggested a storm. The same tin could express different (5) ____.
+At the next rehearsal, I followed the script with a pencil. Rather than interrupting every mention of weather, I waited for a (6) ____ in the dialogue. This time, the rain seemed to belong to the scene. The director asked me to make it gradually fade as the character's fear (7) ____.
+On performance day, the tin slipped from my hand just before my final cue. I caught it, but the peas had spilled. For a second, I (8) ____. Then I remembered the sheet of thin paper beside me. I rubbed it softly and (9) ____ the missing sound. Nobody in the audience saw the change.
+At the end, the actors invited the crew forward. I was pleased, but the public (10) ____ was no longer the part that mattered most. The youngest actor whispered that she had felt the storm disappear around her. Her words (11) ____ what I had learned: a sound effect was there to serve the story, not (12) ____ it. I had spent the first rehearsal trying to be (13) ____. By the last, I was listening. The curtain had not (14) ____ me from the play. It had given me another way to (15) ____ to it.
+
+<!-- responses:start -->
+
+1. 第1空
+   A. promotion
+   B. prediction
+   C. refund
+   D. rejection
+
+2. 第2空
+   A. address
+   B. signature
+   C. signal
+   D. costume
+
+3. 第3空
+   A. delivery
+   B. complaint
+   C. invitation
+   D. prize
+
+4. 第4空
+   A. encouraged
+   B. prevented
+   C. frightened
+   D. exhausted
+
+5. 第5空
+   A. prices
+   B. recipes
+   C. addresses
+   D. moods
+
+6. 第6空
+   A. mistake
+   B. contest
+   C. pause
+   D. translation
+
+7. 第7空
+   A. returned
+   B. eased
+   C. spread
+   D. peaked
+
+8. 第8空
+   A. froze
+   B. cheered
+   C. slept
+   D. departed
+
+9. 第9空
+   A. announced
+   B. recorded
+   C. cancelled
+   D. recreated
+
+10. 第10空
+   A. transport
+   B. argument
+   C. recognition
+   D. inspection
+
+11. 第11空
+   A. concealed
+   B. confirmed
+   C. reversed
+   D. postponed
+
+12. 第12空
+   A. overpower
+   B. support
+   C. accompany
+   D. strengthen
+
+13. 第13空
+   A. replaced
+   B. delayed
+   C. charged
+   D. heard
+
+14. 第14空
+   A. protected
+   B. rescued
+   C. excluded
+   D. borrowed
+
+15. 第15空
+   A. object
+   B. contribute
+   C. apologise
+   D. escape
+
+<!-- responses:end -->
+
+## 作者核对
+
+参照既有公开转载银川二中2025—2026高二下期中完整一篇15空、每空四独立候选、每题1分。原校施测未认证，原键非gold；新稿人物与事件虚构，逐候选全篇回填是作者自审，独立教研/学生难度、商用和生产均未验证。
+
+### 答案与逐项依据
+
+1. D。A：失落于未得主角，不认为获晋升；B：安排角色不是预告未来事件；C：没有费用退还情节；D：未得主角被安排幕后，叙述者最初理解成拒绝
+
+2. C。A：导演地址与何时制造雨声无关；B：不涉及签署文件批准；C：后文final cue对应导演给出的时机信号；D：导演服装不决定音效进入时机
+
+3. B。A：演员前来不是运送货物；B：刚盖住演员台词，所以预期她会抱怨；C：but后实际问技巧，前文失误使预期为抱怨而非邀请；D：刚打断演出，没有评奖或获奖背景
+
+4. A。A：她感兴趣使原本敷衍的叙述者愿意解释；B：解释已发生，prevented与enough to explain的方向相反；C：好奇提问未带来恐惧，也无惊吓迹象；D：没有劳累，她的兴趣引发投入
+
+5. D。A：无买卖，同一罐子实验不表达不同价格；B：并非烹饪步骤，声音变化不表达食谱；C：雨声不提供地点地址信息；D：小雨和暴风营造不同情绪氛围，后文fear变化继续呼应
+
+6. C。A：目标是配合正常台词，不以演员出错为进入条件；B：对话内部没有竞赛，contest不能承接进入时机；C：为避免盖住台词，等待对话停顿；D：没有双语或翻译环节
+
+7. B。A：恐惧重返不合此处风雨退去的情绪转变；B：雨渐弱与恐惧缓解相配，后文storm disappear印证；C：恐惧扩散与导演让音效逐渐消退的方向不符；D：恐惧达顶点不合本场由风雨消失带来的平静收束
+
+8. A。A：意外撒落后短暂僵住，Then记起纸张显示随后恢复行动；B：事故临近音效信号，没有庆祝理由；C：紧张演出中一瞬入睡不符行动链；D：后续仍在幕后台前完成声音，未离开
+
+9. D。A：未对观众宣布故障，而是自行补音效；B：是现场弥补，未描述录音设备或存储；C：后来演员感到风暴消退，声音任务完成而非取消；D：用纸摩擦重新做出缺失的声音，材料换而功能保留
+
+10. C。A：演员邀台前不涉及公共交通；B：结尾无公众争论；C：被邀到台前代表公众认可，已非最重要；D：并非正式检查或验收程序
+
+11. B。A：她直言感受，并未掩盖学习所得；B：演员反馈印证已学到的配合故事原则；C：反馈与所学一致，未推翻原则；D：反馈发生在演出后，不使已发生的学习推迟
+
+12. A。A：开头噪音淹没台词，结尾明确不应压过故事；B：serve与support同向，not support会否定本句原则；C：配合故事的音效需要伴随它，不能以此作为被否定的过度行为；D：增强故事效果与serve同向，非前文淹没台词的问题
+
+13. D。A：一直想要重要角色，未想让别人替换自己；B：没有刻意使自己迟到的目标；C：非收费服务，不涉及要求别人向自己收费；D：首排练不听演员却发出盖过台词的声音，对应想让别人听见自己
+
+14. C。A：未写幕布对其提供保护或造成危险，保护不是被纠正的初始误解；B：没有幕布救助事故的情节；C：误以幕后等于被排除，结尾否定这一理解；D：borrow sb from play不表达这种参与关系
+
+15. B。A：结尾接纳幕后工作，不是提出反对；B：幕后声音也是参与作品并作贡献的方式；C：another way与幕后参与相连，不是新道歉途径；D：最终投入作品，与逃避方向相反
+
+### 全组回填
+
+For our school radio play, I wanted the leading role. Instead, I was asked to produce the sound effects. I took the decision as a rejection: someone else would receive the applause while I stayed behind a curtain. At the first rehearsal, I barely listened to the actors. When rain was mentioned, I shook a tin of dry peas without waiting for the director's signal. The noise drowned out a crucial line.
+Afterwards, the youngest actor approached me. I expected a complaint, but she asked how I had made the rain. She had imagined real water falling into a bucket. Her curiosity encouraged me enough to explain the trick. As we experimented together, I noticed that a gentle movement produced a shower, while a rapid one suggested a storm. The same tin could express different moods.
+At the next rehearsal, I followed the script with a pencil. Rather than interrupting every mention of weather, I waited for a pause in the dialogue. This time, the rain seemed to belong to the scene. The director asked me to make it gradually fade as the character's fear eased.
+On performance day, the tin slipped from my hand just before my final cue. I caught it, but the peas had spilled. For a second, I froze. Then I remembered the sheet of thin paper beside me. I rubbed it softly and recreated the missing sound. Nobody in the audience saw the change.
+At the end, the actors invited the crew forward. I was pleased, but the public recognition was no longer the part that mattered most. The youngest actor whispered that she had felt the storm disappear around her. Her words confirmed what I had learned: a sound effect was there to serve the story, not overpower it. I had spent the first rehearsal trying to be heard. By the last, I was listening. The curtain had not excluded me from the play. It had given me another way to contribute to it.
+
+原配置只支持篇数、空数、候选、分值；不从单个样本推全国词数范围、难度等值或年级排他性。本稿字数另量，非已校准学生负荷。

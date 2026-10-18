@@ -1,0 +1,131 @@
+{
+  "version": "0.1",
+  "batch": {
+    "path": "CompleteCoverage20261017/SchoolClozeOriginalBatch-v0.3.json",
+    "sha256": "8e4fd1f6e5ba4ff66d86db810d9fecdf8266b29420a99bc5a6529d41232fda01"
+  },
+  "bindings": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceBindings-v0.1.json",
+    "sha256": "335bcc7985422197890e25b4f892ecb1a318948a8264437a58f7aa3d8f4edc54"
+  },
+  "source_reconciliation": {
+    "path": "CompleteCoverage20261017/SchoolClozeConfigurationReconciliation-v0.1.json",
+    "sha256": "89f0bee0c4ebec53869a02b80d653d700334d0180ee5082010f58e5c5dafb8f8"
+  },
+  "pending_index": {
+    "path": "CompleteCoverage20261017/PendingObservedModes-v0.61.json",
+    "sha256": "48227cd79cff37dfdbad8ea31ac62ae44c0808c9855b4d38e0ef99dde7c2fe28"
+  },
+  "inventory": {
+    "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.112.json",
+    "sha256": "350fb7d47ec54a5ccb7b012b4fb1026a8caf4f0296d7f7c3d587b6406c977fd3"
+  },
+  "contract": {
+    "path": "build/english-benchmark-authority-20261017/cloze667-contract-v0.2.json",
+    "sha256": "0a99c33f3091d44d88eeb8f1fbb658dff341feee12252028b262ca6ee1e007ef"
+  },
+  "browser": {
+    "path": "build/english-benchmark-authority-20261017/cloze667-browser-v0.1.json",
+    "sha256": "0cfc2d5f00ac860e73b0b725626e794ce4dbd4b96861c95d777e918a9ed4efa7"
+  },
+  "family_and_load_review": {
+    "path": "build/english-benchmark-authority-20261017/cloze667-family-load-review-v0.1.json",
+    "sha256": "9fcc216e1b229a1565a5cdb3f54e6280ddb0dc952d58bf697e67b0b5a915e95e"
+  },
+  "final_check": {
+    "path": "build/english-benchmark-authority-20261017/cloze667-final-check-v0.2.json",
+    "sha256": "96cc52846b0533e748149ca455b90db3b625366b959403e624198421acfa0f07"
+  },
+  "archive": {
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.182.json",
+    "sha256": "b6dcbbe505bd988a96e7926bc9bb6aa9171fd788a2f2f6f38c9dcf72cba62908"
+  },
+  "targeted_restores": [
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/review667-school-cloze-order-delta-v0.1.json",
+        "sha256": "1fd706c8528fb3fdd515759228e59af335a0b1cc4712e203a416aa3e24cf4b35"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/cloze667-browser-v0.1.json",
+        "sha256": "0cfc2d5f00ac860e73b0b725626e794ce4dbd4b96861c95d777e918a9ed4efa7"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/cloze667-overview-v0.1.png",
+        "sha256": "2830e04b5f085a031bbd248192b3b3952f3910cb64e70984e874759f8873d421"
+      },
+      "restored_SHA_verified": true
+    }
+  ],
+  "candidate_HTTP_links": [
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade11-cloze15-radio-rain-v0.2.md",
+        "sha256": "47804162b095b7d63dd269e27ea616830a27b573b992fac450eb85a3b0208250"
+      },
+      "http_status": 200,
+      "served_SHA256_matches": true
+    },
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade11-cloze15-chess-reserve-v0.3.md",
+        "sha256": "10de8aef6f801cfce8b7b9ccf6b05f71d4cb8042bd3008bfd596733cef124941"
+      },
+      "http_status": 200,
+      "served_SHA256_matches": true
+    },
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade11-cloze15-costume-pocket-v0.3.md",
+        "sha256": "f825dc1d0f89daa2c6339ac507b6d8ce714921d893497e5bd87995bb749eda66"
+      },
+      "http_status": 200,
+      "served_SHA256_matches": true
+    }
+  ],
+  "browser_MD_navigation_blocked_by_client_not_claimed_as_opened": true,
+  "screenshots": [
+    {
+      "path": "build/english-benchmark-authority-20261017/cloze667-overview-v0.1.png",
+      "sha256": "2830e04b5f085a031bbd248192b3b3952f3910cb64e70984e874759f8873d421"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/cloze667-review-v0.1.png",
+      "sha256": "1de385f686a58c409117d804b72358c908838dcfef9726669b9a61a30ab14cf4"
+    }
+  ],
+  "current_groups": 667,
+  "current_responses": 4526,
+  "populated_family_cells": 195,
+  "restored_missing_modes": 14,
+  "initial_missing_originals": 42,
+  "now_pending_modes": 13,
+  "now_missing_originals": 39,
+  "new_groups": 3,
+  "new_responses": 45,
+  "candidate_full_passage_substitutions": 180,
+  "contract_negative_controls": 48,
+  "actual_UI_correct_responses": 45,
+  "actual_UI_wrong_blank_controls": 6,
+  "teacher_reset_groups": 3,
+  "pinned_revisions": 45,
+  "new_source_downloads": 0,
+  "new_authenticated_school_papers": 0,
+  "new_archive_objects": 15,
+  "new_archive_bytes": 404885,
+  "source_selected_body_words": 229,
+  "authored_body_words": [
+    315,
+    335,
+    344
+  ],
+  "grade_length_difficulty_equivalence": false,
+  "all_required_types_complete": false,
+  "independent_teacher_student_commercial_production": false
+}
