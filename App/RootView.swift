@@ -79,7 +79,7 @@ struct RootView: View {
         case "messages": .messages
         case "contacts": .contacts
         case "home", "map": .home
-        case "me", "subscription", "learning", "favorites": .me
+        case "me", "subscription", "learning", "favorites", "learning-test": .me
         default:
             ProcessInfo.processInfo.environment["UI_TEST_HOME_DESTINATION"] == nil
                 ? .messages
@@ -91,6 +91,9 @@ struct RootView: View {
         }
         if requested == "learning" {
             _showEnglishJourney = State(initialValue: true)
+        }
+        if requested == "learning-test" {
+            _mePath = State(initialValue: [.learningTrial])
         }
         if requested == "subscription" {
             _mePath = State(initialValue: [.subscription])
@@ -879,6 +882,20 @@ struct RootView: View {
             onOpenSubscription: { openMe(.subscription) }
         )
         .id("me-root")
+        #if DEBUG
+        .safeAreaInset(edge: .bottom) {
+            if section == nil && !bypassesAuthenticationForUITesting {
+                Button { openMe(.learningTrial) } label: {
+                    Label("学习实测 · 切换档位做题", systemImage: "book.pages")
+                        .font(.subheadline.weight(.semibold)).frame(maxWidth: .infinity).padding(12)
+                }
+                .buttonStyle(.borderedProminent)
+                .padding(.horizontal, 20).padding(.vertical, 8)
+                .background(.regularMaterial)
+                .accessibilityIdentifier("me.learning-trial")
+            }
+        }
+        #endif
     }
 
     private func meNavigationTitle(for destination: MeDestination) -> String {
@@ -889,6 +906,9 @@ struct RootView: View {
         case .memory: "记忆档案"
         case .account: "个人资料"
         case .subscription: "会员订阅"
+        #if DEBUG
+        case .learningTrial: "学习实测"
+        #endif
         }
     }
 
@@ -938,6 +958,10 @@ struct RootView: View {
             myPage(section: .account)
         case .subscription:
             myPage(section: .subscription)
+        #if DEBUG
+        case .learningTrial:
+            LearningTrialView(environment: environment)
+        #endif
         case .memory:
             MemoryDebugView(
                 memoryStore: environment.memoryStore,

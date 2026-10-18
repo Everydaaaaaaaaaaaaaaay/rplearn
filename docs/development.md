@@ -141,6 +141,32 @@ DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
 此入口仍是只读工程夹具，不计学习进度，不代表正式听力材料已经审核发布。
 检查词块题；题型可选 `choice`、`arrange`、`matching`、`completion`。正式内容、听力和联网结算另行验收。
 
+### 真实学习实测入口
+
+Debug App 的「我的」底部有「学习实测 · 切换档位做题」。也可以直接启动：
+
+```bash
+Scripts/preview.sh build learning-test   # 源码改变后构建、安装并进入真实登录流程
+Scripts/preview.sh preview learning-test # 已构建后复用产物
+```
+
+`learning-test` 与免登录工程预览使用不同启动分支：强制真实鉴权，默认连接正式后端，
+不调用 `activateUITestWorkspace` 或 `DebugLearningPreviewService`。如已有登录态，保留账号；
+否则在模拟器内自行登录，不把密码传给脚本或聊天。仅对隔离真实后端联调时可设置
+`LINGOTRIP_TRIAL_BACKEND_URL`，这个变量不用于注入题目或判分。
+
+入口可选小学一年级至高三、大学英语四级、大学英语六级、高级英语十五档，以及账号内的真实旅伴。
+数量来自服务端 `learningJourney`，开始时再核权威状态。切换档位与通用英语方向会真实同步到账号，
+只通过现有 Debug fill 接口略过聊天字数等待；之后复用 `LearningChallengeView` 和正式
+`LearningServing` 的媒体、答题、奖励、结束与补答流程。已有挑战保持原档位，跨档位时明确提示续做，
+不改旧快照；无题或供题耗尽显示真实不可用状态，不生成本地替代题。测试会写入真实学习记录和奖励。
+
+本轮研究已按用户要求停止；研究页的772组记录没有批量发布到学习系统。当前可测范围以服务端实际
+已发布题库为准，不以研究数量冒充可抽题量。这个入口仅在 Debug 构建中提供，没有发布 App Store 版本。
+入口流程定向验证为 `Scripts/test.sh -only-testing:LingoTripTests/LearningTrialTests`；
+原判分及组卷的隔离验证可按需运行 `Scripts/verify-backend-workflows.py --phase integration`
+并选择 `learning-bank.test.ts` 和 `learning-api.test.ts`。隔离测试不代表原生端已登录实测通过。
+
 ## 启动速度与偶发慢启动
 
 测量口径、缓存启动策略和定向复测命令见 [启动性能记录](launch-performance.md)。

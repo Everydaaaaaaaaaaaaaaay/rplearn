@@ -3,7 +3,7 @@
 set -euo pipefail
 
 if [[ -z "${DEVELOPER_DIR:-}" ]]; then
-  for candidate in /Volumes/data/Applications/Xcode.app/Contents/Developer /Applications/Xcode.app/Contents/Developer; do
+  for candidate in /Volumes/data/Applications/Xcode.app/Contents/Developer /Applications/Xcode.app/Contents/Developer /Applications/Xcode-beta.app/Contents/Developer; do
     if [[ -x "$candidate/usr/bin/xcodebuild" ]]; then
       export DEVELOPER_DIR="$candidate"
       break
@@ -21,7 +21,7 @@ cd "$LINGOTRIP_REPO_ROOT"
 mode="${1:-preview}"
 case "$mode" in
   help|--help|-h)
-    echo "用法：Scripts/preview.sh [preview|build|status] [messages|contacts|home|map|me|subscription|learning|role-learning|unit-challenge]"
+    echo "用法：Scripts/preview.sh [preview|build|status] [messages|contacts|home|map|me|subscription|learning|learning-test|role-learning|unit-challenge]"
     echo "preview 复用 Debug 构建并免登录启动；build 先增量构建；status 只读设备与产物。"
     exit 0
     ;;
@@ -30,7 +30,7 @@ case "$mode" in
 esac
 preview_tab="${2:-messages}"
 case "$preview_tab" in
-  messages|contacts|home|map|me|subscription|learning|role-learning|unit-challenge) ;;
+  messages|contacts|home|map|me|subscription|learning|learning-test|role-learning|unit-challenge) ;;
   *) echo "错误：不支持的页面：$preview_tab" >&2; exit 1 ;;
 esac
 udid="$(lingotrip_simulator_udid)"
@@ -54,6 +54,16 @@ fi
 bundle_id="$(plutil -extract CFBundleIdentifier raw -o - "$app_path/Info.plist")"
 lingotrip_boot_simulator "$udid"
 xcrun simctl install "$udid" "$app_path"
+if [[ "$preview_tab" == learning-test ]]; then
+  SIMCTL_CHILD_UI_TEST_REQUIRE_AUTHENTICATION=1 \
+  SIMCTL_CHILD_UI_TEST_SKIP_ONBOARDING=1 \
+  SIMCTL_CHILD_UI_TEST_DISABLE_BACKGROUND_REFRESH=0 \
+  SIMCTL_CHILD_UI_TEST_TAB=learning-test \
+  SIMCTL_CHILD_LINGOTRIP_BACKEND_URL="${LINGOTRIP_TRIAL_BACKEND_URL:-https://rplearn.haruyuki.cn}" \
+    xcrun simctl launch --terminate-running-process "$udid" "$bundle_id"
+  echo "已启动真实学习实测入口；需要真实登录，答题使用服务端题库与计分。"
+  exit 0
+fi
 SIMCTL_CHILD_UI_TEST_SKIP_ONBOARDING=1 \
 SIMCTL_CHILD_UI_TEST_REQUIRE_AUTHENTICATION=0 \
 SIMCTL_CHILD_UI_TEST_DISABLE_BACKGROUND_REFRESH=1 \

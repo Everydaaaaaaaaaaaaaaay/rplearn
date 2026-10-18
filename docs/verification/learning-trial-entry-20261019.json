@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-19",
+  "status": "native_entry_implemented_real_sign_in_pending",
+  "research_stopped_by_owner": true,
+  "research_close": "Research/GuYouJi-English-Benchmark/CompleteCoverage20261017/ResearchRoundCloseForLearningTrial-v0.1.json",
+  "entry": "Debug App / 我的 / 学习实测 · 切换档位做题",
+  "direct_launch": "Scripts/preview.sh preview learning-test",
+  "levels": 15,
+  "kindergarten_excluded": true,
+  "uses_real_authentication": true,
+  "uses_DebugLearningPreviewService": false,
+  "question_source": "existing server-published catalog only; not automatic publication of 772 research groups",
+  "native_challenge_view": "LearningChallengeView",
+  "backend_unchanged": true,
+  "production_deployment_needed": false,
+  "real_account_effects": [
+    "difficulty and general direction changes are saved",
+    "normal answer records and rewards are saved",
+    "debug fill skips only character-count wait",
+    "active attempt snapshots retain their original levels"
+  ],
+  "verified": {
+    "swift_focused_tests": 8,
+    "swift_failed": 0,
+    "swift_skipped": 0,
+    "isolated_database_api_tests": 17,
+    "isolated_failed": 0,
+    "ios_architecture": "passed",
+    "shell_syntax": "passed",
+    "latest_build_installed": true,
+    "native_computer_use": "real sign-in screen observed; no authenticated UI test yet"
+  },
+  "evidence": [
+    {
+      "path": "build/learning-trial-tests-final.log",
+      "sha256": "021b68efe7343922dccc3a4d16eb27fb9edaad0fc2f34bc10c0d4c72cf991495"
+    },
+    {
+      "path": "build/learning-trial-backend-verification/report.json",
+      "sha256": "594f5e6f1d4da562d492a150d58dfa2627502a1e76ab5694a013da5d77fac181"
+    },
+    {
+      "path": "build/learning-trial-backend-verification/integration.json",
+      "sha256": "872b18137c9af84adeacc25b4e796eb3fecefaa790a8e66abc46b652fc700dd4"
+    },
+    {
+      "path": "build/learning-trial-login-20261019.png",
+      "sha256": "30395659a78a0b7cfa9bf645ceccb23dbbee38861437e91bb5678c3201dee997"
+    }
+  ],
+  "pending": [
+    "owner signs in through the native login screen; no password sent in chat",
+    "authenticated 15-level navigation, actual native submission, media playback and result readback"
+  ],
+  "independent_teacher_student_validation_not_claimed": true
+}

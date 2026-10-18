@@ -15,6 +15,9 @@ enum MeDestination: Hashable {
     case memory
     case account
     case subscription
+    #if DEBUG
+    case learningTrial
+    #endif
 }
 
 extension HomeDestination {
