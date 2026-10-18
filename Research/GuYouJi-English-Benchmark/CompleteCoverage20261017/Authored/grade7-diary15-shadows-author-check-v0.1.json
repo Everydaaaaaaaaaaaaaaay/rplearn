@@ -1,0 +1,930 @@
+{
+  "version": "0.1",
+  "id": "grade7-diary15-shadows",
+  "grade": 7,
+  "questions": 15,
+  "candidate_sha256": "63a9dde9708d127cc4bfe51939177a6c8b3357fc9ec89488964e0c63602a1db4",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-diary15-shadows-manuscript-v0.1.json",
+    "sha256": "bf6f501dabf535dbe3fc6ce7279c442efeff4664197755d8827d43c9de79a81d"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/JuniorDiaryReadingSourceBindings-v0.1.json",
+    "sha256": "6de3a22c8f2554f166687d3b73128487af0a0c73502eb440ff50668586b76e04"
+  },
+  "source_binding": "grade7-suzhou2025-21cnjy23303742.reading.complete_section15.binding",
+  "school_complete_reading_section": true,
+  "junior_profiles_diary_fantasy_reading15": true,
+  "diary": {
+    "opening": "Today my human is staying home to finish a model ship. I, Dot the cat, am sure she will need a skilled assistant. This is my diary.",
+    "times": [
+      "5 a.m.",
+      "7 a.m.",
+      "8 a.m.",
+      "3 p.m.",
+      "9 p.m.",
+      "12 a.m. (start of the next day)"
+    ],
+    "entries": [
+      "I found a little paper flag on the table. It moved when the window opened. At last, a new game for me! I climbed onto a chair to watch it closely. My human was still asleep, so nobody told me to leave the table alone.",
+      "My human came in and put the flag inside a drawer. She said it belonged on her ship, not between my paws. I could not see why the ship should get the best toy. I followed her to breakfast, still hoping she would change her mind.",
+      "After breakfast, my human carefully painted the ship. I sat beside the table and waved my tail. She moved my chair back, saying she needed room for her brushes. A true assistant should be close enough to see the work, I thought.",
+      "I have already carried my cloth mouse into the empty box beside the table. I played there for ten minutes. I am going to nap by the window later, but I am still awake now. The box makes a fine small boat for a cat.",
+      "The model ship was finished. My human admired it and showed it to a friend on a screen. She thanked me for being quiet in my box. Quiet? I had been very busy! She gave me a pat, but the paper flag was still on the ship, beyond my reach.",
+      "This midnight starts the next day. My human has put the model on a high shelf and turned out the light. She thinks we made a ship together. I wanted to play with that moving flag. We clearly had different plans for the day."
+    ],
+    "afternoon_completed_evidence": "I have already carried my cloth mouse into the empty box beside the table.",
+    "afternoon_completed_not_merely_planned": true,
+    "midnight_next_day_explicit": true
+  },
+  "fantasy": {
+    "events": {
+      "a": "He described two earlier shadow shapes.",
+      "b": "He searched among the stones.",
+      "c": "He discovered a yellow lantern.",
+      "d": "He answered the beetle’s first question."
+    },
+    "order": [
+      "b",
+      "c",
+      "d",
+      "a"
+    ],
+    "evidence": {
+      "b": "He looked among the stones beside the wall.",
+      "c": "In a round hollow he discovered a yellow lantern with a handle shaped like a leaf.",
+      "d": "“▲,” said Eli.",
+      "a": "Eli described the tree shape and the umbrella shape."
+    },
+    "missing_turn": "I cannot be sure at this moment"
+  },
+  "activity": {
+    "rule": "a player must keep the disc behind the blue line until the turn begins.",
+    "comparison": "Like chess, the game rewards thinking about a move before making it.",
+    "recommendation": "If you enjoy trying a careful idea and then changing it, Paper Disc is worth a simple trial.",
+    "not_climbing_safety_or_health_instruction": true
+  },
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "A组 · Why is Ada’s home built into the hill?",
+      "options": [
+        [
+          "A",
+          "The windows must stay dark all morning."
+        ],
+        [
+          "B",
+          "The family plays ball on the roof."
+        ],
+        [
+          "C",
+          "The bakery needs more space."
+        ],
+        [
+          "D",
+          "The hill protects it from strong wind."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：可看晨光，非保持暗；B：明确从不在草顶打球；C：面包店属Luis家；D：明确设计原因是后方山坡挡风",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "home_design_reason"
+    },
+    {
+      "number": 2,
+      "stem": "A组 · What does “terrace” mean in Mei’s description?",
+      "options": [
+        [
+          "A",
+          "A large oven used to bake bread."
+        ],
+        [
+          "B",
+          "A bedroom below the street."
+        ],
+        [
+          "C",
+          "A path through trees in a valley."
+        ],
+        [
+          "D",
+          "An open outside area where people can sit."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：非面包烤炉；B：非卧室且flat外；C：非谷地林间路；D：同位解释室外平地可坐",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "context_word_meaning"
+    },
+    {
+      "number": 3,
+      "stem": "A组 · Which statement is supported by these descriptions?",
+      "options": [
+        [
+          "A",
+          "Mei’s family eats in the kitchen on rainy days."
+        ],
+        [
+          "B",
+          "Luis’s bakery sells fresh bread every Monday."
+        ],
+        [
+          "C",
+          "Ada’s windows look onto a busy street."
+        ],
+        [
+          "D",
+          "Luis uses the big oven before school."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：下雨移椅进屋在厨房吃；B：周一关门不卖新鲜面包；C：面向谷地；D：仅父母操作大烤炉",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "cross_profile_true"
+    },
+    {
+      "number": 4,
+      "stem": "B组 · How does Dot feel about the flag at 5 a.m.?",
+      "options": [
+        [
+          "A",
+          "Uninterested."
+        ],
+        [
+          "B",
+          "Ashamed."
+        ],
+        [
+          "C",
+          "Delighted."
+        ],
+        [
+          "D",
+          "Afraid."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：专心观看非没兴趣；B：没有羞愧行为；C：At last新游戏并爬椅看支持开心；D：主动靠近非恐惧",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "diary_initial_feeling"
+    },
+    {
+      "number": 5,
+      "stem": "B组 · What did Dot complete before writing at 3 p.m.?",
+      "options": [
+        [
+          "A",
+          "Painting the model ship."
+        ],
+        [
+          "B",
+          "Putting the ship on a high shelf."
+        ],
+        [
+          "C",
+          "Taking a cloth mouse into the box and playing there."
+        ],
+        [
+          "D",
+          "Sleeping by the window."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：主人画船，猫未涂；B：次日午夜前由人上架；C：already搬鼠入箱玩十分钟；D：later打算，当前清醒",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "diary_completed_afternoon_action"
+    },
+    {
+      "number": 6,
+      "stem": "B组 · What difference between Dot and the human does the diary show?",
+      "options": [
+        [
+          "A",
+          "They both planned to sleep through the day."
+        ],
+        [
+          "B",
+          "They wanted different uses for the paper flag."
+        ],
+        [
+          "C",
+          "They both wanted to give the ship away."
+        ],
+        [
+          "D",
+          "They both thought the box was a real boat."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：人做模型、猫玩，非睡整天；B：人给模型用、猫想玩旗；C：没有送船计划；D：猫比喻小船，人未作此判断",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "diary_relationship_inference"
+    },
+    {
+      "number": 7,
+      "stem": "B组 · Which title best suits all six entries?",
+      "options": [
+        [
+          "A",
+          "A Flag’s Journey Around the World"
+        ],
+        [
+          "B",
+          "A Cat’s Day as an “Assistant”"
+        ],
+        [
+          "C",
+          "Instructions for Building a Ship"
+        ],
+        [
+          "D",
+          "How a Visitor Painted a Cat"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：无环球旅行；B：猫自认助手但人与猫意图不同；C：非造船步骤；D：访客未画猫",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "diary_title"
+    },
+    {
+      "number": 8,
+      "stem": "C组 · Which publication would most likely carry this article?",
+      "options": [
+        [
+          "A",
+          "A school games-club newsletter."
+        ],
+        [
+          "B",
+          "A book of animal adventures."
+        ],
+        [
+          "C",
+          "A guide to repairing kitchen ovens."
+        ],
+        [
+          "D",
+          "A timetable of city buses."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：虚构社团桌面目标游戏；B：无动物冒险；C：无烤炉维修；D：无公交时刻",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "explanation_publication"
+    },
+    {
+      "number": 9,
+      "stem": "C组 · Which rule belongs to this version of Paper Disc?",
+      "options": [
+        [
+          "A",
+          "Record a score while the disc is still moving."
+        ],
+        [
+          "B",
+          "Begin with the disc inside the target circle."
+        ],
+        [
+          "C",
+          "Change to a different board during every round."
+        ],
+        [
+          "D",
+          "Keep the disc behind the blue line before the turn."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：停稳才记；B：不能先移近目标；C：同轮同板；D：明确蓝线规则",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "explicit_activity_rule"
+    },
+    {
+      "number": 10,
+      "stem": "C组 · Why does the writer compare the game to chess?",
+      "options": [
+        [
+          "A",
+          "The two games require identical hand movements."
+        ],
+        [
+          "B",
+          "A player considers a move before acting."
+        ],
+        [
+          "C",
+          "Both use folded paper discs."
+        ],
+        [
+          "D",
+          "Both award points for sliding off a board."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：说纸盘有手部动作不同；B：都先思考再动；C：折盘属纸盘游戏非棋；D：纸盘出边零分，棋无此规则",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "chess_thinking_comparison"
+    },
+    {
+      "number": 11,
+      "stem": "C组 · Which idea does the writer recommend?",
+      "options": [
+        [
+          "A",
+          "Try the game if you enjoy testing and adjusting a plan."
+        ],
+        [
+          "B",
+          "Only experienced players should take part."
+        ],
+        [
+          "C",
+          "Use as much force as possible on every turn."
+        ],
+        [
+          "D",
+          "Join a world championship before practising."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：末段明确喜欢调整计划可试；B：明确新手也有空间；C：明确非最大力度；D：虚构游戏无官方世界赛",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "writer_recommendation"
+    },
+    {
+      "number": 12,
+      "stem": "D组 · Which order matches Eli’s actions?\n\na. He described two earlier shadow shapes.\n\nb. He searched among the stones.\n\nc. He discovered a yellow lantern.\n\nd. He answered the beetle’s first question.",
+      "options": [
+        [
+          "A",
+          "b-d-c-a"
+        ],
+        [
+          "B",
+          "b-c-a-d"
+        ],
+        [
+          "C",
+          "b-c-d-a"
+        ],
+        [
+          "D",
+          "c-b-d-a"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：初答在发现灯之后；B：旧影描述在初答之后；C：搜石、发现灯、初答、描述旧影；D：灯发现不在寻找之前",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "fantasy_four_event_sequence"
+    },
+    {
+      "number": 13,
+      "stem": "D组 · Which reply best fits “▲”?",
+      "options": [
+        [
+          "A",
+          "I have already opened the stone door"
+        ],
+        [
+          "B",
+          "I cannot be sure at this moment"
+        ],
+        [
+          "C",
+          "It has been a tree without any change"
+        ],
+        [
+          "D",
+          "It is the beetle’s shadow, not mine"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：门始终关，不答影形；B：转头前不知当前形状，答不确定；C：已变伞再变，非一直树；D：无影属于甲虫依据",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "fantasy_missing_turn"
+    },
+    {
+      "number": 14,
+      "stem": "D组 · How does the beetle seem during the talk so far?",
+      "options": [
+        [
+          "A",
+          "Sharp and unwilling to explain."
+        ],
+        [
+          "B",
+          "Too frightened to speak."
+        ],
+        [
+          "C",
+          "Gentle and immediately helpful."
+        ],
+        [
+          "D",
+          "Ready to leave without listening to Eli."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：尖锐责备反复问，尚未说明；B：一直说话非吓得不语；C：并未立即帮助；D：留在灯上，非将离开",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "fantasy_character"
+    },
+    {
+      "number": 15,
+      "stem": "D组 · What can we tell at the end?",
+      "options": [
+        [
+          "A",
+          "The light has already opened the door."
+        ],
+        [
+          "B",
+          "Eli went looking for lunch instead of help."
+        ],
+        [
+          "C",
+          "Eli still needs a way to open the door."
+        ],
+        [
+          "D",
+          "The beetle has explained the lantern fully."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：亮光出现但门仍关；B：首段食物不能开门且午餐可等；C：门关闭仍未入园；D：只预告作用尚未解释",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "fantasy_whole_context_inference"
+    }
+  ],
+  "canonical_response_block_sha256": "86d19b7e2082f19a4aef64250177f4222278d39ff460bf77933a8846f3394125",
+  "student_passage": "### A组（第1—3题）\n\nA home can make use of its surroundings in different ways. These children tell us about three homes and their everyday routines.\n\n#### A1\n\nAda\nOur home is built into a hillside. The hill behind it shelters the rooms from strong wind, which is the reason for the design. The front opens onto a small yard. Our windows face the valley, so I can watch the morning light reach the trees below. The roof is covered with grass, but we never play ball up there.\n\n#### A2\n\nLuis\nOur family lives above a bakery. Before school, I sometimes help put paper bags on the counter, but only my parents operate the big oven. The shop is closed on Mondays, so there is no fresh bread for sale that day. My bedroom is at the back of the building, away from the street and the early customers.\n\n#### A3\n\nMei\nWe live in a flat with a **terrace**, an open, flat area outside our rooms where we can sit. There is a low wall around it and space for two chairs. We grow tomatoes in pots there, not in a large garden. On fine evenings my family eats outside. When it rains, we take the chairs indoors and eat in the kitchen.\n\n### B组（第4—7题）\n\n#### B1\n\nToday my human is staying home to finish a model ship. I, Dot the cat, am sure she will need a skilled assistant. This is my diary.\n\n5 a.m. — I found a little paper flag on the table. It moved when the window opened. At last, a new game for me! I climbed onto a chair to watch it closely. My human was still asleep, so nobody told me to leave the table alone.\n\n7 a.m. — My human came in and put the flag inside a drawer. She said it belonged on her ship, not between my paws. I could not see why the ship should get the best toy. I followed her to breakfast, still hoping she would change her mind.\n\n8 a.m. — After breakfast, my human carefully painted the ship. I sat beside the table and waved my tail. She moved my chair back, saying she needed room for her brushes. A true assistant should be close enough to see the work, I thought.\n\n3 p.m. — I have already carried my cloth mouse into the empty box beside the table. I played there for ten minutes. I am going to nap by the window later, but I am still awake now. The box makes a fine small boat for a cat.\n\n9 p.m. — The model ship was finished. My human admired it and showed it to a friend on a screen. She thanked me for being quiet in my box. Quiet? I had been very busy! She gave me a pat, but the paper flag was still on the ship, beyond my reach.\n\n12 a.m. (start of the next day) — This midnight starts the next day. My human has put the model on a high shelf and turned out the light. She thinks we made a ship together. I wanted to play with that moving flag. We clearly had different plans for the day.\n\n### C组（第8—11题）\n\n#### C1\n\nOur fictional club has invented a table game called Paper Disc. We slide folded paper discs towards circles drawn on a smooth board. The centre circle gives the most points, but a disc that slides off the far edge scores nothing. Players can practise different gentle pushes before a round. There is no official world championship for this invented game.\n\nIn our club version, a player must keep the disc behind the blue line until the turn begins. Moving it nearer the target first is not allowed. Once a disc has stopped, the leader writes down its score before the next player takes a turn. The same board and starting line are used throughout a round, so players can compare their attempts.\n\nA fast push is not always a useful push. The player has to notice the surface and choose how far to slide the disc. Like chess, the game rewards thinking about a move before making it. Unlike chess, it also asks you to control a small movement of your hand. Watching another player can give you an idea, but copying every push may not work for you.\n\nWhat attracts me is the chance to adjust a plan after seeing a result. If you enjoy trying a careful idea and then changing it, Paper Disc is worth a simple trial. The aim is not to use the greatest possible force. There is room for a thoughtful beginner as well as an experienced player.\n\n### D组（第12—15题）\n\n#### D1\n\nEli reached a stone door on the way to the lantern garden. The lock had no keyhole. A sign said, “Only the owner’s shadow can open this door.” Eli’s shadow had been changing all morning: first it looked like a tall tree, then like a tiny umbrella. He needed it to look like him again. Finding lunch could wait; food would not open this door.\n\nHe looked among the stones beside the wall. In a round hollow he discovered a yellow lantern with a handle shaped like a leaf. A small purple beetle stood on it, polishing a pair of glasses. Eli waited until the beetle looked up. “What shape is your shadow?” it asked.\n\n“▲,” said Eli. “Each time I look, it seems to have become something else. I cannot describe the one behind me without turning round again.”\n\n“Then you have not been paying attention,” replied the beetle sharply.\n\nEli described the tree shape and the umbrella shape. He asked whether the lantern could help him find his own shadow.\n\n“Tell me what it is now,” said the beetle. It repeated the same question, though Eli had just explained why that was difficult. It put on its glasses and began polishing the lantern again.\n\nEli decided that this conversation was going nowhere and took a step away. “Come back,” called the beetle. “I have not told you what the lantern does at night.” Eli returned, interested despite his annoyance. A tiny light appeared inside the lantern, but the stone door remained shut. He had not entered the garden, and he still did not know how to make his shadow stay in one shape.",
+  "body_load_text": "A home can make use of its surroundings in different ways. These children tell us about three homes and their everyday routines.\n\nAda\nOur home is built into a hillside. The hill behind it shelters the rooms from strong wind, which is the reason for the design. The front opens onto a small yard. Our windows face the valley, so I can watch the morning light reach the trees below. The roof is covered with grass, but we never play ball up there.\n\nLuis\nOur family lives above a bakery. Before school, I sometimes help put paper bags on the counter, but only my parents operate the big oven. The shop is closed on Mondays, so there is no fresh bread for sale that day. My bedroom is at the back of the building, away from the street and the early customers.\n\nMei\nWe live in a flat with a **terrace**, an open, flat area outside our rooms where we can sit. There is a low wall around it and space for two chairs. We grow tomatoes in pots there, not in a large garden. On fine evenings my family eats outside. When it rains, we take the chairs indoors and eat in the kitchen.\n\nToday my human is staying home to finish a model ship. I, Dot the cat, am sure she will need a skilled assistant. This is my diary.\n\n5 a.m. — I found a little paper flag on the table. It moved when the window opened. At last, a new game for me! I climbed onto a chair to watch it closely. My human was still asleep, so nobody told me to leave the table alone.\n\n7 a.m. — My human came in and put the flag inside a drawer. She said it belonged on her ship, not between my paws. I could not see why the ship should get the best toy. I followed her to breakfast, still hoping she would change her mind.\n\n8 a.m. — After breakfast, my human carefully painted the ship. I sat beside the table and waved my tail. She moved my chair back, saying she needed room for her brushes. A true assistant should be close enough to see the work, I thought.\n\n3 p.m. — I have already carried my cloth mouse into the empty box beside the table. I played there for ten minutes. I am going to nap by the window later, but I am still awake now. The box makes a fine small boat for a cat.\n\n9 p.m. — The model ship was finished. My human admired it and showed it to a friend on a screen. She thanked me for being quiet in my box. Quiet? I had been very busy! She gave me a pat, but the paper flag was still on the ship, beyond my reach.\n\n12 a.m. (start of the next day) — This midnight starts the next day. My human has put the model on a high shelf and turned out the light. She thinks we made a ship together. I wanted to play with that moving flag. We clearly had different plans for the day.\n\nOur fictional club has invented a table game called Paper Disc. We slide folded paper discs towards circles drawn on a smooth board. The centre circle gives the most points, but a disc that slides off the far edge scores nothing. Players can practise different gentle pushes before a round. There is no official world championship for this invented game.\n\nIn our club version, a player must keep the disc behind the blue line until the turn begins. Moving it nearer the target first is not allowed. Once a disc has stopped, the leader writes down its score before the next player takes a turn. The same board and starting line are used throughout a round, so players can compare their attempts.\n\nA fast push is not always a useful push. The player has to notice the surface and choose how far to slide the disc. Like chess, the game rewards thinking about a move before making it. Unlike chess, it also asks you to control a small movement of your hand. Watching another player can give you an idea, but copying every push may not work for you.\n\nWhat attracts me is the chance to adjust a plan after seeing a result. If you enjoy trying a careful idea and then changing it, Paper Disc is worth a simple trial. The aim is not to use the greatest possible force. There is room for a thoughtful beginner as well as an experienced player.\n\nEli reached a stone door on the way to the lantern garden. The lock had no keyhole. A sign said, “Only the owner’s shadow can open this door.” Eli’s shadow had been changing all morning: first it looked like a tall tree, then like a tiny umbrella. He needed it to look like him again. Finding lunch could wait; food would not open this door.\n\nHe looked among the stones beside the wall. In a round hollow he discovered a yellow lantern with a handle shaped like a leaf. A small purple beetle stood on it, polishing a pair of glasses. Eli waited until the beetle looked up. “What shape is your shadow?” it asked.\n\n“▲,” said Eli. “Each time I look, it seems to have become something else. I cannot describe the one behind me without turning round again.”\n\n“Then you have not been paying attention,” replied the beetle sharply.\n\nEli described the tree shape and the umbrella shape. He asked whether the lantern could help him find his own shadow.\n\n“Tell me what it is now,” said the beetle. It repeated the same question, though Eli had just explained why that was difficult. It put on its glasses and began polishing the lantern again.\n\nEli decided that this conversation was going nowhere and took a step away. “Come back,” called the beetle. “I have not told you what the lantern does at night.” Eli returned, interested despite his annoyance. A tiny light appeared inside the lantern, but the stone door remained shut. He had not entered the garden, and he still did not know how to make his shadow stay in one shape.",
+  "question_candidate_audit": [
+    {
+      "number": 1,
+      "label": "A",
+      "text": "The windows must stay dark all morning.",
+      "reason": "可看晨光，非保持暗",
+      "is_best": false
+    },
+    {
+      "number": 1,
+      "label": "B",
+      "text": "The family plays ball on the roof.",
+      "reason": "明确从不在草顶打球",
+      "is_best": false
+    },
+    {
+      "number": 1,
+      "label": "C",
+      "text": "The bakery needs more space.",
+      "reason": "面包店属Luis家",
+      "is_best": false
+    },
+    {
+      "number": 1,
+      "label": "D",
+      "text": "The hill protects it from strong wind.",
+      "reason": "明确设计原因是后方山坡挡风",
+      "is_best": true
+    },
+    {
+      "number": 2,
+      "label": "A",
+      "text": "A large oven used to bake bread.",
+      "reason": "非面包烤炉",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "B",
+      "text": "A bedroom below the street.",
+      "reason": "非卧室且flat外",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "C",
+      "text": "A path through trees in a valley.",
+      "reason": "非谷地林间路",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "D",
+      "text": "An open outside area where people can sit.",
+      "reason": "同位解释室外平地可坐",
+      "is_best": true
+    },
+    {
+      "number": 3,
+      "label": "A",
+      "text": "Mei’s family eats in the kitchen on rainy days.",
+      "reason": "下雨移椅进屋在厨房吃",
+      "is_best": true
+    },
+    {
+      "number": 3,
+      "label": "B",
+      "text": "Luis’s bakery sells fresh bread every Monday.",
+      "reason": "周一关门不卖新鲜面包",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "C",
+      "text": "Ada’s windows look onto a busy street.",
+      "reason": "面向谷地",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "D",
+      "text": "Luis uses the big oven before school.",
+      "reason": "仅父母操作大烤炉",
+      "is_best": false
+    },
+    {
+      "number": 4,
+      "label": "A",
+      "text": "Uninterested.",
+      "reason": "专心观看非没兴趣",
+      "is_best": false
+    },
+    {
+      "number": 4,
+      "label": "B",
+      "text": "Ashamed.",
+      "reason": "没有羞愧行为",
+      "is_best": false
+    },
+    {
+      "number": 4,
+      "label": "C",
+      "text": "Delighted.",
+      "reason": "At last新游戏并爬椅看支持开心",
+      "is_best": true
+    },
+    {
+      "number": 4,
+      "label": "D",
+      "text": "Afraid.",
+      "reason": "主动靠近非恐惧",
+      "is_best": false
+    },
+    {
+      "number": 5,
+      "label": "A",
+      "text": "Painting the model ship.",
+      "reason": "主人画船，猫未涂",
+      "is_best": false
+    },
+    {
+      "number": 5,
+      "label": "B",
+      "text": "Putting the ship on a high shelf.",
+      "reason": "次日午夜前由人上架",
+      "is_best": false
+    },
+    {
+      "number": 5,
+      "label": "C",
+      "text": "Taking a cloth mouse into the box and playing there.",
+      "reason": "already搬鼠入箱玩十分钟",
+      "is_best": true
+    },
+    {
+      "number": 5,
+      "label": "D",
+      "text": "Sleeping by the window.",
+      "reason": "later打算，当前清醒",
+      "is_best": false
+    },
+    {
+      "number": 6,
+      "label": "A",
+      "text": "They both planned to sleep through the day.",
+      "reason": "人做模型、猫玩，非睡整天",
+      "is_best": false
+    },
+    {
+      "number": 6,
+      "label": "B",
+      "text": "They wanted different uses for the paper flag.",
+      "reason": "人给模型用、猫想玩旗",
+      "is_best": true
+    },
+    {
+      "number": 6,
+      "label": "C",
+      "text": "They both wanted to give the ship away.",
+      "reason": "没有送船计划",
+      "is_best": false
+    },
+    {
+      "number": 6,
+      "label": "D",
+      "text": "They both thought the box was a real boat.",
+      "reason": "猫比喻小船，人未作此判断",
+      "is_best": false
+    },
+    {
+      "number": 7,
+      "label": "A",
+      "text": "A Flag’s Journey Around the World",
+      "reason": "无环球旅行",
+      "is_best": false
+    },
+    {
+      "number": 7,
+      "label": "B",
+      "text": "A Cat’s Day as an “Assistant”",
+      "reason": "猫自认助手但人与猫意图不同",
+      "is_best": true
+    },
+    {
+      "number": 7,
+      "label": "C",
+      "text": "Instructions for Building a Ship",
+      "reason": "非造船步骤",
+      "is_best": false
+    },
+    {
+      "number": 7,
+      "label": "D",
+      "text": "How a Visitor Painted a Cat",
+      "reason": "访客未画猫",
+      "is_best": false
+    },
+    {
+      "number": 8,
+      "label": "A",
+      "text": "A school games-club newsletter.",
+      "reason": "虚构社团桌面目标游戏",
+      "is_best": true
+    },
+    {
+      "number": 8,
+      "label": "B",
+      "text": "A book of animal adventures.",
+      "reason": "无动物冒险",
+      "is_best": false
+    },
+    {
+      "number": 8,
+      "label": "C",
+      "text": "A guide to repairing kitchen ovens.",
+      "reason": "无烤炉维修",
+      "is_best": false
+    },
+    {
+      "number": 8,
+      "label": "D",
+      "text": "A timetable of city buses.",
+      "reason": "无公交时刻",
+      "is_best": false
+    },
+    {
+      "number": 9,
+      "label": "A",
+      "text": "Record a score while the disc is still moving.",
+      "reason": "停稳才记",
+      "is_best": false
+    },
+    {
+      "number": 9,
+      "label": "B",
+      "text": "Begin with the disc inside the target circle.",
+      "reason": "不能先移近目标",
+      "is_best": false
+    },
+    {
+      "number": 9,
+      "label": "C",
+      "text": "Change to a different board during every round.",
+      "reason": "同轮同板",
+      "is_best": false
+    },
+    {
+      "number": 9,
+      "label": "D",
+      "text": "Keep the disc behind the blue line before the turn.",
+      "reason": "明确蓝线规则",
+      "is_best": true
+    },
+    {
+      "number": 10,
+      "label": "A",
+      "text": "The two games require identical hand movements.",
+      "reason": "说纸盘有手部动作不同",
+      "is_best": false
+    },
+    {
+      "number": 10,
+      "label": "B",
+      "text": "A player considers a move before acting.",
+      "reason": "都先思考再动",
+      "is_best": true
+    },
+    {
+      "number": 10,
+      "label": "C",
+      "text": "Both use folded paper discs.",
+      "reason": "折盘属纸盘游戏非棋",
+      "is_best": false
+    },
+    {
+      "number": 10,
+      "label": "D",
+      "text": "Both award points for sliding off a board.",
+      "reason": "纸盘出边零分，棋无此规则",
+      "is_best": false
+    },
+    {
+      "number": 11,
+      "label": "A",
+      "text": "Try the game if you enjoy testing and adjusting a plan.",
+      "reason": "末段明确喜欢调整计划可试",
+      "is_best": true
+    },
+    {
+      "number": 11,
+      "label": "B",
+      "text": "Only experienced players should take part.",
+      "reason": "明确新手也有空间",
+      "is_best": false
+    },
+    {
+      "number": 11,
+      "label": "C",
+      "text": "Use as much force as possible on every turn.",
+      "reason": "明确非最大力度",
+      "is_best": false
+    },
+    {
+      "number": 11,
+      "label": "D",
+      "text": "Join a world championship before practising.",
+      "reason": "虚构游戏无官方世界赛",
+      "is_best": false
+    },
+    {
+      "number": 12,
+      "label": "A",
+      "text": "b-d-c-a",
+      "reason": "初答在发现灯之后",
+      "is_best": false
+    },
+    {
+      "number": 12,
+      "label": "B",
+      "text": "b-c-a-d",
+      "reason": "旧影描述在初答之后",
+      "is_best": false
+    },
+    {
+      "number": 12,
+      "label": "C",
+      "text": "b-c-d-a",
+      "reason": "搜石、发现灯、初答、描述旧影",
+      "is_best": true
+    },
+    {
+      "number": 12,
+      "label": "D",
+      "text": "c-b-d-a",
+      "reason": "灯发现不在寻找之前",
+      "is_best": false
+    },
+    {
+      "number": 13,
+      "label": "A",
+      "text": "I have already opened the stone door",
+      "reason": "门始终关，不答影形",
+      "is_best": false
+    },
+    {
+      "number": 13,
+      "label": "B",
+      "text": "I cannot be sure at this moment",
+      "reason": "转头前不知当前形状，答不确定",
+      "is_best": true
+    },
+    {
+      "number": 13,
+      "label": "C",
+      "text": "It has been a tree without any change",
+      "reason": "已变伞再变，非一直树",
+      "is_best": false
+    },
+    {
+      "number": 13,
+      "label": "D",
+      "text": "It is the beetle’s shadow, not mine",
+      "reason": "无影属于甲虫依据",
+      "is_best": false
+    },
+    {
+      "number": 14,
+      "label": "A",
+      "text": "Sharp and unwilling to explain.",
+      "reason": "尖锐责备反复问，尚未说明",
+      "is_best": true
+    },
+    {
+      "number": 14,
+      "label": "B",
+      "text": "Too frightened to speak.",
+      "reason": "一直说话非吓得不语",
+      "is_best": false
+    },
+    {
+      "number": 14,
+      "label": "C",
+      "text": "Gentle and immediately helpful.",
+      "reason": "并未立即帮助",
+      "is_best": false
+    },
+    {
+      "number": 14,
+      "label": "D",
+      "text": "Ready to leave without listening to Eli.",
+      "reason": "留在灯上，非将离开",
+      "is_best": false
+    },
+    {
+      "number": 15,
+      "label": "A",
+      "text": "The light has already opened the door.",
+      "reason": "亮光出现但门仍关",
+      "is_best": false
+    },
+    {
+      "number": 15,
+      "label": "B",
+      "text": "Eli went looking for lunch instead of help.",
+      "reason": "首段食物不能开门且午餐可等",
+      "is_best": false
+    },
+    {
+      "number": 15,
+      "label": "C",
+      "text": "Eli still needs a way to open the door.",
+      "reason": "门关闭仍未入园",
+      "is_best": true
+    },
+    {
+      "number": 15,
+      "label": "D",
+      "text": "The beetle has explained the lantern fully.",
+      "reason": "只预告作用尚未解释",
+      "is_best": false
+    }
+  ],
+  "subgroup_response_counts": [
+    3,
+    4,
+    4,
+    4
+  ],
+  "subgroup_material_units": [
+    3,
+    1,
+    1,
+    1
+  ],
+  "load_measure": {
+    "body_English_words": 1039,
+    "body_Han_characters": 0,
+    "stem_English_words": 158,
+    "stem_Han_characters": 15,
+    "options_English_words_with_repeated_bank": 379,
+    "options_Han_characters": 0,
+    "output_response_positions": 15,
+    "output_requirement_English_words": 11,
+    "output_requirement_Han_characters": 70,
+    "diary_time_entries": 6,
+    "A_intro_English_words": 22,
+    "fantasy_inline_missing_turns": 1,
+    "fantasy_ordered_events": 4
+  },
+  "source_original_key_not_gold": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false
+}

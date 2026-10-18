@@ -46,6 +46,9 @@ def check(data, plan):
             if b.get('task_mode') == 'school_complete_reading_section':
                 from school_reading_contract import check as check_school_reading
                 check_school_reading(g,a,b,source)
+            if b.get('task_mode') == 'school_junior_profiles_diary_fantasy_reading15':
+                from junior_diary_reading_contract import check as check_junior_diary
+                check_junior_diary(g,a,b,source)
             if b.get('task_mode') == 'school_email_chain_study_reading10':
                 from email_reading_contract import check as check_email_reading
                 check_email_reading(g,a,b,source)
