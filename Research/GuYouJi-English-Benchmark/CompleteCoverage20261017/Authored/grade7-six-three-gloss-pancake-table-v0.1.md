@@ -1,0 +1,99 @@
+# 初一六空三选双图释：厨房里的两碗面糊
+
+## 学生题面
+
+阅读完整短文，结合两幅词义图示，从每题A、B、C三个选项中选出最合适的一项。每题1分，共6分。故事均为虚构。
+
+Grandpa invited me to make pancakes with him on Saturday. I wanted to do the exciting part: turn them over in the pan. But first we had to prepare the mixture.
+
+He gave me a sieve for the flour. I shook it over a bowl and watched the flour fall through the little holes. A few lumps stayed behind. Grandpa helped me press them gently through.
+
+![词义图示：a sieve](build/english-benchmark-authority-20261017/grade7-gloss-sieve-v0.1.svg)
+
+Next came milk and eggs. I used a whisk to mix them with the flour. At first, I moved it so quickly that some mixture flew onto the table. I (1) ____ down, and the mixture stayed in the bowl.
+
+![词义图示：a whisk](build/english-benchmark-authority-20261017/grade7-gloss-whisk-v0.1.svg)
+
+Grandpa then divided the mixture between two bowls. My little sister could not eat the fruit we planned to add, so her bowl had to remain plain. He put a label beside each one. The berries were still in their unopened box. I read the labels (2) ____ adding anything. Only the bowl marked "Fruit" received berries.
+
+I was finally ready to cook. Grandpa handled the hot pan while I watched from beside the table. He turned the first pancake too early, and it broke. "Even grandpas make mistakes," he said. He waited longer with the next one, and it stayed in one piece. We had learned to be more (3) ____.
+
+When the pancakes were ready, I carried the plain ones to my sister. She pointed at the fruit pancakes and asked why hers looked different. I showed her the labels, explaining that we had kept her mixture (4) ____ all the time. She chose a topping she could eat.
+
+After breakfast, I began clearing the table. Grandpa asked which tool I had enjoyed using most. "The whisk," I said. "But I didn't turn a pancake." He smiled and asked who had made the smooth mixture. I had done an important job, even though it was not the one I had (5) ____.
+
+We washed the tools together. Next time, I wanted to make the mixture again, not simply (6) ____ that step and start with the pan.
+
+<!-- responses:start -->
+
+1. 第1空
+   A. slowed
+   B. lay
+   C. wrote
+
+2. 第2空
+   A. after
+   B. before
+   C. instead of
+
+3. 第3空
+   A. patient
+   B. hungry
+   C. forgetful
+
+4. 第4空
+   A. identical
+   B. frozen
+   C. separate
+
+5. 第5空
+   A. finished
+   B. shared
+   C. planned
+
+6. 第6空
+   A. learn
+   B. skip
+   C. repeat
+
+<!-- responses:end -->
+
+## 作者核对
+
+参照既存北京市西城区2024—2025第一学期期末七年级公开转载卷第四节（二）完整跨页叙事：六空各三独立候选、两处带英文标签的插图词义释义。上层第四节明确每题1分，共10分另含（一）四空词库；本稿只对应独立六空叙事子组共6分，不称整十空混合节。原图释lightning bolt/trophy位置与跨页结尾/六候选行已核；本稿另画两词图释，就近放于首次出现段后，不把图当额外题或直接给空答案。全部故事人物虚构，家务/烹饪/公园活动非操作或医疗安全指南；原键及情绪推断非gold，原施测未独立认证。全部必要作答信息、两图和候选在页面，故事提及照片/图纸不另依赖未给媒体。作者自审不替代独立教研、学生难度用时、商用和生产验证。
+
+### 答案与逐项依据
+
+1. A。A：初时太快飞溅，慢下来才留在碗里，slow down；B：lay down指躺下或放下，不合继续搅拌时降速；C：write down为写下，不改变搅拌速度
+
+2. B。A：莓盒尚未开，也未加任何东西，非加完后才读；B：此时莓盒未开，先读标签再加，防加错碗；C：读标签不是代替添加，之后水果碗仍加莓
+
+3. A。A：第一次过早翻碎，下一次多等后完整，需耐心；B：等待不是为让自己更饿，问题在过早翻；C：成功来自记住多等，非更健忘
+
+4. C。A：水果碗加莓而她的原味，不是成分相同；B：未冷冻面糊，明确马上煎食；C：妹妹那碗从分碗到最后一直与水果碗分开
+
+5. C。A：已经完成搅拌，even though不是说没有做已做的工作；B：原来期待翻饼，并非对比是否与别人分享；C：本来最想翻饼，实际做了其他重要准备
+
+6. B。A：作者愿意继续做，不是拒绝学习这步；B：下次愿再做准备，不略过它直奔煎锅；C：下次正愿再做调糊，不否定重做准备
+
+### 全组回填
+
+Grandpa invited me to make pancakes with him on Saturday. I wanted to do the exciting part: turn them over in the pan. But first we had to prepare the mixture.
+
+He gave me a sieve for the flour. I shook it over a bowl and watched the flour fall through the little holes. A few lumps stayed behind. Grandpa helped me press them gently through.
+
+
+Next came milk and eggs. I used a whisk to mix them with the flour. At first, I moved it so quickly that some mixture flew onto the table. I slowed down, and the mixture stayed in the bowl.
+
+
+Grandpa then divided the mixture between two bowls. My little sister could not eat the fruit we planned to add, so her bowl had to remain plain. He put a label beside each one. The berries were still in their unopened box. I read the labels before adding anything. Only the bowl marked "Fruit" received berries.
+
+I was finally ready to cook. Grandpa handled the hot pan while I watched from beside the table. He turned the first pancake too early, and it broke. "Even grandpas make mistakes," he said. He waited longer with the next one, and it stayed in one piece. We had learned to be more patient.
+
+When the pancakes were ready, I carried the plain ones to my sister. She pointed at the fruit pancakes and asked why hers looked different. I showed her the labels, explaining that we had kept her mixture separate all the time. She chose a topping she could eat.
+
+After breakfast, I began clearing the table. Grandpa asked which tool I had enjoyed using most. "The whisk," I said. "But I didn't turn a pancake." He smiled and asked who had made the smooth mixture. I had done an important job, even though it was not the one I had planned.
+
+We washed the tools together. Next time, I wanted to make the mixture again, not simply skip that step and start with the pan.
+
+原样本支持具体材料篇数、空数、候选与分值。本稿篇幅单独计量，不从单卷推出全国词数范围、难度或用时等值、年级排他性。所有角色与事件虚构，作者自审不替代独立教研、学生、商用和生产验证。

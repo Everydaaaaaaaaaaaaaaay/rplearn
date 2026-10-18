@@ -2,6 +2,8 @@
 import hashlib
 import json
 import re
+import base64
+import xml.etree.ElementTree as ET
 from grade_mode_evidence import load_ref
 
 
@@ -30,6 +32,50 @@ def section_ranges(sections):
 def student_material(sections):
     if len(sections)==1:return sections[0]['passage']
     return '\n\n'.join('### '+label+'篇（第'+str(numbers[0])+'—'+str(numbers[-1])+'空）\n\n'+section['passage'] for section,(label,numbers) in zip(sections,section_ranges(sections)))
+
+
+def without_gloss_figures(passage):
+    return re.sub(r'^!\[[^\]]+\]\([^)]+\)\s*$', '', passage, flags=re.M)
+
+
+def validate_gloss_figures(draft, source, passage):
+    expected=source['configuration'].get('inline_illustrated_glosses',0)
+    if not expected:
+        assert not draft.get('gloss_figures')
+        return
+    figures=draft['gloss_figures'];assert len(figures)==expected==2
+    assert source['configuration']['necessary_images']
+    assert len(source['source_illustrated_glosses'])==expected
+    score=source['source_scoring_evidence'];config=source['configuration']
+    raw=load_ref(source['source_spans'][0]['source']).read_text()
+    assert score['header'] in raw
+    item_points=float(re.search(r'每小题\s*([0-9.]+)\s*分',score['header'])[1])
+    whole_points=float(re.search(r'共\s*([0-9.]+)\s*分',score['header'])[1])
+    assert config['selected_subgroup_not_entire_mixed_section']
+    assert config['points_each_subgroup']==[item_points]
+    assert score['selected_points']==config['section_points']==len(score['selected_numbers'])*item_points
+    assert score['selected_numbers']==source['source_spans'][0]['question_numbers']
+    assert set(score['selected_numbers']).isdisjoint(score['other_subgroup_numbers'])
+    assert score['whole_section_points']==config['original_mixed_section_points']==whole_points
+    assert whole_points==(len(score['selected_numbers'])+len(score['other_subgroup_numbers']))*item_points
+    embeds=list(re.finditer(r'^!\[([^\]]+)\]\(([^)]+)\)\s*$',passage,re.M))
+    assert len(embeds)==len(figures) and len({f['asset']['path']for f in figures})==len(figures)
+    for figure,embed in zip(figures,embeds):
+        assert figure['role']=='illustrated_word_gloss_not_answer_hint'
+        assert embed[1]==figure['alt'] and embed[2]==figure['asset']['path']
+        assert figure['term'] in figure['alt'] and figure['term'] in figure['anchor_text']
+        before=passage[:embed.start()].rstrip()
+        assert before.endswith(figure['anchor_text'])
+        assert before.count(figure['anchor_text'])==1
+        assert figure['anchor_text'].count(figure['term'])==1
+        raw=load_ref(figure['asset']).read_bytes();svg=ET.fromstring(raw)
+        assert svg.tag=='{http://www.w3.org/2000/svg}svg'
+        assert svg.attrib['width']=='160' and svg.attrib['height']=='140'
+        assert svg.attrib['viewBox']=='0 0 160 140'
+        assert svg.attrib['role']=='img' and svg.attrib['aria-label']==figure['alt']
+        assert [e.text for e in svg.iter('{http://www.w3.org/2000/svg}text')]==[figure['term']]
+        assert not list(svg.iter('{http://www.w3.org/2000/svg}image'))
+        assert not list(svg.iter('{http://www.w3.org/2000/svg}script'))
 
 
 def validate_whole_section(source):
@@ -128,6 +174,7 @@ def validate(draft, binding, source):
                 if len(set(config['points_each_subgroup']))>1:expected_stem+='（'+str(points)+'分）'
                 assert q['stem']==expected_stem
     passage = student_material(sections)
+    validate_gloss_figures(draft,source,passage)
     assert re.findall(r'\((\d+)\) ____',passage) == list(map(str,range(1,count+1)))
     filled = passage
     for q in qs:
@@ -146,6 +193,19 @@ def check(group, audit, binding, source):
     passage, filled = validate(draft,binding,source)
     assert audit['school_complete_cloze'] and audit['student_passage'] == passage and audit['filled_passage'] == filled
     assert group['questions'] == draft['questions'] and group['grade'] == draft['grade']
+    if source['configuration'].get('inline_illustrated_glosses'):
+        figures=draft['gloss_figures']
+        assert audit['school_inline_gloss_cloze']
+        assert audit['figure_assets']==[f['asset']for f in figures]
+        assert audit['body_load_text']==without_gloss_figures(passage)
+        assert audit['load_measure']['body_Han_characters']==len(re.findall('[\u3400-\u9fff]',audit['body_load_text']))
+        assert audit['illustrated_gloss_labels']==[f['term']for f in figures]
+        assert audit['load_measure']['illustrated_gloss_label_English_words']==sum(len(re.findall(r"[A-Za-z]+(?:['’][A-Za-z]+)?",f['term']))for f in figures)
+        assert len(group['requiredPassageImages'])==len(figures)==2
+        for figure,shown in zip(figures,group['requiredPassageImages']):
+            assert shown['asset']==figure['asset'] and shown['alt']==figure['alt']
+            assert shown['width']==160 and shown['height']==140
+            assert base64.b64decode(shown['src'].split(',',1)[1])==load_ref(figure['asset']).read_bytes()
     if source['configuration']['materials']>1:
         assert len(audit['school_cloze_materials'])==source['configuration']['materials']
         for label,numbers in section_ranges(draft['sections']):

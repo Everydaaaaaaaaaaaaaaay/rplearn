@@ -1,0 +1,320 @@
+{
+  "version": "0.1",
+  "id": "grade7-six-three-gloss-park-practice",
+  "grade": 7,
+  "questions": 6,
+  "candidate_sha256": "52ad8c6b430d1fbb315da4d47737963e27d2d51948ce47ca36faff2ecb6b1023",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceBindings-v0.8.json",
+    "sha256": "314e07b0f85f9ec6d3275f0d9c2375cf745d5b810e77131d89aa03706fd1afcc"
+  },
+  "source_binding": "g7.xicheng2025.clozeStory.binding",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-six-three-gloss-park-practice-manuscript-v0.1.json",
+    "sha256": "bfc1d2720f32aaed3ddde53b2df597ec7e9b13090428ac71cac9d575c847e622"
+  },
+  "source_count_increment": 0,
+  "school_complete_cloze": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "signal"
+        ],
+        [
+          "B",
+          "race"
+        ],
+        [
+          "C",
+          "lesson"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：前句明确就是信号，not a signal与之矛盾；B：开头明确不竞速，哨声是停下听令而非比赛开始；C：活动本是老师教观察与听令，不能因哨是信号否认学习"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "silent"
+        ],
+        [
+          "B",
+          "asleep"
+        ],
+        [
+          "C",
+          "together"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：留在一起是不能跑离的对应，未规定全程不讲话；B：户外行走不是睡觉；C：一起行动，不让Max跑离同组人"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "broken"
+        ],
+        [
+          "B",
+          "occupied"
+        ],
+        [
+          "C",
+          "empty"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：没有长椅破损信息，且须依空椅条件；B：有人长椅与empty指令相反；C：卡指定空长椅，另一张有人坐"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "where"
+        ],
+        [
+          "B",
+          "why"
+        ],
+        [
+          "C",
+          "when"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：leave it where it was即留在原位供后组；B：why不表达留下旗子的空间位置；C：when不能在这里表达物品原来所在地点"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "change"
+        ],
+        [
+          "B",
+          "read"
+        ],
+        [
+          "C",
+          "hide"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：任务是遵循原卡不是随意改指令；B：再读卡才发现不取旗，仍应读指令；C：给后组留下信息，不是藏起指令"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [
+        [
+          "A",
+          "team"
+        ],
+        [
+          "B",
+          "winner"
+        ],
+        [
+          "C",
+          "stranger"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：一起走、一起核指令，合作使任务成功；B：开头无竞速无先到奖，非以赢家身份概括；C：同班分组相互协作，不是以陌生人身份成功"
+    }
+  ],
+  "canonical_response_block_sha256": "1bf60d13bace40d9a497f5eda06dc811b334bcdb2178a7564a103307f48dc2ec",
+  "student_passage": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a (1) ____.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay (2) ____ as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the (3) ____ one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it (4) ____ it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to (5) ____ the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a (6) ____, not from being faster than another group.",
+  "filled_passage": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group.",
+  "choice_pair_audit": [
+    {
+      "number": 1,
+      "candidate": "A",
+      "text": "signal",
+      "is_best": false,
+      "reason": "前句明确就是信号，not a signal与之矛盾",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a signal.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 1,
+      "candidate": "B",
+      "text": "race",
+      "is_best": true,
+      "reason": "开头明确不竞速，哨声是停下听令而非比赛开始",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 1,
+      "candidate": "C",
+      "text": "lesson",
+      "is_best": false,
+      "reason": "活动本是老师教观察与听令，不能因哨是信号否认学习",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a lesson.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 2,
+      "candidate": "A",
+      "text": "silent",
+      "is_best": false,
+      "reason": "留在一起是不能跑离的对应，未规定全程不讲话",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay silent as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 2,
+      "candidate": "B",
+      "text": "asleep",
+      "is_best": false,
+      "reason": "户外行走不是睡觉",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay asleep as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 2,
+      "candidate": "C",
+      "text": "together",
+      "is_best": true,
+      "reason": "一起行动，不让Max跑离同组人",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 3,
+      "candidate": "A",
+      "text": "broken",
+      "is_best": false,
+      "reason": "没有长椅破损信息，且须依空椅条件",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the broken one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 3,
+      "candidate": "B",
+      "text": "occupied",
+      "is_best": false,
+      "reason": "有人长椅与empty指令相反",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the occupied one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 3,
+      "candidate": "C",
+      "text": "empty",
+      "is_best": true,
+      "reason": "卡指定空长椅，另一张有人坐",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 4,
+      "candidate": "A",
+      "text": "where",
+      "is_best": true,
+      "reason": "leave it where it was即留在原位供后组",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 4,
+      "candidate": "B",
+      "text": "why",
+      "is_best": false,
+      "reason": "why不表达留下旗子的空间位置",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it why it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 4,
+      "candidate": "C",
+      "text": "when",
+      "is_best": false,
+      "reason": "when不能在这里表达物品原来所在地点",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it when it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 5,
+      "candidate": "A",
+      "text": "change",
+      "is_best": false,
+      "reason": "任务是遵循原卡不是随意改指令",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to change the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 5,
+      "candidate": "B",
+      "text": "read",
+      "is_best": true,
+      "reason": "再读卡才发现不取旗，仍应读指令",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 5,
+      "candidate": "C",
+      "text": "hide",
+      "is_best": false,
+      "reason": "给后组留下信息，不是藏起指令",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to hide the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 6,
+      "candidate": "A",
+      "text": "team",
+      "is_best": true,
+      "reason": "一起走、一起核指令，合作使任务成功",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a team, not from being faster than another group."
+    },
+    {
+      "number": 6,
+      "candidate": "B",
+      "text": "winner",
+      "is_best": false,
+      "reason": "开头无竞速无先到奖，非以赢家身份概括",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a winner, not from being faster than another group."
+    },
+    {
+      "number": 6,
+      "candidate": "C",
+      "text": "stranger",
+      "is_best": false,
+      "reason": "同班分组相互协作，不是以陌生人身份成功",
+      "full_group_substitution": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n![词义图示：a compass](build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg)\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a race.\n\n![词义图示：a whistle](build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg)\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay together as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the empty one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it where it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to read the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a stranger, not from being faster than another group."
+    }
+  ],
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "source_key_not_copied": true,
+  "load_measure": {
+    "body_English_words": 321,
+    "body_Han_characters": 8,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 18,
+    "output_response_positions": 6,
+    "output_requirement_English_words": 3,
+    "illustrated_gloss_label_English_words": 4,
+    "illustrated_gloss_count": 2,
+    "body_count_excludes_image_markdown_path_and_labels": true
+  },
+  "school_inline_gloss_cloze": true,
+  "figure_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/grade7-gloss-compass-v0.1.svg",
+      "sha256": "389973d95240a46202e8b7bc723d73067b581b9f11e0a2231c4ee3040a305bee"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/grade7-gloss-whistle-v0.1.svg",
+      "sha256": "8e139e491cae0dd1f14acb1916f2dd98de2126c15cfee8f03e1ecc244e2c977c"
+    }
+  ],
+  "body_load_text": "Our class went to a small park for an outdoor activity. We were not racing. Our teacher, Ms Hall, wanted us to practise noticing things and following instructions. Each group would walk with an adult helper.\n\nAt the gate, she showed us a compass. Its red needle pointed north. She turned the compass, then asked us to watch what the needle did. We took turns holding it flat.\n\n\nShe also carried a whistle. Two short blows meant that everyone should stop and listen. She demonstrated the sound while we were all together. It was a signal, not the start of a (1) ____.\n\n\nOur helper took us to a tree with a yellow ribbon. Beside it stood a little blue flag with a card attached. \"Look under the empty bench,\" the card said. Max ran towards the nearest bench, but our helper reminded him that we should stay (2) ____ as a group.\n\nThere were two benches. One had a family sitting on it. We looked under the (3) ____ one and found a red envelope. Inside was a photograph of the park gate. We recognised the clock above it. That was where we should return.\n\nOn the way back, we saw another blue flag. Max thought we had to collect it. I reread our card. It said to follow the messages, not take the flags. We left it (4) ____ it was, so the next group could use it.\n\nAt the gate, Ms Hall blew two short notes. Everyone stopped. She asked us to describe one thing we had learned. Max said he had learned not to run ahead. I said a familiar colour did not mean every flag belonged to our group; we still needed to (5) ____ the instructions.\n\nMs Hall smiled. We had returned with only an envelope, but we had done everything on our list. There was no prize for arriving first. Our success came from working as a (6) ____, not from being faster than another group.",
+  "illustrated_gloss_labels": [
+    "a compass",
+    "a whistle"
+  ],
+  "source_media_role_preserved": "two_local_illustrated_word_glosses;not_answer_options_or_extra_response_positions"
+}

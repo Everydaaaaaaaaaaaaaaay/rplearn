@@ -29,7 +29,10 @@ def run(page):
         check(group,audit,binding,source)
         draft = json.loads(load_ref(audit['manuscript']).read_text())
         cases = {}
-        cases['fixed_six_truncation'] = lambda d: d['questions'].__delitem__(slice(6,None))
+        # Six is a real source count here; only clipping a longer group to six
+        # is invalid. A six-response source must still reject five responses.
+        truncation_name='fixed_six_truncation' if len(draft['questions'])>6 else 'last_response_truncation'
+        cases[truncation_name] = lambda d: d['questions'].__delitem__(slice(min(6,len(draft['questions'])-1),None))
         cases['duplicate_option_label'] = lambda d: d['questions'][0]['options'].__setitem__(1,list(d['questions'][0]['options'][0]))
         cases['duplicate_option_text'] = lambda d: d['questions'][0]['options'][1].__setitem__(1,d['questions'][0]['options'][0][1])
         cases['missing_candidate_reason'] = lambda d: d['questions'][0].__setitem__('rationale',d['questions'][0]['rationale'].split('；')[0])
@@ -56,6 +59,20 @@ def run(page):
                 'source_itemwise_unknown_omitted':lambda d:d.__setitem__('source_notice',d['source_notice'].replace('未逐题印分值','')),
                 'author_allocation_omitted':lambda d:d.__setitem__('source_notice',d['source_notice'].replace('本稿按每题1分','')),
             })
+        if draft.get('gloss_figures'):
+            first=draft['gloss_figures'][0]
+            embed='!['+first['alt']+']('+first['asset']['path']+')'
+            cases.update({
+                'gloss_figures_omitted':lambda d:d.__setitem__('gloss_figures',[]),
+                'one_gloss_only':lambda d:d['gloss_figures'].__delitem__(slice(1,None)),
+                'gloss_embed_missing':lambda d:d['sections'][0].__setitem__('passage',d['sections'][0]['passage'].replace(embed,'')),
+                'gloss_term_wrong':lambda d:d['gloss_figures'][0].__setitem__('term','different word'),
+                'gloss_anchor_wrong':lambda d:d['gloss_figures'][0].__setitem__('anchor_text','not the preceding paragraph'),
+                'gloss_is_answer_hint':lambda d:d['gloss_figures'][0].__setitem__('role','answer_hint'),
+                'gloss_asset_SHA_changed':lambda d:d['gloss_figures'][0]['asset'].__setitem__('sha256','0'*64),
+                'gloss_extra_duplicate':lambda d:d['gloss_figures'].append(copy.deepcopy(d['gloss_figures'][0])),
+                'gloss_order_swapped':lambda d:d['gloss_figures'].reverse(),
+            })
         rejected=[]
         for name,mutate in cases.items():
             bad=copy.deepcopy(draft);mutate(bad)
@@ -77,6 +94,14 @@ def run(page):
                 'visual_verification_false':lambda s:s.__setitem__('image_all_body_and_all_candidate_rows_visually_verified',False),
                 'source_page_images_missing':lambda s:s.__setitem__('source_input_images',[]),
                 'source_image_sha_changed':lambda s:s['source_input_images'][0].__setitem__('sha256','0'*64),
+            })
+        if source['configuration'].get('inline_illustrated_glosses'):
+            source_cases.update({
+                'source_gloss_count_lost':lambda s:s['configuration'].__setitem__('inline_illustrated_glosses',0),
+                'source_gloss_media_denied':lambda s:s['configuration'].__setitem__('necessary_images',False),
+                'source_gloss_labels_incomplete':lambda s:s['source_illustrated_glosses'].__delitem__(slice(1,None)),
+                'selected_six_claimed_as_mixed_ten':lambda s:s['configuration'].__setitem__('original_mixed_section_points',6),
+                'wrong_selected_item_points':lambda s:s['configuration'].__setitem__('points_each_subgroup',[2]),
             })
         if len(draft['sections'])>1:
             source_cases.update({

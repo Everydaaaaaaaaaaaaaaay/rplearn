@@ -1,0 +1,132 @@
+{
+  "version": "0.8",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeSelectedSources-v0.7.json",
+    "sha256": "f6b5895a6c7646345e6b2d1e1fe6b1cead68e901cbb3b766f3e23d41f079c396"
+  },
+  "scope": "grade7_sixgap_three_option_two_illustrated_glosses_selected_subgroup",
+  "groups": [
+    {
+      "id": "g7.xicheng2025.clozeStory",
+      "level": 7,
+      "kind": "choice_cloze",
+      "responses": 6,
+      "options_each": 3,
+      "configuration": {
+        "materials": 1,
+        "responses": 6,
+        "subgroups": [
+          {
+            "label": "A",
+            "responses": 6,
+            "options_each": 3
+          }
+        ],
+        "options_each": 3,
+        "shared_bank": false,
+        "each_gap_independent": true,
+        "necessary_audio": false,
+        "necessary_images": true,
+        "inline_illustrated_glosses": 2,
+        "source_word_limit_not_inferred": true,
+        "points_each_subgroup": [
+          1
+        ],
+        "section_points": 6,
+        "original_mixed_section_points": 10,
+        "selected_subgroup_not_entire_mixed_section": true
+      },
+      "source_full_inputs_verified": true,
+      "source_key_is_gold": false,
+      "source_count_increment": 0,
+      "source_pdf": {
+        "path": "build/english-benchmark-research-20261012/raw/grade7-xicheng2025-public-paper-key20261014.pdf",
+        "sha256": "5d302d564efc6ba5973bfbe6d9cce42e27a65323878ec655563a08473f393d70"
+      },
+      "source_input_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-03.png",
+          "sha256": "60eb5c13e3f18a109e9f405234d41442219961f1fff96efe8fdb94be9989cdbb"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-04.png",
+          "sha256": "a2fe339f0816777aefc192b2a5d2132b029e5b0181e2e97e5fd6c43b52b6a871"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-05.png",
+          "sha256": "26571e80114403151ae2e4a060e01bc780b4b431518eaaf16cd3a186ba6f2750"
+        }
+      ],
+      "source_key_visual": {
+        "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-13.png",
+        "sha256": "b100774a8d6e2a828f1b6e033a4ece2b5fcad43d2bb9f4af26a2e05895e3e702"
+      },
+      "image_all_body_and_all_candidate_rows_visually_verified": true,
+      "source_spans": [
+        {
+          "source": {
+            "path": "build/english-benchmark-authority-20261017/g7xicheng-six-gloss-source-transcript-v0.1.txt",
+            "sha256": "0e5337aebb8b71303538e90c66b69dfa4e38dffb009d470a14e75fe8c360f4ab"
+          },
+          "start_offset": 156,
+          "end_offset": 2152,
+          "sha256": "aa1f0db2d54f3fe78593e6a23d3adf87dacfede271bfd2ca8889406f77ee05fe",
+          "question_numbers": [
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "instruction": "（二）阅读下面短文，根据短文内容从后面各题所给的A、B、C三个选项中选出最佳选项。",
+          "instruction_sha256": "aad1769d935d86162ec475f32aae2746ee1cf6a5a1a86114989036934ad8e44a"
+        }
+      ],
+      "source_illustrated_glosses": [
+        {
+          "term": "a lightning bolt",
+          "PDF_page": 4,
+          "position": "left_after_first_paragraph"
+        },
+        {
+          "term": "a trophy",
+          "PDF_page": 4,
+          "position": "right_after_trophies_mention"
+        }
+      ],
+      "source_material_english_words": 318,
+      "source_gloss_label_English_words": 5,
+      "genre": "first_person_child_care_story",
+      "source_identity": "printed_xicheng2024_25_first_semester_grade7_title;repost_not_authenticated_release",
+      "source_previous_review": {
+        "path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json",
+        "sha256": "0e1dd06ca448e7f68b6f68ee0140186e53d7655d0dc97f5c632a4460467e8e8e"
+      },
+      "source_scoring_evidence": {
+        "PDF_page": 3,
+        "header": "四、完形填空（共10分，每小题1分）",
+        "selected_numbers": [
+          27,
+          28,
+          29,
+          30,
+          31,
+          32
+        ],
+        "selected_points": 6,
+        "whole_section_points": 10,
+        "other_subgroup_numbers": [
+          23,
+          24,
+          25,
+          26
+        ]
+      },
+      "new_native_extraction": false,
+      "new_visual_transcript": true
+    }
+  ],
+  "new_sources": 0,
+  "new_authenticated_school_papers": 0
+}
