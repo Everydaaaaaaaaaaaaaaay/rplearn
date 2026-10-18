@@ -1,0 +1,1956 @@
+{
+  "version": "0.26",
+  "scope": "observed_middle_reading_section_boundary_reconciliation_in_progress",
+  "inherited_batches": {
+    "path": "/Users/tiantian/eng/Research/GuYouJi-English-Benchmark/FirstRelease/Sampling/current-batches-v0.5.json",
+    "sha256": "7a2b775a0a7a39c7fc958b4d7719d5634581dbf32ad024fdda5f1bcc34e255ca"
+  },
+  "inherited_structure_records": 306,
+  "inherited_parent_labels": 41,
+  "source_reading_records": 127,
+  "current_groups": 745,
+  "current_responses": 5654,
+  "author_family_aliases": {
+    "reading": "reading_choice"
+  },
+  "alias_is_renderer_operation_not_new_source_identity": true,
+  "confirmed_selected_section": {
+    "path": "CompleteCoverage20261017/SchoolReadingSelectedSources-v0.1.json",
+    "sha256": "ec9f86dad9b09616e1f4300d4568875171ca982f6ce09b4d68f95b1e3f9c9a6d"
+  },
+  "confirmed_member_records": 50,
+  "remaining_source_records_requiring_boundary_classification": 77,
+  "unreviewed_records": [
+    {
+      "id": "g7.2019.readingA",
+      "paper_id": "suzhou-changshu2019-grade7-upper",
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "calendar_and_text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g7.2019.readingB",
+      "paper_id": "suzhou-changshu2019-grade7-upper",
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "image_and_text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g7.xicheng2025.optionalReading",
+      "paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 3,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g7.xicheng2025.readingB",
+      "paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 3,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g7.xicheng2025.readingC",
+      "paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 3,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g7.2021.readingB",
+      "paper_id": "xdf-grade7-2021lower-paper-20261013",
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 3,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g8.2025fengtai.readingB",
+      "paper_id": "grade8-fengtai2025upper-candidate20261014",
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g8.2025fengtai.readingC",
+      "paper_id": "grade8-fengtai2025upper-candidate20261014",
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g8.fengtai2026.readingB",
+      "paper_id": "gaokzx-fengtai2026-paper-key20261014-record",
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g8.fengtai2026.readingD",
+      "paper_id": "gaokzx-fengtai2026-paper-key20261014-record",
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g8.bnu2026.optionalReading",
+      "paper_id": "xschu-bnu2026-paper-key20261014-record",
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g8.changjun2024.readingA",
+      "paper_id": "grade8-changjun2024-midterm-paper-key20261014",
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 3,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g8.2025.readingB",
+      "paper_id": "bj-grade8-xicheng2025upper-20261013",
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g8.2025.readingC",
+      "paper_id": "bj-grade8-xicheng2025upper-20261013",
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g8.fengtai2026.readingC",
+      "paper_id": "gaokzx-fengtai2026-paper-key20261014-record",
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g8.bnu2026.readingB",
+      "paper_id": "xschu-bnu2026-paper-key20261014-record",
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g8.bnu2026.readingC",
+      "paper_id": "xschu-bnu2026-paper-key20261014-record",
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g8.changjun2024.readingB",
+      "paper_id": "grade8-changjun2024-midterm-paper-key20261014",
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 3,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g8.changjun2024.readingC",
+      "paper_id": "grade8-changjun2024-midterm-paper-key20261014",
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 3,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g9.suzhou2024.readingA",
+      "paper_id": "suzhou2024-official-english-paper-image20261014",
+      "shape": {
+        "grade": 9,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "table_and_text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g9.suzhou2024.readingB",
+      "paper_id": "suzhou2024-official-english-paper-image20261014",
+      "shape": {
+        "grade": 9,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g9.suzhou2024.readingC",
+      "paper_id": "suzhou2024-official-english-paper-image20261014",
+      "shape": {
+        "grade": 9,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g9.suzhou2024.readingD",
+      "paper_id": "suzhou2024-official-english-paper-image20261014",
+      "shape": {
+        "grade": 9,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g9.2025.readingA",
+      "paper_id": "fuzhou2025-exam-bundle-public-full",
+      "shape": {
+        "grade": 9,
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "input": "table_and_text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g9.2026.readingC",
+      "paper_id": "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+      "shape": {
+        "grade": 9,
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g10.2025yearend.readingA",
+      "paper_id": "grade10-2025yearend-explanation-candidate20261014",
+      "shape": {
+        "grade": 10,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g10.wenzhou2025.readingA",
+      "paper_id": "grade10-wenzhou2025-midterm-paper-key20261014",
+      "shape": {
+        "grade": 10,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g10.2025yearend.readingB",
+      "paper_id": "grade10-2025yearend-explanation-candidate20261014",
+      "shape": {
+        "grade": 10,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g10.2025yearend.readingC",
+      "paper_id": "grade10-2025yearend-explanation-candidate20261014",
+      "shape": {
+        "grade": 10,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g10.2025yearend.readingD",
+      "paper_id": "grade10-2025yearend-explanation-candidate20261014",
+      "shape": {
+        "grade": 10,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g10.wenzhou2025.readingB",
+      "paper_id": "grade10-wenzhou2025-midterm-paper-key20261014",
+      "shape": {
+        "grade": 10,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g10.wenzhou2025.readingC",
+      "paper_id": "grade10-wenzhou2025-midterm-paper-key20261014",
+      "shape": {
+        "grade": 10,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g10.wenzhou2025.readingD",
+      "paper_id": "grade10-wenzhou2025-midterm-paper-key20261014",
+      "shape": {
+        "grade": 10,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g11.spring2024.readingA",
+      "paper_id": "grade11-spring2024-public-bundle20261014",
+      "shape": {
+        "grade": 11,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g11.2025.readingB",
+      "paper_id": "grade11-2025lower-crossregion-candidate-20261013",
+      "shape": {
+        "grade": 11,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g11.2025.readingC",
+      "paper_id": "grade11-2025lower-crossregion-candidate-20261013",
+      "shape": {
+        "grade": 11,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g11.2025.readingD",
+      "paper_id": "grade11-2025lower-crossregion-candidate-20261013",
+      "shape": {
+        "grade": 11,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g11.spring2024.readingB",
+      "paper_id": "grade11-spring2024-public-bundle20261014",
+      "shape": {
+        "grade": 11,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g11.spring2024.readingC",
+      "paper_id": "grade11-spring2024-public-bundle20261014",
+      "shape": {
+        "grade": 11,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g11.spring2024.readingD",
+      "paper_id": "grade11-spring2024-public-bundle20261014",
+      "shape": {
+        "grade": 11,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g12.national2025.readingA",
+      "paper_id": "grade12-national2025-paper-commentary20261014",
+      "shape": {
+        "grade": 12,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "graph_and_text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g12.2023.readingA",
+      "paper_id": "grade12-jianghuai2024-firstjoint-20261013",
+      "shape": {
+        "grade": 12,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g12.2025anshan.readingA",
+      "paper_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "shape": {
+        "grade": 12,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g12.2023.readingB",
+      "paper_id": "grade12-jianghuai2024-firstjoint-20261013",
+      "shape": {
+        "grade": 12,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g12.2025anshan.readingB",
+      "paper_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "shape": {
+        "grade": 12,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g12.2025anshan.readingC",
+      "paper_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "shape": {
+        "grade": 12,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g12.2025anshan.readingD",
+      "paper_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "shape": {
+        "grade": 12,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g12.national2025.readingB",
+      "paper_id": "grade12-national2025-paper-commentary20261014",
+      "shape": {
+        "grade": 12,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g12.national2025.readingC",
+      "paper_id": "grade12-national2025-paper-commentary20261014",
+      "shape": {
+        "grade": 12,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "g12.national2025.readingD",
+      "paper_id": "grade12-national2025-paper-commentary20261014",
+      "shape": {
+        "grade": 12,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "layer": "baseline_selected117",
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade8-xiaoshan2025-21cnjy22251031.readingA",
+      "paper_id": "grade8-xiaoshan2025-21cnjy22251031",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "posters_and_text",
+          "part": "A",
+          "necessary_input_complete": false
+        },
+        "grade": 8
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade8-xiaoshan2025-21cnjy22251031-resource-v0.2.txt",
+        "sha256": "c1f039f3c6144f61198ba75686100144531c9a1593bb5298d26325fdcc0144ab"
+      },
+      "necessary_input_complete": false,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade8-xiaoshan2025-21cnjy22251031.readingB",
+      "paper_id": "grade8-xiaoshan2025-21cnjy22251031",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text",
+          "part": "B"
+        },
+        "grade": 8
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade8-xiaoshan2025-21cnjy22251031-resource-v0.2.txt",
+        "sha256": "c1f039f3c6144f61198ba75686100144531c9a1593bb5298d26325fdcc0144ab"
+      },
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade8-xiaoshan2025-21cnjy22251031.readingC",
+      "paper_id": "grade8-xiaoshan2025-21cnjy22251031",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text",
+          "part": "C",
+          "source_factual_risk": true
+        },
+        "grade": 8
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade8-xiaoshan2025-21cnjy22251031-resource-v0.2.txt",
+        "sha256": "c1f039f3c6144f61198ba75686100144531c9a1593bb5298d26325fdcc0144ab"
+      },
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade8-xiaoshan2025-21cnjy22251031.readingD",
+      "paper_id": "grade8-xiaoshan2025-21cnjy22251031",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text",
+          "part": "D"
+        },
+        "grade": 8
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade8-xiaoshan2025-21cnjy22251031-resource-v0.2.txt",
+        "sha256": "c1f039f3c6144f61198ba75686100144531c9a1593bb5298d26325fdcc0144ab"
+      },
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade12-tianjin2025-21cnjy24812550.readingA",
+      "paper_id": "grade12-tianjin2025-21cnjy24812550",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "part": "A",
+          "input": "text"
+        },
+        "grade": 12
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade12-tianjin2025-21cnjy24812550-resource-v0.2.txt",
+        "sha256": "1d668a8f1a9ca02a97fa50e897864688c529d835eedae348e2f593847289263f"
+      },
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade12-tianjin2025-21cnjy24812550.readingB",
+      "paper_id": "grade12-tianjin2025-21cnjy24812550",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "part": "B",
+          "input": "text"
+        },
+        "grade": 12
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade12-tianjin2025-21cnjy24812550-resource-v0.2.txt",
+        "sha256": "1d668a8f1a9ca02a97fa50e897864688c529d835eedae348e2f593847289263f"
+      },
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade12-tianjin2025-21cnjy24812550.readingC",
+      "paper_id": "grade12-tianjin2025-21cnjy24812550",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "part": "C",
+          "input": "text",
+          "necessary_input_complete": false
+        },
+        "grade": 12
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade12-tianjin2025-21cnjy24812550-resource-v0.2.txt",
+        "sha256": "1d668a8f1a9ca02a97fa50e897864688c529d835eedae348e2f593847289263f"
+      },
+      "necessary_input_complete": false,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade12-tianjin2025-21cnjy24812550.readingD",
+      "paper_id": "grade12-tianjin2025-21cnjy24812550",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "part": "D",
+          "input": "text"
+        },
+        "grade": 12
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade12-tianjin2025-21cnjy24812550-resource-v0.2.txt",
+        "sha256": "1d668a8f1a9ca02a97fa50e897864688c529d835eedae348e2f593847289263f"
+      },
+      "necessary_input_complete": null,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade7-wuhan2025-21cnjy23303148.readingA",
+      "paper_id": "grade7-wuhan2025-21cnjy23303148",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "part": "A",
+          "input": "three_text_profiles",
+          "necessary_input_complete": true
+        },
+        "grade": 7
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade7-wuhan2025-21cnjy23303148-resource-v0.2.txt",
+        "sha256": "57146dada9ca57abc4cc061fe4f7ac7ae9859fe408dd547f06b6671c789d936b"
+      },
+      "necessary_input_complete": true,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade7-wuhan2025-21cnjy23303148.readingB",
+      "paper_id": "grade7-wuhan2025-21cnjy23303148",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "part": "B",
+          "input": "text",
+          "necessary_input_complete": true
+        },
+        "grade": 7
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade7-wuhan2025-21cnjy23303148-resource-v0.2.txt",
+        "sha256": "57146dada9ca57abc4cc061fe4f7ac7ae9859fe408dd547f06b6671c789d936b"
+      },
+      "necessary_input_complete": true,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade7-wuhan2025-21cnjy23303148.readingC",
+      "paper_id": "grade7-wuhan2025-21cnjy23303148",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "part": "C",
+          "input": "image_and_text",
+          "necessary_input_complete": false
+        },
+        "grade": 7
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade7-wuhan2025-21cnjy23303148-resource-v0.2.txt",
+        "sha256": "57146dada9ca57abc4cc061fe4f7ac7ae9859fe408dd547f06b6671c789d936b"
+      },
+      "necessary_input_complete": false,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade8-hubei2026-21cnjy26105408.readingA",
+      "paper_id": "grade8-hubei2026-21cnjy26105408",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "part": "A",
+          "input": "image_and_text",
+          "necessary_input_complete": false
+        },
+        "grade": 8
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade8-hubei2026-21cnjy26105408-resource-v0.2.txt",
+        "sha256": "b08451bf5b73fb3e02f28097c4e3dc0471a23292f0f1b930feac5ce6ad96f594"
+      },
+      "necessary_input_complete": false,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade8-hubei2026-21cnjy26105408.readingB",
+      "paper_id": "grade8-hubei2026-21cnjy26105408",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "part": "B",
+          "input": "text",
+          "necessary_input_complete": true
+        },
+        "grade": 8
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade8-hubei2026-21cnjy26105408-resource-v0.2.txt",
+        "sha256": "b08451bf5b73fb3e02f28097c4e3dc0471a23292f0f1b930feac5ce6ad96f594"
+      },
+      "necessary_input_complete": true,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade8-hubei2026-21cnjy26105408.readingC",
+      "paper_id": "grade8-hubei2026-21cnjy26105408",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "part": "C",
+          "input": "image_and_text",
+          "necessary_input_complete": false,
+          "source_factual_risk": true
+        },
+        "grade": 8
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade8-hubei2026-21cnjy26105408-resource-v0.2.txt",
+        "sha256": "b08451bf5b73fb3e02f28097c4e3dc0471a23292f0f1b930feac5ce6ad96f594"
+      },
+      "necessary_input_complete": false,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade9-boxing2025-21cnjy24857076.readingA",
+      "paper_id": "grade9-boxing2025-21cnjy24857076",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "necessary_input_complete": false,
+          "part": "A",
+          "input": "text"
+        },
+        "grade": 9
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade9-boxing2025-21cnjy24857076-resource-v0.2.txt",
+        "sha256": "952dc913f67de45445d10e52c5fd64e3b89fca298fa3621afd7a19308a6fd33e"
+      },
+      "necessary_input_complete": false,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade9-boxing2025-21cnjy24857076.readingB",
+      "paper_id": "grade9-boxing2025-21cnjy24857076",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "necessary_input_complete": true,
+          "part": "B",
+          "input": "text"
+        },
+        "grade": 9
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade9-boxing2025-21cnjy24857076-resource-v0.2.txt",
+        "sha256": "952dc913f67de45445d10e52c5fd64e3b89fca298fa3621afd7a19308a6fd33e"
+      },
+      "necessary_input_complete": true,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade9-boxing2025-21cnjy24857076.readingC",
+      "paper_id": "grade9-boxing2025-21cnjy24857076",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "necessary_input_complete": true,
+          "part": "C",
+          "input": "text"
+        },
+        "grade": 9
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade9-boxing2025-21cnjy24857076-resource-v0.2.txt",
+        "sha256": "952dc913f67de45445d10e52c5fd64e3b89fca298fa3621afd7a19308a6fd33e"
+      },
+      "necessary_input_complete": true,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade9-boxing2025-21cnjy24857076.readingD",
+      "paper_id": "grade9-boxing2025-21cnjy24857076",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "necessary_input_complete": true,
+          "part": "D",
+          "input": "text"
+        },
+        "grade": 9
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade9-boxing2025-21cnjy24857076-resource-v0.2.txt",
+        "sha256": "952dc913f67de45445d10e52c5fd64e3b89fca298fa3621afd7a19308a6fd33e"
+      },
+      "necessary_input_complete": true,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade9-zhongshan2025-21cnjy22278047.readingA",
+      "paper_id": "grade9-zhongshan2025-21cnjy22278047",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "necessary_input_complete": false,
+          "part": "A",
+          "input": "text"
+        },
+        "grade": 9
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade9-zhongshan2025-21cnjy22278047-resource-v0.2.txt",
+        "sha256": "2b732327f8b7a110db11e2ed974299e856f5a70b7fa37a3e01afabfab81568a0"
+      },
+      "necessary_input_complete": false,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade9-zhongshan2025-21cnjy22278047.readingB",
+      "paper_id": "grade9-zhongshan2025-21cnjy22278047",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "necessary_input_complete": true,
+          "part": "B",
+          "input": "text"
+        },
+        "grade": 9
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade9-zhongshan2025-21cnjy22278047-resource-v0.2.txt",
+        "sha256": "2b732327f8b7a110db11e2ed974299e856f5a70b7fa37a3e01afabfab81568a0"
+      },
+      "necessary_input_complete": true,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade9-nanshan2026-21cnjy25758947.readingA",
+      "paper_id": "grade9-nanshan2026-21cnjy25758947",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "necessary_input_complete": true,
+          "part": "A",
+          "input": "text",
+          "text_spacing_and_paragraph_layout_unverified": true
+        },
+        "grade": 9
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade9-nanshan2026-21cnjy25758947-resource-v0.2.txt",
+        "sha256": "a90d8dd1e36affbf7ad94511db5b318e3747b26b7cd2171c29d022c06bc920e3"
+      },
+      "necessary_input_complete": true,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade9-nanshan2026-21cnjy25758947.readingB",
+      "paper_id": "grade9-nanshan2026-21cnjy25758947",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "necessary_input_complete": true,
+          "part": "B",
+          "input": "text",
+          "text_spacing_and_paragraph_layout_unverified": true
+        },
+        "grade": 9
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade9-nanshan2026-21cnjy25758947-resource-v0.2.txt",
+        "sha256": "a90d8dd1e36affbf7ad94511db5b318e3747b26b7cd2171c29d022c06bc920e3"
+      },
+      "necessary_input_complete": true,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade9-nanshan2026-21cnjy25758947.readingC",
+      "paper_id": "grade9-nanshan2026-21cnjy25758947",
+      "shape": {
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "necessary_input_complete": true,
+          "part": "C",
+          "input": "text",
+          "text_spacing_and_paragraph_layout_unverified": true
+        },
+        "grade": 9
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade9-nanshan2026-21cnjy25758947-resource-v0.2.txt",
+        "sha256": "a90d8dd1e36affbf7ad94511db5b318e3747b26b7cd2171c29d022c06bc920e3"
+      },
+      "necessary_input_complete": true,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade7-jinan2025-21cnjy24695341.readingA",
+      "paper_id": "grade7-jinan2025-21cnjy24695341",
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "part": "A",
+          "necessary_input_complete": true,
+          "input": "three_room_profiles",
+          "missing_map_candidates": false,
+          "points_each": 2,
+          "source_underlines_not_preserved": false
+        }
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade7-jinan2025-21cnjy24695341-resource-v0.2.txt",
+        "sha256": "71575f020818d7f59fbf7ef9f672aeccf53437a872cc2ab66de26fe70447f6fe"
+      },
+      "necessary_input_complete": true,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade7-jinan2025-21cnjy24695341.readingB",
+      "paper_id": "grade7-jinan2025-21cnjy24695341",
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "part": "B",
+          "necessary_input_complete": true,
+          "input": "farm_notice",
+          "missing_map_candidates": false,
+          "points_each": 2,
+          "source_underlines_not_preserved": false
+        }
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade7-jinan2025-21cnjy24695341-resource-v0.2.txt",
+        "sha256": "71575f020818d7f59fbf7ef9f672aeccf53437a872cc2ab66de26fe70447f6fe"
+      },
+      "necessary_input_complete": true,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade7-jinan2025-21cnjy24695341.readingC",
+      "paper_id": "grade7-jinan2025-21cnjy24695341",
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "part": "C",
+          "necessary_input_complete": false,
+          "input": "text_and_map_options",
+          "missing_map_candidates": true,
+          "points_each": 2,
+          "source_underlines_not_preserved": true
+        }
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade7-jinan2025-21cnjy24695341-resource-v0.2.txt",
+        "sha256": "71575f020818d7f59fbf7ef9f672aeccf53437a872cc2ab66de26fe70447f6fe"
+      },
+      "necessary_input_complete": false,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    },
+    {
+      "id": "grade7-jinan2025-21cnjy24695341.readingD",
+      "paper_id": "grade7-jinan2025-21cnjy24695341",
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "part": "D",
+          "necessary_input_complete": true,
+          "input": "text",
+          "missing_map_candidates": false,
+          "points_each": 2,
+          "source_underlines_not_preserved": true
+        }
+      },
+      "layer": "new_structure_only",
+      "source_text_ref": {
+        "path": "build/english-benchmark-research-20261012/grade7-jinan2025-21cnjy24695341-resource-v0.2.txt",
+        "sha256": "71575f020818d7f59fbf7ef9f672aeccf53437a872cc2ab66de26fe70447f6fe"
+      },
+      "necessary_input_complete": true,
+      "positive_answer_anchor_admitted": false,
+      "production_supported": false
+    }
+  ],
+  "unreviewed_record_count_not_missing_type_count": true,
+  "current_single_passage_authors_retained": true,
+  "single_passage_authors_not_counted_as_this17_response_section": true,
+  "known_confirmed_configuration_targets": [
+    {
+      "source_group_id": "grade7-hefei2025-21cnjy26607976.reading.objective_section1",
+      "whole_original_target": 3,
+      "author_count_at_discovery": 0,
+      "missing_whole_originals_at_discovery": 3
+    }
+  ],
+  "no_new_paper_download_or_authentication": true,
+  "unknown_figure_or_type_not_inferred_from_count": true,
+  "all_required_types_complete": false,
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolReadingConfigurationReconciliation-v0.25.json",
+    "sha256": "c4a9a82de8e98b78c058b921d98e86c5cef6824ac16f6d435d0a15fa71dd7e42"
+  },
+  "confirmed_section_author_batch": {
+    "path": "CompleteCoverage20261017/SchoolReadingOriginalBatch-v0.3.json",
+    "sha256": "d691e3175dd85511b20bd93977d69a48a48d8a5ad932dbedac100c42dd4de4f6"
+  },
+  "confirmed_section_current_author_ids": [
+    "grade7-reading17-craft-friends",
+    "grade7-reading17-book-friends",
+    "grade7-reading17-garden-friends"
+  ],
+  "confirmed_section_current_originals": 3,
+  "confirmed_section_remaining_originals": 0,
+  "senior_confirmed_source_index": {
+    "path": "CompleteCoverage20261017/SchoolReadingSelectedSources-v0.10.json",
+    "sha256": "496504e4c3ddea945672d629615c4542128c5b9fb217aac538af3b5e2f2aacf0"
+  },
+  "senior_confirmed_source_configurations": [
+    {
+      "id": "grade10-jinhua2025-21cnjy22399612.reading.complete_section",
+      "grade": 10,
+      "passages": 4,
+      "responses": [
+        3,
+        4,
+        4,
+        4
+      ],
+      "points_each": 2.5,
+      "author_count_at_discovery": 0,
+      "whole_original_target": 3
+    },
+    {
+      "id": "grade11-heze2026-21cnjy24886046.reading.complete_section",
+      "grade": 11,
+      "passages": 4,
+      "responses": [
+        3,
+        4,
+        4,
+        4
+      ],
+      "points_each": 2,
+      "author_count_at_discovery": 0,
+      "whole_original_target": 3
+    },
+    {
+      "id": "grade12-yali2026-21cnjy25133058.reading.complete_section",
+      "grade": 12,
+      "passages": 4,
+      "responses": [
+        3,
+        4,
+        4,
+        4
+      ],
+      "points_each": 2.5,
+      "author_count_at_discovery": 0,
+      "whole_original_target": 3
+    },
+    {
+      "id": "grade11-tianjin2026-21cnjy26082071.reading.complete_section",
+      "grade": 11,
+      "passages": 3,
+      "responses": [
+        5,
+        5,
+        5
+      ],
+      "points_each": 2.5,
+      "author_count_at_discovery": 0,
+      "whole_original_target": 3
+    },
+    {
+      "id": "grade12-tianjinlower2025-21cnjy22402528.reading.complete_section",
+      "grade": 12,
+      "passages": 4,
+      "responses": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "points_each": 2.5,
+      "author_count_at_discovery": 0,
+      "whole_original_target": 3
+    },
+    {
+      "id": "grade10-shenzhenlower2026-21cnjy26167651.reading.complete_section",
+      "grade": 10,
+      "passages": 4,
+      "responses": [
+        3,
+        4,
+        4,
+        4
+      ],
+      "points_each": 2.5,
+      "source_full_inputs_verified": true,
+      "author_count_at_discovery": 0,
+      "whole_original_target": 3,
+      "details_in": {
+        "path": "CompleteCoverage20261017/SchoolReadingAdditionalBoundaryReview-v0.1.json",
+        "sha256": "ae9eb1df1bb2e81526c8aac7bcbd4d8fc22b993d7412c631082fab8ae75ed13a"
+      }
+    },
+    {
+      "id": "grade11-yinchuan2026-21cnjy25860535.reading.complete_section",
+      "grade": 11,
+      "passages": 4,
+      "responses": [
+        3,
+        4,
+        4,
+        4
+      ],
+      "points_each": 2.5,
+      "source_full_inputs_verified": true,
+      "author_count_at_discovery": 0,
+      "whole_original_target": 3,
+      "details_in": {
+        "path": "CompleteCoverage20261017/SchoolReadingAdditionalBoundaryReview-v0.1.json",
+        "sha256": "ae9eb1df1bb2e81526c8aac7bcbd4d8fc22b993d7412c631082fab8ae75ed13a"
+      }
+    },
+    {
+      "id": "grade10-weishi2026-21cnjy25962499.reading.complete_section",
+      "grade": 10,
+      "passages": 4,
+      "responses": [
+        3,
+        4,
+        4,
+        4
+      ],
+      "points_each": 2,
+      "source_full_inputs_verified": false,
+      "author_count_at_discovery": 0,
+      "whole_original_target": 3,
+      "details_in": {
+        "path": "CompleteCoverage20261017/SchoolReadingAdditionalBoundaryReview-v0.1.json",
+        "sha256": "ae9eb1df1bb2e81526c8aac7bcbd4d8fc22b993d7412c631082fab8ae75ed13a"
+      }
+    },
+    {
+      "id": "bj-grade10-shijingshan2024lower-20261013.reading.complete_section14",
+      "grade": 10,
+      "passages": 4,
+      "responses": [
+        3,
+        4,
+        3,
+        4
+      ],
+      "points_each": 2,
+      "source_full_inputs_verified": true,
+      "author_count_at_discovery": 0,
+      "whole_original_target": 3,
+      "details_in": {
+        "path": "CompleteCoverage20261017/SchoolNativeReadingBoundaryReview-v0.2.json",
+        "sha256": "255886f495ea87424b307d03fec4c10f4ec98470e8f66a929bb8f2fa713b4d03"
+      }
+    },
+    {
+      "id": "bj-grade11-yanqing2024upper-20261013.reading.complete_section14",
+      "grade": 11,
+      "passages": 4,
+      "responses": [
+        3,
+        4,
+        3,
+        4
+      ],
+      "points_each": 2,
+      "source_full_inputs_verified": true,
+      "author_count_at_discovery": 0,
+      "whole_original_target": 3,
+      "details_in": {
+        "path": "CompleteCoverage20261017/SchoolNativeReadingBoundaryReview-v0.2.json",
+        "sha256": "255886f495ea87424b307d03fec4c10f4ec98470e8f66a929bb8f2fa713b4d03"
+      }
+    }
+  ],
+  "new_confirmed_member_records": 19,
+  "new_confirmed_configuration_missing_originals": 3,
+  "score_and_nested_entry_table_patterns_kept": true,
+  "genre_placeholder_correction": {
+    "path": "CompleteCoverage20261017/SchoolReadingSourceQualityNotes-v0.2.json",
+    "sha256": "206a5e2073d4fb52ce00bf76f9418ef3ac117553fe9b862a256eac2e4d8b8c85"
+  },
+  "senior_current_original_batch": {
+    "path": "CompleteCoverage20261017/SeniorProfile14ReadingOriginalBatch-v0.1.json",
+    "sha256": "24db36266ba5f022b54d0e407319e6b086ec595a65e498f88ddbeab0447c0cef"
+  },
+  "senior_current_originals": [
+    {
+      "source_group_id": "grade10-jinhua2025-21cnjy22399612.reading.complete_section",
+      "author_ids": [
+        "grade10-reading15-bindings-lanterns",
+        "grade10-reading15-bindings-puppets",
+        "grade10-reading15-bindings-tiles"
+      ],
+      "count": 3
+    },
+    {
+      "source_group_id": "grade11-tianjin2026-21cnjy26082071.reading.complete_section",
+      "author_ids": [
+        "grade11-reading15-table-card",
+        "grade11-reading15-table-cup",
+        "grade11-reading15-table-pouch"
+      ],
+      "count": 3
+    },
+    {
+      "source_group_id": "grade11-heze2026-21cnjy24886046.reading.complete_section",
+      "author_ids": [
+        "grade11-reading15-program-labels",
+        "grade11-reading15-program-trolley",
+        "grade11-reading15-program-notebook"
+      ],
+      "count": 3
+    },
+    {
+      "source_group_id": "grade12-yali2026-21cnjy25133058.reading.complete_section",
+      "author_ids": [
+        "grade12-reading15-credit-dunes",
+        "grade12-reading15-credit-grove",
+        "grade12-reading15-credit-stream"
+      ],
+      "count": 3
+    },
+    {
+      "source_group_id": "grade12-tianjinlower2025-21cnjy22402528.reading.complete_section",
+      "author_ids": [
+        "grade12-reading20-steps-workbench",
+        "grade12-reading20-steps-voices",
+        "grade12-reading20-steps-archive"
+      ],
+      "count": 3
+    },
+    {
+      "source_group_id": "grade11-yinchuan2026-21cnjy25860535.reading.complete_section",
+      "author_ids": [
+        "grade11-reading15-job-shore",
+        "grade11-reading15-job-grove",
+        "grade11-reading15-job-reed"
+      ],
+      "count": 3
+    },
+    {
+      "source_group_id": "grade10-shenzhenlower2026-21cnjy26167651.reading.complete_section",
+      "author_ids": [
+        "grade10-reading15-graph-reeds",
+        "grade10-reading15-graph-berries",
+        "grade10-reading15-graph-algae"
+      ],
+      "count": 3
+    },
+    {
+      "source_group_id": "bj-grade10-shijingshan2024lower-20261013.reading.complete_section14",
+      "author_ids": [
+        "grade10-reading14-care-cues",
+        "grade10-reading14-care-rooms",
+        "grade10-reading14-care-recordings"
+      ],
+      "count": 3
+    },
+    {
+      "source_group_id": "bj-grade11-yanqing2024upper-20261013.reading.complete_section14",
+      "author_ids": [
+        "grade11-reading14-profile-shelves",
+        "grade11-reading14-profile-parcels",
+        "grade11-reading14-profile-corners"
+      ],
+      "count": 3
+    }
+  ],
+  "senior_genre_fullreview": {
+    "path": "CompleteCoverage20261017/SeniorReadingGenreSubstructureReview-v0.1.json",
+    "sha256": "24a765f10e0144d68d5eb57006561bf1cd6870a4c6131c38e11ea2a474e40b7a"
+  },
+  "four_remaining_sources_now_genre_ready_not_facts_gold": true,
+  "remaining_confirmed_senior_originals": 3,
+  "classified_member_records": 50,
+  "classified_complete_input_member_records": 46,
+  "classified_incomplete_section_member_records": 4,
+  "latest_additional_boundary_review": {
+    "path": "CompleteCoverage20261017/SchoolReadingAdditionalBoundaryReview-v0.1.json",
+    "sha256": "ae9eb1df1bb2e81526c8aac7bcbd4d8fc22b993d7412c631082fab8ae75ed13a"
+  },
+  "remaining_ready_senior_originals": 0,
+  "remaining_input_blocked_senior_originals": 3,
+  "current_job_candidates_compact_v02": true,
+  "old_job_v01_preserved": true,
+  "latest_native14_boundary_review": {
+    "path": "CompleteCoverage20261017/SchoolNativeReadingBoundaryReview-v0.2.json",
+    "sha256": "255886f495ea87424b307d03fec4c10f4ec98470e8f66a929bb8f2fa713b4d03"
+  },
+  "remaining_confirmed_junior_originals": 0,
+  "latest_further_boundary_review": {
+    "path": "CompleteCoverage20261017/SchoolReadingFurtherBoundaryReview-v0.1.json",
+    "sha256": "f56bcf47838b1d04161afc8983ccc8dc7f9f932e96005c963e3f95cb259370d7"
+  },
+  "further_confirmed_source_configurations": [
+    {
+      "id": "grade7-suzhou2025-21cnjy23303742.reading.complete_section15",
+      "grade": 7,
+      "passages": 4,
+      "responses": [
+        3,
+        4,
+        4,
+        4
+      ],
+      "material_units": [
+        3,
+        1,
+        1,
+        1
+      ],
+      "points_each": 2,
+      "source_full_inputs_verified_scope": "selected public-description textual inputs and all candidates;not original-paper facsimile or absence of decorative photos",
+      "author_count_at_discovery": 0,
+      "whole_original_target": 3,
+      "details_in": {
+        "path": "CompleteCoverage20261017/SchoolReadingFurtherBoundaryReview-v0.1.json",
+        "sha256": "f56bcf47838b1d04161afc8983ccc8dc7f9f932e96005c963e3f95cb259370d7"
+      }
+    },
+    {
+      "id": "grade9-chengdu2025-21cnjy23208601.reading.complete_section10",
+      "grade": 9,
+      "passages": 2,
+      "responses": [
+        5,
+        5
+      ],
+      "material_units": [
+        4,
+        1
+      ],
+      "points_each": 2,
+      "source_full_inputs_verified_scope": "selected public-description textual inputs and all candidates;not original-paper facsimile or absence of decorative photos",
+      "author_count_at_discovery": 0,
+      "whole_original_target": 3,
+      "details_in": {
+        "path": "CompleteCoverage20261017/SchoolReadingFurtherBoundaryReview-v0.1.json",
+        "sha256": "f56bcf47838b1d04161afc8983ccc8dc7f9f932e96005c963e3f95cb259370d7"
+      }
+    },
+    {
+      "id": "grade12-linyi2025-21cnjy24838709.reading.complete_section15",
+      "grade": 12,
+      "passages": 4,
+      "responses": [
+        3,
+        4,
+        4,
+        4
+      ],
+      "material_units": [
+        4,
+        1,
+        1,
+        1
+      ],
+      "points_each": 2.5,
+      "source_full_inputs_verified_scope": "selected public-description textual inputs and all candidates;not original-paper facsimile or absence of decorative photos",
+      "author_count_at_discovery": 0,
+      "whole_original_target": 3,
+      "details_in": {
+        "path": "CompleteCoverage20261017/SchoolReadingFurtherBoundaryReview-v0.1.json",
+        "sha256": "f56bcf47838b1d04161afc8983ccc8dc7f9f932e96005c963e3f95cb259370d7"
+      }
+    }
+  ],
+  "current_email_reading_batch": {
+    "path": "CompleteCoverage20261017/SchoolEmailReadingOriginalBatch-v0.1.json",
+    "sha256": "81d5b739ad7e6dd2d76c4ee079ab310f025c8622d50912030502b833ff5e4c74"
+  },
+  "further_current_originals": [
+    {
+      "source_group_id": "grade9-chengdu2025-21cnjy23208601.reading.complete_section10",
+      "author_ids": [
+        "grade9-email10-coast",
+        "grade9-email10-hills",
+        "grade9-email10-lake"
+      ],
+      "count": 3
+    },
+    {
+      "source_group_id": "grade7-suzhou2025-21cnjy23303742.reading.complete_section15",
+      "author_ids": [
+        "grade7-diary15-voices",
+        "grade7-diary15-shadows",
+        "grade7-diary15-colours"
+      ],
+      "count": 3
+    },
+    {
+      "source_group_id": "grade12-linyi2025-21cnjy24838709.reading.complete_section15",
+      "author_ids": [
+        "grade12-river15-harrow",
+        "grade12-river15-bracken",
+        "grade12-river15-selwyn"
+      ],
+      "count": 3
+    }
+  ],
+  "current_junior_diary_batch": {
+    "path": "CompleteCoverage20261017/JuniorDiaryReadingOriginalBatch-v0.1.json",
+    "sha256": "55acd967c98b6ee699430b8ffabeb16e9d338479db50897623f3e943c1972774"
+  },
+  "current_senior_river_batch": {
+    "path": "CompleteCoverage20261017/SeniorRiverReadingOriginalBatch-v0.1.json",
+    "sha256": "6ba926b5f0cd3a815cd6a277fe54370d063e2a93eb11510ee88b91ab63ec6057"
+  },
+  "further_remaining_originals": 0,
+  "current_aliases_reconciled": true,
+  "current_alias_old_values": {
+    "confirmed_member_records": 36,
+    "remaining_source_records_requiring_boundary_classification": 87,
+    "remaining_confirmed_senior_originals": 6,
+    "remaining_ready_senior_originals": 3,
+    "remaining_input_blocked_senior_originals": 3
+  },
+  "current_aliases_do_not_rewrite_previous_frozen_versions": true,
+  "discovery_specific_fields_retained_historical": [
+    "new_confirmed_member_records",
+    "senior_current_originals",
+    "known_confirmed_configuration_targets",
+    "four_remaining_sources_now_genre_ready_not_facts_gold"
+  ]
+}

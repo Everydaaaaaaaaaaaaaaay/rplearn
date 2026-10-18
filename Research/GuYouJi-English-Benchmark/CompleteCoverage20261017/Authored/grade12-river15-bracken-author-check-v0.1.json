@@ -1,0 +1,906 @@
+{
+  "version": "0.1",
+  "id": "grade12-river15-bracken",
+  "grade": 12,
+  "questions": 15,
+  "candidate_sha256": "338a21b8979e1c632eec4da22857051d6270ea9e4fdc68e8936b51f48da06bb8",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade12-river15-bracken-manuscript-v0.1.json",
+    "sha256": "e979d3f409ba5296361a86743b99b49ac5d6d147eda405dae471f87098bc36a4"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SeniorRiverReadingSourceBindings-v0.1.json",
+    "sha256": "c55eb41b7b4f2b7a00b70c47323a8f712d57ec9771d004038ba935d0ec1e730b"
+  },
+  "source_binding": "grade12-linyi2025-21cnjy24838709.reading.complete_section15.binding",
+  "school_complete_reading_section": true,
+  "senior_caves_friendship_river_forecast15": true,
+  "friendship": {
+    "origin": "On the roof of a college science building in 1976, ten first-year astronomy students discovered that waiting for a clear sky left plenty of time for conversation. They shared flasks of tea, took turns adjusting an awkward telescope and disagreed over whether a faint mark on a photograph was worth another hour outside. They became known as the Roof Circle. The name began as a joke, but the friendships grew out of those long evenings spent together.",
+    "figurative_quote": "Nearly half a century later, the ten live far apart and no longer share a telescope. They still reserve one weekend each year for a reunion, choosing a town that keeps the journey manageable for the largest number. When a member cannot travel, another carries a phone around the meal so that the missing friend can take part. “If one of us drops a thread, there are nine hands to catch it,” says David. The image describes mutual support, not a piece of equipment used on the roof.",
+    "distance_effort_and_value": "The Circle does not present its history as an effortless triumph over distance. Plans have failed, messages have gone unanswered and disagreements have occasionally needed a private call rather than another remark in the group chat. The friends set aside time to repair those small breaks because the relationship gives them something valuable. As one member puts it, an old friend can remember a hope you once had without insisting that you remain the same person forever.",
+    "legacy": "Their archive now includes photographs taken by their children. At a recent reunion, three teenagers helped identify places in the older images and asked about the strange coats their parents had worn. The conversations gave a new generation a share in the group’s stories. The Roof Circle has lasted because its members keep finding ways to meet one another’s changing lives, rather than trying to remain students forever."
+  },
+  "river": {
+    "flow_direction": "north_to_south",
+    "flow_text": "The fictional city of Bracken grew around the Nera River, which flows from north to south through its oldest neighbourhoods. A line cut into the market wall records a flood that closed the central square for weeks. The same river also carried goods to that square and drew workers to its banks. In the city archive, descriptions of danger sit beside accounts of trade and celebration: the river has shaped a common life, not merely marked an edge on a map.",
+    "numbering_text": "That central position survives in the address system. Along streets parallel to the Nera, numbers increase downstream, towards the south. Along perpendicular streets, the first numbers are beside the river and larger numbers occur farther from its bank. Knowing which kind of street an address belongs to can therefore help a newcomer interpret it. The two rules are related to the river, but they describe different directions and should not be treated as interchangeable.",
+    "parallel_numbers_increase_downstream": true,
+    "perpendicular_numbers_increase_away_from_bank": true,
+    "parallel_answer": "Towards the south.",
+    "twentieth_century_infrastructure": "In 1968, planners replaced part of that shared edge with a riverside road. Former storage yards were converted into car parks. The new layout helped vehicles cross the centre, while walls and traffic made access to the bank less convenient for people on foot. No new railway station or bus terminal was built as part of this change: the account is specifically about the road and parking spaces.",
+    "infrastructure_answer": "A riverside road and car parks.",
+    "reconnection_ideal": "The city began reversing part of that decision in 2011, opening a former traffic lane to walkers. Later plans added a riverside park while preserving strips of plants and shallower margins for wildlife. A local planner said the object was not to exclude people in the name of nature, or to turn the entire river into a sports facility. It was to let urban life return without removing the natural processes that made the river a living corridor in the first place."
+  },
+  "forecast": {
+    "capability": "An imagined vehicle called the Wayfinder would display a warning when observations suggested that weather might change sharply along a planned route. Its designers picture it drawing attention to an approaching band of heavy rain before the occupants reach it. They do not suggest that a car could stop the rain or guarantee a risk-free journey. The proposed function is a forecast, with all the uncertainty that word implies.",
+    "sensor_to_model_mechanism": "The vehicle’s sensors would first collect readings of pressure, temperature and moisture. A computer model would combine them with earlier observations and estimate how conditions might develop ahead. As new measurements arrived, the estimate would be recalculated. Thus a sensor reading would be an input, while a forecast would result from interpreting several inputs through a model. Collecting a larger volume of readings alone would not perform that interpretation.",
+    "network_mechanism": "Linked vehicles and roadside stations could contribute further observations. To combine them responsibly, the system would need to distinguish recent local measurements from old or distant ones. The designers call this filtering **imperative**, since a rapidly growing network could otherwise circulate the same misleading reading many times. The connection between devices would widen the evidence available to the model, without making all of that evidence equally useful.",
+    "prediction": "If testing and data quality improved as hoped, the writer predicts that weather displays tailored to a route might become ordinary vehicle features in a later decade. The picture is deliberately conditional. It offers a possible direction for development, not a deadline that manufacturers have already proved they can meet. Readers are invited to imagine the change while keeping the proposal separate from demonstrated performance.",
+    "conditional_outlook_not_proven_performance": true,
+    "no_exact_accuracy_or_lives_saved_claim": true,
+    "imagined_proposal_not_current_product_or_road_safety_advice": true
+  },
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "A组 · Why does Bat Bell Cave attract particular interest?",
+      "options": [
+        [
+          "A",
+          "It has frost curtains throughout summer."
+        ],
+        [
+          "B",
+          "It contains a distinctive summer nursery."
+        ],
+        [
+          "C",
+          "It holds the area’s length record."
+        ],
+        [
+          "D",
+          "Its walls carry old survey drawings."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：冬霜属Frost Window且非夏；B：声誉来自本地唯一记录蝙蝠育幼群；C：明确不是最长；D：调查图对比属Ribbon Hall",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "cave_distinctive_feature"
+    },
+    {
+      "number": 2,
+      "stem": "A组 · Which season is especially associated with Frost Window’s main display?",
+      "options": [
+        [
+          "A",
+          "Autumn."
+        ],
+        [
+          "B",
+          "Summer."
+        ],
+        [
+          "C",
+          "Winter."
+        ],
+        [
+          "D",
+          "Spring."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：未称秋为霜幕特展；B：暖月只有影子非霜幕；C：低温霜幕为冬展；D：未称春季主展",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "cave_season_detail"
+    },
+    {
+      "number": 3,
+      "stem": "A组 · What do Deep Ring and Ribbon Hall offer in common?",
+      "options": [
+        [
+          "A",
+          "Boat-based viewing of cave features."
+        ],
+        [
+          "B",
+          "The same underwater camera programme."
+        ],
+        [
+          "C",
+          "Entry to a summer bat nursery."
+        ],
+        [
+          "D",
+          "A dry walking route through a chamber."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：两者皆船上观看；B：Ribbon明确不用水下影像；C：育幼群属Bat Bell；D：均非干步道入洞",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "cross_cave_common_feature"
+    },
+    {
+      "number": 4,
+      "stem": "B组 · Where did the Roof Circle’s friendship develop?",
+      "options": [
+        [
+          "A",
+          "At a reunion after they bought a new telescope."
+        ],
+        [
+          "B",
+          "During shared college astronomy evenings."
+        ],
+        [
+          "C",
+          "At a meal arranged for Celia’s father."
+        ],
+        [
+          "D",
+          "During a recent archive project run by teenagers."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：没说重聚购新望远镜才结识；B：共同观星长夜谈话形成；C：照料父亲为多年后；D：青少年档案是后来传承",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "friendship_origin"
+    },
+    {
+      "number": 5,
+      "stem": "B组 · What does David’s image of “nine hands” convey?",
+      "options": [
+        [
+          "A",
+          "Readiness to support one another."
+        ],
+        [
+          "B",
+          "A rule that every message needs nine replies."
+        ],
+        [
+          "C",
+          "An expectation that one person must organise everything."
+        ],
+        [
+          "D",
+          "A technique for operating the telescope."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：十人中一人失线其余九人接，喻互助；B：无九回复规则；C：九人共同支持非一人全办；D：明说不是屋顶器材",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "figurative_support_quote"
+    },
+    {
+      "number": 6,
+      "stem": "B组 · What view of long-distance friendship does the group express?",
+      "options": [
+        [
+          "A",
+          "It needs care but offers lasting value."
+        ],
+        [
+          "B",
+          "It requires every member’s life to remain unchanged."
+        ],
+        [
+          "C",
+          "It works best when disagreements are ignored."
+        ],
+        [
+          "D",
+          "It becomes unnecessary once new friends appear."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：需修复联系却有值得的关系；B：朋友不要求人永远不变；C：明确处理分歧非无视；D：未把新友当替代",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "distance_relationship_inference"
+    },
+    {
+      "number": 7,
+      "stem": "B组 · What does the writer mainly do?",
+      "options": [
+        [
+          "A",
+          "Explain how teenagers should label every photograph."
+        ],
+        [
+          "B",
+          "Describe how a friendship group has lasted."
+        ],
+        [
+          "C",
+          "Recommend a course in caring for parents."
+        ],
+        [
+          "D",
+          "Evaluate the accuracy of an old telescope."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：档案只一段传承非标注手册；B：起源、调整、互助、传承完整报道；C：照护为例非课程推荐；D：无望远镜性能测量",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "profile_purpose"
+    },
+    {
+      "number": 8,
+      "stem": "C组 · How is the Nera presented in relation to Bracken?",
+      "options": [
+        [
+          "A",
+          "As a force shaping shared city life."
+        ],
+        [
+          "B",
+          "As a border without a role in daily activity."
+        ],
+        [
+          "C",
+          "As a recent substitute for the central square."
+        ],
+        [
+          "D",
+          "As a natural barrier that stopped all commerce."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：危险、贸易、庆典共同塑造生活；B：沿河日常活动丰富；C：河早于广场洪水非取代广场；D：贸易曾靠河",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "river_city_role"
+    },
+    {
+      "number": 9,
+      "stem": "C组 · Which way do building numbers increase on streets parallel to the Nera?",
+      "options": [
+        [
+          "A",
+          "Towards the west."
+        ],
+        [
+          "B",
+          "Towards the east."
+        ],
+        [
+          "C",
+          "Towards the south."
+        ],
+        [
+          "D",
+          "Towards the north."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：沿河非东西；B：沿河非东西；C：顺流由北往南；D：逆流反向",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "parallel_street_numbering"
+    },
+    {
+      "number": 10,
+      "stem": "C组 · What change was made to the riverbank in 1968?",
+      "options": [
+        [
+          "A",
+          "A railway station and bus terminal."
+        ],
+        [
+          "B",
+          "A replacement channel beyond the old city."
+        ],
+        [
+          "C",
+          "A walking lane and wildlife margins."
+        ],
+        [
+          "D",
+          "A riverside road and car parks."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：明确不建此两种；B：没有迁河新槽；C：2011后恢复步行与自然；D：公路与仓场转停车",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "twentieth_century_infrastructure"
+    },
+    {
+      "number": 11,
+      "stem": "C组 · Which outcome would best suit the planner’s aim?",
+      "options": [
+        [
+          "A",
+          "A complete reconstruction of all former storage yards."
+        ],
+        [
+          "B",
+          "A river reserved entirely for organised sport."
+        ],
+        [
+          "C",
+          "A bank permanently closed to every resident."
+        ],
+        [
+          "D",
+          "Daily use of the bank alongside a living natural corridor."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：非全旧仓场复建；B：明确非全河体育设施；C：明确非以自然排除人；D：生活返回且保自然过程",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "river_reconnection_ideal"
+    },
+    {
+      "number": 12,
+      "stem": "D组 · What could the imagined Wayfinder provide?",
+      "options": [
+        [
+          "A",
+          "A means of stopping approaching rain."
+        ],
+        [
+          "B",
+          "A way to replace weather with a stable road climate."
+        ],
+        [
+          "C",
+          "A warning of possible weather changes ahead."
+        ],
+        [
+          "D",
+          "A guarantee that all chosen routes are safe."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：不阻止雨；B：不控制或替换气候；C：前方天气急变警示；D：明确无零风险保证",
+      "materialLabel": "D",
+      "points": 2.5,
+      "operation": "future_car_capability"
+    },
+    {
+      "number": 13,
+      "stem": "D组 · What does paragraph 4 mainly explain?",
+      "options": [
+        [
+          "A",
+          "The decade in which displays will certainly appear."
+        ],
+        [
+          "B",
+          "The sharing of data among linked vehicles."
+        ],
+        [
+          "C",
+          "The proposed process from measurements to forecasts."
+        ],
+        [
+          "D",
+          "The value established by completed road trials."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：末段条件预测且无必然年份；B：第五段联网共享；C：传感采集模型解释更新；D：第三段明确试验未证",
+      "materialLabel": "D",
+      "points": 2.5,
+      "operation": "paragraph_four_mechanism"
+    },
+    {
+      "number": 14,
+      "stem": "D组 · What does “imperative” in paragraph 5 mean?",
+      "options": [
+        [
+          "A",
+          "Complicated."
+        ],
+        [
+          "B",
+          "Optional."
+        ],
+        [
+          "C",
+          "Accurate."
+        ],
+        [
+          "D",
+          "Essential."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：非复杂含义；B：省掉会扩大误导，非可选；C：不是在评筛选本身精确度；D：不筛选会传播误读，意为必要",
+      "materialLabel": "D",
+      "points": 2.5,
+      "operation": "context_imperative_meaning"
+    },
+    {
+      "number": 15,
+      "stem": "D组 · What does the final paragraph mainly offer?",
+      "options": [
+        [
+          "A",
+          "A calculation of accidents already prevented."
+        ],
+        [
+          "B",
+          "A conditional forecast of future development."
+        ],
+        [
+          "C",
+          "Instructions for testing a car already on sale."
+        ],
+        [
+          "D",
+          "A report of a proven vehicle launch."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：无已避免事故计算；B：if测试数据改善则未来可能普通；C：不是销售现车测试指南；D：非已证发布日期",
+      "materialLabel": "D",
+      "points": 2.5,
+      "operation": "final_paragraph_prediction_purpose"
+    }
+  ],
+  "canonical_response_block_sha256": "7b5b687df889a0fafda5b4f1cc885bc23b0b34d035b4f67686064f8eda704abc",
+  "student_passage": "### A组（第1—3题）\n\nA regional exhibition introduces four fictional caves along a lake and the adjoining coast. Each description highlights a different feature and an organised viewing programme; it is not a guide to independent exploration.\n\n#### A1\n\nBat Bell Cave\nThe chamber is best known as the only recorded summer nursery of copper-eared bats in the fictional district. A remote camera allows visitors in the exhibition room to watch the animals without entering the nursery. The cave has an impressive entrance, but measurements place it well below the longest caves in the area. The nursery, rather than a claim about record dimensions, explains why researchers and visitors take a particular interest in it.\n\n#### A2\n\nFrost Window\nAt this lake cave, a winter temperature pattern produces thin curtains of frost around the outer opening. The centre’s winter gallery display attracts special interest because cameras reveal how the curtains alter from morning to afternoon. Visitors remain in the gallery; no route over lake ice is offered. In warmer months the same screens show changing shadows, but these are a different programme, without the frost formations that distinguish the winter display.\n\n#### A3\n\nDeep Ring\nA submerged circular chamber appears as a dark ring beneath clear water near the coast. The exhibition’s viewing boat carries a small remote camera, which provides images of the rock below the surface. Visitors need not enter the water to follow the chamber’s outline. The name refers to its shape in the view from above, not to an object that was found inside it. Researchers in the account are still discussing how its entrance widened.\n\n#### A4\n\nRibbon Hall\nLong, pale bands run across the dark walls of this coastal chamber. Visitors observe the bands from a tour boat positioned outside the entrance while a guide compares them with drawings from an earlier survey. Unlike Deep Ring, the programme does not use underwater images; the rock patterns are above the surface. The hall’s appeal comes from the contrast of colours and the story of its surveys, not from a claim that it contains a bat nursery.\n\n### B组（第4—7题）\n\n#### B1\n\nOn the roof of a college science building in 1976, ten first-year astronomy students discovered that waiting for a clear sky left plenty of time for conversation. They shared flasks of tea, took turns adjusting an awkward telescope and disagreed over whether a faint mark on a photograph was worth another hour outside. They became known as the Roof Circle. The name began as a joke, but the friendships grew out of those long evenings spent together.\n\nNearly half a century later, the ten live far apart and no longer share a telescope. They still reserve one weekend each year for a reunion, choosing a town that keeps the journey manageable for the largest number. When a member cannot travel, another carries a phone around the meal so that the missing friend can take part. “If one of us drops a thread, there are nine hands to catch it,” says David. The image describes mutual support, not a piece of equipment used on the roof.\n\nThe Circle does not present its history as an effortless triumph over distance. Plans have failed, messages have gone unanswered and disagreements have occasionally needed a private call rather than another remark in the group chat. The friends set aside time to repair those small breaks because the relationship gives them something valuable. As one member puts it, an old friend can remember a hope you once had without insisting that you remain the same person forever.\n\nWhen Celia began caring for her father, she stopped attending the annual weekends. Instead of repeatedly telling her to make more time, the group arranged short visits in pairs, with meals that could be reheated. She did not need to entertain everyone at once or repeat the same explanation ten times. Later, when she could travel again, nobody treated her absence as a debt to be repaid. She says their willingness to adjust was more comforting than any promise that nothing would change.\n\nTheir archive now includes photographs taken by their children. At a recent reunion, three teenagers helped identify places in the older images and asked about the strange coats their parents had worn. The conversations gave a new generation a share in the group’s stories. The Roof Circle has lasted because its members keep finding ways to meet one another’s changing lives, rather than trying to remain students forever.\n\n### C组（第8—11题）\n\n#### C1\n\nThe fictional city of Bracken grew around the Nera River, which flows from north to south through its oldest neighbourhoods. A line cut into the market wall records a flood that closed the central square for weeks. The same river also carried goods to that square and drew workers to its banks. In the city archive, descriptions of danger sit beside accounts of trade and celebration: the river has shaped a common life, not merely marked an edge on a map.\n\nThat central position survives in the address system. Along streets parallel to the Nera, numbers increase downstream, towards the south. Along perpendicular streets, the first numbers are beside the river and larger numbers occur farther from its bank. Knowing which kind of street an address belongs to can therefore help a newcomer interpret it. The two rules are related to the river, but they describe different directions and should not be treated as interchangeable.\n\nIn early photographs, stalls stand beside the landing steps and neighbours sit among bundles waiting to be loaded. The water’s edge joined work to leisure. People went there to buy, wash, exchange news and watch the passing boats. It was not a special attraction separated from daily life; many daily activities happened there precisely because the river was close at hand.\n\nIn 1968, planners replaced part of that shared edge with a riverside road. Former storage yards were converted into car parks. The new layout helped vehicles cross the centre, while walls and traffic made access to the bank less convenient for people on foot. No new railway station or bus terminal was built as part of this change: the account is specifically about the road and parking spaces.\n\nThe city began reversing part of that decision in 2011, opening a former traffic lane to walkers. Later plans added a riverside park while preserving strips of plants and shallower margins for wildlife. A local planner said the object was not to exclude people in the name of nature, or to turn the entire river into a sports facility. It was to let urban life return without removing the natural processes that made the river a living corridor in the first place.\n\n### D组（第12—15题）\n\n#### D1\n\nAn imagined vehicle called the Wayfinder would display a warning when observations suggested that weather might change sharply along a planned route. Its designers picture it drawing attention to an approaching band of heavy rain before the occupants reach it. They do not suggest that a car could stop the rain or guarantee a risk-free journey. The proposed function is a forecast, with all the uncertainty that word implies.\n\nIn the fictional account, a broad regional forecast is the starting point rather than the enemy of local information. The vehicle would add observations gathered near the journey and identify stretches where conditions might differ from the regional picture. A designer describes the goal as making uncertainty visible and useful, instead of hiding it behind a single reassuring symbol on a screen.\n\nThis account sets out a development proposal, not an evaluation of a product already in use. No road trial has established an accuracy percentage or a number of accidents prevented. The designers would have to test the system across seasons and locations before claiming a reliable benefit. A promising display on one demonstration route would not settle those questions.\n\nThe vehicle’s sensors would first collect readings of pressure, temperature and moisture. A computer model would combine them with earlier observations and estimate how conditions might develop ahead. As new measurements arrived, the estimate would be recalculated. Thus a sensor reading would be an input, while a forecast would result from interpreting several inputs through a model. Collecting a larger volume of readings alone would not perform that interpretation.\n\nLinked vehicles and roadside stations could contribute further observations. To combine them responsibly, the system would need to distinguish recent local measurements from old or distant ones. The designers call this filtering **imperative**, since a rapidly growing network could otherwise circulate the same misleading reading many times. The connection between devices would widen the evidence available to the model, without making all of that evidence equally useful.\n\nIf testing and data quality improved as hoped, the writer predicts that weather displays tailored to a route might become ordinary vehicle features in a later decade. The picture is deliberately conditional. It offers a possible direction for development, not a deadline that manufacturers have already proved they can meet. Readers are invited to imagine the change while keeping the proposal separate from demonstrated performance.",
+  "body_load_text": "A regional exhibition introduces four fictional caves along a lake and the adjoining coast. Each description highlights a different feature and an organised viewing programme; it is not a guide to independent exploration.\n\nBat Bell Cave\nThe chamber is best known as the only recorded summer nursery of copper-eared bats in the fictional district. A remote camera allows visitors in the exhibition room to watch the animals without entering the nursery. The cave has an impressive entrance, but measurements place it well below the longest caves in the area. The nursery, rather than a claim about record dimensions, explains why researchers and visitors take a particular interest in it.\n\nFrost Window\nAt this lake cave, a winter temperature pattern produces thin curtains of frost around the outer opening. The centre’s winter gallery display attracts special interest because cameras reveal how the curtains alter from morning to afternoon. Visitors remain in the gallery; no route over lake ice is offered. In warmer months the same screens show changing shadows, but these are a different programme, without the frost formations that distinguish the winter display.\n\nDeep Ring\nA submerged circular chamber appears as a dark ring beneath clear water near the coast. The exhibition’s viewing boat carries a small remote camera, which provides images of the rock below the surface. Visitors need not enter the water to follow the chamber’s outline. The name refers to its shape in the view from above, not to an object that was found inside it. Researchers in the account are still discussing how its entrance widened.\n\nRibbon Hall\nLong, pale bands run across the dark walls of this coastal chamber. Visitors observe the bands from a tour boat positioned outside the entrance while a guide compares them with drawings from an earlier survey. Unlike Deep Ring, the programme does not use underwater images; the rock patterns are above the surface. The hall’s appeal comes from the contrast of colours and the story of its surveys, not from a claim that it contains a bat nursery.\n\nOn the roof of a college science building in 1976, ten first-year astronomy students discovered that waiting for a clear sky left plenty of time for conversation. They shared flasks of tea, took turns adjusting an awkward telescope and disagreed over whether a faint mark on a photograph was worth another hour outside. They became known as the Roof Circle. The name began as a joke, but the friendships grew out of those long evenings spent together.\n\nNearly half a century later, the ten live far apart and no longer share a telescope. They still reserve one weekend each year for a reunion, choosing a town that keeps the journey manageable for the largest number. When a member cannot travel, another carries a phone around the meal so that the missing friend can take part. “If one of us drops a thread, there are nine hands to catch it,” says David. The image describes mutual support, not a piece of equipment used on the roof.\n\nThe Circle does not present its history as an effortless triumph over distance. Plans have failed, messages have gone unanswered and disagreements have occasionally needed a private call rather than another remark in the group chat. The friends set aside time to repair those small breaks because the relationship gives them something valuable. As one member puts it, an old friend can remember a hope you once had without insisting that you remain the same person forever.\n\nWhen Celia began caring for her father, she stopped attending the annual weekends. Instead of repeatedly telling her to make more time, the group arranged short visits in pairs, with meals that could be reheated. She did not need to entertain everyone at once or repeat the same explanation ten times. Later, when she could travel again, nobody treated her absence as a debt to be repaid. She says their willingness to adjust was more comforting than any promise that nothing would change.\n\nTheir archive now includes photographs taken by their children. At a recent reunion, three teenagers helped identify places in the older images and asked about the strange coats their parents had worn. The conversations gave a new generation a share in the group’s stories. The Roof Circle has lasted because its members keep finding ways to meet one another’s changing lives, rather than trying to remain students forever.\n\nThe fictional city of Bracken grew around the Nera River, which flows from north to south through its oldest neighbourhoods. A line cut into the market wall records a flood that closed the central square for weeks. The same river also carried goods to that square and drew workers to its banks. In the city archive, descriptions of danger sit beside accounts of trade and celebration: the river has shaped a common life, not merely marked an edge on a map.\n\nThat central position survives in the address system. Along streets parallel to the Nera, numbers increase downstream, towards the south. Along perpendicular streets, the first numbers are beside the river and larger numbers occur farther from its bank. Knowing which kind of street an address belongs to can therefore help a newcomer interpret it. The two rules are related to the river, but they describe different directions and should not be treated as interchangeable.\n\nIn early photographs, stalls stand beside the landing steps and neighbours sit among bundles waiting to be loaded. The water’s edge joined work to leisure. People went there to buy, wash, exchange news and watch the passing boats. It was not a special attraction separated from daily life; many daily activities happened there precisely because the river was close at hand.\n\nIn 1968, planners replaced part of that shared edge with a riverside road. Former storage yards were converted into car parks. The new layout helped vehicles cross the centre, while walls and traffic made access to the bank less convenient for people on foot. No new railway station or bus terminal was built as part of this change: the account is specifically about the road and parking spaces.\n\nThe city began reversing part of that decision in 2011, opening a former traffic lane to walkers. Later plans added a riverside park while preserving strips of plants and shallower margins for wildlife. A local planner said the object was not to exclude people in the name of nature, or to turn the entire river into a sports facility. It was to let urban life return without removing the natural processes that made the river a living corridor in the first place.\n\nAn imagined vehicle called the Wayfinder would display a warning when observations suggested that weather might change sharply along a planned route. Its designers picture it drawing attention to an approaching band of heavy rain before the occupants reach it. They do not suggest that a car could stop the rain or guarantee a risk-free journey. The proposed function is a forecast, with all the uncertainty that word implies.\n\nIn the fictional account, a broad regional forecast is the starting point rather than the enemy of local information. The vehicle would add observations gathered near the journey and identify stretches where conditions might differ from the regional picture. A designer describes the goal as making uncertainty visible and useful, instead of hiding it behind a single reassuring symbol on a screen.\n\nThis account sets out a development proposal, not an evaluation of a product already in use. No road trial has established an accuracy percentage or a number of accidents prevented. The designers would have to test the system across seasons and locations before claiming a reliable benefit. A promising display on one demonstration route would not settle those questions.\n\nThe vehicle’s sensors would first collect readings of pressure, temperature and moisture. A computer model would combine them with earlier observations and estimate how conditions might develop ahead. As new measurements arrived, the estimate would be recalculated. Thus a sensor reading would be an input, while a forecast would result from interpreting several inputs through a model. Collecting a larger volume of readings alone would not perform that interpretation.\n\nLinked vehicles and roadside stations could contribute further observations. To combine them responsibly, the system would need to distinguish recent local measurements from old or distant ones. The designers call this filtering **imperative**, since a rapidly growing network could otherwise circulate the same misleading reading many times. The connection between devices would widen the evidence available to the model, without making all of that evidence equally useful.\n\nIf testing and data quality improved as hoped, the writer predicts that weather displays tailored to a route might become ordinary vehicle features in a later decade. The picture is deliberately conditional. It offers a possible direction for development, not a deadline that manufacturers have already proved they can meet. Readers are invited to imagine the change while keeping the proposal separate from demonstrated performance.",
+  "question_candidate_audit": [
+    {
+      "number": 1,
+      "label": "A",
+      "text": "It has frost curtains throughout summer.",
+      "reason": "冬霜属Frost Window且非夏",
+      "is_best": false
+    },
+    {
+      "number": 1,
+      "label": "B",
+      "text": "It contains a distinctive summer nursery.",
+      "reason": "声誉来自本地唯一记录蝙蝠育幼群",
+      "is_best": true
+    },
+    {
+      "number": 1,
+      "label": "C",
+      "text": "It holds the area’s length record.",
+      "reason": "明确不是最长",
+      "is_best": false
+    },
+    {
+      "number": 1,
+      "label": "D",
+      "text": "Its walls carry old survey drawings.",
+      "reason": "调查图对比属Ribbon Hall",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "A",
+      "text": "Autumn.",
+      "reason": "未称秋为霜幕特展",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "B",
+      "text": "Summer.",
+      "reason": "暖月只有影子非霜幕",
+      "is_best": false
+    },
+    {
+      "number": 2,
+      "label": "C",
+      "text": "Winter.",
+      "reason": "低温霜幕为冬展",
+      "is_best": true
+    },
+    {
+      "number": 2,
+      "label": "D",
+      "text": "Spring.",
+      "reason": "未称春季主展",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "A",
+      "text": "Boat-based viewing of cave features.",
+      "reason": "两者皆船上观看",
+      "is_best": true
+    },
+    {
+      "number": 3,
+      "label": "B",
+      "text": "The same underwater camera programme.",
+      "reason": "Ribbon明确不用水下影像",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "C",
+      "text": "Entry to a summer bat nursery.",
+      "reason": "育幼群属Bat Bell",
+      "is_best": false
+    },
+    {
+      "number": 3,
+      "label": "D",
+      "text": "A dry walking route through a chamber.",
+      "reason": "均非干步道入洞",
+      "is_best": false
+    },
+    {
+      "number": 4,
+      "label": "A",
+      "text": "At a reunion after they bought a new telescope.",
+      "reason": "没说重聚购新望远镜才结识",
+      "is_best": false
+    },
+    {
+      "number": 4,
+      "label": "B",
+      "text": "During shared college astronomy evenings.",
+      "reason": "共同观星长夜谈话形成",
+      "is_best": true
+    },
+    {
+      "number": 4,
+      "label": "C",
+      "text": "At a meal arranged for Celia’s father.",
+      "reason": "照料父亲为多年后",
+      "is_best": false
+    },
+    {
+      "number": 4,
+      "label": "D",
+      "text": "During a recent archive project run by teenagers.",
+      "reason": "青少年档案是后来传承",
+      "is_best": false
+    },
+    {
+      "number": 5,
+      "label": "A",
+      "text": "Readiness to support one another.",
+      "reason": "十人中一人失线其余九人接，喻互助",
+      "is_best": true
+    },
+    {
+      "number": 5,
+      "label": "B",
+      "text": "A rule that every message needs nine replies.",
+      "reason": "无九回复规则",
+      "is_best": false
+    },
+    {
+      "number": 5,
+      "label": "C",
+      "text": "An expectation that one person must organise everything.",
+      "reason": "九人共同支持非一人全办",
+      "is_best": false
+    },
+    {
+      "number": 5,
+      "label": "D",
+      "text": "A technique for operating the telescope.",
+      "reason": "明说不是屋顶器材",
+      "is_best": false
+    },
+    {
+      "number": 6,
+      "label": "A",
+      "text": "It needs care but offers lasting value.",
+      "reason": "需修复联系却有值得的关系",
+      "is_best": true
+    },
+    {
+      "number": 6,
+      "label": "B",
+      "text": "It requires every member’s life to remain unchanged.",
+      "reason": "朋友不要求人永远不变",
+      "is_best": false
+    },
+    {
+      "number": 6,
+      "label": "C",
+      "text": "It works best when disagreements are ignored.",
+      "reason": "明确处理分歧非无视",
+      "is_best": false
+    },
+    {
+      "number": 6,
+      "label": "D",
+      "text": "It becomes unnecessary once new friends appear.",
+      "reason": "未把新友当替代",
+      "is_best": false
+    },
+    {
+      "number": 7,
+      "label": "A",
+      "text": "Explain how teenagers should label every photograph.",
+      "reason": "档案只一段传承非标注手册",
+      "is_best": false
+    },
+    {
+      "number": 7,
+      "label": "B",
+      "text": "Describe how a friendship group has lasted.",
+      "reason": "起源、调整、互助、传承完整报道",
+      "is_best": true
+    },
+    {
+      "number": 7,
+      "label": "C",
+      "text": "Recommend a course in caring for parents.",
+      "reason": "照护为例非课程推荐",
+      "is_best": false
+    },
+    {
+      "number": 7,
+      "label": "D",
+      "text": "Evaluate the accuracy of an old telescope.",
+      "reason": "无望远镜性能测量",
+      "is_best": false
+    },
+    {
+      "number": 8,
+      "label": "A",
+      "text": "As a force shaping shared city life.",
+      "reason": "危险、贸易、庆典共同塑造生活",
+      "is_best": true
+    },
+    {
+      "number": 8,
+      "label": "B",
+      "text": "As a border without a role in daily activity.",
+      "reason": "沿河日常活动丰富",
+      "is_best": false
+    },
+    {
+      "number": 8,
+      "label": "C",
+      "text": "As a recent substitute for the central square.",
+      "reason": "河早于广场洪水非取代广场",
+      "is_best": false
+    },
+    {
+      "number": 8,
+      "label": "D",
+      "text": "As a natural barrier that stopped all commerce.",
+      "reason": "贸易曾靠河",
+      "is_best": false
+    },
+    {
+      "number": 9,
+      "label": "A",
+      "text": "Towards the west.",
+      "reason": "沿河非东西",
+      "is_best": false
+    },
+    {
+      "number": 9,
+      "label": "B",
+      "text": "Towards the east.",
+      "reason": "沿河非东西",
+      "is_best": false
+    },
+    {
+      "number": 9,
+      "label": "C",
+      "text": "Towards the south.",
+      "reason": "顺流由北往南",
+      "is_best": true
+    },
+    {
+      "number": 9,
+      "label": "D",
+      "text": "Towards the north.",
+      "reason": "逆流反向",
+      "is_best": false
+    },
+    {
+      "number": 10,
+      "label": "A",
+      "text": "A railway station and bus terminal.",
+      "reason": "明确不建此两种",
+      "is_best": false
+    },
+    {
+      "number": 10,
+      "label": "B",
+      "text": "A replacement channel beyond the old city.",
+      "reason": "没有迁河新槽",
+      "is_best": false
+    },
+    {
+      "number": 10,
+      "label": "C",
+      "text": "A walking lane and wildlife margins.",
+      "reason": "2011后恢复步行与自然",
+      "is_best": false
+    },
+    {
+      "number": 10,
+      "label": "D",
+      "text": "A riverside road and car parks.",
+      "reason": "公路与仓场转停车",
+      "is_best": true
+    },
+    {
+      "number": 11,
+      "label": "A",
+      "text": "A complete reconstruction of all former storage yards.",
+      "reason": "非全旧仓场复建",
+      "is_best": false
+    },
+    {
+      "number": 11,
+      "label": "B",
+      "text": "A river reserved entirely for organised sport.",
+      "reason": "明确非全河体育设施",
+      "is_best": false
+    },
+    {
+      "number": 11,
+      "label": "C",
+      "text": "A bank permanently closed to every resident.",
+      "reason": "明确非以自然排除人",
+      "is_best": false
+    },
+    {
+      "number": 11,
+      "label": "D",
+      "text": "Daily use of the bank alongside a living natural corridor.",
+      "reason": "生活返回且保自然过程",
+      "is_best": true
+    },
+    {
+      "number": 12,
+      "label": "A",
+      "text": "A means of stopping approaching rain.",
+      "reason": "不阻止雨",
+      "is_best": false
+    },
+    {
+      "number": 12,
+      "label": "B",
+      "text": "A way to replace weather with a stable road climate.",
+      "reason": "不控制或替换气候",
+      "is_best": false
+    },
+    {
+      "number": 12,
+      "label": "C",
+      "text": "A warning of possible weather changes ahead.",
+      "reason": "前方天气急变警示",
+      "is_best": true
+    },
+    {
+      "number": 12,
+      "label": "D",
+      "text": "A guarantee that all chosen routes are safe.",
+      "reason": "明确无零风险保证",
+      "is_best": false
+    },
+    {
+      "number": 13,
+      "label": "A",
+      "text": "The decade in which displays will certainly appear.",
+      "reason": "末段条件预测且无必然年份",
+      "is_best": false
+    },
+    {
+      "number": 13,
+      "label": "B",
+      "text": "The sharing of data among linked vehicles.",
+      "reason": "第五段联网共享",
+      "is_best": false
+    },
+    {
+      "number": 13,
+      "label": "C",
+      "text": "The proposed process from measurements to forecasts.",
+      "reason": "传感采集模型解释更新",
+      "is_best": true
+    },
+    {
+      "number": 13,
+      "label": "D",
+      "text": "The value established by completed road trials.",
+      "reason": "第三段明确试验未证",
+      "is_best": false
+    },
+    {
+      "number": 14,
+      "label": "A",
+      "text": "Complicated.",
+      "reason": "非复杂含义",
+      "is_best": false
+    },
+    {
+      "number": 14,
+      "label": "B",
+      "text": "Optional.",
+      "reason": "省掉会扩大误导，非可选",
+      "is_best": false
+    },
+    {
+      "number": 14,
+      "label": "C",
+      "text": "Accurate.",
+      "reason": "不是在评筛选本身精确度",
+      "is_best": false
+    },
+    {
+      "number": 14,
+      "label": "D",
+      "text": "Essential.",
+      "reason": "不筛选会传播误读，意为必要",
+      "is_best": true
+    },
+    {
+      "number": 15,
+      "label": "A",
+      "text": "A calculation of accidents already prevented.",
+      "reason": "无已避免事故计算",
+      "is_best": false
+    },
+    {
+      "number": 15,
+      "label": "B",
+      "text": "A conditional forecast of future development.",
+      "reason": "if测试数据改善则未来可能普通",
+      "is_best": true
+    },
+    {
+      "number": 15,
+      "label": "C",
+      "text": "Instructions for testing a car already on sale.",
+      "reason": "不是销售现车测试指南",
+      "is_best": false
+    },
+    {
+      "number": 15,
+      "label": "D",
+      "text": "A report of a proven vehicle launch.",
+      "reason": "非已证发布日期",
+      "is_best": false
+    }
+  ],
+  "subgroup_response_counts": [
+    3,
+    4,
+    4,
+    4
+  ],
+  "subgroup_material_units": [
+    4,
+    1,
+    1,
+    1
+  ],
+  "load_measure": {
+    "body_English_words": 1489,
+    "body_Han_characters": 0,
+    "stem_English_words": 135,
+    "stem_Han_characters": 15,
+    "options_English_words_with_repeated_bank": 357,
+    "options_Han_characters": 0,
+    "output_response_positions": 15,
+    "output_requirement_English_words": 8,
+    "output_requirement_Han_characters": 85,
+    "A_cave_profiles": 4,
+    "A_intro_English_words": 33,
+    "forecast_paragraphs": 6
+  },
+  "source_original_key_not_gold": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false
+}
