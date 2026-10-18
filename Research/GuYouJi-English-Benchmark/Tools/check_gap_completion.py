@@ -61,6 +61,9 @@ def check(data, plan):
             if b.get('task_mode') == 'word_order_five':
                 from compile_word_order_groups import check as check_word_order
                 check_word_order(g,a,b,source)
+            if b.get('task_mode') == 'course_reference_ten':
+                from compile_course_reference import check as check_course_reference
+                check_course_reference(g,a,b,source)
             if b.get('task_mode') == 'complete_ten_four_cloze':
                 from compile_ten_four_cloze import check as check_ten_four_cloze
                 check_ten_four_cloze(g,a,b,source)
@@ -414,7 +417,7 @@ def check(data, plan):
                 assert q['acceptedAnswers'] and len(set(q['acceptedAnswers'])) == len(q['acceptedAnswers'])
                 c = q['fillMarking']
                 assert c['review'] == 'author_context_checked' and c['version'] == 1
-                expected_protocol='english_phrase_v1' if a.get('given_forms5') or a.get('paired_word_fill') or a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') or a.get('keyword_transformation') or a.get('listening_sentence_completion') or a.get('word_bank_completion') or a.get('bounded_source_prompt_completion') or a.get('primary_whole_listening') or a.get('junior_source_bound') or a.get('controlled_sentence_transformation') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
+                expected_protocol='english_phrase_v1' if a.get('course_reference_ten') or a.get('given_forms5') or a.get('paired_word_fill') or a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') or a.get('keyword_transformation') or a.get('listening_sentence_completion') or a.get('word_bank_completion') or a.get('bounded_source_prompt_completion') or a.get('primary_whole_listening') or a.get('junior_source_bound') or a.get('controlled_sentence_transformation') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
                 if meta['family']=='listening_table_completion' and a.get('junior_source_bound'):
                     if meta['grade']==7 and q['number'] in [1,4]:expected_protocol='small_count_v1'
                     elif meta['grade']==9 and q['number']==1:expected_protocol='clock_hour_v1'

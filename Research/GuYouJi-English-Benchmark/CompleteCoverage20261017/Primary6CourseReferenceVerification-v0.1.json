@@ -1,0 +1,105 @@
+{
+  "version": "0.1",
+  "batch": {
+    "path": "CompleteCoverage20261017/Primary6CourseReferenceOriginalBatch-v0.2.json",
+    "sha256": "f449aa5a002f9f6da015b9ae85982526c2a0407e9c8d8244eff5a933a6dac310"
+  },
+  "inventory": {
+    "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.102.json",
+    "sha256": "4db622f562717a9b13296dc069f2c260ef23c6d4b0c8aabc85e8d7991939a210"
+  },
+  "contracts": {
+    "path": "build/english-benchmark-authority-20261017/course655-controls-v0.2.json",
+    "sha256": "4038c1989b493a055395b0699495aeaf652919eeedbdfd660817b1128947bd02"
+  },
+  "browser": {
+    "path": "build/english-benchmark-authority-20261017/course655-browser-v0.1.json",
+    "sha256": "6a812769d102cebc5ebca286c7baafb16ca4e55958237f2c71debe58d11c2b23"
+  },
+  "family_load": {
+    "path": "build/english-benchmark-authority-20261017/course655-family-load-v0.1.json",
+    "sha256": "8c614df9d35b407ffc63aa5fa746c165e25fac31ee4383be5b6d1810d3c1022c"
+  },
+  "final_check": {
+    "path": "build/english-benchmark-authority-20261017/course655-final-check-v0.1.json",
+    "sha256": "f8b2b129ed2a53390313c5d7a4053095ad90d124eeb41f1571d68e92d19fead6"
+  },
+  "screenshot": {
+    "path": "build/english-benchmark-authority-20261017/course655-review-v0.1.png",
+    "sha256": "ac2b5b489dad707836b6fd6bc2c01d6035d86c1e1887fdcfc4face799aa0070d"
+  },
+  "archive": {
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.176.json",
+    "sha256": "c97344ed61330c9c373e065ca915c37a265b7342c30733500762ab538baa31bf"
+  },
+  "targeted_restores": [
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/review655-course-reference-delta-v0.2.json",
+        "sha256": "9dd1839972fd8cfaf23fc3de3c41b4ff34ea4065077eb16857a64ee54424572a"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/course655-metadata-v0.2.json",
+        "sha256": "735444fc5ae9f9f686c0e04bf6642d27433e181fe49aec0379d7650f63aa6e0b"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/course655-review-v0.1.png",
+        "sha256": "ac2b5b489dad707836b6fd6bc2c01d6035d86c1e1887fdcfc4face799aa0070d"
+      },
+      "restored_SHA_verified": true
+    }
+  ],
+  "new_complete_groups": 3,
+  "new_responses": 30,
+  "current_groups": 655,
+  "current_responses": 4391,
+  "current_cells": 192,
+  "actual_correct_UI_responses": 30,
+  "actual_case_space_normalized_UI_responses": 30,
+  "boundary_vectors": 3,
+  "wrong_initial_and_two_words_different": true,
+  "unlisted_same_initial_and_numeric_syntax_review": true,
+  "source_author_negative_controls": 45,
+  "initial_constraint_regression": {
+    "command": "node Research/GuYouJi-English-Benchmark/Tools/check_quality_review_initial_constraint.cjs",
+    "passed": true,
+    "synthetic_cases": 13,
+    "unchanged_old_groups": 3,
+    "old_positions": 24,
+    "old_accepted_forms": 26
+  },
+  "no_two_or_three_answer_cap_positive_structural_fixture": true,
+  "all_three_rationale_and_reset": true,
+  "source_original_course_positions_matched": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    8,
+    10
+  ],
+  "source_original_course_positions_missing": [
+    4,
+    7,
+    9
+  ],
+  "source_original_inputs_not_upgraded": true,
+  "original_edition_and_formal_key_unknown": true,
+  "visible_reference_practice_not_prior_class_or_delayed_recall": true,
+  "remaining_explicit_original_count_configurations": 0,
+  "source_quality_or_coverage_gaps_not_closed": true,
+  "paused_old_groups_preserved": 14,
+  "paused_old_responses_preserved": 133,
+  "pinned_revisions_preserved": 33,
+  "new_source_papers": 0,
+  "new_source_modes": 0,
+  "all_required_types_complete": false,
+  "independent_teacher_student_commercial_production": false
+}

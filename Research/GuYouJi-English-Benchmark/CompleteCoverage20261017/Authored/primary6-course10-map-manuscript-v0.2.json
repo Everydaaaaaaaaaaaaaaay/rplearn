@@ -1,0 +1,172 @@
+{
+  "version": "0.2",
+  "id": "primary6-course10-map",
+  "grade": "primary6",
+  "family": "context_word_completion",
+  "title": "小六课文参照回填：一张周末路线图",
+  "source_binding": "p6-course-reference10-owned-packets",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6CourseReferenceSourceBindings-v0.1.json",
+    "sha256": "37172c0a24b83b057e409254fa33834af24b6522634400001a2997a500447739"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.courseinitial10",
+  "instruction": "先阅读本套自有课文配套，再依据配套原句完成全部十题。每空一词，首字母已给；输入完整单词（含首字母）。配套随题可见，可自愿合上后练习，但本页不把它称为受控的延时记忆测验。未列出的表达暂标待复核。",
+  "source_notice": "主参照原教辅“根据课文内容、首字母已给、每空一词”的完整十句结构，原1/3/10文字及2/5/6/8页图共对应7/10；4/7/9课文对应、具体版次和正式键仍缺。这里另外编齐本套自有课文配套，不是补写原课文，也不以作者全输入升级源完整或gold。四段配套是作者编排选择，不据此称原卷只有四段；页面允许直接参照，未复现此前课堂教学、背诵或延时条件，不能当记忆能力/年级效度已验证。独立教研、学生、商用和生产未验证。",
+  "lessons": [
+    {
+      "title": "A. At the bookshop",
+      "text": "Nina and her father visited a new bookshop on Friday. The maps were behind the counter. A shop assistant showed them a small town map. Follow the red line to the art shop. This was the first instruction printed on it. Nina bought a pencil at the bookshop before they went home."
+    },
+    {
+      "title": "B. The Saturday plan",
+      "text": "The next morning, Nina invited her cousin to join her. There were twelve pictures on the town map. They decided to visit three of the places. Nina said, \"We must arrive before the doors close at four.\" Nina wrote that reminder on a small card. The card fit inside her coat pocket."
+    },
+    {
+      "title": "C. A change of plan",
+      "text": "Their first stop was the old museum beside the lake. They wanted to see a model ship. Nina later wrote in her diary, \"We stayed inside because the rain was heavy.\" From a window, they watched people opening umbrellas. When the rain stopped, they continued their walk to the art shop."
+    },
+    {
+      "title": "D. Checking the route",
+      "text": "The walk from the lake took a quarter of an hour. The cousins stopped once to check the map. The art shop was on the east side of the square. They found it beside a bakery. Nina chose a postcard with a picture of the model ship on it."
+    }
+  ],
+  "slots": [
+    {
+      "number": 1,
+      "lesson": 1,
+      "frame": "The maps were b____ the counter.",
+      "initial": "b",
+      "accepted": [
+        "behind"
+      ],
+      "reference_sentence": "The maps were behind the counter.",
+      "grounds": {
+        "behind": "配套A明确地图在柜台后面，原词behind。"
+      }
+    },
+    {
+      "number": 2,
+      "lesson": 1,
+      "frame": "F____ the red line to the art shop.",
+      "initial": "F",
+      "accepted": [
+        "Follow"
+      ],
+      "reference_sentence": "Follow the red line to the art shop.",
+      "grounds": {
+        "Follow": "配套A地图原指令Follow，输入大小写归一后接受。"
+      }
+    },
+    {
+      "number": 3,
+      "lesson": 1,
+      "frame": "Nina b____ a pencil at the bookshop before they went home.",
+      "initial": "b",
+      "accepted": [
+        "bought"
+      ],
+      "reference_sentence": "Nina bought a pencil at the bookshop before they went home.",
+      "grounds": {
+        "bought": "配套A具体已发生的购买动作原词bought。"
+      }
+    },
+    {
+      "number": 4,
+      "lesson": 2,
+      "frame": "There were t____ pictures on the town map.",
+      "initial": "t",
+      "accepted": [
+        "twelve"
+      ],
+      "reference_sentence": "There were twelve pictures on the town map.",
+      "grounds": {
+        "twelve": "配套B明示地图十二张图片，原词twelve。"
+      }
+    },
+    {
+      "number": 5,
+      "lesson": 2,
+      "frame": "We must a____ before the doors close at four.",
+      "initial": "a",
+      "accepted": [
+        "arrive"
+      ],
+      "reference_sentence": "We must arrive before the doors close at four.",
+      "grounds": {
+        "arrive": "配套B提醒四点关门前到达，原词arrive。"
+      }
+    },
+    {
+      "number": 6,
+      "lesson": 2,
+      "frame": "Nina wrote that reminder on a s____ card.",
+      "initial": "s",
+      "accepted": [
+        "small"
+      ],
+      "reference_sentence": "Nina wrote that reminder on a small card.",
+      "grounds": {
+        "small": "配套B明确提示写在小卡片，原词small。"
+      }
+    },
+    {
+      "number": 7,
+      "lesson": 3,
+      "frame": "Their first stop was the old m____ beside the lake.",
+      "initial": "m",
+      "accepted": [
+        "museum"
+      ],
+      "reference_sentence": "Their first stop was the old museum beside the lake.",
+      "grounds": {
+        "museum": "配套C第一站是湖边museum，原词给出具体场所。"
+      }
+    },
+    {
+      "number": 8,
+      "lesson": 3,
+      "frame": "We stayed inside b____ the rain was heavy.",
+      "initial": "b",
+      "accepted": [
+        "because"
+      ],
+      "reference_sentence": "We stayed inside because the rain was heavy.",
+      "grounds": {
+        "because": "配套C用because解释留在室内的原因。"
+      }
+    },
+    {
+      "number": 9,
+      "lesson": 4,
+      "frame": "The walk from the lake took a q____ of an hour.",
+      "initial": "q",
+      "accepted": [
+        "quarter"
+      ],
+      "reference_sentence": "The walk from the lake took a quarter of an hour.",
+      "grounds": {
+        "quarter": "配套D明示步行四分之一小时，原词quarter。"
+      }
+    },
+    {
+      "number": 10,
+      "lesson": 4,
+      "frame": "The art shop was on the e____ side of the square.",
+      "initial": "e",
+      "accepted": [
+        "east"
+      ],
+      "reference_sentence": "The art shop was on the east side of the square.",
+      "grounds": {
+        "east": "配套D明确广场东侧，原词east，不由地图常识推方位。"
+      }
+    }
+  ],
+  "source_input_not_repaired": true,
+  "author_packet_is_complete": true,
+  "study_visibility": "visible_reference_practice_not_controlled_delayed_recall",
+  "previous_manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-course10-map-manuscript-v0.1.json",
+    "sha256": "a09c19a9bf476b4139257b510e00c5ef43c2bb9d400f39eaf387a9e65aaf2b98"
+  }
+}

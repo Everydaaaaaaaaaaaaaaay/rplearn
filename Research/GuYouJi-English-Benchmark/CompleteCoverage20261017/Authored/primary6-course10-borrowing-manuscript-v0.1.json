@@ -1,0 +1,168 @@
+{
+  "version": "0.1",
+  "id": "primary6-course10-borrowing",
+  "grade": "primary6",
+  "family": "context_word_completion",
+  "title": "小六课文参照回填：借物与出行",
+  "source_binding": "p6-course-reference10-owned-packets",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6CourseReferenceSourceBindings-v0.1.json",
+    "sha256": "37172c0a24b83b057e409254fa33834af24b6522634400001a2997a500447739"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.courseinitial10",
+  "instruction": "先阅读本套自有课文配套，再依据配套原句完成全部十题。每空一词，首字母已给；输入完整单词（含首字母）。配套随题可见，可自愿合上后练习，但本页不把它称为受控的延时记忆测验。未列出的表达暂标待复核。",
+  "source_notice": "主参照原教辅“根据课文内容、首字母已给、每空一词”的完整十句结构，原1/3/10文字及2/5/6/8页图共对应7/10；4/7/9课文对应、具体版次和正式键仍缺。这里另外编齐本套自有课文配套，不是补写原课文，也不以作者全输入升级源完整或gold。四段配套是作者编排选择，不据此称原卷只有四段；页面允许直接参照，未复现此前课堂教学、背诵或延时条件，不能当记忆能力/年级效度已验证。独立教研、学生、商用和生产未验证。",
+  "lessons": [
+    {
+      "title": "A. The club room",
+      "text": "Our club room opens after lunch on Tuesdays. Members may borrow a ball for one day. The borrowing desk is at the front of the room. The balls stand in a wide basket. Before taking a ball, members write their names in the blue book. They return the ball to the same place the next day."
+    },
+    {
+      "title": "B. A visit to the theatre",
+      "text": "Last Saturday, my sister and I went to a puppet show. I kept my ticket in a coat pocket. The theatre was across the river. We took the second bus after lunch. From the window, we could see the water and a line of small boats. The bus stopped near the theatre door."
+    },
+    {
+      "title": "C. The meeting place",
+      "text": "A guide met us at the theatre. Walk for one minute from the bus stop. Then you will see a yellow door. Remember to bring your notebook. The guide wanted us to draw one puppet after the show. My sister brought a pencil for each of us."
+    },
+    {
+      "title": "D. Back at home",
+      "text": "At home, I drew the fox puppet at my desk. The upstairs room was quiet that evening. I could hear the clock, but nobody was talking. My school bag was empty after I took out all the books. I put the drawing in it so I could show my friends the next day."
+    }
+  ],
+  "slots": [
+    {
+      "number": 1,
+      "lesson": 1,
+      "frame": "Members may b____ a ball for one day.",
+      "initial": "b",
+      "accepted": [
+        "borrow"
+      ],
+      "reference_sentence": "Members may borrow a ball for one day.",
+      "grounds": {
+        "borrow": "配套A说明成员借球一天，原词borrow与may后原形对应。"
+      }
+    },
+    {
+      "number": 2,
+      "lesson": 1,
+      "frame": "The borrowing desk is at the f____ of the room.",
+      "initial": "f",
+      "accepted": [
+        "front"
+      ],
+      "reference_sentence": "The borrowing desk is at the front of the room.",
+      "grounds": {
+        "front": "配套A把借物台置于房间前部，原词front。"
+      }
+    },
+    {
+      "number": 3,
+      "lesson": 1,
+      "frame": "The balls stand in a wide b____.",
+      "initial": "b",
+      "accepted": [
+        "basket"
+      ],
+      "reference_sentence": "The balls stand in a wide basket.",
+      "grounds": {
+        "basket": "配套A给出球所在容器为basket。"
+      }
+    },
+    {
+      "number": 4,
+      "lesson": 2,
+      "frame": "I kept my t____ in a coat pocket.",
+      "initial": "t",
+      "accepted": [
+        "ticket"
+      ],
+      "reference_sentence": "I kept my ticket in a coat pocket.",
+      "grounds": {
+        "ticket": "配套B给出放在外套口袋里的入场凭证ticket。"
+      }
+    },
+    {
+      "number": 5,
+      "lesson": 2,
+      "frame": "The theatre was a____ the river.",
+      "initial": "a",
+      "accepted": [
+        "across"
+      ],
+      "reference_sentence": "The theatre was across the river.",
+      "grounds": {
+        "across": "配套B写剧院在河对面，用across。"
+      }
+    },
+    {
+      "number": 6,
+      "lesson": 2,
+      "frame": "We took the s____ bus after lunch.",
+      "initial": "s",
+      "accepted": [
+        "second"
+      ],
+      "reference_sentence": "We took the second bus after lunch.",
+      "grounds": {
+        "second": "配套B写午饭后第二班车，原词second。"
+      }
+    },
+    {
+      "number": 7,
+      "lesson": 3,
+      "frame": "Walk for one m____ from the bus stop.",
+      "initial": "m",
+      "accepted": [
+        "minute"
+      ],
+      "reference_sentence": "Walk for one minute from the bus stop.",
+      "grounds": {
+        "minute": "配套C给出步行时间one minute。"
+      }
+    },
+    {
+      "number": 8,
+      "lesson": 3,
+      "frame": "Remember to b____ your notebook.",
+      "initial": "b",
+      "accepted": [
+        "bring"
+      ],
+      "reference_sentence": "Remember to bring your notebook.",
+      "grounds": {
+        "bring": "配套C的原指令为bring，to后原形。"
+      }
+    },
+    {
+      "number": 9,
+      "lesson": 4,
+      "frame": "The upstairs room was q____ that evening.",
+      "initial": "q",
+      "accepted": [
+        "quiet"
+      ],
+      "reference_sentence": "The upstairs room was quiet that evening.",
+      "grounds": {
+        "quiet": "配套D写楼上房间安静，原词quiet。"
+      }
+    },
+    {
+      "number": 10,
+      "lesson": 4,
+      "frame": "My school bag was e____ after I took out all the books.",
+      "initial": "e",
+      "accepted": [
+        "empty"
+      ],
+      "reference_sentence": "My school bag was empty after I took out all the books.",
+      "grounds": {
+        "empty": "配套D说明拿出全部书后书包空了，原词empty。"
+      }
+    }
+  ],
+  "source_input_not_repaired": true,
+  "author_packet_is_complete": true,
+  "study_visibility": "visible_reference_practice_not_controlled_delayed_recall"
+}

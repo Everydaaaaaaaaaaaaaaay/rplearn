@@ -1,0 +1,172 @@
+{
+  "version": "0.2",
+  "id": "primary6-course10-parade",
+  "grade": "primary6",
+  "family": "context_word_completion",
+  "title": "小六课文参照回填：小镇游行日",
+  "source_binding": "p6-course-reference10-owned-packets",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6CourseReferenceSourceBindings-v0.1.json",
+    "sha256": "37172c0a24b83b057e409254fa33834af24b6522634400001a2997a500447739"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.courseinitial10",
+  "instruction": "先阅读本套自有课文配套，再依据配套原句完成全部十题。每空一词，首字母已给；输入完整单词（含首字母）。配套随题可见，可自愿合上后练习，但本页不把它称为受控的延时记忆测验。未列出的表达暂标待复核。",
+  "source_notice": "主参照原教辅“根据课文内容、首字母已给、每空一词”的完整十句结构，原1/3/10文字及2/5/6/8页图共对应7/10；4/7/9课文对应、具体版次和正式键仍缺。这里另外编齐本套自有课文配套，不是补写原课文，也不以作者全输入升级源完整或gold。四段配套是作者编排选择，不据此称原卷只有四段；页面允许直接参照，未复现此前课堂教学、背诵或延时条件，不能当记忆能力/年级效度已验证。独立教研、学生、商用和生产未验证。",
+  "lessons": [
+    {
+      "title": "A. Getting ready",
+      "text": "Our town held a small parade on Sunday. A blue flag hung above the meeting point. We packed the costumes on Saturday evening. Finally, we put the hats in a large bag. On Sunday, we ate breakfast at seven. The bread was still warm, and there was a bowl of fruit on the table."
+    },
+    {
+      "title": "B. Walking to the square",
+      "text": "My brother and I walked together to the square. We left the house after the clock struck eight. The streets were still wet from the rain. We walked slowly on the wet stones. At the square, a band was getting ready to play. We waited beside a flower stall."
+    },
+    {
+      "title": "C. A note for the helpers",
+      "text": "One helper could not find the costume bag. I sent a message to the group leader. She told us where to look. The bag was between two chairs near the stage. We opened it and gave everyone a hat. Then we carried the empty bag back to the stall."
+    },
+    {
+      "title": "D. The last turn",
+      "text": "At the end of the parade, the band played a short song. The children quickly formed a line beside the fountain. Everyone could see the small stage. We had enough space for all twelve dancers. When the song ended, the dancers bowed and the people clapped."
+    }
+  ],
+  "slots": [
+    {
+      "number": 1,
+      "lesson": 1,
+      "frame": "A b____ flag hung above the meeting point.",
+      "initial": "b",
+      "accepted": [
+        "blue"
+      ],
+      "reference_sentence": "A blue flag hung above the meeting point.",
+      "grounds": {
+        "blue": "配套A明确旗的颜色是blue，不凭一般常识猜颜色。"
+      }
+    },
+    {
+      "number": 2,
+      "lesson": 1,
+      "frame": "F____, we put the hats in a large bag.",
+      "initial": "F",
+      "accepted": [
+        "Finally"
+      ],
+      "reference_sentence": "Finally, we put the hats in a large bag.",
+      "grounds": {
+        "Finally": "配套A用Finally标打包的最后一步，大小写归一同等接受。"
+      }
+    },
+    {
+      "number": 3,
+      "lesson": 1,
+      "frame": "On Sunday, we ate b____ at seven.",
+      "initial": "b",
+      "accepted": [
+        "breakfast"
+      ],
+      "reference_sentence": "On Sunday, we ate breakfast at seven.",
+      "grounds": {
+        "breakfast": "配套A给出星期天七点吃的是breakfast。"
+      }
+    },
+    {
+      "number": 4,
+      "lesson": 2,
+      "frame": "My brother and I walked t____ to the square.",
+      "initial": "t",
+      "accepted": [
+        "together"
+      ],
+      "reference_sentence": "My brother and I walked together to the square.",
+      "grounds": {
+        "together": "配套B说明兄弟结伴步行，原词together。"
+      }
+    },
+    {
+      "number": 5,
+      "lesson": 2,
+      "frame": "We left the house a____ the clock struck eight.",
+      "initial": "a",
+      "accepted": [
+        "after"
+      ],
+      "reference_sentence": "We left the house after the clock struck eight.",
+      "grounds": {
+        "after": "配套B把出门放在敲八点之后，原词after。"
+      }
+    },
+    {
+      "number": 6,
+      "lesson": 2,
+      "frame": "We walked s____ on the wet stones.",
+      "initial": "s",
+      "accepted": [
+        "slowly"
+      ],
+      "reference_sentence": "We walked slowly on the wet stones.",
+      "grounds": {
+        "slowly": "配套B明确湿石上慢走，原词slowly。"
+      }
+    },
+    {
+      "number": 7,
+      "lesson": 3,
+      "frame": "I sent a m____ to the group leader.",
+      "initial": "m",
+      "accepted": [
+        "message"
+      ],
+      "reference_sentence": "I sent a message to the group leader.",
+      "grounds": {
+        "message": "配套C说明发给领队的信息为message。"
+      }
+    },
+    {
+      "number": 8,
+      "lesson": 3,
+      "frame": "The bag was b____ two chairs near the stage.",
+      "initial": "b",
+      "accepted": [
+        "between"
+      ],
+      "reference_sentence": "The bag was between two chairs near the stage.",
+      "grounds": {
+        "between": "配套C明确包在两椅之间，原词between。"
+      }
+    },
+    {
+      "number": 9,
+      "lesson": 4,
+      "frame": "The children q____ formed a line beside the fountain.",
+      "initial": "q",
+      "accepted": [
+        "quickly"
+      ],
+      "reference_sentence": "The children quickly formed a line beside the fountain.",
+      "grounds": {
+        "quickly": "配套D写孩子们迅速排队，原词quickly。"
+      }
+    },
+    {
+      "number": 10,
+      "lesson": 4,
+      "frame": "We had e____ space for all twelve dancers.",
+      "initial": "e",
+      "accepted": [
+        "enough"
+      ],
+      "reference_sentence": "We had enough space for all twelve dancers.",
+      "grounds": {
+        "enough": "配套D明确空间足够容十二名舞者，原词enough。"
+      }
+    }
+  ],
+  "source_input_not_repaired": true,
+  "author_packet_is_complete": true,
+  "study_visibility": "visible_reference_practice_not_controlled_delayed_recall",
+  "previous_manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-course10-parade-manuscript-v0.1.json",
+    "sha256": "83bcaffa4526a53141a7b6a144f4935c26a90ce2e46fa91c17942f422cc431d7"
+  }
+}
