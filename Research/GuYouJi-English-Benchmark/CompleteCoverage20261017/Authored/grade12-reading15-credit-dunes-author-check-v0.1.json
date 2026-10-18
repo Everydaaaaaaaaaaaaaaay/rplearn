@@ -1,0 +1,1030 @@
+{
+  "version": "0.1",
+  "id": "grade12-reading15-credit-dunes",
+  "grade": 12,
+  "questions": 15,
+  "candidate_sha256": "64121d169f80172b54ed55dee433b26e0f471e53493a044f2c730b9f02b09dfe",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade12-reading15-credit-dunes-manuscript-v0.1.json",
+    "sha256": "842d5d806f734296efb16eb844321be6d5f916470e8e6dd6b2ec76b93662aa02"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolReadingSourceBindings-v0.6.json",
+    "sha256": "d046d43106ae6436be9b569b9436ec4607f95f9022b57d63d953d5eb9b861298"
+  },
+  "source_binding": "grade12-yali2026-21cnjy25133058.reading.complete_section.binding",
+  "school_complete_senior_reading_section": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "A组 · What is the minimum total of course credits required for a student entering Year 9 in September 2025?",
+      "options": [
+        [
+          "A",
+          "32 credits."
+        ],
+        [
+          "B",
+          "34 credits."
+        ],
+        [
+          "C",
+          "30 credits."
+        ],
+        [
+          "D",
+          "36 credits."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：总数应为30，在线学分不是另加，伙伴课程上限也不是额外学分，社区40小时不入此和；B：总数应为30，在线学分不是另加，伙伴课程上限也不是额外学分，社区40小时不入此和；C：必修18加选修12共30，在线2计入这两类且社区时数非学分；D：总数应为30，在线学分不是另加，伙伴课程上限也不是额外学分，社区40小时不入此和",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "nested_credit_total"
+    },
+    {
+      "number": 2,
+      "stem": "A组 · When does the stated literacy rule take effect?",
+      "options": [
+        [
+          "A",
+          "1 September 2027."
+        ],
+        [
+          "B",
+          "1 September 2025."
+        ],
+        [
+          "C",
+          "1 January 2026."
+        ],
+        [
+          "D",
+          "1 September 2026."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：非所写生效日，不要把在线要求入学批次或其他年月当生效日；B：非所写生效日，不要把在线要求入学批次或其他年月当生效日；C：非所写生效日，不要把在线要求入学批次或其他年月当生效日；D：正文生效日期为1 September 2026",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "policy_effective_date"
+    },
+    {
+      "number": 3,
+      "stem": "A组 · What must a student aged 18 or over do before community activity?",
+      "options": [
+        [
+          "A",
+          "Choose a personal community-hour minimum."
+        ],
+        [
+          "B",
+          "Discuss and select the activity with a parent as a compulsory step."
+        ],
+        [
+          "C",
+          "Check that the proposed activity qualifies under the school’s rules."
+        ],
+        [
+          "D",
+          "Count online course credits as community-service hours."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：最低40小时由规则规定非自选；B：未满18才有该讨论条件，不对成人强加；C：成人仍须核活动符合批准规则，亲属讨论条款仅未满18；D：小时与学分明确分开",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "adult_conditional_requirement"
+    },
+    {
+      "number": 4,
+      "stem": "B组 · What problem is suggested by the footprints Anya noticed?",
+      "options": [
+        [
+          "A",
+          "All damage had been caused by volunteers entering unsafe areas."
+        ],
+        [
+          "B",
+          "The reserve’s young plants had become fully resistant to disturbance."
+        ],
+        [
+          "C",
+          "Some visitors had left the marked route near a damaged barrier."
+        ],
+        [
+          "D",
+          "The team had completed every repair the previous winter."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：明确不冒险且无全因归责；B：正因易受干扰才保护；C：首段脚印与受损路径屏障相邻并说明越线风险；D：无全部完成信息",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "supported_factor_inference"
+    },
+    {
+      "number": 5,
+      "stem": "B组 · What does “dismantled” mean in paragraph 3?",
+      "options": [
+        [
+          "A",
+          "Painted over."
+        ],
+        [
+          "B",
+          "Took apart."
+        ],
+        [
+          "C",
+          "Advertised for sale."
+        ],
+        [
+          "D",
+          "Left in position."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：不是覆盖油漆；B：下一句明确拆开并移走散件；C：无售卖；D：移除旧件与原位保留相反",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "context_word_meaning"
+    },
+    {
+      "number": 6,
+      "stem": "B组 · What is paragraph 4 mainly about?",
+      "options": [
+        [
+          "A",
+          "A comparison of the villages’ visitor numbers."
+        ],
+        [
+          "B",
+          "How shared records help the two village teams cooperate."
+        ],
+        [
+          "C",
+          "Why all observation should be left to one village."
+        ],
+        [
+          "D",
+          "The reasons for closing every path in the reserve."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：主题是记录互通不是客流比较；B：同位置标签及交换日期记录减少重复误识；C：两村协作非单村垄断；D：没有全封路",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "paragraph_main_idea"
+    },
+    {
+      "number": 7,
+      "stem": "B组 · What does the report suggest about the volunteers’ work?",
+      "options": [
+        [
+          "A",
+          "It requires both practical effort and careful judgement."
+        ],
+        [
+          "B",
+          "It has removed every uncertainty about visitor behaviour."
+        ],
+        [
+          "C",
+          "It succeeds simply through enthusiasm without training."
+        ],
+        [
+          "D",
+          "It is of little value unless its effects have a single cause."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：拆件避免踩坏环境及安全记录共同体现；B：保留天气客流等不确定；C：第三段明说不止热情并先观察学习；D：允许多因素仍持续核读",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "work_characterization"
+    },
+    {
+      "number": 8,
+      "stem": "C组 · How does passage C begin?",
+      "options": [
+        [
+          "A",
+          "By giving the author’s childhood memory."
+        ],
+        [
+          "B",
+          "By defining a brain region."
+        ],
+        [
+          "C",
+          "By inviting the reader to imagine a preparation situation."
+        ],
+        [
+          "D",
+          "By reporting a large controlled experiment."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：非作者童年回忆；B：无脑区定义；C：开头Imagine准备课堂演示；D：未以大规模对照开头",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "context_opening_function"
+    },
+    {
+      "number": 9,
+      "stem": "C组 · Which result is explicitly reported about Mara’s experience?",
+      "options": [
+        [
+          "A",
+          "She said she felt more prepared to begin."
+        ],
+        [
+          "B",
+          "She outperformed a large comparison group."
+        ],
+        [
+          "C",
+          "Her brain activity matched a real demonstration exactly."
+        ],
+        [
+          "D",
+          "Her strength increased after she pictured the objects."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：第三段仅报告自觉更有准备；B：没有大对照组；C：明确未记脑活动；D：未测且不报告体力增加",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "narrow_result_scope"
+    },
+    {
+      "number": 10,
+      "stem": "C组 · Which action best illustrates the mental rehearsal described?",
+      "options": [
+        [
+          "A",
+          "A volunteer copies a timetable without thinking through an interaction."
+        ],
+        [
+          "B",
+          "A musician pictures a difficult transition before trying it on an instrument."
+        ],
+        [
+          "C",
+          "A class watches a recording with no plan to perform the task."
+        ],
+        [
+          "D",
+          "A presenter tests whether an object fits by lifting it physically."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：抄表不是心中预演动作；B：第四段明确此类先想再实试；C：观看不等自己预演任务；D：实际测试非心中预演本身",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "mental_rehearsal_application"
+    },
+    {
+      "number": 11,
+      "stem": "C组 · What is the main idea of passage C?",
+      "options": [
+        [
+          "A",
+          "Imagining a sequence can help inspect a plan but cannot guarantee its success."
+        ],
+        [
+          "B",
+          "A prepared audience will never ask unexpected questions."
+        ],
+        [
+          "C",
+          "Mental rehearsal has all the effects of physical practice."
+        ],
+        [
+          "D",
+          "Confidence alone can certify that a demonstration is safe."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：全文功能及限制一起保留；B：最后承认真实受众不同；C：第三段明确无此普遍证据；D：自评不提供安全或成功保证",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "whole_main_idea"
+    },
+    {
+      "number": 12,
+      "stem": "D组 · What coordinates the panel’s repair sequence?",
+      "options": [
+        [
+          "A",
+          "A single sensor that also manufactures every replacement unit."
+        ],
+        [
+          "B",
+          "A change in an organism’s biological cells."
+        ],
+        [
+          "C",
+          "An unlimited supply of energy produced by the patch."
+        ],
+        [
+          "D",
+          "A controller using signals and the stored layout."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：传感器不制造补片各部件分工；B：明确工程模型非生物再生；C：明确非无限能源；D：第二段控制器核信号对布局导向",
+      "materialLabel": "D",
+      "points": 2.5,
+      "operation": "mechanism_controller"
+    },
+    {
+      "number": 13,
+      "stem": "D组 · What is the controller’s main role?",
+      "options": [
+        [
+          "A",
+          "To use location information to guide and align the patch."
+        ],
+        [
+          "B",
+          "To supply all replacement material itself."
+        ],
+        [
+          "C",
+          "To eliminate the need for any damage sensor."
+        ],
+        [
+          "D",
+          "To attach every patch before checking its position."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：核位置并引导对准后才固定；B：明确非提供补片材料；C：仍依赖感知；D：顺序明确先对准再固定",
+      "materialLabel": "D",
+      "points": 2.5,
+      "operation": "process_role"
+    },
+    {
+      "number": 14,
+      "stem": "D组 · What is the project’s stated future objective?",
+      "options": [
+        [
+          "A",
+          "To replace the location code with an untested guess."
+        ],
+        [
+          "B",
+          "To develop more reliable coatings for small-defect repair."
+        ],
+        [
+          "C",
+          "To prove that the panels already work on all uneven surfaces."
+        ],
+        [
+          "D",
+          "To show that human injuries can now be treated by the device."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：无以猜测替代位置码主张；B：第四段明确未来目标非已实现工业收益；C：不平表面未测；D：明确非人体治疗",
+      "materialLabel": "D",
+      "points": 2.5,
+      "operation": "future_application_aim"
+    },
+    {
+      "number": 15,
+      "stem": "D组 · How does the report view the design idea?",
+      "options": [
+        [
+          "A",
+          "As a finished product needing no further trials."
+        ],
+        [
+          "B",
+          "As worthless because it requires several components."
+        ],
+        [
+          "C",
+          "As proof that one component repairs every kind of damage."
+        ],
+        [
+          "D",
+          "As promising, with important limits still to test."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：明确尚非耐用产品；B：并未因协作而否定价值；C：强调多部件协同非万能；D：末两段看好并列未测试条件",
+      "materialLabel": "D",
+      "points": 2.5,
+      "operation": "research_author_attitude"
+    }
+  ],
+  "canonical_response_block_sha256": "a962a6a827343c6a3aa4bf835c36d7e4337a2483fe2f4a6d7b74827eccbf0133",
+  "student_passage": "### A组（第1—3题）\n\n#### A1\n\n### Northbay Upper School certificate requirements\n\nThe following rules belong to an invented school. Students must meet all the requirements to receive its upper-school certificate.\n\n### Compulsory credits\n\n- 4 credits in English (one credit in each of Years 9–12)\n- 3 credits in mathematics (including at least one credit in Year 11 or 12)\n- 3 credits in project courses from the three approved groups\n- 2 credits in science\n- 1 credit in community history\n- 1 credit in local geography\n- 1 credit in the arts\n- 1 credit in health and physical education\n- 1 credit in an additional language\n- 0.5 credit in career studies\n- 0.5 credit in civic participation\n\n### Optional credits\n\nStudents must earn 12 optional credits from approved courses. Up to 4 of these optional credits may come from approved partner-college courses; they are included, not added to the optional total.\n\n### Online learning\n\nStudents who entered Year 9 in September 2025 or later must complete at least 2 credits online. These online credits count within the compulsory or optional requirements above; they are not extra credits.\n\n### Literacy requirement\n\nThe literacy rule takes effect on 1 September 2026. Students graduating in 2026–2027 or later must satisfy the school’s literacy check as well as its credit requirements.\n\n### Community involvement\n\nAt least 40 hours of approved community activity are required. These hours are not course credits. Before beginning, students must:\n\n- check that the proposed activity meets the school’s approval rules;\n- consult the school’s list of approved and prohibited activities;\n- discuss the plan with a parent or guardian if they are under 18.\n\nStudents aged 18 or over must still verify that an activity qualifies, but the parent-or-guardian discussion rule does not apply to them.\n\n### B组（第4—7题）\n\n#### B1\n\nDuring a winter inspection of the fictional Rellin Dune Reserve, volunteer leader Anya noticed fresh footprints beside a damaged path barrier. The marks mattered because visitors leaving the marked route could disturb the young plants the team was trying to protect. She recorded the location before touching anything. A photograph of an empty path would not have shown where the problem had begun.\n\nAnya joined the reserve’s volunteer group eight years earlier, initially helping to label observations collected by more experienced members. She now coordinates visits, checks equipment and teaches new volunteers how to keep records that another person can understand. Strong wind and shifting sand often make the work uncomfortable, but the team avoids entering unsafe areas merely to complete a planned route.\n\nLast autumn, volunteers **dismantled** an old barrier that had become unstable. They took its loose sections apart and removed them before installing a better-marked replacement. The task required more than enthusiasm: members had to identify which pieces were unsafe and carry them away without trampling the area they meant to protect. Anya asked the newer volunteers to observe the first section before working in pairs.\n\nThe reserve lies between two villages, whose teams once kept separate records of damaged signs. They now exchange dated notes and use the same location labels. A repair recorded by one team is therefore less likely to be mistaken for a new problem by the other. Anya regards this cooperation as part of conservation work itself, because repeated visits are of limited value if the information cannot be combined.\n\nRecent checks have found fewer people leaving the path at that spot, although the team does not claim that a new barrier alone caused every change. Weather and visitor numbers vary too. The volunteers plan to continue observing and adjusting the route. Their work combines practical effort with careful judgement: noticing a problem, acting without creating another one, and leaving a record that others can use.\n\n### C组（第8—11题）\n\n#### C1\n\nImagine preparing to explain a simple demonstration in front of a class. You can read your notes again, but you can also picture yourself lifting the first object, pausing for a question and moving to the next step. That imagined sequence is a kind of mental rehearsal. In this fictional example, it helps a presenter inspect a plan before carrying it out; it does not count as having performed the demonstration.\n\nPresenter Mara tried the approach before a practice session. As she pictured the sequence, she realised that a question from the audience might arrive before she had put one object down. Her plan had left no hand free for the next one. She changed the order in her notes, then tested it with the actual objects. The useful point was the problem she had noticed, not a promise that imagining an action makes every detail physically possible.\n\nAfter the session, Mara said that she had felt more prepared to begin. That was a report about her own experience. Nobody measured a change in her strength, recorded her brain activity or compared her performance with a large control group. It would therefore be unjustified to turn her comment into a general claim that mental rehearsal produces the same bodily effects as physical practice.\n\nThe approach can be understood as a way of asking more specific questions. “What happens after I lift this?” may reveal something that “Will I do well?” leaves vague. A musician could similarly picture a difficult transition before testing it on an instrument. A volunteer might mentally walk through a greeting and the first question a visitor is likely to ask. In each case, thinking identifies a possible issue; real conditions may still expose another one.\n\nMental rehearsal is most useful in this account when it leads back to observation and adjustment. An imagined audience may be quieter than the real class, and a step that seems smooth in thought may need physical practice. Mara’s experience suggests a modest role for imagination: it can make a plan available for inspection. It cannot certify success, replace every rehearsal or settle what another person will do.\n\n### D组（第12—15题）\n\n#### D1\n\nA fictional materials project at Vey Institute has explored how a protective panel might coordinate small repairs. The model is inspired by the idea of parts responding to a local problem, but it is an engineered demonstration, not a study showing that an organism can regenerate or that a human injury can be treated.\n\nThe team built panels from small connected units and combined local sensing with a shared location code. In a trial, a sensor first detects a break in one unit’s outer layer. It then sends a location signal to neighbouring units. A controller checks that signal against the panel’s layout and guides a replacement patch towards the indicated gap. Only after the patch is aligned does a fastening step hold it in place. The sequence matters: attaching a patch before its position is checked could leave the original gap uncovered.\n\nThe researchers describe the controller as coordinating information, not as supplying the patch material or generating unlimited energy. Sensors, a stored layout, replacement material and the fastening process each play a different role. When a location code was deliberately left out of one trial, the system could signal that something was wrong without placing the patch correctly. Detecting damage was therefore not the same achievement as completing a repair.\n\nThe team hopes eventually to develop coatings that repair small defects more reliably. That is an objective for later work, not an established industrial benefit. The trials used small flat panels under controlled conditions; uneven surfaces, changing temperatures and repeated damage remain untested. A functioning model does not yet establish a durable product.\n\nThe report presents the coordinated sequence as a promising design idea while keeping the remaining questions visible. Its interest lies in making several limited components work together, rather than describing one component as a universal repair device. Further tests will have to show where the approach fails as well as where it works.",
+  "body_load_text": "### Northbay Upper School certificate requirements\n\nThe following rules belong to an invented school. Students must meet all the requirements to receive its upper-school certificate.\n\n### Compulsory credits\n\n- 4 credits in English (one credit in each of Years 9–12)\n- 3 credits in mathematics (including at least one credit in Year 11 or 12)\n- 3 credits in project courses from the three approved groups\n- 2 credits in science\n- 1 credit in community history\n- 1 credit in local geography\n- 1 credit in the arts\n- 1 credit in health and physical education\n- 1 credit in an additional language\n- 0.5 credit in career studies\n- 0.5 credit in civic participation\n\n### Optional credits\n\nStudents must earn 12 optional credits from approved courses. Up to 4 of these optional credits may come from approved partner-college courses; they are included, not added to the optional total.\n\n### Online learning\n\nStudents who entered Year 9 in September 2025 or later must complete at least 2 credits online. These online credits count within the compulsory or optional requirements above; they are not extra credits.\n\n### Literacy requirement\n\nThe literacy rule takes effect on 1 September 2026. Students graduating in 2026–2027 or later must satisfy the school’s literacy check as well as its credit requirements.\n\n### Community involvement\n\nAt least 40 hours of approved community activity are required. These hours are not course credits. Before beginning, students must:\n\n- check that the proposed activity meets the school’s approval rules;\n- consult the school’s list of approved and prohibited activities;\n- discuss the plan with a parent or guardian if they are under 18.\n\nStudents aged 18 or over must still verify that an activity qualifies, but the parent-or-guardian discussion rule does not apply to them.\n\nDuring a winter inspection of the fictional Rellin Dune Reserve, volunteer leader Anya noticed fresh footprints beside a damaged path barrier. The marks mattered because visitors leaving the marked route could disturb the young plants the team was trying to protect. She recorded the location before touching anything. A photograph of an empty path would not have shown where the problem had begun.\n\nAnya joined the reserve’s volunteer group eight years earlier, initially helping to label observations collected by more experienced members. She now coordinates visits, checks equipment and teaches new volunteers how to keep records that another person can understand. Strong wind and shifting sand often make the work uncomfortable, but the team avoids entering unsafe areas merely to complete a planned route.\n\nLast autumn, volunteers **dismantled** an old barrier that had become unstable. They took its loose sections apart and removed them before installing a better-marked replacement. The task required more than enthusiasm: members had to identify which pieces were unsafe and carry them away without trampling the area they meant to protect. Anya asked the newer volunteers to observe the first section before working in pairs.\n\nThe reserve lies between two villages, whose teams once kept separate records of damaged signs. They now exchange dated notes and use the same location labels. A repair recorded by one team is therefore less likely to be mistaken for a new problem by the other. Anya regards this cooperation as part of conservation work itself, because repeated visits are of limited value if the information cannot be combined.\n\nRecent checks have found fewer people leaving the path at that spot, although the team does not claim that a new barrier alone caused every change. Weather and visitor numbers vary too. The volunteers plan to continue observing and adjusting the route. Their work combines practical effort with careful judgement: noticing a problem, acting without creating another one, and leaving a record that others can use.\n\nImagine preparing to explain a simple demonstration in front of a class. You can read your notes again, but you can also picture yourself lifting the first object, pausing for a question and moving to the next step. That imagined sequence is a kind of mental rehearsal. In this fictional example, it helps a presenter inspect a plan before carrying it out; it does not count as having performed the demonstration.\n\nPresenter Mara tried the approach before a practice session. As she pictured the sequence, she realised that a question from the audience might arrive before she had put one object down. Her plan had left no hand free for the next one. She changed the order in her notes, then tested it with the actual objects. The useful point was the problem she had noticed, not a promise that imagining an action makes every detail physically possible.\n\nAfter the session, Mara said that she had felt more prepared to begin. That was a report about her own experience. Nobody measured a change in her strength, recorded her brain activity or compared her performance with a large control group. It would therefore be unjustified to turn her comment into a general claim that mental rehearsal produces the same bodily effects as physical practice.\n\nThe approach can be understood as a way of asking more specific questions. “What happens after I lift this?” may reveal something that “Will I do well?” leaves vague. A musician could similarly picture a difficult transition before testing it on an instrument. A volunteer might mentally walk through a greeting and the first question a visitor is likely to ask. In each case, thinking identifies a possible issue; real conditions may still expose another one.\n\nMental rehearsal is most useful in this account when it leads back to observation and adjustment. An imagined audience may be quieter than the real class, and a step that seems smooth in thought may need physical practice. Mara’s experience suggests a modest role for imagination: it can make a plan available for inspection. It cannot certify success, replace every rehearsal or settle what another person will do.\n\nA fictional materials project at Vey Institute has explored how a protective panel might coordinate small repairs. The model is inspired by the idea of parts responding to a local problem, but it is an engineered demonstration, not a study showing that an organism can regenerate or that a human injury can be treated.\n\nThe team built panels from small connected units and combined local sensing with a shared location code. In a trial, a sensor first detects a break in one unit’s outer layer. It then sends a location signal to neighbouring units. A controller checks that signal against the panel’s layout and guides a replacement patch towards the indicated gap. Only after the patch is aligned does a fastening step hold it in place. The sequence matters: attaching a patch before its position is checked could leave the original gap uncovered.\n\nThe researchers describe the controller as coordinating information, not as supplying the patch material or generating unlimited energy. Sensors, a stored layout, replacement material and the fastening process each play a different role. When a location code was deliberately left out of one trial, the system could signal that something was wrong without placing the patch correctly. Detecting damage was therefore not the same achievement as completing a repair.\n\nThe team hopes eventually to develop coatings that repair small defects more reliably. That is an objective for later work, not an established industrial benefit. The trials used small flat panels under controlled conditions; uneven surfaces, changing temperatures and repeated damage remain untested. A functioning model does not yet establish a durable product.\n\nThe report presents the coordinated sequence as a promising design idea while keeping the remaining questions visible. Its interest lies in making several limited components work together, rather than describing one component as a universal repair device. Further tests will have to show where the approach fails as well as where it works.",
+  "question_candidate_audit": [
+    {
+      "number": 1,
+      "label": "A",
+      "text": "32 credits.",
+      "is_best": false,
+      "reason": "总数应为30，在线学分不是另加，伙伴课程上限也不是额外学分，社区40小时不入此和",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "B",
+      "text": "34 credits.",
+      "is_best": false,
+      "reason": "总数应为30，在线学分不是另加，伙伴课程上限也不是额外学分，社区40小时不入此和",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "C",
+      "text": "30 credits.",
+      "is_best": true,
+      "reason": "必修18加选修12共30，在线2计入这两类且社区时数非学分",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "D",
+      "text": "36 credits.",
+      "is_best": false,
+      "reason": "总数应为30，在线学分不是另加，伙伴课程上限也不是额外学分，社区40小时不入此和",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "A",
+      "text": "1 September 2027.",
+      "is_best": false,
+      "reason": "非所写生效日，不要把在线要求入学批次或其他年月当生效日",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "B",
+      "text": "1 September 2025.",
+      "is_best": false,
+      "reason": "非所写生效日，不要把在线要求入学批次或其他年月当生效日",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "C",
+      "text": "1 January 2026.",
+      "is_best": false,
+      "reason": "非所写生效日，不要把在线要求入学批次或其他年月当生效日",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "D",
+      "text": "1 September 2026.",
+      "is_best": true,
+      "reason": "正文生效日期为1 September 2026",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "A",
+      "text": "Choose a personal community-hour minimum.",
+      "is_best": false,
+      "reason": "最低40小时由规则规定非自选",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "B",
+      "text": "Discuss and select the activity with a parent as a compulsory step.",
+      "is_best": false,
+      "reason": "未满18才有该讨论条件，不对成人强加",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "C",
+      "text": "Check that the proposed activity qualifies under the school’s rules.",
+      "is_best": true,
+      "reason": "成人仍须核活动符合批准规则，亲属讨论条款仅未满18",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "D",
+      "text": "Count online course credits as community-service hours.",
+      "is_best": false,
+      "reason": "小时与学分明确分开",
+      "material_label": "A"
+    },
+    {
+      "number": 4,
+      "label": "A",
+      "text": "All damage had been caused by volunteers entering unsafe areas.",
+      "is_best": false,
+      "reason": "明确不冒险且无全因归责",
+      "material_label": "B"
+    },
+    {
+      "number": 4,
+      "label": "B",
+      "text": "The reserve’s young plants had become fully resistant to disturbance.",
+      "is_best": false,
+      "reason": "正因易受干扰才保护",
+      "material_label": "B"
+    },
+    {
+      "number": 4,
+      "label": "C",
+      "text": "Some visitors had left the marked route near a damaged barrier.",
+      "is_best": true,
+      "reason": "首段脚印与受损路径屏障相邻并说明越线风险",
+      "material_label": "B"
+    },
+    {
+      "number": 4,
+      "label": "D",
+      "text": "The team had completed every repair the previous winter.",
+      "is_best": false,
+      "reason": "无全部完成信息",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "A",
+      "text": "Painted over.",
+      "is_best": false,
+      "reason": "不是覆盖油漆",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "B",
+      "text": "Took apart.",
+      "is_best": true,
+      "reason": "下一句明确拆开并移走散件",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "C",
+      "text": "Advertised for sale.",
+      "is_best": false,
+      "reason": "无售卖",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "D",
+      "text": "Left in position.",
+      "is_best": false,
+      "reason": "移除旧件与原位保留相反",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "A",
+      "text": "A comparison of the villages’ visitor numbers.",
+      "is_best": false,
+      "reason": "主题是记录互通不是客流比较",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "B",
+      "text": "How shared records help the two village teams cooperate.",
+      "is_best": true,
+      "reason": "同位置标签及交换日期记录减少重复误识",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "C",
+      "text": "Why all observation should be left to one village.",
+      "is_best": false,
+      "reason": "两村协作非单村垄断",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "D",
+      "text": "The reasons for closing every path in the reserve.",
+      "is_best": false,
+      "reason": "没有全封路",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "A",
+      "text": "It requires both practical effort and careful judgement.",
+      "is_best": true,
+      "reason": "拆件避免踩坏环境及安全记录共同体现",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "B",
+      "text": "It has removed every uncertainty about visitor behaviour.",
+      "is_best": false,
+      "reason": "保留天气客流等不确定",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "C",
+      "text": "It succeeds simply through enthusiasm without training.",
+      "is_best": false,
+      "reason": "第三段明说不止热情并先观察学习",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "D",
+      "text": "It is of little value unless its effects have a single cause.",
+      "is_best": false,
+      "reason": "允许多因素仍持续核读",
+      "material_label": "B"
+    },
+    {
+      "number": 8,
+      "label": "A",
+      "text": "By giving the author’s childhood memory.",
+      "is_best": false,
+      "reason": "非作者童年回忆",
+      "material_label": "C"
+    },
+    {
+      "number": 8,
+      "label": "B",
+      "text": "By defining a brain region.",
+      "is_best": false,
+      "reason": "无脑区定义",
+      "material_label": "C"
+    },
+    {
+      "number": 8,
+      "label": "C",
+      "text": "By inviting the reader to imagine a preparation situation.",
+      "is_best": true,
+      "reason": "开头Imagine准备课堂演示",
+      "material_label": "C"
+    },
+    {
+      "number": 8,
+      "label": "D",
+      "text": "By reporting a large controlled experiment.",
+      "is_best": false,
+      "reason": "未以大规模对照开头",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "A",
+      "text": "She said she felt more prepared to begin.",
+      "is_best": true,
+      "reason": "第三段仅报告自觉更有准备",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "B",
+      "text": "She outperformed a large comparison group.",
+      "is_best": false,
+      "reason": "没有大对照组",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "C",
+      "text": "Her brain activity matched a real demonstration exactly.",
+      "is_best": false,
+      "reason": "明确未记脑活动",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "D",
+      "text": "Her strength increased after she pictured the objects.",
+      "is_best": false,
+      "reason": "未测且不报告体力增加",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "A",
+      "text": "A volunteer copies a timetable without thinking through an interaction.",
+      "is_best": false,
+      "reason": "抄表不是心中预演动作",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "B",
+      "text": "A musician pictures a difficult transition before trying it on an instrument.",
+      "is_best": true,
+      "reason": "第四段明确此类先想再实试",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "C",
+      "text": "A class watches a recording with no plan to perform the task.",
+      "is_best": false,
+      "reason": "观看不等自己预演任务",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "D",
+      "text": "A presenter tests whether an object fits by lifting it physically.",
+      "is_best": false,
+      "reason": "实际测试非心中预演本身",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "A",
+      "text": "Imagining a sequence can help inspect a plan but cannot guarantee its success.",
+      "is_best": true,
+      "reason": "全文功能及限制一起保留",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "B",
+      "text": "A prepared audience will never ask unexpected questions.",
+      "is_best": false,
+      "reason": "最后承认真实受众不同",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "C",
+      "text": "Mental rehearsal has all the effects of physical practice.",
+      "is_best": false,
+      "reason": "第三段明确无此普遍证据",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "D",
+      "text": "Confidence alone can certify that a demonstration is safe.",
+      "is_best": false,
+      "reason": "自评不提供安全或成功保证",
+      "material_label": "C"
+    },
+    {
+      "number": 12,
+      "label": "A",
+      "text": "A single sensor that also manufactures every replacement unit.",
+      "is_best": false,
+      "reason": "传感器不制造补片各部件分工",
+      "material_label": "D"
+    },
+    {
+      "number": 12,
+      "label": "B",
+      "text": "A change in an organism’s biological cells.",
+      "is_best": false,
+      "reason": "明确工程模型非生物再生",
+      "material_label": "D"
+    },
+    {
+      "number": 12,
+      "label": "C",
+      "text": "An unlimited supply of energy produced by the patch.",
+      "is_best": false,
+      "reason": "明确非无限能源",
+      "material_label": "D"
+    },
+    {
+      "number": 12,
+      "label": "D",
+      "text": "A controller using signals and the stored layout.",
+      "is_best": true,
+      "reason": "第二段控制器核信号对布局导向",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "A",
+      "text": "To use location information to guide and align the patch.",
+      "is_best": true,
+      "reason": "核位置并引导对准后才固定",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "B",
+      "text": "To supply all replacement material itself.",
+      "is_best": false,
+      "reason": "明确非提供补片材料",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "C",
+      "text": "To eliminate the need for any damage sensor.",
+      "is_best": false,
+      "reason": "仍依赖感知",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "D",
+      "text": "To attach every patch before checking its position.",
+      "is_best": false,
+      "reason": "顺序明确先对准再固定",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "A",
+      "text": "To replace the location code with an untested guess.",
+      "is_best": false,
+      "reason": "无以猜测替代位置码主张",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "B",
+      "text": "To develop more reliable coatings for small-defect repair.",
+      "is_best": true,
+      "reason": "第四段明确未来目标非已实现工业收益",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "C",
+      "text": "To prove that the panels already work on all uneven surfaces.",
+      "is_best": false,
+      "reason": "不平表面未测",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "D",
+      "text": "To show that human injuries can now be treated by the device.",
+      "is_best": false,
+      "reason": "明确非人体治疗",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "A",
+      "text": "As a finished product needing no further trials.",
+      "is_best": false,
+      "reason": "明确尚非耐用产品",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "B",
+      "text": "As worthless because it requires several components.",
+      "is_best": false,
+      "reason": "并未因协作而否定价值",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "C",
+      "text": "As proof that one component repairs every kind of damage.",
+      "is_best": false,
+      "reason": "强调多部件协同非万能",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "D",
+      "text": "As promising, with important limits still to test.",
+      "is_best": true,
+      "reason": "末两段看好并列未测试条件",
+      "material_label": "D"
+    }
+  ],
+  "subgroup_response_counts": [
+    3,
+    4,
+    4,
+    4
+  ],
+  "subgroup_material_units": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "material_unit_load": [
+    {
+      "label": "A",
+      "intro_words": 0,
+      "words": [
+        255
+      ]
+    },
+    {
+      "label": "B",
+      "intro_words": 0,
+      "words": [
+        325
+      ]
+    },
+    {
+      "label": "C",
+      "intro_words": 0,
+      "words": [
+        357
+      ]
+    },
+    {
+      "label": "D",
+      "intro_words": 0,
+      "words": [
+        318
+      ]
+    }
+  ],
+  "load_measure": {
+    "body_English_words": 1255,
+    "body_Han_characters": 0,
+    "stem_English_words": 135,
+    "options_English_words_with_repeated_bank": 442,
+    "options_Han_characters": 0,
+    "output_response_positions": 15,
+    "output_requirement_English_words": 6,
+    "display_material_label_English_words": 8,
+    "compulsory_credit_entries": 11,
+    "half_credit_entries": 2,
+    "online_nested_credits": 2,
+    "community_hours_not_credits": 40
+  },
+  "source_original_key_not_gold": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "source_bound_credit_notice_reading_section": true,
+  "credit_notice": {
+    "school": "Northbay Upper School",
+    "compulsory": [
+      {
+        "subject": "English (one credit in each of Years 9–12)",
+        "credits": 4
+      },
+      {
+        "subject": "mathematics (including at least one credit in Year 11 or 12)",
+        "credits": 3
+      },
+      {
+        "subject": "project courses from the three approved groups",
+        "credits": 3
+      },
+      {
+        "subject": "science",
+        "credits": 2
+      },
+      {
+        "subject": "community history",
+        "credits": 1
+      },
+      {
+        "subject": "local geography",
+        "credits": 1
+      },
+      {
+        "subject": "the arts",
+        "credits": 1
+      },
+      {
+        "subject": "health and physical education",
+        "credits": 1
+      },
+      {
+        "subject": "an additional language",
+        "credits": 1
+      },
+      {
+        "subject": "career studies",
+        "credits": 0.5
+      },
+      {
+        "subject": "civic participation",
+        "credits": 0.5
+      }
+    ],
+    "optional_credits": 12,
+    "dual_credit_cap": 4,
+    "online_credits": 2,
+    "online_included_in_total": true,
+    "online_cohort_start": "September 2025",
+    "literacy_effective": "1 September 2026",
+    "literacy_graduation_year": "2026–2027",
+    "community_hours": 40,
+    "minor_age": 18,
+    "adult_must_verify_approval": true,
+    "adult_parent_discussion_required": false
+  }
+}

@@ -83,6 +83,9 @@ def validate(d,b,s):
         assert len(d['research_conditions'])==3 and len(set(d['research_conditions']))==3
         assert all(v in sections[3]['units'][0]for v in d['research_conditions'])
         assert d['research_scope']['limitations']
+    if 'A.credit_requirements' in c['required_lists']:
+        from senior_credit_reading_contract import validate as validate_credit
+        validate_credit(d,s)
     if c['required_tables']:
         assert c['required_tables']==['A.fee_table'] and not c['required_lists']
         table=d['required_table'];assert table['id']=='A.fee_table'
@@ -149,6 +152,9 @@ def check(g,a,b,s):
             assert row['is_best']==(label==q['answer']) and row['material_label']==q['materialLabel']
     for label,nums in ranges(s['configuration']):
         assert label+'组（第'+str(nums[0])+'—'+str(nums[-1])+'题）' in g['passageHtml']
+    if d.get('credit_notice'):
+        from senior_credit_reading_contract import check_rendered
+        check_rendered(g,a,d)
     if d.get('program_policy'):
         assert a['program_policy']==d['program_policy'] and a['program_match']==d['program_match']
         assert a['research_conditions']==d['research_conditions']

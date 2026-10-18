@@ -1,0 +1,1030 @@
+{
+  "version": "0.3",
+  "id": "grade12-reading15-credit-grove",
+  "grade": 12,
+  "questions": 15,
+  "candidate_sha256": "32302fefa03e579b87a4320b09dc2f9e939d033bfc86a0739e08df475f3f62e4",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade12-reading15-credit-grove-manuscript-v0.3.json",
+    "sha256": "dc89559fb481750b737f22f678b736b91c4874d586a39a00e02dc97bb2308759"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolReadingSourceBindings-v0.6.json",
+    "sha256": "d046d43106ae6436be9b569b9436ec4607f95f9022b57d63d953d5eb9b861298"
+  },
+  "source_binding": "grade12-yali2026-21cnjy25133058.reading.complete_section.binding",
+  "school_complete_senior_reading_section": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "A组 · What is the minimum total of course credits required for a student entering Year 9 in September 2024?",
+      "options": [
+        [
+          "A",
+          "36 credits."
+        ],
+        [
+          "B",
+          "33 credits."
+        ],
+        [
+          "C",
+          "30 credits."
+        ],
+        [
+          "D",
+          "32 credits."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：总数应为30，在线学分不是另加，伙伴课程上限也不是额外学分，社区40小时不入此和；B：总数应为30，在线学分不是另加，伙伴课程上限也不是额外学分，社区40小时不入此和；C：必修20加选修10共30，在线2计入这两类且社区时数非学分；D：总数应为30，在线学分不是另加，伙伴课程上限也不是额外学分，社区40小时不入此和",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "nested_credit_total"
+    },
+    {
+      "number": 2,
+      "stem": "A组 · When does the stated literacy rule take effect?",
+      "options": [
+        [
+          "A",
+          "1 January 2027."
+        ],
+        [
+          "B",
+          "1 October 2024."
+        ],
+        [
+          "C",
+          "1 September 2025."
+        ],
+        [
+          "D",
+          "1 October 2026."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：非所写生效日，不要把在线要求入学批次或其他年月当生效日；B：非所写生效日，不要把在线要求入学批次或其他年月当生效日；C：非所写生效日，不要把在线要求入学批次或其他年月当生效日；D：正文生效日期为1 October 2026",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "policy_effective_date"
+    },
+    {
+      "number": 3,
+      "stem": "A组 · What must a student aged 18 or over do before community activity?",
+      "options": [
+        [
+          "A",
+          "Count online course credits as community-service hours."
+        ],
+        [
+          "B",
+          "Choose a personal community-hour minimum."
+        ],
+        [
+          "C",
+          "Discuss and select the activity with a parent as a compulsory step."
+        ],
+        [
+          "D",
+          "Check that the proposed activity qualifies under the school’s rules."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：小时与学分明确分开；B：最低40小时由规则规定非自选；C：未满18才有该讨论条件，不对成人强加；D：成人仍须核活动符合批准规则，亲属讨论条款仅未满18",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "adult_conditional_requirement"
+    },
+    {
+      "number": 4,
+      "stem": "B组 · What problem prompted Mikel’s initial observation?",
+      "options": [
+        [
+          "A",
+          "All of the wetland had been proved chemically polluted."
+        ],
+        [
+          "B",
+          "Volunteers had been asked to enter every inaccessible location."
+        ],
+        [
+          "C",
+          "The same person had been identified as the source of every item."
+        ],
+        [
+          "D",
+          "Discarded wrapping had gathered at an inlet beside a protected bank."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：他明确不把局部观察写成全湿地污染；B：不可及处转训练维护队；C：照片不能确定丢弃者；D：首段明确包装条聚在入口筛旁受保护岸边",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "supported_factor_inference"
+    },
+    {
+      "number": 5,
+      "stem": "B组 · What does “decommissioned” mean in paragraph 3?",
+      "options": [
+        [
+          "A",
+          "Formally taken out of use."
+        ],
+        [
+          "B",
+          "Put into service at a new inlet."
+        ],
+        [
+          "C",
+          "Recorded as fully repaired."
+        ],
+        [
+          "D",
+          "Photographed without any change in use."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：下一句明确平台停止使用待评估；B：旧平台退用非启新；C：支撑待评估非已修好；D：明确不再从该处记录",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "context_word_meaning"
+    },
+    {
+      "number": 6,
+      "stem": "B组 · What is paragraph 4 mainly about?",
+      "options": [
+        [
+          "A",
+          "How agreeing on recording methods supports cooperation."
+        ],
+        [
+          "B",
+          "Why the two inlets must contain identical quantities of litter."
+        ],
+        [
+          "C",
+          "Why each group should keep its counting method secret."
+        ],
+        [
+          "D",
+          "How a photograph proves who discarded an object."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：统一日期位置类别和件数口径便比较；B：明确不意味垃圾量相同；C：实际交换方法；D：第二段否认且非本段主题",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "paragraph_main_idea"
+    },
+    {
+      "number": 7,
+      "stem": "B组 · What qualities does Mikel value in volunteers?",
+      "options": [
+        [
+          "A",
+          "Certainty that every improvement has one cause."
+        ],
+        [
+          "B",
+          "Careful practical effort and honesty about the limits of records."
+        ],
+        [
+          "C",
+          "An ability to identify every source from appearance alone."
+        ],
+        [
+          "D",
+          "Willingness to fill missing dates with assumed observations."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：列多项影响非单因；B：末段持续清理并解释未能证实部分；C：照片不证明全部来源；D：第三段明确标缺失不伪装完整",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "work_characterization"
+    },
+    {
+      "number": 8,
+      "stem": "C组 · How is passage C introduced?",
+      "options": [
+        [
+          "A",
+          "Through the author’s personal travel diary."
+        ],
+        [
+          "B",
+          "Through a list of measured brain responses."
+        ],
+        [
+          "C",
+          "Through a situation the reader is asked to imagine."
+        ],
+        [
+          "D",
+          "Through an official museum safety regulation."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：非旅行日记；B：无脑活动数据；C：Suppose设置新志愿者讲解场景；D：非真实安全法规",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "context_opening_function"
+    },
+    {
+      "number": 9,
+      "stem": "C组 · What does the account explicitly say about Isha after the session?",
+      "options": [
+        [
+          "A",
+          "Every visitor learned more in a controlled trial."
+        ],
+        [
+          "B",
+          "She demonstrated the same bodily effects as a real talk."
+        ],
+        [
+          "C",
+          "She reported less uncertainty about her opening sentence."
+        ],
+        [
+          "D",
+          "Her physical skill was measured and shown to improve."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：无游客学习对照；B：明确未提供这种测量或等效证明；C：第三段自报开场句较少不确定；D：明确未测体能技能",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "narrow_result_scope"
+    },
+    {
+      "number": 10,
+      "stem": "C组 · Which activity fits the described meaning of mental rehearsal?",
+      "options": [
+        [
+          "A",
+          "Memorising a visitor list without considering an interaction."
+        ],
+        [
+          "B",
+          "Privately picturing an interruption and where to resume a talk."
+        ],
+        [
+          "C",
+          "Only watching a recording of somebody else’s speech."
+        ],
+        [
+          "D",
+          "Moving an object while a partner tests the actual view."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：无行动过程预想；B：第四段明确这种自己序列预想；C：明确观别人不同于想象自己下一步；D：属现实检查非思中预演本身",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "mental_rehearsal_application"
+    },
+    {
+      "number": 11,
+      "stem": "C组 · What main point does passage C make?",
+      "options": [
+        [
+          "A",
+          "A confident opening proves that all visitors understand an explanation."
+        ],
+        [
+          "B",
+          "Imagination can reveal assumptions to test while leaving room for revision."
+        ],
+        [
+          "C",
+          "An imagined listener must behave like a real one."
+        ],
+        [
+          "D",
+          "A fixed mental script removes the need for real practice."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：自信不替代理解证据；B：全文从想象到实测修订而非冻结脚本；C：末段明确现实可能意外；D：应保留修订且后接实练",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "whole_main_idea"
+    },
+    {
+      "number": 12,
+      "stem": "D组 · What controls the model’s placement decisions?",
+      "options": [
+        [
+          "A",
+          "A rule requiring every uncertain gap to be filled immediately."
+        ],
+        [
+          "B",
+          "A controller using the damage map and permitted pattern rules."
+        ],
+        [
+          "C",
+          "The weight of a real surface resting on a frame."
+        ],
+        [
+          "D",
+          "An organism’s response to a severed limb."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：多解时标未决不硬填；B：首两段明确两类信息协作；C：是数字模型非物理承重框架；D：开头明确非生物再生证明",
+      "materialLabel": "D",
+      "points": 2.5,
+      "operation": "mechanism_controller"
+    },
+    {
+      "number": 13,
+      "stem": "D组 · What is the main role of the stored rules?",
+      "options": [
+        [
+          "A",
+          "To guide a completion and check consistency with neighbouring units."
+        ],
+        [
+          "B",
+          "To provide a load-bearing frame for a real surface."
+        ],
+        [
+          "C",
+          "To prove the original pattern whenever several completions are possible."
+        ],
+        [
+          "D",
+          "To manufacture the physical material of a new panel."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：第二段核相邻结构指导匹配与拼接一致；B：明确不是物理框架；C：多解不宣称恢复真相；D：数字规则非造材料",
+      "materialLabel": "D",
+      "points": 2.5,
+      "operation": "process_role"
+    },
+    {
+      "number": 14,
+      "stem": "D组 · What application is presented as a future goal?",
+      "options": [
+        [
+          "A",
+          "Improving how coordinated replacement repairs modular surfaces."
+        ],
+        [
+          "B",
+          "Recovering every object’s true history without evidence."
+        ],
+        [
+          "C",
+          "Replacing all unresolved cases with the neatest-looking guess."
+        ],
+        [
+          "D",
+          "Using digital joins as proof of physical strength without tests."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：第四段明确探索模块表面修补；B：开头明确无此证明；C：设计恰拒绝隐藏未决；D：数字一致不证明物理承重",
+      "materialLabel": "D",
+      "points": 2.5,
+      "operation": "future_application_aim"
+    },
+    {
+      "number": 15,
+      "stem": "D组 · What is the report’s attitude toward the model?",
+      "options": [
+        [
+          "A",
+          "Certain that no physical testing is needed."
+        ],
+        [
+          "B",
+          "Critical because it does not conceal uncertainty."
+        ],
+        [
+          "C",
+          "Positive about its principle while explicit about unresolved limits."
+        ],
+        [
+          "D",
+          "Convinced that an attractive pattern always proves historical accuracy."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：列材料力磨损需测；B：恰把不掩未知当优点；C：看好支持边界且未当成万能成品；D：第三段明确区分整齐与独有证据",
+      "materialLabel": "D",
+      "points": 2.5,
+      "operation": "research_author_attitude"
+    }
+  ],
+  "canonical_response_block_sha256": "2b80787fedbae95d251803b402b506f9bce79cf4d645b2e756a8a7e4a9cea542",
+  "student_passage": "### A组（第1—3题）\n\n#### A1\n\n### Rowan Upper School certificate requirements\n\nThe following rules belong to an invented school. Students must meet all the requirements to receive its upper-school certificate.\n\n### Compulsory credits\n\n- 4 credits in English (one credit in each of Years 9–12)\n- 4 credits in mathematics (including at least one credit in Year 11 or 12)\n- 3 credits in project courses from the three approved groups\n- 3 credits in science\n- 1 credit in community history\n- 1 credit in local geography\n- 1 credit in the arts\n- 1 credit in health and physical education\n- 1 credit in an additional language\n- 0.5 credit in career studies\n- 0.5 credit in civic participation\n\n### Optional credits\n\nStudents must earn 10 optional credits from approved courses. Up to 3 of these optional credits may come from approved partner-college courses; they are included, not added to the optional total.\n\n### Online learning\n\nStudents who entered Year 9 in September 2024 or later must complete at least 2 credits online. These online credits count within the compulsory or optional requirements above; they are not extra credits.\n\n### Literacy requirement\n\nThe literacy rule takes effect on 1 October 2026. Students graduating in 2026–2027 or later must satisfy the school’s literacy check as well as its credit requirements.\n\n### Community involvement\n\nAt least 40 hours of approved community activity are required. These hours are not course credits. Before beginning, students must:\n\n- check that the proposed activity meets the school’s approval rules;\n- consult the school’s list of approved and prohibited activities;\n- discuss the plan with a parent or guardian if they are under 18.\n\nStudents aged 18 or over must still verify that an activity qualifies, but the parent-or-guardian discussion rule does not apply to them.\n\n### B组（第4—7题）\n\n#### B1\n\nAt the fictional Aldercombe Wetland, conservation volunteer Mikel found a strip of packing material caught against an inlet screen after heavy rain. The team was trying to prevent discarded material from collecting along a protected bank. Instead of reporting the whole wetland as polluted, he noted exactly what he could see and where it had gathered. The observation was specific enough for another person to check.\n\nMikel first joined the team as a student labelling bags of collected litter. He now organises inspection rounds and helps new volunteers distinguish a recorded observation from a guess about its source. A photograph of wrapping does not, by itself, identify who discarded it or how far it travelled. The team removes material where permitted and refers inaccessible locations to the trained maintenance crew.\n\nAfter a storm, an old observation platform was **decommissioned**. It was formally taken out of use because its supports needed assessment, and volunteers stopped recording from it. Rather than disguise the interruption as a complete series of observations, Mikel marked the missing dates. The team used another approved observation point while keeping its records separate from those made at the old platform.\n\nTwo local groups inspect different inlets. They now exchange dates, location codes and the categories used for collected material. A bag counted as one item by one group had previously been counted by its separate pieces by the other. Agreeing on a method made the records more comparable. It did not mean that the inlets received identical amounts of litter or that all material had the same source.\n\nRecent rounds have found less loose wrapping at the first screen, but Mikel does not attribute that change to the volunteers alone. Water movement, rainfall and maintenance timing also vary. He values people who can return regularly, handle ordinary clearing work carefully and explain what their records do not establish. Conservation, for this team, includes keeping the wetland cleaner without making its evidence look more certain than it is.\n\n### C组（第8—11题）\n\n#### C1\n\nSuppose a new museum volunteer is about to explain an unfamiliar object to visitors. She may know several facts yet still be unsure how to begin. In a fictional training session, volunteer Isha tried picturing the first minute: where she would stand, what she would point to and which question a visitor might ask. The imagined scene helped make a vague worry more specific.\n\nWhile rehearsing in thought, she noticed that her intended opening depended on a small mark visitors could not see from where she planned to stand. She moved the object during the real practice and tested the view with a partner. The imagined difficulty was useful because it led to a check. It was not evidence that a view imagined from one position must match the view another person actually has.\n\nAfterwards, Isha reported feeling less uncertain about her first sentence. The account does not include a measurement of physical skill or a controlled comparison of visitor learning. Her change in confidence and the practical adjustment are different kinds of information. Neither establishes that imagining an explanation has the same effect on the body as delivering it, or that every visitor will now understand it.\n\nMental rehearsal in this account means running through a sequence from a particular point of view, then asking what might have been left out. A presenter can picture a transition between two ideas. A guide can imagine being interrupted and consider where to resume. Watching somebody else speak may provide useful examples, but it is different from privately imagining one’s own next action. Both can be followed by practice with real listeners.\n\nThe limits matter because imagination tends to supply conditions that are convenient. A cooperative listener in thought may ask a clear question; an actual visitor may ask something unexpected. Rehearsal should therefore leave a plan open to revision rather than freeze it into a script that must work. Isha’s experience illustrates a preparatory use of imagination: making assumptions noticeable enough to test. It does not make confidence a substitute for evidence about performance.\n\n### D组（第12—15题）\n\n#### D1\n\nResearchers in a fictional project at Greyford Lab have constructed a digital model that restores a simple surface pattern after a unit is removed. The project is concerned with coordinating a sequence of decisions. It does not show that an organism regrows a limb or that a computer can recover the true history of an object when the evidence is missing.\n\nThe model combines a damage map with a set of permitted local patterns. First, a process marks the damaged position, distinguishing an empty place from a unit that is present but differently coloured. The controller then checks the neighbouring pattern against its stored rules and directs a matching unit into the gap. A final comparison verifies whether the joins are consistent. The rules guide placement; they are not a physical frame supporting a real surface.\n\nIn some trials, the surrounding units supported more than one possible completion. The model then flagged the gap as unresolved instead of announcing that one guess had recovered the original. This distinction was central to the design: producing a neat pattern and identifying a uniquely supported reconstruction are not the same thing. The reported success concerned gaps for which the permitted rules selected one completion.\n\nThe researchers hope to improve the repair of modular surfaces by learning how local information can guide coordinated replacement. Before any physical application, they would need to investigate materials, forces, wear and cases with incomplete information. A digital join that satisfies a rule says nothing by itself about whether a physical joint can carry a load.\n\nThe report is positive about the model’s ability to expose where a decision is supported and where it remains uncertain. Its promise lies partly in the refusal to hide unresolved cases. Further work is presented as testing those boundaries, rather than simply increasing the number of attractive completed patterns. The model offers a design principle to explore, not a finished method for repairing every damaged object.",
+  "body_load_text": "### Rowan Upper School certificate requirements\n\nThe following rules belong to an invented school. Students must meet all the requirements to receive its upper-school certificate.\n\n### Compulsory credits\n\n- 4 credits in English (one credit in each of Years 9–12)\n- 4 credits in mathematics (including at least one credit in Year 11 or 12)\n- 3 credits in project courses from the three approved groups\n- 3 credits in science\n- 1 credit in community history\n- 1 credit in local geography\n- 1 credit in the arts\n- 1 credit in health and physical education\n- 1 credit in an additional language\n- 0.5 credit in career studies\n- 0.5 credit in civic participation\n\n### Optional credits\n\nStudents must earn 10 optional credits from approved courses. Up to 3 of these optional credits may come from approved partner-college courses; they are included, not added to the optional total.\n\n### Online learning\n\nStudents who entered Year 9 in September 2024 or later must complete at least 2 credits online. These online credits count within the compulsory or optional requirements above; they are not extra credits.\n\n### Literacy requirement\n\nThe literacy rule takes effect on 1 October 2026. Students graduating in 2026–2027 or later must satisfy the school’s literacy check as well as its credit requirements.\n\n### Community involvement\n\nAt least 40 hours of approved community activity are required. These hours are not course credits. Before beginning, students must:\n\n- check that the proposed activity meets the school’s approval rules;\n- consult the school’s list of approved and prohibited activities;\n- discuss the plan with a parent or guardian if they are under 18.\n\nStudents aged 18 or over must still verify that an activity qualifies, but the parent-or-guardian discussion rule does not apply to them.\n\nAt the fictional Aldercombe Wetland, conservation volunteer Mikel found a strip of packing material caught against an inlet screen after heavy rain. The team was trying to prevent discarded material from collecting along a protected bank. Instead of reporting the whole wetland as polluted, he noted exactly what he could see and where it had gathered. The observation was specific enough for another person to check.\n\nMikel first joined the team as a student labelling bags of collected litter. He now organises inspection rounds and helps new volunteers distinguish a recorded observation from a guess about its source. A photograph of wrapping does not, by itself, identify who discarded it or how far it travelled. The team removes material where permitted and refers inaccessible locations to the trained maintenance crew.\n\nAfter a storm, an old observation platform was **decommissioned**. It was formally taken out of use because its supports needed assessment, and volunteers stopped recording from it. Rather than disguise the interruption as a complete series of observations, Mikel marked the missing dates. The team used another approved observation point while keeping its records separate from those made at the old platform.\n\nTwo local groups inspect different inlets. They now exchange dates, location codes and the categories used for collected material. A bag counted as one item by one group had previously been counted by its separate pieces by the other. Agreeing on a method made the records more comparable. It did not mean that the inlets received identical amounts of litter or that all material had the same source.\n\nRecent rounds have found less loose wrapping at the first screen, but Mikel does not attribute that change to the volunteers alone. Water movement, rainfall and maintenance timing also vary. He values people who can return regularly, handle ordinary clearing work carefully and explain what their records do not establish. Conservation, for this team, includes keeping the wetland cleaner without making its evidence look more certain than it is.\n\nSuppose a new museum volunteer is about to explain an unfamiliar object to visitors. She may know several facts yet still be unsure how to begin. In a fictional training session, volunteer Isha tried picturing the first minute: where she would stand, what she would point to and which question a visitor might ask. The imagined scene helped make a vague worry more specific.\n\nWhile rehearsing in thought, she noticed that her intended opening depended on a small mark visitors could not see from where she planned to stand. She moved the object during the real practice and tested the view with a partner. The imagined difficulty was useful because it led to a check. It was not evidence that a view imagined from one position must match the view another person actually has.\n\nAfterwards, Isha reported feeling less uncertain about her first sentence. The account does not include a measurement of physical skill or a controlled comparison of visitor learning. Her change in confidence and the practical adjustment are different kinds of information. Neither establishes that imagining an explanation has the same effect on the body as delivering it, or that every visitor will now understand it.\n\nMental rehearsal in this account means running through a sequence from a particular point of view, then asking what might have been left out. A presenter can picture a transition between two ideas. A guide can imagine being interrupted and consider where to resume. Watching somebody else speak may provide useful examples, but it is different from privately imagining one’s own next action. Both can be followed by practice with real listeners.\n\nThe limits matter because imagination tends to supply conditions that are convenient. A cooperative listener in thought may ask a clear question; an actual visitor may ask something unexpected. Rehearsal should therefore leave a plan open to revision rather than freeze it into a script that must work. Isha’s experience illustrates a preparatory use of imagination: making assumptions noticeable enough to test. It does not make confidence a substitute for evidence about performance.\n\nResearchers in a fictional project at Greyford Lab have constructed a digital model that restores a simple surface pattern after a unit is removed. The project is concerned with coordinating a sequence of decisions. It does not show that an organism regrows a limb or that a computer can recover the true history of an object when the evidence is missing.\n\nThe model combines a damage map with a set of permitted local patterns. First, a process marks the damaged position, distinguishing an empty place from a unit that is present but differently coloured. The controller then checks the neighbouring pattern against its stored rules and directs a matching unit into the gap. A final comparison verifies whether the joins are consistent. The rules guide placement; they are not a physical frame supporting a real surface.\n\nIn some trials, the surrounding units supported more than one possible completion. The model then flagged the gap as unresolved instead of announcing that one guess had recovered the original. This distinction was central to the design: producing a neat pattern and identifying a uniquely supported reconstruction are not the same thing. The reported success concerned gaps for which the permitted rules selected one completion.\n\nThe researchers hope to improve the repair of modular surfaces by learning how local information can guide coordinated replacement. Before any physical application, they would need to investigate materials, forces, wear and cases with incomplete information. A digital join that satisfies a rule says nothing by itself about whether a physical joint can carry a load.\n\nThe report is positive about the model’s ability to expose where a decision is supported and where it remains uncertain. Its promise lies partly in the refusal to hide unresolved cases. Further work is presented as testing those boundaries, rather than simply increasing the number of attractive completed patterns. The model offers a design principle to explore, not a finished method for repairing every damaged object.",
+  "question_candidate_audit": [
+    {
+      "number": 1,
+      "label": "A",
+      "text": "36 credits.",
+      "is_best": false,
+      "reason": "总数应为30，在线学分不是另加，伙伴课程上限也不是额外学分，社区40小时不入此和",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "B",
+      "text": "33 credits.",
+      "is_best": false,
+      "reason": "总数应为30，在线学分不是另加，伙伴课程上限也不是额外学分，社区40小时不入此和",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "C",
+      "text": "30 credits.",
+      "is_best": true,
+      "reason": "必修20加选修10共30，在线2计入这两类且社区时数非学分",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "D",
+      "text": "32 credits.",
+      "is_best": false,
+      "reason": "总数应为30，在线学分不是另加，伙伴课程上限也不是额外学分，社区40小时不入此和",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "A",
+      "text": "1 January 2027.",
+      "is_best": false,
+      "reason": "非所写生效日，不要把在线要求入学批次或其他年月当生效日",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "B",
+      "text": "1 October 2024.",
+      "is_best": false,
+      "reason": "非所写生效日，不要把在线要求入学批次或其他年月当生效日",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "C",
+      "text": "1 September 2025.",
+      "is_best": false,
+      "reason": "非所写生效日，不要把在线要求入学批次或其他年月当生效日",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "D",
+      "text": "1 October 2026.",
+      "is_best": true,
+      "reason": "正文生效日期为1 October 2026",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "A",
+      "text": "Count online course credits as community-service hours.",
+      "is_best": false,
+      "reason": "小时与学分明确分开",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "B",
+      "text": "Choose a personal community-hour minimum.",
+      "is_best": false,
+      "reason": "最低40小时由规则规定非自选",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "C",
+      "text": "Discuss and select the activity with a parent as a compulsory step.",
+      "is_best": false,
+      "reason": "未满18才有该讨论条件，不对成人强加",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "D",
+      "text": "Check that the proposed activity qualifies under the school’s rules.",
+      "is_best": true,
+      "reason": "成人仍须核活动符合批准规则，亲属讨论条款仅未满18",
+      "material_label": "A"
+    },
+    {
+      "number": 4,
+      "label": "A",
+      "text": "All of the wetland had been proved chemically polluted.",
+      "is_best": false,
+      "reason": "他明确不把局部观察写成全湿地污染",
+      "material_label": "B"
+    },
+    {
+      "number": 4,
+      "label": "B",
+      "text": "Volunteers had been asked to enter every inaccessible location.",
+      "is_best": false,
+      "reason": "不可及处转训练维护队",
+      "material_label": "B"
+    },
+    {
+      "number": 4,
+      "label": "C",
+      "text": "The same person had been identified as the source of every item.",
+      "is_best": false,
+      "reason": "照片不能确定丢弃者",
+      "material_label": "B"
+    },
+    {
+      "number": 4,
+      "label": "D",
+      "text": "Discarded wrapping had gathered at an inlet beside a protected bank.",
+      "is_best": true,
+      "reason": "首段明确包装条聚在入口筛旁受保护岸边",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "A",
+      "text": "Formally taken out of use.",
+      "is_best": true,
+      "reason": "下一句明确平台停止使用待评估",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "B",
+      "text": "Put into service at a new inlet.",
+      "is_best": false,
+      "reason": "旧平台退用非启新",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "C",
+      "text": "Recorded as fully repaired.",
+      "is_best": false,
+      "reason": "支撑待评估非已修好",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "D",
+      "text": "Photographed without any change in use.",
+      "is_best": false,
+      "reason": "明确不再从该处记录",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "A",
+      "text": "How agreeing on recording methods supports cooperation.",
+      "is_best": true,
+      "reason": "统一日期位置类别和件数口径便比较",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "B",
+      "text": "Why the two inlets must contain identical quantities of litter.",
+      "is_best": false,
+      "reason": "明确不意味垃圾量相同",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "C",
+      "text": "Why each group should keep its counting method secret.",
+      "is_best": false,
+      "reason": "实际交换方法",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "D",
+      "text": "How a photograph proves who discarded an object.",
+      "is_best": false,
+      "reason": "第二段否认且非本段主题",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "A",
+      "text": "Certainty that every improvement has one cause.",
+      "is_best": false,
+      "reason": "列多项影响非单因",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "B",
+      "text": "Careful practical effort and honesty about the limits of records.",
+      "is_best": true,
+      "reason": "末段持续清理并解释未能证实部分",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "C",
+      "text": "An ability to identify every source from appearance alone.",
+      "is_best": false,
+      "reason": "照片不证明全部来源",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "D",
+      "text": "Willingness to fill missing dates with assumed observations.",
+      "is_best": false,
+      "reason": "第三段明确标缺失不伪装完整",
+      "material_label": "B"
+    },
+    {
+      "number": 8,
+      "label": "A",
+      "text": "Through the author’s personal travel diary.",
+      "is_best": false,
+      "reason": "非旅行日记",
+      "material_label": "C"
+    },
+    {
+      "number": 8,
+      "label": "B",
+      "text": "Through a list of measured brain responses.",
+      "is_best": false,
+      "reason": "无脑活动数据",
+      "material_label": "C"
+    },
+    {
+      "number": 8,
+      "label": "C",
+      "text": "Through a situation the reader is asked to imagine.",
+      "is_best": true,
+      "reason": "Suppose设置新志愿者讲解场景",
+      "material_label": "C"
+    },
+    {
+      "number": 8,
+      "label": "D",
+      "text": "Through an official museum safety regulation.",
+      "is_best": false,
+      "reason": "非真实安全法规",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "A",
+      "text": "Every visitor learned more in a controlled trial.",
+      "is_best": false,
+      "reason": "无游客学习对照",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "B",
+      "text": "She demonstrated the same bodily effects as a real talk.",
+      "is_best": false,
+      "reason": "明确未提供这种测量或等效证明",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "C",
+      "text": "She reported less uncertainty about her opening sentence.",
+      "is_best": true,
+      "reason": "第三段自报开场句较少不确定",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "D",
+      "text": "Her physical skill was measured and shown to improve.",
+      "is_best": false,
+      "reason": "明确未测体能技能",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "A",
+      "text": "Memorising a visitor list without considering an interaction.",
+      "is_best": false,
+      "reason": "无行动过程预想",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "B",
+      "text": "Privately picturing an interruption and where to resume a talk.",
+      "is_best": true,
+      "reason": "第四段明确这种自己序列预想",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "C",
+      "text": "Only watching a recording of somebody else’s speech.",
+      "is_best": false,
+      "reason": "明确观别人不同于想象自己下一步",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "D",
+      "text": "Moving an object while a partner tests the actual view.",
+      "is_best": false,
+      "reason": "属现实检查非思中预演本身",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "A",
+      "text": "A confident opening proves that all visitors understand an explanation.",
+      "is_best": false,
+      "reason": "自信不替代理解证据",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "B",
+      "text": "Imagination can reveal assumptions to test while leaving room for revision.",
+      "is_best": true,
+      "reason": "全文从想象到实测修订而非冻结脚本",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "C",
+      "text": "An imagined listener must behave like a real one.",
+      "is_best": false,
+      "reason": "末段明确现实可能意外",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "D",
+      "text": "A fixed mental script removes the need for real practice.",
+      "is_best": false,
+      "reason": "应保留修订且后接实练",
+      "material_label": "C"
+    },
+    {
+      "number": 12,
+      "label": "A",
+      "text": "A rule requiring every uncertain gap to be filled immediately.",
+      "is_best": false,
+      "reason": "多解时标未决不硬填",
+      "material_label": "D"
+    },
+    {
+      "number": 12,
+      "label": "B",
+      "text": "A controller using the damage map and permitted pattern rules.",
+      "is_best": true,
+      "reason": "首两段明确两类信息协作",
+      "material_label": "D"
+    },
+    {
+      "number": 12,
+      "label": "C",
+      "text": "The weight of a real surface resting on a frame.",
+      "is_best": false,
+      "reason": "是数字模型非物理承重框架",
+      "material_label": "D"
+    },
+    {
+      "number": 12,
+      "label": "D",
+      "text": "An organism’s response to a severed limb.",
+      "is_best": false,
+      "reason": "开头明确非生物再生证明",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "A",
+      "text": "To guide a completion and check consistency with neighbouring units.",
+      "is_best": true,
+      "reason": "第二段核相邻结构指导匹配与拼接一致",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "B",
+      "text": "To provide a load-bearing frame for a real surface.",
+      "is_best": false,
+      "reason": "明确不是物理框架",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "C",
+      "text": "To prove the original pattern whenever several completions are possible.",
+      "is_best": false,
+      "reason": "多解不宣称恢复真相",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "D",
+      "text": "To manufacture the physical material of a new panel.",
+      "is_best": false,
+      "reason": "数字规则非造材料",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "A",
+      "text": "Improving how coordinated replacement repairs modular surfaces.",
+      "is_best": true,
+      "reason": "第四段明确探索模块表面修补",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "B",
+      "text": "Recovering every object’s true history without evidence.",
+      "is_best": false,
+      "reason": "开头明确无此证明",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "C",
+      "text": "Replacing all unresolved cases with the neatest-looking guess.",
+      "is_best": false,
+      "reason": "设计恰拒绝隐藏未决",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "D",
+      "text": "Using digital joins as proof of physical strength without tests.",
+      "is_best": false,
+      "reason": "数字一致不证明物理承重",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "A",
+      "text": "Certain that no physical testing is needed.",
+      "is_best": false,
+      "reason": "列材料力磨损需测",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "B",
+      "text": "Critical because it does not conceal uncertainty.",
+      "is_best": false,
+      "reason": "恰把不掩未知当优点",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "C",
+      "text": "Positive about its principle while explicit about unresolved limits.",
+      "is_best": true,
+      "reason": "看好支持边界且未当成万能成品",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "D",
+      "text": "Convinced that an attractive pattern always proves historical accuracy.",
+      "is_best": false,
+      "reason": "第三段明确区分整齐与独有证据",
+      "material_label": "D"
+    }
+  ],
+  "subgroup_response_counts": [
+    3,
+    4,
+    4,
+    4
+  ],
+  "subgroup_material_units": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "material_unit_load": [
+    {
+      "label": "A",
+      "intro_words": 0,
+      "words": [
+        255
+      ]
+    },
+    {
+      "label": "B",
+      "intro_words": 0,
+      "words": [
+        329
+      ]
+    },
+    {
+      "label": "C",
+      "intro_words": 0,
+      "words": [
+        343
+      ]
+    },
+    {
+      "label": "D",
+      "intro_words": 0,
+      "words": [
+        323
+      ]
+    }
+  ],
+  "load_measure": {
+    "body_English_words": 1250,
+    "body_Han_characters": 0,
+    "stem_English_words": 137,
+    "options_English_words_with_repeated_bank": 455,
+    "options_Han_characters": 0,
+    "output_response_positions": 15,
+    "output_requirement_English_words": 6,
+    "display_material_label_English_words": 8,
+    "compulsory_credit_entries": 11,
+    "half_credit_entries": 2,
+    "online_nested_credits": 2,
+    "community_hours_not_credits": 40
+  },
+  "source_original_key_not_gold": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "source_bound_credit_notice_reading_section": true,
+  "credit_notice": {
+    "school": "Rowan Upper School",
+    "compulsory": [
+      {
+        "subject": "English (one credit in each of Years 9–12)",
+        "credits": 4
+      },
+      {
+        "subject": "mathematics (including at least one credit in Year 11 or 12)",
+        "credits": 4
+      },
+      {
+        "subject": "project courses from the three approved groups",
+        "credits": 3
+      },
+      {
+        "subject": "science",
+        "credits": 3
+      },
+      {
+        "subject": "community history",
+        "credits": 1
+      },
+      {
+        "subject": "local geography",
+        "credits": 1
+      },
+      {
+        "subject": "the arts",
+        "credits": 1
+      },
+      {
+        "subject": "health and physical education",
+        "credits": 1
+      },
+      {
+        "subject": "an additional language",
+        "credits": 1
+      },
+      {
+        "subject": "career studies",
+        "credits": 0.5
+      },
+      {
+        "subject": "civic participation",
+        "credits": 0.5
+      }
+    ],
+    "optional_credits": 10,
+    "dual_credit_cap": 3,
+    "online_credits": 2,
+    "online_included_in_total": true,
+    "online_cohort_start": "September 2024",
+    "literacy_effective": "1 October 2026",
+    "literacy_graduation_year": "2026–2027",
+    "community_hours": 40,
+    "minor_age": 18,
+    "adult_must_verify_approval": true,
+    "adult_parent_discussion_required": false
+  }
+}

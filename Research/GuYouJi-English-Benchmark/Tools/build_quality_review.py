@@ -72,11 +72,11 @@ def full_markdown_candidate(meta):
             image = {'src': 'data:image/svg+xml;base64,'+base64.b64encode(raw).decode(), 'alt': embed[1],
                      'asset': {'path': asset['path'], 'sha256': asset['sha256']}, 'width': width, 'height': height}
             images.append(image)
-            result.append(material_view(value[cursor:embed.start()]))
+            result.append(material_view(value[cursor:embed.start()], unordered_lists=bool(audit.get('source_bound_credit_notice_reading_section'))))
             result.append('<figure><img class="passage-image" src="'+image['src']+'" alt="'+html.escape(image['alt'], quote=True)+
                           '" width="'+str(width)+'" height="'+str(height)+'"></figure>')
             cursor = embed.end()
-        result.append(material_view(value[cursor:]))
+        result.append(material_view(value[cursor:], unordered_lists=bool(audit.get('source_bound_credit_notice_reading_section'))))
         return ''.join(result)
 
     def render_input(value):

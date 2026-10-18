@@ -7,8 +7,17 @@ from pathlib import Path
 from showcase_extended_tasks import markdown_view
 
 
-def material_view(text):
+def material_view(text, unordered_lists=False):
     """Keep numbered input lists distinct from the numbered response form."""
+    if unordered_lists:
+        result, cursor = [], 0
+        for block in re.finditer(r'(?:^- [^\n]+(?:\n|$))+', text, re.M):
+            result.append(material_view(text[cursor:block.start()]))
+            entries=re.findall(r'^- (.+)$',block[0],re.M)
+            result.append('<ul class="reading-requirements">'+''.join('<li>'+html.escape(value)+'</li>'for value in entries)+'</ul>')
+            cursor=block.end()
+        result.append(material_view(text[cursor:]))
+        return ''.join(result)
     result, cursor = [], 0
     for block in re.finditer(r'(?:^\d+\. [^\n]+(?:\n|$))+', text, re.M):
         result.append(markdown_view(text[cursor:block.start()]))

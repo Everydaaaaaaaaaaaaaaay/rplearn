@@ -14,9 +14,10 @@ def run(page):
     data=extract(page);_,plan=resolve_plan(data['active_run_plan']);idx=json.loads(load_ref(plan['current_gap_completion']).read_text());records=[]
     for m in idx['candidates']:
         a=json.loads(load_ref(m['author_check']).read_text())
-        if not a.get('school_complete_senior_reading_section')or a.get('source_bound_three_passage_fee_table_section')or a.get('source_bound_four_program_reading_section'):continue
+        if not a.get('school_complete_senior_reading_section'):continue
         b=next(x for x in json.loads(load_ref(a['source_bindings']).read_text())['bindings']if x['id']==a['source_binding'])
         s=next(x for x in json.loads(load_ref(b['source_index']).read_text())['groups']if x['id']==b['source_group_id'])
+        if not s.get('source_A_book_entries'):continue
         d=json.loads(load_ref(a['manuscript']).read_text());check(data['groups'][m['id']],a,b,s);bad_cases={
             'fixed_six_truncation':lambda x:x['questions'].__delitem__(slice(6,None)),
             'only_first_passage':lambda x:x['sections'].__delitem__(slice(1,None)),
