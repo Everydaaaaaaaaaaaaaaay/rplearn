@@ -158,6 +158,11 @@ def full_markdown_candidate(meta):
     if any(q.get('optionImageAssets')for q in questions):
         from quality_review_images import attach_option_images
         attach_option_images(group)
+    if audit.get('word_editing'):
+        from word_editing_contract import validate
+        group['wordEditing'] = copy.deepcopy(audit['word_editing'])
+        validate(group, audit)
+        group['passageHtml'] = ''.join('<p lang="en"><small>〔'+str(n)+'〕</small> '+html.escape(sentence)+'</p>' for n, sentence in enumerate(group['wordEditing']['sentences'], 1))
     if audit.get('picture_to_event_rank'):
         group['pictureToEventRank'] = True
     if audit.get('response_table'):

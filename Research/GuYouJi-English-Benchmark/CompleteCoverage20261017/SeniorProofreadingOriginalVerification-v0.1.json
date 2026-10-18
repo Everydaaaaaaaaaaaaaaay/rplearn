@@ -1,0 +1,143 @@
+{
+  "version": "0.1",
+  "batch": {
+    "path": "CompleteCoverage20261017/SeniorProofreadingOriginalBatch-v0.2.json",
+    "sha256": "12859097d50e41b55a729f0103bbf873575e307623c0ec4da6dd6c2e83d69969"
+  },
+  "bindings": {
+    "path": "CompleteCoverage20261017/SeniorProofreadingBindings-v0.1.json",
+    "sha256": "57f721a36167561fd162959357c3bc91404ef302289286eec53f267b5ea04a1a"
+  },
+  "source_modes": {
+    "path": "CompleteCoverage20261017/SeniorProofreadingSources-v0.1.json",
+    "sha256": "9aba7ba947fe2099f4a0eda4cd613674ef58abb5811c1dbc019e0dc7444ce5d3"
+  },
+  "revision_index": {
+    "path": "CompleteCoverage20261017/AuthoredRevisions-v0.11.json",
+    "sha256": "8d721105c8170a06cdc3dba0c4d8ec94c8eb03965458ab3538dcaeda6334bf1c"
+  },
+  "inventory": {
+    "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.108.json",
+    "sha256": "9a3d6befeeb8448ab9d647c5e56b6dc6a0f150a89af67db4733c733220cb6498"
+  },
+  "runtime_rules": [
+    {
+      "path": "Tools/word_editing_contract.py",
+      "sha256": "0e33d5c0b8a965fde6713842fc0a5ae7db424a06fa3ad97228037d4394d52bc0"
+    },
+    {
+      "path": "Tools/check_word_editing_contract.py",
+      "sha256": "20294fd896e3452ffbd004fc4e0e426eaec5ac99343f38500162ad07d539c4f6"
+    },
+    {
+      "path": "Tools/check_word_editing_marking.cjs",
+      "sha256": "1a2194df93e31756d45a72499bc881479e92c2415aa0bed0ecab73ab58947e43"
+    },
+    {
+      "path": "Tools/quality_review_interactions.js",
+      "sha256": "b348a8378effc1141eb8a1211cfa67cc8b03cf640e6574520d65acd486e9a1c8"
+    },
+    {
+      "path": "Tools/quality_review_template.html",
+      "sha256": "2f303d13939a264ed95e127370a9452d06ad00c570e6a9c15ef63d0d7a3ec24d"
+    },
+    {
+      "path": "Tools/build_quality_review.py",
+      "sha256": "84b27a18ea619bdbfa13bdf3ea9de946badf77a5b24ad5bea5005245918ac558"
+    },
+    {
+      "path": "Tools/check_all_levels_review.py",
+      "sha256": "16b4db6f83adf0f488963031f56ba5e051a3cbb5932a8fe0df8ef018c879e5d4"
+    },
+    {
+      "path": "Tools/check_gap_completion.py",
+      "sha256": "7a79b9e7bacc93e019a0b885cfa0528a74b02169eb8354c83a8ec6915927af3b"
+    },
+    {
+      "path": "Tools/build_current_type_inventory.py",
+      "sha256": "8aa1e1d7613397e96f6af499833888d796ae0e1347d52ae009c5c70c19be6be2"
+    }
+  ],
+  "marking": {
+    "path": "build/english-benchmark-authority-20261017/g10editing658-marking-v0.4.json",
+    "sha256": "d3b1265fd568cdb32a4ef3539bf7e89616d053eb57ecc199cb02eb01b8e6160b"
+  },
+  "negative_contracts": {
+    "path": "build/english-benchmark-authority-20261017/g10editing658-contract-v0.3.json",
+    "sha256": "73a901e580cd841abfca4a7c9cade9de669f46664685dcfa1678768e65d2e011"
+  },
+  "literal_family_screen": {
+    "path": "build/english-benchmark-authority-20261017/g10editing658-family-screen-v0.1.json",
+    "sha256": "2a6bb7f0d28012c4cab7ad3cbb95e4fa34111bfc12039d2776e8db81377e791f"
+  },
+  "browser": {
+    "path": "build/english-benchmark-authority-20261017/g10editing658-browser-v0.3.json",
+    "sha256": "ff0e5cc745ae3d2041e0a70bfa4505488fc4ee160f040cc6f075e9966e63ddf8"
+  },
+  "screenshot": {
+    "path": "build/english-benchmark-authority-20261017/g10editing658-review-v0.3.png",
+    "sha256": "62aab059da137101c46b6bdad10588f99f3ac71d16e3ef08195df40f5469b131"
+  },
+  "final_check": {
+    "path": "build/english-benchmark-authority-20261017/g10editing658-final-check-v0.1.json",
+    "sha256": "d092334e49e7ad31cb8acb70ec022b410eac1eed0e86195a646ef4a28040a54e"
+  },
+  "archive": {
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.180.json",
+    "sha256": "704cf384c98b1cea3b875c87cef5f32c067a99277c4649b7b52ce9f398139bb8"
+  },
+  "targeted_restores": [
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/review658-g10-editing-revision-delta-v0.1.json",
+        "sha256": "9b6b40a429fe0c634fbcbf913f43c9853f86fb63ebaeb8d908f5328561c292b5"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/g10editing658-browser-v0.3.json",
+        "sha256": "ff0e5cc745ae3d2041e0a70bfa4505488fc4ee160f040cc6f075e9966e63ddf8"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/g10editing658-review-v0.3.png",
+        "sha256": "62aab059da137101c46b6bdad10588f99f3ac71d16e3ef08195df40f5469b131"
+      },
+      "restored_SHA_verified": true
+    }
+  ],
+  "new_groups": 3,
+  "new_responses": 30,
+  "current_groups": 658,
+  "current_responses": 4421,
+  "current_populated_cells": 193,
+  "pending_specific_modes": 2,
+  "remaining_whole_originals": 6,
+  "original_source_counts_unchanged": true,
+  "pinned_revisions": 42,
+  "old655_payloads_and14holds_preserved": true,
+  "unhinted_material_sentence_and_word_address_controls": true,
+  "canonical_full_edit_variants": 22,
+  "forward_and_reverse_vectors": 44,
+  "marking_negative_and_boundary_vectors": 45,
+  "author_contract_negative_vectors": 18,
+  "actual_UI_current_payload_whole_vectors": 6,
+  "actual_UI_current_payload_response_positions": 60,
+  "actual_UI_boundary_vectors": 6,
+  "actual_UI_teacher_reset_groups": 3,
+  "actual_UI_draft_switch_preserved": true,
+  "legacy_UI_reading_correct_responses": 4,
+  "legacy_local_grammar_groups": 2,
+  "seed_collective_mass_ambiguity_not_released_as_error": true,
+  "unlisted_alternative_edits_review_not_wrong": true,
+  "only_first_ten_nonempty_started_records_checked": true,
+  "duplicate_repair_not_doublecounted": true,
+  "max_two_error_constraint_checked_across_all_author_variants": true,
+  "per_sentence_student_record_count_not_used_to_invent_error_or_partscore": true,
+  "no_source_or_independent_or_production_grade_claim": true,
+  "all_required_types_complete": false,
+  "independent_teacher_student_commercial_production": false
+}

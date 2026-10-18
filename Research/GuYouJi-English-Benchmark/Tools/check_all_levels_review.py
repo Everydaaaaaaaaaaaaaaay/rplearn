@@ -242,7 +242,7 @@ def check(page):
     for group in data['groups'].values():
         load_ref(group['candidate']);load_ref(group['author_check'])
         assert [q['number']for q in group['questions']]==list(range(1,len(group['questions'])+1))
-        assert all(q.get('options')or q.get('knownForms')or q.get('acceptedAnswers')for q in group['questions'])
+        assert all(q.get('options')or q.get('knownForms')or q.get('acceptedAnswers')or q.get('editAlternatives')for q in group['questions'])
         assert not any(q.get('parts')or q.get('referenceAnswers')for q in group['questions'])
         assert all(q.get('answer')in [p[0]for p in q['options']]for q in group['questions']if q['options'])
     additions=json.loads(load_ref(data['extra_authored_index']).read_text())

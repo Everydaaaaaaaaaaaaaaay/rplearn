@@ -10,6 +10,7 @@ function select(grade,family){activeGrade=grade;activeFamily=family;if(!reviewDa
 function selectGrade(grade){const current=reviewData.cells.find(c=>c.grade===grade&&c.family===activeFamily),available=reviewData.cells.find(c=>c.grade===grade&&c.groupId);select(grade,current?.groupId?activeFamily:available?.family||activeFamily);}
 function makeButton(label,pressed,fn){const b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('aria-pressed',String(pressed));b.onclick=fn;return b;}
 function inputFor(g,q){
+ if(g.wordEditing)return editingInput(g,q);
  const saved=drafts[g.id]||{};
  if(g.fixedSharedBank)return '<select class="short-answer" name="'+q.number+'" aria-label="'+escapeText(q.stem)+'"><option value="">请选择</option>'+q.options.map(([letter,text])=>'<option value="'+letter+'" '+(saved[q.number]===letter?'selected':'')+'>'+(g.kind==='dialogue_ordering'?escapeText(text):letter+'. '+escapeText(text))+'</option>').join('')+'</select>';
  if(q.options.length){
@@ -167,7 +168,54 @@ function wordOrderComparison(questions,saved={}){
  }
  return {available:true,total:rows.length,matched:rows.filter(r=>r.state==='match').length,different:rows.filter(r=>r.state==='different').length,unanswered:rows.filter(r=>r.state==='unanswered').length,review:rows.filter(r=>r.state==='review').length,rows};
 }
-function answerComparison(questions,saved={}){
+function editingTokens(sentence){return [...sentence.matchAll(/[A-Za-z]+(?:['’-][A-Za-z]+)*/g)].map(m=>m[0]);}
+function editingWord(text){return typeof text==='string'&&/^[A-Za-z]+(?:['’-][A-Za-z]+)*$/.test(text.trim())?text.trim().replace(/’/g,"'").toUpperCase():null;}
+function editingKey(e){return [e.sentence,e.position,e.operation,e.operation==='delete'?'':editingWord(e.text)].join('|');}
+function editingDescription(e,c){const word=editingTokens(c.sentences[e.sentence-1])[e.position-1];return '句'+e.sentence+'，'+(e.operation==='insert'?(word?'“'+word+'”前':'句末')+'增加 '+e.text:'词'+e.position+'“'+word+'”'+(e.operation==='delete'?'删除':'改为 '+e.text));}
+function wordEditingComparison(questions,saved={},c){
+ const unavailable=()=>({available:false,reason:'完整找错材料、位置和等价修法尚未绑定，暂不核对。'});
+ if(c?.version!==1||c.errors!==10||c.firstScoredEdits!==10||c.wordsPerEdit!==1||c.maxEditsPerSentence!==2||c.order!=='any'||c.unlisted!=='review'||c.normalization!=='non_case_target_word_v1'||c.caseOnlyTargets!==false||!Array.isArray(c.sentences)||c.sentences.length<5||c.sentences.some(s=>typeof s!=='string'||!editingTokens(s).length)||questions?.length!==10)return unavailable();
+ const known=new Map();
+ for(const [i,q]of questions.entries()){
+  if(q.number!==i+1||q.options?.length!==0||!q.editAlternatives?.length)return unavailable();
+  for(const e of q.editAlternatives){const ts=editingTokens(c.sentences[e.sentence-1]||'');if(!Number.isInteger(e.sentence)||!Number.isInteger(e.position)||e.position<1||e.position>ts.length+(e.operation==='insert'?1:0)||!['insert','delete','replace'].includes(e.operation)||(e.operation==='delete'?e.text!=='':editingWord(e.text)===null))return unavailable();const key=editingKey(e);if(known.has(key))return unavailable();known.set(key,q.number);}
+ }
+ const rowCount=Number(saved.editingRows||10);if(!Number.isSafeInteger(rowCount)||rowCount<10)return unavailable();
+ const started=Array.from({length:rowCount},(_,i)=>i+1).filter(n=>['operation','sentence','position','text'].some(k=>String(saved['edit.'+n+'.'+k]||'').trim()));
+ const selected=started.slice(0,10),rows=[],used=new Set(),seen=new Set(),occupied=new Set();
+ for(const n of [...selected,...Array(10-selected.length).fill(null)]){
+  const prefix='edit.'+n+'.',op=saved[prefix+'operation']||'',sentence=saved[prefix+'sentence']||'',position=saved[prefix+'position']||'',text=saved[prefix+'text']||'';
+  if([op,sentence,position,text].some(v=>typeof v!=='string'))return unavailable();
+  const e={operation:op,sentence:Number(sentence),position:Number(position),text:text.trim()},ts=editingTokens(c.sentences[e.sentence-1]||'');let state='review',reason='未列修法待复核',errorClass=null;
+  const empty=!op&&!sentence&&!position&&!text.trim(),partial=!op||!sentence||!position||(op!=='delete'&&!text.trim());
+  const invalid=!['insert','delete','replace'].includes(op)||!Number.isInteger(e.sentence)||!ts.length||!Number.isInteger(e.position)||e.position<1||e.position>ts.length+(op==='insert'?1:0);
+  if(empty||partial){state='unanswered';reason=empty?'未填写修改':'修改记录尚未填写完整';}
+  else if(invalid){state='different';reason='操作或词位超出本句范围';}
+  else if(op==='delete'&&text.trim()){state='different';reason='删除操作不填写新增词';}
+  else if(op!=='delete'&&text.trim().split(/\s+/).length>1){state='different';reason='每处修改仅限一词';}
+  else if(op==='replace'&&editingWord(text)!==null&&editingWord(text)===editingWord(ts[e.position-1])){state='different';reason='改前改后相同，未修改词语';}
+  else if(op==='delete'||editingWord(text)!==null){
+   const key=editingKey(e),point=e.sentence+'|'+e.position+'|'+(op==='insert'?'gap':'word');
+   errorClass=known.get(key)||null;
+   if(seen.has(key)){state='different';reason='同一修改重复记录，不重复计入';}
+   else if(errorClass&&used.has(errorClass)){state='different';reason='同一错误的另一修法，不重复计入';}
+   else if(occupied.has(point)){state='review';reason='同一词位有冲突修改，须复核整组';}
+   else if(errorClass){state='match';reason='与已核修法一致';used.add(errorClass);}
+   seen.add(key);occupied.add(point);
+  }
+  const validAddress=Number.isInteger(e.sentence)&&ts.length&&Number.isInteger(e.position)&&e.position>=1&&e.position<=ts.length+(op==='insert'?1:0)&&['insert','delete','replace'].includes(op);
+  rows.push({number:n??'—',chosen:empty?'':validAddress?editingDescription(e,c):[sentence,position,op,text].join(' / '),reference:errorClass?'错误'+errorClass+'：'+questions[errorClass-1].editAlternatives.map(a=>editingDescription(a,c)).join('；'):'查看完整修订与依据',state,reason,errorClass});
+ }
+ return {available:true,total:10,matched:rows.filter(r=>r.state==='match').length,different:rows.filter(r=>r.state==='different').length,unanswered:rows.filter(r=>r.state==='unanswered').length,review:rows.filter(r=>r.state==='review').length,ignored:Math.max(0,started.length-10),wordEditing:true,rows};
+}
+function editingInput(g,q){
+ const s=drafts[g.id]||{},p='edit.'+q.number+'.',sentence=Number(s[p+'sentence']),op=s[p+'operation']||'',ts=editingTokens(g.wordEditing.sentences[sentence-1]||'');
+ const select=(part,label,options)=>'<label>'+label+'<select class="short-answer" name="'+p+part+'" aria-label="修改'+q.number+'：'+label+'"><option value="">请选择</option>'+options.map(([v,t])=>'<option value="'+v+'" '+(String(s[p+part])===String(v)?'selected':'')+'>'+escapeText(t)+'</option>').join('')+'</select></label>';
+ return '<div class="edit-fields">'+select('sentence','句子',g.wordEditing.sentences.map((_,i)=>[i+1,'句'+(i+1)]))+select('operation','操作',[['replace','改词'],['delete','删词'],['insert','在词前加词']])+select('position','词位',ts.map((w,i)=>[i+1,(i+1)+'. '+w]).concat(op==='insert'&&ts.length?[[ts.length+1,'句末（末尾标点前）']]:[]))+'<label>改后或新增一词<input class="short-answer" name="'+p+'text" aria-label="修改'+q.number+'：改后或新增一词" value="'+escapeText(s[p+'text']||'')+'" '+(op==='delete'?'disabled':'')+' autocomplete="off" lang="en"></label></div>';
+}
+
+function answerComparison(questions,saved={},editingContract=null){
+ if(Array.isArray(questions)&&questions.some(q=>q.editAlternatives))return wordEditingComparison(questions,saved,editingContract);
  if(Array.isArray(questions)&&questions.some(q=>q.wordOrder||q.fillMarking?.normalization==='whole_sentence_tokens_v1'))return wordOrderComparison(questions,saved);
  if(Array.isArray(questions)&&questions.some(q=>q.fillPair))return fillPairComparison(questions,saved);
  if(Array.isArray(questions)&&questions.some(q=>q.selectionSet))return selectionSetComparison(questions,saved);
@@ -278,11 +326,12 @@ function render(){
  el('task-instruction').textContent=instruction+(g?.formatSummary?' 完整配置：'+g.formatSummary:'');el('task-instruction').hidden=!instruction;
  el('answer-toggle').hidden=!g;el('reset').hidden=!g;el('answer-toggle').textContent='查看参考与解析';
  el('compare-selections').hidden=!g;
- const comparisonEligibility=answerComparison(g?.questions);
+ const comparisonEligibility=answerComparison(g?.questions,{},g?.wordEditing);
  el('compare-selections').disabled=!comparisonEligibility.available;
  el('compare-selections').title=comparisonEligibility.reason||'仅对照作者参考，不代表独立质量验收。';
  if(!g){el('student').innerHTML='<p class="empty">'+(cell.state==='paused_requires_semantic_adjudication'?'本格的旧完整题组已暂缓：'+escapeText(cell.pauseReason)+' 保留来源与旧稿，不截空冒充完整组；这不表示整个题型均需AI判分，符合约束的新完整代表仍可补编。':cell.pauseReason?escapeText(cell.pauseReason):!cell.observed?'当前样本还不足以确认这个年级的此类题型，暂不据此编题。':cell.state.startsWith('existing_simulated')?'已有模拟来源参照稿，普通学校样本的完整形式仍待核对；本格暂未交付。':'这个年级已有此类题的样本证据，完整原创代表题仍在补充。')+'</p>';el('source-note').textContent=(reviewData.pending_specific_modes||[]).filter(m=>m.grade===cell.grade&&m.family===cell.family&&m.remainingWholeOriginals).map(m=>m.title+'：'+m.remainingWholeOriginals+'组完整原创待补。'+m.source_gap).join('\n');return;}
- const questions=g.questions.map(q=>'<fieldset><legend>'+q.number+'. '+(q.stemHtml||escapeText(q.stem))+'</legend>'+inputFor(g,q)+'</fieldset>').join('');
+ const displayQuestions=g.wordEditing?Array.from({length:Number(drafts[g.id]?.editingRows||10)},(_,i)=>({number:i+1,stem:'修改记录'+(i+1)+'（任选错误，顺序不限）'})):g.questions;
+ const questions=displayQuestions.map(q=>'<fieldset><legend>'+q.number+'. '+(q.stemHtml||escapeText(q.stem))+'</legend>'+inputFor(g,q)+'</fieldset>').join('');
  el('notice').textContent=prototypeNotice;
  el('student').innerHTML=g.studentBeforeHtml!==undefined&&g.studentBeforeHtml!==null?g.studentBeforeHtml+'<form id="responses">'+questions+'</form>'+g.studentAfterHtml:g.passageHtml+'<form id="responses">'+questions+'</form>';
  // The source has four people rows and five item columns: five assignments.
@@ -318,19 +367,21 @@ function render(){
   const pictures=[...el('student').querySelectorAll('img.passage-image')].map(img=>img.closest('figure')),fields=[...el('responses').querySelectorAll('fieldset')];
   if(pictures.length===g.questions.length){pictures.forEach((picture,i)=>{const heading=picture.previousElementSibling;if(heading?.tagName==='H3'&&['图片'+(i+1),'第'+(i+1)+'图'].includes(heading.textContent.trim()))heading.remove();fields[i].querySelector('legend').after(picture);});}
  }
+ if(g.wordEditing){const extra=document.createElement('button');extra.type='button';extra.textContent='追加修改（第11处起不计入核对）';extra.onclick=()=>{(drafts[g.id]||={}).editingRows=String(Number(drafts[g.id].editingRows||10)+1);render();};el('responses').append(extra);}
  const firstParagraph=el('student').firstElementChild;
  if(firstParagraph?.tagName==='P'&&firstParagraph.textContent.trim()===instruction.trim())firstParagraph.remove();
  el('student').querySelectorAll('audio').forEach(a=>{a.onerror=()=>{if(el('student').contains(a))el('notice').textContent='必要音频无法载入，请刷新重试；本组尚不能完整作答。';};});
- const save=e=>{if(e.target.name){(drafts[g.id]||=(Object.create(null)))[e.target.name]=e.target.value;clearSelectionComparison();}};el('responses').oninput=save;el('responses').onchange=save;el('responses').onsubmit=e=>e.preventDefault();
+ const save=e=>{if(e.target.name){const saved=(drafts[g.id]||=(Object.create(null)));saved[e.target.name]=e.target.value;clearSelectionComparison();if(g.wordEditing&&e.type==='change'&&/\.(sentence|operation)$/.test(e.target.name)){const n=Number(e.target.name.split('.')[1]);if(e.target.name.endsWith('.sentence'))delete saved['edit.'+n+'.position'];if(saved['edit.'+n+'.operation']==='delete')delete saved['edit.'+n+'.text'];e.target.closest('fieldset').innerHTML='<legend>修改记录'+n+'（任选错误，顺序不限）</legend>'+editingInput(g,{number:n});}}};el('responses').oninput=save;el('responses').onchange=save;el('responses').onsubmit=e=>e.preventDefault();
  el('source-note').innerHTML='<p>完整作者稿：<a href="'+candidateHref(g.candidate)+'" target="_blank" rel="noopener">'+escapeText(g.id)+'</a></p><p>来源形式参照：'+escapeText((g.anchor_group_ids||[]).join(' / ')||'原卷未配对写作任务，详见作者稿')+'</p>';
  el('source-note').innerHTML+=companionUpdates.map(u=>'<p>后续配套补核：<a href="'+candidateHref(u.review)+'" target="_blank" rel="noopener">'+escapeText(u.label)+'</a> '+escapeText(u.notice)+'</p>').join('');
  el('answer-toggle').onclick=()=>{if(!mediaReady(g)){el('notice').textContent='必要图片或音频尚未完整载入，请等待加载完成后查看参考。';return;}el('notice').textContent=prototypeNotice;el('teacher').hidden=!el('teacher').hidden;el('answer-toggle').textContent=el('teacher').hidden?'查看参考与解析':'收起参考与解析';
-  el('teacher-content').innerHTML=g.questions.map(q=>'<div class="answer"><strong>'+q.number+'. '+(q.selectionSet?'作者参考集合 '+escapeText(q.selectionSet.correct.join(' / '))+'（本提示内顺序任意）':q.answer?'作者参考 '+escapeText(q.answer):q.acceptedAnswers?'可接受形式 '+escapeText(q.acceptedAnswers.join(' / ')):q.knownForms?'作者参考形式 '+escapeText(q.knownForms.join(' / ')):q.referenceAnswers?'作者参考表达 '+escapeText(q.referenceAnswers.join(' / ')):'完整表达：按任务要点复核')+'</strong><p>'+escapeText(q.rationale||'')+'</p></div>').join('')+(g.reviewHtml||'');};
+  el('teacher-content').innerHTML=g.questions.map(q=>'<div class="answer"><strong>'+q.number+'. '+(q.editAlternatives?'错误'+q.number+'的已核修法 '+escapeText(q.editAlternatives.map(a=>editingDescription(a,g.wordEditing)).join('；')):q.selectionSet?'作者参考集合 '+escapeText(q.selectionSet.correct.join(' / '))+'（本提示内顺序任意）':q.answer?'作者参考 '+escapeText(q.answer):q.acceptedAnswers?'可接受形式 '+escapeText(q.acceptedAnswers.join(' / ')):q.knownForms?'作者参考形式 '+escapeText(q.knownForms.join(' / ')):q.referenceAnswers?'作者参考表达 '+escapeText(q.referenceAnswers.join(' / ')):'完整表达：按任务要点复核')+'</strong><p>'+escapeText(q.rationale||'')+'</p></div>').join('')+(g.reviewHtml||'');};
  el('compare-selections').onclick=()=>{
   if(!mediaReady(g)){el('notice').textContent='必要图片或音频尚未完整载入，请等待加载完成后核对。';return;}
-  const result=answerComparison(g.questions,drafts[g.id]);
+  const result=answerComparison(g.questions,drafts[g.id],g.wordEditing);
   if(!result.available){el('notice').textContent=result.reason;return;}
   el('notice').textContent=prototypeNotice;
+  if(result.wordEditing){el('selection-comparison').innerHTML='<strong>按作者参考：'+result.matched+'/10 处一致；'+result.different+' 处不同；'+result.unanswered+' 条未完整填写；'+result.review+' 处待复核。</strong><p>跳过全空记录，按填写顺序核对前十条已开始的修改，记录顺序可任意；同一错误只计一次，第十一条起忽略（当前'+result.ignored+'条）。未列修法待复核，不计为错。位置编号仅为页面定位，不提示错误；本稿不考单纯大小写错误，已核词形忽略大小写及首尾空白。此处不是原卷阅卷分数或独立质量验收。</p><ol>'+result.rows.map(r=>'<li>记录'+r.number+'：'+escapeText(r.chosen||'未填写')+'（'+escapeText(r.reason)+'）</li>').join('')+'</ol>';el('selection-comparison').hidden=false;return;}
   el('selection-comparison').innerHTML='<strong>按作者参考：'+result.matched+'/'+result.total+' 项一致；'+result.different+' 项不同；'+result.unanswered+' 项未答；'+result.review+' 项待复核。</strong>'+(result.fillPairConflicts?.length?'<p>同一双答案提示内的两空须指向不同项目；同一项目的两个合法别名不重复计入。不同提示独立，未列表达仍待复核；本机一致项统计不等于原考试部分给分。</p>':'')+(result.selectionConflicts?.length?'<p>同一多选提示中重复选择不重复计入；各提示之间独立。此处按作者定义核对不同正确选项，不冒称原考试部分给分规则。</p>':'')+(result.bankConflicts?.length?'<p class="bank-conflict">词库复用冲突：'+result.bankConflicts.map(c=>escapeText(c.entry)+'（第'+c.numbers.join('、')+'空）').join('；')+'。这些作答重复使用同一词库项，整组尚未符合每项一次的规则；不据此擅自分配部分分。未列词形仍待复核，不自动猜词根。</p>':'')+'<p>本机按逐题规则核对，已列合法变体同等接受。'+(g.questions.some(q=>q.fillMarking?.closedCandidates)?'限定候选填空须选本题给出的词或词组；未核格式待复核。':'未列词形不直接判错；待复核项不计为错误。')+'作者自审不代表独立教研或生产判分通过。</p><ol>'+result.rows.map(r=>'<li>第'+r.number+'题：'+(r.chosen?'作答 '+escapeText(r.chosen):'未作答')+'；作者参考 '+escapeText(r.reference)+'（'+({match:'一致',different:'不同',unanswered:'未答',review:'待复核'}[r.state])+'）</li>').join('')+'</ol>';
   el('selection-comparison').hidden=false;
  };

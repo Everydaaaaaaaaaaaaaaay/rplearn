@@ -9,11 +9,11 @@
   "national_taxonomy_exhaustive": false,
   "prior_page_groups": 655,
   "prior_page_responses": 4391,
-  "this_batch_groups": 0,
-  "this_batch_responses": 0,
-  "current_plan_path": "CompleteCoverage20261017/ReviewPlan-v0.280.json",
+  "this_batch_groups": 3,
+  "this_batch_responses": 30,
+  "current_plan_path": "CompleteCoverage20261017/ReviewPlan-v0.285.json",
   "next_priorities": [
-    "Implement unhinted ten-word editing whole-passage interaction and equivalence-class marking, then author three complete packets per senior1/senior2/senior3 observed source. Preserve location search, insertion/deletion/replacement and one-word/first10/max2-per-sentence rules; do not substitute ten hinted fill slots. Source native/key risks in SeniorProofreadingDiscovery-v0.1.json remain. Nine whole originals pending; no need more broad research first.",
+    "Use the implemented full unhinted word-editing contract and UI to author three complete senior2 and three senior3 originals (6 remaining). Keep each exact source binding, whole passage and ten atomic edits; preserve verified alternative operations/locations, unknown-review and first-ten-nonempty record semantics. Source/key defects remain separate. Reuse current three senior1 UI/contract evidence, do not redo all658 checks without relevant changes.",
     "Senior18 grammar groups now context-read by author across two batches; do not repeat entire set. Continue source-input/key/rights and independent-quality dependencies; self-review not independent validation.",
     "Source/quality audit remains open: original course4/7/9, exact edition and formal key; owned visible-reference packets do not repair those or replicate teaching/delay",
     "Lowprimary current nonpaper closed activity full pools, instructions and keys remain missing",
@@ -22,14 +22,14 @@
     "Independent teacher/student/commercial/production remain unverified; no thirdparty contact, paid models, access/TLS bypass or production evaluation"
   ],
   "no_old_automation_restored": true,
-  "current_preview_groups": 655,
-  "current_preview_responses": 4391,
-  "current_complete_display_cells": 192,
+  "current_preview_groups": 658,
+  "current_preview_responses": 4421,
+  "current_complete_display_cells": 193,
   "current_coverage_audit": {
-    "path": "CompleteCoverage20261017/CoverageAudit-v0.129.json",
-    "sha256": "2c8c1c1b8c90b588cf443c869dcfab8c11175e7cd75d285dc3077070e4584a77"
+    "path": "CompleteCoverage20261017/CoverageAudit-v0.131.json",
+    "sha256": "a334861a98bcbfe2ef4c276b52a5edddcfaf50f9ce7fb08d06dd81d2d1e95bff"
   },
-  "latest_batch": "proofread655-three-senior-word-editing-modes-reconciled",
+  "latest_batch": "g10editing658-three-unhinted-whole-originals-and-reference-marking",
   "still_active": true,
   "latest_listening_followup": {
     "path": "CompleteCoverage20261017/SeniorListeningFollowup-v0.3.json",
@@ -55,15 +55,15 @@
     "sha256": "24a8654b6388f729d213a06a059a7a733d3347a06c283cb1429c41d41cc7a047"
   },
   "current_type_inventory": {
-    "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.106.json",
-    "sha256": "6d278bcb2453ea3e87b2b1a12a2bc2c2059533fdcf80cc6667871e7faa1a1c6a"
+    "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.108.json",
+    "sha256": "9a3d6befeeb8448ab9d647c5e56b6dc6a0f150a89af67db4733c733220cb6498"
   },
   "inherited_source_modes_rebound_this_batch": 0,
   "advanced_listening_completion_pairing": {
     "path": "CompleteCoverage20261017/C1ListeningCompletionPairing-v0.1.json",
     "sha256": "510ac06342cfc6c8e3a2b0a17a4ee2ef98449b57912533ef8737277bc3a2c06a"
   },
-  "source_observed_cells_without_author": 3,
+  "source_observed_cells_without_author": 2,
   "latest_school_listening_source": {
     "path": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.25.json",
     "sha256": "a170616760eb982d289604d73bc80849f960be2d31494f3b843d67b7cb3923a9"
@@ -76,9 +76,9 @@
     "path": "CompleteCoverage20261017/PendingObservedModes-v0.58.json",
     "sha256": "73204e6b4cf2e330817078b0a0d0c9236d5adb06a5a6e6b784ee19e7195fb3a6"
   },
-  "pending_specific_modes": 3,
-  "pending_observed_family_cells_without_author": 3,
-  "pending_same_mode_whole_originals": 9,
+  "pending_specific_modes": 2,
+  "pending_observed_family_cells_without_author": 2,
+  "pending_same_mode_whole_originals": 6,
   "latest_junior_listening_discovery": {
     "path": "CompleteCoverage20261017/Grade7OrdinaryListeningDiscovery-v0.1.json",
     "sha256": "55e951c0c8408d68ffb0f1529d49f511954dd02c0477bee25086a865b5a0fb0d"
@@ -196,8 +196,8 @@
     "sha256": "35a9aa903a0abb9afd1aa32dd1b849842c3690c67f2f2fcfc431af435cd4b450"
   },
   "current_authored_revisions": {
-    "path": "CompleteCoverage20261017/AuthoredRevisions-v0.10.json",
-    "sha256": "048f05dc3de6047f78c81635c9c48762b4dc674419ca54f26a32e1447af41d22"
+    "path": "CompleteCoverage20261017/AuthoredRevisions-v0.11.json",
+    "sha256": "8d721105c8170a06cdc3dba0c4d8ec94c8eb03965458ab3538dcaeda6334bf1c"
   },
   "current_scope_policy": {
     "path": "CompleteCoverage20261017/ScopePolicy-v0.1.json",
@@ -224,8 +224,8 @@
     "sha256": "45916d6073ff0d3b08fd8406f7bf8cd3d02abb0604a5f2b9195bee4c7a4801e9"
   },
   "current_gap_completion": {
-    "path": "CompleteCoverage20261017/AuthoredIndex-v0.117.json",
-    "sha256": "7686d6bb549d71370bcfb2feef5325fcc88e485315c0e397ca1e614e817a923f"
+    "path": "CompleteCoverage20261017/AuthoredIndex-v0.120.json",
+    "sha256": "ae73e683735de2710dde5d61d40254aa7f5e3e1c428b639d184fdcf8d727a8c8"
   },
   "current_lowprimary_band_reference": {
     "path": "CompleteCoverage20261017/LowPrimaryBandReferenceReview-v0.1.json",
@@ -278,8 +278,8 @@
     "sha256": "d635cf86853b674fa0076b5c3dbe1afb13228e2dbaa91b1219c946fedfb183c3"
   },
   "latest_browser_proof": {
-    "path": "build/english-benchmark-authority-20261017/proofread655-pending-browser-v0.2.json",
-    "sha256": "6ae96805d0eb1d7b0c96c1fb2e88ee747607e185b162bfb7081da1acd9cc5c00"
+    "path": "build/english-benchmark-authority-20261017/g10editing658-browser-v0.3.json",
+    "sha256": "ff0e5cc745ae3d2041e0a70bfa4505488fc4ee160f040cc6f075e9966e63ddf8"
   },
   "current_primary2_lexical_discovery": {
     "path": "CompleteCoverage20261017/Primary2LexicalListeningDiscovery-v0.1.json",
@@ -326,8 +326,8 @@
     "path": "CompleteCoverage20261017/Primary1SentencePictureOriginalBatch-v0.1.json",
     "sha256": "ce7837bfa9245aafbf26f14f3355355554e76a941fc8719df216d230e4d54dfa"
   },
-  "this_batch_revised_existing_groups": 0,
-  "this_batch_revised_existing_responses": 0,
+  "this_batch_revised_existing_groups": 1,
+  "this_batch_revised_existing_responses": 1,
   "current_fill_groups_without_bound_marking_protocol": 0,
   "current_review_matrix": {
     "path": "FirstRelease/timeboxed-review-matrix-v0.11.json",
@@ -352,8 +352,8 @@
     "sha256": "f08ead074f7697cfdac5fe62ebec83f83efe234c60746641f6e60756718da872"
   },
   "latest_verification": {
-    "path": "CompleteCoverage20261017/SeniorProofreadingDiscoveryVerification-v0.1.json",
-    "sha256": "42243f0b25196d43c841cfed1866b8c860a4b10ba2d21743ebd9bbfab2a6e217"
+    "path": "CompleteCoverage20261017/SeniorProofreadingOriginalVerification-v0.1.json",
+    "sha256": "421e6e084e5cdf9a6172d81c7feda25ccdd2f116cf3548ac6e07200da0ca7454"
   },
   "new_authenticated_source_parents_this_batch": 0,
   "current_primary6_pairedword_batch": {
@@ -365,9 +365,9 @@
     "path": "CompleteCoverage20261017/Primary6WrittenModeDiscovery-v0.2.json",
     "sha256": "8c7152893944ba3067b38202c0f9f60f709ebe179b125f1673b1f25431fe99b2"
   },
-  "current_unfilled_specific_modes": 3,
-  "current_unfilled_family_cells": 3,
-  "remaining_same_mode_whole_original_target": 9,
+  "current_unfilled_specific_modes": 2,
+  "current_unfilled_family_cells": 2,
+  "remaining_same_mode_whole_original_target": 6,
   "current_primary6_written_batch": {
     "path": "CompleteCoverage20261017/Primary6WrittenOriginalBatch-v0.1.json",
     "sha256": "55e0662bcea01df4b048f78b68163a6b4d393353797b8b26827a85db954a4e16"
@@ -387,8 +387,8 @@
     "sha256": "410498a1f136d6e1f039d08399ee2578f45cb277080a192b5e8af0139a3cf7e7"
   },
   "latest_review_delta": {
-    "path": "build/english-benchmark-authority-20261017/review655-senior14-context-delta-v0.1.json",
-    "sha256": "49d6889a36fa7b5b743dabbb92517c2d008be7ba3e6fde7ce333bb7181c9e578"
+    "path": "build/english-benchmark-authority-20261017/review658-g10-editing-revision-delta-v0.1.json",
+    "sha256": "9b6b40a429fe0c634fbcbf913f43c9853f86fb63ebaeb8d908f5328561c292b5"
   },
   "current_primary6_five_joint_reading_batch": {
     "path": "CompleteCoverage20261017/Primary6FiveJointReadingOriginalBatch-v0.1.json",
@@ -433,7 +433,7 @@
     "path": "CompleteCoverage20261017/SeniorGrammarContextReview-v0.2.json",
     "sha256": "fc5f7878a467a3678c14c69ab3ad22b92510c46e9549bff1cd529d2718a77deb"
   },
-  "current_pinned_author_revisions": 41,
+  "current_pinned_author_revisions": 42,
   "last_senior_context_review_count": 14,
   "latest_senior_context_review": {
     "path": "CompleteCoverage20261017/SeniorGrammarContextReview-v0.2.json",
@@ -444,5 +444,13 @@
   "current_senior_proofreading_discovery": {
     "path": "CompleteCoverage20261017/SeniorProofreadingDiscovery-v0.1.json",
     "sha256": "96e65d9ad8db2398deea4c4ec57717594995173e826b22b2cc802d3e3abbd70d"
+  },
+  "current_senior_proofreading_sources": {
+    "path": "CompleteCoverage20261017/SeniorProofreadingSources-v0.1.json",
+    "sha256": "9aba7ba947fe2099f4a0eda4cd613674ef58abb5811c1dbc019e0dc7444ce5d3"
+  },
+  "current_senior_proofreading_batch": {
+    "path": "CompleteCoverage20261017/SeniorProofreadingOriginalBatch-v0.2.json",
+    "sha256": "12859097d50e41b55a729f0103bbf873575e307623c0ec4da6dd6c2e83d69969"
   }
 }

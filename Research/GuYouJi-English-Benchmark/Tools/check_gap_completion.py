@@ -37,6 +37,9 @@ def check(data, plan):
                     load_ref(source[key])
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
+            if b.get('task_mode') == 'unhinted_word_editing':
+                from word_editing_contract import check as check_word_editing
+                check_word_editing(g,a,b,source)
             if b.get('task_mode') == 'lowprimary_picture_listening':
                 if a.get('lowprimary_sentence_picture'):
                     from compile_lowprimary_sentence_picture import check as check_lowprimary_picture
@@ -410,6 +413,9 @@ def check(data, plan):
         assert load['output_response_positions'] == len(g['questions'])
         for q in g['questions']:
             assert q['rationale']
+            if q.get('editAlternatives'):
+                assert a.get('word_editing') and b.get('task_mode') == 'unhinted_word_editing'
+                continue
             if q['options']:
                 assert q['answer'] in dict(q['options'])
                 assert len(set(k for k, _ in q['options'])) == (b['options_per_response'][q['number']-1] if a.get('academic_multi_response_multi_select') else options_each)

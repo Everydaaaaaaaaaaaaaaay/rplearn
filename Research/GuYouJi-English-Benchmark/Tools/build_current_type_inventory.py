@@ -109,7 +109,8 @@ def build(page,version="0.1"):
         pending_specific_modes=data.get('pending_specific_modes',[]),unfilled_specific_modes=data.get('unfilled_specific_modes',0),
         current_source_input_quality_corrections=plan.get('current_source_input_quality_corrections'),
         full_source_and_author_count_separate=True,
-        fill_groups_without_bound_marking_protocol=[dict(id=g['id'],grade=g['grade'],family=g['kind'],positions=[q['number']for q in g['questions']if not q['options']and not(q.get('acceptedAnswers')and q.get('fillMarking'))])for g in data['groups'].values()if any(not q['options']and not(q.get('acceptedAnswers')and q.get('fillMarking'))for q in g['questions'])],
+        fill_groups_without_bound_marking_protocol=[dict(id=g['id'],grade=g['grade'],family=g['kind'],positions=[q['number']for q in g['questions']if not q['options']and not q.get('editAlternatives')and not(q.get('acceptedAnswers')and q.get('fillMarking'))])for g in data['groups'].values()if any(not q['options']and not q.get('editAlternatives')and not(q.get('acceptedAnswers')and q.get('fillMarking'))for q in g['questions'])],
+        word_editing_groups=[dict(id=g['id'],responses=len(g['questions']),complete_unhinted_passage=True,source_group_ids=g['anchor_group_ids'])for g in data['groups'].values()if g.get('wordEditing')],
         marking_protocol_presence_is_not_correctness_or_production_validation=True,
         all_required_types_complete=False,independent_teacher_student_commercial_production=False)
 

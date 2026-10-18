@@ -1,0 +1,229 @@
+{
+  "version": "0.1",
+  "id": "grade10-editing-lost-property",
+  "grade": 10,
+  "questions": 10,
+  "candidate_sha256": "208f76ae2e29abf019126a75e529ff8d0be7df8a514dc31ffd880d64d2717d4f",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SeniorProofreadingBindings-v0.1.json",
+    "sha256": "57f721a36167561fd162959357c3bc91404ef302289286eec53f267b5ea04a1a"
+  },
+  "source_binding": "g10-unhinted10-word-editing",
+  "source_count_increment": 0,
+  "source_key_not_copied": true,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "author_grammar_and_corrected_variant_review": true,
+  "word_editing": {
+    "version": 1,
+    "errors": 10,
+    "firstScoredEdits": 10,
+    "wordsPerEdit": 1,
+    "maxEditsPerSentence": 2,
+    "order": "any",
+    "unlisted": "review",
+    "normalization": "non_case_target_word_v1",
+    "caseOnlyTargets": false,
+    "sentences": [
+      "Last month, our class open a lost-property desk beside the school office.",
+      "On the first morning, two pupil brought a scarf and a pair of gloves.",
+      "Our teacher asked us write a short description of each item.",
+      "We kept the descriptions in a folder, but we did not wrote anyone's name on the noticeboard.",
+      "Matching the gloves was more easier than finding the scarf's owner, who was very happily when we finally called her.",
+      "A younger child thanked the classmates helped him look for his gloves.",
+      "The scarf belonged to a girl which had return to the music room to look for it.",
+      "At the end of the week, everyone agreed that our small desk had been a useful experiences."
+    ]
+  },
+  "student_passage": "Last month, our class open a lost-property desk beside the school office.\n\nOn the first morning, two pupil brought a scarf and a pair of gloves.\n\nOur teacher asked us write a short description of each item.\n\nWe kept the descriptions in a folder, but we did not wrote anyone's name on the noticeboard.\n\nMatching the gloves was more easier than finding the scarf's owner, who was very happily when we finally called her.\n\nA younger child thanked the classmates helped him look for his gloves.\n\nThe scarf belonged to a girl which had return to the music room to look for it.\n\nAt the end of the week, everyone agreed that our small desk had been a useful experiences.",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "修改记录1（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 1,
+          "position": 5,
+          "operation": "replace",
+          "text": "opened"
+        }
+      ],
+      "rationale": "Last month明确过去叙事，用opened。"
+    },
+    {
+      "number": 2,
+      "stem": "修改记录2（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 2,
+          "position": 6,
+          "operation": "replace",
+          "text": "pupils"
+        }
+      ],
+      "rationale": "two限定可数名词复数pupils。"
+    },
+    {
+      "number": 3,
+      "stem": "修改记录3（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 3,
+          "position": 5,
+          "operation": "insert",
+          "text": "to"
+        }
+      ],
+      "rationale": "asked us to write，不定式to加在write前；未预标位置。"
+    },
+    {
+      "number": 4,
+      "stem": "修改记录4（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 4,
+          "position": 12,
+          "operation": "replace",
+          "text": "write"
+        }
+      ],
+      "rationale": "did not后主动态动词原形write。"
+    },
+    {
+      "number": 5,
+      "stem": "修改记录5（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 5,
+          "position": 5,
+          "operation": "delete",
+          "text": ""
+        },
+        {
+          "sentence": 5,
+          "position": 6,
+          "operation": "replace",
+          "text": "easy"
+        }
+      ],
+      "rationale": "双重比较more easier可删more；也可将easier改easy，构成more easy，列为同一错误的替代修法。"
+    },
+    {
+      "number": 6,
+      "stem": "修改记录6（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 5,
+          "position": 15,
+          "operation": "replace",
+          "text": "happy"
+        }
+      ],
+      "rationale": "was后用happy描述失主的状态，不能用副词happily作此表语。"
+    },
+    {
+      "number": 7,
+      "stem": "修改记录7（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 6,
+          "position": 7,
+          "operation": "insert",
+          "text": "who"
+        },
+        {
+          "sentence": 6,
+          "position": 7,
+          "operation": "insert",
+          "text": "that"
+        },
+        {
+          "sentence": 6,
+          "position": 7,
+          "operation": "replace",
+          "text": "helping"
+        }
+      ],
+      "rationale": "classmates后可加who/that引出过去帮助过他的同学；也可把helped改helping作主动分词后置修饰。三修法同属一个错误，不重复计入。"
+    },
+    {
+      "number": 8,
+      "stem": "修改记录8（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 7,
+          "position": 7,
+          "operation": "replace",
+          "text": "who"
+        },
+        {
+          "sentence": 7,
+          "position": 7,
+          "operation": "replace",
+          "text": "that"
+        }
+      ],
+      "rationale": "girl指人，限定性定语从句主语可用who/that。"
+    },
+    {
+      "number": 9,
+      "stem": "修改记录9（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 7,
+          "position": 9,
+          "operation": "replace",
+          "text": "returned"
+        }
+      ],
+      "rationale": "had后的主动完成式用returned。"
+    },
+    {
+      "number": 10,
+      "stem": "修改记录10（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 8,
+          "position": 17,
+          "operation": "replace",
+          "text": "experience"
+        }
+      ],
+      "rationale": "a useful后此处表示一次经历，用单数experience。"
+    }
+  ],
+  "canonical_response_block_sha256": "f6005bf3f988e224e57eec7ec2283124bee461a460c2be1ae23fd4a983ceed26",
+  "corrected_passage_variants": [
+    "Last month, our class opened a lost-property desk beside the school office. On the first morning, two pupils brought a scarf and a pair of gloves. Our teacher asked us to write a short description of each item. We kept the descriptions in a folder, but we did not write anyone's name on the noticeboard. Matching the gloves was easier than finding the scarf's owner, who was very happy when we finally called her. A younger child thanked the classmates who helped him look for his gloves. The scarf belonged to a girl who had returned to the music room to look for it. At the end of the week, everyone agreed that our small desk had been a useful experience.",
+    "Last month, our class opened a lost-property desk beside the school office. On the first morning, two pupils brought a scarf and a pair of gloves. Our teacher asked us to write a short description of each item. We kept the descriptions in a folder, but we did not write anyone's name on the noticeboard. Matching the gloves was easier than finding the scarf's owner, who was very happy when we finally called her. A younger child thanked the classmates who helped him look for his gloves. The scarf belonged to a girl that had returned to the music room to look for it. At the end of the week, everyone agreed that our small desk had been a useful experience.",
+    "Last month, our class opened a lost-property desk beside the school office. On the first morning, two pupils brought a scarf and a pair of gloves. Our teacher asked us to write a short description of each item. We kept the descriptions in a folder, but we did not write anyone's name on the noticeboard. Matching the gloves was easier than finding the scarf's owner, who was very happy when we finally called her. A younger child thanked the classmates that helped him look for his gloves. The scarf belonged to a girl who had returned to the music room to look for it. At the end of the week, everyone agreed that our small desk had been a useful experience.",
+    "Last month, our class opened a lost-property desk beside the school office. On the first morning, two pupils brought a scarf and a pair of gloves. Our teacher asked us to write a short description of each item. We kept the descriptions in a folder, but we did not write anyone's name on the noticeboard. Matching the gloves was easier than finding the scarf's owner, who was very happy when we finally called her. A younger child thanked the classmates that helped him look for his gloves. The scarf belonged to a girl that had returned to the music room to look for it. At the end of the week, everyone agreed that our small desk had been a useful experience.",
+    "Last month, our class opened a lost-property desk beside the school office. On the first morning, two pupils brought a scarf and a pair of gloves. Our teacher asked us to write a short description of each item. We kept the descriptions in a folder, but we did not write anyone's name on the noticeboard. Matching the gloves was easier than finding the scarf's owner, who was very happy when we finally called her. A younger child thanked the classmates helping him look for his gloves. The scarf belonged to a girl who had returned to the music room to look for it. At the end of the week, everyone agreed that our small desk had been a useful experience.",
+    "Last month, our class opened a lost-property desk beside the school office. On the first morning, two pupils brought a scarf and a pair of gloves. Our teacher asked us to write a short description of each item. We kept the descriptions in a folder, but we did not write anyone's name on the noticeboard. Matching the gloves was easier than finding the scarf's owner, who was very happy when we finally called her. A younger child thanked the classmates helping him look for his gloves. The scarf belonged to a girl that had returned to the music room to look for it. At the end of the week, everyone agreed that our small desk had been a useful experience.",
+    "Last month, our class opened a lost-property desk beside the school office. On the first morning, two pupils brought a scarf and a pair of gloves. Our teacher asked us to write a short description of each item. We kept the descriptions in a folder, but we did not write anyone's name on the noticeboard. Matching the gloves was more easy than finding the scarf's owner, who was very happy when we finally called her. A younger child thanked the classmates who helped him look for his gloves. The scarf belonged to a girl who had returned to the music room to look for it. At the end of the week, everyone agreed that our small desk had been a useful experience.",
+    "Last month, our class opened a lost-property desk beside the school office. On the first morning, two pupils brought a scarf and a pair of gloves. Our teacher asked us to write a short description of each item. We kept the descriptions in a folder, but we did not write anyone's name on the noticeboard. Matching the gloves was more easy than finding the scarf's owner, who was very happy when we finally called her. A younger child thanked the classmates who helped him look for his gloves. The scarf belonged to a girl that had returned to the music room to look for it. At the end of the week, everyone agreed that our small desk had been a useful experience.",
+    "Last month, our class opened a lost-property desk beside the school office. On the first morning, two pupils brought a scarf and a pair of gloves. Our teacher asked us to write a short description of each item. We kept the descriptions in a folder, but we did not write anyone's name on the noticeboard. Matching the gloves was more easy than finding the scarf's owner, who was very happy when we finally called her. A younger child thanked the classmates that helped him look for his gloves. The scarf belonged to a girl who had returned to the music room to look for it. At the end of the week, everyone agreed that our small desk had been a useful experience.",
+    "Last month, our class opened a lost-property desk beside the school office. On the first morning, two pupils brought a scarf and a pair of gloves. Our teacher asked us to write a short description of each item. We kept the descriptions in a folder, but we did not write anyone's name on the noticeboard. Matching the gloves was more easy than finding the scarf's owner, who was very happy when we finally called her. A younger child thanked the classmates that helped him look for his gloves. The scarf belonged to a girl that had returned to the music room to look for it. At the end of the week, everyone agreed that our small desk had been a useful experience.",
+    "Last month, our class opened a lost-property desk beside the school office. On the first morning, two pupils brought a scarf and a pair of gloves. Our teacher asked us to write a short description of each item. We kept the descriptions in a folder, but we did not write anyone's name on the noticeboard. Matching the gloves was more easy than finding the scarf's owner, who was very happy when we finally called her. A younger child thanked the classmates helping him look for his gloves. The scarf belonged to a girl who had returned to the music room to look for it. At the end of the week, everyone agreed that our small desk had been a useful experience.",
+    "Last month, our class opened a lost-property desk beside the school office. On the first morning, two pupils brought a scarf and a pair of gloves. Our teacher asked us to write a short description of each item. We kept the descriptions in a folder, but we did not write anyone's name on the noticeboard. Matching the gloves was more easy than finding the scarf's owner, who was very happy when we finally called her. A younger child thanked the classmates helping him look for his gloves. The scarf belonged to a girl that had returned to the music room to look for it. At the end of the week, everyone agreed that our small desk had been a useful experience."
+  ],
+  "full_edit_variant_combinations": 12,
+  "load_measure": {
+    "body_English_words": 121,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10,
+    "output_requirement_English_words": 0,
+    "output_requirement": "十处位置+操作+单词，不是十段自由表达"
+  }
+}

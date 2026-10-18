@@ -1,0 +1,211 @@
+{
+  "version": "0.1",
+  "id": "grade10-editing-town-game",
+  "grade": 10,
+  "questions": 10,
+  "candidate_sha256": "613c7ad0527ab59cb41cb10c69ab16188431239d09285f00b0bb071d82bf846e",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SeniorProofreadingBindings-v0.1.json",
+    "sha256": "57f721a36167561fd162959357c3bc91404ef302289286eec53f267b5ea04a1a"
+  },
+  "source_binding": "g10-unhinted10-word-editing",
+  "source_count_increment": 0,
+  "source_key_not_copied": true,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "author_grammar_and_corrected_variant_review": true,
+  "word_editing": {
+    "version": 1,
+    "errors": 10,
+    "firstScoredEdits": 10,
+    "wordsPerEdit": 1,
+    "maxEditsPerSentence": 2,
+    "order": "any",
+    "unlisted": "review",
+    "normalization": "non_case_target_word_v1",
+    "caseOnlyTargets": false,
+    "sentences": [
+      "For our English club, Mina and I designed a board game about a small town.",
+      "Each player start at the station and follows a different route.",
+      "We wrote the rules clear and put a copy beside each board.",
+      "Before the first test, our teacher asked us check the map for missing street names.",
+      "A pupil who knew the town very well give us two useful suggestion.",
+      "We listened to her and added a bridge which connect the two sides of the river.",
+      "The new route was much more shorter than the old one.",
+      "After play one complete game, we asked the group what they wanted to change.",
+      "They all agreed that one card had too many information on it.",
+      "We removed a repeated sentence from the card and tested the game again, which made the instructions more easier to follow."
+    ]
+  },
+  "student_passage": "For our English club, Mina and I designed a board game about a small town.\n\nEach player start at the station and follows a different route.\n\nWe wrote the rules clear and put a copy beside each board.\n\nBefore the first test, our teacher asked us check the map for missing street names.\n\nA pupil who knew the town very well give us two useful suggestion.\n\nWe listened to her and added a bridge which connect the two sides of the river.\n\nThe new route was much more shorter than the old one.\n\nAfter play one complete game, we asked the group what they wanted to change.\n\nThey all agreed that one card had too many information on it.\n\nWe removed a repeated sentence from the card and tested the game again, which made the instructions more easier to follow.",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "修改记录1（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 2,
+          "position": 3,
+          "operation": "replace",
+          "text": "starts"
+        }
+      ],
+      "rationale": "游戏规则用一般现在时，Each player单数与follows一致，用starts。"
+    },
+    {
+      "number": 2,
+      "stem": "修改记录2（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 3,
+          "position": 5,
+          "operation": "replace",
+          "text": "clearly"
+        }
+      ],
+      "rationale": "修饰wrote，用clearly。"
+    },
+    {
+      "number": 3,
+      "stem": "修改记录3（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 4,
+          "position": 9,
+          "operation": "insert",
+          "text": "to"
+        }
+      ],
+      "rationale": "ask somebody to do，加to于check前。"
+    },
+    {
+      "number": 4,
+      "stem": "修改记录4（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 5,
+          "position": 9,
+          "operation": "replace",
+          "text": "gave"
+        }
+      ],
+      "rationale": "过去测试时的小学生给建议，用gave；who knew是另一个定语从句，不作为主句谓语。"
+    },
+    {
+      "number": 5,
+      "stem": "修改记录5（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 5,
+          "position": 13,
+          "operation": "replace",
+          "text": "suggestions"
+        }
+      ],
+      "rationale": "two修饰可数名词复数suggestions。"
+    },
+    {
+      "number": 6,
+      "stem": "修改记录6（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 6,
+          "position": 10,
+          "operation": "replace",
+          "text": "connects"
+        },
+        {
+          "sentence": 6,
+          "position": 10,
+          "operation": "replace",
+          "text": "connected"
+        }
+      ],
+      "rationale": "bridge为单数，当前地图关系用connects；依过去叙事时点描述连接的桥也可用connected。两种已核时态同等接受。"
+    },
+    {
+      "number": 7,
+      "stem": "修改记录7（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 7,
+          "position": 6,
+          "operation": "delete",
+          "text": ""
+        }
+      ],
+      "rationale": "much可加强比较级shorter，more重复比较，删more。若提出其他修法，未列者待复核。"
+    },
+    {
+      "number": 8,
+      "stem": "修改记录8（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 8,
+          "position": 2,
+          "operation": "replace",
+          "text": "playing"
+        }
+      ],
+      "rationale": "After介词后用playing；本题每处仅一词，不能一次写having played。"
+    },
+    {
+      "number": 9,
+      "stem": "修改记录9（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 9,
+          "position": 9,
+          "operation": "replace",
+          "text": "much"
+        }
+      ],
+      "rationale": "information不可数，too much information。"
+    },
+    {
+      "number": 10,
+      "stem": "修改记录10（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 10,
+          "position": 18,
+          "operation": "delete",
+          "text": ""
+        },
+        {
+          "sentence": 10,
+          "position": 19,
+          "operation": "replace",
+          "text": "easy"
+        }
+      ],
+      "rationale": "more easier重复比较，可删more；easier改easy也形成more easy，另列同一错误的修法。"
+    }
+  ],
+  "canonical_response_block_sha256": "f6005bf3f988e224e57eec7ec2283124bee461a460c2be1ae23fd4a983ceed26",
+  "corrected_passage_variants": [
+    "For our English club, Mina and I designed a board game about a small town. Each player starts at the station and follows a different route. We wrote the rules clearly and put a copy beside each board. Before the first test, our teacher asked us to check the map for missing street names. A pupil who knew the town very well gave us two useful suggestions. We listened to her and added a bridge which connects the two sides of the river. The new route was much shorter than the old one. After playing one complete game, we asked the group what they wanted to change. They all agreed that one card had too much information on it. We removed a repeated sentence from the card and tested the game again, which made the instructions easier to follow.",
+    "For our English club, Mina and I designed a board game about a small town. Each player starts at the station and follows a different route. We wrote the rules clearly and put a copy beside each board. Before the first test, our teacher asked us to check the map for missing street names. A pupil who knew the town very well gave us two useful suggestions. We listened to her and added a bridge which connects the two sides of the river. The new route was much shorter than the old one. After playing one complete game, we asked the group what they wanted to change. They all agreed that one card had too much information on it. We removed a repeated sentence from the card and tested the game again, which made the instructions more easy to follow.",
+    "For our English club, Mina and I designed a board game about a small town. Each player starts at the station and follows a different route. We wrote the rules clearly and put a copy beside each board. Before the first test, our teacher asked us to check the map for missing street names. A pupil who knew the town very well gave us two useful suggestions. We listened to her and added a bridge which connected the two sides of the river. The new route was much shorter than the old one. After playing one complete game, we asked the group what they wanted to change. They all agreed that one card had too much information on it. We removed a repeated sentence from the card and tested the game again, which made the instructions easier to follow.",
+    "For our English club, Mina and I designed a board game about a small town. Each player starts at the station and follows a different route. We wrote the rules clearly and put a copy beside each board. Before the first test, our teacher asked us to check the map for missing street names. A pupil who knew the town very well gave us two useful suggestions. We listened to her and added a bridge which connected the two sides of the river. The new route was much shorter than the old one. After playing one complete game, we asked the group what they wanted to change. They all agreed that one card had too much information on it. We removed a repeated sentence from the card and tested the game again, which made the instructions more easy to follow."
+  ],
+  "full_edit_variant_combinations": 4,
+  "load_measure": {
+    "body_English_words": 140,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10,
+    "output_requirement_English_words": 0,
+    "output_requirement": "十处位置+操作+单词，不是十段自由表达"
+  }
+}
