@@ -52,6 +52,9 @@ def check(data, plan):
             if b.get('task_mode') == 'school_optional_report_reading3':
                 from optional_report_reading_contract import check as check_optional_report
                 check_optional_report(g,a,b,source)
+            if b.get('task_mode') == 'junior_optional_curiosity_essay3':
+                from curiosity_essay_reading_contract import check as check_curiosity_essay
+                check_curiosity_essay(g,a,b,source)
             if b.get('task_mode') == 'school_closed_mixed_reading11':
                 from mixed_closed_reading_contract import check as check_closed_mixed
                 check_closed_mixed(g,a,b,source)
