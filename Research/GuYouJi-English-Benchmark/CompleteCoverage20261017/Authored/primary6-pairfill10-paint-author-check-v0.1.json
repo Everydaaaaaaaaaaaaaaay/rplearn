@@ -1,0 +1,321 @@
+{
+  "version": "0.1",
+  "id": "primary6-pairfill10-paint",
+  "grade": "primary6",
+  "questions": 10,
+  "candidate_sha256": "72ac33c2acaba42c7a436fc70263f7e73e99d66b3ebb7de9ff24a7e1cdae6f11",
+  "source_binding": "p6-pairedwords10",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6PairedWordSourceBindings-v0.1.json",
+    "sha256": "0606f7cfc4f58dc272cbf8a15c3033ba7743a5f7c1b0816fb3b8baf709bf0ad8"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.pairedwords10",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-pairfill10-paint-manuscript-v0.1.json",
+    "sha256": "5f72a33d6a001c5860fba9f458c7f13bb854130f9e80d09b0c8fac2d6b8b1e68"
+  },
+  "paired_word_fill": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Bert is ____ blue paint for the wooden sign. (mix / mixing)",
+      "options": [],
+      "givenCandidates": [
+        "mix",
+        "mixing"
+      ],
+      "acceptedAnswers": [
+        "mixing"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "mix"
+        ]
+      },
+      "rationale": "mix：is后需现在分词，mix原形不能直接组成此进行结构。；mixing：is mixing构成现在进行时。"
+    },
+    {
+      "number": 2,
+      "stem": "Maya hopes to ____ a small frame before lunch. (make / makes)",
+      "options": [],
+      "givenCandidates": [
+        "make",
+        "makes"
+      ],
+      "acceptedAnswers": [
+        "make"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "makes"
+        ]
+      },
+      "rationale": "make：to后用动词原形make。；makes：不定式标记to后不能用第三人称单数makes。"
+    },
+    {
+      "number": 3,
+      "stem": "Yesterday I ____ how to clean the brushes. (learned / learnt)",
+      "options": [],
+      "givenCandidates": [
+        "learned",
+        "learnt"
+      ],
+      "acceptedAnswers": [
+        "learned",
+        "learnt"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": []
+      },
+      "rationale": "learned：learn的过去式，昨日语境成立。；learnt：Oxford同列learn的过去式learnt；与learned同等接受。"
+    },
+    {
+      "number": 4,
+      "stem": "My sister did not ____ a ruler to the workshop. (bring / brought)",
+      "options": [],
+      "givenCandidates": [
+        "bring",
+        "brought"
+      ],
+      "acceptedAnswers": [
+        "bring"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "brought"
+        ]
+      },
+      "rationale": "bring：did not后接原形bring。；brought：did not后不能使用过去式brought。"
+    },
+    {
+      "number": 5,
+      "stem": "The empty shelf is ____ to hold the long frame. (wide enough / enough wide)",
+      "options": [],
+      "givenCandidates": [
+        "wide enough",
+        "enough wide"
+      ],
+      "acceptedAnswers": [
+        "wide enough"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "enough wide"
+        ]
+      },
+      "rationale": "wide enough：enough修饰形容词放其后。；enough wide：enough不能在这里置于形容词wide前。"
+    },
+    {
+      "number": 6,
+      "stem": "We left the wet brushes ____ a jar of water. (in / at)",
+      "options": [],
+      "givenCandidates": [
+        "in",
+        "at"
+      ],
+      "acceptedAnswers": [
+        "in"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "at"
+        ]
+      },
+      "rationale": "in：水罐内部用in a jar。；at：at不表达题中刷子置于水罐内的位置。"
+    },
+    {
+      "number": 7,
+      "stem": "This is Nia's drawing. Please return it to ____. (her / she)",
+      "options": [],
+      "givenCandidates": [
+        "her",
+        "she"
+      ],
+      "acceptedAnswers": [
+        "her"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "she"
+        ]
+      },
+      "rationale": "her：介词to后用人称代词宾格her。；she：she是主格，不能直接作介词to的宾语。"
+    },
+    {
+      "number": 8,
+      "stem": "The two helpers ____ the table when I arrived. (were cleaning / cleans)",
+      "options": [],
+      "givenCandidates": [
+        "were cleaning",
+        "cleans"
+      ],
+      "acceptedAnswers": [
+        "were cleaning"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "cleans"
+        ]
+      },
+      "rationale": "were cleaning：复数主语与were cleaning一致，过去到达语境成立。；cleans：cleans既为现在时又是第三人称单数，不与复数主语一致。"
+    },
+    {
+      "number": 9,
+      "stem": "Thank you for ____ the broken hinge. (mending / mend)",
+      "options": [],
+      "givenCandidates": [
+        "mending",
+        "mend"
+      ],
+      "acceptedAnswers": [
+        "mending"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "mend"
+        ]
+      },
+      "rationale": "mending：for后动词用-ing形式。；mend：for后不能直接接动词原形mend作此补语。"
+    },
+    {
+      "number": 10,
+      "stem": "Please close the paint box ____. (careful / carefully)",
+      "options": [],
+      "givenCandidates": [
+        "careful",
+        "carefully"
+      ],
+      "acceptedAnswers": [
+        "carefully"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "careful"
+        ]
+      },
+      "rationale": "careful：careful为形容词，不能在此修饰close。；carefully：carefully为副词，修饰关盒动作。"
+    }
+  ],
+  "canonical_response_block_sha256": "03d6d77ea49a9516aa9c06a32330a970f919f59600af78831d307651ad99b72a",
+  "student_passage": "",
+  "fully_filled_sentence_sets": [
+    [
+      "Bert is mixing blue paint for the wooden sign.",
+      "Maya hopes to make a small frame before lunch.",
+      "Yesterday I learned how to clean the brushes.",
+      "My sister did not bring a ruler to the workshop.",
+      "The empty shelf is wide enough to hold the long frame.",
+      "We left the wet brushes in a jar of water.",
+      "This is Nia's drawing. Please return it to her.",
+      "The two helpers were cleaning the table when I arrived.",
+      "Thank you for mending the broken hinge.",
+      "Please close the paint box carefully."
+    ],
+    [
+      "Bert is mixing blue paint for the wooden sign.",
+      "Maya hopes to make a small frame before lunch.",
+      "Yesterday I learnt how to clean the brushes.",
+      "My sister did not bring a ruler to the workshop.",
+      "The empty shelf is wide enough to hold the long frame.",
+      "We left the wet brushes in a jar of water.",
+      "This is Nia's drawing. Please return it to her.",
+      "The two helpers were cleaning the table when I arrived.",
+      "Thank you for mending the broken hinge.",
+      "Please close the paint box carefully."
+    ]
+  ],
+  "full_fill_variant_combinations": 2,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 100,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10,
+    "sentence_context_English_words": 77,
+    "printed_local_candidates_English_words": 23,
+    "output_word_counts": [
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      2,
+      1,
+      1
+    ]
+  }
+}

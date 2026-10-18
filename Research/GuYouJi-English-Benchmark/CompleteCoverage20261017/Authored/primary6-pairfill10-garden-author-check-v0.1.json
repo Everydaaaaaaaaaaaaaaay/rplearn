@@ -1,0 +1,321 @@
+{
+  "version": "0.1",
+  "id": "primary6-pairfill10-garden",
+  "grade": "primary6",
+  "questions": 10,
+  "candidate_sha256": "c53125421edb06ddd7e8415a9efd624d5a62b50407ea0b3621c41e74dad1b859",
+  "source_binding": "p6-pairedwords10",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6PairedWordSourceBindings-v0.1.json",
+    "sha256": "0606f7cfc4f58dc272cbf8a15c3033ba7743a5f7c1b0816fb3b8baf709bf0ad8"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.pairedwords10",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-pairfill10-garden-manuscript-v0.1.json",
+    "sha256": "a4237de7c6504553a3fcde5e911b29a36d0b587e2d8c81b893fc7d9ce3c95171"
+  },
+  "paired_word_fill": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Rosa is ____ three seeds into each pot now. (putting / put)",
+      "options": [],
+      "givenCandidates": [
+        "putting",
+        "put"
+      ],
+      "acceptedAnswers": [
+        "putting"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "put"
+        ]
+      },
+      "rationale": "putting：is putting构成现在进行时。；put：is后不能直接接原形put构成此谓语。"
+    },
+    {
+      "number": 2,
+      "stem": "You should ____ the dry leaves into this basket. (puts / put)",
+      "options": [],
+      "givenCandidates": [
+        "puts",
+        "put"
+      ],
+      "acceptedAnswers": [
+        "put"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "puts"
+        ]
+      },
+      "rationale": "puts：情态动词should后不用puts。；put：should后用动词原形put。"
+    },
+    {
+      "number": 3,
+      "stem": "Last month our class ____ how to grow beans. (learned / learnt)",
+      "options": [],
+      "givenCandidates": [
+        "learned",
+        "learnt"
+      ],
+      "acceptedAnswers": [
+        "learned",
+        "learnt"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": []
+      },
+      "rationale": "learned：learned是合法过去式。；learnt：learnt是Oxford列明的合法过去式，同等接受。"
+    },
+    {
+      "number": 4,
+      "stem": "The class did not ____ any seeds last winter. (plant / planted)",
+      "options": [],
+      "givenCandidates": [
+        "plant",
+        "planted"
+      ],
+      "acceptedAnswers": [
+        "plant"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "planted"
+        ]
+      },
+      "rationale": "plant：did not后用原形plant。；planted：did not后不接过去式planted。"
+    },
+    {
+      "number": 5,
+      "stem": "The path is ____ for the little wheelbarrow. (wide enough / enough wide)",
+      "options": [],
+      "givenCandidates": [
+        "wide enough",
+        "enough wide"
+      ],
+      "acceptedAnswers": [
+        "wide enough"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "enough wide"
+        ]
+      },
+      "rationale": "wide enough：enough修饰形容词wide置于其后。；enough wide：这里不能使用enough wide。"
+    },
+    {
+      "number": 6,
+      "stem": "These beans came ____ our school garden. (from / at)",
+      "options": [],
+      "givenCandidates": [
+        "from",
+        "at"
+      ],
+      "acceptedAnswers": [
+        "from"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "at"
+        ]
+      },
+      "rationale": "from：come from说明来源。；at：come at不表达这里的产地来源。"
+    },
+    {
+      "number": 7,
+      "stem": "Uncle gave the empty pots to my sister and ____. (I / me)",
+      "options": [],
+      "givenCandidates": [
+        "I",
+        "me"
+      ],
+      "acceptedAnswers": [
+        "me"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "I"
+        ]
+      },
+      "rationale": "I：并列后仍作介词to的宾语，不能用主格I。；me：并列宾语my sister and me使用宾格me。"
+    },
+    {
+      "number": 8,
+      "stem": "The two pupils ____ the young plants when the teacher arrived. (were watering / waters)",
+      "options": [],
+      "givenCandidates": [
+        "were watering",
+        "waters"
+      ],
+      "acceptedAnswers": [
+        "were watering"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "waters"
+        ]
+      },
+      "rationale": "were watering：复数主语two pupils与were watering一致。；waters：waters为第三人称单数，与复数主语不符。"
+    },
+    {
+      "number": 9,
+      "stem": "The children finished ____ the seed labels before lunch. (write / writing)",
+      "options": [],
+      "givenCandidates": [
+        "write",
+        "writing"
+      ],
+      "acceptedAnswers": [
+        "writing"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "write"
+        ]
+      },
+      "rationale": "write：finish后不能在此接原形write。；writing：finish后接动名词writing。"
+    },
+    {
+      "number": 10,
+      "stem": "Please count the empty pots ____. (accurately / accurate)",
+      "options": [],
+      "givenCandidates": [
+        "accurately",
+        "accurate"
+      ],
+      "acceptedAnswers": [
+        "accurately"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "accurate"
+        ]
+      },
+      "rationale": "accurately：accurately为副词，修饰count。；accurate：accurate为形容词，不在此修饰count。"
+    }
+  ],
+  "canonical_response_block_sha256": "27a93f4c8a636b391778833646d900bbccd67228b7cb4df153a5696dd670fdc1",
+  "student_passage": "",
+  "fully_filled_sentence_sets": [
+    [
+      "Rosa is putting three seeds into each pot now.",
+      "You should put the dry leaves into this basket.",
+      "Last month our class learned how to grow beans.",
+      "The class did not plant any seeds last winter.",
+      "The path is wide enough for the little wheelbarrow.",
+      "These beans came from our school garden.",
+      "Uncle gave the empty pots to my sister and me.",
+      "The two pupils were watering the young plants when the teacher arrived.",
+      "The children finished writing the seed labels before lunch.",
+      "Please count the empty pots accurately."
+    ],
+    [
+      "Rosa is putting three seeds into each pot now.",
+      "You should put the dry leaves into this basket.",
+      "Last month our class learnt how to grow beans.",
+      "The class did not plant any seeds last winter.",
+      "The path is wide enough for the little wheelbarrow.",
+      "These beans came from our school garden.",
+      "Uncle gave the empty pots to my sister and me.",
+      "The two pupils were watering the young plants when the teacher arrived.",
+      "The children finished writing the seed labels before lunch.",
+      "Please count the empty pots accurately."
+    ]
+  ],
+  "full_fill_variant_combinations": 2,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 100,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10,
+    "sentence_context_English_words": 77,
+    "printed_local_candidates_English_words": 23,
+    "output_word_counts": [
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      2,
+      1,
+      1
+    ]
+  }
+}

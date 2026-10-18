@@ -1,0 +1,162 @@
+{
+  "version": "0.1",
+  "id": "primary6-pairfill10-train",
+  "title": "小六：车站与行李",
+  "grade": "primary6",
+  "family": "sentence_form",
+  "source_group_id": "primary6.shenzhenexperiment2017.pairedwords10",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6PairedWordSourceBindings-v0.1.json",
+    "sha256": "0606f7cfc4f58dc272cbf8a15c3033ba7743a5f7c1b0816fb3b8baf709bf0ad8"
+  },
+  "source_binding": "p6-pairedwords10",
+  "learn_variants_evidence": {
+    "path": "build/english-benchmark-authority-20261017/p6pair636-learn-usage-v0.1.json",
+    "sha256": "986fb54037920996fbc0c34bf5e804f5cbb13cf76f5776a05b05215054167454"
+  },
+  "instruction": "完成全部十题：从每题括号内的两个词或词组中选取合适的一项，原样填入空白，不填字母或给词变形。两项均合法时，填写其中任意一项即可；不要将两项一起填写。候选只供本题使用。",
+  "source_notice": "参照历史转载PDF第12节十个独立句、每空两个候选，填写词或词组而非字母，非共享词库；第5题两项均两词、第8题两词/一词，未见统一每空一词限制。原文件自署2016–17深圳实验学校小学部六下，属教辅平台导出，原校和实际施测未认证；第五页只见水印，无原键。原7连接词、8时态与10副词可能多解，2/9词形异常保留，未作为唯一键或gold；原创另审全部候选。独立教研、学生、商用与生产未验证。",
+  "sentences": [
+    {
+      "frame": "The driver is ____ the last door now.",
+      "candidates": [
+        "checking",
+        "check"
+      ],
+      "accepted": [
+        "checking"
+      ],
+      "grounds": [
+        "is checking是现在进行结构。",
+        "is后不能直接接原形check构成这里的谓语。"
+      ]
+    },
+    {
+      "frame": "All passengers must ____ their own bags.",
+      "candidates": [
+        "carry",
+        "carries"
+      ],
+      "accepted": [
+        "carry"
+      ],
+      "grounds": [
+        "情态动词must后接原形。",
+        "must后不能用第三人称单数carries。"
+      ]
+    },
+    {
+      "frame": "Last Saturday we ____ how to read a railway map.",
+      "candidates": [
+        "learnt",
+        "learned"
+      ],
+      "accepted": [
+        "learnt",
+        "learned"
+      ],
+      "grounds": [
+        "learnt是learn的合法过去式。",
+        "learned同样是合法过去式，不限定一种地区拼写。"
+      ]
+    },
+    {
+      "frame": "Dad did not ____ a taxi to the station.",
+      "candidates": [
+        "took",
+        "take"
+      ],
+      "accepted": [
+        "take"
+      ],
+      "grounds": [
+        "did not后不能接过去式took。",
+        "did not后用动词原形take。"
+      ]
+    },
+    {
+      "frame": "This case is ____ for the narrow luggage shelf.",
+      "candidates": [
+        "small enough",
+        "enough small"
+      ],
+      "accepted": [
+        "small enough"
+      ],
+      "grounds": [
+        "形容词small后接enough。",
+        "enough不置于small前。"
+      ]
+    },
+    {
+      "frame": "The waiting room opens ____ six in the morning.",
+      "candidates": [
+        "on",
+        "at"
+      ],
+      "accepted": [
+        "at"
+      ],
+      "grounds": [
+        "钟点前用at，不用on。",
+        "at six表示六点。"
+      ]
+    },
+    {
+      "frame": "I cannot lift the box alone. Can you help ____?",
+      "candidates": [
+        "I",
+        "me"
+      ],
+      "accepted": [
+        "me"
+      ],
+      "grounds": [
+        "I是主格，不能作help的宾语。",
+        "me是宾格，可作help的宾语。"
+      ]
+    },
+    {
+      "frame": "The children ____ behind the yellow line when I saw them.",
+      "candidates": [
+        "were standing",
+        "stands"
+      ],
+      "accepted": [
+        "were standing"
+      ],
+      "grounds": [
+        "复数children与were standing一致，过去观察语境成立。",
+        "stands为第三人称单数，不与children一致。"
+      ]
+    },
+    {
+      "frame": "Leah enjoys ____ pictures of old stations.",
+      "candidates": [
+        "draw",
+        "drawing"
+      ],
+      "accepted": [
+        "drawing"
+      ],
+      "grounds": [
+        "enjoy后不直接接动词原形。",
+        "enjoy后接动名词drawing。"
+      ]
+    },
+    {
+      "frame": "Please hold the glass jar ____.",
+      "candidates": [
+        "firmly",
+        "firm"
+      ],
+      "accepted": [
+        "firmly"
+      ],
+      "grounds": [
+        "firmly为副词，修饰握住动作。",
+        "firm为形容词，不能作这里的方式副词。"
+      ]
+    }
+  ]
+}

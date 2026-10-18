@@ -1,0 +1,108 @@
+{
+  "version": "0.1",
+  "scope": "actual_complete_source_section_and_new_full_authors_not_full_paper_admission",
+  "source": {
+    "path": "build/english-benchmark-authority-20261017/p6source635-shenzhen2017-public-v0.1.pdf",
+    "sha256": "e95f54d1f2bfcd89b2bd75474aac8baf63881df9a69a00e624f5c0b09f22c83a"
+  },
+  "source_selection": {
+    "path": "build/english-benchmark-authority-20261017/p6pair636-selected-source-v0.1.json",
+    "sha256": "b90f915c0b52626046db333ef7f1adf607e7b305f39eced823f3e0c1ce98601f"
+  },
+  "source_section": 12,
+  "new_selected_specific_modes": 1,
+  "new_public_repost_parent_labels": 1,
+  "new_authenticated_parent_papers": 0,
+  "original_key_acquired": false,
+  "missing_minzhi14_2B_not_repaired": true,
+  "source_other_native_detected_modes_requiring_visual_and_response_scope_review": [
+    {
+      "section": 11,
+      "label": "五题固定词序重组",
+      "responses": 5,
+      "pages": [
+        1,
+        2
+      ],
+      "admitted": false,
+      "needed": "完整词池/标点/多种合法排列与确定性边界"
+    },
+    {
+      "section": 14,
+      "label": "十题首字母与课文内容填词",
+      "responses": 10,
+      "pages": [
+        2,
+        3
+      ],
+      "admitted": false,
+      "needed": "原页及实际所依赖课文，不能把课文依赖忽略成独立语境题"
+    },
+    {
+      "section": 15,
+      "label": "五题给词形式，每空不限一词",
+      "responses": 5,
+      "pages": [
+        3
+      ],
+      "admitted": false,
+      "needed": "原页/全提示/变体与完整原创"
+    },
+    {
+      "section": "1-10",
+      "label": "十题四选独立句",
+      "responses": 10,
+      "pages": [
+        1
+      ],
+      "admitted": false,
+      "needed": "原页与全部候选核读；与现有三选分开"
+    }
+  ],
+  "other_native_text_not_claimed_visual_or_new_required_positive_modes": true,
+  "learn_usage": {
+    "path": "build/english-benchmark-authority-20261017/p6pair636-learn-usage-v0.1.json",
+    "sha256": "986fb54037920996fbc0c34bf5e804f5cbb13cf76f5776a05b05215054167454"
+  },
+  "authored": [
+    {
+      "id": "primary6-pairfill10-paint",
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/primary6-pairfill10-paint-v0.1.md",
+        "sha256": "72ac33c2acaba42c7a436fc70263f7e73e99d66b3ebb7de9ff24a7e1cdae6f11"
+      },
+      "author_check": {
+        "path": "CompleteCoverage20261017/Authored/primary6-pairfill10-paint-author-check-v0.1.json",
+        "sha256": "c9bedaaf9a367ab62c77ffb6ceb60fe295b337b75b07a1d53f8080a6038bf0be"
+      }
+    },
+    {
+      "id": "primary6-pairfill10-train",
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/primary6-pairfill10-train-v0.1.md",
+        "sha256": "98e67bc1781a9e524197fb1a0670a23561fbd3cfd61b8473c9bbabadec6fb11e"
+      },
+      "author_check": {
+        "path": "CompleteCoverage20261017/Authored/primary6-pairfill10-train-author-check-v0.1.json",
+        "sha256": "2719be3f29e316c0d22132390851c2ea7d6a8fb0d04d476957056e2e5edbaa9a"
+      }
+    },
+    {
+      "id": "primary6-pairfill10-garden",
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/primary6-pairfill10-garden-v0.1.md",
+        "sha256": "c53125421edb06ddd7e8415a9efd624d5a62b50407ea0b3621c41e74dad1b859"
+      },
+      "author_check": {
+        "path": "CompleteCoverage20261017/Authored/primary6-pairfill10-garden-author-check-v0.1.json",
+        "sha256": "1a4c152eeeba110142f8a3b19083a953ca40bad5bd03e88c918dd8350b1969e5"
+      }
+    }
+  ],
+  "new_groups": 3,
+  "new_responses": 30,
+  "variants_no_fixed_answer_count_cap": true,
+  "source_or_author_semantic_independence_certified": false,
+  "independent_teacher_student_commercial_production": false,
+  "all_required_types_complete": false
+}

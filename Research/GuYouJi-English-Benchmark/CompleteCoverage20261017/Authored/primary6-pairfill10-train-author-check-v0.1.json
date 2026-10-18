@@ -1,0 +1,321 @@
+{
+  "version": "0.1",
+  "id": "primary6-pairfill10-train",
+  "grade": "primary6",
+  "questions": 10,
+  "candidate_sha256": "98e67bc1781a9e524197fb1a0670a23561fbd3cfd61b8473c9bbabadec6fb11e",
+  "source_binding": "p6-pairedwords10",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6PairedWordSourceBindings-v0.1.json",
+    "sha256": "0606f7cfc4f58dc272cbf8a15c3033ba7743a5f7c1b0816fb3b8baf709bf0ad8"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.pairedwords10",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-pairfill10-train-manuscript-v0.1.json",
+    "sha256": "68052738cc4df62679f89bc6370d5f667b09e27601df5aae04c6ce00b18f93a9"
+  },
+  "paired_word_fill": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The driver is ____ the last door now. (checking / check)",
+      "options": [],
+      "givenCandidates": [
+        "checking",
+        "check"
+      ],
+      "acceptedAnswers": [
+        "checking"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "check"
+        ]
+      },
+      "rationale": "checking：is checking是现在进行结构。；check：is后不能直接接原形check构成这里的谓语。"
+    },
+    {
+      "number": 2,
+      "stem": "All passengers must ____ their own bags. (carry / carries)",
+      "options": [],
+      "givenCandidates": [
+        "carry",
+        "carries"
+      ],
+      "acceptedAnswers": [
+        "carry"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "carries"
+        ]
+      },
+      "rationale": "carry：情态动词must后接原形。；carries：must后不能用第三人称单数carries。"
+    },
+    {
+      "number": 3,
+      "stem": "Last Saturday we ____ how to read a railway map. (learnt / learned)",
+      "options": [],
+      "givenCandidates": [
+        "learnt",
+        "learned"
+      ],
+      "acceptedAnswers": [
+        "learnt",
+        "learned"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": []
+      },
+      "rationale": "learnt：learnt是learn的合法过去式。；learned：learned同样是合法过去式，不限定一种地区拼写。"
+    },
+    {
+      "number": 4,
+      "stem": "Dad did not ____ a taxi to the station. (took / take)",
+      "options": [],
+      "givenCandidates": [
+        "took",
+        "take"
+      ],
+      "acceptedAnswers": [
+        "take"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "took"
+        ]
+      },
+      "rationale": "took：did not后不能接过去式took。；take：did not后用动词原形take。"
+    },
+    {
+      "number": 5,
+      "stem": "This case is ____ for the narrow luggage shelf. (small enough / enough small)",
+      "options": [],
+      "givenCandidates": [
+        "small enough",
+        "enough small"
+      ],
+      "acceptedAnswers": [
+        "small enough"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "enough small"
+        ]
+      },
+      "rationale": "small enough：形容词small后接enough。；enough small：enough不置于small前。"
+    },
+    {
+      "number": 6,
+      "stem": "The waiting room opens ____ six in the morning. (on / at)",
+      "options": [],
+      "givenCandidates": [
+        "on",
+        "at"
+      ],
+      "acceptedAnswers": [
+        "at"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "on"
+        ]
+      },
+      "rationale": "on：钟点前用at，不用on。；at：at six表示六点。"
+    },
+    {
+      "number": 7,
+      "stem": "I cannot lift the box alone. Can you help ____? (I / me)",
+      "options": [],
+      "givenCandidates": [
+        "I",
+        "me"
+      ],
+      "acceptedAnswers": [
+        "me"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "I"
+        ]
+      },
+      "rationale": "I：I是主格，不能作help的宾语。；me：me是宾格，可作help的宾语。"
+    },
+    {
+      "number": 8,
+      "stem": "The children ____ behind the yellow line when I saw them. (were standing / stands)",
+      "options": [],
+      "givenCandidates": [
+        "were standing",
+        "stands"
+      ],
+      "acceptedAnswers": [
+        "were standing"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "stands"
+        ]
+      },
+      "rationale": "were standing：复数children与were standing一致，过去观察语境成立。；stands：stands为第三人称单数，不与children一致。"
+    },
+    {
+      "number": 9,
+      "stem": "Leah enjoys ____ pictures of old stations. (draw / drawing)",
+      "options": [],
+      "givenCandidates": [
+        "draw",
+        "drawing"
+      ],
+      "acceptedAnswers": [
+        "drawing"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "draw"
+        ]
+      },
+      "rationale": "draw：enjoy后不直接接动词原形。；drawing：enjoy后接动名词drawing。"
+    },
+    {
+      "number": 10,
+      "stem": "Please hold the glass jar ____. (firmly / firm)",
+      "options": [],
+      "givenCandidates": [
+        "firmly",
+        "firm"
+      ],
+      "acceptedAnswers": [
+        "firmly"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "closedCandidates": true,
+        "rejectedAnswers": [
+          "firm"
+        ]
+      },
+      "rationale": "firmly：firmly为副词，修饰握住动作。；firm：firm为形容词，不能作这里的方式副词。"
+    }
+  ],
+  "canonical_response_block_sha256": "64df964c1a78e9abaf49504b3a951ad56ac430d8675d024ad616064cf99ef5e3",
+  "student_passage": "",
+  "fully_filled_sentence_sets": [
+    [
+      "The driver is checking the last door now.",
+      "All passengers must carry their own bags.",
+      "Last Saturday we learnt how to read a railway map.",
+      "Dad did not take a taxi to the station.",
+      "This case is small enough for the narrow luggage shelf.",
+      "The waiting room opens at six in the morning.",
+      "I cannot lift the box alone. Can you help me?",
+      "The children were standing behind the yellow line when I saw them.",
+      "Leah enjoys drawing pictures of old stations.",
+      "Please hold the glass jar firmly."
+    ],
+    [
+      "The driver is checking the last door now.",
+      "All passengers must carry their own bags.",
+      "Last Saturday we learned how to read a railway map.",
+      "Dad did not take a taxi to the station.",
+      "This case is small enough for the narrow luggage shelf.",
+      "The waiting room opens at six in the morning.",
+      "I cannot lift the box alone. Can you help me?",
+      "The children were standing behind the yellow line when I saw them.",
+      "Leah enjoys drawing pictures of old stations.",
+      "Please hold the glass jar firmly."
+    ]
+  ],
+  "full_fill_variant_combinations": 2,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 99,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10,
+    "sentence_context_English_words": 76,
+    "printed_local_candidates_English_words": 23,
+    "output_word_counts": [
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      2,
+      1,
+      1
+    ]
+  }
+}
