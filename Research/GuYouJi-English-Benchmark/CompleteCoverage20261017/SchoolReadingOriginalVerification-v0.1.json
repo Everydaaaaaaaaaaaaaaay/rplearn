@@ -1,0 +1,186 @@
+{
+  "version": "0.1",
+  "batch": {
+    "path": "CompleteCoverage20261017/SchoolReadingOriginalBatch-v0.3.json",
+    "sha256": "d691e3175dd85511b20bd93977d69a48a48d8a5ad932dbedac100c42dd4de4f6"
+  },
+  "source_index": {
+    "path": "CompleteCoverage20261017/SchoolReadingSelectedSources-v0.1.json",
+    "sha256": "ec9f86dad9b09616e1f4300d4568875171ca982f6ce09b4d68f95b1e3f9c9a6d"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolReadingSourceBindings-v0.1.json",
+    "sha256": "c7c0bc5d43f7a9e7928b477729be7532b24a789b13c5c5b0cb5b9575970e21da"
+  },
+  "reading_reconciliation": {
+    "path": "CompleteCoverage20261017/SchoolReadingConfigurationReconciliation-v0.4.json",
+    "sha256": "7457abc6783918c014f38f9db423149dc0ec374d42973e276b129079608c526a"
+  },
+  "pending_index": {
+    "path": "CompleteCoverage20261017/PendingObservedModes-v0.78.json",
+    "sha256": "89c76a101863233f74d682d8989cc8e47f5172aeb5721f3305b64c9767c7ceb3"
+  },
+  "inventory": {
+    "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.131.json",
+    "sha256": "bf18e9f3552c1c482e2c984573ab4c6183a2a52a9dda2cdb8252572a77e96f47"
+  },
+  "contract": {
+    "path": "build/english-benchmark-authority-20261017/reading709-contract-v0.2.json",
+    "sha256": "5353b29774f538dcbc01b14cf51057686a44932861ac3fd717ef306ced6a1fee"
+  },
+  "initial_browser": {
+    "path": "build/english-benchmark-authority-20261017/reading709-browser-v0.1.json",
+    "sha256": "72c146dec26de53e39da041aac534d56a202f147c4045364da861a7fc61eaeeb"
+  },
+  "revised_book_browser": {
+    "path": "build/english-benchmark-authority-20261017/reading709-browser-query-fix-v0.1.json",
+    "sha256": "32efdb6f4084be478f897ef70ce1228384d06639fe8b29b869e4f200a52cd4a6"
+  },
+  "family_load": {
+    "path": "build/english-benchmark-authority-20261017/reading709-family-load-review-v0.1.json",
+    "sha256": "dd49e3ada618510b61e8dd526b9dc8467a25f3888b544f488e9759bcba7d311b"
+  },
+  "final_check": {
+    "path": "build/english-benchmark-authority-20261017/reading709-final-check-v0.3.json",
+    "sha256": "b3c64b0b5c548ac2dc43a408415c18665ffeaed93f8d751e48e39ddfbdd6d6cf"
+  },
+  "archive": {
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.200.json",
+    "sha256": "49d0e950b30e3d79b4adc9659e7dc839c92a8ea6a7cc31e40d452e5dc3410f91"
+  },
+  "targeted_restores": [
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/review709-school-reading-query-delta-v0.1.json",
+        "sha256": "8d194c82b1a1ee75113df118533ffcaf82bc9dec3e78413d62373af1fa37d68d"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/reading709-browser-query-fix-v0.1.json",
+        "sha256": "32efdb6f4084be478f897ef70ce1228384d06639fe8b29b869e4f200a52cd4a6"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/reading709-query-fixed-review-v0.1.png",
+        "sha256": "491f2e93d4c2a183352ec0b9a8a49be0354b5534e04bf3c4b6ec91036e6093fa"
+      },
+      "restored_SHA_verified": true
+    }
+  ],
+  "candidate_HTTP_links": [
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade7-reading17-craft-friends-v0.1.md",
+        "sha256": "2411cb7dfb322ac2bbebfe958fd2bb784d24905a8c55a07d94d2e6c153a6e900"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    },
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade7-reading17-book-friends-v0.2.md",
+        "sha256": "3a3307f2126893814f1cd35526c3f90980b34dc3e2e33c92bcaa3664060d4c6c"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    },
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade7-reading17-garden-friends-v0.1.md",
+        "sha256": "2a6d9998afa470c9cb8658d1ffe68705f4ae34d7257a31d30c2850d4ab5605a7"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "build/english-benchmark-authority-20261017/reading709-query-fixed-review-v0.1.png",
+      "sha256": "491f2e93d4c2a183352ec0b9a8a49be0354b5534e04bf3c4b6ec91036e6093fa"
+    }
+  ],
+  "runtime_rules": [
+    {
+      "path": "Tools/school_reading_contract.py",
+      "sha256": "c6d02c59e00e5b5ca5bfb1095ef1821608c5254437af0f9c5fb9cb5bf442ab19"
+    },
+    {
+      "path": "Tools/compile_school_reading.py",
+      "sha256": "e6136a11e203cd962b1a3af406986333602c6f5c335971f117f360a202d87e98"
+    },
+    {
+      "path": "Tools/check_school_reading_contract.py",
+      "sha256": "7515cee1e22e9b0df62fe07cd0680c83fc9cc75eddefc1f40c9dbc45b4427bf6"
+    },
+    {
+      "path": "Tools/check_gap_completion.py",
+      "sha256": "abbea4821357e081431e3be39008124548313059a21e3dbb8131a189387d4032"
+    }
+  ],
+  "current_groups": 709,
+  "current_responses": 5120,
+  "populated_family_cells": 195,
+  "new_groups": 3,
+  "new_responses": 51,
+  "text_units_per_whole_original": 9,
+  "subgroup_response_distribution": [
+    3,
+    4,
+    4,
+    3,
+    3
+  ],
+  "original_source_first_section17x2equals34_not_whole_reading20x2equals40": true,
+  "original_second_section3open_responses_paused": true,
+  "new_candidates_reviewed_in_all_material_context": 204,
+  "negative_controls": 105,
+  "current_UI_correct_response_positions": 51,
+  "initial_UI_positions": 51,
+  "revised_current_book_UI_retested": 17,
+  "total_UI_correct_positions_including_superseded17": 68,
+  "current_wrong_partial_blank_vectors": 9,
+  "revision_additional_wrong_partial_blank_vectors": 3,
+  "current_teacher_reset_groups": 3,
+  "all_27_text_units_and_marked_reference_context_words_visible": true,
+  "UI_consistency_count_not_weighted_paper_marks": true,
+  "source_body_words_per_subgroup": [
+    63,
+    84,
+    81,
+    75,
+    84
+  ],
+  "source_total_body_words": 387,
+  "authored_body_words": [
+    439,
+    463,
+    461
+  ],
+  "no_wordload_difficulty_time_equivalence": true,
+  "source_header_selected_spans_and_all_candidate_rows_SHA_verified": true,
+  "source_published_key_not_available_in_selected_resource": true,
+  "source_underlining_style_and_unstated_negative_item_risks_not_gold": true,
+  "author_B5_semantic_query_corrected_not_individual_preference_inference": true,
+  "one_precise_revision_added_total54": true,
+  "all_other706_payloads_preserved": true,
+  "staged_metadata_failures_kept_previous706_page": {
+    "path": "build/english-benchmark-authority-20261017/reading709-staged-build-recovery-v0.4.json",
+    "sha256": "fe130186f850bf7f57c9dc1f575fa4d02f6f86296e4fced2bff5ac9091a07cdd"
+  },
+  "pre_repair_inventory129_and_final_check_v01_not_current709_evidence": true,
+  "source_downloads": 0,
+  "new_processed_transcripts": 0,
+  "new_authenticated_school_papers": 0,
+  "archive_registered_paths": 21,
+  "archive_new_objects": 20,
+  "archive_new_bytes": 355958,
+  "new_full_snapshots": 0,
+  "remaining_reading_source_records_for_boundary_classification": 122,
+  "reading_source_records_not_missing_type_counts": true,
+  "all_required_types_complete": false,
+  "independent_teacher_student_commercial_production": false
+}

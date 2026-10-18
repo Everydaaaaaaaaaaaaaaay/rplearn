@@ -63,6 +63,14 @@
     {
       "id": "school-expansion20261015-bs4-unavailable",
       "result": "Bundled Python lacks bs4; failed before acquisition. Used standard-library extraction, no installation or content inference."
+    },
+    {
+      "id": "schoolreading709-staged-metadata-guards",
+      "result": "New pending-row count/config fields, portable source-index reference and new coverage issue display fields were incomplete. Staged builder retained previous706 page. Frozen early versions retained; current pending78/audit153/plan336 corrected. Pre-repair inventory129/finalcheck-v01 refer to previous706 and are not current709 evidence. Source bindings and student materials were not removed or bypassed.",
+      "evidence": {
+        "path": "build/english-benchmark-authority-20261017/reading709-staged-build-recovery-v0.4.json",
+        "sha256": "fe130186f850bf7f57c9dc1f575fa4d02f6f86296e4fced2bff5ac9091a07cdd"
+      }
     }
   ],
   "ocr_models": [
@@ -58900,6 +58908,138 @@
           "output": "build/english-benchmark-authority-20261017/lowprimary706-news-fetch-v0.1.json",
           "bytes": 681,
           "sha256": "7d3b34024abe40abe6cc4a1a0a66c29366b292ed166b7692e491b8a6ec50c820",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "schoolreading709-grade7-complete-objective-first-section",
+      "scope": "three_complete_AtoE9text17response_reading_sections;bookB5querycorrected;sourceandoldpayloadsretained",
+      "page_records": [
+        {
+          "output": "build/english-benchmark-authority-20261017/bind-school-reading709-v0.1.py",
+          "bytes": 5705,
+          "sha256": "a89520d5101509fd2c70fda151e74586645bf5f2debe9e39bc97f593ea7903e1",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/schoolreading709-working-packets.py",
+          "bytes": 20575,
+          "sha256": "5434f5983aee1f792675672c9200f1f2e3d93f1151cbda8b34748e66dd01da47",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/refine-schoolreading709-working-v0.1.py",
+          "bytes": 5076,
+          "sha256": "4320ebf06bbb98b73a66859102d6cdbe05ee0c5463d72e367194c56a5fc4ad52",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/author-school-reading709-v0.1.py",
+          "bytes": 9036,
+          "sha256": "d463435890ef9cd4e064646e0410c75a6f270d9c1a98a4ba8e3be3a4fed67dbd",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/revise-school-reading709-book-query-v0.1.py",
+          "bytes": 6316,
+          "sha256": "a0b46990e0fce76d8e11c3c333b01d48ff17a418a98a068f74f9d4e731bbea3e",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/screen-school-reading709-v0.1.py",
+          "bytes": 2353,
+          "sha256": "df7ff3c0f141bb1c1313bed5324ef8668b0f6df8b4b9e7efaa7a65579120f067",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/review709-school-reading-delta-v0.1.json",
+          "bytes": 86498,
+          "sha256": "9ba4f026a0c8d3a0740b6e70a9bc76156e4348542ef3267932a0b36770c3f643",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/review709-school-reading-query-delta-v0.1.json",
+          "bytes": 33819,
+          "sha256": "8d194c82b1a1ee75113df118533ffcaf82bc9dec3e78413d62373af1fa37d68d",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/reading709-contract-v0.1.json",
+          "bytes": 4685,
+          "sha256": "5353b29774f538dcbc01b14cf51057686a44932861ac3fd717ef306ced6a1fee",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/reading709-contract-v0.2.json",
+          "bytes": 4685,
+          "sha256": "5353b29774f538dcbc01b14cf51057686a44932861ac3fd717ef306ced6a1fee",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/reading709-final-check-v0.2.json",
+          "bytes": 1455,
+          "sha256": "368b95429826b7b3344b1e3c1587e62724c483f1ca92f3bb4da64ac6b8f67d62",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/reading709-final-check-v0.3.json",
+          "bytes": 1455,
+          "sha256": "b3c64b0b5c548ac2dc43a408415c18665ffeaed93f8d751e48e39ddfbdd6d6cf",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/reading709-browser-v0.1.json",
+          "bytes": 14710,
+          "sha256": "72c146dec26de53e39da041aac534d56a202f147c4045364da861a7fc61eaeeb",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/reading709-browser-query-fix-v0.1.json",
+          "bytes": 4898,
+          "sha256": "32efdb6f4084be478f897ef70ce1228384d06639fe8b29b869e4f200a52cd4a6",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/reading709-section-review-v0.1.png",
+          "bytes": 74935,
+          "sha256": "631fdbb932d9828b297eb993820e22754db9613533428d895264dc63c312bfa1",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/reading709-query-fixed-review-v0.1.png",
+          "bytes": 74910,
+          "sha256": "491f2e93d4c2a183352ec0b9a8a49be0354b5534e04bf3c4b6ec91036e6093fa",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/reading709-family-load-review-v0.1.json",
+          "bytes": 6857,
+          "sha256": "dd49e3ada618510b61e8dd526b9dc8467a25f3888b544f488e9759bcba7d311b",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/reading709-staged-build-recovery-v0.1.json",
+          "bytes": 508,
+          "sha256": "097778b98bbb4157e06736b6c5f1ce4c2ce7796d2b4f50592a54cabd50ebe64e",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/reading709-staged-build-recovery-v0.2.json",
+          "bytes": 690,
+          "sha256": "12a95a247250fbd6870d5dd1dfe91b66790f3ece0e58899d0ddb98ecdd53d384",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/reading709-staged-build-recovery-v0.3.json",
+          "bytes": 507,
+          "sha256": "3dfa9d92f5823e407feb7240dc6bf852288071855a141efcbdf26e3ee5307d3e",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/reading709-staged-build-recovery-v0.4.json",
+          "bytes": 970,
+          "sha256": "fe130186f850bf7f57c9dc1f575fa4d02f6f86296e4fced2bff5ac9091a07cdd",
           "exit_code": 0
         }
       ]
