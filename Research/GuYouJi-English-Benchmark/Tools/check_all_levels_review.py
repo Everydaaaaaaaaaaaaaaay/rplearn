@@ -2,6 +2,7 @@
 """Verify complete objective data, label identity and preserved source boundaries."""
 import argparse
 import hashlib
+import html
 import itertools
 import json
 import re
@@ -57,7 +58,24 @@ def pinned_revision(prior,current,record):
                 assert old_image['asset']['sha256']==new_image['asset']['sha256']
                 assert {k:v for k,v in old_image.items()if k!='asset'}=={k:v for k,v in new_image.items()if k!='asset'}
             continue
+        if record.get('image_alt_only_correction') and key=='requiredPassageImages':
+            changes=record['image_alt_changes'];assert len(old_value)==len(new_value) and changes
+            for index,(old_image,new_image)in enumerate(zip(old_value,new_value)):
+                assert {k:v for k,v in old_image.items()if k!='alt'}=={k:v for k,v in new_image.items()if k!='alt'}
+                expected=next((r for r in changes if r['index']==index),None)
+                if expected:assert old_image['alt']==expected['old'] and new_image['alt']==expected['new']
+                else:assert old_image==new_image
+            continue
         assert old_value == new_value, 'Revision altered source form: '+key
+    if record.get('image_alt_only_correction'):
+        assert prior['questions']==current['questions'] and prior['reviewHtml']==current['reviewHtml']
+        expected=prior['passageHtml'];printed=load_ref(prior['candidate']).read_text()
+        for change in record['image_alt_changes']:
+            assert expected.count(html.escape(change['old'],quote=True))==1
+            expected=expected.replace(html.escape(change['old'],quote=True),html.escape(change['new'],quote=True),1)
+            assert printed.count('!['+change['old']+']')==1
+            printed=printed.replace('!['+change['old']+']','!['+change['new']+']',1)
+        assert expected==current['passageHtml'] and printed==load_ref(current['candidate']).read_text()
     assert record['source_form_kept'] and record['reason']
     return True
 

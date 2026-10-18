@@ -52,6 +52,9 @@ def check(data, plan):
             if b.get('task_mode') == 'school_optional_report_reading3':
                 from optional_report_reading_contract import check as check_optional_report
                 check_optional_report(g,a,b,source)
+            if b.get('task_mode') == 'school_closed_mixed_reading11':
+                from mixed_closed_reading_contract import check as check_closed_mixed
+                check_closed_mixed(g,a,b,source)
             if b.get('task_mode') == 'school_senior_caves_friendship_river_forecast15':
                 from senior_river_reading_contract import check as check_senior_river
                 check_senior_river(g,a,b,source)
@@ -426,7 +429,8 @@ def check(data, plan):
         options_each = b.get('options_each')
         if b.get('task_mode') == 'lowprimary_picture_listening':
             options_each = source['features']['options_each']
-        assert [len(q['options']) for q in g['questions']] == (b['options_per_response'] if a.get('academic_multi_response_multi_select') else [options_each] * b['responses'])
+        per_response_options = a.get('academic_multi_response_multi_select') or a.get('school_closed_mixed_reading11')
+        assert [len(q['options']) for q in g['questions']] == (b['options_per_response'] if per_response_options else [options_each] * b['responses'])
         assert a['authored_student_inputs_complete'] and not a['independent_teacher_student_commercial_production_validated']
         assert meta['candidate']['sha256'] == a['candidate_sha256']
         printed = text.split('<!-- responses:start -->')[1].split('<!-- responses:end -->')[0].strip()
@@ -445,7 +449,7 @@ def check(data, plan):
                 continue
             if q['options']:
                 assert q['answer'] in dict(q['options'])
-                assert len(set(k for k, _ in q['options'])) == (b['options_per_response'][q['number']-1] if a.get('academic_multi_response_multi_select') else options_each)
+                assert len(set(k for k, _ in q['options'])) == (b['options_per_response'][q['number']-1] if per_response_options else options_each)
             else:
                 assert q['acceptedAnswers'] and len(set(q['acceptedAnswers'])) == len(q['acceptedAnswers'])
                 c = q['fillMarking']
