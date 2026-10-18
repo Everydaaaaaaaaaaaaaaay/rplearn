@@ -1,0 +1,96 @@
+{
+  "version": "0.6",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceQualityNotes-v0.5.json",
+    "sha256": "5fc9bc7b903c78a034047ff1914fa042cfc3a9f62e510cfeb17fa160d4700f58"
+  },
+  "scope": "additional_grade9_report_key_and_fact_risks_not_independent_adjudication",
+  "source_index": {
+    "path": "CompleteCoverage20261017/SchoolClozeSelectedSources-v0.6.json",
+    "sha256": "9aadc33a0b360b59d65796b48b2b76c1c62367c3b694dc6e4d1aa5eb8dc2b974"
+  },
+  "rows": [
+    {
+      "source_group_id": "grade9-boxing2025-21cnjy24857076.cloze",
+      "key_risks": [
+        {
+          "source_number": 11,
+          "candidate_labels": [
+            "B",
+            "C"
+          ],
+          "texts": [
+            "products",
+            "objects"
+          ],
+          "reason": "electronic products通常搭配最佳，但电子物体objects也可语义成立，不当充分排他源键。"
+        },
+        {
+          "source_number": 17,
+          "candidate_labels": [
+            "A",
+            "B"
+          ],
+          "texts": [
+            "built",
+            "created"
+          ],
+          "reason": "制造或创制陶瓷手机可有相近动词解释，原表述缺排他界定。"
+        }
+      ],
+      "facts_not_verified": [
+        "实名个人手机体验、未明确型号的相机/充电对比",
+        "Credit Suisse调查年代样本和90%以上购物意向",
+        "世界首款陶瓷及双摄像头手机首创归属",
+        "产品趋势与民族自信解释是原报道归因，非本研究事实结论"
+      ],
+      "source_key_is_gold": false
+    },
+    {
+      "source_group_id": "grade9-zhongshan2025-21cnjy22278047.cloze",
+      "key_risks": [
+        {
+          "source_number": 11,
+          "candidate_labels": [
+            "B"
+          ],
+          "texts": [
+            "youngest"
+          ],
+          "reason": "给十岁年龄未列同年获奖者全龄，不能仅据此充分证明最年轻；原键B保留不升gold。"
+        },
+        {
+          "source_number": 24,
+          "candidate_labels": [
+            "B",
+            "C"
+          ],
+          "texts": [
+            "bags",
+            "boxes"
+          ],
+          "reason": "snack bags/boxes均可组装赠送；此前袋装午餐并不独立排除这次点心盒。"
+        },
+        {
+          "source_number": 25,
+          "candidate_labels": [
+            "C",
+            "D"
+          ],
+          "texts": [
+            "proud",
+            "relaxed"
+          ],
+          "reason": "采访只给感受空及获奖背景，骄傲为预期最佳，放松未由明示事实充分排他。"
+        }
+      ],
+      "facts_not_verified": [
+        "Emily获奖及官员/报道来源未独立核验",
+        "饥饿身心影响为原报道泛称，本批不转写为医疗建议"
+      ],
+      "source_key_is_gold": false
+    }
+  ],
+  "no_claim_all_other_source_keys_verified": true,
+  "new_source_files": 0
+}

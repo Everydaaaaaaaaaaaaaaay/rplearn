@@ -51,6 +51,11 @@ def run(page):
                 'wrong_response_stem':lambda d:d['questions'][-1].__setitem__('stem','A篇 · 第'+str(len(d['questions']))+'空'),
                 'wrong_response_points':lambda d:d['questions'][0].__setitem__('points',99),
             })
+        if source.get('scoring_observation'):
+            cases.update({
+                'source_itemwise_unknown_omitted':lambda d:d.__setitem__('source_notice',d['source_notice'].replace('未逐题印分值','')),
+                'author_allocation_omitted':lambda d:d.__setitem__('source_notice',d['source_notice'].replace('本稿按每题1分','')),
+            })
         rejected=[]
         for name,mutate in cases.items():
             bad=copy.deepcopy(draft);mutate(bad)
@@ -63,6 +68,10 @@ def run(page):
             'source_span_changed':lambda s:s['source_spans'][0].__setitem__('sha256','0'*64),
             'cartesian_option_count':lambda s:s.__setitem__('options_each',3 if s['options_each']==4 else 4),
         }
+        if source.get('scoring_observation'):
+            source_cases.update({
+                'unprinted_item_points_claimed':lambda s:s.__setitem__('source_item_points_explicit',True),
+            })
         if source.get('source_pdf'):
             source_cases.update({
                 'visual_verification_false':lambda s:s.__setitem__('image_all_body_and_all_candidate_rows_visually_verified',False),

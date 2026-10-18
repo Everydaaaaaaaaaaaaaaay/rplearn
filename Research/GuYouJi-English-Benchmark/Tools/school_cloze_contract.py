@@ -88,6 +88,16 @@ def validate(draft, binding, source):
         assert source['source_input_images']
         for image_ref in source['source_input_images']:load_ref(image_ref)
     assert source['source_count_increment'] == 0 and binding['new_source_count'] == 0
+    if source.get('scoring_observation'):
+        observation=source['scoring_observation'];raw=load_ref(observation['source']).read_text()
+        header=raw[observation['start_offset']:observation['end_offset']]
+        assert digest(header)==observation['sha256'] and header==observation['text']
+        assert header=='二、完形填空（共10小题，计10分）'
+        assert observation['item_points'] is None and observation['section_points']==10
+        assert source['source_item_points_explicit'] is False
+        assert source['configuration']['point_allocation_basis']=='author_uniform_from_observed_total_not_itemwise_printed'
+        assert source['configuration']['points_each_subgroup']==[1]
+        assert '未逐题印分值' in draft['source_notice'] and '本稿按每题1分' in draft['source_notice']
     count = source['responses']; options = source['options_each']
     assert binding['responses'] == count and binding['options_each'] == options
     config = source['configuration']; sections = draft['sections']

@@ -1,0 +1,127 @@
+# 初三十空四选：午餐预约的两条通道
+
+## 学生题面
+
+以下为虚构场景资料。阅读完整短文，从每题四个选项中为第1—10空各选最合适的一项。每题1分，共10分。
+
+At Rowan School, pupils can reserve lunch online or use a paper ticket at the office. The school planned to keep only the online system. A user review led it to keep both (1) ____.
+
+The online system was fast for pupils with easy internet (2) ____. Some families shared a device that was not always home when orders were due. Paper tickets therefore served a practical purpose.
+
+An early trial also showed another problem. Some online forms arrived (3) ____: pupils had chosen a meal but left the collection time blank. Staff had to contact them for details. The school changed the form so that users could see all required fields together. A final page now lets them (4) ____ their choices before sending an order.
+
+The paper route needed improvement too. Staff had sometimes found it difficult to read handwriting. Pupils now tick printed choices (5) ____ of writing out every meal name. A dated receipt records the order and collection time.
+
+Both routes remain (6) ____ to all pupils. Nobody must explain why they prefer one. Both carry the same (7) ____ about deadlines and collection.
+
+The trial covered two weeks, not a full year. Its results are useful (8) ____ for the next decision, but cannot prove that all future orders will be correct. Staff will check records next term.
+
+"We wanted fewer mistakes, not just a newer-looking process," the office manager said. The school has learned to (9) ____ a service by what users can actually do with it. A screen may be convenient, while a paper route may solve a different difficulty. Keeping both is a planned (10) ____, not a sign that the review has been forgotten.
+
+<!-- responses:start -->
+
+1. 第1空
+   A. options
+   B. secrets
+   C. mistakes
+   D. prices
+
+2. 第2空
+   A. repair
+   B. silence
+   C. access
+   D. history
+
+3. 第3空
+   A. incomplete
+   B. expensive
+   C. identical
+   D. invisible
+
+4. 第4空
+   A. deliver
+   B. erase
+   C. hide
+   D. check
+
+5. 第5空
+   A. instead
+   B. because
+   C. ahead
+   D. outside
+
+6. 第6空
+   A. private
+   B. available
+   C. forbidden
+   D. broken
+
+7. 第7空
+   A. prizes
+   B. excuses
+   C. instructions
+   D. apologies
+
+8. 第8空
+   A. permission
+   B. equipment
+   C. entertainment
+   D. evidence
+
+9. 第9空
+   A. decorate
+   B. judge
+   C. hide
+   D. sell
+
+10. 第10空
+   A. accident
+   B. choice
+   C. failure
+   D. disappearance
+
+<!-- responses:end -->
+
+## 作者核对
+
+参照既存公开转载题首2024—2025第一学期期末教育集团九年级英语一篇消费趋势报道：十空各四独立候选；原节只印10小题/计10分，未逐题印分值，本稿按每题1分分配。博兴只保留原转载标签，不据文件名补正文地区。原电子产品/物体、built/created近义与具体手机型号/首创/调查比例等未独立核验，原键非gold、原施测未认证。本稿学校机构、受访者、人数、引语和服务案例均作者虚构，只作完整信息短文练习，不当实测数据或真实产品评价；不照抄原品牌宣传。作者逐候选回填不替代独立教研、学生难度用时、商用或生产验证。
+
+### 答案与逐项依据
+
+1. A。A：线上与纸票是两种预约途径，保留两种选择；B：两途径都公开，非两个秘密；C：学校要减少错误，非故意保留错误；D：没设两种售价，区别是下单途径
+
+2. C。A：internet repair不表示上网条件，未修网络；B：internet silence不表示能联网预约；C：internet access表示能方便使用网络；D：上网历史不是此处能否及时使用设备的条件
+
+3. A。A：选餐但缺时间，表格不完整；B：没有表单收费，非费用太贵；C：不是说表格彼此完全一样，实际问题是缺字段；D：工作人员看得见缺项表，非不可见
+
+4. D。A：订单最终页不能交付实体餐食；B：未说必须清空全部选择，目标确认所需内容；C：最后页供核对不是隐藏选项；D：发送前最后一页让用户核对所选餐和时间
+
+5. A。A：instead of固定搭配，用勾选代替写全餐名；B：because of writing表达因为写，不是用勾选代替书写；C：ahead of表示早于而非替代写餐名；D：outside of不表示这里以勾选替换整词书写
+
+6. B。A：向所有学生提供的途径非私密受限；B：两途径向所有学生开放可用；C：保留纸票和线上不表示都禁止；D：系统已改且在用，不是都坏了
+
+7. C。A：没奖励竞赛，时间地点不是奖品；B：操作说明不是为错误找借口；C：截止日和取餐地点是两途径共同指令信息；D：不是两份道歉，文中给操作要求
+
+8. D。A：记录不是行动授权许可；B：结果记录不是物理设备；C：减少错误的试用不是娱乐活动；D：两周试用记录作为后续决定的证据，非永久保证
+
+9. B。A：评估服务能力不是装饰服务外观；B：按用户实际能完成什么来判断服务；C：不公开隐藏服务，正在改进使用；D：预约途径没售卖给用户，非按功能出售服务
+
+10. B。A：planned与无意事故相反；B：审查后有意保留两条通道，是计划内选择；C：原目标为减少错误，保留双途径有理由，非失败；D：两途径都在，不是某物消失
+
+### 全组回填
+
+At Rowan School, pupils can reserve lunch online or use a paper ticket at the office. The school planned to keep only the online system. A user review led it to keep both options.
+
+The online system was fast for pupils with easy internet access. Some families shared a device that was not always home when orders were due. Paper tickets therefore served a practical purpose.
+
+An early trial also showed another problem. Some online forms arrived incomplete: pupils had chosen a meal but left the collection time blank. Staff had to contact them for details. The school changed the form so that users could see all required fields together. A final page now lets them check their choices before sending an order.
+
+The paper route needed improvement too. Staff had sometimes found it difficult to read handwriting. Pupils now tick printed choices instead of writing out every meal name. A dated receipt records the order and collection time.
+
+Both routes remain available to all pupils. Nobody must explain why they prefer one. Both carry the same instructions about deadlines and collection.
+
+The trial covered two weeks, not a full year. Its results are useful evidence for the next decision, but cannot prove that all future orders will be correct. Staff will check records next term.
+
+"We wanted fewer mistakes, not just a newer-looking process," the office manager said. The school has learned to judge a service by what users can actually do with it. A screen may be convenient, while a paper route may solve a different difficulty. Keeping both is a planned choice, not a sign that the review has been forgotten.
+
+原样本支持具体材料篇数、空数、候选与分值。本稿篇幅单独计量，不从单卷推出全国词数范围、难度或用时等值、年级排他性。所有角色与事件虚构，作者自审不替代独立教研、学生、商用和生产验证。
