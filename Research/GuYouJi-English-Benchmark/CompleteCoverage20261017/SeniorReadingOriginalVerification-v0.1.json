@@ -1,0 +1,178 @@
+{
+  "version": "0.1",
+  "batch": {
+    "path": "CompleteCoverage20261017/SeniorReadingOriginalBatch-v0.1.json",
+    "sha256": "8cdd1a9691e0be4738c46e7d7f46338973b983ed8b86abbaed351a1a6bbd4705"
+  },
+  "source_index": {
+    "path": "CompleteCoverage20261017/SchoolReadingSelectedSources-v0.3.json",
+    "sha256": "52e0e2c67f3f7d8e5fbb634665932695e229faae0c9d99dabb9edc384a2108a7"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolReadingSourceBindings-v0.3.json",
+    "sha256": "291198c6f9cc53a69555e269520191919361dd11ed97b179d5082026e9a17fe5"
+  },
+  "source_quality": {
+    "path": "CompleteCoverage20261017/SchoolReadingSourceQualityNotes-v0.2.json",
+    "sha256": "206a5e2073d4fb52ce00bf76f9418ef3ac117553fe9b862a256eac2e4d8b8c85"
+  },
+  "reconciliation": {
+    "path": "CompleteCoverage20261017/SchoolReadingConfigurationReconciliation-v0.7.json",
+    "sha256": "7f3f580901a60df7365e7aed1a98a2daaf765070b41981f8917c23ad65836e62"
+  },
+  "pending": {
+    "path": "CompleteCoverage20261017/PendingObservedModes-v0.81.json",
+    "sha256": "4b34e8cb1d2ae2dcf5df6aa3d414d1d9efb1219c3327b15fc1b7d9ae26b6b4e9"
+  },
+  "inventory": {
+    "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.134.json",
+    "sha256": "7384f73657f06b54ba97f6959fd8fc2ebd74cc7294940ec962409c826020ab5e"
+  },
+  "contract": {
+    "path": "build/english-benchmark-authority-20261017/senior-reading712-contract-v0.1.json",
+    "sha256": "6664a30edd3cbcf3357a9d20db179c1cff565c9070155c8e915e044999318c40"
+  },
+  "browser": {
+    "path": "build/english-benchmark-authority-20261017/senior-reading712-browser-v0.1.json",
+    "sha256": "f265d349e878b5b054d021c12c0a8c3c57b2a38440a18c12ac4f05616e2b0ebf"
+  },
+  "family_load": {
+    "path": "build/english-benchmark-authority-20261017/senior-reading712-family-load-review-v0.1.json",
+    "sha256": "46a6002798961a13601762b493be3befecdb4771a1fc858ea971aa2596f571d4"
+  },
+  "final_check": {
+    "path": "build/english-benchmark-authority-20261017/senior-reading712-final-check-v0.1.json",
+    "sha256": "a851fa5ebdfc3ea0934ab5ea206f5e71ef4890e4d00554789a28528b2cf55beb"
+  },
+  "archive": {
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.202.json",
+    "sha256": "21ef7564cd80eb64a1afe345b15d2064fa192c8c6487ff1d0e6101989d40edac"
+  },
+  "targeted_restores": [
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/review712-senior-reading-delta-v0.1.json",
+        "sha256": "f4f19798d3c190c0991b24bf99252c042bf47e8a70db8af54f4e0fe912138785"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/senior-reading712-browser-v0.1.json",
+        "sha256": "f265d349e878b5b054d021c12c0a8c3c57b2a38440a18c12ac4f05616e2b0ebf"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/senior-reading712-review-v0.1.png",
+        "sha256": "935a9e8963ec41fc0809c0bafb5d160eb763da1c13f705c882cda818646999fa"
+      },
+      "restored_SHA_verified": true
+    }
+  ],
+  "candidate_HTTP_links": [
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade10-reading15-bindings-lanterns-v0.1.md",
+        "sha256": "ac687cb4655f144a7c706701ba92a86d684f5ec2ac5f5a0b3a2d544739745a94"
+      },
+      "HTTP_status": 200,
+      "served_SHA_matches": true
+    },
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade10-reading15-bindings-puppets-v0.1.md",
+        "sha256": "795dac80b269b3beb8d59a2d833b25a1d8745e27e59bcf06b9307fe7eeae15a2"
+      },
+      "HTTP_status": 200,
+      "served_SHA_matches": true
+    },
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade10-reading15-bindings-tiles-v0.1.md",
+        "sha256": "05669c633a6f2b340ac348073f9e78d9f4d51a7b11d195a84703382fd67222ce"
+      },
+      "HTTP_status": 200,
+      "served_SHA_matches": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "build/english-benchmark-authority-20261017/senior-reading712-review-v0.1.png",
+      "sha256": "935a9e8963ec41fc0809c0bafb5d160eb763da1c13f705c882cda818646999fa"
+    }
+  ],
+  "runtime_rules": [
+    {
+      "path": "Tools/senior_reading_contract.py",
+      "sha256": "a0ef971c731720c26d8f77c996dbb060c0b1f97ab7e50ddecae884b954394e74"
+    },
+    {
+      "path": "Tools/compile_senior_reading.py",
+      "sha256": "4c5435c1a90d9f752d5b316f6a5b6290d70bb46943cdaade2c5494c82a98e072"
+    },
+    {
+      "path": "Tools/check_senior_reading_contract.py",
+      "sha256": "db9a67c84160e98f757b056d47535373705409c1455e62940cdd7e7575bb9ab9"
+    },
+    {
+      "path": "Tools/check_gap_completion.py",
+      "sha256": "d9ce0bd193a9d48e260ece7ed14472c59a6445f8925dc9d9a726b9c4464ad06e"
+    }
+  ],
+  "current_groups": 712,
+  "current_responses": 5165,
+  "populated_family_cells": 195,
+  "new_complete_originals": 3,
+  "new_responses": 45,
+  "full_passages_per_original": 4,
+  "nested_text_units_per_original": 7,
+  "subgroup_response_distribution": [
+    3,
+    4,
+    4,
+    4
+  ],
+  "points_each": 2.5,
+  "total_per_original": 37.5,
+  "source_second_section_not_merged": true,
+  "all180candidates_context_read_by_author": true,
+  "whole_contract_negative_controls": 93,
+  "current_UI_correct_positions": 45,
+  "current_wrong_partial_blank_vectors": 9,
+  "teacher_reset_groups": 3,
+  "all21text_units_and3context_words_visible": true,
+  "UI_consistency_count_not_weighted_paper_marks": true,
+  "source_body_words_per_passage": [
+    284,
+    258,
+    342,
+    355
+  ],
+  "source_body_total1239": true,
+  "authored_body_words": [
+    1304,
+    1327,
+    1341
+  ],
+  "no_wordload_difficulty_or_time_equivalence": true,
+  "book_product_and_research_all_fictional": true,
+  "source_fact_key_and_school_identity_quality_not_gold": true,
+  "all709prior_payloads_and54pins_preserved": true,
+  "old14paused133responses_preserved": true,
+  "source_downloads": 0,
+  "new_processed_transcripts": 0,
+  "new_authenticated_school_papers": 0,
+  "archive_registered_new_paths": 10,
+  "archive_new_objects": 10,
+  "archive_new_bytes": 268794,
+  "new_full_snapshots": 0,
+  "remaining_confirmed_senior_modes": 4,
+  "remaining_confirmed_senior_originals": 12,
+  "remaining_reading_source_records_for_boundary_classification": 103,
+  "source_records_not_missing_type_counts": true,
+  "lowprimary_public_research_continues_without_user_links": true,
+  "all_required_types_complete": false,
+  "independent_teacher_student_commercial_production": false
+}

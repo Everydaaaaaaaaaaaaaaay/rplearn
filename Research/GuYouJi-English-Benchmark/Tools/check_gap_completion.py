@@ -40,6 +40,9 @@ def check(data, plan):
             if b.get('task_mode') == 'school_complete_cloze':
                 from school_cloze_contract import check as check_school_cloze
                 check_school_cloze(g,a,b,source)
+            if b.get('task_mode') == 'school_complete_senior_reading_section':
+                from senior_reading_contract import check as check_senior_reading
+                check_senior_reading(g,a,b,source)
             if b.get('task_mode') == 'school_complete_reading_section':
                 from school_reading_contract import check as check_school_reading
                 check_school_reading(g,a,b,source)
@@ -388,7 +391,7 @@ def check(data, plan):
             for key in ['parent_document', 'transcription']:
                 load_ref(b['source_reference'][key])
         assert b['new_source_count'] == a['source_count_increment'] == 0
-        if b.get('task_mode') in {'school_complete_cloze','school_complete_reading_section'}:
+        if b.get('task_mode') in {'school_complete_cloze','school_complete_reading_section','school_complete_senior_reading_section'}:
             assert source['source_key_is_gold'] is False
         else:
             assert b.get('source_original_key_not_gold') or (b.get('source_script_audio_and_key_missing') and source.get('source_key_acquired') is False)
@@ -416,7 +419,7 @@ def check(data, plan):
         assert hashlib.sha256(printed.encode()).hexdigest() == a['canonical_response_block_sha256']
         assert a['student_passage'] in text
         load = a['load_measure']
-        assert load['body_English_words'] == words(a['body_load_text'] if a.get('school_complete_reading_section') or a.get('school_inline_gloss_cloze') or a.get('lowprimary_lexical_listening') or a.get('shop_grid_reading') or a.get('academic_form_listening') or a.get('academic_bundle_listening') or a.get('academic_shared_audio_matching') or a.get('listening_sentence_completion') or a.get('publisher_listening_true_false') or a.get('short_dialogue_listening') or a.get('multi_question_listening') or a.get('primary_dialogue_listening') or a.get('picture_listening') or a.get('word_phrase_listening') or a.get('primary_whole_listening') or a.get('dialogue_picture_matching') or a.get('junior_source_bound') or a.get('senior_short_source_bound') or a.get('primary_passage_listening') or a.get('illustrated_listening') or a.get('shared_picture_listening') or a.get('sequence_table_listening') else a['student_passage'])
+        assert load['body_English_words'] == words(a['body_load_text'] if a.get('school_complete_senior_reading_section') or a.get('school_complete_reading_section') or a.get('school_inline_gloss_cloze') or a.get('lowprimary_lexical_listening') or a.get('shop_grid_reading') or a.get('academic_form_listening') or a.get('academic_bundle_listening') or a.get('academic_shared_audio_matching') or a.get('listening_sentence_completion') or a.get('publisher_listening_true_false') or a.get('short_dialogue_listening') or a.get('multi_question_listening') or a.get('primary_dialogue_listening') or a.get('picture_listening') or a.get('word_phrase_listening') or a.get('primary_whole_listening') or a.get('dialogue_picture_matching') or a.get('junior_source_bound') or a.get('senior_short_source_bound') or a.get('primary_passage_listening') or a.get('illustrated_listening') or a.get('shared_picture_listening') or a.get('sequence_table_listening') else a['student_passage'])
         assert load['stem_English_words'] == sum(words(q['stem']) for q in g['questions'])
         assert load['options_English_words_with_repeated_bank'] == sum(words(t) for q in g['questions'] for _, t in q['options'])
         assert load['output_response_positions'] == len(g['questions'])
