@@ -57746,6 +57746,78 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "coverage17-schoolcloze670-g11twentygap3-v0.1",
+      "source_acquisition_ids": [],
+      "tool": "complete_bound_school_cloze_compiler+whole_group_substitution+CUA60responses+incremental_archive",
+      "tool_version": "0.1",
+      "parameters": [
+        "3complete_G11one20x4_wholes;60responses240contextual_candidate_substitutions",
+        "source367words;new394/404/428words;no_difficulty_time_or_CEFR_equivalence",
+        "3newcontract48negative+3priorregression48;source32B/C33A/Dplausibilitykept_not_gold",
+        "same_reposted_source_id_not_new_paper_or_school_authentication;body_grade_seen_no_regionyear_from_filename",
+        "all20responses_and80candidate_inputs_each_actual_UI;6wrong_blank3teacher_reset",
+        "670/4586/195cells;12restored_configurations36wholes_pending;otherfamilies_audit_still_open",
+        "no_backend_production_or_external_paid_models;all667oldpayloads_preserved"
+      ],
+      "pages": 9,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-authority-20261017/schoolcloze670-working-packets.py",
+          "bytes": 23401,
+          "sha256": "bcc771db4d75ef46a1c63f6f02f6dc0442a0ddc59f1428831717f8e64ee56ec4",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/refine-schoolcloze670-working-v0.1.py",
+          "bytes": 4077,
+          "sha256": "f6e329ac84e82a1fd1edb8c6f9eea89afbf94480728fe9e12f9b9764f5551659",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/author-school-cloze670-v0.1.py",
+          "bytes": 7607,
+          "sha256": "398455fdf95d7ad1a467830364dc6af4ab81682b945b46f30f06dedf28e8019d",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/review670-school-cloze-delta-v0.1.json",
+          "bytes": 110120,
+          "sha256": "edd831f770b50c123691f6d3dd7be03ff05f8dcb0eb4ecd97ded2d6944c91d63",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/cloze670-contract-v0.1.json",
+          "bytes": 4289,
+          "sha256": "d71b8f7d7b01ac30b0db5bdbae19073ce23b17d1e16e4332bca64dbc885bcbaa",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/cloze670-family-load-review-v0.1.json",
+          "bytes": 3770,
+          "sha256": "0abac2213159acb0985de8be644da436474e614bf11b83fdf9d001fed00ae983",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/cloze670-browser-v0.1.json",
+          "bytes": 11892,
+          "sha256": "924650c1999099b1b69bf1ae72cbecd1075671b582387280024a6becc8e64a76",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/cloze670-review-v0.1.png",
+          "bytes": 81013,
+          "sha256": "c9a35405b779f2eed21357f7f8c6670fbc20d42f7725c7b373a16e86b7c7c405",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/cloze670-final-check-v0.1.json",
+          "bytes": 1456,
+          "sha256": "2d145190c1dda3c3412063bc01984a91bdbee721ddc6fe3cb2252accbb6b3179",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

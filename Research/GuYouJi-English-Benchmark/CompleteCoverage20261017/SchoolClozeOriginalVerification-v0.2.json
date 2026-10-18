@@ -1,0 +1,147 @@
+{
+  "version": "0.2",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeOriginalVerification-v0.1.json",
+    "sha256": "ec815dd7a994d1eba13e9d9fc0e4366c996202a27ead9876d443f95f5aecefb9"
+  },
+  "batch": {
+    "path": "CompleteCoverage20261017/SchoolClozeOriginalBatch-v0.4.json",
+    "sha256": "7a416949885f647a3d04c3e1ad5ca1f07f9b6b8015aed80d058c3c75cad0ac35"
+  },
+  "bindings": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceBindings-v0.1.json",
+    "sha256": "335bcc7985422197890e25b4f892ecb1a318948a8264437a58f7aa3d8f4edc54"
+  },
+  "source_quality_notes": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceQualityNotes-v0.1.json",
+    "sha256": "2519f34456bccabff63cbcf965ba1cd43e4c444f94dd5f8690dcc57546c88a05"
+  },
+  "pending_index": {
+    "path": "CompleteCoverage20261017/PendingObservedModes-v0.62.json",
+    "sha256": "e1c5c4835b5af327f0b8227f4c4dbaadea44a141ea4fe578428fa25f4facb881"
+  },
+  "inventory": {
+    "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.113.json",
+    "sha256": "e288f19b48416ef4b0d2d8d127598ca9dcaf5a60befba472e4c443ad9d4bc647"
+  },
+  "contract": {
+    "path": "build/english-benchmark-authority-20261017/cloze670-contract-v0.1.json",
+    "sha256": "d71b8f7d7b01ac30b0db5bdbae19073ce23b17d1e16e4332bca64dbc885bcbaa"
+  },
+  "browser": {
+    "path": "build/english-benchmark-authority-20261017/cloze670-browser-v0.1.json",
+    "sha256": "924650c1999099b1b69bf1ae72cbecd1075671b582387280024a6becc8e64a76"
+  },
+  "family_and_load": {
+    "path": "build/english-benchmark-authority-20261017/cloze670-family-load-review-v0.1.json",
+    "sha256": "0abac2213159acb0985de8be644da436474e614bf11b83fdf9d001fed00ae983"
+  },
+  "final_check": {
+    "path": "build/english-benchmark-authority-20261017/cloze670-final-check-v0.1.json",
+    "sha256": "2d145190c1dda3c3412063bc01984a91bdbee721ddc6fe3cb2252accbb6b3179"
+  },
+  "archive": {
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.183.json",
+    "sha256": "576418152c00b6305aa85b3b7111f79a627253a9d3709d42715b55048c698e7f"
+  },
+  "targeted_restores": [
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/review670-school-cloze-delta-v0.1.json",
+        "sha256": "edd831f770b50c123691f6d3dd7be03ff05f8dcb0eb4ecd97ded2d6944c91d63"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/cloze670-browser-v0.1.json",
+        "sha256": "924650c1999099b1b69bf1ae72cbecd1075671b582387280024a6becc8e64a76"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/cloze670-review-v0.1.png",
+        "sha256": "c9a35405b779f2eed21357f7f8c6670fbc20d42f7725c7b373a16e86b7c7c405"
+      },
+      "restored_SHA_verified": true
+    }
+  ],
+  "candidate_HTTP_links": [
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade11-cloze20-newsletter-correction-v0.1.md",
+        "sha256": "3d453659ab768287ad3686a3dedcbd1fa79fb4bb2976696fb92ba45dd63772ce"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    },
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade11-cloze20-pool-clock-v0.1.md",
+        "sha256": "d262e378ac91a40d8d1f079b65fecd66dabff70a27c71203de82372584a992f5"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    },
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade11-cloze20-bakery-token-v0.1.md",
+        "sha256": "b42a7cf233ae19bb7621f96d7054fc7ecf358ab746186b403a6925a3682b8106"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    }
+  ],
+  "browser_MD_open_not_claimed": true,
+  "screenshot": {
+    "path": "build/english-benchmark-authority-20261017/cloze670-review-v0.1.png",
+    "sha256": "c9a35405b779f2eed21357f7f8c6670fbc20d42f7725c7b373a16e86b7c7c405"
+  },
+  "runtime_rules": [
+    {
+      "path": "Tools/school_cloze_contract.py",
+      "sha256": "e00187c4d9b0a6cee57ca4a524086170e9f1ea28ecca8834dea3c6694bd58828"
+    },
+    {
+      "path": "Tools/compile_school_cloze.py",
+      "sha256": "be2c7c8e909a8c90f30f3e72afb08d1ce5d6bde53dd4f36d9ebe9fcf58edc384"
+    },
+    {
+      "path": "Tools/check_school_cloze_contract.py",
+      "sha256": "afa57ea6ff1dd346cffd4f25562c80bb2195d8234a7962f15aabb137de843335"
+    }
+  ],
+  "current_groups": 670,
+  "current_responses": 4586,
+  "populated_family_cells": 195,
+  "new_groups": 3,
+  "new_responses": 60,
+  "new_full_candidate_substitutions": 240,
+  "new_contract_negative_controls": 48,
+  "prior3_contract_negative_controls_reused": 48,
+  "actual_UI_correct_responses": 60,
+  "actual_UI_wrong_blank_controls": 6,
+  "actual_UI_candidate_positions": 240,
+  "actual_teacher_reset_groups": 3,
+  "source_selected_body_words": 367,
+  "authored_body_words": [
+    394,
+    404,
+    428
+  ],
+  "original_source32BC33AD_possible_ambiguity_not_gold": true,
+  "source_labels_not_body_region_year_or_authentication": true,
+  "source_empirical_measurement_not_copied": true,
+  "no_difficulty_time_or_CEFR_equivalence": true,
+  "source_downloads": 0,
+  "new_authenticated_school_papers": 0,
+  "archive_new_objects": 9,
+  "archive_new_bytes": 247625,
+  "new_full_snapshots": 0,
+  "now_pending_modes": 12,
+  "now_missing_originals": 36,
+  "old667_payloads_and45pins_preserved": true,
+  "all_required_types_complete": false,
+  "independent_teacher_student_commercial_production": false
+}

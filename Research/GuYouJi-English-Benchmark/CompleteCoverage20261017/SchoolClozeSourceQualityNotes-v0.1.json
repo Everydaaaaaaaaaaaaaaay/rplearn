@@ -1,0 +1,74 @@
+{
+  "version": "0.1",
+  "scope": "author_observed_ambiguity_not_independent_adjudication",
+  "source_group_id": "grade11-tianjin2026-21cnjy26082071.cloze",
+  "source_index": {
+    "path": "CompleteCoverage20261017/SchoolClozeSelectedSources-v0.1.json",
+    "sha256": "4e0cd68b390d369759a5000b66a0e3222d6cf273209202556ae2d8c94a6d1783"
+  },
+  "source_span": {
+    "source": {
+      "path": "build/english-benchmark-research-20261012/grade11-tianjin2026-21cnjy26082071-resource-v0.2.txt",
+      "sha256": "10fb2080d59120dae6c64cd8748dd000a624a1b6279a7f56f73592c100d6e868"
+    },
+    "start_offset": 4756,
+    "end_offset": 8341,
+    "sha256": "1bd8783bc29e276decb3cd2a6bf593384786ea6acd085e27519a2fcd024d17a3",
+    "question_numbers": [
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50
+    ],
+    "instruction": "阅读下面短文，掌握其大意，然后从31-50各题所给的四个选项A、B、C、D四个选项中，选出最佳选项。",
+    "instruction_sha256": "45f9e20a1cd06e8bbd35c2e4bb4050032bab86c99bfb6a9d9881acc180fb91d4"
+  },
+  "source_identity_body": "高二年级英语学科第二次质量检测试卷",
+  "body_grade_seen": true,
+  "body_region_and_year_not_added_from_filename": true,
+  "potential_ambiguities": [
+    {
+      "source_number": 32,
+      "labels": [
+        "B",
+        "C"
+      ],
+      "texts": [
+        "transformed into",
+        "grew into"
+      ],
+      "reason": "两短语均可描述开始的本地徒步活动转变为/发展成国际出游经历，按可见完整上下文未形成可靠唯一排除证据。"
+    },
+    {
+      "source_number": 33,
+      "labels": [
+        "A",
+        "D"
+      ],
+      "texts": [
+        "rational",
+        "practical"
+      ],
+      "reason": "保持运动/探索/交友可被描述为理性或实际的动机，未把原键当独立唯一裁决。"
+    }
+  ],
+  "is_independent_gold": false,
+  "structure_usable_not_answer_gold": true,
+  "new_sources": 0
+}
