@@ -662,7 +662,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
       );
       expect(receipt.awardedPoints).toBe(1);
       expect(receipt.attempt.round.answers).toHaveLength(1);
-      const other = await c.character();
+      const beforeJobs =
+        await db.sql`select id from app.learning_generation_jobs where role_key='oliver' and level_key=${unit.level}`;
+      const other = await c.character("oliver");
       expect(
         (
           await c.command((s) =>
@@ -673,6 +675,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
           )
         ).attempt,
       ).toBeNull();
+      const afterJobs =
+        await db.sql`select id from app.learning_generation_jobs where role_key='oliver' and level_key=${unit.level}`;
+      expect(afterJobs.length).toBe(beforeJobs.length);
     }
     const id = await c.character();
     const attempt = required(

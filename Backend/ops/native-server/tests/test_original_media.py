@@ -26,4 +26,11 @@ class OriginalMediaTest(unittest.TestCase):
    root=Path(folder);archive=root/'a.tgz';archive.write_bytes(b'not-an-archive')
    with self.assertRaises(ValueError):module.stage(archive,'a'*64,root/'objects')
    self.assertFalse((root/'objects').exists())
+class OriginalPublishPlanTest(unittest.TestCase):
+ def test_only_small_explicit_hash_bound_plans(self):
+  spec=importlib.util.spec_from_file_location('original_publish',Path(__file__).parents[1]/'publish-original-batches.py');publish=importlib.util.module_from_spec(spec);spec.loader.exec_module(publish)
+  plan=[{'batch':'b000','hash':'a'*64}]
+  self.assertEqual(publish.commands(plan)[0][-2:],['a'*64,'b000'])
+  for value in [[],plan*4,[{'batch':'../../x','hash':'a'*64}],[{'batch':'b000','hash':'$(bad)'}],plan*2]:
+   with self.assertRaises(ValueError):publish.commands(value)
 if __name__=='__main__':unittest.main()

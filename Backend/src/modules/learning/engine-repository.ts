@@ -516,6 +516,7 @@ export class LearningSession {
     if (!candidate && !composed) {
       // 只为确有角色蓝图的主角色保留原生成队列；普通角色缺题由公共题库补齐。
       if (
+        !options.originalUnitId &&
         ["oliver", "ruby", "marcus"].includes(state.roleKey) &&
         ["primary3", "primary4"].includes(level)
       ) {

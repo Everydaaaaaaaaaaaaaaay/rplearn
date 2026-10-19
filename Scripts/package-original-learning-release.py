@@ -9,8 +9,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def git(*args):return subprocess.check_output(['git',*args],cwd=ROOT)
 def main():
- parser=argparse.ArgumentParser();parser.add_argument('--base',required=True);parser.add_argument('--change',required=True);args=parser.parse_args()
- base=git('rev-parse',args.base).decode().strip();change=git('rev-parse',args.change).decode().strip();version='originals-'+change[:12]
+ parser=argparse.ArgumentParser();parser.add_argument('--base',required=True);parser.add_argument('--change',required=True,action='append');args=parser.parse_args()
+ base=git('rev-parse',args.base).decode().strip();changes=[git('rev-parse',c).decode().strip() for c in args.change];change=changes[-1];version='originals-'+change[:12]
  stage=ROOT/'build'/('original-backend-source-'+change[:12]);stage.mkdir(exist_ok=False)
  archive=git('archive',base,'Backend')
  with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
@@ -18,7 +18,7 @@ def main():
    path=Path(member.name)
    if not path.parts or path.parts[0]!='Backend' or '..' in path.parts:raise ValueError('Unsafe Git archive path')
    tar.extract(member,stage)
- changed=[p for p in git('diff-tree','--no-commit-id','--name-only','-r',change,'--','Backend').decode().splitlines() if p]
+ changed=sorted({p for commit in changes for p in git('diff-tree','--no-commit-id','--name-only','-r',commit,'--','Backend').decode().splitlines() if p})
  for name in changed:
   target=stage/name
   try:content=git('show',change+':'+name)
@@ -31,6 +31,6 @@ def main():
  target=ROOT/'build'/('lingotrip-backend-'+version+'.tar.gz')
  subprocess.run(['bash',str(stage/'Backend/ops/native-server/package-release.sh'),version,str(target)],cwd=stage/'Backend',check=True)
  omitted=[p for p in git('diff','--name-only',base,change+'^','--','Backend/src').decode().splitlines() if p not in changed]
- record=dict(version=version,baseCommit=base,learningChangeCommit=change,overlayPaths=changed,unrelatedUnreleasedBackendPathsExcluded=omitted,archive=str(target.relative_to(ROOT)),sha256=hashlib.sha256(target.read_bytes()).hexdigest(),originalMediaExcluded=True)
+ record=dict(version=version,baseCommit=base,learningChangeCommits=changes,overlayPaths=changed,unrelatedUnreleasedBackendPathsExcluded=omitted,archive=str(target.relative_to(ROOT)),sha256=hashlib.sha256(target.read_bytes()).hexdigest(),originalMediaExcluded=True)
  (ROOT/'build/original-backend-release.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n');print(json.dumps(record,ensure_ascii=False))
 if __name__=='__main__':main()

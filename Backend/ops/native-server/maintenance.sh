@@ -13,6 +13,9 @@ case "${action}" in
   originals-publish)
     [[ "$#" = 3 && "$2" =~ ^[a-f0-9]{64}$ && "$3" =~ ^b[0-9]{3}$ ]] || exit 2
     command=(/opt/lingotrip/runtime/bin/node --max-old-space-size=128 --env-file=/etc/lingotrip/backend.env --env-file=/etc/lingotrip/release.env dist/cli/learning-originals.js publish "$2" "$3") ;;
+  originals-publish-many)
+    [[ "$#" = 2 ]] || exit 2
+    command=(/usr/bin/python3 "${script_dir}/publish-original-batches.py" "$(realpath "$2")") ;;
   originals-media)
     [[ "$#" = 3 && "$3" =~ ^[a-f0-9]{64}$ ]] || exit 2
     command=("${script_dir}/install-original-media.sh" "$(realpath "$2")" "$3") ;;

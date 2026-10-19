@@ -143,6 +143,11 @@ def run(args):
   pending.append(entry['unit']['id']);weight+=size
  if pending:batches.append(dict(id='b'+str(len(batches)).zfill(3),unitIds=pending))
  manifest['batches']=batches
+ if (out/'catalog.json').exists():
+  previous={e['unit']['id']:e for e in json.loads((out/'catalog.json').read_text())['units']}
+  for entry in entries:
+   old=previous.get(entry['unit']['id'])
+   if old and old['unit']['version']==entry['unit']['version'] and old['contentHash']!=entry['contentHash']:raise ValueError('Frozen unit changed; explicit new-version review required: '+entry['unit']['id'])
  (out/'catalog.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
  report=dict(researchGroups=len(data['groups']),inScopeGroups=len(label_by_id),exportedGroups=len(entries),exportedResponses=sum(len(e['unit']['questions']) for e in entries),levels=dict(collections.Counter(e['unit']['level'] for e in entries)),held=holds,imageObjects=len(used),audioObjects=len(manifest['audioAssets']),notNewlyAuthored=True)
  (ROOT/'build/learning-originals-export.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='held'},ensure_ascii=False))
