@@ -1,0 +1,855 @@
+{
+  "date": "2026-10-19",
+  "recordedAt": "2026-10-19T18:20:58.779502+00:00",
+  "status": "production_published_sampled_authenticated_native_acceptance_passed",
+  "entry": "Debug App / 我的 / 学习实测 · 切换档位做题 / 刷新题库",
+  "auth": "real account; no preview data",
+  "researchExpansionStopped": true,
+  "kindergartenAndSubjectiveExcluded": true,
+  "researchGroupsTotal": 772,
+  "publishedExistingOriginalGroups": 634,
+  "referenceGroupsNotPublished": 138,
+  "publishedResponses": 5090,
+  "levelTypeCells": 141,
+  "minimumCompleteGroupsPerLevelTypeCell": 3,
+  "publication": {
+    "verifiedAt": "2026-10-19T18:19:17.419Z",
+    "release": "originals-8f84b5f0520b",
+    "sourceCatalogSHA256": "d14f9e1f9cd3dcd246250e11c119721793433dd0690a3d3f083344215d4803b0",
+    "expectedGroups": 634,
+    "publishedExpectedGroups": 634,
+    "responses": 5090,
+    "fullPayloadsCompared": 634,
+    "allPayloadsExact": true,
+    "fullPayloadChunkMaximum": 20,
+    "existingOtherPublishedGroups": 100,
+    "distribution": {
+      "primary1": {
+        "groups": 9,
+        "responses": 60,
+        "families": 3
+      },
+      "primary2": {
+        "groups": 18,
+        "responses": 117,
+        "families": 6
+      },
+      "primary3": {
+        "groups": 24,
+        "responses": 150,
+        "families": 7
+      },
+      "primary4": {
+        "groups": 39,
+        "responses": 228,
+        "families": 12
+      },
+      "primary5": {
+        "groups": 67,
+        "responses": 404,
+        "families": 13
+      },
+      "primary6": {
+        "groups": 69,
+        "responses": 432,
+        "families": 17
+      },
+      "junior1": {
+        "groups": 96,
+        "responses": 804,
+        "families": 16
+      },
+      "junior2": {
+        "groups": 45,
+        "responses": 342,
+        "families": 9
+      },
+      "junior3": {
+        "groups": 54,
+        "responses": 450,
+        "families": 13
+      },
+      "senior1": {
+        "groups": 39,
+        "responses": 426,
+        "families": 7
+      },
+      "senior2": {
+        "groups": 54,
+        "responses": 585,
+        "families": 7
+      },
+      "senior3": {
+        "groups": 39,
+        "responses": 462,
+        "families": 7
+      },
+      "undergraduate": {
+        "groups": 21,
+        "responses": 180,
+        "families": 6
+      },
+      "postgraduate": {
+        "groups": 21,
+        "responses": 180,
+        "families": 6
+      },
+      "advanced": {
+        "groups": 39,
+        "responses": 270,
+        "families": 12
+      }
+    },
+    "audioAssets": 547,
+    "imageAssets": 203,
+    "errors": []
+  },
+  "releaseSource": {
+    "version": "originals-8f84b5f0520b",
+    "baseCommit": "d6ba7b6c61fbb3edc33786640eaa52647874d75b",
+    "learningChangeCommits": [
+      "21f8afc6303bb41f9d735fa67c240a91efaca995",
+      "cf8c38d47acecc1bf81c78d55a59990570ea1b18",
+      "4bc5d49e7d034bfb94a609a94fd1565ccfcfe412",
+      "f3056bc9d38a127e3549aef70471402e62b9802e",
+      "cf84620be5d87ae40017212f3a2774b793b17e56",
+      "8f84b5f0520bb49265b7465af94e2542541f91ae"
+    ],
+    "overlayPaths": [
+      "Backend/config/learning/README.md",
+      "Backend/config/learning/originals/catalog.json",
+      "Backend/ops/native-server/install-original-media.py",
+      "Backend/ops/native-server/install-original-media.sh",
+      "Backend/ops/native-server/maintenance.sh",
+      "Backend/ops/native-server/package-release.sh",
+      "Backend/ops/native-server/publish-original-batches.py",
+      "Backend/ops/native-server/tests/test_original_media.py",
+      "Backend/src/cli/learning-originals.ts",
+      "Backend/src/modules/learning/audio.ts",
+      "Backend/src/modules/learning/bank-content.ts",
+      "Backend/src/modules/learning/catalog.ts",
+      "Backend/src/modules/learning/content.ts",
+      "Backend/src/modules/learning/engine-repository.ts",
+      "Backend/src/modules/learning/grading.ts",
+      "Backend/src/modules/learning/images.ts",
+      "Backend/src/modules/learning/original-catalog.ts",
+      "Backend/src/modules/learning/routes.ts",
+      "Backend/src/modules/learning/service.ts",
+      "Backend/test/integration/learning-api.test.ts",
+      "Backend/test/integration/learning-bank.test.ts",
+      "Backend/test/modules/learning/audio.test.ts",
+      "Backend/test/modules/learning/catalog.test.ts",
+      "Backend/test/modules/learning/originals.test.ts"
+    ],
+    "unrelatedUnreleasedBackendPathsExcluded": [
+      "Backend/src/modules/dictionary-translation/generation-processor.ts",
+      "Backend/src/modules/dictionary-translation/processor.ts"
+    ],
+    "archive": "build/lingotrip-backend-originals-8f84b5f0520b.tar.gz",
+    "sha256": "36c8d3e5fce82c380e4b056f4feb68710dfbeb4c1dcb453b73d60e8b0dc4f7fa",
+    "originalMediaExcluded": true,
+    "retryReason": "Validate WAV files and upload directly in 64 KiB chunks; no complete original audio buffer retained under memory.high. Existing SHA/format/peak/time checks, 90-second PUT, 120-second signature and 600-second maintenance limits preserved."
+  },
+  "assetPublication": {
+    "audio": 547,
+    "png": 203,
+    "uniqueSHA": 750,
+    "bytes": 1719380406,
+    "boundedTransportPacks": 14,
+    "boundedCatalogBatches": 49,
+    "maintenanceLimitsPreserved": true,
+    "objectStoreSHAConfirmedBeforeDatabasePublication": true,
+    "incrementalArchive": "Research/GuYouJi-English-Benchmark/Storage/LearningOriginalPublicationAssets-v0.1.json",
+    "newFullSnapshots": 0
+  },
+  "checks": {
+    "moduleTests": 29,
+    "isolatedHTTPAndDatabaseTests": 19,
+    "subsequentBankRegressionTests": 12,
+    "swiftTests": 16,
+    "operationsTests": 12,
+    "lint": "passed",
+    "typecheck": "passed",
+    "backendArchitecture": "passed",
+    "latestNativeBuildInstalled": true,
+    "productionReadinessAndUnauthenticatedBoundary": {
+      "checkedAt": "2026-10-19T18:15:14.421819+00:00",
+      "baseURL": "https://rplearn.haruyuki.cn",
+      "checks": [
+        {
+          "path": "/health/ready",
+          "status": 200,
+          "expected": 200,
+          "pass": true,
+          "body": {
+            "status": "ready"
+          }
+        },
+        {
+          "path": "/v1/learning/originals?level=primary1",
+          "status": 401,
+          "expected": 401,
+          "pass": true,
+          "body": {
+            "code": "UNAUTHORIZED",
+            "message": "A valid access token is required.",
+            "requestId": "c591b913-b6f2-4408-b6c6-f2a866f0352f"
+          }
+        },
+        {
+          "path": "/v1/learning/originals?level=senior3",
+          "status": 401,
+          "expected": 401,
+          "pass": true,
+          "body": {
+            "code": "UNAUTHORIZED",
+            "message": "A valid access token is required.",
+            "requestId": "83c5e12f-d0a4-4122-a195-8b686b88b38e"
+          }
+        },
+        {
+          "path": "/v1/learning/originals?level=advanced",
+          "status": 401,
+          "expected": 401,
+          "pass": true,
+          "body": {
+            "code": "UNAUTHORIZED",
+            "message": "A valid access token is required.",
+            "requestId": "bf35a154-4f01-44f3-8f6b-8ee761921d52"
+          }
+        }
+      ],
+      "note": "Public readiness and authentication boundary only; does not claim authenticated native acceptance."
+    },
+    "sampledMediaDeliveryFromMac": {
+      "checkedAt": "2026-10-19T18:18:22.147688+00:00",
+      "mode": "Actual signed object-store URLs downloaded from developer Mac; no app token sent to object storage; URLs kept only in memory.",
+      "checks": [
+        {
+          "level": "primary1",
+          "id": "audio.13894139c9567a2d96fef9161ccbd913127c01eae6e423f59fe8489a59cb08d4",
+          "key": "learning/audio/audio.13894139c9567a2d96fef9161ccbd913127c01eae6e423f59fe8489a59cb08d4.wav",
+          "sha256": "13894139c9567a2d96fef9161ccbd913127c01eae6e423f59fe8489a59cb08d4",
+          "bytes": 557218,
+          "contentType": "audio/wav",
+          "status": 200,
+          "receivedBytes": 557218,
+          "receivedContentType": "audio/wav",
+          "shaMatches": true,
+          "pass": true
+        },
+        {
+          "level": "senior3",
+          "id": "audio.c631d20907ada90bdc72ee12ea2d3616a2f2c5b507db6e0d9fbb2ee98820ff42",
+          "key": "learning/audio/audio.c631d20907ada90bdc72ee12ea2d3616a2f2c5b507db6e0d9fbb2ee98820ff42.wav",
+          "sha256": "c631d20907ada90bdc72ee12ea2d3616a2f2c5b507db6e0d9fbb2ee98820ff42",
+          "bytes": 1203662,
+          "contentType": "audio/wav",
+          "status": 200,
+          "receivedBytes": 1203662,
+          "receivedContentType": "audio/wav",
+          "shaMatches": true,
+          "pass": true
+        },
+        {
+          "level": "advanced",
+          "id": "audio.99e0aa8c3251d50a7abc1ff6e1126ff3e185e573397cde15065f3840ca85253c",
+          "key": "learning/audio/audio.99e0aa8c3251d50a7abc1ff6e1126ff3e185e573397cde15065f3840ca85253c.wav",
+          "sha256": "99e0aa8c3251d50a7abc1ff6e1126ff3e185e573397cde15065f3840ca85253c",
+          "bytes": 6792056,
+          "contentType": "audio/wav",
+          "status": 200,
+          "receivedBytes": 6792056,
+          "receivedContentType": "audio/wav",
+          "shaMatches": true,
+          "pass": true
+        },
+        {
+          "level": "primary1",
+          "id": "image.5e38f2fa219ce793fc12f818271c04381226131a2eb110b2c10908b610bb08b5",
+          "key": "learning/images/image.5e38f2fa219ce793fc12f818271c04381226131a2eb110b2c10908b610bb08b5.png",
+          "sha256": "5e38f2fa219ce793fc12f818271c04381226131a2eb110b2c10908b610bb08b5",
+          "bytes": 13949,
+          "contentType": "image/png",
+          "status": 200,
+          "receivedBytes": 13949,
+          "receivedContentType": "image/png",
+          "shaMatches": true,
+          "pass": true
+        }
+      ],
+      "scope": "Samples only; not authenticated native or subjective listening acceptance."
+    },
+    "publishedMetadataAndContentHashes": "all 634 exact versions, levels, response counts and hashes match; 750 media metadata hashes match",
+    "streamUploadRegressionTests": 18,
+    "streamOperationsTests": 12,
+    "largestTestedHTTPUploadBytes": 43200044,
+    "streamFixLintTypecheckArchitecture": "passed",
+    "slowResponseUploadRegressionTests": 18,
+    "largestHTTPUploadResponseDelayedMs": 32000,
+    "audioUploadTimeoutMs": 90000,
+    "uploadSignatureExpiresSeconds": 120,
+    "maintenanceRuntimeMaxSeconds": 600,
+    "postUploadMemoryReleaseOpsTests": 4,
+    "postUploadMemoryReleaseTypecheckAndLint": "passed",
+    "fileStreamingRegressionTests": 19,
+    "originalAudioFileChunkBytes": 65536,
+    "fileBackedUploadNeverCallsWholeBufferLoader": true,
+    "fileStreamingLintTypecheckFormatArchitecture": "passed",
+    "fullPublishedUnitPayloads": "All 634 full PostgreSQL JSONB payloads equal frozen source units, including complete inputs, keys and marking; compared in chunks of at most 20.",
+    "publicationMemoryRecovery": {
+      "oldStoppedDatabaseStartRssMiB": 246,
+      "oldCgroupPressureSample": {
+        "fullAvg10": 76.09,
+        "oom": 0,
+        "oomKill": 0
+      },
+      "fileStreamSuccessfulBatches": [
+        {
+          "path": "build/original-production/publish-safe-b036-b037-result.log",
+          "sha256": "ecb08f805ef4f05fd223aa52899d6eefd09ae083c7bdc6ffe4dfb7e7c4f53956",
+          "databaseStartsRssMiB": [
+            175,
+            137
+          ],
+          "databaseElapsedMs": [
+            1935,
+            164
+          ]
+        },
+        {
+          "path": "build/original-production/publish-safe-b038-b038-result.log",
+          "sha256": "ce8ef920ca0d46e8c70325c75b108728f06f28f99068da6188a15f007f9cd7ce",
+          "databaseStartsRssMiB": [
+            133
+          ],
+          "databaseElapsedMs": [
+            183
+          ]
+        }
+      ],
+      "newCgroupDuringB036B037": {
+        "memoryCurrent": 150970368,
+        "memoryPeak": 235520000,
+        "fullAvg10": 0.0
+      },
+      "resourceLimitsUnchanged": {
+        "memoryMaxMiB": 256,
+        "memoryHighMiB": 224,
+        "heapMiB": 128,
+        "runtimeSeconds": 600,
+        "diskMiBPerSecond": 2
+      },
+      "scope": "Sampled process/cgroup observations and matching successful CLI receipts; no all-workload performance guarantee."
+    }
+  },
+  "nativeAcceptance": {
+    "status": "sampled_authenticated_native_acceptance_passed",
+    "checkedAt": "2026-10-19T18:14:15.085441+00:00",
+    "surface": "Device Hub / iPhone 17 Pro / iOS 26.1",
+    "authentication": "Owner restored Apple sign-in; same installed App and simulator retained without another install or restart.",
+    "realAccountEffects": true,
+    "primary1PictureMatching": {
+      "unitId": "original.primary1-picture-matches-1",
+      "questions": 4,
+      "submitted": 4,
+      "correct": 4,
+      "rewardDisplayed": 4,
+      "completeGroup": true,
+      "nativeImagesVerified": true,
+      "perQuestionExplanation": true,
+      "finished": true
+    },
+    "primary1Listening": {
+      "unitId": "original.primary1-sentences10-pictures-a",
+      "questions": 10,
+      "submitted": 1,
+      "correct": 1,
+      "rewardDisplayed": 1,
+      "nativeImagesVerified": true,
+      "playback": "Real native play entered playing state, completed and unlocked checking; first answer graded correct.",
+      "saveResume": "Saved and resumed at 1/10; second question required its own audio.",
+      "firstRoundEnded": "One mastered, nine pending retry; no fabricated answers for remaining questions."
+    },
+    "preservedHistory": {
+      "Desmond": "Existing senior3 challenge left intact.",
+      "Ruby": "Existing 18-question senior3 first round ended with one mastered and 17 pending retry; submitted answers and reward retained."
+    },
+    "pending": [],
+    "limits": [
+      "Sampled native acceptance, not every original or all levels manually tested.",
+      "No independent teacher/student calibration or natural listening review claimed."
+    ],
+    "screenshots": [
+      {
+        "path": "/Users/tiantian/Desktop/Screenshot iPhone 17 Pro 2026-10-20 at 00.07.44.png",
+        "sha256": "7b33dfdf247c0a7150fa05bdae503c2032f534632125a83b6409d19f7701440e"
+      },
+      {
+        "path": "/Users/tiantian/Desktop/Screenshot iPhone 17 Pro 2026-10-20 at 00.09.44.png",
+        "sha256": "5691476e6f7b3a4646c488a8aad16dc0c4beca896e43cb7bdcc8cf614729d828"
+      },
+      {
+        "path": "/Users/tiantian/Desktop/Screenshot iPhone 17 Pro 2026-10-20 at 00.12.08.png",
+        "sha256": "3036a36e3b0c1346c1a0ea4ee0bec26e988859e64e9d6f75beeab44cbc982006"
+      },
+      {
+        "path": "/Users/tiantian/Desktop/Screenshot iPhone 17 Pro 2026-10-20 at 00.13.05.png",
+        "sha256": "edf96eb96fd35e9c373e0cba6f1ec2f3fa0e00fcc3b45b5dd17015cc2569e3fa"
+      },
+      {
+        "path": "/Users/tiantian/Desktop/Screenshot iPhone 17 Pro 2026-10-20 at 00.18.19.png",
+        "sha256": "365dbaead86babee506a29cd7153d66f4dd8a8869e8702d7d8f199bba3e0752a"
+      },
+      {
+        "path": "/Users/tiantian/Desktop/Screenshot iPhone 17 Pro 2026-10-20 at 00.19.09.png",
+        "sha256": "dd6a6914b3dcb35deec577b2b055e91f416a4a2553c21c12f6ba0abf5c8ead7c"
+      },
+      {
+        "path": "/Users/tiantian/Desktop/Screenshot iPhone 17 Pro 2026-10-20 at 00.45.17.png",
+        "sha256": "a08c7a933f4eb483f37dc13581dc02db01a0867284f91bde3cc83c3023cb86d9"
+      },
+      {
+        "path": "/Users/tiantian/Desktop/Screenshot iPhone 17 Pro 2026-10-20 at 00.45.41.png",
+        "sha256": "32024c054abc461d89cb10007e60b4e98909d32751becaa468f3577598563a08"
+      },
+      {
+        "path": "/Users/tiantian/Desktop/Screenshot iPhone 17 Pro 2026-10-20 at 00.46.39.png",
+        "sha256": "92d3cc62d139cde047e9a1217574ab1949dd84ca577dc2997a0c54120472f0de"
+      },
+      {
+        "path": "/Users/tiantian/Desktop/Screenshot iPhone 17 Pro 2026-10-20 at 02.07.11.png",
+        "sha256": "98b0903f4409138190e70eb3aa8fb67e5ad2a82c8e4ecd42391ad9dfe347b4c4"
+      },
+      {
+        "path": "/Users/tiantian/Desktop/Screenshot iPhone 17 Pro 2026-10-20 at 02.09.15.png",
+        "sha256": "b3a85ea6ec36c1ca0a06363a26afbad942ed389d926a49fd5688a5c9fecfb29a"
+      },
+      {
+        "path": "/Users/tiantian/Desktop/Screenshot iPhone 17 Pro 2026-10-20 at 02.18.09.png",
+        "sha256": "320339890c15f22e497e87efd63907f82682f5a6642b553798bd1163d7a0b6e9"
+      }
+    ],
+    "primary6Completion": {
+      "unitId": "original.primary6-givenforms5-courtesy",
+      "questions": 5,
+      "unlisted": {
+        "input": "courteously",
+        "observed": "Review-required message, no incorrect feedback or points, progress remained 0/5; could edit and submit known answer."
+      },
+      "knownAnswer": {
+        "input": "politely",
+        "observed": "Correct, +1, 1/5 after previous review-required input."
+      },
+      "knownVariant": {
+        "input": "learnt",
+        "acceptedForms": [
+          "learned",
+          "learnt"
+        ],
+        "observed": "Correct, +1, 2/5 and explanation lists both accepted forms."
+      },
+      "remaining": "First round ended retaining three pending retries."
+    },
+    "senior3Grammar": {
+      "unitId": "original.grade12-grammar-tool-loans",
+      "questions": 10,
+      "material": "Full passage rendered; screenshot visibly includes blanks 8, 9 and 10 and final sentence. No truncation to six.",
+      "constraint": "Ungiven blanks explicitly one word; supplied-word blanks not artificially capped to one word.",
+      "submitted": 2,
+      "correct": 2,
+      "rewardDisplayed": 2,
+      "answers": [
+        "an",
+        "receives"
+      ],
+      "saveResume": "Saved and resumed at 2/10 on third blank (they).",
+      "remaining": "First round ended with eight pending retries."
+    },
+    "advancedCrossTextMatching": {
+      "unitId": "original.advanced-workshop-book-cross-reviews",
+      "questions": 4,
+      "sourceTexts": 4,
+      "completeMaterialCharacters": 3909,
+      "answers": [
+        "D",
+        "C",
+        "A",
+        "D"
+      ],
+      "submitted": 4,
+      "correct": 4,
+      "rewardDisplayed": 4,
+      "candidateReuseVerified": true,
+      "finished": true,
+      "material": "Four full reviews A/B/C/D observed in native accessibility tree; four responses retained."
+    },
+    "readyForOwner": {
+      "unitId": "original.grade12-grammar-station-clock",
+      "questions": 10,
+      "submitted": 0,
+      "selectedAndAccountLevel": "senior3",
+      "saveResume": "Saved at 0/10, verified account footer senior3, resumed same unit and entered first blank.",
+      "surfaceLeft": "First blank of full high-school grammar passage; no answers submitted."
+    },
+    "newCorrectSubmissions": 13,
+    "newRewardDisplayedTotal": 13
+  },
+  "boundaries": [
+    "Frozen original groups are selected as complete units, with all materials and responses; not truncated to six or eighteen.",
+    "Known accepted variants score equally; uncertain fill expressions return 422 without wrong-answer record, reward, or consumed submission. No human review queue is claimed.",
+    "Prior challenges and user data retained. New complete-group contract requires a compatible client.",
+    "Independent teacher review, student calibration, natural listening review and commercial fitness not established.",
+    "Not every group was manually exercised in native UI. Not an App Store publication."
+  ],
+  "evidence": [
+    {
+      "path": "build/original-catalog-final-validation.log",
+      "sha256": "b447ee2c2d3077e64697ac054e82ef12c1ca71c6129aabd21ed45e86e57777b6"
+    },
+    {
+      "path": "build/original-path-module-verified.log",
+      "sha256": "d870a51b0b131a9e3913e4b5dd2aa5432c2c212fad4f4830da75efe15debd1e3"
+    },
+    {
+      "path": "build/original-path-http-verified/report.json",
+      "sha256": "164a5fc6f54daa04fe378d8b3a961dda294a6d51735f7fc5274360640690f951"
+    },
+    {
+      "path": "build/original-path-http-verified/integration.json",
+      "sha256": "c659eefa3c05b5303fe196f56d1b3c22f14958a76abb0c39dc603695b81290ad"
+    },
+    {
+      "path": "build/original-specific-group-verification/report.json",
+      "sha256": "b15ba6b31b6208c34ea4372d0294e167f21382cac072f75f882ba9a67236b3ed"
+    },
+    {
+      "path": "build/original-specific-group-verification/integration.json",
+      "sha256": "65a9d6b44ba064639498665ec24e23c30bbd3e30b871789115b1a9a46ac1421a"
+    },
+    {
+      "path": "build/original-path-swift-verified.log",
+      "sha256": "4709b6675aa59784562706eb4453737bd0457c36f49091007367464d00ef56b6"
+    },
+    {
+      "path": "build/original-ops-tests.log",
+      "sha256": "f8eeb101cb36916fb4f168f81edb8a2d070a19ab4e9bbcbd014188a7f93a47fb"
+    },
+    {
+      "path": "build/original-path-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/original-path-typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/original-path-backend-architecture.log",
+      "sha256": "39d87cdf0dc94fc1989bdc3f4c46826838819751c51b724dbc53094075d48341"
+    },
+    {
+      "path": "build/original-native-preview-build.log",
+      "sha256": "5fc0f4c85c5143567a4576bee47127ba4b10df97be5330abb1547c699738fafd"
+    },
+    {
+      "path": "build/original-backend-release.json",
+      "sha256": "479014e6b1298bf42e5b2f58a29d127afae07ec8314de7274b20892e0682d817"
+    },
+    {
+      "path": "build/original-release-batch-check.json",
+      "sha256": "bc0c28dc47f4f02f006daa99d431620c00cd30774f5de362431ff811e5cb58ae"
+    },
+    {
+      "path": "build/original-production-deploy.log",
+      "sha256": "ae583ecc315eabbf6abb25ad71b1f6d742d0133f22eb016f68224ce4458e3182"
+    },
+    {
+      "path": "build/original-publication-plan.json",
+      "sha256": "7f943e23c65ce447fa41a6f12d33c4fd538ae389e81726e05b21d23cab2377c9"
+    },
+    {
+      "path": "build/original-production/state.json",
+      "sha256": "072fdd63a8cf98ee47c36b6e76495a70bbde76f0edd94b80769b38986f4efe0f"
+    },
+    {
+      "path": "build/original-production/database.json",
+      "sha256": "2da0ca4d98087117e60cbd4912cb6cf25c92797fe90560e0a15b10ab29f80201"
+    },
+    {
+      "path": "build/original-production/catalog-coverage.json",
+      "sha256": "738c5130d42505397bab3d583767b7173ffa2db381e3b209648133757982147c"
+    },
+    {
+      "path": "build/original-production/public-http.json",
+      "sha256": "63afb40bc7a3c11b5dd41999bb45cc48f65d83bad99348818533b90f89d145da"
+    },
+    {
+      "path": "build/original-production/media-delivery.json",
+      "sha256": "8b11fbc9590612a7712f633579ed10dcb3cebe6a7cafeb546e24a8ed5351c9bb"
+    },
+    {
+      "path": "build/original-stream-tests.log",
+      "sha256": "407480689762e8361c708f21da6c93d3fd4ff1bcc0f05d6ffd9f435fe33d8b76"
+    },
+    {
+      "path": "build/original-stream-ops-tests.log",
+      "sha256": "e4b3dae2201f818476876f255ef7f598410e9b88e70cb08a73fe7851fd9f211d"
+    },
+    {
+      "path": "build/original-stream-typecheck.log",
+      "sha256": "7551772657f9c46d074bed3c7eb4b485e9ea1e275c67123b78c7c229fa1b9785"
+    },
+    {
+      "path": "build/original-stream-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/original-stream-architecture.log",
+      "sha256": "ed5661e4c03a2ed151f056de172c0e278d31f6c836b85c6d028fd2520ac615f9"
+    },
+    {
+      "path": "build/original-production/deploy-r2.log",
+      "sha256": "02c76fbb8b5fdf2d47958bbab857fe705a9bf373bf1f54b53ad9741799521484"
+    },
+    {
+      "path": "build/original-production/safe-plan.json",
+      "sha256": "b00c4be84e03d4207da7b46bd5342a58632ddf8a90bdf0b865c0abe12b812663"
+    },
+    {
+      "path": "build/original-production/native-acceptance.json",
+      "sha256": "2a0075771ae050c0082e72d9d710037928c9e3c3f575f76778763020ac135076"
+    },
+    {
+      "path": "build/original-production/temporary-pack-cleanup.json",
+      "sha256": "bd0c9b086f48cd4b9b0e3b307c444c5a16b73f2f23985f0ac2e4f10cb0af70d3"
+    },
+    {
+      "path": "build/original-production/build-cache-cleanup.json",
+      "sha256": "d061f8dfdee66253bfdc1aeb60594e6670263f3ab29e2af5826a7bdff7a6722a"
+    },
+    {
+      "path": "build/original-production/regenerable-cache-cleanup.json",
+      "sha256": "7b82fd495f3d7a2e990d10a860eca3c6ae2fc3b1df8f31b70ab6a8596c098cd2"
+    },
+    {
+      "path": "build/original-production/publish-safe-b009-b011-result.log",
+      "sha256": "b2c776b1eef4fb37e40735fe544f38409bb2904e6afacc049900df78969baf94"
+    },
+    {
+      "path": "build/original-production/publish-safe-b012-b014-result.log",
+      "sha256": "784e6c30271275757676ff115aa5a57e5a50d561fd7459ec3749f534e585b7e4"
+    },
+    {
+      "path": "build/original-production/publish-safe-b015-b016-result.log",
+      "sha256": "7ce69cf17fb7249c26a127ca0d3ef6a506415b391a4cb19cd9a4778bb7e50430"
+    },
+    {
+      "path": "build/original-production/publish-safe-b017-b019-result.log",
+      "sha256": "9cba3177b9b6508c9328ee39b5390748957f3b7144a02ceec5eda80af24e7cdd"
+    },
+    {
+      "path": "build/original-production/publish-safe-b020-b022-result.log",
+      "sha256": "66d69f98be6eae08775ba89d53cc7c902e71bed2ccbf1bf74085bbc6d41682eb"
+    },
+    {
+      "path": "build/original-production/publish-safe-b023-b024-result.log",
+      "sha256": "2ae46af08e919c027bba733cb0a4ceb061b358747527eb015e9f1cb483eea702"
+    },
+    {
+      "path": "build/original-production/publish-safe-b025-b027-result.log",
+      "sha256": "6aa0d5664d46e828bc77fa1f1ec0ab57a1e00f0959ad0fef7c1e7fddce2f0762"
+    },
+    {
+      "path": "build/original-production/publish-safe-b028-b030-result.log",
+      "sha256": "e736d04504661c92c3960ac28570c0e1e971f602662fd8797851fdfab1d464bc"
+    },
+    {
+      "path": "build/original-production/publish-safe-b031-b032-result.log",
+      "sha256": "40b627dbb679ef4a3e7c5b5b2834aaf7dc0729e0a51bdafc1bf24666503d21d4"
+    },
+    {
+      "path": "build/original-production/publish-safe-b033-b034-result.log",
+      "sha256": "a069bf7789e299d349cc4377917e5f7090f017497875f92f218eecd8a1316464"
+    },
+    {
+      "path": "build/original-production/publish-safe-b036-b037-result.log",
+      "sha256": "ecb08f805ef4f05fd223aa52899d6eefd09ae083c7bdc6ffe4dfb7e7c4f53956"
+    },
+    {
+      "path": "build/original-production/publish-safe-b038-b038-result.log",
+      "sha256": "ce8ef920ca0d46e8c70325c75b108728f06f28f99068da6188a15f007f9cd7ce"
+    },
+    {
+      "path": "build/original-production/publish-safe-b039-b039-result.log",
+      "sha256": "c1aacd5a577b676ef287fa93e0765fa906aaa13096c26a45094972c42f4d4f3a"
+    },
+    {
+      "path": "build/original-production/publish-safe-b040-b040-result.log",
+      "sha256": "7b9b1b5c1b24709c4bb7e47926ca5332f898afc68383116f75693c6d37559d52"
+    },
+    {
+      "path": "build/original-production/publish-safe-b041-b041-result.log",
+      "sha256": "16183c191cc543f5715864e5c4892d5a863d3b6fbb1bc918dfd67cf1835fef07"
+    },
+    {
+      "path": "build/original-production/publish-safe-b042-b043-result.log",
+      "sha256": "44718933e62db1a277724d4d568e2edbeae55b69f67154223c84425a95ac57fb"
+    },
+    {
+      "path": "build/original-production/publish-safe-b044-b044-result.log",
+      "sha256": "0c133df6aab8101ddc0277e41e197ff17f0ac1a7353339c973172f37617e1cc3"
+    },
+    {
+      "path": "build/original-production/publish-safe-b045-b046-result.log",
+      "sha256": "d65f6c300ff37d981e1ccd7b173d79dc39476c52f98531dc32d0f30a88f28bec"
+    },
+    {
+      "path": "build/original-production/publish-safe-b047-b048-result.log",
+      "sha256": "41ea12a2a8ce6d8e76f248c9f4a5a65fdeb0fb748dc6833c01b7f6d0f43941e9"
+    },
+    {
+      "path": "build/original-upload-timeout-tests.log",
+      "sha256": "15ecce6d42141f0e9bc56525fccbf09488623c562844832cde4b40d1147267d0"
+    },
+    {
+      "path": "build/original-upload-timeout-typecheck.log",
+      "sha256": "7551772657f9c46d074bed3c7eb4b485e9ea1e275c67123b78c7c229fa1b9785"
+    },
+    {
+      "path": "build/original-upload-timeout-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/original-upload-timeout-architecture.log",
+      "sha256": "ed5661e4c03a2ed151f056de172c0e278d31f6c836b85c6d028fd2520ac615f9"
+    },
+    {
+      "path": "build/original-upload-timeout-package.log",
+      "sha256": "cabe4ab3f5300e0ad27137793a6d1a361bd2de242fc3bac62b1f57ed77066fd6"
+    },
+    {
+      "path": "build/original-production/deploy-f3056bc9d38a.log",
+      "sha256": "fd50528af6c176c756950fc1b20ada90bde0f1b3280cdf1484685cae42d3895a"
+    },
+    {
+      "path": "build/original-production/publish-safe-b035-b036-failure-1.log",
+      "sha256": "27a94c8cd9f08e13f27a19fb66d1580dabfc22501748c4c21c9483a3b82b9923"
+    },
+    {
+      "path": "build/original-production/publish-safe-b035-b036-failure-2.log",
+      "sha256": "1fc7c77f2bb2280a50d62e80e90022aef31b331a9fd44fb3aebfc97deb52068a"
+    },
+    {
+      "path": "build/original-production/publish-000.log",
+      "sha256": "55a25468267d24354edb6fc04d35ab7b9efe8847c194eb870981a56c66c2dc65"
+    },
+    {
+      "path": "build/original-production/publish-001.log",
+      "sha256": "43a2aec6dcce6103aa56b5fc79787bdff7e32dc1acb760b4a4b51b8dd15666ed"
+    },
+    {
+      "path": "build/original-production/publish-002.log",
+      "sha256": "1ea34501ddf6affb3e12cf195bb262c9d7ab8b6e39b1cc2c037a4e104a31e4a7"
+    },
+    {
+      "path": "build/original-production/publish-003.log",
+      "sha256": "f5b5b27a845027bb2914e11d00ac055031b4671e31da782b46c6c2a4182ad227"
+    },
+    {
+      "path": "build/original-upload-gc-typecheck.log",
+      "sha256": "7551772657f9c46d074bed3c7eb4b485e9ea1e275c67123b78c7c229fa1b9785"
+    },
+    {
+      "path": "build/original-upload-gc-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/original-upload-gc-ops-tests.log",
+      "sha256": "967c92d36cebcf36f2f214cac7698609db89c071c595426864067899c8d2dcc7"
+    },
+    {
+      "path": "build/original-upload-gc-package.log",
+      "sha256": "45b7a7b2e53ab1e7d847911a3aabc9a99d82ed1ee3c96f8664afe59b0e576ec4"
+    },
+    {
+      "path": "build/original-production/publish-safe-b036-b037-memory-stop.log",
+      "sha256": "a663e77c25b9435277e622d67c18668a8a07aa9840726727df42bb7a08451870"
+    },
+    {
+      "path": "build/original-production/deploy-cf84620be5d8.log",
+      "sha256": "bfa3a8bedd2a8b5374960cae4109cd2dc33ec52ea7a514b6867f28188a463529"
+    },
+    {
+      "path": "build/original-file-stream-tests.log",
+      "sha256": "639cc56812630d4bcff2af267240a5e475e57313f203c2121ac1734e059cdf68"
+    },
+    {
+      "path": "build/original-file-stream-typecheck.log",
+      "sha256": "7551772657f9c46d074bed3c7eb4b485e9ea1e275c67123b78c7c229fa1b9785"
+    },
+    {
+      "path": "build/original-file-stream-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/original-file-stream-architecture.log",
+      "sha256": "672b29dd343e1ac9a2a5588be9a28f7bb9bd5349e76c6a083b1efa0ce203b26c"
+    },
+    {
+      "path": "build/original-file-stream-format.log",
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "path": "build/original-file-stream-package.log",
+      "sha256": "fe565a97ac98d22faf83618a1e20b598554c8877bc6950c2bf23d8c21055e69b"
+    },
+    {
+      "path": "build/original-production/deploy-8f84b5f0520b.log",
+      "sha256": "fabd5f92d6e579fc125d8caf4cdf358e82e1ed38dfb338b02e04d8ed110be7af"
+    },
+    {
+      "path": "build/original-production/publish-safe-b038-b038-upload-memory-stop.log",
+      "sha256": "68c96914646203f3c2c8479f325d87a872e16296a42d52e223e7ac1a5695b59a"
+    },
+    {
+      "path": "build/original-production/receipt-validation.json",
+      "sha256": "6cf4d0f97fefa9e85d738c438e06e4b450f394fd1155a88e9b315d598ee8d710"
+    },
+    {
+      "path": "build/original-production/memory-recovery.json",
+      "sha256": "b686e18393df25c8c70ff9611298c65b7b3362781678d2c95f957181055b1683"
+    },
+    {
+      "path": "build/original-production/database-verification.log",
+      "sha256": "f44598e7978f462656d91066277b6efeac09014d29d732cf94e991a26f851c1a"
+    },
+    {
+      "path": "build/verify-original-production.mjs",
+      "sha256": "1b795ddbdaa8e7c8e12d4bb0022390abb4e2e3f440ddeb50bbd98d9650896f4d"
+    },
+    {
+      "path": "build/verify-original-production.sh",
+      "sha256": "7a3dbd771b2bba019936f927220a1d99f2c7527868e5d4737eccd6faa7310928"
+    },
+    {
+      "path": "build/run-original-final-verification.py",
+      "sha256": "29075378120f13848f50bc9d6033dd0e3bf28d9456cee6ea8d50da451902d7ed"
+    },
+    {
+      "path": "build/publish-original-production-safe.py",
+      "sha256": "025a829eb4811c0af5589b9ae3a49d22524ef2eefaa750390055971d85536493"
+    }
+  ],
+  "publicationRecovery": {
+    "earlierBoundedRun": "Stopped before b009 database transaction because sustained reclaim stalled media upload; b000-b008 retained.",
+    "fix": "Stream media request bodies, explicitly collect after validation and between optional CLI uploads; original resource limits preserved.",
+    "deploymentRetry": "First fixed release rolled back when local disk exhaustion broke streamed logs. R2 uses server-local logs and completed successfully.",
+    "resume": "Restarted at b009 using bounded chunks of at most three batches and at most 100 MiB referenced media; every batch retained health and stability gates.",
+    "releaseLog": "build/original-production/deploy-r2.log",
+    "audioTimeout": "At b036 two PUT attempts exceeded the prior 30-second short-clip request deadline. Published b035 retained. Changed only the audio PUT deadline to 90 seconds inside the existing 120-second signature and 600-second maintenance job; server memory/CPU/IO limits unchanged. Verified 43.2 MB HTTP upload with a 32-second response delay, then deployed the focused fix and resumed idempotently.",
+    "finalReleaseLog": "build/original-production/deploy-8f84b5f0520b.log",
+    "postUploadReclaim": "The extended upload completed, but the final media buffers remained before database allocation and caused sustained memory.high reclaim. Stopped that owned maintenance unit safely, retained assets and prior committed versions, and added an explicit CLI collection before creating the database connection. No memory/CPU/IO/runtime limits changed; unconfirmed batch resumed idempotently.",
+    "fileStreaming": "Post-upload collection alone did not prevent in-flight whole-WAV buffers from exceeding memory.high. Changed original-file WAV validation and upload to bounded 64 KiB reads, preserving complete-file SHA, RIFF/PCM format, duration and peak checks, and cancelling/destroying upload streams after requests. Original file bytes and catalog hashes unchanged.",
+    "receiptReconciliation": "A deliberately stopped systemd maintenance unit returned status zero without transaction receipts. Removed unconfirmed b036/b037 checkpoint entries and required matching CLI batch/hash/unit/response receipts before acknowledging any batch; final PostgreSQL verification independently confirms publication."
+  }
+}

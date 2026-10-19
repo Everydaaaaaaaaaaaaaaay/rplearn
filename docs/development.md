@@ -161,14 +161,19 @@ Scripts/preview.sh preview learning-test # 已构建后复用产物
 `LearningServing` 的媒体、答题、奖励、结束与补答流程。已有挑战保持原档位，跨档位时明确提示续做，
 不改旧快照；无题或供题耗尽显示真实不可用状态，不生成本地替代题。测试会写入真实学习记录和奖励。
 
-本轮研究已按用户要求停止；研究页的772组记录没有批量发布到学习系统。当前可测范围以服务端实际
-已发布题库为准，不以研究数量冒充可抽题量。这个入口仅在 Debug 构建中提供，没有发布 App Store 版本。
+本轮研究已按用户要求停止。既有772组研究作者稿中，当前主范围634个完整原创组（15档、141个
+档位/题型格，每格至少3个完整组、5,090个作答点）接入正式供题目录，138组参考稿排除。真题用于提取结构、输入与判分
+规则，正式填库使用独立原创稿。入口支持题型和具体原创组选择，点击“刷新题库”读取已发布目录；
+可抽取数量仍以服务器和账号已有记录为准。这个入口仅在 Debug 构建中提供，没有发布 App Store 版本。
+完整组保留全部材料与子题，不进入固定6/18题抽取器；已核填空变体同等接受，未确认表达不直接记错。
+本轮发布与验收边界见[原创接入记录](verification/learning-originals-integration-20261019.json)及
+[接入说明](learning-program/original-groups-integration-2026-10-19.md)。
 入口流程定向验证为 `Scripts/test.sh -only-testing:LingoTripTests/LearningTrialTests`；
 原判分及组卷的隔离验证可按需运行 `Scripts/verify-backend-workflows.py --phase integration`
 并选择 `learning-bank.test.ts` 和 `learning-api.test.ts`。隔离测试与原生实测分开记录。2026-10-19 已通过真实登录后的 15 档供题数量读取，以及高三
 18 题挑战的听力播放门槛、两题服务器判分、各 +1 点反馈、保存续做与跨档保护。
 这次人工抽查未逐档完成整套题，也未覆盖结束与补答全部流程；具体证据及限制见
-[实测验收记录](verification/learning-trial-entry-20261019.json)。
+[实测验收记录](verification/learning-trial-entry-20261019.json)。这份旧题库人工验收不替代本轮原创完整组验收。本轮另实测小学图片/听力、填空变体、高三十空保存续做及高级四篇跨文本匹配；完整记录见上方原创接入记录。
 
 ## 启动速度与偶发慢启动
 
