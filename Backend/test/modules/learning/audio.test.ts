@@ -85,7 +85,7 @@ describe("听力资源完整性与发布顺序", () => {
       "远端内容校验失败",
     );
   });
-  it("最大完整音轨通过真实 HTTP 流式上传，字节和长度不丢失", async () => {
+  it("最大完整音轨通过慢响应 HTTP 流式上传，字节和长度不丢失", async () => {
     const fixture = learningAudioFixture();
     const bytes = Buffer.alloc(44 + 48_000 * 900);
     bytes.fill(fixture.bytes.subarray(44), 44);
@@ -120,7 +120,8 @@ describe("听力资源完整性与发布顺序", () => {
           checksumSha256: hash.digest("base64"),
           contentType: request.headers["content-type"] ?? "",
         };
-        response.writeHead(200).end();
+        // A complete WAV may take longer than the former short-clip timeout.
+        setTimeout(() => response.writeHead(200).end(), 32_000);
       });
     });
     await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
@@ -153,5 +154,5 @@ describe("听力资源完整性与发布顺序", () => {
         server.close((error) => (error ? reject(error) : resolve())),
       );
     }
-  }, 15_000);
+  }, 45_000);
 });

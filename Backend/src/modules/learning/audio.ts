@@ -136,7 +136,9 @@ export async function uploadLearningAudio(
         headers: upload.headers,
         body: Readable.from([bytes]),
         duplex: "half",
-        signal: AbortSignal.timeout(30_000),
+        // Complete-group WAVs can reach 43.2 MB. Allow a slow object-store
+        // response within the 120-second signature and 600-second job bound.
+        signal: AbortSignal.timeout(90_000),
       });
       if (!result.ok)
         throw new AppError({
