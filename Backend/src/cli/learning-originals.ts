@@ -30,6 +30,8 @@ async function main() {
   const catalog = await maintenanceStage("核验原创完整组", () =>
     loadOriginalCatalog(directory, batchID),
   );
+  // Release parsing/verification temporaries before allocating an upload body.
+  globalThis.gc?.();
   if (command === "publish") {
     if (arg !== catalog.hash) throw new Error("原创批次哈希不符，已停止发布。");
     const config = loadConfig();

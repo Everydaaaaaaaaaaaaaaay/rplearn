@@ -9,10 +9,10 @@ case "${action}" in
     command=("${script_dir}/deploy.sh" "$(realpath "$2")" "$3") ;;
   originals-validate)
     [[ "$#" = 2 && "$2" =~ ^b[0-9]{3}$ ]] || exit 2
-    command=(/opt/lingotrip/runtime/bin/node --max-old-space-size=128 --env-file=/etc/lingotrip/backend.env --env-file=/etc/lingotrip/release.env dist/cli/learning-originals.js validate "$2") ;;
+    command=(/opt/lingotrip/runtime/bin/node --expose-gc --max-old-space-size=128 --env-file=/etc/lingotrip/backend.env --env-file=/etc/lingotrip/release.env dist/cli/learning-originals.js validate "$2") ;;
   originals-publish)
     [[ "$#" = 3 && "$2" =~ ^[a-f0-9]{64}$ && "$3" =~ ^b[0-9]{3}$ ]] || exit 2
-    command=(/opt/lingotrip/runtime/bin/node --max-old-space-size=128 --env-file=/etc/lingotrip/backend.env --env-file=/etc/lingotrip/release.env dist/cli/learning-originals.js publish "$2" "$3") ;;
+    command=(/opt/lingotrip/runtime/bin/node --expose-gc --max-old-space-size=128 --env-file=/etc/lingotrip/backend.env --env-file=/etc/lingotrip/release.env dist/cli/learning-originals.js publish "$2" "$3") ;;
   originals-publish-many)
     [[ "$#" = 2 ]] || exit 2
     command=(/usr/bin/python3 "${script_dir}/publish-original-batches.py" "$(realpath "$2")") ;;

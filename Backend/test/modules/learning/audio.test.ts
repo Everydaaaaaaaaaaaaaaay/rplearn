@@ -1,4 +1,6 @@
 import { describe, expect, it, vi, afterEach } from "vitest";
+import { createHash } from "node:crypto";
+import { createServer } from "node:http";
 import {
   uploadLearningAudio,
   verifyLearningAudio,
@@ -83,4 +85,73 @@ describe("听力资源完整性与发布顺序", () => {
       "远端内容校验失败",
     );
   });
+  it("最大完整音轨通过真实 HTTP 流式上传，字节和长度不丢失", async () => {
+    const fixture = learningAudioFixture();
+    const bytes = Buffer.alloc(44 + 48_000 * 900);
+    bytes.fill(fixture.bytes.subarray(44), 44);
+    fixture.bytes.copy(bytes, 0, 0, 44);
+    bytes.writeUInt32LE(bytes.length - 8, 4);
+    bytes.writeUInt32LE(bytes.length - 44, 40);
+    const sha256 = createHash("sha256").update(bytes).digest("hex");
+    const asset = {
+      bytes,
+      metadata: {
+        ...fixture.metadata,
+        id: `audio.${sha256}`,
+        sha256,
+        byteSize: bytes.length,
+        durationMs: 900_000,
+      },
+    };
+    let received:
+      { byteSize: number; checksumSha256: string; contentType: string } | undefined;
+    let declaredLength: string | undefined;
+    const server = createServer((request, response) => {
+      const hash = createHash("sha256");
+      let size = 0;
+      declaredLength = request.headers["content-length"];
+      request.on("data", (chunk: Buffer) => {
+        size += chunk.length;
+        hash.update(chunk);
+      });
+      request.on("end", () => {
+        received = {
+          byteSize: size,
+          checksumSha256: hash.digest("base64"),
+          contentType: request.headers["content-type"] ?? "",
+        };
+        response.writeHead(200).end();
+      });
+    });
+    await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
+    try {
+      const address = server.address();
+      if (!address || typeof address === "string")
+        throw new Error("Missing test server address");
+      const store: LearningAudioObjectStore = {
+        headObject: () => Promise.resolve(received),
+        createDownloadUrl: vi.fn(),
+        createUploadUrl: () =>
+          Promise.resolve({
+            url: `http://127.0.0.1:${String(address.port)}/upload`,
+            headers: {
+              "content-type": "audio/wav",
+              "content-length": String(bytes.length),
+            },
+          }),
+      };
+      await uploadLearningAudio([asset], store);
+      expect(declaredLength).toBe(String(bytes.length));
+      expect(received).toEqual({
+        byteSize: bytes.length,
+        checksumSha256: Buffer.from(sha256, "hex").toString("base64"),
+        contentType: "audio/wav",
+      });
+    } finally {
+      server.closeAllConnections();
+      await new Promise<void>((resolve, reject) =>
+        server.close((error) => (error ? reject(error) : resolve())),
+      );
+    }
+  }, 15_000);
 });

@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { Readable } from "node:stream";
 import { z } from "zod";
 import type { MediaObjectStore } from "../media/object-store.js";
 import { AppError } from "../../shared/errors.js";
@@ -111,6 +112,9 @@ export async function uploadLearningAudio(
   store: LearningAudioObjectStore,
 ): Promise<void> {
   for (const asset of assets) {
+    // The bounded publication CLI exposes GC so previous deferred media buffers
+    // are released before loading the next file, including under memory.high.
+    globalThis.gc?.();
     const { metadata } = asset;
     const bytes = "bytes" in asset ? asset.bytes : await asset.loadBytes();
     verifyLearningAudio(metadata, bytes);
@@ -130,7 +134,8 @@ export async function uploadLearningAudio(
       const result = await fetch(upload.url, {
         method: "PUT",
         headers: upload.headers,
-        body: new Uint8Array(bytes),
+        body: Readable.from([bytes]),
+        duplex: "half",
         signal: AbortSignal.timeout(30_000),
       });
       if (!result.ok)

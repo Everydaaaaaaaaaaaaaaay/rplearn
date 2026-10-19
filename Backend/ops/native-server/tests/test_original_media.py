@@ -31,6 +31,8 @@ class OriginalPublishPlanTest(unittest.TestCase):
   spec=importlib.util.spec_from_file_location('original_publish',Path(__file__).parents[1]/'publish-original-batches.py');publish=importlib.util.module_from_spec(spec);spec.loader.exec_module(publish)
   plan=[{'batch':'b000','hash':'a'*64}]
   self.assertEqual(publish.commands(plan)[0][-2:],['a'*64,'b000'])
+  self.assertIn('--expose-gc',publish.commands(plan)[0])
+  self.assertIn('--max-old-space-size=128',publish.commands(plan)[0])
   for value in [[],plan*4,[{'batch':'../../x','hash':'a'*64}],[{'batch':'b000','hash':'$(bad)'}],plan*2]:
    with self.assertRaises(ValueError):publish.commands(value)
 if __name__=='__main__':unittest.main()

@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { Readable } from "node:stream";
 import { crc32, inflateSync } from "node:zlib";
 import { z } from "zod";
 import type { MediaObjectStore } from "../media/object-store.js";
@@ -106,6 +107,7 @@ export async function uploadLearningImages(
   store: LearningImageObjectStore,
 ): Promise<void> {
   for (const asset of assets) {
+    globalThis.gc?.();
     const { metadata } = asset;
     const bytes = "bytes" in asset ? asset.bytes : await asset.loadBytes();
     verifyLearningImage(metadata, bytes);
@@ -125,7 +127,8 @@ export async function uploadLearningImages(
       const response = await fetch(upload.url, {
         method: "PUT",
         headers: upload.headers,
-        body: new Uint8Array(bytes),
+        body: Readable.from([bytes]),
+        duplex: "half",
         signal: AbortSignal.timeout(30_000),
       });
       if (!response.ok)
