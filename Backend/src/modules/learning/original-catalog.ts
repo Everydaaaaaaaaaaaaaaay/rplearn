@@ -8,7 +8,7 @@ import {
   questionImageIds,
 } from "./content.js";
 import { answerSchema, gradeAnswer } from "./grading.js";
-import { learningAudioSchema, verifyLearningAudio } from "./audio.js";
+import { learningAudioSchema, verifyLearningAudioFile } from "./audio.js";
 import { learningImageSchema, verifyLearningImage } from "./images.js";
 
 const manifestSchema = z.strictObject({
@@ -175,6 +175,7 @@ export async function loadOriginalCatalog(directory: string, batchID?: string) {
   }
   const audioAssets = manifest.audioAssets.map((metadata) => ({
     metadata,
+    filePath: join(mediaRoot, `${metadata.id}.wav`),
     loadBytes: () => readFile(join(mediaRoot, `${metadata.id}.wav`)),
   }));
   const imageAssets = manifest.imageAssets.map((metadata) => ({
@@ -182,7 +183,7 @@ export async function loadOriginalCatalog(directory: string, batchID?: string) {
     loadBytes: () => readFile(join(mediaRoot, `${metadata.id}.png`)),
   }));
   for (const asset of audioAssets)
-    verifyLearningAudio(asset.metadata, await asset.loadBytes());
+    await verifyLearningAudioFile(asset.metadata, asset.filePath);
   for (const asset of imageAssets)
     verifyLearningImage(asset.metadata, await asset.loadBytes());
   return {
