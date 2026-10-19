@@ -46,6 +46,9 @@ async function main() {
         uploadLearningImages(catalog.imageAssets, store),
       );
     }
+    // Release the final streamed media body before allocating database buffers.
+    // The CLI runs with --expose-gc inside the existing memory.high boundary.
+    globalThis.gc?.();
     const database = createDatabase(config);
     try {
       await maintenanceStage("发布原创批次事务", () =>
