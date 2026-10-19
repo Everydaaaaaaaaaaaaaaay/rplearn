@@ -20,7 +20,10 @@ const directories: string[] = [];
 async function copyCatalog() {
   const directory = await mkdtemp(join(tmpdir(), "lingotrip-catalog-"));
   directories.push(directory);
-  await cp(catalogPath, directory, { recursive: true });
+  await cp(catalogPath, directory, {
+    recursive: true,
+    filter: (source) => source !== join(catalogPath, "originals"),
+  });
   return directory;
 }
 afterEach(async () => {

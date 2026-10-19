@@ -113,9 +113,22 @@ export function registerLearningRoutes(
         body.expectedRevision,
       );
     });
-    scope.get("/v1/learning/journey", (request) => service.journey(user(request)));
+    scope.get("/v1/learning/originals", (request) => {
+      const query = parse(z.strictObject({ level: levelSchema }), request.query);
+      return service.originals(user(request), query.level);
+    });
+    scope.get("/v1/learning/journey", (request) =>
+      service.journey(
+        user(request),
+        request.headers["x-learning-complete-groups"] === "1",
+      ),
+    );
     scope.get("/v1/learning/characters/:id", (request) =>
-      service.character(user(request), parse(paramsSchema, request.params).id),
+      service.character(
+        user(request),
+        parse(paramsSchema, request.params).id,
+        request.headers["x-learning-complete-groups"] === "1",
+      ),
     );
     scope.get("/v1/learning/characters/:id/history", (request) => {
       const query = parse(historySchema, request.query);
@@ -130,19 +143,44 @@ export function registerLearningRoutes(
       "/v1/learning/characters/:id/attempts",
       { bodyLimit: 1024 },
       async (request, reply) => {
-        const body = parse(requestSchema, request.body);
+        const body = parse(
+          requestSchema.extend({
+            originalUnitId: z
+              .string()
+              .regex(/^original\.[a-z0-9_.-]{1,110}$/)
+              .optional(),
+          }),
+          request.body,
+        );
         const result = await service.start(
           user(request),
           body.requestId,
           parse(paramsSchema, request.params).id,
+          {
+            completeGroups: request.headers["x-learning-complete-groups"] === "1",
+            ...(body.originalUnitId ? { originalUnitId: body.originalUnitId } : {}),
+          },
         );
         if (result.status === "preparing") reply.code(202);
         return result;
       },
     );
-    scope.get("/v1/learning/attempts/:id", (request) =>
-      service.attempt(user(request), parse(paramsSchema, request.params).id),
-    );
+    scope.get("/v1/learning/attempts/:id", async (request) => {
+      const attempt = await service.attempt(
+        user(request),
+        parse(paramsSchema, request.params).id,
+      );
+      if (
+        attempt.unit.originalGroup &&
+        request.headers["x-learning-complete-groups"] !== "1"
+      )
+        throw new AppError({
+          code: "LEARNING_CLIENT_UPDATE_REQUIRED",
+          message: "这次完整题组需要新版 App，请更新后继续。",
+          statusCode: 426,
+        });
+      return attempt;
+    });
     scope.get("/v1/learning/attempts/:id/audio/:questionId", (request) => {
       const params = parse(
         paramsSchema.extend({

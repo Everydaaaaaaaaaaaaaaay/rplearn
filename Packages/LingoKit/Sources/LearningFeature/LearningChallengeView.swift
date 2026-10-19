@@ -180,6 +180,18 @@ public struct LearningChallengeView: View {
                 }
             }
             Text(question.type == .matching && dynamicTypeSize.isAccessibilitySize ? "将两组内容逐一配对。" : question.instruction).font(.title2.bold())
+            if let material = question.material, !material.isEmpty {
+                LearningGroupMaterial(text: material)
+                    .accessibilityIdentifier("learning.group.material")
+            }
+            ForEach(Array((question.materialImages ?? []).enumerated()), id: \.offset) { _, asset in
+                if let image = pictures.images[asset.assetId] {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(asset.label).font(.caption).foregroundStyle(.secondary)
+                        Image(uiImage: image).resizable().scaledToFit().accessibilityLabel(asset.label)
+                    }
+                }
+            }
             Text(question.prompt).font(.system(.title3, design: .rounded)).lineSpacing(6).fixedSize(horizontal: false, vertical: true)
             if showsHint && model.feedback == nil {
                 Text(question.hint).font(.subheadline).foregroundStyle(.secondary)
@@ -537,7 +549,7 @@ public struct LearningChallengeView: View {
         VStack(spacing: 10) {
             switch model.stage {
             case .cover:
-                primary("进入") { model.advance() }.accessibilityLabel("开始故事")
+                primary("进入") { model.advance() }.accessibilityLabel(model.attempt.unit.originalGroup == nil ? "开始故事" : "开始完整题组")
             case .story:
                 HStack(spacing: 12) {
                     primary(model.isLastOpeningBeat ? "开始挑战" : "继续") { model.advance() }
@@ -623,5 +635,50 @@ struct LearningFlowLayout: Layout {
             positions.append(CGPoint(x: x, y: y)); x += size.width + spacing; rowHeight = max(rowHeight, size.height)
         }
         return (CGSize(width: width, height: y + rowHeight), positions)
+    }
+}
+
+
+/// 保留原表格行列，避免把竖线或HTML实现细节呈现给学习者。
+private struct LearningGroupMaterial: View {
+    let text: String
+    private enum Block { case prose(String), table([[String]]) }
+    private var blocks: [Block] {
+        var result: [Block] = []; var prose: [String] = []; var rows: [[String]] = []
+        func flushProse() { if !prose.isEmpty { result.append(.prose(prose.joined(separator: "\n"))); prose = [] } }
+        func flushTable() { if !rows.isEmpty { result.append(.table(rows)); rows = [] } }
+        for line in text.components(separatedBy: "\n") {
+            if line.trimmingCharacters(in: .whitespaces).hasPrefix("| ") {
+                flushProse()
+                rows.append(line.components(separatedBy: " | ").dropFirst().map { $0.trimmingCharacters(in: .whitespaces) })
+            } else if !line.trimmingCharacters(in: .whitespaces).isEmpty {
+                flushTable(); prose.append(line)
+            } else if rows.isEmpty { prose.append("") }
+        }
+        flushTable(); flushProse(); return result
+    }
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            ForEach(Array(blocks.enumerated()), id: \.offset) { _, block in
+                switch block {
+                case .prose(let value): Text(value).font(.body).lineSpacing(7).textSelection(.enabled)
+                case .table(let rows):
+                    ScrollView(.horizontal) {
+                        Grid(alignment: .topLeading, horizontalSpacing: 0, verticalSpacing: 0) {
+                            ForEach(rows.indices, id: \.self) { row in
+                                GridRow {
+                                    ForEach(rows[row].indices, id: \.self) { column in
+                                        Text(rows[row][column]).font(.subheadline)
+                                            .frame(minWidth: 90, maxWidth: 180, alignment: .leading)
+                                            .padding(10)
+                                            .background(row.isMultiple(of: 2) ? Color.secondary.opacity(0.08) : Color.clear)
+                                    }
+                                }
+                            }
+                        }
+                    }.accessibilityLabel("题目表格")
+                }
+            }
+        }
     }
 }

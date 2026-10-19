@@ -15,6 +15,7 @@ struct LearningTrialView: View {
     @State private var characters: [CharacterDTO] = []
     @State private var selectedCharacterID: UUID?
     @State private var rosterError: String?
+    @State private var originalFamily = ""
 
     init(environment: AppEnvironment) {
         self.environment = environment
@@ -69,6 +70,27 @@ struct LearningTrialView: View {
                     .accessibilityAddTraits(model.selectedLevel == level ? .isSelected : [])
                 }
             }
+            Section("原创完整题组") {
+                if let originals = model.originals {
+                    Text("已发布 \(originals.units.count) 组；保留全文、全部子题与配套输入。")
+                        .font(.footnote).foregroundStyle(.secondary)
+                    Picker("题型", selection: $originalFamily) {
+                        Text("全部题型").tag("")
+                        ForEach(Array(Set(originals.units.map(\.family))).sorted(), id: \.self) { family in
+                            Text(originals.units.first(where: { $0.family == family })?.label ?? family).tag(family)
+                        }
+                    }.accessibilityIdentifier("learning.trial.family")
+                    Picker("选择题组", selection: $model.selectedOriginalID) {
+                        if originalFamily.isEmpty { Text("自动抽取").tag(Optional<String>.none) }
+                        ForEach(originals.units.filter { originalFamily.isEmpty || $0.family == originalFamily }) { unit in
+                            Text("\(unit.label) · \(unit.title)（\(unit.questions)题）").tag(Optional(unit.id))
+                        }
+                    }.accessibilityIdentifier("learning.trial.original")
+                } else if let error = model.originalsError {
+                    Text(error).foregroundStyle(.red)
+                    Button("重新读取原创题组") { Task { await model.loadOriginals() } }
+                } else { ProgressView("读取正式原创题库…") }
+            }
             if let attempt = model.activeAttempt {
                 Section("进行中的挑战") {
                     Text(attempt.unit.title)
@@ -111,7 +133,15 @@ struct LearningTrialView: View {
         }
         .navigationTitle("学习实测")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            Button("刷新题库", systemImage: "arrow.clockwise") { Task { await load(); await model.loadOriginals() } }
+                .disabled(model.isBusy)
+        }
         .task { await load() }
+        .task(id: model.selectedLevel) { originalFamily = ""; await model.loadOriginals() }
+        .onChange(of: originalFamily) { _, family in
+            model.selectedOriginalID = family.isEmpty ? nil : model.originals?.units.first(where: { $0.family == family })?.id
+        }
         .onChange(of: selectedCharacterID) { previous, current in
             // 首次选旅伴由 load() 顺序完成；避免 id 变化取消正在读取的初始请求。
             guard previous != nil else { return }

@@ -287,16 +287,22 @@ export class LearningSession {
       reject("LEARNING_REVISION_CONFLICT", "挑战已在其他设备更新，请刷新后继续。");
   }
 
-  async availability(roleKey: string, level: LearningLevel, characterId: string) {
+  async availability(
+    roleKey: string,
+    level: LearningLevel,
+    characterId: string,
+    completeGroups = false,
+  ) {
     const { selectedDirection } = await this.directions().read();
     // 备考稿尚未通过正式发布门槛，不回退到同一用户的普通年级题库。
     if (selectedDirection !== "general")
       return { availableUnits: 0, generationStatus: null };
     const [row] = await this.sql<
       { count: number }[]
-    >`select count(*)::integer as count from app.learning_units u
-      where u.published and u.role_key=${roleKey} and u.level_key=${level}
-      and not exists(select 1 from app.learning_attempts a where a.user_id=${this.userId} and a.character_id=${characterId} and a.unit_id=u.id)
+    >`select count(*)::integer as count from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
+      where u.published and u.level_key=${level}
+      and ((u.role_key=${roleKey} and not (v.payload ? 'originalGroup')) or (${completeGroups} and v.payload ? 'originalGroup'))
+      and not exists(select 1 from app.learning_attempts a where a.user_id=${this.userId} and (a.character_id=${characterId} or v.payload ? 'originalGroup') and a.unit_id=u.id)
         and not exists(select 1 from app.learning_bank_sources s join app.learning_bank_exposures e on e.question_id=s.question_id
           where s.unit_id=u.id and s.unit_version=u.current_version and e.user_id=${this.userId})
         and not exists(select 1 from app.learning_bank_sources s join app.learning_bank_questions b on b.id=s.question_id
@@ -428,10 +434,36 @@ export class LearningSession {
     return this.character(input.characterId);
   }
 
-  async start(characterId: string, level: LearningLevel) {
+  async originals(level: LearningLevel) {
+    const rows = await this.sql<
+      { id: string; title: string; family: string; label: string; questions: number }[]
+    >`
+      select u.id,v.payload->>'title' as title,v.payload->'originalGroup'->>'family' as family,
+      v.payload->'originalGroup'->>'label' as label,jsonb_array_length(v.payload->'questions') as questions
+      from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
+      where u.published and u.level_key=${level} and v.payload ? 'originalGroup' order by family,u.id`;
+    return { units: rows };
+  }
+
+  async start(
+    characterId: string,
+    level: LearningLevel,
+    options: { completeGroups?: boolean; originalUnitId?: string } = {},
+  ) {
     await this
       .sql`select pg_advisory_xact_lock_shared(hashtextextended('learning-publication',0))`;
     const state = await this.character(characterId);
+    if (options.originalUnitId && !options.completeGroups)
+      reject("LEARNING_CLIENT_UPDATE_REQUIRED", "完整题组需要新版 App。", 426);
+    if (state.activeAttemptId && !options.completeGroups) {
+      const active = await this.rawAttempt(state.activeAttemptId);
+      if (active.payload.originalGroup)
+        reject(
+          "LEARNING_CLIENT_UPDATE_REQUIRED",
+          "这次完整题组需要新版 App，请更新后继续。",
+          426,
+        );
+    }
     if (state.activeAttemptId)
       return {
         status: "started" as const,
@@ -447,13 +479,16 @@ export class LearningSession {
       reject("LEARNING_NOT_READY", "再聊一会儿，进度满后就能开启挑战。");
     const [dedicated] = await this.sql<{ payload: LearningUnit }[]>`
       select v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
-      where u.published and u.role_key=${state.roleKey} and u.level_key=${level}
-        and not exists(select 1 from app.learning_attempts a where a.user_id=${this.userId} and a.character_id=${characterId} and a.unit_id=u.id)
+      where u.published and u.level_key=${level}
+        and ((u.role_key=${state.roleKey} and not (v.payload ? 'originalGroup'))
+          or (${options.completeGroups === true} and v.payload ? 'originalGroup'))
+        and (${options.originalUnitId ?? null}::text is null or u.id=${options.originalUnitId ?? null})
+        and not exists(select 1 from app.learning_attempts a where a.user_id=${this.userId} and (a.character_id=${characterId} or v.payload ? 'originalGroup') and a.unit_id=u.id)
         and not exists(select 1 from app.learning_bank_sources s join app.learning_bank_exposures e on e.question_id=s.question_id
           where s.unit_id=u.id and s.unit_version=u.current_version and e.user_id=${this.userId})
         and not exists(select 1 from app.learning_bank_sources s join app.learning_bank_questions b on b.id=s.question_id
           where s.unit_id=u.id and s.unit_version=u.current_version and (not b.published or b.current_version<>1))
-      order by random() limit 1`;
+      order by (v.payload ? 'originalGroup') desc,random() limit 1`;
     const attemptId = randomUUID();
     const bank = new LearningBankSession(this.sql, this.userId);
     const companion = await this.context?.companion?.(
@@ -462,18 +497,21 @@ export class LearningSession {
       characterId,
     );
     // 已有更完整的新练习时，不让早期短专属单元遮住公共长单元；纯复习不抢占未见专属题。
-    const composed = await bank.compose(
-      level,
-      state.roleKey,
-      companion?.name ?? "同行者",
-      attemptId,
-      dedicated
-        ? {
-            minQuestions: dedicated.payload.questions.length + 1,
-            excludeReviewOnly: true,
-          }
-        : {},
-    );
+    const composed =
+      dedicated?.payload.originalGroup || options.originalUnitId
+        ? null
+        : await bank.compose(
+            level,
+            state.roleKey,
+            companion?.name ?? "同行者",
+            attemptId,
+            dedicated
+              ? {
+                  minQuestions: dedicated.payload.questions.length + 1,
+                  excludeReviewOnly: true,
+                }
+              : {},
+          );
     const candidate = composed ? undefined : dedicated;
     if (!candidate && !composed) {
       // 只为确有角色蓝图的主角色保留原生成队列；普通角色缺题由公共题库补齐。
@@ -576,10 +614,18 @@ export class LearningSession {
       values(${input.roundId},${input.questionId},${JSON.stringify(input.answer)}::jsonb,${JSON.stringify(result)}::jsonb)`;
     let awardedPoints = 0;
     if (result.outcome === "correct") {
-      const firstMastery = await new LearningBankSession(this.sql, this.userId).claim(
-        input.attemptId,
-        input.questionId,
-      );
+      // 原创完整组跨旅伴只计一次；账号命令锁使查询与奖励写入串行。
+      const priorOriginal = unit.originalGroup
+        ? await this.sql`
+        select 1 from app.learning_rewards r join app.learning_attempts a on a.id=r.attempt_id
+        where r.user_id=${this.userId} and a.unit_id=${unit.id} and r.question_id=${input.questionId} and r.points>0 limit 1`
+        : [];
+      const firstMastery = unit.originalGroup
+        ? priorOriginal.length === 0
+        : await new LearningBankSession(this.sql, this.userId).claim(
+            input.attemptId,
+            input.questionId,
+          );
       const award = await this
         .sql`insert into app.learning_rewards(attempt_id,question_id,user_id,level_key,goal_id,points)
         values(${input.attemptId},${input.questionId},${this.userId},${attempt.level_key},${question.goalId},${firstMastery ? 1 : 0})
@@ -673,9 +719,11 @@ export class LearningSession {
     return this.attempt(id);
   }
 
-  async publishedContent() {
+  async publishedContent(completeGroups = false) {
     return this.sql<{ level: LearningLevel; count: number }[]>`
-      select level_key as level,count(*)::integer as count from app.learning_units where published group by level_key`;
+      select u.level_key as level,count(*)::integer as count from app.learning_units u
+      join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
+      where u.published and (${completeGroups} or not (v.payload ? 'originalGroup')) group by u.level_key`;
   }
 
   async progress() {

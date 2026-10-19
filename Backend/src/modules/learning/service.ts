@@ -176,12 +176,12 @@ export function createLearningService(
         expiresAt: new Date(Date.now() + 300_000).toISOString(),
       };
     },
-    journey: async (userId: string) => {
+    journey: async (userId: string, completeGroups = false) => {
       await drainMessages?.(userId);
       return repository.inspect(userId, async (session) => {
         const currentLevel = await session.currentLevel();
         const progress = await session.progress();
-        const content = await session.publishedContent();
+        const content = await session.publishedContent(completeGroups);
         return {
           currentLevel,
           learningDirections: await session.directions().read(),
@@ -198,7 +198,7 @@ export function createLearningService(
         };
       });
     },
-    character: async (userId: string, characterId: string) => {
+    character: async (userId: string, characterId: string, completeGroups = false) => {
       await drainMessages?.(userId);
       return repository.inspect(userId, async (session) => {
         const level = await session.currentLevel();
@@ -207,7 +207,12 @@ export function createLearningService(
           ...state,
           level,
           learningDirections: await session.directions().read(),
-          ...(await session.availability(state.roleKey, level, characterId)),
+          ...(await session.availability(
+            state.roleKey,
+            level,
+            characterId,
+            completeGroups,
+          )),
         };
       });
     },
@@ -227,17 +232,28 @@ export function createLearningService(
         };
       });
     },
-    start: async (userId: string, requestId: string, characterId: string) => {
+    originals: (userId: string, level: LearningLevel) =>
+      repository.read(userId, (session) => session.originals(level)),
+    start: async (
+      userId: string,
+      requestId: string,
+      characterId: string,
+      options: { completeGroups?: boolean; originalUnitId?: string } = {},
+    ) => {
       await drainMessages?.(userId);
       return repository.command(
         userId,
         requestId,
         "start",
-        { characterId },
+        {
+          characterId,
+          ...(options.completeGroups ? { completeGroups: true } : {}),
+          ...(options.originalUnitId ? { originalUnitId: options.originalUnitId } : {}),
+        },
         async (session) => {
           const level = await session.currentLevel();
           await session.resolveCharacter(characterId);
-          return session.start(characterId, level);
+          return session.start(characterId, level, options);
         },
       );
     },

@@ -13,7 +13,9 @@ install -d "${staging}/release"
 # A normal incremental build leaves emitted files for deleted sources behind in dist.
 # Compile into this release's empty directory so reverted modules cannot be shipped.
 pnpm exec tsc -p tsconfig.build.json --outDir "${staging}/release/dist"
-cp -R migrations config "${staging}/release/"
+cp -R migrations "${staging}/release/"
+# 原创长音轨采用按SHA增量的独立资产包，避免在每次程序发布中复制全部语料。
+tar --exclude='config/learning/originals/media' -cf - config | tar -xf - -C "${staging}/release/"
 install -m 0644 package.json pnpm-lock.yaml "${staging}/release/"
 printf '%s\n' "${version}" >"${staging}/release/RELEASE"
 

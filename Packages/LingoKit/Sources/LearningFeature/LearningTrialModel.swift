@@ -14,13 +14,16 @@ public final class LearningTrialModel {
     public private(set) var isBusy = false
     public private(set) var error: String?
     public private(set) var notice: String?
+    public private(set) var originals: LearningOriginalCatalog?
+    public private(set) var originalsError: String?
+    public var selectedOriginalID: String?
     public var presentedAttempt: LearningAttempt?
     public var selectedLevel: DifficultyLevel = .primary3
     private var loadedInitialLevel = false
     private let service: any LearningServing & LearningDirectionServing
     private let changeLevel: @Sendable (DifficultyLevel) async throws -> Void
     private let fillCycle: @Sendable (UUID, UUID, UUID) async throws -> Void
-    private var startRequest: (characterID: UUID, id: UUID)?
+    private var startRequest: (characterID: UUID, unitID: String?, id: UUID)?
 
     public init(service: any LearningServing & LearningDirectionServing,
                 changeLevel: @escaping @Sendable (DifficultyLevel) async throws -> Void,
@@ -45,6 +48,19 @@ public final class LearningTrialModel {
         } catch { self.error = error.localizedDescription }
     }
 
+    public func loadOriginals() async {
+        let target = selectedLevel.rawValue
+        originals = nil; originalsError = nil; selectedOriginalID = nil
+        do {
+            let catalog = try await service.learningOriginals(level: target)
+            guard selectedLevel.rawValue == target else { return }
+            originals = catalog
+        } catch {
+            guard selectedLevel.rawValue == target else { return }
+            originalsError = error.localizedDescription
+        }
+    }
+
     public func start(characterID: UUID) async {
         guard !isBusy, Self.levels.contains(selectedLevel) else { return }
         let target = selectedLevel
@@ -59,8 +75,8 @@ public final class LearningTrialModel {
             if let id = state.activeAttemptId {
                 let attempt = try await service.learningAttempt(id)
                 activeAttempt = attempt
-                guard attempt.level == target.rawValue else {
-                    notice = "这位旅伴还有\(learningLevelName(attempt.level))的挑战。请先继续该挑战，或换一位旅伴。"
+                guard attempt.level == target.rawValue && (selectedOriginalID == nil || selectedOriginalID == attempt.unit.id) else {
+                    notice = "这位旅伴还有\(learningLevelName(attempt.level))的挑战。请先继续该挑战，或换一位旅伴；不会替换进行中的题组。"
                     return
                 }
                 presentedAttempt = attempt
@@ -92,9 +108,11 @@ public final class LearningTrialModel {
                 try await fillCycle(characterID, state.cycleId, UUID())
             }
             let request: UUID
-            if let previous = startRequest, previous.characterID == characterID { request = previous.id }
-            else { request = UUID(); startRequest = (characterID, request) }
-            let result = try await service.startLearning(characterID, requestID: request)
+            if let previous = startRequest, previous.characterID == characterID && previous.unitID == selectedOriginalID { request = previous.id }
+            else { request = UUID(); startRequest = (characterID, selectedOriginalID, request) }
+            let result: LearningStart
+            if let unitID = selectedOriginalID { result = try await service.startOriginalLearning(characterID, unitID: unitID, requestID: request) }
+            else { result = try await service.startLearning(characterID, requestID: request) }
             startRequest = nil
             if let attempt = result.attempt {
                 guard attempt.characterId == characterID else { throw BackendClientError.invalidResponse }
@@ -105,7 +123,9 @@ public final class LearningTrialModel {
                 }
                 presentedAttempt = attempt
             } else if result.status == "preparing" {
-                notice = "当前档位暂时没有可用的新练习，可能已用完当前题库。可以换旅伴、换档位或稍后再试。"
+                notice = selectedOriginalID == nil
+                    ? "当前档位暂时没有可用的新练习，可能已用完当前题库。可以换档位或从记录补答。"
+                    : "这组原创练习目前无法开启，可能已做过。请换一组；已做题可在学习记录中补答。"
             } else { throw TrialError("服务器没有返回可用挑战，请刷新后重试。") }
         } catch {
             self.error = error.localizedDescription

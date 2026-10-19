@@ -218,6 +218,9 @@ public final class LearningChallengeModel {
             attempt = receipt.attempt; feedback = receipt.result; awardedPoints = receipt.awardedPoints
             roundPoints = attempt.round.answers.filter { $0.result.outcome == .correct }.count
             pendingAnswer = nil; hasUnconfirmedAnswer = false
+        } catch BackendClientError.api(let code, let message, _, _) where code == "LEARNING_ANSWER_REVIEW_REQUIRED" {
+            pendingAnswer = nil; hasUnconfirmedAnswer = false
+            self.error = message
         } catch {
             hasUnconfirmedAnswer = true
             self.error = "还未确认提交结果。重试会核对同一次答案，不会重复加分。\n\(error.localizedDescription)"

@@ -231,7 +231,7 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
               type: question.type,
               prompt: question.prompt.trim().toLowerCase(),
               // “听写完整句子”等操作语可以复用，录音原文才是听力题的作答材料。
-              ...("audio" in question
+              ...("audio" in question && question.audio
                 ? { audio: question.audio.text.trim().toLowerCase() }
                 : {}),
               ...(question.type === "audioChoice" || question.type === "audioMatching"

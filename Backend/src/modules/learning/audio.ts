@@ -3,15 +3,15 @@ import { z } from "zod";
 import type { MediaObjectStore } from "../media/object-store.js";
 import { AppError } from "../../shared/errors.js";
 
-const voice = z.string().regex(/^[MF][1-5]$/);
+const voice = z.string().regex(/^(?:[MF][1-5]|research\.local)$/);
 export const learningAudioSchema = z
   .strictObject({
     id: z.string().regex(/^audio\.[a-f0-9]{64}$/),
     sha256: z.string().regex(/^[a-f0-9]{64}$/),
-    byteSize: z.number().int().min(1000).max(3_000_000),
-    durationMs: z.number().int().min(300).max(60_000),
+    byteSize: z.number().int().min(1000).max(43_300_000),
+    durationMs: z.number().int().min(300).max(900_000),
     contentType: z.literal("audio/wav"),
-    transcript: z.string().trim().min(1).max(1200),
+    transcript: z.string().trim().min(1).max(20000),
     // 单人素材使用该声线；多人素材保留首位发言者声线，与题目引用一致。
     voice,
     speakers: z

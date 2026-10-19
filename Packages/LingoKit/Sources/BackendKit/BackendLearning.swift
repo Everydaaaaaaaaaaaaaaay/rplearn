@@ -21,6 +21,13 @@ extension BackendClient {
 
 extension BackendClient: LearningServing {
     private struct Request: Encodable, Sendable { let requestId: UUID; var expectedRevision: Int?; var skipRemaining: Bool? }
+    public func learningOriginals(level: String) async throws -> LearningOriginalCatalog {
+        try await get("/v1/learning/originals", queryItems: [URLQueryItem(name: "level", value: level)])
+    }
+    public func startOriginalLearning(_ characterID: UUID, unitID: String, requestID: UUID) async throws -> LearningStart {
+        struct OriginalRequest: Encodable, Sendable { let requestId: UUID; let originalUnitId: String }
+        return try await send(path: "/v1/learning/characters/\(characterID.uuidString.lowercased())/attempts", method: "POST", body: OriginalRequest(requestId: requestID, originalUnitId: unitID))
+    }
     public func learningJourney() async throws -> LearningJourney { try await get("/v1/learning/journey") }
     public func learningHistory(_ characterID: UUID, cursor: String? = nil) async throws -> LearningHistory {
         try await get("/v1/learning/characters/\(characterID.uuidString.lowercased())/history",

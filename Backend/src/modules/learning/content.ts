@@ -25,7 +25,7 @@ const identifier = z.string().regex(/^[a-z][a-z0-9_.-]{0,119}$/);
 const text = z.string().trim().min(1).max(1200);
 const option = z.strictObject({
   id: identifier,
-  text: text.max(240),
+  text: text.max(1200),
   imageAssetId: identifier.optional(),
 });
 const normalization = z.strictObject({
@@ -55,14 +55,20 @@ const baseQuestion = {
   id: identifier,
   goalId: identifier,
   instruction: text,
-  prompt: text,
-  explanation: text,
+  prompt: z.string().min(1).max(4000),
+  explanation: z.string().min(1).max(8000),
   hint: text,
   difficultyReason: text,
+  // 完整原创题组的共享输入随每个回应冻结；不能把第N空脱离全文供题。
+  material: z.string().max(24000).optional(),
+  materialImages: z
+    .array(z.strictObject({ assetId: identifier, label: text.max(1200) }))
+    .max(24)
+    .optional(),
 };
 const audioReference = z.strictObject({
   assetId: identifier,
-  text,
+  text: z.string().min(1).max(20000),
   voice: z.string().min(1).max(32),
 });
 
@@ -108,17 +114,17 @@ export const questionSchema = z.discriminatedUnion("type", [
   z.strictObject({
     ...baseQuestion,
     type: z.literal("choice"),
-    options: z.array(option).min(2).max(5),
+    options: z.array(option).min(2).max(20),
     answer: identifier,
   }),
   z.strictObject({
     ...baseQuestion,
     type: z.literal("listeningChoice"),
-    options: z.array(option).min(2).max(5),
+    options: z.array(option).min(2).max(20),
     answer: identifier,
     audio: z.strictObject({
       assetId: identifier,
-      text,
+      text: z.string().min(1).max(20000),
       voice: z.string().min(1).max(32),
     }),
   }),
@@ -135,22 +141,40 @@ export const questionSchema = z.discriminatedUnion("type", [
     acceptedOrders: z.array(z.array(identifier).min(2).max(18)).min(1).max(8),
     audio: z.strictObject({
       assetId: identifier,
-      text,
+      text: z.string().min(1).max(20000),
       voice: z.string().min(1).max(32),
     }),
   }),
   z.strictObject({
     ...baseQuestion,
     type: z.literal("completion"),
-    acceptedAnswers: z.array(text.max(240)).min(1).max(12),
+    audio: audioReference.optional(),
+    acceptedAnswers: z.array(text.max(600)).min(1).max(64),
     normalization,
+    marking: z
+      .strictObject({
+        protocol: z.string().min(1).max(60),
+        minWords: z.number().int().min(1).max(100).optional(),
+        requiredInitial: z
+          .string()
+          .regex(/^[A-Za-z]$/)
+          .optional(),
+        requiredWord: z
+          .string()
+          .regex(/^[A-Za-z]+$/)
+          .optional(),
+        rejectedAnswers: z.array(z.string().max(600)).max(100),
+        maxWords: z.number().int().min(1).max(100).nullable(),
+        unlisted: z.literal("review"),
+      })
+      .optional(),
   }),
   z.strictObject({
     ...baseQuestion,
     type: z.literal("dictation"),
     audio: z.strictObject({
       assetId: identifier,
-      text,
+      text: z.string().min(1).max(20000),
       voice: z.string().min(1).max(32),
     }),
     acceptedAnswers: z.array(text.max(240)).min(1).max(12),
@@ -197,6 +221,18 @@ export const unitSchema = z
     roleKey: identifier,
     roleVersion: z.number().int().min(1),
     level: levelSchema,
+    originalGroup: z
+      .strictObject({
+        id: identifier,
+        family: identifier,
+        label: text.max(100),
+        candidateSHA256: z.string().regex(/^[a-f0-9]{64}$/),
+        authorCheckSHA256: z.string().regex(/^[a-f0-9]{64}$/),
+        sourceGroupIds: z.array(z.string().min(1).max(160)).min(1).max(30),
+        sourceNotice: z.string().max(3000),
+        material: z.string().max(24000),
+      })
+      .optional(),
     title: text.max(100),
     summary: text.max(300),
     scene: text.max(300),
@@ -231,9 +267,9 @@ export const unitSchema = z
           translation: text.max(500),
         }),
       )
-      .min(2)
+      .min(0)
       .max(12),
-    questions: z.array(questionSchema).min(4).max(18),
+    questions: z.array(questionSchema).min(2).max(40),
   })
   .superRefine((unit, context) => {
     const fail = (message: string) => context.addIssue({ code: "custom", message });
@@ -256,7 +292,10 @@ export const unitSchema = z
     for (const beat of unit.beats) {
       if (beat.afterQuestion > unit.questions.length) fail("镜头位置超过题目数量。");
     }
-    if (!unit.beats.some((beat) => beat.afterQuestion === 0)) fail("单元必须有开场。");
+    if (!unit.originalGroup && !unit.beats.some((beat) => beat.afterQuestion === 0))
+      fail("单元必须有开场。");
+    if (unit.originalGroup && unit.beats.length !== 0)
+      fail("完整原创题组直接呈现材料，不混入剧情。");
     for (const question of unit.questions) {
       if (!unit.goalIds.includes(question.goalId)) fail("题目引用了未声明的学习目标。");
       if (question.type === "audioChoice" || question.type === "audioMatching") {
@@ -433,6 +472,8 @@ export function publicQuestion(question: LearningQuestion) {
     instruction: question.instruction,
     prompt: question.prompt,
     hint: question.hint,
+    ...(question.material !== undefined ? { material: question.material } : {}),
+    ...(question.materialImages ? { materialImages: question.materialImages } : {}),
   };
   switch (question.type) {
     case "audioMatching":
@@ -473,7 +514,10 @@ export function publicQuestion(question: LearningQuestion) {
     case "cloze":
       return { ...common, passage: question.passage, tokens: question.tokens };
     case "completion":
-      return common;
+      return {
+        ...common,
+        ...(question.audio ? { audio: { assetId: question.audio.assetId } } : {}),
+      };
     case "dictation":
       return { ...common, audio: { assetId: question.audio.assetId } };
     case "listeningCompletion":
@@ -489,7 +533,7 @@ export function publicQuestion(question: LearningQuestion) {
 export function questionAudios(question: LearningQuestion) {
   return question.type === "audioChoice" || question.type === "audioMatching"
     ? question.audioOptions.map((o) => o.audio)
-    : "audio" in question
+    : "audio" in question && question.audio
       ? [question.audio]
       : [];
 }
@@ -504,9 +548,12 @@ export function questionImageIds(question: LearningQuestion): string[] {
           ? [...question.left, ...question.right]
           : [];
   return [
-    ...new Set(
-      options.flatMap((option) => (option.imageAssetId ? [option.imageAssetId] : [])),
-    ),
+    ...new Set([
+      ...options.flatMap((option) =>
+        option.imageAssetId ? [option.imageAssetId] : [],
+      ),
+      ...(question.materialImages ?? []).map((image) => image.assetId),
+    ]),
   ];
 }
 
@@ -522,9 +569,19 @@ export function publicUnit(unit: LearningUnit, attemptId?: string) {
     scene: unit.scene,
     estimatedMinutes: unit.estimatedMinutes,
     goalIds: unit.goalIds,
+    ...(unit.originalGroup
+      ? {
+          originalGroup: {
+            id: unit.originalGroup.id,
+            family: unit.originalGroup.family,
+            label: unit.originalGroup.label,
+          },
+        }
+      : {}),
     beats: unit.beats,
     questions: unit.questions.map((question) => {
       const projected = publicQuestion(question);
+      if (unit.originalGroup) projected.material = unit.originalGroup.material;
       if (attemptId && "audioOptions" in projected) {
         // 挑战身份决定稳定的显示顺序；补答和重进不换编号，答案仍以选项身份判定。
         projected.audioOptions.sort((a, b) =>

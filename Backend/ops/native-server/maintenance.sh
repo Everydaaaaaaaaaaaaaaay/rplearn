@@ -7,6 +7,15 @@ case "${action}" in
   deploy)
     [[ "$#" = 3 && "$3" =~ ^[a-zA-Z0-9._-]{4,64}$ ]] || exit 2
     command=("${script_dir}/deploy.sh" "$(realpath "$2")" "$3") ;;
+  originals-validate)
+    [[ "$#" = 2 && "$2" =~ ^b[0-9]{3}$ ]] || exit 2
+    command=(/opt/lingotrip/runtime/bin/node --max-old-space-size=128 --env-file=/etc/lingotrip/backend.env --env-file=/etc/lingotrip/release.env dist/cli/learning-originals.js validate "$2") ;;
+  originals-publish)
+    [[ "$#" = 3 && "$2" =~ ^[a-f0-9]{64}$ && "$3" =~ ^b[0-9]{3}$ ]] || exit 2
+    command=(/opt/lingotrip/runtime/bin/node --max-old-space-size=128 --env-file=/etc/lingotrip/backend.env --env-file=/etc/lingotrip/release.env dist/cli/learning-originals.js publish "$2" "$3") ;;
+  originals-media)
+    [[ "$#" = 3 && "$3" =~ ^[a-f0-9]{64}$ ]] || exit 2
+    command=("${script_dir}/install-original-media.sh" "$(realpath "$2")" "$3") ;;
   catalog-publish|bank-publish)
     [[ "$#" = 2 && "$2" =~ ^[a-f0-9]{64}$ ]] || exit 2
     name="${action%-publish}"

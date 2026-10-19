@@ -155,7 +155,7 @@ struct LearningAudioTests {
         #expect(model.players.isEmpty)
     }
 
-    @Test("音频缓存按字节淘汰旧素材，跨题和跨挑战不复用")
+    @Test("音频缓存按字节淘汰，同挑战同素材复用，跨挑战隔离")
     func audioCacheEvictsAndScopesDownloads() async throws {
         let service = AudioTestService()
         let cache = LearningAudioCache(byteLimit: 6)
@@ -168,7 +168,7 @@ struct LearningAudioTests {
         try await load("c"); try await load("b")
         #expect(await service.downloadCount == 4)
         try await load("b", question: "other"); try await load("b", attemptID: UUID())
-        #expect(await service.downloadCount == 6)
+        #expect(await service.downloadCount == 5)
     }
 
     @Test("下载失败或取消后可重新下载，不缓存失败结果")
@@ -192,6 +192,22 @@ struct LearningAudioTests {
         let data = try await cache.load(service: service, attemptID: attempt, questionID: "q", assetID: "a")
         #expect(data == Data([1, 2, 3]))
         #expect(await service.downloadCount == 3)
+    }
+
+    @Test("完整题组共用音轨只需听完一次，跨挑战重新解锁")
+    func sharedGroupTrack() async throws {
+        let service = AudioTestService(); let playback = TestAudioPlayback()
+        let model = LearningAudioModel(service: service, playback: playback)
+        let attempt = UUID()
+        await model.prepare(attemptID: attempt, question: try question("q1"))
+        model.play(slow: false); try await waitForPlayback(model)
+        playback.completions[0](true)
+        await model.prepare(attemptID: attempt, question: try question("q2"))
+        #expect(model.hasListened)
+        #expect(await service.downloadCount == 1)
+        await model.prepare(attemptID: UUID(), question: try question("q2"))
+        #expect(!model.hasListened)
+        #expect(await service.downloadCount == 2)
     }
 
 }

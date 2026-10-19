@@ -1,3 +1,6 @@
+import type { LearningAudioAsset } from "../../src/modules/learning/audio.js";
+import type { LearningImageAsset } from "../../src/modules/learning/images.js";
+import { readFile } from "node:fs/promises";
 import { buildApp } from "../../src/app.js";
 import { createAdminAuthenticator } from "../../src/modules/admin/http.js";
 import { registerLearningAdminRoutes } from "../../src/modules/learning/admin-routes.js";
@@ -589,4 +592,111 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
     >`select enabled from app.learning_bank_control where id=true`;
     expect(control?.enabled).toBe(false);
   });
+  it("15档冻结原创整组进入真实事务、跨旅伴不重抽，未知填空不写错答", async () => {
+    const manifest = JSON.parse(
+      await readFile(`${directory}/originals/catalog.json`, "utf8"),
+    ) as {
+      units: { unit: LearningUnit }[];
+      audioAssets: LearningAudioAsset[];
+      imageAssets: LearningImageAsset[];
+    };
+    const selected = [
+      ...new Set(manifest.units.map((e: { unit: LearningUnit }) => e.unit.level)),
+    ].map(
+      (level) =>
+        required(
+          manifest.units.find((e: { unit: LearningUnit }) => e.unit.level === level),
+        ).unit,
+    );
+    const grammar = required(
+      manifest.units.find(
+        (e: { unit: LearningUnit }) =>
+          e.unit.id === "original.grade12-grammar-tool-loans",
+      ),
+    ).unit;
+    selected.push(grammar);
+    addedUnits.push(...selected);
+    const audioIDs = new Set(
+      selected.flatMap((u) =>
+        u.questions.flatMap((q) => ("audio" in q && q.audio ? [q.audio.assetId] : [])),
+      ),
+    );
+    const imageIDs = new Set(
+      selected.flatMap((u) =>
+        u.questions.flatMap((q) => [
+          ...(q.materialImages ?? []).map((m) => m.assetId),
+          ...(q.type === "choice" || q.type === "listeningChoice"
+            ? q.options.flatMap((o) => (o.imageAssetId ? [o.imageAssetId] : []))
+            : []),
+        ]),
+      ),
+    );
+    await engine.publishBatch(
+      selected,
+      manifest.audioAssets.filter((a: { id: string }) => audioIDs.has(a.id)),
+      manifest.imageAssets.filter((a: { id: string }) => imageIDs.has(a.id)),
+    );
+    const c = await account();
+    for (const unit of selected.slice(0, 15)) {
+      const id = await c.character();
+      const started = await c.command((s) =>
+        s.start(id, unit.level, { completeGroups: true, originalUnitId: unit.id }),
+      );
+      const attempt = required(started.attempt);
+      expect(attempt.unit.questions).toHaveLength(unit.questions.length);
+      expect(
+        attempt.unit.questions.every(
+          (q) => q.material === unit.originalGroup?.material,
+        ),
+      ).toBe(true);
+      expect(attempt.unit.beats).toEqual([]);
+      expect(JSON.stringify(attempt.unit)).not.toContain("acceptedAnswers");
+      const q = required(unit.questions[0]);
+      const receipt = await c.command((s) =>
+        s.submit({
+          attemptId: attempt.id,
+          roundId: attempt.round.id,
+          questionId: q.id,
+          answer: gradeAnswer(q, { kind: "skip" }).solution,
+        }),
+      );
+      expect(receipt.awardedPoints).toBe(1);
+      expect(receipt.attempt.round.answers).toHaveLength(1);
+      const other = await c.character();
+      expect(
+        (
+          await c.command((s) =>
+            s.start(other, unit.level, {
+              completeGroups: true,
+              originalUnitId: unit.id,
+            }),
+          )
+        ).attempt,
+      ).toBeNull();
+    }
+    const id = await c.character();
+    const attempt = required(
+      (
+        await c.command((s) =>
+          s.start(id, grammar.level, {
+            completeGroups: true,
+            originalUnitId: grammar.id,
+          }),
+        )
+      ).attempt,
+    );
+    await expect(
+      c.command((s) =>
+        s.submit({
+          attemptId: attempt.id,
+          roundId: attempt.round.id,
+          questionId: required(grammar.questions[0]).id,
+          answer: { kind: "text", text: "unknownform" },
+        }),
+      ),
+    ).rejects.toMatchObject({ code: "LEARNING_ANSWER_REVIEW_REQUIRED" });
+    const fresh = await engine.read(c.user, (s) => s.attempt(attempt.id));
+    expect(fresh.revision).toBe(attempt.revision);
+    expect(fresh.round.answers).toEqual([]);
+  }, 30000);
 });

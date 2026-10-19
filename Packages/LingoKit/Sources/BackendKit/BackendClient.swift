@@ -12,7 +12,7 @@ public actor BackendClient {
         let grant: LearningAudioDownload = try await get("/v1/learning/attempts/\(attemptID.uuidString.lowercased())/audio/\(questionID)", queryItems: [URLQueryItem(name: "assetId", value: assetID)])
         guard grant.assetId == assetID, grant.assetId == "audio.\(grant.sha256)",
               grant.sha256.range(of: "^[a-f0-9]{64}$", options: .regularExpression) != nil,
-              (1000...3_000_000).contains(grant.byteSize), (300...60_000).contains(grant.durationMs),
+              (1000...43_300_000).contains(grant.byteSize), (300...900_000).contains(grant.durationMs),
               grant.contentType == "audio/wav", grant.url.scheme == "https", grant.url.host != nil,
               grant.url.user == nil, grant.url.password == nil else { throw BackendClientError.invalidResponse }
         try Task.checkCancellation()
@@ -580,6 +580,7 @@ public actor BackendClient {
         request.httpMethod = method
         request.httpBody = body
         request.setValue("application/json", forHTTPHeaderField: "accept")
+        if path.hasPrefix("/v1/learning/") { request.setValue("1", forHTTPHeaderField: "x-learning-complete-groups") }
         request.setValue("application/json", forHTTPHeaderField: "content-type")
         request.setValue(UUID().uuidString.lowercased(), forHTTPHeaderField: "x-request-id")
         if let idempotencyKey {

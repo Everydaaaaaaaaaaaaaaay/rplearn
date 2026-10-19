@@ -16,6 +16,9 @@ public struct LearningQuestion: Codable, Sendable, Equatable, Identifiable {
     public let instruction: String
     public let prompt: String
     public let hint: String
+    public let material: String?
+    public struct MaterialImage: Codable, Sendable, Equatable { public let assetId: String; public let label: String }
+    public let materialImages: [MaterialImage]?
     public let options: [LearningOption]?
     public let tokens: [LearningOption]?
     public let left: [LearningOption]?
@@ -48,7 +51,7 @@ public struct LearningQuestion: Codable, Sendable, Equatable, Identifiable {
         case .matching: candidates = (left ?? []) + (right ?? [])
         default: candidates = []
         }
-        return Array(Set(candidates.compactMap(\.imageAssetId))).sorted()
+        return Array(Set(candidates.compactMap(\.imageAssetId) + (materialImages ?? []).map(\.assetId))).sorted()
     }
 }
 public struct LearningBeat: Codable, Sendable, Equatable, Identifiable {
@@ -69,6 +72,8 @@ public struct LearningUnit: Codable, Sendable, Equatable {
     public let scene: String
     public let estimatedMinutes: Int
     public let goalIds: [String]
+    public struct OriginalGroup: Codable, Sendable, Equatable { public let id: String; public let family: String; public let label: String }
+    public let originalGroup: OriginalGroup?
     public let beats: [LearningBeat]
     public let questions: [LearningQuestion]
 }
@@ -201,6 +206,8 @@ public struct LearningAnswerCommand: Encodable, Sendable {
     }
 }
 public protocol LearningServing: Sendable {
+    func learningOriginals(level: String) async throws -> LearningOriginalCatalog
+    func startOriginalLearning(_ characterID: UUID, unitID: String, requestID: UUID) async throws -> LearningStart
     func learningImage(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data
     func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data
     func learningCharacter(_ characterID: UUID) async throws -> BackendLearningCharacter
@@ -213,7 +220,15 @@ public protocol LearningServing: Sendable {
     func retryLearning(_ attempt: LearningAttempt, requestID: UUID) async throws -> LearningAttempt
 }
 
+public struct LearningOriginalCatalog: Codable, Sendable, Equatable {
+    public struct Unit: Codable, Sendable, Equatable, Identifiable { public let id: String; public let title: String; public let family: String; public let label: String; public let questions: Int }
+    public let units: [Unit]
+}
+
 extension LearningServing {
+    public func learningOriginals(level: String) async throws -> LearningOriginalCatalog { .init(units: []) }
+    public func startOriginalLearning(_ characterID: UUID, unitID: String, requestID: UUID) async throws -> LearningStart { throw BackendClientError.invalidResponse }
+
     public func learningImage(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
         throw BackendClientError.api(code: "LEARNING_IMAGE_NOT_READY", message: "图片素材暂不可用，请稍后重试。", requestID: nil, status: 503)
     }

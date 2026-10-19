@@ -9,7 +9,6 @@ import SpeechKit
 actor LearningAudioCache {
     private struct Key: Hashable {
         let attemptID: UUID
-        let questionID: String
         let assetID: String
     }
     private let byteLimit: Int
@@ -17,11 +16,11 @@ actor LearningAudioCache {
     private var order: [Key] = []
     private var byteCount = 0
 
-    init(byteLimit: Int = 8 * 1024 * 1024) { self.byteLimit = byteLimit }
+    init(byteLimit: Int = 44 * 1024 * 1024) { self.byteLimit = byteLimit }
 
     func load(service: any LearningServing, attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
         try Task.checkCancellation()
-        let key = Key(attemptID: attemptID, questionID: questionID, assetID: assetID)
+        let key = Key(attemptID: attemptID, assetID: assetID)
         if let cached = entries[key] {
             order.removeAll { $0 == key }; order.append(key)
             return cached
@@ -57,6 +56,8 @@ final class LearningAudioModel {
     @ObservationIgnored private let playback: any LearningAudioPlayback
     @ObservationIgnored private let beforePlayback: @Sendable () async -> Void
     @ObservationIgnored private let cache: LearningAudioCache
+    @ObservationIgnored private var listenedAssets: Set<String> = []
+    @ObservationIgnored private var currentAssetKey: String?
     @ObservationIgnored private var data: Data?
     @ObservationIgnored private var revision = UUID()
     @ObservationIgnored private var playTask: Task<Void, Never>?
@@ -72,6 +73,8 @@ final class LearningAudioModel {
 
     func prepare(attemptID: UUID, questionID: String, assetID: String) async {
         reset()
+        currentAssetKey = "\(attemptID.uuidString):\(assetID)"
+        hasListened = listenedAssets.contains(currentAssetKey ?? "")
         let requestRevision = revision
         state = .loading
         do {
@@ -96,7 +99,7 @@ final class LearningAudioModel {
             do {
                 try await playback.play(data: data, rate: slow ? 0.75 : 1) { [weak self] success in
                     guard let self, revision == requestRevision else { return }
-                    if success { hasListened = true; state = .ready } else { state = .failed }
+                    if success { hasListened = true; if let currentAssetKey { listenedAssets.insert(currentAssetKey) }; state = .ready } else { state = .failed }
                 }
                 guard revision == requestRevision, !Task.isCancelled else { return }
                 state = .playing

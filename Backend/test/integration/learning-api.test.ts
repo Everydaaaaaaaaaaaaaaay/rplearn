@@ -543,5 +543,130 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect((await status()).chapters[4]?.state).toBe("completed");
       expect((await complete("mainline_singapore")).statusCode).toBe(409);
     });
+    it("原创完整组鉴权、旧端保护、多答案与未知不误判贯通HTTP", async () => {
+      const domain = createDomainService(database);
+      const currentProfile = (await domain.getSnapshot(owner())).profile;
+      await domain.updateProfile(owner(), randomUUID(), {
+        difficulty: "primary3",
+        expectedVersion: currentProfile.version,
+      });
+      const fixture = learningFixture(`original.http-${randomUUID()}`);
+      const unit = {
+        ...fixture,
+        roleKey: "companion",
+        beats: [],
+        originalGroup: {
+          id: "http-test",
+          family: "passage_form",
+          label: "测试语篇填空",
+          candidateSHA256: "a".repeat(64),
+          authorCheckSHA256: "b".repeat(64),
+          sourceGroupIds: ["test.source"],
+          sourceNotice: "隔离测试，不发布为教学内容。",
+          material:
+            "This is a complete ten-response test material, including its final sentence.",
+        },
+        questions: Array.from({ length: 10 }, (_, i) => ({
+          id: `q${String(i)}`,
+          goalId: "test.greetings",
+          instruction: "填写各空",
+          prompt: `第${String(i + 1)}空`,
+          explanation: "仅供程序测试的明确解析。",
+          hint: "查看完整材料",
+          difficultyReason: "程序测试",
+          type: "completion",
+          acceptedAnswers: ["learned", "learnt"],
+          normalization: { ignoreCase: true, ignoreTerminalPunctuation: false },
+          marking: {
+            protocol: "english_phrase_v1",
+            rejectedAnswers: ["learn"],
+            maxWords: 1,
+            unlisted: "review",
+          },
+        })),
+      };
+      unitIds.push(unit.id);
+      await repository.publish(unit);
+      const indexURL = "/v1/learning/originals?level=primary3";
+      expect((await app.inject({ url: indexURL })).statusCode).toBe(401);
+      expect(
+        (await get(indexURL))
+          .json<{ units: { id: string }[] }>()
+          .units.some((u) => u.id === unit.id),
+      ).toBe(true);
+      const previous = (
+        await get(`/v1/learning/characters/${characterId}`)
+      ).json<Character>();
+      if (previous.activeAttemptId) {
+        const a = (
+          await get(`/v1/learning/attempts/${previous.activeAttemptId}`)
+        ).json<Attempt>();
+        await post(`/v1/learning/attempts/${a.id}/finish`, {
+          requestId: randomUUID(),
+          expectedRevision: a.revision,
+          skipRemaining: true,
+        });
+      }
+      await fill();
+      const input = { requestId: randomUUID(), originalUnitId: unit.id };
+      expect(
+        (await post(`/v1/learning/characters/${characterId}/attempts`, input))
+          .statusCode,
+      ).toBe(426);
+      const modern = { ...headers(), "x-learning-complete-groups": "1" };
+      const started = await app.inject({
+        method: "POST",
+        url: `/v1/learning/characters/${characterId}/attempts`,
+        headers: modern,
+        payload: { ...input, requestId: randomUUID() },
+      });
+      expect(started.statusCode).toBe(200);
+      const a = started.json<{ attempt: Attempt }>().attempt;
+      expect(a.unit.questions).toHaveLength(10);
+      expect(
+        a.unit.questions.every((q) => q.material === unit.originalGroup.material),
+      ).toBe(true);
+      expect(JSON.stringify(a.unit)).not.toContain("acceptedAnswers");
+      expect((await get(`/v1/learning/attempts/${a.id}`)).statusCode).toBe(426);
+      expect((await get(`/v1/learning/attempts/${a.id}`, 1)).statusCode).toBe(404);
+      const command = {
+        requestId: randomUUID(),
+        expectedRevision: a.revision,
+        roundId: a.round.id,
+        questionId: "q0",
+        answer: { kind: "text", text: "unknownform" },
+      };
+      const url = `/v1/learning/attempts/${a.id}/answers`;
+      const unknown = await app.inject({
+        method: "POST",
+        url,
+        headers: modern,
+        payload: command,
+      });
+      expect(unknown.statusCode).toBe(422);
+      const fresh = (
+        await app.inject({ url: `/v1/learning/attempts/${a.id}`, headers: modern })
+      ).json<Attempt>();
+      expect(fresh.revision).toBe(a.revision);
+      expect(fresh.round.answers).toHaveLength(0);
+      const correct = {
+        ...command,
+        requestId: randomUUID(),
+        answer: { kind: "text", text: " LEARNT " },
+      };
+      const receipt = await app.inject({
+        method: "POST",
+        url,
+        headers: modern,
+        payload: correct,
+      });
+      expect(receipt.statusCode).toBe(200);
+      expect(receipt.json<{ awardedPoints: number }>().awardedPoints).toBe(1);
+      expect(
+        (
+          await app.inject({ method: "POST", url, headers: modern, payload: correct })
+        ).json(),
+      ).toEqual(receipt.json());
+    });
   },
 );

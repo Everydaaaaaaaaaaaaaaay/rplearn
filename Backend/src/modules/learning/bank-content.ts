@@ -123,7 +123,7 @@ export function bankIdentity(question: LearningQuestion): string {
   } else if (question.type === "choice" || question.type === "listeningChoice") {
     material = {
       options: materials(question.options),
-      audio: "audio" in question ? clean(question.audio.text) : null,
+      audio: question.type === "listeningChoice" ? clean(question.audio.text) : null,
     };
   } else if (question.type === "arrange" || question.type === "audioArrange") {
     material =
@@ -138,7 +138,9 @@ export function bankIdentity(question: LearningQuestion): string {
   } else if (question.type === "matching") {
     material = { left: materials(question.left), right: materials(question.right) };
   } else {
-    material = { audio: "audio" in question ? clean(question.audio.text) : null };
+    material = {
+      audio: "audio" in question && question.audio ? clean(question.audio.text) : null,
+    };
   }
   return `question.${contentHash({ type: question.type, prompt: clean(question.prompt), material })}`;
 }
