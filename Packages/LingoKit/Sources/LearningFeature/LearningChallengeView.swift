@@ -35,6 +35,14 @@ public struct LearningChallengeView: View {
     }
     private var theme: LearningTheme { LearningTheme(role: model.attempt.unit.roleKey) }
     public var body: some View {
+        GeometryReader { geometry in
+            challenge(materialHeight: min(240, max(110, geometry.size.height * 0.27)))
+        }
+    }
+    private func readingPlan(_ question: LearningQuestion) -> LearningReadingPlan {
+        LearningReadingPlan(unit: model.attempt.unit, question: question)
+    }
+    private func challenge(materialHeight: CGFloat) -> some View {
         ScrollViewReader { reader in
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
@@ -49,7 +57,7 @@ public struct LearningChallengeView: View {
                     }
                 }.padding(24).frame(maxWidth: 680).frame(maxWidth: .infinity)
             }
-            // 每题与每段故事拥有独立滚动位置，不继承上一页的末尾偏移。
+            // Only the answer area resets. The separate material reader persists.
             .id(model.stage)
             .scrollDismissesKeyboard(.interactively)
             .onChange(of: model.stage) { _, _ in
@@ -64,7 +72,15 @@ public struct LearningChallengeView: View {
                 feedbackFocused = true
             }
         }
-        .safeAreaInset(edge: .top, spacing: 0) { topBar.background(.regularMaterial) }
+        .safeAreaInset(edge: .top, spacing: 0) {
+            VStack(spacing: 0) {
+                topBar.background(.regularMaterial)
+                if let question = model.question, readingPlan(question).usesPane {
+                    LearningReadingPane(plan: readingPlan(question), question: question, pictures: pictures,
+                        height: materialHeight, keyboardFocused: inputFocused, dismissKeyboard: { inputFocused = false })
+                }
+            }
+        }
         .safeAreaInset(edge: .bottom, spacing: 0) { bottomBar }
         .background(Color.dsBackground).tint(theme.tint)
         .interactiveDismissDisabled()
@@ -105,7 +121,6 @@ public struct LearningChallengeView: View {
         .onChange(of: model.feedback?.outcome) { _, outcome in
             if outcome == .correct { Haptics.notify(.success) }
         }
-        .accessibilityIdentifier("learning.challenge")
     }
     private var topBar: some View {
         HStack(spacing: 18) {
@@ -164,6 +179,7 @@ public struct LearningChallengeView: View {
     }
     private func questionBody(_ question: LearningQuestion) -> some View {
         VStack(alignment: .leading, spacing: 22) {
+            let plan = readingPlan(question)
             let headingLayout = dynamicTypeSize.isAccessibilitySize ? AnyLayout(VStackLayout(alignment: .leading, spacing: 10)) : AnyLayout(HStackLayout())
             headingLayout {
                 Label(model.attempt.round.ordinal > 0 ? "补答" : "练习", systemImage: "pencil.tip").font(.caption.bold()).foregroundStyle(theme.tint)
@@ -179,15 +195,22 @@ public struct LearningChallengeView: View {
                         .disabled(model.hasUnconfirmedAnswer)
                 }
             }
-            Text(question.type == .matching && dynamicTypeSize.isAccessibilitySize ? "将两组内容逐一配对。" : question.instruction).font(.title2.bold())
-            if let material = question.material, !material.isEmpty {
+            let instruction = plan.usesPane && plan.originalText.contains(question.instruction)
+                ? (model.attempt.unit.originalGroup?.label ?? question.instruction) : question.instruction
+            Text(question.type == .matching && dynamicTypeSize.isAccessibilitySize ? "将两组内容逐一配对。" : instruction)
+                .font(plan.usesPane ? .subheadline.weight(.semibold) : .title2.bold())
+            if let progress = plan.progress(questionID: question.id) {
+                Text(progress).font(.caption.weight(.semibold)).foregroundStyle(.secondary)
+                    .accessibilityIdentifier("learning.material.progress")
+            }
+            if !plan.usesPane, let material = question.material, !material.isEmpty {
                 LearningGroupMaterial(text: material)
                     .accessibilityIdentifier("learning.group.material")
             }
-            ForEach(Array((question.materialImages ?? []).enumerated()), id: \.offset) { _, asset in
+            ForEach(Array((plan.usesPane ? [] : question.materialImages ?? []).enumerated()), id: \.offset) { _, asset in
                 if let image = pictures.images[asset.assetId] {
                     VStack(alignment: .leading, spacing: 6) {
-                        Text(asset.label).font(.caption).foregroundStyle(.secondary)
+                        Text(asset.label.count > 100 ? "题目图片" : asset.label).font(.caption).foregroundStyle(.secondary)
                         Image(uiImage: image).resizable().scaledToFit().accessibilityLabel(asset.label)
                     }
                 }
@@ -466,7 +489,7 @@ public struct LearningChallengeView: View {
                 if option.imageAssetId != nil { optionPicture(option).frame(height: dynamicTypeSize.isAccessibilitySize ? 200 : 132) }
                 HStack(spacing: 14) {
                     Image(systemName: model.choice == option.id ? "checkmark.circle.fill" : "circle").font(.title3)
-                    if option.imageAssetId == nil { Text(option.text).font(.body.weight(.medium)).multilineTextAlignment(.leading) }
+                    if option.imageAssetId == nil { Text(displayOption(option)).font(.body.weight(.medium)).multilineTextAlignment(.leading) }
                     else { Text("图片 \(number)").font(.subheadline.weight(.medium)) }
                     Spacer(minLength: 0)
                 }
@@ -475,9 +498,12 @@ public struct LearningChallengeView: View {
                 .background(model.choice == option.id ? theme.tint.opacity(0.09) : Color.dsSurface, in: RoundedRectangle(cornerRadius: 18))
                 .overlay { RoundedRectangle(cornerRadius: 18).stroke(model.choice == option.id ? theme.tint : Color.primary.opacity(0.08), lineWidth: model.choice == option.id ? 2 : 1) }
         }.buttonStyle(LearningPressStyle())
-            .accessibilityLabel(option.text)
+            .accessibilityLabel(displayOption(option))
             .accessibilityIdentifier("learning.option.\(option.id)")
             .accessibilityAddTraits(model.choice == option.id ? [.isSelected] : [])
+    }
+    private func displayOption(_ option: LearningOption) -> String {
+        model.question.flatMap { readingPlan($0).optionLabels[option.id] } ?? option.text
     }
     private func optionPicture(_ option: LearningOption) -> some View {
         ZStack {
@@ -640,12 +666,18 @@ struct LearningFlowLayout: Layout {
 
 
 /// 保留原表格行列，避免把竖线或HTML实现细节呈现给学习者。
-private struct LearningGroupMaterial: View {
+struct LearningGroupMaterial: View {
     let text: String
     private enum Block { case prose(String), table([[String]]) }
     private var blocks: [Block] {
         var result: [Block] = []; var prose: [String] = []; var rows: [[String]] = []
-        func flushProse() { if !prose.isEmpty { result.append(.prose(prose.joined(separator: "\n"))); prose = [] } }
+        func flushProse() {
+            if !prose.isEmpty {
+                result += prose.joined(separator: "\n").components(separatedBy: "\n\n")
+                    .filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }.map(Block.prose)
+                prose = []
+            }
+        }
         func flushTable() { if !rows.isEmpty { result.append(.table(rows)); rows = [] } }
         for line in text.components(separatedBy: "\n") {
             if line.trimmingCharacters(in: .whitespaces).hasPrefix("| ") {
@@ -659,7 +691,8 @@ private struct LearningGroupMaterial: View {
     }
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            ForEach(Array(blocks.enumerated()), id: \.offset) { _, block in
+            ForEach(Array(blocks.enumerated()), id: \.offset) { offset, block in
+                Group {
                 switch block {
                 case .prose(let value): Text(value).font(.body).lineSpacing(7).textSelection(.enabled)
                 case .table(let rows):
@@ -678,7 +711,8 @@ private struct LearningGroupMaterial: View {
                         }
                     }.accessibilityLabel("题目表格")
                 }
+                }.id("material.block.\(offset)")
             }
-        }
+        }.scrollTargetLayout()
     }
 }

@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-22",
+  "status": "verified_latest_simulator_build_installed",
+  "scope": {
+    "groups": 634,
+    "responses": 5090,
+    "groupsWithRepeatedChoiceBank": 93,
+    "longMaterialGroups": 390,
+    "sharedImageGroups": 27,
+    "multiEnglishPassageGroups": 2,
+    "multiChineseArticleGroups": 48
+  },
+  "additionalAudit": "Existing non-original configured units contain no prompts longer than 500 characters. Shared audio already preserves listened state across questions; gating unchanged.",
+  "changes": [
+    "Separate persistent reading pane from the per-question answer ScrollView.",
+    "Recognize explicit article question ranges and Passage prefixes; select the owning article without guessing from answers.",
+    "Keep cross-text articles freely switchable, including a complete-original view.",
+    "Preserve per-section reading bookmarks; advance only the question area within one article.",
+    "Collapse reading when the keyboard opens; maximum accessibility text sizes use the full reader.",
+    "Project named repeated tool/activity descriptions to their names in old and new snapshots.",
+    "Keep complete paragraph-insertion candidates in separate reading tabs with compact answer identities.",
+    "Put shared images behind a direct image tab; do not guess image-to-article ownership in legacy data.",
+    "Avoid repeating full instructions as a large heading when already in the material.",
+    "Move shared instructions behind an accessible info control; full reader keeps an expandable instructions section."
+  ],
+  "preserved": [
+    "all original source text and full candidate paragraphs",
+    "question order, option IDs, outgoing answers and server grading",
+    "audio completion gates and image readiness",
+    "existing login, attempts and production data"
+  ],
+  "checks": {
+    "readingPlanTests": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "result": "build/DerivedData/VerificationResults/20261022T102513Z-99754.xcresult"
+    },
+    "computerUse": [
+      "Switched actual grade7 multi-article unit from A to B while current question remained visible.",
+      "Opened full reader and returned to the same question.",
+      "Latest polish installed with Scripts/preview.sh; Device Hub capture returned white, so verified actual q4/B article and question placement with simctl screenshot."
+    ],
+    "uiRegression": {
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "result": "build/DerivedData/VerificationResults/20261022T105346Z-5252.xcresult",
+      "covered": [
+        "article switching and persistent scroll offsets",
+        "current question remains visible during material navigation",
+        "expand, return and collapse controls",
+        "old-snapshot named tool choice selection",
+        "complete paragraph candidate tabs and compact choice identity",
+        "maximum accessibility text-size reading and return controls"
+      ]
+    },
+    "simulator": "659893A7-0822-43F4-8DA1-4A92E9C78814",
+    "latestBuildInstalled": true,
+    "preview": "Actual published grade7 multi-article group, q4 auto-selects B (questions 4–7), no production answer or score submitted.",
+    "gitDiffCheck": "passed",
+    "screenshot": "build/reading-layout-preview/final-multi-reading.png"
+  },
+  "operationalNotes": [
+    "Initial hosted test build exhausted available disk; only unused generated package link products were cleaned after open-file/compiler checks, with physical free-space measurements recorded. Models, app builds, simulator data and source were retained.",
+    "First UI run exposed inherited accessibility identifiers overriding child controls. Removed the override and retained the failure summary; obsolete verbose failed-run temporaries were cleaned after collection completed and open-file checks.",
+    "Visible-item scroll identifiers did not reliably restore a replaced article in the UI regression. Replaced with explicit per-material ScrollPosition offsets; the bookmark regression now passes.",
+    "Final polish initially failed in CodeSign while filesystem available space was about 150 MB. Compared only two superseded release staging candidates against their Git blobs; removed 1965 matching generated copies, retaining differing files, all packaged releases and newest staging. Retry compiled, signed and passed both UI regressions; cleanup and filesystem measurements are in build/storage-cleanup/reading-layout-old-staging-cleanup-20261022.json."
+  ],
+  "deployment": "iOS client display-only; no backend schema or production-data change, no App Store publication."
+}
