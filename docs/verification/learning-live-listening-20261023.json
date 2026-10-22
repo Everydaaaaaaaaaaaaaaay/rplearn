@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-23",
+  "scope": "Live Supertonic listening and comprehension content",
+  "voices": {
+    "first": "F1",
+    "second": "M5",
+    "source": "Owner explicitly confirmed casting"
+  },
+  "playback": {
+    "engine": "Bundled Supertonic-3, cpuAndNeuralEngine",
+    "maximumCompletedPasses": 2,
+    "systemFallback": false,
+    "audioFilesWritten": false,
+    "boundedPhraseCharacters": 320,
+    "pcm": "One phrase in memory; AVAudioPlayer waits for actual completion"
+  },
+  "content": {
+    "revisedUnits": 9,
+    "revisedQuestions": 50,
+    "replacedDictation": 12,
+    "originalTrackScripts": 547,
+    "originalScriptSegments": 2221,
+    "spokenQuestionPauseMs": 3000,
+    "primaryPictureDirectionsRetained": true,
+    "oldAttemptsAndMediaPreserved": true
+  },
+  "checks": {
+    "backendFocused": {
+      "passed": 23,
+      "log": "build/listening-backend-tests-20261023.log"
+    },
+    "backendIsolatedDatabase": {
+      "passed": 20,
+      "log": "build/listening-backend-integration-20261023/tests.log",
+      "database": "local isolated lingotrip_test_listening_20261023"
+    },
+    "swiftPoliciesAndPlacement": {
+      "passed": 22,
+      "result": "build/DerivedData/VerificationResults/20261022T175929Z-56561.xcresult"
+    },
+    "swiftRuntimeAndClient": {
+      "passed": 16,
+      "skipped": 0,
+      "result": "build/DerivedData/VerificationResults/20261022T181035Z-58238.xcresult",
+      "actualF1AndM5Synthesis": "testSynthesizeBothVoicesWithoutWritingAudio passed in 7.87 seconds; no audio attachments or files"
+    },
+    "typecheckAndFocusedESLint": "passed",
+    "curatedCatalogHash": "eca057b5718d59cbee4f88f1a244c89a95389a1ef7d648a7a1665239b3c45066",
+    "bankHash": "80b82424e9f1ac3b040299c70fd3b8edfb5cfadc8a984fa94c7e46d07835bbc0",
+    "legacyBlueprint": {
+      "passed": 12,
+      "log": "build/listening-legacy-blueprint-tests-20261023.log"
+    }
+  },
+  "visualReview": {
+    "computerUse": "Device Hub simulator and physical screenshot return white; no visual pass claimed from that tool",
+    "focusedUITest": {
+      "passed": 1,
+      "failed": 0,
+      "durationSeconds": 56.394,
+      "result": "build/DerivedData/VerificationResults/20261022T182636Z-60688.xcresult",
+      "test": "LiveListeningUITests.testEnglishQuestionAndTwoLivePasses",
+      "assertions": [
+        "English senior3 question and option label",
+        "First F1 pass completes before second M5 is offered",
+        "Second live pass completes; regular and slow playback disabled afterwards"
+      ],
+      "note": "Test passed; Xcode is still collecting simulator diagnostic attachments."
+    }
+  },
+  "production": {
+    "status": "pending authorized deployment"
+  },
+  "device": {
+    "status": "pending latest installation",
+    "udid": "00008110-00092C493C0B801E"
+  },
+  "limitations": [
+    "Automated waveform and playback checks are not an independent pronunciation or examination-validity review.",
+    "No App Store publication. Existing frozen attempts retain their old question format."
+  ],
+  "backendCommit": "9edd518d"
+}

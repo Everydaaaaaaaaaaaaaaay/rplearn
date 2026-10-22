@@ -368,6 +368,7 @@ extension PlacementTestView {
         else { return }
         selectedOriginalIndex = originalIndex
         listeningPlayer.stop()
+        isListeningAudioLoading = false; isListeningAudioPlaying = false
         Haptics.impact(.light)
         Task { await deps.speech.stopSpeaking() }
 
@@ -400,24 +401,21 @@ extension PlacementTestView {
 
     func playListeningQuestion(_ question: PlacementQuestion) {
         guard PlacementListeningPolicy.canPlay(currentCount: listeningPlayCount),
-              !isListeningAudioLoading,
-              let audioAssetName = question.audioAssetName
-        else { return }
+              !isListeningAudioLoading, let text = question.audioText else { return }
         isListeningAudioLoading = true
         Task {
             await deps.speech.stopSpeaking()
-            let didStart = await listeningPlayer.play(assetName: audioAssetName)
-            guard currentQuestion?.id == question.id else {
-                isListeningAudioLoading = false
-                return
-            }
-            if didStart {
-                listeningPlayCount += 1
+            guard currentQuestion?.id == question.id else { isListeningAudioLoading = false; return }
+            listeningPlayer.play(text: text, question: question.prompt, completedPlays: listeningPlayCount, started: {
+                guard currentQuestion?.id == question.id else { return }
+                isListeningAudioPlaying = true
                 Haptics.impact(.light)
-            } else {
-                errorMessage = "听力音频暂时无法播放，请重试。"
-            }
-            isListeningAudioLoading = false
+            }, completed: { success in
+                guard currentQuestion?.id == question.id else { return }
+                isListeningAudioLoading = false; isListeningAudioPlaying = false
+                if success { listeningPlayCount += 1 }
+                else { errorMessage = "听力音频暂时无法播放，请重试。" }
+            })
         }
     }
 

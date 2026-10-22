@@ -24,13 +24,15 @@ public struct LearningChallengeView: View {
     @FocusState private var inputFocused: Bool
     public init(attempt: LearningAttempt, character: CharacterDTO, service: any LearningServing,
                 audioSession: AudioSessionCoordinator = AudioSessionCoordinator(),
+                speech: (any SpeechService)? = nil,
                 beforePlayback: @escaping @Sendable () async -> Void = {},
                 afterFinish: @escaping @Sendable () async -> Void = {}) {
         _model = State(initialValue: LearningChallengeModel(attempt: attempt, service: service, afterFinish: afterFinish)); self.character = character
+        let listeningSpeech = speech ?? AdaptiveSpeechService(audioSession: audioSession)
         _pictures = State(initialValue: LearningImageModel(service: service))
-        _audio = State(initialValue: LearningAudioModel(service: service, playback: NativeLearningAudioPlayback(session: audioSession), beforePlayback: beforePlayback))
+        _audio = State(initialValue: LearningAudioModel(service: service, playback: NativeLearningAudioPlayback(session: audioSession, speech: listeningSpeech), beforePlayback: beforePlayback))
         _audioOptions = State(initialValue: LearningAudioOptionsModel { cache in
-            LearningAudioModel(service: service, playback: NativeLearningAudioPlayback(session: audioSession), beforePlayback: beforePlayback, cache: cache)
+            LearningAudioModel(service: service, playback: NativeLearningAudioPlayback(session: audioSession, speech: listeningSpeech), beforePlayback: beforePlayback, cache: cache)
         })
     }
     private var theme: LearningTheme { LearningTheme(role: model.attempt.unit.roleKey) }
@@ -250,7 +252,7 @@ public struct LearningChallengeView: View {
         case .playing: "停止播放"
         case .failed: "重新载入"
         case .idle: "载入听力"
-        case .ready, .interrupted: audio.hasListened ? "再听一遍" : "播放听力"
+        case .ready, .interrupted: !audio.canPlay ? "已听完两遍" : audio.hasListened ? "第二遍 · 英音" : "第一遍 · 美音"
         }
     }
     private func listeningControls(_ question: LearningQuestion) -> some View {
@@ -286,9 +288,9 @@ public struct LearningChallengeView: View {
                     }.frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
                         .contentShape(Rectangle())
                 }.buttonStyle(LearningPressStyle())
-                    .disabled(audio.state == .loading || model.isBusy)
+                    .disabled(audio.state == .loading || model.isBusy || !audio.canPlay)
                     .accessibilityLabel(audioControlTitle)
-                    .accessibilityHint(audio.hasListened ? "已完整听过，可以重听。" : "完整听一遍后可检查答案。")
+                    .accessibilityHint("第一遍 F1，第二遍 M5；完整听一遍后可检查答案。")
                     .accessibilityIdentifier("learning.audio.play")
                 Button { audio.play(slow: true) } label: {
                     HStack(spacing: 5) {
@@ -297,7 +299,7 @@ public struct LearningChallengeView: View {
                     }.foregroundStyle(theme.tint).padding(.horizontal, 10)
                         .frame(minHeight: 44).contentShape(Rectangle())
                 }.buttonStyle(LearningPressStyle())
-                    .disabled(![.ready, .playing, .interrupted].contains(audio.state) || model.isBusy)
+                    .disabled(![.ready, .playing, .interrupted].contains(audio.state) || model.isBusy || !audio.canPlay)
                     .accessibilityLabel("慢速播放")
                     .accessibilityHint("以四分之三速度从头播放。")
                     .accessibilityIdentifier("learning.audio.slow")

@@ -205,10 +205,22 @@ public struct LearningAnswerCommand: Encodable, Sendable {
         self.questionId = questionId; self.answer = answer
     }
 }
+public struct LearningSpeechScript: Codable, Sendable, Equatable {
+    public struct Segment: Codable, Sendable, Equatable {
+        public let text: String
+        public let pauseAfterMs: Int
+        public init(text: String, pauseAfterMs: Int = 0) { self.text = text; self.pauseAfterMs = pauseAfterMs }
+    }
+    public let assetId: String
+    public let segments: [Segment]
+    public init(assetId: String, segments: [Segment]) { self.assetId = assetId; self.segments = segments }
+}
+
 public protocol LearningServing: Sendable {
     func learningOriginals(level: String) async throws -> LearningOriginalCatalog
     func startOriginalLearning(_ characterID: UUID, unitID: String, requestID: UUID) async throws -> LearningStart
     func learningImage(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data
+    func learningSpeech(_ attemptID: UUID, questionID: String, assetID: String) async throws -> LearningSpeechScript
     func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data
     func learningCharacter(_ characterID: UUID) async throws -> BackendLearningCharacter
     func learningJourney() async throws -> LearningJourney
@@ -226,6 +238,10 @@ public struct LearningOriginalCatalog: Codable, Sendable, Equatable {
 }
 
 extension LearningServing {
+    public func learningSpeech(_ attemptID: UUID, questionID: String, assetID: String) async throws -> LearningSpeechScript {
+        throw BackendClientError.api(code: "LEARNING_AUDIO_NOT_READY", message: "听力脚本暂不可用，请稍后重试。", requestID: nil, status: 503)
+    }
+
     public func learningOriginals(level: String) async throws -> LearningOriginalCatalog { .init(units: []) }
     public func startOriginalLearning(_ characterID: UUID, unitID: String, requestID: UUID) async throws -> LearningStart { throw BackendClientError.invalidResponse }
 

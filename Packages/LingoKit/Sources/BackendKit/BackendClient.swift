@@ -3,6 +3,15 @@ import CryptoKit
 import Foundation
 
 public actor BackendClient {
+    public func learningSpeech(_ attemptID: UUID, questionID: String, assetID: String) async throws -> LearningSpeechScript {
+        guard questionID.range(of: "^[a-z][a-z0-9_.-]{0,119}$", options: .regularExpression) != nil,
+              assetID.range(of: "^audio\\.[a-f0-9]{64}$", options: .regularExpression) != nil else { throw BackendClientError.invalidResponse }
+        let script: LearningSpeechScript = try await get("/v1/learning/attempts/\(attemptID.uuidString.lowercased())/speech/\(questionID)/\(assetID)")
+        guard script.assetId == assetID, (1...500).contains(script.segments.count),
+              script.segments.allSatisfy({ !$0.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && $0.text.count <= 20000 && (0...30000).contains($0.pauseAfterMs) }) else { throw BackendClientError.invalidResponse }
+        return script
+    }
+
     /// 签名资源请求不携带账号令牌；下载完成后核对不可变内容的长度与哈希。
     public func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
         guard questionID.range(of: "^[a-z][a-z0-9_.-]{0,119}$", options: .regularExpression) != nil,

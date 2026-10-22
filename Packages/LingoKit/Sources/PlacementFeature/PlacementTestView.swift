@@ -58,6 +58,7 @@ public struct PlacementTestView: View {
     @State var selectedOriginalIndex: Int?
     @State var listeningPlayCount = 0
     @State var isListeningAudioLoading = false
+    @State var isListeningAudioPlaying = false
     @State var result: PlacementResult?
     @State var currentLevel: DifficultyLevel = .junior3
     @State var selectedLevel: DifficultyLevel = .junior3
@@ -87,7 +88,7 @@ public struct PlacementTestView: View {
         self.onComplete = onComplete
         self.onCancel = onCancel
         _listeningPlayer = State(
-            initialValue: PlacementListeningAudioPlayer(audioSession: deps.audioSession)
+            initialValue: PlacementListeningAudioPlayer(audioSession: deps.audioSession, speech: deps.speech)
         )
     }
 
@@ -150,6 +151,7 @@ public struct PlacementTestView: View {
         } message: { Text(pendingLevelChange?.summary ?? "") }
         .onDisappear {
             listeningPlayer.stop()
+            isListeningAudioLoading = false; isListeningAudioPlaying = false
             Task { await deps.speech.stopSpeaking() }
         }
         .interactiveDismissDisabled(
@@ -428,10 +430,10 @@ public struct PlacementTestView: View {
                     }
                     Text(
                         isListeningAudioLoading
-                            ? "正在准备音频"
+                            ? (isListeningAudioPlaying ? "正在播放" : "正在准备声音…")
                             : !canPlay
                             ? "已达到播放上限"
-                            : listeningPlayCount == 0 ? "播放音频" : "再听一次"
+                            : listeningPlayCount == 0 ? "第一遍 · 美音" : "第二遍 · 英音"
                     )
                         .font(.headline)
                     Spacer()
@@ -445,12 +447,12 @@ public struct PlacementTestView: View {
             .buttonStyle(.plain)
             .disabled(!canPlay)
             .accessibilityLabel(canPlay ? "播放听力音频" : "听力音频播放次数已用完")
-            .accessibilityValue("已播放 \(listeningPlayCount) 次，最多 3 次")
+            .accessibilityValue("已播放 \(listeningPlayCount) 次，最多 2 次")
             .accessibilityHint(canPlay ? "播放后即可选择答案，还可播放 \(remaining) 次" : "请根据已听内容作答")
 
             Text(
                 listeningPlayCount == 0
-                    ? "先听音频，再根据内容作答；每题最多播放 3 次。"
+                    ? "先听音频，再根据内容作答；每题最多播放 2 次，先美音后英音。"
                     : canPlay
                         ? "还可播放 \(remaining) 次；音频文本不会显示。"
                         : "本题播放次数已用完，请根据已听内容作答。"

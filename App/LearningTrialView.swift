@@ -152,7 +152,7 @@ struct LearningTrialView: View {
         }) { attempt in
             if let character = characters.first(where: { $0.id == attempt.characterId }) {
                 LearningChallengeView(attempt: attempt, character: character, service: environment.backendClient,
-                    audioSession: environment.audioSession,
+                    audioSession: environment.audioSession, speech: environment.speech,
                     beforePlayback: { await environment.speech.stopSpeaking() },
                     afterFinish: { await environment.workspace?.learningChat.challengeCompleted(characterID: character.id) })
             }

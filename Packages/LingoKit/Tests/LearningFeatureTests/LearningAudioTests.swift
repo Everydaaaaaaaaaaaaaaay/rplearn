@@ -1,25 +1,26 @@
 import BackendKit
 import Foundation
+import SpeechKit
 @testable import LearningFeature
 import Testing
 
 private actor AudioTestService: LearningServing {
     var fail = false
     var delayed = false
-    var pending: [CheckedContinuation<Data, Error>] = []
+    var pending: [CheckedContinuation<LearningSpeechScript, Error>] = []
     private(set) var downloadCount = 0
     private(set) var maximumPending = 0
     func setDelayed() { delayed = true }
     func failDownloads() { fail = true }
     func resumeDownloads() { fail = false; delayed = false }
-    func finishDownload() { if !pending.isEmpty { pending.removeFirst().resume(returning: Data([1, 2, 3])) } }
-    func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
+    func finishDownload() { if !pending.isEmpty { pending.removeFirst().resume(returning: LearningSpeechScript(assetId: "test.audio", segments: [.init(text: "The room is open.")])) } }
+    func learningSpeech(_ attemptID: UUID, questionID: String, assetID: String) async throws -> LearningSpeechScript {
         downloadCount += 1
         if fail { throw BackendClientError.invalidResponse }
         if delayed { return try await withCheckedThrowingContinuation {
             pending.append($0); maximumPending = max(maximumPending, pending.count)
         } }
-        return Data([1, 2, 3])
+        return LearningSpeechScript(assetId: "test.audio", segments: [.init(text: "The room is open.")])
     }
     func learningCharacter(_ characterID: UUID) async throws -> BackendLearningCharacter { throw BackendClientError.invalidResponse }
     func learningJourney() async throws -> LearningJourney { throw BackendClientError.invalidResponse }
@@ -32,9 +33,10 @@ private actor AudioTestService: LearningServing {
 }
 @MainActor private final class TestAudioPlayback: LearningAudioPlayback {
     var rates: [Float] = []
+    var voices: [SupertonicVoice] = []
     var completions: [@MainActor @Sendable (Bool) -> Void] = []
-    func play(data: Data, rate: Float, completed: @escaping @MainActor @Sendable (Bool) -> Void) async throws {
-        rates.append(rate); completions.append(completed)
+    func play(script: LearningSpeechScript, voice: SupertonicVoice, rate: Float, started: @escaping @MainActor @Sendable () -> Void, completed: @escaping @MainActor @Sendable (Bool) -> Void) async throws {
+        rates.append(rate); voices.append(voice); completions.append(completed); started()
     }
     func stop() {}
 }
@@ -70,6 +72,30 @@ struct LearningAudioTests {
         playback.completions[1](true)
         #expect(!model.hasListened); #expect(model.state == .ready)
     }
+    @Test("两遍实时合成依次选择 F1、M5，中断不消耗次数，同材料保留进度")
+    func liveListeningOrder() async throws {
+        let playback = TestAudioPlayback()
+        let model = LearningAudioModel(service: AudioTestService(), playback: playback)
+        let attempt = UUID(), q = try question()
+        await model.prepare(attemptID: attempt, question: q)
+        model.play(slow: false); try await waitForPlayback(model)
+        model.stop(interrupted: true); playback.completions[0](true)
+        #expect(model.completedPlayCount == 0)
+        model.play(slow: true); try await waitForPlayback(model)
+        playback.completions[1](true)
+        #expect(model.completedPlayCount == 1)
+        await model.prepare(attemptID: attempt, question: q)
+        #expect(model.completedPlayCount == 1)
+        model.play(slow: false); try await waitForPlayback(model)
+        playback.completions[2](true); playback.completions[2](true)
+        #expect(model.completedPlayCount == 2); #expect(!model.canPlay)
+        model.play(slow: true)
+        #expect(playback.voices == [.f1, .f1, .m5])
+        #expect(playback.rates == [1, 0.75, 1])
+        await model.prepare(attemptID: UUID(), question: q)
+        #expect(model.completedPlayCount == 0)
+    }
+
     @Test("离开时废弃在途下载，迟到的音频不恢复界面或播放")
     func lateDownloadIsDiscarded() async throws {
         let service = AudioTestService(); await service.setDelayed()
@@ -118,7 +144,7 @@ struct LearningAudioTests {
         playbacks[0].completions[1](true)
         #expect(model.players.isEmpty); #expect(!model.hasListenedToAll)
         await model.prepare(attemptID: attemptID, question: question)
-        #expect(!model.hasListenedToAll)
+        #expect(model.hasListenedToAll)
         #expect(await service.downloadCount == 2)
         await model.prepare(attemptID: UUID(), question: question)
         #expect(await service.downloadCount == 4)
@@ -155,10 +181,10 @@ struct LearningAudioTests {
         #expect(model.players.isEmpty)
     }
 
-    @Test("音频缓存按字节淘汰，同挑战同素材复用，跨挑战隔离")
+    @Test("脚本缓存按字节淘汰，同挑战同素材复用，跨挑战隔离")
     func audioCacheEvictsAndScopesDownloads() async throws {
         let service = AudioTestService()
-        let cache = LearningAudioCache(byteLimit: 6)
+        let cache = LearningAudioCache(byteLimit: 34)
         let attempt = UUID()
         func load(_ asset: String, question: String = "q", attemptID: UUID? = nil) async throws {
             _ = try await cache.load(service: service, attemptID: attemptID ?? attempt, questionID: question, assetID: asset)
@@ -168,7 +194,7 @@ struct LearningAudioTests {
         try await load("c"); try await load("b")
         #expect(await service.downloadCount == 4)
         try await load("b", question: "other"); try await load("b", attemptID: UUID())
-        #expect(await service.downloadCount == 5)
+        #expect(await service.downloadCount == 6)
     }
 
     @Test("下载失败或取消后可重新下载，不缓存失败结果")
@@ -190,7 +216,7 @@ struct LearningAudioTests {
         await #expect(throws: CancellationError.self) { _ = try await loading.value }
         await service.resumeDownloads()
         let data = try await cache.load(service: service, attemptID: attempt, questionID: "q", assetID: "a")
-        #expect(data == Data([1, 2, 3]))
+        #expect(data == LearningSpeechScript(assetId: "test.audio", segments: [.init(text: "The room is open.")]))
         #expect(await service.downloadCount == 3)
     }
 
@@ -204,10 +230,10 @@ struct LearningAudioTests {
         playback.completions[0](true)
         await model.prepare(attemptID: attempt, question: try question("q2"))
         #expect(model.hasListened)
-        #expect(await service.downloadCount == 1)
+        #expect(await service.downloadCount == 2)
         await model.prepare(attemptID: UUID(), question: try question("q2"))
         #expect(!model.hasListened)
-        #expect(await service.downloadCount == 2)
+        #expect(await service.downloadCount == 3)
     }
 
 }

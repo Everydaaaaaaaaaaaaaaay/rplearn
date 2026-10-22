@@ -9,6 +9,7 @@ final class LearningAudioOptionsModel {
     @ObservationIgnored private let makePlayer: (LearningAudioCache) -> LearningAudioModel
     @ObservationIgnored private let cache = LearningAudioCache()
     @ObservationIgnored private var revision = UUID()
+    @ObservationIgnored private var retainedPlayers: [String: LearningAudioModel] = [:]
 
     init(makePlayer: @escaping (LearningAudioCache) -> LearningAudioModel) { self.makePlayer = makePlayer }
 
@@ -20,7 +21,9 @@ final class LearningAudioOptionsModel {
         let requestRevision = revision
         let options = question.audioOptions ?? []
         let jobs = options.map { option in
-            let player = makePlayer(cache)
+            let key = "\(attemptID):\(option.audio.assetId)"
+            let player = retainedPlayers[key] ?? makePlayer(cache)
+            retainedPlayers[key] = player
             players[option.id] = player
             return (option, player)
         }

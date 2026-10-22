@@ -19,7 +19,7 @@ public enum PlacementSkill: String, Codable, CaseIterable, Sendable {
 
 /// 听力题的重听次数策略。每道题独立计数，切换题目后重置。
 public enum PlacementListeningPolicy {
-    public static let maximumPlayCount = 3
+    public static let maximumPlayCount = 2
 
     public static func canPlay(currentCount: Int) -> Bool {
         currentCount < maximumPlayCount

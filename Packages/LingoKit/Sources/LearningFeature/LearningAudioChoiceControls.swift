@@ -28,13 +28,13 @@ struct LearningAudioChoiceControls: View {
                         }.frame(width: 48, height: 48)
                             .background(tint.opacity(0.12), in: Circle())
                     }
-                    .disabled(loading)
+                    .disabled(loading || player?.canPlay == false)
                     .accessibilityLabel("\(playing ? "停止" : player?.state == .failed ? "重新载入" : "播放")声音 \(index + 1)")
-                    .accessibilityValue(player?.hasListened == true ? "已听完" : "未听完")
+                    .accessibilityValue(player?.hasListened == true ? "已听完 \(player?.completedPlayCount ?? 0) 遍" : "未听完")
                     .accessibilityIdentifier("learning.sound.play.\(option.id)")
                     Button { audio.play(option.id, slow: true) } label: {
                         Image(systemName: "tortoise").font(.system(size: 22)).frame(width: 44, height: 48)
-                    }.disabled(loading || player?.state == .failed)
+                    }.disabled(loading || player?.state == .failed || player?.canPlay == false)
                         .accessibilityLabel("慢速播放声音 \(index + 1)")
                         .accessibilityIdentifier("learning.sound.slow.\(option.id)")
                     Button { selection = option.id } label: {

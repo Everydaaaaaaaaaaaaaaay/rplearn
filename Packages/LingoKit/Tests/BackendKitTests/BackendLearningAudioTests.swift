@@ -23,6 +23,8 @@ struct BackendLearningAudioTests {
             let body: Data
             if request.url?.path == "/v1/auth/login" {
                 body = Data(#"{"accessToken":"test-token","accessTokenExpiresIn":900,"tokenType":"Bearer","refreshToken":"test-refresh","refreshTokenExpiresAt":"2036-01-02T00:00:00Z","sessionId":"10000000-0000-0000-0000-000000000001","userId":"20000000-0000-0000-0000-000000000001"}"#.utf8)
+            } else if request.url?.path.contains("/speech/") == true {
+                body = try JSONSerialization.data(withJSONObject: ["assetId": "audio.\(hash)", "segments": [["text": "Water, please.", "pauseAfterMs": corrupt ? -1 : 3000], ["text": "Question: What would the speaker like?", "pauseAfterMs": 0]]])
             } else if request.url?.host == "assets.example.com" {
                 body = corrupt ? Data(repeating: 8, count: audio.count) : audio
             } else {
@@ -50,6 +52,17 @@ struct BackendLearningAudioTests {
         #expect(asset.value(forHTTPHeaderField: "Authorization") == nil)
         await transport.setCorrupt()
         await #expect(throws: BackendClientError.self) { try await client.learningAudio(UUID(), questionID: "listen", assetID: "audio.\(await transport.hash)") }
+    }
+    @Test("实时听力只取鉴权脚本，校验题目资源和停顿，无媒体下载")
+    func liveScript() async throws {
+        let transport = Transport(); let client = try await client(transport)
+        let script = try await client.learningSpeech(UUID(), questionID: "listen", assetID: "audio.\(await transport.hash)")
+        #expect(script.segments.first?.pauseAfterMs == 3000)
+        let requests = await transport.requests
+        #expect(requests.last?.value(forHTTPHeaderField: "Authorization") == "Bearer test-token")
+        #expect(requests.allSatisfy { $0.url?.host == "api.example.com" })
+        await transport.setCorrupt()
+        await #expect(throws: BackendClientError.self) { try await client.learningSpeech(UUID(), questionID: "listen", assetID: "audio.\(await transport.hash)") }
     }
     @Test("拒绝不安全资源地址和与冻结题目不一致的资源身份")
     func refusesInvalidGrant() async throws {

@@ -118,6 +118,19 @@ public actor AdaptiveSpeechService: SpeechService, SpeechSynthesisEngineManaging
         }
     }
 
+    public func synthesizeListening(_ text: String, voice: SupertonicVoice) async throws -> Data {
+        try Task.checkCancellation()
+        // Explicit casting overrides global engine preferences. This path calls
+        // synthesis directly, bypassing disk audio caches and system fallback.
+        let request = SpeechRequest(text: text, language: "en", purpose: .characterDialogue,
+            voiceHint: SpeechVoiceHint(stableID: "listening." + voice.rawValue, supertonicVoice: voice),
+            engine: .supertonic3, allowsSystemFallback: false)
+        let samples = try await supertonic.synthesizeSamples(request)
+        try Task.checkCancellation()
+        guard !samples.isEmpty, samples.allSatisfy(\.isFinite) else { throw ListeningSpeechError.unavailable }
+        return ListeningPCM.wave(samples, sampleRate: 44_100)
+    }
+
     public func prepareForPlayback(_ request: SpeechRequest) async -> PreparedSpeech? {
         guard !Task.isCancelled, request.purpose == .realtimeConversation,
               await resolvedEngine(for: request) == .supertonic3,

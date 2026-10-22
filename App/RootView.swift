@@ -1127,7 +1127,7 @@ struct RootView: View {
         if !bypassesAuthenticationForUITesting {
             dependencies.learningPage = { character, visible in
                 AnyView(CharacterLearningView(character: character, service: backend, isVisible: visible,
-                    audioSession: learningAudioSession, beforePlayback: { await learningSpeech.stopSpeaking() },
+                    audioSession: learningAudioSession, speech: learningSpeech, beforePlayback: { await learningSpeech.stopSpeaking() },
                     cycleChanged: { await tracker?.challengeCompleted(characterID: character.id) }))
             }
         }

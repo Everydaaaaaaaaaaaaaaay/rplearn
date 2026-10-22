@@ -5,15 +5,16 @@ import PersistenceKit
 
 @Suite("自适应英语水平测评")
 struct AdaptivePlacementEngineTests {
-    @Test("每道听力题最多播放三次")
+    @Test("每道听力题最多播放两次")
     func listeningPlaybackIsLimited() {
-        #expect(PlacementListeningPolicy.maximumPlayCount == 3)
+        #expect(PlacementListeningPolicy.maximumPlayCount == 2)
         #expect(PlacementListeningPolicy.canPlay(currentCount: 0))
-        #expect(PlacementListeningPolicy.canPlay(currentCount: 2))
+        #expect(PlacementListeningPolicy.canPlay(currentCount: 1))
+        #expect(!PlacementListeningPolicy.canPlay(currentCount: 2))
         #expect(!PlacementListeningPolicy.canPlay(currentCount: 3))
         #expect(!PlacementListeningPolicy.canPlay(currentCount: 4))
-        #expect(PlacementListeningPolicy.remainingPlayCount(after: 0) == 3)
-        #expect(PlacementListeningPolicy.remainingPlayCount(after: 2) == 1)
+        #expect(PlacementListeningPolicy.remainingPlayCount(after: 0) == 2)
+        #expect(PlacementListeningPolicy.remainingPlayCount(after: 1) == 1)
         #expect(PlacementListeningPolicy.remainingPlayCount(after: 3) == 0)
     }
 

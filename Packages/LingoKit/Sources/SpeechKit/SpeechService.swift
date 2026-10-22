@@ -149,6 +149,8 @@ public struct PreparedSpeech: Sendable {
 /// 语音朗读服务。具体引擎、随包模型资源和回退策略都隐藏在协议后。
 public protocol SpeechService: Sendable {
     func speak(_ request: SpeechRequest) async
+    /// Listening assessments always use live Supertonic; returned PCM is memory-only.
+    func synthesizeListening(_ text: String, voice: SupertonicVoice) async throws -> Data
     /// 播放并等待真实结束。实时语音按短分句串行调用，普通朗读无需使用。
     func speakAndWait(_ request: SpeechRequest) async
     /// Prepare at most one upcoming phrase while the current phrase is audibly playing.
@@ -160,6 +162,10 @@ public protocol SpeechService: Sendable {
 }
 
 extension SpeechService {
+    public func synthesizeListening(_ text: String, voice: SupertonicVoice) async throws -> Data {
+        throw ListeningSpeechError.unavailable
+    }
+
     public func speak(_ text: String) async {
         await speak(SpeechRequest(text: text))
     }

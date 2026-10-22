@@ -107,6 +107,16 @@ struct DebugLearningPreviewService: LearningServing, LearningDirectionServing, M
             }
         }
     }
+    func learningSpeech(_ attemptID: UUID, questionID: String, assetID: String) async throws -> LearningSpeechScript {
+        if ProcessInfo.processInfo.environment["UI_TEST_LEARNING_AUDIO_FAILURE"] == "1" { throw unavailable }
+        if let json = ProcessInfo.processInfo.environment["UI_TEST_LEARNING_SPEECH_JSON"] {
+            let script = try JSONDecoder().decode(LearningSpeechScript.self, from: Data(json.utf8))
+            guard script.assetId == assetID else { throw unavailable }
+            return script
+        }
+        guard assetID == "preview.audio" else { throw unavailable }
+        return LearningSpeechScript(assetId: assetID, segments: [.init(text: "Water, please.")])
+    }
     func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
         if let data = try localMedia(questionID: questionID, assetID: assetID, kind: "audio", extension: "wav") { return data }
         guard assetID == "preview.audio",
