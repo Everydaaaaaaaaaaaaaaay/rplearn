@@ -1,18 +1,18 @@
 {
   "unitId": "companion.senior3.paper-boat",
-  "contentHash": "e467986539421179a854e7a31ae81a1228224024a7ef9862966a5e5d68f736da",
+  "contentHash": "cf2494722da34c2e3f6a78fc658cad26116ddfba018902332761220cb8ccadc4",
   "status": "approved",
   "reviewKind": "author-self-review",
-  "reviewer": "Codex主代理逐题复核，Astra作者逐题自审",
-  "reviewedAt": "2026-10-07",
+  "reviewer": "Codex 主代理逐题语义复核",
+  "reviewedAt": "2026-10-23",
   "roleFit": "普通同行者完整开场，无固定姓名、性别或职业；题目独立且可供任意角色抽取。",
   "levelFit": "依据实际核读教材页及逐题任务登记；包含明确的基础支架与既有结构迁移，不把18题宣称为18项新增知识。",
   "limitations": "本单元为局部受控练习，不等于完整考试或自由口语写作测量。音频经双ASR及客观波形检查，尚未独立真人听感审定；主代理逐题终审见senior-second-review-2026-10-07.md。",
   "questions": [
     {
       "questionId": "s3.second.q01",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听两人商量旧书交换活动。第二位说话人最后支持什么安排？",
-      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"b\",\"wrongExample\":\"c\",\"optionReasons\":{\"a\":\"把B最初想取消当成最后立场，并把下午有人能帮忙听反。\",\"b\":\"保留B最终提出的活动继续及午后开始，未擅称已订妥房间。\",\"c\":\"保留活动这一点正确，但漏掉开始时间的修改。\"},\"ambiguity\":\"问题只问B最后支持的安排，不问A是否确认房间。b与c都合乎现实，必须听音区分。\",\"teachingBoundary\":\"不把音频中的建议当作现实已承诺的活动。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior3.archive20260929\",\"pages\":\"印刷6—7／PDF13—14\"}}",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：What arrangement does the second speaker finally suggest?",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"b\",\"wrongExample\":\"c\",\"optionReasons\":{\"a\":\"把B最初想取消当成最后立场，并把下午有人能帮忙听反。\",\"b\":\"保留B最终提出的活动继续及午后开始，未擅称已订妥房间。\",\"c\":\"保留活动这一点正确，但漏掉开始时间的修改。\"},\"ambiguity\":\"问题只问B最后支持的安排，不问A是否确认房间。b与c都合乎现实，必须听音区分。\",\"teachingBoundary\":\"不把音频中的建议当作现实已承诺的活动。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior3.archive20260929\",\"pages\":\"印刷6—7／PDF13—14\"}} 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "把B最初想取消当成最后立场，并把下午有人能帮忙听反。",
         "b": "保留B最终提出的活动继续及午后开始，未擅称已订妥房间。",
@@ -77,35 +77,32 @@
     },
     {
       "questionId": "s3.second.q03",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听录音，写出完整句子。inspected表示检查。",
-      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"the bridge was being inspected when we arrived\",\"wrongExample\":\"The bridge was inspected when we arrived.\",\"optionReasons\":{},\"wrongAnswerReasons\":{\"The bridge was inspected when we arrived.\":\"语法可以成立，但漏写录音中的being，丢掉进行状态。\",\"The bridge being inspected when we arrived.\":\"漏掉录音中的was，当前主句缺少完整谓语。\"},\"ambiguity\":\"忽略大小写和末尾句号；没有内部标点、缩写或英美拼写分歧。不接受概括或同义改写，因任务明确要求完整听写。\",\"teachingBoundary\":\"允许复习支架；不得把保留一题旧稿说成17题原创之外的第18题全新原创。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior3.archive20260929\",\"pages\":\"结构：印刷5／PDF12；听记迁移：印刷19／PDF26及外研印刷19／PDF26\",\"supportingGoalIds\":[\"senior3.repair-report-focus\"]}}",
-      "optionNotes": {},
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：What was happening when the speakers arrived?",
+      "ambiguityReview": "was being inspected说明到达时桥正在接受检查；a错把正在进行说成完成，c改变到达的时间关系。 按录音语义区分三项；不再要求整句逐字匹配。",
+      "optionNotes": {
+        "a": "该选项与录音事实或限定不符。was being inspected说明到达时桥正在接受检查；a错把正在进行说成完成，c改变到达的时间关系。",
+        "b": "与录音事实和限制一致。was being inspected说明到达时桥正在接受检查；a错把正在进行说成完成，c改变到达的时间关系。",
+        "c": "该选项与录音事实或限定不符。was being inspected说明到达时桥正在接受检查；a错把正在进行说成完成，c改变到达的时间关系。"
+      },
       "probes": [
         {
           "answer": {
-            "kind": "text",
-            "text": "The bridge was being inspected when we arrived."
-          },
-          "correct": true
-        },
-        {
-          "answer": {
-            "kind": "text",
-            "text": "the bridge was being inspected when we arrived"
-          },
-          "correct": true
-        },
-        {
-          "answer": {
-            "kind": "text",
-            "text": "The bridge was inspected when we arrived."
+            "kind": "choice",
+            "optionId": "a"
           },
           "correct": false
         },
         {
           "answer": {
-            "kind": "text",
-            "text": "The bridge being inspected when we arrived."
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
           },
           "correct": false
         }
@@ -113,8 +110,8 @@
     },
     {
       "questionId": "s3.second.q04",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听关于手工活动的对话。对方澄清后，“免费”具体指什么？",
-      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"a\",\"wrongExample\":\"b\",\"optionReasons\":{\"a\":\"同时保留免费教学、自备材料免费、领用材料收费。\",\"b\":\"误把free扩大到主办方供应的材料。\",\"c\":\"把教学与材料的收费关系对调。\"},\"ambiguity\":\"最后明确确认teaching itself免费，避免entry仅指参观入场的歧义；题面未泄露费用结构。\",\"teachingBoundary\":\"这是对话所述活动的规则，不是现实收费政策。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior3.archive20260929\",\"pages\":\"印刷42／PDF49\"}}",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：What does the workshop offer free of charge?",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"a\",\"wrongExample\":\"b\",\"optionReasons\":{\"a\":\"同时保留免费教学、自备材料免费、领用材料收费。\",\"b\":\"误把free扩大到主办方供应的材料。\",\"c\":\"把教学与材料的收费关系对调。\"},\"ambiguity\":\"最后明确确认teaching itself免费，避免entry仅指参观入场的歧义；题面未泄露费用结构。\",\"teachingBoundary\":\"这是对话所述活动的规则，不是现实收费政策。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior3.archive20260929\",\"pages\":\"印刷42／PDF49\"}} 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "同时保留免费教学、自备材料免费、领用材料收费。",
         "b": "误把free扩大到主办方供应的材料。",
@@ -307,8 +304,8 @@
     },
     {
       "questionId": "s3.second.q07",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听环保小组对活动记录的说明。哪项保留了发言者认为仍需弄清的事情？",
-      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"c\",\"wrongExample\":\"b\",\"optionReasons\":{\"a\":\"总杯数更少是开头已给出的记录，不是最后待比较的对象。\",\"b\":\"到场人数更少也已明示，不能把它写成尚待核实。\",\"c\":\"per person是总结的关键，保留待比较而非已证明的状态。\"},\"ambiguity\":\"collected不是现实中所有使用杯数的必然完美测量；题目只问发言者提出的下一比较步骤，不自行确认环保效果。\",\"teachingBoundary\":\"不把总量/平均量问题伪称教材原页内容，明确为证据限制任务的日常迁移。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior3.archive20260929\",\"pages\":\"印刷55／PDF62；论证迁移另据PEP印刷33／PDF40\",\"supportingGoalIds\":[\"senior3.argument-evidence-link\"]}}",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：What do the speakers still need to compare?",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"c\",\"wrongExample\":\"b\",\"optionReasons\":{\"a\":\"总杯数更少是开头已给出的记录，不是最后待比较的对象。\",\"b\":\"到场人数更少也已明示，不能把它写成尚待核实。\",\"c\":\"per person是总结的关键，保留待比较而非已证明的状态。\"},\"ambiguity\":\"collected不是现实中所有使用杯数的必然完美测量；题目只问发言者提出的下一比较步骤，不自行确认环保效果。\",\"teachingBoundary\":\"不把总量/平均量问题伪称教材原页内容，明确为证据限制任务的日常迁移。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior3.archive20260929\",\"pages\":\"印刷55／PDF62；论证迁移另据PEP印刷33／PDF40\",\"supportingGoalIds\":[\"senior3.argument-evidence-link\"]}} 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "总杯数更少是开头已给出的记录，不是最后待比较的对象。",
         "b": "到场人数更少也已明示，不能把它写成尚待核实。",
@@ -376,14 +373,22 @@
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t1", "t2", "t3"]
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3"
+            ]
           },
           "correct": true
         },
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t2", "t1", "t3"]
+            "tokenIds": [
+              "t2",
+              "t1",
+              "t3"
+            ]
           },
           "correct": false
         }
@@ -391,8 +396,8 @@
     },
     {
       "questionId": "s3.second.q10",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听会议中的一小段对话。两人接下来决定先谈什么？",
-      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"a\",\"wrongExample\":\"b\",\"optionReasons\":{\"a\":\"that first承接B刚提出的休息咨询地点。\",\"b\":\"这是A最初提出的转题方向，但被明确推迟到afterwards。\",\"c\":\"开头说明项目已经达成一致，本段没有重新选项目。\"},\"ambiguity\":\"题目问讨论顺序，不问体育活动现实进行顺序；ask for a rest是寻求休息安排，不自动等同医务室。\",\"teachingBoundary\":\"不要求熟悉会议流程或推断未说出的安全设施。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior3.archive20260929\",\"pages\":\"印刷6—7、30—31／PDF13—14、37—38\"}}",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：What do the speakers decide to discuss next?",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"a\",\"wrongExample\":\"b\",\"optionReasons\":{\"a\":\"that first承接B刚提出的休息咨询地点。\",\"b\":\"这是A最初提出的转题方向，但被明确推迟到afterwards。\",\"c\":\"开头说明项目已经达成一致，本段没有重新选项目。\"},\"ambiguity\":\"题目问讨论顺序，不问体育活动现实进行顺序；ask for a rest是寻求休息安排，不自动等同医务室。\",\"teachingBoundary\":\"不要求熟悉会议流程或推断未说出的安全设施。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior3.archive20260929\",\"pages\":\"印刷6—7、30—31／PDF13—14、37—38\"}} 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "that first承接B刚提出的休息咨询地点。",
         "b": "这是A最初提出的转题方向，但被明确推迟到afterwards。",
@@ -457,49 +462,32 @@
     },
     {
       "questionId": "s3.second.q12",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听录音，写出完整句子。",
-      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"this route is shorter than the other two routes we tried\",\"wrongExample\":\"This route is shorter than the other routes we tried.\",\"optionReasons\":{},\"wrongAnswerReasons\":{\"This route is shorter than the other routes we tried.\":\"漏写two，未完整记录数量范围。\",\"This route is shorter than the other two routes.\":\"漏写we tried，丢失这次比较基于试走路线的限制。\",\"This is the shortest route.\":\"不是原声转写，且扩大比较范围。\"},\"ambiguity\":\"routes没有英美拼写变体；不同口音发音不改变拼写。忽略大小写与句末标点，脚本无缩写或内部标点。\",\"teachingBoundary\":\"听写并不要求用户额外写出比较逻辑解释；解析仅指出完整记录的意义。\",\"parentRevision\":\"主代理逐项接纳数词two写为数字2的完整转写，数量和语义不变；不扩展为其他数字或删词。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior3.archive20260929\",\"pages\":\"听记：印刷19／PDF26；比较限定迁移：印刷33／PDF40；另据外研印刷19／PDF26听记任务\"}}",
-      "optionNotes": {},
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：How does this route compare with the other two routes they tried?",
+      "ambiguityReview": "the other two routes表示比较对象包括另外两条，当前路线比两条都短；不要求逐字复述。 按录音语义区分三项；不再要求整句逐字匹配。",
+      "optionNotes": {
+        "a": "与录音事实和限制一致。the other two routes表示比较对象包括另外两条，当前路线比两条都短；不要求逐字复述。",
+        "b": "该选项与录音事实或限定不符。the other two routes表示比较对象包括另外两条，当前路线比两条都短；不要求逐字复述。",
+        "c": "该选项与录音事实或限定不符。the other two routes表示比较对象包括另外两条，当前路线比两条都短；不要求逐字复述。"
+      },
       "probes": [
         {
           "answer": {
-            "kind": "text",
-            "text": "This route is shorter than the other two routes we tried."
+            "kind": "choice",
+            "optionId": "a"
           },
           "correct": true
         },
         {
           "answer": {
-            "kind": "text",
-            "text": "This route is shorter than the other 2 routes we tried."
-          },
-          "correct": true
-        },
-        {
-          "answer": {
-            "kind": "text",
-            "text": "this route is shorter than the other two routes we tried"
-          },
-          "correct": true
-        },
-        {
-          "answer": {
-            "kind": "text",
-            "text": "This route is shorter than the other routes we tried."
+            "kind": "choice",
+            "optionId": "b"
           },
           "correct": false
         },
         {
           "answer": {
-            "kind": "text",
-            "text": "This route is shorter than the other two routes."
-          },
-          "correct": false
-        },
-        {
-          "answer": {
-            "kind": "text",
-            "text": "This is the shortest route."
+            "kind": "choice",
+            "optionId": "c"
           },
           "correct": false
         }
@@ -514,14 +502,26 @@
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t1", "t2", "t3", "t4", "t5"]
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3",
+              "t4",
+              "t5"
+            ]
           },
           "correct": true
         },
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t1", "t4", "t3", "t2", "t5"]
+            "tokenIds": [
+              "t1",
+              "t4",
+              "t3",
+              "t2",
+              "t5"
+            ]
           },
           "correct": false
         }
@@ -529,8 +529,8 @@
     },
     {
       "questionId": "s3.second.q14",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一段关于校园信息发布的发言。哪项最能概括说话人的主张？",
-      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"b\",\"wrongExample\":\"c\",\"optionReasons\":{\"a\":\"纸质是帮助部分家庭的一个办法，录音没有要求以它为主或减少其他渠道。\",\"b\":\"对应总结中的message和people两个条件，保留多种方式的适用性。\",\"c\":\"电话仅作为紧急变化可能需要的方式，不是所有通知的主渠道。\"},\"ambiguity\":\"不问哪种渠道客观最好；三项都属于现实可能的主张，必须根据录音选择。\",\"teachingBoundary\":\"无需任何智能手机或家庭条件的外部常识。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior3.archive20260929\",\"pages\":\"印刷18—19／PDF25—26\"}}",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：What is the speaker's main point about school communications?",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"b\",\"wrongExample\":\"c\",\"optionReasons\":{\"a\":\"纸质是帮助部分家庭的一个办法，录音没有要求以它为主或减少其他渠道。\",\"b\":\"对应总结中的message和people两个条件，保留多种方式的适用性。\",\"c\":\"电话仅作为紧急变化可能需要的方式，不是所有通知的主渠道。\"},\"ambiguity\":\"不问哪种渠道客观最好；三项都属于现实可能的主张，必须根据录音选择。\",\"teachingBoundary\":\"无需任何智能手机或家庭条件的外部常识。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior3.archive20260929\",\"pages\":\"印刷18—19／PDF25—26\"}} 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "纸质是帮助部分家庭的一个办法，录音没有要求以它为主或减少其他渠道。",
         "b": "对应总结中的message和people两个条件，保留多种方式的适用性。",
@@ -766,14 +766,26 @@
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t1", "t2", "t3", "t4", "t5"]
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3",
+              "t4",
+              "t5"
+            ]
           },
           "correct": true
         },
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t1", "t2", "t5", "t4", "t3"]
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t5",
+              "t4",
+              "t3"
+            ]
           },
           "correct": false
         }

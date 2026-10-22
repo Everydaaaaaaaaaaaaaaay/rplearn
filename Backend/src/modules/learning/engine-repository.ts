@@ -1,3 +1,4 @@
+import { questionListeningScript } from "./listening-speech.js";
 import { LearningBankSession } from "./bank-repository.js";
 import { LearningDirectionSession } from "./direction-repository.js";
 import { LearningPromotionSession } from "./promotion-repository.js";
@@ -223,6 +224,17 @@ export class LearningSession {
     return new LearningDirectionSession(this.sql, this.userId);
   }
 
+  async listeningScript(attemptId: string, questionId: string, assetId: string) {
+    const attempt = await this.rawAttempt(attemptId);
+    const question = unitSchema
+      .parse(attempt.payload)
+      .questions.find((q) => q.id === questionId);
+    const script = question && (await questionListeningScript(question, assetId));
+    if (!script)
+      reject("LEARNING_AUDIO_NOT_FOUND", "这道题没有可播放的听力素材。", 404);
+    return script;
+  }
+
   async audioAsset(
     attemptId: string,
     questionId: string,
@@ -301,6 +313,10 @@ export class LearningSession {
       { count: number }[]
     >`select count(*)::integer as count from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
       where u.published and u.level_key=${level}
+        and not exists (select 1 from jsonb_array_elements(v.payload->'questions') q where q->>'type'='dictation')
+        and (v.payload ? 'originalGroup' or u.level_key not in ('senior1','senior2','senior3','undergraduate','postgraduate','advanced')
+          or not exists (select 1 from jsonb_array_elements(v.payload->'questions') q
+            where q->>'type'='listeningChoice' and ((q->>'prompt') ~ '[一-鿿]' or (q->'options')::text ~ '[一-鿿]')))
       and ((u.role_key=${roleKey} and not (v.payload ? 'originalGroup')) or (${completeGroups} and v.payload ? 'originalGroup'))
       and not exists(select 1 from app.learning_attempts a where a.user_id=${this.userId} and (a.character_id=${characterId} or v.payload ? 'originalGroup') and a.unit_id=u.id)
         and not exists(select 1 from app.learning_bank_sources s join app.learning_bank_exposures e on e.question_id=s.question_id
@@ -480,6 +496,10 @@ export class LearningSession {
     const [dedicated] = await this.sql<{ payload: LearningUnit }[]>`
       select v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
       where u.published and u.level_key=${level}
+        and not exists (select 1 from jsonb_array_elements(v.payload->'questions') q where q->>'type'='dictation')
+        and (v.payload ? 'originalGroup' or u.level_key not in ('senior1','senior2','senior3','undergraduate','postgraduate','advanced')
+          or not exists (select 1 from jsonb_array_elements(v.payload->'questions') q
+            where q->>'type'='listeningChoice' and ((q->>'prompt') ~ '[一-鿿]' or (q->'options')::text ~ '[一-鿿]')))
         and ((u.role_key=${state.roleKey} and not (v.payload ? 'originalGroup'))
           or (${options.completeGroups === true} and v.payload ? 'originalGroup'))
         and (${options.originalUnitId ?? null}::text is null or u.id=${options.originalUnitId ?? null})

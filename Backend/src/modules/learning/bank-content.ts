@@ -145,6 +145,29 @@ export function bankIdentity(question: LearningQuestion): string {
   return `question.${contentHash({ type: question.type, prompt: clean(question.prompt), material })}`;
 }
 
+/** Keep legacy snapshots gradeable while excluding retired tasks from fresh supply. */
+export function availableForNewLearning(
+  question: LearningQuestion,
+  level: string,
+): boolean {
+  if (question.type === "dictation") return false;
+  if (
+    question.type !== "listeningChoice" ||
+    ![
+      "senior1",
+      "senior2",
+      "senior3",
+      "undergraduate",
+      "postgraduate",
+      "advanced",
+    ].includes(level)
+  )
+    return true;
+  return !/\p{Script=Han}/u.test(
+    question.prompt + question.options.map((o) => o.text).join(" "),
+  );
+}
+
 /** 所有插槽都满足才交卷；不靠降级、重复题或少题凑齐。 */
 export function assembleBankQuestions(
   blueprint: BankBlueprint,
@@ -157,6 +180,7 @@ export function assembleBankQuestions(
     return null;
   const pool = candidates.filter(
     (q) =>
+      availableForNewLearning(q.question, q.level) &&
       q.level === blueprint.level &&
       q.topic === blueprint.topic &&
       ((!q.seen && !q.mastered) || (q.mastered && q.reviewDue === true)) &&
@@ -164,7 +188,9 @@ export function assembleBankQuestions(
   );
   const choices = blueprint.slots.map((slot) => {
     const matches = pool.filter(
-      (q) => q.question.goalId === slot.goalId && q.question.type === slot.type,
+      (q) =>
+        q.question.goalId === slot.goalId &&
+        q.question.type === (slot.type === "dictation" ? "listeningChoice" : slot.type),
     );
     // 保留新题优先；每个插槽只随机一次，回溯时不反复重抽同一候选。
     const fresh = matches.filter((q) => !q.mastered);

@@ -1,6 +1,6 @@
 {
   "id": "companion.senior1.window-rainbow",
-  "version": 1,
+  "version": 2,
   "schemaVersion": 1,
   "scoringVersion": 1,
   "roleKey": "companion",
@@ -38,9 +38,9 @@
   "authorship": {
     "kind": "authored",
     "author": "Astra高一第二组独立作者",
-    "reviewedBy": "Codex主代理逐题复核，Astra作者逐题自审",
-    "reviewedAt": "2026-10-07",
-    "reviewNotes": "主代理逐题终审，按冻结作者稿机械映射正文、答案变体、提示、解析和前置故事；全部录音经双ASR及客观波形检查，不等同独立真人听感或教师效度审定。"
+    "reviewedBy": "Codex 主代理逐题语义复核",
+    "reviewedAt": "2026-10-23",
+    "reviewNotes": "主代理逐题终审，按冻结作者稿机械映射正文、答案变体、提示、解析和前置故事；全部录音经双ASR及客观波形检查，不等同独立真人听感或教师效度审定。 2026-10-23：听力理解题改用英文题面与选项；整句听写替换为理解选择；实时Supertonic按F1、M5两遍播放，原录音仅保留给历史版本。"
   },
   "beats": [
     {
@@ -95,7 +95,7 @@
       "id": "s1.astra.a13",
       "goalId": "senior1.learning-advice-listening",
       "type": "listeningChoice",
-      "prompt": "听同学的困难，选择最能解决所说问题的建议。",
+      "prompt": "Which suggestion best addresses the speaker's difficulty?",
       "explanation": "问题是语速，时间只有十分钟；短段录音回听直接针对问题，负担也可控。",
       "hint": "先确定困难是什么，再检查建议能否在现有条件下执行。",
       "instruction": "听后选择",
@@ -130,7 +130,9 @@
       "hint": "单独检查从句中动词的宾语由哪一部分承担，是否重复出现。",
       "instruction": "填入准确表达",
       "difficultyReason": "受控改错：需要理解宾语关系而不是看到物品就填which；只删除一词，无开放改写判分。",
-      "acceptedAnswers": ["it"],
+      "acceptedAnswers": [
+        "it"
+      ],
       "normalization": {
         "ignoreCase": true,
         "ignoreTerminalPunctuation": true
@@ -140,7 +142,7 @@
       "id": "s1.astra.b15",
       "goalId": "senior1.everyday-detail-listening",
       "type": "listeningChoice",
-      "prompt": "听留言，选择应该采用的最新安排。",
+      "prompt": "Where and when will they meet?",
       "explanation": "图书馆明天关闭，instead引出新安排；We're meeting表达明天在隔壁咖啡馆两点见。",
       "hint": "把原安排与转折后替代它的新安排分开。",
       "instruction": "听后选择",
@@ -148,15 +150,15 @@
       "options": [
         {
           "id": "a",
-          "text": "明天两点在图书馆见。"
+          "text": "At the library at two tomorrow."
         },
         {
           "id": "b",
-          "text": "明天两点在图书馆隔壁的咖啡馆见。"
+          "text": "At the cafe next to the library at two tomorrow."
         },
         {
           "id": "c",
-          "text": "今天两点在咖啡馆见。"
+          "text": "At the cafe at two today."
         }
       ],
       "answer": "b",
@@ -274,13 +276,21 @@
           "text": "not in front of the whole class,"
         }
       ],
-      "acceptedOrders": [["t3", "t2", "t5", "t1", "t4"]]
+      "acceptedOrders": [
+        [
+          "t3",
+          "t2",
+          "t5",
+          "t1",
+          "t4"
+        ]
+      ]
     },
     {
       "id": "s1.astra.b02",
       "goalId": "senior1.everyday-detail-listening",
       "type": "listeningChoice",
-      "prompt": "听说明，选择需要放到窗边的书。",
+      "prompt": "Which books should be put by the window?",
       "explanation": "that have red labels限定需要移动的书；其他书留在桌上。",
       "hint": "注意修饰books的部分，它决定指令适用的范围。",
       "instruction": "听后选择",
@@ -288,15 +298,15 @@
       "options": [
         {
           "id": "a",
-          "text": "所有书。"
+          "text": "All the books."
         },
         {
           "id": "b",
-          "text": "带红标签的书。"
+          "text": "The books with red labels."
         },
         {
           "id": "c",
-          "text": "不带红标签的书。"
+          "text": "The books without red labels."
         }
       ],
       "answer": "b",
@@ -335,7 +345,7 @@
       "id": "s1.astra.b05",
       "goalId": "senior1.everyday-detail-listening",
       "type": "listeningChoice",
-      "prompt": "听一位同学谈看电影的感受。然后代这位同学回答朋友的问题：You enjoyed the film, didn't you?",
+      "prompt": "How would the speaker answer a friend who asks, \"You enjoyed the film, didn't you?\"",
       "explanation": "喜欢配乐不等于喜欢电影；录音明确没喜欢这部电影，用过去时短答No, I didn't。",
       "hint": "区分对不同对象的评价，并留意提问的时间。",
       "instruction": "听后选择",
@@ -467,7 +477,7 @@
       "id": "s1.astra.b18",
       "goalId": "senior1.everyday-detail-listening",
       "type": "listeningChoice",
-      "prompt": "听项目更新，选择与录音完全一致的简短记录。",
+      "prompt": "Which note accurately records the project update?",
       "explanation": "tested on Monday定位过去测试；have fixed报告登录问题修好；are still checking报告声音检查仍在继续。",
       "hint": "分别记录过去事件、现有成果和尚未完成的工作。",
       "instruction": "听后选择",
@@ -475,15 +485,15 @@
       "options": [
         {
           "id": "a",
-          "text": "周一测试；登录问题已修好；声音仍在检查。"
+          "text": "Tested on Monday; login fixed; sound still being checked."
         },
         {
           "id": "b",
-          "text": "周一测试；声音已经修好；登录问题仍在检查。"
+          "text": "Tested on Monday; sound fixed; login still being checked."
         },
         {
           "id": "c",
-          "text": "周一修复；登录和声音问题已解决；测试仍在进行。"
+          "text": "Repairs on Monday; login and sound fixed; testing still in progress."
         }
       ],
       "answer": "a",
@@ -524,13 +534,21 @@
           "text": "the station"
         }
       ],
-      "acceptedOrders": [["t2", "t5", "t4", "t1", "t3"]]
+      "acceptedOrders": [
+        [
+          "t2",
+          "t5",
+          "t4",
+          "t1",
+          "t3"
+        ]
+      ]
     },
     {
       "id": "s1.second.c16",
       "goalId": "senior1.everyday-detail-listening",
       "type": "listeningChoice",
-      "prompt": "听一段预订房间的对话，选择客人最后确认的预订信息。",
+      "prompt": "Which booking does the guest finally confirm?",
       "explanation": "客人以Just one night更正两晚的询问，并明确周五到、周六离开。早餐在酒店外和朋友一起吃，因此没有预订酒店早餐。",
       "hint": "分别记录入住、离开和附加服务；问句提出的选项不一定是客人接受的选项。",
       "instruction": "听后选择",
@@ -538,15 +556,15 @@
       "options": [
         {
           "id": "a",
-          "text": "周五入住、周日离开；不订酒店早餐。"
+          "text": "Friday to Sunday, without hotel breakfast."
         },
         {
           "id": "b",
-          "text": "周五入住、周六离开；不订酒店早餐。"
+          "text": "Friday to Saturday, without hotel breakfast."
         },
         {
           "id": "c",
-          "text": "周五入住、周六离开；订酒店早餐。"
+          "text": "Friday to Saturday, with hotel breakfast."
         }
       ],
       "answer": "b",
@@ -587,32 +605,45 @@
           "text": "but"
         }
       ],
-      "acceptedOrders": [["t3", "t2", "t5", "t1", "t4"]]
+      "acceptedOrders": [
+        [
+          "t3",
+          "t2",
+          "t5",
+          "t1",
+          "t4"
+        ]
+      ]
     },
     {
       "id": "s1.second.c18",
       "goalId": "senior1.learning-advice-listening",
-      "type": "dictation",
-      "prompt": "听录音，写出听到的全部内容。可以重播，也可以不写标点。",
-      "explanation": "先再读一遍问题，再向一个同伴解释自己的答案。question是read的对象，answer是explain的对象；a partner中的冠词也属于原音。",
-      "hint": "先记住两个动作及先后顺序，重播时再核对各自动作的对象和小词。",
-      "instruction": "听写完整句子",
-      "difficultyReason": "11词短句听写，保留两个动作、两个不同对象及顺序词；不提供可凭语法完成的词池。",
-      "acceptedAnswers": [
-        "Read the question again, then explain your answer to a partner.",
-        "Read the question again then explain your answer to a partner.",
-        "Read the question again; then explain your answer to a partner.",
-        "Read the question again. Then explain your answer to a partner."
-      ],
-      "normalization": {
-        "ignoreCase": true,
-        "ignoreTerminalPunctuation": true
-      },
+      "type": "listeningChoice",
+      "prompt": "What should the listener do before explaining an answer to a partner?",
+      "explanation": "录音要求先再次读题，再向同伴解释答案；b加入未提到的写作任务，c颠倒顺序。",
+      "hint": "听清录音的意思及限定信息，再选择最符合的一项。",
+      "instruction": "听后选择",
+      "difficultyReason": "听力理解替代整句听写；保留原材料和能力支点，通过语义差异作答。",
       "audio": {
         "assetId": "audio.46b6a78586ed4f65eb0a58583a85fd1c59c7e0374fdcaaa35cee8211297462e5",
         "text": "Read the question again, then explain your answer to a partner.",
         "voice": "F3"
-      }
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Read the question again."
+        },
+        {
+          "id": "b",
+          "text": "Ask the partner to write the answer."
+        },
+        {
+          "id": "c",
+          "text": "Explain the answer before reading the question."
+        }
+      ],
+      "answer": "a"
     }
   ]
 }

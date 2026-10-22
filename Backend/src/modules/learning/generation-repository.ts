@@ -1,3 +1,4 @@
+import { availableForNewLearning } from "./bank-content.js";
 import { AppError } from "../../shared/errors.js";
 import { randomUUID } from "node:crypto";
 import type { DatabaseResource } from "../../db/client.js";
@@ -295,6 +296,12 @@ export class LearningGenerationRepository {
       );
       if (contentHash(unit) !== expectedHash || unit.id !== `generated.${id}`)
         throw editorialError("候选身份或内容哈希不符。");
+      if (
+        unit.questions.some(
+          (question) => !availableForNewLearning(question, unit.level),
+        )
+      )
+        throw editorialError("候选含已停用的听写或中文高阶听力题面，请返修。");
       validateIndependentReview(JSON.stringify(job.review_report), unit);
       unit.authorship.reviewedBy = reviewer.trim();
       unit.authorship.reviewedAt = new Date().toISOString().slice(0, 10);

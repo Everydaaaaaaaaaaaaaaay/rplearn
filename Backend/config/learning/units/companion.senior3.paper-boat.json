@@ -1,6 +1,6 @@
 {
   "id": "companion.senior3.paper-boat",
-  "version": 1,
+  "version": 2,
   "schemaVersion": 1,
   "scoringVersion": 1,
   "roleKey": "companion",
@@ -34,9 +34,9 @@
   "authorship": {
     "kind": "authored",
     "author": "Astra高三第二组独立作者",
-    "reviewedBy": "Codex主代理逐题复核，Astra作者逐题自审",
-    "reviewedAt": "2026-10-07",
-    "reviewNotes": "主代理逐题终审，按冻结作者稿机械映射正文、答案变体、提示、解析和前置故事；全部录音经双ASR及客观波形检查，不等同独立真人听感或教师效度审定。"
+    "reviewedBy": "Codex 主代理逐题语义复核",
+    "reviewedAt": "2026-10-23",
+    "reviewNotes": "主代理逐题终审，按冻结作者稿机械映射正文、答案变体、提示、解析和前置故事；全部录音经双ASR及客观波形检查，不等同独立真人听感或教师效度审定。 2026-10-23：听力理解题改用英文题面与选项；整句听写替换为理解选择；实时Supertonic按F1、M5两遍播放，原录音仅保留给历史版本。"
   },
   "beats": [
     {
@@ -66,7 +66,7 @@
       "id": "s3.second.q01",
       "goalId": "senior3.listen-discourse-position",
       "type": "listeningChoice",
-      "prompt": "听两人商量旧书交换活动。第二位说话人最后支持什么安排？",
+      "prompt": "What arrangement does the second speaker finally suggest?",
       "explanation": "B最初也考虑取消，但随后得知有人下午能帮忙，因此建议保留活动并改到午饭后。A仍需询问房间，不能说新时间已经最终落实。",
       "hint": "听清最初的赞同之后，哪条新信息使提议发生变化。",
       "instruction": "听后选择",
@@ -74,15 +74,15 @@
       "options": [
         {
           "id": "a",
-          "text": "取消活动，因为下午也缺少帮手。"
+          "text": "Cancel the event because there are too few helpers in the afternoon as well."
         },
         {
           "id": "b",
-          "text": "保留活动，建议改到午饭后进行。"
+          "text": "Keep the event and move its start to after lunch."
         },
         {
           "id": "c",
-          "text": "保留活动，仍按周六上午安排。"
+          "text": "Keep the event on Saturday morning as planned."
         }
       ],
       "answer": "b",
@@ -120,28 +120,38 @@
     {
       "id": "s3.second.q03",
       "goalId": "senior3.listen-precise-record",
-      "type": "dictation",
-      "prompt": "听录音，写出完整句子。inspected表示检查。",
-      "explanation": "录音中的was being inspected表示到达时正在检查桥。漏掉being会变成一般过去时被动，不能完整还原这次原声。",
-      "hint": "听清检查动作的完整动词短语，记录到达时的状态。",
-      "instruction": "听写完整句子",
-      "difficultyReason": "受控听写支架：8词、一个进行被动短语；不宣称新增语法机制或高难迁移。",
-      "acceptedAnswers": ["The bridge was being inspected when we arrived."],
-      "normalization": {
-        "ignoreCase": true,
-        "ignoreTerminalPunctuation": true
-      },
+      "type": "listeningChoice",
+      "prompt": "What was happening when the speakers arrived?",
+      "explanation": "was being inspected说明到达时桥正在接受检查；a错把正在进行说成完成，c改变到达的时间关系。",
+      "hint": "听清录音的意思及限定信息，再选择最符合的一项。",
+      "instruction": "听后选择",
+      "difficultyReason": "听力理解替代整句听写；保留原材料和能力支点，通过语义差异作答。",
       "audio": {
         "assetId": "audio.2de6181fd76737ae3c680f8141d8318eeabb395d2a7c615f1795fde61a2244bd",
         "text": "The bridge was being inspected when we arrived.",
         "voice": "F3"
-      }
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "The bridge inspection had already finished."
+        },
+        {
+          "id": "b",
+          "text": "The bridge was under inspection."
+        },
+        {
+          "id": "c",
+          "text": "The speakers were beginning their journey to the bridge."
+        }
+      ],
+      "answer": "b"
     },
     {
       "id": "s3.second.q04",
       "goalId": "senior3.listen-discourse-position",
       "type": "listeningChoice",
-      "prompt": "听关于手工活动的对话。对方澄清后，“免费”具体指什么？",
+      "prompt": "What does the workshop offer free of charge?",
       "explanation": "B把收费限定为主办方提供的材料，并确认教学本身免费；自带纸张与颜料可完全不付费。不能把free扩大到现场提供的一切。",
       "hint": "把入场及教学与材料供应分开听，注意only限定的收费对象。",
       "instruction": "听后选择",
@@ -149,15 +159,15 @@
       "options": [
         {
           "id": "a",
-          "text": "教学免费；自带材料无需付费，领用现场材料需付费。"
+          "text": "Teaching; participants pay only if they use materials supplied by the organisers."
         },
         {
           "id": "b",
-          "text": "教学和现场材料免费；自带材料也无需付费。"
+          "text": "Teaching and all materials supplied by the organisers."
         },
         {
           "id": "c",
-          "text": "材料免费；无论是否自带材料，都要交教学费。"
+          "text": "Materials; everyone must pay a teaching fee."
         }
       ],
       "answer": "a",
@@ -248,7 +258,7 @@
       "id": "s3.second.q07",
       "goalId": "senior3.listen-discourse-position",
       "type": "listeningChoice",
-      "prompt": "听环保小组对活动记录的说明。哪项保留了发言者认为仍需弄清的事情？",
+      "prompt": "What do the speakers still need to compare?",
       "explanation": "总杯数和到场人数都已知减少；仍需比较的是每人纸杯数。总量变小本身不能说明每人使用量变小。c没有宣称平均量已经下降。",
       "hint": "发言者已知道两个总量的变化，却提醒不能立即作出哪一种比较结论？",
       "instruction": "听后选择",
@@ -256,15 +266,15 @@
       "options": [
         {
           "id": "a",
-          "text": "今年纸杯总数是否比去年少，尚需统计。"
+          "text": "Whether the total number of cups was lower this year."
         },
         {
           "id": "b",
-          "text": "今年到场人数是否比去年少，尚需核实。"
+          "text": "Whether fewer people attended this year."
         },
         {
           "id": "c",
-          "text": "今年平均每位访客用了多少纸杯，需要比较。"
+          "text": "How many cups were used per visitor in each year."
         }
       ],
       "answer": "c",
@@ -283,7 +293,10 @@
       "hint": "两条记录各自成立；连接词应呈现差异，不能凭空建立原因。",
       "instruction": "填入准确表达",
       "difficultyReason": "高三受控衔接：在同一调查中准确对照两个群体的关注，接受两个合法变体；不是只认唯一连接词。",
-      "acceptedAnswers": ["whereas", "while"],
+      "acceptedAnswers": [
+        "whereas",
+        "while"
+      ],
       "normalization": {
         "ignoreCase": true,
         "ignoreTerminalPunctuation": true
@@ -312,13 +325,19 @@
           "text": "Yesterday, pupils crossing the yard had to stop because the queue blocked that path."
         }
       ],
-      "acceptedOrders": [["t1", "t2", "t3"]]
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3"
+        ]
+      ]
     },
     {
       "id": "s3.second.q10",
       "goalId": "senior3.listen-discourse-position",
       "type": "listeningChoice",
-      "prompt": "听会议中的一小段对话。两人接下来决定先谈什么？",
+      "prompt": "What do the speakers decide to discuss next?",
       "explanation": "A原本想转到食品摊位，B在转题前提出休息需求，A同意先处理它，食物议题留后。运动项目本身已经达成一致。",
       "hint": "不要把先被提到的下一议题当成最终顺序；听清first和afterwards指向什么。",
       "instruction": "听后选择",
@@ -326,15 +345,15 @@
       "options": [
         {
           "id": "a",
-          "text": "休息需求应到哪里提出。"
+          "text": "Where pupils can ask for a rest."
         },
         {
           "id": "b",
-          "text": "食品摊位如何安排。"
+          "text": "How to arrange the food stalls."
         },
         {
           "id": "c",
-          "text": "运动项目要保留哪些。"
+          "text": "Which sports events to keep."
         }
       ],
       "answer": "a",
@@ -372,25 +391,32 @@
     {
       "id": "s3.second.q12",
       "goalId": "senior3.listen-precise-record",
-      "type": "dictation",
-      "prompt": "听录音，写出完整句子。",
-      "explanation": "the other two routes we tried把比较限制在另外两条试走过的路线。漏掉two或we tried会丢失原声中的比较范围，不能改写成所有可能路线中最短。",
-      "hint": "除了比较结果，还要保留比较的是哪些路线。",
-      "instruction": "听写完整句子",
-      "difficultyReason": "高三精确听记支架：11词的限定比较，不靠罕见词或超长记忆跨度。",
-      "acceptedAnswers": [
-        "This route is shorter than the other two routes we tried.",
-        "This route is shorter than the other 2 routes we tried."
-      ],
-      "normalization": {
-        "ignoreCase": true,
-        "ignoreTerminalPunctuation": true
-      },
+      "type": "listeningChoice",
+      "prompt": "How does this route compare with the other two routes they tried?",
+      "explanation": "the other two routes表示比较对象包括另外两条，当前路线比两条都短；不要求逐字复述。",
+      "hint": "听清录音的意思及限定信息，再选择最符合的一项。",
+      "instruction": "听后选择",
+      "difficultyReason": "听力理解替代整句听写；保留原材料和能力支点，通过语义差异作答。",
       "audio": {
         "assetId": "audio.a8443befd2092d4ef0e654ca87952d186f68b33ffc0f7d84dc86a6d90853d28b",
         "text": "This route is shorter than the other two routes we tried.",
         "voice": "M5"
-      }
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "It is shorter than both of them."
+        },
+        {
+          "id": "b",
+          "text": "It is longer than both of them."
+        },
+        {
+          "id": "c",
+          "text": "It is shorter than one but longer than the other."
+        }
+      ],
+      "answer": "a"
     },
     {
       "id": "s3.second.q13",
@@ -423,13 +449,21 @@
           "text": "what"
         }
       ],
-      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]]
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4",
+          "t5"
+        ]
+      ]
     },
     {
       "id": "s3.second.q14",
       "goalId": "senior3.listen-discourse-position",
       "type": "listeningChoice",
-      "prompt": "听一段关于校园信息发布的发言。哪项最能概括说话人的主张？",
+      "prompt": "What is the speaker's main point about school communications?",
       "explanation": "App、纸质通知和电话分别适合不同需要；说话人没有主张全面转向其中一种。b概括了信息特点和接收者两个选择依据。",
       "hint": "听清In short之后如何把前面的三个例子联系起来。",
       "instruction": "听后选择",
@@ -437,15 +471,15 @@
       "options": [
         {
           "id": "a",
-          "text": "校园通知应改以纸质形式为主，尽量减少其他渠道。"
+          "text": "Use mainly paper notices and reduce other channels."
         },
         {
           "id": "b",
-          "text": "发布渠道应结合信息特点与接收者的实际需要选择。"
+          "text": "Choose the channel to suit the message and the people receiving it."
         },
         {
           "id": "c",
-          "text": "校园通知应改以电话联系为主，以免错过任何信息。"
+          "text": "Use mainly phone calls so that no information is missed."
         }
       ],
       "answer": "b",
@@ -541,7 +575,9 @@
       "hint": "已经确认的人不会因还有表格未核对而减少；但未核对的表格可能增加人数。",
       "instruction": "填入准确表达",
       "difficultyReason": "高三精确摘要支架：用常见短语保留证据给出的下界，不要求数学计算或统计术语。",
-      "acceptedAnswers": ["at least"],
+      "acceptedAnswers": [
+        "at least"
+      ],
       "normalization": {
         "ignoreCase": true,
         "ignoreTerminalPunctuation": true
@@ -578,7 +614,15 @@
           "text": "is about"
         }
       ],
-      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]]
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4",
+          "t5"
+        ]
+      ]
     }
   ]
 }

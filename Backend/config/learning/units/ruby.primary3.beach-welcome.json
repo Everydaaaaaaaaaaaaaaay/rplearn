@@ -1,6 +1,6 @@
 {
   "id": "ruby.primary3.beach-welcome",
-  "version": 2,
+  "version": 3,
   "schemaVersion": 1,
   "scoringVersion": 1,
   "roleKey": "ruby",
@@ -10,7 +10,9 @@
   "summary": "加入 Ruby 的海岸小队，练习问候、回应和道别。",
   "scene": "海风吹起活动桌上的纸。Ruby 压住签到表，朝刚到的伙伴挥手，笑着让大家围过来。",
   "estimatedMinutes": 5,
-  "goalIds": ["p3.greetings"],
+  "goalIds": [
+    "p3.greetings"
+  ],
   "prerequisiteGoalIds": [],
   "references": [
     {
@@ -29,9 +31,9 @@
   "authorship": {
     "kind": "authored",
     "author": "Codex · 原创编写与逐题自审",
-    "reviewedBy": "Codex · 原创编写与逐题自审",
-    "reviewedAt": "2026-09-26",
-    "reviewNotes": "逐题检查独立题意、选项及输入变体；新增固定听力资源，双模型识别与波形检查通过。作者自审，不代表独立教研或人耳音质验收。"
+    "reviewedBy": "Codex 主代理逐题语义复核",
+    "reviewedAt": "2026-10-23",
+    "reviewNotes": "逐题检查独立题意、选项及输入变体；新增固定听力资源，双模型识别与波形检查通过。作者自审，不代表独立教研或人耳音质验收。 2026-10-23：听力理解题改用英文题面与选项；整句听写替换为理解选择；实时Supertonic按F1、M5两遍播放，原录音仅保留给历史版本。"
   },
   "beats": [
     {
@@ -61,7 +63,7 @@
       "id": "morning",
       "goalId": "p3.greetings",
       "instruction": "听一听，再选择符合题意的一项。",
-      "prompt": "听 Ruby 的话，选择她使用的问候语。",
+      "prompt": "Which greeting does Ruby use?",
       "hint": "先完整听一遍，留意说话者使用的关键词。",
       "explanation": "录音中的 Good morning! 表示早上好；后面的自我介绍不是本题要判断的内容。",
       "difficultyReason": "小学三年级基础交际语听辨；固定短句音频支持正常和慢速重播，题干不显示听力原文。",
@@ -114,7 +116,14 @@
           "text": "to"
         }
       ],
-      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ]
     },
     {
       "id": "greeting-reply",
@@ -196,22 +205,32 @@
     {
       "id": "i-am",
       "goalId": "p3.greetings",
-      "instruction": "听一听，写出你听到的英文。",
-      "prompt": "可以先完整听一遍，再输入；需要时可用慢速重播。 这次是一个告别用语。",
-      "hint": "这是离开时常用的一个告别用语。",
-      "explanation": "Goodbye! 表示再见。本题接受 goodbye、good-bye 及分写 good bye，不因正字法变体误判听懂的告别语。",
-      "difficultyReason": "小学三年级短语或短句听写；不含专名，大小写与句末标点不单独扣分，允许正常及慢速重播。",
-      "type": "dictation",
-      "acceptedAnswers": ["Goodbye", "Good-bye", "Good bye"],
-      "normalization": {
-        "ignoreCase": true,
-        "ignoreTerminalPunctuation": true
-      },
+      "instruction": "听后选择",
+      "prompt": "What is the speaker doing?",
+      "hint": "听清录音的意思及限定信息，再选择最符合的一项。",
+      "explanation": "Goodbye用于告别；不是问候或道谢。根据交际功能选择，不要求拼写。",
+      "difficultyReason": "听力理解替代整句听写；保留原材料和能力支点，通过语义差异作答。",
+      "type": "listeningChoice",
       "audio": {
         "assetId": "audio.e22147ec8cbb8d0258385425499bc557a73ef3106870943b78734d9619c2ea36",
         "text": "Goodbye!",
         "voice": "F3"
-      }
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Saying hello."
+        },
+        {
+          "id": "b",
+          "text": "Saying thank you."
+        },
+        {
+          "id": "c",
+          "text": "Saying goodbye."
+        }
+      ],
+      "answer": "c"
     },
     {
       "id": "leave",

@@ -8,7 +8,10 @@ import {
   type BankCandidate,
 } from "../../../src/modules/learning/bank-content.js";
 import { loadBankCatalog } from "../../../src/modules/learning/bank-catalog.js";
-import { learningFixture } from "../../helpers/learning.js";
+import {
+  freshLearningFixture as learningFixture,
+  learningFixture as legacyFixture,
+} from "../../helpers/learning.js";
 
 function required<T>(value: T | undefined | null): T {
   if (value === undefined || value === null) throw new Error("测试夹具缺少必要内容。");
@@ -46,6 +49,54 @@ describe("公共题库内容与组卷", () => {
     });
     return { candidates, blueprint };
   }
+
+  it("旧蓝图听写槽改选同目标的理解题，旧听写不再进入新卷", () => {
+    const { candidates, blueprint } = exclusionFixture();
+    const index = candidates.findIndex(
+      (q) => q.question.type === "listeningCompletion",
+    );
+    const candidate = required(candidates[index]);
+    const legacy = required(
+      legacyFixture().questions.find((q) => q.type === "dictation"),
+    );
+    const replacement: BankCandidate = {
+      ...candidate,
+      id: "test.replacement",
+      question: {
+        id: "test.replacement",
+        goalId: candidate.question.goalId,
+        type: "listeningChoice",
+        prompt: "What does the speaker say?",
+        instruction: "Listen and choose.",
+        hint: "Listen to the greeting.",
+        explanation: "The speaker says hello.",
+        difficultyReason: "Engineering test.",
+        audio: legacy.audio,
+        options: [
+          { id: "a", text: "Hello." },
+          { id: "b", text: "Goodbye." },
+        ],
+        answer: "a",
+      },
+    };
+    const slot = required(blueprint.slots[index]);
+    slot.type = "dictation";
+    const selected = required(
+      assembleBankQuestions(
+        blueprint,
+        [
+          ...candidates.filter((_, i) => i !== index),
+          { ...candidate, question: { ...legacy, goalId: candidate.question.goalId } },
+          replacement,
+        ],
+        "anyone",
+        new Set(),
+        () => 0,
+      ),
+    );
+    expect(selected[index]?.id).toBe(replacement.id);
+    expect(selected.some((q) => q.question.type === "dictation")).toBe(false);
+  });
 
   it("前题暴露后题答案时回溯选择替代题，仍保留完整题数与槽位", () => {
     const { candidates, blueprint } = exclusionFixture();

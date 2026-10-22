@@ -11,7 +11,7 @@ import { gradeAnswer } from "../../src/modules/learning/grading.js";
 import { registerLearningRoutes } from "../../src/modules/learning/routes.js";
 import { learningImageFixture } from "../helpers/learning-images.js";
 import { learningAudioFixture } from "../helpers/learning-audio.js";
-import { learningFixture } from "../helpers/learning.js";
+import { freshLearningFixture as learningFixture } from "../helpers/learning.js";
 import { integrationConfig } from "../helpers/integration.js";
 
 function required<T>(value: T | undefined): T {
@@ -75,12 +75,13 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         const asset =
           question.type === "listeningChoice"
             ? assets[0]
-            : question.type === "dictation"
+            : question.type === "listeningCompletion"
               ? assets[1]
               : undefined;
         if (
           asset &&
-          (question.type === "listeningChoice" || question.type === "dictation")
+          (question.type === "listeningChoice" ||
+            question.type === "listeningCompletion")
         )
           question.audio = {
             assetId: asset.metadata.id,
@@ -250,6 +251,43 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           await app.inject({
             method: "GET",
             url: `/v1/learning/attempts/${attemptId}/audio/q.choice`,
+            headers: { authorization: `Bearer ${tokens[0] ?? ""}` },
+          })
+        ).statusCode,
+      ).toBe(404);
+    });
+    it("实时脚本接口复用挑战所有权与资源绑定，不依赖对象存储下载", async () => {
+      const assetId = required(assets[0]).metadata.id;
+      const url = `/v1/learning/attempts/${attemptId}/speech/q.listen/${assetId}`;
+      expect((await app.inject({ method: "GET", url })).statusCode).toBe(401);
+      expect(
+        (
+          await app.inject({
+            method: "GET",
+            url,
+            headers: { authorization: `Bearer ${tokens[1] ?? ""}` },
+          })
+        ).statusCode,
+      ).toBe(404);
+      const response = await app.inject({
+        method: "GET",
+        url,
+        headers: { authorization: `Bearer ${tokens[0] ?? ""}` },
+      });
+      expect(response.statusCode).toBe(200);
+      expect(response.headers["cache-control"]).toBe("no-store");
+      expect(response.json()).toMatchObject({
+        assetId,
+        segments: [{ text: required(assets[0]).metadata.transcript, pauseAfterMs: 0 }],
+      });
+      expect(response.json()).not.toHaveProperty("url");
+      expect(response.json()).not.toHaveProperty("answer");
+      const unbound = `/v1/learning/attempts/${attemptId}/speech/q.choice/${assetId}`;
+      expect(
+        (
+          await app.inject({
+            method: "GET",
+            url: unbound,
             headers: { authorization: `Bearer ${tokens[0] ?? ""}` },
           })
         ).statusCode,

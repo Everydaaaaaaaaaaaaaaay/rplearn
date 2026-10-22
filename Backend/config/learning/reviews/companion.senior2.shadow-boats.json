@@ -1,10 +1,10 @@
 {
   "unitId": "companion.senior2.shadow-boats",
-  "contentHash": "38579f038c85922120197d6dafe0703ad523da0e390f55f3ff2fe4d29bd23a96",
+  "contentHash": "a1c635307c3346ea0b6b525bc1d03a649aa46cabdb81a50a246d8f73aa1e3b23",
   "status": "approved",
   "reviewKind": "author-self-review",
-  "reviewer": "Codex主代理逐题复核，Astra作者逐题自审",
-  "reviewedAt": "2026-10-07",
+  "reviewer": "Codex 主代理逐题语义复核",
+  "reviewedAt": "2026-10-23",
   "roleFit": "普通同行者完整开场，无固定姓名、性别或职业；题目独立且可供任意角色抽取。",
   "levelFit": "依据实际核读教材页及逐题任务登记；包含明确的基础支架与既有结构迁移，不把18题宣称为18项新增知识。",
   "limitations": "本单元为局部受控练习，不等于完整考试或自由口语写作测量。音频经双ASR及客观波形检查，尚未独立真人听感审定；主代理逐题终审见senior-second-review-2026-10-07.md。",
@@ -127,21 +127,42 @@
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["c", "w", "e", "i", "r", "p"]
+            "tokenIds": [
+              "c",
+              "w",
+              "e",
+              "i",
+              "r",
+              "p"
+            ]
           },
           "correct": true
         },
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["c", "e", "w", "i", "r", "p"]
+            "tokenIds": [
+              "c",
+              "e",
+              "w",
+              "i",
+              "r",
+              "p"
+            ]
           },
           "correct": false
         },
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["c", "w", "e", "r", "i", "p"]
+            "tokenIds": [
+              "c",
+              "w",
+              "e",
+              "r",
+              "i",
+              "p"
+            ]
           },
           "correct": false
         }
@@ -211,21 +232,42 @@
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["w", "n", "i", "a", "r", "d"]
+            "tokenIds": [
+              "w",
+              "n",
+              "i",
+              "a",
+              "r",
+              "d"
+            ]
           },
           "correct": true
         },
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["w", "n", "i", "d", "r", "a"]
+            "tokenIds": [
+              "w",
+              "n",
+              "i",
+              "d",
+              "r",
+              "a"
+            ]
           },
           "correct": false
         },
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["w", "i", "n", "a", "r", "d"]
+            "tokenIds": [
+              "w",
+              "i",
+              "n",
+              "a",
+              "r",
+              "d"
+            ]
           },
           "correct": false
         }
@@ -496,44 +538,41 @@
     },
     {
       "questionId": "s2.astra.second.q13",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听近况询问，写下完整问句。",
-      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"How long have you been waiting?\",\"how long have you been waiting\"],\"wrongExamples\":[\"How long you have been waiting?\",\"How long have you waited?\"],\"allAnswerReasons\":{\"原问句及大小写标点变体\":\"保留完整所听词序和词形。\",\"陈述语序反例\":\"与录音的直接问句语序不同。\",\"have you waited反例\":\"本身可构成另一合法问句，但没有听写出本录音的been waiting。\"},\"ambiguity\":\"无自由改述任务；统一归一化负责大小写和末尾问号，不能接受遗漏助动词。\",\"novelty\":\"旧库有相近结构的文字排序，故明确标基础听写支架；只有真实制音和答前隐藏文本后才增加听辨任务，不能算全新语法机制。\",\"sourceBoundary\":\"印刷54的教材听记任务支持受控听辨输入方式；本问句不是教材规定的听写项目，是本产品的原创基础练习。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior.selective1.review2019\",\"pages\":\"印刷65／PDF72语法；印刷54／PDF61听记事实任务\",\"supportingGoalIds\":[\"s2.present-perfect-continuous\"]}}",
-      "optionNotes": {},
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：What does the speaker want to know?",
+      "ambiguityReview": "How long have you been waiting询问已持续等待的时长；不是地点，也不是未来还打算等多久。 按录音语义区分三项；不再要求整句逐字匹配。",
+      "optionNotes": {
+        "a": "该选项与录音事实或限定不符。How long have you been waiting询问已持续等待的时长；不是地点，也不是未来还打算等多久。",
+        "b": "该选项与录音事实或限定不符。How long have you been waiting询问已持续等待的时长；不是地点，也不是未来还打算等多久。",
+        "c": "与录音事实和限制一致。How long have you been waiting询问已持续等待的时长；不是地点，也不是未来还打算等多久。"
+      },
       "probes": [
         {
           "answer": {
-            "kind": "text",
-            "text": "How long have you been waiting?"
-          },
-          "correct": true
-        },
-        {
-          "answer": {
-            "kind": "text",
-            "text": "how long have you been waiting"
-          },
-          "correct": true
-        },
-        {
-          "answer": {
-            "kind": "text",
-            "text": "How long you have been waiting?"
+            "kind": "choice",
+            "optionId": "a"
           },
           "correct": false
         },
         {
           "answer": {
-            "kind": "text",
-            "text": "How long have you waited?"
+            "kind": "choice",
+            "optionId": "b"
           },
           "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
         }
       ]
     },
     {
       "questionId": "s2.astra.second.q14",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一段活动讨论。说话人为什么暂时不决定参加？",
-      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"a\"],\"wrongExamples\":[\"b\",\"c\"],\"optionReasons\":{\"a\":\"把仍需核实的台阶与脚踝状况连成决定理由。\",\"b\":\"price is fine已排除价格障碍。\",\"c\":\"sounds lovely明确对活动有好感，没有换活动要求。\"},\"ambiguity\":\"不推断具体损伤或医生建议，不作医疗判断；只问暂缓决定理由。\",\"audioNecessity\":\"题面不提供身体状况、路线或价格事实，必须听录音。\",\"novelty\":\"不复用旧日程改约或简单过程数量记录；需区分已满足条件与待核实条件。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective1.review2019\",\"pages\":\"印刷6／PDF13，Listen for reasons；名词从句依据选择性必修二印刷5\",\"additionalSourceIds\":[\"pep.senior.selective2.preface2019\"]}}",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：Why has the speaker not decided whether to join the walk?",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"a\"],\"wrongExamples\":[\"b\",\"c\"],\"optionReasons\":{\"a\":\"把仍需核实的台阶与脚踝状况连成决定理由。\",\"b\":\"price is fine已排除价格障碍。\",\"c\":\"sounds lovely明确对活动有好感，没有换活动要求。\"},\"ambiguity\":\"不推断具体损伤或医生建议，不作医疗判断；只问暂缓决定理由。\",\"audioNecessity\":\"题面不提供身体状况、路线或价格事实，必须听录音。\",\"novelty\":\"不复用旧日程改约或简单过程数量记录；需区分已满足条件与待核实条件。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective1.review2019\",\"pages\":\"印刷6／PDF13，Listen for reasons；名词从句依据选择性必修二印刷5\",\"additionalSourceIds\":[\"pep.senior.selective2.preface2019\"]}} 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "把仍需核实的台阶与脚踝状况连成决定理由。",
         "b": "price is fine已排除价格障碍。",
@@ -565,8 +604,8 @@
     },
     {
       "questionId": "s2.astra.second.q15",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听两个人讨论未来出行。乙与甲的分歧主要在哪里？",
-      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"b\"],\"wrongExamples\":[\"a\",\"c\"],\"optionReasons\":{\"a\":\"把两人的未来预测误作对当前事实的争执。\",\"b\":\"准确区分最终可能与十年太早。\",\"c\":\"把质疑十年改成同意，并把建设耗时误作希望推迟。\"},\"ambiguity\":\"不要求评价真实城市基础设施；录音是虚构观点，不能当作现实预测证据。\",\"audioNecessity\":\"甲乙观点和时间限定只在录音中给出。\",\"productionNotes\":\"两名可辨说话者自然轮换；Speaker A/B是角色标签，不读出。\",\"novelty\":\"旧未来题集中时间段占用；本题理解预测中的部分赞同和时间分歧。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective1.review2019\",\"pages\":\"印刷18—19／PDF25—26，听预测与讨论其可能性\",\"supportingGoalIds\":[\"s2.future-progressive\"]}}",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：What do the speakers mainly disagree about?",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"b\"],\"wrongExamples\":[\"a\",\"c\"],\"optionReasons\":{\"a\":\"把两人的未来预测误作对当前事实的争执。\",\"b\":\"准确区分最终可能与十年太早。\",\"c\":\"把质疑十年改成同意，并把建设耗时误作希望推迟。\"},\"ambiguity\":\"不要求评价真实城市基础设施；录音是虚构观点，不能当作现实预测证据。\",\"audioNecessity\":\"甲乙观点和时间限定只在录音中给出。\",\"productionNotes\":\"两名可辨说话者自然轮换；Speaker A/B是角色标签，不读出。\",\"novelty\":\"旧未来题集中时间段占用；本题理解预测中的部分赞同和时间分歧。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective1.review2019\",\"pages\":\"印刷18—19／PDF25—26，听预测与讨论其可能性\",\"supportingGoalIds\":[\"s2.future-progressive\"]}} 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "把两人的未来预测误作对当前事实的争执。",
         "b": "准确区分最终可能与十年太早。",
@@ -598,8 +637,8 @@
     },
     {
       "questionId": "s2.astra.second.q16",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一段练习后的留言。你想先准确回应对方遇到的困难，再邀请对方说说卡住的位置。哪句回应符合？",
-      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"b\"],\"wrongExamples\":[\"a\",\"c\"],\"optionReasons\":{\"a\":\"与Everyone waited quietly相反；语气关切不代表事实准确。\",\"b\":\"保留充分练习后仍忘词这一实际困难，并邀请讲述具体卡点。\",\"c\":\"说话人已经站起来讲话，只是忘记后续，不是错失发言机会。\"},\"ambiguity\":\"不把三个句子作为普遍人际道德判定，只按本题明确回应目标评分。\",\"audioNecessity\":\"三项都是自然关切回应，只有录音提供忘词、已开始发言与观众安静三条区分信息。\",\"novelty\":\"旧b17是请求别人解释图表；此题是听对方失败经历后进行关切倾听，不是交换形容词。\",\"parentRevision\":\"主代理将when I stood up改为halfway through it，明确已经开始并讲到一半，排除尚未开口就忘词的解释；原选项和答案不变。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior.selective1.review2019\",\"pages\":\"印刷19／PDF26，Showing concern与Comforting people\"}}",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：Which reply accurately acknowledges the speaker's difficulty and invites them to explain where they got stuck?",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"b\"],\"wrongExamples\":[\"a\",\"c\"],\"optionReasons\":{\"a\":\"与Everyone waited quietly相反；语气关切不代表事实准确。\",\"b\":\"保留充分练习后仍忘词这一实际困难，并邀请讲述具体卡点。\",\"c\":\"说话人已经站起来讲话，只是忘记后续，不是错失发言机会。\"},\"ambiguity\":\"不把三个句子作为普遍人际道德判定，只按本题明确回应目标评分。\",\"audioNecessity\":\"三项都是自然关切回应，只有录音提供忘词、已开始发言与观众安静三条区分信息。\",\"novelty\":\"旧b17是请求别人解释图表；此题是听对方失败经历后进行关切倾听，不是交换形容词。\",\"parentRevision\":\"主代理将when I stood up改为halfway through it，明确已经开始并讲到一半，排除尚未开口就忘词的解释；原选项和答案不变。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior.selective1.review2019\",\"pages\":\"印刷19／PDF26，Showing concern与Comforting people\"}} 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "与Everyone waited quietly相反；语气关切不代表事实准确。",
         "b": "保留充分练习后仍忘词这一实际困难，并邀请讲述具体卡点。",
@@ -631,8 +670,8 @@
     },
     {
       "questionId": "s2.astra.second.q17",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听两位同行者讨论下午的安排。最后同意的是哪一种？",
-      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"a\"],\"wrongExamples\":[\"b\",\"c\"],\"optionReasons\":{\"a\":\"准确保留分开活动与四点会合的共同部分。\",\"b\":\"把各自活动变成共同活动，并把四点地点改成展览。\",\"c\":\"添加共同看展且取消了已接受的会面。\"},\"ambiguity\":\"after that承接四点会合；不推断两人出发前是否同行。\",\"audioNecessity\":\"只有录音给出个人愿望、提议、接受及最终时点。\",\"productionNotes\":\"两名可辨说话者自然轮换；不朗读Speaker标签。\",\"novelty\":\"旧利弊题是试用与公平比较；此题通过后续接受轮次确认分段折中。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior.selective1.review2019\",\"pages\":\"印刷66—67／PDF73—74，Compromise与达成双方接受的安排\"}}",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：What do the speakers finally agree to do?",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"a\"],\"wrongExamples\":[\"b\",\"c\"],\"optionReasons\":{\"a\":\"准确保留分开活动与四点会合的共同部分。\",\"b\":\"把各自活动变成共同活动，并把四点地点改成展览。\",\"c\":\"添加共同看展且取消了已接受的会面。\"},\"ambiguity\":\"after that承接四点会合；不推断两人出发前是否同行。\",\"audioNecessity\":\"只有录音给出个人愿望、提议、接受及最终时点。\",\"productionNotes\":\"两名可辨说话者自然轮换；不朗读Speaker标签。\",\"novelty\":\"旧利弊题是试用与公平比较；此题通过后续接受轮次确认分段折中。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior.selective1.review2019\",\"pages\":\"印刷66—67／PDF73—74，Compromise与达成双方接受的安排\"}} 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "准确保留分开活动与四点会合的共同部分。",
         "b": "把各自活动变成共同活动，并把四点地点改成展览。",
@@ -664,8 +703,8 @@
     },
     {
       "questionId": "s2.astra.second.q18",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一段对迟到原因的说明。下列哪条记录把最初计划与实际行动区分清楚？",
-      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"b\"],\"wrongExamples\":[\"a\",\"c\"],\"optionReasons\":{\"a\":\"把计划误作实际乘车，并虚构车慢原因。\",\"b\":\"保留计划、回家取物造成的错过以及下一班的实际行动。\",\"c\":\"颠倒班次，并把留在家中的钱包误为车上遗失。\"},\"ambiguity\":\"不把had planned本身解释成一定未实现；未实现由but之后和后续班次明确给出。\",\"audioNecessity\":\"原因及实际班次不在文字题面出现，必须从录音获取。\",\"novelty\":\"不是原b14到达时门开与未开始的双状态；新任务将计划与实施分开，并串起迟到原因。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior.selective1.review2019\",\"pages\":\"印刷53／PDF60过去参照；印刷19／PDF26听事件顺序；PEP印刷6／PDF13听理由\",\"additionalSourceIds\":[\"pep.senior.selective1.review2019\"],\"supportingGoalIds\":[\"s2.past-perfect\"]}}",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：Which note distinguishes the speaker's original plan from what actually happened?",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"b\"],\"wrongExamples\":[\"a\",\"c\"],\"optionReasons\":{\"a\":\"把计划误作实际乘车，并虚构车慢原因。\",\"b\":\"保留计划、回家取物造成的错过以及下一班的实际行动。\",\"c\":\"颠倒班次，并把留在家中的钱包误为车上遗失。\"},\"ambiguity\":\"不把had planned本身解释成一定未实现；未实现由but之后和后续班次明确给出。\",\"audioNecessity\":\"原因及实际班次不在文字题面出现，必须从录音获取。\",\"novelty\":\"不是原b14到达时门开与未开始的双状态；新任务将计划与实施分开，并串起迟到原因。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior.selective1.review2019\",\"pages\":\"印刷53／PDF60过去参照；印刷19／PDF26听事件顺序；PEP印刷6／PDF13听理由\",\"additionalSourceIds\":[\"pep.senior.selective1.review2019\"],\"supportingGoalIds\":[\"s2.past-perfect\"]}} 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "把计划误作实际乘车，并虚构车慢原因。",
         "b": "保留计划、回家取物造成的错过以及下一班的实际行动。",

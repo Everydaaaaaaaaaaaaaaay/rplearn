@@ -1,3 +1,4 @@
+import { availableForNewLearning } from "./bank-content.js";
 import { ZodError } from "zod";
 import type { TransactionSql } from "postgres";
 import type { DatabaseResource } from "../../db/client.js";
@@ -353,6 +354,8 @@ export class LearningBankRepository {
     published: boolean,
     operator: string,
   ) {
+    if (published && !availableForNewLearning(q.question, q.level))
+      conflict("此听力题型或题面已停用，请改为英文听力理解题。");
     const [current] = await sql<
       { payload: BankQuestion; content_hash: string }[]
     >`select v.payload,v.content_hash from app.learning_bank_questions q join app.learning_bank_versions v on v.question_id=q.id and v.version=q.current_version where q.id=${id} for update of q`;
@@ -380,6 +383,8 @@ export class LearningBankRepository {
       id: bankIdentity(value.question),
       version: 1,
     });
+    if (!availableForNewLearning(q.question, q.level))
+      conflict("此听力题型或题面已停用，请改为英文听力理解题。");
     return this.database.sql.begin(async (sql) => {
       const [template] = await sql<
         { payload: BankQuestion; content_hash: string }[]

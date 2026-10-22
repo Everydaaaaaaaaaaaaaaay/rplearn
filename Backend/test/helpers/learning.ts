@@ -123,3 +123,12 @@ export function learningFixture(id = "test.unit-one"): LearningUnit {
     ],
   };
 }
+
+/** Fresh supply uses bounded word completion; legacy dictation fixtures remain above for history/grading tests. */
+export function freshLearningFixture(id = "test.unit-one"): LearningUnit {
+  const unit = learningFixture(id);
+  unit.questions = unit.questions.map((q) =>
+    q.type === "dictation" ? { ...q, type: "listeningCompletion", wordLimit: 1 } : q,
+  );
+  return unit;
+}

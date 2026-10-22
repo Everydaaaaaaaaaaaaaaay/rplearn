@@ -1,6 +1,6 @@
 {
   "id": "marcus.primary3.family-photo-wall",
-  "version": 2,
+  "version": 3,
   "schemaVersion": 1,
   "scoringVersion": 1,
   "roleKey": "marcus",
@@ -10,7 +10,9 @@
   "summary": "陪 Marcus 整理家庭照片，练习家庭成员和人物介绍。",
   "scene": "Marcus 从纸袋里取出几张家庭照片。奶奶的厨房里留了一小块墙面，他想把重要的人都放进去。",
   "estimatedMinutes": 5,
-  "goalIds": ["p3.family"],
+  "goalIds": [
+    "p3.family"
+  ],
   "prerequisiteGoalIds": [],
   "references": [
     {
@@ -29,9 +31,9 @@
   "authorship": {
     "kind": "authored",
     "author": "Codex · 原创编写与逐题自审",
-    "reviewedBy": "Codex · 原创编写与逐题自审",
-    "reviewedAt": "2026-09-26",
-    "reviewNotes": "逐题检查独立题意、选项及输入变体；新增固定听力资源，双模型识别与波形检查通过。作者自审，不代表独立教研或人耳音质验收。"
+    "reviewedBy": "Codex 主代理逐题语义复核",
+    "reviewedAt": "2026-10-23",
+    "reviewNotes": "逐题检查独立题意、选项及输入变体；新增固定听力资源，双模型识别与波形检查通过。作者自审，不代表独立教研或人耳音质验收。 2026-10-23：听力理解题改用英文题面与选项；整句听写替换为理解选择；实时Supertonic按F1、M5两遍播放，原录音仅保留给历史版本。"
   },
   "beats": [
     {
@@ -113,7 +115,7 @@
       "id": "my-mother",
       "goalId": "p3.family",
       "instruction": "听一听，再选择符合题意的一项。",
-      "prompt": "听一句家庭介绍，选择你听到的句子。",
+      "prompt": "Which sentence do you hear?",
       "hint": "先完整听一遍，留意说话者使用的关键词。",
       "explanation": "录音是 This is my mother.，既要听清 mother，也要听清 my。",
       "difficultyReason": "小学三年级基础交际语听辨；固定短句音频支持正常和慢速重播，题干不显示听力原文。",
@@ -166,27 +168,44 @@
           "text": "is"
         }
       ],
-      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ]
     },
     {
       "id": "sister-word",
       "goalId": "p3.family",
-      "instruction": "听一听，写出你听到的英文。",
-      "prompt": "可以先完整听一遍，再输入；需要时可用慢速重播。 这次写一句介绍家人的话。",
-      "hint": "注意亲属称呼；英文这个词不区分姐姐和妹妹。",
-      "explanation": "This is my sister. 表示这是我的姐姐或妹妹。sister 不区分年龄先后，brother 则改变了亲属称呼。",
-      "difficultyReason": "小学三年级短语或短句听写；不含专名，大小写与句末标点不单独扣分，允许正常及慢速重播。",
-      "type": "dictation",
-      "acceptedAnswers": ["This is my sister"],
-      "normalization": {
-        "ignoreCase": true,
-        "ignoreTerminalPunctuation": true
-      },
+      "instruction": "听后选择",
+      "prompt": "Who is being introduced?",
+      "hint": "听清录音的意思及限定信息，再选择最符合的一项。",
+      "explanation": "sister指姐妹；brother是兄弟，mother是母亲。根据听到的亲属关系选择，不要求整句拼写。",
+      "difficultyReason": "听力理解替代整句听写；保留原材料和能力支点，通过语义差异作答。",
+      "type": "listeningChoice",
       "audio": {
         "assetId": "audio.7a365bb1e118b5e659503a8483d843f82ac776a326122adc0e3299f9299b6cca",
         "text": "This is my sister.",
         "voice": "M3"
-      }
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "A sister."
+        },
+        {
+          "id": "b",
+          "text": "A brother."
+        },
+        {
+          "id": "c",
+          "text": "A mother."
+        }
+      ],
+      "answer": "a"
     },
     {
       "id": "grandma-name",
@@ -240,7 +259,14 @@
           "text": "is"
         }
       ],
-      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "companion.senior2.shadow-boats",
-  "version": 1,
+  "version": 2,
   "schemaVersion": 1,
   "scoringVersion": 1,
   "roleKey": "companion",
@@ -71,9 +71,9 @@
   "authorship": {
     "kind": "authored",
     "author": "Astra 高二第二组独立逐题作者",
-    "reviewedBy": "Codex主代理逐题复核，Astra作者逐题自审",
-    "reviewedAt": "2026-10-07",
-    "reviewNotes": "主代理逐题终审，按冻结作者稿机械映射正文、答案变体、提示、解析和前置故事；全部录音经双ASR及客观波形检查，不等同独立真人听感或教师效度审定。"
+    "reviewedBy": "Codex 主代理逐题语义复核",
+    "reviewedAt": "2026-10-23",
+    "reviewNotes": "主代理逐题终审，按冻结作者稿机械映射正文、答案变体、提示、解析和前置故事；全部录音经双ASR及客观波形检查，不等同独立真人听感或教师效度审定。 2026-10-23：听力理解题改用英文题面与选项；整句听写替换为理解选择；实时Supertonic按F1、M5两遍播放，原录音仅保留给历史版本。"
   },
   "beats": [
     {
@@ -108,7 +108,10 @@
       "hint": "先找从句已有的主语，再看空格对应谁与什么成分；日常用法和较正式用法可能都成立。",
       "instruction": "填入准确表达",
       "difficultyReason": "受控运用；不是人名后机械填who",
-      "acceptedAnswers": ["whom", "who"],
+      "acceptedAnswers": [
+        "whom",
+        "who"
+      ],
       "normalization": {
         "ignoreCase": true,
         "ignoreTerminalPunctuation": true
@@ -199,7 +202,16 @@
           "text": "is closed"
         }
       ],
-      "acceptedOrders": [["c", "w", "e", "i", "r", "p"]]
+      "acceptedOrders": [
+        [
+          "c",
+          "w",
+          "e",
+          "i",
+          "r",
+          "p"
+        ]
+      ]
     },
     {
       "id": "s2.astra.second.q05",
@@ -235,7 +247,9 @@
       "hint": "判断表语部分是在报告已经确定的事实，还是保留两个可能结果。",
       "instruction": "填入准确表达",
       "difficultyReason": "名词从句的信息性质",
-      "acceptedAnswers": ["whether"],
+      "acceptedAnswers": [
+        "whether"
+      ],
       "normalization": {
         "ignoreCase": true,
         "ignoreTerminalPunctuation": true
@@ -276,7 +290,16 @@
           "text": "is"
         }
       ],
-      "acceptedOrders": [["w", "n", "i", "a", "r", "d"]]
+      "acceptedOrders": [
+        [
+          "w",
+          "n",
+          "i",
+          "a",
+          "r",
+          "d"
+        ]
+      ]
     },
     {
       "id": "s2.astra.second.q08",
@@ -389,7 +412,9 @@
       "hint": "先识别devote time to的完整搭配，再判断这个to连接的是哪类成分。",
       "instruction": "填入准确表达",
       "difficultyReason": "介词to与不定式标记的区别",
-      "acceptedAnswers": ["checking"],
+      "acceptedAnswers": [
+        "checking"
+      ],
       "normalization": {
         "ignoreCase": true,
         "ignoreTerminalPunctuation": true
@@ -423,28 +448,38 @@
     {
       "id": "s2.astra.second.q13",
       "goalId": "s2.listening-duration-question",
-      "type": "dictation",
-      "prompt": "听近况询问，写下完整问句。",
-      "explanation": "How long询问持续时长；have you been waiting是现在完成进行时的疑问结构。",
-      "hint": "留意时长问法，以及主语前后的助动词位置。",
-      "instruction": "听写完整句子",
-      "difficultyReason": "基础受控听写，不计新增高阶迁移",
-      "acceptedAnswers": ["How long have you been waiting?"],
-      "normalization": {
-        "ignoreCase": true,
-        "ignoreTerminalPunctuation": true
-      },
+      "type": "listeningChoice",
+      "prompt": "What does the speaker want to know?",
+      "explanation": "How long have you been waiting询问已持续等待的时长；不是地点，也不是未来还打算等多久。",
+      "hint": "听清录音的意思及限定信息，再选择最符合的一项。",
+      "instruction": "听后选择",
+      "difficultyReason": "听力理解替代整句听写；保留原材料和能力支点，通过语义差异作答。",
       "audio": {
         "assetId": "audio.a1597d3ffb228c0b70ec3feb01e61932939278b547dff4de4932f807abca6d36",
         "text": "How long have you been waiting?",
         "voice": "F3"
-      }
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Where the listener has been waiting."
+        },
+        {
+          "id": "b",
+          "text": "How much longer the listener plans to wait."
+        },
+        {
+          "id": "c",
+          "text": "How much time the listener has already spent waiting."
+        }
+      ],
+      "answer": "c"
     },
     {
       "id": "s2.astra.second.q14",
       "goalId": "s2.listening-reasons-and-response",
       "type": "listeningChoice",
-      "prompt": "听一段活动讨论。说话人为什么暂时不决定参加？",
+      "prompt": "Why has the speaker not decided whether to join the walk?",
       "explanation": "说话人认可活动和价格，待查的是路线台阶；脚踝仍疼解释为何关心台阶。未说要降价或换活动。",
       "hint": "区分已经给出正面评价的方面，以及说话人仍要核实的信息。",
       "instruction": "听后选择",
@@ -452,15 +487,15 @@
       "options": [
         {
           "id": "a",
-          "text": "想先确认路线台阶情况，再结合脚踝状况决定。"
+          "text": "To check how many steps the route has before deciding, because of a sore ankle."
         },
         {
           "id": "b",
-          "text": "想等价格下降到能够接受的范围，再决定是否参加。"
+          "text": "To wait for the price to fall to an affordable level."
         },
         {
           "id": "c",
-          "text": "认为晚上步行没有吸引力，等朋友换一个活动再决定。"
+          "text": "To wait for friends to suggest a more appealing activity."
         }
       ],
       "answer": "a",
@@ -474,7 +509,7 @@
       "id": "s2.astra.second.q15",
       "goalId": "s2.listening-predictions-and-compromise",
       "type": "listeningChoice",
-      "prompt": "听两个人讨论未来出行。乙与甲的分歧主要在哪里？",
+      "prompt": "What do the speakers mainly disagree about?",
       "explanation": "Eventually, perhaps保留最终可能发生；ten years seems too soon质疑时间预期，理由是充电站建设需要更久。没有说现在已实现，也没有希望推迟建设。",
       "hint": "先分清两位说话人，再听乙对可能性和所需时间分别怎样表态。",
       "instruction": "听后选择",
@@ -482,15 +517,15 @@
       "options": [
         {
           "id": "a",
-          "text": "乙认为大家已经主要乘电动公交，甲认为还没有。"
+          "text": "Whether most people already travel by electric bus."
         },
         {
           "id": "b",
-          "text": "乙认为这种变化可能发生，但十年的时间预期偏乐观。"
+          "text": "Whether the change is likely to happen within ten years."
         },
         {
           "id": "c",
-          "text": "乙同意十年内实现变化，但希望充电站更晚开始建设。"
+          "text": "Whether charging stations should be built later despite the change happening within ten years."
         }
       ],
       "answer": "b",
@@ -504,7 +539,7 @@
       "id": "s2.astra.second.q16",
       "goalId": "s2.listening-reasons-and-response",
       "type": "listeningChoice",
-      "prompt": "听一段练习后的留言。你想先准确回应对方遇到的困难，再邀请对方说说卡住的位置。哪句回应符合？",
+      "prompt": "Which reply accurately acknowledges the speaker's difficulty and invites them to explain where they got stuck?",
       "explanation": "b回应练习后仍忘记下一部分的具体挫败。a把观众安静等待误作吵闹干扰；c把已经开始讲话后卡住误作没有机会讲话。",
       "hint": "三句都愿意倾听，区别在于它们怎样概括已发生的困难；核对录音中的行为和旁人的反应。",
       "instruction": "听后选择",
@@ -534,7 +569,7 @@
       "id": "s2.astra.second.q17",
       "goalId": "s2.listening-predictions-and-compromise",
       "type": "listeningChoice",
-      "prompt": "听两位同行者讨论下午的安排。最后同意的是哪一种？",
+      "prompt": "What do the speakers finally agree to do?",
       "explanation": "乙提议先各自活动、四点会合，甲的That works接受该提议，并补充会合后一起喝点东西。并未同意一起完成两种最初活动。",
       "hint": "把最初各自的愿望与后来被明确接受的安排分开，注意哪些活动一起做。",
       "instruction": "听后选择",
@@ -542,15 +577,15 @@
       "options": [
         {
           "id": "a",
-          "text": "先各自进行想做的活动，四点在咖啡馆碰面喝点东西。"
+          "text": "Do their own activities first, then meet at the cafe at four for a drink."
         },
         {
           "id": "b",
-          "text": "先一起去河边画画，四点一起进室内展览，再去咖啡馆。"
+          "text": "Sketch by the river together, visit the exhibition at four, then go to the cafe."
         },
         {
           "id": "c",
-          "text": "先一起看室内展览，之后各自活动，取消咖啡馆见面。"
+          "text": "Visit the exhibition together, then do separate activities and cancel the cafe meeting."
         }
       ],
       "answer": "a",
@@ -564,7 +599,7 @@
       "id": "s2.astra.second.q18",
       "goalId": "s2.listening-reasons-and-response",
       "type": "listeningChoice",
-      "prompt": "听一段对迟到原因的说明。下列哪条记录把最初计划与实际行动区分清楚？",
+      "prompt": "Which note distinguishes the speaker's original plan from what actually happened?",
       "explanation": "had planned是更早的计划，后面的回家取钱包使其未实现；返回车站时早班已走，实际坐的是下一班。",
       "hint": "分别记下计划、打断计划的事情和最终乘坐的班次，不把计划当成已实施。",
       "instruction": "听后选择",
@@ -572,15 +607,15 @@
       "options": [
         {
           "id": "a",
-          "text": "原计划坐早班车，也确实上了早班车；迟到是因为车开得慢。"
+          "text": "The speaker caught the planned early bus but was delayed by its slow journey."
         },
         {
           "id": "b",
-          "text": "原计划坐早班车，因回家取钱包错过了，实际乘坐下一班。"
+          "text": "The speaker missed the planned early bus after going home for a wallet, then took the next bus."
         },
         {
           "id": "c",
-          "text": "原计划坐下一班车，后来改乘早班车，却在车上丢了钱包。"
+          "text": "The speaker switched from the next bus to the early bus, then lost a wallet on it."
         }
       ],
       "answer": "b",

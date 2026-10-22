@@ -125,6 +125,15 @@ export function createLearningService(
             .promotions(courses)
             .complete(id, expectedRevision, expectedProfileVersion, requestId),
       ),
+    listeningScript: (
+      userId: string,
+      attemptId: string,
+      questionId: string,
+      assetId: string,
+    ) =>
+      repository.read(userId, (session) =>
+        session.listeningScript(attemptId, questionId, assetId),
+      ),
     audio: async (
       userId: string,
       attemptId: string,

@@ -1,6 +1,6 @@
 {
   "id": "companion.postgraduate.missing-piece",
-  "version": 1,
+  "version": 2,
   "schemaVersion": 1,
   "scoringVersion": 1,
   "roleKey": "companion",
@@ -29,9 +29,9 @@
   "authorship": {
     "kind": "authored",
     "author": "Astra独立年级作者；Codex主代理逐题终审与定点修订",
-    "reviewedBy": "Codex主代理逐题复核，Astra作者逐题自审",
-    "reviewedAt": "2026-10-07",
-    "reviewNotes": "亲写及手选未发布原稿，逐题核对答案、变体、每个选项、提示和解析；退回语法可直接解的听后排序。完整三段故事前置，问题不依赖故事。音频双ASR和客观波形通过，不等同真人听感或独立教师效度审定。"
+    "reviewedBy": "Codex 主代理逐题语义复核",
+    "reviewedAt": "2026-10-23",
+    "reviewNotes": "亲写及手选未发布原稿，逐题核对答案、变体、每个选项、提示和解析；退回语法可直接解的听后排序。完整三段故事前置，问题不依赖故事。音频双ASR和客观波形通过，不等同真人听感或独立教师效度审定。 2026-10-23：听力理解题改用英文题面与选项；整句听写替换为理解选择；实时Supertonic按F1、M5两遍播放，原录音仅保留给历史版本。"
   },
   "beats": [
     {
@@ -61,7 +61,7 @@
       "id": "cet6.second.01",
       "goalId": "cet6.listening-scope-stance",
       "type": "listeningChoice",
-      "prompt": "听发言，哪项准确概括说话人对共享空间试行的立场？",
+      "prompt": "Under what condition would the speaker support a shared-workspace trial?",
       "explanation": "说话人认为共享空间可能有用，但不接受人人都能留下参加晚间活动的假设。included表示加入白天时段，并非取消晚间时段或只接收晚上有空的人。",
       "hint": "听完发言再比较各项，不把中途的评价当成最终立场。",
       "instruction": "听后选择",
@@ -91,7 +91,7 @@
       "id": "cet6.second.02",
       "goalId": "cet6.listening-scope-stance",
       "type": "listeningChoice",
-      "prompt": "听两人的交流。第二位说话人主要在澄清什么？",
+      "prompt": "What is the second speaker mainly questioning?",
       "explanation": "对方质疑线上投票覆盖较少上网者的能力，未否定公众反馈本身。",
       "hint": "分别辨认提问者的概括和回答者自己的意思。",
       "instruction": "听后选择",
@@ -121,7 +121,7 @@
       "id": "cet6.second.03",
       "goalId": "cet6.listening-scope-stance",
       "type": "listeningChoice",
-      "prompt": "听介绍。哪句话最准确反映目前情况？",
+      "prompt": "Which statement best describes the current findings?",
       "explanation": "材料只说一周内没有找到出勤变化证据，并明确反对过早下广泛结论。既未支持暂定无效，也未提示有效。",
       "hint": "同时听取观察结果和说话人给出的解释。",
       "instruction": "听后选择",
@@ -245,7 +245,7 @@
       "id": "cet6.second.07",
       "goalId": "cet6.listening-scope-stance",
       "type": "listeningChoice",
-      "prompt": "听发言，哪项符合说话人目前对方案的判断？",
+      "prompt": "What is the speaker's current view of the plan?",
       "explanation": "说话人承认节省旅行时间是真实收益，但维护估算遗漏费用，因此本人尚未确信总收益超过总成本。这是说话者的判断状态，不直接等于客观上不存在其他证明；也不等于已经证明整体劣势。",
       "hint": "把说话人认可的部分和仍未接受的判断分开听。",
       "instruction": "听后选择",
@@ -274,31 +274,38 @@
     {
       "id": "cet6.second.08",
       "goalId": "cet6.listening-detail-encoding",
-      "type": "dictation",
-      "prompt": "听写完整句子。",
-      "explanation": "take ... into account明确表示纳入考虑。句子说这些数字没有考虑季节变化；删除not会反转是否纳入的结论。",
-      "hint": "听完后检查每个词，包括容易漏掉的短词。",
-      "instruction": "听写完整句子",
-      "difficultyReason": "听写巩固：否定与限定信息编码",
-      "acceptedAnswers": [
-        "These figures do not take seasonal changes into account.",
-        "These figures don't take seasonal changes into account."
-      ],
-      "normalization": {
-        "ignoreCase": true,
-        "ignoreTerminalPunctuation": true
-      },
+      "type": "listeningChoice",
+      "prompt": "What limitation of the figures does the speaker identify?",
+      "explanation": "do not take seasonal changes into account明确指出没有计入季节变化；b反转否定，c误称只描述季节变化。",
+      "hint": "听清录音的意思及限定信息，再选择最符合的一项。",
+      "instruction": "听后选择",
+      "difficultyReason": "听力理解替代整句听写；保留原材料和能力支点，通过语义差异作答。",
       "audio": {
         "assetId": "audio.6782e0ae708d29c4967c243f63963cc11a107205a2f0f185ea46cf0720a87de7",
         "text": "These figures do not take seasonal changes into account.",
         "voice": "F3"
-      }
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "They leave seasonal changes out of account."
+        },
+        {
+          "id": "b",
+          "text": "They fully account for seasonal changes."
+        },
+        {
+          "id": "c",
+          "text": "They describe only seasonal changes."
+        }
+      ],
+      "answer": "a"
     },
     {
       "id": "cet6.second.09",
       "goalId": "cet6.listening-scope-stance",
       "type": "listeningChoice",
-      "prompt": "听发言，哪项准确概括说话人建议采取的行动？",
+      "prompt": "What action does the speaker recommend?",
       "explanation": "当前维持规则并继续调查；若后续确认问题跨场所存在，再考虑修订。consider不是确认后必然修订，录音也未要求先暂停规则。",
       "hint": "留意调查期间的安排与后续决定各自处在什么时间。",
       "instruction": "听后选择",
@@ -327,27 +334,32 @@
     {
       "id": "cet6.second.10",
       "goalId": "cet6.listening-detail-encoding",
-      "type": "dictation",
-      "prompt": "听写完整句子。",
-      "explanation": "结果令人鼓舞，但远未达到确定结论的程度；far from在这里强化否定性评价。",
-      "hint": "先听清完整评价，再核对遗漏的词。",
-      "instruction": "听写完整句子",
-      "difficultyReason": "听写巩固：保留态度与证据强度",
-      "acceptedAnswers": [
-        "The results are encouraging, but they are far from conclusive.",
-        "The results are encouraging, but they're far from conclusive.",
-        "The results are encouraging but they are far from conclusive.",
-        "The results are encouraging but they're far from conclusive."
-      ],
-      "normalization": {
-        "ignoreCase": true,
-        "ignoreTerminalPunctuation": true
-      },
+      "type": "listeningChoice",
+      "prompt": "How does the speaker assess the results?",
+      "explanation": "encouraging表示令人鼓舞，far from conclusive表示尚不能定论；c同时保留两层判断。",
+      "hint": "听清录音的意思及限定信息，再选择最符合的一项。",
+      "instruction": "听后选择",
+      "difficultyReason": "听力理解替代整句听写；保留原材料和能力支点，通过语义差异作答。",
       "audio": {
         "assetId": "audio.efb34195ddd537f8b196ede4e2b0af464e82d58fbd01f9ae0c60cfd5dd8697e8",
         "text": "The results are encouraging, but they are far from conclusive.",
         "voice": "F3"
-      }
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "They are discouraging and should be discarded."
+        },
+        {
+          "id": "b",
+          "text": "They establish a firm conclusion."
+        },
+        {
+          "id": "c",
+          "text": "They are promising but do not establish a firm conclusion."
+        }
+      ],
+      "answer": "c"
     },
     {
       "id": "cet6.second.11",
@@ -387,7 +399,7 @@
       "id": "cet6.second.13",
       "goalId": "cet6.listening-scope-stance",
       "type": "listeningChoice",
-      "prompt": "听短发言。说话人建议下一步怎么做？",
+      "prompt": "What does the speaker recommend doing next?",
       "explanation": "说话人建议先在大中心验证，再考虑全国扩大；这不是只延长原小中心试点，也不是全国推广后再观察。",
       "hint": "听完后核对行动发生的地点和先后关系。",
       "instruction": "听后选择",
@@ -417,7 +429,7 @@
       "id": "cet6.second.14",
       "goalId": "cet6.listening-scope-stance",
       "type": "listeningChoice",
-      "prompt": "听交流。第二个人为什么暂不选方案？",
+      "prompt": "Why does the second speaker hesitate to recommend a plan?",
       "explanation": "第一报价不含维护、第二报价含维护，需先把覆盖项目对齐再比较总成本。录音未说价格将变化，也未评价维护服务期限。",
       "hint": "听清两个方案分别包含什么，再判断说话人的请求。",
       "instruction": "听后选择",
@@ -447,7 +459,7 @@
       "id": "cet6.second.15",
       "goalId": "cet6.listening-scope-stance",
       "type": "listeningChoice",
-      "prompt": "听短评。说话人认为这篇文章的主要问题是什么？",
+      "prompt": "What does the speaker see as the article's main weakness?",
       "explanation": "说话人肯定例子有趣和主题重要，质疑例子与核心主张的支持关系。没有评价样本数量，也没有承认支持关系已成立。",
       "hint": "核对每项所说的问题是否就是发言者提出的问题。",
       "instruction": "听后选择",

@@ -1,6 +1,6 @@
 {
   "id": "companion.undergraduate.small-mountain",
-  "version": 1,
+  "version": 2,
   "schemaVersion": 1,
   "scoringVersion": 1,
   "roleKey": "companion",
@@ -30,9 +30,9 @@
   "authorship": {
     "kind": "authored",
     "author": "Astra独立年级作者；Codex主代理逐题终审与定点修订",
-    "reviewedBy": "Codex主代理逐题复核，Astra作者逐题自审",
-    "reviewedAt": "2026-10-07",
-    "reviewNotes": "亲写及手选未发布原稿，逐题核对答案、变体、每个选项、提示和解析；退回语法可直接解的听后排序。完整三段故事前置，问题不依赖故事。音频双ASR和客观波形通过，不等同真人听感或独立教师效度审定。"
+    "reviewedBy": "Codex 主代理逐题语义复核",
+    "reviewedAt": "2026-10-23",
+    "reviewNotes": "亲写及手选未发布原稿，逐题核对答案、变体、每个选项、提示和解析；退回语法可直接解的听后排序。完整三段故事前置，问题不依赖故事。音频双ASR和客观波形通过，不等同真人听感或独立教师效度审定。 2026-10-23：听力理解题改用英文题面与选项；整句听写替换为理解选择；实时Supertonic按F1、M5两遍播放，原录音仅保留给历史版本。"
   },
   "beats": [
     {
@@ -62,7 +62,7 @@
       "id": "cet4.astra.a02",
       "goalId": "cet4.listening-detail-attitude",
       "type": "listeningChoice",
-      "prompt": "听一则场地通知。参加者应该怎么做？",
+      "prompt": "When and where should participants attend the workshop?",
       "explanation": "时间仍是两点，原定六号室改为同层九号室。",
       "hint": "分清保留的安排与被更正的安排。",
       "instruction": "听后选择",
@@ -70,19 +70,19 @@
       "options": [
         {
           "id": "a",
-          "text": "一点到六号室。"
+          "text": "At one in Room Six."
         },
         {
           "id": "b",
-          "text": "两点到六号室。"
+          "text": "At two in Room Six."
         },
         {
           "id": "c",
-          "text": "两点到九号室。"
+          "text": "At two in Room Nine."
         },
         {
           "id": "d",
-          "text": "一点到九号室。"
+          "text": "At one in Room Nine."
         }
       ],
       "answer": "c",
@@ -240,25 +240,32 @@
     {
       "id": "cet4.astra.b08",
       "goalId": "cet4.listening-detail-attitude",
-      "type": "dictation",
-      "prompt": "听一句提醒，写出完整句子。",
-      "explanation": "要求保存副本，而不只是链接；not just若漏掉，会失去提醒的关键。",
-      "hint": "先听完整句，再检查是否准确写出每个词。",
-      "instruction": "听写完整句子",
-      "difficultyReason": "八词短句降低输入负担，重点辨否定限定。",
-      "acceptedAnswers": [
-        "Please save a copy, not just a link.",
-        "Please save a copy not just a link."
-      ],
-      "normalization": {
-        "ignoreCase": true,
-        "ignoreTerminalPunctuation": true
-      },
+      "type": "listeningChoice",
+      "prompt": "What does the speaker ask the listener to save?",
+      "explanation": "not just a link限定只存链接不够，需要保存副本；a和c均漏掉所需副本。",
+      "hint": "听清录音的意思及限定信息，再选择最符合的一项。",
+      "instruction": "听后选择",
+      "difficultyReason": "听力理解替代整句听写；保留原材料和能力支点，通过语义差异作答。",
       "audio": {
         "assetId": "audio.c38c5f8af9911c97889ec5597ce9563963b2564ac3fc207fb748a7c977112760",
         "text": "Please save a copy, not just a link.",
         "voice": "F3"
-      }
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Only a link."
+        },
+        {
+          "id": "b",
+          "text": "A copy, rather than just a link."
+        },
+        {
+          "id": "c",
+          "text": "A link instead of a copy."
+        }
+      ],
+      "answer": "b"
     },
     {
       "id": "cet4.astra.b09",
@@ -269,7 +276,9 @@
       "hint": "比较通知表达的是可以自行选择的建议，还是必须遵守的要求。",
       "instruction": "填入准确表达",
       "difficultyReason": "安全通知的语义强度，不需要骑行专业知识。",
-      "acceptedAnswers": ["require"],
+      "acceptedAnswers": [
+        "require"
+      ],
       "normalization": {
         "ignoreCase": true,
         "ignoreTerminalPunctuation": true
@@ -298,7 +307,13 @@
           "text": "provided that"
         }
       ],
-      "acceptedOrders": [["w", "p", "q"]]
+      "acceptedOrders": [
+        [
+          "w",
+          "p",
+          "q"
+        ]
+      ]
     },
     {
       "id": "cet4.astra.b11",
@@ -332,24 +347,32 @@
     {
       "id": "cet4.astra.second01",
       "goalId": "cet4.listening-detail-attitude",
-      "type": "dictation",
-      "prompt": "听一则简短安排，写出完整句子。",
-      "explanation": "只有上午那场改到了较小的房间；Only限定the morning session。不要漏掉限定词，也不要把has been moved改成将来安排。",
-      "hint": "先听清整句话，再核对句首、动作和句尾。",
-      "instruction": "听写完整句子",
-      "difficultyReason": "十一词，熟悉安排中的范围、完成被动和比较级；短句听辨不代表篇章能力。",
-      "acceptedAnswers": [
-        "Only the morning session has been moved to the smaller room."
-      ],
-      "normalization": {
-        "ignoreCase": true,
-        "ignoreTerminalPunctuation": true
-      },
+      "type": "listeningChoice",
+      "prompt": "Which session has changed rooms?",
+      "explanation": "Only限定仅上午场移到小房间，不代表下午场或所有场次移动。",
+      "hint": "听清录音的意思及限定信息，再选择最符合的一项。",
+      "instruction": "听后选择",
+      "difficultyReason": "听力理解替代整句听写；保留原材料和能力支点，通过语义差异作答。",
       "audio": {
         "assetId": "audio.30dfbe3301d37e26aff926df88d3141d8b4623c62cc9e88560fd42f0a4e93c88",
         "text": "Only the morning session has been moved to the smaller room.",
         "voice": "F3"
-      }
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Every session."
+        },
+        {
+          "id": "b",
+          "text": "Only the afternoon session."
+        },
+        {
+          "id": "c",
+          "text": "Only the morning session."
+        }
+      ],
+      "answer": "c"
     },
     {
       "id": "cet4.astra.b13",
@@ -384,7 +407,7 @@
       "id": "cet4.astra.b02",
       "goalId": "cet4.listening-detail-attitude",
       "type": "listeningChoice",
-      "prompt": "听一则语音。说话人确定承诺了什么？",
+      "prompt": "What does the speaker promise to do if the part does not arrive today?",
       "explanation": "明确承诺的是零件不到时五点前联系；明早维修依赖零件今天到，结尾还否认无条件保证。",
       "hint": "分别记录带条件的可能安排与相应的联系承诺。",
       "instruction": "听后选择",
@@ -392,19 +415,19 @@
       "options": [
         {
           "id": "a",
-          "text": "若零件今天不到，会先开始维修，明早按原计划交车。"
+          "text": "Begin repairs anyway and return the bike tomorrow morning."
         },
         {
           "id": "b",
-          "text": "若零件今天不到，会在五点前来电确认明早可以交车。"
+          "text": "Call by five to confirm that the bike will be ready tomorrow morning."
         },
         {
           "id": "c",
-          "text": "若零件今天到了，会在五点前来电商量其他维修日期。"
+          "text": "Call by five to discuss another repair date if the part arrives today."
         },
         {
           "id": "d",
-          "text": "若零件今天不到，会在五点前来电商量其他维修日期。"
+          "text": "Call by five to discuss another repair date."
         }
       ],
       "answer": "d",
@@ -418,7 +441,7 @@
       "id": "cet4.astra.a14",
       "goalId": "cet4.listening-detail-attitude",
       "type": "listeningChoice",
-      "prompt": "听一段评价。说话人对新系统的态度是什么？",
+      "prompt": "What is the speaker's attitude towards the new system?",
       "explanation": "认可搜索省时，但不满意分享部分，希望改善前保留旧分享工具。",
       "hint": "注意评价是否针对同一个功能，以及后面提出了什么选择。",
       "instruction": "听后选择",
@@ -426,19 +449,19 @@
       "options": [
         {
           "id": "a",
-          "text": "认可新系统的搜索功能，但暂时想保留旧分享工具。"
+          "text": "The search function is useful, but the old sharing tool should be kept for now."
         },
         {
           "id": "b",
-          "text": "认可新系统的分享功能，但暂时想保留旧搜索工具。"
+          "text": "The sharing function is useful, but the old search tool should be kept for now."
         },
         {
           "id": "c",
-          "text": "认可新系统的搜索功能，因此准备同时换掉旧分享工具。"
+          "text": "The search function is useful, so the old sharing tool should also be replaced now."
         },
         {
           "id": "d",
-          "text": "不认可新系统的搜索功能，因此暂时想保留旧分享工具。"
+          "text": "The search function is poor, so the old sharing tool should be kept for now."
         }
       ],
       "answer": "a",
@@ -452,7 +475,7 @@
       "id": "cet4.astra.b14",
       "goalId": "cet4.listening-detail-attitude",
       "type": "listeningChoice",
-      "prompt": "听一段发言。说话人的主要意思是什么？",
+      "prompt": "What is the speaker's main point about the new schedule?",
       "explanation": "positive是当前少量反馈，仍希望听到其余人的意见才决定保留。",
       "hint": "把已有观察和下一步决定分开，不要让开头的评价替代结尾的态度。",
       "instruction": "听后选择",
@@ -460,19 +483,19 @@
       "options": [
         {
           "id": "a",
-          "text": "目前反馈不错，虽然回复人数少，仍建议现在决定保留。"
+          "text": "The early feedback is positive, so the schedule should be kept despite the few replies."
         },
         {
           "id": "b",
-          "text": "目前回复不多，且多数评价偏负面，想收齐意见后决定。"
+          "text": "Few people have replied and most dislike it, so more feedback is needed."
         },
         {
           "id": "c",
-          "text": "目前反馈不错，已决定正式保留，再收集具体执行建议。"
+          "text": "The schedule has already been retained, and only implementation suggestions are needed."
         },
         {
           "id": "d",
-          "text": "目前反馈不错，但回复人数还少，想听取更多意见后决定。"
+          "text": "The early feedback is positive, but more replies are needed before making a decision."
         }
       ],
       "answer": "d",
@@ -567,7 +590,14 @@
           "text": "began"
         }
       ],
-      "acceptedOrders": [["t", "c", "b", "s"]]
+      "acceptedOrders": [
+        [
+          "t",
+          "c",
+          "b",
+          "s"
+        ]
+      ]
     }
   ]
 }

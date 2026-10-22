@@ -1,10 +1,10 @@
 {
   "unitId": "marcus.primary3.family-photo-wall",
-  "contentHash": "2e84753615b40a5495aba1e754402dd24491f768df04cb7797f7a7e835982e45",
+  "contentHash": "c40a02371448ec4e2a5cc052020dbc013c7b5b07c58e7ede9787751f8e8a54d7",
   "status": "approved",
   "reviewKind": "author-self-review",
-  "reviewer": "Codex · 原创编写与逐题自审",
-  "reviewedAt": "2026-09-26",
+  "reviewer": "Codex 主代理逐题语义复核",
+  "reviewedAt": "2026-10-23",
   "roleFit": "Marcus 珍惜家人、以奶奶厨房为摄影起点；练习使用虚构指令，不要求用户披露个人家庭。",
   "levelFit": "使用简单家庭称呼和 be 动词介绍，解释中英亲属词覆盖差异，避免文化性误判。",
   "limitations": "本单元初批加入听辨与短句听写，支持慢速重播；其余题目提供文字支架。尚无独立教研、真人学习效果或人耳音质评定证据。",
@@ -59,8 +59,8 @@
     },
     {
       "questionId": "my-mother",
-      "standaloneContext": "交际目的与任务要求都在本题内；唯一语音来自这道题的播放按钮，不需要记住剧情。",
-      "ambiguityReview": "三个选项在关键词或交际功能上明确不同；录音与唯一正确项核对，提示不直接重复原文。",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：Which sentence do you hear?",
+      "ambiguityReview": "三个选项在关键词或交际功能上明确不同；录音与唯一正确项核对，提示不直接重复原文。 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "亲属词与所属词都和录音一致。",
         "b": "把 mother 换成 father，亲属关系变化。",
@@ -99,14 +99,24 @@
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t1", "t2", "t3", "t4"]
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3",
+              "t4"
+            ]
           },
           "correct": true
         },
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t2", "t1", "t3", "t4"]
+            "tokenIds": [
+              "t2",
+              "t1",
+              "t3",
+              "t4"
+            ]
           },
           "correct": false
         }
@@ -114,21 +124,32 @@
     },
     {
       "questionId": "sister-word",
-      "standaloneContext": "本题给出独立音频与输入范围，没有跨题或剧情事实要求；不依赖未展示的图片。",
-      "ambiguityReview": "答案覆盖本题可接受的正字法形式；人称、亲属词等语义变化不接受，不以句末标点或大小写造成误判。",
-      "optionNotes": {},
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：Who is being introduced?",
+      "ambiguityReview": "sister指姐妹；brother是兄弟，mother是母亲。根据听到的亲属关系选择，不要求整句拼写。 按录音语义区分三项；不再要求整句逐字匹配。",
+      "optionNotes": {
+        "a": "与录音事实和限制一致。sister指姐妹；brother是兄弟，mother是母亲。根据听到的亲属关系选择，不要求整句拼写。",
+        "b": "该选项与录音事实或限定不符。sister指姐妹；brother是兄弟，mother是母亲。根据听到的亲属关系选择，不要求整句拼写。",
+        "c": "该选项与录音事实或限定不符。sister指姐妹；brother是兄弟，mother是母亲。根据听到的亲属关系选择，不要求整句拼写。"
+      },
       "probes": [
         {
           "answer": {
-            "kind": "text",
-            "text": "This is my sister"
+            "kind": "choice",
+            "optionId": "a"
           },
           "correct": true
         },
         {
           "answer": {
-            "kind": "text",
-            "text": "This is my brother"
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
           },
           "correct": false
         }
@@ -176,14 +197,24 @@
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t1", "t2", "t3", "t4"]
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3",
+              "t4"
+            ]
           },
           "correct": true
         },
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t2", "t1", "t3", "t4"]
+            "tokenIds": [
+              "t2",
+              "t1",
+              "t3",
+              "t4"
+            ]
           },
           "correct": false
         }

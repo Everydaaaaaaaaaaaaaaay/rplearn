@@ -1,6 +1,6 @@
 {
   "id": "companion.advanced.paper-moon",
-  "version": 1,
+  "version": 2,
   "schemaVersion": 1,
   "scoringVersion": 1,
   "roleKey": "companion",
@@ -30,9 +30,9 @@
   "authorship": {
     "kind": "authored",
     "author": "Astra独立年级作者；Codex主代理逐题终审与定点修订",
-    "reviewedBy": "Codex主代理逐题复核，Astra作者逐题自审",
-    "reviewedAt": "2026-10-07",
-    "reviewNotes": "亲写及手选未发布原稿，逐题核对答案、变体、每个选项、提示和解析；退回语法可直接解的听后排序。完整三段故事前置，问题不依赖故事。音频双ASR和客观波形通过，不等同真人听感或独立教师效度审定。"
+    "reviewedBy": "Codex 主代理逐题语义复核",
+    "reviewedAt": "2026-10-23",
+    "reviewNotes": "亲写及手选未发布原稿，逐题核对答案、变体、每个选项、提示和解析；退回语法可直接解的听后排序。完整三段故事前置，问题不依赖故事。音频双ASR和客观波形通过，不等同真人听感或独立教师效度审定。 2026-10-23：听力理解题改用英文题面与选项；整句听写替换为理解选择；实时Supertonic按F1、M5两遍播放，原录音仅保留给历史版本。"
   },
   "beats": [
     {
@@ -191,7 +191,7 @@
       "id": "adv.astra.a11",
       "goalId": "advanced.listening-scope-attribution",
       "type": "listeningChoice",
-      "prompt": "听讨论，哪句准确概括说话人对结果的解释？",
+      "prompt": "How does the speaker interpret the difference in attendance?",
       "explanation": "说话者认为宣传差异妨碍单独判断时段作用，没有断定宣传是主要原因，也没有建议减少宣传。",
       "hint": "留意说话者究竟选定了一种解释，还是指出需要怎样的比较。",
       "instruction": "听后选择",
@@ -221,7 +221,7 @@
       "id": "adv.astra.a12",
       "goalId": "advanced.listening-scope-attribution",
       "type": "listeningChoice",
-      "prompt": "听会议回应，哪项是说话者当前的立场？",
+      "prompt": "What is the speaker's current position on the proposed launch date?",
       "explanation": "他质疑检查能否排入日程，未质疑方案本身。b移错焦点；c把保留意见改成只要方案不变就支持。",
       "hint": "把认可的对象、质疑的对象及附带条件分别听清。",
       "instruction": "听后选择",
@@ -401,7 +401,7 @@
       "id": "adv.astra.b11",
       "goalId": "advanced.listening-scope-attribution",
       "type": "listeningChoice",
-      "prompt": "听一段更正，更新纪要时应写哪项？",
+      "prompt": "Which statement should be recorded in the corrected minutes?",
       "explanation": "有效最终信息是审查组发现记录缺失，说话人提出延期，组方是否同意未知。b保留已撤回的归因；c交换角色并增加接受。",
       "hint": "注意更正标记之后，发现和建议分别被重新归给了谁。",
       "instruction": "听后选择",
@@ -431,7 +431,7 @@
       "id": "adv.astra.b12",
       "goalId": "advanced.listening-scope-attribution",
       "type": "listeningChoice",
-      "prompt": "听说明，哪句保留了说话者对短期和长期结果的区分？",
+      "prompt": "Which statement preserves the speaker's distinction between short-term and long-term effects?",
       "explanation": "录音只预测初期可能增加，长期信息不足。a补出下降，b捏造随访结果。",
       "hint": "把短期预测与长期尚未知晓的内容分开，不把否定推断听成相反结果。",
       "instruction": "听后选择",
@@ -460,31 +460,38 @@
     {
       "id": "adv.astra.b17",
       "goalId": "advanced.listening-scope-attribution",
-      "type": "dictation",
-      "prompt": "听写这一句报告更正，注意保留限制词。",
-      "explanation": "句子说明本方报告的是关联而不是已证实的原因。漏掉not会抹去限制；proven也需保留，不能把原文改成与原因完全无关。",
-      "hint": "先抓住两个被比较的名词短语，再复听它们之间的关系。",
-      "instruction": "听写完整句子",
-      "difficultyReason": "短听写作为精确接收训练，拼写不承担本档主要难度；需匹配完整句和归一化标点。",
-      "acceptedAnswers": [
-        "We reported an association, not a proven cause.",
-        "We reported an association not a proven cause"
-      ],
-      "normalization": {
-        "ignoreCase": true,
-        "ignoreTerminalPunctuation": true
-      },
+      "type": "listeningChoice",
+      "prompt": "What distinction does the speaker make about the report?",
+      "explanation": "not a proven cause排除已证明因果关系；a反转该限制，c误删已报告的关联。",
+      "hint": "听清录音的意思及限定信息，再选择最符合的一项。",
+      "instruction": "听后选择",
+      "difficultyReason": "听力理解替代整句听写；保留原材料和能力支点，通过语义差异作答。",
       "audio": {
         "assetId": "audio.c4f8cef05ad89557326a86bd23b968aca0f80b77857c57893c7107bb3b0d685b",
         "text": "We reported an association, not a proven cause.",
         "voice": "F3"
-      }
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "It established a causal relationship rather than an association."
+        },
+        {
+          "id": "b",
+          "text": "It reported an association without establishing causation."
+        },
+        {
+          "id": "c",
+          "text": "It found no association between the factors."
+        }
+      ],
+      "answer": "b"
     },
     {
       "id": "adv.astra.second.c01",
       "goalId": "advanced.listening-scope-attribution",
       "type": "listeningChoice",
-      "prompt": "听一段工作说明，哪条记录准确保留了说话者当前的判断？",
+      "prompt": "Which note accurately records the speaker's current judgement?",
       "explanation": "不预期审查者要求再试，不等于可以忽略后来收到的要求。解释请求也只是may，不是已经决定的替代方案。",
       "hint": "分清对他方下一步的预测与对本方行动的授权。",
       "instruction": "听后选择",
@@ -514,7 +521,7 @@
       "id": "adv.astra.second.c02",
       "goalId": "advanced.listening-scope-attribution",
       "type": "listeningChoice",
-      "prompt": "听结果说明，哪项准确概括了这次分析变化所能支持的结论？",
+      "prompt": "What conclusion does the change in the analysis support?",
       "explanation": "区间更窄支持精度提高，不能保证更接近真值；同样本使潜在偏差仍可能影响两者，却不能确定两次与真值相差相等。",
       "hint": "比较说话者确认的变化与仍可能影响结果的因素，不要把一种改善当成所有尺度上的改善。",
       "instruction": "听后选择",
@@ -544,7 +551,7 @@
       "id": "adv.astra.second.c03",
       "goalId": "advanced.listening-scope-attribution",
       "type": "listeningChoice",
-      "prompt": "听发言者修正先前的说法，哪句应写入最终纪要？",
+      "prompt": "Which statement should appear in the corrected final minutes?",
       "explanation": "发言者撤回自己给回复贴上的“反对”标签。Dana只要求明确temporary含义，未表明支持与否；没有证据她曾反对再撤回。",
       "hint": "留意谁在修正什么；不要把转述者修改标签听成被转述者改变立场。",
       "instruction": "听后选择",

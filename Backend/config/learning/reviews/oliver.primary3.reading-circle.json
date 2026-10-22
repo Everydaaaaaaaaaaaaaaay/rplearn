@@ -1,18 +1,18 @@
 {
   "unitId": "oliver.primary3.reading-circle",
-  "contentHash": "32d5d12a5bbf5d3f98c9ac6b21626f09db4b32e389393f67077c76964d9e6195",
+  "contentHash": "118a18ed8f3d5214a5c79edf652cbbe108282f0c63d444b8d01f5f7a76e7b3a4",
   "status": "approved",
   "reviewKind": "author-self-review",
-  "reviewer": "Codex · 原创编写与逐题自审",
-  "reviewedAt": "2026-09-26",
+  "reviewer": "Codex 主代理逐题语义复核",
+  "reviewedAt": "2026-10-23",
   "roleFit": "旧书店读书会与 Oliver 的职业一致；轻微冷幽默只出现在剧情，题目不靠俚语设障。",
   "levelFit": "聚焦短问候、人称与 be 动词；英文输出为三至五词块，符合初步自我介绍的文字练习范围。",
   "limitations": "本单元初批加入听辨与短句听写，支持慢速重播；其余题目提供文字支架。尚无独立教研、真人学习效果或人耳音质评定证据。",
   "questions": [
     {
       "questionId": "hello",
-      "standaloneContext": "交际目的与任务要求都在本题内；唯一语音来自这道题的播放按钮，不需要记住剧情。",
-      "ambiguityReview": "三个选项在关键词或交际功能上明确不同；录音与唯一正确项核对，提示不直接重复原文。",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：Which greeting do you hear?",
+      "ambiguityReview": "三个选项在关键词或交际功能上明确不同；录音与唯一正确项核对，提示不直接重复原文。 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "这是道别，没有录音里的见面问候。",
         "b": "问好和见面喜悦都与录音一致。",
@@ -51,14 +51,24 @@
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t1", "t2", "t3", "t4"]
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3",
+              "t4"
+            ]
           },
           "correct": true
         },
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t2", "t1", "t3", "t4"]
+            "tokenIds": [
+              "t2",
+              "t1",
+              "t3",
+              "t4"
+            ]
           },
           "correct": false
         }
@@ -147,28 +157,32 @@
     },
     {
       "questionId": "name-link",
-      "standaloneContext": "本题给出独立音频与输入范围，没有跨题或剧情事实要求；不依赖未展示的图片。",
-      "ambiguityReview": "答案覆盖本题可接受的正字法形式；人称、亲属词等语义变化不接受，不以句末标点或大小写造成误判。",
-      "optionNotes": {},
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：What does the speaker say about their relationship with the listener?",
+      "ambiguityReview": "your friend表明是朋友；录音未说邻居或表亲。不要求逐字复述。 按录音语义区分三项；不再要求整句逐字匹配。",
+      "optionNotes": {
+        "a": "该选项与录音事实或限定不符。your friend表明是朋友；录音未说邻居或表亲。不要求逐字复述。",
+        "b": "与录音事实和限制一致。your friend表明是朋友；录音未说邻居或表亲。不要求逐字复述。",
+        "c": "该选项与录音事实或限定不符。your friend表明是朋友；录音未说邻居或表亲。不要求逐字复述。"
+      },
       "probes": [
         {
           "answer": {
-            "kind": "text",
-            "text": "I am your friend"
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
           },
           "correct": true
         },
         {
           "answer": {
-            "kind": "text",
-            "text": "I'm your friend"
-          },
-          "correct": true
-        },
-        {
-          "answer": {
-            "kind": "text",
-            "text": "You are my friend"
+            "kind": "choice",
+            "optionId": "c"
           },
           "correct": false
         }
@@ -183,14 +197,26 @@
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t1", "t2", "t3", "t4", "t5"]
+            "tokenIds": [
+              "t1",
+              "t2",
+              "t3",
+              "t4",
+              "t5"
+            ]
           },
           "correct": true
         },
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t2", "t1", "t3", "t4", "t5"]
+            "tokenIds": [
+              "t2",
+              "t1",
+              "t3",
+              "t4",
+              "t5"
+            ]
           },
           "correct": false
         }

@@ -1,6 +1,6 @@
 {
   "id": "oliver.primary3.reading-circle",
-  "version": 2,
+  "version": 3,
   "schemaVersion": 1,
   "scoringVersion": 1,
   "roleKey": "oliver",
@@ -10,7 +10,10 @@
   "summary": "给读书会写一张名牌，练习介绍自己和身边的人。",
   "scene": "伦敦的雨落在书店玻璃上。Oliver 给圆桌添了一把椅子，旁边放着几张空白名牌。",
   "estimatedMinutes": 5,
-  "goalIds": ["p3.greetings", "p3.introductions"],
+  "goalIds": [
+    "p3.greetings",
+    "p3.introductions"
+  ],
   "prerequisiteGoalIds": [],
   "references": [
     {
@@ -35,9 +38,9 @@
   "authorship": {
     "kind": "authored",
     "author": "Codex · 原创编写与逐题自审",
-    "reviewedBy": "Codex · 原创编写与逐题自审",
-    "reviewedAt": "2026-09-26",
-    "reviewNotes": "逐题检查独立题意、选项及输入变体；新增固定听力资源，双模型识别与波形检查通过。作者自审，不代表独立教研或人耳音质验收。"
+    "reviewedBy": "Codex 主代理逐题语义复核",
+    "reviewedAt": "2026-10-23",
+    "reviewNotes": "逐题检查独立题意、选项及输入变体；新增固定听力资源，双模型识别与波形检查通过。作者自审，不代表独立教研或人耳音质验收。 2026-10-23：听力理解题改用英文题面与选项；整句听写替换为理解选择；实时Supertonic按F1、M5两遍播放，原录音仅保留给历史版本。"
   },
   "beats": [
     {
@@ -67,7 +70,7 @@
       "id": "hello",
       "goalId": "p3.greetings",
       "instruction": "听一听，再选择符合题意的一项。",
-      "prompt": "听这段初次见面的问候，选出你听到的完整表达。",
+      "prompt": "Which greeting do you hear?",
       "hint": "先完整听一遍，留意说话者使用的关键词。",
       "explanation": "录音先问好，再表达很高兴认识对方。Hello! Nice to meet you. 对应这两个功能。",
       "difficultyReason": "小学三年级基础交际语听辨；固定短句音频支持正常和慢速重播，题干不显示听力原文。",
@@ -120,7 +123,14 @@
           "text": "is"
         }
       ],
-      "acceptedOrders": [["t1", "t2", "t3", "t4"]]
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4"
+        ]
+      ]
     },
     {
       "id": "self-introduction",
@@ -202,22 +212,32 @@
     {
       "id": "name-link",
       "goalId": "p3.introductions",
-      "instruction": "听一听，写出你听到的英文。",
-      "prompt": "可以先完整听一遍，再输入；需要时可用慢速重播。 这次写一句关于朋友的话。",
-      "hint": "留意说话者说的是“我”还是“你”。",
-      "explanation": "I am your friend. 表示“我是你的朋友”。本题也接受常用缩写 I'm your friend，不把同义缩写视为错误。",
-      "difficultyReason": "小学三年级短语或短句听写；不含专名，大小写与句末标点不单独扣分，允许正常及慢速重播。",
-      "type": "dictation",
-      "acceptedAnswers": ["I am your friend", "I'm your friend"],
-      "normalization": {
-        "ignoreCase": true,
-        "ignoreTerminalPunctuation": true
-      },
+      "instruction": "听后选择",
+      "prompt": "What does the speaker say about their relationship with the listener?",
+      "hint": "听清录音的意思及限定信息，再选择最符合的一项。",
+      "explanation": "your friend表明是朋友；录音未说邻居或表亲。不要求逐字复述。",
+      "difficultyReason": "听力理解替代整句听写；保留原材料和能力支点，通过语义差异作答。",
+      "type": "listeningChoice",
       "audio": {
         "assetId": "audio.f11739ac727e3dfc518e2993dddd1333813d8c01e1222db1e96d110e5e9be34b",
         "text": "I am your friend.",
         "voice": "M5"
-      }
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "They are neighbours."
+        },
+        {
+          "id": "b",
+          "text": "They are friends."
+        },
+        {
+          "id": "c",
+          "text": "They are cousins."
+        }
+      ],
+      "answer": "b"
     },
     {
       "id": "introduce-friend",
@@ -250,7 +270,15 @@
           "text": "is"
         }
       ],
-      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]]
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4",
+          "t5"
+        ]
+      ]
     }
   ]
 }

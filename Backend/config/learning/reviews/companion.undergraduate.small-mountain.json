@@ -1,18 +1,18 @@
 {
   "unitId": "companion.undergraduate.small-mountain",
-  "contentHash": "4b0fb1acd363e3f6917f647576da1f803ed7385073e31eb221ca9360e3950cf2",
+  "contentHash": "790fe5e277d10eda2794013742cd88f4913d2d8196ab44fbe3165258cd39ea36",
   "status": "approved",
   "reviewKind": "author-self-review",
-  "reviewer": "Codex主代理逐题复核，Astra作者逐题自审",
-  "reviewedAt": "2026-10-07",
+  "reviewer": "Codex 主代理逐题语义复核",
+  "reviewedAt": "2026-10-23",
   "roleFit": "普通同行者完整开场，无固定姓名、性别或职业；题目独立且可供任意角色抽取。",
   "levelFit": "依据熟悉场景的细节、条件、态度、语境词义、句间关系与受控译义；九文字选择、四听力选择、二听写、二排序、一填空。短录音和有支架表达不代表完整四级测量。",
   "limitations": "本单元是局部受控训练，含听力接收、文字理解及表达巩固，不等于完整考试或自由口语写作测量。音频经双ASR及客观波形检查，尚未独立真人听感审定；详细终审见adult-second-review-2026-10-07.md。",
   "questions": [
     {
       "questionId": "cet4.astra.a02",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一则场地通知。参加者应该怎么做？",
-      "ambiguityReview": "无需推测楼层数；题目不要求辨认无关数字。 四项等长组合时点与地点；a两项都错，b采用旧地点，d采用错误时间。 时间仍是两点，原定六号室改为同层九号室。",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：When and where should participants attend the workshop?",
+      "ambiguityReview": "无需推测楼层数；题目不要求辨认无关数字。 四项等长组合时点与地点；a两项都错，b采用旧地点，d采用错误时间。 时间仍是两点，原定六号室改为同层九号室。 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "时间和地点都不符现行安排。",
         "b": "仍是两点，但六号室已经被更正。",
@@ -257,28 +257,32 @@
     },
     {
       "questionId": "cet4.astra.b08",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一句提醒，写出完整句子。",
-      "ambiguityReview": "这是听写而不是自由转述；大小写及句末标点按正式规则归一。内部逗号不由通用规则忽略，故显式接受省去内部逗号的版本；保留not just等意义词。 and把纠正改成并列要求；just a link会颠倒需要保存的内容。 要求保存副本，而不只是链接；not just若漏掉，会失去提醒的关键。",
-      "optionNotes": {},
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：What does the speaker ask the listener to save?",
+      "ambiguityReview": "not just a link限定只存链接不够，需要保存副本；a和c均漏掉所需副本。 按录音语义区分三项；不再要求整句逐字匹配。",
+      "optionNotes": {
+        "a": "该选项与录音事实或限定不符。not just a link限定只存链接不够，需要保存副本；a和c均漏掉所需副本。",
+        "b": "与录音事实和限制一致。not just a link限定只存链接不够，需要保存副本；a和c均漏掉所需副本。",
+        "c": "该选项与录音事实或限定不符。not just a link限定只存链接不够，需要保存副本；a和c均漏掉所需副本。"
+      },
       "probes": [
         {
           "answer": {
-            "kind": "text",
-            "text": "Please save a copy, not just a link."
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
           },
           "correct": true
         },
         {
           "answer": {
-            "kind": "text",
-            "text": "Please save a copy not just a link."
-          },
-          "correct": true
-        },
-        {
-          "answer": {
-            "kind": "text",
-            "text": "Please save a copy and a link."
+            "kind": "choice",
+            "optionId": "c"
           },
           "correct": false
         }
@@ -315,14 +319,22 @@
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["w", "p", "q"]
+            "tokenIds": [
+              "w",
+              "p",
+              "q"
+            ]
           },
           "correct": true
         },
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["q", "p", "w"]
+            "tokenIds": [
+              "q",
+              "p",
+              "w"
+            ]
           },
           "correct": false
         }
@@ -371,23 +383,34 @@
     },
     {
       "questionId": "cet4.astra.second01",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一则简短安排，写出完整句子。",
-      "ambiguityReview": "听写而非自由转述；无内部标点，只归一句末标点、空格和大小写。 无选项；漏Only扩大范围，改will move改变动作状态。 只有上午那场改到了较小的房间；Only限定the morning session。不要漏掉限定词，也不要把has been moved改成将来安排。",
-      "optionNotes": {},
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：Which session has changed rooms?",
+      "ambiguityReview": "Only限定仅上午场移到小房间，不代表下午场或所有场次移动。 按录音语义区分三项；不再要求整句逐字匹配。",
+      "optionNotes": {
+        "a": "该选项与录音事实或限定不符。Only限定仅上午场移到小房间，不代表下午场或所有场次移动。",
+        "b": "该选项与录音事实或限定不符。Only限定仅上午场移到小房间，不代表下午场或所有场次移动。",
+        "c": "与录音事实和限制一致。Only限定仅上午场移到小房间，不代表下午场或所有场次移动。"
+      },
       "probes": [
         {
           "answer": {
-            "kind": "text",
-            "text": "Only the morning session has been moved to the smaller room."
+            "kind": "choice",
+            "optionId": "a"
           },
-          "correct": true
+          "correct": false
         },
         {
           "answer": {
-            "kind": "text",
-            "text": "The morning session will move to the smaller room."
+            "kind": "choice",
+            "optionId": "b"
           },
           "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
         }
       ]
     },
@@ -434,8 +457,8 @@
     },
     {
       "questionId": "cet4.astra.b02",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一则语音。说话人确定承诺了什么？",
-      "ambiguityReview": "题面不泄露零件或时间，须听录音；不据此猜具体维修时长。 a在零件未到时仍保证按原计划交车；b保留电话时间却把改期协商换成确认明早交车；c保留电话动作却反转触发条件。 明确承诺的是零件不到时五点前联系；明早维修依赖零件今天到，结尾还否认无条件保证。",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：What does the speaker promise to do if the part does not arrive today?",
+      "ambiguityReview": "题面不泄露零件或时间，须听录音；不据此猜具体维修时长。 a在零件未到时仍保证按原计划交车；b保留电话时间却把改期协商换成确认明早交车；c保留电话动作却反转触发条件。 明确承诺的是零件不到时五点前联系；明早维修依赖零件今天到，结尾还否认无条件保证。 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "零件不到仍保证交车，与录音不符。",
         "b": "电话目的应为改期协商，不是确认次日交车。",
@@ -475,8 +498,8 @@
     },
     {
       "questionId": "cet4.astra.a14",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一段评价。说话人对新系统的态度是什么？",
-      "ambiguityReview": "不推断分享功能具体哪里有问题，录音未说明。 四项都包含功能评价和行动，b交换功能对象，c反转行动，d反转搜索评价。 认可搜索省时，但不满意分享部分，希望改善前保留旧分享工具。",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：What is the speaker's attitude towards the new system?",
+      "ambiguityReview": "不推断分享功能具体哪里有问题，录音未说明。 四项都包含功能评价和行动，b交换功能对象，c反转行动，d反转搜索评价。 认可搜索省时，但不满意分享部分，希望改善前保留旧分享工具。 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "肯定搜索省时，分享待改善，暂留旧分享工具。",
         "b": "调换被肯定和被保留的功能。",
@@ -516,8 +539,8 @@
     },
     {
       "questionId": "cet4.astra.b14",
-      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一段发言。说话人的主要意思是什么？",
-      "ambiguityReview": "不推断尚未回复者赞成或反对。 a保留正面反馈和样本少，却将暂缓改为现在决定；b保留等待意见的动作，却将当前评价改为多数负面；c把是否保留仍未定偷换成已决定保留、只待收集执行建议。 positive是当前少量反馈，仍希望听到其余人的意见才决定保留。",
+      "standaloneContext": "本题独立提供录音与英文问题，不依赖故事或前题答案：What is the speaker's main point about the new schedule?",
+      "ambiguityReview": "不推断尚未回复者赞成或反对。 a保留正面反馈和样本少，却将暂缓改为现在决定；b保留等待意见的动作，却将当前评价改为多数负面；c把是否保留仍未定偷换成已决定保留、只待收集执行建议。 positive是当前少量反馈，仍希望听到其余人的意见才决定保留。 2026-10-23：逐项核对英文译文保留原先的范围、否定、时间和正确项；不增添额外推断。",
       "optionNotes": {
         "a": "将等待意见改成现在决定。",
         "b": "把少量正面反馈改成多数负面。",
@@ -646,14 +669,24 @@
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["t", "c", "b", "s"]
+            "tokenIds": [
+              "t",
+              "c",
+              "b",
+              "s"
+            ]
           },
           "correct": true
         },
         {
           "answer": {
             "kind": "arrange",
-            "tokenIds": ["s", "b", "c", "t"]
+            "tokenIds": [
+              "s",
+              "b",
+              "c",
+              "t"
+            ]
           },
           "correct": false
         }

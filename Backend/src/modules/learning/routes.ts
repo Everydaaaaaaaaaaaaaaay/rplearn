@@ -181,6 +181,25 @@ export function registerLearningRoutes(
         });
       return attempt;
     });
+    scope.get(
+      "/v1/learning/attempts/:id/speech/:questionId/:assetId",
+      (request, reply) => {
+        const params = parse(
+          paramsSchema.extend({
+            questionId: z.string().regex(/^[a-z][a-z0-9_.-]{0,119}$/),
+            assetId: z.string().regex(/^audio\.[a-f0-9]{64}$/),
+          }),
+          request.params,
+        );
+        reply.header("Cache-Control", "no-store");
+        return service.listeningScript(
+          user(request),
+          params.id,
+          params.questionId,
+          params.assetId,
+        );
+      },
+    );
     scope.get("/v1/learning/attempts/:id/audio/:questionId", (request) => {
       const params = parse(
         paramsSchema.extend({
