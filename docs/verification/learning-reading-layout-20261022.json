@@ -1,6 +1,6 @@
 {
   "date": "2026-10-22",
-  "status": "verified_latest_simulator_build_installed",
+  "status": "verified_simulator_and_physical_device_build_installed",
   "scope": {
     "groups": 634,
     "responses": 5090,
@@ -59,13 +59,30 @@
     "latestBuildInstalled": true,
     "preview": "Actual published grade7 multi-article group, q4 auto-selects B (questions 4–7), no production answer or score submitted.",
     "gitDiffCheck": "passed",
-    "screenshot": "build/reading-layout-preview/final-multi-reading.png"
+    "screenshot": "build/reading-layout-preview/final-multi-reading.png",
+    "physicalDevice": {
+      "model": "iPhone 13",
+      "os": "27.2",
+      "bundleID": "com.tiantian.lingotrip",
+      "version": "1.0",
+      "build": "1474",
+      "sourceCommit": "6a68d79e",
+      "configuration": "Debug",
+      "codesignVerification": "passed --deep --strict",
+      "buildEvidence": "build/reading-layout-device-build-20261022.log",
+      "installationEvidence": "build/reading-layout-device-install-20261022.json",
+      "launchEvidence": "build/reading-layout-device-launch-20261022.json",
+      "installedAndLaunched": true,
+      "visualCheck": "Device Hub connected to physical iPhone, but Computer Use screenshot returned white; do not claim a physical visual interaction pass. Simulator UI regressions cover the changed behavior.",
+      "dataPreservation": "Updated the same bundle ID in place. No app uninstall, account reset, database removal or login override."
+    }
   },
   "operationalNotes": [
     "Initial hosted test build exhausted available disk; only unused generated package link products were cleaned after open-file/compiler checks, with physical free-space measurements recorded. Models, app builds, simulator data and source were retained.",
     "First UI run exposed inherited accessibility identifiers overriding child controls. Removed the override and retained the failure summary; obsolete verbose failed-run temporaries were cleaned after collection completed and open-file checks.",
     "Visible-item scroll identifiers did not reliably restore a replaced article in the UI regression. Replaced with explicit per-material ScrollPosition offsets; the bookmark regression now passes.",
-    "Final polish initially failed in CodeSign while filesystem available space was about 150 MB. Compared only two superseded release staging candidates against their Git blobs; removed 1965 matching generated copies, retaining differing files, all packaged releases and newest staging. Retry compiled, signed and passed both UI regressions; cleanup and filesystem measurements are in build/storage-cleanup/reading-layout-old-staging-cleanup-20261022.json."
+    "Final polish initially failed in CodeSign while filesystem available space was about 150 MB. Compared only two superseded release staging candidates against their Git blobs; removed 1965 matching generated copies, retaining differing files, all packaged releases and newest staging. Retry compiled, signed and passed both UI regressions; cleanup and filesystem measurements are in build/storage-cleanup/reading-layout-old-staging-cleanup-20261022.json.",
+    "Before authorized physical installation, restored only the four missing tracked Vocoder files from the current Git revision. Bundled model verification passed as part of build; no model content change committed."
   ],
   "deployment": "iOS client display-only; no backend schema or production-data change, no App Store publication."
 }
