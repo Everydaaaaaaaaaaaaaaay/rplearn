@@ -1,6 +1,6 @@
 {
   "date": "2026-10-22",
-  "status": "local_verified_production_ssh_authentication_blocked",
+  "status": "production_deployed_and_verified",
   "issue": "Repeated full tool descriptions inside junior2 matching answer cards",
   "revisedGroups": [
     "original.grade8-learner-tools-profile-matching",
@@ -35,8 +35,24 @@
     "gitDiffCheck": "passed"
   },
   "deployment": {
-    "status": "blocked",
-    "reason": "SSH host alias unavailable; direct known production endpoint rejected existing public-key authentication. No server or user data changed."
+    "status": "verified",
+    "release": "originals-153d910cf7a0",
+    "previousReleaseRetained": "originals-8f84b5f0520b",
+    "archiveSHA256": "147084b3dbb462b27c2b88d75c32be5dfe7df29a7216ee3a0820ba8c7a761291",
+    "sourceCatalogSHA256": "0224b0bcf8f32d2bc3cc04b06da7da74f1d70b5eed86cf2c77af9dd05d0cacf3",
+    "batch": "b049",
+    "batchHash": "85fd4b647ac4c751bb32ddfed40c9bad02ff82e473949240f6cd45b90887239b",
+    "verifiedAt": "2026-10-22 15:22:11 UTC",
+    "verification": "All 3 affected units published at v2, expected payload hashes match, all 3 immutable v1 hashes retained; 9 responses. API, worker and Caddy active; public ready returns 200; junior2 originals authentication boundary returns 401 without a token.",
+    "scope": "No runtime JS, dependency or migration changes versus prior release; only RELEASE, catalog and generated source maps differ. Published b049 only.",
+    "resourceLimits": "Existing maintenance flow: MemoryMax 256 MiB, swap 0; deployment peak 216.5 MiB, publication peak 200.3 MiB, both successful after stable health observations.",
+    "evidence": "build/tool-option-production-verification-20261022.json",
+    "httpEvidence": "build/tool-option-production-http-20261022.json",
+    "remoteLogs": [
+      "/opt/lingotrip/ops-audits/tool-options-deploy-20261022.log",
+      "/opt/lingotrip/ops-audits/tool-options-publish-20261022.log",
+      "/opt/lingotrip/ops-audits/tool-options-verify-20261022.json"
+    ]
   },
   "client": "Data-only correction; no iOS code/build required. Existing attempts keep their immutable v1 input; new attempts use v2 after publication."
 }
