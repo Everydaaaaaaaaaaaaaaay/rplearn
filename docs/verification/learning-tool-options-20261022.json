@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-22",
+  "status": "local_verified_production_ssh_authentication_blocked",
+  "issue": "Repeated full tool descriptions inside junior2 matching answer cards",
+  "revisedGroups": [
+    "original.grade8-learner-tools-profile-matching",
+    "original.grade8-offline-app-needs",
+    "original.grade8-record-reading-writing-tools"
+  ],
+  "unitVersion": 2,
+  "responses": 9,
+  "optionLabels": 36,
+  "exampleOptions": [
+    "A. StoryTrack",
+    "B. SpeakPair",
+    "C. ListenReplay",
+    "D. WriteFix"
+  ],
+  "preserved": [
+    "full reading material verbatim",
+    "all question prompts and explanations",
+    "option IDs and order",
+    "answers and every grading probe",
+    "frozen author manuscripts",
+    "631 other complete groups",
+    "prior published versions and in-progress attempts"
+  ],
+  "checks": {
+    "pythonRevisionTests": 2,
+    "backendOriginalsTests": 4,
+    "runtimeBatchValidation": "passed; three complete groups, 9 responses, no media",
+    "reproducibleExport": "Reapplying reviewed revision to immutable v1 catalog exactly matches exported catalog",
+    "catalogHash": "85fd4b647ac4c751bb32ddfed40c9bad02ff82e473949240f6cd45b90887239b",
+    "batch": "b049",
+    "gitDiffCheck": "passed"
+  },
+  "deployment": {
+    "status": "blocked",
+    "reason": "SSH host alias unavailable; direct known production endpoint rejected existing public-key authentication. No server or user data changed."
+  },
+  "client": "Data-only correction; no iOS code/build required. Existing attempts keep their immutable v1 input; new attempts use v2 after publication."
+}

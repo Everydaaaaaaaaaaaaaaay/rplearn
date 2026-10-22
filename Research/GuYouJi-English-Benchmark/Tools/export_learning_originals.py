@@ -7,6 +7,7 @@ whole group. Sources supply form rules; their text/keys are never exported.
 import argparse,base64,collections,hashlib,html,json,re,subprocess,tempfile,wave,struct,xml.etree.ElementTree as ET
 from pathlib import Path
 from html.parser import HTMLParser
+from learning_original_presentation import apply_option_labels
 
 ROOT=Path(__file__).resolve().parents[3]; BASE=ROOT/'Research/GuYouJi-English-Benchmark'
 def sha(b):return hashlib.sha256(b).hexdigest()
@@ -143,6 +144,9 @@ def run(args):
   pending.append(entry['unit']['id']);weight+=size
  if pending:batches.append(dict(id='b'+str(len(batches)).zfill(3),unitIds=pending))
  manifest['batches']=batches
+ revisions=BASE/'FirstRelease/tool-option-label-revisions-v0.1.json'
+ if revisions.exists():manifest=apply_option_labels(manifest,json.loads(revisions.read_text()))
+ entries=manifest['units']
  if (out/'catalog.json').exists():
   previous={e['unit']['id']:e for e in json.loads((out/'catalog.json').read_text())['units']}
   for entry in entries:
