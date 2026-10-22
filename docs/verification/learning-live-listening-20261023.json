@@ -65,19 +65,64 @@
         "First F1 pass completes before second M5 is offered",
         "Second live pass completes; regular and slow playback disabled afterwards"
       ],
-      "note": "Test passed; Xcode is still collecting simulator diagnostic attachments."
-    }
+      "note": "Final result confirms 1 passed, 0 failed. Xcode timed out collecting optional simulator diagnostics after the passed test; the screenshot was exported and visually checked."
+    },
+    "screenshot": "build/listening-live-ui-attachments-20261023/6871F53E-42BE-423F-88E5-5E1FCC9EBAC5.png",
+    "inspection": "English question and three options fit on screen with clear second-pass control and unobstructed answer area.",
+    "simulatorPreviewLeftOpen": true,
+    "previewCommand": "Scripts/preview.sh preview unit-challenge with public senior3 question and matching speech script"
   },
   "production": {
-    "status": "pending authorized deployment"
+    "status": "published and verified",
+    "version": "originals-9edd518db660",
+    "archiveSHA256": "32dd4539a77c8a1608fea93d3c3269635050ec000c570e616841a2dc04461775",
+    "previousReleasePreserved": "originals-153d910cf7a0",
+    "deploymentMemoryPeakMiB": 211.1,
+    "deploymentSwapBytes": 0,
+    "catalogHash": "eca057b5718d59cbee4f88f1a244c89a95389a1ef7d648a7a1665239b3c45066",
+    "bankHash": "80b82424e9f1ac3b040299c70fd3b8edfb5cfadc8a984fa94c7e46d07835bbc0",
+    "publicationMemoryPeakMiB": {
+      "bank": 150.3
+    },
+    "readOnlyVerification": {
+      "passed": true,
+      "updatedUnitHashesMatched": 9,
+      "previousExactVersionsPreserved": 9,
+      "historicalDictationPreserved": 12,
+      "compatibleBlueprints": 9,
+      "originalScriptBindings": 547,
+      "spokenQuestionPauseMs": 3000,
+      "summary": "build/listening-production-verification-20261023.json",
+      "remoteAudit": "/opt/lingotrip/ops-audits/live-listening-verification-20261023-v2.log",
+      "productionUserAttemptsCreated": false
+    },
+    "publicHTTP": {
+      "readiness": 200,
+      "unauthenticatedSpeechEndpoint": 401,
+      "evidence": "build/listening-production-http-20261023.json"
+    }
   },
   "device": {
-    "status": "pending latest installation",
-    "udid": "00008110-00092C493C0B801E"
+    "status": "installed and launched",
+    "model": "iPhone 13",
+    "system": "iOS 27.2",
+    "udid": "00008110-00092C493C0B801E",
+    "bundleID": "com.tiantian.lingotrip",
+    "build": 1475,
+    "sourceCommit": "39ebbd3d",
+    "codeSignatureVerified": true,
+    "uninstallOrDataReset": false,
+    "buildLog": "build/listening-live-device-build-20261023.log",
+    "installRecord": "build/listening-live-device-install-20261023.json",
+    "launchRecord": "build/listening-live-device-launch-20261023.json"
   },
   "limitations": [
     "Automated waveform and playback checks are not an independent pronunciation or examination-validity review.",
     "No App Store publication. Existing frozen attempts retain their old question format."
   ],
-  "backendCommit": "9edd518d"
+  "backendCommit": "9edd518d",
+  "clientCommit": "39ebbd3d",
+  "verificationNotes": [
+    "The first read-only probe assumed every previous unit version was 1; the three primary3 units were already version 2. Corrected the probe to bind each exact pre-change version and hash; no production data was changed by either read-only probe."
+  ]
 }
