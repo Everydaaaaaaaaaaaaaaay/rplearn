@@ -1,0 +1,1362 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b064",
+  "createdAt": "2026-10-23T22:49:27.888808+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.personal-dictionary-064",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · A dictionary of my own examples",
+        "summary": "A dictionary of my own examples，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage with seven supplied-word and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four new complete junior ten-gap grammar passages. Fictional classroom/kitchen visits and general basic process discussion, no invented study or numerical result. Same-author form and variant review; no independent calibration, unknown forms reviewable."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.personal-dictionary-064",
+          "family": "passage_form",
+          "label": "A dictionary of my own examples",
+          "candidateSHA256": "765be5b2878c370e5ecb2d0e52e9a5bec5a1cbe457d14d0d54edae4e0464a077",
+          "authorCheckSHA256": "9b42be190a97574592c0c0903f2f01e677b171eaa09efa2087720e8bdfc77e5a",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.personal-dictionary-064#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b064；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A dictionary of my own examples\n\nMy English teacher ____1____ (suggest) keeping a vocabulary notebook at the beginning of last term. I first copied long lists of words, but soon discovered that a neat list was not the same ____2____ knowing how to use them.\n\nNow I choose fewer words and write a short example for each one. The example should be something ____3____ I can understand without searching another page. If I borrow a sentence from a book, I note where it came from instead of pretending it is mine.\n\nI also try ____4____ (add) a phrase rather than an isolated word when the combination matters. A verb may take a particular preposition, and that small detail can be difficult ____5____ (remember) later.\n\nOnce a week, I look back without ____6____ (cover) the examples at first. Then I hide the new words and see whether I can supply them. If I cannot, I change the example or look for another one rather than copying the same list again.\n\nThe notebook has become ____7____ (useful) than my original collection because it helps me ask specific questions. Some entries include two ____8____ (meaning) of a word, with different situations beside them.\n\nI do not expect to remember everything immediately. The point is to make the next encounter easier. When I meet a familiar expression, I check whether ____9____ (I) example still makes sense. Learning a word is part of learning ____10____ it works, not merely recognising its shape."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.personal-dictionary-064.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of suggest.",
+            "material": "A dictionary of my own examples\n\nMy English teacher ____1____ (suggest) keeping a vocabulary notebook at the beginning of last term. I first copied long lists of words, but soon discovered that a neat list was not the same ____2____ knowing how to use them.\n\nNow I choose fewer words and write a short example for each one. The example should be something ____3____ I can understand without searching another page. If I borrow a sentence from a book, I note where it came from instead of pretending it is mine.\n\nI also try ____4____ (add) a phrase rather than an isolated word when the combination matters. A verb may take a particular preposition, and that small detail can be difficult ____5____ (remember) later.\n\nOnce a week, I look back without ____6____ (cover) the examples at first. Then I hide the new words and see whether I can supply them. If I cannot, I change the example or look for another one rather than copying the same list again.\n\nThe notebook has become ____7____ (useful) than my original collection because it helps me ask specific questions. Some entries include two ____8____ (meaning) of a word, with different situations beside them.\n\nI do not expect to remember everything immediately. The point is to make the next encounter easier. When I meet a familiar expression, I check whether ____9____ (I) example still makes sense. Learning a word is part of learning ____10____ it works, not merely recognising its shape.",
+            "explanation": "At the beginning of last term establishes a completed past suggestion. Base and unaided -ing forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "suggested"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "suggest",
+                "suggesting"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.personal-dictionary-064.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "A dictionary of my own examples\n\nMy English teacher ____1____ (suggest) keeping a vocabulary notebook at the beginning of last term. I first copied long lists of words, but soon discovered that a neat list was not the same ____2____ knowing how to use them.\n\nNow I choose fewer words and write a short example for each one. The example should be something ____3____ I can understand without searching another page. If I borrow a sentence from a book, I note where it came from instead of pretending it is mine.\n\nI also try ____4____ (add) a phrase rather than an isolated word when the combination matters. A verb may take a particular preposition, and that small detail can be difficult ____5____ (remember) later.\n\nOnce a week, I look back without ____6____ (cover) the examples at first. Then I hide the new words and see whether I can supply them. If I cannot, I change the example or look for another one rather than copying the same list again.\n\nThe notebook has become ____7____ (useful) than my original collection because it helps me ask specific questions. Some entries include two ____8____ (meaning) of a word, with different situations beside them.\n\nI do not expect to remember everything immediately. The point is to make the next encounter easier. When I meet a familiar expression, I check whether ____9____ (I) example still makes sense. Learning a word is part of learning ____10____ it works, not merely recognising its shape.",
+            "explanation": "The same as is the fixed comparison. Than/from/to do not complete same here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "as"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "than",
+                "from",
+                "to"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.personal-dictionary-064.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "A dictionary of my own examples\n\nMy English teacher ____1____ (suggest) keeping a vocabulary notebook at the beginning of last term. I first copied long lists of words, but soon discovered that a neat list was not the same ____2____ knowing how to use them.\n\nNow I choose fewer words and write a short example for each one. The example should be something ____3____ I can understand without searching another page. If I borrow a sentence from a book, I note where it came from instead of pretending it is mine.\n\nI also try ____4____ (add) a phrase rather than an isolated word when the combination matters. A verb may take a particular preposition, and that small detail can be difficult ____5____ (remember) later.\n\nOnce a week, I look back without ____6____ (cover) the examples at first. Then I hide the new words and see whether I can supply them. If I cannot, I change the example or look for another one rather than copying the same list again.\n\nThe notebook has become ____7____ (useful) than my original collection because it helps me ask specific questions. Some entries include two ____8____ (meaning) of a word, with different situations beside them.\n\nI do not expect to remember everything immediately. The point is to make the next encounter easier. When I meet a familiar expression, I check whether ____9____ (I) example still makes sense. Learning a word is part of learning ____10____ it works, not merely recognising its shape.",
+            "explanation": "Something is the object of the defining relative clause: that, with which also accepted in this nonhuman reference. Who is human, where a location and what incompatible with something as an expressed antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.personal-dictionary-064.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of add.",
+            "material": "A dictionary of my own examples\n\nMy English teacher ____1____ (suggest) keeping a vocabulary notebook at the beginning of last term. I first copied long lists of words, but soon discovered that a neat list was not the same ____2____ knowing how to use them.\n\nNow I choose fewer words and write a short example for each one. The example should be something ____3____ I can understand without searching another page. If I borrow a sentence from a book, I note where it came from instead of pretending it is mine.\n\nI also try ____4____ (add) a phrase rather than an isolated word when the combination matters. A verb may take a particular preposition, and that small detail can be difficult ____5____ (remember) later.\n\nOnce a week, I look back without ____6____ (cover) the examples at first. Then I hide the new words and see whether I can supply them. If I cannot, I change the example or look for another one rather than copying the same list again.\n\nThe notebook has become ____7____ (useful) than my original collection because it helps me ask specific questions. Some entries include two ____8____ (meaning) of a word, with different situations beside them.\n\nI do not expect to remember everything immediately. The point is to make the next encounter easier. When I meet a familiar expression, I check whether ____9____ (I) example still makes sense. Learning a word is part of learning ____10____ it works, not merely recognising its shape.",
+            "explanation": "Try adding describes testing the method, while try to add describes an attempt. Both fit. Base add and finite added do not directly complete try.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "adding",
+              "to add"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "add",
+                "added"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.personal-dictionary-064.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of remember.",
+            "material": "A dictionary of my own examples\n\nMy English teacher ____1____ (suggest) keeping a vocabulary notebook at the beginning of last term. I first copied long lists of words, but soon discovered that a neat list was not the same ____2____ knowing how to use them.\n\nNow I choose fewer words and write a short example for each one. The example should be something ____3____ I can understand without searching another page. If I borrow a sentence from a book, I note where it came from instead of pretending it is mine.\n\nI also try ____4____ (add) a phrase rather than an isolated word when the combination matters. A verb may take a particular preposition, and that small detail can be difficult ____5____ (remember) later.\n\nOnce a week, I look back without ____6____ (cover) the examples at first. Then I hide the new words and see whether I can supply them. If I cannot, I change the example or look for another one rather than copying the same list again.\n\nThe notebook has become ____7____ (useful) than my original collection because it helps me ask specific questions. Some entries include two ____8____ (meaning) of a word, with different situations beside them.\n\nI do not expect to remember everything immediately. The point is to make the next encounter easier. When I meet a familiar expression, I check whether ____9____ (I) example still makes sense. Learning a word is part of learning ____10____ it works, not merely recognising its shape.",
+            "explanation": "Difficult to remember uses a to-infinitive. Other listed forms do not complete this adjective construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to remember"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "remembering",
+                "remember",
+                "remembered"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.personal-dictionary-064.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of cover.",
+            "material": "A dictionary of my own examples\n\nMy English teacher ____1____ (suggest) keeping a vocabulary notebook at the beginning of last term. I first copied long lists of words, but soon discovered that a neat list was not the same ____2____ knowing how to use them.\n\nNow I choose fewer words and write a short example for each one. The example should be something ____3____ I can understand without searching another page. If I borrow a sentence from a book, I note where it came from instead of pretending it is mine.\n\nI also try ____4____ (add) a phrase rather than an isolated word when the combination matters. A verb may take a particular preposition, and that small detail can be difficult ____5____ (remember) later.\n\nOnce a week, I look back without ____6____ (cover) the examples at first. Then I hide the new words and see whether I can supply them. If I cannot, I change the example or look for another one rather than copying the same list again.\n\nThe notebook has become ____7____ (useful) than my original collection because it helps me ask specific questions. Some entries include two ____8____ (meaning) of a word, with different situations beside them.\n\nI do not expect to remember everything immediately. The point is to make the next encounter easier. When I meet a familiar expression, I check whether ____9____ (I) example still makes sense. Learning a word is part of learning ____10____ it works, not merely recognising its shape.",
+            "explanation": "Without takes covering. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "covering"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "cover",
+                "covered",
+                "to cover"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.personal-dictionary-064.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of useful.",
+            "material": "A dictionary of my own examples\n\nMy English teacher ____1____ (suggest) keeping a vocabulary notebook at the beginning of last term. I first copied long lists of words, but soon discovered that a neat list was not the same ____2____ knowing how to use them.\n\nNow I choose fewer words and write a short example for each one. The example should be something ____3____ I can understand without searching another page. If I borrow a sentence from a book, I note where it came from instead of pretending it is mine.\n\nI also try ____4____ (add) a phrase rather than an isolated word when the combination matters. A verb may take a particular preposition, and that small detail can be difficult ____5____ (remember) later.\n\nOnce a week, I look back without ____6____ (cover) the examples at first. Then I hide the new words and see whether I can supply them. If I cannot, I change the example or look for another one rather than copying the same list again.\n\nThe notebook has become ____7____ (useful) than my original collection because it helps me ask specific questions. Some entries include two ____8____ (meaning) of a word, with different situations beside them.\n\nI do not expect to remember everything immediately. The point is to make the next encounter easier. When I meet a familiar expression, I check whether ____9____ (I) example still makes sense. Learning a word is part of learning ____10____ it works, not merely recognising its shape.",
+            "explanation": "Than requires comparative more useful. Plain and superlative forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "more useful"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "useful",
+                "most useful"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.personal-dictionary-064.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of meaning.",
+            "material": "A dictionary of my own examples\n\nMy English teacher ____1____ (suggest) keeping a vocabulary notebook at the beginning of last term. I first copied long lists of words, but soon discovered that a neat list was not the same ____2____ knowing how to use them.\n\nNow I choose fewer words and write a short example for each one. The example should be something ____3____ I can understand without searching another page. If I borrow a sentence from a book, I note where it came from instead of pretending it is mine.\n\nI also try ____4____ (add) a phrase rather than an isolated word when the combination matters. A verb may take a particular preposition, and that small detail can be difficult ____5____ (remember) later.\n\nOnce a week, I look back without ____6____ (cover) the examples at first. Then I hide the new words and see whether I can supply them. If I cannot, I change the example or look for another one rather than copying the same list again.\n\nThe notebook has become ____7____ (useful) than my original collection because it helps me ask specific questions. Some entries include two ____8____ (meaning) of a word, with different situations beside them.\n\nI do not expect to remember everything immediately. The point is to make the next encounter easier. When I meet a familiar expression, I check whether ____9____ (I) example still makes sense. Learning a word is part of learning ____10____ it works, not merely recognising its shape.",
+            "explanation": "Two requires plural meanings. Meaning is singular and meaningful adjective.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "meanings"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "meaning",
+                "meaningful"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.personal-dictionary-064.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of I.",
+            "material": "A dictionary of my own examples\n\nMy English teacher ____1____ (suggest) keeping a vocabulary notebook at the beginning of last term. I first copied long lists of words, but soon discovered that a neat list was not the same ____2____ knowing how to use them.\n\nNow I choose fewer words and write a short example for each one. The example should be something ____3____ I can understand without searching another page. If I borrow a sentence from a book, I note where it came from instead of pretending it is mine.\n\nI also try ____4____ (add) a phrase rather than an isolated word when the combination matters. A verb may take a particular preposition, and that small detail can be difficult ____5____ (remember) later.\n\nOnce a week, I look back without ____6____ (cover) the examples at first. Then I hide the new words and see whether I can supply them. If I cannot, I change the example or look for another one rather than copying the same list again.\n\nThe notebook has become ____7____ (useful) than my original collection because it helps me ask specific questions. Some entries include two ____8____ (meaning) of a word, with different situations beside them.\n\nI do not expect to remember everything immediately. The point is to make the next encounter easier. When I meet a familiar expression, I check whether ____9____ (I) example still makes sense. Learning a word is part of learning ____10____ it works, not merely recognising its shape.",
+            "explanation": "My modifies example. I/me are personal pronouns and mine cannot directly precede it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "my"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "I",
+                "me",
+                "mine"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.personal-dictionary-064.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "A dictionary of my own examples\n\nMy English teacher ____1____ (suggest) keeping a vocabulary notebook at the beginning of last term. I first copied long lists of words, but soon discovered that a neat list was not the same ____2____ knowing how to use them.\n\nNow I choose fewer words and write a short example for each one. The example should be something ____3____ I can understand without searching another page. If I borrow a sentence from a book, I note where it came from instead of pretending it is mine.\n\nI also try ____4____ (add) a phrase rather than an isolated word when the combination matters. A verb may take a particular preposition, and that small detail can be difficult ____5____ (remember) later.\n\nOnce a week, I look back without ____6____ (cover) the examples at first. Then I hide the new words and see whether I can supply them. If I cannot, I change the example or look for another one rather than copying the same list again.\n\nThe notebook has become ____7____ (useful) than my original collection because it helps me ask specific questions. Some entries include two ____8____ (meaning) of a word, with different situations beside them.\n\nI do not expect to remember everything immediately. The point is to make the next encounter easier. When I meet a familiar expression, I check whether ____9____ (I) example still makes sense. Learning a word is part of learning ____10____ it works, not merely recognising its shape.",
+            "explanation": "How introduces the manner in which the word works. What/which would need a missing role that the complete clause it works does not supply.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "how"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "what",
+                "which"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "af1b1537203a7277f60701f7cad74c9e559e0dc0b7ed7a29559c67a67877efe7",
+      "reviewNotes": "Four new complete junior ten-gap grammar passages. Fictional classroom/kitchen visits and general basic process discussion, no invented study or numerical result. Same-author form and variant review; no independent calibration, unknown forms reviewable. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.yeast-demonstration-064",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Bubbles in bread dough",
+        "summary": "Bubbles in bread dough，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage with seven supplied-word and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four new complete junior ten-gap grammar passages. Fictional classroom/kitchen visits and general basic process discussion, no invented study or numerical result. Same-author form and variant review; no independent calibration, unknown forms reviewable."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.yeast-demonstration-064",
+          "family": "passage_form",
+          "label": "Bubbles in bread dough",
+          "candidateSHA256": "f683773bf73458efcf6790c35384cf47b4ebcfc1282c733302ebe018a166c2e1",
+          "authorCheckSHA256": "0e8cea08beb3da8f46aefc77a2be33d460ded05437de3eafe4b380646a23caf8",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.yeast-demonstration-064#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b064；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Bubbles in bread dough\n\nOur school cook showed us a small piece of bread dough. It looked different from a mixture of flour and water because it contained yeast. She explained that yeast consists of tiny living ____1____ (organism) that can produce gas as they use sugar.\n\nThe gas becomes trapped in the dough, helping it rise. That does not mean every mixture grows at the same speed. Temperature, ingredients and time all matter. The cook asked us ____2____ (notice) the conditions rather than remember a single number as a rule for every recipe.\n\nWe looked at two covered bowls ____3____ had been prepared earlier. One dough had risen ____4____ (high) than the other. We were not allowed to decide that yeast alone explained the difference without knowing how each bowl had been prepared.\n\nAfter ____5____ (observe) the dough, we watched the cook shape it. She handled it confidently, but paused to explain what she was feeling. A written instruction could give useful guidance, yet experience helped her respond ____6____ changes in the mixture.\n\nThe finished bread ____7____ (bake) by the kitchen staff. We did not work with the ovens ourselves. Later, we compared a cut slice with the raw dough, noticing the spaces inside.\n\nThe visit gave us ____8____ (we) first close look at a familiar food's preparation. I wrote a short ____9____ (describe) for the school newsletter. It was ____10____ introduction to a process, not a claim that I could now make every kind of bread."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.yeast-demonstration-064.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of organism.",
+            "material": "Bubbles in bread dough\n\nOur school cook showed us a small piece of bread dough. It looked different from a mixture of flour and water because it contained yeast. She explained that yeast consists of tiny living ____1____ (organism) that can produce gas as they use sugar.\n\nThe gas becomes trapped in the dough, helping it rise. That does not mean every mixture grows at the same speed. Temperature, ingredients and time all matter. The cook asked us ____2____ (notice) the conditions rather than remember a single number as a rule for every recipe.\n\nWe looked at two covered bowls ____3____ had been prepared earlier. One dough had risen ____4____ (high) than the other. We were not allowed to decide that yeast alone explained the difference without knowing how each bowl had been prepared.\n\nAfter ____5____ (observe) the dough, we watched the cook shape it. She handled it confidently, but paused to explain what she was feeling. A written instruction could give useful guidance, yet experience helped her respond ____6____ changes in the mixture.\n\nThe finished bread ____7____ (bake) by the kitchen staff. We did not work with the ovens ourselves. Later, we compared a cut slice with the raw dough, noticing the spaces inside.\n\nThe visit gave us ____8____ (we) first close look at a familiar food's preparation. I wrote a short ____9____ (describe) for the school newsletter. It was ____10____ introduction to a process, not a claim that I could now make every kind of bread.",
+            "explanation": "Tiny living organisms are the plural entities referred to. Singular organism and adjective organic do not name them in this plural statement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "organisms"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "organism",
+                "organic"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.yeast-demonstration-064.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of notice.",
+            "material": "Bubbles in bread dough\n\nOur school cook showed us a small piece of bread dough. It looked different from a mixture of flour and water because it contained yeast. She explained that yeast consists of tiny living ____1____ (organism) that can produce gas as they use sugar.\n\nThe gas becomes trapped in the dough, helping it rise. That does not mean every mixture grows at the same speed. Temperature, ingredients and time all matter. The cook asked us ____2____ (notice) the conditions rather than remember a single number as a rule for every recipe.\n\nWe looked at two covered bowls ____3____ had been prepared earlier. One dough had risen ____4____ (high) than the other. We were not allowed to decide that yeast alone explained the difference without knowing how each bowl had been prepared.\n\nAfter ____5____ (observe) the dough, we watched the cook shape it. She handled it confidently, but paused to explain what she was feeling. A written instruction could give useful guidance, yet experience helped her respond ____6____ changes in the mixture.\n\nThe finished bread ____7____ (bake) by the kitchen staff. We did not work with the ovens ourselves. Later, we compared a cut slice with the raw dough, noticing the spaces inside.\n\nThe visit gave us ____8____ (we) first close look at a familiar food's preparation. I wrote a short ____9____ (describe) for the school newsletter. It was ____10____ introduction to a process, not a claim that I could now make every kind of bread.",
+            "explanation": "Asked us takes to notice. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to notice"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "noticing",
+                "notice",
+                "noticed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.yeast-demonstration-064.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "Bubbles in bread dough\n\nOur school cook showed us a small piece of bread dough. It looked different from a mixture of flour and water because it contained yeast. She explained that yeast consists of tiny living ____1____ (organism) that can produce gas as they use sugar.\n\nThe gas becomes trapped in the dough, helping it rise. That does not mean every mixture grows at the same speed. Temperature, ingredients and time all matter. The cook asked us ____2____ (notice) the conditions rather than remember a single number as a rule for every recipe.\n\nWe looked at two covered bowls ____3____ had been prepared earlier. One dough had risen ____4____ (high) than the other. We were not allowed to decide that yeast alone explained the difference without knowing how each bowl had been prepared.\n\nAfter ____5____ (observe) the dough, we watched the cook shape it. She handled it confidently, but paused to explain what she was feeling. A written instruction could give useful guidance, yet experience helped her respond ____6____ changes in the mixture.\n\nThe finished bread ____7____ (bake) by the kitchen staff. We did not work with the ovens ourselves. Later, we compared a cut slice with the raw dough, noticing the spaces inside.\n\nThe visit gave us ____8____ (we) first close look at a familiar food's preparation. I wrote a short ____9____ (describe) for the school newsletter. It was ____10____ introduction to a process, not a claim that I could now make every kind of bread.",
+            "explanation": "Bowls is the subject antecedent of that/which had been prepared. Who is human, where not subject and what does not follow this antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.yeast-demonstration-064.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of high.",
+            "material": "Bubbles in bread dough\n\nOur school cook showed us a small piece of bread dough. It looked different from a mixture of flour and water because it contained yeast. She explained that yeast consists of tiny living ____1____ (organism) that can produce gas as they use sugar.\n\nThe gas becomes trapped in the dough, helping it rise. That does not mean every mixture grows at the same speed. Temperature, ingredients and time all matter. The cook asked us ____2____ (notice) the conditions rather than remember a single number as a rule for every recipe.\n\nWe looked at two covered bowls ____3____ had been prepared earlier. One dough had risen ____4____ (high) than the other. We were not allowed to decide that yeast alone explained the difference without knowing how each bowl had been prepared.\n\nAfter ____5____ (observe) the dough, we watched the cook shape it. She handled it confidently, but paused to explain what she was feeling. A written instruction could give useful guidance, yet experience helped her respond ____6____ changes in the mixture.\n\nThe finished bread ____7____ (bake) by the kitchen staff. We did not work with the ovens ourselves. Later, we compared a cut slice with the raw dough, noticing the spaces inside.\n\nThe visit gave us ____8____ (we) first close look at a familiar food's preparation. I wrote a short ____9____ (describe) for the school newsletter. It was ____10____ introduction to a process, not a claim that I could now make every kind of bread.",
+            "explanation": "Than requires comparative higher. Plain, superlative and double comparison do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "higher"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "high",
+                "highest",
+                "more higher"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.yeast-demonstration-064.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of observe.",
+            "material": "Bubbles in bread dough\n\nOur school cook showed us a small piece of bread dough. It looked different from a mixture of flour and water because it contained yeast. She explained that yeast consists of tiny living ____1____ (organism) that can produce gas as they use sugar.\n\nThe gas becomes trapped in the dough, helping it rise. That does not mean every mixture grows at the same speed. Temperature, ingredients and time all matter. The cook asked us ____2____ (notice) the conditions rather than remember a single number as a rule for every recipe.\n\nWe looked at two covered bowls ____3____ had been prepared earlier. One dough had risen ____4____ (high) than the other. We were not allowed to decide that yeast alone explained the difference without knowing how each bowl had been prepared.\n\nAfter ____5____ (observe) the dough, we watched the cook shape it. She handled it confidently, but paused to explain what she was feeling. A written instruction could give useful guidance, yet experience helped her respond ____6____ changes in the mixture.\n\nThe finished bread ____7____ (bake) by the kitchen staff. We did not work with the ovens ourselves. Later, we compared a cut slice with the raw dough, noticing the spaces inside.\n\nThe visit gave us ____8____ (we) first close look at a familiar food's preparation. I wrote a short ____9____ (describe) for the school newsletter. It was ____10____ introduction to a process, not a claim that I could now make every kind of bread.",
+            "explanation": "After takes observing in the prepositional clause. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "observing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "observe",
+                "observed",
+                "to observe"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.yeast-demonstration-064.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "Bubbles in bread dough\n\nOur school cook showed us a small piece of bread dough. It looked different from a mixture of flour and water because it contained yeast. She explained that yeast consists of tiny living ____1____ (organism) that can produce gas as they use sugar.\n\nThe gas becomes trapped in the dough, helping it rise. That does not mean every mixture grows at the same speed. Temperature, ingredients and time all matter. The cook asked us ____2____ (notice) the conditions rather than remember a single number as a rule for every recipe.\n\nWe looked at two covered bowls ____3____ had been prepared earlier. One dough had risen ____4____ (high) than the other. We were not allowed to decide that yeast alone explained the difference without knowing how each bowl had been prepared.\n\nAfter ____5____ (observe) the dough, we watched the cook shape it. She handled it confidently, but paused to explain what she was feeling. A written instruction could give useful guidance, yet experience helped her respond ____6____ changes in the mixture.\n\nThe finished bread ____7____ (bake) by the kitchen staff. We did not work with the ovens ourselves. Later, we compared a cut slice with the raw dough, noticing the spaces inside.\n\nThe visit gave us ____8____ (we) first close look at a familiar food's preparation. I wrote a short ____9____ (describe) for the school newsletter. It was ____10____ introduction to a process, not a claim that I could now make every kind of bread.",
+            "explanation": "Respond to changes uses to. At/of/from do not complete respond here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "at",
+                "of",
+                "from"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.yeast-demonstration-064.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of bake.",
+            "material": "Bubbles in bread dough\n\nOur school cook showed us a small piece of bread dough. It looked different from a mixture of flour and water because it contained yeast. She explained that yeast consists of tiny living ____1____ (organism) that can produce gas as they use sugar.\n\nThe gas becomes trapped in the dough, helping it rise. That does not mean every mixture grows at the same speed. Temperature, ingredients and time all matter. The cook asked us ____2____ (notice) the conditions rather than remember a single number as a rule for every recipe.\n\nWe looked at two covered bowls ____3____ had been prepared earlier. One dough had risen ____4____ (high) than the other. We were not allowed to decide that yeast alone explained the difference without knowing how each bowl had been prepared.\n\nAfter ____5____ (observe) the dough, we watched the cook shape it. She handled it confidently, but paused to explain what she was feeling. A written instruction could give useful guidance, yet experience helped her respond ____6____ changes in the mixture.\n\nThe finished bread ____7____ (bake) by the kitchen staff. We did not work with the ovens ourselves. Later, we compared a cut slice with the raw dough, noticing the spaces inside.\n\nThe visit gave us ____8____ (we) first close look at a familiar food's preparation. I wrote a short ____9____ (describe) for the school newsletter. It was ____10____ introduction to a process, not a claim that I could now make every kind of bread.",
+            "explanation": "Uncountable bread receives baking, so singular past/past-perfect passive. Baked alone lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was baked",
+              "had been baked"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "baked",
+                "were baked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.yeast-demonstration-064.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of we.",
+            "material": "Bubbles in bread dough\n\nOur school cook showed us a small piece of bread dough. It looked different from a mixture of flour and water because it contained yeast. She explained that yeast consists of tiny living ____1____ (organism) that can produce gas as they use sugar.\n\nThe gas becomes trapped in the dough, helping it rise. That does not mean every mixture grows at the same speed. Temperature, ingredients and time all matter. The cook asked us ____2____ (notice) the conditions rather than remember a single number as a rule for every recipe.\n\nWe looked at two covered bowls ____3____ had been prepared earlier. One dough had risen ____4____ (high) than the other. We were not allowed to decide that yeast alone explained the difference without knowing how each bowl had been prepared.\n\nAfter ____5____ (observe) the dough, we watched the cook shape it. She handled it confidently, but paused to explain what she was feeling. A written instruction could give useful guidance, yet experience helped her respond ____6____ changes in the mixture.\n\nThe finished bread ____7____ (bake) by the kitchen staff. We did not work with the ovens ourselves. Later, we compared a cut slice with the raw dough, noticing the spaces inside.\n\nThe visit gave us ____8____ (we) first close look at a familiar food's preparation. I wrote a short ____9____ (describe) for the school newsletter. It was ____10____ introduction to a process, not a claim that I could now make every kind of bread.",
+            "explanation": "Our modifies first close look. We/us are personal pronouns; ours cannot directly modify the following noun phrase.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "our"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "us",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.yeast-demonstration-064.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of describe.",
+            "material": "Bubbles in bread dough\n\nOur school cook showed us a small piece of bread dough. It looked different from a mixture of flour and water because it contained yeast. She explained that yeast consists of tiny living ____1____ (organism) that can produce gas as they use sugar.\n\nThe gas becomes trapped in the dough, helping it rise. That does not mean every mixture grows at the same speed. Temperature, ingredients and time all matter. The cook asked us ____2____ (notice) the conditions rather than remember a single number as a rule for every recipe.\n\nWe looked at two covered bowls ____3____ had been prepared earlier. One dough had risen ____4____ (high) than the other. We were not allowed to decide that yeast alone explained the difference without knowing how each bowl had been prepared.\n\nAfter ____5____ (observe) the dough, we watched the cook shape it. She handled it confidently, but paused to explain what she was feeling. A written instruction could give useful guidance, yet experience helped her respond ____6____ changes in the mixture.\n\nThe finished bread ____7____ (bake) by the kitchen staff. We did not work with the ovens ourselves. Later, we compared a cut slice with the raw dough, noticing the spaces inside.\n\nThe visit gave us ____8____ (we) first close look at a familiar food's preparation. I wrote a short ____9____ (describe) for the school newsletter. It was ____10____ introduction to a process, not a claim that I could now make every kind of bread.",
+            "explanation": "A short description requires a singular noun. Describe is verb and descriptive adjective.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "description"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "describe",
+                "descriptive"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.yeast-demonstration-064.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "Bubbles in bread dough\n\nOur school cook showed us a small piece of bread dough. It looked different from a mixture of flour and water because it contained yeast. She explained that yeast consists of tiny living ____1____ (organism) that can produce gas as they use sugar.\n\nThe gas becomes trapped in the dough, helping it rise. That does not mean every mixture grows at the same speed. Temperature, ingredients and time all matter. The cook asked us ____2____ (notice) the conditions rather than remember a single number as a rule for every recipe.\n\nWe looked at two covered bowls ____3____ had been prepared earlier. One dough had risen ____4____ (high) than the other. We were not allowed to decide that yeast alone explained the difference without knowing how each bowl had been prepared.\n\nAfter ____5____ (observe) the dough, we watched the cook shape it. She handled it confidently, but paused to explain what she was feeling. A written instruction could give useful guidance, yet experience helped her respond ____6____ changes in the mixture.\n\nThe finished bread ____7____ (bake) by the kitchen staff. We did not work with the ovens ourselves. Later, we compared a cut slice with the raw dough, noticing the spaces inside.\n\nThe visit gave us ____8____ (we) first close look at a familiar food's preparation. I wrote a short ____9____ (describe) for the school newsletter. It was ____10____ introduction to a process, not a claim that I could now make every kind of bread.",
+            "explanation": "An introduction uses an before a vowel sound. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "5f7ce64bebda5b0c51bc233ebe3e5b638387ab38e00810763e9738571c33d2de",
+      "reviewNotes": "Four new complete junior ten-gap grammar passages. Fictional classroom/kitchen visits and general basic process discussion, no invented study or numerical result. Same-author form and variant review; no independent calibration, unknown forms reviewable. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.magnet-table-064",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Not every metal behaved the same way",
+        "summary": "Not every metal behaved the same way，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage with seven supplied-word and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four new complete junior ten-gap grammar passages. Fictional classroom/kitchen visits and general basic process discussion, no invented study or numerical result. Same-author form and variant review; no independent calibration, unknown forms reviewable."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.magnet-table-064",
+          "family": "passage_form",
+          "label": "Not every metal behaved the same way",
+          "candidateSHA256": "5a5c08a619898cd3525dc95f9d62287389465be95c155601a8aa0f1248c07a2b",
+          "authorCheckSHA256": "bb3cbe3390c5e523e80cbd32dbd4e09fa3ff000d538ee0bd613fd04b350a970b",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.magnet-table-064#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b064；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Not every metal behaved the same way\n\nAt a science-centre table, our group ____1____ (invite) to test several objects with a magnet. The demonstrator asked us to predict what would happen, then record the result separately from the prediction.\n\nI assumed that every shiny metal object would be attracted. A copper piece challenged that idea. The demonstrator explained that different materials could behave ____2____ (different), even when they shared a broad everyday label such as metal.\n\nWe were encouraged ____3____ (compare) particular objects, not simply announce that our first expectation was right or wrong. Some objects contained more than one material, ____4____ made appearances especially easy to misread.\n\nAfter ____5____ (finish) the first round, we chose one object to examine more closely. A classmate noticed a small steel part inside a plastic case. That helped explain why judging the whole object ____6____ its outer surface had been misleading.\n\nThe demonstration did not turn us into experts. It gave us a ____7____ (clear) question than the one we had started with. Instead of asking only whether something looked metallic, we could ask what it was made of and which part was responding.\n\nBack at school, we wrote our ____8____ (conclusion) with the tested objects named. We did not claim that a few examples described every possible material. Our teacher thanked ____9____ (we) for keeping the account specific. It was ____10____ exercise in changing a question when an observation did not fit its original assumptions."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.magnet-table-064.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of invite.",
+            "material": "Not every metal behaved the same way\n\nAt a science-centre table, our group ____1____ (invite) to test several objects with a magnet. The demonstrator asked us to predict what would happen, then record the result separately from the prediction.\n\nI assumed that every shiny metal object would be attracted. A copper piece challenged that idea. The demonstrator explained that different materials could behave ____2____ (different), even when they shared a broad everyday label such as metal.\n\nWe were encouraged ____3____ (compare) particular objects, not simply announce that our first expectation was right or wrong. Some objects contained more than one material, ____4____ made appearances especially easy to misread.\n\nAfter ____5____ (finish) the first round, we chose one object to examine more closely. A classmate noticed a small steel part inside a plastic case. That helped explain why judging the whole object ____6____ its outer surface had been misleading.\n\nThe demonstration did not turn us into experts. It gave us a ____7____ (clear) question than the one we had started with. Instead of asking only whether something looked metallic, we could ask what it was made of and which part was responding.\n\nBack at school, we wrote our ____8____ (conclusion) with the tested objects named. We did not claim that a few examples described every possible material. Our teacher thanked ____9____ (we) for keeping the account specific. It was ____10____ exercise in changing a question when an observation did not fit its original assumptions.",
+            "explanation": "Our group permits singular was invited or British notional plural were invited; had been invited also fits prior arrangement. Invited without a passive auxiliary does not fit the intended received invitation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was invited",
+              "were invited",
+              "had been invited"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "invited"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.magnet-table-064.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of different.",
+            "material": "Not every metal behaved the same way\n\nAt a science-centre table, our group ____1____ (invite) to test several objects with a magnet. The demonstrator asked us to predict what would happen, then record the result separately from the prediction.\n\nI assumed that every shiny metal object would be attracted. A copper piece challenged that idea. The demonstrator explained that different materials could behave ____2____ (different), even when they shared a broad everyday label such as metal.\n\nWe were encouraged ____3____ (compare) particular objects, not simply announce that our first expectation was right or wrong. Some objects contained more than one material, ____4____ made appearances especially easy to misread.\n\nAfter ____5____ (finish) the first round, we chose one object to examine more closely. A classmate noticed a small steel part inside a plastic case. That helped explain why judging the whole object ____6____ its outer surface had been misleading.\n\nThe demonstration did not turn us into experts. It gave us a ____7____ (clear) question than the one we had started with. Instead of asking only whether something looked metallic, we could ask what it was made of and which part was responding.\n\nBack at school, we wrote our ____8____ (conclusion) with the tested objects named. We did not claim that a few examples described every possible material. Our teacher thanked ____9____ (we) for keeping the account specific. It was ____10____ exercise in changing a question when an observation did not fit its original assumptions.",
+            "explanation": "Differently modifies behave. Different is adjective and difference noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "differently"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "different",
+                "difference"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.magnet-table-064.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of compare.",
+            "material": "Not every metal behaved the same way\n\nAt a science-centre table, our group ____1____ (invite) to test several objects with a magnet. The demonstrator asked us to predict what would happen, then record the result separately from the prediction.\n\nI assumed that every shiny metal object would be attracted. A copper piece challenged that idea. The demonstrator explained that different materials could behave ____2____ (different), even when they shared a broad everyday label such as metal.\n\nWe were encouraged ____3____ (compare) particular objects, not simply announce that our first expectation was right or wrong. Some objects contained more than one material, ____4____ made appearances especially easy to misread.\n\nAfter ____5____ (finish) the first round, we chose one object to examine more closely. A classmate noticed a small steel part inside a plastic case. That helped explain why judging the whole object ____6____ its outer surface had been misleading.\n\nThe demonstration did not turn us into experts. It gave us a ____7____ (clear) question than the one we had started with. Instead of asking only whether something looked metallic, we could ask what it was made of and which part was responding.\n\nBack at school, we wrote our ____8____ (conclusion) with the tested objects named. We did not claim that a few examples described every possible material. Our teacher thanked ____9____ (we) for keeping the account specific. It was ____10____ exercise in changing a question when an observation did not fit its original assumptions.",
+            "explanation": "Encouraged takes to compare in the passive construction. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to compare"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "comparing",
+                "compare",
+                "compared"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.magnet-table-064.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "Not every metal behaved the same way\n\nAt a science-centre table, our group ____1____ (invite) to test several objects with a magnet. The demonstrator asked us to predict what would happen, then record the result separately from the prediction.\n\nI assumed that every shiny metal object would be attracted. A copper piece challenged that idea. The demonstrator explained that different materials could behave ____2____ (different), even when they shared a broad everyday label such as metal.\n\nWe were encouraged ____3____ (compare) particular objects, not simply announce that our first expectation was right or wrong. Some objects contained more than one material, ____4____ made appearances especially easy to misread.\n\nAfter ____5____ (finish) the first round, we chose one object to examine more closely. A classmate noticed a small steel part inside a plastic case. That helped explain why judging the whole object ____6____ its outer surface had been misleading.\n\nThe demonstration did not turn us into experts. It gave us a ____7____ (clear) question than the one we had started with. Instead of asking only whether something looked metallic, we could ask what it was made of and which part was responding.\n\nBack at school, we wrote our ____8____ (conclusion) with the tested objects named. We did not claim that a few examples described every possible material. Our teacher thanked ____9____ (we) for keeping the account specific. It was ____10____ exercise in changing a question when an observation did not fit its original assumptions.",
+            "explanation": "The comma introduces a non-defining relative comment about the mixed-material situation, using which. That does not introduce it, who is human and what does not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "that",
+                "who",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.magnet-table-064.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of finish.",
+            "material": "Not every metal behaved the same way\n\nAt a science-centre table, our group ____1____ (invite) to test several objects with a magnet. The demonstrator asked us to predict what would happen, then record the result separately from the prediction.\n\nI assumed that every shiny metal object would be attracted. A copper piece challenged that idea. The demonstrator explained that different materials could behave ____2____ (different), even when they shared a broad everyday label such as metal.\n\nWe were encouraged ____3____ (compare) particular objects, not simply announce that our first expectation was right or wrong. Some objects contained more than one material, ____4____ made appearances especially easy to misread.\n\nAfter ____5____ (finish) the first round, we chose one object to examine more closely. A classmate noticed a small steel part inside a plastic case. That helped explain why judging the whole object ____6____ its outer surface had been misleading.\n\nThe demonstration did not turn us into experts. It gave us a ____7____ (clear) question than the one we had started with. Instead of asking only whether something looked metallic, we could ask what it was made of and which part was responding.\n\nBack at school, we wrote our ____8____ (conclusion) with the tested objects named. We did not claim that a few examples described every possible material. Our teacher thanked ____9____ (we) for keeping the account specific. It was ____10____ exercise in changing a question when an observation did not fit its original assumptions.",
+            "explanation": "After takes finishing as a prepositional -ing clause. Other listed forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "finishing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "finish",
+                "finished",
+                "to finish"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.magnet-table-064.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "Not every metal behaved the same way\n\nAt a science-centre table, our group ____1____ (invite) to test several objects with a magnet. The demonstrator asked us to predict what would happen, then record the result separately from the prediction.\n\nI assumed that every shiny metal object would be attracted. A copper piece challenged that idea. The demonstrator explained that different materials could behave ____2____ (different), even when they shared a broad everyday label such as metal.\n\nWe were encouraged ____3____ (compare) particular objects, not simply announce that our first expectation was right or wrong. Some objects contained more than one material, ____4____ made appearances especially easy to misread.\n\nAfter ____5____ (finish) the first round, we chose one object to examine more closely. A classmate noticed a small steel part inside a plastic case. That helped explain why judging the whole object ____6____ its outer surface had been misleading.\n\nThe demonstration did not turn us into experts. It gave us a ____7____ (clear) question than the one we had started with. Instead of asking only whether something looked metallic, we could ask what it was made of and which part was responding.\n\nBack at school, we wrote our ____8____ (conclusion) with the tested objects named. We did not claim that a few examples described every possible material. Our teacher thanked ____9____ (we) for keeping the account specific. It was ____10____ exercise in changing a question when an observation did not fit its original assumptions.",
+            "explanation": "Judging by/from its surface both express the basis of inference. Of/to do not complete this intended construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "by",
+              "from"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of",
+                "to"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.magnet-table-064.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of clear.",
+            "material": "Not every metal behaved the same way\n\nAt a science-centre table, our group ____1____ (invite) to test several objects with a magnet. The demonstrator asked us to predict what would happen, then record the result separately from the prediction.\n\nI assumed that every shiny metal object would be attracted. A copper piece challenged that idea. The demonstrator explained that different materials could behave ____2____ (different), even when they shared a broad everyday label such as metal.\n\nWe were encouraged ____3____ (compare) particular objects, not simply announce that our first expectation was right or wrong. Some objects contained more than one material, ____4____ made appearances especially easy to misread.\n\nAfter ____5____ (finish) the first round, we chose one object to examine more closely. A classmate noticed a small steel part inside a plastic case. That helped explain why judging the whole object ____6____ its outer surface had been misleading.\n\nThe demonstration did not turn us into experts. It gave us a ____7____ (clear) question than the one we had started with. Instead of asking only whether something looked metallic, we could ask what it was made of and which part was responding.\n\nBack at school, we wrote our ____8____ (conclusion) with the tested objects named. We did not claim that a few examples described every possible material. Our teacher thanked ____9____ (we) for keeping the account specific. It was ____10____ exercise in changing a question when an observation did not fit its original assumptions.",
+            "explanation": "Than requires comparative clearer/more clear. Plain, superlative and doubled comparative forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "clearer",
+              "more clear"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "clear",
+                "clearest",
+                "more clearer"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.magnet-table-064.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of conclusion.",
+            "material": "Not every metal behaved the same way\n\nAt a science-centre table, our group ____1____ (invite) to test several objects with a magnet. The demonstrator asked us to predict what would happen, then record the result separately from the prediction.\n\nI assumed that every shiny metal object would be attracted. A copper piece challenged that idea. The demonstrator explained that different materials could behave ____2____ (different), even when they shared a broad everyday label such as metal.\n\nWe were encouraged ____3____ (compare) particular objects, not simply announce that our first expectation was right or wrong. Some objects contained more than one material, ____4____ made appearances especially easy to misread.\n\nAfter ____5____ (finish) the first round, we chose one object to examine more closely. A classmate noticed a small steel part inside a plastic case. That helped explain why judging the whole object ____6____ its outer surface had been misleading.\n\nThe demonstration did not turn us into experts. It gave us a ____7____ (clear) question than the one we had started with. Instead of asking only whether something looked metallic, we could ask what it was made of and which part was responding.\n\nBack at school, we wrote our ____8____ (conclusion) with the tested objects named. We did not claim that a few examples described every possible material. Our teacher thanked ____9____ (we) for keeping the account specific. It was ____10____ exercise in changing a question when an observation did not fit its original assumptions.",
+            "explanation": "Conclusions can name several findings, and conclusion one overall account. Conclusive is an adjective rather than the noun object.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "conclusions",
+              "conclusion"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "conclusive"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.magnet-table-064.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of we.",
+            "material": "Not every metal behaved the same way\n\nAt a science-centre table, our group ____1____ (invite) to test several objects with a magnet. The demonstrator asked us to predict what would happen, then record the result separately from the prediction.\n\nI assumed that every shiny metal object would be attracted. A copper piece challenged that idea. The demonstrator explained that different materials could behave ____2____ (different), even when they shared a broad everyday label such as metal.\n\nWe were encouraged ____3____ (compare) particular objects, not simply announce that our first expectation was right or wrong. Some objects contained more than one material, ____4____ made appearances especially easy to misread.\n\nAfter ____5____ (finish) the first round, we chose one object to examine more closely. A classmate noticed a small steel part inside a plastic case. That helped explain why judging the whole object ____6____ its outer surface had been misleading.\n\nThe demonstration did not turn us into experts. It gave us a ____7____ (clear) question than the one we had started with. Instead of asking only whether something looked metallic, we could ask what it was made of and which part was responding.\n\nBack at school, we wrote our ____8____ (conclusion) with the tested objects named. We did not claim that a few examples described every possible material. Our teacher thanked ____9____ (we) for keeping the account specific. It was ____10____ exercise in changing a question when an observation did not fit its original assumptions.",
+            "explanation": "Thanked takes object us. Subject and possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.magnet-table-064.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "Not every metal behaved the same way\n\nAt a science-centre table, our group ____1____ (invite) to test several objects with a magnet. The demonstrator asked us to predict what would happen, then record the result separately from the prediction.\n\nI assumed that every shiny metal object would be attracted. A copper piece challenged that idea. The demonstrator explained that different materials could behave ____2____ (different), even when they shared a broad everyday label such as metal.\n\nWe were encouraged ____3____ (compare) particular objects, not simply announce that our first expectation was right or wrong. Some objects contained more than one material, ____4____ made appearances especially easy to misread.\n\nAfter ____5____ (finish) the first round, we chose one object to examine more closely. A classmate noticed a small steel part inside a plastic case. That helped explain why judging the whole object ____6____ its outer surface had been misleading.\n\nThe demonstration did not turn us into experts. It gave us a ____7____ (clear) question than the one we had started with. Instead of asking only whether something looked metallic, we could ask what it was made of and which part was responding.\n\nBack at school, we wrote our ____8____ (conclusion) with the tested objects named. We did not claim that a few examples described every possible material. Our teacher thanked ____9____ (we) for keeping the account specific. It was ____10____ exercise in changing a question when an observation did not fit its original assumptions.",
+            "explanation": "An exercise agrees with a vowel sound. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "ee66852c8bedb9c5f5610447ef0bbdbff5f232155a31e422e7f23d11c265d438",
+      "reviewNotes": "Four new complete junior ten-gap grammar passages. Fictional classroom/kitchen visits and general basic process discussion, no invented study or numerical result. Same-author form and variant review; no independent calibration, unknown forms reviewable. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.bell-repair-064",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · The bell stayed silent",
+        "summary": "The bell stayed silent，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage with seven supplied-word and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four new complete junior ten-gap grammar passages. Fictional classroom/kitchen visits and general basic process discussion, no invented study or numerical result. Same-author form and variant review; no independent calibration, unknown forms reviewable."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.bell-repair-064",
+          "family": "passage_form",
+          "label": "The bell stayed silent",
+          "candidateSHA256": "3b33ef10746c532786889b41ea460699a06455f595ecbd45a2d9ce2d6bf41815",
+          "authorCheckSHA256": "c2f1ec7cc9b5d1587243dd7e76dbdae0d9e071478aea167e339ecbb1c8423c59",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.bell-repair-064#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b064；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The bell stayed silent\n\nOne morning, the school bell did not ring at the usual time. Several students ____1____ (wait) in the corridor, uncertain whether the lesson had ended. A teacher came out and explained that the system was being checked.\n\nFor the rest of the day, we followed the timetable ____2____ was displayed in each classroom. Teachers used their clocks and gave clear spoken instructions. The silence felt unusual, but it did not mean the school day had stopped.\n\nOur class began discussing how many actions we normally took without ____3____ (think) about the signal. I discovered that I often packed my bag as soon as I heard it, even if a teacher was still finishing a sentence.\n\nThe next day, a technician explained the problem ____4____ (brief) during an assembly. Qualified staff had repaired the fault, and we were not asked to touch the equipment. The explanation helped us distinguish a temporary failure ____5____ a planned change in the timetable.\n\nWe also considered the people ____6____ needs might not be met by one signal alone. A sound that works for some listeners may not reach everyone equally. Clear visual information and direct communication can matter too.\n\nThe bell ____7____ (restore) before afternoon lessons. I was pleased to hear it, but I no longer treated it as a complete ____8____ (explain) of what I should do. Our routines had become a little more ____9____ (notice) when one familiar part was missing. The teacher encouraged us ____10____ (keep) that attention, even after the sound returned."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.bell-repair-064.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of wait.",
+            "material": "The bell stayed silent\n\nOne morning, the school bell did not ring at the usual time. Several students ____1____ (wait) in the corridor, uncertain whether the lesson had ended. A teacher came out and explained that the system was being checked.\n\nFor the rest of the day, we followed the timetable ____2____ was displayed in each classroom. Teachers used their clocks and gave clear spoken instructions. The silence felt unusual, but it did not mean the school day had stopped.\n\nOur class began discussing how many actions we normally took without ____3____ (think) about the signal. I discovered that I often packed my bag as soon as I heard it, even if a teacher was still finishing a sentence.\n\nThe next day, a technician explained the problem ____4____ (brief) during an assembly. Qualified staff had repaired the fault, and we were not asked to touch the equipment. The explanation helped us distinguish a temporary failure ____5____ a planned change in the timetable.\n\nWe also considered the people ____6____ needs might not be met by one signal alone. A sound that works for some listeners may not reach everyone equally. Clear visual information and direct communication can matter too.\n\nThe bell ____7____ (restore) before afternoon lessons. I was pleased to hear it, but I no longer treated it as a complete ____8____ (explain) of what I should do. Our routines had become a little more ____9____ (notice) when one familiar part was missing. The teacher encouraged us ____10____ (keep) that attention, even after the sound returned.",
+            "explanation": "Past progressive, simple past or earlier continuing wait all fit the morning account. Base wait and present singular waits do not match this past plural context.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "were waiting",
+              "waited",
+              "had been waiting"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "wait",
+                "waits"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.bell-repair-064.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "The bell stayed silent\n\nOne morning, the school bell did not ring at the usual time. Several students ____1____ (wait) in the corridor, uncertain whether the lesson had ended. A teacher came out and explained that the system was being checked.\n\nFor the rest of the day, we followed the timetable ____2____ was displayed in each classroom. Teachers used their clocks and gave clear spoken instructions. The silence felt unusual, but it did not mean the school day had stopped.\n\nOur class began discussing how many actions we normally took without ____3____ (think) about the signal. I discovered that I often packed my bag as soon as I heard it, even if a teacher was still finishing a sentence.\n\nThe next day, a technician explained the problem ____4____ (brief) during an assembly. Qualified staff had repaired the fault, and we were not asked to touch the equipment. The explanation helped us distinguish a temporary failure ____5____ a planned change in the timetable.\n\nWe also considered the people ____6____ needs might not be met by one signal alone. A sound that works for some listeners may not reach everyone equally. Clear visual information and direct communication can matter too.\n\nThe bell ____7____ (restore) before afternoon lessons. I was pleased to hear it, but I no longer treated it as a complete ____8____ (explain) of what I should do. Our routines had become a little more ____9____ (notice) when one familiar part was missing. The teacher encouraged us ____10____ (keep) that attention, even after the sound returned.",
+            "explanation": "Timetable is subject of that/which was displayed. Who is human, where not subject and what does not follow this antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.bell-repair-064.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of think.",
+            "material": "The bell stayed silent\n\nOne morning, the school bell did not ring at the usual time. Several students ____1____ (wait) in the corridor, uncertain whether the lesson had ended. A teacher came out and explained that the system was being checked.\n\nFor the rest of the day, we followed the timetable ____2____ was displayed in each classroom. Teachers used their clocks and gave clear spoken instructions. The silence felt unusual, but it did not mean the school day had stopped.\n\nOur class began discussing how many actions we normally took without ____3____ (think) about the signal. I discovered that I often packed my bag as soon as I heard it, even if a teacher was still finishing a sentence.\n\nThe next day, a technician explained the problem ____4____ (brief) during an assembly. Qualified staff had repaired the fault, and we were not asked to touch the equipment. The explanation helped us distinguish a temporary failure ____5____ a planned change in the timetable.\n\nWe also considered the people ____6____ needs might not be met by one signal alone. A sound that works for some listeners may not reach everyone equally. Clear visual information and direct communication can matter too.\n\nThe bell ____7____ (restore) before afternoon lessons. I was pleased to hear it, but I no longer treated it as a complete ____8____ (explain) of what I should do. Our routines had become a little more ____9____ (notice) when one familiar part was missing. The teacher encouraged us ____10____ (keep) that attention, even after the sound returned.",
+            "explanation": "Without takes thinking. Other listed forms do not directly complete it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "thinking"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "think",
+                "thought",
+                "to think"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.bell-repair-064.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of brief.",
+            "material": "The bell stayed silent\n\nOne morning, the school bell did not ring at the usual time. Several students ____1____ (wait) in the corridor, uncertain whether the lesson had ended. A teacher came out and explained that the system was being checked.\n\nFor the rest of the day, we followed the timetable ____2____ was displayed in each classroom. Teachers used their clocks and gave clear spoken instructions. The silence felt unusual, but it did not mean the school day had stopped.\n\nOur class began discussing how many actions we normally took without ____3____ (think) about the signal. I discovered that I often packed my bag as soon as I heard it, even if a teacher was still finishing a sentence.\n\nThe next day, a technician explained the problem ____4____ (brief) during an assembly. Qualified staff had repaired the fault, and we were not asked to touch the equipment. The explanation helped us distinguish a temporary failure ____5____ a planned change in the timetable.\n\nWe also considered the people ____6____ needs might not be met by one signal alone. A sound that works for some listeners may not reach everyone equally. Clear visual information and direct communication can matter too.\n\nThe bell ____7____ (restore) before afternoon lessons. I was pleased to hear it, but I no longer treated it as a complete ____8____ (explain) of what I should do. Our routines had become a little more ____9____ (notice) when one familiar part was missing. The teacher encouraged us ____10____ (keep) that attention, even after the sound returned.",
+            "explanation": "Briefly modifies explained. Brief is adjective and briefness noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "briefly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "brief",
+                "briefness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.bell-repair-064.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with one appropriate word.",
+            "material": "The bell stayed silent\n\nOne morning, the school bell did not ring at the usual time. Several students ____1____ (wait) in the corridor, uncertain whether the lesson had ended. A teacher came out and explained that the system was being checked.\n\nFor the rest of the day, we followed the timetable ____2____ was displayed in each classroom. Teachers used their clocks and gave clear spoken instructions. The silence felt unusual, but it did not mean the school day had stopped.\n\nOur class began discussing how many actions we normally took without ____3____ (think) about the signal. I discovered that I often packed my bag as soon as I heard it, even if a teacher was still finishing a sentence.\n\nThe next day, a technician explained the problem ____4____ (brief) during an assembly. Qualified staff had repaired the fault, and we were not asked to touch the equipment. The explanation helped us distinguish a temporary failure ____5____ a planned change in the timetable.\n\nWe also considered the people ____6____ needs might not be met by one signal alone. A sound that works for some listeners may not reach everyone equally. Clear visual information and direct communication can matter too.\n\nThe bell ____7____ (restore) before afternoon lessons. I was pleased to hear it, but I no longer treated it as a complete ____8____ (explain) of what I should do. Our routines had become a little more ____9____ (notice) when one familiar part was missing. The teacher encouraged us ____10____ (keep) that attention, even after the sound returned.",
+            "explanation": "Distinguish A from B uses from after the first object. Between would require between A and B; of/with do not express this contrast.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "from"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "between",
+                "of",
+                "with"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.bell-repair-064.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "The bell stayed silent\n\nOne morning, the school bell did not ring at the usual time. Several students ____1____ (wait) in the corridor, uncertain whether the lesson had ended. A teacher came out and explained that the system was being checked.\n\nFor the rest of the day, we followed the timetable ____2____ was displayed in each classroom. Teachers used their clocks and gave clear spoken instructions. The silence felt unusual, but it did not mean the school day had stopped.\n\nOur class began discussing how many actions we normally took without ____3____ (think) about the signal. I discovered that I often packed my bag as soon as I heard it, even if a teacher was still finishing a sentence.\n\nThe next day, a technician explained the problem ____4____ (brief) during an assembly. Qualified staff had repaired the fault, and we were not asked to touch the equipment. The explanation helped us distinguish a temporary failure ____5____ a planned change in the timetable.\n\nWe also considered the people ____6____ needs might not be met by one signal alone. A sound that works for some listeners may not reach everyone equally. Clear visual information and direct communication can matter too.\n\nThe bell ____7____ (restore) before afternoon lessons. I was pleased to hear it, but I no longer treated it as a complete ____8____ (explain) of what I should do. Our routines had become a little more ____9____ (notice) when one familiar part was missing. The teacher encouraged us ____10____ (keep) that attention, even after the sound returned.",
+            "explanation": "Whose modifies needs possessively. The other relatives do not supply that relation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "whose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "which",
+                "that"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.bell-repair-064.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of restore.",
+            "material": "The bell stayed silent\n\nOne morning, the school bell did not ring at the usual time. Several students ____1____ (wait) in the corridor, uncertain whether the lesson had ended. A teacher came out and explained that the system was being checked.\n\nFor the rest of the day, we followed the timetable ____2____ was displayed in each classroom. Teachers used their clocks and gave clear spoken instructions. The silence felt unusual, but it did not mean the school day had stopped.\n\nOur class began discussing how many actions we normally took without ____3____ (think) about the signal. I discovered that I often packed my bag as soon as I heard it, even if a teacher was still finishing a sentence.\n\nThe next day, a technician explained the problem ____4____ (brief) during an assembly. Qualified staff had repaired the fault, and we were not asked to touch the equipment. The explanation helped us distinguish a temporary failure ____5____ a planned change in the timetable.\n\nWe also considered the people ____6____ needs might not be met by one signal alone. A sound that works for some listeners may not reach everyone equally. Clear visual information and direct communication can matter too.\n\nThe bell ____7____ (restore) before afternoon lessons. I was pleased to hear it, but I no longer treated it as a complete ____8____ (explain) of what I should do. Our routines had become a little more ____9____ (notice) when one familiar part was missing. The teacher encouraged us ____10____ (keep) that attention, even after the sound returned.",
+            "explanation": "The singular bell/system receives restoration, so past or past-perfect passive. Restored lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was restored",
+              "had been restored"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "restored",
+                "were restored"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.bell-repair-064.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of explain.",
+            "material": "The bell stayed silent\n\nOne morning, the school bell did not ring at the usual time. Several students ____1____ (wait) in the corridor, uncertain whether the lesson had ended. A teacher came out and explained that the system was being checked.\n\nFor the rest of the day, we followed the timetable ____2____ was displayed in each classroom. Teachers used their clocks and gave clear spoken instructions. The silence felt unusual, but it did not mean the school day had stopped.\n\nOur class began discussing how many actions we normally took without ____3____ (think) about the signal. I discovered that I often packed my bag as soon as I heard it, even if a teacher was still finishing a sentence.\n\nThe next day, a technician explained the problem ____4____ (brief) during an assembly. Qualified staff had repaired the fault, and we were not asked to touch the equipment. The explanation helped us distinguish a temporary failure ____5____ a planned change in the timetable.\n\nWe also considered the people ____6____ needs might not be met by one signal alone. A sound that works for some listeners may not reach everyone equally. Clear visual information and direct communication can matter too.\n\nThe bell ____7____ (restore) before afternoon lessons. I was pleased to hear it, but I no longer treated it as a complete ____8____ (explain) of what I should do. Our routines had become a little more ____9____ (notice) when one familiar part was missing. The teacher encouraged us ____10____ (keep) that attention, even after the sound returned.",
+            "explanation": "A complete explanation requires the singular count noun. Explain is verb and explaining is not the usual noun in this construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "explanation"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "explain",
+                "explaining"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.bell-repair-064.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of notice.",
+            "material": "The bell stayed silent\n\nOne morning, the school bell did not ring at the usual time. Several students ____1____ (wait) in the corridor, uncertain whether the lesson had ended. A teacher came out and explained that the system was being checked.\n\nFor the rest of the day, we followed the timetable ____2____ was displayed in each classroom. Teachers used their clocks and gave clear spoken instructions. The silence felt unusual, but it did not mean the school day had stopped.\n\nOur class began discussing how many actions we normally took without ____3____ (think) about the signal. I discovered that I often packed my bag as soon as I heard it, even if a teacher was still finishing a sentence.\n\nThe next day, a technician explained the problem ____4____ (brief) during an assembly. Qualified staff had repaired the fault, and we were not asked to touch the equipment. The explanation helped us distinguish a temporary failure ____5____ a planned change in the timetable.\n\nWe also considered the people ____6____ needs might not be met by one signal alone. A sound that works for some listeners may not reach everyone equally. Clear visual information and direct communication can matter too.\n\nThe bell ____7____ (restore) before afternoon lessons. I was pleased to hear it, but I no longer treated it as a complete ____8____ (explain) of what I should do. Our routines had become a little more ____9____ (notice) when one familiar part was missing. The teacher encouraged us ____10____ (keep) that attention, even after the sound returned.",
+            "explanation": "More noticeable describes routines becoming perceptible. Notice is verb/noun and noticeably adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "noticeable"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "notice",
+                "noticeably"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.bell-repair-064.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of keep.",
+            "material": "The bell stayed silent\n\nOne morning, the school bell did not ring at the usual time. Several students ____1____ (wait) in the corridor, uncertain whether the lesson had ended. A teacher came out and explained that the system was being checked.\n\nFor the rest of the day, we followed the timetable ____2____ was displayed in each classroom. Teachers used their clocks and gave clear spoken instructions. The silence felt unusual, but it did not mean the school day had stopped.\n\nOur class began discussing how many actions we normally took without ____3____ (think) about the signal. I discovered that I often packed my bag as soon as I heard it, even if a teacher was still finishing a sentence.\n\nThe next day, a technician explained the problem ____4____ (brief) during an assembly. Qualified staff had repaired the fault, and we were not asked to touch the equipment. The explanation helped us distinguish a temporary failure ____5____ a planned change in the timetable.\n\nWe also considered the people ____6____ needs might not be met by one signal alone. A sound that works for some listeners may not reach everyone equally. Clear visual information and direct communication can matter too.\n\nThe bell ____7____ (restore) before afternoon lessons. I was pleased to hear it, but I no longer treated it as a complete ____8____ (explain) of what I should do. Our routines had become a little more ____9____ (notice) when one familiar part was missing. The teacher encouraged us ____10____ (keep) that attention, even after the sound returned.",
+            "explanation": "Encouraged us takes to keep. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to keep"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "keeping",
+                "keep",
+                "kept"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "87ae0a5c261426298d2e187a729e9df52782f30a21e1c4a09a1beed6ae801aa4",
+      "reviewNotes": "Four new complete junior ten-gap grammar passages. Fictional classroom/kitchen visits and general basic process discussion, no invented study or numerical result. Same-author form and variant review; no independent calibration, unknown forms reviewable. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
