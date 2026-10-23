@@ -1,0 +1,1618 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b039",
+  "createdAt": "2026-10-23T21:24:01.257874+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.two-lunch-boxes-039",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · Two lunch boxes",
+        "summary": "Two lunch boxes，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.two-lunch-boxes-039",
+          "family": "reading_tf",
+          "label": "Two lunch boxes",
+          "candidateSHA256": "22fa3cae29d2627d7826846861cdee8fde2f7bb7e9be9b1617db660ef3842557",
+          "authorCheckSHA256": "bd6a61386903f46d05313ea8768b6dd85893958dcc9ff34218ba9afcf7cc900a",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.two-lunch-boxes-039#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b039；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Two lunch boxes\n\nLily and her brother Sam have two lunch boxes. Lily's box is yellow. Sam's box is green. Mum puts rice and eggs in the yellow box. She puts bread and cheese in the green one.\n\nAt school, Lily opens her bag. The green box is inside! Sam is in the classroom next door. Lily takes the box to him. Sam has the yellow one in his bag. They laugh and change boxes.\n\nAt lunch, Lily sits with her friend May. Sam sits with Ben. Each child now has the right lunch."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.two-lunch-boxes-039.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Lily has a yellow lunch box.",
+            "material": "Two lunch boxes\n\nLily and her brother Sam have two lunch boxes. Lily's box is yellow. Sam's box is green. Mum puts rice and eggs in the yellow box. She puts bread and cheese in the green one.\n\nAt school, Lily opens her bag. The green box is inside! Sam is in the classroom next door. Lily takes the box to him. Sam has the yellow one in his bag. They laugh and change boxes.\n\nAt lunch, Lily sits with her friend May. Sam sits with Ben. Each child now has the right lunch.",
+            "explanation": "The yellow box belongs to Lily.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.two-lunch-boxes-039.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Mum puts rice and eggs in Sam’s box.",
+            "material": "Two lunch boxes\n\nLily and her brother Sam have two lunch boxes. Lily's box is yellow. Sam's box is green. Mum puts rice and eggs in the yellow box. She puts bread and cheese in the green one.\n\nAt school, Lily opens her bag. The green box is inside! Sam is in the classroom next door. Lily takes the box to him. Sam has the yellow one in his bag. They laugh and change boxes.\n\nAt lunch, Lily sits with her friend May. Sam sits with Ben. Each child now has the right lunch.",
+            "explanation": "Rice and eggs go in Lily’s yellow box; Sam’s has bread and cheese.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.two-lunch-boxes-039.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Sam is in the classroom next door.",
+            "material": "Two lunch boxes\n\nLily and her brother Sam have two lunch boxes. Lily's box is yellow. Sam's box is green. Mum puts rice and eggs in the yellow box. She puts bread and cheese in the green one.\n\nAt school, Lily opens her bag. The green box is inside! Sam is in the classroom next door. Lily takes the box to him. Sam has the yellow one in his bag. They laugh and change boxes.\n\nAt lunch, Lily sits with her friend May. Sam sits with Ben. Each child now has the right lunch.",
+            "explanation": "His classroom is next door to Lily’s.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.two-lunch-boxes-039.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "The children change their lunch boxes.",
+            "material": "Two lunch boxes\n\nLily and her brother Sam have two lunch boxes. Lily's box is yellow. Sam's box is green. Mum puts rice and eggs in the yellow box. She puts bread and cheese in the green one.\n\nAt school, Lily opens her bag. The green box is inside! Sam is in the classroom next door. Lily takes the box to him. Sam has the yellow one in his bag. They laugh and change boxes.\n\nAt lunch, Lily sits with her friend May. Sam sits with Ben. Each child now has the right lunch.",
+            "explanation": "They exchange the wrong boxes and each gets the right lunch.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.two-lunch-boxes-039.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Lily sits with Ben at lunch.",
+            "material": "Two lunch boxes\n\nLily and her brother Sam have two lunch boxes. Lily's box is yellow. Sam's box is green. Mum puts rice and eggs in the yellow box. She puts bread and cheese in the green one.\n\nAt school, Lily opens her bag. The green box is inside! Sam is in the classroom next door. Lily takes the box to him. Sam has the yellow one in his bag. They laugh and change boxes.\n\nAt lunch, Lily sits with her friend May. Sam sits with Ben. Each child now has the right lunch.",
+            "explanation": "Lily sits with May. Sam sits with Ben.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "f14ce9057da61356c9945f38a9159170cf4ce085e455f62d4107edb1fa2f29e5",
+      "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.sofa-football-039",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · The ball under the sofa",
+        "summary": "The ball under the sofa，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.sofa-football-039",
+          "family": "reading_tf",
+          "label": "The ball under the sofa",
+          "candidateSHA256": "068a5a080847b85fb571ce94b34fb3a32fc80422fd7274ae45c0fc069d3055c3",
+          "authorCheckSHA256": "9e3ed5c8d6fb2b2a8021e4fcaf99799d973a656fa2abb8c68b6ae5825af742a6",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.sofa-football-039#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b039；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The ball under the sofa\n\nOn a rainy afternoon, Max wants to play with his small football. He looks in the toy box, but it is not there. He looks behind the door. There is a shoe, but no ball.\n\nHis sister Amy is on the sofa with a book. \"Look under here,\" she says. Max gets down on the floor. He sees the ball beside a red sock.\n\nMax takes the ball to his bedroom. \"No football in the living room, please,\" Dad says. Max puts it away. Then he sits beside Amy and reads with her."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.sofa-football-039.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "It is sunny that afternoon.",
+            "material": "The ball under the sofa\n\nOn a rainy afternoon, Max wants to play with his small football. He looks in the toy box, but it is not there. He looks behind the door. There is a shoe, but no ball.\n\nHis sister Amy is on the sofa with a book. \"Look under here,\" she says. Max gets down on the floor. He sees the ball beside a red sock.\n\nMax takes the ball to his bedroom. \"No football in the living room, please,\" Dad says. Max puts it away. Then he sits beside Amy and reads with her.",
+            "explanation": "The afternoon is rainy.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.sofa-football-039.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Max finds a shoe behind the door.",
+            "material": "The ball under the sofa\n\nOn a rainy afternoon, Max wants to play with his small football. He looks in the toy box, but it is not there. He looks behind the door. There is a shoe, but no ball.\n\nHis sister Amy is on the sofa with a book. \"Look under here,\" she says. Max gets down on the floor. He sees the ball beside a red sock.\n\nMax takes the ball to his bedroom. \"No football in the living room, please,\" Dad says. Max puts it away. Then he sits beside Amy and reads with her.",
+            "explanation": "The shoe is there, but the ball is not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.sofa-football-039.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "The ball is under the sofa.",
+            "material": "The ball under the sofa\n\nOn a rainy afternoon, Max wants to play with his small football. He looks in the toy box, but it is not there. He looks behind the door. There is a shoe, but no ball.\n\nHis sister Amy is on the sofa with a book. \"Look under here,\" she says. Max gets down on the floor. He sees the ball beside a red sock.\n\nMax takes the ball to his bedroom. \"No football in the living room, please,\" Dad says. Max puts it away. Then he sits beside Amy and reads with her.",
+            "explanation": "Amy points under the sofa, where Max sees it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.sofa-football-039.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Amy is drawing on the sofa.",
+            "material": "The ball under the sofa\n\nOn a rainy afternoon, Max wants to play with his small football. He looks in the toy box, but it is not there. He looks behind the door. There is a shoe, but no ball.\n\nHis sister Amy is on the sofa with a book. \"Look under here,\" she says. Max gets down on the floor. He sees the ball beside a red sock.\n\nMax takes the ball to his bedroom. \"No football in the living room, please,\" Dad says. Max puts it away. Then he sits beside Amy and reads with her.",
+            "explanation": "Amy has a book and is reading.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.sofa-football-039.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Max plays football in the living room at the end.",
+            "material": "The ball under the sofa\n\nOn a rainy afternoon, Max wants to play with his small football. He looks in the toy box, but it is not there. He looks behind the door. There is a shoe, but no ball.\n\nHis sister Amy is on the sofa with a book. \"Look under here,\" she says. Max gets down on the floor. He sees the ball beside a red sock.\n\nMax takes the ball to his bedroom. \"No football in the living room, please,\" Dad says. Max puts it away. Then he sits beside Amy and reads with her.",
+            "explanation": "He puts the ball away and reads with Amy.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "17085cc4f87ac0850d28e1e91aa1963984c80923da114ce447630d388857c47c",
+      "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.empty-bird-table-039",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · At the bird table",
+        "summary": "At the bird table，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.empty-bird-table-039",
+          "family": "reading_tf",
+          "label": "At the bird table",
+          "candidateSHA256": "fe41d9ce21b62c88ecaa2a5d3dd18e10603f2e665fe5d22d32de95f785fbbc22",
+          "authorCheckSHA256": "9c1a4fec3998cbaf1588ad3e41c3d9d98dd44936b018f5c4e4c6c73ef52271ed",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.empty-bird-table-039#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b039；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "At the bird table\n\nNina visits her grandpa on Sunday. There is a little bird table in his garden. In the morning, they put some bird food on it. Then they go into the house and watch from the window.\n\nTwo small birds come to the table. A black cat walks into the garden. The birds fly up to a tree. Grandpa opens the back door, and the cat runs away.\n\nAfter a few minutes, the birds come back. Nina draws them in her notebook. She does not go outside because she wants the birds to eat quietly."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.empty-bird-table-039.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Nina visits her grandma.",
+            "material": "At the bird table\n\nNina visits her grandpa on Sunday. There is a little bird table in his garden. In the morning, they put some bird food on it. Then they go into the house and watch from the window.\n\nTwo small birds come to the table. A black cat walks into the garden. The birds fly up to a tree. Grandpa opens the back door, and the cat runs away.\n\nAfter a few minutes, the birds come back. Nina draws them in her notebook. She does not go outside because she wants the birds to eat quietly.",
+            "explanation": "She visits her grandpa.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.empty-bird-table-039.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "They watch the birds from inside the house.",
+            "material": "At the bird table\n\nNina visits her grandpa on Sunday. There is a little bird table in his garden. In the morning, they put some bird food on it. Then they go into the house and watch from the window.\n\nTwo small birds come to the table. A black cat walks into the garden. The birds fly up to a tree. Grandpa opens the back door, and the cat runs away.\n\nAfter a few minutes, the birds come back. Nina draws them in her notebook. She does not go outside because she wants the birds to eat quietly.",
+            "explanation": "They watch from the window.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.empty-bird-table-039.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Three birds come to the table.",
+            "material": "At the bird table\n\nNina visits her grandpa on Sunday. There is a little bird table in his garden. In the morning, they put some bird food on it. Then they go into the house and watch from the window.\n\nTwo small birds come to the table. A black cat walks into the garden. The birds fly up to a tree. Grandpa opens the back door, and the cat runs away.\n\nAfter a few minutes, the birds come back. Nina draws them in her notebook. She does not go outside because she wants the birds to eat quietly.",
+            "explanation": "There are two small birds.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.empty-bird-table-039.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "The cat runs away when Grandpa opens the door.",
+            "material": "At the bird table\n\nNina visits her grandpa on Sunday. There is a little bird table in his garden. In the morning, they put some bird food on it. Then they go into the house and watch from the window.\n\nTwo small birds come to the table. A black cat walks into the garden. The birds fly up to a tree. Grandpa opens the back door, and the cat runs away.\n\nAfter a few minutes, the birds come back. Nina draws them in her notebook. She does not go outside because she wants the birds to eat quietly.",
+            "explanation": "The cat leaves after the back door is opened.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.empty-bird-table-039.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Nina draws the birds in a notebook.",
+            "material": "At the bird table\n\nNina visits her grandpa on Sunday. There is a little bird table in his garden. In the morning, they put some bird food on it. Then they go into the house and watch from the window.\n\nTwo small birds come to the table. A black cat walks into the garden. The birds fly up to a tree. Grandpa opens the back door, and the cat runs away.\n\nAfter a few minutes, the birds come back. Nina draws them in her notebook. She does not go outside because she wants the birds to eat quietly.",
+            "explanation": "She stays indoors and draws them in her notebook.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "88f82d0e14396c64a7c94188ce1601a8aae3731596cc3fbdddd48769e82ce170",
+      "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.wet-paint-chair-039",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · A chair for the garden",
+        "summary": "A chair for the garden，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.wet-paint-chair-039",
+          "family": "reading_tf",
+          "label": "A chair for the garden",
+          "candidateSHA256": "7594b594757e082972124d1f1d46ee80ee0d4a9ecf1e162890b9ac01d5c2aea3",
+          "authorCheckSHA256": "775f64145f58527a7cbf4cd81d19bb5c32fca0e9a90853bdad27f746bc204095",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.wet-paint-chair-039#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b039；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A chair for the garden\n\nDad paints an old chair blue. He puts it in the garden to dry. \"Please do not sit on it yet,\" he tells Tom. Tom makes a sign. It says, \"Wet paint!\"\n\nTom puts the sign on the chair. Then he goes inside for a drink. When he comes back, the sign is on the grass. The wind is strong today.\n\nTom gets two clothes pegs from Mum. He uses them to hold the sign on the chair. Now the wind cannot take it away. Dad smiles. \"Thank you for helping,\" he says."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.wet-paint-chair-039.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Dad paints the chair blue.",
+            "material": "A chair for the garden\n\nDad paints an old chair blue. He puts it in the garden to dry. \"Please do not sit on it yet,\" he tells Tom. Tom makes a sign. It says, \"Wet paint!\"\n\nTom puts the sign on the chair. Then he goes inside for a drink. When he comes back, the sign is on the grass. The wind is strong today.\n\nTom gets two clothes pegs from Mum. He uses them to hold the sign on the chair. Now the wind cannot take it away. Dad smiles. \"Thank you for helping,\" he says.",
+            "explanation": "The new paint is blue.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.wet-paint-chair-039.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Tom sits on the chair to help it dry.",
+            "material": "A chair for the garden\n\nDad paints an old chair blue. He puts it in the garden to dry. \"Please do not sit on it yet,\" he tells Tom. Tom makes a sign. It says, \"Wet paint!\"\n\nTom puts the sign on the chair. Then he goes inside for a drink. When he comes back, the sign is on the grass. The wind is strong today.\n\nTom gets two clothes pegs from Mum. He uses them to hold the sign on the chair. Now the wind cannot take it away. Dad smiles. \"Thank you for helping,\" he says.",
+            "explanation": "Dad says not to sit on it; Tom makes a sign.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.wet-paint-chair-039.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "The sign falls onto the grass.",
+            "material": "A chair for the garden\n\nDad paints an old chair blue. He puts it in the garden to dry. \"Please do not sit on it yet,\" he tells Tom. Tom makes a sign. It says, \"Wet paint!\"\n\nTom puts the sign on the chair. Then he goes inside for a drink. When he comes back, the sign is on the grass. The wind is strong today.\n\nTom gets two clothes pegs from Mum. He uses them to hold the sign on the chair. Now the wind cannot take it away. Dad smiles. \"Thank you for helping,\" he says.",
+            "explanation": "Tom finds it on the grass after going inside.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.wet-paint-chair-039.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Tom uses two pegs to hold the sign.",
+            "material": "A chair for the garden\n\nDad paints an old chair blue. He puts it in the garden to dry. \"Please do not sit on it yet,\" he tells Tom. Tom makes a sign. It says, \"Wet paint!\"\n\nTom puts the sign on the chair. Then he goes inside for a drink. When he comes back, the sign is on the grass. The wind is strong today.\n\nTom gets two clothes pegs from Mum. He uses them to hold the sign on the chair. Now the wind cannot take it away. Dad smiles. \"Thank you for helping,\" he says.",
+            "explanation": "Mum gives him two clothes pegs for that purpose.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.wet-paint-chair-039.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Dad is angry with Tom at the end.",
+            "material": "A chair for the garden\n\nDad paints an old chair blue. He puts it in the garden to dry. \"Please do not sit on it yet,\" he tells Tom. Tom makes a sign. It says, \"Wet paint!\"\n\nTom puts the sign on the chair. Then he goes inside for a drink. When he comes back, the sign is on the grass. The wind is strong today.\n\nTom gets two clothes pegs from Mum. He uses them to hold the sign on the chair. Now the wind cannot take it away. Dad smiles. \"Thank you for helping,\" he says.",
+            "explanation": "Dad smiles and thanks him.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "a04200c1f20912cf37414f7f59a8713ce0e827f19aeca796cf848c2d82ad9135",
+      "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.one-more-library-book-039",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · The library book",
+        "summary": "The library book，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.one-more-library-book-039",
+          "family": "reading_tf",
+          "label": "The library book",
+          "candidateSHA256": "deb868832ab1a53ddbf32397200cb883bcdb139b94d31339b3bb12cff0feea0c",
+          "authorCheckSHA256": "428e5fa0c1348518525ba6e1dc28cc11ee66d721c230f3d4692ef7af8fb501c6",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.one-more-library-book-039#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b039；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The library book\n\nElla goes to the school library after lunch. She wants a book about animals. The books about cats are on a low shelf. The books about birds are on a high shelf.\n\nElla can get a cat book, but she cannot reach the bird books. She asks Mr Green for help. He gives her a book with a blue bird on the front.\n\nElla borrows the bird book. She takes it home and reads it with Dad. On Friday, she brings it back. Next time, she wants to read about cats."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.one-more-library-book-039.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Ella visits the library before lunch.",
+            "material": "The library book\n\nElla goes to the school library after lunch. She wants a book about animals. The books about cats are on a low shelf. The books about birds are on a high shelf.\n\nElla can get a cat book, but she cannot reach the bird books. She asks Mr Green for help. He gives her a book with a blue bird on the front.\n\nElla borrows the bird book. She takes it home and reads it with Dad. On Friday, she brings it back. Next time, she wants to read about cats.",
+            "explanation": "She goes after lunch.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.one-more-library-book-039.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "The cat books are on a low shelf.",
+            "material": "The library book\n\nElla goes to the school library after lunch. She wants a book about animals. The books about cats are on a low shelf. The books about birds are on a high shelf.\n\nElla can get a cat book, but she cannot reach the bird books. She asks Mr Green for help. He gives her a book with a blue bird on the front.\n\nElla borrows the bird book. She takes it home and reads it with Dad. On Friday, she brings it back. Next time, she wants to read about cats.",
+            "explanation": "The low shelf holds books about cats.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.one-more-library-book-039.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Ella reaches the bird books by herself.",
+            "material": "The library book\n\nElla goes to the school library after lunch. She wants a book about animals. The books about cats are on a low shelf. The books about birds are on a high shelf.\n\nElla can get a cat book, but she cannot reach the bird books. She asks Mr Green for help. He gives her a book with a blue bird on the front.\n\nElla borrows the bird book. She takes it home and reads it with Dad. On Friday, she brings it back. Next time, she wants to read about cats.",
+            "explanation": "She cannot reach them and asks Mr Green for help.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.one-more-library-book-039.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "There is a blue bird on the borrowed book.",
+            "material": "The library book\n\nElla goes to the school library after lunch. She wants a book about animals. The books about cats are on a low shelf. The books about birds are on a high shelf.\n\nElla can get a cat book, but she cannot reach the bird books. She asks Mr Green for help. He gives her a book with a blue bird on the front.\n\nElla borrows the bird book. She takes it home and reads it with Dad. On Friday, she brings it back. Next time, she wants to read about cats.",
+            "explanation": "The book has a blue bird on its front.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.one-more-library-book-039.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Ella brings the book back on Friday.",
+            "material": "The library book\n\nElla goes to the school library after lunch. She wants a book about animals. The books about cats are on a low shelf. The books about birds are on a high shelf.\n\nElla can get a cat book, but she cannot reach the bird books. She asks Mr Green for help. He gives her a book with a blue bird on the front.\n\nElla borrows the bird book. She takes it home and reads it with Dad. On Friday, she brings it back. Next time, she wants to read about cats.",
+            "explanation": "Friday is the stated return day.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "7dadf60dae95b8c974691faa9651a5c2222d2f32ca1c0f46181bf0c353921af1",
+      "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.walk-and-postcard-039",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · A postcard for Aunt Rose",
+        "summary": "A postcard for Aunt Rose，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.walk-and-postcard-039",
+          "family": "reading_tf",
+          "label": "A postcard for Aunt Rose",
+          "candidateSHA256": "d58ba41edf70e79e3e30653ba08178426d54a1605f59f9af36ca61ed0043b564",
+          "authorCheckSHA256": "a20fd57b0216b8b98722dd76eb872fb1fff7329b20a77c49038447d924464c6f",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.walk-and-postcard-039#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b039；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A postcard for Aunt Rose\n\nFinn draws a picture of his new house on a postcard. He wants to send it to Aunt Rose. Mum writes the address, and Finn puts a stamp in the corner.\n\nThey walk to the shop. There is a red post box beside it. Finn is too short to reach the opening. Mum lifts him, and he puts the card inside.\n\nAt the shop, they buy milk and bananas. Finn chooses one banana for his snack. On the way home, he asks, \"Will Aunt Rose like my picture?\" Mum smiles. \"I think she will.\""
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.walk-and-postcard-039.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Finn draws his new house.",
+            "material": "A postcard for Aunt Rose\n\nFinn draws a picture of his new house on a postcard. He wants to send it to Aunt Rose. Mum writes the address, and Finn puts a stamp in the corner.\n\nThey walk to the shop. There is a red post box beside it. Finn is too short to reach the opening. Mum lifts him, and he puts the card inside.\n\nAt the shop, they buy milk and bananas. Finn chooses one banana for his snack. On the way home, he asks, \"Will Aunt Rose like my picture?\" Mum smiles. \"I think she will.\"",
+            "explanation": "The postcard picture shows his new house.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.walk-and-postcard-039.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Finn writes the address by himself.",
+            "material": "A postcard for Aunt Rose\n\nFinn draws a picture of his new house on a postcard. He wants to send it to Aunt Rose. Mum writes the address, and Finn puts a stamp in the corner.\n\nThey walk to the shop. There is a red post box beside it. Finn is too short to reach the opening. Mum lifts him, and he puts the card inside.\n\nAt the shop, they buy milk and bananas. Finn chooses one banana for his snack. On the way home, he asks, \"Will Aunt Rose like my picture?\" Mum smiles. \"I think she will.\"",
+            "explanation": "Mum writes the address.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.walk-and-postcard-039.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "The post box is beside the shop.",
+            "material": "A postcard for Aunt Rose\n\nFinn draws a picture of his new house on a postcard. He wants to send it to Aunt Rose. Mum writes the address, and Finn puts a stamp in the corner.\n\nThey walk to the shop. There is a red post box beside it. Finn is too short to reach the opening. Mum lifts him, and he puts the card inside.\n\nAt the shop, they buy milk and bananas. Finn chooses one banana for his snack. On the way home, he asks, \"Will Aunt Rose like my picture?\" Mum smiles. \"I think she will.\"",
+            "explanation": "It is the red post box beside the shop.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.walk-and-postcard-039.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Mum helps Finn put the card in.",
+            "material": "A postcard for Aunt Rose\n\nFinn draws a picture of his new house on a postcard. He wants to send it to Aunt Rose. Mum writes the address, and Finn puts a stamp in the corner.\n\nThey walk to the shop. There is a red post box beside it. Finn is too short to reach the opening. Mum lifts him, and he puts the card inside.\n\nAt the shop, they buy milk and bananas. Finn chooses one banana for his snack. On the way home, he asks, \"Will Aunt Rose like my picture?\" Mum smiles. \"I think she will.\"",
+            "explanation": "She lifts him so he can reach the opening.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.walk-and-postcard-039.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "They buy apples and bread.",
+            "material": "A postcard for Aunt Rose\n\nFinn draws a picture of his new house on a postcard. He wants to send it to Aunt Rose. Mum writes the address, and Finn puts a stamp in the corner.\n\nThey walk to the shop. There is a red post box beside it. Finn is too short to reach the opening. Mum lifts him, and he puts the card inside.\n\nAt the shop, they buy milk and bananas. Finn chooses one banana for his snack. On the way home, he asks, \"Will Aunt Rose like my picture?\" Mum smiles. \"I think she will.\"",
+            "explanation": "They buy milk and bananas.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "3327b91d1174dcaec10e89966e0603647f8fe275f454f09c99b0dfb377dd1da5",
+      "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.school-bag-dry-039",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · The open water bottle",
+        "summary": "The open water bottle，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.school-bag-dry-039",
+          "family": "reading_tf",
+          "label": "The open water bottle",
+          "candidateSHA256": "5b23ad381dc312cc2c0ee139265b86295ae6fd1fc8a0126f85fef67ea2481351",
+          "authorCheckSHA256": "3bff71f5391a9b56b522ba54df6bbf573badcef045f6de2ed12ce2c2cefa847a",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.school-bag-dry-039#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b039；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The open water bottle\n\nGrace takes a water bottle to school. She puts it in her bag beside a small towel. Her reading book is in the front pocket.\n\nOn the bus, she sees water on her bag. The bottle is open. She closes it and takes out the wet towel. Her pencil case is wet too, but the book in the front pocket is dry.\n\nAt school, Grace puts the towel beside the window. She tells her teacher what happened. At home that afternoon, she checks the bottle before putting it in her bag again."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.school-bag-dry-039.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Grace puts a towel beside her bottle.",
+            "material": "The open water bottle\n\nGrace takes a water bottle to school. She puts it in her bag beside a small towel. Her reading book is in the front pocket.\n\nOn the bus, she sees water on her bag. The bottle is open. She closes it and takes out the wet towel. Her pencil case is wet too, but the book in the front pocket is dry.\n\nAt school, Grace puts the towel beside the window. She tells her teacher what happened. At home that afternoon, she checks the bottle before putting it in her bag again.",
+            "explanation": "The towel and bottle are together in the bag.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.school-bag-dry-039.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "She notices the water at home.",
+            "material": "The open water bottle\n\nGrace takes a water bottle to school. She puts it in her bag beside a small towel. Her reading book is in the front pocket.\n\nOn the bus, she sees water on her bag. The bottle is open. She closes it and takes out the wet towel. Her pencil case is wet too, but the book in the front pocket is dry.\n\nAt school, Grace puts the towel beside the window. She tells her teacher what happened. At home that afternoon, she checks the bottle before putting it in her bag again.",
+            "explanation": "She notices it on the bus.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.school-bag-dry-039.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Her reading book gets wet.",
+            "material": "The open water bottle\n\nGrace takes a water bottle to school. She puts it in her bag beside a small towel. Her reading book is in the front pocket.\n\nOn the bus, she sees water on her bag. The bottle is open. She closes it and takes out the wet towel. Her pencil case is wet too, but the book in the front pocket is dry.\n\nAt school, Grace puts the towel beside the window. She tells her teacher what happened. At home that afternoon, she checks the bottle before putting it in her bag again.",
+            "explanation": "The book is dry in the front pocket.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.school-bag-dry-039.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "She puts the towel beside a window at school.",
+            "material": "The open water bottle\n\nGrace takes a water bottle to school. She puts it in her bag beside a small towel. Her reading book is in the front pocket.\n\nOn the bus, she sees water on her bag. The bottle is open. She closes it and takes out the wet towel. Her pencil case is wet too, but the book in the front pocket is dry.\n\nAt school, Grace puts the towel beside the window. She tells her teacher what happened. At home that afternoon, she checks the bottle before putting it in her bag again.",
+            "explanation": "That is where she places the wet towel.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.school-bag-dry-039.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "She checks the bottle before packing it again.",
+            "material": "The open water bottle\n\nGrace takes a water bottle to school. She puts it in her bag beside a small towel. Her reading book is in the front pocket.\n\nOn the bus, she sees water on her bag. The bottle is open. She closes it and takes out the wet towel. Her pencil case is wet too, but the book in the front pocket is dry.\n\nAt school, Grace puts the towel beside the window. She tells her teacher what happened. At home that afternoon, she checks the bottle before putting it in her bag again.",
+            "explanation": "She checks it at home that afternoon.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "b49cda44a76d8f94a8bb9dce133ca24a34554373d20d6b651442cddcdc6a4702",
+      "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.puppy-music-room-039",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · Pip and the piano",
+        "summary": "Pip and the piano，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.puppy-music-room-039",
+          "family": "reading_tf",
+          "label": "Pip and the piano",
+          "candidateSHA256": "66af490ff42f7e6407af490e18373b9095a187d99802c981494b66eca68abc2d",
+          "authorCheckSHA256": "f3e05d0393dfc043fcb4c4453d160c77706f5288d4d3052349fa806c568e1067",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.puppy-music-room-039#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b039；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Pip and the piano\n\nMaya practises the piano after school. Her puppy Pip usually sleeps beside the kitchen door. Today he comes into the music room and sits on the rug.\n\nMaya plays a fast song. Pip gets up and walks to the window. Then Maya plays a slow song. Pip lies down again and closes his eyes.\n\nWhen Maya stops, Pip opens his eyes and looks at her. Maya laughs. \"Do you want another song?\" she asks. Mum comes in with some water for Pip. \"He may just want a drink,\" she says."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.puppy-music-room-039.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Pip is a kitten.",
+            "material": "Pip and the piano\n\nMaya practises the piano after school. Her puppy Pip usually sleeps beside the kitchen door. Today he comes into the music room and sits on the rug.\n\nMaya plays a fast song. Pip gets up and walks to the window. Then Maya plays a slow song. Pip lies down again and closes his eyes.\n\nWhen Maya stops, Pip opens his eyes and looks at her. Maya laughs. \"Do you want another song?\" she asks. Mum comes in with some water for Pip. \"He may just want a drink,\" she says.",
+            "explanation": "Pip is Maya’s puppy.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.puppy-music-room-039.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Pip usually sleeps beside the kitchen door.",
+            "material": "Pip and the piano\n\nMaya practises the piano after school. Her puppy Pip usually sleeps beside the kitchen door. Today he comes into the music room and sits on the rug.\n\nMaya plays a fast song. Pip gets up and walks to the window. Then Maya plays a slow song. Pip lies down again and closes his eyes.\n\nWhen Maya stops, Pip opens his eyes and looks at her. Maya laughs. \"Do you want another song?\" she asks. Mum comes in with some water for Pip. \"He may just want a drink,\" she says.",
+            "explanation": "That is his usual sleeping place.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.puppy-music-room-039.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Maya plays only one song.",
+            "material": "Pip and the piano\n\nMaya practises the piano after school. Her puppy Pip usually sleeps beside the kitchen door. Today he comes into the music room and sits on the rug.\n\nMaya plays a fast song. Pip gets up and walks to the window. Then Maya plays a slow song. Pip lies down again and closes his eyes.\n\nWhen Maya stops, Pip opens his eyes and looks at her. Maya laughs. \"Do you want another song?\" she asks. Mum comes in with some water for Pip. \"He may just want a drink,\" she says.",
+            "explanation": "She plays a fast song and then a slow song.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.puppy-music-room-039.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Pip closes his eyes during the slow song.",
+            "material": "Pip and the piano\n\nMaya practises the piano after school. Her puppy Pip usually sleeps beside the kitchen door. Today he comes into the music room and sits on the rug.\n\nMaya plays a fast song. Pip gets up and walks to the window. Then Maya plays a slow song. Pip lies down again and closes his eyes.\n\nWhen Maya stops, Pip opens his eyes and looks at her. Maya laughs. \"Do you want another song?\" she asks. Mum comes in with some water for Pip. \"He may just want a drink,\" she says.",
+            "explanation": "He lies down and closes his eyes then.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.puppy-music-room-039.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Mum brings food for Pip.",
+            "material": "Pip and the piano\n\nMaya practises the piano after school. Her puppy Pip usually sleeps beside the kitchen door. Today he comes into the music room and sits on the rug.\n\nMaya plays a fast song. Pip gets up and walks to the window. Then Maya plays a slow song. Pip lies down again and closes his eyes.\n\nWhen Maya stops, Pip opens his eyes and looks at her. Maya laughs. \"Do you want another song?\" she asks. Mum comes in with some water for Pip. \"He may just want a drink,\" she says.",
+            "explanation": "Mum brings water, not food.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "d9ba450f00ef916d4081dcaa9c5befbdfc9b317e984edbe9bc0a0fe5ff6fc7e6",
+      "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.wrong-bus-stop-wait-039",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · Waiting for Dad",
+        "summary": "Waiting for Dad，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.wrong-bus-stop-wait-039",
+          "family": "reading_tf",
+          "label": "Waiting for Dad",
+          "candidateSHA256": "36272425fddc7a1a790cfa4d48f8bcfbeda7562b6af1778fdc934ed72d102f50",
+          "authorCheckSHA256": "28b9d1c18af7b2dc5df1c38918b0a16ad7d838528337c29dfde2012dbe4af85a",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.wrong-bus-stop-wait-039#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b039；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Waiting for Dad\n\nOn Tuesday, Leo waits for Dad outside the school gate. He has a red bag and a long ruler. His friend Joy waits with him.\n\nA white car stops across the road. Leo waves, but it is not Dad's car. Dad has a blue car. The woman in the white car is Joy's mum.\n\nJoy says goodbye and goes to her mum. Leo stays by the gate with his teacher. Five minutes later, Dad arrives in the blue car. Leo puts his bag on the back seat and keeps the ruler in his hand."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.wrong-bus-stop-wait-039.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Leo waits outside the school gate.",
+            "material": "Waiting for Dad\n\nOn Tuesday, Leo waits for Dad outside the school gate. He has a red bag and a long ruler. His friend Joy waits with him.\n\nA white car stops across the road. Leo waves, but it is not Dad's car. Dad has a blue car. The woman in the white car is Joy's mum.\n\nJoy says goodbye and goes to her mum. Leo stays by the gate with his teacher. Five minutes later, Dad arrives in the blue car. Leo puts his bag on the back seat and keeps the ruler in his hand.",
+            "explanation": "The first sentence gives his waiting place.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.wrong-bus-stop-wait-039.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Dad has a white car.",
+            "material": "Waiting for Dad\n\nOn Tuesday, Leo waits for Dad outside the school gate. He has a red bag and a long ruler. His friend Joy waits with him.\n\nA white car stops across the road. Leo waves, but it is not Dad's car. Dad has a blue car. The woman in the white car is Joy's mum.\n\nJoy says goodbye and goes to her mum. Leo stays by the gate with his teacher. Five minutes later, Dad arrives in the blue car. Leo puts his bag on the back seat and keeps the ruler in his hand.",
+            "explanation": "Dad’s car is blue; the white car belongs to Joy’s mum.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.wrong-bus-stop-wait-039.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Joy leaves with her mum.",
+            "material": "Waiting for Dad\n\nOn Tuesday, Leo waits for Dad outside the school gate. He has a red bag and a long ruler. His friend Joy waits with him.\n\nA white car stops across the road. Leo waves, but it is not Dad's car. Dad has a blue car. The woman in the white car is Joy's mum.\n\nJoy says goodbye and goes to her mum. Leo stays by the gate with his teacher. Five minutes later, Dad arrives in the blue car. Leo puts his bag on the back seat and keeps the ruler in his hand.",
+            "explanation": "Joy says goodbye and goes to her mum’s car.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.wrong-bus-stop-wait-039.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Leo waits alone after Joy leaves.",
+            "material": "Waiting for Dad\n\nOn Tuesday, Leo waits for Dad outside the school gate. He has a red bag and a long ruler. His friend Joy waits with him.\n\nA white car stops across the road. Leo waves, but it is not Dad's car. Dad has a blue car. The woman in the white car is Joy's mum.\n\nJoy says goodbye and goes to her mum. Leo stays by the gate with his teacher. Five minutes later, Dad arrives in the blue car. Leo puts his bag on the back seat and keeps the ruler in his hand.",
+            "explanation": "His teacher stays with him.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.wrong-bus-stop-wait-039.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Leo puts his bag on the back seat.",
+            "material": "Waiting for Dad\n\nOn Tuesday, Leo waits for Dad outside the school gate. He has a red bag and a long ruler. His friend Joy waits with him.\n\nA white car stops across the road. Leo waves, but it is not Dad's car. Dad has a blue car. The woman in the white car is Joy's mum.\n\nJoy says goodbye and goes to her mum. Leo stays by the gate with his teacher. Five minutes later, Dad arrives in the blue car. Leo puts his bag on the back seat and keeps the ruler in his hand.",
+            "explanation": "He puts the bag there and holds his ruler.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "9075ceb43836933445ff49c632ce67e0d94f731d4a98abc23bd53586dfcb3573",
+      "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.paper-stars-window-039",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · Stars for the window",
+        "summary": "Stars for the window，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.paper-stars-window-039",
+          "family": "reading_tf",
+          "label": "Stars for the window",
+          "candidateSHA256": "59d9ccfd4e521d46bf457b4f96d925c7d22a00b7b26b5b1c240a00e0f1ebde7f",
+          "authorCheckSHA256": "3bdd0a81c44df0b20134bc3e166a05eddcd7e36162d50bc47fc1b2d3c4bc9156",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.paper-stars-window-039#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b039；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Stars for the window\n\nAva and her cousin make paper stars at Grandma's house. Ava uses yellow paper. Her cousin uses blue paper. They make six stars: four yellow and two blue.\n\nGrandma gives them some string. They put three stars on one string and three on another. Ava holds the first string near the window. It is too long, so Grandma cuts it a little.\n\nThe children hang both strings in the window. Then they put the small pieces of paper in a box. Grandma can use the pieces to make cards another day."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.paper-stars-window-039.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Ava uses blue paper.",
+            "material": "Stars for the window\n\nAva and her cousin make paper stars at Grandma's house. Ava uses yellow paper. Her cousin uses blue paper. They make six stars: four yellow and two blue.\n\nGrandma gives them some string. They put three stars on one string and three on another. Ava holds the first string near the window. It is too long, so Grandma cuts it a little.\n\nThe children hang both strings in the window. Then they put the small pieces of paper in a box. Grandma can use the pieces to make cards another day.",
+            "explanation": "Ava uses yellow; her cousin uses blue.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.paper-stars-window-039.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "They make six stars altogether.",
+            "material": "Stars for the window\n\nAva and her cousin make paper stars at Grandma's house. Ava uses yellow paper. Her cousin uses blue paper. They make six stars: four yellow and two blue.\n\nGrandma gives them some string. They put three stars on one string and three on another. Ava holds the first string near the window. It is too long, so Grandma cuts it a little.\n\nThe children hang both strings in the window. Then they put the small pieces of paper in a box. Grandma can use the pieces to make cards another day.",
+            "explanation": "Four yellow plus two blue is six, also explicitly stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.paper-stars-window-039.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Each string has three stars.",
+            "material": "Stars for the window\n\nAva and her cousin make paper stars at Grandma's house. Ava uses yellow paper. Her cousin uses blue paper. They make six stars: four yellow and two blue.\n\nGrandma gives them some string. They put three stars on one string and three on another. Ava holds the first string near the window. It is too long, so Grandma cuts it a little.\n\nThe children hang both strings in the window. Then they put the small pieces of paper in a box. Grandma can use the pieces to make cards another day.",
+            "explanation": "They place three on each of the two strings.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.paper-stars-window-039.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Grandma makes the first string longer.",
+            "material": "Stars for the window\n\nAva and her cousin make paper stars at Grandma's house. Ava uses yellow paper. Her cousin uses blue paper. They make six stars: four yellow and two blue.\n\nGrandma gives them some string. They put three stars on one string and three on another. Ava holds the first string near the window. It is too long, so Grandma cuts it a little.\n\nThe children hang both strings in the window. Then they put the small pieces of paper in a box. Grandma can use the pieces to make cards another day.",
+            "explanation": "She cuts it shorter because it is too long.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.paper-stars-window-039.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "They throw all the small paper pieces away.",
+            "material": "Stars for the window\n\nAva and her cousin make paper stars at Grandma's house. Ava uses yellow paper. Her cousin uses blue paper. They make six stars: four yellow and two blue.\n\nGrandma gives them some string. They put three stars on one string and three on another. Ava holds the first string near the window. It is too long, so Grandma cuts it a little.\n\nThe children hang both strings in the window. Then they put the small pieces of paper in a box. Grandma can use the pieces to make cards another day.",
+            "explanation": "They save them in a box for cards.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "b3e94a4180408b540081fae80da5d3b71191791b7e7f0858d71b7788553ed0e8",
+      "reviewNotes": "Ten complete new primary3 true/false readings. Simple fictional everyday scenes; all facts needed are in the passage. Same-author evidence and polarity review, not independent learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
