@@ -1,0 +1,1358 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b074",
+  "createdAt": "2026-10-23T23:30:58.083921+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.train-window-count-074",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Counting from the train",
+        "summary": "Counting from the train，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap passage: seven prompted forms and three unprompted single-word gaps. Reference supplies level/family, not prose."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four whole junior originals; fictional journeys/clubs/museum/survey. All grammatical variants and invalid examples reviewed by same author, not independent student calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.train-window-count-074",
+          "family": "passage_form",
+          "label": "Counting from the train",
+          "candidateSHA256": "4158b9de4e29c80eecb5943748b30c5c6c6f07065765a6d3208c81e5987c495f",
+          "authorCheckSHA256": "af6c60a39823c0dd0e5c8e086a7149f9aa722d524fb1b66e7dfa93826ab2d575",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.train-window-count-074#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b074；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Counting from the train\n\nLast Saturday, Dad and I travelled to the coast by train. While he ____1____ (read) a newspaper, I watched the fields pass the window. I began counting sheep, but the train moved too fast for me to be sure of the number.\n\nDad suggested choosing something ____2____ was easier to count. We decided to record stations instead. I wrote each name as we arrived, then compared my list ____3____ the route map above the door. \n\nThe map showed two stations with similar names. I nearly wrote the same one ____4____ (two). A passenger pointed out the different endings, and I corrected my note before the train left. \n\nAt the coast, we bought sandwiches and sat on a bench. It was the ____5____ (windy) day of our short holiday, so we held the paper bags firmly. \n\nOn the return journey, I wanted ____6____ (check) whether the order of stops was exactly reversed. It was, although a train on another service might have a different stopping pattern. I put ____7____ (I) list beside the map again.\n\nThe exercise had made an ordinary journey ____8____ (interesting) than I expected. I had not discovered anything unknown to the railway, but I had paid attention. There was ____9____ useful difference between looking through a window and deciding what to notice. The list became a small record of a day that otherwise might have passed very ____10____ (quick)."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.train-window-count-074.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of read.",
+            "material": "Counting from the train\n\nLast Saturday, Dad and I travelled to the coast by train. While he ____1____ (read) a newspaper, I watched the fields pass the window. I began counting sheep, but the train moved too fast for me to be sure of the number.\n\nDad suggested choosing something ____2____ was easier to count. We decided to record stations instead. I wrote each name as we arrived, then compared my list ____3____ the route map above the door. \n\nThe map showed two stations with similar names. I nearly wrote the same one ____4____ (two). A passenger pointed out the different endings, and I corrected my note before the train left. \n\nAt the coast, we bought sandwiches and sat on a bench. It was the ____5____ (windy) day of our short holiday, so we held the paper bags firmly. \n\nOn the return journey, I wanted ____6____ (check) whether the order of stops was exactly reversed. It was, although a train on another service might have a different stopping pattern. I put ____7____ (I) list beside the map again.\n\nThe exercise had made an ordinary journey ____8____ (interesting) than I expected. I had not discovered anything unknown to the railway, but I had paid attention. There was ____9____ useful difference between looking through a window and deciding what to notice. The list became a small record of a day that otherwise might have passed very ____10____ (quick).",
+            "explanation": "While and the past watched establish an ongoing past action by singular he: was reading. Unaided -ing and plural were do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was reading"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "reading",
+                "were reading"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.train-window-count-074.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "Counting from the train\n\nLast Saturday, Dad and I travelled to the coast by train. While he ____1____ (read) a newspaper, I watched the fields pass the window. I began counting sheep, but the train moved too fast for me to be sure of the number.\n\nDad suggested choosing something ____2____ was easier to count. We decided to record stations instead. I wrote each name as we arrived, then compared my list ____3____ the route map above the door. \n\nThe map showed two stations with similar names. I nearly wrote the same one ____4____ (two). A passenger pointed out the different endings, and I corrected my note before the train left. \n\nAt the coast, we bought sandwiches and sat on a bench. It was the ____5____ (windy) day of our short holiday, so we held the paper bags firmly. \n\nOn the return journey, I wanted ____6____ (check) whether the order of stops was exactly reversed. It was, although a train on another service might have a different stopping pattern. I put ____7____ (I) list beside the map again.\n\nThe exercise had made an ordinary journey ____8____ (interesting) than I expected. I had not discovered anything unknown to the railway, but I had paid attention. There was ____9____ useful difference between looking through a window and deciding what to notice. The list became a small record of a day that otherwise might have passed very ____10____ (quick).",
+            "explanation": "Something is the nonhuman subject antecedent of that/which was easier. Who is human and where not a subject.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.train-window-count-074.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "Counting from the train\n\nLast Saturday, Dad and I travelled to the coast by train. While he ____1____ (read) a newspaper, I watched the fields pass the window. I began counting sheep, but the train moved too fast for me to be sure of the number.\n\nDad suggested choosing something ____2____ was easier to count. We decided to record stations instead. I wrote each name as we arrived, then compared my list ____3____ the route map above the door. \n\nThe map showed two stations with similar names. I nearly wrote the same one ____4____ (two). A passenger pointed out the different endings, and I corrected my note before the train left. \n\nAt the coast, we bought sandwiches and sat on a bench. It was the ____5____ (windy) day of our short holiday, so we held the paper bags firmly. \n\nOn the return journey, I wanted ____6____ (check) whether the order of stops was exactly reversed. It was, although a train on another service might have a different stopping pattern. I put ____7____ (I) list beside the map again.\n\nThe exercise had made an ordinary journey ____8____ (interesting) than I expected. I had not discovered anything unknown to the railway, but I had paid attention. There was ____9____ useful difference between looking through a window and deciding what to notice. The list became a small record of a day that otherwise might have passed very ____10____ (quick).",
+            "explanation": "Compared my list with/to the map both express comparison. At/from do not fit that comparison construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "with",
+              "to"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "at",
+                "from"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.train-window-count-074.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of two.",
+            "material": "Counting from the train\n\nLast Saturday, Dad and I travelled to the coast by train. While he ____1____ (read) a newspaper, I watched the fields pass the window. I began counting sheep, but the train moved too fast for me to be sure of the number.\n\nDad suggested choosing something ____2____ was easier to count. We decided to record stations instead. I wrote each name as we arrived, then compared my list ____3____ the route map above the door. \n\nThe map showed two stations with similar names. I nearly wrote the same one ____4____ (two). A passenger pointed out the different endings, and I corrected my note before the train left. \n\nAt the coast, we bought sandwiches and sat on a bench. It was the ____5____ (windy) day of our short holiday, so we held the paper bags firmly. \n\nOn the return journey, I wanted ____6____ (check) whether the order of stops was exactly reversed. It was, although a train on another service might have a different stopping pattern. I put ____7____ (I) list beside the map again.\n\nThe exercise had made an ordinary journey ____8____ (interesting) than I expected. I had not discovered anything unknown to the railway, but I had paid attention. There was ____9____ useful difference between looking through a window and deciding what to notice. The list became a small record of a day that otherwise might have passed very ____10____ (quick).",
+            "explanation": "Twice means on two occasions. Two requires a counted noun and second is an ordinal, not the adverb here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "twice"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "two",
+                "second"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.train-window-count-074.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of windy.",
+            "material": "Counting from the train\n\nLast Saturday, Dad and I travelled to the coast by train. While he ____1____ (read) a newspaper, I watched the fields pass the window. I began counting sheep, but the train moved too fast for me to be sure of the number.\n\nDad suggested choosing something ____2____ was easier to count. We decided to record stations instead. I wrote each name as we arrived, then compared my list ____3____ the route map above the door. \n\nThe map showed two stations with similar names. I nearly wrote the same one ____4____ (two). A passenger pointed out the different endings, and I corrected my note before the train left. \n\nAt the coast, we bought sandwiches and sat on a bench. It was the ____5____ (windy) day of our short holiday, so we held the paper bags firmly. \n\nOn the return journey, I wanted ____6____ (check) whether the order of stops was exactly reversed. It was, although a train on another service might have a different stopping pattern. I put ____7____ (I) list beside the map again.\n\nThe exercise had made an ordinary journey ____8____ (interesting) than I expected. I had not discovered anything unknown to the railway, but I had paid attention. There was ____9____ useful difference between looking through a window and deciding what to notice. The list became a small record of a day that otherwise might have passed very ____10____ (quick).",
+            "explanation": "The day of our holiday is presented as the maximum, windiest/most windy. Comparative windier lacks a two-way comparison here and doubled more windier is nonstandard.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "windiest",
+              "most windy"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "windier",
+                "more windier"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.train-window-count-074.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of check.",
+            "material": "Counting from the train\n\nLast Saturday, Dad and I travelled to the coast by train. While he ____1____ (read) a newspaper, I watched the fields pass the window. I began counting sheep, but the train moved too fast for me to be sure of the number.\n\nDad suggested choosing something ____2____ was easier to count. We decided to record stations instead. I wrote each name as we arrived, then compared my list ____3____ the route map above the door. \n\nThe map showed two stations with similar names. I nearly wrote the same one ____4____ (two). A passenger pointed out the different endings, and I corrected my note before the train left. \n\nAt the coast, we bought sandwiches and sat on a bench. It was the ____5____ (windy) day of our short holiday, so we held the paper bags firmly. \n\nOn the return journey, I wanted ____6____ (check) whether the order of stops was exactly reversed. It was, although a train on another service might have a different stopping pattern. I put ____7____ (I) list beside the map again.\n\nThe exercise had made an ordinary journey ____8____ (interesting) than I expected. I had not discovered anything unknown to the railway, but I had paid attention. There was ____9____ useful difference between looking through a window and deciding what to notice. The list became a small record of a day that otherwise might have passed very ____10____ (quick).",
+            "explanation": "Wanted takes to check. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to check"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "checking",
+                "check",
+                "checked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.train-window-count-074.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of I.",
+            "material": "Counting from the train\n\nLast Saturday, Dad and I travelled to the coast by train. While he ____1____ (read) a newspaper, I watched the fields pass the window. I began counting sheep, but the train moved too fast for me to be sure of the number.\n\nDad suggested choosing something ____2____ was easier to count. We decided to record stations instead. I wrote each name as we arrived, then compared my list ____3____ the route map above the door. \n\nThe map showed two stations with similar names. I nearly wrote the same one ____4____ (two). A passenger pointed out the different endings, and I corrected my note before the train left. \n\nAt the coast, we bought sandwiches and sat on a bench. It was the ____5____ (windy) day of our short holiday, so we held the paper bags firmly. \n\nOn the return journey, I wanted ____6____ (check) whether the order of stops was exactly reversed. It was, although a train on another service might have a different stopping pattern. I put ____7____ (I) list beside the map again.\n\nThe exercise had made an ordinary journey ____8____ (interesting) than I expected. I had not discovered anything unknown to the railway, but I had paid attention. There was ____9____ useful difference between looking through a window and deciding what to notice. The list became a small record of a day that otherwise might have passed very ____10____ (quick).",
+            "explanation": "My modifies list. I/me are personal pronouns and mine cannot directly modify list.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "my"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "I",
+                "me",
+                "mine"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.train-window-count-074.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of interesting.",
+            "material": "Counting from the train\n\nLast Saturday, Dad and I travelled to the coast by train. While he ____1____ (read) a newspaper, I watched the fields pass the window. I began counting sheep, but the train moved too fast for me to be sure of the number.\n\nDad suggested choosing something ____2____ was easier to count. We decided to record stations instead. I wrote each name as we arrived, then compared my list ____3____ the route map above the door. \n\nThe map showed two stations with similar names. I nearly wrote the same one ____4____ (two). A passenger pointed out the different endings, and I corrected my note before the train left. \n\nAt the coast, we bought sandwiches and sat on a bench. It was the ____5____ (windy) day of our short holiday, so we held the paper bags firmly. \n\nOn the return journey, I wanted ____6____ (check) whether the order of stops was exactly reversed. It was, although a train on another service might have a different stopping pattern. I put ____7____ (I) list beside the map again.\n\nThe exercise had made an ordinary journey ____8____ (interesting) than I expected. I had not discovered anything unknown to the railway, but I had paid attention. There was ____9____ useful difference between looking through a window and deciding what to notice. The list became a small record of a day that otherwise might have passed very ____10____ (quick).",
+            "explanation": "Than marks a comparative: more interesting. Interestinger is nonstandard and most is superlative.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "more interesting"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "interestinger",
+                "most interesting"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.train-window-count-074.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "Counting from the train\n\nLast Saturday, Dad and I travelled to the coast by train. While he ____1____ (read) a newspaper, I watched the fields pass the window. I began counting sheep, but the train moved too fast for me to be sure of the number.\n\nDad suggested choosing something ____2____ was easier to count. We decided to record stations instead. I wrote each name as we arrived, then compared my list ____3____ the route map above the door. \n\nThe map showed two stations with similar names. I nearly wrote the same one ____4____ (two). A passenger pointed out the different endings, and I corrected my note before the train left. \n\nAt the coast, we bought sandwiches and sat on a bench. It was the ____5____ (windy) day of our short holiday, so we held the paper bags firmly. \n\nOn the return journey, I wanted ____6____ (check) whether the order of stops was exactly reversed. It was, although a train on another service might have a different stopping pattern. I put ____7____ (I) list beside the map again.\n\nThe exercise had made an ordinary journey ____8____ (interesting) than I expected. I had not discovered anything unknown to the railway, but I had paid attention. There was ____9____ useful difference between looking through a window and deciding what to notice. The list became a small record of a day that otherwise might have passed very ____10____ (quick).",
+            "explanation": "A useful difference begins with consonant /j/. Other determiner readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.train-window-count-074.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of quick.",
+            "material": "Counting from the train\n\nLast Saturday, Dad and I travelled to the coast by train. While he ____1____ (read) a newspaper, I watched the fields pass the window. I began counting sheep, but the train moved too fast for me to be sure of the number.\n\nDad suggested choosing something ____2____ was easier to count. We decided to record stations instead. I wrote each name as we arrived, then compared my list ____3____ the route map above the door. \n\nThe map showed two stations with similar names. I nearly wrote the same one ____4____ (two). A passenger pointed out the different endings, and I corrected my note before the train left. \n\nAt the coast, we bought sandwiches and sat on a bench. It was the ____5____ (windy) day of our short holiday, so we held the paper bags firmly. \n\nOn the return journey, I wanted ____6____ (check) whether the order of stops was exactly reversed. It was, although a train on another service might have a different stopping pattern. I put ____7____ (I) list beside the map again.\n\nThe exercise had made an ordinary journey ____8____ (interesting) than I expected. I had not discovered anything unknown to the railway, but I had paid attention. There was ____9____ useful difference between looking through a window and deciding what to notice. The list became a small record of a day that otherwise might have passed very ____10____ (quick).",
+            "explanation": "Quickly modifies passed. Quickness is a noun; unlisted informal flat-adverb readings are reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "quickly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "quickness"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "e49e36accdb26025de832e64c133d169fde5e3c1fff3e910426b8fce9693a5e4",
+      "reviewNotes": "Four whole junior originals; fictional journeys/clubs/museum/survey. All grammatical variants and invalid examples reviewed by same author, not independent student calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.seed-envelope-074",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · The envelope of seeds",
+        "summary": "The envelope of seeds，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap passage: seven prompted forms and three unprompted single-word gaps. Reference supplies level/family, not prose."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four whole junior originals; fictional journeys/clubs/museum/survey. All grammatical variants and invalid examples reviewed by same author, not independent student calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.seed-envelope-074",
+          "family": "passage_form",
+          "label": "The envelope of seeds",
+          "candidateSHA256": "4ca17372b77844912cda9031f6f0b11be2f4272b6cc553b9e1648297815aeaba",
+          "authorCheckSHA256": "e12047b349a2f3daf3940c53c83b811ecd4248875691ce0e2fec68d97b6e2fff",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.seed-envelope-074#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b074；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The envelope of seeds\n\nOur gardening club received an envelope of seeds from a neighbouring school. Nobody had written the plant's name on it. The teacher asked us not to guess ____1____ (careless), because an incorrect label could remain in our records long after the original question had been forgotten.\n\nWe sent a message to the school ____2____ had given us the envelope. While waiting for a reply, we placed the seeds in a dry cupboard. We did not put them into the ground or mix them with the three other ____3____ (packet).\n\nTwo days later, a teacher replied. The seeds came from a tall flower in their school garden, and she attached a photograph. She also admitted that she was not certain of the exact variety. Her answer was helpful, ____4____ it did not settle every detail.\n\nWe made a label saying where the seeds had come from and what remained unknown. Our teacher said this was ____5____ (honest) than inventing a precise name. \n\nWhen spring arrived, we planted a few in separate pots. Each pot ____6____ (number), so we could connect our notes with the right plant. \n\nAfter ____7____ (watch) the seedlings for several weeks, we sent new pictures to the neighbouring school. The students there were pleased to see ____8____ (they) gift growing in another garden. We still had questions, but now we had more ____9____ (inform) to discuss. The original blank envelope had led ____10____ a conversation between two clubs, rather than a confident mistake copied from one notebook into another."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.seed-envelope-074.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of careless.",
+            "material": "The envelope of seeds\n\nOur gardening club received an envelope of seeds from a neighbouring school. Nobody had written the plant's name on it. The teacher asked us not to guess ____1____ (careless), because an incorrect label could remain in our records long after the original question had been forgotten.\n\nWe sent a message to the school ____2____ had given us the envelope. While waiting for a reply, we placed the seeds in a dry cupboard. We did not put them into the ground or mix them with the three other ____3____ (packet).\n\nTwo days later, a teacher replied. The seeds came from a tall flower in their school garden, and she attached a photograph. She also admitted that she was not certain of the exact variety. Her answer was helpful, ____4____ it did not settle every detail.\n\nWe made a label saying where the seeds had come from and what remained unknown. Our teacher said this was ____5____ (honest) than inventing a precise name. \n\nWhen spring arrived, we planted a few in separate pots. Each pot ____6____ (number), so we could connect our notes with the right plant. \n\nAfter ____7____ (watch) the seedlings for several weeks, we sent new pictures to the neighbouring school. The students there were pleased to see ____8____ (they) gift growing in another garden. We still had questions, but now we had more ____9____ (inform) to discuss. The original blank envelope had led ____10____ a conversation between two clubs, rather than a confident mistake copied from one notebook into another.",
+            "explanation": "Carelessly modifies guess. Careless is adjective and carelessness noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carelessly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careless",
+                "carelessness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.seed-envelope-074.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "The envelope of seeds\n\nOur gardening club received an envelope of seeds from a neighbouring school. Nobody had written the plant's name on it. The teacher asked us not to guess ____1____ (careless), because an incorrect label could remain in our records long after the original question had been forgotten.\n\nWe sent a message to the school ____2____ had given us the envelope. While waiting for a reply, we placed the seeds in a dry cupboard. We did not put them into the ground or mix them with the three other ____3____ (packet).\n\nTwo days later, a teacher replied. The seeds came from a tall flower in their school garden, and she attached a photograph. She also admitted that she was not certain of the exact variety. Her answer was helpful, ____4____ it did not settle every detail.\n\nWe made a label saying where the seeds had come from and what remained unknown. Our teacher said this was ____5____ (honest) than inventing a precise name. \n\nWhen spring arrived, we planted a few in separate pots. Each pot ____6____ (number), so we could connect our notes with the right plant. \n\nAfter ____7____ (watch) the seedlings for several weeks, we sent new pictures to the neighbouring school. The students there were pleased to see ____8____ (they) gift growing in another garden. We still had questions, but now we had more ____9____ (inform) to discuss. The original blank envelope had led ____10____ a conversation between two clubs, rather than a confident mistake copied from one notebook into another.",
+            "explanation": "School is the subject antecedent of that/which had given. Who is human and where not a subject in this clause.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.seed-envelope-074.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of packet.",
+            "material": "The envelope of seeds\n\nOur gardening club received an envelope of seeds from a neighbouring school. Nobody had written the plant's name on it. The teacher asked us not to guess ____1____ (careless), because an incorrect label could remain in our records long after the original question had been forgotten.\n\nWe sent a message to the school ____2____ had given us the envelope. While waiting for a reply, we placed the seeds in a dry cupboard. We did not put them into the ground or mix them with the three other ____3____ (packet).\n\nTwo days later, a teacher replied. The seeds came from a tall flower in their school garden, and she attached a photograph. She also admitted that she was not certain of the exact variety. Her answer was helpful, ____4____ it did not settle every detail.\n\nWe made a label saying where the seeds had come from and what remained unknown. Our teacher said this was ____5____ (honest) than inventing a precise name. \n\nWhen spring arrived, we planted a few in separate pots. Each pot ____6____ (number), so we could connect our notes with the right plant. \n\nAfter ____7____ (watch) the seedlings for several weeks, we sent new pictures to the neighbouring school. The students there were pleased to see ____8____ (they) gift growing in another garden. We still had questions, but now we had more ____9____ (inform) to discuss. The original blank envelope had led ____10____ a conversation between two clubs, rather than a confident mistake copied from one notebook into another.",
+            "explanation": "Three other packets requires plural packets. Packet is singular and packeting not the plural noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "packets"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "packet",
+                "packeting"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.seed-envelope-074.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "The envelope of seeds\n\nOur gardening club received an envelope of seeds from a neighbouring school. Nobody had written the plant's name on it. The teacher asked us not to guess ____1____ (careless), because an incorrect label could remain in our records long after the original question had been forgotten.\n\nWe sent a message to the school ____2____ had given us the envelope. While waiting for a reply, we placed the seeds in a dry cupboard. We did not put them into the ground or mix them with the three other ____3____ (packet).\n\nTwo days later, a teacher replied. The seeds came from a tall flower in their school garden, and she attached a photograph. She also admitted that she was not certain of the exact variety. Her answer was helpful, ____4____ it did not settle every detail.\n\nWe made a label saying where the seeds had come from and what remained unknown. Our teacher said this was ____5____ (honest) than inventing a precise name. \n\nWhen spring arrived, we planted a few in separate pots. Each pot ____6____ (number), so we could connect our notes with the right plant. \n\nAfter ____7____ (watch) the seedlings for several weeks, we sent new pictures to the neighbouring school. The students there were pleased to see ____8____ (they) gift growing in another garden. We still had questions, but now we had more ____9____ (inform) to discuss. The original blank envelope had led ____10____ a conversation between two clubs, rather than a confident mistake copied from one notebook into another.",
+            "explanation": "But/yet mark contrast, while although/though introduce a concessive clause. Unless incorrectly makes lack of certainty a condition on helpfulness; other unlisted relations remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "but",
+              "yet",
+              "although",
+              "though"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "unless"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.seed-envelope-074.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of honest.",
+            "material": "The envelope of seeds\n\nOur gardening club received an envelope of seeds from a neighbouring school. Nobody had written the plant's name on it. The teacher asked us not to guess ____1____ (careless), because an incorrect label could remain in our records long after the original question had been forgotten.\n\nWe sent a message to the school ____2____ had given us the envelope. While waiting for a reply, we placed the seeds in a dry cupboard. We did not put them into the ground or mix them with the three other ____3____ (packet).\n\nTwo days later, a teacher replied. The seeds came from a tall flower in their school garden, and she attached a photograph. She also admitted that she was not certain of the exact variety. Her answer was helpful, ____4____ it did not settle every detail.\n\nWe made a label saying where the seeds had come from and what remained unknown. Our teacher said this was ____5____ (honest) than inventing a precise name. \n\nWhen spring arrived, we planted a few in separate pots. Each pot ____6____ (number), so we could connect our notes with the right plant. \n\nAfter ____7____ (watch) the seedlings for several weeks, we sent new pictures to the neighbouring school. The students there were pleased to see ____8____ (they) gift growing in another garden. We still had questions, but now we had more ____9____ (inform) to discuss. The original blank envelope had led ____10____ a conversation between two clubs, rather than a confident mistake copied from one notebook into another.",
+            "explanation": "Than requires comparative more honest; rarer honester is also allowed. Most is superlative and more honester doubled.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "more honest",
+              "honester"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "most honest",
+                "more honester"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.seed-envelope-074.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of number.",
+            "material": "The envelope of seeds\n\nOur gardening club received an envelope of seeds from a neighbouring school. Nobody had written the plant's name on it. The teacher asked us not to guess ____1____ (careless), because an incorrect label could remain in our records long after the original question had been forgotten.\n\nWe sent a message to the school ____2____ had given us the envelope. While waiting for a reply, we placed the seeds in a dry cupboard. We did not put them into the ground or mix them with the three other ____3____ (packet).\n\nTwo days later, a teacher replied. The seeds came from a tall flower in their school garden, and she attached a photograph. She also admitted that she was not certain of the exact variety. Her answer was helpful, ____4____ it did not settle every detail.\n\nWe made a label saying where the seeds had come from and what remained unknown. Our teacher said this was ____5____ (honest) than inventing a precise name. \n\nWhen spring arrived, we planted a few in separate pots. Each pot ____6____ (number), so we could connect our notes with the right plant. \n\nAfter ____7____ (watch) the seedlings for several weeks, we sent new pictures to the neighbouring school. The students there were pleased to see ____8____ (they) gift growing in another garden. We still had questions, but now we had more ____9____ (inform) to discuss. The original blank envelope had led ____10____ a conversation between two clubs, rather than a confident mistake copied from one notebook into another.",
+            "explanation": "Singular each pot receives numbering: was/had been numbered. Numbered alone lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was numbered",
+              "had been numbered"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "numbered",
+                "were numbered"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.seed-envelope-074.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of watch.",
+            "material": "The envelope of seeds\n\nOur gardening club received an envelope of seeds from a neighbouring school. Nobody had written the plant's name on it. The teacher asked us not to guess ____1____ (careless), because an incorrect label could remain in our records long after the original question had been forgotten.\n\nWe sent a message to the school ____2____ had given us the envelope. While waiting for a reply, we placed the seeds in a dry cupboard. We did not put them into the ground or mix them with the three other ____3____ (packet).\n\nTwo days later, a teacher replied. The seeds came from a tall flower in their school garden, and she attached a photograph. She also admitted that she was not certain of the exact variety. Her answer was helpful, ____4____ it did not settle every detail.\n\nWe made a label saying where the seeds had come from and what remained unknown. Our teacher said this was ____5____ (honest) than inventing a precise name. \n\nWhen spring arrived, we planted a few in separate pots. Each pot ____6____ (number), so we could connect our notes with the right plant. \n\nAfter ____7____ (watch) the seedlings for several weeks, we sent new pictures to the neighbouring school. The students there were pleased to see ____8____ (they) gift growing in another garden. We still had questions, but now we had more ____9____ (inform) to discuss. The original blank envelope had led ____10____ a conversation between two clubs, rather than a confident mistake copied from one notebook into another.",
+            "explanation": "After watching/having watched is grammatical. Other listed forms do not follow the preposition directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "watching",
+              "having watched"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "watch",
+                "watched",
+                "to watch"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.seed-envelope-074.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of they.",
+            "material": "The envelope of seeds\n\nOur gardening club received an envelope of seeds from a neighbouring school. Nobody had written the plant's name on it. The teacher asked us not to guess ____1____ (careless), because an incorrect label could remain in our records long after the original question had been forgotten.\n\nWe sent a message to the school ____2____ had given us the envelope. While waiting for a reply, we placed the seeds in a dry cupboard. We did not put them into the ground or mix them with the three other ____3____ (packet).\n\nTwo days later, a teacher replied. The seeds came from a tall flower in their school garden, and she attached a photograph. She also admitted that she was not certain of the exact variety. Her answer was helpful, ____4____ it did not settle every detail.\n\nWe made a label saying where the seeds had come from and what remained unknown. Our teacher said this was ____5____ (honest) than inventing a precise name. \n\nWhen spring arrived, we planted a few in separate pots. Each pot ____6____ (number), so we could connect our notes with the right plant. \n\nAfter ____7____ (watch) the seedlings for several weeks, we sent new pictures to the neighbouring school. The students there were pleased to see ____8____ (they) gift growing in another garden. We still had questions, but now we had more ____9____ (inform) to discuss. The original blank envelope had led ____10____ a conversation between two clubs, rather than a confident mistake copied from one notebook into another.",
+            "explanation": "Their modifies gift. Personal forms and independent theirs do not modify that noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "their"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "them",
+                "theirs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.seed-envelope-074.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of inform.",
+            "material": "The envelope of seeds\n\nOur gardening club received an envelope of seeds from a neighbouring school. Nobody had written the plant's name on it. The teacher asked us not to guess ____1____ (careless), because an incorrect label could remain in our records long after the original question had been forgotten.\n\nWe sent a message to the school ____2____ had given us the envelope. While waiting for a reply, we placed the seeds in a dry cupboard. We did not put them into the ground or mix them with the three other ____3____ (packet).\n\nTwo days later, a teacher replied. The seeds came from a tall flower in their school garden, and she attached a photograph. She also admitted that she was not certain of the exact variety. Her answer was helpful, ____4____ it did not settle every detail.\n\nWe made a label saying where the seeds had come from and what remained unknown. Our teacher said this was ____5____ (honest) than inventing a precise name. \n\nWhen spring arrived, we planted a few in separate pots. Each pot ____6____ (number), so we could connect our notes with the right plant. \n\nAfter ____7____ (watch) the seedlings for several weeks, we sent new pictures to the neighbouring school. The students there were pleased to see ____8____ (they) gift growing in another garden. We still had questions, but now we had more ____9____ (inform) to discuss. The original blank envelope had led ____10____ a conversation between two clubs, rather than a confident mistake copied from one notebook into another.",
+            "explanation": "Information names knowledge to discuss. Inform is verb and informative adjective.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "information"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "inform",
+                "informative"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.seed-envelope-074.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "The envelope of seeds\n\nOur gardening club received an envelope of seeds from a neighbouring school. Nobody had written the plant's name on it. The teacher asked us not to guess ____1____ (careless), because an incorrect label could remain in our records long after the original question had been forgotten.\n\nWe sent a message to the school ____2____ had given us the envelope. While waiting for a reply, we placed the seeds in a dry cupboard. We did not put them into the ground or mix them with the three other ____3____ (packet).\n\nTwo days later, a teacher replied. The seeds came from a tall flower in their school garden, and she attached a photograph. She also admitted that she was not certain of the exact variety. Her answer was helpful, ____4____ it did not settle every detail.\n\nWe made a label saying where the seeds had come from and what remained unknown. Our teacher said this was ____5____ (honest) than inventing a precise name. \n\nWhen spring arrived, we planted a few in separate pots. Each pot ____6____ (number), so we could connect our notes with the right plant. \n\nAfter ____7____ (watch) the seedlings for several weeks, we sent new pictures to the neighbouring school. The students there were pleased to see ____8____ (they) gift growing in another garden. We still had questions, but now we had more ____9____ (inform) to discuss. The original blank envelope had led ____10____ a conversation between two clubs, rather than a confident mistake copied from one notebook into another.",
+            "explanation": "Led to a conversation uses result preposition to. The other listed prepositions do not express that result.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "at",
+                "of",
+                "by"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "9d9c248cd0613ddca77593c1c48f0b833cfa00a683c134c81a7b397f17ffc6c0",
+      "reviewNotes": "Four whole junior originals; fictional journeys/clubs/museum/survey. All grammatical variants and invalid examples reviewed by same author, not independent student calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.clock-restoration-074",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · The station clock on display",
+        "summary": "The station clock on display，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap passage: seven prompted forms and three unprompted single-word gaps. Reference supplies level/family, not prose."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four whole junior originals; fictional journeys/clubs/museum/survey. All grammatical variants and invalid examples reviewed by same author, not independent student calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.clock-restoration-074",
+          "family": "passage_form",
+          "label": "The station clock on display",
+          "candidateSHA256": "89834373c34656d80f7b256abb2790b216da1f4ee385ef9becb55d9711beeef6",
+          "authorCheckSHA256": "9ff5714251b6bd4fc91cd4ea5873889ab3d8897d79d77bdc6d62318eed172829",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.clock-restoration-074#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b074；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The station clock on display\n\nThe clock in our local history room no longer keeps time. It ____1____ (stop) many years before I first saw it. It once hung above the old station ticket office.\n\nOn our visit, someone asked why it was not repaired. The guide said the answer involved more than finding a person ____2____ could repair clocks. Some damaged parts carried evidence of how the mechanism had been changed during its working life.\n\nReplacing every worn piece might make the hands move, but it could also remove some of that evidence. The museum had to decide what it wanted ____3____ (preserve). A working clock and a record of historical repairs were related goals, but not always identical ones.\n\nThe guide showed us enlarged photographs of the inside. We could see parts of different ages, including a small wheel that was ____4____ (new) than the frame around it. The images allowed examination without touching.\n\nWe were encouraged to write down questions instead ____5____ giving the clock a simple good-or-bad judgment. I asked how the wheel was dated. The guide described the ____6____ (compare) of old maintenance notes with marks on the metal.\n\nAt the end, each of us wrote ____7____ short account of the visit. I described the clock as carefully preserved rather than merely broken.  It meant that an object could have several kinds of value, and that treating ____8____ (it) history seriously required choices. My account ____9____ (read) by a classmate before I handed it in. She helped me make the distinction ____10____ (clear), without turning it into a rule for every old object."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.clock-restoration-074.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of stop.",
+            "material": "The station clock on display\n\nThe clock in our local history room no longer keeps time. It ____1____ (stop) many years before I first saw it. It once hung above the old station ticket office.\n\nOn our visit, someone asked why it was not repaired. The guide said the answer involved more than finding a person ____2____ could repair clocks. Some damaged parts carried evidence of how the mechanism had been changed during its working life.\n\nReplacing every worn piece might make the hands move, but it could also remove some of that evidence. The museum had to decide what it wanted ____3____ (preserve). A working clock and a record of historical repairs were related goals, but not always identical ones.\n\nThe guide showed us enlarged photographs of the inside. We could see parts of different ages, including a small wheel that was ____4____ (new) than the frame around it. The images allowed examination without touching.\n\nWe were encouraged to write down questions instead ____5____ giving the clock a simple good-or-bad judgment. I asked how the wheel was dated. The guide described the ____6____ (compare) of old maintenance notes with marks on the metal.\n\nAt the end, each of us wrote ____7____ short account of the visit. I described the clock as carefully preserved rather than merely broken.  It meant that an object could have several kinds of value, and that treating ____8____ (it) history seriously required choices. My account ____9____ (read) by a classmate before I handed it in. She helped me make the distinction ____10____ (clear), without turning it into a rule for every old object.",
+            "explanation": "The stopping precedes first seeing in a past narrative, so had stopped. Has shifts to present perfect and had stop lacks a participle.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "had stopped"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "has stopped",
+                "had stop"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.clock-restoration-074.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "The station clock on display\n\nThe clock in our local history room no longer keeps time. It ____1____ (stop) many years before I first saw it. It once hung above the old station ticket office.\n\nOn our visit, someone asked why it was not repaired. The guide said the answer involved more than finding a person ____2____ could repair clocks. Some damaged parts carried evidence of how the mechanism had been changed during its working life.\n\nReplacing every worn piece might make the hands move, but it could also remove some of that evidence. The museum had to decide what it wanted ____3____ (preserve). A working clock and a record of historical repairs were related goals, but not always identical ones.\n\nThe guide showed us enlarged photographs of the inside. We could see parts of different ages, including a small wheel that was ____4____ (new) than the frame around it. The images allowed examination without touching.\n\nWe were encouraged to write down questions instead ____5____ giving the clock a simple good-or-bad judgment. I asked how the wheel was dated. The guide described the ____6____ (compare) of old maintenance notes with marks on the metal.\n\nAt the end, each of us wrote ____7____ short account of the visit. I described the clock as carefully preserved rather than merely broken.  It meant that an object could have several kinds of value, and that treating ____8____ (it) history seriously required choices. My account ____9____ (read) by a classmate before I handed it in. She helped me make the distinction ____10____ (clear), without turning it into a rule for every old object.",
+            "explanation": "A person is the defining human subject: who/that. Which is nonhuman, where not subject and whose needs a possessed noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "where",
+                "whose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.clock-restoration-074.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of preserve.",
+            "material": "The station clock on display\n\nThe clock in our local history room no longer keeps time. It ____1____ (stop) many years before I first saw it. It once hung above the old station ticket office.\n\nOn our visit, someone asked why it was not repaired. The guide said the answer involved more than finding a person ____2____ could repair clocks. Some damaged parts carried evidence of how the mechanism had been changed during its working life.\n\nReplacing every worn piece might make the hands move, but it could also remove some of that evidence. The museum had to decide what it wanted ____3____ (preserve). A working clock and a record of historical repairs were related goals, but not always identical ones.\n\nThe guide showed us enlarged photographs of the inside. We could see parts of different ages, including a small wheel that was ____4____ (new) than the frame around it. The images allowed examination without touching.\n\nWe were encouraged to write down questions instead ____5____ giving the clock a simple good-or-bad judgment. I asked how the wheel was dated. The guide described the ____6____ (compare) of old maintenance notes with marks on the metal.\n\nAt the end, each of us wrote ____7____ short account of the visit. I described the clock as carefully preserved rather than merely broken.  It meant that an object could have several kinds of value, and that treating ____8____ (it) history seriously required choices. My account ____9____ (read) by a classmate before I handed it in. She helped me make the distinction ____10____ (clear), without turning it into a rule for every old object.",
+            "explanation": "Wanted takes infinitive to preserve. The listed alternatives do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to preserve"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "preserving",
+                "preserve",
+                "preserved"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.clock-restoration-074.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of new.",
+            "material": "The station clock on display\n\nThe clock in our local history room no longer keeps time. It ____1____ (stop) many years before I first saw it. It once hung above the old station ticket office.\n\nOn our visit, someone asked why it was not repaired. The guide said the answer involved more than finding a person ____2____ could repair clocks. Some damaged parts carried evidence of how the mechanism had been changed during its working life.\n\nReplacing every worn piece might make the hands move, but it could also remove some of that evidence. The museum had to decide what it wanted ____3____ (preserve). A working clock and a record of historical repairs were related goals, but not always identical ones.\n\nThe guide showed us enlarged photographs of the inside. We could see parts of different ages, including a small wheel that was ____4____ (new) than the frame around it. The images allowed examination without touching.\n\nWe were encouraged to write down questions instead ____5____ giving the clock a simple good-or-bad judgment. I asked how the wheel was dated. The guide described the ____6____ (compare) of old maintenance notes with marks on the metal.\n\nAt the end, each of us wrote ____7____ short account of the visit. I described the clock as carefully preserved rather than merely broken.  It meant that an object could have several kinds of value, and that treating ____8____ (it) history seriously required choices. My account ____9____ (read) by a classmate before I handed it in. She helped me make the distinction ____10____ (clear), without turning it into a rule for every old object.",
+            "explanation": "Than gives comparative newer/more new. Newest is superlative and more newer doubled.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "newer",
+              "more new"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "newest",
+                "more newer"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.clock-restoration-074.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with one appropriate word.",
+            "material": "The station clock on display\n\nThe clock in our local history room no longer keeps time. It ____1____ (stop) many years before I first saw it. It once hung above the old station ticket office.\n\nOn our visit, someone asked why it was not repaired. The guide said the answer involved more than finding a person ____2____ could repair clocks. Some damaged parts carried evidence of how the mechanism had been changed during its working life.\n\nReplacing every worn piece might make the hands move, but it could also remove some of that evidence. The museum had to decide what it wanted ____3____ (preserve). A working clock and a record of historical repairs were related goals, but not always identical ones.\n\nThe guide showed us enlarged photographs of the inside. We could see parts of different ages, including a small wheel that was ____4____ (new) than the frame around it. The images allowed examination without touching.\n\nWe were encouraged to write down questions instead ____5____ giving the clock a simple good-or-bad judgment. I asked how the wheel was dated. The guide described the ____6____ (compare) of old maintenance notes with marks on the metal.\n\nAt the end, each of us wrote ____7____ short account of the visit. I described the clock as carefully preserved rather than merely broken.  It meant that an object could have several kinds of value, and that treating ____8____ (it) history seriously required choices. My account ____9____ (read) by a classmate before I handed it in. She helped me make the distinction ____10____ (clear), without turning it into a rule for every old object.",
+            "explanation": "Instead of takes the following -ing clause. Other listed prepositions do not complete instead.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "with",
+                "at"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.clock-restoration-074.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of compare.",
+            "material": "The station clock on display\n\nThe clock in our local history room no longer keeps time. It ____1____ (stop) many years before I first saw it. It once hung above the old station ticket office.\n\nOn our visit, someone asked why it was not repaired. The guide said the answer involved more than finding a person ____2____ could repair clocks. Some damaged parts carried evidence of how the mechanism had been changed during its working life.\n\nReplacing every worn piece might make the hands move, but it could also remove some of that evidence. The museum had to decide what it wanted ____3____ (preserve). A working clock and a record of historical repairs were related goals, but not always identical ones.\n\nThe guide showed us enlarged photographs of the inside. We could see parts of different ages, including a small wheel that was ____4____ (new) than the frame around it. The images allowed examination without touching.\n\nWe were encouraged to write down questions instead ____5____ giving the clock a simple good-or-bad judgment. I asked how the wheel was dated. The guide described the ____6____ (compare) of old maintenance notes with marks on the metal.\n\nAt the end, each of us wrote ____7____ short account of the visit. I described the clock as carefully preserved rather than merely broken.  It meant that an object could have several kinds of value, and that treating ____8____ (it) history seriously required choices. My account ____9____ (read) by a classmate before I handed it in. She helped me make the distinction ____10____ (clear), without turning it into a rule for every old object.",
+            "explanation": "The comparison of records with marks names a process. Compare is verb and comparative not the intended process noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "comparison"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "compare",
+                "comparative"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.clock-restoration-074.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "The station clock on display\n\nThe clock in our local history room no longer keeps time. It ____1____ (stop) many years before I first saw it. It once hung above the old station ticket office.\n\nOn our visit, someone asked why it was not repaired. The guide said the answer involved more than finding a person ____2____ could repair clocks. Some damaged parts carried evidence of how the mechanism had been changed during its working life.\n\nReplacing every worn piece might make the hands move, but it could also remove some of that evidence. The museum had to decide what it wanted ____3____ (preserve). A working clock and a record of historical repairs were related goals, but not always identical ones.\n\nThe guide showed us enlarged photographs of the inside. We could see parts of different ages, including a small wheel that was ____4____ (new) than the frame around it. The images allowed examination without touching.\n\nWe were encouraged to write down questions instead ____5____ giving the clock a simple good-or-bad judgment. I asked how the wheel was dated. The guide described the ____6____ (compare) of old maintenance notes with marks on the metal.\n\nAt the end, each of us wrote ____7____ short account of the visit. I described the clock as carefully preserved rather than merely broken.  It meant that an object could have several kinds of value, and that treating ____8____ (it) history seriously required choices. My account ____9____ (read) by a classmate before I handed it in. She helped me make the distinction ____10____ (clear), without turning it into a rule for every old object.",
+            "explanation": "A short account begins with a consonant. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.clock-restoration-074.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of it.",
+            "material": "The station clock on display\n\nThe clock in our local history room no longer keeps time. It ____1____ (stop) many years before I first saw it. It once hung above the old station ticket office.\n\nOn our visit, someone asked why it was not repaired. The guide said the answer involved more than finding a person ____2____ could repair clocks. Some damaged parts carried evidence of how the mechanism had been changed during its working life.\n\nReplacing every worn piece might make the hands move, but it could also remove some of that evidence. The museum had to decide what it wanted ____3____ (preserve). A working clock and a record of historical repairs were related goals, but not always identical ones.\n\nThe guide showed us enlarged photographs of the inside. We could see parts of different ages, including a small wheel that was ____4____ (new) than the frame around it. The images allowed examination without touching.\n\nWe were encouraged to write down questions instead ____5____ giving the clock a simple good-or-bad judgment. I asked how the wheel was dated. The guide described the ____6____ (compare) of old maintenance notes with marks on the metal.\n\nAt the end, each of us wrote ____7____ short account of the visit. I described the clock as carefully preserved rather than merely broken.  It meant that an object could have several kinds of value, and that treating ____8____ (it) history seriously required choices. My account ____9____ (read) by a classmate before I handed it in. She helped me make the distinction ____10____ (clear), without turning it into a rule for every old object.",
+            "explanation": "Its is possessive before history. It/itself are pronouns and it’s means it is/has.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "its"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "it",
+                "itself",
+                "it’s"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.clock-restoration-074.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of read.",
+            "material": "The station clock on display\n\nThe clock in our local history room no longer keeps time. It ____1____ (stop) many years before I first saw it. It once hung above the old station ticket office.\n\nOn our visit, someone asked why it was not repaired. The guide said the answer involved more than finding a person ____2____ could repair clocks. Some damaged parts carried evidence of how the mechanism had been changed during its working life.\n\nReplacing every worn piece might make the hands move, but it could also remove some of that evidence. The museum had to decide what it wanted ____3____ (preserve). A working clock and a record of historical repairs were related goals, but not always identical ones.\n\nThe guide showed us enlarged photographs of the inside. We could see parts of different ages, including a small wheel that was ____4____ (new) than the frame around it. The images allowed examination without touching.\n\nWe were encouraged to write down questions instead ____5____ giving the clock a simple good-or-bad judgment. I asked how the wheel was dated. The guide described the ____6____ (compare) of old maintenance notes with marks on the metal.\n\nAt the end, each of us wrote ____7____ short account of the visit. I described the clock as carefully preserved rather than merely broken.  It meant that an object could have several kinds of value, and that treating ____8____ (it) history seriously required choices. My account ____9____ (read) by a classmate before I handed it in. She helped me make the distinction ____10____ (clear), without turning it into a rule for every old object.",
+            "explanation": "Singular account receives reading, so was/had been read. Read alone lacks a passive auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was read",
+              "had been read"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "read",
+                "were read"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.clock-restoration-074.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of clear.",
+            "material": "The station clock on display\n\nThe clock in our local history room no longer keeps time. It ____1____ (stop) many years before I first saw it. It once hung above the old station ticket office.\n\nOn our visit, someone asked why it was not repaired. The guide said the answer involved more than finding a person ____2____ could repair clocks. Some damaged parts carried evidence of how the mechanism had been changed during its working life.\n\nReplacing every worn piece might make the hands move, but it could also remove some of that evidence. The museum had to decide what it wanted ____3____ (preserve). A working clock and a record of historical repairs were related goals, but not always identical ones.\n\nThe guide showed us enlarged photographs of the inside. We could see parts of different ages, including a small wheel that was ____4____ (new) than the frame around it. The images allowed examination without touching.\n\nWe were encouraged to write down questions instead ____5____ giving the clock a simple good-or-bad judgment. I asked how the wheel was dated. The guide described the ____6____ (compare) of old maintenance notes with marks on the metal.\n\nAt the end, each of us wrote ____7____ short account of the visit. I described the clock as carefully preserved rather than merely broken.  It meant that an object could have several kinds of value, and that treating ____8____ (it) history seriously required choices. My account ____9____ (read) by a classmate before I handed it in. She helped me make the distinction ____10____ (clear), without turning it into a rule for every old object.",
+            "explanation": "Make the distinction clearer/more clear expresses an improvement. Clearest is superlative and more clearer doubled; unlisted plain adjective readings stay reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "clearer",
+              "more clear"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "clearest",
+                "more clearer"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "98ffb6099ef447955cf33b61a8f598ec84a726f32ecb9cfa48289cfa43965eb1",
+      "reviewNotes": "Four whole junior originals; fictional journeys/clubs/museum/survey. All grammatical variants and invalid examples reviewed by same author, not independent student calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.lunchbox-count-074",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · The lunchbox survey",
+        "summary": "The lunchbox survey，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap passage: seven prompted forms and three unprompted single-word gaps. Reference supplies level/family, not prose."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four whole junior originals; fictional journeys/clubs/museum/survey. All grammatical variants and invalid examples reviewed by same author, not independent student calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.lunchbox-count-074",
+          "family": "passage_form",
+          "label": "The lunchbox survey",
+          "candidateSHA256": "6784046ec5708f0c922da0b1232d2131e6490e60471fb91dfad549db1348e771",
+          "authorCheckSHA256": "37e61e9b9ec813003b485a5cbd8d1d55c04f87575a826a7cd56e45a12364370b",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.lunchbox-count-074#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b074；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The lunchbox survey\n\nOur class wanted to know how many students brought reusable lunchboxes to school. We had seen several on one table, but our teacher said that a few visible examples were not enough ____1____ (answer) a question about the whole school.\n\nWe prepared a short survey and asked permission to visit other classrooms. The first question was difficult ____2____ it combined two things: owning a lunchbox and bringing it that day. An owner might have bought canteen food.\n\nAfter ____3____ (separate) the questions, we tried the survey with a small group. One student asked whether a reused food container counted.  We added a definition ____4____ everyone could read before answering.\n\nThe next week, we collected responses from the classes that had agreed to take part. Not every class was included. Our report therefore described all the ____5____ (student) who had responded, rather than claiming to speak for everybody in the school.\n\nWe checked the totals ____6____ (careful). One answer had been entered twice, and removing the duplicate changed the number. It corrected our record, not anyone’s behaviour.\n\nThe result was ____7____ (low) than I had expected from looking at that one table. My teacher reminded ____8____ (we) that expectation and measurement were different things. We wrote a short paragraph about the limits ____9____ our survey alongside the results. When the report ____10____ (display) outside our classroom, that paragraph appeared in the same size as the headline. We wanted the conditions of the result to be as easy to find as the result itself."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.lunchbox-count-074.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of answer.",
+            "material": "The lunchbox survey\n\nOur class wanted to know how many students brought reusable lunchboxes to school. We had seen several on one table, but our teacher said that a few visible examples were not enough ____1____ (answer) a question about the whole school.\n\nWe prepared a short survey and asked permission to visit other classrooms. The first question was difficult ____2____ it combined two things: owning a lunchbox and bringing it that day. An owner might have bought canteen food.\n\nAfter ____3____ (separate) the questions, we tried the survey with a small group. One student asked whether a reused food container counted.  We added a definition ____4____ everyone could read before answering.\n\nThe next week, we collected responses from the classes that had agreed to take part. Not every class was included. Our report therefore described all the ____5____ (student) who had responded, rather than claiming to speak for everybody in the school.\n\nWe checked the totals ____6____ (careful). One answer had been entered twice, and removing the duplicate changed the number. It corrected our record, not anyone’s behaviour.\n\nThe result was ____7____ (low) than I had expected from looking at that one table. My teacher reminded ____8____ (we) that expectation and measurement were different things. We wrote a short paragraph about the limits ____9____ our survey alongside the results. When the report ____10____ (display) outside our classroom, that paragraph appeared in the same size as the headline. We wanted the conditions of the result to be as easy to find as the result itself.",
+            "explanation": "Enough to answer expresses sufficiency for an action. The other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to answer"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "answering",
+                "answer",
+                "answered"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.lunchbox-count-074.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "The lunchbox survey\n\nOur class wanted to know how many students brought reusable lunchboxes to school. We had seen several on one table, but our teacher said that a few visible examples were not enough ____1____ (answer) a question about the whole school.\n\nWe prepared a short survey and asked permission to visit other classrooms. The first question was difficult ____2____ it combined two things: owning a lunchbox and bringing it that day. An owner might have bought canteen food.\n\nAfter ____3____ (separate) the questions, we tried the survey with a small group. One student asked whether a reused food container counted.  We added a definition ____4____ everyone could read before answering.\n\nThe next week, we collected responses from the classes that had agreed to take part. Not every class was included. Our report therefore described all the ____5____ (student) who had responded, rather than claiming to speak for everybody in the school.\n\nWe checked the totals ____6____ (careful). One answer had been entered twice, and removing the duplicate changed the number. It corrected our record, not anyone’s behaviour.\n\nThe result was ____7____ (low) than I had expected from looking at that one table. My teacher reminded ____8____ (we) that expectation and measurement were different things. We wrote a short paragraph about the limits ____9____ our survey alongside the results. When the report ____10____ (display) outside our classroom, that paragraph appeared in the same size as the headline. We wanted the conditions of the result to be as easy to find as the result itself.",
+            "explanation": "The combined question explains the difficulty, so because/as/since. Unless introduces a condition inconsistent with the stated cause.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "because",
+              "as",
+              "since"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "unless"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.lunchbox-count-074.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of separate.",
+            "material": "The lunchbox survey\n\nOur class wanted to know how many students brought reusable lunchboxes to school. We had seen several on one table, but our teacher said that a few visible examples were not enough ____1____ (answer) a question about the whole school.\n\nWe prepared a short survey and asked permission to visit other classrooms. The first question was difficult ____2____ it combined two things: owning a lunchbox and bringing it that day. An owner might have bought canteen food.\n\nAfter ____3____ (separate) the questions, we tried the survey with a small group. One student asked whether a reused food container counted.  We added a definition ____4____ everyone could read before answering.\n\nThe next week, we collected responses from the classes that had agreed to take part. Not every class was included. Our report therefore described all the ____5____ (student) who had responded, rather than claiming to speak for everybody in the school.\n\nWe checked the totals ____6____ (careful). One answer had been entered twice, and removing the duplicate changed the number. It corrected our record, not anyone’s behaviour.\n\nThe result was ____7____ (low) than I had expected from looking at that one table. My teacher reminded ____8____ (we) that expectation and measurement were different things. We wrote a short paragraph about the limits ____9____ our survey alongside the results. When the report ____10____ (display) outside our classroom, that paragraph appeared in the same size as the headline. We wanted the conditions of the result to be as easy to find as the result itself.",
+            "explanation": "After separating/having separated is grammatical. Other listed forms do not directly follow after as preposition.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "separating",
+              "having separated"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "separate",
+                "separated",
+                "to separate"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.lunchbox-count-074.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "The lunchbox survey\n\nOur class wanted to know how many students brought reusable lunchboxes to school. We had seen several on one table, but our teacher said that a few visible examples were not enough ____1____ (answer) a question about the whole school.\n\nWe prepared a short survey and asked permission to visit other classrooms. The first question was difficult ____2____ it combined two things: owning a lunchbox and bringing it that day. An owner might have bought canteen food.\n\nAfter ____3____ (separate) the questions, we tried the survey with a small group. One student asked whether a reused food container counted.  We added a definition ____4____ everyone could read before answering.\n\nThe next week, we collected responses from the classes that had agreed to take part. Not every class was included. Our report therefore described all the ____5____ (student) who had responded, rather than claiming to speak for everybody in the school.\n\nWe checked the totals ____6____ (careful). One answer had been entered twice, and removing the duplicate changed the number. It corrected our record, not anyone’s behaviour.\n\nThe result was ____7____ (low) than I had expected from looking at that one table. My teacher reminded ____8____ (we) that expectation and measurement were different things. We wrote a short paragraph about the limits ____9____ our survey alongside the results. When the report ____10____ (display) outside our classroom, that paragraph appeared in the same size as the headline. We wanted the conditions of the result to be as easy to find as the result itself.",
+            "explanation": "Definition is object of that/which everyone could read. Who is human, where not object and whose needs a noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "whose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.lunchbox-count-074.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of student.",
+            "material": "The lunchbox survey\n\nOur class wanted to know how many students brought reusable lunchboxes to school. We had seen several on one table, but our teacher said that a few visible examples were not enough ____1____ (answer) a question about the whole school.\n\nWe prepared a short survey and asked permission to visit other classrooms. The first question was difficult ____2____ it combined two things: owning a lunchbox and bringing it that day. An owner might have bought canteen food.\n\nAfter ____3____ (separate) the questions, we tried the survey with a small group. One student asked whether a reused food container counted.  We added a definition ____4____ everyone could read before answering.\n\nThe next week, we collected responses from the classes that had agreed to take part. Not every class was included. Our report therefore described all the ____5____ (student) who had responded, rather than claiming to speak for everybody in the school.\n\nWe checked the totals ____6____ (careful). One answer had been entered twice, and removing the duplicate changed the number. It corrected our record, not anyone’s behaviour.\n\nThe result was ____7____ (low) than I had expected from looking at that one table. My teacher reminded ____8____ (we) that expectation and measurement were different things. We wrote a short paragraph about the limits ____9____ our survey alongside the results. When the report ____10____ (display) outside our classroom, that paragraph appeared in the same size as the headline. We wanted the conditions of the result to be as easy to find as the result itself.",
+            "explanation": "The respondents are multiple students. Student is singular and student’s possessive does not directly name this group.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "students"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "student",
+                "student’s"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.lunchbox-count-074.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of careful.",
+            "material": "The lunchbox survey\n\nOur class wanted to know how many students brought reusable lunchboxes to school. We had seen several on one table, but our teacher said that a few visible examples were not enough ____1____ (answer) a question about the whole school.\n\nWe prepared a short survey and asked permission to visit other classrooms. The first question was difficult ____2____ it combined two things: owning a lunchbox and bringing it that day. An owner might have bought canteen food.\n\nAfter ____3____ (separate) the questions, we tried the survey with a small group. One student asked whether a reused food container counted.  We added a definition ____4____ everyone could read before answering.\n\nThe next week, we collected responses from the classes that had agreed to take part. Not every class was included. Our report therefore described all the ____5____ (student) who had responded, rather than claiming to speak for everybody in the school.\n\nWe checked the totals ____6____ (careful). One answer had been entered twice, and removing the duplicate changed the number. It corrected our record, not anyone’s behaviour.\n\nThe result was ____7____ (low) than I had expected from looking at that one table. My teacher reminded ____8____ (we) that expectation and measurement were different things. We wrote a short paragraph about the limits ____9____ our survey alongside the results. When the report ____10____ (display) outside our classroom, that paragraph appeared in the same size as the headline. We wanted the conditions of the result to be as easy to find as the result itself.",
+            "explanation": "Carefully modifies checked. Careful is adjective and carefulness noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careful",
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.lunchbox-count-074.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of low.",
+            "material": "The lunchbox survey\n\nOur class wanted to know how many students brought reusable lunchboxes to school. We had seen several on one table, but our teacher said that a few visible examples were not enough ____1____ (answer) a question about the whole school.\n\nWe prepared a short survey and asked permission to visit other classrooms. The first question was difficult ____2____ it combined two things: owning a lunchbox and bringing it that day. An owner might have bought canteen food.\n\nAfter ____3____ (separate) the questions, we tried the survey with a small group. One student asked whether a reused food container counted.  We added a definition ____4____ everyone could read before answering.\n\nThe next week, we collected responses from the classes that had agreed to take part. Not every class was included. Our report therefore described all the ____5____ (student) who had responded, rather than claiming to speak for everybody in the school.\n\nWe checked the totals ____6____ (careful). One answer had been entered twice, and removing the duplicate changed the number. It corrected our record, not anyone’s behaviour.\n\nThe result was ____7____ (low) than I had expected from looking at that one table. My teacher reminded ____8____ (we) that expectation and measurement were different things. We wrote a short paragraph about the limits ____9____ our survey alongside the results. When the report ____10____ (display) outside our classroom, that paragraph appeared in the same size as the headline. We wanted the conditions of the result to be as easy to find as the result itself.",
+            "explanation": "Than requires lower. Lowest is superlative and more lower doubled.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "lower"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "lowest",
+                "more lower"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.lunchbox-count-074.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of we.",
+            "material": "The lunchbox survey\n\nOur class wanted to know how many students brought reusable lunchboxes to school. We had seen several on one table, but our teacher said that a few visible examples were not enough ____1____ (answer) a question about the whole school.\n\nWe prepared a short survey and asked permission to visit other classrooms. The first question was difficult ____2____ it combined two things: owning a lunchbox and bringing it that day. An owner might have bought canteen food.\n\nAfter ____3____ (separate) the questions, we tried the survey with a small group. One student asked whether a reused food container counted.  We added a definition ____4____ everyone could read before answering.\n\nThe next week, we collected responses from the classes that had agreed to take part. Not every class was included. Our report therefore described all the ____5____ (student) who had responded, rather than claiming to speak for everybody in the school.\n\nWe checked the totals ____6____ (careful). One answer had been entered twice, and removing the duplicate changed the number. It corrected our record, not anyone’s behaviour.\n\nThe result was ____7____ (low) than I had expected from looking at that one table. My teacher reminded ____8____ (we) that expectation and measurement were different things. We wrote a short paragraph about the limits ____9____ our survey alongside the results. When the report ____10____ (display) outside our classroom, that paragraph appeared in the same size as the headline. We wanted the conditions of the result to be as easy to find as the result itself.",
+            "explanation": "Reminded takes object us. Subject and possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.lunchbox-count-074.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "The lunchbox survey\n\nOur class wanted to know how many students brought reusable lunchboxes to school. We had seen several on one table, but our teacher said that a few visible examples were not enough ____1____ (answer) a question about the whole school.\n\nWe prepared a short survey and asked permission to visit other classrooms. The first question was difficult ____2____ it combined two things: owning a lunchbox and bringing it that day. An owner might have bought canteen food.\n\nAfter ____3____ (separate) the questions, we tried the survey with a small group. One student asked whether a reused food container counted.  We added a definition ____4____ everyone could read before answering.\n\nThe next week, we collected responses from the classes that had agreed to take part. Not every class was included. Our report therefore described all the ____5____ (student) who had responded, rather than claiming to speak for everybody in the school.\n\nWe checked the totals ____6____ (careful). One answer had been entered twice, and removing the duplicate changed the number. It corrected our record, not anyone’s behaviour.\n\nThe result was ____7____ (low) than I had expected from looking at that one table. My teacher reminded ____8____ (we) that expectation and measurement were different things. We wrote a short paragraph about the limits ____9____ our survey alongside the results. When the report ____10____ (display) outside our classroom, that paragraph appeared in the same size as the headline. We wanted the conditions of the result to be as easy to find as the result itself.",
+            "explanation": "Limits of/to the survey both express its bounds. By does not complete this noun phrase. Other unlisted readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "of",
+              "to"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "by"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.lunchbox-count-074.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of display.",
+            "material": "The lunchbox survey\n\nOur class wanted to know how many students brought reusable lunchboxes to school. We had seen several on one table, but our teacher said that a few visible examples were not enough ____1____ (answer) a question about the whole school.\n\nWe prepared a short survey and asked permission to visit other classrooms. The first question was difficult ____2____ it combined two things: owning a lunchbox and bringing it that day. An owner might have bought canteen food.\n\nAfter ____3____ (separate) the questions, we tried the survey with a small group. One student asked whether a reused food container counted.  We added a definition ____4____ everyone could read before answering.\n\nThe next week, we collected responses from the classes that had agreed to take part. Not every class was included. Our report therefore described all the ____5____ (student) who had responded, rather than claiming to speak for everybody in the school.\n\nWe checked the totals ____6____ (careful). One answer had been entered twice, and removing the duplicate changed the number. It corrected our record, not anyone’s behaviour.\n\nThe result was ____7____ (low) than I had expected from looking at that one table. My teacher reminded ____8____ (we) that expectation and measurement were different things. We wrote a short paragraph about the limits ____9____ our survey alongside the results. When the report ____10____ (display) outside our classroom, that paragraph appeared in the same size as the headline. We wanted the conditions of the result to be as easy to find as the result itself.",
+            "explanation": "The singular report receives display in a past event. Displayed alone lacks auxiliary and were disagrees; other tenses are reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was displayed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "displayed",
+                "were displayed"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "4ad7f1311148f4253a3e02dff9de746ca372e150d92a63f3eca467298930303a",
+      "reviewNotes": "Four whole junior originals; fictional journeys/clubs/museum/survey. All grammatical variants and invalid examples reviewed by same author, not independent student calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
