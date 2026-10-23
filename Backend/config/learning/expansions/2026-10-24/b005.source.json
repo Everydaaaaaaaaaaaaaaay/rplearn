@@ -1,0 +1,417 @@
+{
+  "createdAt": "2026-10-23T18:04:13.404331+00:00",
+  "reviewBoundary": "完整原创短文及封闭设问，自审全文证据和全部选项；篇章单元组合为本批练习设计，不增加真题样本数，不声称独立教师或学生验证。",
+  "units": [
+    {
+      "id": "primary2.classroom-door-004",
+      "level": "primary2",
+      "title": "教室门口",
+      "family": "function_choice",
+      "minutes": 8,
+      "sourceUnitId": "original.primary2-five-small-functions",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "At the classroom door",
+          "text": "Choose a suitable reply for each short conversation.\n\n1. Child: May I come in?\nTeacher: ____\n\n2. Child: I'm sorry, I'm late.\nTeacher: ____\n\n3. Child: Where is my book?\nFriend: ____\n\n4. Child: Who is that woman?\nFriend: ____\n\n5. Teacher: How old are you?\nChild: ____",
+          "questions": [
+            {
+              "prompt": "Child: May I come in?\nTeacher: ____",
+              "options": [
+                "I'm eight.",
+                "Yes. Come in, please.",
+                "It's blue.",
+                "It's a pencil."
+              ],
+              "answer": 1,
+              "explanation": "May I come in请求进门，教师允许Come in, please。年龄、颜色和物品名称均不回应请求。"
+            },
+            {
+              "prompt": "Child: I'm sorry, I'm late.\nTeacher: ____",
+              "options": [
+                "It's a dog.",
+                "I'm seven.",
+                "That's all right. Come in.",
+                "Good night."
+              ],
+              "answer": 2,
+              "explanation": "为迟到道歉，That's all right宽慰并让进门自然。动物命名、年龄和睡前告别都不适配。"
+            },
+            {
+              "prompt": "Child: Where is my book?\nFriend: ____",
+              "options": [
+                "It's on your desk.",
+                "You're welcome.",
+                "I'm fine.",
+                "They are apples."
+              ],
+              "answer": 0,
+              "explanation": "Where询问书的位置，on your desk作答。其余是感谢应答、状态或复数物品辨认，不提供书的位置。"
+            },
+            {
+              "prompt": "Child: Who is that woman?\nFriend: ____",
+              "options": [
+                "It's red.",
+                "I'm fine.",
+                "He is my brother.",
+                "She is our teacher."
+              ],
+              "answer": 3,
+              "explanation": "询问那位女士身份，She is our teacher匹配。颜色、自己状态以及男性兄弟身份都不符合woman所指。"
+            },
+            {
+              "prompt": "Teacher: How old are you?\nChild: ____",
+              "options": [
+                "It's a book.",
+                "I'm eight.",
+                "It's on the chair.",
+                "Goodbye."
+              ],
+              "answer": 1,
+              "explanation": "How old询问年龄，I'm eight正确。物品、位置和告别均不作年龄回答。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior1.signs-and-sunflowers-001",
+      "level": "junior1",
+      "title": "阅读理解 · 两篇 · 活动告示与向日葵",
+      "family": "reading_choice",
+      "minutes": 16,
+      "sourceUnitId": "original.grade7-reading17-craft-friends",
+      "materials": [
+        {
+          "id": "a",
+          "title": "A. Saturday at Maple School",
+          "text": "Saturday at Maple School\n\nOur school is opening its garden to families this Saturday. Come and find out what grows behind the sports hall!\n\nGarden walks start at 9:30 and 11:00. Each walk takes thirty minutes. Meet at the small gate next to the library, not at the main school gate. Students from the gardening club will show visitors the vegetable beds and the new pond. Children must stay with an adult near the pond.\n\nAt 10:15, visitors can plant a bean in a paper pot. This activity is free, but there are only twenty places. Please write your name on the list at the garden gate when you arrive. You can take your pot home afterwards.\n\nBring drinking water and wear shoes that are suitable for walking on grass. There is no café in the garden. If it rains heavily, the garden walks will be cancelled, but the bean activity will move into Room 4 beside the library. Updates will be on the school website by 8:30 on Saturday.\n\nYou do not need to book a garden walk. We look forward to seeing you!",
+          "questions": [
+            {
+              "prompt": "Where should visitors meet for a garden walk?",
+              "options": [
+                "At the main school gate.",
+                "Inside the sports hall.",
+                "At the small gate next to the library.",
+                "In Room 4."
+              ],
+              "answer": 2,
+              "explanation": "第二段明确在图书馆旁小门集合，而不是学校大门。体育馆只是花园位置参照；4室是大雨时种豆活动地点。"
+            },
+            {
+              "prompt": "How can a visitor join the bean-planting activity?",
+              "options": [
+                "By paying for a paper pot online.",
+                "By putting a name on the list at the garden gate.",
+                "By joining the gardening club before Saturday.",
+                "By booking the 11:00 garden walk."
+              ],
+              "answer": 1,
+              "explanation": "种豆活动免费限20人，到达时在花园门口登记。无网上购盆、入社或预订11点步行要求。"
+            },
+            {
+              "prompt": "What should visitors bring?",
+              "options": [
+                "Drinking water.",
+                "A bean plant.",
+                "A sports ticket.",
+                "A café booking."
+              ],
+              "answer": 0,
+              "explanation": "告示明确Bring drinking water。豆苗非自带要求，未提运动票或咖啡预订，花园还没有咖啡馆。"
+            },
+            {
+              "prompt": "What will happen if it rains heavily?",
+              "options": [
+                "The garden walks will begin earlier.",
+                "Every activity will be cancelled.",
+                "Visitors will meet beside the pond.",
+                "The bean activity will take place indoors."
+              ],
+              "answer": 3,
+              "explanation": "大雨取消garden walks，但种豆移至4室。非提前步行、全部取消或到池边集合。"
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "title": "B. The smaller sunflower",
+          "text": "In April, Leo and his sister Anna each planted a sunflower seed in a pot. Leo put his pot beside the kitchen window. Anna put hers on the balcony. Both children watered their plants, and soon each pot had a small green shoot.\n\nAfter a few weeks, Anna's plant was taller. Leo looked at his shorter plant and said, 'Maybe I should give it more water.' His grandfather asked whether the soil was dry. It was still wet, so Leo did not add more. Instead, his grandfather suggested checking how much sunlight the plant received. A large tree outside the kitchen kept the window in shade for much of the day.\n\nLeo moved his pot to the balcony. He also turned it a little every few days because the plant leaned towards the light. He did not expect it to become as tall as Anna's immediately. Every Sunday, he measured it and drew a small picture in his notebook.\n\nBy July, Leo's plant was still shorter, but both sunflowers had yellow flowers. Anna liked her tall plant. Leo liked looking through his notebook and seeing how his had changed. When a neighbour asked which child had grown the better sunflower, Anna answered, 'We both grew a flower, but Leo grew a whole book about his!'",
+          "questions": [
+            {
+              "prompt": "Where did Leo first put his sunflower pot?",
+              "options": [
+                "On the balcony.",
+                "Beside the kitchen window.",
+                "Under a bed.",
+                "In his grandfather's garden."
+              ],
+              "answer": 1,
+              "explanation": "首段直接交代Leo放厨房窗边，Anna才放阳台。床下和祖父花园未出现。"
+            },
+            {
+              "prompt": "Why did Leo decide not to add more water at that time?",
+              "options": [
+                "Anna had taken away the watering can.",
+                "His plant already had a yellow flower.",
+                "The soil was still wet.",
+                "His grandfather wanted the plant to stop growing."
+              ],
+              "answer": 2,
+              "explanation": "第二段祖父让查土壤，仍湿，所以不再加水。水壶、已有黄花或阻止生长都不是原因。"
+            },
+            {
+              "prompt": "What did Leo do every Sunday?",
+              "options": [
+                "He moved the tree outside the window.",
+                "He gave his plant to a neighbour.",
+                "He bought another sunflower pot.",
+                "He measured and drew his plant."
+              ],
+              "answer": 3,
+              "explanation": "第三段每周日测量并在笔记本画图。没有移树、送掉植物或每周购盆。"
+            },
+            {
+              "prompt": "What did Anna mean by 'a whole book' about Leo's sunflower?",
+              "options": [
+                "His notebook recorded the plant's growth.",
+                "His plant had grown between the pages of a book.",
+                "He had bought a book that explained how to sell flowers.",
+                "His sunflower was taller than all the books on a shelf."
+              ],
+              "answer": 0,
+              "explanation": "Anna指Leo持续记录形成完整成长笔记。不是花长在书页里、买卖花指南或拿书架比高度。"
+            }
+          ]
+        }
+      ],
+      "alignmentNote": "The recorded source supports complete written reading components. This new practice pairs two complete four-question passages; it does not reproduce the entire source section or its visual-matching component. Text and questions are new, not another source sample. Source identity limits remain in the frozen research record; no independent teacher or learner validation claimed."
+    },
+    {
+      "id": "junior2.water-and-repair-002",
+      "level": "junior2",
+      "title": "阅读理解 · 两篇 · 饮水点与修理课",
+      "family": "reading_choice",
+      "minutes": 16,
+      "sourceUnitId": "original.grade8-device11-models",
+      "materials": [
+        {
+          "id": "a",
+          "title": "A. Where to refill a bottle",
+          "text": "The Green Street youth club made a map of places where people could refill drinking-water bottles. The first version showed five public taps as blue dots. Club members thought it was clear and simple. Then their neighbour Mr Hall tried to use it on a warm Sunday morning. Two of the taps were inside buildings that were closed.\n\nThe members realised that a dot answered 'where' but not 'when'. They visited each place again and asked the staff about opening hours. One sports centre allowed anyone to use its tap, while a small museum let only ticket holders enter the area containing its water point. Both offered drinking water, but they were not equally useful to every passer-by.\n\nThe new map gave opening times and explained whether visitors needed a ticket. The club also added a telephone number for reporting changes. It did not publish staff members' personal numbers. If the club received a report, two members checked the information before changing the map.\n\nWhen a new water point opened at the bus station, the club was careful about its description. The tap was beside the ticket machines, not inside the waiting room. This detail mattered because the waiting room closed at night while the machines remained accessible. The members had learned that useful information often needed more than a mark in the correct place.",
+          "questions": [
+            {
+              "prompt": "What problem did Mr Hall find with the first map?",
+              "options": [
+                "Every blue dot marked a place without water.",
+                "Some water points could not be reached when he visited.",
+                "The map showed only roads outside the neighbourhood.",
+                "He needed to buy five bottles before using it."
+              ],
+              "answer": 1,
+              "explanation": "两处水点位于周日关门建筑内，到访时无法用。不是全部无水、只画外地道路或必须购瓶。"
+            },
+            {
+              "prompt": "How was the museum's water point different from the sports centre's?",
+              "options": [
+                "It was reserved for people holding museum tickets.",
+                "It was the only place with clean drinking water.",
+                "It remained open later than every other water point.",
+                "It could be used only by youth-club members."
+              ],
+              "answer": 0,
+              "explanation": "第二段博物馆仅持票者可进入饮水区域，体育中心任何人可用。没有纯净度独占、最晚营业或仅青年社员使用的陈述。"
+            },
+            {
+              "prompt": "What did the club do before acting on a reported change?",
+              "options": [
+                "It published the reporter's personal phone number.",
+                "It removed the whole map from public use.",
+                "Two members checked the information.",
+                "It asked every resident to buy a museum ticket."
+              ],
+              "answer": 2,
+              "explanation": "第三段接到更改报告后两名成员核对，且不公开职员私人号码。撤全图及让居民买票均未提。"
+            },
+            {
+              "prompt": "Why was the exact location of the bus-station tap important?",
+              "options": [
+                "It could be used only while buses were moving.",
+                "It was hidden inside a ticket machine.",
+                "It replaced all the station's other facilities.",
+                "It could remain reachable after the waiting room closed."
+              ],
+              "answer": 3,
+              "explanation": "水龙头在全天可达售票机旁，不在夜间关闭的候车室内，因此位置关系影响可达时间。其他三项均误读或夸大。"
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "title": "B. A repair lesson that began with listening",
+          "text": "Before a weekend repair workshop, sixteen-year-old Jamal practised changing a bicycle tyre until he could do it quickly. He expected the younger children to be impressed by his speed. At the workshop, however, most questions were about things he usually did without thinking: which way to hold a tool, how hard to pull, and where to put the small parts.\n\nJamal began by demonstrating the whole repair while explaining every step. When he asked a child to try, the child could remember only the beginning. Jamal's partner suggested stopping after one small action and letting the learner repeat it before moving on. They also placed tools on a plain tray instead of leaving them in a crowded box.\n\nThe lesson became slower, but the children asked more questions. Jamal learned to wait after asking one of his own. If a learner did not answer immediately, he no longer supplied the answer at once. Sometimes the child was simply checking the tyre or choosing words to explain a problem.\n\nAt the end, one girl repaired a loose bicycle bell without being shown how to do that particular job. She looked at the tool tray, chose a suitable tool and asked Jamal to check whether the bell was secure. Jamal still valued being able to work quickly himself. But when helping someone else learn, he now cared more about what the other person could do after his hands had moved away.",
+          "questions": [
+            {
+              "prompt": "What surprised Jamal at the start of the workshop?",
+              "options": [
+                "The children asked about actions that seemed obvious to him.",
+                "No child had ever seen a bicycle before.",
+                "The children repaired every bicycle faster than he could.",
+                "Every question concerned the price of a new bicycle."
+              ],
+              "answer": 0,
+              "explanation": "首段孩子问握工具、力度、零件放置等他习以为常的动作。没说从未见自行车、全比他快或全问购车价格。"
+            },
+            {
+              "prompt": "What change did Jamal's partner suggest?",
+              "options": [
+                "Explaining the entire repair more quickly.",
+                "Asking learners to remember the tools without seeing them.",
+                "Dividing the repair into actions that learners could try one at a time.",
+                "Ending the workshop before anyone touched a tyre."
+              ],
+              "answer": 2,
+              "explanation": "第二段建议每完成一个小动作就让学生重复再下一步。并非整段加速、无实物背工具或取消动手。"
+            },
+            {
+              "prompt": "Why did Jamal learn to wait for a learner's answer?",
+              "options": [
+                "He hoped the learner would stop asking questions.",
+                "The learner might need time to observe or explain.",
+                "His partner had asked him never to speak during a repair.",
+                "The tools could be used only after a fixed period of silence."
+              ],
+              "answer": 1,
+              "explanation": "第三段孩子可能在检查轮胎或组织语言，等待保留思考空间。没有希望闭嘴、全程禁言或工具规定静默期。"
+            },
+            {
+              "prompt": "Why is the girl's repair of the bell mentioned?",
+              "options": [
+                "To show that the tyre lesson was unnecessary.",
+                "To prove that Jamal had stopped caring about repair skills.",
+                "To suggest that every child could repair any machine alone.",
+                "To show a learner beginning to apply skills to a different task."
+              ],
+              "answer": 3,
+              "explanation": "女孩未被直接演示修铃却会选工具并请求安全检查，显示迁移运用。不能推出轮胎课无用、Jamal不重视技术或任何机器都能独修。"
+            }
+          ]
+        }
+      ],
+      "alignmentNote": "The recorded source supports complete written reading components. This new practice pairs two complete four-question passages; it does not reproduce the entire source section or its visual-matching component. Text and questions are new, not another source sample. Source identity limits remain in the frozen research record; no independent teacher or learner validation claimed."
+    },
+    {
+      "id": "junior2.snack-and-bird-count-003",
+      "level": "junior2",
+      "title": "阅读理解 · 两篇 · 点心预订与观鸟记录",
+      "family": "reading_choice",
+      "minutes": 16,
+      "sourceUnitId": "original.grade8-device11-models",
+      "materials": [
+        {
+          "id": "a",
+          "title": "A. A small change at the snack counter",
+          "text": "The snack counter at Elm School sold fruit, sandwiches and yoghurt after lessons. On some days, sandwiches sold out within ten minutes. On others, several were left when the counter closed. The staff could not simply prepare more every day, because unsold food would be wasted.\n\nA group of students suggested advance orders. Students could order a sandwich before the end of lunch and collect it after school. The counter would still prepare a smaller number for people who had not ordered. This meant that forgetting to order did not automatically mean going without a snack.\n\nFor the first week, the order form asked for a student's name, class, choice and collection time. Staff soon discovered that the collection-time box was not useful: most students wrote 'after school'. They replaced it with a question about food allergies and kept the information available only to the staff preparing the food. The order list was not displayed where other students could read it.\n\nAfter a month, fewer sandwiches were left over, but the staff did not claim that advance ordering had solved every problem. Fruit was still bought in person, and a rainy afternoon could change how many students stayed after lessons. The system helped with one decision—how many sandwiches to prepare—while leaving room to respond to the day as it happened.",
+          "questions": [
+            {
+              "prompt": "Why could the counter not simply make more sandwiches every day?",
+              "options": [
+                "Students were not allowed to eat sandwiches after lessons.",
+                "There was a risk of wasting unsold food.",
+                "Only teachers could buy food from the counter.",
+                "The school had stopped selling any cold food."
+              ],
+              "answer": 1,
+              "explanation": "首段有时售罄有时剩余，每天增加可能浪费未售食物。其余学生禁食、教师专属和停卖冷食均不实。"
+            },
+            {
+              "prompt": "What could students who had not ordered still do?",
+              "options": [
+                "Take another student's reserved sandwich without asking.",
+                "Order a sandwich after the counter had closed.",
+                "Buy from the smaller number prepared for direct sales.",
+                "Collect a sandwich for free every afternoon."
+              ],
+              "answer": 2,
+              "explanation": "第二段仍备少量给未预订者现场购买。没有抢别人预留、关门后订或每日免费。"
+            },
+            {
+              "prompt": "What replaced the collection-time question on the form?",
+              "options": [
+                "A question about food allergies.",
+                "A list of every student's exam results.",
+                "A request for the names of a student's friends.",
+                "A question asking why the student stayed after school."
+              ],
+              "answer": 0,
+              "explanation": "第三段改问food allergies，且只供相关职员使用。没有成绩、朋友姓名或留校原因。"
+            },
+            {
+              "prompt": "How did the staff describe the result after a month?",
+              "options": [
+                "The system made weather irrelevant to all food sales.",
+                "All snack purchases had moved to advance orders.",
+                "The counter no longer needed to make daily decisions.",
+                "The system reduced one kind of uncertainty without removing all of it."
+              ],
+              "answer": 3,
+              "explanation": "末段剩三明治更少，但水果现场买、天气仍影响留校人数，说明只减少部分不确定性。A/B/C均过度概括。"
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "title": "B. The birds that were easy to miss",
+          "text": "During a school bird-counting project, Tessa and her friend Owen visited the park every Friday afternoon. They wrote down every bird they could identify and the number they saw. In their first report, they said that one corner of the park had almost no birds.\n\nTheir science teacher asked how they had checked that corner. Tessa explained that they usually passed it quickly because it was beside a busy road. The teacher suggested spending the same amount of time in each area. On the next visit, Tessa and Owen stopped there for ten minutes, just as they did beside the pond.\n\nAt first they saw nothing. Then a movement in a bush caught Owen's eye. Several small birds were searching for food close to the ground. The birds were less easy to notice than the ducks on the open pond, but they were certainly there. The two students changed their route so that they could observe the corner without standing directly in front of the bush.\n\nThey did not erase their earlier records. Instead, they added a note explaining the shorter observation time and marked the week when they had changed their method. Their new report said that the earlier counts could not show whether there had been fewer birds in that corner or simply less chance of noticing them. Tessa found this conclusion less exciting than a clear ranking of the park's best bird areas. She also knew it was more honest about what their observations could tell them.",
+          "questions": [
+            {
+              "prompt": "What was unequal in Tessa and Owen's original method?",
+              "options": [
+                "The number of students allowed to visit the park.",
+                "The size of the notebooks used for recording.",
+                "The time spent observing different areas.",
+                "The number of Fridays in each month."
+              ],
+              "answer": 2,
+              "explanation": "路边角落快速经过，池边停留较久，核心是不等观察时间。人数、笔记本尺寸和每月周五数量不是所改方法。"
+            },
+            {
+              "prompt": "Why had the small birds been easy to miss?",
+              "options": [
+                "They searched for food near the ground in a bush.",
+                "They visited only the open pond.",
+                "They appeared only when the park was closed.",
+                "They were all too young to move."
+              ],
+              "answer": 0,
+              "explanation": "第三段鸟在灌木近地面觅食，比开阔池塘鸭子难发现。非仅去池塘、闭园才出现或不会移动。"
+            },
+            {
+              "prompt": "How did the students handle their earlier records?",
+              "options": [
+                "They replaced every old number with a larger one.",
+                "They kept them and explained the change in method.",
+                "They gave them to classmates without any explanation.",
+                "They removed the difficult corner from every future visit."
+              ],
+              "answer": 1,
+              "explanation": "末段保留旧记录，注记较短观察时间与改方法周次。没有改大旧数、无说明转交或以后不去该处。"
+            },
+            {
+              "prompt": "What could the earlier counts not establish?",
+              "options": [
+                "Whether any ducks had been seen near the pond.",
+                "Which students had joined the project.",
+                "Whether the park was open on Friday afternoons.",
+                "Whether low counts reflected fewer birds or a lower chance of seeing them."
+              ],
+              "answer": 3,
+              "explanation": "末段直接区分鸟确实少与发现机会少，旧方法无法辨清。其他三项不是报告强调的不可推断内容。"
+            }
+          ]
+        }
+      ],
+      "alignmentNote": "The recorded source supports complete written reading components. This new practice pairs two complete four-question passages; it does not reproduce the entire source section or its visual-matching component. Text and questions are new, not another source sample. Source identity limits remain in the frozen research record; no independent teacher or learner validation claimed."
+    }
+  ]
+}

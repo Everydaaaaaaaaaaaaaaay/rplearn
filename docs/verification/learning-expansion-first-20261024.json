@@ -1,0 +1,127 @@
+{
+  "checkedAt": "2026-10-23T18:17:04.061Z",
+  "release": "originals-50e3250131eb",
+  "codeCommit": "50e3250131eb",
+  "releaseSHA256": "9044bf6adbb66c092b55e2f97f27f39c67f159b2372089a11087149a01fab23b",
+  "characterThreshold": 500,
+  "newPublishedUnits": 22,
+  "newPublishedScoringItems": 108,
+  "batches": [
+    "b000",
+    "b001",
+    "b002",
+    "b003"
+  ],
+  "oldUnitRegistryCount": 794,
+  "oldUnitRegistryPreserved": true,
+  "oldRegistrySHA256": "89dc5b54e633fede7f53dcfbf7ceec54c12897a429153154e90e021f96dea1b0",
+  "levels": {
+    "primary1": {
+      "completeGroups": 23,
+      "completeQuestions": 116,
+      "bankQuestions": 54,
+      "registeredScoringItems": 170
+    },
+    "primary2": {
+      "completeGroups": 21,
+      "completeQuestions": 132,
+      "bankQuestions": 36,
+      "registeredScoringItems": 168
+    },
+    "primary3": {
+      "completeGroups": 24,
+      "completeQuestions": 150,
+      "bankQuestions": 57,
+      "registeredScoringItems": 207
+    },
+    "primary4": {
+      "completeGroups": 39,
+      "completeQuestions": 228,
+      "bankQuestions": 54,
+      "registeredScoringItems": 282
+    },
+    "primary5": {
+      "completeGroups": 67,
+      "completeQuestions": 404,
+      "bankQuestions": 36,
+      "registeredScoringItems": 440
+    },
+    "primary6": {
+      "completeGroups": 69,
+      "completeQuestions": 432,
+      "bankQuestions": 36,
+      "registeredScoringItems": 468
+    },
+    "junior1": {
+      "completeGroups": 96,
+      "completeQuestions": 804,
+      "bankQuestions": 36,
+      "registeredScoringItems": 840
+    },
+    "junior2": {
+      "completeGroups": 46,
+      "completeQuestions": 347,
+      "bankQuestions": 36,
+      "registeredScoringItems": 383
+    },
+    "junior3": {
+      "completeGroups": 54,
+      "completeQuestions": 450,
+      "bankQuestions": 54,
+      "registeredScoringItems": 504
+    },
+    "senior1": {
+      "completeGroups": 20,
+      "completeQuestions": 194,
+      "bankQuestions": 0,
+      "registeredScoringItems": 194
+    },
+    "senior2": {
+      "completeGroups": 22,
+      "completeQuestions": 225,
+      "bankQuestions": 0,
+      "registeredScoringItems": 225
+    },
+    "senior3": {
+      "completeGroups": 22,
+      "completeQuestions": 225,
+      "bankQuestions": 0,
+      "registeredScoringItems": 225
+    },
+    "undergraduate": {
+      "completeGroups": 21,
+      "completeQuestions": 180,
+      "bankQuestions": 40,
+      "registeredScoringItems": 220
+    },
+    "postgraduate": {
+      "completeGroups": 21,
+      "completeQuestions": 180,
+      "bankQuestions": 44,
+      "registeredScoringItems": 224
+    },
+    "advanced": {
+      "completeGroups": 39,
+      "completeQuestions": 270,
+      "bankQuestions": 43,
+      "registeredScoringItems": 313
+    }
+  },
+  "maxMinScoringItemRatio": 5.0,
+  "maxMinCompleteGroupRatio": 4.8,
+  "verification": {
+    "isolatedIntegrationTests": 22,
+    "gaokaoModuleTests": 5,
+    "typecheck": "passed",
+    "focusedESLint": "passed",
+    "architecture": "passed",
+    "newImageAssets": 56,
+    "newMediaArchiveAndIndependentRestoreChecked": true,
+    "productionLearnerAnswersCreatedForTesting": false,
+    "rollbackPreservesHistoryAndPoints": "verified in isolated integration",
+    "independentTeacherOrStudentCalibration": false
+  },
+  "countingNote": "Complete original items use unit/local-question identity except shared Gaokao source IDs. Legacy bank uses its published canonical question ID; no extra count for the same bank item in dedicated unit wrappers. Counts are registered eligible supply before per-account exposure exclusion, not number of exam papers or validation samples.",
+  "rollbackCommand": "Scripts/withdraw-learning-expansion.sh all",
+  "status": "first batch group online; expansion continues until 2026-10-24 13:00 Asia/Shanghai"
+}

@@ -5,6 +5,8 @@ import crypto from 'node:crypto';
 import sharp from '../Backend/node_modules/sharp/lib/index.js';
 const root=path.resolve(import.meta.dirname,'..');
 const output=path.join(root,'Backend/config/learning/expansions/2026-10-24');
+try { await fs.access(path.join(output,'b001.source.json')); throw new Error('b001 is already authored; preserve the frozen source and use a new batch.'); }
+catch (error) { if (error.code !== 'ENOENT') throw error; }
 const sources=path.join(output,'visual-sources');
 const media=path.join(root,'Backend/config/learning/originals/media');
 await fs.mkdir(sources,{recursive:true});await fs.mkdir(media,{recursive:true});

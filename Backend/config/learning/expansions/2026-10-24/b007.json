@@ -1,0 +1,712 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b007",
+  "createdAt": "2026-10-23T18:25:16.891278+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.rainy-playtime-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · 雨天的课间",
+        "summary": "雨天的课间，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded complete five-item reading judgement form. The short passage and all statements are newly authored; false statements directly contradict the text rather than relying on missing information. No extra source sample or independent grade calibration is claimed."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "新原创小学完整短文/对话/信息表，适龄中文操作说明、英文材料和回应；逐题自审全部参考键与干扰项，未进行独立教师或学生难度标定。人物、活动及书名为虚构。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.rainy-playtime-001",
+          "family": "reading_tf",
+          "label": "雨天的课间",
+          "candidateSHA256": "1dc661703bb20a5f927c0c498ed5371a5031c513d2fc3836beebbc203f8caff7",
+          "authorCheckSHA256": "4fcf7cf5edef766e6a603993f90028ac2595efa0e311a4ead4653bd05a720da4",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.rainy-playtime-001#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b007；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A rainy playtime\n\nIt is Friday. It is rainy today. Tom and May are not in the park. They are in the classroom. Tom has a puzzle. It is on a small table. May has some paper and three crayons. She draws a blue bird. Tom looks at her picture and smiles. Then May helps Tom with the puzzle. They put the puzzle and crayons away before class. Their teacher says, 'Thank you!'"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.rainy-playtime-001.whole.q1",
+            "goalId": "original.reading_tf",
+            "type": "choice",
+            "instruction": "阅读短文，判断句子是否与短文一致。",
+            "prompt": "It is Friday.",
+            "material": "A rainy playtime\n\nIt is Friday. It is rainy today. Tom and May are not in the park. They are in the classroom. Tom has a puzzle. It is on a small table. May has some paper and three crayons. She draws a blue bird. Tom looks at her picture and smiles. Then May helps Tom with the puzzle. They put the puzzle and crayons away before class. Their teacher says, 'Thank you!'",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "短文首句明确It is Friday，因此一致。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary3.rainy-playtime-001.whole.q2",
+            "goalId": "original.reading_tf",
+            "type": "choice",
+            "instruction": "阅读短文，判断句子是否与短文一致。",
+            "prompt": "Tom and May are in the park.",
+            "material": "A rainy playtime\n\nIt is Friday. It is rainy today. Tom and May are not in the park. They are in the classroom. Tom has a puzzle. It is on a small table. May has some paper and three crayons. She draws a blue bird. Tom looks at her picture and smiles. Then May helps Tom with the puzzle. They put the puzzle and crayons away before class. Their teacher says, 'Thank you!'",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "短文明确not in the park，而在classroom，陈述与原文相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary3.rainy-playtime-001.whole.q3",
+            "goalId": "original.reading_tf",
+            "type": "choice",
+            "instruction": "阅读短文，判断句子是否与短文一致。",
+            "prompt": "Tom's puzzle is on the floor.",
+            "material": "A rainy playtime\n\nIt is Friday. It is rainy today. Tom and May are not in the park. They are in the classroom. Tom has a puzzle. It is on a small table. May has some paper and three crayons. She draws a blue bird. Tom looks at her picture and smiles. Then May helps Tom with the puzzle. They put the puzzle and crayons away before class. Their teacher says, 'Thank you!'",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "拼图在small table上，不在floor上，原文有明确相反地点。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary3.rainy-playtime-001.whole.q4",
+            "goalId": "original.reading_tf",
+            "type": "choice",
+            "instruction": "阅读短文，判断句子是否与短文一致。",
+            "prompt": "May draws a blue bird.",
+            "material": "A rainy playtime\n\nIt is Friday. It is rainy today. Tom and May are not in the park. They are in the classroom. Tom has a puzzle. It is on a small table. May has some paper and three crayons. She draws a blue bird. Tom looks at her picture and smiles. Then May helps Tom with the puzzle. They put the puzzle and crayons away before class. Their teacher says, 'Thank you!'",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "原文She draws a blue bird直接支持本句。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary3.rainy-playtime-001.whole.q5",
+            "goalId": "original.reading_tf",
+            "type": "choice",
+            "instruction": "阅读短文，判断句子是否与短文一致。",
+            "prompt": "They put their things away before class.",
+            "material": "A rainy playtime\n\nIt is Friday. It is rainy today. Tom and May are not in the park. They are in the classroom. Tom has a puzzle. It is on a small table. May has some paper and three crayons. She draws a blue bird. Tom looks at her picture and smiles. Then May helps Tom with the puzzle. They put the puzzle and crayons away before class. Their teacher says, 'Thank you!'",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "结尾上课前收好拼图和蜡笔，things指这些用品，与短文一致。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "04aa566eb7a61b7b3b098e0979313e313ba1b93286686b2786325670181f176b",
+      "reviewNotes": "新原创小学完整短文/对话/信息表，适龄中文操作说明、英文材料和回应；逐题自审全部参考键与干扰项，未进行独立教师或学生难度标定。人物、活动及书名为虚构。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary4.art-room-call-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "10·24新题 · 给美术教室打电话",
+        "summary": "给美术教室打电话，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 9,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded five-question, three-option dialogue-reading form. This new phone conversation concerns a different activity, with complete time, age, price and booking information. It does not copy the source conversation or increase the number of real-paper samples."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "新原创小学完整短文/对话/信息表，适龄中文操作说明、英文材料和回应；逐题自审全部参考键与干扰项，未进行独立教师或学生难度标定。人物、活动及书名为虚构。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary4.art-room-call-001",
+          "family": "reading_choice",
+          "label": "给美术教室打电话",
+          "candidateSHA256": "f49a7d219da8d0c2ede5b183a5b892eba66b16bb46b1b98b9a4e4907d1d2e561",
+          "authorCheckSHA256": "f29969ba6ee4099653a0dfba5dbe224609d212f4acdb8758192f1d3f7a34169f",
+          "sourceGroupIds": [
+            "expansion.20261024.primary4.art-room-call-001#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b007；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A call about Saturday art\n\nEmma: Hello. Is the art room open on Saturday?\nMr Hill: Yes. It opens at ten and closes at twelve. We will paint paper boats at ten fifteen.\nEmma: Do I need to bring a brush?\nMr Hill: No. We have brushes and paint here. Please bring an old shirt to wear.\nEmma: Can my little brother come? He is five.\nMr Hill: The painting activity is for children from eight to eleven. Your brother can join the story club next door. That club is for children from five to seven.\nEmma: How much is the painting activity?\nMr Hill: Three pounds. Please book a place by Friday.\nEmma: Thank you. I'll ask my mum to book it."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary4.art-room-call-001.whole.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读完整对话，选择正确答案。",
+            "prompt": "When does the painting activity begin?",
+            "material": "A call about Saturday art\n\nEmma: Hello. Is the art room open on Saturday?\nMr Hill: Yes. It opens at ten and closes at twelve. We will paint paper boats at ten fifteen.\nEmma: Do I need to bring a brush?\nMr Hill: No. We have brushes and paint here. Please bring an old shirt to wear.\nEmma: Can my little brother come? He is five.\nMr Hill: The painting activity is for children from eight to eleven. Your brother can join the story club next door. That club is for children from five to seven.\nEmma: How much is the painting activity?\nMr Hill: Three pounds. Please book a place by Friday.\nEmma: Thank you. I'll ask my mum to book it.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At 10:00."
+              },
+              {
+                "id": "o1",
+                "text": "At 10:15."
+              },
+              {
+                "id": "o2",
+                "text": "At 12:00."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "Mr Hill明确10:15开始画纸船；10点是开门时间，12点是关门时间。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary4.art-room-call-001.whole.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读完整对话，选择正确答案。",
+            "prompt": "What should Emma bring?",
+            "material": "A call about Saturday art\n\nEmma: Hello. Is the art room open on Saturday?\nMr Hill: Yes. It opens at ten and closes at twelve. We will paint paper boats at ten fifteen.\nEmma: Do I need to bring a brush?\nMr Hill: No. We have brushes and paint here. Please bring an old shirt to wear.\nEmma: Can my little brother come? He is five.\nMr Hill: The painting activity is for children from eight to eleven. Your brother can join the story club next door. That club is for children from five to seven.\nEmma: How much is the painting activity?\nMr Hill: Three pounds. Please book a place by Friday.\nEmma: Thank you. I'll ask my mum to book it.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A new brush."
+              },
+              {
+                "id": "o1",
+                "text": "Some paint."
+              },
+              {
+                "id": "o2",
+                "text": "An old shirt."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "教室提供画笔和颜料，要求带旧衬衣。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary4.art-room-call-001.whole.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读完整对话，选择正确答案。",
+            "prompt": "Which activity can Emma's five-year-old brother join?",
+            "material": "A call about Saturday art\n\nEmma: Hello. Is the art room open on Saturday?\nMr Hill: Yes. It opens at ten and closes at twelve. We will paint paper boats at ten fifteen.\nEmma: Do I need to bring a brush?\nMr Hill: No. We have brushes and paint here. Please bring an old shirt to wear.\nEmma: Can my little brother come? He is five.\nMr Hill: The painting activity is for children from eight to eleven. Your brother can join the story club next door. That club is for children from five to seven.\nEmma: How much is the painting activity?\nMr Hill: Three pounds. Please book a place by Friday.\nEmma: Thank you. I'll ask my mum to book it.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The story club."
+              },
+              {
+                "id": "o1",
+                "text": "The painting activity."
+              },
+              {
+                "id": "o2",
+                "text": "Both activities."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "故事会适合5至7岁，画画适合8至11岁，因此五岁弟弟只能参加故事会。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary4.art-room-call-001.whole.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读完整对话，选择正确答案。",
+            "prompt": "How much does the painting activity cost?",
+            "material": "A call about Saturday art\n\nEmma: Hello. Is the art room open on Saturday?\nMr Hill: Yes. It opens at ten and closes at twelve. We will paint paper boats at ten fifteen.\nEmma: Do I need to bring a brush?\nMr Hill: No. We have brushes and paint here. Please bring an old shirt to wear.\nEmma: Can my little brother come? He is five.\nMr Hill: The painting activity is for children from eight to eleven. Your brother can join the story club next door. That club is for children from five to seven.\nEmma: How much is the painting activity?\nMr Hill: Three pounds. Please book a place by Friday.\nEmma: Thank you. I'll ask my mum to book it.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Two pounds."
+              },
+              {
+                "id": "o1",
+                "text": "Three pounds."
+              },
+              {
+                "id": "o2",
+                "text": "Five pounds."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "原对话直接给出Three pounds，其余数字没有作为价格出现。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary4.art-room-call-001.whole.q5",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读完整对话，选择正确答案。",
+            "prompt": "When should Emma's mum book a place?",
+            "material": "A call about Saturday art\n\nEmma: Hello. Is the art room open on Saturday?\nMr Hill: Yes. It opens at ten and closes at twelve. We will paint paper boats at ten fifteen.\nEmma: Do I need to bring a brush?\nMr Hill: No. We have brushes and paint here. Please bring an old shirt to wear.\nEmma: Can my little brother come? He is five.\nMr Hill: The painting activity is for children from eight to eleven. Your brother can join the story club next door. That club is for children from five to seven.\nEmma: How much is the painting activity?\nMr Hill: Three pounds. Please book a place by Friday.\nEmma: Thank you. I'll ask my mum to book it.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "After Saturday's activity."
+              },
+              {
+                "id": "o1",
+                "text": "At twelve on Saturday."
+              },
+              {
+                "id": "o2",
+                "text": "By Friday."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "Mr Hill要求by Friday预订，不是活动后或周六中午。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "66cf5e5dc431001d88c61c0deafbeec9a6cb582fa5c8fda5f45ef7982eef9cf2",
+      "reviewNotes": "新原创小学完整短文/对话/信息表，适龄中文操作说明、英文材料和回应；逐题自审全部参考键与干扰项，未进行独立教师或学生难度标定。人物、活动及书名为虚构。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary5.birds-small-job-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "10·24新题 · 小鸟的工作",
+        "summary": "小鸟的工作，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.frog",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded complete five-question, three-option story-reading form. The animal story, events and questions are new fiction; it is not a claim about real animal behaviour or another source sample. No independent learner calibration is claimed."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "新原创小学完整短文/对话/信息表，适龄中文操作说明、英文材料和回应；逐题自审全部参考键与干扰项，未进行独立教师或学生难度标定。人物、活动及书名为虚构。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary5.birds-small-job-001",
+          "family": "reading_choice",
+          "label": "小鸟的工作",
+          "candidateSHA256": "a31ac8ba2db1e5edb16b7313592587ccefd381d5b14aa245da707f7c15d4b1a8",
+          "authorCheckSHA256": "58ffef9a0e22727995aac524f6a9f9d7d2386a3ca869e1156b249f32502f3859",
+          "sourceGroupIds": [
+            "expansion.20261024.primary5.birds-small-job-001#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b007；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A small job for Bird\n\nRabbit and Goat wanted to make a reading seat beside the village tree. Rabbit drew a plan, and Goat carried the long pieces of wood. Bird flew down and asked, 'Can I help?'\n\nGoat looked at Bird's little wings. 'The wood is heavy,' he said. Bird felt sad and sat on a branch. From there, she saw dark clouds coming towards the village.\n\n'We must keep the wood dry!' she called. Rabbit and Goat were busy and did not look up. Bird flew to an empty shed and found its door open. She came back and showed them the way. They moved the wood into the shed just before the rain began.\n\nThe next day, they finished the seat. Goat asked Bird to choose a place for a small sign. She chose a spot where everyone on the path could see it. The sign said, 'Built by Rabbit, Goat and Bird.' Bird smiled. Her name was on it, although she had not carried one piece of wood."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary5.birds-small-job-001.whole.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读故事，选择最合适的答案。",
+            "prompt": "What were Rabbit and Goat making?",
+            "material": "A small job for Bird\n\nRabbit and Goat wanted to make a reading seat beside the village tree. Rabbit drew a plan, and Goat carried the long pieces of wood. Bird flew down and asked, 'Can I help?'\n\nGoat looked at Bird's little wings. 'The wood is heavy,' he said. Bird felt sad and sat on a branch. From there, she saw dark clouds coming towards the village.\n\n'We must keep the wood dry!' she called. Rabbit and Goat were busy and did not look up. Bird flew to an empty shed and found its door open. She came back and showed them the way. They moved the wood into the shed just before the rain began.\n\nThe next day, they finished the seat. Goat asked Bird to choose a place for a small sign. She chose a spot where everyone on the path could see it. The sign said, 'Built by Rabbit, Goat and Bird.' Bird smiled. Her name was on it, although she had not carried one piece of wood.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A reading seat."
+              },
+              {
+                "id": "o1",
+                "text": "A new village road."
+              },
+              {
+                "id": "o2",
+                "text": "A door for the tree."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "首段明确make a reading seat。道路和树门均不在计划中。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary5.birds-small-job-001.whole.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读故事，选择最合适的答案。",
+            "prompt": "Why did Goat think Bird could not carry the wood?",
+            "material": "A small job for Bird\n\nRabbit and Goat wanted to make a reading seat beside the village tree. Rabbit drew a plan, and Goat carried the long pieces of wood. Bird flew down and asked, 'Can I help?'\n\nGoat looked at Bird's little wings. 'The wood is heavy,' he said. Bird felt sad and sat on a branch. From there, she saw dark clouds coming towards the village.\n\n'We must keep the wood dry!' she called. Rabbit and Goat were busy and did not look up. Bird flew to an empty shed and found its door open. She came back and showed them the way. They moved the wood into the shed just before the rain began.\n\nThe next day, they finished the seat. Goat asked Bird to choose a place for a small sign. She chose a spot where everyone on the path could see it. The sign said, 'Built by Rabbit, Goat and Bird.' Bird smiled. Her name was on it, although she had not carried one piece of wood.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Bird was busy reading a book."
+              },
+              {
+                "id": "o1",
+                "text": "The wood was heavy and Bird was small."
+              },
+              {
+                "id": "o2",
+                "text": "Bird had already left the village."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "Goat看小翅膀并说木头沉，体现大小/负重对比。不是忙读书或已经离村。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary5.birds-small-job-001.whole.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读故事，选择最合适的答案。",
+            "prompt": "What did Bird notice from the branch?",
+            "material": "A small job for Bird\n\nRabbit and Goat wanted to make a reading seat beside the village tree. Rabbit drew a plan, and Goat carried the long pieces of wood. Bird flew down and asked, 'Can I help?'\n\nGoat looked at Bird's little wings. 'The wood is heavy,' he said. Bird felt sad and sat on a branch. From there, she saw dark clouds coming towards the village.\n\n'We must keep the wood dry!' she called. Rabbit and Goat were busy and did not look up. Bird flew to an empty shed and found its door open. She came back and showed them the way. They moved the wood into the shed just before the rain began.\n\nThe next day, they finished the seat. Goat asked Bird to choose a place for a small sign. She chose a spot where everyone on the path could see it. The sign said, 'Built by Rabbit, Goat and Bird.' Bird smiled. Her name was on it, although she had not carried one piece of wood.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A sign on the new seat."
+              },
+              {
+                "id": "o1",
+                "text": "A broken door."
+              },
+              {
+                "id": "o2",
+                "text": "Dark clouds coming towards the village."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "第二段从枝上看见乌云朝村子来。招牌是完工后，棚门开着不是坏了。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary5.birds-small-job-001.whole.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读故事，选择最合适的答案。",
+            "prompt": "How did Bird help before the rain?",
+            "material": "A small job for Bird\n\nRabbit and Goat wanted to make a reading seat beside the village tree. Rabbit drew a plan, and Goat carried the long pieces of wood. Bird flew down and asked, 'Can I help?'\n\nGoat looked at Bird's little wings. 'The wood is heavy,' he said. Bird felt sad and sat on a branch. From there, she saw dark clouds coming towards the village.\n\n'We must keep the wood dry!' she called. Rabbit and Goat were busy and did not look up. Bird flew to an empty shed and found its door open. She came back and showed them the way. They moved the wood into the shed just before the rain began.\n\nThe next day, they finished the seat. Goat asked Bird to choose a place for a small sign. She chose a spot where everyone on the path could see it. The sign said, 'Built by Rabbit, Goat and Bird.' Bird smiled. Her name was on it, although she had not carried one piece of wood.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She showed the others an empty shed for the wood."
+              },
+              {
+                "id": "o1",
+                "text": "She carried all the heavy wood by herself."
+              },
+              {
+                "id": "o2",
+                "text": "She built a new roof over the village."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "第三段发现敞门空棚并带路，让大家及时移木。未独扛木，也没盖全村屋顶。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary5.birds-small-job-001.whole.q5",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读故事，选择最合适的答案。",
+            "prompt": "Why was Bird's name included on the sign?",
+            "material": "A small job for Bird\n\nRabbit and Goat wanted to make a reading seat beside the village tree. Rabbit drew a plan, and Goat carried the long pieces of wood. Bird flew down and asked, 'Can I help?'\n\nGoat looked at Bird's little wings. 'The wood is heavy,' he said. Bird felt sad and sat on a branch. From there, she saw dark clouds coming towards the village.\n\n'We must keep the wood dry!' she called. Rabbit and Goat were busy and did not look up. Bird flew to an empty shed and found its door open. She came back and showed them the way. They moved the wood into the shed just before the rain began.\n\nThe next day, they finished the seat. Goat asked Bird to choose a place for a small sign. She chose a spot where everyone on the path could see it. The sign said, 'Built by Rabbit, Goat and Bird.' Bird smiled. Her name was on it, although she had not carried one piece of wood.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She was the only animal able to write."
+              },
+              {
+                "id": "o1",
+                "text": "Her help was useful even though she did not carry the wood."
+              },
+              {
+                "id": "o2",
+                "text": "She had paid Goat to finish all the work."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "Bird观察天气、找到避雨棚并选招牌位置，贡献不靠搬木。未说只有她识字或付钱雇Goat。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "94ba6a59a679fee51828dce29d3498ec71f315a1bc79ec44be3ea9d9c30c6467",
+      "reviewNotes": "新原创小学完整短文/对话/信息表，适龄中文操作说明、英文材料和回应；逐题自审全部参考键与干扰项，未进行独立教师或学生难度标定。人物、活动及书名为虚构。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary6.four-new-books-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "10·24新题 · 四本新书的信息表",
+        "summary": "四本新书的信息表，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.dongcheng2025.booktable",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded four-book information-table reading form with five three-option questions. All titles, prices, page counts and descriptions here are newly authored fictional data; no covers or audio are needed for these text-only questions. Source-sample count and independent validation status are unchanged."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "新原创小学完整短文/对话/信息表，适龄中文操作说明、英文材料和回应；逐题自审全部参考键与干扰项，未进行独立教师或学生难度标定。人物、活动及书名为虚构。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary6.four-new-books-001",
+          "family": "reading_choice",
+          "label": "四本新书的信息表",
+          "candidateSHA256": "f4d74d3a68691201a9280afe3b087b25b81c7b08ebce696f2a967459b7511632",
+          "authorCheckSHA256": "12e490c45e842cee6ceb66fc76b79b0d108ac26e1a7f88007bc1aa240fc0e5d2",
+          "sourceGroupIds": [
+            "expansion.20261024.primary6.four-new-books-001#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b007；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four new books\n\nHere is information about four imaginary books. All prices are in yuan.\n\n| Book | Pages | Price | What is inside? |\n| --- | --- | --- | --- |\n| A. Weather Notebook | 96 | 12 | Simple ways to record clouds, rain and wind, with blank pages for your own notes. |\n| B. Town Walks | 120 | 18 | Six short walking routes, clear directions and stories about old buildings. |\n| C. Paper City | 88 | 16 | Step-by-step drawings for making houses, shops and bridges from paper. |\n| D. Stories at Dusk | 64 | 10 | Eight short stories that can each be read in about ten minutes. |\n\nThe books have different uses. You can write observations in Weather Notebook, take Town Walks on a trip, follow the drawings in Paper City, or enjoy one story at a time in Stories at Dusk."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary6.four-new-books-001.whole.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读完整图书信息，选择正确答案。",
+            "prompt": "Which book is most suitable for keeping notes about clouds?",
+            "material": "Four new books\n\nHere is information about four imaginary books. All prices are in yuan.\n\n| Book | Pages | Price | What is inside? |\n| --- | --- | --- | --- |\n| A. Weather Notebook | 96 | 12 | Simple ways to record clouds, rain and wind, with blank pages for your own notes. |\n| B. Town Walks | 120 | 18 | Six short walking routes, clear directions and stories about old buildings. |\n| C. Paper City | 88 | 16 | Step-by-step drawings for making houses, shops and bridges from paper. |\n| D. Stories at Dusk | 64 | 10 | Eight short stories that can each be read in about ten minutes. |\n\nThe books have different uses. You can write observations in Weather Notebook, take Town Walks on a trip, follow the drawings in Paper City, or enjoy one story at a time in Stories at Dusk.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Weather Notebook."
+              },
+              {
+                "id": "o1",
+                "text": "Town Walks."
+              },
+              {
+                "id": "o2",
+                "text": "Stories at Dusk."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "A明确记录云雨风并有空白笔记页；B是步行路线，D是短篇故事。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary6.four-new-books-001.whole.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读完整图书信息，选择正确答案。",
+            "prompt": "Which book gives directions for walking routes?",
+            "material": "Four new books\n\nHere is information about four imaginary books. All prices are in yuan.\n\n| Book | Pages | Price | What is inside? |\n| --- | --- | --- | --- |\n| A. Weather Notebook | 96 | 12 | Simple ways to record clouds, rain and wind, with blank pages for your own notes. |\n| B. Town Walks | 120 | 18 | Six short walking routes, clear directions and stories about old buildings. |\n| C. Paper City | 88 | 16 | Step-by-step drawings for making houses, shops and bridges from paper. |\n| D. Stories at Dusk | 64 | 10 | Eight short stories that can each be read in about ten minutes. |\n\nThe books have different uses. You can write observations in Weather Notebook, take Town Walks on a trip, follow the drawings in Paper City, or enjoy one story at a time in Stories at Dusk.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Paper City."
+              },
+              {
+                "id": "o1",
+                "text": "Town Walks."
+              },
+              {
+                "id": "o2",
+                "text": "Weather Notebook."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "B含六条步行路线和方向；C教纸模型，A记录天气。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary6.four-new-books-001.whole.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读完整图书信息，选择正确答案。",
+            "prompt": "What can readers learn from Paper City?",
+            "material": "Four new books\n\nHere is information about four imaginary books. All prices are in yuan.\n\n| Book | Pages | Price | What is inside? |\n| --- | --- | --- | --- |\n| A. Weather Notebook | 96 | 12 | Simple ways to record clouds, rain and wind, with blank pages for your own notes. |\n| B. Town Walks | 120 | 18 | Six short walking routes, clear directions and stories about old buildings. |\n| C. Paper City | 88 | 16 | Step-by-step drawings for making houses, shops and bridges from paper. |\n| D. Stories at Dusk | 64 | 10 | Eight short stories that can each be read in about ten minutes. |\n\nThe books have different uses. You can write observations in Weather Notebook, take Town Walks on a trip, follow the drawings in Paper City, or enjoy one story at a time in Stories at Dusk.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "How to record wind every day."
+              },
+              {
+                "id": "o1",
+                "text": "How to find every building in a real town."
+              },
+              {
+                "id": "o2",
+                "text": "How to make paper buildings and bridges."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "C用分步图教纸房、商店和桥；不教天气记录，也不是找现实所有建筑的地图。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary6.four-new-books-001.whole.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读完整图书信息，选择正确答案。",
+            "prompt": "Which book has the lowest price?",
+            "material": "Four new books\n\nHere is information about four imaginary books. All prices are in yuan.\n\n| Book | Pages | Price | What is inside? |\n| --- | --- | --- | --- |\n| A. Weather Notebook | 96 | 12 | Simple ways to record clouds, rain and wind, with blank pages for your own notes. |\n| B. Town Walks | 120 | 18 | Six short walking routes, clear directions and stories about old buildings. |\n| C. Paper City | 88 | 16 | Step-by-step drawings for making houses, shops and bridges from paper. |\n| D. Stories at Dusk | 64 | 10 | Eight short stories that can each be read in about ten minutes. |\n\nThe books have different uses. You can write observations in Weather Notebook, take Town Walks on a trip, follow the drawings in Paper City, or enjoy one story at a time in Stories at Dusk.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Stories at Dusk."
+              },
+              {
+                "id": "o1",
+                "text": "Weather Notebook."
+              },
+              {
+                "id": "o2",
+                "text": "Paper City."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "D10元低于A12、C16；全表B18也更高，D最便宜。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary6.four-new-books-001.whole.q5",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "阅读完整图书信息，选择正确答案。",
+            "prompt": "Which book costs less than 15 yuan and has fewer than 80 pages?",
+            "material": "Four new books\n\nHere is information about four imaginary books. All prices are in yuan.\n\n| Book | Pages | Price | What is inside? |\n| --- | --- | --- | --- |\n| A. Weather Notebook | 96 | 12 | Simple ways to record clouds, rain and wind, with blank pages for your own notes. |\n| B. Town Walks | 120 | 18 | Six short walking routes, clear directions and stories about old buildings. |\n| C. Paper City | 88 | 16 | Step-by-step drawings for making houses, shops and bridges from paper. |\n| D. Stories at Dusk | 64 | 10 | Eight short stories that can each be read in about ten minutes. |\n\nThe books have different uses. You can write observations in Weather Notebook, take Town Walks on a trip, follow the drawings in Paper City, or enjoy one story at a time in Stories at Dusk.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Weather Notebook."
+              },
+              {
+                "id": "o1",
+                "text": "Stories at Dusk."
+              },
+              {
+                "id": "o2",
+                "text": "Town Walks."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "D10元64页同时满足；A12元但96页不满足页数，B18元120页两项均不满足。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "9743fef435f42c065f020d60b5e4b3e1ec7be169be2e0ea6914ba91cf07d737f",
+      "reviewNotes": "新原创小学完整短文/对话/信息表，适龄中文操作说明、英文材料和回应；逐题自审全部参考键与干扰项，未进行独立教师或学生难度标定。人物、活动及书名为虚构。 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}

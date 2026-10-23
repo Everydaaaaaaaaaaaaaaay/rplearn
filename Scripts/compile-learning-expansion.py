@@ -42,26 +42,35 @@ def main():
                     raise ValueError('Invalid hand-authored candidate set or key')
                 questions.append(dict(
                     id=qid, goalId='original.' + draft['family'], type='choice',
-                    instruction=('看图，选择与英文词组对应的图片。' if draft['level'] == 'primary1' else '选择合适的应答。' if draft['level'] == 'primary2' and draft['family'] == 'function_choice' else 'Read the complete material and choose the best answer.'),
+                    instruction=(item.get('instruction') or part.get('instruction') or draft.get('instruction') or ('看图，选择与英文词组对应的图片。' if draft['level'] == 'primary1' else '选择合适的应答。' if draft['level'] == 'primary2' and draft['family'] == 'function_choice' else 'Read the complete material and choose the best answer.')),
                     prompt=item['prompt'], material=material,
                     options=[dict(id=f'o{i}', text=text, **({'imageAssetId': item['optionImages'][i]} if 'optionImages' in item else {})) for i, text in enumerate(item['options'])],
                     answer=f"o{item['answer']}", explanation=item['explanation'],
                     hint='Use the complete material and the question together.',
                     difficultyReason='New provisional original for this level; no independent learner calibration claimed.',
                 ))
-            components.append(dict(id=f"{unit_id}#{part['id']}", family='reading_choice', questionIds=part_ids,
+            component_family = 'choice_cloze' if draft['family'] == 'choice_cloze' else 'reading_choice'
+            components.append(dict(id=f"{unit_id}#{part['id']}", family=component_family, questionIds=part_ids,
                 sourceNumbers=list(range(1, len(part_ids) + 1)), sourceUnitId=unit_id, sourceContentHash=digest(part)))
         senior = draft['level'].startswith('senior')
-        if senior and (len(components) != 2 or any(len(c['questionIds']) not in (3, 4) for c in components)):
-            raise ValueError('Senior reading practice needs two complete 3/4-question passages')
+        if senior:
+            if draft['family'] == 'choice_cloze':
+                if len(components) != 1 or len(questions) != 15 or any(len(q['options']) != 4 for q in questions):
+                    raise ValueError('Senior cloze needs a complete 15-gap passage')
+                for number in range(1, 16):
+                    if draft['materials'][0]['text'].count(f'____{number}____') != 1:
+                        raise ValueError('Every cloze gap must appear exactly once in the full passage')
+            elif len(components) != 2 or any(len(c['questionIds']) not in (3, 4) for c in components):
+                raise ValueError('Senior reading practice needs two complete 3/4-question passages')
         material = '\n\n'.join(part['title'] + '\n\n' + part['text'] for part in draft['materials'])
         source_hash = digest(draft)
         author_check = dict(boundary=source['reviewBoundary'], questions=[dict(id=q['id'], key=q['answer'], rationale=q['explanation']) for q in questions])
         references = copy.deepcopy(reviewed_source['references'])
         for reference in references:
-            reference['alignment'] = ('Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. ' + reference['alignment'])[:500]
+            reference['alignment'] = (draft.get('alignmentNote') or ('Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. ' + reference['alignment']))[:500]
         if senior:
-            references.insert(0, dict(sourceId='gaokao.2025.national1', unit='2025 National I complete reading task structure', pages='Reading section', alignment='Two complete original readings; the source paper supplies task rules, not copied text or answer keys.'))
+            cloze = draft['family'] == 'choice_cloze'
+            references.insert(0, dict(sourceId='gaokao.2025.national1', unit='2025 National I complete cloze task structure' if cloze else '2025 National I complete reading task structure', pages='Use of English: 15-gap cloze' if cloze else 'Reading section', alignment='One complete original 15-gap passage, four options per gap; the source supplies task rules, not copied text or keys.' if cloze else 'Two complete original readings; the source paper supplies task rules, not copied text or answer keys.'))
         notice = '2026-10-24新题批次 ' + args.batch + '；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。'
         unit = dict(id=unit_id, version=1, schemaVersion=1, scoringVersion=1, roleKey='companion', roleVersion=1,
             level=draft['level'], title=('高考题型原创 · 10·24新题 · ' if senior else '10·24新题 · ') + draft['title'],

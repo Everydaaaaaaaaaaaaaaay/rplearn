@@ -1,0 +1,632 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b006",
+  "createdAt": "2026-10-23T18:11:52.591619+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.book-sale-and-bridge-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · 阅读理解 · 两篇 · 义卖邮件与纸桥",
+        "summary": "阅读理解 · 两篇 · 义卖邮件与纸桥，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-chengdu2025-21cnjy23208601.reading.complete_section10",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "The recorded source supports two complete five-question, three-option reading components, including a four-email thread. This practice supplies a new complete thread and a fictional classroom-project article. It follows the task structure, not the original text or science topic; no extra real-paper sample or independent validation is claimed."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "新原创邮件线程和完整阅读，逐题核对时序、约束、数字与文本证据；全部人物和项目为虚构，不冒充真实通信或实证研究，不声称独立教师或学生验证。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.book-sale-and-bridge-001",
+          "family": "reading_choice",
+          "label": "阅读理解 · 两篇 · 义卖邮件与纸桥",
+          "candidateSHA256": "4237bb0c2d2377dd728f7373d44dc5a2ecf1fd5901ff3f2f64a6f77b23d78bd3",
+          "authorCheckSHA256": "e6c437ace1028c5cc1ba184c4ccba84f408ee8a7f1e5e0ea5a53a85cd50005a4",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.book-sale-and-bridge-001#a",
+            "expansion.20261024.junior3.book-sale-and-bridge-001#b"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b006；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Planning a book sale\n\nThe four emails below use the same local time.\n\nFrom: Nina\nTo: Sam; Iris\nSent: 10 November 2026, 09:00\nSubject: A date for the book sale\n\nHi both, we need to choose between 21 and 28 November for our second-hand book sale. I can help on either date, but I must leave at noon. The community room is available on both days. We will need time to put the books on tables before visitors arrive. Which date works for you?\n\nFrom: Sam\nTo: Nina; Iris\nSent: 10 November 2026, 09:12\nSubject: Re: A date for the book sale\n\nI am away on 21 November. On the 28th, I can arrive at 10:30 and stay until the room closes at 13:00. I cannot carry the boxes from the store before then, but I can help at a sales table and put things away afterwards.\n\nFrom: Iris\nTo: Nina; Sam\nSent: 10 November 2026, 10:05\nSubject: Re: A date for the book sale\n\nThe 28th is good for me. I have the key to the room and can get there at 09:30. My brother has offered to help us carry the boxes at that time. We should finish selling early enough to clean the room before it closes.\n\nFrom: Nina\nTo: Sam; Iris\nSent: 10 November 2026, 11:20\nSubject: Final plan\n\nLet's choose 28 November. Iris, please bring the key at 09:30. I will meet you and your brother to set up. Sam can join us at 10:30. We will open the sale at 11:00 and finish selling at 12:30. I will leave at noon, so Sam and Iris will need to handle the last half hour and the cleaning. Thanks, everyone!\n\nB. Testing a paper bridge\n\nIn a fictional classroom project, a science club compared two paper-bridge designs. One used a flat sheet; the other used a sheet folded into four long ridges. The students wanted to know which design could hold more identical metal counters before falling between two supports.\n\nThey cut every sheet to the same size and kept the supports ten centimetres apart. Counters were added one at a time at the centre of each bridge. Every trial used a fresh sheet, so a bridge weakened by an earlier test was never used again.\n\nThe flat bridges held 4, 5, 5, 6 and 5 counters. The folded bridges held 12, 14, 15, 13 and 16. The average was therefore 5 counters for the flat design and 14 for the folded design. The students recorded every trial, including the ones that held fewer counters than expected.\n\nOne member wanted the report to say that folding paper always made it stronger. The group decided that this would go beyond their test. They had compared one kind of paper, one folding pattern and one distance between supports. They had not compared every possible fold or tested whether the bridges behaved the same way over a wider gap.\n\nTheir final report described the folded design as the better performer in this particular comparison. For a follow-up project, they planned to keep the paper and the distance unchanged while trying a different folding pattern. The question would become more specific, not less useful: which features of the fold appeared to matter under the same test conditions?"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.book-sale-and-bridge-001.a.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why was 28 November chosen instead of 21 November?",
+            "material": "A. Planning a book sale\n\nThe four emails below use the same local time.\n\nFrom: Nina\nTo: Sam; Iris\nSent: 10 November 2026, 09:00\nSubject: A date for the book sale\n\nHi both, we need to choose between 21 and 28 November for our second-hand book sale. I can help on either date, but I must leave at noon. The community room is available on both days. We will need time to put the books on tables before visitors arrive. Which date works for you?\n\nFrom: Sam\nTo: Nina; Iris\nSent: 10 November 2026, 09:12\nSubject: Re: A date for the book sale\n\nI am away on 21 November. On the 28th, I can arrive at 10:30 and stay until the room closes at 13:00. I cannot carry the boxes from the store before then, but I can help at a sales table and put things away afterwards.\n\nFrom: Iris\nTo: Nina; Sam\nSent: 10 November 2026, 10:05\nSubject: Re: A date for the book sale\n\nThe 28th is good for me. I have the key to the room and can get there at 09:30. My brother has offered to help us carry the boxes at that time. We should finish selling early enough to clean the room before it closes.\n\nFrom: Nina\nTo: Sam; Iris\nSent: 10 November 2026, 11:20\nSubject: Final plan\n\nLet's choose 28 November. Iris, please bring the key at 09:30. I will meet you and your brother to set up. Sam can join us at 10:30. We will open the sale at 11:00 and finish selling at 12:30. I will leave at noon, so Sam and Iris will need to handle the last half hour and the cleaning. Thanks, everyone!",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The community room was closed on the 21st."
+              },
+              {
+                "id": "o1",
+                "text": "Sam was away on the 21st."
+              },
+              {
+                "id": "o2",
+                "text": "Nina could stay all afternoon on the 28th."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "Sam第二封明确21日不在，28日可10:30到。房间两日都可用；Nina两天均须中午离开，并非28日下午全空。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.book-sale-and-bridge-001.a.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who will help Nina and Iris carry the boxes at 09:30?",
+            "material": "A. Planning a book sale\n\nThe four emails below use the same local time.\n\nFrom: Nina\nTo: Sam; Iris\nSent: 10 November 2026, 09:00\nSubject: A date for the book sale\n\nHi both, we need to choose between 21 and 28 November for our second-hand book sale. I can help on either date, but I must leave at noon. The community room is available on both days. We will need time to put the books on tables before visitors arrive. Which date works for you?\n\nFrom: Sam\nTo: Nina; Iris\nSent: 10 November 2026, 09:12\nSubject: Re: A date for the book sale\n\nI am away on 21 November. On the 28th, I can arrive at 10:30 and stay until the room closes at 13:00. I cannot carry the boxes from the store before then, but I can help at a sales table and put things away afterwards.\n\nFrom: Iris\nTo: Nina; Sam\nSent: 10 November 2026, 10:05\nSubject: Re: A date for the book sale\n\nThe 28th is good for me. I have the key to the room and can get there at 09:30. My brother has offered to help us carry the boxes at that time. We should finish selling early enough to clean the room before it closes.\n\nFrom: Nina\nTo: Sam; Iris\nSent: 10 November 2026, 11:20\nSubject: Final plan\n\nLet's choose 28 November. Iris, please bring the key at 09:30. I will meet you and your brother to set up. Sam can join us at 10:30. We will open the sale at 11:00 and finish selling at 12:30. I will leave at noon, so Sam and Iris will need to handle the last half hour and the cleaning. Thanks, everyone!",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Sam's teacher."
+              },
+              {
+                "id": "o1",
+                "text": "Every visitor to the sale."
+              },
+              {
+                "id": "o2",
+                "text": "Iris's brother."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "第三封Iris说弟弟愿9:30搬箱，末封确认Nina与Iris及弟弟布置。Sam10:30才到，未提其老师或让顾客搬箱。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.book-sale-and-bridge-001.a.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When will visitors first be able to buy books?",
+            "material": "A. Planning a book sale\n\nThe four emails below use the same local time.\n\nFrom: Nina\nTo: Sam; Iris\nSent: 10 November 2026, 09:00\nSubject: A date for the book sale\n\nHi both, we need to choose between 21 and 28 November for our second-hand book sale. I can help on either date, but I must leave at noon. The community room is available on both days. We will need time to put the books on tables before visitors arrive. Which date works for you?\n\nFrom: Sam\nTo: Nina; Iris\nSent: 10 November 2026, 09:12\nSubject: Re: A date for the book sale\n\nI am away on 21 November. On the 28th, I can arrive at 10:30 and stay until the room closes at 13:00. I cannot carry the boxes from the store before then, but I can help at a sales table and put things away afterwards.\n\nFrom: Iris\nTo: Nina; Sam\nSent: 10 November 2026, 10:05\nSubject: Re: A date for the book sale\n\nThe 28th is good for me. I have the key to the room and can get there at 09:30. My brother has offered to help us carry the boxes at that time. We should finish selling early enough to clean the room before it closes.\n\nFrom: Nina\nTo: Sam; Iris\nSent: 10 November 2026, 11:20\nSubject: Final plan\n\nLet's choose 28 November. Iris, please bring the key at 09:30. I will meet you and your brother to set up. Sam can join us at 10:30. We will open the sale at 11:00 and finish selling at 12:30. I will leave at noon, so Sam and Iris will need to handle the last half hour and the cleaning. Thanks, everyone!",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At 11:00."
+              },
+              {
+                "id": "o1",
+                "text": "At 09:30."
+              },
+              {
+                "id": "o2",
+                "text": "At 10:30."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "最终计划11点开卖；9:30布置，10:30是Sam加入时间，不是开卖时间。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.book-sale-and-bridge-001.a.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What will Sam and Iris need to do after Nina leaves?",
+            "material": "A. Planning a book sale\n\nThe four emails below use the same local time.\n\nFrom: Nina\nTo: Sam; Iris\nSent: 10 November 2026, 09:00\nSubject: A date for the book sale\n\nHi both, we need to choose between 21 and 28 November for our second-hand book sale. I can help on either date, but I must leave at noon. The community room is available on both days. We will need time to put the books on tables before visitors arrive. Which date works for you?\n\nFrom: Sam\nTo: Nina; Iris\nSent: 10 November 2026, 09:12\nSubject: Re: A date for the book sale\n\nI am away on 21 November. On the 28th, I can arrive at 10:30 and stay until the room closes at 13:00. I cannot carry the boxes from the store before then, but I can help at a sales table and put things away afterwards.\n\nFrom: Iris\nTo: Nina; Sam\nSent: 10 November 2026, 10:05\nSubject: Re: A date for the book sale\n\nThe 28th is good for me. I have the key to the room and can get there at 09:30. My brother has offered to help us carry the boxes at that time. We should finish selling early enough to clean the room before it closes.\n\nFrom: Nina\nTo: Sam; Iris\nSent: 10 November 2026, 11:20\nSubject: Final plan\n\nLet's choose 28 November. Iris, please bring the key at 09:30. I will meet you and your brother to set up. Sam can join us at 10:30. We will open the sale at 11:00 and finish selling at 12:30. I will leave at noon, so Sam and Iris will need to handle the last half hour and the cleaning. Thanks, everyone!",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Cancel the sale immediately."
+              },
+              {
+                "id": "o1",
+                "text": "Finish the sale and clean the room."
+              },
+              {
+                "id": "o2",
+                "text": "Move the sale to 21 November."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "Nina12点离开，末封安排Sam/Iris负责最后半小时和清洁。不是即刻取消或改到21日。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.book-sale-and-bridge-001.a.q5",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which statement agrees with the final plan?",
+            "material": "A. Planning a book sale\n\nThe four emails below use the same local time.\n\nFrom: Nina\nTo: Sam; Iris\nSent: 10 November 2026, 09:00\nSubject: A date for the book sale\n\nHi both, we need to choose between 21 and 28 November for our second-hand book sale. I can help on either date, but I must leave at noon. The community room is available on both days. We will need time to put the books on tables before visitors arrive. Which date works for you?\n\nFrom: Sam\nTo: Nina; Iris\nSent: 10 November 2026, 09:12\nSubject: Re: A date for the book sale\n\nI am away on 21 November. On the 28th, I can arrive at 10:30 and stay until the room closes at 13:00. I cannot carry the boxes from the store before then, but I can help at a sales table and put things away afterwards.\n\nFrom: Iris\nTo: Nina; Sam\nSent: 10 November 2026, 10:05\nSubject: Re: A date for the book sale\n\nThe 28th is good for me. I have the key to the room and can get there at 09:30. My brother has offered to help us carry the boxes at that time. We should finish selling early enough to clean the room before it closes.\n\nFrom: Nina\nTo: Sam; Iris\nSent: 10 November 2026, 11:20\nSubject: Final plan\n\nLet's choose 28 November. Iris, please bring the key at 09:30. I will meet you and your brother to set up. Sam can join us at 10:30. We will open the sale at 11:00 and finish selling at 12:30. I will leave at noon, so Sam and Iris will need to handle the last half hour and the cleaning. Thanks, everyone!",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Sam must arrive before 09:30 to collect the room key."
+              },
+              {
+                "id": "o1",
+                "text": "The sale will continue until the room closes at 13:00."
+              },
+              {
+                "id": "o2",
+                "text": "Selling ends at 12:30, leaving time for cleaning before 13:00."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "卖书12:30结束，房间13点关，留半小时清洁。钥匙由Iris9:30带来，Sam10:30到；不能把售卖延至关门。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.book-sale-and-bridge-001.b.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What was the main difference between the two designs in the first test?",
+            "material": "B. Testing a paper bridge\n\nIn a fictional classroom project, a science club compared two paper-bridge designs. One used a flat sheet; the other used a sheet folded into four long ridges. The students wanted to know which design could hold more identical metal counters before falling between two supports.\n\nThey cut every sheet to the same size and kept the supports ten centimetres apart. Counters were added one at a time at the centre of each bridge. Every trial used a fresh sheet, so a bridge weakened by an earlier test was never used again.\n\nThe flat bridges held 4, 5, 5, 6 and 5 counters. The folded bridges held 12, 14, 15, 13 and 16. The average was therefore 5 counters for the flat design and 14 for the folded design. The students recorded every trial, including the ones that held fewer counters than expected.\n\nOne member wanted the report to say that folding paper always made it stronger. The group decided that this would go beyond their test. They had compared one kind of paper, one folding pattern and one distance between supports. They had not compared every possible fold or tested whether the bridges behaved the same way over a wider gap.\n\nTheir final report described the folded design as the better performer in this particular comparison. For a follow-up project, they planned to keep the paper and the distance unchanged while trying a different folding pattern. The question would become more specific, not less useful: which features of the fold appeared to matter under the same test conditions?",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Whether the sheet was flat or folded into ridges."
+              },
+              {
+                "id": "o1",
+                "text": "Whether the supports were made of metal or wood."
+              },
+              {
+                "id": "o2",
+                "text": "Whether counters were placed in the centre or on the edges."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "首段对比平纸与四条长折脊，支架材料未作为变量，计数片都放中央。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.book-sale-and-bridge-001.b.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why was a fresh sheet used for every trial?",
+            "material": "B. Testing a paper bridge\n\nIn a fictional classroom project, a science club compared two paper-bridge designs. One used a flat sheet; the other used a sheet folded into four long ridges. The students wanted to know which design could hold more identical metal counters before falling between two supports.\n\nThey cut every sheet to the same size and kept the supports ten centimetres apart. Counters were added one at a time at the centre of each bridge. Every trial used a fresh sheet, so a bridge weakened by an earlier test was never used again.\n\nThe flat bridges held 4, 5, 5, 6 and 5 counters. The folded bridges held 12, 14, 15, 13 and 16. The average was therefore 5 counters for the flat design and 14 for the folded design. The students recorded every trial, including the ones that held fewer counters than expected.\n\nOne member wanted the report to say that folding paper always made it stronger. The group decided that this would go beyond their test. They had compared one kind of paper, one folding pattern and one distance between supports. They had not compared every possible fold or tested whether the bridges behaved the same way over a wider gap.\n\nTheir final report described the folded design as the better performer in this particular comparison. For a follow-up project, they planned to keep the paper and the distance unchanged while trying a different folding pattern. The question would become more specific, not less useful: which features of the fold appeared to matter under the same test conditions?",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To make every trial use a different size of paper."
+              },
+              {
+                "id": "o1",
+                "text": "To avoid reusing paper weakened by an earlier test."
+              },
+              {
+                "id": "o2",
+                "text": "To ensure that no bridge could hold more than one counter."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "第二段直接说明避免重复使用先前试验已受损变弱的纸。纸尺寸保持一致，并非限制仅承一枚。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.book-sale-and-bridge-001.b.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How many counters did the folded bridges hold on average?",
+            "material": "B. Testing a paper bridge\n\nIn a fictional classroom project, a science club compared two paper-bridge designs. One used a flat sheet; the other used a sheet folded into four long ridges. The students wanted to know which design could hold more identical metal counters before falling between two supports.\n\nThey cut every sheet to the same size and kept the supports ten centimetres apart. Counters were added one at a time at the centre of each bridge. Every trial used a fresh sheet, so a bridge weakened by an earlier test was never used again.\n\nThe flat bridges held 4, 5, 5, 6 and 5 counters. The folded bridges held 12, 14, 15, 13 and 16. The average was therefore 5 counters for the flat design and 14 for the folded design. The students recorded every trial, including the ones that held fewer counters than expected.\n\nOne member wanted the report to say that folding paper always made it stronger. The group decided that this would go beyond their test. They had compared one kind of paper, one folding pattern and one distance between supports. They had not compared every possible fold or tested whether the bridges behaved the same way over a wider gap.\n\nTheir final report described the folded design as the better performer in this particular comparison. For a follow-up project, they planned to keep the paper and the distance unchanged while trying a different folding pattern. The question would become more specific, not less useful: which features of the fold appeared to matter under the same test conditions?",
+            "options": [
+              {
+                "id": "o0",
+                "text": "5."
+              },
+              {
+                "id": "o1",
+                "text": "16."
+              },
+              {
+                "id": "o2",
+                "text": "14."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "12+14+15+13+16=70，除5得14。5是平纸平均，16只是折纸单次最大值。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.book-sale-and-bridge-001.b.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which conclusion did the group reject?",
+            "material": "B. Testing a paper bridge\n\nIn a fictional classroom project, a science club compared two paper-bridge designs. One used a flat sheet; the other used a sheet folded into four long ridges. The students wanted to know which design could hold more identical metal counters before falling between two supports.\n\nThey cut every sheet to the same size and kept the supports ten centimetres apart. Counters were added one at a time at the centre of each bridge. Every trial used a fresh sheet, so a bridge weakened by an earlier test was never used again.\n\nThe flat bridges held 4, 5, 5, 6 and 5 counters. The folded bridges held 12, 14, 15, 13 and 16. The average was therefore 5 counters for the flat design and 14 for the folded design. The students recorded every trial, including the ones that held fewer counters than expected.\n\nOne member wanted the report to say that folding paper always made it stronger. The group decided that this would go beyond their test. They had compared one kind of paper, one folding pattern and one distance between supports. They had not compared every possible fold or tested whether the bridges behaved the same way over a wider gap.\n\nTheir final report described the folded design as the better performer in this particular comparison. For a follow-up project, they planned to keep the paper and the distance unchanged while trying a different folding pattern. The question would become more specific, not less useful: which features of the fold appeared to matter under the same test conditions?",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Folding paper always makes it stronger in every situation."
+              },
+              {
+                "id": "o1",
+                "text": "The folded design performed better in this particular test."
+              },
+              {
+                "id": "o2",
+                "text": "The flat design held an average of five counters."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "第四段拒绝always的普遍结论；本次折纸较好和平均5枚均为保留的实际测试描述。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.book-sale-and-bridge-001.b.q5",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What would change in the planned follow-up comparison?",
+            "material": "B. Testing a paper bridge\n\nIn a fictional classroom project, a science club compared two paper-bridge designs. One used a flat sheet; the other used a sheet folded into four long ridges. The students wanted to know which design could hold more identical metal counters before falling between two supports.\n\nThey cut every sheet to the same size and kept the supports ten centimetres apart. Counters were added one at a time at the centre of each bridge. Every trial used a fresh sheet, so a bridge weakened by an earlier test was never used again.\n\nThe flat bridges held 4, 5, 5, 6 and 5 counters. The folded bridges held 12, 14, 15, 13 and 16. The average was therefore 5 counters for the flat design and 14 for the folded design. The students recorded every trial, including the ones that held fewer counters than expected.\n\nOne member wanted the report to say that folding paper always made it stronger. The group decided that this would go beyond their test. They had compared one kind of paper, one folding pattern and one distance between supports. They had not compared every possible fold or tested whether the bridges behaved the same way over a wider gap.\n\nTheir final report described the folded design as the better performer in this particular comparison. For a follow-up project, they planned to keep the paper and the distance unchanged while trying a different folding pattern. The question would become more specific, not less useful: which features of the fold appeared to matter under the same test conditions?",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The distance between the supports."
+              },
+              {
+                "id": "o1",
+                "text": "The folding pattern."
+              },
+              {
+                "id": "o2",
+                "text": "The kind of paper and the counter size together."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "末段保持纸种和跨度，改用不同折法。不是改跨度，也没有同时改纸和计数片大小。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "af9f6f9ed925637a7a05401b27f8ed67f45c8be78f299bdb2cfe31e53c95be12",
+      "reviewNotes": "新原创邮件线程和完整阅读，逐题核对时序、约束、数字与文本证据；全部人物和项目为虚构，不冒充真实通信或实证研究，不声称独立教师或学生验证。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.interview-and-radio-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · 阅读理解 · 两篇 · 访谈安排与校园广播",
+        "summary": "阅读理解 · 两篇 · 访谈安排与校园广播，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-chengdu2025-21cnjy23208601.reading.complete_section10",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the source's complete four-message thread and two five-question, three-option reading structure as task rules. The second new text is a school-radio feature rather than the source's forest article. All people, correspondence and events are fictional; adaptation is explicit, with no additional source sample or independent learner validation claimed."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "新原创邮件线程和完整阅读，逐题核对时序、约束、数字与文本证据；全部人物和项目为虚构，不冒充真实通信或实证研究，不声称独立教师或学生验证。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.interview-and-radio-002",
+          "family": "reading_choice",
+          "label": "阅读理解 · 两篇 · 访谈安排与校园广播",
+          "candidateSHA256": "e984cc7f71583559c80bf33e7fc4a13ef4234f73567a69530d2ead361c0e6eae",
+          "authorCheckSHA256": "e8e8eaa0e4d4d18a0fdbde3c6f9a318faf92ca0922ef3679eec64adf64d01ba1",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.interview-and-radio-002#a",
+            "expansion.20261024.junior3.interview-and-radio-002#b"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b006；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Arranging a recorded interview\n\nAll four emails use the same local date and time zone.\n\nFrom: Eli\nTo: May; Jorge\nSent: 12 November 2026, 10:00\nSubject: Our local-history interview\n\nMs Reed has agreed to speak to us on 21 November for our school project. We need a quiet room for a half-hour interview. May, could we use the community room? Jorge, when could you arrive to help with the recorder?\n\nFrom: May\nTo: Eli; Jorge\nSent: 12 November 2026, 10:20\nSubject: Re: Our local-history interview\n\nThe room is available until noon, but there will be a piano rehearsal next door from 10:00 to 11:00. It will be much quieter afterwards. I can bring copies of the old street photographs that Ms Reed has offered to discuss.\n\nFrom: Jorge\nTo: Eli; May\nSent: 12 November 2026, 11:05\nSubject: Re: Our local-history interview\n\nMy class finishes at 10:40, and it takes me ten minutes to walk to the community room. I can test the recorder before the interview. Please check whether Ms Reed is happy for us to record both sound and video.\n\nFrom: Eli\nTo: May; Jorge\nSent: 12 November 2026, 12:10\nSubject: Confirmed arrangements\n\nMs Reed is happy for us to record her voice, but she does not want to appear in a video. Her bus arrives at 11:10 and she needs five minutes to walk to the room, so let's start at 11:15 and finish at 11:45. Jorge, please test the recorder at 10:55. May and I will arrange the chairs and photographs. We must leave the room before noon.\n\nB. The voice behind the school radio\n\nFor her first school-radio programme, Hana wanted a guest whose name everyone would recognise. When the sports captain was unavailable, her teacher suggested interviewing Mr Cole, who opened the school building each morning. Hana was polite, but privately wondered whether the conversation would interest anyone.\n\nShe prepared questions about keys, lights and early buses. Mr Cole answered them, then mentioned that he once repaired stage equipment for a travelling theatre group. He had worked behind curtains while actors performed in small halls across the country. Hana stopped looking at her list and asked him about the first performance he remembered.\n\nThe interview produced more material than the eight-minute programme could contain. Hana's first edit kept the fastest stories and removed most of the pauses. When she listened again, the conversation sounded rushed. In one place, Mr Cole's answer seemed to disagree with a question that had actually come later in the original recording.\n\nHana returned to the complete recording. She chose fewer stories, kept each question with its answer and left short pauses where Mr Cole had been thinking. Before broadcasting, she played the edited version to him and checked that she had represented his meaning accurately.\n\nThe programme did not turn Mr Cole into a celebrity. It did make several students stop to talk to him about theatre. Hana learned that finding an interesting story was not always a matter of finding the most famous person. It could begin with taking an ordinary meeting seriously—and continue with enough care not to lose someone's meaning while making it fit the time available."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.interview-and-radio-002.a.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the main purpose of the email thread?",
+            "material": "A. Arranging a recorded interview\n\nAll four emails use the same local date and time zone.\n\nFrom: Eli\nTo: May; Jorge\nSent: 12 November 2026, 10:00\nSubject: Our local-history interview\n\nMs Reed has agreed to speak to us on 21 November for our school project. We need a quiet room for a half-hour interview. May, could we use the community room? Jorge, when could you arrive to help with the recorder?\n\nFrom: May\nTo: Eli; Jorge\nSent: 12 November 2026, 10:20\nSubject: Re: Our local-history interview\n\nThe room is available until noon, but there will be a piano rehearsal next door from 10:00 to 11:00. It will be much quieter afterwards. I can bring copies of the old street photographs that Ms Reed has offered to discuss.\n\nFrom: Jorge\nTo: Eli; May\nSent: 12 November 2026, 11:05\nSubject: Re: Our local-history interview\n\nMy class finishes at 10:40, and it takes me ten minutes to walk to the community room. I can test the recorder before the interview. Please check whether Ms Reed is happy for us to record both sound and video.\n\nFrom: Eli\nTo: May; Jorge\nSent: 12 November 2026, 12:10\nSubject: Confirmed arrangements\n\nMs Reed is happy for us to record her voice, but she does not want to appear in a video. Her bus arrives at 11:10 and she needs five minutes to walk to the room, so let's start at 11:15 and finish at 11:45. Jorge, please test the recorder at 10:55. May and I will arrange the chairs and photographs. We must leave the room before noon.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To sell tickets for a piano concert."
+              },
+              {
+                "id": "o1",
+                "text": "To arrange an interview for a school project."
+              },
+              {
+                "id": "o2",
+                "text": "To decide which bus route should close."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "首封明确为学校地方史项目安排Ms Reed访谈，后续定场地时间和录音。钢琴仅噪声条件，公交仅到达时间。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.interview-and-radio-002.a.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why would the room be more suitable after 11:00?",
+            "material": "A. Arranging a recorded interview\n\nAll four emails use the same local date and time zone.\n\nFrom: Eli\nTo: May; Jorge\nSent: 12 November 2026, 10:00\nSubject: Our local-history interview\n\nMs Reed has agreed to speak to us on 21 November for our school project. We need a quiet room for a half-hour interview. May, could we use the community room? Jorge, when could you arrive to help with the recorder?\n\nFrom: May\nTo: Eli; Jorge\nSent: 12 November 2026, 10:20\nSubject: Re: Our local-history interview\n\nThe room is available until noon, but there will be a piano rehearsal next door from 10:00 to 11:00. It will be much quieter afterwards. I can bring copies of the old street photographs that Ms Reed has offered to discuss.\n\nFrom: Jorge\nTo: Eli; May\nSent: 12 November 2026, 11:05\nSubject: Re: Our local-history interview\n\nMy class finishes at 10:40, and it takes me ten minutes to walk to the community room. I can test the recorder before the interview. Please check whether Ms Reed is happy for us to record both sound and video.\n\nFrom: Eli\nTo: May; Jorge\nSent: 12 November 2026, 12:10\nSubject: Confirmed arrangements\n\nMs Reed is happy for us to record her voice, but she does not want to appear in a video. Her bus arrives at 11:10 and she needs five minutes to walk to the room, so let's start at 11:15 and finish at 11:45. Jorge, please test the recorder at 10:55. May and I will arrange the chairs and photographs. We must leave the room before noon.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The piano rehearsal next door would have ended."
+              },
+              {
+                "id": "o1",
+                "text": "The community room would open for the first time that day."
+              },
+              {
+                "id": "o2",
+                "text": "All visitors would have left the town."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "May说明隔壁排练10至11点，之后更安静。并非房间11点才开或全镇访客离开。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.interview-and-radio-002.a.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is Jorge's earliest possible arrival time after his class?",
+            "material": "A. Arranging a recorded interview\n\nAll four emails use the same local date and time zone.\n\nFrom: Eli\nTo: May; Jorge\nSent: 12 November 2026, 10:00\nSubject: Our local-history interview\n\nMs Reed has agreed to speak to us on 21 November for our school project. We need a quiet room for a half-hour interview. May, could we use the community room? Jorge, when could you arrive to help with the recorder?\n\nFrom: May\nTo: Eli; Jorge\nSent: 12 November 2026, 10:20\nSubject: Re: Our local-history interview\n\nThe room is available until noon, but there will be a piano rehearsal next door from 10:00 to 11:00. It will be much quieter afterwards. I can bring copies of the old street photographs that Ms Reed has offered to discuss.\n\nFrom: Jorge\nTo: Eli; May\nSent: 12 November 2026, 11:05\nSubject: Re: Our local-history interview\n\nMy class finishes at 10:40, and it takes me ten minutes to walk to the community room. I can test the recorder before the interview. Please check whether Ms Reed is happy for us to record both sound and video.\n\nFrom: Eli\nTo: May; Jorge\nSent: 12 November 2026, 12:10\nSubject: Confirmed arrangements\n\nMs Reed is happy for us to record her voice, but she does not want to appear in a video. Her bus arrives at 11:10 and she needs five minutes to walk to the room, so let's start at 11:15 and finish at 11:45. Jorge, please test the recorder at 10:55. May and I will arrange the chairs and photographs. We must leave the room before noon.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "10:40."
+              },
+              {
+                "id": "o1",
+                "text": "11:05."
+              },
+              {
+                "id": "o2",
+                "text": "10:50."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "10:40下课加十分钟步行=10:50。10:40未计路程，11:05是发邮件时刻而非最早到场时刻。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.interview-and-radio-002.a.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What has Ms Reed agreed to?",
+            "material": "A. Arranging a recorded interview\n\nAll four emails use the same local date and time zone.\n\nFrom: Eli\nTo: May; Jorge\nSent: 12 November 2026, 10:00\nSubject: Our local-history interview\n\nMs Reed has agreed to speak to us on 21 November for our school project. We need a quiet room for a half-hour interview. May, could we use the community room? Jorge, when could you arrive to help with the recorder?\n\nFrom: May\nTo: Eli; Jorge\nSent: 12 November 2026, 10:20\nSubject: Re: Our local-history interview\n\nThe room is available until noon, but there will be a piano rehearsal next door from 10:00 to 11:00. It will be much quieter afterwards. I can bring copies of the old street photographs that Ms Reed has offered to discuss.\n\nFrom: Jorge\nTo: Eli; May\nSent: 12 November 2026, 11:05\nSubject: Re: Our local-history interview\n\nMy class finishes at 10:40, and it takes me ten minutes to walk to the community room. I can test the recorder before the interview. Please check whether Ms Reed is happy for us to record both sound and video.\n\nFrom: Eli\nTo: May; Jorge\nSent: 12 November 2026, 12:10\nSubject: Confirmed arrangements\n\nMs Reed is happy for us to record her voice, but she does not want to appear in a video. Her bus arrives at 11:10 and she needs five minutes to walk to the room, so let's start at 11:15 and finish at 11:45. Jorge, please test the recorder at 10:55. May and I will arrange the chairs and photographs. We must leave the room before noon.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Being filmed but not having her voice recorded."
+              },
+              {
+                "id": "o1",
+                "text": "Having her voice recorded without appearing in a video."
+              },
+              {
+                "id": "o2",
+                "text": "Publishing a video of every person in the community room."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "末封同意录声音、不同意出镜。A颠倒，C把个人许可扩大为全场录像。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.interview-and-radio-002.a.q5",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the interview scheduled to start at 11:15?",
+            "material": "A. Arranging a recorded interview\n\nAll four emails use the same local date and time zone.\n\nFrom: Eli\nTo: May; Jorge\nSent: 12 November 2026, 10:00\nSubject: Our local-history interview\n\nMs Reed has agreed to speak to us on 21 November for our school project. We need a quiet room for a half-hour interview. May, could we use the community room? Jorge, when could you arrive to help with the recorder?\n\nFrom: May\nTo: Eli; Jorge\nSent: 12 November 2026, 10:20\nSubject: Re: Our local-history interview\n\nThe room is available until noon, but there will be a piano rehearsal next door from 10:00 to 11:00. It will be much quieter afterwards. I can bring copies of the old street photographs that Ms Reed has offered to discuss.\n\nFrom: Jorge\nTo: Eli; May\nSent: 12 November 2026, 11:05\nSubject: Re: Our local-history interview\n\nMy class finishes at 10:40, and it takes me ten minutes to walk to the community room. I can test the recorder before the interview. Please check whether Ms Reed is happy for us to record both sound and video.\n\nFrom: Eli\nTo: May; Jorge\nSent: 12 November 2026, 12:10\nSubject: Confirmed arrangements\n\nMs Reed is happy for us to record her voice, but she does not want to appear in a video. Her bus arrives at 11:10 and she needs five minutes to walk to the room, so let's start at 11:15 and finish at 11:45. Jorge, please test the recorder at 10:55. May and I will arrange the chairs and photographs. We must leave the room before noon.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Ms Reed needs five minutes to walk after her 11:10 bus arrival."
+              },
+              {
+                "id": "o1",
+                "text": "Jorge's class continues until 11:15."
+              },
+              {
+                "id": "o2",
+                "text": "The room cannot be used before 11:15 on any day."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "末封11:10公交到再步行五分钟，故11:15。Jorge10:40已下课，房间也无所有日期均11:15前禁用的规则。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.interview-and-radio-002.b.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How did Hana initially feel about interviewing Mr Cole?",
+            "material": "B. The voice behind the school radio\n\nFor her first school-radio programme, Hana wanted a guest whose name everyone would recognise. When the sports captain was unavailable, her teacher suggested interviewing Mr Cole, who opened the school building each morning. Hana was polite, but privately wondered whether the conversation would interest anyone.\n\nShe prepared questions about keys, lights and early buses. Mr Cole answered them, then mentioned that he once repaired stage equipment for a travelling theatre group. He had worked behind curtains while actors performed in small halls across the country. Hana stopped looking at her list and asked him about the first performance he remembered.\n\nThe interview produced more material than the eight-minute programme could contain. Hana's first edit kept the fastest stories and removed most of the pauses. When she listened again, the conversation sounded rushed. In one place, Mr Cole's answer seemed to disagree with a question that had actually come later in the original recording.\n\nHana returned to the complete recording. She chose fewer stories, kept each question with its answer and left short pauses where Mr Cole had been thinking. Before broadcasting, she played the edited version to him and checked that she had represented his meaning accurately.\n\nThe programme did not turn Mr Cole into a celebrity. It did make several students stop to talk to him about theatre. Hana learned that finding an interesting story was not always a matter of finding the most famous person. It could begin with taking an ordinary meeting seriously—and continue with enough care not to lose someone's meaning while making it fit the time available.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She doubted whether he would have an interesting story."
+              },
+              {
+                "id": "o1",
+                "text": "She already knew all about his theatre experience."
+              },
+              {
+                "id": "o2",
+                "text": "She wanted him to replace the sports captain on the school team."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "首段私下怀疑采访是否有趣，尚不知道剧团经历。没有让他加入校队替代队长。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.interview-and-radio-002.b.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What made Hana move away from her prepared questions?",
+            "material": "B. The voice behind the school radio\n\nFor her first school-radio programme, Hana wanted a guest whose name everyone would recognise. When the sports captain was unavailable, her teacher suggested interviewing Mr Cole, who opened the school building each morning. Hana was polite, but privately wondered whether the conversation would interest anyone.\n\nShe prepared questions about keys, lights and early buses. Mr Cole answered them, then mentioned that he once repaired stage equipment for a travelling theatre group. He had worked behind curtains while actors performed in small halls across the country. Hana stopped looking at her list and asked him about the first performance he remembered.\n\nThe interview produced more material than the eight-minute programme could contain. Hana's first edit kept the fastest stories and removed most of the pauses. When she listened again, the conversation sounded rushed. In one place, Mr Cole's answer seemed to disagree with a question that had actually come later in the original recording.\n\nHana returned to the complete recording. She chose fewer stories, kept each question with its answer and left short pauses where Mr Cole had been thinking. Before broadcasting, she played the edited version to him and checked that she had represented his meaning accurately.\n\nThe programme did not turn Mr Cole into a celebrity. It did make several students stop to talk to him about theatre. Hana learned that finding an interesting story was not always a matter of finding the most famous person. It could begin with taking an ordinary meeting seriously—and continue with enough care not to lose someone's meaning while making it fit the time available.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Mr Cole refused to answer any questions about school."
+              },
+              {
+                "id": "o1",
+                "text": "The programme had already been broadcast."
+              },
+              {
+                "id": "o2",
+                "text": "Mr Cole mentioned his work with a travelling theatre group."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "第二段剧团幕后经历引出第一场演出的追问。不是完全拒答或节目已播出。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.interview-and-radio-002.b.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What was one problem with Hana's first edit?",
+            "material": "B. The voice behind the school radio\n\nFor her first school-radio programme, Hana wanted a guest whose name everyone would recognise. When the sports captain was unavailable, her teacher suggested interviewing Mr Cole, who opened the school building each morning. Hana was polite, but privately wondered whether the conversation would interest anyone.\n\nShe prepared questions about keys, lights and early buses. Mr Cole answered them, then mentioned that he once repaired stage equipment for a travelling theatre group. He had worked behind curtains while actors performed in small halls across the country. Hana stopped looking at her list and asked him about the first performance he remembered.\n\nThe interview produced more material than the eight-minute programme could contain. Hana's first edit kept the fastest stories and removed most of the pauses. When she listened again, the conversation sounded rushed. In one place, Mr Cole's answer seemed to disagree with a question that had actually come later in the original recording.\n\nHana returned to the complete recording. She chose fewer stories, kept each question with its answer and left short pauses where Mr Cole had been thinking. Before broadcasting, she played the edited version to him and checked that she had represented his meaning accurately.\n\nThe programme did not turn Mr Cole into a celebrity. It did make several students stop to talk to him about theatre. Hana learned that finding an interesting story was not always a matter of finding the most famous person. It could begin with taking an ordinary meeting seriously—and continue with enough care not to lose someone's meaning while making it fit the time available.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It included no stories from the theatre."
+              },
+              {
+                "id": "o1",
+                "text": "It made an answer appear to respond to the wrong question."
+              },
+              {
+                "id": "o2",
+                "text": "It was shorter than the programme's opening music."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "第三段错接前后顺序使回答似乎与实际后来才问的问题冲突。不是完全没剧院故事，也未涉及开场音乐长度。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.interview-and-radio-002.b.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did Hana play the edited recording to Mr Cole?",
+            "material": "B. The voice behind the school radio\n\nFor her first school-radio programme, Hana wanted a guest whose name everyone would recognise. When the sports captain was unavailable, her teacher suggested interviewing Mr Cole, who opened the school building each morning. Hana was polite, but privately wondered whether the conversation would interest anyone.\n\nShe prepared questions about keys, lights and early buses. Mr Cole answered them, then mentioned that he once repaired stage equipment for a travelling theatre group. He had worked behind curtains while actors performed in small halls across the country. Hana stopped looking at her list and asked him about the first performance he remembered.\n\nThe interview produced more material than the eight-minute programme could contain. Hana's first edit kept the fastest stories and removed most of the pauses. When she listened again, the conversation sounded rushed. In one place, Mr Cole's answer seemed to disagree with a question that had actually come later in the original recording.\n\nHana returned to the complete recording. She chose fewer stories, kept each question with its answer and left short pauses where Mr Cole had been thinking. Before broadcasting, she played the edited version to him and checked that she had represented his meaning accurately.\n\nThe programme did not turn Mr Cole into a celebrity. It did make several students stop to talk to him about theatre. Hana learned that finding an interesting story was not always a matter of finding the most famous person. It could begin with taking an ordinary meeting seriously—and continue with enough care not to lose someone's meaning while making it fit the time available.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To check that the editing had preserved what he meant."
+              },
+              {
+                "id": "o1",
+                "text": "To ask him to buy the recording before it was broadcast."
+              },
+              {
+                "id": "o2",
+                "text": "To persuade him to remove every pause from his speech."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "第四段播前确认意思准确。没有售卖录音，且重新编辑是保留适当思考停顿而非全部删除。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior3.interview-and-radio-002.b.q5",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is a central idea of the passage?",
+            "material": "B. The voice behind the school radio\n\nFor her first school-radio programme, Hana wanted a guest whose name everyone would recognise. When the sports captain was unavailable, her teacher suggested interviewing Mr Cole, who opened the school building each morning. Hana was polite, but privately wondered whether the conversation would interest anyone.\n\nShe prepared questions about keys, lights and early buses. Mr Cole answered them, then mentioned that he once repaired stage equipment for a travelling theatre group. He had worked behind curtains while actors performed in small halls across the country. Hana stopped looking at her list and asked him about the first performance he remembered.\n\nThe interview produced more material than the eight-minute programme could contain. Hana's first edit kept the fastest stories and removed most of the pauses. When she listened again, the conversation sounded rushed. In one place, Mr Cole's answer seemed to disagree with a question that had actually come later in the original recording.\n\nHana returned to the complete recording. She chose fewer stories, kept each question with its answer and left short pauses where Mr Cole had been thinking. Before broadcasting, she played the edited version to him and checked that she had represented his meaning accurately.\n\nThe programme did not turn Mr Cole into a celebrity. It did make several students stop to talk to him about theatre. Hana learned that finding an interesting story was not always a matter of finding the most famous person. It could begin with taking an ordinary meeting seriously—and continue with enough care not to lose someone's meaning while making it fit the time available.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A radio interview is useful only if its guest becomes famous."
+              },
+              {
+                "id": "o1",
+                "text": "Prepared questions should never be used in an interview."
+              },
+              {
+                "id": "o2",
+                "text": "Interesting stories can come from everyday people and need careful editing."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "首尾呼应普通人也有故事，编辑须尊重原意。嘉宾并未成名但节目有价值；文章没有全面否定准备问题。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "be0da89e4b0a7149d203b90e6e92db6156357893e082d74092aac12ac88da267",
+      "reviewNotes": "新原创邮件线程和完整阅读，逐题核对时序、约束、数字与文本证据；全部人物和项目为虚构，不冒充真实通信或实证研究，不声称独立教师或学生验证。 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
