@@ -1,0 +1,733 @@
+{
+  "createdAt": "2026-10-23T22:37:08.196260+00:00",
+  "reviewBoundary": "Three new complete senior mixed practices. Fictional visits/demonstration and general study/physics discussion, no invented study or numerical result. Same-author cohesion, alternative and form review; no independent calibration.",
+  "units": [
+    {
+      "id": "senior1.club-choice-and-journey-061",
+      "level": "senior1",
+      "title": "Choosing a club and taking a journey",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade10-club-routines-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Choosing a club and taking a journey",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "A school may offer more clubs than you can reasonably join. Choosing well does not mean finding the one with the most impressive name. It means understanding what you want to try and what regular participation would involve.\n\nRead the description beyond its first line. A photography club might spend as much time discussing pictures as taking them. ____1____ Knowing the ordinary activities helps prevent disappointment based on an imagined version of the club.\n\nAttend a trial session if one is available. Notice how beginners are welcomed and whether questions receive useful answers. ____2____ A single enjoyable demonstration does not necessarily show what a normal meeting feels like.\n\nCheck the practical commitment. A club that meets after the last bus may be difficult to attend even if its subject interests you. ____3____ Enthusiasm is more likely to last when the arrangement fits your week.\n\nDistinguish initial discomfort from a clear mismatch. Trying something new can feel awkward before you understand it. ____4____ Ask whether another attempt might help, rather than treating the first nervous moment as a final judgment.\n\nFinally, leave yourself time outside organised activities. ____5____ A choice can be worthwhile without filling every available afternoon. Joining fewer clubs may allow you to take part more fully in the ones you choose.",
+          "candidates": [
+            "A. Ask what members usually do during a meeting.",
+            "B. That feeling alone does not prove the activity is wrong for you.",
+            "C. Consider travel and preparation as well as the meeting itself.",
+            "D. You may also enjoy unplanned time with friends or by yourself.",
+            "E. If possible, ask a member about an ordinary week too.",
+            "F. The longest list of memberships always shows the most meaningful involvement.",
+            "G. Any club that causes one moment of uncertainty must be avoided forever."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 0,
+              "explanation": "A asks about routine activities and leads to avoiding an imagined club. B discomfort, C commitment, D free time and E a member’s ordinary week serve later gaps. F/G make unsupported absolutes."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 4,
+              "explanation": "E adds an ordinary-week account to a trial and prepares the warning about demonstrations. A is description, B nervousness, C logistics and D unplanned time. F/G ignore fit."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 2,
+              "explanation": "C develops the bus example into travel/preparation costs and leads to fitting a week. A/B/D/E concern other checks. F/G do not address practical attendance."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 1,
+              "explanation": "B refers to initial awkwardness and supports trying again. A/C/D/E concern activities, logistics, free time and member accounts. G directly contradicts this distinction and F confuses quantity with involvement."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 3,
+              "explanation": "D gives examples of time outside clubs and prepares fewer afternoons being filled. A/B/C/E concern selection checks. F contradicts fewer but deeper commitments and G is unrelated to free time."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade10-slotgrammar-football-signatures",
+          "title": "B. Choosing a club and taking a journey",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "Our class left for a museum visit on the ____1____ (twenty) of May. The teacher had reminded us to bring only a small bag, but I arrived with enough things for a whole weekend. A friend laughed and offered to help me carry it.\n\nAt the station, part of the entrance ____2____ (repair), so we followed the temporary signs. A member of staff showed us the route ____3____ led to the platforms. The teacher checked the group before we went through the barrier.\n\nI had packed three books, thinking I would read throughout the journey. In fact, the ____4____ (discuss) about the exhibition began almost as soon as we sat down. We compared the objects we hoped to see and the questions we wanted to ask.\n\nAfter ____5____ (reach) the museum, we put our bags in the lockers. Mine was ____6____ (heavy) than anyone else's, although the visit lasted only a few hours. I was glad not to carry it around every room.\n\nOur guide encouraged us ____7____ (choose) one object to describe in detail. I selected a small wooden box ____8____ its painted lid interested me. The activity helped us slow down rather than hurry past everything.\n\nOn the train home, I looked through my notes and smiled at ____9____ (I) unnecessary packing. Next time, I would bring fewer objects and leave more room ____10____ questions. The most useful thing I carried home fitted on two pages.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of twenty.",
+              "acceptedAnswers": [
+                "twentieth"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "twenty",
+                  "twentyth"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The twentieth of May needs an ordinal. Twenty is cardinal and twentyth nonstandard."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of repair.",
+              "acceptedAnswers": [
+                "was being repaired",
+                "was repaired",
+                "had been repaired"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "repaired",
+                  "were being repaired"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The entrance receives repair in this past setting. Ongoing was being repaired best explains temporary routing; simple/past-perfect passive can also fit. Repaired lacks auxiliary and were disagrees with part."
+            },
+            {
+              "prompt": "Fill gap 3 with one appropriate word.",
+              "acceptedAnswers": [
+                "that",
+                "which"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "where",
+                  "what"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Route is subject of that/which led. Where would leave led without a subject, who is human and what incompatible with an expressed antecedent."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of discuss.",
+              "acceptedAnswers": [
+                "discussion",
+                "discussions"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "discuss",
+                  "discussing"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Discussion can name the overall exchange and discussions its several parts. Discuss is a verb and discussing is not the ordinary event noun in this construction."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of reach.",
+              "acceptedAnswers": [
+                "reaching"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "reach",
+                  "reached",
+                  "to reach"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "After as preposition takes reaching. Other listed forms do not directly fit."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of heavy.",
+              "acceptedAnswers": [
+                "heavier",
+                "more heavy"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "heavy",
+                  "heaviest",
+                  "more heavier"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Than requires comparative heavier/more heavy. Plain, superlative and double comparative do not fit."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of choose.",
+              "acceptedAnswers": [
+                "to choose"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "choosing",
+                  "choose",
+                  "chose"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Encouraged us takes to choose. Other listed forms do not directly complete the pattern."
+            },
+            {
+              "prompt": "Fill gap 8 with one appropriate word.",
+              "acceptedAnswers": [
+                "because",
+                "as",
+                "since"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "although",
+                  "unless"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Because/as/since introduce the reason for selection. Although would need a contrast not supplied and unless would make a condition inconsistent with the stated interest."
+            },
+            {
+              "prompt": "Fill gap 9 with the correct form of I.",
+              "acceptedAnswers": [
+                "my"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "I",
+                  "me",
+                  "mine"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "My modifies unnecessary packing. I/me are personal pronouns and mine cannot directly modify the following noun phrase."
+            },
+            {
+              "prompt": "Fill gap 10 with one appropriate word.",
+              "acceptedAnswers": [
+                "for"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "of",
+                  "at",
+                  "from"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Room for questions means capacity for inquiry. Of/at/from do not complete this intended expression."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior2.presentation-and-bubbles-061",
+      "level": "senior2",
+      "title": "Preparing to speak and looking at bubbles",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade11-exhibition-labels-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Preparing to speak and looking at bubbles",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "Preparing an oral presentation is not simply writing an essay and reading it aloud. A listener cannot move backwards through a paragraph as easily as a reader can. The structure has to support attention as the talk unfolds.\n\nBegin by deciding what listeners should understand at the end. A list of everything you know is not yet a message. ____1____ Other details should help that idea rather than compete with it.\n\nGive the audience a route through the talk. A brief opening can explain the question, the stages and the reason it matters. ____2____ These signals help listeners place a detail in the larger explanation.\n\nRehearse aloud, not only in your head. A sentence that looks elegant may be hard to say clearly. ____3____ If you repeatedly run out of breath in the same place, the wording may need to change.\n\nUse visual material for a clear purpose. A slide packed with text may force the audience to choose between reading and listening. ____4____ Explain the part you want them to notice rather than assuming that its importance is obvious.\n\nFinally, leave space for questions and a short conclusion. ____5____ The aim is to make the main point easier to carry away, not to hide it inside a hurried list of unfinished extras.",
+          "candidates": [
+            "A. Choose one central idea that the audience can follow.",
+            "B. A useful image or a few key words may support your voice better.",
+            "C. Spoken practice reveals where the phrasing becomes awkward.",
+            "D. Fill every second with new detail, even after time has run out.",
+            "E. Signpost important changes as you move from one stage to the next.",
+            "F. Return to the central idea instead of adding a new topic at the last moment.",
+            "G. A presentation needs no structure if its speaker knows the subject."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 0,
+              "explanation": "A turns knowledge into a central message, picked up by that idea. B visuals, C rehearsal, E signposts and F conclusion fit later gaps. D/G ignore the audience’s processing needs."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 4,
+              "explanation": "E supplies transition signals, referred to by these signals next. A focus, B visuals, C phrasing and F ending are other steps. D/G remove structure rather than support it."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 2,
+              "explanation": "C explains rehearsing aloud and prepares the breath example. A/B/E/F concern message, visuals, transitions and ending. D/G do not diagnose spoken phrasing."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 1,
+              "explanation": "B offers a simpler visual alternative to dense text and prepares explaining the relevant part. A/C/E/F concern other stages. D adds overload and G denies structure."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 5,
+              "explanation": "F gives the concluding return that makes a point portable. A is initial focus, B image, C rehearsal and E transitions. D contradicts time discipline and G ignores listener needs."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade11-slotgrammar-lantern-frame",
+          "title": "B. Preparing to speak and looking at bubbles",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "A soap bubble looks simple, but each one ____1____ (contain) air enclosed by a very thin liquid film. The soap helps the film last long enough for us to watch it, although an ordinary bubble still changes from moment to moment.\n\nWhen a bubble floats freely without touching anything, surface tension tends to draw it into a round shape. This is connected with the attraction ____2____ the molecules in the liquid. A sphere can enclose a given volume with the least surface area, which helps explain the shape.\n\nThe film becomes ____3____ (thin) as liquid drains and evaporates. Eventually, it breaks. Two bubbles ____4____ meet can affect one another's shape, so not every part of a group looks like a separate perfect sphere.\n\nBefore ____5____ (blow) bubbles in a classroom demonstration, our teacher asked us to think about what we wanted to observe. We were not trying to produce the largest possible number. We wanted to compare individual bubbles with those that joined together.\n\nThe changing ____6____ (shape) were easier to see against a dark background. We watched ____7____ (careful) and avoided treating a quick photograph as a record of every stage.\n\nThe activity gave us ____8____ useful starting point, but not a complete ____9____ (explain) of liquids and forces. Afterwards, our teacher connected the observations with ideas that could be discussed more ____10____ (precise) than \"bubbles are always round\". The familiar sight had become a question worth examining.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of contain.",
+              "acceptedAnswers": [
+                "contains"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "contain",
+                  "containing"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Each one is singular in this general statement, so contains. Contain disagrees and containing lacks auxiliary."
+            },
+            {
+              "prompt": "Fill gap 2 with one appropriate word.",
+              "acceptedAnswers": [
+                "between",
+                "among"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "to",
+                  "from"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Attraction between/among molecules expresses interaction within the liquid. To/from do not complete this noun phrase with the intended mutual relation."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of thin.",
+              "acceptedAnswers": [
+                "thinner",
+                "more thin"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "thinnest",
+                  "more thinner"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Thinner/more thin expresses progressive reduction of film thickness. Thinnest is maximum and more thinner doubled comparative. Plain thin is left reviewable rather than treated as necessarily wrong."
+            },
+            {
+              "prompt": "Fill gap 4 with one appropriate word.",
+              "acceptedAnswers": [
+                "that",
+                "which"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "where",
+                  "what"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Bubbles are subject antecedent of that/which meet. Who is human, where not subject and what does not fit an expressed antecedent."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of blow.",
+              "acceptedAnswers": [
+                "blowing"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "blow",
+                  "blew",
+                  "to blow"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Before as preposition takes blowing. The listed alternatives do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of shape.",
+              "acceptedAnswers": [
+                "shapes"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "shape",
+                  "shaped"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The changing shapes were uses plural noun shapes. Singular shape conflicts with were; shaped is a participle."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of careful.",
+              "acceptedAnswers": [
+                "carefully"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "careful",
+                  "carefulness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Carefully modifies watched. Careful is adjective and carefulness noun."
+            },
+            {
+              "prompt": "Fill gap 8 with one appropriate word.",
+              "acceptedAnswers": [
+                "a"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "an"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A useful starting point begins with consonant /j/. Unlisted article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 9 with the correct form of explain.",
+              "acceptedAnswers": [
+                "explanation"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "explain",
+                  "explaining"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A complete explanation requires a noun. Explain is verb and explaining is not the ordinary count noun in this phrase."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of precise.",
+              "acceptedAnswers": [
+                "precisely"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "precise",
+                  "precision"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Precisely modifies discussed, with more forming its comparative. Precise is adjective and precision noun."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior3.rest-and-lighthouse-061",
+      "level": "senior3",
+      "title": "Taking a pause and examining a lens",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade12-print-room-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Taking a pause and examining a lens",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "A demanding project can make a pause feel like a failure of commitment. Yet continuing without attention may waste more effort than stopping briefly. The useful question is not whether serious people ever rest, but how a pause can support a return to the work.\n\nNotice what is actually happening. You may be tired, stuck on one decision or simply distracted by another task. ____1____ A short walk will not supply missing information, while another hour at the desk may not restore exhausted attention.\n\nChoose a break with a clear boundary. Decide when you will return or what event will mark the end. ____2____ You can step away without needing to renegotiate the whole project each time.\n\nBefore leaving, note the next manageable action. \"Finish everything\" is not a useful instruction to your future self. ____3____ A specific starting point can reduce the effort of finding your place again.\n\nWhen you return, check whether the pause helped. ____4____ If the same obstacle remains, you may need a different explanation, a smaller task or another person's advice rather than an endless series of identical breaks.\n\nFinally, judge progress across more than one short period. ____5____ Sustainable effort includes variation. A pause is useful when it serves the work, not when it becomes another rule you must obey regardless of the situation.",
+          "candidates": [
+            "A. A slower afternoon does not erase a week of steady work.",
+            "B. Different problems may need different responses.",
+            "C. Write something like “compare the two figures in the first paragraph”.",
+            "D. Being busy always proves that attention is effective.",
+            "E. That limit makes the pause easier to separate from abandoning the task.",
+            "F. Do not assume that every interruption solves the same problem.",
+            "G. One difficult session means the entire project must be cancelled."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 1,
+              "explanation": "B links distinct tiredness/information/distraction problems to the different responses next. A longer view, C next action, E boundary and F review fit later. D/G overstate one signal."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 4,
+              "explanation": "E refers to a return time/end event and prepares stepping away without abandoning the project. A/C/F concern later stages and B diagnosis. D/G do not define a useful pause."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 2,
+              "explanation": "C gives a specific next action, contrasted with finish everything and referenced by starting point. A/B/E/F concern pace, diagnosis, boundary and evaluation. D/G provide no restart instruction."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 5,
+              "explanation": "F introduces checking rather than assuming a universal remedy, leading to persistent obstacles. A longer view, B initial diagnosis, C next step and E boundary fit elsewhere. D/G are unsupported absolutes."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 0,
+              "explanation": "A develops judging across periods and prepares sustainable variation. B/C/E/F concern particular pauses. D confuses busyness with attention and G makes one session decisive."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade12-grammar-station-clock",
+          "title": "B. Taking a pause and examining a lens",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "The large lens in the maritime museum was no longer in ____1____ (it) original lighthouse. It stood at floor level, where visitors could see the rings of glass more easily. A guide explained that the display showed only one part of a much larger working system.\n\nThe glass had been cleaned before ____2____ (install), and the surrounding metalwork ____3____ (check) by specialists. The museum did not suggest that making the object shine was the same as making the old lighthouse operational again.\n\nWe compared the lens with a small demonstration model ____4____ used light to show a basic principle. The model made one relationship clear, but it did not reproduce every property of the original equipment. Its ____5____ (simple) was useful because the limits were explained.\n\nA visitor asked whether the glass had always looked exactly like this. The guide answered ____6____ (cautious). Some parts had been replaced during the object's working life, and the surviving records did not answer every question.\n\nI was impressed by her willingness ____7____ (distinguish) what was known from what remained uncertain. She invited us to look at a diagram rather than asking us to rely entirely ____8____ her words.\n\nBefore leaving, I bought a postcard with a photograph of the lighthouse. The picture gave me ____9____ different view, but not a complete one. Understanding the object required connecting several forms of ____10____ (inform), including an honest account of what each could show.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of it.",
+              "acceptedAnswers": [
+                "its"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "it",
+                  "it’s",
+                  "itself"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Its is the possessive determiner before original lighthouse. It is a pronoun, it’s a contraction and itself reflexive."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of install.",
+              "acceptedAnswers": [
+                "installation",
+                "being installed",
+                "having been installed"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "install",
+                  "installed"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Before installation uses the event noun; before being/having been installed uses a passive -ing clause. Bare install and installed without a finite subject/auxiliary do not directly complete it."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of check.",
+              "acceptedAnswers": [
+                "had been checked",
+                "was checked"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "checked",
+                  "were checked"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Singular metalwork receives checking. Past-perfect or simple passive fits earlier preparation; checked lacks auxiliary and were disagrees."
+            },
+            {
+              "prompt": "Fill gap 4 with one appropriate word.",
+              "acceptedAnswers": [
+                "that",
+                "which"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "where",
+                  "what"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Model is subject of that/which used. Who is human, where not subject and what does not follow this antecedent."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of simple.",
+              "acceptedAnswers": [
+                "simplicity"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "simple",
+                  "simply"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Its simplicity names the model’s simplified nature. Simple is adjective and simply adverb."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of cautious.",
+              "acceptedAnswers": [
+                "cautiously"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "cautious",
+                  "caution"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Cautiously modifies answered. Cautious is adjective and caution noun."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of distinguish.",
+              "acceptedAnswers": [
+                "to distinguish"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "distinguishing",
+                  "distinguish",
+                  "distinguished"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Willingness takes to distinguish. Other listed verb forms do not complete this noun-plus-infinitive construction."
+            },
+            {
+              "prompt": "Fill gap 8 with one appropriate word.",
+              "acceptedAnswers": [
+                "on",
+                "upon"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "from",
+                  "with",
+                  "at"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Rely on/upon expresses dependence. From/with/at do not complete rely here."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "a"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "an"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A different view uses a before consonant d. Other article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of inform.",
+              "acceptedAnswers": [
+                "information"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "inform",
+                  "informative"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Forms of information requires the content noun information. Inform is verb and informative adjective."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
