@@ -28,6 +28,22 @@ describe("明确登记的兼容迁移", () => {
       ]),
     ).toThrow();
   });
+  it("回退版本接受已核对的练习退役迁移，摘要变动则拒绝", () => {
+    const supersession = {
+      hash: "abe601bf211103949624799adf146eb5df39f80479760c8956b86ef2c4ee8657",
+      created_at: "1792713600000",
+    };
+    expect(() =>
+      assertCompatibleMigrationInventory(2, [previous, addition, supersession]),
+    ).not.toThrow();
+    expect(() =>
+      assertCompatibleMigrationInventory(2, [
+        previous,
+        addition,
+        { ...supersession, hash: "unknown" },
+      ]),
+    ).toThrow();
+  });
   it("未知额外迁移或重复迁移不能因总数更多而通过", () => {
     expect(() =>
       assertCompatibleMigrationInventory(1, [
