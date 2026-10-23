@@ -1,0 +1,1094 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b080",
+  "createdAt": "2026-10-23T23:45:19.357328+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary4.camera-shop-call-080",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "10·24新题 · A call to the camera shop",
+        "summary": "A call to the camera shop，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete five-question original: telephone dialogue, fictional story or four-entry information table. Task-family reference only; new vocabulary/difficulty provisional."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete primary readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author all-option/time/fee evidence review; no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary4.camera-shop-call-080",
+          "family": "reading_choice",
+          "label": "A call to the camera shop",
+          "candidateSHA256": "9b75ff8731c3f591ba4387db8a4b17a49a87588340d7de416dcf48fdff695427",
+          "authorCheckSHA256": "0c1abe11ff7d18f65e98a08fd2cbde33babfb8ba636edd434e6cbcc7ff89c26e",
+          "sourceGroupIds": [
+            "expansion.20261024.primary4.camera-shop-call-080#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b080；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A call to the camera shop\n\nMan: Hill Road Camera Shop. How can I help?\nZoe: Hello. I left a small bag in your shop yesterday. Have you found one?\nMan: We have two bags here. What colour is yours?\nZoe: It is grey, with a yellow star on the front.\nMan: Yes, I can see it. What is inside?\nZoe: A notebook and a pair of red gloves. There is no camera in it.\nMan: That matches this one. Please bring something with your name when you collect it.\nZoe: Can I come at six this evening?\nMan: We close at five thirty today. We open again at nine tomorrow.\nZoe: I have school tomorrow morning. Could Mum collect it for me?\nMan: Yes. Please give her your name and the description of the bag.\nZoe: She can come at four today. Thank you for keeping it safe.\nMan: You’re welcome. We will keep it behind the counter."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary4.camera-shop-call-080.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is on Zoe’s bag?",
+            "material": "A call to the camera shop\n\nMan: Hill Road Camera Shop. How can I help?\nZoe: Hello. I left a small bag in your shop yesterday. Have you found one?\nMan: We have two bags here. What colour is yours?\nZoe: It is grey, with a yellow star on the front.\nMan: Yes, I can see it. What is inside?\nZoe: A notebook and a pair of red gloves. There is no camera in it.\nMan: That matches this one. Please bring something with your name when you collect it.\nZoe: Can I come at six this evening?\nMan: We close at five thirty today. We open again at nine tomorrow.\nZoe: I have school tomorrow morning. Could Mum collect it for me?\nMan: Yes. Please give her your name and the description of the bag.\nZoe: She can come at four today. Thank you for keeping it safe.\nMan: You’re welcome. We will keep it behind the counter.",
+            "explanation": "The bag has a yellow star; red describes gloves and no flower is mentioned.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A red camera"
+              },
+              {
+                "id": "o1",
+                "text": "A yellow star"
+              },
+              {
+                "id": "o2",
+                "text": "A grey flower"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.camera-shop-call-080.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is inside the bag?",
+            "material": "A call to the camera shop\n\nMan: Hill Road Camera Shop. How can I help?\nZoe: Hello. I left a small bag in your shop yesterday. Have you found one?\nMan: We have two bags here. What colour is yours?\nZoe: It is grey, with a yellow star on the front.\nMan: Yes, I can see it. What is inside?\nZoe: A notebook and a pair of red gloves. There is no camera in it.\nMan: That matches this one. Please bring something with your name when you collect it.\nZoe: Can I come at six this evening?\nMan: We close at five thirty today. We open again at nine tomorrow.\nZoe: I have school tomorrow morning. Could Mum collect it for me?\nMan: Yes. Please give her your name and the description of the bag.\nZoe: She can come at four today. Thank you for keeping it safe.\nMan: You’re welcome. We will keep it behind the counter.",
+            "explanation": "Zoe lists notebook and gloves, explicitly no camera.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Two notebooks and a star"
+              },
+              {
+                "id": "o1",
+                "text": "A camera and yellow shoes"
+              },
+              {
+                "id": "o2",
+                "text": "A notebook and red gloves"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary4.camera-shop-call-080.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why can Zoe not collect it at six today?",
+            "material": "A call to the camera shop\n\nMan: Hill Road Camera Shop. How can I help?\nZoe: Hello. I left a small bag in your shop yesterday. Have you found one?\nMan: We have two bags here. What colour is yours?\nZoe: It is grey, with a yellow star on the front.\nMan: Yes, I can see it. What is inside?\nZoe: A notebook and a pair of red gloves. There is no camera in it.\nMan: That matches this one. Please bring something with your name when you collect it.\nZoe: Can I come at six this evening?\nMan: We close at five thirty today. We open again at nine tomorrow.\nZoe: I have school tomorrow morning. Could Mum collect it for me?\nMan: Yes. Please give her your name and the description of the bag.\nZoe: She can come at four today. Thank you for keeping it safe.\nMan: You’re welcome. We will keep it behind the counter.",
+            "explanation": "Closing is17:30. The shop is open earlier and holds the bag.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The shop is closed all day"
+              },
+              {
+                "id": "o1",
+                "text": "The shop closes before six"
+              },
+              {
+                "id": "o2",
+                "text": "The bag is at her school"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.camera-shop-call-080.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who is expected to collect the bag?",
+            "material": "A call to the camera shop\n\nMan: Hill Road Camera Shop. How can I help?\nZoe: Hello. I left a small bag in your shop yesterday. Have you found one?\nMan: We have two bags here. What colour is yours?\nZoe: It is grey, with a yellow star on the front.\nMan: Yes, I can see it. What is inside?\nZoe: A notebook and a pair of red gloves. There is no camera in it.\nMan: That matches this one. Please bring something with your name when you collect it.\nZoe: Can I come at six this evening?\nMan: We close at five thirty today. We open again at nine tomorrow.\nZoe: I have school tomorrow morning. Could Mum collect it for me?\nMan: Yes. Please give her your name and the description of the bag.\nZoe: She can come at four today. Thank you for keeping it safe.\nMan: You’re welcome. We will keep it behind the counter.",
+            "explanation": "Zoe arranges for Mum to collect it at16:00.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A man from school"
+              },
+              {
+                "id": "o1",
+                "text": "Zoe’s teacher"
+              },
+              {
+                "id": "o2",
+                "text": "Zoe’s mum"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary4.camera-shop-call-080.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where will the shop keep the bag?",
+            "material": "A call to the camera shop\n\nMan: Hill Road Camera Shop. How can I help?\nZoe: Hello. I left a small bag in your shop yesterday. Have you found one?\nMan: We have two bags here. What colour is yours?\nZoe: It is grey, with a yellow star on the front.\nMan: Yes, I can see it. What is inside?\nZoe: A notebook and a pair of red gloves. There is no camera in it.\nMan: That matches this one. Please bring something with your name when you collect it.\nZoe: Can I come at six this evening?\nMan: We close at five thirty today. We open again at nine tomorrow.\nZoe: I have school tomorrow morning. Could Mum collect it for me?\nMan: Yes. Please give her your name and the description of the bag.\nZoe: She can come at four today. Thank you for keeping it safe.\nMan: You’re welcome. We will keep it behind the counter.",
+            "explanation": "The man states behind the counter, not outside or on a bus.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Outside the front door"
+              },
+              {
+                "id": "o1",
+                "text": "On a school bus"
+              },
+              {
+                "id": "o2",
+                "text": "Behind the counter"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "3808a41e91ba683c9a6dd7d7cc368fb722d4dd672e64620fbec4dfd41ae3136b",
+      "reviewNotes": "Six complete primary readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author all-option/time/fee evidence review; no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary4.farm-visit-call-080",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "10·24新题 · Calling about a farm visit",
+        "summary": "Calling about a farm visit，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete five-question original: telephone dialogue, fictional story or four-entry information table. Task-family reference only; new vocabulary/difficulty provisional."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete primary readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author all-option/time/fee evidence review; no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary4.farm-visit-call-080",
+          "family": "reading_choice",
+          "label": "Calling about a farm visit",
+          "candidateSHA256": "b2a7e280a2849fb084fe8597ef4aa1d3ca80b2829b252ed844601c101f1d6aa1",
+          "authorCheckSHA256": "664642c7b2bcd148a142b87e1739897213a5eaabf0bfa19ac83f0dc6d9b38d7e",
+          "sourceGroupIds": [
+            "expansion.20261024.primary4.farm-visit-call-080#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b080；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Calling about a farm visit\n\nWoman: Green Lane Farm. Good morning.\nAli: Hello. Our family would like to visit on Sunday. What time do you open?\nWoman: At ten. The last entry is at three, and the farm closes at four.\nAli: Can we see the goats being fed?\nWoman: Yes. That happens at eleven, near the red barn. Please watch with a staff member. Visitors must not give the animals their own food.\nAli: My sister is five. Does she need a ticket?\nWoman: Yes. Children under four are free. A child ticket is four pounds, and an adult ticket is seven.\nAli: Can we bring lunch?\nWoman: Yes. Use the picnic tables by the pond. The café also sells sandwiches.\nAli: What if it rains?\nWoman: The farm still opens, but some paths may be muddy. Wear suitable shoes. If there is dangerous weather, we announce a closure on our booking page.\nAli: Thank you. We will check before leaving home."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary4.farm-visit-call-080.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When is the last entry?",
+            "material": "Calling about a farm visit\n\nWoman: Green Lane Farm. Good morning.\nAli: Hello. Our family would like to visit on Sunday. What time do you open?\nWoman: At ten. The last entry is at three, and the farm closes at four.\nAli: Can we see the goats being fed?\nWoman: Yes. That happens at eleven, near the red barn. Please watch with a staff member. Visitors must not give the animals their own food.\nAli: My sister is five. Does she need a ticket?\nWoman: Yes. Children under four are free. A child ticket is four pounds, and an adult ticket is seven.\nAli: Can we bring lunch?\nWoman: Yes. Use the picnic tables by the pond. The café also sells sandwiches.\nAli: What if it rains?\nWoman: The farm still opens, but some paths may be muddy. Wear suitable shoes. If there is dangerous weather, we announce a closure on our booking page.\nAli: Thank you. We will check before leaving home.",
+            "explanation": "Last entry is15:00;16:00 is closure and11:00 feeding.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At eleven"
+              },
+              {
+                "id": "o1",
+                "text": "At four"
+              },
+              {
+                "id": "o2",
+                "text": "At three"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary4.farm-visit-call-080.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where can visitors watch the goats being fed?",
+            "material": "Calling about a farm visit\n\nWoman: Green Lane Farm. Good morning.\nAli: Hello. Our family would like to visit on Sunday. What time do you open?\nWoman: At ten. The last entry is at three, and the farm closes at four.\nAli: Can we see the goats being fed?\nWoman: Yes. That happens at eleven, near the red barn. Please watch with a staff member. Visitors must not give the animals their own food.\nAli: My sister is five. Does she need a ticket?\nWoman: Yes. Children under four are free. A child ticket is four pounds, and an adult ticket is seven.\nAli: Can we bring lunch?\nWoman: Yes. Use the picnic tables by the pond. The café also sells sandwiches.\nAli: What if it rains?\nWoman: The farm still opens, but some paths may be muddy. Wear suitable shoes. If there is dangerous weather, we announce a closure on our booking page.\nAli: Thank you. We will check before leaving home.",
+            "explanation": "Feeding is near the barn; café and tables are food areas for people.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Near the red barn"
+              },
+              {
+                "id": "o1",
+                "text": "Inside the café"
+              },
+              {
+                "id": "o2",
+                "text": "At the pond tables"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.farm-visit-call-080.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Does Ali’s five-year-old sister need a ticket?",
+            "material": "Calling about a farm visit\n\nWoman: Green Lane Farm. Good morning.\nAli: Hello. Our family would like to visit on Sunday. What time do you open?\nWoman: At ten. The last entry is at three, and the farm closes at four.\nAli: Can we see the goats being fed?\nWoman: Yes. That happens at eleven, near the red barn. Please watch with a staff member. Visitors must not give the animals their own food.\nAli: My sister is five. Does she need a ticket?\nWoman: Yes. Children under four are free. A child ticket is four pounds, and an adult ticket is seven.\nAli: Can we bring lunch?\nWoman: Yes. Use the picnic tables by the pond. The café also sells sandwiches.\nAli: What if it rains?\nWoman: The farm still opens, but some paths may be muddy. Wear suitable shoes. If there is dangerous weather, we announce a closure on our booking page.\nAli: Thank you. We will check before leaving home.",
+            "explanation": "Only under-four children are free. A five-year-old needs the child ticket.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "No, everyone under six is free"
+              },
+              {
+                "id": "o1",
+                "text": "Yes, a child ticket"
+              },
+              {
+                "id": "o2",
+                "text": "Yes, an adult ticket"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.farm-visit-call-080.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where may the family eat their own lunch?",
+            "material": "Calling about a farm visit\n\nWoman: Green Lane Farm. Good morning.\nAli: Hello. Our family would like to visit on Sunday. What time do you open?\nWoman: At ten. The last entry is at three, and the farm closes at four.\nAli: Can we see the goats being fed?\nWoman: Yes. That happens at eleven, near the red barn. Please watch with a staff member. Visitors must not give the animals their own food.\nAli: My sister is five. Does she need a ticket?\nWoman: Yes. Children under four are free. A child ticket is four pounds, and an adult ticket is seven.\nAli: Can we bring lunch?\nWoman: Yes. Use the picnic tables by the pond. The café also sells sandwiches.\nAli: What if it rains?\nWoman: The farm still opens, but some paths may be muddy. Wear suitable shoes. If there is dangerous weather, we announce a closure on our booking page.\nAli: Thank you. We will check before leaving home.",
+            "explanation": "Own lunches are allowed at the picnic tables. Animal areas/path dining are not permitted locations stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "On every muddy path"
+              },
+              {
+                "id": "o1",
+                "text": "At the picnic tables"
+              },
+              {
+                "id": "o2",
+                "text": "In the goat pen"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.farm-visit-call-080.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should the family check before travelling?",
+            "material": "Calling about a farm visit\n\nWoman: Green Lane Farm. Good morning.\nAli: Hello. Our family would like to visit on Sunday. What time do you open?\nWoman: At ten. The last entry is at three, and the farm closes at four.\nAli: Can we see the goats being fed?\nWoman: Yes. That happens at eleven, near the red barn. Please watch with a staff member. Visitors must not give the animals their own food.\nAli: My sister is five. Does she need a ticket?\nWoman: Yes. Children under four are free. A child ticket is four pounds, and an adult ticket is seven.\nAli: Can we bring lunch?\nWoman: Yes. Use the picnic tables by the pond. The café also sells sandwiches.\nAli: What if it rains?\nWoman: The farm still opens, but some paths may be muddy. Wear suitable shoes. If there is dangerous weather, we announce a closure on our booking page.\nAli: Thank you. We will check before leaving home.",
+            "explanation": "Dangerous-weather closures appear on the booking page. Animal feeding from visitors is prohibited and ticket rules are already stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Whether all children are free"
+              },
+              {
+                "id": "o1",
+                "text": "Whether goats can eat sandwiches"
+              },
+              {
+                "id": "o2",
+                "text": "The booking page for any closure"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "84a205941a990446206109e2b7a4dc2bb7425a07bd2163bf6dee108bb362b279",
+      "reviewNotes": "Six complete primary readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author all-option/time/fee evidence review; no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary5.moon-in-puddle-080",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "10·24新题 · The moon in the puddle",
+        "summary": "The moon in the puddle，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.frog",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete five-question original: telephone dialogue, fictional story or four-entry information table. Task-family reference only; new vocabulary/difficulty provisional."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete primary readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author all-option/time/fee evidence review; no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary5.moon-in-puddle-080",
+          "family": "reading_choice",
+          "label": "The moon in the puddle",
+          "candidateSHA256": "01f62409bf06acfc5bd953efc66854e574075e03c49abfa1816e6a5e09ccc26a",
+          "authorCheckSHA256": "8b396482f6e158ef32f81668ea6466cecacc2ec7454a29cad32ee63a23317498",
+          "sourceGroupIds": [
+            "expansion.20261024.primary5.moon-in-puddle-080#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b080；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The moon in the puddle\n\nIn this story, a young fox sees the moon reflected in a puddle. He thinks it has fallen from the sky. He runs to Owl's tree and calls for help.\n\nOwl looks up. The real moon is still above the hill, but Fox is staring at the water. \"Look carefully,\" says Owl. Before she can explain, Fox fetches a small bucket.\n\nHe lowers it into the puddle. The water shakes, and the bright circle breaks into many moving pieces. Fox is worried that he has broken the moon. He sits down so suddenly that his tail splashes into the water too.\n\nOwl waits until the puddle is still. The circle comes back. She asks Fox to look up, then down. At last he sees the two bright shapes together.\n\n\"One moon, two views,\" he says slowly.\n\nFox puts the bucket away. On his walk home, he sees the moon in a window and again in the river. This time he does not call for help. He counts the places where its light appears, while the real moon travels above him."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary5.moon-in-puddle-080.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does Fox first call Owl?",
+            "material": "The moon in the puddle\n\nIn this story, a young fox sees the moon reflected in a puddle. He thinks it has fallen from the sky. He runs to Owl's tree and calls for help.\n\nOwl looks up. The real moon is still above the hill, but Fox is staring at the water. \"Look carefully,\" says Owl. Before she can explain, Fox fetches a small bucket.\n\nHe lowers it into the puddle. The water shakes, and the bright circle breaks into many moving pieces. Fox is worried that he has broken the moon. He sits down so suddenly that his tail splashes into the water too.\n\nOwl waits until the puddle is still. The circle comes back. She asks Fox to look up, then down. At last he sees the two bright shapes together.\n\n\"One moon, two views,\" he says slowly.\n\nFox puts the bucket away. On his walk home, he sees the moon in a window and again in the river. This time he does not call for help. He counts the places where its light appears, while the real moon travels above him.",
+            "explanation": "He mistakes the reflection for a fallen moon. The bucket comes later and his tail is present.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He thinks the moon has fallen"
+              },
+              {
+                "id": "o1",
+                "text": "He wants a new bucket"
+              },
+              {
+                "id": "o2",
+                "text": "He cannot find his tail"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.moon-in-puddle-080.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happens when the bucket enters the puddle?",
+            "material": "The moon in the puddle\n\nIn this story, a young fox sees the moon reflected in a puddle. He thinks it has fallen from the sky. He runs to Owl's tree and calls for help.\n\nOwl looks up. The real moon is still above the hill, but Fox is staring at the water. \"Look carefully,\" says Owl. Before she can explain, Fox fetches a small bucket.\n\nHe lowers it into the puddle. The water shakes, and the bright circle breaks into many moving pieces. Fox is worried that he has broken the moon. He sits down so suddenly that his tail splashes into the water too.\n\nOwl waits until the puddle is still. The circle comes back. She asks Fox to look up, then down. At last he sees the two bright shapes together.\n\n\"One moon, two views,\" he says slowly.\n\nFox puts the bucket away. On his walk home, he sees the moon in a window and again in the river. This time he does not call for help. He counts the places where its light appears, while the real moon travels above him.",
+            "explanation": "Disturbed water changes the reflection; the moon/tree do not move that way.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The real moon falls from the hill"
+              },
+              {
+                "id": "o1",
+                "text": "The reflection breaks into moving shapes"
+              },
+              {
+                "id": "o2",
+                "text": "Owl’s tree disappears"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary5.moon-in-puddle-080.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does Owl wait?",
+            "material": "The moon in the puddle\n\nIn this story, a young fox sees the moon reflected in a puddle. He thinks it has fallen from the sky. He runs to Owl's tree and calls for help.\n\nOwl looks up. The real moon is still above the hill, but Fox is staring at the water. \"Look carefully,\" says Owl. Before she can explain, Fox fetches a small bucket.\n\nHe lowers it into the puddle. The water shakes, and the bright circle breaks into many moving pieces. Fox is worried that he has broken the moon. He sits down so suddenly that his tail splashes into the water too.\n\nOwl waits until the puddle is still. The circle comes back. She asks Fox to look up, then down. At last he sees the two bright shapes together.\n\n\"One moon, two views,\" he says slowly.\n\nFox puts the bucket away. On his walk home, he sees the moon in a window and again in the river. This time he does not call for help. He counts the places where its light appears, while the real moon travels above him.",
+            "explanation": "Still water restores a clear reflection. Sunrise/purchase are not part of the scene.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The water needs to become still"
+              },
+              {
+                "id": "o1",
+                "text": "She wants Fox to buy a window"
+              },
+              {
+                "id": "o2",
+                "text": "She is waiting for the sun to rise"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.moon-in-puddle-080.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What helps Fox understand?",
+            "material": "The moon in the puddle\n\nIn this story, a young fox sees the moon reflected in a puddle. He thinks it has fallen from the sky. He runs to Owl's tree and calls for help.\n\nOwl looks up. The real moon is still above the hill, but Fox is staring at the water. \"Look carefully,\" says Owl. Before she can explain, Fox fetches a small bucket.\n\nHe lowers it into the puddle. The water shakes, and the bright circle breaks into many moving pieces. Fox is worried that he has broken the moon. He sits down so suddenly that his tail splashes into the water too.\n\nOwl waits until the puddle is still. The circle comes back. She asks Fox to look up, then down. At last he sees the two bright shapes together.\n\n\"One moon, two views,\" he says slowly.\n\nFox puts the bucket away. On his walk home, he sees the moon in a window and again in the river. This time he does not call for help. He counts the places where its light appears, while the real moon travels above him.",
+            "explanation": "He compares real moon and reflection. The other actions do not occur.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Closing his eyes"
+              },
+              {
+                "id": "o1",
+                "text": "Looking up and down"
+              },
+              {
+                "id": "o2",
+                "text": "Breaking the bucket"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary5.moon-in-puddle-080.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Fox do on the way home?",
+            "material": "The moon in the puddle\n\nIn this story, a young fox sees the moon reflected in a puddle. He thinks it has fallen from the sky. He runs to Owl's tree and calls for help.\n\nOwl looks up. The real moon is still above the hill, but Fox is staring at the water. \"Look carefully,\" says Owl. Before she can explain, Fox fetches a small bucket.\n\nHe lowers it into the puddle. The water shakes, and the bright circle breaks into many moving pieces. Fox is worried that he has broken the moon. He sits down so suddenly that his tail splashes into the water too.\n\nOwl waits until the puddle is still. The circle comes back. She asks Fox to look up, then down. At last he sees the two bright shapes together.\n\n\"One moon, two views,\" he says slowly.\n\nFox puts the bucket away. On his walk home, he sees the moon in a window and again in the river. This time he does not call for help. He counts the places where its light appears, while the real moon travels above him.",
+            "explanation": "He recognises window/river appearances without calling for help. No rescue or captured moon occurs.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Carries the moon in his bucket"
+              },
+              {
+                "id": "o1",
+                "text": "Recognises more reflections"
+              },
+              {
+                "id": "o2",
+                "text": "Asks everyone to rescue the moon"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "c555481c32efb61c70757c7e11ca83bf2a359da198dd9249acd30483894af013",
+      "reviewNotes": "Six complete primary readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author all-option/time/fee evidence review; no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary5.bell-for-post-080",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "10·24新题 · The little post bell",
+        "summary": "The little post bell，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.frog",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete five-question original: telephone dialogue, fictional story or four-entry information table. Task-family reference only; new vocabulary/difficulty provisional."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete primary readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author all-option/time/fee evidence review; no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary5.bell-for-post-080",
+          "family": "reading_choice",
+          "label": "The little post bell",
+          "candidateSHA256": "406b4d138d914ab1ca64eb17850c33949fca66ae4b068094193cb4d66fc0d1fe",
+          "authorCheckSHA256": "6a028f00978fc557cb917231efdea32e6cc95330bf6dece85ff729566713853a",
+          "sourceGroupIds": [
+            "expansion.20261024.primary5.bell-for-post-080#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b080；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The little post bell\n\nIn this fictional village, Rabbit delivers letters along a narrow lane. Every house has a small box by the gate. Rabbit usually leaves a letter and rings a bell to tell the family it has arrived.\n\nOne morning, the bell at Hedgehog's gate makes no sound. Rabbit taps it twice, then leaves the letter safely in the box. He decides to mention the silent bell when he returns.\n\nThat afternoon, Hedgehog is waiting outside. \"I wondered when you would come,\" she says. She has been expecting a letter from her sister. Rabbit points to the box, and Hedgehog finds the envelope inside.\n\n\"The letter was here all along,\" she says. \"I listened for the bell instead of looking.\"\n\nThey inspect the bell together. A piece of dry leaf is caught inside. Hedgehog removes it, and the bell rings again. She thanks Rabbit for delivering the letter even when the signal failed.\n\nThe next day, Rabbit still rings the bell. Hedgehog enjoys its familiar sound, but she checks the box too. The bell is useful news about a delivery; it is not the letter itself."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary5.bell-for-post-080.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where does Rabbit put letters?",
+            "material": "The little post bell\n\nIn this fictional village, Rabbit delivers letters along a narrow lane. Every house has a small box by the gate. Rabbit usually leaves a letter and rings a bell to tell the family it has arrived.\n\nOne morning, the bell at Hedgehog's gate makes no sound. Rabbit taps it twice, then leaves the letter safely in the box. He decides to mention the silent bell when he returns.\n\nThat afternoon, Hedgehog is waiting outside. \"I wondered when you would come,\" she says. She has been expecting a letter from her sister. Rabbit points to the box, and Hedgehog finds the envelope inside.\n\n\"The letter was here all along,\" she says. \"I listened for the bell instead of looking.\"\n\nThey inspect the bell together. A piece of dry leaf is caught inside. Hedgehog removes it, and the bell rings again. She thanks Rabbit for delivering the letter even when the signal failed.\n\nThe next day, Rabbit still rings the bell. Hedgehog enjoys its familiar sound, but she checks the box too. The bell is useful news about a delivery; it is not the letter itself.",
+            "explanation": "Each gate has a letterbox. Beds/bell interior are not delivery places.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "In boxes by the gates"
+              },
+              {
+                "id": "o1",
+                "text": "Inside the village bell"
+              },
+              {
+                "id": "o2",
+                "text": "Under every bed"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.bell-for-post-080.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does Hedgehog wait outside?",
+            "material": "The little post bell\n\nIn this fictional village, Rabbit delivers letters along a narrow lane. Every house has a small box by the gate. Rabbit usually leaves a letter and rings a bell to tell the family it has arrived.\n\nOne morning, the bell at Hedgehog's gate makes no sound. Rabbit taps it twice, then leaves the letter safely in the box. He decides to mention the silent bell when he returns.\n\nThat afternoon, Hedgehog is waiting outside. \"I wondered when you would come,\" she says. She has been expecting a letter from her sister. Rabbit points to the box, and Hedgehog finds the envelope inside.\n\n\"The letter was here all along,\" she says. \"I listened for the bell instead of looking.\"\n\nThey inspect the bell together. A piece of dry leaf is caught inside. Hedgehog removes it, and the bell rings again. She thanks Rabbit for delivering the letter even when the signal failed.\n\nThe next day, Rabbit still rings the bell. Hedgehog enjoys its familiar sound, but she checks the box too. The bell is useful news about a delivery; it is not the letter itself.",
+            "explanation": "Her sister’s expected letter is stated. Stopping post/lost bicycle are invented.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She wants to stop all deliveries"
+              },
+              {
+                "id": "o1",
+                "text": "She has lost Rabbit’s bicycle"
+              },
+              {
+                "id": "o2",
+                "text": "She expects a letter from her sister"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary5.bell-for-post-080.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What has happened to the letter that morning?",
+            "material": "The little post bell\n\nIn this fictional village, Rabbit delivers letters along a narrow lane. Every house has a small box by the gate. Rabbit usually leaves a letter and rings a bell to tell the family it has arrived.\n\nOne morning, the bell at Hedgehog's gate makes no sound. Rabbit taps it twice, then leaves the letter safely in the box. He decides to mention the silent bell when he returns.\n\nThat afternoon, Hedgehog is waiting outside. \"I wondered when you would come,\" she says. She has been expecting a letter from her sister. Rabbit points to the box, and Hedgehog finds the envelope inside.\n\n\"The letter was here all along,\" she says. \"I listened for the bell instead of looking.\"\n\nThey inspect the bell together. A piece of dry leaf is caught inside. Hedgehog removes it, and the bell rings again. She thanks Rabbit for delivering the letter even when the signal failed.\n\nThe next day, Rabbit still rings the bell. Hedgehog enjoys its familiar sound, but she checks the box too. The bell is useful news about a delivery; it is not the letter itself.",
+            "explanation": "Rabbit leaves it safely in the box despite the silent bell.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is still at her sister’s house"
+              },
+              {
+                "id": "o1",
+                "text": "It has been eaten by Rabbit"
+              },
+              {
+                "id": "o2",
+                "text": "It has already been delivered"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary5.bell-for-post-080.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What stops the bell from sounding?",
+            "material": "The little post bell\n\nIn this fictional village, Rabbit delivers letters along a narrow lane. Every house has a small box by the gate. Rabbit usually leaves a letter and rings a bell to tell the family it has arrived.\n\nOne morning, the bell at Hedgehog's gate makes no sound. Rabbit taps it twice, then leaves the letter safely in the box. He decides to mention the silent bell when he returns.\n\nThat afternoon, Hedgehog is waiting outside. \"I wondered when you would come,\" she says. She has been expecting a letter from her sister. Rabbit points to the box, and Hedgehog finds the envelope inside.\n\n\"The letter was here all along,\" she says. \"I listened for the bell instead of looking.\"\n\nThey inspect the bell together. A piece of dry leaf is caught inside. Hedgehog removes it, and the bell rings again. She thanks Rabbit for delivering the letter even when the signal failed.\n\nThe next day, Rabbit still rings the bell. Hedgehog enjoys its familiar sound, but she checks the box too. The bell is useful news about a delivery; it is not the letter itself.",
+            "explanation": "The leaf is removed and sound returns. The alternatives are not described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A broken letterbox gate"
+              },
+              {
+                "id": "o1",
+                "text": "A sleeping bird on the roof"
+              },
+              {
+                "id": "o2",
+                "text": "A dry leaf caught inside"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary5.bell-for-post-080.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Hedgehog do afterwards?",
+            "material": "The little post bell\n\nIn this fictional village, Rabbit delivers letters along a narrow lane. Every house has a small box by the gate. Rabbit usually leaves a letter and rings a bell to tell the family it has arrived.\n\nOne morning, the bell at Hedgehog's gate makes no sound. Rabbit taps it twice, then leaves the letter safely in the box. He decides to mention the silent bell when he returns.\n\nThat afternoon, Hedgehog is waiting outside. \"I wondered when you would come,\" she says. She has been expecting a letter from her sister. Rabbit points to the box, and Hedgehog finds the envelope inside.\n\n\"The letter was here all along,\" she says. \"I listened for the bell instead of looking.\"\n\nThey inspect the bell together. A piece of dry leaf is caught inside. Hedgehog removes it, and the bell rings again. She thanks Rabbit for delivering the letter even when the signal failed.\n\nThe next day, Rabbit still rings the bell. Hedgehog enjoys its familiar sound, but she checks the box too. The bell is useful news about a delivery; it is not the letter itself.",
+            "explanation": "She keeps the useful signal while checking the actual delivery. She does not destroy or refuse the system.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Uses the bell and also checks the box"
+              },
+              {
+                "id": "o1",
+                "text": "Throws the letterbox away"
+              },
+              {
+                "id": "o2",
+                "text": "Refuses all future letters"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "6915ab71927dc3d62a3c0ca4286856818e299e4caf7d8ff8df4ee5b83a32c8f1",
+      "reviewNotes": "Six complete primary readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author all-option/time/fee evidence review; no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary6.four-family-trips-080",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "10·24新题 · Four family outings",
+        "summary": "Four family outings，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.dongcheng2025.booktable",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete five-question original: telephone dialogue, fictional story or four-entry information table. Task-family reference only; new vocabulary/difficulty provisional."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete primary readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author all-option/time/fee evidence review; no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary6.four-family-trips-080",
+          "family": "reading_choice",
+          "label": "Four family outings",
+          "candidateSHA256": "566f1667f4f45f139fb54ab29981a1a850504740a58b536ef4db3ea84d074ac0",
+          "authorCheckSHA256": "96fe9fe7f53f3ca027515823dd5e427d20886e43361cf79d00733f16ce22f22e",
+          "sourceGroupIds": [
+            "expansion.20261024.primary6.four-family-trips-080#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b080；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four family outings\n\nThe town visitor office offers four outings. The prices below are per person. Each outing must be booked before Friday noon.\n\n| Outing | Time | Age | Price | Important information |\n| --- | --- | --- | --- | --- |\n| Canal Boat | Saturday 10:00–11:30 | All ages | £8 | Children under 12 must come with an adult. Life jackets supplied. |\n| Hill Walk | Saturday 14:00–16:30 | 10 and over | £5 | Bring water and walking shoes. Uneven ground; no pushchairs. |\n| Puppet Theatre | Sunday 11:00–12:00 | All ages | £6 | Indoors. Seats reserved at booking. No food during the show. |\n| Garden Trail | Sunday 14:00–15:30 | All ages | £4 | Outdoor picture clues. One adult must accompany each family group. |\n\nAn adult needs a ticket as well as a child. Prices do not include travel to the starting point. Arrive fifteen minutes before the listed start. The office will contact booked visitors if an outing is cancelled. Boat and walking outings may change in unsuitable weather; the indoor show is unaffected by rain. Ask about access needs before paying, since the routes and venues differ."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary6.four-family-trips-080.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which outing is suitable for a rainy-day indoor activity?",
+            "material": "Four family outings\n\nThe town visitor office offers four outings. The prices below are per person. Each outing must be booked before Friday noon.\n\n| Outing | Time | Age | Price | Important information |\n| --- | --- | --- | --- | --- |\n| Canal Boat | Saturday 10:00–11:30 | All ages | £8 | Children under 12 must come with an adult. Life jackets supplied. |\n| Hill Walk | Saturday 14:00–16:30 | 10 and over | £5 | Bring water and walking shoes. Uneven ground; no pushchairs. |\n| Puppet Theatre | Sunday 11:00–12:00 | All ages | £6 | Indoors. Seats reserved at booking. No food during the show. |\n| Garden Trail | Sunday 14:00–15:30 | All ages | £4 | Outdoor picture clues. One adult must accompany each family group. |\n\nAn adult needs a ticket as well as a child. Prices do not include travel to the starting point. Arrive fifteen minutes before the listed start. The office will contact booked visitors if an outing is cancelled. Boat and walking outings may change in unsuitable weather; the indoor show is unaffected by rain. Ask about access needs before paying, since the routes and venues differ.",
+            "explanation": "Theatre is explicitly indoors; walk/trail are outdoor activities.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Garden Trail"
+              },
+              {
+                "id": "o1",
+                "text": "Puppet Theatre"
+              },
+              {
+                "id": "o2",
+                "text": "Hill Walk"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-family-trips-080.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When should Canal Boat visitors arrive?",
+            "material": "Four family outings\n\nThe town visitor office offers four outings. The prices below are per person. Each outing must be booked before Friday noon.\n\n| Outing | Time | Age | Price | Important information |\n| --- | --- | --- | --- | --- |\n| Canal Boat | Saturday 10:00–11:30 | All ages | £8 | Children under 12 must come with an adult. Life jackets supplied. |\n| Hill Walk | Saturday 14:00–16:30 | 10 and over | £5 | Bring water and walking shoes. Uneven ground; no pushchairs. |\n| Puppet Theatre | Sunday 11:00–12:00 | All ages | £6 | Indoors. Seats reserved at booking. No food during the show. |\n| Garden Trail | Sunday 14:00–15:30 | All ages | £4 | Outdoor picture clues. One adult must accompany each family group. |\n\nAn adult needs a ticket as well as a child. Prices do not include travel to the starting point. Arrive fifteen minutes before the listed start. The office will contact booked visitors if an outing is cancelled. Boat and walking outings may change in unsuitable weather; the indoor show is unaffected by rain. Ask about access needs before paying, since the routes and venues differ.",
+            "explanation": "Arrival is15 minutes before10:00 Saturday, hence9:45.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At 10:15 on Saturday"
+              },
+              {
+                "id": "o1",
+                "text": "At 9:45 on Saturday"
+              },
+              {
+                "id": "o2",
+                "text": "At 10:45 on Sunday"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-family-trips-080.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How much do one adult and one child pay for Garden Trail?",
+            "material": "Four family outings\n\nThe town visitor office offers four outings. The prices below are per person. Each outing must be booked before Friday noon.\n\n| Outing | Time | Age | Price | Important information |\n| --- | --- | --- | --- | --- |\n| Canal Boat | Saturday 10:00–11:30 | All ages | £8 | Children under 12 must come with an adult. Life jackets supplied. |\n| Hill Walk | Saturday 14:00–16:30 | 10 and over | £5 | Bring water and walking shoes. Uneven ground; no pushchairs. |\n| Puppet Theatre | Sunday 11:00–12:00 | All ages | £6 | Indoors. Seats reserved at booking. No food during the show. |\n| Garden Trail | Sunday 14:00–15:30 | All ages | £4 | Outdoor picture clues. One adult must accompany each family group. |\n\nAn adult needs a ticket as well as a child. Prices do not include travel to the starting point. Arrive fifteen minutes before the listed start. The office will contact booked visitors if an outing is cancelled. Boat and walking outings may change in unsuitable weather; the indoor show is unaffected by rain. Ask about access needs before paying, since the routes and venues differ.",
+            "explanation": "Each pays£4, total£8. Four is one ticket, twelve not the two-person trail total.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "£4"
+              },
+              {
+                "id": "o1",
+                "text": "£12"
+              },
+              {
+                "id": "o2",
+                "text": "£8"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-family-trips-080.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which outing does not allow pushchairs?",
+            "material": "Four family outings\n\nThe town visitor office offers four outings. The prices below are per person. Each outing must be booked before Friday noon.\n\n| Outing | Time | Age | Price | Important information |\n| --- | --- | --- | --- | --- |\n| Canal Boat | Saturday 10:00–11:30 | All ages | £8 | Children under 12 must come with an adult. Life jackets supplied. |\n| Hill Walk | Saturday 14:00–16:30 | 10 and over | £5 | Bring water and walking shoes. Uneven ground; no pushchairs. |\n| Puppet Theatre | Sunday 11:00–12:00 | All ages | £6 | Indoors. Seats reserved at booking. No food during the show. |\n| Garden Trail | Sunday 14:00–15:30 | All ages | £4 | Outdoor picture clues. One adult must accompany each family group. |\n\nAn adult needs a ticket as well as a child. Prices do not include travel to the starting point. Arrive fifteen minutes before the listed start. The office will contact booked visitors if an outing is cancelled. Boat and walking outings may change in unsuitable weather; the indoor show is unaffected by rain. Ask about access needs before paying, since the routes and venues differ.",
+            "explanation": "Hill Walk explicitly excludes pushchairs due to uneven ground. The other notices do not state that rule.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Puppet Theatre"
+              },
+              {
+                "id": "o1",
+                "text": "Hill Walk"
+              },
+              {
+                "id": "o2",
+                "text": "Canal Boat"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-family-trips-080.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must happen before Friday noon?",
+            "material": "Four family outings\n\nThe town visitor office offers four outings. The prices below are per person. Each outing must be booked before Friday noon.\n\n| Outing | Time | Age | Price | Important information |\n| --- | --- | --- | --- | --- |\n| Canal Boat | Saturday 10:00–11:30 | All ages | £8 | Children under 12 must come with an adult. Life jackets supplied. |\n| Hill Walk | Saturday 14:00–16:30 | 10 and over | £5 | Bring water and walking shoes. Uneven ground; no pushchairs. |\n| Puppet Theatre | Sunday 11:00–12:00 | All ages | £6 | Indoors. Seats reserved at booking. No food during the show. |\n| Garden Trail | Sunday 14:00–15:30 | All ages | £4 | Outdoor picture clues. One adult must accompany each family group. |\n\nAn adult needs a ticket as well as a child. Prices do not include travel to the starting point. Arrive fifteen minutes before the listed start. The office will contact booked visitors if an outing is cancelled. Boat and walking outings may change in unsuitable weather; the indoor show is unaffected by rain. Ask about access needs before paying, since the routes and venues differ.",
+            "explanation": "The deadline is for booking, not finishing or arrival on the weekend.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The outing must be booked"
+              },
+              {
+                "id": "o1",
+                "text": "Every outing must be finished"
+              },
+              {
+                "id": "o2",
+                "text": "Visitors must arrive at the starting point"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "50b38fdcf581865dc49f7a9d72554e987722488a081681324b1185ea81b32be2",
+      "reviewNotes": "Six complete primary readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author all-option/time/fee evidence review; no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary6.four-help-desks-080",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "10·24新题 · Where to ask for help",
+        "summary": "Where to ask for help，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.dongcheng2025.booktable",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete five-question original: telephone dialogue, fictional story or four-entry information table. Task-family reference only; new vocabulary/difficulty provisional."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete primary readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author all-option/time/fee evidence review; no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary6.four-help-desks-080",
+          "family": "reading_choice",
+          "label": "Where to ask for help",
+          "candidateSHA256": "8647e54489cc5b2f291ec19c3a266e60a23fec0f8d44278af89fcfaf2699956a",
+          "authorCheckSHA256": "38dc3fd5bcb00a979ae65badd8053be380f6e2c48c5f381f6703291d35135037",
+          "sourceGroupIds": [
+            "expansion.20261024.primary6.four-help-desks-080#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b080；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Where to ask for help\n\nDuring the school open day, four help desks provide different services. All are free to use. Students should stay with their visiting family unless a teacher has agreed otherwise.\n\n| Desk | Place | Open | What it does |\n| --- | --- | --- | --- |\n| Welcome | Main gate | 9:00–12:00 | Gives maps and the day’s programme. |\n| Lost Property | Library entrance | 10:00–14:00 | Holds found bags, coats and small items. Describe an item before collecting it. |\n| Club Information | Sports hall | 9:30–13:30 | Explains club activities and future joining dates. Does not collect payments. |\n| Quiet Space | Room 6 | 9:00–14:30 | Offers a place to sit away from the busy halls. A staff member is present. |\n\nThe open day begins at 9:00 and ends at 14:30. Lunch is sold in the dining room from 11:30 to 13:00. It is separate from the free help-desk services. Visitors who find an item should take it to Lost Property after 10:00; before then, give it to a teacher at Welcome. For an urgent problem, ask the nearest member of staff instead of waiting for a particular desk to open."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary6.four-help-desks-080.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where can a family get a programme at 9:15?",
+            "material": "Where to ask for help\n\nDuring the school open day, four help desks provide different services. All are free to use. Students should stay with their visiting family unless a teacher has agreed otherwise.\n\n| Desk | Place | Open | What it does |\n| --- | --- | --- | --- |\n| Welcome | Main gate | 9:00–12:00 | Gives maps and the day’s programme. |\n| Lost Property | Library entrance | 10:00–14:00 | Holds found bags, coats and small items. Describe an item before collecting it. |\n| Club Information | Sports hall | 9:30–13:30 | Explains club activities and future joining dates. Does not collect payments. |\n| Quiet Space | Room 6 | 9:00–14:30 | Offers a place to sit away from the busy halls. A staff member is present. |\n\nThe open day begins at 9:00 and ends at 14:30. Lunch is sold in the dining room from 11:30 to 13:00. It is separate from the free help-desk services. Visitors who find an item should take it to Lost Property after 10:00; before then, give it to a teacher at Welcome. For an urgent problem, ask the nearest member of staff instead of waiting for a particular desk to open.",
+            "explanation": "Welcome is open9:00. Lost Property opens10:00 and clubs9:30.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Club Information in the sports hall"
+              },
+              {
+                "id": "o1",
+                "text": "Lost Property at the library"
+              },
+              {
+                "id": "o2",
+                "text": "Welcome at the main gate"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-help-desks-080.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should someone do to collect a found coat?",
+            "material": "Where to ask for help\n\nDuring the school open day, four help desks provide different services. All are free to use. Students should stay with their visiting family unless a teacher has agreed otherwise.\n\n| Desk | Place | Open | What it does |\n| --- | --- | --- | --- |\n| Welcome | Main gate | 9:00–12:00 | Gives maps and the day’s programme. |\n| Lost Property | Library entrance | 10:00–14:00 | Holds found bags, coats and small items. Describe an item before collecting it. |\n| Club Information | Sports hall | 9:30–13:30 | Explains club activities and future joining dates. Does not collect payments. |\n| Quiet Space | Room 6 | 9:00–14:30 | Offers a place to sit away from the busy halls. A staff member is present. |\n\nThe open day begins at 9:00 and ends at 14:30. Lunch is sold in the dining room from 11:30 to 13:00. It is separate from the free help-desk services. Visitors who find an item should take it to Lost Property after 10:00; before then, give it to a teacher at Welcome. For an urgent problem, ask the nearest member of staff instead of waiting for a particular desk to open.",
+            "explanation": "The collection rule requires description. No fee or closing-time delay is stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Describe it at Lost Property"
+              },
+              {
+                "id": "o1",
+                "text": "Pay the club desk for it"
+              },
+              {
+                "id": "o2",
+                "text": "Wait until all desks close"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-help-desks-080.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which desk is still open at 14:15?",
+            "material": "Where to ask for help\n\nDuring the school open day, four help desks provide different services. All are free to use. Students should stay with their visiting family unless a teacher has agreed otherwise.\n\n| Desk | Place | Open | What it does |\n| --- | --- | --- | --- |\n| Welcome | Main gate | 9:00–12:00 | Gives maps and the day’s programme. |\n| Lost Property | Library entrance | 10:00–14:00 | Holds found bags, coats and small items. Describe an item before collecting it. |\n| Club Information | Sports hall | 9:30–13:30 | Explains club activities and future joining dates. Does not collect payments. |\n| Quiet Space | Room 6 | 9:00–14:30 | Offers a place to sit away from the busy halls. A staff member is present. |\n\nThe open day begins at 9:00 and ends at 14:30. Lunch is sold in the dining room from 11:30 to 13:00. It is separate from the free help-desk services. Visitors who find an item should take it to Lost Property after 10:00; before then, give it to a teacher at Welcome. For an urgent problem, ask the nearest member of staff instead of waiting for a particular desk to open.",
+            "explanation": "Quiet Space lasts14:30, Welcome12:00 and clubs13:30.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Welcome"
+              },
+              {
+                "id": "o1",
+                "text": "Quiet Space"
+              },
+              {
+                "id": "o2",
+                "text": "Club Information"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-help-desks-080.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where should a bag found at 9:30 be taken?",
+            "material": "Where to ask for help\n\nDuring the school open day, four help desks provide different services. All are free to use. Students should stay with their visiting family unless a teacher has agreed otherwise.\n\n| Desk | Place | Open | What it does |\n| --- | --- | --- | --- |\n| Welcome | Main gate | 9:00–12:00 | Gives maps and the day’s programme. |\n| Lost Property | Library entrance | 10:00–14:00 | Holds found bags, coats and small items. Describe an item before collecting it. |\n| Club Information | Sports hall | 9:30–13:30 | Explains club activities and future joining dates. Does not collect payments. |\n| Quiet Space | Room 6 | 9:00–14:30 | Offers a place to sit away from the busy halls. A staff member is present. |\n\nThe open day begins at 9:00 and ends at 14:30. Lunch is sold in the dining room from 11:30 to 13:00. It is separate from the free help-desk services. Visitors who find an item should take it to Lost Property after 10:00; before then, give it to a teacher at Welcome. For an urgent problem, ask the nearest member of staff instead of waiting for a particular desk to open.",
+            "explanation": "Before10:00, found items go to a teacher at Welcome. Keeping it or relying on the closed desk contradicts guidance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To a teacher at Welcome"
+              },
+              {
+                "id": "o1",
+                "text": "Directly to the closed Lost Property desk"
+              },
+              {
+                "id": "o2",
+                "text": "Home to keep until next week"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-help-desks-080.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which service is not included among the free desk services?",
+            "material": "Where to ask for help\n\nDuring the school open day, four help desks provide different services. All are free to use. Students should stay with their visiting family unless a teacher has agreed otherwise.\n\n| Desk | Place | Open | What it does |\n| --- | --- | --- | --- |\n| Welcome | Main gate | 9:00–12:00 | Gives maps and the day’s programme. |\n| Lost Property | Library entrance | 10:00–14:00 | Holds found bags, coats and small items. Describe an item before collecting it. |\n| Club Information | Sports hall | 9:30–13:30 | Explains club activities and future joining dates. Does not collect payments. |\n| Quiet Space | Room 6 | 9:00–14:30 | Offers a place to sit away from the busy halls. A staff member is present. |\n\nThe open day begins at 9:00 and ends at 14:30. Lunch is sold in the dining room from 11:30 to 13:00. It is separate from the free help-desk services. Visitors who find an item should take it to Lost Property after 10:00; before then, give it to a teacher at Welcome. For an urgent problem, ask the nearest member of staff instead of waiting for a particular desk to open.",
+            "explanation": "Lunch is sold separately. Programmes and quiet seating are free help services.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Getting a programme"
+              },
+              {
+                "id": "o1",
+                "text": "Buying lunch in the dining room"
+              },
+              {
+                "id": "o2",
+                "text": "Sitting in the quiet room"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "6123afe306e6f0c62bb562a47909c93beb2b01c69b980e49570857c6fae015a8",
+      "reviewNotes": "Six complete primary readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author all-option/time/fee evidence review; no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
