@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-23",
+  "completedAt": "2026-10-23T13:04:08.558604+00:00",
+  "scope": "Appropriate question language in current supply and frozen attempts",
+  "sourceCommit": "7e430324211317e1bfc093200efbda81561eaddd",
+  "audit": {
+    "curatedQuestions": 738,
+    "originalGroupResponses": 5090,
+    "separateBankRevisions": 15,
+    "placementQuestions": 96,
+    "placementQuestionsAlreadyEnglish": true
+  },
+  "copyChanges": {
+    "curatedChoiceQuestions": 188,
+    "separatelyPublishedBankChoiceQuestions": 1,
+    "legacyListeningCompatibilityQuestions": 38,
+    "originalGroupLabelOrPartPrefixQuestions": 943,
+    "distinctExactContentBindings": 1167
+  },
+  "contract": {
+    "matching": "Full original private question hash excluding only local/composed ID",
+    "editableFields": [
+      "prompt",
+      "options[].text"
+    ],
+    "sameOptionIdentities": true,
+    "frozenContentAndGradingUntouched": true,
+    "exposureAndRewardIdentitiesPreserved": true,
+    "liveSpeechUsesSameEnglishQuestion": true,
+    "chineseRetained": "Early-primary scaffolding, translations, matching meanings, explicit grammar/word-pool directions, hints and explanations.",
+    "futureSupplyGuard": "Secondary/adult choices with unreviewed Chinese comprehension text cannot be newly selected or published."
+  },
+  "verification": {
+    "learningModuleTests": {
+      "passed": 91,
+      "files": 17,
+      "log": "build/learning-language-unit-20261023.log"
+    },
+    "isolatedDatabaseTests": {
+      "passed": 28,
+      "files": 3,
+      "log": "build/learning-language-integration-20261023.log",
+      "database": "lingotrip_test_language_20261023",
+      "postgresAndRedisStoppedAfterTests": true
+    },
+    "typecheck": "passed",
+    "focusedESLint": "passed",
+    "architecture": "passed: 264 modules, 753 dependencies",
+    "diffCheck": "passed",
+    "testFixtureNote": "API fresh-supply fixture now uses existing freshLearningFixture instead of retired sentence dictation. Legacy grading fixture remains available."
+  },
+  "production": {
+    "status": "deployed and verified",
+    "version": "originals-7e4303242113",
+    "archiveSHA256": "a5c9d7f63186e8605d0d0e1b76791e78e7fbbe15019de64f7d133c43c544a640",
+    "previousReleasePreserved": "originals-9edd518db660",
+    "maintenanceMemoryPeakMiB": 212.7,
+    "maintenanceSwapBytes": 0,
+    "stabilityObservation": "Passed after memory recovered; no guard bypass or threshold changes.",
+    "readOnlyAudit": {
+      "checkedAt": "2026-10-23T13:02:12.844Z",
+      "mode": "verify",
+      "readOnly": true,
+      "registryEntries": 1167,
+      "currentUnits": 734,
+      "currentQuestions": 5834,
+      "correctedCurrentQuestions": 1131,
+      "activeAttempts": 3,
+      "correctedActiveQuestions": 24,
+      "currentBankQuestions": 788,
+      "correctedBankQuestions": 226,
+      "unresolved": [],
+      "repositoryReadsVerified": 3,
+      "liveScriptsVerified": 5,
+      "frozenVersionsDigest": "eef0a05cb8caf596fafd16a8a5206b7598c09da2b0dee53857c723a7a5232bf6",
+      "activeSnapshotsDigest": "9d1423165a82d56e93005254ec2845667e6ded030979ed424f395fc0efd18b4f",
+      "passed": true
+    },
+    "frozenVersionsDigestUnchanged": true,
+    "activeSnapshotDigestUnchanged": true,
+    "http": {
+      "readiness": 200,
+      "unauthenticatedSpeech": 401,
+      "record": "build/learning-language-http-20261023.json"
+    },
+    "apiAndWorkerActive": true,
+    "unexpectedRestarts": 0,
+    "userScoresCreatedByVerification": false
+  },
+  "delivery": {
+    "clientUpdateRequired": false,
+    "refresh": "Exit and re-enter the practice to refetch its corrected question presentation.",
+    "appDataOrLoginReset": false
+  },
+  "limitations": [
+    "English copy was reviewed by Codex; no independent teacher or learner-validity review claimed.",
+    "No new iOS binary or App Store release was required for this backend presentation correction."
+  ]
+}
