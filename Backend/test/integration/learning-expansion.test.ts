@@ -104,7 +104,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       });
       const withdrawn = await expansion.withdraw();
       expect(withdrawn.withdrawnUnits).toBe(4);
-      expect(withdrawn.changedPublishedHashes).toBe(2);
+      expect(withdrawn.targetScope).toBe("reserved-run-namespace");
       expect(withdrawn.retiredAttempts).toBe(2);
       expect(
         contentHash(

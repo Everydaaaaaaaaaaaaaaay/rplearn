@@ -25,13 +25,9 @@ export class LearningExpansionRepository {
 
   /** The full-run switch also works from an earlier compatible release/catalog. */
   async withdraw(batch?: string) {
-    let units: LearningUnit[] = [];
-    try {
-      units = loadExpansionCatalog(batch).units;
-    } catch (error) {
-      // Broken new content must not disable the emergency full-cohort switch.
-      if (batch) throw error;
-    }
+    // The full-run emergency switch reads IDs from PostgreSQL, not every new
+    // payload. It remains bounded if the new catalog is huge, absent or broken.
+    const units: LearningUnit[] = batch ? loadExpansionCatalog(batch).units : [];
     const ids = units.map((u) => u.id);
     return this.database.sql.begin(async (sql) => {
       await sql`set local lock_timeout='5s'`;
@@ -45,9 +41,9 @@ export class LearningExpansionRepository {
       // A later reviewed version still belongs to this new cohort and must be
       // withdrawable. Report hash drift without blocking the requested rollback.
       const expected = new Map(units.map((u) => [u.id, contentHash(u)]));
-      const changedPublishedHashes = rows.filter(
-        (row) => expected.get(row.id) !== row.content_hash,
-      ).length;
+      const changedPublishedHashes = batch
+        ? rows.filter((row) => expected.get(row.id) !== row.content_hash).length
+        : 0;
       const withdrawn =
         await sql`update app.learning_units set published=false where id=any(${targetIds}) and published returning id`;
       const attempts = await sql<
@@ -69,6 +65,7 @@ export class LearningExpansionRepository {
         batch: batch ?? "all",
         withdrawnUnits: withdrawn.length,
         changedPublishedHashes,
+        targetScope: batch ? "exact-batch-ids" : "reserved-run-namespace",
         retiredAttempts: attempts.length,
         preservedAnswersAndRewards: true,
       };
