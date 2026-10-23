@@ -1,0 +1,920 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b063",
+  "createdAt": "2026-10-23T22:45:37.852444+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.canoe-and-diary-063",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · A canoe session and a diary",
+        "summary": "A canoe session and a diary，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.2024.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete senior paired-reading originals, three plus four questions each. Fictional events/diary and original general essays; no fabricated empirical study. Same-author evidence and all-distractor review, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.canoe-and-diary-063",
+          "family": "reading_choice",
+          "label": "A canoe session and a diary",
+          "candidateSHA256": "88ebf5e112ad06783e93a36d84e42449b8b4150cb6f26270f8bf65ebf81ade49",
+          "authorCheckSHA256": "ae8b2fb1bee4ebc35be3607d5e0932cb38daf6b0c09debd1206f93720a27b913",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.canoe-and-diary-063#canoe",
+            "expansion.20261024.senior1.canoe-and-diary-063#diary"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b063；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Canoeing: a first session\n\nLakeview Outdoor Centre offers a two-hour canoe introduction for young people aged fifteen to eighteen. No canoeing experience is required, but participants must be comfortable entering the water while wearing a buoyancy aid. Qualified instructors supervise the session, and all required equipment is provided.\n\nThere are two sessions on Sunday, at 9:30 and 13:30. Arrive thirty minutes before your chosen session for registration and changing. Each booking is for one person; friends who want to attend together must book the same session separately. A maximum of eight participants will be accepted in each group.\n\nWear clothing that can get wet and shoes that remain securely on your feet. Bring a full change of clothes and a towel. Do not bring valuable jewellery onto the water. The centre has lockers, but large bags should be left with accompanying adults where possible.\n\nThe fee is twenty pounds. Payment confirms the booking. Participants under eighteen need the parent or guardian consent form before the day; eighteen-year-olds complete their own form. Everyone provides an emergency contact.\n\nStrong wind or another unsuitable condition may prevent the session from running. The centre will contact booked participants by 18:00 on Saturday if cancellation is already known then. Conditions can still change on Sunday, so instructors retain the right to cancel at the site. A cancelled session will be refunded or moved to another date by agreement. Arriving does not guarantee that the weather will permit canoeing.\n\nBefore she was Grandma\n\nGrandma offered me a copy of a diary she had kept when she first left home to train as a nurse. I expected familiar stories about the village. Instead, the opening pages described a city station, a suitcase with a broken handle and a fear of getting on the wrong bus.\n\nI knew Grandma as the person who always seemed to know what to do. At family meals, she found an extra chair, rescued a forgotten dish or remembered whose birthday was approaching. The young woman in the diary was uncertain about nearly everything. She wrote down the name of her street because she worried she would forget it.\n\nAt first, I found the contrast amusing. Then I reached a page about her first difficult week. She had considered going home but had not told her parents because she did not want them to worry. A fellow trainee invited her for tea and showed her a quieter route to the hospital. The invitation was small, but she had described it across half a page.\n\nWhen I asked Grandma about it, she remembered the trainee immediately. They had remained friends for years. \"I wasn't born knowing my way around,\" she said, smiling at my surprise.\n\nThe diary did not replace the grandmother I knew with a more authentic stranger. Both versions belonged to the same person. The later confidence had a history, and part of that history included needing help.\n\nI returned the copy after reading it, with a question rather than a judgment. What else did she remember about the city? She brought out an old street map, and our conversation continued through the afternoon. I had thought family knowledge meant knowing someone's habits. The diary had shown me how much of a familiar person's life could exist beyond the role they played in mine."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.canoe-and-diary-063.canoe.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When should someone booked for 13:30 arrive?",
+            "material": "Canoeing: a first session\n\nLakeview Outdoor Centre offers a two-hour canoe introduction for young people aged fifteen to eighteen. No canoeing experience is required, but participants must be comfortable entering the water while wearing a buoyancy aid. Qualified instructors supervise the session, and all required equipment is provided.\n\nThere are two sessions on Sunday, at 9:30 and 13:30. Arrive thirty minutes before your chosen session for registration and changing. Each booking is for one person; friends who want to attend together must book the same session separately. A maximum of eight participants will be accepted in each group.\n\nWear clothing that can get wet and shoes that remain securely on your feet. Bring a full change of clothes and a towel. Do not bring valuable jewellery onto the water. The centre has lockers, but large bags should be left with accompanying adults where possible.\n\nThe fee is twenty pounds. Payment confirms the booking. Participants under eighteen need the parent or guardian consent form before the day; eighteen-year-olds complete their own form. Everyone provides an emergency contact.\n\nStrong wind or another unsuitable condition may prevent the session from running. The centre will contact booked participants by 18:00 on Saturday if cancellation is already known then. Conditions can still change on Sunday, so instructors retain the right to cancel at the site. A cancelled session will be refunded or moved to another date by agreement. Arriving does not guarantee that the weather will permit canoeing.",
+            "explanation": "Arrival is30 minutes before the session, so13:00. 13:30 is the start,14:00 late and18:00 the prior-day contact deadline.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At 13:00"
+              },
+              {
+                "id": "o1",
+                "text": "At 13:30"
+              },
+              {
+                "id": "o2",
+                "text": "At 14:00"
+              },
+              {
+                "id": "o3",
+                "text": "At 18:00"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.canoe-and-diary-063.canoe.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must a seventeen-year-old provide?",
+            "material": "Canoeing: a first session\n\nLakeview Outdoor Centre offers a two-hour canoe introduction for young people aged fifteen to eighteen. No canoeing experience is required, but participants must be comfortable entering the water while wearing a buoyancy aid. Qualified instructors supervise the session, and all required equipment is provided.\n\nThere are two sessions on Sunday, at 9:30 and 13:30. Arrive thirty minutes before your chosen session for registration and changing. Each booking is for one person; friends who want to attend together must book the same session separately. A maximum of eight participants will be accepted in each group.\n\nWear clothing that can get wet and shoes that remain securely on your feet. Bring a full change of clothes and a towel. Do not bring valuable jewellery onto the water. The centre has lockers, but large bags should be left with accompanying adults where possible.\n\nThe fee is twenty pounds. Payment confirms the booking. Participants under eighteen need the parent or guardian consent form before the day; eighteen-year-olds complete their own form. Everyone provides an emergency contact.\n\nStrong wind or another unsuitable condition may prevent the session from running. The centre will contact booked participants by 18:00 on Saturday if cancellation is already known then. Conditions can still change on Sunday, so instructors retain the right to cancel at the site. A cancelled session will be refunded or moved to another date by agreement. Arriving does not guarantee that the weather will permit canoeing.",
+            "explanation": "Under-eighteens need adult consent. Experience is not required, equipment provided and self-consent is for18-year-olds.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Proof of previous canoeing experience"
+              },
+              {
+                "id": "o1",
+                "text": "A personal canoe and all equipment"
+              },
+              {
+                "id": "o2",
+                "text": "An eighteen-year-old’s self-completed form"
+              },
+              {
+                "id": "o3",
+                "text": "A parent or guardian consent form"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.canoe-and-diary-063.canoe.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which statement about cancellation is correct?",
+            "material": "Canoeing: a first session\n\nLakeview Outdoor Centre offers a two-hour canoe introduction for young people aged fifteen to eighteen. No canoeing experience is required, but participants must be comfortable entering the water while wearing a buoyancy aid. Qualified instructors supervise the session, and all required equipment is provided.\n\nThere are two sessions on Sunday, at 9:30 and 13:30. Arrive thirty minutes before your chosen session for registration and changing. Each booking is for one person; friends who want to attend together must book the same session separately. A maximum of eight participants will be accepted in each group.\n\nWear clothing that can get wet and shoes that remain securely on your feet. Bring a full change of clothes and a towel. Do not bring valuable jewellery onto the water. The centre has lockers, but large bags should be left with accompanying adults where possible.\n\nThe fee is twenty pounds. Payment confirms the booking. Participants under eighteen need the parent or guardian consent form before the day; eighteen-year-olds complete their own form. Everyone provides an emergency contact.\n\nStrong wind or another unsuitable condition may prevent the session from running. The centre will contact booked participants by 18:00 on Saturday if cancellation is already known then. Conditions can still change on Sunday, so instructors retain the right to cancel at the site. A cancelled session will be refunded or moved to another date by agreement. Arriving does not guarantee that the weather will permit canoeing.",
+            "explanation": "The notice preserves site cancellation as conditions change. It denies weather guarantees and offers refund or agreed rescheduling.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A Saturday message guarantees safe conditions all Sunday"
+              },
+              {
+                "id": "o1",
+                "text": "Instructors may cancel at the site if conditions become unsuitable"
+              },
+              {
+                "id": "o2",
+                "text": "Everyone must canoe once they have arrived"
+              },
+              {
+                "id": "o3",
+                "text": "Cancelled sessions never qualify for refund"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.canoe-and-diary-063.diary.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How did the diary differ from the narrator’s expectation?",
+            "material": "Before she was Grandma\n\nGrandma offered me a copy of a diary she had kept when she first left home to train as a nurse. I expected familiar stories about the village. Instead, the opening pages described a city station, a suitcase with a broken handle and a fear of getting on the wrong bus.\n\nI knew Grandma as the person who always seemed to know what to do. At family meals, she found an extra chair, rescued a forgotten dish or remembered whose birthday was approaching. The young woman in the diary was uncertain about nearly everything. She wrote down the name of her street because she worried she would forget it.\n\nAt first, I found the contrast amusing. Then I reached a page about her first difficult week. She had considered going home but had not told her parents because she did not want them to worry. A fellow trainee invited her for tea and showed her a quieter route to the hospital. The invitation was small, but she had described it across half a page.\n\nWhen I asked Grandma about it, she remembered the trainee immediately. They had remained friends for years. \"I wasn't born knowing my way around,\" she said, smiling at my surprise.\n\nThe diary did not replace the grandmother I knew with a more authentic stranger. Both versions belonged to the same person. The later confidence had a history, and part of that history included needing help.\n\nI returned the copy after reading it, with a question rather than a judgment. What else did she remember about the city? She brought out an old street map, and our conversation continued through the afternoon. I had thought family knowledge meant knowing someone's habits. The diary had shown me how much of a familiar person's life could exist beyond the role they played in mine.",
+            "explanation": "The opening sets city anxiety against expected village stories. Recipes, retirement writing and never leaving are not the content.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It had been written after Grandma retired"
+              },
+              {
+                "id": "o1",
+                "text": "It contained only recipes for family meals"
+              },
+              {
+                "id": "o2",
+                "text": "It described uncertainty in a city rather than familiar village stories"
+              },
+              {
+                "id": "o3",
+                "text": "It denied that Grandma had ever left home"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.canoe-and-diary-063.diary.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why was the fellow trainee’s invitation important?",
+            "material": "Before she was Grandma\n\nGrandma offered me a copy of a diary she had kept when she first left home to train as a nurse. I expected familiar stories about the village. Instead, the opening pages described a city station, a suitcase with a broken handle and a fear of getting on the wrong bus.\n\nI knew Grandma as the person who always seemed to know what to do. At family meals, she found an extra chair, rescued a forgotten dish or remembered whose birthday was approaching. The young woman in the diary was uncertain about nearly everything. She wrote down the name of her street because she worried she would forget it.\n\nAt first, I found the contrast amusing. Then I reached a page about her first difficult week. She had considered going home but had not told her parents because she did not want them to worry. A fellow trainee invited her for tea and showed her a quieter route to the hospital. The invitation was small, but she had described it across half a page.\n\nWhen I asked Grandma about it, she remembered the trainee immediately. They had remained friends for years. \"I wasn't born knowing my way around,\" she said, smiling at my surprise.\n\nThe diary did not replace the grandmother I knew with a more authentic stranger. Both versions belonged to the same person. The later confidence had a history, and part of that history included needing help.\n\nI returned the copy after reading it, with a question rather than a judgment. What else did she remember about the city? She brought out an old street map, and our conversation continued through the afternoon. I had thought family knowledge meant knowing someone's habits. The diary had shown me how much of a familiar person's life could exist beyond the role they played in mine.",
+            "explanation": "Tea and guidance help during the week she considered leaving. The invitation supports staying; it neither eliminates all problems nor denies need.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It offered support during a difficult period"
+              },
+              {
+                "id": "o1",
+                "text": "It proved Grandma had never needed help"
+              },
+              {
+                "id": "o2",
+                "text": "It replaced every practical problem with a gift"
+              },
+              {
+                "id": "o3",
+                "text": "It forced Grandma to leave the training course"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.canoe-and-diary-063.diary.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the writer mean by “Both versions belonged to the same person”?",
+            "material": "Before she was Grandma\n\nGrandma offered me a copy of a diary she had kept when she first left home to train as a nurse. I expected familiar stories about the village. Instead, the opening pages described a city station, a suitcase with a broken handle and a fear of getting on the wrong bus.\n\nI knew Grandma as the person who always seemed to know what to do. At family meals, she found an extra chair, rescued a forgotten dish or remembered whose birthday was approaching. The young woman in the diary was uncertain about nearly everything. She wrote down the name of her street because she worried she would forget it.\n\nAt first, I found the contrast amusing. Then I reached a page about her first difficult week. She had considered going home but had not told her parents because she did not want them to worry. A fellow trainee invited her for tea and showed her a quieter route to the hospital. The invitation was small, but she had described it across half a page.\n\nWhen I asked Grandma about it, she remembered the trainee immediately. They had remained friends for years. \"I wasn't born knowing my way around,\" she said, smiling at my surprise.\n\nThe diary did not replace the grandmother I knew with a more authentic stranger. Both versions belonged to the same person. The later confidence had a history, and part of that history included needing help.\n\nI returned the copy after reading it, with a question rather than a judgment. What else did she remember about the city? She brought out an old street map, and our conversation continued through the afternoon. I had thought family knowledge meant knowing someone's habits. The diary had shown me how much of a familiar person's life could exist beyond the role they played in mine.",
+            "explanation": "The later confidence has a history including help. Two authors, exclusive authenticity and worthless family habits are not claimed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Early uncertainty and later confidence are connected parts of one life"
+              },
+              {
+                "id": "o1",
+                "text": "The diary must have been written by two different people"
+              },
+              {
+                "id": "o2",
+                "text": "Only the younger account was truthful"
+              },
+              {
+                "id": "o3",
+                "text": "Grandma’s family habits had no value"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.canoe-and-diary-063.diary.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the narrator’s main discovery?",
+            "material": "Before she was Grandma\n\nGrandma offered me a copy of a diary she had kept when she first left home to train as a nurse. I expected familiar stories about the village. Instead, the opening pages described a city station, a suitcase with a broken handle and a fear of getting on the wrong bus.\n\nI knew Grandma as the person who always seemed to know what to do. At family meals, she found an extra chair, rescued a forgotten dish or remembered whose birthday was approaching. The young woman in the diary was uncertain about nearly everything. She wrote down the name of her street because she worried she would forget it.\n\nAt first, I found the contrast amusing. Then I reached a page about her first difficult week. She had considered going home but had not told her parents because she did not want them to worry. A fellow trainee invited her for tea and showed her a quieter route to the hospital. The invitation was small, but she had described it across half a page.\n\nWhen I asked Grandma about it, she remembered the trainee immediately. They had remained friends for years. \"I wasn't born knowing my way around,\" she said, smiling at my surprise.\n\nThe diary did not replace the grandmother I knew with a more authentic stranger. Both versions belonged to the same person. The later confidence had a history, and part of that history included needing help.\n\nI returned the copy after reading it, with a question rather than a judgment. What else did she remember about the city? She brought out an old street map, and our conversation continued through the afternoon. I had thought family knowledge meant knowing someone's habits. The diary had shown me how much of a familiar person's life could exist beyond the role they played in mine.",
+            "explanation": "The conclusion explicitly widens family knowledge beyond one’s own role relationship. Complete knowledge, universal contradiction and avoidance oppose the conversation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A familiar person has a life beyond the role one knows them in"
+              },
+              {
+                "id": "o1",
+                "text": "Old diaries always contradict every family story"
+              },
+              {
+                "id": "o2",
+                "text": "Questions about another person’s past should be avoided"
+              },
+              {
+                "id": "o3",
+                "text": "Knowing someone’s habits guarantees complete knowledge of their past"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "2689fed10b37e5ef88ae5c26d98f47056d9b3906513cd9cd3bf334a5b3457cb8",
+      "reviewNotes": "Three complete senior paired-reading originals, three plus four questions each. Fictional events/diary and original general essays; no fabricated empirical study. Same-author evidence and all-distractor review, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.canoe-and-diary-063#canoe",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.canoe-and-diary-063.canoe.q1",
+            "expansion.20261024.senior1.canoe-and-diary-063.canoe.q2",
+            "expansion.20261024.senior1.canoe-and-diary-063.canoe.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.canoe-and-diary-063",
+          "sourceContentHash": "39209ff4575c3a45b4f3b7d8520f7f4ac4dee9af905a2fba2eca3a5b62181cc0"
+        },
+        {
+          "id": "expansion.20261024.senior1.canoe-and-diary-063#diary",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.canoe-and-diary-063.diary.q1",
+            "expansion.20261024.senior1.canoe-and-diary-063.diary.q2",
+            "expansion.20261024.senior1.canoe-and-diary-063.diary.q3",
+            "expansion.20261024.senior1.canoe-and-diary-063.diary.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.canoe-and-diary-063",
+          "sourceContentHash": "34ee75d141bb7f8a4c2154ee0eb311f8cd449b26266a91b6ffba9b3d918ec773"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.rail-tour-and-path-063",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · A railway walk and a path without trains",
+        "summary": "A railway walk and a path without trains，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g11.2025.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete senior paired-reading originals, three plus four questions each. Fictional events/diary and original general essays; no fabricated empirical study. Same-author evidence and all-distractor review, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.rail-tour-and-path-063",
+          "family": "reading_choice",
+          "label": "A railway walk and a path without trains",
+          "candidateSHA256": "fcfe30c8204960e45efef5e7018c5cb00cf0f29883d167c3427d48940f3c8e1b",
+          "authorCheckSHA256": "fc096f46f72e1f17f5fc6e0d524963cde72be82d6a86fb5f1d5603667c8e5d2a",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.rail-tour-and-path-063#tour",
+            "expansion.20261024.senior2.rail-tour-and-path-063#path"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b063；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The Old Junction Walk\n\nThe town history society is offering a guided walk around the former railway junction on Sunday 21 September. The route follows public paths outside the operational railway. It does not enter tracks, closed tunnels or railway work areas. Participants must remain with the guide in the marked areas.\n\nThe walk begins at 10:00 beside the station's south entrance and ends at the old goods office at approximately 12:00. The start and finish are about fifteen minutes apart on foot. Anyone leaving a car near the start should allow time to return after the walk.\n\nMost of the route is level, but a short section crosses uneven gravel and includes two steps. Contact the organiser before booking if this may affect your participation; a shorter alternative can be discussed, although the whole route cannot be described as step-free. Wear suitable walking shoes and bring water. There is no café stop during the guided part.\n\nThe fee is five pounds, payable when booking. Members of the history society pay three pounds. Places must be reserved by Friday. The guide will use old photographs to explain changes in the area, but participants do not need any previous railway knowledge.\n\nThe walk will go ahead in light rain. If severe weather requires cancellation, booked participants will receive a message by 8:00 on Sunday and the fee will be refunded. Please check the contact number entered at booking. Dogs, except assistance dogs, should remain at home because the group will pass through a small wildlife area.\n\nThe railway after the trains\n\nWhen an old railway closes, the strip of land it occupied can appear to be an obvious opportunity for a path. The route may connect places already linked by travel, and its gradients may be gentler than nearby roads. In many projects, former railway corridors have therefore become walking or cycling routes. Their appeal, however, does not mean that conversion is simply a matter of lifting the rails.\n\nA railway was designed for trains, not for every person who might later use a public path. Access points may be far apart, bridges may need assessment, and surfaces that suit maintenance vehicles may be inconvenient for wheelchairs or bicycles. A route can look continuous on a map while still containing practical gaps for a particular user.\n\nThe corridor may also have acquired new ecological value during years without services. Vegetation can offer shelter or connect patches of habitat. Opening a path might help people appreciate that landscape, but increased use can also bring disturbance. Decisions about width, lighting and maintenance need to consider more than the quickest way to create a smooth line.\n\nMemory adds another layer. Some residents may see the old route primarily as transport heritage, others as an overlooked green space, and others as a useful connection to work. These views need not be enemies, but they do not always produce the same priorities. Retaining a piece of railway equipment may enrich the path while also requiring space and care.\n\nA successful conversion therefore joins several kinds of knowledge: engineering, access, ecology and local experience. It does not have to preserve every feature or satisfy every preference unchanged. It does need to make the choices clear enough for people to understand what is being gained, what is being altered and why.\n\nThe old railway's history makes the new path possible, but history alone does not design it. Reuse becomes more thoughtful when the apparent simplicity of an empty corridor is replaced by attention to the different journeys that may now pass through it."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.rail-tour-and-path-063.tour.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where will the walk take place?",
+            "material": "The Old Junction Walk\n\nThe town history society is offering a guided walk around the former railway junction on Sunday 21 September. The route follows public paths outside the operational railway. It does not enter tracks, closed tunnels or railway work areas. Participants must remain with the guide in the marked areas.\n\nThe walk begins at 10:00 beside the station's south entrance and ends at the old goods office at approximately 12:00. The start and finish are about fifteen minutes apart on foot. Anyone leaving a car near the start should allow time to return after the walk.\n\nMost of the route is level, but a short section crosses uneven gravel and includes two steps. Contact the organiser before booking if this may affect your participation; a shorter alternative can be discussed, although the whole route cannot be described as step-free. Wear suitable walking shoes and bring water. There is no café stop during the guided part.\n\nThe fee is five pounds, payable when booking. Members of the history society pay three pounds. Places must be reserved by Friday. The guide will use old photographs to explain changes in the area, but participants do not need any previous railway knowledge.\n\nThe walk will go ahead in light rain. If severe weather requires cancellation, booked participants will receive a message by 8:00 on Sunday and the fee will be refunded. Please check the contact number entered at booking. Dogs, except assistance dogs, should remain at home because the group will pass through a small wildlife area.",
+            "explanation": "The route explicitly avoids operational tracks, closed tunnels and work areas; it is an outdoor public-path walk.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "On active tracks during normal services"
+              },
+              {
+                "id": "o1",
+                "text": "Only inside the present station building"
+              },
+              {
+                "id": "o2",
+                "text": "Inside every closed tunnel at the junction"
+              },
+              {
+                "id": "o3",
+                "text": "On public paths outside the operational railway"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.rail-tour-and-path-063.tour.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should a participant with mobility concerns do?",
+            "material": "The Old Junction Walk\n\nThe town history society is offering a guided walk around the former railway junction on Sunday 21 September. The route follows public paths outside the operational railway. It does not enter tracks, closed tunnels or railway work areas. Participants must remain with the guide in the marked areas.\n\nThe walk begins at 10:00 beside the station's south entrance and ends at the old goods office at approximately 12:00. The start and finish are about fifteen minutes apart on foot. Anyone leaving a car near the start should allow time to return after the walk.\n\nMost of the route is level, but a short section crosses uneven gravel and includes two steps. Contact the organiser before booking if this may affect your participation; a shorter alternative can be discussed, although the whole route cannot be described as step-free. Wear suitable walking shoes and bring water. There is no café stop during the guided part.\n\nThe fee is five pounds, payable when booking. Members of the history society pay three pounds. Places must be reserved by Friday. The guide will use old photographs to explain changes in the area, but participants do not need any previous railway knowledge.\n\nThe walk will go ahead in light rain. If severe weather requires cancellation, booked participants will receive a message by 8:00 on Sunday and the fee will be refunded. Please check the contact number entered at booking. Dogs, except assistance dogs, should remain at home because the group will pass through a small wildlife area.",
+            "explanation": "Access concerns require prior contact; the notice does not guarantee step-free access. Unchecked assumptions and using a dog as a substitute for information do not follow.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Enter the uneven section without seeking information"
+              },
+              {
+                "id": "o1",
+                "text": "Contact the organiser to discuss the route before booking"
+              },
+              {
+                "id": "o2",
+                "text": "Assume the entire route is step-free"
+              },
+              {
+                "id": "o3",
+                "text": "Bring a dog instead of asking about access"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.rail-tour-and-path-063.tour.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happens in light rain?",
+            "material": "The Old Junction Walk\n\nThe town history society is offering a guided walk around the former railway junction on Sunday 21 September. The route follows public paths outside the operational railway. It does not enter tracks, closed tunnels or railway work areas. Participants must remain with the guide in the marked areas.\n\nThe walk begins at 10:00 beside the station's south entrance and ends at the old goods office at approximately 12:00. The start and finish are about fifteen minutes apart on foot. Anyone leaving a car near the start should allow time to return after the walk.\n\nMost of the route is level, but a short section crosses uneven gravel and includes two steps. Contact the organiser before booking if this may affect your participation; a shorter alternative can be discussed, although the whole route cannot be described as step-free. Wear suitable walking shoes and bring water. There is no café stop during the guided part.\n\nThe fee is five pounds, payable when booking. Members of the history society pay three pounds. Places must be reserved by Friday. The guide will use old photographs to explain changes in the area, but participants do not need any previous railway knowledge.\n\nThe walk will go ahead in light rain. If severe weather requires cancellation, booked participants will receive a message by 8:00 on Sunday and the fee will be refunded. Please check the contact number entered at booking. Dogs, except assistance dogs, should remain at home because the group will pass through a small wildlife area.",
+            "explanation": "Light rain does not cancel the walk. Severe weather can trigger refund; no track shelter or noon start is permitted.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The starting time moves to 12:00"
+              },
+              {
+                "id": "o1",
+                "text": "The walk is still expected to go ahead"
+              },
+              {
+                "id": "o2",
+                "text": "Every booking is automatically refunded"
+              },
+              {
+                "id": "o3",
+                "text": "The group enters the operational tracks for shelter"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.rail-tour-and-path-063.path.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why can a former railway be attractive as a new path?",
+            "material": "The railway after the trains\n\nWhen an old railway closes, the strip of land it occupied can appear to be an obvious opportunity for a path. The route may connect places already linked by travel, and its gradients may be gentler than nearby roads. In many projects, former railway corridors have therefore become walking or cycling routes. Their appeal, however, does not mean that conversion is simply a matter of lifting the rails.\n\nA railway was designed for trains, not for every person who might later use a public path. Access points may be far apart, bridges may need assessment, and surfaces that suit maintenance vehicles may be inconvenient for wheelchairs or bicycles. A route can look continuous on a map while still containing practical gaps for a particular user.\n\nThe corridor may also have acquired new ecological value during years without services. Vegetation can offer shelter or connect patches of habitat. Opening a path might help people appreciate that landscape, but increased use can also bring disturbance. Decisions about width, lighting and maintenance need to consider more than the quickest way to create a smooth line.\n\nMemory adds another layer. Some residents may see the old route primarily as transport heritage, others as an overlooked green space, and others as a useful connection to work. These views need not be enemies, but they do not always produce the same priorities. Retaining a piece of railway equipment may enrich the path while also requiring space and care.\n\nA successful conversion therefore joins several kinds of knowledge: engineering, access, ecology and local experience. It does not have to preserve every feature or satisfy every preference unchanged. It does need to make the choices clear enough for people to understand what is being gained, what is being altered and why.\n\nThe old railway's history makes the new path possible, but history alone does not design it. Reuse becomes more thoughtful when the apparent simplicity of an empty corridor is replaced by attention to the different journeys that may now pass through it.",
+            "explanation": "The opening gives connections/gradients as opportunities while rejecting effortless conversion and guaranteed access.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It guarantees perfect access for every possible user"
+              },
+              {
+                "id": "o1",
+                "text": "It may offer existing connections and relatively gentle gradients"
+              },
+              {
+                "id": "o2",
+                "text": "It needs no assessment once trains stop"
+              },
+              {
+                "id": "o3",
+                "text": "It always contains ready-made public lighting"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.rail-tour-and-path-063.path.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is illustrated by a route that is continuous on a map but has practical gaps?",
+            "material": "The railway after the trains\n\nWhen an old railway closes, the strip of land it occupied can appear to be an obvious opportunity for a path. The route may connect places already linked by travel, and its gradients may be gentler than nearby roads. In many projects, former railway corridors have therefore become walking or cycling routes. Their appeal, however, does not mean that conversion is simply a matter of lifting the rails.\n\nA railway was designed for trains, not for every person who might later use a public path. Access points may be far apart, bridges may need assessment, and surfaces that suit maintenance vehicles may be inconvenient for wheelchairs or bicycles. A route can look continuous on a map while still containing practical gaps for a particular user.\n\nThe corridor may also have acquired new ecological value during years without services. Vegetation can offer shelter or connect patches of habitat. Opening a path might help people appreciate that landscape, but increased use can also bring disturbance. Decisions about width, lighting and maintenance need to consider more than the quickest way to create a smooth line.\n\nMemory adds another layer. Some residents may see the old route primarily as transport heritage, others as an overlooked green space, and others as a useful connection to work. These views need not be enemies, but they do not always produce the same priorities. Retaining a piece of railway equipment may enrich the path while also requiring space and care.\n\nA successful conversion therefore joins several kinds of knowledge: engineering, access, ecology and local experience. It does not have to preserve every feature or satisfy every preference unchanged. It does need to make the choices clear enough for people to understand what is being gained, what is being altered and why.\n\nThe old railway's history makes the new path possible, but history alone does not design it. Reuse becomes more thoughtful when the apparent simplicity of an empty corridor is replaced by attention to the different journeys that may now pass through it.",
+            "explanation": "Access points, surfaces and bridges can limit actual users. Universal map omission, danger and driver-only access are not claimed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only train drivers can use a former railway"
+              },
+              {
+                "id": "o1",
+                "text": "Different users may face barriers not visible in a line on a map"
+              },
+              {
+                "id": "o2",
+                "text": "Maps must always omit every bridge"
+              },
+              {
+                "id": "o3",
+                "text": "Any continuous line is physically dangerous"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.rail-tour-and-path-063.path.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is vegetation mentioned?",
+            "material": "The railway after the trains\n\nWhen an old railway closes, the strip of land it occupied can appear to be an obvious opportunity for a path. The route may connect places already linked by travel, and its gradients may be gentler than nearby roads. In many projects, former railway corridors have therefore become walking or cycling routes. Their appeal, however, does not mean that conversion is simply a matter of lifting the rails.\n\nA railway was designed for trains, not for every person who might later use a public path. Access points may be far apart, bridges may need assessment, and surfaces that suit maintenance vehicles may be inconvenient for wheelchairs or bicycles. A route can look continuous on a map while still containing practical gaps for a particular user.\n\nThe corridor may also have acquired new ecological value during years without services. Vegetation can offer shelter or connect patches of habitat. Opening a path might help people appreciate that landscape, but increased use can also bring disturbance. Decisions about width, lighting and maintenance need to consider more than the quickest way to create a smooth line.\n\nMemory adds another layer. Some residents may see the old route primarily as transport heritage, others as an overlooked green space, and others as a useful connection to work. These views need not be enemies, but they do not always produce the same priorities. Retaining a piece of railway equipment may enrich the path while also requiring space and care.\n\nA successful conversion therefore joins several kinds of knowledge: engineering, access, ecology and local experience. It does not have to preserve every feature or satisfy every preference unchanged. It does need to make the choices clear enough for people to understand what is being gained, what is being altered and why.\n\nThe old railway's history makes the new path possible, but history alone does not design it. Reuse becomes more thoughtful when the apparent simplicity of an empty corridor is replaced by attention to the different journeys that may now pass through it.",
+            "explanation": "Habitat value adds a planning consideration. The passage neither demands all removal nor all exclusion and explicitly links design to disturbance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The unused corridor may have ecological functions that conversion affects"
+              },
+              {
+                "id": "o1",
+                "text": "Ecology is unrelated to path width or lighting"
+              },
+              {
+                "id": "o2",
+                "text": "All vegetation must be removed before any path can exist"
+              },
+              {
+                "id": "o3",
+                "text": "Plants prove that no people should ever enter"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.rail-tour-and-path-063.path.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the central argument?",
+            "material": "The railway after the trains\n\nWhen an old railway closes, the strip of land it occupied can appear to be an obvious opportunity for a path. The route may connect places already linked by travel, and its gradients may be gentler than nearby roads. In many projects, former railway corridors have therefore become walking or cycling routes. Their appeal, however, does not mean that conversion is simply a matter of lifting the rails.\n\nA railway was designed for trains, not for every person who might later use a public path. Access points may be far apart, bridges may need assessment, and surfaces that suit maintenance vehicles may be inconvenient for wheelchairs or bicycles. A route can look continuous on a map while still containing practical gaps for a particular user.\n\nThe corridor may also have acquired new ecological value during years without services. Vegetation can offer shelter or connect patches of habitat. Opening a path might help people appreciate that landscape, but increased use can also bring disturbance. Decisions about width, lighting and maintenance need to consider more than the quickest way to create a smooth line.\n\nMemory adds another layer. Some residents may see the old route primarily as transport heritage, others as an overlooked green space, and others as a useful connection to work. These views need not be enemies, but they do not always produce the same priorities. Retaining a piece of railway equipment may enrich the path while also requiring space and care.\n\nA successful conversion therefore joins several kinds of knowledge: engineering, access, ecology and local experience. It does not have to preserve every feature or satisfy every preference unchanged. It does need to make the choices clear enough for people to understand what is being gained, what is being altered and why.\n\nThe old railway's history makes the new path possible, but history alone does not design it. Reuse becomes more thoughtful when the apparent simplicity of an empty corridor is replaced by attention to the different journeys that may now pass through it.",
+            "explanation": "The conclusion integrates knowledge and transparent trade-offs. Automatic design, unchanged everything and speed-only priorities are rejected.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Historical transport use automatically determines the best new design"
+              },
+              {
+                "id": "o1",
+                "text": "The quickest smooth route is always the sole priority"
+              },
+              {
+                "id": "o2",
+                "text": "Reusing a railway needs choices informed by several functions and users"
+              },
+              {
+                "id": "o3",
+                "text": "A conversion succeeds only if every feature remains unchanged"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "03f97712cee3b5a94250371c63a611d96465bec44c97d7ff3501835f75aaa7a5",
+      "reviewNotes": "Three complete senior paired-reading originals, three plus four questions each. Fictional events/diary and original general essays; no fabricated empirical study. Same-author evidence and all-distractor review, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.rail-tour-and-path-063#tour",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.rail-tour-and-path-063.tour.q1",
+            "expansion.20261024.senior2.rail-tour-and-path-063.tour.q2",
+            "expansion.20261024.senior2.rail-tour-and-path-063.tour.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.rail-tour-and-path-063",
+          "sourceContentHash": "3c82e59cc4c67d3f3a9329569252042f2a853b6ce52cd051a99f9f08af211295"
+        },
+        {
+          "id": "expansion.20261024.senior2.rail-tour-and-path-063#path",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.rail-tour-and-path-063.path.q1",
+            "expansion.20261024.senior2.rail-tour-and-path-063.path.q2",
+            "expansion.20261024.senior2.rail-tour-and-path-063.path.q3",
+            "expansion.20261024.senior2.rail-tour-and-path-063.path.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.rail-tour-and-path-063",
+          "sourceContentHash": "e4b8e28fc945f0cfac044ce0ada8e3012a7a3e2c4fd183732db1b5256cf10986"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior3.revision-and-translation-063",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高考题型原创 · 10·24新题 · Revising a story and judging a translation",
+        "summary": "Revising a story and judging a translation，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade12-tianjinlower2025-21cnjy22402528.reading.complete_section",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete senior paired-reading originals, three plus four questions each. Fictional events/diary and original general essays; no fabricated empirical study. Same-author evidence and all-distractor review, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior3.revision-and-translation-063",
+          "family": "reading_choice",
+          "label": "Revising a story and judging a translation",
+          "candidateSHA256": "b59cdf35a230399f9e1511627ed634421cd1db85aa7fea580f4c92c354006de4",
+          "authorCheckSHA256": "2b63074302b68b2951d979fc8a5511b9899614c970abee8b6500da44ff8494bf",
+          "sourceGroupIds": [
+            "expansion.20261024.senior3.revision-and-translation-063#prize",
+            "expansion.20261024.senior3.revision-and-translation-063#translation"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b063；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The Second Draft Story Award\n\nThis fictional award is open to writers aged sixteen to twenty. It recognises thoughtful revision of a short story, not merely a polished final version. Entrants submit an original draft, a revised draft and a commentary explaining the most important changes.\n\nEach draft must be between 1,200 and 1,800 words. The commentary should be 300–500 words and discuss at least two decisions, one of which must concern something beyond spelling or punctuation. Changing a narrator, removing a scene or altering the order of events may qualify. There is no requirement that the second draft be longer than the first.\n\nThe original draft must be preserved as it was before revision began. Do not introduce errors afterwards to make the changes appear more dramatic. The judges are interested in the writer's reasoning, including a decision to keep a passage that was questioned by a reader.\n\nWriters may receive general feedback, but both drafts and the commentary must be their own work. Anyone who gave feedback should be acknowledged in a short note outside the commentary's word count. Feedback providers may not rewrite the entry.\n\nSubmit all three documents in one application by 15 November. Entries missing an original draft will not be considered, even if the revised story is excellent. Five selected writers will join a discussion with the judges in December. Selection for that discussion is not a promise of publication; publication permission will be requested separately if a story is chosen for the award website.\n\nFluent is not the same as settled\n\nA fluent translation can be reassuring. The sentences move naturally, the grammar seems sound and nothing visibly interrupts understanding. Yet fluency answers only one question about a translated text. It tells us something about how the result reads, not necessarily whether every important choice is supported by the source and its situation.\n\nA short instruction illustrates the distinction. A word may refer to a physical part of a machine in one setting and to a stage in a process in another. A translation can choose either sense and produce an elegant sentence. The elegance does not establish that the relevant object or action has been identified correctly. Context is not a decoration added after the words have been converted; it helps determine what the words are doing.\n\nAutomated tools can make useful first versions, especially when a reader needs rapid access to a general meaning. Their output can also hide uncertainty by presenting one smooth formulation where several interpretations were possible. A human translator can make the same mistake. The problem is therefore not solved by declaring one source of language always trustworthy and another always suspect.\n\nThe appropriate response depends on the use. A rough understanding of an informal message may be sufficient for one purpose. Instructions on which a consequential action depends require closer checking. A reviewer may need to compare key terms, establish who is acting on what and ask someone with knowledge of the subject. Treating every line as equally risky wastes attention, but treating smoothness as proof of accuracy misdirects it.\n\nGood checking can preserve useful fluency while questioning its basis. It asks where a choice matters, what evidence supports it and what remains unresolved. The aim is not to make every translation hesitant or unreadable. It is to prevent a confident surface from silently doing the work of a justified conclusion."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior3.revision-and-translation-063.prize.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which revision decision can meet the commentary requirement?",
+            "material": "The Second Draft Story Award\n\nThis fictional award is open to writers aged sixteen to twenty. It recognises thoughtful revision of a short story, not merely a polished final version. Entrants submit an original draft, a revised draft and a commentary explaining the most important changes.\n\nEach draft must be between 1,200 and 1,800 words. The commentary should be 300–500 words and discuss at least two decisions, one of which must concern something beyond spelling or punctuation. Changing a narrator, removing a scene or altering the order of events may qualify. There is no requirement that the second draft be longer than the first.\n\nThe original draft must be preserved as it was before revision began. Do not introduce errors afterwards to make the changes appear more dramatic. The judges are interested in the writer's reasoning, including a decision to keep a passage that was questioned by a reader.\n\nWriters may receive general feedback, but both drafts and the commentary must be their own work. Anyone who gave feedback should be acknowledged in a short note outside the commentary's word count. Feedback providers may not rewrite the entry.\n\nSubmit all three documents in one application by 15 November. Entries missing an original draft will not be considered, even if the revised story is excellent. Five selected writers will join a discussion with the judges in December. Selection for that discussion is not a promise of publication; publication permission will be requested separately if a story is chosen for the award website.",
+            "explanation": "A scene-level decision goes beyond spelling/punctuation. Comma-only work, fabricated errors and missing draft violate requirements.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Changing only two commas with no other decision"
+              },
+              {
+                "id": "o1",
+                "text": "Sending only a polished story without earlier work"
+              },
+              {
+                "id": "o2",
+                "text": "Adding deliberate errors to the original draft after revision"
+              },
+              {
+                "id": "o3",
+                "text": "Removing a scene for a stated narrative reason"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.revision-and-translation-063.prize.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the rule about feedback?",
+            "material": "The Second Draft Story Award\n\nThis fictional award is open to writers aged sixteen to twenty. It recognises thoughtful revision of a short story, not merely a polished final version. Entrants submit an original draft, a revised draft and a commentary explaining the most important changes.\n\nEach draft must be between 1,200 and 1,800 words. The commentary should be 300–500 words and discuss at least two decisions, one of which must concern something beyond spelling or punctuation. Changing a narrator, removing a scene or altering the order of events may qualify. There is no requirement that the second draft be longer than the first.\n\nThe original draft must be preserved as it was before revision began. Do not introduce errors afterwards to make the changes appear more dramatic. The judges are interested in the writer's reasoning, including a decision to keep a passage that was questioned by a reader.\n\nWriters may receive general feedback, but both drafts and the commentary must be their own work. Anyone who gave feedback should be acknowledged in a short note outside the commentary's word count. Feedback providers may not rewrite the entry.\n\nSubmit all three documents in one application by 15 November. Entries missing an original draft will not be considered, even if the revised story is excellent. Five selected writers will join a discussion with the judges in December. Selection for that discussion is not a promise of publication; publication permission will be requested separately if a story is chosen for the award website.",
+            "explanation": "Feedback is allowed with acknowledgement, not ghostwriting. Total prohibition and replacing required documents are not the policy.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "General feedback may be used and acknowledged, but the writing remains the entrant’s"
+              },
+              {
+                "id": "o1",
+                "text": "All feedback automatically disqualifies an entrant"
+              },
+              {
+                "id": "o2",
+                "text": "Acknowledgement replaces the need for an original draft"
+              },
+              {
+                "id": "o3",
+                "text": "A feedback provider must rewrite the final story"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.revision-and-translation-063.prize.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does selection for the judges’ discussion imply?",
+            "material": "The Second Draft Story Award\n\nThis fictional award is open to writers aged sixteen to twenty. It recognises thoughtful revision of a short story, not merely a polished final version. Entrants submit an original draft, a revised draft and a commentary explaining the most important changes.\n\nEach draft must be between 1,200 and 1,800 words. The commentary should be 300–500 words and discuss at least two decisions, one of which must concern something beyond spelling or punctuation. Changing a narrator, removing a scene or altering the order of events may qualify. There is no requirement that the second draft be longer than the first.\n\nThe original draft must be preserved as it was before revision began. Do not introduce errors afterwards to make the changes appear more dramatic. The judges are interested in the writer's reasoning, including a decision to keep a passage that was questioned by a reader.\n\nWriters may receive general feedback, but both drafts and the commentary must be their own work. Anyone who gave feedback should be acknowledged in a short note outside the commentary's word count. Feedback providers may not rewrite the entry.\n\nSubmit all three documents in one application by 15 November. Entries missing an original draft will not be considered, even if the revised story is excellent. Five selected writers will join a discussion with the judges in December. Selection for that discussion is not a promise of publication; publication permission will be requested separately if a story is chosen for the award website.",
+            "explanation": "The notice separates discussion from publication consent. It does not remove documents or impose increased length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A requirement that the revised draft be longer"
+              },
+              {
+                "id": "o1",
+                "text": "Exemption from submitting the commentary"
+              },
+              {
+                "id": "o2",
+                "text": "A discussion opportunity, with publication decided separately"
+              },
+              {
+                "id": "o3",
+                "text": "Automatic publication without further permission"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.revision-and-translation-063.translation.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does fluency establish according to the opening?",
+            "material": "Fluent is not the same as settled\n\nA fluent translation can be reassuring. The sentences move naturally, the grammar seems sound and nothing visibly interrupts understanding. Yet fluency answers only one question about a translated text. It tells us something about how the result reads, not necessarily whether every important choice is supported by the source and its situation.\n\nA short instruction illustrates the distinction. A word may refer to a physical part of a machine in one setting and to a stage in a process in another. A translation can choose either sense and produce an elegant sentence. The elegance does not establish that the relevant object or action has been identified correctly. Context is not a decoration added after the words have been converted; it helps determine what the words are doing.\n\nAutomated tools can make useful first versions, especially when a reader needs rapid access to a general meaning. Their output can also hide uncertainty by presenting one smooth formulation where several interpretations were possible. A human translator can make the same mistake. The problem is therefore not solved by declaring one source of language always trustworthy and another always suspect.\n\nThe appropriate response depends on the use. A rough understanding of an informal message may be sufficient for one purpose. Instructions on which a consequential action depends require closer checking. A reviewer may need to compare key terms, establish who is acting on what and ask someone with knowledge of the subject. Treating every line as equally risky wastes attention, but treating smoothness as proof of accuracy misdirects it.\n\nGood checking can preserve useful fluency while questioning its basis. It asks where a choice matters, what evidence supports it and what remains unresolved. The aim is not to make every translation hesitant or unreadable. It is to prevent a confident surface from silently doing the work of a justified conclusion.",
+            "explanation": "The opening limits fluency to readable form. Exact accuracy, no context and eliminated alternatives overreach.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "That no contextual information is needed"
+              },
+              {
+                "id": "o1",
+                "text": "How naturally the result reads, rather than the justification for every choice"
+              },
+              {
+                "id": "o2",
+                "text": "That every meaning must match the source exactly"
+              },
+              {
+                "id": "o3",
+                "text": "That all important alternatives have already been eliminated"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.revision-and-translation-063.translation.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the machine-part example show?",
+            "material": "Fluent is not the same as settled\n\nA fluent translation can be reassuring. The sentences move naturally, the grammar seems sound and nothing visibly interrupts understanding. Yet fluency answers only one question about a translated text. It tells us something about how the result reads, not necessarily whether every important choice is supported by the source and its situation.\n\nA short instruction illustrates the distinction. A word may refer to a physical part of a machine in one setting and to a stage in a process in another. A translation can choose either sense and produce an elegant sentence. The elegance does not establish that the relevant object or action has been identified correctly. Context is not a decoration added after the words have been converted; it helps determine what the words are doing.\n\nAutomated tools can make useful first versions, especially when a reader needs rapid access to a general meaning. Their output can also hide uncertainty by presenting one smooth formulation where several interpretations were possible. A human translator can make the same mistake. The problem is therefore not solved by declaring one source of language always trustworthy and another always suspect.\n\nThe appropriate response depends on the use. A rough understanding of an informal message may be sufficient for one purpose. Instructions on which a consequential action depends require closer checking. A reviewer may need to compare key terms, establish who is acting on what and ask someone with knowledge of the subject. Treating every line as equally risky wastes attention, but treating smoothness as proof of accuracy misdirects it.\n\nGood checking can preserve useful fluency while questioning its basis. It asks where a choice matters, what evidence supports it and what remains unresolved. The aim is not to make every translation hesitant or unreadable. It is to prevent a confident surface from silently doing the work of a justified conclusion.",
+            "explanation": "Several senses can each yield an elegant sentence; context selects the relevant one. The other options deny that ambiguity or invent restrictions.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A fluent sentence may still use the wrong contextual sense"
+              },
+              {
+                "id": "o1",
+                "text": "Elegant language cannot describe physical objects"
+              },
+              {
+                "id": "o2",
+                "text": "Process descriptions never require translation"
+              },
+              {
+                "id": "o3",
+                "text": "Every technical word has only one possible meaning"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.revision-and-translation-063.translation.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the writer’s view of automated and human translation?",
+            "material": "Fluent is not the same as settled\n\nA fluent translation can be reassuring. The sentences move naturally, the grammar seems sound and nothing visibly interrupts understanding. Yet fluency answers only one question about a translated text. It tells us something about how the result reads, not necessarily whether every important choice is supported by the source and its situation.\n\nA short instruction illustrates the distinction. A word may refer to a physical part of a machine in one setting and to a stage in a process in another. A translation can choose either sense and produce an elegant sentence. The elegance does not establish that the relevant object or action has been identified correctly. Context is not a decoration added after the words have been converted; it helps determine what the words are doing.\n\nAutomated tools can make useful first versions, especially when a reader needs rapid access to a general meaning. Their output can also hide uncertainty by presenting one smooth formulation where several interpretations were possible. A human translator can make the same mistake. The problem is therefore not solved by declaring one source of language always trustworthy and another always suspect.\n\nThe appropriate response depends on the use. A rough understanding of an informal message may be sufficient for one purpose. Instructions on which a consequential action depends require closer checking. A reviewer may need to compare key terms, establish who is acting on what and ask someone with knowledge of the subject. Treating every line as equally risky wastes attention, but treating smoothness as proof of accuracy misdirects it.\n\nGood checking can preserve useful fluency while questioning its basis. It asks where a choice matters, what evidence supports it and what remains unresolved. The aim is not to make every translation hesitant or unreadable. It is to prevent a confident surface from silently doing the work of a justified conclusion.",
+            "explanation": "The third paragraph explicitly notes useful tools and analogous human mistakes. Blanket rejection, human infallibility and source-only guarantees are opposed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The source of the text alone settles its accuracy"
+              },
+              {
+                "id": "o1",
+                "text": "Human output can never sound certain while being wrong"
+              },
+              {
+                "id": "o2",
+                "text": "All automated output must be discarded without reading"
+              },
+              {
+                "id": "o3",
+                "text": "Both can be useful and both can conceal a mistaken choice"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.revision-and-translation-063.translation.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does proportionate checking require?",
+            "material": "Fluent is not the same as settled\n\nA fluent translation can be reassuring. The sentences move naturally, the grammar seems sound and nothing visibly interrupts understanding. Yet fluency answers only one question about a translated text. It tells us something about how the result reads, not necessarily whether every important choice is supported by the source and its situation.\n\nA short instruction illustrates the distinction. A word may refer to a physical part of a machine in one setting and to a stage in a process in another. A translation can choose either sense and produce an elegant sentence. The elegance does not establish that the relevant object or action has been identified correctly. Context is not a decoration added after the words have been converted; it helps determine what the words are doing.\n\nAutomated tools can make useful first versions, especially when a reader needs rapid access to a general meaning. Their output can also hide uncertainty by presenting one smooth formulation where several interpretations were possible. A human translator can make the same mistake. The problem is therefore not solved by declaring one source of language always trustworthy and another always suspect.\n\nThe appropriate response depends on the use. A rough understanding of an informal message may be sufficient for one purpose. Instructions on which a consequential action depends require closer checking. A reviewer may need to compare key terms, establish who is acting on what and ask someone with knowledge of the subject. Treating every line as equally risky wastes attention, but treating smoothness as proof of accuracy misdirects it.\n\nGood checking can preserve useful fluency while questioning its basis. It asks where a choice matters, what evidence supports it and what remains unresolved. The aim is not to make every translation hesitant or unreadable. It is to prevent a confident surface from silently doing the work of a justified conclusion.",
+            "explanation": "The final paragraphs connect effort to use and relevant choices. Equal risk, universal vagueness and confidence as proof are rejected.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Focus on consequential choices and verify them against context and evidence"
+              },
+              {
+                "id": "o1",
+                "text": "Treat every possible use as carrying identical stakes"
+              },
+              {
+                "id": "o2",
+                "text": "Replace all fluent sentences with vague ones"
+              },
+              {
+                "id": "o3",
+                "text": "Assume a confident surface needs no support"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "329056f085bfa3f339fa5d78a3936d5c33ecd14e135219ea3f33e76b3c1c8bda",
+      "reviewNotes": "Three complete senior paired-reading originals, three plus four questions each. Fictional events/diary and original general essays; no fabricated empirical study. Same-author evidence and all-distractor review, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior3.revision-and-translation-063#prize",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.revision-and-translation-063.prize.q1",
+            "expansion.20261024.senior3.revision-and-translation-063.prize.q2",
+            "expansion.20261024.senior3.revision-and-translation-063.prize.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.revision-and-translation-063",
+          "sourceContentHash": "a8334b67297d52b46db4327557d445e717be77ff858b880c51edd46774e4dc86"
+        },
+        {
+          "id": "expansion.20261024.senior3.revision-and-translation-063#translation",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.revision-and-translation-063.translation.q1",
+            "expansion.20261024.senior3.revision-and-translation-063.translation.q2",
+            "expansion.20261024.senior3.revision-and-translation-063.translation.q3",
+            "expansion.20261024.senior3.revision-and-translation-063.translation.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.revision-and-translation-063",
+          "sourceContentHash": "97d2d0ea283963d0bc9562ff4d34a3ef3cc9e1430f2a55491891524c4b8c5855"
+        }
+      ]
+    }
+  ]
+}
