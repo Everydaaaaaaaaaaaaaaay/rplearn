@@ -1,0 +1,541 @@
+{
+  "createdAt": "2026-10-23T19:52:42.083134+00:00",
+  "reviewBoundary": "Eight new complete elementary reading practices: primary3 true/false, primary4 dialogues, primary5 fictional animal stories, primary6 four-entry information tables. All assessed text is English, directions for younger learners Chinese. Author checks explicit evidence and all alternatives; options are shuffled before freeze. No independent calibration claimed.",
+  "units": [
+    {
+      "id": "primary3.orange-cap-023",
+      "level": "primary3",
+      "title": "The orange cap",
+      "family": "reading_tf",
+      "minutes": 10,
+      "sourceUnitId": "original.bens-bag-reading",
+      "instruction": "读完整材料，判断句子是否相符。",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "The orange cap",
+          "text": "Jack has an orange cap. On Saturday, he goes to the park with his sister Mia. Jack rides his bike, and Mia walks beside him. They take some bread and two bottles of water.\n\nJack puts his cap on a bench when they stop to eat. After lunch, he runs to the swings. Mia sees the cap and puts it in her bag.\n\nWhen they go home, Jack asks, \"Where's my cap?\" Mia opens her bag. \"Here it is!\" she says. Jack smiles and puts it on.",
+          "questions": [
+            {
+              "prompt": "Jack wears a blue cap.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "The cap is orange, not blue."
+            },
+            {
+              "prompt": "Mia goes to the park with Jack.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "They go together; Mia is his sister."
+            },
+            {
+              "prompt": "Mia rides a bike beside Jack.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "Jack rides the bike; Mia walks."
+            },
+            {
+              "prompt": "Jack leaves his cap on a bench.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "He puts it on the bench before going to the swings."
+            },
+            {
+              "prompt": "The cap is in Mia's bag when they go home.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "Mia puts it in her bag and takes it out when Jack asks."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary3.garden-snack-023",
+      "level": "primary3",
+      "title": "A snack in the garden",
+      "family": "reading_tf",
+      "minutes": 10,
+      "sourceUnitId": "original.bens-bag-reading",
+      "instruction": "读完整材料，判断句子是否相符。",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "A snack in the garden",
+          "text": "It is Sunday afternoon. Emma and her dad are in the garden. Dad reads a book under a tree. Emma draws a picture of their house.\n\nAt three o'clock, Mum brings a plate of apples and pears. Emma takes a pear. Dad takes an apple. Their dog Pip sits beside the table, but he does not eat the fruit.\n\nThen it starts to rain. They take the book and picture into the house. Pip runs in too. Emma puts her picture on the kitchen wall. She wants Grandma to see it on Monday.",
+          "questions": [
+            {
+              "prompt": "Dad reads under a tree.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "The first paragraph gives his position and activity."
+            },
+            {
+              "prompt": "Emma draws a picture of a dog.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "She draws their house; Pip is the actual dog nearby."
+            },
+            {
+              "prompt": "Mum brings the fruit at three o'clock.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "The time is explicitly three o'clock."
+            },
+            {
+              "prompt": "Pip eats a pear.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "Emma eats a pear; Pip does not eat the fruit."
+            },
+            {
+              "prompt": "Emma puts her picture on the bedroom wall.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "It goes on the kitchen wall, not a bedroom wall."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary4.museum-visit-call-023",
+      "level": "primary4",
+      "title": "Calling the toy museum",
+      "family": "reading_choice",
+      "minutes": 10,
+      "sourceUnitId": "original.primary4-book-bus-call",
+      "instruction": "读完整材料，选择合适的答案。",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Calling the toy museum",
+          "text": "Woman: Toy Museum. Can I help you?\nBen: Hello. I'd like to visit with my dad tomorrow. Are you open on Wednesday?\nWoman: Yes. We open at ten and close at five.\nBen: Can we see the old trains?\nWoman: Yes. They are in Room 2, upstairs. The dolls are downstairs.\nBen: Is there a toy-making class?\nWoman: There is one at eleven. It takes an hour. Children over seven can join it.\nBen: I'm nine. Do I need to bring anything?\nWoman: No. We have the paper and glue here. Please book a place before you come.\nBen: How do I book?\nWoman: Your dad can use our website. The class is four pounds for each child. He can watch for free.\nBen: Can we eat lunch there?\nWoman: You can use the picnic tables outside. Food is not allowed in the rooms.\nBen: Thank you. I'll tell my dad.",
+          "questions": [
+            {
+              "prompt": "On which day does Ben want to visit?",
+              "options": [
+                "Monday",
+                "Saturday",
+                "Wednesday"
+              ],
+              "answer": 2,
+              "explanation": "Ben asks about tomorrow and specifically confirms Wednesday. Saturday and Monday are not the requested day."
+            },
+            {
+              "prompt": "Where are the old trains?",
+              "options": [
+                "Downstairs beside the dolls",
+                "Outside near the picnic tables",
+                "Upstairs in Room 2"
+              ],
+              "answer": 2,
+              "explanation": "The woman explicitly locates trains upstairs in Room2. Dolls are downstairs, and tables are outside."
+            },
+            {
+              "prompt": "When does the toy-making class finish?",
+              "options": [
+                "At ten",
+                "At eleven",
+                "At twelve"
+              ],
+              "answer": 2,
+              "explanation": "It starts at11 and lasts one hour, ending at12. Ten is opening time and11 is the start."
+            },
+            {
+              "prompt": "How much will Ben and his dad pay for Ben's class?",
+              "options": [
+                "Eight pounds",
+                "Nothing",
+                "Four pounds"
+              ],
+              "answer": 2,
+              "explanation": "One child pays four pounds and Dad may watch free. Eight incorrectly charges Dad, while free ignores the child fee."
+            },
+            {
+              "prompt": "Where can they eat lunch?",
+              "options": [
+                "At the outdoor picnic tables",
+                "Inside Room 2",
+                "In the toy-making room"
+              ],
+              "answer": 0,
+              "explanation": "Outdoor tables are provided; food is forbidden in museum rooms, excluding both indoor options."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary4.grandpas-beans-call-023",
+      "level": "primary4",
+      "title": "A call about the beans",
+      "family": "reading_choice",
+      "minutes": 10,
+      "sourceUnitId": "original.primary4-book-bus-call",
+      "instruction": "读完整材料，选择合适的答案。",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "A call about the beans",
+          "text": "Grandpa: Hello, Lucy. How are your plants?\nLucy: Two are tall, but the third is still small.\nGrandpa: Where do you keep the pots?\nLucy: On my desk. The tall plants are beside the window. The small one is behind my big book box.\nGrandpa: Can it get much light there?\nLucy: No. The box is in the way.\nGrandpa: Move the box first. Then you can put all three pots near the window.\nLucy: Shall I give the small plant lots of water?\nGrandpa: Check the soil. If it is wet, don't add more now.\nLucy: It's wet today. I'll wait.\nGrandpa: Good. Take a photograph every Friday. Then you can see how the plants change.\nLucy: Will you visit this weekend?\nGrandpa: On Sunday morning, after breakfast.\nLucy: Great! I'll show you my photographs.",
+          "questions": [
+            {
+              "prompt": "How many plants does Lucy have?",
+              "options": [
+                "Four",
+                "Two",
+                "Three"
+              ],
+              "answer": 2,
+              "explanation": "Two tall plants plus one small plant total three. Two omits the small one and four adds an extra."
+            },
+            {
+              "prompt": "What is between the small plant and the light?",
+              "options": [
+                "A curtain",
+                "A book box",
+                "A chair"
+              ],
+              "answer": 1,
+              "explanation": "The small plant is behind a large book box that blocks light. No chair or curtain is mentioned."
+            },
+            {
+              "prompt": "What does Grandpa suggest moving first?",
+              "options": [
+                "The window",
+                "The desk",
+                "The book box"
+              ],
+              "answer": 2,
+              "explanation": "He tells her to move the box first. He does not advise moving a window or the whole desk."
+            },
+            {
+              "prompt": "Why will Lucy wait before adding water?",
+              "options": [
+                "Grandpa has taken the pot away",
+                "She has no water at home",
+                "The soil is already wet"
+              ],
+              "answer": 2,
+              "explanation": "She checks and finds wet soil. Water shortage and removal of the plant are not stated."
+            },
+            {
+              "prompt": "When will Grandpa visit?",
+              "options": [
+                "Friday afternoon",
+                "Sunday morning",
+                "Saturday evening"
+              ],
+              "answer": 1,
+              "explanation": "He says Sunday morning after breakfast. Friday is the photo routine; Saturday evening is not given."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary5.frog-and-echo-023",
+      "level": "primary5",
+      "title": "Frog's audience",
+      "family": "reading_choice",
+      "minutes": 10,
+      "sourceUnitId": "original.inside-the-book-reading",
+      "instruction": "读完整材料，选择合适的答案。",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Frog's audience",
+          "text": "In a valley of talking animals, Frog loved singing. One afternoon, he practised beside a rocky hill. When he sang a long note, the same note came back to him.\n\n\"Someone likes my song!\" he thought. He sang louder, and the returning sound grew louder too. Frog ran to Owl and announced that he had a hidden audience inside the hill.\n\nOwl came to listen. Instead of singing, she called, \"Good afternoon!\" The words came back. Frog looked surprised.\n\n\"The rock is returning the sound,\" Owl explained. \"It is an echo, not another singer.\"\n\nFrog felt foolish. He wanted to leave, but Owl asked him to sing once more. This time, he listened to the pause before the note returned. Soon he made a short song with spaces in it, letting the echo answer each line.\n\nThat evening, Frog invited his friends to the hill. He explained the echo before he began. They enjoyed the song, and when it ended, they really did clap. Frog was pleased with the applause, but he was also glad he had learned what the first sound meant.",
+          "questions": [
+            {
+              "prompt": "What did Frog first think the returning sound was?",
+              "options": [
+                "Owl reading a book",
+                "A listener responding to his song",
+                "Rain falling inside the hill"
+              ],
+              "answer": 1,
+              "explanation": "He imagines a hidden audience. Rain and a book do not match his interpretation."
+            },
+            {
+              "prompt": "How did Owl show what was happening?",
+              "options": [
+                "She called a greeting and heard it return",
+                "She moved the hill",
+                "She hid another singer behind Frog"
+              ],
+              "answer": 0,
+              "explanation": "Her returned greeting demonstrates the echo. Moving the hill and hiding a singer are not actions in the story."
+            },
+            {
+              "prompt": "How did Frog feel when Owl explained the echo?",
+              "options": [
+                "Foolish",
+                "Angry with his friends",
+                "Sleepy"
+              ],
+              "answer": 0,
+              "explanation": "The story explicitly says he felt foolish. No anger at friends or sleepiness is described."
+            },
+            {
+              "prompt": "What did Frog change in his song?",
+              "options": [
+                "He sang without making any sound",
+                "He left spaces for the echo",
+                "He asked Owl to sing every line"
+              ],
+              "answer": 1,
+              "explanation": "He inserts pauses so the echo answers. He still sings himself; silence throughout and Owl singing every line are not the new song."
+            },
+            {
+              "prompt": "What was different about the applause that evening?",
+              "options": [
+                "It came from the rock alone",
+                "Nobody explained the echo",
+                "It came from real friends"
+              ],
+              "answer": 2,
+              "explanation": "His gathered friends actually clap. The rock is not the sole audience, and Frog explains the echo before singing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary5.bear-market-bell-023",
+      "level": "primary5",
+      "title": "Bear's market bell",
+      "family": "reading_choice",
+      "minutes": 10,
+      "sourceUnitId": "original.inside-the-book-reading",
+      "instruction": "读完整材料，选择合适的答案。",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Bear's market bell",
+          "text": "In a town of talking animals, Bear sold vegetables at the market. He bought a bright bell and rang it whenever he wanted customers to look at his stall.\n\nAt first, everyone turned. Bear rang the bell for fresh carrots, then for a clean table, then because he liked its sound. Soon the other sellers stopped looking up. Some customers moved to the quieter end of the market.\n\nOne morning, Bear received the first strawberries of the season. He rang his bell, but Rabbit walked past without noticing. Bear was puzzled. He had expected his best fruit to bring the most attention.\n\nRabbit explained, \"Your bell used to tell us something new. Now we hear it all the time. We don't know when it matters.\"\n\nBear put the bell under the table. He wrote clear prices on a board and spoke to customers who came near. For a week, he did not ring it once.\n\nOn the following Saturday, he held a short strawberry-tasting event. He rang the bell once, then explained the invitation. People turned and listened. Bear kept the bell, but he no longer used it simply to fill the air.",
+          "questions": [
+            {
+              "prompt": "Why did Bear first buy the bell?",
+              "options": [
+                "To draw attention to his stall",
+                "To keep vegetables cold",
+                "To call a doctor"
+              ],
+              "answer": 0,
+              "explanation": "He wants people to look at his stall. Cooling food and medical help are not its purpose."
+            },
+            {
+              "prompt": "Why did some customers move away?",
+              "options": [
+                "They wanted a quieter place",
+                "The market was closed",
+                "Bear had no vegetables at all"
+              ],
+              "answer": 0,
+              "explanation": "The text identifies the quieter end as their destination. He still sells produce and the market remains open."
+            },
+            {
+              "prompt": "Why was Bear puzzled about the strawberries?",
+              "options": [
+                "Rabbit had bought all the fruit",
+                "The bell did not make people notice them",
+                "He could not find his bell"
+              ],
+              "answer": 1,
+              "explanation": "He rings but Rabbit walks past, contrary to his expectations. The bell is present and no complete purchase occurs."
+            },
+            {
+              "prompt": "What did Bear do while the bell was under the table?",
+              "options": [
+                "He rang a larger bell instead",
+                "He wrote prices and talked to nearby customers",
+                "He stopped working for a week"
+              ],
+              "answer": 1,
+              "explanation": "The board and conversations replace repeated ringing. He continues working and no new bell is introduced."
+            },
+            {
+              "prompt": "What did Bear learn?",
+              "options": [
+                "A stall cannot sell fruit without a bell",
+                "A signal is more useful when it carries a clear purpose",
+                "Every customer likes loud sounds"
+              ],
+              "answer": 1,
+              "explanation": "He saves the bell for a specific invitation. Customers had avoided noise, contradicting universal liking, and the bell is no longer essential to every sale."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary6.four-club-books-023",
+      "level": "primary6",
+      "title": "Four books for the reading club",
+      "family": "reading_choice",
+      "minutes": 10,
+      "sourceUnitId": "original.primary6-four-books-table",
+      "instruction": "读完整材料，选择合适的答案。",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Four books for the reading club",
+          "text": "Choose one book for the reading club's holiday project. Read it during the holiday, then bring a one-page response on the first Friday of next term. You may borrow a copy from the school library.\n\nBook | Length | Main subject | Special feature\nThe Moon Post Office | 96 pages | A girl delivers letters in an imaginary town | Short chapters and black-and-white drawings\nBridge for an Ant | 72 pages | Talking insects solve a problem together | A map at the beginning\nThe Storm Piano | 144 pages | A boy learns an old family song | A small glossary of music words\nThe Hidden Watch | 128 pages | Two friends investigate a missing object | Clues shown in pictures as well as words\n\nYou may write about a character, draw an important scene with an explanation, or compare two parts of your chosen story. Do not copy a review from the internet. The response should show your own reading.\n\nThe library has two copies of each book. Reservations open on Monday. Books must be returned by the second Wednesday of next term. There is no requirement to choose the longest book, and responses will not be judged by how many pages you have read.",
+          "questions": [
+            {
+              "prompt": "Which book is the shortest?",
+              "options": [
+                "The Storm Piano",
+                "The Moon Post Office",
+                "Bridge for an Ant"
+              ],
+              "answer": 2,
+              "explanation": "72 pages is shorter than96 and144. The Hidden Watch has128 but is not among these options."
+            },
+            {
+              "prompt": "Which book may suit a reader who enjoys picture clues?",
+              "options": [
+                "The Hidden Watch",
+                "The Storm Piano",
+                "Bridge for an Ant"
+              ],
+              "answer": 0,
+              "explanation": "The Hidden Watch includes picture clues. The Storm Piano offers a glossary and Bridge for an Ant a map."
+            },
+            {
+              "prompt": "What should students bring on the first Friday?",
+              "options": [
+                "A one-page response",
+                "A printed internet review",
+                "Every library copy"
+              ],
+              "answer": 0,
+              "explanation": "The task requires a one-page personal response. They need not bring all copies and must not copy internet reviews."
+            },
+            {
+              "prompt": "When must borrowed books be returned?",
+              "options": [
+                "The second Wednesday of next term",
+                "The first Friday of next term",
+                "Before reservations open on Monday"
+              ],
+              "answer": 0,
+              "explanation": "Return is due the second Wednesday. First Friday is the response date; Monday starts reservations."
+            },
+            {
+              "prompt": "Which statement about choosing a book is correct?",
+              "options": [
+                "Students do not have to choose the longest one",
+                "Only books over one hundred pages are allowed",
+                "Students must compare all four books"
+              ],
+              "answer": 0,
+              "explanation": "The note rejects a longest-book requirement. Shorter books are listed and students choose one rather than compare all four."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary6.four-holiday-visits-023",
+      "level": "primary6",
+      "title": "Four holiday visits",
+      "family": "reading_choice",
+      "minutes": 10,
+      "sourceUnitId": "original.primary6-four-books-table",
+      "instruction": "读完整材料，选择合适的答案。",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Four holiday visits",
+          "text": "The school travel club has arranged four visits during the holiday. Each student may book one visit. Fees include transport and entry. Bring your own lunch unless the table says lunch is included.\n\nVisit | Day | Leaving/returning | Fee | Notes\nCoastal Bird Centre | Tuesday | 8:30/16:00 | 12 pounds | Outdoor walk; bring binoculars if you have them\nTown Print Museum | Wednesday | 9:00/15:00 | 10 pounds | Indoor printmaking activity; wear old clothes\nHill Farm | Thursday | 8:00/17:00 | 15 pounds | Lunch included; tell us about food allergies\nRailway Workshop | Friday | 9:30/15:30 | 11 pounds | Closed shoes required; no sandals\n\nMeet at the school gate fifteen minutes before departure. A teacher will travel with every group. Book through the school office by next Monday, with a parent's permission.\n\nIf strong winds make the coastal walk unsafe, that visit will be postponed and families will receive a message by 18:00 on Monday. The other visits are not affected by that decision. Students who do not own binoculars may still join the bird-centre visit. Do not buy a pair just for the trip.",
+          "questions": [
+            {
+              "prompt": "Which visit includes lunch?",
+              "options": [
+                "Town Print Museum",
+                "Hill Farm",
+                "Railway Workshop"
+              ],
+              "answer": 1,
+              "explanation": "Only Hill Farm states lunch included. The other visits require students to bring their own."
+            },
+            {
+              "prompt": "At what time should the bird-centre group meet?",
+              "options": [
+                "8:15",
+                "8:45",
+                "8:30"
+              ],
+              "answer": 0,
+              "explanation": "Departure is8:30, with meeting15 minutes earlier at8:15. 8:30 is departure itself and8:45 too late."
+            },
+            {
+              "prompt": "What must students wear at the railway workshop?",
+              "options": [
+                "New sports uniforms",
+                "Sandals",
+                "Closed shoes"
+              ],
+              "answer": 2,
+              "explanation": "Closed shoes are required and sandals prohibited. There is no requirement for new sports uniforms."
+            },
+            {
+              "prompt": "What happens if strong winds affect the coastal visit?",
+              "options": [
+                "Students must buy binoculars",
+                "Families receive a postponement message by Monday evening",
+                "Every visit is cancelled immediately"
+              ],
+              "answer": 1,
+              "explanation": "A message comes by18:00Monday if postponed. Other visits are unaffected and binocular purchase is explicitly unnecessary."
+            },
+            {
+              "prompt": "What is needed when booking any visit?",
+              "options": [
+                "A parent's permission",
+                "A pair of binoculars",
+                "A new set of clothes"
+              ],
+              "answer": 0,
+              "explanation": "Every booking needs parental permission. Binoculars are optional and old clothes are suggested for one activity, not new clothes for all."
+            }
+          ]
+        }
+      ],
+      "alignmentNote": "Uses the recorded four-entry informational comparison task with five questions. Holiday visits replace books explicitly; source provides task structure only, not copied text or independent age calibration."
+    }
+  ]
+}

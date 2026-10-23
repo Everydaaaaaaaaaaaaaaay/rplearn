@@ -1,0 +1,941 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b024",
+  "createdAt": "2026-10-23T19:56:03.598408+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.grandpas-paper-crown-024",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · A paper crown for Grandpa",
+        "summary": "A paper crown for Grandpa，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.choice_cloze"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g7.2021.cloze",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete junior1 ten-gap three-choice narratives, using the recorded whole-passage task format. Author checks contextual keys and both distractors; option positions shuffled before freeze. Fictional events, not independent learner calibration or a claim of specialised dog-training advice."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.grandpas-paper-crown-024",
+          "family": "choice_cloze",
+          "label": "A paper crown for Grandpa",
+          "candidateSHA256": "d79255a4cdc090ac583b5ccc73457a705c6f44bacf69a3473406af1674cf8907",
+          "authorCheckSHA256": "3b8c14e773d86cd8887db18e55d081342c724ece22ab3bfb45a417c6544f6f7c",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.grandpas-paper-crown-024#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b024；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A paper crown for Grandpa\n\nGrandpa's birthday was on Sunday. My little sister wanted to buy him a crown. \"He tells the best stories,\" she said. \"He should be a ____1____.\"\n\nWe went to a toy shop, but every crown was too small. My sister looked ____2____. Then I remembered the large sheet of gold paper at home. Perhaps we could make one.\n\nWe measured Grandpa's old hat to find the right ____3____. I drew a long strip, and my sister added stars. We cut it out and joined the ends with tape. The crown looked beautiful, but it fell over when we put it on the table. The paper was too ____4____.\n\nMum suggested putting a strip of card inside. This made the crown ____5____ enough to stand. My sister wanted to cover it with more stars, but we left a small space at the front for a ____6____: \"Our Story King.\"\n\nOn Sunday, Grandpa opened our box. He put the crown on and laughed. It was larger than a toy crown, but it ____7____ him perfectly.\n\nAfter tea, we asked for a story. Grandpa began, \"Once there were two clever children who made something with their own ____8____.\"\n\nMy sister smiled. The crown had cost almost nothing, but Grandpa kept it on all afternoon. Later, he put it on his bookshelf, ____9____ his favourite storybook. When we visited the next week, it was still there. We had not found the right present in a shop. We had ____10____ it together."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.grandpas-paper-crown-024.whole.q1",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 1.",
+            "material": "A paper crown for Grandpa\n\nGrandpa's birthday was on Sunday. My little sister wanted to buy him a crown. \"He tells the best stories,\" she said. \"He should be a ____1____.\"\n\nWe went to a toy shop, but every crown was too small. My sister looked ____2____. Then I remembered the large sheet of gold paper at home. Perhaps we could make one.\n\nWe measured Grandpa's old hat to find the right ____3____. I drew a long strip, and my sister added stars. We cut it out and joined the ends with tape. The crown looked beautiful, but it fell over when we put it on the table. The paper was too ____4____.\n\nMum suggested putting a strip of card inside. This made the crown ____5____ enough to stand. My sister wanted to cover it with more stars, but we left a small space at the front for a ____6____: \"Our Story King.\"\n\nOn Sunday, Grandpa opened our box. He put the crown on and laughed. It was larger than a toy crown, but it ____7____ him perfectly.\n\nAfter tea, we asked for a story. Grandpa began, \"Once there were two clever children who made something with their own ____8____.\"\n\nMy sister smiled. The crown had cost almost nothing, but Grandpa kept it on all afternoon. Later, he put it on his bookshelf, ____9____ his favourite storybook. When we visited the next week, it was still there. We had not found the right present in a shop. We had ____10____ it together.",
+            "explanation": "A crown and the later title Story King establish king. Driver and doctor do not match the crown idea.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "doctor"
+              },
+              {
+                "id": "o1",
+                "text": "driver"
+              },
+              {
+                "id": "o2",
+                "text": "king"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior1.grandpas-paper-crown-024.whole.q2",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 2.",
+            "material": "A paper crown for Grandpa\n\nGrandpa's birthday was on Sunday. My little sister wanted to buy him a crown. \"He tells the best stories,\" she said. \"He should be a ____1____.\"\n\nWe went to a toy shop, but every crown was too small. My sister looked ____2____. Then I remembered the large sheet of gold paper at home. Perhaps we could make one.\n\nWe measured Grandpa's old hat to find the right ____3____. I drew a long strip, and my sister added stars. We cut it out and joined the ends with tape. The crown looked beautiful, but it fell over when we put it on the table. The paper was too ____4____.\n\nMum suggested putting a strip of card inside. This made the crown ____5____ enough to stand. My sister wanted to cover it with more stars, but we left a small space at the front for a ____6____: \"Our Story King.\"\n\nOn Sunday, Grandpa opened our box. He put the crown on and laughed. It was larger than a toy crown, but it ____7____ him perfectly.\n\nAfter tea, we asked for a story. Grandpa began, \"Once there were two clever children who made something with their own ____8____.\"\n\nMy sister smiled. The crown had cost almost nothing, but Grandpa kept it on all afternoon. Later, he put it on his bookshelf, ____9____ his favourite storybook. When we visited the next week, it was still there. We had not found the right present in a shop. We had ____10____ it together.",
+            "explanation": "No crown fits Grandpa, so she is disappointed. Excitement would fit success, and no cue supports sleepiness.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "disappointed"
+              },
+              {
+                "id": "o1",
+                "text": "sleepy"
+              },
+              {
+                "id": "o2",
+                "text": "excited"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior1.grandpas-paper-crown-024.whole.q3",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 3.",
+            "material": "A paper crown for Grandpa\n\nGrandpa's birthday was on Sunday. My little sister wanted to buy him a crown. \"He tells the best stories,\" she said. \"He should be a ____1____.\"\n\nWe went to a toy shop, but every crown was too small. My sister looked ____2____. Then I remembered the large sheet of gold paper at home. Perhaps we could make one.\n\nWe measured Grandpa's old hat to find the right ____3____. I drew a long strip, and my sister added stars. We cut it out and joined the ends with tape. The crown looked beautiful, but it fell over when we put it on the table. The paper was too ____4____.\n\nMum suggested putting a strip of card inside. This made the crown ____5____ enough to stand. My sister wanted to cover it with more stars, but we left a small space at the front for a ____6____: \"Our Story King.\"\n\nOn Sunday, Grandpa opened our box. He put the crown on and laughed. It was larger than a toy crown, but it ____7____ him perfectly.\n\nAfter tea, we asked for a story. Grandpa began, \"Once there were two clever children who made something with their own ____8____.\"\n\nMy sister smiled. The crown had cost almost nothing, but Grandpa kept it on all afternoon. Later, he put it on his bookshelf, ____9____ his favourite storybook. When we visited the next week, it was still there. We had not found the right present in a shop. We had ____10____ it together.",
+            "explanation": "Measuring his hat finds the head size needed. Price and colour are not found by measuring the hat.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "size"
+              },
+              {
+                "id": "o1",
+                "text": "colour"
+              },
+              {
+                "id": "o2",
+                "text": "price"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior1.grandpas-paper-crown-024.whole.q4",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 4.",
+            "material": "A paper crown for Grandpa\n\nGrandpa's birthday was on Sunday. My little sister wanted to buy him a crown. \"He tells the best stories,\" she said. \"He should be a ____1____.\"\n\nWe went to a toy shop, but every crown was too small. My sister looked ____2____. Then I remembered the large sheet of gold paper at home. Perhaps we could make one.\n\nWe measured Grandpa's old hat to find the right ____3____. I drew a long strip, and my sister added stars. We cut it out and joined the ends with tape. The crown looked beautiful, but it fell over when we put it on the table. The paper was too ____4____.\n\nMum suggested putting a strip of card inside. This made the crown ____5____ enough to stand. My sister wanted to cover it with more stars, but we left a small space at the front for a ____6____: \"Our Story King.\"\n\nOn Sunday, Grandpa opened our box. He put the crown on and laughed. It was larger than a toy crown, but it ____7____ him perfectly.\n\nAfter tea, we asked for a story. Grandpa began, \"Once there were two clever children who made something with their own ____8____.\"\n\nMy sister smiled. The crown had cost almost nothing, but Grandpa kept it on all afternoon. Later, he put it on his bookshelf, ____9____ his favourite storybook. When we visited the next week, it was still there. We had not found the right present in a shop. We had ____10____ it together.",
+            "explanation": "Paper that cannot stand needs support because it is thin. Cleanliness and brightness do not explain collapse.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "clean"
+              },
+              {
+                "id": "o1",
+                "text": "bright"
+              },
+              {
+                "id": "o2",
+                "text": "thin"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior1.grandpas-paper-crown-024.whole.q5",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 5.",
+            "material": "A paper crown for Grandpa\n\nGrandpa's birthday was on Sunday. My little sister wanted to buy him a crown. \"He tells the best stories,\" she said. \"He should be a ____1____.\"\n\nWe went to a toy shop, but every crown was too small. My sister looked ____2____. Then I remembered the large sheet of gold paper at home. Perhaps we could make one.\n\nWe measured Grandpa's old hat to find the right ____3____. I drew a long strip, and my sister added stars. We cut it out and joined the ends with tape. The crown looked beautiful, but it fell over when we put it on the table. The paper was too ____4____.\n\nMum suggested putting a strip of card inside. This made the crown ____5____ enough to stand. My sister wanted to cover it with more stars, but we left a small space at the front for a ____6____: \"Our Story King.\"\n\nOn Sunday, Grandpa opened our box. He put the crown on and laughed. It was larger than a toy crown, but it ____7____ him perfectly.\n\nAfter tea, we asked for a story. Grandpa began, \"Once there were two clever children who made something with their own ____8____.\"\n\nMy sister smiled. The crown had cost almost nothing, but Grandpa kept it on all afternoon. Later, he put it on his bookshelf, ____9____ his favourite storybook. When we visited the next week, it was still there. We had not found the right present in a shop. We had ____10____ it together.",
+            "explanation": "Card makes the crown strong enough to stand. Quiet is irrelevant and heavy does not specify resistance to bending.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "strong"
+              },
+              {
+                "id": "o1",
+                "text": "heavy"
+              },
+              {
+                "id": "o2",
+                "text": "quiet"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior1.grandpas-paper-crown-024.whole.q6",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 6.",
+            "material": "A paper crown for Grandpa\n\nGrandpa's birthday was on Sunday. My little sister wanted to buy him a crown. \"He tells the best stories,\" she said. \"He should be a ____1____.\"\n\nWe went to a toy shop, but every crown was too small. My sister looked ____2____. Then I remembered the large sheet of gold paper at home. Perhaps we could make one.\n\nWe measured Grandpa's old hat to find the right ____3____. I drew a long strip, and my sister added stars. We cut it out and joined the ends with tape. The crown looked beautiful, but it fell over when we put it on the table. The paper was too ____4____.\n\nMum suggested putting a strip of card inside. This made the crown ____5____ enough to stand. My sister wanted to cover it with more stars, but we left a small space at the front for a ____6____: \"Our Story King.\"\n\nOn Sunday, Grandpa opened our box. He put the crown on and laughed. It was larger than a toy crown, but it ____7____ him perfectly.\n\nAfter tea, we asked for a story. Grandpa began, \"Once there were two clever children who made something with their own ____8____.\"\n\nMy sister smiled. The crown had cost almost nothing, but Grandpa kept it on all afternoon. Later, he put it on his bookshelf, ____9____ his favourite storybook. When we visited the next week, it was still there. We had not found the right present in a shop. We had ____10____ it together.",
+            "explanation": "Our Story King is a written message. It is not a button or flower.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "flower"
+              },
+              {
+                "id": "o1",
+                "text": "button"
+              },
+              {
+                "id": "o2",
+                "text": "message"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior1.grandpas-paper-crown-024.whole.q7",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 7.",
+            "material": "A paper crown for Grandpa\n\nGrandpa's birthday was on Sunday. My little sister wanted to buy him a crown. \"He tells the best stories,\" she said. \"He should be a ____1____.\"\n\nWe went to a toy shop, but every crown was too small. My sister looked ____2____. Then I remembered the large sheet of gold paper at home. Perhaps we could make one.\n\nWe measured Grandpa's old hat to find the right ____3____. I drew a long strip, and my sister added stars. We cut it out and joined the ends with tape. The crown looked beautiful, but it fell over when we put it on the table. The paper was too ____4____.\n\nMum suggested putting a strip of card inside. This made the crown ____5____ enough to stand. My sister wanted to cover it with more stars, but we left a small space at the front for a ____6____: \"Our Story King.\"\n\nOn Sunday, Grandpa opened our box. He put the crown on and laughed. It was larger than a toy crown, but it ____7____ him perfectly.\n\nAfter tea, we asked for a story. Grandpa began, \"Once there were two clever children who made something with their own ____8____.\"\n\nMy sister smiled. The crown had cost almost nothing, but Grandpa kept it on all afternoon. Later, he put it on his bookshelf, ____9____ his favourite storybook. When we visited the next week, it was still there. We had not found the right present in a shop. We had ____10____ it together.",
+            "explanation": "The measured crown fits him perfectly. Missed and followed do not describe wearing a correctly sized crown.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "followed"
+              },
+              {
+                "id": "o1",
+                "text": "missed"
+              },
+              {
+                "id": "o2",
+                "text": "fitted"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior1.grandpas-paper-crown-024.whole.q8",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 8.",
+            "material": "A paper crown for Grandpa\n\nGrandpa's birthday was on Sunday. My little sister wanted to buy him a crown. \"He tells the best stories,\" she said. \"He should be a ____1____.\"\n\nWe went to a toy shop, but every crown was too small. My sister looked ____2____. Then I remembered the large sheet of gold paper at home. Perhaps we could make one.\n\nWe measured Grandpa's old hat to find the right ____3____. I drew a long strip, and my sister added stars. We cut it out and joined the ends with tape. The crown looked beautiful, but it fell over when we put it on the table. The paper was too ____4____.\n\nMum suggested putting a strip of card inside. This made the crown ____5____ enough to stand. My sister wanted to cover it with more stars, but we left a small space at the front for a ____6____: \"Our Story King.\"\n\nOn Sunday, Grandpa opened our box. He put the crown on and laughed. It was larger than a toy crown, but it ____7____ him perfectly.\n\nAfter tea, we asked for a story. Grandpa began, \"Once there were two clever children who made something with their own ____8____.\"\n\nMy sister smiled. The crown had cost almost nothing, but Grandpa kept it on all afternoon. Later, he put it on his bookshelf, ____9____ his favourite storybook. When we visited the next week, it was still there. We had not found the right present in a shop. We had ____10____ it together.",
+            "explanation": "They make the crown with their hands. Eyes help see but do not perform the construction, and feet do not do the craft.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "eyes"
+              },
+              {
+                "id": "o1",
+                "text": "feet"
+              },
+              {
+                "id": "o2",
+                "text": "hands"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior1.grandpas-paper-crown-024.whole.q9",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 9.",
+            "material": "A paper crown for Grandpa\n\nGrandpa's birthday was on Sunday. My little sister wanted to buy him a crown. \"He tells the best stories,\" she said. \"He should be a ____1____.\"\n\nWe went to a toy shop, but every crown was too small. My sister looked ____2____. Then I remembered the large sheet of gold paper at home. Perhaps we could make one.\n\nWe measured Grandpa's old hat to find the right ____3____. I drew a long strip, and my sister added stars. We cut it out and joined the ends with tape. The crown looked beautiful, but it fell over when we put it on the table. The paper was too ____4____.\n\nMum suggested putting a strip of card inside. This made the crown ____5____ enough to stand. My sister wanted to cover it with more stars, but we left a small space at the front for a ____6____: \"Our Story King.\"\n\nOn Sunday, Grandpa opened our box. He put the crown on and laughed. It was larger than a toy crown, but it ____7____ him perfectly.\n\nAfter tea, we asked for a story. Grandpa began, \"Once there were two clever children who made something with their own ____8____.\"\n\nMy sister smiled. The crown had cost almost nothing, but Grandpa kept it on all afternoon. Later, he put it on his bookshelf, ____9____ his favourite storybook. When we visited the next week, it was still there. We had not found the right present in a shop. We had ____10____ it together.",
+            "explanation": "A crown on a shelf can stand beside a storybook. Under or inside the book conflicts with the displayed standing crown.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "beside"
+              },
+              {
+                "id": "o1",
+                "text": "inside"
+              },
+              {
+                "id": "o2",
+                "text": "under"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior1.grandpas-paper-crown-024.whole.q10",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 10.",
+            "material": "A paper crown for Grandpa\n\nGrandpa's birthday was on Sunday. My little sister wanted to buy him a crown. \"He tells the best stories,\" she said. \"He should be a ____1____.\"\n\nWe went to a toy shop, but every crown was too small. My sister looked ____2____. Then I remembered the large sheet of gold paper at home. Perhaps we could make one.\n\nWe measured Grandpa's old hat to find the right ____3____. I drew a long strip, and my sister added stars. We cut it out and joined the ends with tape. The crown looked beautiful, but it fell over when we put it on the table. The paper was too ____4____.\n\nMum suggested putting a strip of card inside. This made the crown ____5____ enough to stand. My sister wanted to cover it with more stars, but we left a small space at the front for a ____6____: \"Our Story King.\"\n\nOn Sunday, Grandpa opened our box. He put the crown on and laughed. It was larger than a toy crown, but it ____7____ him perfectly.\n\nAfter tea, we asked for a story. Grandpa began, \"Once there were two clever children who made something with their own ____8____.\"\n\nMy sister smiled. The crown had cost almost nothing, but Grandpa kept it on all afternoon. Later, he put it on his bookshelf, ____9____ his favourite storybook. When we visited the next week, it was still there. We had not found the right present in a shop. We had ____10____ it together.",
+            "explanation": "They make the present together. It is neither lost nor borrowed from another owner.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "made"
+              },
+              {
+                "id": "o1",
+                "text": "lost"
+              },
+              {
+                "id": "o2",
+                "text": "borrowed"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "86e3e5a7d73a168daaa24b7292e5b95c796ae44fa2be24fd50a0687d96107829",
+      "reviewNotes": "Three new complete junior1 ten-gap three-choice narratives, using the recorded whole-passage task format. Author checks contextual keys and both distractors; option positions shuffled before freeze. Fictional events, not independent learner calibration or a claim of specialised dog-training advice. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.picnic-in-bus-shelter-024",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · The picnic place",
+        "summary": "The picnic place，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.choice_cloze"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g7.2021.cloze",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 复用已核对应初中整组来源；本稿按实际10空三选或8空四选，不统一题数，不以年级边际范围拼模式。源卷原图/图注留在原件，新虚构故事是文字自足材料，未偷换源缺图状态。源原键及年级难度未独立认证；作者自审与本机准备不等独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete junior1 ten-gap three-choice narratives, using the recorded whole-passage task format. Author checks contextual keys and both distractors; option positions shuffled before freeze. Fictional events, not independent learner calibration or a claim of specialised dog-training advice."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.picnic-in-bus-shelter-024",
+          "family": "choice_cloze",
+          "label": "The picnic place",
+          "candidateSHA256": "9d8f476e7e4a4af3cef376dc0fb916a9147b3ffa28db4c6324d7d6f24103c1e7",
+          "authorCheckSHA256": "5bc88859330ffa8092bb6b4bb3ebb47f31f3285a702d6daf97224e8cd4bb9305",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.picnic-in-bus-shelter-024#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b024；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The picnic place\n\nWe planned a bicycle picnic beside the lake. On Saturday morning, the sky was clear. Dad packed sandwiches, and I put apples in a bag. My sister brought a small ____1____ so we could sit on the grass.\n\nHalfway to the lake, dark clouds appeared. Then rain began to fall. We left the road and stopped at an empty bus shelter. Its roof kept us ____2____, but we could not continue our ride immediately.\n\nI was angry with the weather. \"The day is ____3____,\" I said.\n\nDad looked at his watch. It was nearly lunchtime. \"The lake will still be there another day,\" he said. \"The sandwiches are here ____4____.\"\n\nWe sat on the bench and opened the food. My sister spread her cloth over our knees like a tiny table. A woman waiting for the bus smiled at us. We offered her an apple, and she showed us a photograph of the lake in ____5____. The water was frozen, and snow covered the path.\n\n\"I've only seen it in summer,\" I said. Her picture made me want to ____6____ again in another season.\n\nAfter lunch, the rain stopped. We checked the road and decided to ride ____7____ instead of continuing to the lake. There would be enough time to dry our clothes before visiting Grandma.\n\nAt home, my sister drew our picnic. She included the shelter, bench and woman with the photograph. The lake was not in the picture, but our day was. I had thought a good picnic needed one ____8____ place. Now I knew it also needed food and people I enjoyed being ____9____. We would try the lake again, but I did not want to ____10____ the picnic we had already had."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.picnic-in-bus-shelter-024.whole.q1",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 1.",
+            "material": "The picnic place\n\nWe planned a bicycle picnic beside the lake. On Saturday morning, the sky was clear. Dad packed sandwiches, and I put apples in a bag. My sister brought a small ____1____ so we could sit on the grass.\n\nHalfway to the lake, dark clouds appeared. Then rain began to fall. We left the road and stopped at an empty bus shelter. Its roof kept us ____2____, but we could not continue our ride immediately.\n\nI was angry with the weather. \"The day is ____3____,\" I said.\n\nDad looked at his watch. It was nearly lunchtime. \"The lake will still be there another day,\" he said. \"The sandwiches are here ____4____.\"\n\nWe sat on the bench and opened the food. My sister spread her cloth over our knees like a tiny table. A woman waiting for the bus smiled at us. We offered her an apple, and she showed us a photograph of the lake in ____5____. The water was frozen, and snow covered the path.\n\n\"I've only seen it in summer,\" I said. Her picture made me want to ____6____ again in another season.\n\nAfter lunch, the rain stopped. We checked the road and decided to ride ____7____ instead of continuing to the lake. There would be enough time to dry our clothes before visiting Grandma.\n\nAt home, my sister drew our picnic. She included the shelter, bench and woman with the photograph. The lake was not in the picture, but our day was. I had thought a good picnic needed one ____8____ place. Now I knew it also needed food and people I enjoyed being ____9____. We would try the lake again, but I did not want to ____10____ the picnic we had already had.",
+            "explanation": "The later spread cloth is what she brought for sitting on grass. Camera and umbrella do not match that item.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cloth"
+              },
+              {
+                "id": "o1",
+                "text": "camera"
+              },
+              {
+                "id": "o2",
+                "text": "umbrella"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior1.picnic-in-bus-shelter-024.whole.q2",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 2.",
+            "material": "The picnic place\n\nWe planned a bicycle picnic beside the lake. On Saturday morning, the sky was clear. Dad packed sandwiches, and I put apples in a bag. My sister brought a small ____1____ so we could sit on the grass.\n\nHalfway to the lake, dark clouds appeared. Then rain began to fall. We left the road and stopped at an empty bus shelter. Its roof kept us ____2____, but we could not continue our ride immediately.\n\nI was angry with the weather. \"The day is ____3____,\" I said.\n\nDad looked at his watch. It was nearly lunchtime. \"The lake will still be there another day,\" he said. \"The sandwiches are here ____4____.\"\n\nWe sat on the bench and opened the food. My sister spread her cloth over our knees like a tiny table. A woman waiting for the bus smiled at us. We offered her an apple, and she showed us a photograph of the lake in ____5____. The water was frozen, and snow covered the path.\n\n\"I've only seen it in summer,\" I said. Her picture made me want to ____6____ again in another season.\n\nAfter lunch, the rain stopped. We checked the road and decided to ride ____7____ instead of continuing to the lake. There would be enough time to dry our clothes before visiting Grandma.\n\nAt home, my sister drew our picnic. She included the shelter, bench and woman with the photograph. The lake was not in the picture, but our day was. I had thought a good picnic needed one ____8____ place. Now I knew it also needed food and people I enjoyed being ____9____. We would try the lake again, but I did not want to ____10____ the picnic we had already had.",
+            "explanation": "A roof shelters them from rain and keeps them dry. Cold and late are not protection from rain.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cold"
+              },
+              {
+                "id": "o1",
+                "text": "late"
+              },
+              {
+                "id": "o2",
+                "text": "dry"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior1.picnic-in-bus-shelter-024.whole.q3",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 3.",
+            "material": "The picnic place\n\nWe planned a bicycle picnic beside the lake. On Saturday morning, the sky was clear. Dad packed sandwiches, and I put apples in a bag. My sister brought a small ____1____ so we could sit on the grass.\n\nHalfway to the lake, dark clouds appeared. Then rain began to fall. We left the road and stopped at an empty bus shelter. Its roof kept us ____2____, but we could not continue our ride immediately.\n\nI was angry with the weather. \"The day is ____3____,\" I said.\n\nDad looked at his watch. It was nearly lunchtime. \"The lake will still be there another day,\" he said. \"The sandwiches are here ____4____.\"\n\nWe sat on the bench and opened the food. My sister spread her cloth over our knees like a tiny table. A woman waiting for the bus smiled at us. We offered her an apple, and she showed us a photograph of the lake in ____5____. The water was frozen, and snow covered the path.\n\n\"I've only seen it in summer,\" I said. Her picture made me want to ____6____ again in another season.\n\nAfter lunch, the rain stopped. We checked the road and decided to ride ____7____ instead of continuing to the lake. There would be enough time to dry our clothes before visiting Grandma.\n\nAt home, my sister drew our picnic. She included the shelter, bench and woman with the photograph. The lake was not in the picture, but our day was. I had thought a good picnic needed one ____8____ place. Now I knew it also needed food and people I enjoyed being ____9____. We would try the lake again, but I did not want to ____10____ the picnic we had already had.",
+            "explanation": "Anger about rain makes the narrator call the day ruined. Sunny contradicts the rain, and planned does not express the negative judgment.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "planned"
+              },
+              {
+                "id": "o1",
+                "text": "ruined"
+              },
+              {
+                "id": "o2",
+                "text": "sunny"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior1.picnic-in-bus-shelter-024.whole.q4",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 4.",
+            "material": "The picnic place\n\nWe planned a bicycle picnic beside the lake. On Saturday morning, the sky was clear. Dad packed sandwiches, and I put apples in a bag. My sister brought a small ____1____ so we could sit on the grass.\n\nHalfway to the lake, dark clouds appeared. Then rain began to fall. We left the road and stopped at an empty bus shelter. Its roof kept us ____2____, but we could not continue our ride immediately.\n\nI was angry with the weather. \"The day is ____3____,\" I said.\n\nDad looked at his watch. It was nearly lunchtime. \"The lake will still be there another day,\" he said. \"The sandwiches are here ____4____.\"\n\nWe sat on the bench and opened the food. My sister spread her cloth over our knees like a tiny table. A woman waiting for the bus smiled at us. We offered her an apple, and she showed us a photograph of the lake in ____5____. The water was frozen, and snow covered the path.\n\n\"I've only seen it in summer,\" I said. Her picture made me want to ____6____ again in another season.\n\nAfter lunch, the rain stopped. We checked the road and decided to ride ____7____ instead of continuing to the lake. There would be enough time to dry our clothes before visiting Grandma.\n\nAt home, my sister drew our picnic. She included the shelter, bench and woman with the photograph. The lake was not in the picture, but our day was. I had thought a good picnic needed one ____8____ place. Now I knew it also needed food and people I enjoyed being ____9____. We would try the lake again, but I did not want to ____10____ the picnic we had already had.",
+            "explanation": "Dad contrasts a future visit with sandwiches available now. Yesterday is past, and outside does not express the present timing.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "outside"
+              },
+              {
+                "id": "o1",
+                "text": "yesterday"
+              },
+              {
+                "id": "o2",
+                "text": "now"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior1.picnic-in-bus-shelter-024.whole.q5",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 5.",
+            "material": "The picnic place\n\nWe planned a bicycle picnic beside the lake. On Saturday morning, the sky was clear. Dad packed sandwiches, and I put apples in a bag. My sister brought a small ____1____ so we could sit on the grass.\n\nHalfway to the lake, dark clouds appeared. Then rain began to fall. We left the road and stopped at an empty bus shelter. Its roof kept us ____2____, but we could not continue our ride immediately.\n\nI was angry with the weather. \"The day is ____3____,\" I said.\n\nDad looked at his watch. It was nearly lunchtime. \"The lake will still be there another day,\" he said. \"The sandwiches are here ____4____.\"\n\nWe sat on the bench and opened the food. My sister spread her cloth over our knees like a tiny table. A woman waiting for the bus smiled at us. We offered her an apple, and she showed us a photograph of the lake in ____5____. The water was frozen, and snow covered the path.\n\n\"I've only seen it in summer,\" I said. Her picture made me want to ____6____ again in another season.\n\nAfter lunch, the rain stopped. We checked the road and decided to ride ____7____ instead of continuing to the lake. There would be enough time to dry our clothes before visiting Grandma.\n\nAt home, my sister drew our picnic. She included the shelter, bench and woman with the photograph. The lake was not in the picture, but our day was. I had thought a good picnic needed one ____8____ place. Now I knew it also needed food and people I enjoyed being ____9____. We would try the lake again, but I did not want to ____10____ the picnic we had already had.",
+            "explanation": "Frozen water and snow establish winter. Spring and autumn are not the season indicated by these cues.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "spring"
+              },
+              {
+                "id": "o1",
+                "text": "winter"
+              },
+              {
+                "id": "o2",
+                "text": "autumn"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior1.picnic-in-bus-shelter-024.whole.q6",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 6.",
+            "material": "The picnic place\n\nWe planned a bicycle picnic beside the lake. On Saturday morning, the sky was clear. Dad packed sandwiches, and I put apples in a bag. My sister brought a small ____1____ so we could sit on the grass.\n\nHalfway to the lake, dark clouds appeared. Then rain began to fall. We left the road and stopped at an empty bus shelter. Its roof kept us ____2____, but we could not continue our ride immediately.\n\nI was angry with the weather. \"The day is ____3____,\" I said.\n\nDad looked at his watch. It was nearly lunchtime. \"The lake will still be there another day,\" he said. \"The sandwiches are here ____4____.\"\n\nWe sat on the bench and opened the food. My sister spread her cloth over our knees like a tiny table. A woman waiting for the bus smiled at us. We offered her an apple, and she showed us a photograph of the lake in ____5____. The water was frozen, and snow covered the path.\n\n\"I've only seen it in summer,\" I said. Her picture made me want to ____6____ again in another season.\n\nAfter lunch, the rain stopped. We checked the road and decided to ride ____7____ instead of continuing to the lake. There would be enough time to dry our clothes before visiting Grandma.\n\nAt home, my sister drew our picnic. She included the shelter, bench and woman with the photograph. The lake was not in the picture, but our day was. I had thought a good picnic needed one ____8____ place. Now I knew it also needed food and people I enjoyed being ____9____. We would try the lake again, but I did not want to ____10____ the picnic we had already had.",
+            "explanation": "Seeing a different season prompts another visit to the lake. Cooking and waiting do not describe going there again.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cook"
+              },
+              {
+                "id": "o1",
+                "text": "visit"
+              },
+              {
+                "id": "o2",
+                "text": "wait"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior1.picnic-in-bus-shelter-024.whole.q7",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 7.",
+            "material": "The picnic place\n\nWe planned a bicycle picnic beside the lake. On Saturday morning, the sky was clear. Dad packed sandwiches, and I put apples in a bag. My sister brought a small ____1____ so we could sit on the grass.\n\nHalfway to the lake, dark clouds appeared. Then rain began to fall. We left the road and stopped at an empty bus shelter. Its roof kept us ____2____, but we could not continue our ride immediately.\n\nI was angry with the weather. \"The day is ____3____,\" I said.\n\nDad looked at his watch. It was nearly lunchtime. \"The lake will still be there another day,\" he said. \"The sandwiches are here ____4____.\"\n\nWe sat on the bench and opened the food. My sister spread her cloth over our knees like a tiny table. A woman waiting for the bus smiled at us. We offered her an apple, and she showed us a photograph of the lake in ____5____. The water was frozen, and snow covered the path.\n\n\"I've only seen it in summer,\" I said. Her picture made me want to ____6____ again in another season.\n\nAfter lunch, the rain stopped. We checked the road and decided to ride ____7____ instead of continuing to the lake. There would be enough time to dry our clothes before visiting Grandma.\n\nAt home, my sister drew our picnic. She included the shelter, bench and woman with the photograph. The lake was not in the picture, but our day was. I had thought a good picnic needed one ____8____ place. Now I knew it also needed food and people I enjoyed being ____9____. We would try the lake again, but I did not want to ____10____ the picnic we had already had.",
+            "explanation": "They return home to dry clothes before Grandma's visit. Uphill gives no destination and abroad invents foreign travel.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "uphill"
+              },
+              {
+                "id": "o1",
+                "text": "abroad"
+              },
+              {
+                "id": "o2",
+                "text": "home"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior1.picnic-in-bus-shelter-024.whole.q8",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 8.",
+            "material": "The picnic place\n\nWe planned a bicycle picnic beside the lake. On Saturday morning, the sky was clear. Dad packed sandwiches, and I put apples in a bag. My sister brought a small ____1____ so we could sit on the grass.\n\nHalfway to the lake, dark clouds appeared. Then rain began to fall. We left the road and stopped at an empty bus shelter. Its roof kept us ____2____, but we could not continue our ride immediately.\n\nI was angry with the weather. \"The day is ____3____,\" I said.\n\nDad looked at his watch. It was nearly lunchtime. \"The lake will still be there another day,\" he said. \"The sandwiches are here ____4____.\"\n\nWe sat on the bench and opened the food. My sister spread her cloth over our knees like a tiny table. A woman waiting for the bus smiled at us. We offered her an apple, and she showed us a photograph of the lake in ____5____. The water was frozen, and snow covered the path.\n\n\"I've only seen it in summer,\" I said. Her picture made me want to ____6____ again in another season.\n\nAfter lunch, the rain stopped. We checked the road and decided to ride ____7____ instead of continuing to the lake. There would be enough time to dry our clothes before visiting Grandma.\n\nAt home, my sister drew our picnic. She included the shelter, bench and woman with the photograph. The lake was not in the picture, but our day was. I had thought a good picnic needed one ____8____ place. Now I knew it also needed food and people I enjoyed being ____9____. We would try the lake again, but I did not want to ____10____ the picnic we had already had.",
+            "explanation": "The narrator had made a successful picnic depend on the planned special lakeside place. Strange and secret are not features of the originally chosen public lake.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "secret"
+              },
+              {
+                "id": "o1",
+                "text": "strange"
+              },
+              {
+                "id": "o2",
+                "text": "special"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior1.picnic-in-bus-shelter-024.whole.q9",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 9.",
+            "material": "The picnic place\n\nWe planned a bicycle picnic beside the lake. On Saturday morning, the sky was clear. Dad packed sandwiches, and I put apples in a bag. My sister brought a small ____1____ so we could sit on the grass.\n\nHalfway to the lake, dark clouds appeared. Then rain began to fall. We left the road and stopped at an empty bus shelter. Its roof kept us ____2____, but we could not continue our ride immediately.\n\nI was angry with the weather. \"The day is ____3____,\" I said.\n\nDad looked at his watch. It was nearly lunchtime. \"The lake will still be there another day,\" he said. \"The sandwiches are here ____4____.\"\n\nWe sat on the bench and opened the food. My sister spread her cloth over our knees like a tiny table. A woman waiting for the bus smiled at us. We offered her an apple, and she showed us a photograph of the lake in ____5____. The water was frozen, and snow covered the path.\n\n\"I've only seen it in summer,\" I said. Her picture made me want to ____6____ again in another season.\n\nAfter lunch, the rain stopped. We checked the road and decided to ride ____7____ instead of continuing to the lake. There would be enough time to dry our clothes before visiting Grandma.\n\nAt home, my sister drew our picnic. She included the shelter, bench and woman with the photograph. The lake was not in the picture, but our day was. I had thought a good picnic needed one ____8____ place. Now I knew it also needed food and people I enjoyed being ____9____. We would try the lake again, but I did not want to ____10____ the picnic we had already had.",
+            "explanation": "Enjoy being with people expresses pleasant company. Against opposition and under position do not fit that meaning.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "under"
+              },
+              {
+                "id": "o1",
+                "text": "with"
+              },
+              {
+                "id": "o2",
+                "text": "against"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior1.picnic-in-bus-shelter-024.whole.q10",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 10.",
+            "material": "The picnic place\n\nWe planned a bicycle picnic beside the lake. On Saturday morning, the sky was clear. Dad packed sandwiches, and I put apples in a bag. My sister brought a small ____1____ so we could sit on the grass.\n\nHalfway to the lake, dark clouds appeared. Then rain began to fall. We left the road and stopped at an empty bus shelter. Its roof kept us ____2____, but we could not continue our ride immediately.\n\nI was angry with the weather. \"The day is ____3____,\" I said.\n\nDad looked at his watch. It was nearly lunchtime. \"The lake will still be there another day,\" he said. \"The sandwiches are here ____4____.\"\n\nWe sat on the bench and opened the food. My sister spread her cloth over our knees like a tiny table. A woman waiting for the bus smiled at us. We offered her an apple, and she showed us a photograph of the lake in ____5____. The water was frozen, and snow covered the path.\n\n\"I've only seen it in summer,\" I said. Her picture made me want to ____6____ again in another season.\n\nAfter lunch, the rain stopped. We checked the road and decided to ride ____7____ instead of continuing to the lake. There would be enough time to dry our clothes before visiting Grandma.\n\nAt home, my sister drew our picnic. She included the shelter, bench and woman with the photograph. The lake was not in the picture, but our day was. I had thought a good picnic needed one ____8____ place. Now I knew it also needed food and people I enjoyed being ____9____. We would try the lake again, but I did not want to ____10____ the picnic we had already had.",
+            "explanation": "The drawing preserves a real picnic the narrator does not want to forget. Measuring is unrelated, and an event already experienced cannot now be cancelled.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "measure"
+              },
+              {
+                "id": "o1",
+                "text": "cancel"
+              },
+              {
+                "id": "o2",
+                "text": "forget"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "aaf7825304583fcb50ac922d6d0d7a923e117d24ee93e69601e4f9caea944433",
+      "reviewNotes": "Three new complete junior1 ten-gap three-choice narratives, using the recorded whole-passage task format. Author checks contextual keys and both distractors; option positions shuffled before freeze. Fictional events, not independent learner calibration or a claim of specialised dog-training advice. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.dog-blue-glove-024",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · Pip and the blue glove",
+        "summary": "Pip and the blue glove，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.choice_cloze"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g7.2021.cloze",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 复用已核对应初中整组来源；本稿按实际10空三选或8空四选，不统一题数，不以年级边际范围拼模式。源卷原图/图注留在原件，新虚构故事是文字自足材料，未偷换源缺图状态。源原键及年级难度未独立认证；作者自审与本机准备不等独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete junior1 ten-gap three-choice narratives, using the recorded whole-passage task format. Author checks contextual keys and both distractors; option positions shuffled before freeze. Fictional events, not independent learner calibration or a claim of specialised dog-training advice."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.dog-blue-glove-024",
+          "family": "choice_cloze",
+          "label": "Pip and the blue glove",
+          "candidateSHA256": "aa8176cdfa8f53dd1bc750f5c7ebc37e19a0ff8da5cde348f2e62f7f4e0a0897",
+          "authorCheckSHA256": "c91cfa829726714881f795bbf3d54eb6b359e860a03842726b1953602d8ab61e",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.dog-blue-glove-024#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b024；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Pip and the blue glove\n\nMy aunt's dog Pip liked carrying things. He brought slippers to the door and sometimes took a newspaper into the garden. When Aunt May said he could help find lost things, I wanted to ____1____ him.\n\nI placed a blue glove behind a chair while Pip waited in the kitchen. Then Aunt May let him smell its partner. He ran into the room, looked around and returned with a ____2____. It was blue too, but it belonged on my foot.\n\nI laughed. \"He has found the wrong thing!\"\n\nAunt May did not call him a bad dog. She took the sock gently and showed him the glove again. \"We need to make the task ____3____,\" she said.\n\nThis time, I placed the glove where part of it was ____4____ beside the chair. Pip found it quickly. We praised him and stopped after a few short tries, before he became ____5____.\n\nLater, I could not find my own cap. I almost called Pip, but the garden gate was open and a delivery van was outside. Aunt May asked me to keep Pip ____6____ while she closed the gate. A game did not matter more than keeping him safe.\n\nI found the cap myself, ____7____ the newspaper. Pip had not hidden it; I had put the paper on top of it.\n\nThat afternoon taught me two things. Helping a dog learn required ____8____, not just a loud command. And before blaming someone else for a lost object, I should ____9____ where I had left it. Pip carried his toy to me, and I put away my notebook. Nothing was missing now; we could simply ____10____."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.dog-blue-glove-024.whole.q1",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 1.",
+            "material": "Pip and the blue glove\n\nMy aunt's dog Pip liked carrying things. He brought slippers to the door and sometimes took a newspaper into the garden. When Aunt May said he could help find lost things, I wanted to ____1____ him.\n\nI placed a blue glove behind a chair while Pip waited in the kitchen. Then Aunt May let him smell its partner. He ran into the room, looked around and returned with a ____2____. It was blue too, but it belonged on my foot.\n\nI laughed. \"He has found the wrong thing!\"\n\nAunt May did not call him a bad dog. She took the sock gently and showed him the glove again. \"We need to make the task ____3____,\" she said.\n\nThis time, I placed the glove where part of it was ____4____ beside the chair. Pip found it quickly. We praised him and stopped after a few short tries, before he became ____5____.\n\nLater, I could not find my own cap. I almost called Pip, but the garden gate was open and a delivery van was outside. Aunt May asked me to keep Pip ____6____ while she closed the gate. A game did not matter more than keeping him safe.\n\nI found the cap myself, ____7____ the newspaper. Pip had not hidden it; I had put the paper on top of it.\n\nThat afternoon taught me two things. Helping a dog learn required ____8____, not just a loud command. And before blaming someone else for a lost object, I should ____9____ where I had left it. Pip carried his toy to me, and I put away my notebook. Nothing was missing now; we could simply ____10____.",
+            "explanation": "The narrator wants to test the claimed finding skill. Washing or selling Pip does not check it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "test"
+              },
+              {
+                "id": "o1",
+                "text": "wash"
+              },
+              {
+                "id": "o2",
+                "text": "sell"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior1.dog-blue-glove-024.whole.q2",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 2.",
+            "material": "Pip and the blue glove\n\nMy aunt's dog Pip liked carrying things. He brought slippers to the door and sometimes took a newspaper into the garden. When Aunt May said he could help find lost things, I wanted to ____1____ him.\n\nI placed a blue glove behind a chair while Pip waited in the kitchen. Then Aunt May let him smell its partner. He ran into the room, looked around and returned with a ____2____. It was blue too, but it belonged on my foot.\n\nI laughed. \"He has found the wrong thing!\"\n\nAunt May did not call him a bad dog. She took the sock gently and showed him the glove again. \"We need to make the task ____3____,\" she said.\n\nThis time, I placed the glove where part of it was ____4____ beside the chair. Pip found it quickly. We praised him and stopped after a few short tries, before he became ____5____.\n\nLater, I could not find my own cap. I almost called Pip, but the garden gate was open and a delivery van was outside. Aunt May asked me to keep Pip ____6____ while she closed the gate. A game did not matter more than keeping him safe.\n\nI found the cap myself, ____7____ the newspaper. Pip had not hidden it; I had put the paper on top of it.\n\nThat afternoon taught me two things. Helping a dog learn required ____8____, not just a loud command. And before blaming someone else for a lost object, I should ____9____ where I had left it. Pip carried his toy to me, and I put away my notebook. Nothing was missing now; we could simply ____10____.",
+            "explanation": "A blue item worn on the foot is a sock. Hat goes on the head and glove on the hand.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "sock"
+              },
+              {
+                "id": "o1",
+                "text": "hat"
+              },
+              {
+                "id": "o2",
+                "text": "glove"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior1.dog-blue-glove-024.whole.q3",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 3.",
+            "material": "Pip and the blue glove\n\nMy aunt's dog Pip liked carrying things. He brought slippers to the door and sometimes took a newspaper into the garden. When Aunt May said he could help find lost things, I wanted to ____1____ him.\n\nI placed a blue glove behind a chair while Pip waited in the kitchen. Then Aunt May let him smell its partner. He ran into the room, looked around and returned with a ____2____. It was blue too, but it belonged on my foot.\n\nI laughed. \"He has found the wrong thing!\"\n\nAunt May did not call him a bad dog. She took the sock gently and showed him the glove again. \"We need to make the task ____3____,\" she said.\n\nThis time, I placed the glove where part of it was ____4____ beside the chair. Pip found it quickly. We praised him and stopped after a few short tries, before he became ____5____.\n\nLater, I could not find my own cap. I almost called Pip, but the garden gate was open and a delivery van was outside. Aunt May asked me to keep Pip ____6____ while she closed the gate. A game did not matter more than keeping him safe.\n\nI found the cap myself, ____7____ the newspaper. Pip had not hidden it; I had put the paper on top of it.\n\nThat afternoon taught me two things. Helping a dog learn required ____8____, not just a loud command. And before blaming someone else for a lost object, I should ____9____ where I had left it. Pip carried his toy to me, and I put away my notebook. Nothing was missing now; we could simply ____10____.",
+            "explanation": "Showing the glove again and making it partly visible clarifies the task. Longer and noisier do not specify the helpful change.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "noisier"
+              },
+              {
+                "id": "o1",
+                "text": "longer"
+              },
+              {
+                "id": "o2",
+                "text": "clearer"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior1.dog-blue-glove-024.whole.q4",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 4.",
+            "material": "Pip and the blue glove\n\nMy aunt's dog Pip liked carrying things. He brought slippers to the door and sometimes took a newspaper into the garden. When Aunt May said he could help find lost things, I wanted to ____1____ him.\n\nI placed a blue glove behind a chair while Pip waited in the kitchen. Then Aunt May let him smell its partner. He ran into the room, looked around and returned with a ____2____. It was blue too, but it belonged on my foot.\n\nI laughed. \"He has found the wrong thing!\"\n\nAunt May did not call him a bad dog. She took the sock gently and showed him the glove again. \"We need to make the task ____3____,\" she said.\n\nThis time, I placed the glove where part of it was ____4____ beside the chair. Pip found it quickly. We praised him and stopped after a few short tries, before he became ____5____.\n\nLater, I could not find my own cap. I almost called Pip, but the garden gate was open and a delivery van was outside. Aunt May asked me to keep Pip ____6____ while she closed the gate. A game did not matter more than keeping him safe.\n\nI found the cap myself, ____7____ the newspaper. Pip had not hidden it; I had put the paper on top of it.\n\nThat afternoon taught me two things. Helping a dog learn required ____8____, not just a loud command. And before blaming someone else for a lost object, I should ____9____ where I had left it. Pip carried his toy to me, and I put away my notebook. Nothing was missing now; we could simply ____10____.",
+            "explanation": "A visible part helps Pip spot the glove. Wetness and weight do not improve the visual cue described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "wet"
+              },
+              {
+                "id": "o1",
+                "text": "visible"
+              },
+              {
+                "id": "o2",
+                "text": "heavy"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior1.dog-blue-glove-024.whole.q5",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 5.",
+            "material": "Pip and the blue glove\n\nMy aunt's dog Pip liked carrying things. He brought slippers to the door and sometimes took a newspaper into the garden. When Aunt May said he could help find lost things, I wanted to ____1____ him.\n\nI placed a blue glove behind a chair while Pip waited in the kitchen. Then Aunt May let him smell its partner. He ran into the room, looked around and returned with a ____2____. It was blue too, but it belonged on my foot.\n\nI laughed. \"He has found the wrong thing!\"\n\nAunt May did not call him a bad dog. She took the sock gently and showed him the glove again. \"We need to make the task ____3____,\" she said.\n\nThis time, I placed the glove where part of it was ____4____ beside the chair. Pip found it quickly. We praised him and stopped after a few short tries, before he became ____5____.\n\nLater, I could not find my own cap. I almost called Pip, but the garden gate was open and a delivery van was outside. Aunt May asked me to keep Pip ____6____ while she closed the gate. A game did not matter more than keeping him safe.\n\nI found the cap myself, ____7____ the newspaper. Pip had not hidden it; I had put the paper on top of it.\n\nThat afternoon taught me two things. Helping a dog learn required ____8____, not just a loud command. And before blaming someone else for a lost object, I should ____9____ where I had left it. Pip carried his toy to me, and I put away my notebook. Nothing was missing now; we could simply ____10____.",
+            "explanation": "Short practice ends before fatigue. Fame and wealth are not possible states relevant to the dog's session.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "tired"
+              },
+              {
+                "id": "o1",
+                "text": "famous"
+              },
+              {
+                "id": "o2",
+                "text": "rich"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior1.dog-blue-glove-024.whole.q6",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 6.",
+            "material": "Pip and the blue glove\n\nMy aunt's dog Pip liked carrying things. He brought slippers to the door and sometimes took a newspaper into the garden. When Aunt May said he could help find lost things, I wanted to ____1____ him.\n\nI placed a blue glove behind a chair while Pip waited in the kitchen. Then Aunt May let him smell its partner. He ran into the room, looked around and returned with a ____2____. It was blue too, but it belonged on my foot.\n\nI laughed. \"He has found the wrong thing!\"\n\nAunt May did not call him a bad dog. She took the sock gently and showed him the glove again. \"We need to make the task ____3____,\" she said.\n\nThis time, I placed the glove where part of it was ____4____ beside the chair. Pip found it quickly. We praised him and stopped after a few short tries, before he became ____5____.\n\nLater, I could not find my own cap. I almost called Pip, but the garden gate was open and a delivery van was outside. Aunt May asked me to keep Pip ____6____ while she closed the gate. A game did not matter more than keeping him safe.\n\nI found the cap myself, ____7____ the newspaper. Pip had not hidden it; I had put the paper on top of it.\n\nThat afternoon taught me two things. Helping a dog learn required ____8____, not just a loud command. And before blaming someone else for a lost object, I should ____9____ where I had left it. Pip carried his toy to me, and I put away my notebook. Nothing was missing now; we could simply ____10____.",
+            "explanation": "An open gate and van mean Pip should stay inside until the gate is shut. Outside increases the problem and sleep is not the instruction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "asleep"
+              },
+              {
+                "id": "o1",
+                "text": "outside"
+              },
+              {
+                "id": "o2",
+                "text": "inside"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior1.dog-blue-glove-024.whole.q7",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 7.",
+            "material": "Pip and the blue glove\n\nMy aunt's dog Pip liked carrying things. He brought slippers to the door and sometimes took a newspaper into the garden. When Aunt May said he could help find lost things, I wanted to ____1____ him.\n\nI placed a blue glove behind a chair while Pip waited in the kitchen. Then Aunt May let him smell its partner. He ran into the room, looked around and returned with a ____2____. It was blue too, but it belonged on my foot.\n\nI laughed. \"He has found the wrong thing!\"\n\nAunt May did not call him a bad dog. She took the sock gently and showed him the glove again. \"We need to make the task ____3____,\" she said.\n\nThis time, I placed the glove where part of it was ____4____ beside the chair. Pip found it quickly. We praised him and stopped after a few short tries, before he became ____5____.\n\nLater, I could not find my own cap. I almost called Pip, but the garden gate was open and a delivery van was outside. Aunt May asked me to keep Pip ____6____ while she closed the gate. A game did not matter more than keeping him safe.\n\nI found the cap myself, ____7____ the newspaper. Pip had not hidden it; I had put the paper on top of it.\n\nThat afternoon taught me two things. Helping a dog learn required ____8____, not just a loud command. And before blaming someone else for a lost object, I should ____9____ where I had left it. Pip carried his toy to me, and I put away my notebook. Nothing was missing now; we could simply ____10____.",
+            "explanation": "The paper had been placed on top of the cap, so the cap is under it. Above and beside contradict the stated covering.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "beside"
+              },
+              {
+                "id": "o1",
+                "text": "under"
+              },
+              {
+                "id": "o2",
+                "text": "above"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior1.dog-blue-glove-024.whole.q8",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 8.",
+            "material": "Pip and the blue glove\n\nMy aunt's dog Pip liked carrying things. He brought slippers to the door and sometimes took a newspaper into the garden. When Aunt May said he could help find lost things, I wanted to ____1____ him.\n\nI placed a blue glove behind a chair while Pip waited in the kitchen. Then Aunt May let him smell its partner. He ran into the room, looked around and returned with a ____2____. It was blue too, but it belonged on my foot.\n\nI laughed. \"He has found the wrong thing!\"\n\nAunt May did not call him a bad dog. She took the sock gently and showed him the glove again. \"We need to make the task ____3____,\" she said.\n\nThis time, I placed the glove where part of it was ____4____ beside the chair. Pip found it quickly. We praised him and stopped after a few short tries, before he became ____5____.\n\nLater, I could not find my own cap. I almost called Pip, but the garden gate was open and a delivery van was outside. Aunt May asked me to keep Pip ____6____ while she closed the gate. A game did not matter more than keeping him safe.\n\nI found the cap myself, ____7____ the newspaper. Pip had not hidden it; I had put the paper on top of it.\n\nThat afternoon taught me two things. Helping a dog learn required ____8____, not just a loud command. And before blaming someone else for a lost object, I should ____9____ where I had left it. Pip carried his toy to me, and I put away my notebook. Nothing was missing now; we could simply ____10____.",
+            "explanation": "Gentle repetition, praise and short practice show patience. No payment is involved; complete silence contradicts guidance and praise.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "money"
+              },
+              {
+                "id": "o1",
+                "text": "silence"
+              },
+              {
+                "id": "o2",
+                "text": "patience"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior1.dog-blue-glove-024.whole.q9",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 9.",
+            "material": "Pip and the blue glove\n\nMy aunt's dog Pip liked carrying things. He brought slippers to the door and sometimes took a newspaper into the garden. When Aunt May said he could help find lost things, I wanted to ____1____ him.\n\nI placed a blue glove behind a chair while Pip waited in the kitchen. Then Aunt May let him smell its partner. He ran into the room, looked around and returned with a ____2____. It was blue too, but it belonged on my foot.\n\nI laughed. \"He has found the wrong thing!\"\n\nAunt May did not call him a bad dog. She took the sock gently and showed him the glove again. \"We need to make the task ____3____,\" she said.\n\nThis time, I placed the glove where part of it was ____4____ beside the chair. Pip found it quickly. We praised him and stopped after a few short tries, before he became ____5____.\n\nLater, I could not find my own cap. I almost called Pip, but the garden gate was open and a delivery van was outside. Aunt May asked me to keep Pip ____6____ while she closed the gate. A game did not matter more than keeping him safe.\n\nI found the cap myself, ____7____ the newspaper. Pip had not hidden it; I had put the paper on top of it.\n\nThat afternoon taught me two things. Helping a dog learn required ____8____, not just a loud command. And before blaming someone else for a lost object, I should ____9____ where I had left it. Pip carried his toy to me, and I put away my notebook. Nothing was missing now; we could simply ____10____.",
+            "explanation": "The narrator should check their own actions before blaming another. Hiding or announcing a location does not establish where the object actually is.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "check"
+              },
+              {
+                "id": "o1",
+                "text": "announce"
+              },
+              {
+                "id": "o2",
+                "text": "hide"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior1.dog-blue-glove-024.whole.q10",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 10.",
+            "material": "Pip and the blue glove\n\nMy aunt's dog Pip liked carrying things. He brought slippers to the door and sometimes took a newspaper into the garden. When Aunt May said he could help find lost things, I wanted to ____1____ him.\n\nI placed a blue glove behind a chair while Pip waited in the kitchen. Then Aunt May let him smell its partner. He ran into the room, looked around and returned with a ____2____. It was blue too, but it belonged on my foot.\n\nI laughed. \"He has found the wrong thing!\"\n\nAunt May did not call him a bad dog. She took the sock gently and showed him the glove again. \"We need to make the task ____3____,\" she said.\n\nThis time, I placed the glove where part of it was ____4____ beside the chair. Pip found it quickly. We praised him and stopped after a few short tries, before he became ____5____.\n\nLater, I could not find my own cap. I almost called Pip, but the garden gate was open and a delivery van was outside. Aunt May asked me to keep Pip ____6____ while she closed the gate. A game did not matter more than keeping him safe.\n\nI found the cap myself, ____7____ the newspaper. Pip had not hidden it; I had put the paper on top of it.\n\nThat afternoon taught me two things. Helping a dog learn required ____8____, not just a loud command. And before blaming someone else for a lost object, I should ____9____ where I had left it. Pip carried his toy to me, and I put away my notebook. Nothing was missing now; we could simply ____10____.",
+            "explanation": "The toy invites them to play together. Nothing needs searching for, and no delivery task is waiting.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "play"
+              },
+              {
+                "id": "o1",
+                "text": "deliver"
+              },
+              {
+                "id": "o2",
+                "text": "search"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "f559d3707e09b9c2f7e2a566c2a4a74356eacd34598e95a6e00166905b6b2ac6",
+      "reviewNotes": "Three new complete junior1 ten-gap three-choice narratives, using the recorded whole-passage task format. Author checks contextual keys and both distractors; option positions shuffled before freeze. Fictional events, not independent learner calibration or a claim of specialised dog-training advice. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
