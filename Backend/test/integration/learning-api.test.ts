@@ -29,7 +29,7 @@ import {
 import { registerLearningRoutes } from "../../src/modules/learning/routes.js";
 import { integrationConfig } from "../helpers/integration.js";
 import { createTestJobWorker } from "../helpers/jobs.js";
-import { learningFixture } from "../helpers/learning.js";
+import { freshLearningFixture, learningFixture } from "../helpers/learning.js";
 
 type Attempt = Awaited<ReturnType<LearningService["attempt"]>>;
 type Character = Awaited<ReturnType<LearningService["character"]>>;
@@ -167,7 +167,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         expectedVersion: snapshot.profile.version,
       });
       for (let i = 0; i < 3; i++) {
-        const unit = learningFixture(`test.api-${randomUUID()}`);
+        const unit = freshLearningFixture(`test.api-${randomUUID()}`);
         unitIds.push(unit.id);
         await repository.publish(unit);
       }

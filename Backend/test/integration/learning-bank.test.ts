@@ -28,6 +28,7 @@ import {
   type LearningUnit,
 } from "../../src/modules/learning/content.js";
 import { gradeAnswer } from "../../src/modules/learning/grading.js";
+import { questionForPresentation } from "../../src/modules/learning/presentation.js";
 import { integrationConfig } from "../helpers/integration.js";
 
 function required<T>(value: T | undefined | null): T {
@@ -105,6 +106,39 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
     >`select coalesce(a.snapshot,v.payload) as payload from app.learning_attempts a left join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version where a.id=${id}`;
     return required(r).payload;
   }
+  it("旧中文听力快照通过真实读取链路显示英文，存储和原答案保持不变", async () => {
+    const c = await account();
+    const attempt = await c.start(await c.character(), "senior3");
+    const frozen = await privateUnit(attempt.id);
+    const original = required(
+      authored.units.find((u) => u.id === "companion.senior3.paper-boat")?.questions[0],
+    );
+    if (original.type !== "listeningChoice")
+      throw new Error("Missing listening fixture");
+    const old = {
+      ...original,
+      id: required(frozen.questions[0]).id,
+      prompt: "听两人商量旧书交换活动。第二位说话人最后支持什么安排？",
+      options: [
+        { id: "a", text: "取消活动，因为下午也缺少帮手。" },
+        { id: "b", text: "保留活动，建议改到午饭后进行。" },
+        { id: "c", text: "保留活动，仍按周六上午安排。" },
+      ],
+    };
+    frozen.questions[0] = old;
+    frozen.goalIds = [...new Set([...frozen.goalIds, old.goalId])];
+    await db.sql`update app.learning_attempts set snapshot=${JSON.stringify(frozen)}::jsonb where id=${attempt.id}`;
+    const hash = contentHash(await privateUnit(attempt.id));
+    const shown = await engine.read(c.user, (s) => s.attempt(attempt.id));
+    expect(shown.unit.questions[0]?.prompt).toBe(original.prompt);
+    expect(shown.unit.questions[0]).toMatchObject({ options: original.options });
+    const speech = await engine.read(c.user, (s) =>
+      s.listeningScript(attempt.id, old.id, old.audio.assetId),
+    );
+    expect(speech.segments.at(-1)?.text).toBe(`Question: ${original.prompt}`);
+    expect(gradeAnswer(old, { kind: "choice", optionId: "b" }).outcome).toBe("correct");
+    expect(contentHash(await privateUnit(attempt.id))).toBe(hash);
+  });
   it("任意角色覆盖已发布档位，固定快照可读取且响应没有答案", async () => {
     const c = await account();
     for (const level of new Set(catalog.blueprints.map((b) => b.level))) {
@@ -398,6 +432,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
         list.json<{ items: { payload: unknown; content_hash: string }[] }>().items[0],
       );
       const q = bankQuestionSchema.parse(item.payload);
+      q.question = questionForPresentation(q.question);
       if (q.question.type !== "choice") throw new Error("夹具题型错误");
       const hash = item.content_hash;
       const invalid = {
@@ -422,7 +457,10 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
       ).toBe(422);
       const variant = {
         ...q,
-        question: { ...q.question, prompt: q.question.prompt + "（隔离测试的新材料）" },
+        question: {
+          ...q.question,
+          prompt: q.question.prompt + " (New isolated test material.)",
+        },
       };
       const response = await app.inject({
         method: "POST",

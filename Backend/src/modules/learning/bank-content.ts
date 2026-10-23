@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { hasAppropriateQuestionLanguage } from "./presentation.js";
 import {
   contentHash,
   levelSchema,
@@ -150,21 +151,8 @@ export function availableForNewLearning(
   question: LearningQuestion,
   level: string,
 ): boolean {
-  if (question.type === "dictation") return false;
-  if (
-    question.type !== "listeningChoice" ||
-    ![
-      "senior1",
-      "senior2",
-      "senior3",
-      "undergraduate",
-      "postgraduate",
-      "advanced",
-    ].includes(level)
-  )
-    return true;
-  return !/\p{Script=Han}/u.test(
-    question.prompt + question.options.map((o) => o.text).join(" "),
+  return (
+    question.type !== "dictation" && hasAppropriateQuestionLanguage(question, level)
   );
 }
 

@@ -1,5 +1,7 @@
-import { createHash } from "node:crypto";
+import { contentHash } from "./content-hash.js";
+export { canonicalJSON, contentHash } from "./content-hash.js";
 import { z } from "zod";
+import { questionForPresentation } from "./presentation.js";
 
 export const levelKeys = [
   "kindergarten",
@@ -444,27 +446,9 @@ export const unitSchema = z
   });
 export type LearningUnit = z.infer<typeof unitSchema>;
 
-/** 保持字段顺序无关，发布与幂等检查共用规范序列化。 */
-export function canonicalJSON(value: unknown): string {
-  if (Array.isArray(value)) return `[${value.map(canonicalJSON).join(",")}]`;
-  if (value !== null && typeof value === "object") {
-    const record = value as Record<string, unknown>;
-    return `{${Object.keys(record)
-      .sort()
-      .map((key) => `${JSON.stringify(key)}:${canonicalJSON(record[key])}`)
-      .join(",")}}`;
-  }
-  const result: unknown = JSON.stringify(value);
-  if (typeof result !== "string") throw new Error("学习合同不能包含不可序列化的字段。");
-  return result;
-}
-
-export function contentHash(value: unknown): string {
-  return createHash("sha256").update(canonicalJSON(value)).digest("hex");
-}
-
 /** 只投影白名单字段，防止新增私有答案字段时意外被传给客户端。 */
 export function publicQuestion(question: LearningQuestion) {
+  question = questionForPresentation(question);
   const common = {
     id: question.id,
     type: question.type,

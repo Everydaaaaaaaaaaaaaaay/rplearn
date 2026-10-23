@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { z } from "zod";
 import { questionAudios, type LearningQuestion } from "./content.js";
+import { questionForPresentation } from "./presentation.js";
 
 const segment = z.strictObject({
   text: z.string().trim().min(1).max(20000),
@@ -32,6 +33,7 @@ export async function questionListeningScript(
   question: LearningQuestion,
   assetId: string,
 ) {
+  question = questionForPresentation(question);
   const audio = questionAudios(question).find((item) => item.assetId === assetId);
   if (!audio) return undefined;
   const authored = (await scripts()).assets[assetId];

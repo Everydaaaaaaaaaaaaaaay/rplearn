@@ -11,6 +11,7 @@ import {
 } from "./content.js";
 import { answerSchema, gradeAnswer } from "./grading.js";
 import { bankIdentity } from "./bank-content.js";
+import { hasAppropriateQuestionLanguage } from "./presentation.js";
 import {
   learningAudioSchema,
   verifyLearningAudio,
@@ -197,6 +198,8 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
     if (review.questions.length !== unit.questions.length)
       fail("逐题审核没有完整覆盖。");
     for (const question of unit.questions) {
+      if (!hasAppropriateQuestionLanguage(question, unit.level))
+        fail(`题目 ${question.id} 的题干或选项语言不符合当前题型要求。`);
       const checked = review.questions.find((q) => q.questionId === question.id);
       if (!checked) fail(`题目 ${question.id} 缺少审核。`);
       for (const audio of questionAudios(question)) {
