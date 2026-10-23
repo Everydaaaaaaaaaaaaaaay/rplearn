@@ -1,0 +1,1106 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b032",
+  "createdAt": "2026-10-23T20:46:40.140156+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.robot-team-notebook-032",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · The notebook beside the robot",
+        "summary": "The notebook beside the robot，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.choice_cloze"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete cloze task structure",
+            "pages": "Use of English: 15-gap cloze",
+            "alignment": "One complete original 15-gap passage, four options per gap; the source supplies task rules, not copied text or keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade10-shenzhenlower2026-21cnjy26167651.cloze",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Existing original supplies a level/family drafting reference. The final task follows the 2025 National I whole 15-gap four-choice cloze structure; all text and keys are newly authored."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Two original complete senior1 15-gap four-choice cloze narratives. Author checks contextual keys and all alternatives, with candidate positions shuffled before freeze. Final structure follows National I; no claim of independent teacher or learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.robot-team-notebook-032",
+          "family": "choice_cloze",
+          "label": "The notebook beside the robot",
+          "candidateSHA256": "9abd4810590c247ded22d0653bb0597de4df0237aaa91b851044452c22b51958",
+          "authorCheckSHA256": "bdadc220d13d2de51ec83f986747dff017158cc1237c0c511af665a1eaba26e7",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.robot-team-notebook-032#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b032；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q1",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 1.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "The narrator is uncertain about their contribution or role. Age, coat and address do not concern who built the robot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "age"
+              },
+              {
+                "id": "o1",
+                "text": "coat"
+              },
+              {
+                "id": "o2",
+                "text": "address"
+              },
+              {
+                "id": "o3",
+                "text": "role"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q2",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 2.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "Checking and recording feel less exciting than making visible motion. Danger, cost and familiarity are not the comparison motivating insecurity.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "dangerous"
+              },
+              {
+                "id": "o1",
+                "text": "familiar"
+              },
+              {
+                "id": "o2",
+                "text": "expensive"
+              },
+              {
+                "id": "o3",
+                "text": "exciting"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q3",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 3.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "The friend who programmed it opens the computer to change code. Floor, battery and physical label are not changed through that programming action.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "floor"
+              },
+              {
+                "id": "o1",
+                "text": "label"
+              },
+              {
+                "id": "o2",
+                "text": "battery"
+              },
+              {
+                "id": "o3",
+                "text": "code"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q4",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 4.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "Securing the loose wire lets the robot continue. Forgetting, planning or measuring does not resume the halted movement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "planned"
+              },
+              {
+                "id": "o1",
+                "text": "continued"
+              },
+              {
+                "id": "o2",
+                "text": "measured"
+              },
+              {
+                "id": "o3",
+                "text": "forgot"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q5",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 5.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "The dated notes connect the present fault with an earlier event. Hiding or denying prevents diagnosis, while replacing one problem with another is not the task.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "replace"
+              },
+              {
+                "id": "o1",
+                "text": "connect"
+              },
+              {
+                "id": "o2",
+                "text": "deny"
+              },
+              {
+                "id": "o3",
+                "text": "hide"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q6",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 6.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "Concern about crossed-out lines leads to hesitation. Immediate agreement or celebration lacks the uncertainty, and the narrator remains present.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "hesitated"
+              },
+              {
+                "id": "o1",
+                "text": "celebrated"
+              },
+              {
+                "id": "o2",
+                "text": "disappeared"
+              },
+              {
+                "id": "o3",
+                "text": "agreed"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q7",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 7.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "The notebook explains a final design choice including rejecting a larger wheel. Buying/painting do not explain its absence, and no accidental loss is described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "rejected"
+              },
+              {
+                "id": "o1",
+                "text": "lost"
+              },
+              {
+                "id": "o2",
+                "text": "bought"
+              },
+              {
+                "id": "o3",
+                "text": "painted"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q8",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 8.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "The narrator can now explain the role with confidence. Quietness and brevity concern delivery mechanics; anger has no supporting cue.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "briefly"
+              },
+              {
+                "id": "o1",
+                "text": "confidently"
+              },
+              {
+                "id": "o2",
+                "text": "angrily"
+              },
+              {
+                "id": "o3",
+                "text": "quietly"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q9",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 9.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "Records prevent learning being lost between tests. Growing and starting are desirable, while change itself is not what the notebook prevents.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "disappearing"
+              },
+              {
+                "id": "o1",
+                "text": "growing"
+              },
+              {
+                "id": "o2",
+                "text": "changing"
+              },
+              {
+                "id": "o3",
+                "text": "starting"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q10",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 10.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "Visitors see the physical machine more readily than the recorded testing work. Weight, borrowing and carrying are not the visible-versus-hidden contribution contrast.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "carry"
+              },
+              {
+                "id": "o1",
+                "text": "borrow"
+              },
+              {
+                "id": "o2",
+                "text": "see"
+              },
+              {
+                "id": "o3",
+                "text": "weigh"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q11",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 11.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "A request for the useful notes makes the narrator pleased. Guilt, boredom and loneliness do not fit recognition and continuing collaboration.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "guilty"
+              },
+              {
+                "id": "o1",
+                "text": "lonely"
+              },
+              {
+                "id": "o2",
+                "text": "bored"
+              },
+              {
+                "id": "o3",
+                "text": "pleased"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q12",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 12.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "The team uses the notes for future work, so usefulness to others matters. Customers, judges and strangers are not the identified next-design users.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "judges"
+              },
+              {
+                "id": "o1",
+                "text": "others"
+              },
+              {
+                "id": "o2",
+                "text": "customers"
+              },
+              {
+                "id": "o3",
+                "text": "strangers"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q13",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 13.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "Distinct roles are different contributions to the team. Competition, permission and decoration do not name that cooperative work.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "permission"
+              },
+              {
+                "id": "o1",
+                "text": "contribution"
+              },
+              {
+                "id": "o2",
+                "text": "competition"
+              },
+              {
+                "id": "o3",
+                "text": "decoration"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q14",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 14.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "The notes prove needed for diagnosis and future design: necessary work. Temporary, private and simple do not capture their importance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "temporary"
+              },
+              {
+                "id": "o1",
+                "text": "private"
+              },
+              {
+                "id": "o2",
+                "text": "necessary"
+              },
+              {
+                "id": "o3",
+                "text": "simple"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.robot-team-notebook-032.whole.q15",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 15.",
+            "material": "The notebook beside the robot\n\nAt our robotics club exhibition, visitors admired the machine that followed a black line across the floor. My friend wrote its code; another designed its body. I stood behind them, unsure what to say about my own ____1____.\n\nFor weeks, I had checked batteries, labelled wires and written down what happened during tests. It seemed less ____2____ than making the robot move. When a visitor asked who had built it, I almost said, \"They did.\"\n\nThen the robot stopped halfway along the line. My friend opened the computer, ready to change the ____3____. I remembered an entry in my notebook: the same sudden stop had happened when one battery connection was loose.\n\n\"Can we check this first?\" I asked. A wire had slipped. Once it was secured, the robot ____4____ its journey.\n\nThe visitor turned to me. \"How did you know?\"\n\nI showed her the notebook. Each test had a date, a description and a drawing of the connections. The pages were not tidy, but they helped us ____5____ today's problem with an earlier one.\n\nOur teacher asked me to put the notebook beside the display. I ____6____, worried that its crossed-out lines would look careless. She said those changes showed what the team had actually tried.\n\nAs the afternoon continued, several visitors stopped to read it. One asked why we had ____7____ a larger wheel. I could answer because I had recorded the reason, not just the final choice.\n\nI began to describe my role more ____8____. I had not written the main code, but I had helped keep our learning from ____9____ between tests. The robot's smooth movement depended on more than the parts visitors could ____10____.\n\nMy friend requested a copy for our next design. I felt ____11____, but the notes mattered because they helped ____12____. A team needed different kinds of ____13____. I had already been doing a ____14____ job. At the next meeting, I opened a fresh notebook and asked what we needed to ____15____.",
+            "explanation": "A fresh notebook is for recording new tests and decisions. Advertising, erasing and selling do not continue that useful role.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "advertise"
+              },
+              {
+                "id": "o1",
+                "text": "sell"
+              },
+              {
+                "id": "o2",
+                "text": "erase"
+              },
+              {
+                "id": "o3",
+                "text": "record"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "befc3b83f6d98ed061c4c5573032c432671e2b08741e1cf1002caecaa384d7fa",
+      "reviewNotes": "Two original complete senior1 15-gap four-choice cloze narratives. Author checks contextual keys and all alternatives, with candidate positions shuffled before freeze. Final structure follows National I; no claim of independent teacher or learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.robot-team-notebook-032#whole",
+          "family": "choice_cloze",
+          "questionIds": [
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q1",
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q2",
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q3",
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q4",
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q5",
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q6",
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q7",
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q8",
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q9",
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q10",
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q11",
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q12",
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q13",
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q14",
+            "expansion.20261024.senior1.robot-team-notebook-032.whole.q15"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.robot-team-notebook-032",
+          "sourceContentHash": "9b3265cbfc65adeb65347b0f0124ec08e0f6cb645a2d497169f533dd6e5acfd1"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.small-bowl-abroad-032",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · A small bowl and a new word",
+        "summary": "A small bowl and a new word，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.choice_cloze"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete cloze task structure",
+            "pages": "Use of English: 15-gap cloze",
+            "alignment": "One complete original 15-gap passage, four options per gap; the source supplies task rules, not copied text or keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade10-shenzhenlower2026-21cnjy26167651.cloze",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Existing original supplies a level/family drafting reference. The final task follows the 2025 National I whole 15-gap four-choice cloze structure; all text and keys are newly authored."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Two original complete senior1 15-gap four-choice cloze narratives. Author checks contextual keys and all alternatives, with candidate positions shuffled before freeze. Final structure follows National I; no claim of independent teacher or learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.small-bowl-abroad-032",
+          "family": "choice_cloze",
+          "label": "A small bowl and a new word",
+          "candidateSHA256": "63cbd0a6dfe0fadb8285a23803126512da19b7c775fa99736981797bfc44b0da",
+          "authorCheckSHA256": "b315f1848308767acd17820cedc1376c2a83c84e67e44efed392fa1e44545c8f",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.small-bowl-abroad-032#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b032；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q1",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 1.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "The narrator cannot read the language, making the menu unfamiliar. No prices establish expense; a printed menu is not empty and ordinary does not explain the language barrier.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "ordinary"
+              },
+              {
+                "id": "o1",
+                "text": "expensive"
+              },
+              {
+                "id": "o2",
+                "text": "empty"
+              },
+              {
+                "id": "o3",
+                "text": "unfamiliar"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q2",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 2.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "Asking which dish to choose is asking for a recommendation. Forget, borrow and repair do not select food from a menu.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "repair"
+              },
+              {
+                "id": "o1",
+                "text": "recommend"
+              },
+              {
+                "id": "o2",
+                "text": "borrow"
+              },
+              {
+                "id": "o3",
+                "text": "forget"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q3",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 3.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "The waiter cannot understand the spoken English request. Remember and repeat would concern recalling or reproducing words, not grasping the request, while collecting a spoken question is not the activity taking place.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "collect"
+              },
+              {
+                "id": "o1",
+                "text": "understand"
+              },
+              {
+                "id": "o2",
+                "text": "remember"
+              },
+              {
+                "id": "o3",
+                "text": "repeat"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q4",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 4.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "Wanting to leave before another mistake shows feeling helpless. Pride and certainty conflict with the insecurity; sleepiness is not described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "certain"
+              },
+              {
+                "id": "o1",
+                "text": "proud"
+              },
+              {
+                "id": "o2",
+                "text": "sleepy"
+              },
+              {
+                "id": "o3",
+                "text": "helpless"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q5",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 5.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "Bringing drawing materials and working through the request demonstrates patience. Anger, absence and carelessness conflict with her helpful actions.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "careless"
+              },
+              {
+                "id": "o1",
+                "text": "absent"
+              },
+              {
+                "id": "o2",
+                "text": "angry"
+              },
+              {
+                "id": "o3",
+                "text": "patient"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q6",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 6.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "The bowl image is a drawing, later kept as a picture. It is not the cooked meal, written words or voice.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "voice"
+              },
+              {
+                "id": "o1",
+                "text": "meal"
+              },
+              {
+                "id": "o2",
+                "text": "writing"
+              },
+              {
+                "id": "o3",
+                "text": "drawing"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q7",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 7.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "Not being hungry motivates the smaller portion. Heavier/larger increase it; depth is not the offered distinction of two drawn sizes.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "larger"
+              },
+              {
+                "id": "o1",
+                "text": "deeper"
+              },
+              {
+                "id": "o2",
+                "text": "smaller"
+              },
+              {
+                "id": "o3",
+                "text": "heavier"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q8",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 8.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "A number beside the chosen dish is its price for the purchase. Date, age and distance do not explain agreeing to the food order.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "date"
+              },
+              {
+                "id": "o1",
+                "text": "age"
+              },
+              {
+                "id": "o2",
+                "text": "distance"
+              },
+              {
+                "id": "o3",
+                "text": "price"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q9",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 9.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "Nodding conveys agreement across the language barrier. Complaining opposes it, hiding avoids communication and running leaves the exchange.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "ran"
+              },
+              {
+                "id": "o1",
+                "text": "nodded"
+              },
+              {
+                "id": "o2",
+                "text": "hid"
+              },
+              {
+                "id": "o3",
+                "text": "complained"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q10",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 10.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "Enjoying the food after resolving the difficulty lets the narrator relax. Disappearance is impossible here; rushing and arguing do not match the easing mood.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "relax"
+              },
+              {
+                "id": "o1",
+                "text": "argue"
+              },
+              {
+                "id": "o2",
+                "text": "rush"
+              },
+              {
+                "id": "o3",
+                "text": "disappear"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q11",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 11.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "Keeping the written name helps remember it for a later order. Correcting, selling and inventing are not why it is saved.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "invent"
+              },
+              {
+                "id": "o1",
+                "text": "correct"
+              },
+              {
+                "id": "o2",
+                "text": "remember"
+              },
+              {
+                "id": "o3",
+                "text": "sell"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q12",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 12.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "The host family hears about the attempt to communicate. No recipe, weather report or building description is given.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "attempt"
+              },
+              {
+                "id": "o1",
+                "text": "recipe"
+              },
+              {
+                "id": "o2",
+                "text": "weather"
+              },
+              {
+                "id": "o3",
+                "text": "building"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q13",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 13.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "The narrator learns to try without complete linguistic perfection. Quietness, privacy and speed are not the standard previously feared.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "quiet"
+              },
+              {
+                "id": "o1",
+                "text": "perfect"
+              },
+              {
+                "id": "o2",
+                "text": "rapid"
+              },
+              {
+                "id": "o3",
+                "text": "private"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q14",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 14.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "Willingness to ask supplies the initiative needed. Permission, a promise and an order are not the personal readiness described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "order"
+              },
+              {
+                "id": "o1",
+                "text": "willingness"
+              },
+              {
+                "id": "o2",
+                "text": "promise"
+              },
+              {
+                "id": "o3",
+                "text": "permission"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.small-bowl-abroad-032.whole.q15",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 15.",
+            "material": "A small bowl and a new word\n\nDuring an exchange visit, I entered a small café alone. The menu was completely ____1____ to me. I tried asking the waiter what she would ____2____, but she shook her head. She could not ____3____ my English question.\n\nFor a moment, I felt ____4____. I wanted to leave before making a bigger mistake. The waiter, however, remained ____5____. She brought a pencil and a piece of paper.\n\nI drew a bowl with lines rising from it. My ____6____ was terrible, but she laughed gently and pointed towards a pot behind the counter. Then she drew two bowls of different sizes. I chose the ____7____ one because I was not very hungry.\n\nShe wrote a number beside it. This was the ____8____, which I could understand. I ____9____ to show agreement, and she went to the kitchen.\n\nThe soup was warm and delicious. As I ate, I felt myself ____10____. A difficult moment had become a small conversation, even though neither of us had suddenly learned the other's language.\n\nBefore leaving, I asked her to say the name of the dish slowly. I repeated it until I could say it reasonably well. She wrote it beside my bowl, and I folded the paper into my pocket so I would ____11____ it.\n\nBack with my host family, I showed them the picture. They enjoyed my account of the ____12____ as much as the drawing. The next afternoon, I returned and ordered using my new word. The waiter recognised me and drew a smiling face on the bill.\n\nI still wanted to learn more vocabulary. But I stopped expecting my speech to be ____13____ before trying a simple exchange. A little patience and the ____14____ to ask could open a door. The paper bowl stayed in my travel notebook, reminding me how much a conversation can achieve once we ____15____.",
+            "explanation": "The lesson values beginning an exchange despite limited words. Waiting or leaving prevents it; payment is one later action rather than the start of conversation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "wait"
+              },
+              {
+                "id": "o1",
+                "text": "leave"
+              },
+              {
+                "id": "o2",
+                "text": "pay"
+              },
+              {
+                "id": "o3",
+                "text": "begin"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "ffb938bfadef559ab6c21745c6f887e359ebbce0bcc081064a973b6105cca578",
+      "reviewNotes": "Two original complete senior1 15-gap four-choice cloze narratives. Author checks contextual keys and all alternatives, with candidate positions shuffled before freeze. Final structure follows National I; no claim of independent teacher or learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.small-bowl-abroad-032#whole",
+          "family": "choice_cloze",
+          "questionIds": [
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q1",
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q2",
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q3",
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q4",
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q5",
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q6",
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q7",
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q8",
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q9",
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q10",
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q11",
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q12",
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q13",
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q14",
+            "expansion.20261024.senior1.small-bowl-abroad-032.whole.q15"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.small-bowl-abroad-032",
+          "sourceContentHash": "588f056497a28402a795999886fd420b2c9d3d0b7c33cba208df6b777819eaf7"
+        }
+      ]
+    }
+  ]
+}
