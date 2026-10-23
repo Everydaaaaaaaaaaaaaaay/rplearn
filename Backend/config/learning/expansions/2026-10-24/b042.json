@@ -1,0 +1,920 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b042",
+  "createdAt": "2026-10-23T21:31:53.659286+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.park-cinema-and-dinghy-042",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · A park cinema and a small boat",
+        "summary": "A park cinema and a small boat，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.2024.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages with three and four four-choice questions. Old source is a level/family drafting reference; final complete-practice structure follows National I."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete new senior two-passage practices, each three plus four questions. Notices, incidents and award scenario are fictional. General rain-garden discussion asserts no invented study or statistics. Same-author all-key/all-distractor and inference review; no independent calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.park-cinema-and-dinghy-042",
+          "family": "reading_choice",
+          "label": "A park cinema and a small boat",
+          "candidateSHA256": "f1ebc4d8d51687f8718d042b1aee6f42956c28705231be63453bb7c200492c84",
+          "authorCheckSHA256": "27e780ea17e77870ec30a9edb70a12acfdc09faed1cde7362ce9c19dafa2408d",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.park-cinema-and-dinghy-042#cinema",
+            "expansion.20261024.senior1.park-cinema-and-dinghy-042#dinghy"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b042；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Meadow Park Film Evening\n\nMeadow Park is holding an outdoor film evening on Saturday 18 July. The event is suitable for families, but children under fourteen must attend with an adult. The gate opens at 18:30 and the film begins at 20:00. Visitors may arrive later than the gate-opening time, but everyone must enter before the screening starts.\n\nTickets cost six pounds for adults and three pounds for children. Booking is online only and closes at noon on Friday. A ticket gives access to the screening area; it does not reserve a particular position. The first three rows are kept clear for people who need an unobstructed view from a wheelchair or cannot sit on the grass. If you need this space, select that option when booking. No extra fee applies.\n\nBring a blanket or a low chair. Tall camping chairs may be used only at the back, so they do not block other people's view. Visitors may bring cold food, and drinking water will be available. Barbecues and glass bottles are not permitted.\n\nIf the forecast makes an outdoor screening unsuitable, the organisers will send a cancellation email by 14:00 on Saturday. Tickets will then be refunded automatically. The film will not move into the nearby community hall. Once the screening has begun, phones should be silenced, and anyone taking a call is asked to leave the viewing area until the call is finished.\n\nA slower turn\n\nOn my first sailing lesson, I thought the main task would be learning the names of the ropes. I had studied a diagram and could point confidently to most parts of our small boat. Then our instructor, Jo, asked us to turn towards a floating marker. Knowing the names did not tell my hands how far to move.\n\nI pushed the steering handle sharply. The boat turned more than I expected, and Jo calmly helped me bring it back. \"Try a smaller change,\" she said. \"Then give the boat time to answer.\"\n\nThat last instruction was difficult. When nothing seemed to happen immediately, I wanted to move the handle again. Jo asked me to watch the marker rather than stare at my hand. Slowly, its position against the shore changed. The boat had been responding all along; I had simply expected a response before I could see one.\n\nFor the next exercise, another beginner steered while I watched the sail. We had to speak to one another. I could not see everything from my seat, and neither could she. My careful list of parts became useful at last: it gave us words for making our observations clear.\n\nBy the end of the lesson, we could make a fairly smooth turn under Jo's supervision. We were nowhere near ready to sail alone, but I no longer thought my preparation had been wasted. The diagram had given me a vocabulary. Practice had begun to give those words a physical meaning.\n\nWalking home, I noticed how often I expected learning to arrive as a complete set of instructions. On the water, each instruction had become useful only when I could connect it with a movement, an observation and a little patience. Next time, I would still read before the lesson. I would also leave room for the boat to teach me what the page could not."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.park-cinema-and-dinghy-042.cinema.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must a thirteen-year-old visitor do?",
+            "material": "Meadow Park Film Evening\n\nMeadow Park is holding an outdoor film evening on Saturday 18 July. The event is suitable for families, but children under fourteen must attend with an adult. The gate opens at 18:30 and the film begins at 20:00. Visitors may arrive later than the gate-opening time, but everyone must enter before the screening starts.\n\nTickets cost six pounds for adults and three pounds for children. Booking is online only and closes at noon on Friday. A ticket gives access to the screening area; it does not reserve a particular position. The first three rows are kept clear for people who need an unobstructed view from a wheelchair or cannot sit on the grass. If you need this space, select that option when booking. No extra fee applies.\n\nBring a blanket or a low chair. Tall camping chairs may be used only at the back, so they do not block other people's view. Visitors may bring cold food, and drinking water will be available. Barbecues and glass bottles are not permitted.\n\nIf the forecast makes an outdoor screening unsuitable, the organisers will send a cancellation email by 14:00 on Saturday. Tickets will then be refunded automatically. The film will not move into the nearby community hall. Once the screening has begun, phones should be silenced, and anyone taking a call is asked to leave the viewing area until the call is finished.",
+            "explanation": "Children under fourteen need an adult companion. They retain child pricing, arrival can be later than18:30, and accessible rows are based on need rather than age.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Buy an adult ticket"
+              },
+              {
+                "id": "o1",
+                "text": "Sit in one of the first three rows"
+              },
+              {
+                "id": "o2",
+                "text": "Attend with an adult"
+              },
+              {
+                "id": "o3",
+                "text": "Arrive exactly at 18:30"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.park-cinema-and-dinghy-042.cinema.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who should select a special option when booking?",
+            "material": "Meadow Park Film Evening\n\nMeadow Park is holding an outdoor film evening on Saturday 18 July. The event is suitable for families, but children under fourteen must attend with an adult. The gate opens at 18:30 and the film begins at 20:00. Visitors may arrive later than the gate-opening time, but everyone must enter before the screening starts.\n\nTickets cost six pounds for adults and three pounds for children. Booking is online only and closes at noon on Friday. A ticket gives access to the screening area; it does not reserve a particular position. The first three rows are kept clear for people who need an unobstructed view from a wheelchair or cannot sit on the grass. If you need this space, select that option when booking. No extra fee applies.\n\nBring a blanket or a low chair. Tall camping chairs may be used only at the back, so they do not block other people's view. Visitors may bring cold food, and drinking water will be available. Barbecues and glass bottles are not permitted.\n\nIf the forecast makes an outdoor screening unsuitable, the organisers will send a cancellation email by 14:00 on Saturday. Tickets will then be refunded automatically. The film will not move into the nearby community hall. Once the screening has begun, phones should be silenced, and anyone taking a call is asked to leave the viewing area until the call is finished.",
+            "explanation": "The specific booking option is for accessible space. Blankets and later arrival need no special selection; cancellation refunds are automatic.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Anyone arriving after the gate opens"
+              },
+              {
+                "id": "o1",
+                "text": "Someone who needs the accessible viewing area"
+              },
+              {
+                "id": "o2",
+                "text": "Everyone bringing a blanket"
+              },
+              {
+                "id": "o3",
+                "text": "Visitors who want a refund if it rains"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.park-cinema-and-dinghy-042.cinema.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happens if the event is cancelled before it begins?",
+            "material": "Meadow Park Film Evening\n\nMeadow Park is holding an outdoor film evening on Saturday 18 July. The event is suitable for families, but children under fourteen must attend with an adult. The gate opens at 18:30 and the film begins at 20:00. Visitors may arrive later than the gate-opening time, but everyone must enter before the screening starts.\n\nTickets cost six pounds for adults and three pounds for children. Booking is online only and closes at noon on Friday. A ticket gives access to the screening area; it does not reserve a particular position. The first three rows are kept clear for people who need an unobstructed view from a wheelchair or cannot sit on the grass. If you need this space, select that option when booking. No extra fee applies.\n\nBring a blanket or a low chair. Tall camping chairs may be used only at the back, so they do not block other people's view. Visitors may bring cold food, and drinking water will be available. Barbecues and glass bottles are not permitted.\n\nIf the forecast makes an outdoor screening unsuitable, the organisers will send a cancellation email by 14:00 on Saturday. Tickets will then be refunded automatically. The film will not move into the nearby community hall. Once the screening has begun, phones should be silenced, and anyone taking a call is asked to leave the viewing area until the call is finished.",
+            "explanation": "The notice promises an email and automatic refund. It explicitly rejects moving indoors and states neither in-person applications nor a postponed date.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Tickets remain valid for an unnamed later date"
+              },
+              {
+                "id": "o1",
+                "text": "Visitors must apply in person for refunds"
+              },
+              {
+                "id": "o2",
+                "text": "Ticket payments are returned automatically"
+              },
+              {
+                "id": "o3",
+                "text": "The film moves to the community hall"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.park-cinema-and-dinghy-042.dinghy.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the narrator initially struggle to turn the boat?",
+            "material": "A slower turn\n\nOn my first sailing lesson, I thought the main task would be learning the names of the ropes. I had studied a diagram and could point confidently to most parts of our small boat. Then our instructor, Jo, asked us to turn towards a floating marker. Knowing the names did not tell my hands how far to move.\n\nI pushed the steering handle sharply. The boat turned more than I expected, and Jo calmly helped me bring it back. \"Try a smaller change,\" she said. \"Then give the boat time to answer.\"\n\nThat last instruction was difficult. When nothing seemed to happen immediately, I wanted to move the handle again. Jo asked me to watch the marker rather than stare at my hand. Slowly, its position against the shore changed. The boat had been responding all along; I had simply expected a response before I could see one.\n\nFor the next exercise, another beginner steered while I watched the sail. We had to speak to one another. I could not see everything from my seat, and neither could she. My careful list of parts became useful at last: it gave us words for making our observations clear.\n\nBy the end of the lesson, we could make a fairly smooth turn under Jo's supervision. We were nowhere near ready to sail alone, but I no longer thought my preparation had been wasted. The diagram had given me a vocabulary. Practice had begun to give those words a physical meaning.\n\nWalking home, I noticed how often I expected learning to arrive as a complete set of instructions. On the water, each instruction had become useful only when I could connect it with a movement, an observation and a little patience. Next time, I would still read before the lesson. I would also leave room for the boat to teach me what the page could not.",
+            "explanation": "The narrator knows names but not how far to move the handle. No false diagram, refusal or removed marker is described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Jo refused to give practical instructions"
+              },
+              {
+                "id": "o1",
+                "text": "The floating marker had been removed"
+              },
+              {
+                "id": "o2",
+                "text": "Knowing the terminology did not yet provide control of the movement"
+              },
+              {
+                "id": "o3",
+                "text": "The diagram labelled every rope incorrectly"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.park-cinema-and-dinghy-042.dinghy.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did watching the marker help the narrator understand?",
+            "material": "A slower turn\n\nOn my first sailing lesson, I thought the main task would be learning the names of the ropes. I had studied a diagram and could point confidently to most parts of our small boat. Then our instructor, Jo, asked us to turn towards a floating marker. Knowing the names did not tell my hands how far to move.\n\nI pushed the steering handle sharply. The boat turned more than I expected, and Jo calmly helped me bring it back. \"Try a smaller change,\" she said. \"Then give the boat time to answer.\"\n\nThat last instruction was difficult. When nothing seemed to happen immediately, I wanted to move the handle again. Jo asked me to watch the marker rather than stare at my hand. Slowly, its position against the shore changed. The boat had been responding all along; I had simply expected a response before I could see one.\n\nFor the next exercise, another beginner steered while I watched the sail. We had to speak to one another. I could not see everything from my seat, and neither could she. My careful list of parts became useful at last: it gave us words for making our observations clear.\n\nBy the end of the lesson, we could make a fairly smooth turn under Jo's supervision. We were nowhere near ready to sail alone, but I no longer thought my preparation had been wasted. The diagram had given me a vocabulary. Practice had begun to give those words a physical meaning.\n\nWalking home, I noticed how often I expected learning to arrive as a complete set of instructions. On the water, each instruction had become useful only when I could connect it with a movement, an observation and a little patience. Next time, I would still read before the lesson. I would also leave room for the boat to teach me what the page could not.",
+            "explanation": "Its changing position reveals the gradual response. Continuous movement was the impulse Jo discourages; shore movement and labels are not explanations.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The boat was already responding to the small adjustment"
+              },
+              {
+                "id": "o1",
+                "text": "The handle had to be moved continuously"
+              },
+              {
+                "id": "o2",
+                "text": "The shore was moving towards the boat"
+              },
+              {
+                "id": "o3",
+                "text": "The marker named each part of the sail"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.park-cinema-and-dinghy-042.dinghy.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What role did the earlier study play during the paired exercise?",
+            "material": "A slower turn\n\nOn my first sailing lesson, I thought the main task would be learning the names of the ropes. I had studied a diagram and could point confidently to most parts of our small boat. Then our instructor, Jo, asked us to turn towards a floating marker. Knowing the names did not tell my hands how far to move.\n\nI pushed the steering handle sharply. The boat turned more than I expected, and Jo calmly helped me bring it back. \"Try a smaller change,\" she said. \"Then give the boat time to answer.\"\n\nThat last instruction was difficult. When nothing seemed to happen immediately, I wanted to move the handle again. Jo asked me to watch the marker rather than stare at my hand. Slowly, its position against the shore changed. The boat had been responding all along; I had simply expected a response before I could see one.\n\nFor the next exercise, another beginner steered while I watched the sail. We had to speak to one another. I could not see everything from my seat, and neither could she. My careful list of parts became useful at last: it gave us words for making our observations clear.\n\nBy the end of the lesson, we could make a fairly smooth turn under Jo's supervision. We were nowhere near ready to sail alone, but I no longer thought my preparation had been wasted. The diagram had given me a vocabulary. Practice had begun to give those words a physical meaning.\n\nWalking home, I noticed how often I expected learning to arrive as a complete set of instructions. On the water, each instruction had become useful only when I could connect it with a movement, an observation and a little patience. Next time, I would still read before the lesson. I would also leave room for the boat to teach me what the page could not.",
+            "explanation": "Shared vocabulary helps communicate limited views. It neither replaces observation nor makes either learner ready alone or all-seeing.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It proved both learners could sail unsupervised"
+              },
+              {
+                "id": "o1",
+                "text": "It allowed the narrator to see from every seat"
+              },
+              {
+                "id": "o2",
+                "text": "It replaced the need for observations"
+              },
+              {
+                "id": "o3",
+                "text": "It supplied useful terms for communication"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.park-cinema-and-dinghy-042.dinghy.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which statement best expresses the narrator’s final view?",
+            "material": "A slower turn\n\nOn my first sailing lesson, I thought the main task would be learning the names of the ropes. I had studied a diagram and could point confidently to most parts of our small boat. Then our instructor, Jo, asked us to turn towards a floating marker. Knowing the names did not tell my hands how far to move.\n\nI pushed the steering handle sharply. The boat turned more than I expected, and Jo calmly helped me bring it back. \"Try a smaller change,\" she said. \"Then give the boat time to answer.\"\n\nThat last instruction was difficult. When nothing seemed to happen immediately, I wanted to move the handle again. Jo asked me to watch the marker rather than stare at my hand. Slowly, its position against the shore changed. The boat had been responding all along; I had simply expected a response before I could see one.\n\nFor the next exercise, another beginner steered while I watched the sail. We had to speak to one another. I could not see everything from my seat, and neither could she. My careful list of parts became useful at last: it gave us words for making our observations clear.\n\nBy the end of the lesson, we could make a fairly smooth turn under Jo's supervision. We were nowhere near ready to sail alone, but I no longer thought my preparation had been wasted. The diagram had given me a vocabulary. Practice had begun to give those words a physical meaning.\n\nWalking home, I noticed how often I expected learning to arrive as a complete set of instructions. On the water, each instruction had become useful only when I could connect it with a movement, an observation and a little patience. Next time, I would still read before the lesson. I would also leave room for the boat to teach me what the page could not.",
+            "explanation": "The ending keeps reading while adding movement and observation. It rejects neither books nor instruction and does not restrict the lesson to water.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Written explanations prevent people from gaining physical skills"
+              },
+              {
+                "id": "o1",
+                "text": "Patience matters only when learning on water"
+              },
+              {
+                "id": "o2",
+                "text": "Preparation becomes more useful when connected with practical experience"
+              },
+              {
+                "id": "o3",
+                "text": "A successful first lesson removes the need for an instructor"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "7eb86124523c6e4408894eaf494bccaefeec096fa005747659f5aaff20a4b2b6",
+      "reviewNotes": "Three complete new senior two-passage practices, each three plus four questions. Notices, incidents and award scenario are fictional. General rain-garden discussion asserts no invented study or statistics. Same-author all-key/all-distractor and inference review; no independent calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.park-cinema-and-dinghy-042#cinema",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.park-cinema-and-dinghy-042.cinema.q1",
+            "expansion.20261024.senior1.park-cinema-and-dinghy-042.cinema.q2",
+            "expansion.20261024.senior1.park-cinema-and-dinghy-042.cinema.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.park-cinema-and-dinghy-042",
+          "sourceContentHash": "ce9221e80291b498e0d442d3b805a2e5571cfa0dde43964871267343f421e560"
+        },
+        {
+          "id": "expansion.20261024.senior1.park-cinema-and-dinghy-042#dinghy",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.park-cinema-and-dinghy-042.dinghy.q1",
+            "expansion.20261024.senior1.park-cinema-and-dinghy-042.dinghy.q2",
+            "expansion.20261024.senior1.park-cinema-and-dinghy-042.dinghy.q3",
+            "expansion.20261024.senior1.park-cinema-and-dinghy-042.dinghy.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.park-cinema-and-dinghy-042",
+          "sourceContentHash": "9e4984a0499b5fab1b19a94be33434d66190901d011858ff01af7d097ed7e138"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.theatre-and-rain-garden-042",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · Theatre workshops and rain gardens",
+        "summary": "Theatre workshops and rain gardens，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g11.2025.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages with three and four four-choice questions. Old source is a level/family drafting reference; final complete-practice structure follows National I."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete new senior two-passage practices, each three plus four questions. Notices, incidents and award scenario are fictional. General rain-garden discussion asserts no invented study or statistics. Same-author all-key/all-distractor and inference review; no independent calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.theatre-and-rain-garden-042",
+          "family": "reading_choice",
+          "label": "Theatre workshops and rain gardens",
+          "candidateSHA256": "ba5b880061ce641ff9bacd4fdb748631bc6d48b50d4d2788b34447b2aab37b64",
+          "authorCheckSHA256": "20c801d711d73d84c2e7e0ce87ed8df0a929e80a694cc584b4df472fea625052",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.theatre-and-rain-garden-042#theatre",
+            "expansion.20261024.senior2.theatre-and-rain-garden-042#rain-garden"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b042；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Behind the Curtain: Holiday Workshops\n\nThe Riverside Theatre offers three holiday workshops for young people aged fifteen to eighteen. Each explores a different part of making a performance. No acting experience is required, and participants do not need to audition.\n\nSound in a Scene runs on Monday from 10:00 to 13:00. Participants create a short sound sequence using recorded and everyday sounds. Bring headphones with a standard cable connection if you have them; a limited number can be borrowed. The workshop is about choosing and arranging sounds, not repairing electronic equipment.\n\nObjects on Stage takes place on Wednesday from 11:00 to 15:00, with a half-hour lunch break. Participants explore how an ordinary object can suggest a place or change meaning during a scene. All objects are supplied. Wear clothes in which you can move comfortably and bring lunch.\n\nLighting a Moment runs on Friday from 14:00 to 17:00. Working with low-voltage demonstration lamps, participants investigate how light directs attention. Theatre staff handle all equipment connections. Participants may change the positions of the demonstration lamps only after staff explain the procedure.\n\nEach workshop costs eighteen pounds. A student may book one or two, but not all three, to leave places for others. Bookings close five days before each workshop. If a session is full, join its waiting list rather than booking an unsuitable session merely to hold a place. A cancelled booking may be transferred to someone on that list. Completion gives no formal qualification, but participants may keep their planning sheets as a record of the work.\n\nA garden with a job to do\n\nAfter heavy rain, water running from a roof may seem to disappear as soon as it enters a drain. Yet the speed and route of that water matter. In many places, rain gardens are used as one way to slow runoff before it reaches the wider drainage system.\n\nA rain garden is usually a shallow planted area positioned to receive water from a suitable nearby surface. During rain, water can collect there temporarily and soak into the ground. Between storms, the area may look much like an ordinary garden. Its function depends less on having a permanent pool than on allowing water to pass through it at an appropriate rate.\n\nPlants can help maintain that process, but choosing attractive flowers is not the first design decision. The ground's ability to absorb water, the direction of runoff and the position of buildings all need consideration. A hollow made in the wrong place could send water towards a foundation instead of protecting it. Appropriate design therefore begins with understanding the site, often with advice from someone familiar with local requirements.\n\nMaintenance matters too. Leaves may be welcome on some garden surfaces but can obstruct an inlet if they gather densely in one place. Sediment carried by runoff may also need attention. Calling the area a garden does not mean it can simply be planted and forgotten.\n\nRain gardens are not a universal answer to flooding. Their usefulness is shaped by scale, soil and the amount of water they receive. They can, however, make one part of a water-management system visible. A resident watching water pause among plants can begin to understand a process that a covered drain usually hides.\n\nThat visibility offers an additional benefit. It can invite questions about where rain goes and what happens when many hard surfaces send it away at once. A well-designed rain garden does a practical job while making that job easier to notice."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.theatre-and-rain-garden-042.theatre.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which workshop includes a planned lunch break?",
+            "material": "Behind the Curtain: Holiday Workshops\n\nThe Riverside Theatre offers three holiday workshops for young people aged fifteen to eighteen. Each explores a different part of making a performance. No acting experience is required, and participants do not need to audition.\n\nSound in a Scene runs on Monday from 10:00 to 13:00. Participants create a short sound sequence using recorded and everyday sounds. Bring headphones with a standard cable connection if you have them; a limited number can be borrowed. The workshop is about choosing and arranging sounds, not repairing electronic equipment.\n\nObjects on Stage takes place on Wednesday from 11:00 to 15:00, with a half-hour lunch break. Participants explore how an ordinary object can suggest a place or change meaning during a scene. All objects are supplied. Wear clothes in which you can move comfortably and bring lunch.\n\nLighting a Moment runs on Friday from 14:00 to 17:00. Working with low-voltage demonstration lamps, participants investigate how light directs attention. Theatre staff handle all equipment connections. Participants may change the positions of the demonstration lamps only after staff explain the procedure.\n\nEach workshop costs eighteen pounds. A student may book one or two, but not all three, to leave places for others. Bookings close five days before each workshop. If a session is full, join its waiting list rather than booking an unsuitable session merely to hold a place. A cancelled booking may be transferred to someone on that list. Completion gives no formal qualification, but participants may keep their planning sheets as a record of the work.",
+            "explanation": "Only Wednesday’s11:00–15:00 workshop specifies a half-hour lunch break. The other shorter sessions do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Sound in a Scene"
+              },
+              {
+                "id": "o1",
+                "text": "Lighting a Moment"
+              },
+              {
+                "id": "o2",
+                "text": "All three workshops"
+              },
+              {
+                "id": "o3",
+                "text": "Objects on Stage"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.theatre-and-rain-garden-042.theatre.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What may participants do in Lighting a Moment?",
+            "material": "Behind the Curtain: Holiday Workshops\n\nThe Riverside Theatre offers three holiday workshops for young people aged fifteen to eighteen. Each explores a different part of making a performance. No acting experience is required, and participants do not need to audition.\n\nSound in a Scene runs on Monday from 10:00 to 13:00. Participants create a short sound sequence using recorded and everyday sounds. Bring headphones with a standard cable connection if you have them; a limited number can be borrowed. The workshop is about choosing and arranging sounds, not repairing electronic equipment.\n\nObjects on Stage takes place on Wednesday from 11:00 to 15:00, with a half-hour lunch break. Participants explore how an ordinary object can suggest a place or change meaning during a scene. All objects are supplied. Wear clothes in which you can move comfortably and bring lunch.\n\nLighting a Moment runs on Friday from 14:00 to 17:00. Working with low-voltage demonstration lamps, participants investigate how light directs attention. Theatre staff handle all equipment connections. Participants may change the positions of the demonstration lamps only after staff explain the procedure.\n\nEach workshop costs eighteen pounds. A student may book one or two, but not all three, to leave places for others. Bookings close five days before each workshop. If a session is full, join its waiting list rather than booking an unsuitable session merely to hold a place. A cancelled booking may be transferred to someone on that list. Completion gives no formal qualification, but participants may keep their planning sheets as a record of the work.",
+            "explanation": "Staff explain repositioning and handle connections. Unrestricted equipment use and repair qualifications are explicitly outside the arrangement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Use any theatre light without supervision"
+              },
+              {
+                "id": "o1",
+                "text": "Earn a qualification in electrical repair"
+              },
+              {
+                "id": "o2",
+                "text": "Move demonstration lamps after receiving staff instructions"
+              },
+              {
+                "id": "o3",
+                "text": "Make all electrical connections themselves"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.theatre-and-rain-garden-042.theatre.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is each student limited to two workshops?",
+            "material": "Behind the Curtain: Holiday Workshops\n\nThe Riverside Theatre offers three holiday workshops for young people aged fifteen to eighteen. Each explores a different part of making a performance. No acting experience is required, and participants do not need to audition.\n\nSound in a Scene runs on Monday from 10:00 to 13:00. Participants create a short sound sequence using recorded and everyday sounds. Bring headphones with a standard cable connection if you have them; a limited number can be borrowed. The workshop is about choosing and arranging sounds, not repairing electronic equipment.\n\nObjects on Stage takes place on Wednesday from 11:00 to 15:00, with a half-hour lunch break. Participants explore how an ordinary object can suggest a place or change meaning during a scene. All objects are supplied. Wear clothes in which you can move comfortably and bring lunch.\n\nLighting a Moment runs on Friday from 14:00 to 17:00. Working with low-voltage demonstration lamps, participants investigate how light directs attention. Theatre staff handle all equipment connections. Participants may change the positions of the demonstration lamps only after staff explain the procedure.\n\nEach workshop costs eighteen pounds. A student may book one or two, but not all three, to leave places for others. Bookings close five days before each workshop. If a session is full, join its waiting list rather than booking an unsuitable session merely to hold a place. A cancelled booking may be transferred to someone on that list. Completion gives no formal qualification, but participants may keep their planning sheets as a record of the work.",
+            "explanation": "The notice directly states leaving places for others. Experience is not required, no fixed pair is specified, and waiting lists still exist.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To ensure that no waiting list is needed"
+              },
+              {
+                "id": "o1",
+                "text": "To make every student choose the same pair"
+              },
+              {
+                "id": "o2",
+                "text": "To require previous acting experience for a third"
+              },
+              {
+                "id": "o3",
+                "text": "To keep places available for other students"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.theatre-and-rain-garden-042.rain-garden.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What distinguishes a rain garden from a permanent pond?",
+            "material": "A garden with a job to do\n\nAfter heavy rain, water running from a roof may seem to disappear as soon as it enters a drain. Yet the speed and route of that water matter. In many places, rain gardens are used as one way to slow runoff before it reaches the wider drainage system.\n\nA rain garden is usually a shallow planted area positioned to receive water from a suitable nearby surface. During rain, water can collect there temporarily and soak into the ground. Between storms, the area may look much like an ordinary garden. Its function depends less on having a permanent pool than on allowing water to pass through it at an appropriate rate.\n\nPlants can help maintain that process, but choosing attractive flowers is not the first design decision. The ground's ability to absorb water, the direction of runoff and the position of buildings all need consideration. A hollow made in the wrong place could send water towards a foundation instead of protecting it. Appropriate design therefore begins with understanding the site, often with advice from someone familiar with local requirements.\n\nMaintenance matters too. Leaves may be welcome on some garden surfaces but can obstruct an inlet if they gather densely in one place. Sediment carried by runoff may also need attention. Calling the area a garden does not mean it can simply be planted and forgotten.\n\nRain gardens are not a universal answer to flooding. Their usefulness is shaped by scale, soil and the amount of water they receive. They can, however, make one part of a water-management system visible. A resident watching water pause among plants can begin to understand a process that a covered drain usually hides.\n\nThat visibility offers an additional benefit. It can invite questions about where rain goes and what happens when many hard surfaces send it away at once. A well-designed rain garden does a practical job while making that job easier to notice.",
+            "explanation": "The second paragraph describes temporary collection and infiltration. Permanent dryness, isolation and drinking-water storage are not its function.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is designed to hold runoff temporarily and let it soak away"
+              },
+              {
+                "id": "o1",
+                "text": "Its purpose is to store drinking water indefinitely"
+              },
+              {
+                "id": "o2",
+                "text": "It must stay completely dry during every storm"
+              },
+              {
+                "id": "o3",
+                "text": "It receives no water from nearby surfaces"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.theatre-and-rain-garden-042.rain-garden.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the author mention a building’s foundation?",
+            "material": "A garden with a job to do\n\nAfter heavy rain, water running from a roof may seem to disappear as soon as it enters a drain. Yet the speed and route of that water matter. In many places, rain gardens are used as one way to slow runoff before it reaches the wider drainage system.\n\nA rain garden is usually a shallow planted area positioned to receive water from a suitable nearby surface. During rain, water can collect there temporarily and soak into the ground. Between storms, the area may look much like an ordinary garden. Its function depends less on having a permanent pool than on allowing water to pass through it at an appropriate rate.\n\nPlants can help maintain that process, but choosing attractive flowers is not the first design decision. The ground's ability to absorb water, the direction of runoff and the position of buildings all need consideration. A hollow made in the wrong place could send water towards a foundation instead of protecting it. Appropriate design therefore begins with understanding the site, often with advice from someone familiar with local requirements.\n\nMaintenance matters too. Leaves may be welcome on some garden surfaces but can obstruct an inlet if they gather densely in one place. Sediment carried by runoff may also need attention. Calling the area a garden does not mean it can simply be planted and forgotten.\n\nRain gardens are not a universal answer to flooding. Their usefulness is shaped by scale, soil and the amount of water they receive. They can, however, make one part of a water-management system visible. A resident watching water pause among plants can begin to understand a process that a covered drain usually hides.\n\nThat visibility offers an additional benefit. It can invite questions about where rain goes and what happens when many hard surfaces send it away at once. A well-designed rain garden does a practical job while making that job easier to notice.",
+            "explanation": "A poorly placed hollow can direct water to foundations, illustrating site assessment. No universal placement, plant-only mechanism or claim about all gardens is made.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To show that every rain garden should touch a building"
+              },
+              {
+                "id": "o1",
+                "text": "To illustrate why the location must be assessed before construction"
+              },
+              {
+                "id": "o2",
+                "text": "To prove that ordinary gardens always damage houses"
+              },
+              {
+                "id": "o3",
+                "text": "To argue that plant choice alone determines drainage"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.theatre-and-rain-garden-042.rain-garden.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What can be inferred from the maintenance paragraph?",
+            "material": "A garden with a job to do\n\nAfter heavy rain, water running from a roof may seem to disappear as soon as it enters a drain. Yet the speed and route of that water matter. In many places, rain gardens are used as one way to slow runoff before it reaches the wider drainage system.\n\nA rain garden is usually a shallow planted area positioned to receive water from a suitable nearby surface. During rain, water can collect there temporarily and soak into the ground. Between storms, the area may look much like an ordinary garden. Its function depends less on having a permanent pool than on allowing water to pass through it at an appropriate rate.\n\nPlants can help maintain that process, but choosing attractive flowers is not the first design decision. The ground's ability to absorb water, the direction of runoff and the position of buildings all need consideration. A hollow made in the wrong place could send water towards a foundation instead of protecting it. Appropriate design therefore begins with understanding the site, often with advice from someone familiar with local requirements.\n\nMaintenance matters too. Leaves may be welcome on some garden surfaces but can obstruct an inlet if they gather densely in one place. Sediment carried by runoff may also need attention. Calling the area a garden does not mean it can simply be planted and forgotten.\n\nRain gardens are not a universal answer to flooding. Their usefulness is shaped by scale, soil and the amount of water they receive. They can, however, make one part of a water-management system visible. A resident watching water pause among plants can begin to understand a process that a covered drain usually hides.\n\nThat visibility offers an additional benefit. It can invite questions about where rain goes and what happens when many hard surfaces send it away at once. A well-designed rain garden does a practical job while making that job easier to notice.",
+            "explanation": "Leaves densely blocking an inlet illustrate context-dependent effects. The paragraph does not demand clearing every leaf or advocate blocked inlets or sediment addition.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Inlets operate best when permanently blocked"
+              },
+              {
+                "id": "o1",
+                "text": "Every fallen leaf must be removed from the entire garden"
+              },
+              {
+                "id": "o2",
+                "text": "Natural materials can become a problem in a particular part of the system"
+              },
+              {
+                "id": "o3",
+                "text": "Sediment is deliberately added to prevent infiltration"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.theatre-and-rain-garden-042.rain-garden.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What additional value does the author find in rain gardens?",
+            "material": "A garden with a job to do\n\nAfter heavy rain, water running from a roof may seem to disappear as soon as it enters a drain. Yet the speed and route of that water matter. In many places, rain gardens are used as one way to slow runoff before it reaches the wider drainage system.\n\nA rain garden is usually a shallow planted area positioned to receive water from a suitable nearby surface. During rain, water can collect there temporarily and soak into the ground. Between storms, the area may look much like an ordinary garden. Its function depends less on having a permanent pool than on allowing water to pass through it at an appropriate rate.\n\nPlants can help maintain that process, but choosing attractive flowers is not the first design decision. The ground's ability to absorb water, the direction of runoff and the position of buildings all need consideration. A hollow made in the wrong place could send water towards a foundation instead of protecting it. Appropriate design therefore begins with understanding the site, often with advice from someone familiar with local requirements.\n\nMaintenance matters too. Leaves may be welcome on some garden surfaces but can obstruct an inlet if they gather densely in one place. Sediment carried by runoff may also need attention. Calling the area a garden does not mean it can simply be planted and forgotten.\n\nRain gardens are not a universal answer to flooding. Their usefulness is shaped by scale, soil and the amount of water they receive. They can, however, make one part of a water-management system visible. A resident watching water pause among plants can begin to understand a process that a covered drain usually hides.\n\nThat visibility offers an additional benefit. It can invite questions about where rain goes and what happens when many hard surfaces send it away at once. A well-designed rain garden does a practical job while making that job easier to notice.",
+            "explanation": "The final paragraphs emphasise visibility and questions about runoff. The author explicitly limits flood protection and design depends on soil and a wider system.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They guarantee that a neighbourhood will never flood"
+              },
+              {
+                "id": "o1",
+                "text": "They help people see and think about how runoff is managed"
+              },
+              {
+                "id": "o2",
+                "text": "They make local soil conditions irrelevant"
+              },
+              {
+                "id": "o3",
+                "text": "They remove the need for all other drainage infrastructure"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "570879e53bc72e141fcc318f25d43e046a4e921390cf4b83c9900190a2e37551",
+      "reviewNotes": "Three complete new senior two-passage practices, each three plus four questions. Notices, incidents and award scenario are fictional. General rain-garden discussion asserts no invented study or statistics. Same-author all-key/all-distractor and inference review; no independent calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.theatre-and-rain-garden-042#theatre",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.theatre-and-rain-garden-042.theatre.q1",
+            "expansion.20261024.senior2.theatre-and-rain-garden-042.theatre.q2",
+            "expansion.20261024.senior2.theatre-and-rain-garden-042.theatre.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.theatre-and-rain-garden-042",
+          "sourceContentHash": "52fdffb6f917091e20d54d43ceef8205301348281a7533f4633087b774be755a"
+        },
+        {
+          "id": "expansion.20261024.senior2.theatre-and-rain-garden-042#rain-garden",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.theatre-and-rain-garden-042.rain-garden.q1",
+            "expansion.20261024.senior2.theatre-and-rain-garden-042.rain-garden.q2",
+            "expansion.20261024.senior2.theatre-and-rain-garden-042.rain-garden.q3",
+            "expansion.20261024.senior2.theatre-and-rain-garden-042.rain-garden.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.theatre-and-rain-garden-042",
+          "sourceContentHash": "66f22b6015608a043e5930f1a941ef4aa2e6035eb12dfe7428d98d91b671fcba"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior3.translation-award-and-ambiguity-042",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高考题型原创 · 10·24新题 · A translation award and open meanings",
+        "summary": "A translation award and open meanings，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade12-tianjinlower2025-21cnjy22402528.reading.complete_section",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages with three and four four-choice questions. Old source is a level/family drafting reference; final complete-practice structure follows National I."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete new senior two-passage practices, each three plus four questions. Notices, incidents and award scenario are fictional. General rain-garden discussion asserts no invented study or statistics. Same-author all-key/all-distractor and inference review; no independent calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior3.translation-award-and-ambiguity-042",
+          "family": "reading_choice",
+          "label": "A translation award and open meanings",
+          "candidateSHA256": "83ef15e08b75c31ccb05d3649b3d3199095cb362c86057cd7ff979b037e93a38",
+          "authorCheckSHA256": "63d7a55a276656fcff9b67a91506ade967407407144c20f51dd5cd6c17de22ee",
+          "sourceGroupIds": [
+            "expansion.20261024.senior3.translation-award-and-ambiguity-042#award",
+            "expansion.20261024.senior3.translation-award-and-ambiguity-042#ambiguity"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b042；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The Young Translators’ Notebook Award\n\nThis fictional award invites students aged sixteen to nineteen to translate a short poem into English and submit a commentary on their decisions. The aim is to recognise thoughtful translation rather than to discover a single approved version of a poem.\n\nEntrants must choose one of the four poems supplied in the award booklet. Each is available with its original text, a plain prose account of its meaning and brief notes on cultural references. Students may work from a language they know, or use the supplied materials to explore an unfamiliar one. The commentary must make clear which route they took.\n\nSubmit one translation and a commentary of 400–600 words. The translation has no fixed word limit, but the commentary must explain at least two specific decisions, including one concerning sound, rhythm or line arrangement. A general account of why poetry matters will not meet this requirement.\n\nEntries must be individual. A teacher may clarify the rules but may not rewrite the translation or commentary. If entrants consult a dictionary, published translation or other source, they must identify it in a short source note. That note does not count towards the commentary's word limit.\n\nThe closing date is 30 September at 18:00. Five shortlisted entrants will discuss one translation choice in an online session in October. The judges will consider both the submitted work and the discussion. Shortlisting therefore does not establish a final ranking. The award booklet and previous judges' comments can be downloaded free; buying any book or course is unnecessary.\n\nWhen a picture leaves something open\n\nAt a gallery, two visitors stand before the same painting. One sees a figure about to leave; the other imagines someone who has just arrived. The doorway, coat and half-turned face support both readings. It is tempting to decide that one viewer has missed the answer. But a work can sustain more than one interpretation without becoming meaningless.\n\nThis does not imply that every claim about it is equally convincing. If a visitor argues that the figure is swimming, the visible room and ordinary clothing create an immediate difficulty. An interpretation gains strength by accounting for details rather than merely attaching a story the viewer happens to prefer. Openness and evidence are compatible.\n\nNor must uncertainty be a defect the artist failed to remove. A half-turned face may direct attention to the moment between decisions. If the destination were stated explicitly, that tension might disappear. The absence of one fact can encourage us to examine the available ones more carefully.\n\nThe experience differs from solving a practical problem with a single necessary outcome. A confusing station sign needs clarification because passengers must reach the correct platform. A painting may invite viewers to remain with a question because the act of considering it is part of the experience. Applying the same demand for immediate resolution to both ignores their different purposes.\n\nThere are limits to this distinction. A gallery label can still state a date incorrectly, and a critic can overlook a clear visual feature. Calling art open to interpretation does not protect every factual statement about it from correction. It simply separates those correctable claims from meanings the work genuinely leaves unsettled.\n\nFor viewers, the useful response may be neither a hurried search for the official answer nor a declaration that anything goes. It is to ask what each reading explains, what resists it and what the uncertainty allows us to notice. Another visitor's account can then become a way to look again, rather than a rival answer that must be defeated."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior3.translation-award-and-ambiguity-042.award.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "May a student enter using a poem in an unfamiliar language?",
+            "material": "The Young Translators’ Notebook Award\n\nThis fictional award invites students aged sixteen to nineteen to translate a short poem into English and submit a commentary on their decisions. The aim is to recognise thoughtful translation rather than to discover a single approved version of a poem.\n\nEntrants must choose one of the four poems supplied in the award booklet. Each is available with its original text, a plain prose account of its meaning and brief notes on cultural references. Students may work from a language they know, or use the supplied materials to explore an unfamiliar one. The commentary must make clear which route they took.\n\nSubmit one translation and a commentary of 400–600 words. The translation has no fixed word limit, but the commentary must explain at least two specific decisions, including one concerning sound, rhythm or line arrangement. A general account of why poetry matters will not meet this requirement.\n\nEntries must be individual. A teacher may clarify the rules but may not rewrite the translation or commentary. If entrants consult a dictionary, published translation or other source, they must identify it in a short source note. That note does not count towards the commentary's word limit.\n\nThe closing date is 30 September at 18:00. Five shortlisted entrants will discuss one translation choice in an online session in October. The judges will consider both the submitted work and the discussion. Shortlisting therefore does not establish a final ranking. The award booklet and previous judges' comments can be downloaded free; buying any book or course is unnecessary.",
+            "explanation": "The booklet allows an unfamiliar language with materials and requires disclosure. Fluency, concealment and course purchase are not conditions.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "No, because entrants must already speak every source language"
+              },
+              {
+                "id": "o1",
+                "text": "Only after purchasing a specified translation course"
+              },
+              {
+                "id": "o2",
+                "text": "Yes, if the supplied support is used and the approach is disclosed"
+              },
+              {
+                "id": "o3",
+                "text": "Yes, but the commentary must hide the use of support"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.translation-award-and-ambiguity-042.award.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which commentary would meet the stated content requirement?",
+            "material": "The Young Translators’ Notebook Award\n\nThis fictional award invites students aged sixteen to nineteen to translate a short poem into English and submit a commentary on their decisions. The aim is to recognise thoughtful translation rather than to discover a single approved version of a poem.\n\nEntrants must choose one of the four poems supplied in the award booklet. Each is available with its original text, a plain prose account of its meaning and brief notes on cultural references. Students may work from a language they know, or use the supplied materials to explore an unfamiliar one. The commentary must make clear which route they took.\n\nSubmit one translation and a commentary of 400–600 words. The translation has no fixed word limit, but the commentary must explain at least two specific decisions, including one concerning sound, rhythm or line arrangement. A general account of why poetry matters will not meet this requirement.\n\nEntries must be individual. A teacher may clarify the rules but may not rewrite the translation or commentary. If entrants consult a dictionary, published translation or other source, they must identify it in a short source note. That note does not count towards the commentary's word limit.\n\nThe closing date is 30 September at 18:00. Five shortlisted entrants will discuss one translation choice in an online session in October. The judges will consider both the submitted work and the discussion. Shortlisting therefore does not establish a final ranking. The award booklet and previous judges' comments can be downloaded free; buying any book or course is unnecessary.",
+            "explanation": "Specific decisions and at least one formal/sound choice are required. General praise, a source list alone and biography without choices do not meet that requirement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A general essay praising poetry without discussing the translation"
+              },
+              {
+                "id": "o1",
+                "text": "An account of two particular choices, including how a line break affects rhythm"
+              },
+              {
+                "id": "o2",
+                "text": "A list of dictionaries with no explanation of decisions"
+              },
+              {
+                "id": "o3",
+                "text": "A biography of the poet replacing all discussion of form"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.translation-award-and-ambiguity-042.award.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does being shortlisted mean?",
+            "material": "The Young Translators’ Notebook Award\n\nThis fictional award invites students aged sixteen to nineteen to translate a short poem into English and submit a commentary on their decisions. The aim is to recognise thoughtful translation rather than to discover a single approved version of a poem.\n\nEntrants must choose one of the four poems supplied in the award booklet. Each is available with its original text, a plain prose account of its meaning and brief notes on cultural references. Students may work from a language they know, or use the supplied materials to explore an unfamiliar one. The commentary must make clear which route they took.\n\nSubmit one translation and a commentary of 400–600 words. The translation has no fixed word limit, but the commentary must explain at least two specific decisions, including one concerning sound, rhythm or line arrangement. A general account of why poetry matters will not meet this requirement.\n\nEntries must be individual. A teacher may clarify the rules but may not rewrite the translation or commentary. If entrants consult a dictionary, published translation or other source, they must identify it in a short source note. That note does not count towards the commentary's word limit.\n\nThe closing date is 30 September at 18:00. Five shortlisted entrants will discuss one translation choice in an online session in October. The judges will consider both the submitted work and the discussion. Shortlisting therefore does not establish a final ranking. The award booklet and previous judges' comments can be downloaded free; buying any book or course is unnecessary.",
+            "explanation": "The discussion is part of the judges’ assessment, so final ranking is not established. Rewriting and altered source-note limits are not granted.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The source-note word limit is increased"
+              },
+              {
+                "id": "o1",
+                "text": "The teacher may now rewrite the final entry"
+              },
+              {
+                "id": "o2",
+                "text": "The entrant proceeds to a discussion that also informs judging"
+              },
+              {
+                "id": "o3",
+                "text": "The entrant has already received a fixed final rank"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.translation-award-and-ambiguity-042.ambiguity.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the swimming interpretation illustrate?",
+            "material": "When a picture leaves something open\n\nAt a gallery, two visitors stand before the same painting. One sees a figure about to leave; the other imagines someone who has just arrived. The doorway, coat and half-turned face support both readings. It is tempting to decide that one viewer has missed the answer. But a work can sustain more than one interpretation without becoming meaningless.\n\nThis does not imply that every claim about it is equally convincing. If a visitor argues that the figure is swimming, the visible room and ordinary clothing create an immediate difficulty. An interpretation gains strength by accounting for details rather than merely attaching a story the viewer happens to prefer. Openness and evidence are compatible.\n\nNor must uncertainty be a defect the artist failed to remove. A half-turned face may direct attention to the moment between decisions. If the destination were stated explicitly, that tension might disappear. The absence of one fact can encourage us to examine the available ones more carefully.\n\nThe experience differs from solving a practical problem with a single necessary outcome. A confusing station sign needs clarification because passengers must reach the correct platform. A painting may invite viewers to remain with a question because the act of considering it is part of the experience. Applying the same demand for immediate resolution to both ignores their different purposes.\n\nThere are limits to this distinction. A gallery label can still state a date incorrectly, and a critic can overlook a clear visual feature. Calling art open to interpretation does not protect every factual statement about it from correction. It simply separates those correctable claims from meanings the work genuinely leaves unsettled.\n\nFor viewers, the useful response may be neither a hurried search for the official answer nor a declaration that anything goes. It is to ask what each reading explains, what resists it and what the uncertainty allows us to notice. Another visitor's account can then become a way to look again, rather than a rival answer that must be defeated.",
+            "explanation": "The room and clothing challenge swimming, illustrating evidence-based limits. The author rejects equal validity and does not require titles to dictate content.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every imaginative interpretation must be accepted equally"
+              },
+              {
+                "id": "o1",
+                "text": "An interpretation can be weakened by visible details that contradict it"
+              },
+              {
+                "id": "o2",
+                "text": "Visitors should ignore the room shown in a painting"
+              },
+              {
+                "id": "o3",
+                "text": "A picture can only represent activities stated in its title"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.translation-award-and-ambiguity-042.ambiguity.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why might the artist leave the figure’s destination unstated?",
+            "material": "When a picture leaves something open\n\nAt a gallery, two visitors stand before the same painting. One sees a figure about to leave; the other imagines someone who has just arrived. The doorway, coat and half-turned face support both readings. It is tempting to decide that one viewer has missed the answer. But a work can sustain more than one interpretation without becoming meaningless.\n\nThis does not imply that every claim about it is equally convincing. If a visitor argues that the figure is swimming, the visible room and ordinary clothing create an immediate difficulty. An interpretation gains strength by accounting for details rather than merely attaching a story the viewer happens to prefer. Openness and evidence are compatible.\n\nNor must uncertainty be a defect the artist failed to remove. A half-turned face may direct attention to the moment between decisions. If the destination were stated explicitly, that tension might disappear. The absence of one fact can encourage us to examine the available ones more carefully.\n\nThe experience differs from solving a practical problem with a single necessary outcome. A confusing station sign needs clarification because passengers must reach the correct platform. A painting may invite viewers to remain with a question because the act of considering it is part of the experience. Applying the same demand for immediate resolution to both ignores their different purposes.\n\nThere are limits to this distinction. A gallery label can still state a date incorrectly, and a critic can overlook a clear visual feature. Calling art open to interpretation does not protect every factual statement about it from correction. It simply separates those correctable claims from meanings the work genuinely leaves unsettled.\n\nFor viewers, the useful response may be neither a hurried search for the official answer nor a declaration that anything goes. It is to ask what each reading explains, what resists it and what the uncertainty allows us to notice. Another visitor's account can then become a way to look again, rather than a rival answer that must be defeated.",
+            "explanation": "The third paragraph explains how explicit destination could dissolve tension. Agreement, necessary incompetence and helpless viewers are not the author’s claims.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Doing so can preserve tension around an unresolved moment"
+              },
+              {
+                "id": "o1",
+                "text": "Every missing fact proves a lack of artistic skill"
+              },
+              {
+                "id": "o2",
+                "text": "The omission guarantees that all viewers will agree"
+              },
+              {
+                "id": "o3",
+                "text": "Viewers are unable to notice any details without written answers"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.translation-award-and-ambiguity-042.ambiguity.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the station sign compared with the painting?",
+            "material": "When a picture leaves something open\n\nAt a gallery, two visitors stand before the same painting. One sees a figure about to leave; the other imagines someone who has just arrived. The doorway, coat and half-turned face support both readings. It is tempting to decide that one viewer has missed the answer. But a work can sustain more than one interpretation without becoming meaningless.\n\nThis does not imply that every claim about it is equally convincing. If a visitor argues that the figure is swimming, the visible room and ordinary clothing create an immediate difficulty. An interpretation gains strength by accounting for details rather than merely attaching a story the viewer happens to prefer. Openness and evidence are compatible.\n\nNor must uncertainty be a defect the artist failed to remove. A half-turned face may direct attention to the moment between decisions. If the destination were stated explicitly, that tension might disappear. The absence of one fact can encourage us to examine the available ones more carefully.\n\nThe experience differs from solving a practical problem with a single necessary outcome. A confusing station sign needs clarification because passengers must reach the correct platform. A painting may invite viewers to remain with a question because the act of considering it is part of the experience. Applying the same demand for immediate resolution to both ignores their different purposes.\n\nThere are limits to this distinction. A gallery label can still state a date incorrectly, and a critic can overlook a clear visual feature. Calling art open to interpretation does not protect every factual statement about it from correction. It simply separates those correctable claims from meanings the work genuinely leaves unsettled.\n\nFor viewers, the useful response may be neither a hurried search for the official answer nor a declaration that anything goes. It is to ask what each reading explains, what resists it and what the uncertainty allows us to notice. Another visitor's account can then become a way to look again, rather than a rival answer that must be defeated.",
+            "explanation": "The practical sign needs a definite platform outcome; art may invite sustained questions. The comparison concerns purpose, not ambiguity in signage or rankings of usefulness.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To prove that all uncertainty should be removed from public spaces"
+              },
+              {
+                "id": "o1",
+                "text": "To suggest that railway information should be deliberately ambiguous"
+              },
+              {
+                "id": "o2",
+                "text": "To claim that paintings are more useful than transport systems"
+              },
+              {
+                "id": "o3",
+                "text": "To show that the value of clarity depends partly on an object’s purpose"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.translation-award-and-ambiguity-042.ambiguity.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which response would the author most likely encourage?",
+            "material": "When a picture leaves something open\n\nAt a gallery, two visitors stand before the same painting. One sees a figure about to leave; the other imagines someone who has just arrived. The doorway, coat and half-turned face support both readings. It is tempting to decide that one viewer has missed the answer. But a work can sustain more than one interpretation without becoming meaningless.\n\nThis does not imply that every claim about it is equally convincing. If a visitor argues that the figure is swimming, the visible room and ordinary clothing create an immediate difficulty. An interpretation gains strength by accounting for details rather than merely attaching a story the viewer happens to prefer. Openness and evidence are compatible.\n\nNor must uncertainty be a defect the artist failed to remove. A half-turned face may direct attention to the moment between decisions. If the destination were stated explicitly, that tension might disappear. The absence of one fact can encourage us to examine the available ones more carefully.\n\nThe experience differs from solving a practical problem with a single necessary outcome. A confusing station sign needs clarification because passengers must reach the correct platform. A painting may invite viewers to remain with a question because the act of considering it is part of the experience. Applying the same demand for immediate resolution to both ignores their different purposes.\n\nThere are limits to this distinction. A gallery label can still state a date incorrectly, and a critic can overlook a clear visual feature. Calling art open to interpretation does not protect every factual statement about it from correction. It simply separates those correctable claims from meanings the work genuinely leaves unsettled.\n\nFor viewers, the useful response may be neither a hurried search for the official answer nor a declaration that anything goes. It is to ask what each reading explains, what resists it and what the uncertainty allows us to notice. Another visitor's account can then become a way to look again, rather than a rival answer that must be defeated.",
+            "explanation": "The ending asks what each reading explains and resists. Rival suppression, uncorrectable dates and automatic official answers contradict the stated balance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Treat the date on every gallery label as uncorrectable"
+              },
+              {
+                "id": "o1",
+                "text": "Search for one official account before looking at any painted details"
+              },
+              {
+                "id": "o2",
+                "text": "Reject another reading solely because it differs from one’s first impression"
+              },
+              {
+                "id": "o3",
+                "text": "Compare interpretations by examining what each accounts for in the work"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "e6b13c229b34e31a592a893827f0a11e1723465881b7d6e185939c82ee844518",
+      "reviewNotes": "Three complete new senior two-passage practices, each three plus four questions. Notices, incidents and award scenario are fictional. General rain-garden discussion asserts no invented study or statistics. Same-author all-key/all-distractor and inference review; no independent calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior3.translation-award-and-ambiguity-042#award",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.translation-award-and-ambiguity-042.award.q1",
+            "expansion.20261024.senior3.translation-award-and-ambiguity-042.award.q2",
+            "expansion.20261024.senior3.translation-award-and-ambiguity-042.award.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.translation-award-and-ambiguity-042",
+          "sourceContentHash": "9305b54fb9e97fbfc81bdebec3427c0f5bcebd7aafa6d2509c54bc45503abb0f"
+        },
+        {
+          "id": "expansion.20261024.senior3.translation-award-and-ambiguity-042#ambiguity",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.translation-award-and-ambiguity-042.ambiguity.q1",
+            "expansion.20261024.senior3.translation-award-and-ambiguity-042.ambiguity.q2",
+            "expansion.20261024.senior3.translation-award-and-ambiguity-042.ambiguity.q3",
+            "expansion.20261024.senior3.translation-award-and-ambiguity-042.ambiguity.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.translation-award-and-ambiguity-042",
+          "sourceContentHash": "7d7f3f4144de77819ddd6ad0bc1abc45c52e1ef1c9896ee0ecac9a6f66acfae1"
+        }
+      ]
+    }
+  ]
+}
