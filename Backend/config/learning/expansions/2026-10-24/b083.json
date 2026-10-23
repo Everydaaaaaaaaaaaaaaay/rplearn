@@ -1,0 +1,1359 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b083",
+  "createdAt": "2026-10-23T23:50:54.971446+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.newspaper-correction-083",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · A correction in the school paper",
+        "summary": "A correction in the school paper，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage with seven supplied-word and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior ten-gap passages. Fictional newspaper/class/subtitle/weather-club cases, qualified measurement descriptions. Same-author variant and invalid-form review only, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.newspaper-correction-083",
+          "family": "passage_form",
+          "label": "A correction in the school paper",
+          "candidateSHA256": "46726a069b15dc83f4831a861d445d32fa9ec1f81eaedacdeeacfeb01a32e1d2",
+          "authorCheckSHA256": "7b81e9e2ad4be0463072a60919debb3db4ccfd52a52553dafda3608dea109454",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.newspaper-correction-083#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b083；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A correction in the school paper\n\nOur school newspaper published a report about the swimming team last month. On the next morning, a team member ____1____ (notice) that one result was wrong. The article said her team had finished second, but it had actually finished third.\n\nThe editor thanked her ____2____ pointing it out. He checked the official results before changing anything. The team member was right, and the error had come from an early version of the writer's notes.\n\nAt first, the editor wanted to replace the number ____3____ (quiet). Our teacher suggested adding a short correction note instead. Readers ____4____ had already seen the wrong version needed to know what had changed.\n\nThe note explained the mistake without blaming the student who reported it. It also gave the correct result. The team was disappointed about not finishing second, but its members preferred an accurate report to ____5____ false success.\n\nThe corrected page ____6____ (share) with the team that afternoon. Several students wrote back to say thank you. The editor kept a copy of both ____7____ (version) in the newspaper's records, clearly marking which one had been corrected.\n\nBefore ____8____ (publish) the next sports report, the writers checked their notes against the final results. The extra step took a little time, but it was ____9____ (easy) than explaining another avoidable error. The first mistake had not made ____10____ (they) newspaper useless. It had shown where the checking process needed to improve."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.newspaper-correction-083.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of notice.",
+            "material": "A correction in the school paper\n\nOur school newspaper published a report about the swimming team last month. On the next morning, a team member ____1____ (notice) that one result was wrong. The article said her team had finished second, but it had actually finished third.\n\nThe editor thanked her ____2____ pointing it out. He checked the official results before changing anything. The team member was right, and the error had come from an early version of the writer's notes.\n\nAt first, the editor wanted to replace the number ____3____ (quiet). Our teacher suggested adding a short correction note instead. Readers ____4____ had already seen the wrong version needed to know what had changed.\n\nThe note explained the mistake without blaming the student who reported it. It also gave the correct result. The team was disappointed about not finishing second, but its members preferred an accurate report to ____5____ false success.\n\nThe corrected page ____6____ (share) with the team that afternoon. Several students wrote back to say thank you. The editor kept a copy of both ____7____ (version) in the newspaper's records, clearly marking which one had been corrected.\n\nBefore ____8____ (publish) the next sports report, the writers checked their notes against the final results. The extra step took a little time, but it was ____9____ (easy) than explaining another avoidable error. The first mistake had not made ____10____ (they) newspaper useless. It had shown where the checking process needed to improve.",
+            "explanation": "The report and next morning form a past narrative, so noticed. Base and unaided -ing forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "noticed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "notice",
+                "noticing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newspaper-correction-083.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "A correction in the school paper\n\nOur school newspaper published a report about the swimming team last month. On the next morning, a team member ____1____ (notice) that one result was wrong. The article said her team had finished second, but it had actually finished third.\n\nThe editor thanked her ____2____ pointing it out. He checked the official results before changing anything. The team member was right, and the error had come from an early version of the writer's notes.\n\nAt first, the editor wanted to replace the number ____3____ (quiet). Our teacher suggested adding a short correction note instead. Readers ____4____ had already seen the wrong version needed to know what had changed.\n\nThe note explained the mistake without blaming the student who reported it. It also gave the correct result. The team was disappointed about not finishing second, but its members preferred an accurate report to ____5____ false success.\n\nThe corrected page ____6____ (share) with the team that afternoon. Several students wrote back to say thank you. The editor kept a copy of both ____7____ (version) in the newspaper's records, clearly marking which one had been corrected.\n\nBefore ____8____ (publish) the next sports report, the writers checked their notes against the final results. The extra step took a little time, but it was ____9____ (easy) than explaining another avoidable error. The first mistake had not made ____10____ (they) newspaper useless. It had shown where the checking process needed to improve.",
+            "explanation": "Thanked her for pointing it out takes for. Other listed prepositions do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "at",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newspaper-correction-083.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of quiet.",
+            "material": "A correction in the school paper\n\nOur school newspaper published a report about the swimming team last month. On the next morning, a team member ____1____ (notice) that one result was wrong. The article said her team had finished second, but it had actually finished third.\n\nThe editor thanked her ____2____ pointing it out. He checked the official results before changing anything. The team member was right, and the error had come from an early version of the writer's notes.\n\nAt first, the editor wanted to replace the number ____3____ (quiet). Our teacher suggested adding a short correction note instead. Readers ____4____ had already seen the wrong version needed to know what had changed.\n\nThe note explained the mistake without blaming the student who reported it. It also gave the correct result. The team was disappointed about not finishing second, but its members preferred an accurate report to ____5____ false success.\n\nThe corrected page ____6____ (share) with the team that afternoon. Several students wrote back to say thank you. The editor kept a copy of both ____7____ (version) in the newspaper's records, clearly marking which one had been corrected.\n\nBefore ____8____ (publish) the next sports report, the writers checked their notes against the final results. The extra step took a little time, but it was ____9____ (easy) than explaining another avoidable error. The first mistake had not made ____10____ (they) newspaper useless. It had shown where the checking process needed to improve.",
+            "explanation": "Quietly modifies replace. Quietness is a noun; unlisted informal uses stay reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "quietly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "quietness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newspaper-correction-083.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "A correction in the school paper\n\nOur school newspaper published a report about the swimming team last month. On the next morning, a team member ____1____ (notice) that one result was wrong. The article said her team had finished second, but it had actually finished third.\n\nThe editor thanked her ____2____ pointing it out. He checked the official results before changing anything. The team member was right, and the error had come from an early version of the writer's notes.\n\nAt first, the editor wanted to replace the number ____3____ (quiet). Our teacher suggested adding a short correction note instead. Readers ____4____ had already seen the wrong version needed to know what had changed.\n\nThe note explained the mistake without blaming the student who reported it. It also gave the correct result. The team was disappointed about not finishing second, but its members preferred an accurate report to ____5____ false success.\n\nThe corrected page ____6____ (share) with the team that afternoon. Several students wrote back to say thank you. The editor kept a copy of both ____7____ (version) in the newspaper's records, clearly marking which one had been corrected.\n\nBefore ____8____ (publish) the next sports report, the writers checked their notes against the final results. The extra step took a little time, but it was ____9____ (easy) than explaining another avoidable error. The first mistake had not made ____10____ (they) newspaper useless. It had shown where the checking process needed to improve.",
+            "explanation": "Readers are the human subject antecedent of who/that had seen. Which is nonhuman, where not subject and whose needs a noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "where",
+                "whose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newspaper-correction-083.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with one appropriate word.",
+            "material": "A correction in the school paper\n\nOur school newspaper published a report about the swimming team last month. On the next morning, a team member ____1____ (notice) that one result was wrong. The article said her team had finished second, but it had actually finished third.\n\nThe editor thanked her ____2____ pointing it out. He checked the official results before changing anything. The team member was right, and the error had come from an early version of the writer's notes.\n\nAt first, the editor wanted to replace the number ____3____ (quiet). Our teacher suggested adding a short correction note instead. Readers ____4____ had already seen the wrong version needed to know what had changed.\n\nThe note explained the mistake without blaming the student who reported it. It also gave the correct result. The team was disappointed about not finishing second, but its members preferred an accurate report to ____5____ false success.\n\nThe corrected page ____6____ (share) with the team that afternoon. Several students wrote back to say thank you. The editor kept a copy of both ____7____ (version) in the newspaper's records, clearly marking which one had been corrected.\n\nBefore ____8____ (publish) the next sports report, the writers checked their notes against the final results. The extra step took a little time, but it was ____9____ (easy) than explaining another avoidable error. The first mistake had not made ____10____ (they) newspaper useless. It had shown where the checking process needed to improve.",
+            "explanation": "A false success begins with consonant f. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newspaper-correction-083.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of share.",
+            "material": "A correction in the school paper\n\nOur school newspaper published a report about the swimming team last month. On the next morning, a team member ____1____ (notice) that one result was wrong. The article said her team had finished second, but it had actually finished third.\n\nThe editor thanked her ____2____ pointing it out. He checked the official results before changing anything. The team member was right, and the error had come from an early version of the writer's notes.\n\nAt first, the editor wanted to replace the number ____3____ (quiet). Our teacher suggested adding a short correction note instead. Readers ____4____ had already seen the wrong version needed to know what had changed.\n\nThe note explained the mistake without blaming the student who reported it. It also gave the correct result. The team was disappointed about not finishing second, but its members preferred an accurate report to ____5____ false success.\n\nThe corrected page ____6____ (share) with the team that afternoon. Several students wrote back to say thank you. The editor kept a copy of both ____7____ (version) in the newspaper's records, clearly marking which one had been corrected.\n\nBefore ____8____ (publish) the next sports report, the writers checked their notes against the final results. The extra step took a little time, but it was ____9____ (easy) than explaining another avoidable error. The first mistake had not made ____10____ (they) newspaper useless. It had shown where the checking process needed to improve.",
+            "explanation": "Singular page receives sharing, so was/had been shared. Shared alone lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was shared",
+              "had been shared"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "shared",
+                "were shared"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newspaper-correction-083.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of version.",
+            "material": "A correction in the school paper\n\nOur school newspaper published a report about the swimming team last month. On the next morning, a team member ____1____ (notice) that one result was wrong. The article said her team had finished second, but it had actually finished third.\n\nThe editor thanked her ____2____ pointing it out. He checked the official results before changing anything. The team member was right, and the error had come from an early version of the writer's notes.\n\nAt first, the editor wanted to replace the number ____3____ (quiet). Our teacher suggested adding a short correction note instead. Readers ____4____ had already seen the wrong version needed to know what had changed.\n\nThe note explained the mistake without blaming the student who reported it. It also gave the correct result. The team was disappointed about not finishing second, but its members preferred an accurate report to ____5____ false success.\n\nThe corrected page ____6____ (share) with the team that afternoon. Several students wrote back to say thank you. The editor kept a copy of both ____7____ (version) in the newspaper's records, clearly marking which one had been corrected.\n\nBefore ____8____ (publish) the next sports report, the writers checked their notes against the final results. The extra step took a little time, but it was ____9____ (easy) than explaining another avoidable error. The first mistake had not made ____10____ (they) newspaper useless. It had shown where the checking process needed to improve.",
+            "explanation": "Both requires plural versions. Singular or singular possessive does not name the two copies.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "versions"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "version",
+                "version’s"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newspaper-correction-083.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of publish.",
+            "material": "A correction in the school paper\n\nOur school newspaper published a report about the swimming team last month. On the next morning, a team member ____1____ (notice) that one result was wrong. The article said her team had finished second, but it had actually finished third.\n\nThe editor thanked her ____2____ pointing it out. He checked the official results before changing anything. The team member was right, and the error had come from an early version of the writer's notes.\n\nAt first, the editor wanted to replace the number ____3____ (quiet). Our teacher suggested adding a short correction note instead. Readers ____4____ had already seen the wrong version needed to know what had changed.\n\nThe note explained the mistake without blaming the student who reported it. It also gave the correct result. The team was disappointed about not finishing second, but its members preferred an accurate report to ____5____ false success.\n\nThe corrected page ____6____ (share) with the team that afternoon. Several students wrote back to say thank you. The editor kept a copy of both ____7____ (version) in the newspaper's records, clearly marking which one had been corrected.\n\nBefore ____8____ (publish) the next sports report, the writers checked their notes against the final results. The extra step took a little time, but it was ____9____ (easy) than explaining another avoidable error. The first mistake had not made ____10____ (they) newspaper useless. It had shown where the checking process needed to improve.",
+            "explanation": "Before publishing takes -ing after a preposition. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "publishing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "publish",
+                "published",
+                "to publish"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newspaper-correction-083.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of easy.",
+            "material": "A correction in the school paper\n\nOur school newspaper published a report about the swimming team last month. On the next morning, a team member ____1____ (notice) that one result was wrong. The article said her team had finished second, but it had actually finished third.\n\nThe editor thanked her ____2____ pointing it out. He checked the official results before changing anything. The team member was right, and the error had come from an early version of the writer's notes.\n\nAt first, the editor wanted to replace the number ____3____ (quiet). Our teacher suggested adding a short correction note instead. Readers ____4____ had already seen the wrong version needed to know what had changed.\n\nThe note explained the mistake without blaming the student who reported it. It also gave the correct result. The team was disappointed about not finishing second, but its members preferred an accurate report to ____5____ false success.\n\nThe corrected page ____6____ (share) with the team that afternoon. Several students wrote back to say thank you. The editor kept a copy of both ____7____ (version) in the newspaper's records, clearly marking which one had been corrected.\n\nBefore ____8____ (publish) the next sports report, the writers checked their notes against the final results. The extra step took a little time, but it was ____9____ (easy) than explaining another avoidable error. The first mistake had not made ____10____ (they) newspaper useless. It had shown where the checking process needed to improve.",
+            "explanation": "Than gives comparative easier/more easy. Easiest is superlative and more easier doubled.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "easier",
+              "more easy"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "easiest",
+                "more easier"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newspaper-correction-083.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of they.",
+            "material": "A correction in the school paper\n\nOur school newspaper published a report about the swimming team last month. On the next morning, a team member ____1____ (notice) that one result was wrong. The article said her team had finished second, but it had actually finished third.\n\nThe editor thanked her ____2____ pointing it out. He checked the official results before changing anything. The team member was right, and the error had come from an early version of the writer's notes.\n\nAt first, the editor wanted to replace the number ____3____ (quiet). Our teacher suggested adding a short correction note instead. Readers ____4____ had already seen the wrong version needed to know what had changed.\n\nThe note explained the mistake without blaming the student who reported it. It also gave the correct result. The team was disappointed about not finishing second, but its members preferred an accurate report to ____5____ false success.\n\nThe corrected page ____6____ (share) with the team that afternoon. Several students wrote back to say thank you. The editor kept a copy of both ____7____ (version) in the newspaper's records, clearly marking which one had been corrected.\n\nBefore ____8____ (publish) the next sports report, the writers checked their notes against the final results. The extra step took a little time, but it was ____9____ (easy) than explaining another avoidable error. The first mistake had not made ____10____ (they) newspaper useless. It had shown where the checking process needed to improve.",
+            "explanation": "Their modifies newspaper. Personal pronouns and independent theirs do not fit before the noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "their"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "them",
+                "theirs"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "124d50f7d679a22fc45cbf5e7cc6899b27d0a8c20f314795c1cf8fa5395fb958",
+      "reviewNotes": "Four complete junior ten-gap passages. Fictional newspaper/class/subtitle/weather-club cases, qualified measurement descriptions. Same-author variant and invalid-form review only, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.balance-scale-083",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Two sides of a balance",
+        "summary": "Two sides of a balance，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage with seven supplied-word and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior ten-gap passages. Fictional newspaper/class/subtitle/weather-club cases, qualified measurement descriptions. Same-author variant and invalid-form review only, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.balance-scale-083",
+          "family": "passage_form",
+          "label": "Two sides of a balance",
+          "candidateSHA256": "2d143470e47228fb389bbb5f3065b12cc34ba38bfb828a9ef275297a25ea84e0",
+          "authorCheckSHA256": "63a8c821ba0264fd8840a65c99dd09b41bbfb2e01661d930ba1abcb813000055",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.balance-scale-083#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b083；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Two sides of a balance\n\nIn science class, we used a simple balance to compare objects. Our teacher put a small bag on one side and asked us ____1____ (find) objects that would balance it on the other. We were not allowed to open the bag yet.\n\nI chose three wooden blocks. The bag's side stayed lower, so I added another block. My partner watched ____2____ (careful) and asked whether the balance had been level before we started. We had forgotten to check.\n\nAfter ____3____ (remove) everything, we saw that one pan still hung lower. The teacher helped us adjust the equipment. Only then did we begin our comparison again. A fair result needed more ____4____ a confident guess about the objects.\n\nThis time, five blocks balanced the bag. Another group used several metal washers instead. Their answer did not disagree with ours simply ____5____ the number of objects was different. The washers and blocks were not the same mass.\n\nWe wrote a description ____6____ explained exactly what we had compared. Then the teacher opened the bag. It contained a small toy car, not the stones I had imagined.\n\nThe activity was ____7____ (use) because it made us separate two questions: what an object was and how its mass compared with another's. My notebook showed two different ____8____ (result), with the comparison objects named clearly. The balance ____9____ (check) again before the next class used it. We had learned to examine ____10____ (we) starting point as well as the final answer."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.balance-scale-083.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of find.",
+            "material": "Two sides of a balance\n\nIn science class, we used a simple balance to compare objects. Our teacher put a small bag on one side and asked us ____1____ (find) objects that would balance it on the other. We were not allowed to open the bag yet.\n\nI chose three wooden blocks. The bag's side stayed lower, so I added another block. My partner watched ____2____ (careful) and asked whether the balance had been level before we started. We had forgotten to check.\n\nAfter ____3____ (remove) everything, we saw that one pan still hung lower. The teacher helped us adjust the equipment. Only then did we begin our comparison again. A fair result needed more ____4____ a confident guess about the objects.\n\nThis time, five blocks balanced the bag. Another group used several metal washers instead. Their answer did not disagree with ours simply ____5____ the number of objects was different. The washers and blocks were not the same mass.\n\nWe wrote a description ____6____ explained exactly what we had compared. Then the teacher opened the bag. It contained a small toy car, not the stones I had imagined.\n\nThe activity was ____7____ (use) because it made us separate two questions: what an object was and how its mass compared with another's. My notebook showed two different ____8____ (result), with the comparison objects named clearly. The balance ____9____ (check) again before the next class used it. We had learned to examine ____10____ (we) starting point as well as the final answer.",
+            "explanation": "Asked us takes to find. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to find"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "find",
+                "finding",
+                "found"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.balance-scale-083.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of careful.",
+            "material": "Two sides of a balance\n\nIn science class, we used a simple balance to compare objects. Our teacher put a small bag on one side and asked us ____1____ (find) objects that would balance it on the other. We were not allowed to open the bag yet.\n\nI chose three wooden blocks. The bag's side stayed lower, so I added another block. My partner watched ____2____ (careful) and asked whether the balance had been level before we started. We had forgotten to check.\n\nAfter ____3____ (remove) everything, we saw that one pan still hung lower. The teacher helped us adjust the equipment. Only then did we begin our comparison again. A fair result needed more ____4____ a confident guess about the objects.\n\nThis time, five blocks balanced the bag. Another group used several metal washers instead. Their answer did not disagree with ours simply ____5____ the number of objects was different. The washers and blocks were not the same mass.\n\nWe wrote a description ____6____ explained exactly what we had compared. Then the teacher opened the bag. It contained a small toy car, not the stones I had imagined.\n\nThe activity was ____7____ (use) because it made us separate two questions: what an object was and how its mass compared with another's. My notebook showed two different ____8____ (result), with the comparison objects named clearly. The balance ____9____ (check) again before the next class used it. We had learned to examine ____10____ (we) starting point as well as the final answer.",
+            "explanation": "Carefully modifies watched. Careful is adjective and carefulness noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careful",
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.balance-scale-083.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of remove.",
+            "material": "Two sides of a balance\n\nIn science class, we used a simple balance to compare objects. Our teacher put a small bag on one side and asked us ____1____ (find) objects that would balance it on the other. We were not allowed to open the bag yet.\n\nI chose three wooden blocks. The bag's side stayed lower, so I added another block. My partner watched ____2____ (careful) and asked whether the balance had been level before we started. We had forgotten to check.\n\nAfter ____3____ (remove) everything, we saw that one pan still hung lower. The teacher helped us adjust the equipment. Only then did we begin our comparison again. A fair result needed more ____4____ a confident guess about the objects.\n\nThis time, five blocks balanced the bag. Another group used several metal washers instead. Their answer did not disagree with ours simply ____5____ the number of objects was different. The washers and blocks were not the same mass.\n\nWe wrote a description ____6____ explained exactly what we had compared. Then the teacher opened the bag. It contained a small toy car, not the stones I had imagined.\n\nThe activity was ____7____ (use) because it made us separate two questions: what an object was and how its mass compared with another's. My notebook showed two different ____8____ (result), with the comparison objects named clearly. The balance ____9____ (check) again before the next class used it. We had learned to examine ____10____ (we) starting point as well as the final answer.",
+            "explanation": "After removing/having removed expresses the prior action. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "removing",
+              "having removed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "remove",
+                "removed",
+                "to remove"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.balance-scale-083.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "Two sides of a balance\n\nIn science class, we used a simple balance to compare objects. Our teacher put a small bag on one side and asked us ____1____ (find) objects that would balance it on the other. We were not allowed to open the bag yet.\n\nI chose three wooden blocks. The bag's side stayed lower, so I added another block. My partner watched ____2____ (careful) and asked whether the balance had been level before we started. We had forgotten to check.\n\nAfter ____3____ (remove) everything, we saw that one pan still hung lower. The teacher helped us adjust the equipment. Only then did we begin our comparison again. A fair result needed more ____4____ a confident guess about the objects.\n\nThis time, five blocks balanced the bag. Another group used several metal washers instead. Their answer did not disagree with ours simply ____5____ the number of objects was different. The washers and blocks were not the same mass.\n\nWe wrote a description ____6____ explained exactly what we had compared. Then the teacher opened the bag. It contained a small toy car, not the stones I had imagined.\n\nThe activity was ____7____ (use) because it made us separate two questions: what an object was and how its mass compared with another's. My notebook showed two different ____8____ (result), with the comparison objects named clearly. The balance ____9____ (check) again before the next class used it. We had learned to examine ____10____ (we) starting point as well as the final answer.",
+            "explanation": "More than means beyond merely a guess. Then is time and that does not complete the comparison.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "than"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "then",
+                "that"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.balance-scale-083.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with one appropriate word.",
+            "material": "Two sides of a balance\n\nIn science class, we used a simple balance to compare objects. Our teacher put a small bag on one side and asked us ____1____ (find) objects that would balance it on the other. We were not allowed to open the bag yet.\n\nI chose three wooden blocks. The bag's side stayed lower, so I added another block. My partner watched ____2____ (careful) and asked whether the balance had been level before we started. We had forgotten to check.\n\nAfter ____3____ (remove) everything, we saw that one pan still hung lower. The teacher helped us adjust the equipment. Only then did we begin our comparison again. A fair result needed more ____4____ a confident guess about the objects.\n\nThis time, five blocks balanced the bag. Another group used several metal washers instead. Their answer did not disagree with ours simply ____5____ the number of objects was different. The washers and blocks were not the same mass.\n\nWe wrote a description ____6____ explained exactly what we had compared. Then the teacher opened the bag. It contained a small toy car, not the stones I had imagined.\n\nThe activity was ____7____ (use) because it made us separate two questions: what an object was and how its mass compared with another's. My notebook showed two different ____8____ (result), with the comparison objects named clearly. The balance ____9____ (check) again before the next class used it. We had learned to examine ____10____ (we) starting point as well as the final answer.",
+            "explanation": "Because/as/since introduce the rejected simple reason: a different item count alone does not establish disagreement. Unless reverses that logic.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "because",
+              "as",
+              "since"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "unless"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.balance-scale-083.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "Two sides of a balance\n\nIn science class, we used a simple balance to compare objects. Our teacher put a small bag on one side and asked us ____1____ (find) objects that would balance it on the other. We were not allowed to open the bag yet.\n\nI chose three wooden blocks. The bag's side stayed lower, so I added another block. My partner watched ____2____ (careful) and asked whether the balance had been level before we started. We had forgotten to check.\n\nAfter ____3____ (remove) everything, we saw that one pan still hung lower. The teacher helped us adjust the equipment. Only then did we begin our comparison again. A fair result needed more ____4____ a confident guess about the objects.\n\nThis time, five blocks balanced the bag. Another group used several metal washers instead. Their answer did not disagree with ours simply ____5____ the number of objects was different. The washers and blocks were not the same mass.\n\nWe wrote a description ____6____ explained exactly what we had compared. Then the teacher opened the bag. It contained a small toy car, not the stones I had imagined.\n\nThe activity was ____7____ (use) because it made us separate two questions: what an object was and how its mass compared with another's. My notebook showed two different ____8____ (result), with the comparison objects named clearly. The balance ____9____ (check) again before the next class used it. We had learned to examine ____10____ (we) starting point as well as the final answer.",
+            "explanation": "Description is subject antecedent of that/which explained. Who is human, where not subject and what conflicts with the antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.balance-scale-083.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of use.",
+            "material": "Two sides of a balance\n\nIn science class, we used a simple balance to compare objects. Our teacher put a small bag on one side and asked us ____1____ (find) objects that would balance it on the other. We were not allowed to open the bag yet.\n\nI chose three wooden blocks. The bag's side stayed lower, so I added another block. My partner watched ____2____ (careful) and asked whether the balance had been level before we started. We had forgotten to check.\n\nAfter ____3____ (remove) everything, we saw that one pan still hung lower. The teacher helped us adjust the equipment. Only then did we begin our comparison again. A fair result needed more ____4____ a confident guess about the objects.\n\nThis time, five blocks balanced the bag. Another group used several metal washers instead. Their answer did not disagree with ours simply ____5____ the number of objects was different. The washers and blocks were not the same mass.\n\nWe wrote a description ____6____ explained exactly what we had compared. Then the teacher opened the bag. It contained a small toy car, not the stones I had imagined.\n\nThe activity was ____7____ (use) because it made us separate two questions: what an object was and how its mass compared with another's. My notebook showed two different ____8____ (result), with the comparison objects named clearly. The balance ____9____ (check) again before the next class used it. We had learned to examine ____10____ (we) starting point as well as the final answer.",
+            "explanation": "Useful describes the activity. Use is noun/verb and usefully adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "useful"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "use",
+                "usefully"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.balance-scale-083.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of result.",
+            "material": "Two sides of a balance\n\nIn science class, we used a simple balance to compare objects. Our teacher put a small bag on one side and asked us ____1____ (find) objects that would balance it on the other. We were not allowed to open the bag yet.\n\nI chose three wooden blocks. The bag's side stayed lower, so I added another block. My partner watched ____2____ (careful) and asked whether the balance had been level before we started. We had forgotten to check.\n\nAfter ____3____ (remove) everything, we saw that one pan still hung lower. The teacher helped us adjust the equipment. Only then did we begin our comparison again. A fair result needed more ____4____ a confident guess about the objects.\n\nThis time, five blocks balanced the bag. Another group used several metal washers instead. Their answer did not disagree with ours simply ____5____ the number of objects was different. The washers and blocks were not the same mass.\n\nWe wrote a description ____6____ explained exactly what we had compared. Then the teacher opened the bag. It contained a small toy car, not the stones I had imagined.\n\nThe activity was ____7____ (use) because it made us separate two questions: what an object was and how its mass compared with another's. My notebook showed two different ____8____ (result), with the comparison objects named clearly. The balance ____9____ (check) again before the next class used it. We had learned to examine ____10____ (we) starting point as well as the final answer.",
+            "explanation": "Two different results explicitly requires the plural. Singular result and singular possessive result’s do not fill that plural count slot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "results"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "result",
+                "result’s"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.balance-scale-083.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of check.",
+            "material": "Two sides of a balance\n\nIn science class, we used a simple balance to compare objects. Our teacher put a small bag on one side and asked us ____1____ (find) objects that would balance it on the other. We were not allowed to open the bag yet.\n\nI chose three wooden blocks. The bag's side stayed lower, so I added another block. My partner watched ____2____ (careful) and asked whether the balance had been level before we started. We had forgotten to check.\n\nAfter ____3____ (remove) everything, we saw that one pan still hung lower. The teacher helped us adjust the equipment. Only then did we begin our comparison again. A fair result needed more ____4____ a confident guess about the objects.\n\nThis time, five blocks balanced the bag. Another group used several metal washers instead. Their answer did not disagree with ours simply ____5____ the number of objects was different. The washers and blocks were not the same mass.\n\nWe wrote a description ____6____ explained exactly what we had compared. Then the teacher opened the bag. It contained a small toy car, not the stones I had imagined.\n\nThe activity was ____7____ (use) because it made us separate two questions: what an object was and how its mass compared with another's. My notebook showed two different ____8____ (result), with the comparison objects named clearly. The balance ____9____ (check) again before the next class used it. We had learned to examine ____10____ (we) starting point as well as the final answer.",
+            "explanation": "The singular balance receives checking. Was/had been checked fit the past sequence; checked lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was checked",
+              "had been checked"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "checked",
+                "were checked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.balance-scale-083.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of we.",
+            "material": "Two sides of a balance\n\nIn science class, we used a simple balance to compare objects. Our teacher put a small bag on one side and asked us ____1____ (find) objects that would balance it on the other. We were not allowed to open the bag yet.\n\nI chose three wooden blocks. The bag's side stayed lower, so I added another block. My partner watched ____2____ (careful) and asked whether the balance had been level before we started. We had forgotten to check.\n\nAfter ____3____ (remove) everything, we saw that one pan still hung lower. The teacher helped us adjust the equipment. Only then did we begin our comparison again. A fair result needed more ____4____ a confident guess about the objects.\n\nThis time, five blocks balanced the bag. Another group used several metal washers instead. Their answer did not disagree with ours simply ____5____ the number of objects was different. The washers and blocks were not the same mass.\n\nWe wrote a description ____6____ explained exactly what we had compared. Then the teacher opened the bag. It contained a small toy car, not the stones I had imagined.\n\nThe activity was ____7____ (use) because it made us separate two questions: what an object was and how its mass compared with another's. My notebook showed two different ____8____ (result), with the comparison objects named clearly. The balance ____9____ (check) again before the next class used it. We had learned to examine ____10____ (we) starting point as well as the final answer.",
+            "explanation": "Our modifies starting point. Personal and independent possessive forms do not directly modify it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "our"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "us",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "3866e431ad43c1849d6c74f6aeec48feb6827222a2973afaf36c5feaae2007e3",
+      "reviewNotes": "Four complete junior ten-gap passages. Fictional newspaper/class/subtitle/weather-club cases, qualified measurement descriptions. Same-author variant and invalid-form review only, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.subtitles-speed-083",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Reading the moving words",
+        "summary": "Reading the moving words，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage with seven supplied-word and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior ten-gap passages. Fictional newspaper/class/subtitle/weather-club cases, qualified measurement descriptions. Same-author variant and invalid-form review only, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.subtitles-speed-083",
+          "family": "passage_form",
+          "label": "Reading the moving words",
+          "candidateSHA256": "21d91e52758d597edb02b9b66b018488661bd23dfb994978fe04741ea5c18630",
+          "authorCheckSHA256": "03f422d64b21c8f60d831e99443e5aac8185d2503188999ee8c2e0829d3db5ca",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.subtitles-speed-083#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b083；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Reading the moving words\n\nOur media club made a short video with subtitles for a school project. At first, we simply copied the spoken words and placed them at the bottom of the screen. We soon found that ____1____ (read) those words while watching the action was harder than reading them on paper.\n\nSome lines remained on screen for only a moment. Others covered part of the image ____2____ viewers needed to see. The subtitles were technically present, but that did not mean they were easy to use.\n\nA teacher asked us to watch without sound. We missed an important change of speaker because two people were outside the frame. We added a short label ____3____ (identify) the new voice where the picture did not make it clear.\n\nWe also divided long sentences into ____4____ (short) units. This was not permission to change the meaning. We compared the edited lines with the recording to check that necessary information had not disappeared.\n\nBefore ____5____ (finish), we showed the video to classmates who had not helped make it. Their questions revealed places where our ____6____ (familiar) with the story had hidden a problem. We knew what would happen next; a new viewer did not.\n\nThe revised video ____7____ (display) at the school meeting. Afterwards, we kept the subtitle file with the final recording so that the two could be updated together. A correction to one version without a change ____8____ the other could create a new mismatch. The project gave ____9____ (we) a practical understanding of access. Adding words was only ____10____ beginning; making them usable required attention to timing, context and meaning."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.subtitles-speed-083.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of read.",
+            "material": "Reading the moving words\n\nOur media club made a short video with subtitles for a school project. At first, we simply copied the spoken words and placed them at the bottom of the screen. We soon found that ____1____ (read) those words while watching the action was harder than reading them on paper.\n\nSome lines remained on screen for only a moment. Others covered part of the image ____2____ viewers needed to see. The subtitles were technically present, but that did not mean they were easy to use.\n\nA teacher asked us to watch without sound. We missed an important change of speaker because two people were outside the frame. We added a short label ____3____ (identify) the new voice where the picture did not make it clear.\n\nWe also divided long sentences into ____4____ (short) units. This was not permission to change the meaning. We compared the edited lines with the recording to check that necessary information had not disappeared.\n\nBefore ____5____ (finish), we showed the video to classmates who had not helped make it. Their questions revealed places where our ____6____ (familiar) with the story had hidden a problem. We knew what would happen next; a new viewer did not.\n\nThe revised video ____7____ (display) at the school meeting. Afterwards, we kept the subtitle file with the final recording so that the two could be updated together. A correction to one version without a change ____8____ the other could create a new mismatch. The project gave ____9____ (we) a practical understanding of access. Adding words was only ____10____ beginning; making them usable required attention to timing, context and meaning.",
+            "explanation": "Reading or to read can form the subject of was. Read/reads are finite/base forms that do not directly fill this nominal subject slot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "reading",
+              "to read"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "read",
+                "reads"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.subtitles-speed-083.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "Reading the moving words\n\nOur media club made a short video with subtitles for a school project. At first, we simply copied the spoken words and placed them at the bottom of the screen. We soon found that ____1____ (read) those words while watching the action was harder than reading them on paper.\n\nSome lines remained on screen for only a moment. Others covered part of the image ____2____ viewers needed to see. The subtitles were technically present, but that did not mean they were easy to use.\n\nA teacher asked us to watch without sound. We missed an important change of speaker because two people were outside the frame. We added a short label ____3____ (identify) the new voice where the picture did not make it clear.\n\nWe also divided long sentences into ____4____ (short) units. This was not permission to change the meaning. We compared the edited lines with the recording to check that necessary information had not disappeared.\n\nBefore ____5____ (finish), we showed the video to classmates who had not helped make it. Their questions revealed places where our ____6____ (familiar) with the story had hidden a problem. We knew what would happen next; a new viewer did not.\n\nThe revised video ____7____ (display) at the school meeting. Afterwards, we kept the subtitle file with the final recording so that the two could be updated together. A correction to one version without a change ____8____ the other could create a new mismatch. The project gave ____9____ (we) a practical understanding of access. Adding words was only ____10____ beginning; making them usable required attention to timing, context and meaning.",
+            "explanation": "Part of the image that/which viewers needed to see supplies the object relative. Who is human, where locative and what incompatible with the antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.subtitles-speed-083.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of identify.",
+            "material": "Reading the moving words\n\nOur media club made a short video with subtitles for a school project. At first, we simply copied the spoken words and placed them at the bottom of the screen. We soon found that ____1____ (read) those words while watching the action was harder than reading them on paper.\n\nSome lines remained on screen for only a moment. Others covered part of the image ____2____ viewers needed to see. The subtitles were technically present, but that did not mean they were easy to use.\n\nA teacher asked us to watch without sound. We missed an important change of speaker because two people were outside the frame. We added a short label ____3____ (identify) the new voice where the picture did not make it clear.\n\nWe also divided long sentences into ____4____ (short) units. This was not permission to change the meaning. We compared the edited lines with the recording to check that necessary information had not disappeared.\n\nBefore ____5____ (finish), we showed the video to classmates who had not helped make it. Their questions revealed places where our ____6____ (familiar) with the story had hidden a problem. We knew what would happen next; a new viewer did not.\n\nThe revised video ____7____ (display) at the school meeting. Afterwards, we kept the subtitle file with the final recording so that the two could be updated together. A correction to one version without a change ____8____ the other could create a new mismatch. The project gave ____9____ (we) a practical understanding of access. Adding words was only ____10____ beginning; making them usable required attention to timing, context and meaning.",
+            "explanation": "To identify states the label’s purpose; identifying the new voice is also a participial modifier of label. Base and finite past do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to identify",
+              "identifying"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "identify",
+                "identified"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.subtitles-speed-083.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of short.",
+            "material": "Reading the moving words\n\nOur media club made a short video with subtitles for a school project. At first, we simply copied the spoken words and placed them at the bottom of the screen. We soon found that ____1____ (read) those words while watching the action was harder than reading them on paper.\n\nSome lines remained on screen for only a moment. Others covered part of the image ____2____ viewers needed to see. The subtitles were technically present, but that did not mean they were easy to use.\n\nA teacher asked us to watch without sound. We missed an important change of speaker because two people were outside the frame. We added a short label ____3____ (identify) the new voice where the picture did not make it clear.\n\nWe also divided long sentences into ____4____ (short) units. This was not permission to change the meaning. We compared the edited lines with the recording to check that necessary information had not disappeared.\n\nBefore ____5____ (finish), we showed the video to classmates who had not helped make it. Their questions revealed places where our ____6____ (familiar) with the story had hidden a problem. We knew what would happen next; a new viewer did not.\n\nThe revised video ____7____ (display) at the school meeting. Afterwards, we kept the subtitle file with the final recording so that the two could be updated together. A correction to one version without a change ____8____ the other could create a new mismatch. The project gave ____9____ (we) a practical understanding of access. Adding words was only ____10____ beginning; making them usable required attention to timing, context and meaning.",
+            "explanation": "Shorter/more short expresses reduction relative to long sentences. Shortest is superlative and more shorter doubled; unlisted plain adjective remains reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "shorter",
+              "more short"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "shortest",
+                "more shorter"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.subtitles-speed-083.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of finish.",
+            "material": "Reading the moving words\n\nOur media club made a short video with subtitles for a school project. At first, we simply copied the spoken words and placed them at the bottom of the screen. We soon found that ____1____ (read) those words while watching the action was harder than reading them on paper.\n\nSome lines remained on screen for only a moment. Others covered part of the image ____2____ viewers needed to see. The subtitles were technically present, but that did not mean they were easy to use.\n\nA teacher asked us to watch without sound. We missed an important change of speaker because two people were outside the frame. We added a short label ____3____ (identify) the new voice where the picture did not make it clear.\n\nWe also divided long sentences into ____4____ (short) units. This was not permission to change the meaning. We compared the edited lines with the recording to check that necessary information had not disappeared.\n\nBefore ____5____ (finish), we showed the video to classmates who had not helped make it. Their questions revealed places where our ____6____ (familiar) with the story had hidden a problem. We knew what would happen next; a new viewer did not.\n\nThe revised video ____7____ (display) at the school meeting. Afterwards, we kept the subtitle file with the final recording so that the two could be updated together. A correction to one version without a change ____8____ the other could create a new mismatch. The project gave ____9____ (we) a practical understanding of access. Adding words was only ____10____ beginning; making them usable required attention to timing, context and meaning.",
+            "explanation": "Before finishing takes an -ing clause after the preposition. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "finishing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "finish",
+                "finished",
+                "to finish"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.subtitles-speed-083.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of familiar.",
+            "material": "Reading the moving words\n\nOur media club made a short video with subtitles for a school project. At first, we simply copied the spoken words and placed them at the bottom of the screen. We soon found that ____1____ (read) those words while watching the action was harder than reading them on paper.\n\nSome lines remained on screen for only a moment. Others covered part of the image ____2____ viewers needed to see. The subtitles were technically present, but that did not mean they were easy to use.\n\nA teacher asked us to watch without sound. We missed an important change of speaker because two people were outside the frame. We added a short label ____3____ (identify) the new voice where the picture did not make it clear.\n\nWe also divided long sentences into ____4____ (short) units. This was not permission to change the meaning. We compared the edited lines with the recording to check that necessary information had not disappeared.\n\nBefore ____5____ (finish), we showed the video to classmates who had not helped make it. Their questions revealed places where our ____6____ (familiar) with the story had hidden a problem. We knew what would happen next; a new viewer did not.\n\nThe revised video ____7____ (display) at the school meeting. Afterwards, we kept the subtitle file with the final recording so that the two could be updated together. A correction to one version without a change ____8____ the other could create a new mismatch. The project gave ____9____ (we) a practical understanding of access. Adding words was only ____10____ beginning; making them usable required attention to timing, context and meaning.",
+            "explanation": "Our familiarity with the story requires a noun. Familiar is adjective and familiarly adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "familiarity"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "familiar",
+                "familiarly"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.subtitles-speed-083.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of display.",
+            "material": "Reading the moving words\n\nOur media club made a short video with subtitles for a school project. At first, we simply copied the spoken words and placed them at the bottom of the screen. We soon found that ____1____ (read) those words while watching the action was harder than reading them on paper.\n\nSome lines remained on screen for only a moment. Others covered part of the image ____2____ viewers needed to see. The subtitles were technically present, but that did not mean they were easy to use.\n\nA teacher asked us to watch without sound. We missed an important change of speaker because two people were outside the frame. We added a short label ____3____ (identify) the new voice where the picture did not make it clear.\n\nWe also divided long sentences into ____4____ (short) units. This was not permission to change the meaning. We compared the edited lines with the recording to check that necessary information had not disappeared.\n\nBefore ____5____ (finish), we showed the video to classmates who had not helped make it. Their questions revealed places where our ____6____ (familiar) with the story had hidden a problem. We knew what would happen next; a new viewer did not.\n\nThe revised video ____7____ (display) at the school meeting. Afterwards, we kept the subtitle file with the final recording so that the two could be updated together. A correction to one version without a change ____8____ the other could create a new mismatch. The project gave ____9____ (we) a practical understanding of access. Adding words was only ____10____ beginning; making them usable required attention to timing, context and meaning.",
+            "explanation": "Singular video receives display in this past narrative. Displayed alone lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was displayed",
+              "had been displayed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "displayed",
+                "were displayed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.subtitles-speed-083.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "Reading the moving words\n\nOur media club made a short video with subtitles for a school project. At first, we simply copied the spoken words and placed them at the bottom of the screen. We soon found that ____1____ (read) those words while watching the action was harder than reading them on paper.\n\nSome lines remained on screen for only a moment. Others covered part of the image ____2____ viewers needed to see. The subtitles were technically present, but that did not mean they were easy to use.\n\nA teacher asked us to watch without sound. We missed an important change of speaker because two people were outside the frame. We added a short label ____3____ (identify) the new voice where the picture did not make it clear.\n\nWe also divided long sentences into ____4____ (short) units. This was not permission to change the meaning. We compared the edited lines with the recording to check that necessary information had not disappeared.\n\nBefore ____5____ (finish), we showed the video to classmates who had not helped make it. Their questions revealed places where our ____6____ (familiar) with the story had hidden a problem. We knew what would happen next; a new viewer did not.\n\nThe revised video ____7____ (display) at the school meeting. Afterwards, we kept the subtitle file with the final recording so that the two could be updated together. A correction to one version without a change ____8____ the other could create a new mismatch. The project gave ____9____ (we) a practical understanding of access. Adding words was only ____10____ beginning; making them usable required attention to timing, context and meaning.",
+            "explanation": "A change to/in the other refers to updating that version. From would suggest changing away from it rather than correcting its content; other unlisted readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to",
+              "in"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "from"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.subtitles-speed-083.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of we.",
+            "material": "Reading the moving words\n\nOur media club made a short video with subtitles for a school project. At first, we simply copied the spoken words and placed them at the bottom of the screen. We soon found that ____1____ (read) those words while watching the action was harder than reading them on paper.\n\nSome lines remained on screen for only a moment. Others covered part of the image ____2____ viewers needed to see. The subtitles were technically present, but that did not mean they were easy to use.\n\nA teacher asked us to watch without sound. We missed an important change of speaker because two people were outside the frame. We added a short label ____3____ (identify) the new voice where the picture did not make it clear.\n\nWe also divided long sentences into ____4____ (short) units. This was not permission to change the meaning. We compared the edited lines with the recording to check that necessary information had not disappeared.\n\nBefore ____5____ (finish), we showed the video to classmates who had not helped make it. Their questions revealed places where our ____6____ (familiar) with the story had hidden a problem. We knew what would happen next; a new viewer did not.\n\nThe revised video ____7____ (display) at the school meeting. Afterwards, we kept the subtitle file with the final recording so that the two could be updated together. A correction to one version without a change ____8____ the other could create a new mismatch. The project gave ____9____ (we) a practical understanding of access. Adding words was only ____10____ beginning; making them usable required attention to timing, context and meaning.",
+            "explanation": "Gave takes object us. Subject and possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.subtitles-speed-083.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "Reading the moving words\n\nOur media club made a short video with subtitles for a school project. At first, we simply copied the spoken words and placed them at the bottom of the screen. We soon found that ____1____ (read) those words while watching the action was harder than reading them on paper.\n\nSome lines remained on screen for only a moment. Others covered part of the image ____2____ viewers needed to see. The subtitles were technically present, but that did not mean they were easy to use.\n\nA teacher asked us to watch without sound. We missed an important change of speaker because two people were outside the frame. We added a short label ____3____ (identify) the new voice where the picture did not make it clear.\n\nWe also divided long sentences into ____4____ (short) units. This was not permission to change the meaning. We compared the edited lines with the recording to check that necessary information had not disappeared.\n\nBefore ____5____ (finish), we showed the video to classmates who had not helped make it. Their questions revealed places where our ____6____ (familiar) with the story had hidden a problem. We knew what would happen next; a new viewer did not.\n\nThe revised video ____7____ (display) at the school meeting. Afterwards, we kept the subtitle file with the final recording so that the two could be updated together. A correction to one version without a change ____8____ the other could create a new mismatch. The project gave ____9____ (we) a practical understanding of access. Adding words was only ____10____ beginning; making them usable required attention to timing, context and meaning.",
+            "explanation": "The beginning identifies the first stage; a beginning is also grammatical as an initial step. An before consonant b is invalid.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "the",
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "89f3d0c74a5059890624674b48f0204a91a42d82d1b48a706773ea28c4f38a03",
+      "reviewNotes": "Four complete junior ten-gap passages. Fictional newspaper/class/subtitle/weather-club cases, qualified measurement descriptions. Same-author variant and invalid-form review only, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.rain-gauge-site-083",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Where the rain gauge stood",
+        "summary": "Where the rain gauge stood，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage with seven supplied-word and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior ten-gap passages. Fictional newspaper/class/subtitle/weather-club cases, qualified measurement descriptions. Same-author variant and invalid-form review only, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.rain-gauge-site-083",
+          "family": "passage_form",
+          "label": "Where the rain gauge stood",
+          "candidateSHA256": "646439fc667fad2e847c289d11313a66ed0668692a38ff978caf76383edcc17f",
+          "authorCheckSHA256": "9156401f266b23d7037c5ba6493f7fdc61a2af13f77612a292fcfe57d5ecce16",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.rain-gauge-site-083#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b083；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Where the rain gauge stood\n\nThe school weather club put a rain gauge in the garden and recorded the water collected after each rainy day. For a week, our numbers were much lower than those from a nearby school. We wondered whether our garden ____1____ (receive) less rain.\n\nOur teacher asked where the gauge stood. It was beside a wall, under the edge of a tree. We had chosen the spot because it was convenient ____2____ (reach), without considering how the surroundings could affect collection.\n\nLeaves could intercept some water, while drips from a branch might add water in a different way. We needed a site ____3____ allowed a more representative collection, not simply a container that was easy to visit.\n\nFollowing appropriate local measurement guidance, we moved the gauge and checked that it was level. We wrote the change of site in our record instead of ____4____ (hide) it. Otherwise, someone reading the numbers later might assume that every observation had been made under the same ____5____ (condition).\n\nThe next readings were closer to those from the neighbouring school, but the two sets were not identical. The gauges were still in different places, and small local differences were possible. We were ____6____ (careful) than before about treating one difference as proof of an error.\n\nAt the end of term, our report included ____7____ explanation of the first site and the date it changed. Our teacher thanked ____8____ (we) for keeping that detail. A method change was part ____9____ the evidence, not an embarrassing mark to erase. The experience helped us judge the numbers more ____10____ (accurate), while recognising that a school project was not a complete weather-monitoring service."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.rain-gauge-site-083.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of receive.",
+            "material": "Where the rain gauge stood\n\nThe school weather club put a rain gauge in the garden and recorded the water collected after each rainy day. For a week, our numbers were much lower than those from a nearby school. We wondered whether our garden ____1____ (receive) less rain.\n\nOur teacher asked where the gauge stood. It was beside a wall, under the edge of a tree. We had chosen the spot because it was convenient ____2____ (reach), without considering how the surroundings could affect collection.\n\nLeaves could intercept some water, while drips from a branch might add water in a different way. We needed a site ____3____ allowed a more representative collection, not simply a container that was easy to visit.\n\nFollowing appropriate local measurement guidance, we moved the gauge and checked that it was level. We wrote the change of site in our record instead of ____4____ (hide) it. Otherwise, someone reading the numbers later might assume that every observation had been made under the same ____5____ (condition).\n\nThe next readings were closer to those from the neighbouring school, but the two sets were not identical. The gauges were still in different places, and small local differences were possible. We were ____6____ (careful) than before about treating one difference as proof of an error.\n\nAt the end of term, our report included ____7____ explanation of the first site and the date it changed. Our teacher thanked ____8____ (we) for keeping that detail. A method change was part ____9____ the evidence, not an embarrassing mark to erase. The experience helped us judge the numbers more ____10____ (accurate), while recognising that a school project was not a complete weather-monitoring service.",
+            "explanation": "Past simple/progressive/perfect all fit the uncertain comparison in the past. Receiving alone lacks a finite auxiliary; other tense readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "received",
+              "was receiving",
+              "had received"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "receiving"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.rain-gauge-site-083.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of reach.",
+            "material": "Where the rain gauge stood\n\nThe school weather club put a rain gauge in the garden and recorded the water collected after each rainy day. For a week, our numbers were much lower than those from a nearby school. We wondered whether our garden ____1____ (receive) less rain.\n\nOur teacher asked where the gauge stood. It was beside a wall, under the edge of a tree. We had chosen the spot because it was convenient ____2____ (reach), without considering how the surroundings could affect collection.\n\nLeaves could intercept some water, while drips from a branch might add water in a different way. We needed a site ____3____ allowed a more representative collection, not simply a container that was easy to visit.\n\nFollowing appropriate local measurement guidance, we moved the gauge and checked that it was level. We wrote the change of site in our record instead of ____4____ (hide) it. Otherwise, someone reading the numbers later might assume that every observation had been made under the same ____5____ (condition).\n\nThe next readings were closer to those from the neighbouring school, but the two sets were not identical. The gauges were still in different places, and small local differences were possible. We were ____6____ (careful) than before about treating one difference as proof of an error.\n\nAt the end of term, our report included ____7____ explanation of the first site and the date it changed. Our teacher thanked ____8____ (we) for keeping that detail. A method change was part ____9____ the evidence, not an embarrassing mark to erase. The experience helped us judge the numbers more ____10____ (accurate), while recognising that a school project was not a complete weather-monitoring service.",
+            "explanation": "Convenient to reach uses an infinitive. Other listed forms do not directly complete that adjective construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to reach"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "reach",
+                "reaching",
+                "reached"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.rain-gauge-site-083.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "Where the rain gauge stood\n\nThe school weather club put a rain gauge in the garden and recorded the water collected after each rainy day. For a week, our numbers were much lower than those from a nearby school. We wondered whether our garden ____1____ (receive) less rain.\n\nOur teacher asked where the gauge stood. It was beside a wall, under the edge of a tree. We had chosen the spot because it was convenient ____2____ (reach), without considering how the surroundings could affect collection.\n\nLeaves could intercept some water, while drips from a branch might add water in a different way. We needed a site ____3____ allowed a more representative collection, not simply a container that was easy to visit.\n\nFollowing appropriate local measurement guidance, we moved the gauge and checked that it was level. We wrote the change of site in our record instead of ____4____ (hide) it. Otherwise, someone reading the numbers later might assume that every observation had been made under the same ____5____ (condition).\n\nThe next readings were closer to those from the neighbouring school, but the two sets were not identical. The gauges were still in different places, and small local differences were possible. We were ____6____ (careful) than before about treating one difference as proof of an error.\n\nAt the end of term, our report included ____7____ explanation of the first site and the date it changed. Our teacher thanked ____8____ (we) for keeping that detail. A method change was part ____9____ the evidence, not an embarrassing mark to erase. The experience helped us judge the numbers more ____10____ (accurate), while recognising that a school project was not a complete weather-monitoring service.",
+            "explanation": "Site is subject antecedent of that/which allowed. Where would lack a subject and who/what do not fit this nonhuman expressed antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.rain-gauge-site-083.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of hide.",
+            "material": "Where the rain gauge stood\n\nThe school weather club put a rain gauge in the garden and recorded the water collected after each rainy day. For a week, our numbers were much lower than those from a nearby school. We wondered whether our garden ____1____ (receive) less rain.\n\nOur teacher asked where the gauge stood. It was beside a wall, under the edge of a tree. We had chosen the spot because it was convenient ____2____ (reach), without considering how the surroundings could affect collection.\n\nLeaves could intercept some water, while drips from a branch might add water in a different way. We needed a site ____3____ allowed a more representative collection, not simply a container that was easy to visit.\n\nFollowing appropriate local measurement guidance, we moved the gauge and checked that it was level. We wrote the change of site in our record instead of ____4____ (hide) it. Otherwise, someone reading the numbers later might assume that every observation had been made under the same ____5____ (condition).\n\nThe next readings were closer to those from the neighbouring school, but the two sets were not identical. The gauges were still in different places, and small local differences were possible. We were ____6____ (careful) than before about treating one difference as proof of an error.\n\nAt the end of term, our report included ____7____ explanation of the first site and the date it changed. Our teacher thanked ____8____ (we) for keeping that detail. A method change was part ____9____ the evidence, not an embarrassing mark to erase. The experience helped us judge the numbers more ____10____ (accurate), while recognising that a school project was not a complete weather-monitoring service.",
+            "explanation": "Instead of takes hiding. Other listed forms do not directly follow the preposition.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "hiding"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "hide",
+                "hid",
+                "to hide"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.rain-gauge-site-083.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of condition.",
+            "material": "Where the rain gauge stood\n\nThe school weather club put a rain gauge in the garden and recorded the water collected after each rainy day. For a week, our numbers were much lower than those from a nearby school. We wondered whether our garden ____1____ (receive) less rain.\n\nOur teacher asked where the gauge stood. It was beside a wall, under the edge of a tree. We had chosen the spot because it was convenient ____2____ (reach), without considering how the surroundings could affect collection.\n\nLeaves could intercept some water, while drips from a branch might add water in a different way. We needed a site ____3____ allowed a more representative collection, not simply a container that was easy to visit.\n\nFollowing appropriate local measurement guidance, we moved the gauge and checked that it was level. We wrote the change of site in our record instead of ____4____ (hide) it. Otherwise, someone reading the numbers later might assume that every observation had been made under the same ____5____ (condition).\n\nThe next readings were closer to those from the neighbouring school, but the two sets were not identical. The gauges were still in different places, and small local differences were possible. We were ____6____ (careful) than before about treating one difference as proof of an error.\n\nAt the end of term, our report included ____7____ explanation of the first site and the date it changed. Our teacher thanked ____8____ (we) for keeping that detail. A method change was part ____9____ the evidence, not an embarrassing mark to erase. The experience helped us judge the numbers more ____10____ (accurate), while recognising that a school project was not a complete weather-monitoring service.",
+            "explanation": "The same conditions names the collection circumstances. Conditional is adjective; singular condition is left reviewable because it can name an overall state.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "conditions"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "conditional"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.rain-gauge-site-083.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of careful.",
+            "material": "Where the rain gauge stood\n\nThe school weather club put a rain gauge in the garden and recorded the water collected after each rainy day. For a week, our numbers were much lower than those from a nearby school. We wondered whether our garden ____1____ (receive) less rain.\n\nOur teacher asked where the gauge stood. It was beside a wall, under the edge of a tree. We had chosen the spot because it was convenient ____2____ (reach), without considering how the surroundings could affect collection.\n\nLeaves could intercept some water, while drips from a branch might add water in a different way. We needed a site ____3____ allowed a more representative collection, not simply a container that was easy to visit.\n\nFollowing appropriate local measurement guidance, we moved the gauge and checked that it was level. We wrote the change of site in our record instead of ____4____ (hide) it. Otherwise, someone reading the numbers later might assume that every observation had been made under the same ____5____ (condition).\n\nThe next readings were closer to those from the neighbouring school, but the two sets were not identical. The gauges were still in different places, and small local differences were possible. We were ____6____ (careful) than before about treating one difference as proof of an error.\n\nAt the end of term, our report included ____7____ explanation of the first site and the date it changed. Our teacher thanked ____8____ (we) for keeping that detail. A method change was part ____9____ the evidence, not an embarrassing mark to erase. The experience helped us judge the numbers more ____10____ (accurate), while recognising that a school project was not a complete weather-monitoring service.",
+            "explanation": "Than gives comparative more careful; rare carefuller is allowed. Most is superlative and more carefuller doubled.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "more careful",
+              "carefuller"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "most careful",
+                "more carefuller"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.rain-gauge-site-083.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "Where the rain gauge stood\n\nThe school weather club put a rain gauge in the garden and recorded the water collected after each rainy day. For a week, our numbers were much lower than those from a nearby school. We wondered whether our garden ____1____ (receive) less rain.\n\nOur teacher asked where the gauge stood. It was beside a wall, under the edge of a tree. We had chosen the spot because it was convenient ____2____ (reach), without considering how the surroundings could affect collection.\n\nLeaves could intercept some water, while drips from a branch might add water in a different way. We needed a site ____3____ allowed a more representative collection, not simply a container that was easy to visit.\n\nFollowing appropriate local measurement guidance, we moved the gauge and checked that it was level. We wrote the change of site in our record instead of ____4____ (hide) it. Otherwise, someone reading the numbers later might assume that every observation had been made under the same ____5____ (condition).\n\nThe next readings were closer to those from the neighbouring school, but the two sets were not identical. The gauges were still in different places, and small local differences were possible. We were ____6____ (careful) than before about treating one difference as proof of an error.\n\nAt the end of term, our report included ____7____ explanation of the first site and the date it changed. Our teacher thanked ____8____ (we) for keeping that detail. A method change was part ____9____ the evidence, not an embarrassing mark to erase. The experience helped us judge the numbers more ____10____ (accurate), while recognising that a school project was not a complete weather-monitoring service.",
+            "explanation": "An explanation begins with a vowel sound. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.rain-gauge-site-083.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of we.",
+            "material": "Where the rain gauge stood\n\nThe school weather club put a rain gauge in the garden and recorded the water collected after each rainy day. For a week, our numbers were much lower than those from a nearby school. We wondered whether our garden ____1____ (receive) less rain.\n\nOur teacher asked where the gauge stood. It was beside a wall, under the edge of a tree. We had chosen the spot because it was convenient ____2____ (reach), without considering how the surroundings could affect collection.\n\nLeaves could intercept some water, while drips from a branch might add water in a different way. We needed a site ____3____ allowed a more representative collection, not simply a container that was easy to visit.\n\nFollowing appropriate local measurement guidance, we moved the gauge and checked that it was level. We wrote the change of site in our record instead of ____4____ (hide) it. Otherwise, someone reading the numbers later might assume that every observation had been made under the same ____5____ (condition).\n\nThe next readings were closer to those from the neighbouring school, but the two sets were not identical. The gauges were still in different places, and small local differences were possible. We were ____6____ (careful) than before about treating one difference as proof of an error.\n\nAt the end of term, our report included ____7____ explanation of the first site and the date it changed. Our teacher thanked ____8____ (we) for keeping that detail. A method change was part ____9____ the evidence, not an embarrassing mark to erase. The experience helped us judge the numbers more ____10____ (accurate), while recognising that a school project was not a complete weather-monitoring service.",
+            "explanation": "Thanked takes object us. Subject and possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.rain-gauge-site-083.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "Where the rain gauge stood\n\nThe school weather club put a rain gauge in the garden and recorded the water collected after each rainy day. For a week, our numbers were much lower than those from a nearby school. We wondered whether our garden ____1____ (receive) less rain.\n\nOur teacher asked where the gauge stood. It was beside a wall, under the edge of a tree. We had chosen the spot because it was convenient ____2____ (reach), without considering how the surroundings could affect collection.\n\nLeaves could intercept some water, while drips from a branch might add water in a different way. We needed a site ____3____ allowed a more representative collection, not simply a container that was easy to visit.\n\nFollowing appropriate local measurement guidance, we moved the gauge and checked that it was level. We wrote the change of site in our record instead of ____4____ (hide) it. Otherwise, someone reading the numbers later might assume that every observation had been made under the same ____5____ (condition).\n\nThe next readings were closer to those from the neighbouring school, but the two sets were not identical. The gauges were still in different places, and small local differences were possible. We were ____6____ (careful) than before about treating one difference as proof of an error.\n\nAt the end of term, our report included ____7____ explanation of the first site and the date it changed. Our teacher thanked ____8____ (we) for keeping that detail. A method change was part ____9____ the evidence, not an embarrassing mark to erase. The experience helped us judge the numbers more ____10____ (accurate), while recognising that a school project was not a complete weather-monitoring service.",
+            "explanation": "Part of the evidence takes of. Other listed prepositions do not express inclusion.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "from",
+                "by"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.rain-gauge-site-083.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of accurate.",
+            "material": "Where the rain gauge stood\n\nThe school weather club put a rain gauge in the garden and recorded the water collected after each rainy day. For a week, our numbers were much lower than those from a nearby school. We wondered whether our garden ____1____ (receive) less rain.\n\nOur teacher asked where the gauge stood. It was beside a wall, under the edge of a tree. We had chosen the spot because it was convenient ____2____ (reach), without considering how the surroundings could affect collection.\n\nLeaves could intercept some water, while drips from a branch might add water in a different way. We needed a site ____3____ allowed a more representative collection, not simply a container that was easy to visit.\n\nFollowing appropriate local measurement guidance, we moved the gauge and checked that it was level. We wrote the change of site in our record instead of ____4____ (hide) it. Otherwise, someone reading the numbers later might assume that every observation had been made under the same ____5____ (condition).\n\nThe next readings were closer to those from the neighbouring school, but the two sets were not identical. The gauges were still in different places, and small local differences were possible. We were ____6____ (careful) than before about treating one difference as proof of an error.\n\nAt the end of term, our report included ____7____ explanation of the first site and the date it changed. Our teacher thanked ____8____ (we) for keeping that detail. A method change was part ____9____ the evidence, not an embarrassing mark to erase. The experience helped us judge the numbers more ____10____ (accurate), while recognising that a school project was not a complete weather-monitoring service.",
+            "explanation": "Accurately modifies judge. Accurate is adjective and accuracy noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "accurately"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "accurate",
+                "accuracy"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "fd9640b3e527580694dd876a4d5c6bffc49e87a822bacfed2496aaeed06a39a4",
+      "reviewNotes": "Four complete junior ten-gap passages. Fictional newspaper/class/subtitle/weather-club cases, qualified measurement descriptions. Same-author variant and invalid-form review only, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
