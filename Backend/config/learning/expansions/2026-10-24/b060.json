@@ -1,0 +1,943 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b060",
+  "createdAt": "2026-10-23T22:33:28.042779+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.undergraduate.ticket-and-library-060",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "undergraduate",
+        "title": "10·24新题 · A digital ticket and a library reservation",
+        "summary": "A digital ticket and a library reservation，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "cet4.2016.sample.complete_sectionC",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original written-reading practice following the referenced two-passage/five-question or single-passage/six-question response structure. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete adult original reading practices: CET4 and CET6 two passages/five four-choice questions each; C1 one longer passage/six questions. Fictional everyday/association cases and original general essays, no invented empirical study or attributed quotation. Same-author evidence and distractor review, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.undergraduate.ticket-and-library-060",
+          "family": "reading_choice",
+          "label": "A digital ticket and a library reservation",
+          "candidateSHA256": "e80526dcd6b1cbe917f95e31cd164ae879a6366a03835cf629d40878327d75fc",
+          "authorCheckSHA256": "5c1da7692261d142d0813b904a8ccb93b83dd470e0deac262533a3cb5a340afa",
+          "sourceGroupIds": [
+            "expansion.20261024.undergraduate.ticket-and-library-060#ticket",
+            "expansion.20261024.undergraduate.ticket-and-library-060#library"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b060；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The ticket was there all along\n\nWhen my aunt first booked a train ticket on her phone, she asked me to travel with her to the station. I assumed that I would need to handle every step. I had used the system many times, while she usually bought paper tickets at a desk. On the bus there, I began giving a rapid explanation of all the things that might go wrong.\n\nShe stopped me gently. \"Can we do one thing at a time?\" The question surprised me. I was trying to make her independent, but my long list had made a simple journey sound like a technical examination. We opened the ticket screen, checked the date and destination, and looked at the code she would show at the barrier.\n\nAt the station, I reached for her phone automatically. She kept it in her hand and asked me to stand nearby instead. The first barrier did not open. I nearly took over, but a staff member pointed to the reader on the other side. My aunt moved the phone, waited a moment and walked through. The problem had been the position, not her ability to use a digital ticket.\n\nWhile waiting on the platform, she showed me that she had also saved the ticket where she could find it without searching through messages. She had learned that part before asking for my company. I had mistaken one request for support as evidence that she knew nothing about the process.\n\nOn the return journey, I bought our tea while she checked the platform display. We still helped each other, but the help no longer travelled in only one direction. I left with a smaller idea of what assistance needed to look like: explain the step that matters, allow time to try it, and resist turning another person's hesitation into proof that only you can do the task.\n\nA reservation is not a permanent claim\n\nAt my local library, readers can reserve a book that is currently on loan. When a copy returns, it is kept at the collection desk for a limited period, and the reader receives a message. The system is convenient, but it depends on a small action that is easy to overlook: cancelling a reservation that is no longer wanted.\n\nI discovered this after reserving three books for a short course. Two arrived in time; the third became available several weeks after the course ended. I saw the message, thought that I no longer needed the book, and did nothing. It seemed harmless to let the collection period expire. I had not taken the book home, so I imagined that I was not keeping it from anyone.\n\nA librarian later explained that a held copy was temporarily unavailable to other borrowers. The collection period protected someone who could not come immediately, but it was not intended as a quiet storage period for an unwanted choice. Cancelling would release the book sooner, allowing the next reservation or an ordinary loan to proceed.\n\nThe explanation changed my habits. I now review reservations when my plans change, not only when a message arrives. If I still want a book but cannot collect it in time, I contact the library rather than assume that staff will extend the hold automatically. Local rules differ, and the desk can tell me what is possible.\n\nThis is a minor responsibility, not a demand that every reading intention become a fixed promise. People discover new interests, finish projects or find another copy. A useful reservation system makes room for those changes. It works better when readers communicate them. The right to request a book and the consideration involved in releasing an unwanted hold are two parts of the same shared service."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.undergraduate.ticket-and-library-060.ticket.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the narrator initially assume?",
+            "material": "The ticket was there all along\n\nWhen my aunt first booked a train ticket on her phone, she asked me to travel with her to the station. I assumed that I would need to handle every step. I had used the system many times, while she usually bought paper tickets at a desk. On the bus there, I began giving a rapid explanation of all the things that might go wrong.\n\nShe stopped me gently. \"Can we do one thing at a time?\" The question surprised me. I was trying to make her independent, but my long list had made a simple journey sound like a technical examination. We opened the ticket screen, checked the date and destination, and looked at the code she would show at the barrier.\n\nAt the station, I reached for her phone automatically. She kept it in her hand and asked me to stand nearby instead. The first barrier did not open. I nearly took over, but a staff member pointed to the reader on the other side. My aunt moved the phone, waited a moment and walked through. The problem had been the position, not her ability to use a digital ticket.\n\nWhile waiting on the platform, she showed me that she had also saved the ticket where she could find it without searching through messages. She had learned that part before asking for my company. I had mistaken one request for support as evidence that she knew nothing about the process.\n\nOn the return journey, I bought our tea while she checked the platform display. We still helped each other, but the help no longer travelled in only one direction. I left with a smaller idea of what assistance needed to look like: explain the step that matters, allow time to try it, and resist turning another person's hesitation into proof that only you can do the task.",
+            "explanation": "The narrator expects to handle all steps. Cancellation, a digital-ticket ban and refusal of company are not stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The aunt had already cancelled the trip"
+              },
+              {
+                "id": "o1",
+                "text": "The aunt preferred travelling without company"
+              },
+              {
+                "id": "o2",
+                "text": "The station did not accept digital tickets"
+              },
+              {
+                "id": "o3",
+                "text": "The aunt would need help with every stage"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.ticket-and-library-060.ticket.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the aunt ask to take one thing at a time?",
+            "material": "The ticket was there all along\n\nWhen my aunt first booked a train ticket on her phone, she asked me to travel with her to the station. I assumed that I would need to handle every step. I had used the system many times, while she usually bought paper tickets at a desk. On the bus there, I began giving a rapid explanation of all the things that might go wrong.\n\nShe stopped me gently. \"Can we do one thing at a time?\" The question surprised me. I was trying to make her independent, but my long list had made a simple journey sound like a technical examination. We opened the ticket screen, checked the date and destination, and looked at the code she would show at the barrier.\n\nAt the station, I reached for her phone automatically. She kept it in her hand and asked me to stand nearby instead. The first barrier did not open. I nearly took over, but a staff member pointed to the reader on the other side. My aunt moved the phone, waited a moment and walked through. The problem had been the position, not her ability to use a digital ticket.\n\nWhile waiting on the platform, she showed me that she had also saved the ticket where she could find it without searching through messages. She had learned that part before asking for my company. I had mistaken one request for support as evidence that she knew nothing about the process.\n\nOn the return journey, I bought our tea while she checked the platform display. We still helped each other, but the help no longer travelled in only one direction. I left with a smaller idea of what assistance needed to look like: explain the step that matters, allow time to try it, and resist turning another person's hesitation into proof that only you can do the task.",
+            "explanation": "The narrator recognises that a simple trip sounded like an exam. Date/destination remain relevant, the phone is present and the booking is digital.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The rapid list of possible problems was overwhelming"
+              },
+              {
+                "id": "o1",
+                "text": "She had no phone with her"
+              },
+              {
+                "id": "o2",
+                "text": "She wanted to forget the destination"
+              },
+              {
+                "id": "o3",
+                "text": "The ticket had been printed on paper"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.ticket-and-library-060.ticket.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the first barrier fail to open?",
+            "material": "The ticket was there all along\n\nWhen my aunt first booked a train ticket on her phone, she asked me to travel with her to the station. I assumed that I would need to handle every step. I had used the system many times, while she usually bought paper tickets at a desk. On the bus there, I began giving a rapid explanation of all the things that might go wrong.\n\nShe stopped me gently. \"Can we do one thing at a time?\" The question surprised me. I was trying to make her independent, but my long list had made a simple journey sound like a technical examination. We opened the ticket screen, checked the date and destination, and looked at the code she would show at the barrier.\n\nAt the station, I reached for her phone automatically. She kept it in her hand and asked me to stand nearby instead. The first barrier did not open. I nearly took over, but a staff member pointed to the reader on the other side. My aunt moved the phone, waited a moment and walked through. The problem had been the position, not her ability to use a digital ticket.\n\nWhile waiting on the platform, she showed me that she had also saved the ticket where she could find it without searching through messages. She had learned that part before asking for my company. I had mistaken one request for support as evidence that she knew nothing about the process.\n\nOn the return journey, I bought our tea while she checked the platform display. We still helped each other, but the help no longer travelled in only one direction. I left with a smaller idea of what assistance needed to look like: explain the step that matters, allow time to try it, and resist turning another person's hesitation into proof that only you can do the task.",
+            "explanation": "Staff point to the other reader and the same ticket works. No wrong date, missing ticket or refusal is described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The aunt had bought a ticket for a different day"
+              },
+              {
+                "id": "o1",
+                "text": "The phone was presented to the wrong reader"
+              },
+              {
+                "id": "o2",
+                "text": "The phone contained no ticket"
+              },
+              {
+                "id": "o3",
+                "text": "The staff refused to help"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.ticket-and-library-060.ticket.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What had the aunt done before the journey?",
+            "material": "The ticket was there all along\n\nWhen my aunt first booked a train ticket on her phone, she asked me to travel with her to the station. I assumed that I would need to handle every step. I had used the system many times, while she usually bought paper tickets at a desk. On the bus there, I began giving a rapid explanation of all the things that might go wrong.\n\nShe stopped me gently. \"Can we do one thing at a time?\" The question surprised me. I was trying to make her independent, but my long list had made a simple journey sound like a technical examination. We opened the ticket screen, checked the date and destination, and looked at the code she would show at the barrier.\n\nAt the station, I reached for her phone automatically. She kept it in her hand and asked me to stand nearby instead. The first barrier did not open. I nearly took over, but a staff member pointed to the reader on the other side. My aunt moved the phone, waited a moment and walked through. The problem had been the position, not her ability to use a digital ticket.\n\nWhile waiting on the platform, she showed me that she had also saved the ticket where she could find it without searching through messages. She had learned that part before asking for my company. I had mistaken one request for support as evidence that she knew nothing about the process.\n\nOn the return journey, I bought our tea while she checked the platform display. We still helped each other, but the help no longer travelled in only one direction. I left with a smaller idea of what assistance needed to look like: explain the step that matters, allow time to try it, and resist turning another person's hesitation into proof that only you can do the task.",
+            "explanation": "She had organised access herself. The narrator’s assumptions of total dependence/lack of learning are disproved, and deleting messages is not mentioned.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Removed all messages from her phone"
+              },
+              {
+                "id": "o1",
+                "text": "Asked the narrator to buy every ticket for her"
+              },
+              {
+                "id": "o2",
+                "text": "Saved the ticket in an easy-to-find place"
+              },
+              {
+                "id": "o3",
+                "text": "Learned nothing about the system"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.ticket-and-library-060.ticket.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What view of assistance does the narrator reach?",
+            "material": "The ticket was there all along\n\nWhen my aunt first booked a train ticket on her phone, she asked me to travel with her to the station. I assumed that I would need to handle every step. I had used the system many times, while she usually bought paper tickets at a desk. On the bus there, I began giving a rapid explanation of all the things that might go wrong.\n\nShe stopped me gently. \"Can we do one thing at a time?\" The question surprised me. I was trying to make her independent, but my long list had made a simple journey sound like a technical examination. We opened the ticket screen, checked the date and destination, and looked at the code she would show at the barrier.\n\nAt the station, I reached for her phone automatically. She kept it in her hand and asked me to stand nearby instead. The first barrier did not open. I nearly took over, but a staff member pointed to the reader on the other side. My aunt moved the phone, waited a moment and walked through. The problem had been the position, not her ability to use a digital ticket.\n\nWhile waiting on the platform, she showed me that she had also saved the ticket where she could find it without searching through messages. She had learned that part before asking for my company. I had mistaken one request for support as evidence that she knew nothing about the process.\n\nOn the return journey, I bought our tea while she checked the platform display. We still helped each other, but the help no longer travelled in only one direction. I left with a smaller idea of what assistance needed to look like: explain the step that matters, allow time to try it, and resist turning another person's hesitation into proof that only you can do the task.",
+            "explanation": "The conclusion values relevant explanation and space to try. The other options repeat the rejected assumptions or forbid legitimate support.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "People should never ask for company"
+              },
+              {
+                "id": "o1",
+                "text": "Helping requires taking control of every object"
+              },
+              {
+                "id": "o2",
+                "text": "Support should leave room for another person’s own attempt"
+              },
+              {
+                "id": "o3",
+                "text": "Hesitation always proves inability"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.ticket-and-library-060.library.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What small action does the writer emphasise?",
+            "material": "A reservation is not a permanent claim\n\nAt my local library, readers can reserve a book that is currently on loan. When a copy returns, it is kept at the collection desk for a limited period, and the reader receives a message. The system is convenient, but it depends on a small action that is easy to overlook: cancelling a reservation that is no longer wanted.\n\nI discovered this after reserving three books for a short course. Two arrived in time; the third became available several weeks after the course ended. I saw the message, thought that I no longer needed the book, and did nothing. It seemed harmless to let the collection period expire. I had not taken the book home, so I imagined that I was not keeping it from anyone.\n\nA librarian later explained that a held copy was temporarily unavailable to other borrowers. The collection period protected someone who could not come immediately, but it was not intended as a quiet storage period for an unwanted choice. Cancelling would release the book sooner, allowing the next reservation or an ordinary loan to proceed.\n\nThe explanation changed my habits. I now review reservations when my plans change, not only when a message arrives. If I still want a book but cannot collect it in time, I contact the library rather than assume that staff will extend the hold automatically. Local rules differ, and the desk can tell me what is possible.\n\nThis is a minor responsibility, not a demand that every reading intention become a fixed promise. People discover new interests, finish projects or find another copy. A useful reservation system makes room for those changes. It works better when readers communicate them. The right to request a book and the consideration involved in releasing an unwanted hold are two parts of the same shared service.",
+            "explanation": "Cancelling unwanted holds is the focus. Permanent claims, ignored messages and automatic unlimited extensions oppose the explanation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Reserve every available copy permanently"
+              },
+              {
+                "id": "o1",
+                "text": "Ignore all collection messages"
+              },
+              {
+                "id": "o2",
+                "text": "Cancel a reservation when it is no longer needed"
+              },
+              {
+                "id": "o3",
+                "text": "Demand unlimited extensions for every hold"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.ticket-and-library-060.library.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the writer initially leave the third reservation alone?",
+            "material": "A reservation is not a permanent claim\n\nAt my local library, readers can reserve a book that is currently on loan. When a copy returns, it is kept at the collection desk for a limited period, and the reader receives a message. The system is convenient, but it depends on a small action that is easy to overlook: cancelling a reservation that is no longer wanted.\n\nI discovered this after reserving three books for a short course. Two arrived in time; the third became available several weeks after the course ended. I saw the message, thought that I no longer needed the book, and did nothing. It seemed harmless to let the collection period expire. I had not taken the book home, so I imagined that I was not keeping it from anyone.\n\nA librarian later explained that a held copy was temporarily unavailable to other borrowers. The collection period protected someone who could not come immediately, but it was not intended as a quiet storage period for an unwanted choice. Cancelling would release the book sooner, allowing the next reservation or an ordinary loan to proceed.\n\nThe explanation changed my habits. I now review reservations when my plans change, not only when a message arrives. If I still want a book but cannot collect it in time, I contact the library rather than assume that staff will extend the hold automatically. Local rules differ, and the desk can tell me what is possible.\n\nThis is a minor responsibility, not a demand that every reading intention become a fixed promise. People discover new interests, finish projects or find another copy. A useful reservation system makes room for those changes. It works better when readers communicate them. The right to request a book and the consideration involved in releasing an unwanted hold are two parts of the same shared service.",
+            "explanation": "The writer did not recognise that holding a copy restricts access. It was uncollected and the course over; no instruction not to cancel is given.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The library had asked the writer not to cancel"
+              },
+              {
+                "id": "o1",
+                "text": "The writer thought not borrowing it meant not restricting anyone else"
+              },
+              {
+                "id": "o2",
+                "text": "The writer had already collected it"
+              },
+              {
+                "id": "o3",
+                "text": "The course required it urgently that day"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.ticket-and-library-060.library.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the collection period meant to do?",
+            "material": "A reservation is not a permanent claim\n\nAt my local library, readers can reserve a book that is currently on loan. When a copy returns, it is kept at the collection desk for a limited period, and the reader receives a message. The system is convenient, but it depends on a small action that is easy to overlook: cancelling a reservation that is no longer wanted.\n\nI discovered this after reserving three books for a short course. Two arrived in time; the third became available several weeks after the course ended. I saw the message, thought that I no longer needed the book, and did nothing. It seemed harmless to let the collection period expire. I had not taken the book home, so I imagined that I was not keeping it from anyone.\n\nA librarian later explained that a held copy was temporarily unavailable to other borrowers. The collection period protected someone who could not come immediately, but it was not intended as a quiet storage period for an unwanted choice. Cancelling would release the book sooner, allowing the next reservation or an ordinary loan to proceed.\n\nThe explanation changed my habits. I now review reservations when my plans change, not only when a message arrives. If I still want a book but cannot collect it in time, I contact the library rather than assume that staff will extend the hold automatically. Local rules differ, and the desk can tell me what is possible.\n\nThis is a minor responsibility, not a demand that every reading intention become a fixed promise. People discover new interests, finish projects or find another copy. A useful reservation system makes room for those changes. It works better when readers communicate them. The right to request a book and the consideration involved in releasing an unwanted hold are two parts of the same shared service.",
+            "explanation": "It protects people unable to come immediately. It is limited, enables later loans and rules may differ.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Store unwanted books indefinitely"
+              },
+              {
+                "id": "o1",
+                "text": "Allow a wanted book to be collected without immediate attendance"
+              },
+              {
+                "id": "o2",
+                "text": "Guarantee that local rules are identical everywhere"
+              },
+              {
+                "id": "o3",
+                "text": "Prevent all further loans of a returned copy"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.ticket-and-library-060.library.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the writer now do when unable to collect a wanted book?",
+            "material": "A reservation is not a permanent claim\n\nAt my local library, readers can reserve a book that is currently on loan. When a copy returns, it is kept at the collection desk for a limited period, and the reader receives a message. The system is convenient, but it depends on a small action that is easy to overlook: cancelling a reservation that is no longer wanted.\n\nI discovered this after reserving three books for a short course. Two arrived in time; the third became available several weeks after the course ended. I saw the message, thought that I no longer needed the book, and did nothing. It seemed harmless to let the collection period expire. I had not taken the book home, so I imagined that I was not keeping it from anyone.\n\nA librarian later explained that a held copy was temporarily unavailable to other borrowers. The collection period protected someone who could not come immediately, but it was not intended as a quiet storage period for an unwanted choice. Cancelling would release the book sooner, allowing the next reservation or an ordinary loan to proceed.\n\nThe explanation changed my habits. I now review reservations when my plans change, not only when a message arrives. If I still want a book but cannot collect it in time, I contact the library rather than assume that staff will extend the hold automatically. Local rules differ, and the desk can tell me what is possible.\n\nThis is a minor responsibility, not a demand that every reading intention become a fixed promise. People discover new interests, finish projects or find another copy. A useful reservation system makes room for those changes. It works better when readers communicate them. The right to request a book and the consideration involved in releasing an unwanted hold are two parts of the same shared service.",
+            "explanation": "The writer contacts the library. The other responses deny the stated communication habit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Leave the book uncollected without notice"
+              },
+              {
+                "id": "o1",
+                "text": "Assume an extension without checking"
+              },
+              {
+                "id": "o2",
+                "text": "Ask the library what arrangements are possible"
+              },
+              {
+                "id": "o3",
+                "text": "Cancel every future reading plan"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.ticket-and-library-060.library.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How does the conclusion treat changing reading plans?",
+            "material": "A reservation is not a permanent claim\n\nAt my local library, readers can reserve a book that is currently on loan. When a copy returns, it is kept at the collection desk for a limited period, and the reader receives a message. The system is convenient, but it depends on a small action that is easy to overlook: cancelling a reservation that is no longer wanted.\n\nI discovered this after reserving three books for a short course. Two arrived in time; the third became available several weeks after the course ended. I saw the message, thought that I no longer needed the book, and did nothing. It seemed harmless to let the collection period expire. I had not taken the book home, so I imagined that I was not keeping it from anyone.\n\nA librarian later explained that a held copy was temporarily unavailable to other borrowers. The collection period protected someone who could not come immediately, but it was not intended as a quiet storage period for an unwanted choice. Cancelling would release the book sooner, allowing the next reservation or an ordinary loan to proceed.\n\nThe explanation changed my habits. I now review reservations when my plans change, not only when a message arrives. If I still want a book but cannot collect it in time, I contact the library rather than assume that staff will extend the hold automatically. Local rules differ, and the desk can tell me what is possible.\n\nThis is a minor responsibility, not a demand that every reading intention become a fixed promise. People discover new interests, finish projects or find another copy. A useful reservation system makes room for those changes. It works better when readers communicate them. The right to request a book and the consideration involved in releasing an unwanted hold are two parts of the same shared service.",
+            "explanation": "The final paragraph explicitly accepts changed interests and projects, while encouraging updates. Punishment, abolition and unlimited claims are not proposed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "As a reason to claim every held copy"
+              },
+              {
+                "id": "o1",
+                "text": "As normal changes that should be communicated"
+              },
+              {
+                "id": "o2",
+                "text": "As misconduct requiring permanent exclusion"
+              },
+              {
+                "id": "o3",
+                "text": "As proof that reservations should not exist"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "ca83b060c758cc97f6080ad4cf2f6bd58fea65a8aedc43e9c86577d5b030df94",
+      "reviewNotes": "Three complete adult original reading practices: CET4 and CET6 two passages/five four-choice questions each; C1 one longer passage/six questions. Fictional everyday/association cases and original general essays, no invented empirical study or attributed quotation. Same-author evidence and distractor review, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.postgraduate.hybrid-meeting-and-edition-060",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "postgraduate",
+        "title": "10·24新题 · Remote attendance and changing editions",
+        "summary": "Remote attendance and changing editions，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "cet6.2016.sample.complete_sectionC",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original written-reading practice following the referenced two-passage/five-question or single-passage/six-question response structure. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete adult original reading practices: CET4 and CET6 two passages/five four-choice questions each; C1 one longer passage/six questions. Fictional everyday/association cases and original general essays, no invented empirical study or attributed quotation. Same-author evidence and distractor review, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.postgraduate.hybrid-meeting-and-edition-060",
+          "family": "reading_choice",
+          "label": "Remote attendance and changing editions",
+          "candidateSHA256": "8b8ced4a85629b663f3bca95feb8b5bddd821b0e7d91a0fd6815d5ef795b1651",
+          "authorCheckSHA256": "73d7dd41f1d27a67d3536f3c604cce57e487e7f77cebd31ddbcac5e53551ed58",
+          "sourceGroupIds": [
+            "expansion.20261024.postgraduate.hybrid-meeting-and-edition-060#meeting",
+            "expansion.20261024.postgraduate.hybrid-meeting-and-edition-060#edition"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b060；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The meeting beyond the room\n\nA neighbourhood association decided to allow remote attendance at its monthly meeting. The proposal seemed straightforward: place a laptop at the front, open a connection and let people who could not travel listen from home. The first attempt revealed that extending an invitation was easier than extending participation. Those in the room could follow informal comments, while remote listeners often heard only the loudest speaker.\n\nThe difficulty was not solved simply by buying a better microphone. The chair had to change how discussion was managed. Speakers needed to identify themselves, questions from the online channel had to be noticed, and a decision reached during a side conversation had to be restated for everyone. These actions made the meeting slightly less spontaneous for people in the room, but they also made its process more visible.\n\nSome members complained that remote attendance reduced the feeling of community. Others replied that they had previously been absent altogether because of work, caring responsibilities or difficulty travelling. Comparing the online experience with an ideal room-based meeting missed that alternative. For those members, the relevant comparison was often between limited participation and none, not between two equally available forms of attendance.\n\nThat did not make the technical limits irrelevant. A connection could fail, written questions could be overlooked, and people joining from a shared home might not be able to speak freely. The association therefore kept more than one route for contributions, including comments sent before the meeting. It also stopped treating the number of online connections as a complete measure of involvement. One connection might represent two neighbours, while a connected device did not establish that its owner had heard or understood every discussion.\n\nWritten summaries remained useful, but they could not restore the chance to question a proposal at the moment a decision was being formed. The association had to consider those differences between receiving an account and joining its creation.\n\nAfter several meetings, the association retained the arrangement with revised procedures. It had not created a version of the same experience that could be delivered identically everywhere. It had created another way into a shared decision, one that required its own practical support. The point was not to declare either the room or the screen inherently superior. It was to ask which opportunities each arrangement opened, what it made harder, and whether the people affected could influence those choices. The meeting had become more complex, but some of that complexity had always existed in the lives of people who could not previously enter it.\n\nWhen the same title is not the same text\n\nA student quoting a book may assume that a title and page number are enough for another reader to find the passage. Often they are not. Different editions can change pagination, correct errors, add notes or revise the main text itself. Two readers may therefore seem to disagree about what a book says when they are looking at versions that are not fully identical.\n\nThe issue becomes especially noticeable with digital reading. On some devices, changing the type size changes the amount of text displayed on a screen. A screen number generated by that layout may not correspond to a printed page. Some editions provide fixed reference points or links to a standard print version; others rely on chapters or locations of their own. A useful citation needs to make clear which system is being used rather than treating every displayed number as interchangeable.\n\nA revised cover or a new page layout need not indicate a changed argument. Identifying the kind of revision matters before drawing conclusions from it.\n\nRevision presents a deeper problem than location alone. A later edition may replace a sentence that was criticised in an earlier one. A quotation from the earlier version remains evidence of what that version said, but it should not silently be presented as the wording of every edition. Conversely, pointing to a corrected edition does not establish that the earlier wording never existed. Both claims require attention to dates and versions.\n\nThis does not mean that every reader must become a specialist in publishing history before quoting a line. The practical requirement is proportionate to the claim. For an ordinary discussion, identifying the edition and using a stable locator may be enough. If an argument depends on how an author's position changed, comparing relevant versions becomes part of the evidence rather than an optional technical detail. The more weight a conclusion places on a particular phrase, the more important it is to know where that phrase comes from.\n\nEditors can help by stating significant changes clearly, and teachers can encourage students to record publication details when they begin reading instead of reconstructing them after writing. The aim is not to make reference lists longer for their own sake. It is to allow another person to check the account and understand the limits of the source. A title identifies a work at one level, but the actual words used in an argument belong to a particular instance of it. Recognising that distinction makes disagreement easier to investigate and correction less mysterious."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.postgraduate.hybrid-meeting-and-edition-060.meeting.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the first remote meeting demonstrate?",
+            "material": "The meeting beyond the room\n\nA neighbourhood association decided to allow remote attendance at its monthly meeting. The proposal seemed straightforward: place a laptop at the front, open a connection and let people who could not travel listen from home. The first attempt revealed that extending an invitation was easier than extending participation. Those in the room could follow informal comments, while remote listeners often heard only the loudest speaker.\n\nThe difficulty was not solved simply by buying a better microphone. The chair had to change how discussion was managed. Speakers needed to identify themselves, questions from the online channel had to be noticed, and a decision reached during a side conversation had to be restated for everyone. These actions made the meeting slightly less spontaneous for people in the room, but they also made its process more visible.\n\nSome members complained that remote attendance reduced the feeling of community. Others replied that they had previously been absent altogether because of work, caring responsibilities or difficulty travelling. Comparing the online experience with an ideal room-based meeting missed that alternative. For those members, the relevant comparison was often between limited participation and none, not between two equally available forms of attendance.\n\nThat did not make the technical limits irrelevant. A connection could fail, written questions could be overlooked, and people joining from a shared home might not be able to speak freely. The association therefore kept more than one route for contributions, including comments sent before the meeting. It also stopped treating the number of online connections as a complete measure of involvement. One connection might represent two neighbours, while a connected device did not establish that its owner had heard or understood every discussion.\n\nWritten summaries remained useful, but they could not restore the chance to question a proposal at the moment a decision was being formed. The association had to consider those differences between receiving an account and joining its creation.\n\nAfter several meetings, the association retained the arrangement with revised procedures. It had not created a version of the same experience that could be delivered identically everywhere. It had created another way into a shared decision, one that required its own practical support. The point was not to declare either the room or the screen inherently superior. It was to ask which opportunities each arrangement opened, what it made harder, and whether the people affected could influence those choices. The meeting had become more complex, but some of that complexity had always existed in the lives of people who could not previously enter it.",
+            "explanation": "The opening distinguishes invitation/listening from participation. Equal audibility and price-only explanations are rejected, and preferences differ.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every neighbour preferred attending from home"
+              },
+              {
+                "id": "o1",
+                "text": "Only microphone price could affect inclusion"
+              },
+              {
+                "id": "o2",
+                "text": "Listening access alone did not ensure meaningful participation"
+              },
+              {
+                "id": "o3",
+                "text": "A laptop automatically made every contribution equally audible"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.hybrid-meeting-and-edition-060.meeting.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the chair restate side-conversation decisions?",
+            "material": "The meeting beyond the room\n\nA neighbourhood association decided to allow remote attendance at its monthly meeting. The proposal seemed straightforward: place a laptop at the front, open a connection and let people who could not travel listen from home. The first attempt revealed that extending an invitation was easier than extending participation. Those in the room could follow informal comments, while remote listeners often heard only the loudest speaker.\n\nThe difficulty was not solved simply by buying a better microphone. The chair had to change how discussion was managed. Speakers needed to identify themselves, questions from the online channel had to be noticed, and a decision reached during a side conversation had to be restated for everyone. These actions made the meeting slightly less spontaneous for people in the room, but they also made its process more visible.\n\nSome members complained that remote attendance reduced the feeling of community. Others replied that they had previously been absent altogether because of work, caring responsibilities or difficulty travelling. Comparing the online experience with an ideal room-based meeting missed that alternative. For those members, the relevant comparison was often between limited participation and none, not between two equally available forms of attendance.\n\nThat did not make the technical limits irrelevant. A connection could fail, written questions could be overlooked, and people joining from a shared home might not be able to speak freely. The association therefore kept more than one route for contributions, including comments sent before the meeting. It also stopped treating the number of online connections as a complete measure of involvement. One connection might represent two neighbours, while a connected device did not establish that its owner had heard or understood every discussion.\n\nWritten summaries remained useful, but they could not restore the chance to question a proposal at the moment a decision was being formed. The association had to consider those differences between receiving an account and joining its creation.\n\nAfter several meetings, the association retained the arrangement with revised procedures. It had not created a version of the same experience that could be delivered identically everywhere. It had created another way into a shared decision, one that required its own practical support. The point was not to declare either the room or the screen inherently superior. It was to ask which opportunities each arrangement opened, what it made harder, and whether the people affected could influence those choices. The meeting had become more complex, but some of that complexity had always existed in the lives of people who could not previously enter it.",
+            "explanation": "Restating brings decisions into shared hearing. Concealment, rejection of all spontaneity and replacing agendas are not the purpose.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To stop remote members from knowing the outcome"
+              },
+              {
+                "id": "o1",
+                "text": "To prove that spontaneous talk has no value"
+              },
+              {
+                "id": "o2",
+                "text": "To replace every formal agenda with private conversation"
+              },
+              {
+                "id": "o3",
+                "text": "To make the process available to people outside the room"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.hybrid-meeting-and-edition-060.meeting.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What comparison mattered to some remote participants?",
+            "material": "The meeting beyond the room\n\nA neighbourhood association decided to allow remote attendance at its monthly meeting. The proposal seemed straightforward: place a laptop at the front, open a connection and let people who could not travel listen from home. The first attempt revealed that extending an invitation was easier than extending participation. Those in the room could follow informal comments, while remote listeners often heard only the loudest speaker.\n\nThe difficulty was not solved simply by buying a better microphone. The chair had to change how discussion was managed. Speakers needed to identify themselves, questions from the online channel had to be noticed, and a decision reached during a side conversation had to be restated for everyone. These actions made the meeting slightly less spontaneous for people in the room, but they also made its process more visible.\n\nSome members complained that remote attendance reduced the feeling of community. Others replied that they had previously been absent altogether because of work, caring responsibilities or difficulty travelling. Comparing the online experience with an ideal room-based meeting missed that alternative. For those members, the relevant comparison was often between limited participation and none, not between two equally available forms of attendance.\n\nThat did not make the technical limits irrelevant. A connection could fail, written questions could be overlooked, and people joining from a shared home might not be able to speak freely. The association therefore kept more than one route for contributions, including comments sent before the meeting. It also stopped treating the number of online connections as a complete measure of involvement. One connection might represent two neighbours, while a connected device did not establish that its owner had heard or understood every discussion.\n\nWritten summaries remained useful, but they could not restore the chance to question a proposal at the moment a decision was being formed. The association had to consider those differences between receiving an account and joining its creation.\n\nAfter several meetings, the association retained the arrangement with revised procedures. It had not created a version of the same experience that could be delivered identically everywhere. It had created another way into a shared decision, one that required its own practical support. The point was not to declare either the room or the screen inherently superior. It was to ask which opportunities each arrangement opened, what it made harder, and whether the people affected could influence those choices. The meeting had become more complex, but some of that complexity had always existed in the lives of people who could not previously enter it.",
+            "explanation": "Travel/work/caring constraints meant absence was the alternative. Equal availability and the unrelated equipment/count comparisons miss that context.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "An online meeting versus a room experience equally available to them"
+              },
+              {
+                "id": "o1",
+                "text": "Expensive microphones versus free personal devices only"
+              },
+              {
+                "id": "o2",
+                "text": "The number of chairs versus the size of the screen"
+              },
+              {
+                "id": "o3",
+                "text": "Some participation versus no practical opportunity to attend"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.hybrid-meeting-and-edition-060.meeting.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why was the number of online connections insufficient as a measure?",
+            "material": "The meeting beyond the room\n\nA neighbourhood association decided to allow remote attendance at its monthly meeting. The proposal seemed straightforward: place a laptop at the front, open a connection and let people who could not travel listen from home. The first attempt revealed that extending an invitation was easier than extending participation. Those in the room could follow informal comments, while remote listeners often heard only the loudest speaker.\n\nThe difficulty was not solved simply by buying a better microphone. The chair had to change how discussion was managed. Speakers needed to identify themselves, questions from the online channel had to be noticed, and a decision reached during a side conversation had to be restated for everyone. These actions made the meeting slightly less spontaneous for people in the room, but they also made its process more visible.\n\nSome members complained that remote attendance reduced the feeling of community. Others replied that they had previously been absent altogether because of work, caring responsibilities or difficulty travelling. Comparing the online experience with an ideal room-based meeting missed that alternative. For those members, the relevant comparison was often between limited participation and none, not between two equally available forms of attendance.\n\nThat did not make the technical limits irrelevant. A connection could fail, written questions could be overlooked, and people joining from a shared home might not be able to speak freely. The association therefore kept more than one route for contributions, including comments sent before the meeting. It also stopped treating the number of online connections as a complete measure of involvement. One connection might represent two neighbours, while a connected device did not establish that its owner had heard or understood every discussion.\n\nWritten summaries remained useful, but they could not restore the chance to question a proposal at the moment a decision was being formed. The association had to consider those differences between receiving an account and joining its creation.\n\nAfter several meetings, the association retained the arrangement with revised procedures. It had not created a version of the same experience that could be delivered identically everywhere. It had created another way into a shared decision, one that required its own practical support. The point was not to declare either the room or the screen inherently superior. It was to ask which opportunities each arrangement opened, what it made harder, and whether the people affected could influence those choices. The meeting had become more complex, but some of that complexity had always existed in the lives of people who could not previously enter it.",
+            "explanation": "One connection may cover two people and does not establish hearing/understanding. The other claims contradict these limits.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It proved that pre-meeting comments were unnecessary"
+              },
+              {
+                "id": "o1",
+                "text": "Every connection necessarily represented one silent person"
+              },
+              {
+                "id": "o2",
+                "text": "It did not reliably represent people or the extent of engagement"
+              },
+              {
+                "id": "o3",
+                "text": "It directly measured comprehension of each decision"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.hybrid-meeting-and-edition-060.meeting.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How should the final sentence be understood?",
+            "material": "The meeting beyond the room\n\nA neighbourhood association decided to allow remote attendance at its monthly meeting. The proposal seemed straightforward: place a laptop at the front, open a connection and let people who could not travel listen from home. The first attempt revealed that extending an invitation was easier than extending participation. Those in the room could follow informal comments, while remote listeners often heard only the loudest speaker.\n\nThe difficulty was not solved simply by buying a better microphone. The chair had to change how discussion was managed. Speakers needed to identify themselves, questions from the online channel had to be noticed, and a decision reached during a side conversation had to be restated for everyone. These actions made the meeting slightly less spontaneous for people in the room, but they also made its process more visible.\n\nSome members complained that remote attendance reduced the feeling of community. Others replied that they had previously been absent altogether because of work, caring responsibilities or difficulty travelling. Comparing the online experience with an ideal room-based meeting missed that alternative. For those members, the relevant comparison was often between limited participation and none, not between two equally available forms of attendance.\n\nThat did not make the technical limits irrelevant. A connection could fail, written questions could be overlooked, and people joining from a shared home might not be able to speak freely. The association therefore kept more than one route for contributions, including comments sent before the meeting. It also stopped treating the number of online connections as a complete measure of involvement. One connection might represent two neighbours, while a connected device did not establish that its owner had heard or understood every discussion.\n\nWritten summaries remained useful, but they could not restore the chance to question a proposal at the moment a decision was being formed. The association had to consider those differences between receiving an account and joining its creation.\n\nAfter several meetings, the association retained the arrangement with revised procedures. It had not created a version of the same experience that could be delivered identically everywhere. It had created another way into a shared decision, one that required its own practical support. The point was not to declare either the room or the screen inherently superior. It was to ask which opportunities each arrangement opened, what it made harder, and whether the people affected could influence those choices. The meeting had become more complex, but some of that complexity had always existed in the lives of people who could not previously enter it.",
+            "explanation": "The complexity already existed for excluded people. It is not all technology-caused, nor a reason to abandon access or assume earlier equality.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Meeting complexity was evidence that access should be abandoned"
+              },
+              {
+                "id": "o1",
+                "text": "Technology created every personal difficulty mentioned"
+              },
+              {
+                "id": "o2",
+                "text": "All existing members had enjoyed identical access before the change"
+              },
+              {
+                "id": "o3",
+                "text": "The new arrangement exposed participation difficulties that had previously been less visible"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.hybrid-meeting-and-edition-060.edition.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why may a title and page number fail to locate a quotation?",
+            "material": "When the same title is not the same text\n\nA student quoting a book may assume that a title and page number are enough for another reader to find the passage. Often they are not. Different editions can change pagination, correct errors, add notes or revise the main text itself. Two readers may therefore seem to disagree about what a book says when they are looking at versions that are not fully identical.\n\nThe issue becomes especially noticeable with digital reading. On some devices, changing the type size changes the amount of text displayed on a screen. A screen number generated by that layout may not correspond to a printed page. Some editions provide fixed reference points or links to a standard print version; others rely on chapters or locations of their own. A useful citation needs to make clear which system is being used rather than treating every displayed number as interchangeable.\n\nA revised cover or a new page layout need not indicate a changed argument. Identifying the kind of revision matters before drawing conclusions from it.\n\nRevision presents a deeper problem than location alone. A later edition may replace a sentence that was criticised in an earlier one. A quotation from the earlier version remains evidence of what that version said, but it should not silently be presented as the wording of every edition. Conversely, pointing to a corrected edition does not establish that the earlier wording never existed. Both claims require attention to dates and versions.\n\nThis does not mean that every reader must become a specialist in publishing history before quoting a line. The practical requirement is proportionate to the claim. For an ordinary discussion, identifying the edition and using a stable locator may be enough. If an argument depends on how an author's position changed, comparing relevant versions becomes part of the evidence rather than an optional technical detail. The more weight a conclusion places on a particular phrase, the more important it is to know where that phrase comes from.\n\nEditors can help by stating significant changes clearly, and teachers can encourage students to record publication details when they begin reading instead of reconstructing them after writing. The aim is not to make reference lists longer for their own sake. It is to allow another person to check the account and understand the limits of the source. A title identifies a work at one level, but the actual words used in an argument belong to a particular instance of it. Recognising that distinction makes disagreement easier to investigate and correction less mysterious.",
+            "explanation": "The passage lists pagination and textual differences. Total removal, lack of structure and one fixed copy are not claimed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Digital books have no identifiable structure"
+              },
+              {
+                "id": "o1",
+                "text": "A title always identifies one unchanging physical copy"
+              },
+              {
+                "id": "o2",
+                "text": "Every edition removes all earlier chapters"
+              },
+              {
+                "id": "o3",
+                "text": "Editions and layouts can differ"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.hybrid-meeting-and-edition-060.edition.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What point is made about changing digital type size?",
+            "material": "When the same title is not the same text\n\nA student quoting a book may assume that a title and page number are enough for another reader to find the passage. Often they are not. Different editions can change pagination, correct errors, add notes or revise the main text itself. Two readers may therefore seem to disagree about what a book says when they are looking at versions that are not fully identical.\n\nThe issue becomes especially noticeable with digital reading. On some devices, changing the type size changes the amount of text displayed on a screen. A screen number generated by that layout may not correspond to a printed page. Some editions provide fixed reference points or links to a standard print version; others rely on chapters or locations of their own. A useful citation needs to make clear which system is being used rather than treating every displayed number as interchangeable.\n\nA revised cover or a new page layout need not indicate a changed argument. Identifying the kind of revision matters before drawing conclusions from it.\n\nRevision presents a deeper problem than location alone. A later edition may replace a sentence that was criticised in an earlier one. A quotation from the earlier version remains evidence of what that version said, but it should not silently be presented as the wording of every edition. Conversely, pointing to a corrected edition does not establish that the earlier wording never existed. Both claims require attention to dates and versions.\n\nThis does not mean that every reader must become a specialist in publishing history before quoting a line. The practical requirement is proportionate to the claim. For an ordinary discussion, identifying the edition and using a stable locator may be enough. If an argument depends on how an author's position changed, comparing relevant versions becomes part of the evidence rather than an optional technical detail. The more weight a conclusion places on a particular phrase, the more important it is to know where that phrase comes from.\n\nEditors can help by stating significant changes clearly, and teachers can encourage students to record publication details when they begin reading instead of reconstructing them after writing. The aim is not to make reference lists longer for their own sake. It is to allow another person to check the account and understand the limits of the source. A title identifies a work at one level, but the actual words used in an argument belong to a particular instance of it. Recognising that distinction makes disagreement easier to investigate and correction less mysterious.",
+            "explanation": "Reflow alters display amount and numbering. Meaning need not change and stable systems may exist; identical pagination is not guaranteed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It guarantees identical pagination on all devices"
+              },
+              {
+                "id": "o1",
+                "text": "It makes stable reference systems impossible"
+              },
+              {
+                "id": "o2",
+                "text": "A layout-generated screen number may not equal a print page"
+              },
+              {
+                "id": "o3",
+                "text": "It necessarily changes the author’s intended meaning"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.hybrid-meeting-and-edition-060.edition.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does a later corrected edition establish?",
+            "material": "When the same title is not the same text\n\nA student quoting a book may assume that a title and page number are enough for another reader to find the passage. Often they are not. Different editions can change pagination, correct errors, add notes or revise the main text itself. Two readers may therefore seem to disagree about what a book says when they are looking at versions that are not fully identical.\n\nThe issue becomes especially noticeable with digital reading. On some devices, changing the type size changes the amount of text displayed on a screen. A screen number generated by that layout may not correspond to a printed page. Some editions provide fixed reference points or links to a standard print version; others rely on chapters or locations of their own. A useful citation needs to make clear which system is being used rather than treating every displayed number as interchangeable.\n\nA revised cover or a new page layout need not indicate a changed argument. Identifying the kind of revision matters before drawing conclusions from it.\n\nRevision presents a deeper problem than location alone. A later edition may replace a sentence that was criticised in an earlier one. A quotation from the earlier version remains evidence of what that version said, but it should not silently be presented as the wording of every edition. Conversely, pointing to a corrected edition does not establish that the earlier wording never existed. Both claims require attention to dates and versions.\n\nThis does not mean that every reader must become a specialist in publishing history before quoting a line. The practical requirement is proportionate to the claim. For an ordinary discussion, identifying the edition and using a stable locator may be enough. If an argument depends on how an author's position changed, comparing relevant versions becomes part of the evidence rather than an optional technical detail. The more weight a conclusion places on a particular phrase, the more important it is to know where that phrase comes from.\n\nEditors can help by stating significant changes clearly, and teachers can encourage students to record publication details when they begin reading instead of reconstructing them after writing. The aim is not to make reference lists longer for their own sake. It is to allow another person to check the account and understand the limits of the source. A title identifies a work at one level, but the actual words used in an argument belong to a particular instance of it. Recognising that distinction makes disagreement easier to investigate and correction less mysterious.",
+            "explanation": "Correction does not erase prior wording. The other conclusions overreach and deny version/date evidence.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "That every quotation from an earlier edition was invented"
+              },
+              {
+                "id": "o1",
+                "text": "That all criticism of the work must be withdrawn"
+              },
+              {
+                "id": "o2",
+                "text": "That dates no longer matter"
+              },
+              {
+                "id": "o3",
+                "text": "That the later text differs, not that earlier wording never existed"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.hybrid-meeting-and-edition-060.edition.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When is comparison of editions especially necessary?",
+            "material": "When the same title is not the same text\n\nA student quoting a book may assume that a title and page number are enough for another reader to find the passage. Often they are not. Different editions can change pagination, correct errors, add notes or revise the main text itself. Two readers may therefore seem to disagree about what a book says when they are looking at versions that are not fully identical.\n\nThe issue becomes especially noticeable with digital reading. On some devices, changing the type size changes the amount of text displayed on a screen. A screen number generated by that layout may not correspond to a printed page. Some editions provide fixed reference points or links to a standard print version; others rely on chapters or locations of their own. A useful citation needs to make clear which system is being used rather than treating every displayed number as interchangeable.\n\nA revised cover or a new page layout need not indicate a changed argument. Identifying the kind of revision matters before drawing conclusions from it.\n\nRevision presents a deeper problem than location alone. A later edition may replace a sentence that was criticised in an earlier one. A quotation from the earlier version remains evidence of what that version said, but it should not silently be presented as the wording of every edition. Conversely, pointing to a corrected edition does not establish that the earlier wording never existed. Both claims require attention to dates and versions.\n\nThis does not mean that every reader must become a specialist in publishing history before quoting a line. The practical requirement is proportionate to the claim. For an ordinary discussion, identifying the edition and using a stable locator may be enough. If an argument depends on how an author's position changed, comparing relevant versions becomes part of the evidence rather than an optional technical detail. The more weight a conclusion places on a particular phrase, the more important it is to know where that phrase comes from.\n\nEditors can help by stating significant changes clearly, and teachers can encourage students to record publication details when they begin reading instead of reconstructing them after writing. The aim is not to make reference lists longer for their own sake. It is to allow another person to check the account and understand the limits of the source. A title identifies a work at one level, but the actual words used in an argument belong to a particular instance of it. Recognising that distinction makes disagreement easier to investigate and correction less mysterious.",
+            "explanation": "The stated example links comparison to a change claim. Routine specialist work for every mention, wording irrelevance and full copying are not required.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only after every edition has been copied in full"
+              },
+              {
+                "id": "o1",
+                "text": "Only when no specific wording matters"
+              },
+              {
+                "id": "o2",
+                "text": "When an argument depends on changes in the author’s position"
+              },
+              {
+                "id": "o3",
+                "text": "Whenever any reader mentions any book title at all"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.hybrid-meeting-and-edition-060.edition.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the purpose of recording edition details?",
+            "material": "When the same title is not the same text\n\nA student quoting a book may assume that a title and page number are enough for another reader to find the passage. Often they are not. Different editions can change pagination, correct errors, add notes or revise the main text itself. Two readers may therefore seem to disagree about what a book says when they are looking at versions that are not fully identical.\n\nThe issue becomes especially noticeable with digital reading. On some devices, changing the type size changes the amount of text displayed on a screen. A screen number generated by that layout may not correspond to a printed page. Some editions provide fixed reference points or links to a standard print version; others rely on chapters or locations of their own. A useful citation needs to make clear which system is being used rather than treating every displayed number as interchangeable.\n\nA revised cover or a new page layout need not indicate a changed argument. Identifying the kind of revision matters before drawing conclusions from it.\n\nRevision presents a deeper problem than location alone. A later edition may replace a sentence that was criticised in an earlier one. A quotation from the earlier version remains evidence of what that version said, but it should not silently be presented as the wording of every edition. Conversely, pointing to a corrected edition does not establish that the earlier wording never existed. Both claims require attention to dates and versions.\n\nThis does not mean that every reader must become a specialist in publishing history before quoting a line. The practical requirement is proportionate to the claim. For an ordinary discussion, identifying the edition and using a stable locator may be enough. If an argument depends on how an author's position changed, comparing relevant versions becomes part of the evidence rather than an optional technical detail. The more weight a conclusion places on a particular phrase, the more important it is to know where that phrase comes from.\n\nEditors can help by stating significant changes clearly, and teachers can encourage students to record publication details when they begin reading instead of reconstructing them after writing. The aim is not to make reference lists longer for their own sake. It is to allow another person to check the account and understand the limits of the source. A title identifies a work at one level, but the actual words used in an argument belong to a particular instance of it. Recognising that distinction makes disagreement easier to investigate and correction less mysterious.",
+            "explanation": "The final paragraph emphasises verification and scope. Longer lists for their own sake, no disagreement and identical versions are expressly not the aim.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To prevent any disagreement about interpretation"
+              },
+              {
+                "id": "o1",
+                "text": "To maximise reference-list length regardless of usefulness"
+              },
+              {
+                "id": "o2",
+                "text": "To let others check the claim and understand its source limits"
+              },
+              {
+                "id": "o3",
+                "text": "To claim that every version says exactly the same thing"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "168da3f90f9274d3a4979954b503800ff6982176108929cc8728d863c19f886c",
+      "reviewNotes": "Three complete adult original reading practices: CET4 and CET6 two passages/five four-choice questions each; C1 one longer passage/six questions. Fictional everyday/association cases and original general essays, no invented empirical study or attributed quotation. Same-author evidence and distractor review, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.advanced.shared-joke-060",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "10·24新题 · What a shared joke asks of its audience",
+        "summary": "What a shared joke asks of its audience，共6题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.cambridge.c1.paper1.2022.part5",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original written-reading practice following the referenced two-passage/five-question or single-passage/six-question response structure. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete adult original reading practices: CET4 and CET6 two passages/five four-choice questions each; C1 one longer passage/six questions. Fictional everyday/association cases and original general essays, no invented empirical study or attributed quotation. Same-author evidence and distractor review, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.advanced.shared-joke-060",
+          "family": "reading_choice",
+          "label": "What a shared joke asks of its audience",
+          "candidateSHA256": "ea59960b2c1a4cac39cbc77a2f407882068e3be4bd15dce017cbf29d9231f954",
+          "authorCheckSHA256": "d77516ab5ca86cf6d9181a5ac4a724e14acb28971c3701604219d9215bb2fea6",
+          "sourceGroupIds": [
+            "expansion.20261024.advanced.shared-joke-060#humour"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b060；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "What a shared joke asks of its audience\n\nA joke can appear to be a small, self-contained object: a sentence with a surprising ending, ready to be repeated wherever an audience can be found. Yet anyone who has retold a joke that once succeeded and watched it fail knows that the words are only part of the event. Timing, shared knowledge and the relationship between speakers can change what those words are understood to be doing.\n\nConsider a harmless comment about a colleague who is always early. Spoken when that colleague arrives first yet again, it may express affectionate recognition. Repeated to strangers without the history, the same line may require an explanation and lose its point. Used during a serious complaint about attendance, it could sound defensive or dismissive. The sentence has not changed, but its place in the conversation has. Treating context as an optional decoration misses part of the meaning.\n\nShared knowledge can make humour economical. A group need not explain every reference because members already know the story behind it. That economy may create a feeling of belonging: understanding the joke shows that one has participated in an ongoing relationship. It can also exclude a newcomer who hears the laughter but cannot identify its source. Neither result is guaranteed by the wording alone. A speaker can acknowledge the missing background and invite the newcomer into it, or use the reference to keep a boundary visible.\n\nExplaining a joke is often accused of destroying it. There is a limited truth in that complaint. Surprise cannot always be recreated after the mechanism has been described, and an account of why something was funny is not identical to the experience of finding it funny. But it does not follow that explanation is worthless. It may reveal a linguistic ambiguity, a local reference or an assumption that the listener has no reason to share. Understanding the attempt can matter even when the original laugh cannot be recovered.\n\nThe response of an audience is equally complex. Laughter may signal delight, politeness, discomfort or agreement to keep the interaction moving. Silence can mean offence, confusion, distraction or simply that the joke was not amusing to that person. A speaker who interprets every laugh as approval and every silence as hostility makes the available evidence more definite than it is. Where the relationship permits, a modest question can be more informative than a confident diagnosis of the listener's sense of humour.\n\nA recording creates another audience with another relationship to the exchange. People watching a short clip may hear laughter without knowing what preceded it or who was present. Looking for that missing information can improve interpretation, although context should not become an unlimited excuse that makes criticism impossible. The point is to identify what changes the reading, not to declare that outsiders can never judge it.\n\nThese uncertainties do not relieve speakers of responsibility. Saying that something was intended as a joke identifies an intention; it does not settle the effect on others. Nor does an unintended effect automatically establish that the speaker wanted it. A useful conversation can hold both points together: the attempt had a context and a purpose, and another person may reasonably have experienced it differently. Repairing the exchange may require listening rather than repeating the claim that the words were only playful.\n\nThis view does not demand that every casual joke be accompanied by a formal explanation or an advance negotiation. Such a rule would misunderstand the speed and informality that often make humour possible. It asks instead for attention to the signals and relationships already present. A successful shared joke is not merely a clever piece of language delivered intact. It is a moment people help construct together. When that construction fails, the failure may tell us something about missing knowledge, unequal participation or a mistaken assumption. The most useful next move is not always to tell the joke louder. Sometimes it is to discover what the audience was actually invited to share."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.advanced.shared-joke-060.humour.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the early-colleague example primarily used to demonstrate?",
+            "material": "What a shared joke asks of its audience\n\nA joke can appear to be a small, self-contained object: a sentence with a surprising ending, ready to be repeated wherever an audience can be found. Yet anyone who has retold a joke that once succeeded and watched it fail knows that the words are only part of the event. Timing, shared knowledge and the relationship between speakers can change what those words are understood to be doing.\n\nConsider a harmless comment about a colleague who is always early. Spoken when that colleague arrives first yet again, it may express affectionate recognition. Repeated to strangers without the history, the same line may require an explanation and lose its point. Used during a serious complaint about attendance, it could sound defensive or dismissive. The sentence has not changed, but its place in the conversation has. Treating context as an optional decoration misses part of the meaning.\n\nShared knowledge can make humour economical. A group need not explain every reference because members already know the story behind it. That economy may create a feeling of belonging: understanding the joke shows that one has participated in an ongoing relationship. It can also exclude a newcomer who hears the laughter but cannot identify its source. Neither result is guaranteed by the wording alone. A speaker can acknowledge the missing background and invite the newcomer into it, or use the reference to keep a boundary visible.\n\nExplaining a joke is often accused of destroying it. There is a limited truth in that complaint. Surprise cannot always be recreated after the mechanism has been described, and an account of why something was funny is not identical to the experience of finding it funny. But it does not follow that explanation is worthless. It may reveal a linguistic ambiguity, a local reference or an assumption that the listener has no reason to share. Understanding the attempt can matter even when the original laugh cannot be recovered.\n\nThe response of an audience is equally complex. Laughter may signal delight, politeness, discomfort or agreement to keep the interaction moving. Silence can mean offence, confusion, distraction or simply that the joke was not amusing to that person. A speaker who interprets every laugh as approval and every silence as hostility makes the available evidence more definite than it is. Where the relationship permits, a modest question can be more informative than a confident diagnosis of the listener's sense of humour.\n\nA recording creates another audience with another relationship to the exchange. People watching a short clip may hear laughter without knowing what preceded it or who was present. Looking for that missing information can improve interpretation, although context should not become an unlimited excuse that makes criticism impossible. The point is to identify what changes the reading, not to declare that outsiders can never judge it.\n\nThese uncertainties do not relieve speakers of responsibility. Saying that something was intended as a joke identifies an intention; it does not settle the effect on others. Nor does an unintended effect automatically establish that the speaker wanted it. A useful conversation can hold both points together: the attempt had a context and a purpose, and another person may reasonably have experienced it differently. Repairing the exchange may require listening rather than repeating the claim that the words were only playful.\n\nThis view does not demand that every casual joke be accompanied by a formal explanation or an advance negotiation. Such a rule would misunderstand the speed and informality that often make humour possible. It asks instead for attention to the signals and relationships already present. A successful shared joke is not merely a clever piece of language delivered intact. It is a moment people help construct together. When that construction fails, the failure may tell us something about missing knowledge, unequal participation or a mistaken assumption. The most useful next move is not always to tell the joke louder. Sometimes it is to discover what the audience was actually invited to share.",
+            "explanation": "The example varies conversational setting while holding words constant. Affection is one reading, and no universal claim about strangers or complaints is made.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Strangers always understand group references better than colleagues"
+              },
+              {
+                "id": "o1",
+                "text": "A joke about punctuality must always be affectionate"
+              },
+              {
+                "id": "o2",
+                "text": "Identical wording can perform different functions in different contexts"
+              },
+              {
+                "id": "o3",
+                "text": "Serious complaints cannot contain any humour"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.advanced.shared-joke-060.humour.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How can shared background both include and exclude?",
+            "material": "What a shared joke asks of its audience\n\nA joke can appear to be a small, self-contained object: a sentence with a surprising ending, ready to be repeated wherever an audience can be found. Yet anyone who has retold a joke that once succeeded and watched it fail knows that the words are only part of the event. Timing, shared knowledge and the relationship between speakers can change what those words are understood to be doing.\n\nConsider a harmless comment about a colleague who is always early. Spoken when that colleague arrives first yet again, it may express affectionate recognition. Repeated to strangers without the history, the same line may require an explanation and lose its point. Used during a serious complaint about attendance, it could sound defensive or dismissive. The sentence has not changed, but its place in the conversation has. Treating context as an optional decoration misses part of the meaning.\n\nShared knowledge can make humour economical. A group need not explain every reference because members already know the story behind it. That economy may create a feeling of belonging: understanding the joke shows that one has participated in an ongoing relationship. It can also exclude a newcomer who hears the laughter but cannot identify its source. Neither result is guaranteed by the wording alone. A speaker can acknowledge the missing background and invite the newcomer into it, or use the reference to keep a boundary visible.\n\nExplaining a joke is often accused of destroying it. There is a limited truth in that complaint. Surprise cannot always be recreated after the mechanism has been described, and an account of why something was funny is not identical to the experience of finding it funny. But it does not follow that explanation is worthless. It may reveal a linguistic ambiguity, a local reference or an assumption that the listener has no reason to share. Understanding the attempt can matter even when the original laugh cannot be recovered.\n\nThe response of an audience is equally complex. Laughter may signal delight, politeness, discomfort or agreement to keep the interaction moving. Silence can mean offence, confusion, distraction or simply that the joke was not amusing to that person. A speaker who interprets every laugh as approval and every silence as hostility makes the available evidence more definite than it is. Where the relationship permits, a modest question can be more informative than a confident diagnosis of the listener's sense of humour.\n\nA recording creates another audience with another relationship to the exchange. People watching a short clip may hear laughter without knowing what preceded it or who was present. Looking for that missing information can improve interpretation, although context should not become an unlimited excuse that makes criticism impossible. The point is to identify what changes the reading, not to declare that outsiders can never judge it.\n\nThese uncertainties do not relieve speakers of responsibility. Saying that something was intended as a joke identifies an intention; it does not settle the effect on others. Nor does an unintended effect automatically establish that the speaker wanted it. A useful conversation can hold both points together: the attempt had a context and a purpose, and another person may reasonably have experienced it differently. Repairing the exchange may require listening rather than repeating the claim that the words were only playful.\n\nThis view does not demand that every casual joke be accompanied by a formal explanation or an advance negotiation. Such a rule would misunderstand the speed and informality that often make humour possible. It asks instead for attention to the signals and relationships already present. A successful shared joke is not merely a clever piece of language delivered intact. It is a moment people help construct together. When that construction fails, the failure may tell us something about missing knowledge, unequal participation or a mistaken assumption. The most useful next move is not always to tell the joke louder. Sometimes it is to discover what the audience was actually invited to share.",
+            "explanation": "Economical references can affirm members and puzzle newcomers; speakers can invite or exclude. Automatic knowledge, inability to explain and universal hostility are not claimed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It makes a speaker incapable of explaining anything"
+              },
+              {
+                "id": "o1",
+                "text": "It gives every listener identical knowledge automatically"
+              },
+              {
+                "id": "o2",
+                "text": "It ensures that all group boundaries are intentionally hostile"
+              },
+              {
+                "id": "o3",
+                "text": "It can signal participation while leaving newcomers without the needed reference"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.advanced.shared-joke-060.humour.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the writer’s position on explaining jokes?",
+            "material": "What a shared joke asks of its audience\n\nA joke can appear to be a small, self-contained object: a sentence with a surprising ending, ready to be repeated wherever an audience can be found. Yet anyone who has retold a joke that once succeeded and watched it fail knows that the words are only part of the event. Timing, shared knowledge and the relationship between speakers can change what those words are understood to be doing.\n\nConsider a harmless comment about a colleague who is always early. Spoken when that colleague arrives first yet again, it may express affectionate recognition. Repeated to strangers without the history, the same line may require an explanation and lose its point. Used during a serious complaint about attendance, it could sound defensive or dismissive. The sentence has not changed, but its place in the conversation has. Treating context as an optional decoration misses part of the meaning.\n\nShared knowledge can make humour economical. A group need not explain every reference because members already know the story behind it. That economy may create a feeling of belonging: understanding the joke shows that one has participated in an ongoing relationship. It can also exclude a newcomer who hears the laughter but cannot identify its source. Neither result is guaranteed by the wording alone. A speaker can acknowledge the missing background and invite the newcomer into it, or use the reference to keep a boundary visible.\n\nExplaining a joke is often accused of destroying it. There is a limited truth in that complaint. Surprise cannot always be recreated after the mechanism has been described, and an account of why something was funny is not identical to the experience of finding it funny. But it does not follow that explanation is worthless. It may reveal a linguistic ambiguity, a local reference or an assumption that the listener has no reason to share. Understanding the attempt can matter even when the original laugh cannot be recovered.\n\nThe response of an audience is equally complex. Laughter may signal delight, politeness, discomfort or agreement to keep the interaction moving. Silence can mean offence, confusion, distraction or simply that the joke was not amusing to that person. A speaker who interprets every laugh as approval and every silence as hostility makes the available evidence more definite than it is. Where the relationship permits, a modest question can be more informative than a confident diagnosis of the listener's sense of humour.\n\nA recording creates another audience with another relationship to the exchange. People watching a short clip may hear laughter without knowing what preceded it or who was present. Looking for that missing information can improve interpretation, although context should not become an unlimited excuse that makes criticism impossible. The point is to identify what changes the reading, not to declare that outsiders can never judge it.\n\nThese uncertainties do not relieve speakers of responsibility. Saying that something was intended as a joke identifies an intention; it does not settle the effect on others. Nor does an unintended effect automatically establish that the speaker wanted it. A useful conversation can hold both points together: the attempt had a context and a purpose, and another person may reasonably have experienced it differently. Repairing the exchange may require listening rather than repeating the claim that the words were only playful.\n\nThis view does not demand that every casual joke be accompanied by a formal explanation or an advance negotiation. Such a rule would misunderstand the speed and informality that often make humour possible. It asks instead for attention to the signals and relationships already present. A successful shared joke is not merely a clever piece of language delivered intact. It is a moment people help construct together. When that construction fails, the failure may tell us something about missing knowledge, unequal participation or a mistaken assumption. The most useful next move is not always to tell the joke louder. Sometimes it is to discover what the audience was actually invited to share.",
+            "explanation": "The writer separates recovering a laugh from understanding ambiguity/background. Perfect recreation, laughter as the only value and necessary harm are unsupported.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It has no value unless everyone laughs again"
+              },
+              {
+                "id": "o1",
+                "text": "It proves that the original joke was necessarily harmful"
+              },
+              {
+                "id": "o2",
+                "text": "It always recreates surprise perfectly"
+              },
+              {
+                "id": "o3",
+                "text": "Explanation may be useful even if it cannot recreate the original amusement"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.advanced.shared-joke-060.humour.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why should audience responses be interpreted cautiously?",
+            "material": "What a shared joke asks of its audience\n\nA joke can appear to be a small, self-contained object: a sentence with a surprising ending, ready to be repeated wherever an audience can be found. Yet anyone who has retold a joke that once succeeded and watched it fail knows that the words are only part of the event. Timing, shared knowledge and the relationship between speakers can change what those words are understood to be doing.\n\nConsider a harmless comment about a colleague who is always early. Spoken when that colleague arrives first yet again, it may express affectionate recognition. Repeated to strangers without the history, the same line may require an explanation and lose its point. Used during a serious complaint about attendance, it could sound defensive or dismissive. The sentence has not changed, but its place in the conversation has. Treating context as an optional decoration misses part of the meaning.\n\nShared knowledge can make humour economical. A group need not explain every reference because members already know the story behind it. That economy may create a feeling of belonging: understanding the joke shows that one has participated in an ongoing relationship. It can also exclude a newcomer who hears the laughter but cannot identify its source. Neither result is guaranteed by the wording alone. A speaker can acknowledge the missing background and invite the newcomer into it, or use the reference to keep a boundary visible.\n\nExplaining a joke is often accused of destroying it. There is a limited truth in that complaint. Surprise cannot always be recreated after the mechanism has been described, and an account of why something was funny is not identical to the experience of finding it funny. But it does not follow that explanation is worthless. It may reveal a linguistic ambiguity, a local reference or an assumption that the listener has no reason to share. Understanding the attempt can matter even when the original laugh cannot be recovered.\n\nThe response of an audience is equally complex. Laughter may signal delight, politeness, discomfort or agreement to keep the interaction moving. Silence can mean offence, confusion, distraction or simply that the joke was not amusing to that person. A speaker who interprets every laugh as approval and every silence as hostility makes the available evidence more definite than it is. Where the relationship permits, a modest question can be more informative than a confident diagnosis of the listener's sense of humour.\n\nA recording creates another audience with another relationship to the exchange. People watching a short clip may hear laughter without knowing what preceded it or who was present. Looking for that missing information can improve interpretation, although context should not become an unlimited excuse that makes criticism impossible. The point is to identify what changes the reading, not to declare that outsiders can never judge it.\n\nThese uncertainties do not relieve speakers of responsibility. Saying that something was intended as a joke identifies an intention; it does not settle the effect on others. Nor does an unintended effect automatically establish that the speaker wanted it. A useful conversation can hold both points together: the attempt had a context and a purpose, and another person may reasonably have experienced it differently. Repairing the exchange may require listening rather than repeating the claim that the words were only playful.\n\nThis view does not demand that every casual joke be accompanied by a formal explanation or an advance negotiation. Such a rule would misunderstand the speed and informality that often make humour possible. It asks instead for attention to the signals and relationships already present. A successful shared joke is not merely a clever piece of language delivered intact. It is a moment people help construct together. When that construction fails, the failure may tell us something about missing knowledge, unequal participation or a mistaken assumption. The most useful next move is not always to tell the joke louder. Sometimes it is to discover what the audience was actually invited to share.",
+            "explanation": "Several functions are listed for both responses. The other options impose exactly the certainty criticised.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every laugh conclusively shows approval"
+              },
+              {
+                "id": "o1",
+                "text": "Silence has only one possible cause"
+              },
+              {
+                "id": "o2",
+                "text": "Laughter and silence each have several possible meanings"
+              },
+              {
+                "id": "o3",
+                "text": "A speaker can infer intention from volume alone"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.advanced.shared-joke-060.humour.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What distinction is drawn concerning intention and effect?",
+            "material": "What a shared joke asks of its audience\n\nA joke can appear to be a small, self-contained object: a sentence with a surprising ending, ready to be repeated wherever an audience can be found. Yet anyone who has retold a joke that once succeeded and watched it fail knows that the words are only part of the event. Timing, shared knowledge and the relationship between speakers can change what those words are understood to be doing.\n\nConsider a harmless comment about a colleague who is always early. Spoken when that colleague arrives first yet again, it may express affectionate recognition. Repeated to strangers without the history, the same line may require an explanation and lose its point. Used during a serious complaint about attendance, it could sound defensive or dismissive. The sentence has not changed, but its place in the conversation has. Treating context as an optional decoration misses part of the meaning.\n\nShared knowledge can make humour economical. A group need not explain every reference because members already know the story behind it. That economy may create a feeling of belonging: understanding the joke shows that one has participated in an ongoing relationship. It can also exclude a newcomer who hears the laughter but cannot identify its source. Neither result is guaranteed by the wording alone. A speaker can acknowledge the missing background and invite the newcomer into it, or use the reference to keep a boundary visible.\n\nExplaining a joke is often accused of destroying it. There is a limited truth in that complaint. Surprise cannot always be recreated after the mechanism has been described, and an account of why something was funny is not identical to the experience of finding it funny. But it does not follow that explanation is worthless. It may reveal a linguistic ambiguity, a local reference or an assumption that the listener has no reason to share. Understanding the attempt can matter even when the original laugh cannot be recovered.\n\nThe response of an audience is equally complex. Laughter may signal delight, politeness, discomfort or agreement to keep the interaction moving. Silence can mean offence, confusion, distraction or simply that the joke was not amusing to that person. A speaker who interprets every laugh as approval and every silence as hostility makes the available evidence more definite than it is. Where the relationship permits, a modest question can be more informative than a confident diagnosis of the listener's sense of humour.\n\nA recording creates another audience with another relationship to the exchange. People watching a short clip may hear laughter without knowing what preceded it or who was present. Looking for that missing information can improve interpretation, although context should not become an unlimited excuse that makes criticism impossible. The point is to identify what changes the reading, not to declare that outsiders can never judge it.\n\nThese uncertainties do not relieve speakers of responsibility. Saying that something was intended as a joke identifies an intention; it does not settle the effect on others. Nor does an unintended effect automatically establish that the speaker wanted it. A useful conversation can hold both points together: the attempt had a context and a purpose, and another person may reasonably have experienced it differently. Repairing the exchange may require listening rather than repeating the claim that the words were only playful.\n\nThis view does not demand that every casual joke be accompanied by a formal explanation or an advance negotiation. Such a rule would misunderstand the speed and informality that often make humour possible. It asks instead for attention to the signals and relationships already present. A successful shared joke is not merely a clever piece of language delivered intact. It is a moment people help construct together. When that construction fails, the failure may tell us something about missing knowledge, unequal participation or a mistaken assumption. The most useful next move is not always to tell the joke louder. Sometimes it is to discover what the audience was actually invited to share.",
+            "explanation": "The sixth paragraph explicitly holds both limits. The other options deny listener experience, responsibility or the difference between outcome and purpose.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A playful intention removes all responsibility"
+              },
+              {
+                "id": "o1",
+                "text": "An unwelcome effect always proves a deliberate wish to cause it"
+              },
+              {
+                "id": "o2",
+                "text": "Only the speaker’s account has any relevance"
+              },
+              {
+                "id": "o3",
+                "text": "Stating an intention does not settle an effect, and an effect does not automatically prove intention"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.advanced.shared-joke-060.humour.q6",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the conclusion recommend?",
+            "material": "What a shared joke asks of its audience\n\nA joke can appear to be a small, self-contained object: a sentence with a surprising ending, ready to be repeated wherever an audience can be found. Yet anyone who has retold a joke that once succeeded and watched it fail knows that the words are only part of the event. Timing, shared knowledge and the relationship between speakers can change what those words are understood to be doing.\n\nConsider a harmless comment about a colleague who is always early. Spoken when that colleague arrives first yet again, it may express affectionate recognition. Repeated to strangers without the history, the same line may require an explanation and lose its point. Used during a serious complaint about attendance, it could sound defensive or dismissive. The sentence has not changed, but its place in the conversation has. Treating context as an optional decoration misses part of the meaning.\n\nShared knowledge can make humour economical. A group need not explain every reference because members already know the story behind it. That economy may create a feeling of belonging: understanding the joke shows that one has participated in an ongoing relationship. It can also exclude a newcomer who hears the laughter but cannot identify its source. Neither result is guaranteed by the wording alone. A speaker can acknowledge the missing background and invite the newcomer into it, or use the reference to keep a boundary visible.\n\nExplaining a joke is often accused of destroying it. There is a limited truth in that complaint. Surprise cannot always be recreated after the mechanism has been described, and an account of why something was funny is not identical to the experience of finding it funny. But it does not follow that explanation is worthless. It may reveal a linguistic ambiguity, a local reference or an assumption that the listener has no reason to share. Understanding the attempt can matter even when the original laugh cannot be recovered.\n\nThe response of an audience is equally complex. Laughter may signal delight, politeness, discomfort or agreement to keep the interaction moving. Silence can mean offence, confusion, distraction or simply that the joke was not amusing to that person. A speaker who interprets every laugh as approval and every silence as hostility makes the available evidence more definite than it is. Where the relationship permits, a modest question can be more informative than a confident diagnosis of the listener's sense of humour.\n\nA recording creates another audience with another relationship to the exchange. People watching a short clip may hear laughter without knowing what preceded it or who was present. Looking for that missing information can improve interpretation, although context should not become an unlimited excuse that makes criticism impossible. The point is to identify what changes the reading, not to declare that outsiders can never judge it.\n\nThese uncertainties do not relieve speakers of responsibility. Saying that something was intended as a joke identifies an intention; it does not settle the effect on others. Nor does an unintended effect automatically establish that the speaker wanted it. A useful conversation can hold both points together: the attempt had a context and a purpose, and another person may reasonably have experienced it differently. Repairing the exchange may require listening rather than repeating the claim that the words were only playful.\n\nThis view does not demand that every casual joke be accompanied by a formal explanation or an advance negotiation. Such a rule would misunderstand the speed and informality that often make humour possible. It asks instead for attention to the signals and relationships already present. A successful shared joke is not merely a clever piece of language delivered intact. It is a moment people help construct together. When that construction fails, the failure may tell us something about missing knowledge, unequal participation or a mistaken assumption. The most useful next move is not always to tell the joke louder. Sometimes it is to discover what the audience was actually invited to share.",
+            "explanation": "The ending rejects rigid advance formalities and louder repetition in favour of contextual attention. A context-free model is the opening assumption being challenged.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Repeat a failed joke more loudly until it succeeds"
+              },
+              {
+                "id": "o1",
+                "text": "Require formal advance negotiation before every casual remark"
+              },
+              {
+                "id": "o2",
+                "text": "Treat a joke as a context-free object unchanged by its audience"
+              },
+              {
+                "id": "o3",
+                "text": "Attend to the relationship and investigate what sharing the joke required"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "5beb528954faebe5599a58740c3fedf2effacb572b7f002b710dfd0ffb06f286",
+      "reviewNotes": "Three complete adult original reading practices: CET4 and CET6 two passages/five four-choice questions each; C1 one longer passage/six questions. Fictional everyday/association cases and original general essays, no invented empirical study or attributed quotation. Same-author evidence and distractor review, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
