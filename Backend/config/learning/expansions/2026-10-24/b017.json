@@ -1,0 +1,1828 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b017",
+  "createdAt": "2026-10-23T19:26:17.930645+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · Walking plans and a time capsule",
+        "summary": "Walking plans and a time capsule，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_insertion",
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I insertion and passage-form task structure",
+            "pages": "Reading: five of seven; Use of English: 10-gap passage form",
+            "alignment": "One full five-gap passage sharing seven candidates, plus one full ten-gap grammar passage. Source supplies task rules only; all prose and keys are original."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.wenzhou2025.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete new senior mixed practices: five of seven sentence insertion plus one ten-gap grammar passage each. Same-author cohesion, distractor and written-variant review; all unknown written variants remain reviewable. Not past-paper content and not independently teacher- or learner-calibrated."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017",
+          "family": "shared_insertion_passage_form",
+          "label": "Walking plans and a time capsule",
+          "candidateSHA256": "3e69fbb9206e24e2a0276e133552becfc05aeacd835bc6952a5e3038e352615a",
+          "authorCheckSHA256": "20afccd8d8fd19687eebca4183b9bb3229ed14163239d5e6a909a56ae4e1161d",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017#insertion",
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017#grammar"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b017；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Preparing for a first group walk\n\nJoining a group walk can be an enjoyable way to spend a day outdoors. You do not need expensive equipment for every short route, but you do need to understand the particular walk you have chosen. A little preparation makes it easier to enjoy the company and the surroundings.\n\nRead the route description before agreeing to join. The distance is useful, but it is only part of the picture. ____1____ A short route with steep steps may take more effort than a longer level path.\n\nAsk what the group will do about food and water. A café may appear on the map without being open when you arrive. ____2____ Carrying what you need avoids depending on a stop that may not be available.\n\nTry your shoes before the day itself. Even a pair that feels comfortable while you stand can rub after you have walked for an hour. ____3____ It is easier to discover a problem near home than halfway along an unfamiliar route.\n\nLet the leader know about any difficulty that may affect your participation. You do not need to explain private details to the whole group. ____4____ Then the leader can discuss a suitable pace or suggest whether a different walk would be better.\n\nFinally, check the meeting instructions. Some places have several entrances with similar names. ____5____ Arriving at the correct place is a simple beginning, but it saves everyone from starting the walk with an avoidable search.\n\nB. A letter for next year\n\nLast March, our class ____1____ (visit) the small museum inside our school. Among the old ____2____ (photograph), we found a picture of the playground before the new sports hall was built. A guide ____3____ had once studied at the school told us what had changed.\n\nAfter ____4____ (read) some former students' letters, we decided ____5____ (write) messages for the class that would use our room next year. The teacher gave each of us ____6____ envelope and asked us to describe one ordinary day rather than list our prizes.\n\nI wrote about arriving late after missing a bus. My friend described a lunch when everyone exchanged seats. We worked ____7____ (careful), because we wanted the future readers to understand small things that might otherwise be forgotten.\n\nThe box held not only letters ____8____ also a timetable and a drawing of our room. When all the envelopes were ready, the teacher collected ____9____ (they) and placed them in the cupboard.\n\nWe left the box for next year's students ____10____ (enjoy). Perhaps some routines would be different by then. We did not expect our letters to describe the whole school, but we hoped they would give another class a few familiar voices to meet."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.insertion.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 1.",
+            "material": "A. Preparing for a first group walk\n\nJoining a group walk can be an enjoyable way to spend a day outdoors. You do not need expensive equipment for every short route, but you do need to understand the particular walk you have chosen. A little preparation makes it easier to enjoy the company and the surroundings.\n\nRead the route description before agreeing to join. The distance is useful, but it is only part of the picture. ____1____ A short route with steep steps may take more effort than a longer level path.\n\nAsk what the group will do about food and water. A café may appear on the map without being open when you arrive. ____2____ Carrying what you need avoids depending on a stop that may not be available.\n\nTry your shoes before the day itself. Even a pair that feels comfortable while you stand can rub after you have walked for an hour. ____3____ It is easier to discover a problem near home than halfway along an unfamiliar route.\n\nLet the leader know about any difficulty that may affect your participation. You do not need to explain private details to the whole group. ____4____ Then the leader can discuss a suitable pace or suggest whether a different walk would be better.\n\nFinally, check the meeting instructions. Some places have several entrances with similar names. ____5____ Arriving at the correct place is a simple beginning, but it saves everyone from starting the walk with an avoidable search.",
+            "explanation": "B adds slope and surface to distance, explained by the steep-versus-level example. A concerns shoes, C the meeting, E supplies and F private communication. D wrongly assumes cafe availability and G delays essential information.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. A short practice walk can show whether they are suitable."
+              },
+              {
+                "id": "o1",
+                "text": "B. Check the slopes and the surface as well."
+              },
+              {
+                "id": "o2",
+                "text": "C. Keep the exact entrance and meeting time where you can find them."
+              },
+              {
+                "id": "o3",
+                "text": "D. The presence of a café means that carrying water is unnecessary."
+              },
+              {
+                "id": "o4",
+                "text": "E. Confirm the plan rather than assuming refreshments will be provided."
+              },
+              {
+                "id": "o5",
+                "text": "F. A quiet conversation with the leader may be enough."
+              },
+              {
+                "id": "o6",
+                "text": "G. Wait until the group has left before mentioning that you cannot manage the route."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.insertion.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 2.",
+            "material": "A. Preparing for a first group walk\n\nJoining a group walk can be an enjoyable way to spend a day outdoors. You do not need expensive equipment for every short route, but you do need to understand the particular walk you have chosen. A little preparation makes it easier to enjoy the company and the surroundings.\n\nRead the route description before agreeing to join. The distance is useful, but it is only part of the picture. ____1____ A short route with steep steps may take more effort than a longer level path.\n\nAsk what the group will do about food and water. A café may appear on the map without being open when you arrive. ____2____ Carrying what you need avoids depending on a stop that may not be available.\n\nTry your shoes before the day itself. Even a pair that feels comfortable while you stand can rub after you have walked for an hour. ____3____ It is easier to discover a problem near home than halfway along an unfamiliar route.\n\nLet the leader know about any difficulty that may affect your participation. You do not need to explain private details to the whole group. ____4____ Then the leader can discuss a suitable pace or suggest whether a different walk would be better.\n\nFinally, check the meeting instructions. Some places have several entrances with similar names. ____5____ Arriving at the correct place is a simple beginning, but it saves everyone from starting the walk with an avoidable search.",
+            "explanation": "E links asking about supplies to carrying enough yourself. A refers to footwear, B terrain, C meeting details and F the leader conversation. D directly contradicts the warning about a closed cafe; G concerns delayed disclosure.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. A short practice walk can show whether they are suitable."
+              },
+              {
+                "id": "o1",
+                "text": "B. Check the slopes and the surface as well."
+              },
+              {
+                "id": "o2",
+                "text": "C. Keep the exact entrance and meeting time where you can find them."
+              },
+              {
+                "id": "o3",
+                "text": "D. The presence of a café means that carrying water is unnecessary."
+              },
+              {
+                "id": "o4",
+                "text": "E. Confirm the plan rather than assuming refreshments will be provided."
+              },
+              {
+                "id": "o5",
+                "text": "F. A quiet conversation with the leader may be enough."
+              },
+              {
+                "id": "o6",
+                "text": "G. Wait until the group has left before mentioning that you cannot manage the route."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.insertion.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 3.",
+            "material": "A. Preparing for a first group walk\n\nJoining a group walk can be an enjoyable way to spend a day outdoors. You do not need expensive equipment for every short route, but you do need to understand the particular walk you have chosen. A little preparation makes it easier to enjoy the company and the surroundings.\n\nRead the route description before agreeing to join. The distance is useful, but it is only part of the picture. ____1____ A short route with steep steps may take more effort than a longer level path.\n\nAsk what the group will do about food and water. A café may appear on the map without being open when you arrive. ____2____ Carrying what you need avoids depending on a stop that may not be available.\n\nTry your shoes before the day itself. Even a pair that feels comfortable while you stand can rub after you have walked for an hour. ____3____ It is easier to discover a problem near home than halfway along an unfamiliar route.\n\nLet the leader know about any difficulty that may affect your participation. You do not need to explain private details to the whole group. ____4____ Then the leader can discuss a suitable pace or suggest whether a different walk would be better.\n\nFinally, check the meeting instructions. Some places have several entrances with similar names. ____5____ Arriving at the correct place is a simple beginning, but it saves everyone from starting the walk with an avoidable search.",
+            "explanation": "A gives a practical shoe test; the next sentence contrasts near-home discovery with a distant problem. B, C, E and F shift to route, meeting, supplies and disclosure. D and G promote unsuitable assumptions rather than testing shoes.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. A short practice walk can show whether they are suitable."
+              },
+              {
+                "id": "o1",
+                "text": "B. Check the slopes and the surface as well."
+              },
+              {
+                "id": "o2",
+                "text": "C. Keep the exact entrance and meeting time where you can find them."
+              },
+              {
+                "id": "o3",
+                "text": "D. The presence of a café means that carrying water is unnecessary."
+              },
+              {
+                "id": "o4",
+                "text": "E. Confirm the plan rather than assuming refreshments will be provided."
+              },
+              {
+                "id": "o5",
+                "text": "F. A quiet conversation with the leader may be enough."
+              },
+              {
+                "id": "o6",
+                "text": "G. Wait until the group has left before mentioning that you cannot manage the route."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.insertion.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 4.",
+            "material": "A. Preparing for a first group walk\n\nJoining a group walk can be an enjoyable way to spend a day outdoors. You do not need expensive equipment for every short route, but you do need to understand the particular walk you have chosen. A little preparation makes it easier to enjoy the company and the surroundings.\n\nRead the route description before agreeing to join. The distance is useful, but it is only part of the picture. ____1____ A short route with steep steps may take more effort than a longer level path.\n\nAsk what the group will do about food and water. A café may appear on the map without being open when you arrive. ____2____ Carrying what you need avoids depending on a stop that may not be available.\n\nTry your shoes before the day itself. Even a pair that feels comfortable while you stand can rub after you have walked for an hour. ____3____ It is easier to discover a problem near home than halfway along an unfamiliar route.\n\nLet the leader know about any difficulty that may affect your participation. You do not need to explain private details to the whole group. ____4____ Then the leader can discuss a suitable pace or suggest whether a different walk would be better.\n\nFinally, check the meeting instructions. Some places have several entrances with similar names. ____5____ Arriving at the correct place is a simple beginning, but it saves everyone from starting the walk with an avoidable search.",
+            "explanation": "F provides a private way to communicate difficulty, after which the leader can respond. A, B, C and E concern shoes, terrain, meeting and supplies. G contradicts speaking before joining; D is unrelated to personal participation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. A short practice walk can show whether they are suitable."
+              },
+              {
+                "id": "o1",
+                "text": "B. Check the slopes and the surface as well."
+              },
+              {
+                "id": "o2",
+                "text": "C. Keep the exact entrance and meeting time where you can find them."
+              },
+              {
+                "id": "o3",
+                "text": "D. The presence of a café means that carrying water is unnecessary."
+              },
+              {
+                "id": "o4",
+                "text": "E. Confirm the plan rather than assuming refreshments will be provided."
+              },
+              {
+                "id": "o5",
+                "text": "F. A quiet conversation with the leader may be enough."
+              },
+              {
+                "id": "o6",
+                "text": "G. Wait until the group has left before mentioning that you cannot manage the route."
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.insertion.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 5.",
+            "material": "A. Preparing for a first group walk\n\nJoining a group walk can be an enjoyable way to spend a day outdoors. You do not need expensive equipment for every short route, but you do need to understand the particular walk you have chosen. A little preparation makes it easier to enjoy the company and the surroundings.\n\nRead the route description before agreeing to join. The distance is useful, but it is only part of the picture. ____1____ A short route with steep steps may take more effort than a longer level path.\n\nAsk what the group will do about food and water. A café may appear on the map without being open when you arrive. ____2____ Carrying what you need avoids depending on a stop that may not be available.\n\nTry your shoes before the day itself. Even a pair that feels comfortable while you stand can rub after you have walked for an hour. ____3____ It is easier to discover a problem near home than halfway along an unfamiliar route.\n\nLet the leader know about any difficulty that may affect your participation. You do not need to explain private details to the whole group. ____4____ Then the leader can discuss a suitable pace or suggest whether a different walk would be better.\n\nFinally, check the meeting instructions. Some places have several entrances with similar names. ____5____ Arriving at the correct place is a simple beginning, but it saves everyone from starting the walk with an avoidable search.",
+            "explanation": "C develops exact meeting instructions and is followed by correct arrival. A, B, E and F refer to other preparation stages. D removes needed supplies without justification; G creates the avoidable difficulty the paragraph seeks to prevent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. A short practice walk can show whether they are suitable."
+              },
+              {
+                "id": "o1",
+                "text": "B. Check the slopes and the surface as well."
+              },
+              {
+                "id": "o2",
+                "text": "C. Keep the exact entrance and meeting time where you can find them."
+              },
+              {
+                "id": "o3",
+                "text": "D. The presence of a café means that carrying water is unnecessary."
+              },
+              {
+                "id": "o4",
+                "text": "E. Confirm the plan rather than assuming refreshments will be provided."
+              },
+              {
+                "id": "o5",
+                "text": "F. A quiet conversation with the leader may be enough."
+              },
+              {
+                "id": "o6",
+                "text": "G. Wait until the group has left before mentioning that you cannot manage the route."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of visit.",
+            "material": "B. A letter for next year\n\nLast March, our class ____1____ (visit) the small museum inside our school. Among the old ____2____ (photograph), we found a picture of the playground before the new sports hall was built. A guide ____3____ had once studied at the school told us what had changed.\n\nAfter ____4____ (read) some former students' letters, we decided ____5____ (write) messages for the class that would use our room next year. The teacher gave each of us ____6____ envelope and asked us to describe one ordinary day rather than list our prizes.\n\nI wrote about arriving late after missing a bus. My friend described a lunch when everyone exchanged seats. We worked ____7____ (careful), because we wanted the future readers to understand small things that might otherwise be forgotten.\n\nThe box held not only letters ____8____ also a timetable and a drawing of our room. When all the envelopes were ready, the teacher collected ____9____ (they) and placed them in the cupboard.\n\nWe left the box for next year's students ____10____ (enjoy). Perhaps some routines would be different by then. We did not expect our letters to describe the whole school, but we hoped they would give another class a few familiar voices to meet.",
+            "explanation": "Last March locates the visit in the past. Visit and visits are present forms.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "visited"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "visit",
+                "visits"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with the correct form of photograph.",
+            "material": "B. A letter for next year\n\nLast March, our class ____1____ (visit) the small museum inside our school. Among the old ____2____ (photograph), we found a picture of the playground before the new sports hall was built. A guide ____3____ had once studied at the school told us what had changed.\n\nAfter ____4____ (read) some former students' letters, we decided ____5____ (write) messages for the class that would use our room next year. The teacher gave each of us ____6____ envelope and asked us to describe one ordinary day rather than list our prizes.\n\nI wrote about arriving late after missing a bus. My friend described a lunch when everyone exchanged seats. We worked ____7____ (careful), because we wanted the future readers to understand small things that might otherwise be forgotten.\n\nThe box held not only letters ____8____ also a timetable and a drawing of our room. When all the envelopes were ready, the teacher collected ____9____ (they) and placed them in the cupboard.\n\nWe left the box for next year's students ____10____ (enjoy). Perhaps some routines would be different by then. We did not expect our letters to describe the whole school, but we hoped they would give another class a few familiar voices to meet.",
+            "explanation": "Among refers to several old photographs. Singular photograph lacks a determiner and photographes is not the plural spelling.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "photographs"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "photograph",
+                "photographes"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "B. A letter for next year\n\nLast March, our class ____1____ (visit) the small museum inside our school. Among the old ____2____ (photograph), we found a picture of the playground before the new sports hall was built. A guide ____3____ had once studied at the school told us what had changed.\n\nAfter ____4____ (read) some former students' letters, we decided ____5____ (write) messages for the class that would use our room next year. The teacher gave each of us ____6____ envelope and asked us to describe one ordinary day rather than list our prizes.\n\nI wrote about arriving late after missing a bus. My friend described a lunch when everyone exchanged seats. We worked ____7____ (careful), because we wanted the future readers to understand small things that might otherwise be forgotten.\n\nThe box held not only letters ____8____ also a timetable and a drawing of our room. When all the envelopes were ready, the teacher collected ____9____ (they) and placed them in the cupboard.\n\nWe left the box for next year's students ____10____ (enjoy). Perhaps some routines would be different by then. We did not expect our letters to describe the whole school, but we hoped they would give another class a few familiar voices to meet.",
+            "explanation": "A guide is the subject of a defining relative clause, allowing who or that. Which is inappropriate for the person, whose needs a possessed noun and where is not a subject.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "whose",
+                "where"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with the correct form of read.",
+            "material": "B. A letter for next year\n\nLast March, our class ____1____ (visit) the small museum inside our school. Among the old ____2____ (photograph), we found a picture of the playground before the new sports hall was built. A guide ____3____ had once studied at the school told us what had changed.\n\nAfter ____4____ (read) some former students' letters, we decided ____5____ (write) messages for the class that would use our room next year. The teacher gave each of us ____6____ envelope and asked us to describe one ordinary day rather than list our prizes.\n\nI wrote about arriving late after missing a bus. My friend described a lunch when everyone exchanged seats. We worked ____7____ (careful), because we wanted the future readers to understand small things that might otherwise be forgotten.\n\nThe box held not only letters ____8____ also a timetable and a drawing of our room. When all the envelopes were ready, the teacher collected ____9____ (they) and placed them in the cupboard.\n\nWe left the box for next year's students ____10____ (enjoy). Perhaps some routines would be different by then. We did not expect our letters to describe the whole school, but we hoped they would give another class a few familiar voices to meet.",
+            "explanation": "After is a preposition taking reading. Read and to read do not fit this construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "reading"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "read",
+                "to read"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with the correct form of write.",
+            "material": "B. A letter for next year\n\nLast March, our class ____1____ (visit) the small museum inside our school. Among the old ____2____ (photograph), we found a picture of the playground before the new sports hall was built. A guide ____3____ had once studied at the school told us what had changed.\n\nAfter ____4____ (read) some former students' letters, we decided ____5____ (write) messages for the class that would use our room next year. The teacher gave each of us ____6____ envelope and asked us to describe one ordinary day rather than list our prizes.\n\nI wrote about arriving late after missing a bus. My friend described a lunch when everyone exchanged seats. We worked ____7____ (careful), because we wanted the future readers to understand small things that might otherwise be forgotten.\n\nThe box held not only letters ____8____ also a timetable and a drawing of our room. When all the envelopes were ready, the teacher collected ____9____ (they) and placed them in the cupboard.\n\nWe left the box for next year's students ____10____ (enjoy). Perhaps some routines would be different by then. We did not expect our letters to describe the whole school, but we hoped they would give another class a few familiar voices to meet.",
+            "explanation": "Decided takes the infinitive to write, not an -ing form, bare verb or past verb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to write"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "writing",
+                "write",
+                "wrote"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "B. A letter for next year\n\nLast March, our class ____1____ (visit) the small museum inside our school. Among the old ____2____ (photograph), we found a picture of the playground before the new sports hall was built. A guide ____3____ had once studied at the school told us what had changed.\n\nAfter ____4____ (read) some former students' letters, we decided ____5____ (write) messages for the class that would use our room next year. The teacher gave each of us ____6____ envelope and asked us to describe one ordinary day rather than list our prizes.\n\nI wrote about arriving late after missing a bus. My friend described a lunch when everyone exchanged seats. We worked ____7____ (careful), because we wanted the future readers to understand small things that might otherwise be forgotten.\n\nThe box held not only letters ____8____ also a timetable and a drawing of our room. When all the envelopes were ready, the teacher collected ____9____ (they) and placed them in the cupboard.\n\nWe left the box for next year's students ____10____ (enjoy). Perhaps some routines would be different by then. We did not expect our letters to describe the whole school, but we hoped they would give another class a few familiar voices to meet.",
+            "explanation": "Envelope is a singular count noun beginning with a vowel sound, so an. A has wrong sound agreement and some does not fit singular envelope.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a",
+                "some"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with the correct form of careful.",
+            "material": "B. A letter for next year\n\nLast March, our class ____1____ (visit) the small museum inside our school. Among the old ____2____ (photograph), we found a picture of the playground before the new sports hall was built. A guide ____3____ had once studied at the school told us what had changed.\n\nAfter ____4____ (read) some former students' letters, we decided ____5____ (write) messages for the class that would use our room next year. The teacher gave each of us ____6____ envelope and asked us to describe one ordinary day rather than list our prizes.\n\nI wrote about arriving late after missing a bus. My friend described a lunch when everyone exchanged seats. We worked ____7____ (careful), because we wanted the future readers to understand small things that might otherwise be forgotten.\n\nThe box held not only letters ____8____ also a timetable and a drawing of our room. When all the envelopes were ready, the teacher collected ____9____ (they) and placed them in the cupboard.\n\nWe left the box for next year's students ____10____ (enjoy). Perhaps some routines would be different by then. We did not expect our letters to describe the whole school, but we hoped they would give another class a few familiar voices to meet.",
+            "explanation": "Carefully modifies worked. Careful is an adjective and carefulness a noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careful",
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "B. A letter for next year\n\nLast March, our class ____1____ (visit) the small museum inside our school. Among the old ____2____ (photograph), we found a picture of the playground before the new sports hall was built. A guide ____3____ had once studied at the school told us what had changed.\n\nAfter ____4____ (read) some former students' letters, we decided ____5____ (write) messages for the class that would use our room next year. The teacher gave each of us ____6____ envelope and asked us to describe one ordinary day rather than list our prizes.\n\nI wrote about arriving late after missing a bus. My friend described a lunch when everyone exchanged seats. We worked ____7____ (careful), because we wanted the future readers to understand small things that might otherwise be forgotten.\n\nThe box held not only letters ____8____ also a timetable and a drawing of our room. When all the envelopes were ready, the teacher collected ____9____ (they) and placed them in the cupboard.\n\nWe left the box for next year's students ____10____ (enjoy). Perhaps some routines would be different by then. We did not expect our letters to describe the whole school, but we hoped they would give another class a few familiar voices to meet.",
+            "explanation": "Not only ... but also requires but, rather than and, or or so.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "but"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "and",
+                "or",
+                "so"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with the correct form of they.",
+            "material": "B. A letter for next year\n\nLast March, our class ____1____ (visit) the small museum inside our school. Among the old ____2____ (photograph), we found a picture of the playground before the new sports hall was built. A guide ____3____ had once studied at the school told us what had changed.\n\nAfter ____4____ (read) some former students' letters, we decided ____5____ (write) messages for the class that would use our room next year. The teacher gave each of us ____6____ envelope and asked us to describe one ordinary day rather than list our prizes.\n\nI wrote about arriving late after missing a bus. My friend described a lunch when everyone exchanged seats. We worked ____7____ (careful), because we wanted the future readers to understand small things that might otherwise be forgotten.\n\nThe box held not only letters ____8____ also a timetable and a drawing of our room. When all the envelopes were ready, the teacher collected ____9____ (they) and placed them in the cupboard.\n\nWe left the box for next year's students ____10____ (enjoy). Perhaps some routines would be different by then. We did not expect our letters to describe the whole school, but we hoped they would give another class a few familiar voices to meet.",
+            "explanation": "Collected takes object pronoun them, not subject they or possessive their.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "them"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "their"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with the correct form of enjoy.",
+            "material": "B. A letter for next year\n\nLast March, our class ____1____ (visit) the small museum inside our school. Among the old ____2____ (photograph), we found a picture of the playground before the new sports hall was built. A guide ____3____ had once studied at the school told us what had changed.\n\nAfter ____4____ (read) some former students' letters, we decided ____5____ (write) messages for the class that would use our room next year. The teacher gave each of us ____6____ envelope and asked us to describe one ordinary day rather than list our prizes.\n\nI wrote about arriving late after missing a bus. My friend described a lunch when everyone exchanged seats. We worked ____7____ (careful), because we wanted the future readers to understand small things that might otherwise be forgotten.\n\nThe box held not only letters ____8____ also a timetable and a drawing of our room. When all the envelopes were ready, the teacher collected ____9____ (they) and placed them in the cupboard.\n\nWe left the box for next year's students ____10____ (enjoy). Perhaps some routines would be different by then. We did not expect our letters to describe the whole school, but we hoped they would give another class a few familiar voices to meet.",
+            "explanation": "For next year's students to enjoy uses the to-infinitive with its expressed subject. The other forms do not complete it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to enjoy"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "enjoying",
+                "enjoyed",
+                "enjoy"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "6acb318f9aebe426ab026bbe3766c60101330c4eae6e2a54dfc700bb00e9a8c1",
+      "reviewNotes": "Three complete new senior mixed practices: five of seven sentence insertion plus one ten-gap grammar passage each. Same-author cohesion, distractor and written-variant review; all unknown written variants remain reviewable. Not past-paper content and not independently teacher- or learner-calibrated. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017#insertion",
+          "family": "shared_insertion",
+          "questionIds": [
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.insertion.q1",
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.insertion.q2",
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.insertion.q3",
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.insertion.q4",
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.insertion.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.first-walk-and-time-capsule-017",
+          "sourceContentHash": "f9f794169e0e2acd870e372840f23c7e0cccb9efa32a0202310d3ec22a8c062a"
+        },
+        {
+          "id": "expansion.20261024.senior1.first-walk-and-time-capsule-017#grammar",
+          "family": "passage_form",
+          "questionIds": [
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q1",
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q2",
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q3",
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q4",
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q5",
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q6",
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q7",
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q8",
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q9",
+            "expansion.20261024.senior1.first-walk-and-time-capsule-017.grammar.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.first-walk-and-time-capsule-017",
+          "sourceContentHash": "b1f6a6ae29a04fc55416b73eea2ba19244be755be18ee109a05d5d4372689f3d"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · Feedback and a recovered game",
+        "summary": "Feedback and a recovered game，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_insertion",
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I insertion and passage-form task structure",
+            "pages": "Reading: five of seven; Use of English: 10-gap passage form",
+            "alignment": "One full five-gap passage sharing seven candidates, plus one full ten-gap grammar passage. Source supplies task rules only; all prose and keys are original."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g11.spring2024.insertionE",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 完整形式复用已核具体源组：初二一篇日记4空5候选/1多余；初三5空7项，保留第2空引号内提醒、第5空标题和三个已印标题；高一第5空标题；高二起首分句/第2空标题/第3句/第4条件分句/第5过渡句，候选含两个If分句；高三五完整句人物报道。各组按自己的具体格绑定，不拼边际。新题不加源未印一次规则；旧首稿作者另加协议仍分记。高二源39最佳性未证，不沿原键作gold。原创虚构，独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete new senior mixed practices: five of seven sentence insertion plus one ten-gap grammar passage each. Same-author cohesion, distractor and written-variant review; all unknown written variants remain reviewable. Not past-paper content and not independently teacher- or learner-calibrated."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017",
+          "family": "shared_insertion_passage_form",
+          "label": "Feedback and a recovered game",
+          "candidateSHA256": "4e9f29b062953b67bfe53ba0ee4a1c4f0b0d2ee2a949bc065980f27b6e0a6657",
+          "authorCheckSHA256": "6faaa1f3c8a70fb7724d4aba217b85ee1f349feccc3b97fab648e7d89b979971",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017#insertion",
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017#grammar"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b017；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Giving feedback that a writer can use\n\nA friend asks you to read a draft. You notice a confusing paragraph, an effective opening and several small mistakes. Where should you begin? Useful feedback does not require you to rewrite the piece in your own voice. It helps the writer see how another person is reading it.\n\nFirst, ask what kind of help is needed. A writer still choosing an argument may not benefit from a page full of punctuation corrections. ____1____ Your comments can then respond to the stage the work has reached.\n\nDescribe your reading experience before offering a solution. Saying that you lost track of who was speaking identifies a problem. ____2____ The writer may find a better way to clarify the scene than the one you first imagined.\n\nBe specific about what works, too. A general compliment is pleasant but gives little guidance. ____3____ Explain how that example supports the argument, so the writer knows what to preserve during revision.\n\nDistinguish a question from a correction. If you are unsure whether a statement is accurate, mark the uncertainty and suggest checking it. ____4____ Presenting a guess with complete confidence can replace one problem with another.\n\nWhen you have many comments, identify the most important few. A list in which every point looks equally urgent can make revision feel impossible. ____5____ Feedback succeeds when the writer can use it to make a considered next decision, not when the reader has demonstrated how many faults they can find.\n\nB. The game in the cupboard\n\nDuring a classroom clear-out, we ____1____ (find) an old board game in a cupboard. Two ____2____ (piece) were missing, and the lid had no picture. However, ____3____ instruction sheet lay beneath the board, folded into a small square.\n\nThe rules ____4____ (print) on thin paper, but most of the words were still readable. Our teacher suggested ____5____ (check) the contents against the list before trying to play. We discovered that buttons could replace the two lost counters without changing the rules.\n\nWe were interested ____6____ the way the game used cards to move players around the board. One card could help an opponent as well as its owner, so the choices were not as simple ____7____ they first appeared.\n\nAt our first attempt, we did not play ____8____ (correct). We had missed a sentence explaining when to return the cards to the box. After reading the whole sheet aloud, we understood why the game had seemed to end too quickly.\n\nThe teacher allowed us ____9____ (borrow) it for the lunch break. We made a fresh copy of the instructions and kept the old sheet beside it, rather than throwing it away. The new copy was ____10____ (clear) than the faded original, but the original remained useful whenever we wanted to check that we had not changed a rule."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.insertion.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 1.",
+            "material": "A. Giving feedback that a writer can use\n\nA friend asks you to read a draft. You notice a confusing paragraph, an effective opening and several small mistakes. Where should you begin? Useful feedback does not require you to rewrite the piece in your own voice. It helps the writer see how another person is reading it.\n\nFirst, ask what kind of help is needed. A writer still choosing an argument may not benefit from a page full of punctuation corrections. ____1____ Your comments can then respond to the stage the work has reached.\n\nDescribe your reading experience before offering a solution. Saying that you lost track of who was speaking identifies a problem. ____2____ The writer may find a better way to clarify the scene than the one you first imagined.\n\nBe specific about what works, too. A general compliment is pleasant but gives little guidance. ____3____ Explain how that example supports the argument, so the writer knows what to preserve during revision.\n\nDistinguish a question from a correction. If you are unsure whether a statement is accurate, mark the uncertainty and suggest checking it. ____4____ Presenting a guess with complete confidence can replace one problem with another.\n\nWhen you have many comments, identify the most important few. A list in which every point looks equally urgent can make revision feel impossible. ____5____ Feedback succeeds when the writer can use it to make a considered next decision, not when the reader has demonstrated how many faults they can find.",
+            "explanation": "D develops asking the kind of help needed and prepares comments suitable for the current stage. A is factual uncertainty, B effective evidence, E priorities and F solutions. C reverses the proposed order; G confuses taste with correctness.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Do not turn your own uncertainty into an apparently settled fact."
+              },
+              {
+                "id": "o1",
+                "text": "B. Point to a particular example that makes an idea convincing."
+              },
+              {
+                "id": "o2",
+                "text": "C. Correct every comma before asking what the piece is meant to do."
+              },
+              {
+                "id": "o3",
+                "text": "D. Agree on the main purpose of the feedback before reading closely."
+              },
+              {
+                "id": "o4",
+                "text": "E. Let the writer know which changes would have the greatest effect."
+              },
+              {
+                "id": "o5",
+                "text": "F. It does not require you to prescribe the exact replacement sentence."
+              },
+              {
+                "id": "o6",
+                "text": "G. Treat all differences from your personal style as mistakes."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.insertion.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 2.",
+            "material": "A. Giving feedback that a writer can use\n\nA friend asks you to read a draft. You notice a confusing paragraph, an effective opening and several small mistakes. Where should you begin? Useful feedback does not require you to rewrite the piece in your own voice. It helps the writer see how another person is reading it.\n\nFirst, ask what kind of help is needed. A writer still choosing an argument may not benefit from a page full of punctuation corrections. ____1____ Your comments can then respond to the stage the work has reached.\n\nDescribe your reading experience before offering a solution. Saying that you lost track of who was speaking identifies a problem. ____2____ The writer may find a better way to clarify the scene than the one you first imagined.\n\nBe specific about what works, too. A general compliment is pleasant but gives little guidance. ____3____ Explain how that example supports the argument, so the writer knows what to preserve during revision.\n\nDistinguish a question from a correction. If you are unsure whether a statement is accurate, mark the uncertainty and suggest checking it. ____4____ Presenting a guess with complete confidence can replace one problem with another.\n\nWhen you have many comments, identify the most important few. A list in which every point looks equally urgent can make revision feel impossible. ____5____ Feedback succeeds when the writer can use it to make a considered next decision, not when the reader has demonstrated how many faults they can find.",
+            "explanation": "F contrasts identifying a reader problem with prescribing a sentence, leading to the writer finding another solution. A, B, D and E concern certainty, strengths, purpose and priority. C and G impose unhelpful correction rules.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Do not turn your own uncertainty into an apparently settled fact."
+              },
+              {
+                "id": "o1",
+                "text": "B. Point to a particular example that makes an idea convincing."
+              },
+              {
+                "id": "o2",
+                "text": "C. Correct every comma before asking what the piece is meant to do."
+              },
+              {
+                "id": "o3",
+                "text": "D. Agree on the main purpose of the feedback before reading closely."
+              },
+              {
+                "id": "o4",
+                "text": "E. Let the writer know which changes would have the greatest effect."
+              },
+              {
+                "id": "o5",
+                "text": "F. It does not require you to prescribe the exact replacement sentence."
+              },
+              {
+                "id": "o6",
+                "text": "G. Treat all differences from your personal style as mistakes."
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.insertion.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 3.",
+            "material": "A. Giving feedback that a writer can use\n\nA friend asks you to read a draft. You notice a confusing paragraph, an effective opening and several small mistakes. Where should you begin? Useful feedback does not require you to rewrite the piece in your own voice. It helps the writer see how another person is reading it.\n\nFirst, ask what kind of help is needed. A writer still choosing an argument may not benefit from a page full of punctuation corrections. ____1____ Your comments can then respond to the stage the work has reached.\n\nDescribe your reading experience before offering a solution. Saying that you lost track of who was speaking identifies a problem. ____2____ The writer may find a better way to clarify the scene than the one you first imagined.\n\nBe specific about what works, too. A general compliment is pleasant but gives little guidance. ____3____ Explain how that example supports the argument, so the writer knows what to preserve during revision.\n\nDistinguish a question from a correction. If you are unsure whether a statement is accurate, mark the uncertainty and suggest checking it. ____4____ Presenting a guess with complete confidence can replace one problem with another.\n\nWhen you have many comments, identify the most important few. A list in which every point looks equally urgent can make revision feel impossible. ____5____ Feedback succeeds when the writer can use it to make a considered next decision, not when the reader has demonstrated how many faults they can find.",
+            "explanation": "B specifies the effective detail behind praise, and the following sentence asks how that example helps. A concerns uncertainty, D purpose, E priorities and F restraint in solutions. C ignores the stage of drafting; G treats preference as error.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Do not turn your own uncertainty into an apparently settled fact."
+              },
+              {
+                "id": "o1",
+                "text": "B. Point to a particular example that makes an idea convincing."
+              },
+              {
+                "id": "o2",
+                "text": "C. Correct every comma before asking what the piece is meant to do."
+              },
+              {
+                "id": "o3",
+                "text": "D. Agree on the main purpose of the feedback before reading closely."
+              },
+              {
+                "id": "o4",
+                "text": "E. Let the writer know which changes would have the greatest effect."
+              },
+              {
+                "id": "o5",
+                "text": "F. It does not require you to prescribe the exact replacement sentence."
+              },
+              {
+                "id": "o6",
+                "text": "G. Treat all differences from your personal style as mistakes."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.insertion.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 4.",
+            "material": "A. Giving feedback that a writer can use\n\nA friend asks you to read a draft. You notice a confusing paragraph, an effective opening and several small mistakes. Where should you begin? Useful feedback does not require you to rewrite the piece in your own voice. It helps the writer see how another person is reading it.\n\nFirst, ask what kind of help is needed. A writer still choosing an argument may not benefit from a page full of punctuation corrections. ____1____ Your comments can then respond to the stage the work has reached.\n\nDescribe your reading experience before offering a solution. Saying that you lost track of who was speaking identifies a problem. ____2____ The writer may find a better way to clarify the scene than the one you first imagined.\n\nBe specific about what works, too. A general compliment is pleasant but gives little guidance. ____3____ Explain how that example supports the argument, so the writer knows what to preserve during revision.\n\nDistinguish a question from a correction. If you are unsure whether a statement is accurate, mark the uncertainty and suggest checking it. ____4____ Presenting a guess with complete confidence can replace one problem with another.\n\nWhen you have many comments, identify the most important few. A list in which every point looks equally urgent can make revision feel impossible. ____5____ Feedback succeeds when the writer can use it to make a considered next decision, not when the reader has demonstrated how many faults they can find.",
+            "explanation": "A restates preserving factual uncertainty, directly developed by the warning about confident guesses. B, D, E and F address other feedback functions. C and G recommend premature or personal corrections rather than checking a claim.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Do not turn your own uncertainty into an apparently settled fact."
+              },
+              {
+                "id": "o1",
+                "text": "B. Point to a particular example that makes an idea convincing."
+              },
+              {
+                "id": "o2",
+                "text": "C. Correct every comma before asking what the piece is meant to do."
+              },
+              {
+                "id": "o3",
+                "text": "D. Agree on the main purpose of the feedback before reading closely."
+              },
+              {
+                "id": "o4",
+                "text": "E. Let the writer know which changes would have the greatest effect."
+              },
+              {
+                "id": "o5",
+                "text": "F. It does not require you to prescribe the exact replacement sentence."
+              },
+              {
+                "id": "o6",
+                "text": "G. Treat all differences from your personal style as mistakes."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.insertion.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 5.",
+            "material": "A. Giving feedback that a writer can use\n\nA friend asks you to read a draft. You notice a confusing paragraph, an effective opening and several small mistakes. Where should you begin? Useful feedback does not require you to rewrite the piece in your own voice. It helps the writer see how another person is reading it.\n\nFirst, ask what kind of help is needed. A writer still choosing an argument may not benefit from a page full of punctuation corrections. ____1____ Your comments can then respond to the stage the work has reached.\n\nDescribe your reading experience before offering a solution. Saying that you lost track of who was speaking identifies a problem. ____2____ The writer may find a better way to clarify the scene than the one you first imagined.\n\nBe specific about what works, too. A general compliment is pleasant but gives little guidance. ____3____ Explain how that example supports the argument, so the writer knows what to preserve during revision.\n\nDistinguish a question from a correction. If you are unsure whether a statement is accurate, mark the uncertainty and suggest checking it. ____4____ Presenting a guess with complete confidence can replace one problem with another.\n\nWhen you have many comments, identify the most important few. A list in which every point looks equally urgent can make revision feel impossible. ____5____ Feedback succeeds when the writer can use it to make a considered next decision, not when the reader has demonstrated how many faults they can find.",
+            "explanation": "E supplies prioritisation after a warning about equal urgency. A is certainty, B specific praise, D agreed purpose and F alternative solutions. C and G would increase irrelevant correction rather than help choose the next revision.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Do not turn your own uncertainty into an apparently settled fact."
+              },
+              {
+                "id": "o1",
+                "text": "B. Point to a particular example that makes an idea convincing."
+              },
+              {
+                "id": "o2",
+                "text": "C. Correct every comma before asking what the piece is meant to do."
+              },
+              {
+                "id": "o3",
+                "text": "D. Agree on the main purpose of the feedback before reading closely."
+              },
+              {
+                "id": "o4",
+                "text": "E. Let the writer know which changes would have the greatest effect."
+              },
+              {
+                "id": "o5",
+                "text": "F. It does not require you to prescribe the exact replacement sentence."
+              },
+              {
+                "id": "o6",
+                "text": "G. Treat all differences from your personal style as mistakes."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of find.",
+            "material": "B. The game in the cupboard\n\nDuring a classroom clear-out, we ____1____ (find) an old board game in a cupboard. Two ____2____ (piece) were missing, and the lid had no picture. However, ____3____ instruction sheet lay beneath the board, folded into a small square.\n\nThe rules ____4____ (print) on thin paper, but most of the words were still readable. Our teacher suggested ____5____ (check) the contents against the list before trying to play. We discovered that buttons could replace the two lost counters without changing the rules.\n\nWe were interested ____6____ the way the game used cards to move players around the board. One card could help an opponent as well as its owner, so the choices were not as simple ____7____ they first appeared.\n\nAt our first attempt, we did not play ____8____ (correct). We had missed a sentence explaining when to return the cards to the box. After reading the whole sheet aloud, we understood why the game had seemed to end too quickly.\n\nThe teacher allowed us ____9____ (borrow) it for the lunch break. We made a fresh copy of the instructions and kept the old sheet beside it, rather than throwing it away. The new copy was ____10____ (clear) than the faded original, but the original remained useful whenever we wanted to check that we had not changed a rule.",
+            "explanation": "The past narrative takes found, the irregular past of find. Find is present and finded is not standard.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "found"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "find",
+                "finded"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with the correct form of piece.",
+            "material": "B. The game in the cupboard\n\nDuring a classroom clear-out, we ____1____ (find) an old board game in a cupboard. Two ____2____ (piece) were missing, and the lid had no picture. However, ____3____ instruction sheet lay beneath the board, folded into a small square.\n\nThe rules ____4____ (print) on thin paper, but most of the words were still readable. Our teacher suggested ____5____ (check) the contents against the list before trying to play. We discovered that buttons could replace the two lost counters without changing the rules.\n\nWe were interested ____6____ the way the game used cards to move players around the board. One card could help an opponent as well as its owner, so the choices were not as simple ____7____ they first appeared.\n\nAt our first attempt, we did not play ____8____ (correct). We had missed a sentence explaining when to return the cards to the box. After reading the whole sheet aloud, we understood why the game had seemed to end too quickly.\n\nThe teacher allowed us ____9____ (borrow) it for the lunch break. We made a fresh copy of the instructions and kept the old sheet beside it, rather than throwing it away. The new copy was ____10____ (clear) than the faded original, but the original remained useful whenever we wanted to check that we had not changed a rule.",
+            "explanation": "Two requires plural pieces. Piece is singular and piecees is misspelt.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "pieces"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "piece",
+                "piecees"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "B. The game in the cupboard\n\nDuring a classroom clear-out, we ____1____ (find) an old board game in a cupboard. Two ____2____ (piece) were missing, and the lid had no picture. However, ____3____ instruction sheet lay beneath the board, folded into a small square.\n\nThe rules ____4____ (print) on thin paper, but most of the words were still readable. Our teacher suggested ____5____ (check) the contents against the list before trying to play. We discovered that buttons could replace the two lost counters without changing the rules.\n\nWe were interested ____6____ the way the game used cards to move players around the board. One card could help an opponent as well as its owner, so the choices were not as simple ____7____ they first appeared.\n\nAt our first attempt, we did not play ____8____ (correct). We had missed a sentence explaining when to return the cards to the box. After reading the whole sheet aloud, we understood why the game had seemed to end too quickly.\n\nThe teacher allowed us ____9____ (borrow) it for the lunch break. We made a fresh copy of the instructions and kept the old sheet beside it, rather than throwing it away. The new copy was ____10____ (clear) than the faded original, but the original remained useful whenever we wanted to check that we had not changed a rule.",
+            "explanation": "A singular instruction sheet first introduced takes an before the vowel sound in instruction. A has wrong sound agreement and some does not fit the singular noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a",
+                "some"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with the correct form of print.",
+            "material": "B. The game in the cupboard\n\nDuring a classroom clear-out, we ____1____ (find) an old board game in a cupboard. Two ____2____ (piece) were missing, and the lid had no picture. However, ____3____ instruction sheet lay beneath the board, folded into a small square.\n\nThe rules ____4____ (print) on thin paper, but most of the words were still readable. Our teacher suggested ____5____ (check) the contents against the list before trying to play. We discovered that buttons could replace the two lost counters without changing the rules.\n\nWe were interested ____6____ the way the game used cards to move players around the board. One card could help an opponent as well as its owner, so the choices were not as simple ____7____ they first appeared.\n\nAt our first attempt, we did not play ____8____ (correct). We had missed a sentence explaining when to return the cards to the box. After reading the whole sheet aloud, we understood why the game had seemed to end too quickly.\n\nThe teacher allowed us ____9____ (borrow) it for the lunch break. We made a fresh copy of the instructions and kept the old sheet beside it, rather than throwing it away. The new copy was ____10____ (clear) than the faded original, but the original remained useful whenever we wanted to check that we had not changed a rule.",
+            "explanation": "The plural rules received printing; past passive and earlier past-perfect passive both fit. Printed alone lacks the passive auxiliary, and was disagrees with rules.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "were printed",
+              "had been printed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "printed",
+                "was printed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with the correct form of check.",
+            "material": "B. The game in the cupboard\n\nDuring a classroom clear-out, we ____1____ (find) an old board game in a cupboard. Two ____2____ (piece) were missing, and the lid had no picture. However, ____3____ instruction sheet lay beneath the board, folded into a small square.\n\nThe rules ____4____ (print) on thin paper, but most of the words were still readable. Our teacher suggested ____5____ (check) the contents against the list before trying to play. We discovered that buttons could replace the two lost counters without changing the rules.\n\nWe were interested ____6____ the way the game used cards to move players around the board. One card could help an opponent as well as its owner, so the choices were not as simple ____7____ they first appeared.\n\nAt our first attempt, we did not play ____8____ (correct). We had missed a sentence explaining when to return the cards to the box. After reading the whole sheet aloud, we understood why the game had seemed to end too quickly.\n\nThe teacher allowed us ____9____ (borrow) it for the lunch break. We made a fresh copy of the instructions and kept the old sheet beside it, rather than throwing it away. The new copy was ____10____ (clear) than the faded original, but the original remained useful whenever we wanted to check that we had not changed a rule.",
+            "explanation": "Suggested takes checking in this construction, not bare check, to check or checked.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "checking"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "check",
+                "to check",
+                "checked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "B. The game in the cupboard\n\nDuring a classroom clear-out, we ____1____ (find) an old board game in a cupboard. Two ____2____ (piece) were missing, and the lid had no picture. However, ____3____ instruction sheet lay beneath the board, folded into a small square.\n\nThe rules ____4____ (print) on thin paper, but most of the words were still readable. Our teacher suggested ____5____ (check) the contents against the list before trying to play. We discovered that buttons could replace the two lost counters without changing the rules.\n\nWe were interested ____6____ the way the game used cards to move players around the board. One card could help an opponent as well as its owner, so the choices were not as simple ____7____ they first appeared.\n\nAt our first attempt, we did not play ____8____ (correct). We had missed a sentence explaining when to return the cards to the box. After reading the whole sheet aloud, we understood why the game had seemed to end too quickly.\n\nThe teacher allowed us ____9____ (borrow) it for the lunch break. We made a fresh copy of the instructions and kept the old sheet beside it, rather than throwing it away. The new copy was ____10____ (clear) than the faded original, but the original remained useful whenever we wanted to check that we had not changed a rule.",
+            "explanation": "Interested in describes interest in the game mechanism. On, at and for do not complete this adjective phrase.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "on",
+                "at",
+                "for"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "B. The game in the cupboard\n\nDuring a classroom clear-out, we ____1____ (find) an old board game in a cupboard. Two ____2____ (piece) were missing, and the lid had no picture. However, ____3____ instruction sheet lay beneath the board, folded into a small square.\n\nThe rules ____4____ (print) on thin paper, but most of the words were still readable. Our teacher suggested ____5____ (check) the contents against the list before trying to play. We discovered that buttons could replace the two lost counters without changing the rules.\n\nWe were interested ____6____ the way the game used cards to move players around the board. One card could help an opponent as well as its owner, so the choices were not as simple ____7____ they first appeared.\n\nAt our first attempt, we did not play ____8____ (correct). We had missed a sentence explaining when to return the cards to the box. After reading the whole sheet aloud, we understood why the game had seemed to end too quickly.\n\nThe teacher allowed us ____9____ (borrow) it for the lunch break. We made a fresh copy of the instructions and kept the old sheet beside it, rather than throwing it away. The new copy was ____10____ (clear) than the faded original, but the original remained useful whenever we wanted to check that we had not changed a rule.",
+            "explanation": "The comparison is not as simple as. Than, that and like do not complete the as ... as pattern.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "as"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "than",
+                "that",
+                "like"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with the correct form of correct.",
+            "material": "B. The game in the cupboard\n\nDuring a classroom clear-out, we ____1____ (find) an old board game in a cupboard. Two ____2____ (piece) were missing, and the lid had no picture. However, ____3____ instruction sheet lay beneath the board, folded into a small square.\n\nThe rules ____4____ (print) on thin paper, but most of the words were still readable. Our teacher suggested ____5____ (check) the contents against the list before trying to play. We discovered that buttons could replace the two lost counters without changing the rules.\n\nWe were interested ____6____ the way the game used cards to move players around the board. One card could help an opponent as well as its owner, so the choices were not as simple ____7____ they first appeared.\n\nAt our first attempt, we did not play ____8____ (correct). We had missed a sentence explaining when to return the cards to the box. After reading the whole sheet aloud, we understood why the game had seemed to end too quickly.\n\nThe teacher allowed us ____9____ (borrow) it for the lunch break. We made a fresh copy of the instructions and kept the old sheet beside it, rather than throwing it away. The new copy was ____10____ (clear) than the faded original, but the original remained useful whenever we wanted to check that we had not changed a rule.",
+            "explanation": "Correctly modifies play. Correct is an adjective and correctness a noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "correctly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "correct",
+                "correctness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with the correct form of borrow.",
+            "material": "B. The game in the cupboard\n\nDuring a classroom clear-out, we ____1____ (find) an old board game in a cupboard. Two ____2____ (piece) were missing, and the lid had no picture. However, ____3____ instruction sheet lay beneath the board, folded into a small square.\n\nThe rules ____4____ (print) on thin paper, but most of the words were still readable. Our teacher suggested ____5____ (check) the contents against the list before trying to play. We discovered that buttons could replace the two lost counters without changing the rules.\n\nWe were interested ____6____ the way the game used cards to move players around the board. One card could help an opponent as well as its owner, so the choices were not as simple ____7____ they first appeared.\n\nAt our first attempt, we did not play ____8____ (correct). We had missed a sentence explaining when to return the cards to the box. After reading the whole sheet aloud, we understood why the game had seemed to end too quickly.\n\nThe teacher allowed us ____9____ (borrow) it for the lunch break. We made a fresh copy of the instructions and kept the old sheet beside it, rather than throwing it away. The new copy was ____10____ (clear) than the faded original, but the original remained useful whenever we wanted to check that we had not changed a rule.",
+            "explanation": "Allowed us to borrow requires a to-infinitive. The other forms do not complete allowed us.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to borrow"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "borrowing",
+                "borrow",
+                "borrowed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with the correct form of clear.",
+            "material": "B. The game in the cupboard\n\nDuring a classroom clear-out, we ____1____ (find) an old board game in a cupboard. Two ____2____ (piece) were missing, and the lid had no picture. However, ____3____ instruction sheet lay beneath the board, folded into a small square.\n\nThe rules ____4____ (print) on thin paper, but most of the words were still readable. Our teacher suggested ____5____ (check) the contents against the list before trying to play. We discovered that buttons could replace the two lost counters without changing the rules.\n\nWe were interested ____6____ the way the game used cards to move players around the board. One card could help an opponent as well as its owner, so the choices were not as simple ____7____ they first appeared.\n\nAt our first attempt, we did not play ____8____ (correct). We had missed a sentence explaining when to return the cards to the box. After reading the whole sheet aloud, we understood why the game had seemed to end too quickly.\n\nThe teacher allowed us ____9____ (borrow) it for the lunch break. We made a fresh copy of the instructions and kept the old sheet beside it, rather than throwing it away. The new copy was ____10____ (clear) than the faded original, but the original remained useful whenever we wanted to check that we had not changed a rule.",
+            "explanation": "Than requires a comparative. Clearer and less common but grammatical more clear are accepted; clear is not comparative, clearest is superlative and more clearer duplicates comparison.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "clearer",
+              "more clear"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "clear",
+                "clearest",
+                "more clearer"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "30eb8db1b7fe7f18f4bc6052b84984700230fb9101e2b50b6699936035e2a379",
+      "reviewNotes": "Three complete new senior mixed practices: five of seven sentence insertion plus one ten-gap grammar passage each. Same-author cohesion, distractor and written-variant review; all unknown written variants remain reviewable. Not past-paper content and not independently teacher- or learner-calibrated. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017#insertion",
+          "family": "shared_insertion",
+          "questionIds": [
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.insertion.q1",
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.insertion.q2",
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.insertion.q3",
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.insertion.q4",
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.insertion.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.draft-feedback-and-board-game-017",
+          "sourceContentHash": "5df6bd86bc0082ecc9a6fc187b4510b11bcd8df9a14ab4751b302d56a6ad69b8"
+        },
+        {
+          "id": "expansion.20261024.senior2.draft-feedback-and-board-game-017#grammar",
+          "family": "passage_form",
+          "questionIds": [
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q1",
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q2",
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q3",
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q4",
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q5",
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q6",
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q7",
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q8",
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q9",
+            "expansion.20261024.senior2.draft-feedback-and-board-game-017.grammar.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.draft-feedback-and-board-game-017",
+          "sourceContentHash": "fa27988a9e4a93fc5eadc4abf4d679597188b5b222d74993991224b7149cbb19"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高考题型原创 · 10·24新题 · Practice decisions and bookbinding",
+        "summary": "Practice decisions and bookbinding，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_insertion",
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I insertion and passage-form task structure",
+            "pages": "Reading: five of seven; Use of English: 10-gap passage form",
+            "alignment": "One full five-gap passage sharing seven candidates, plus one full ten-gap grammar passage. Source supplies task rules only; all prose and keys are original."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g12.national2025.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 完整形式复用已核具体源组：初二一篇日记4空5候选/1多余；初三5空7项，保留第2空引号内提醒、第5空标题和三个已印标题；高一第5空标题；高二起首分句/第2空标题/第3句/第4条件分句/第5过渡句，候选含两个If分句；高三五完整句人物报道。各组按自己的具体格绑定，不拼边际。新题不加源未印一次规则；旧首稿作者另加协议仍分记。高二源39最佳性未证，不沿原键作gold。原创虚构，独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete new senior mixed practices: five of seven sentence insertion plus one ten-gap grammar passage each. Same-author cohesion, distractor and written-variant review; all unknown written variants remain reviewable. Not past-paper content and not independently teacher- or learner-calibrated."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017",
+          "family": "shared_insertion_passage_form",
+          "label": "Practice decisions and bookbinding",
+          "candidateSHA256": "997e2909b79c7f7d2c35dbb158244e5b343a9c6bcc81415a408d26407a666ee7",
+          "authorCheckSHA256": "6c579a1321d25b4aeadf8629b964a0b8823f572dc4b1b0d5aed99f1fdfd14ece",
+          "sourceGroupIds": [
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017#insertion",
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017#grammar"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b017；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Returning to a difficult piece of music\n\nLearning a piece of music is not always a steady journey from the first bar to the last. A player may improve one passage while another remains uncertain. When progress seems to stop, changing the structure of practice can be more useful than simply adding another hour.\n\nIdentify where the difficulty begins. Players often repeat the whole piece, hoping the troublesome section will improve along with the rest. ____1____ Mark the few bars that repeatedly cause hesitation and give them separate attention.\n\nSlow the passage down enough to notice what your hands are doing. If you cannot complete it accurately at that speed, reduce the speed again. ____2____ Repeating an uncontrolled movement quickly gives you little chance to understand it.\n\nOnce the section is manageable, include a little of what comes before and after it. ____3____ A passage learned alone may still feel unfamiliar when approached from the previous phrase.\n\nRecord a short attempt occasionally, then listen without playing. You may notice that a pause feels much longer from the outside than it did while you were searching for a note. ____4____ Treat the recording as information for the next attempt, not as a final judgment on your ability.\n\nFinally, decide when to stop. If each repetition becomes less attentive, more time may not be helping. ____5____ Returning later with a clear question can be more productive than ending the session with a long series of increasingly careless runs.\n\nB. Binding a small notebook\n\nHaving ____1____ (agree) to help with a bookbinding workshop, I arrived early to prepare the room. With the tools ____2____ (lay) out on the table, we could check that each pair of students had everything they needed.\n\nThe tutor explained the steps ____3____ (require) to turn folded sheets into a small notebook. Among the visitors was an artist ____4____ sketchbooks were usually made by hand. She showed us a narrow needle and a length of thread, but reminded us that the cover was not the only part worth noticing.\n\nWhat mattered most ____5____ (be) how the pages moved when the book opened. A cover could look neat while the stitching inside made the pages difficult to turn. We learned to distinguish a decorative choice ____6____ a structural one before deciding what to change.\n\nMy first attempt held the sheets too tightly. I had to remove part of the thread and begin again. The second attempt took ____7____ (little) time than the first because I now understood where the needle should go.\n\nIt was tempting ____8____ (believe) that every successful notebook would look alike. Yet the finished examples differed in colour, size and purpose. The tutor listened ____9____ (patient) as each student described a choice. I left with a notebook and a clearer idea of ____10____ it meant to make something that could be used, rather than simply displayed."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.insertion.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 1.",
+            "material": "A. Returning to a difficult piece of music\n\nLearning a piece of music is not always a steady journey from the first bar to the last. A player may improve one passage while another remains uncertain. When progress seems to stop, changing the structure of practice can be more useful than simply adding another hour.\n\nIdentify where the difficulty begins. Players often repeat the whole piece, hoping the troublesome section will improve along with the rest. ____1____ Mark the few bars that repeatedly cause hesitation and give them separate attention.\n\nSlow the passage down enough to notice what your hands are doing. If you cannot complete it accurately at that speed, reduce the speed again. ____2____ Repeating an uncontrolled movement quickly gives you little chance to understand it.\n\nOnce the section is manageable, include a little of what comes before and after it. ____3____ A passage learned alone may still feel unfamiliar when approached from the previous phrase.\n\nRecord a short attempt occasionally, then listen without playing. You may notice that a pause feels much longer from the outside than it did while you were searching for a note. ____4____ Treat the recording as information for the next attempt, not as a final judgment on your ability.\n\nFinally, decide when to stop. If each repetition becomes less attentive, more time may not be helping. ____5____ Returning later with a clear question can be more productive than ending the session with a long series of increasingly careless runs.",
+            "explanation": "C contrasts whole-piece repetition with little time on the difficult bars, followed by marking those bars. A is reconnecting phrases, D listening notes, E rest and F slow control. B wrongly equates speed with understanding; G wrongly guarantees transfer.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. This helps restore the connections that the separate exercise leaves out."
+              },
+              {
+                "id": "o1",
+                "text": "B. Faster repetition is always evidence that the music has been understood."
+              },
+              {
+                "id": "o2",
+                "text": "C. But the difficult bars may receive only a small share of that time."
+              },
+              {
+                "id": "o3",
+                "text": "D. Note the specific feature you want to change rather than criticising the entire performance."
+              },
+              {
+                "id": "o4",
+                "text": "E. A short break can interrupt that pattern and leave a useful aim for your return."
+              },
+              {
+                "id": "o5",
+                "text": "F. The purpose is control, not reaching an impressive tempo immediately."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once a passage works by itself, it will fit every surrounding phrase automatically."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.insertion.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 2.",
+            "material": "A. Returning to a difficult piece of music\n\nLearning a piece of music is not always a steady journey from the first bar to the last. A player may improve one passage while another remains uncertain. When progress seems to stop, changing the structure of practice can be more useful than simply adding another hour.\n\nIdentify where the difficulty begins. Players often repeat the whole piece, hoping the troublesome section will improve along with the rest. ____1____ Mark the few bars that repeatedly cause hesitation and give them separate attention.\n\nSlow the passage down enough to notice what your hands are doing. If you cannot complete it accurately at that speed, reduce the speed again. ____2____ Repeating an uncontrolled movement quickly gives you little chance to understand it.\n\nOnce the section is manageable, include a little of what comes before and after it. ____3____ A passage learned alone may still feel unfamiliar when approached from the previous phrase.\n\nRecord a short attempt occasionally, then listen without playing. You may notice that a pause feels much longer from the outside than it did while you were searching for a note. ____4____ Treat the recording as information for the next attempt, not as a final judgment on your ability.\n\nFinally, decide when to stop. If each repetition becomes less attentive, more time may not be helping. ____5____ Returning later with a clear question can be more productive than ending the session with a long series of increasingly careless runs.",
+            "explanation": "F explains slowing as control, reinforced by the warning about uncontrolled speed. A concerns transitions, C allocation, D recorded feedback and E breaks. B contradicts the purpose; G concerns the false automatic transfer of an isolated passage.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. This helps restore the connections that the separate exercise leaves out."
+              },
+              {
+                "id": "o1",
+                "text": "B. Faster repetition is always evidence that the music has been understood."
+              },
+              {
+                "id": "o2",
+                "text": "C. But the difficult bars may receive only a small share of that time."
+              },
+              {
+                "id": "o3",
+                "text": "D. Note the specific feature you want to change rather than criticising the entire performance."
+              },
+              {
+                "id": "o4",
+                "text": "E. A short break can interrupt that pattern and leave a useful aim for your return."
+              },
+              {
+                "id": "o5",
+                "text": "F. The purpose is control, not reaching an impressive tempo immediately."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once a passage works by itself, it will fit every surrounding phrase automatically."
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.insertion.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 3.",
+            "material": "A. Returning to a difficult piece of music\n\nLearning a piece of music is not always a steady journey from the first bar to the last. A player may improve one passage while another remains uncertain. When progress seems to stop, changing the structure of practice can be more useful than simply adding another hour.\n\nIdentify where the difficulty begins. Players often repeat the whole piece, hoping the troublesome section will improve along with the rest. ____1____ Mark the few bars that repeatedly cause hesitation and give them separate attention.\n\nSlow the passage down enough to notice what your hands are doing. If you cannot complete it accurately at that speed, reduce the speed again. ____2____ Repeating an uncontrolled movement quickly gives you little chance to understand it.\n\nOnce the section is manageable, include a little of what comes before and after it. ____3____ A passage learned alone may still feel unfamiliar when approached from the previous phrase.\n\nRecord a short attempt occasionally, then listen without playing. You may notice that a pause feels much longer from the outside than it did while you were searching for a note. ____4____ Treat the recording as information for the next attempt, not as a final judgment on your ability.\n\nFinally, decide when to stop. If each repetition becomes less attentive, more time may not be helping. ____5____ Returning later with a clear question can be more productive than ending the session with a long series of increasingly careless runs.",
+            "explanation": "A explains adding neighbouring bars and is illustrated by approaching from a previous phrase. C is allocation, D specific feedback, E rest and F control. G directly denies the transition problem; B confuses speed with understanding.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. This helps restore the connections that the separate exercise leaves out."
+              },
+              {
+                "id": "o1",
+                "text": "B. Faster repetition is always evidence that the music has been understood."
+              },
+              {
+                "id": "o2",
+                "text": "C. But the difficult bars may receive only a small share of that time."
+              },
+              {
+                "id": "o3",
+                "text": "D. Note the specific feature you want to change rather than criticising the entire performance."
+              },
+              {
+                "id": "o4",
+                "text": "E. A short break can interrupt that pattern and leave a useful aim for your return."
+              },
+              {
+                "id": "o5",
+                "text": "F. The purpose is control, not reaching an impressive tempo immediately."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once a passage works by itself, it will fit every surrounding phrase automatically."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.insertion.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 4.",
+            "material": "A. Returning to a difficult piece of music\n\nLearning a piece of music is not always a steady journey from the first bar to the last. A player may improve one passage while another remains uncertain. When progress seems to stop, changing the structure of practice can be more useful than simply adding another hour.\n\nIdentify where the difficulty begins. Players often repeat the whole piece, hoping the troublesome section will improve along with the rest. ____1____ Mark the few bars that repeatedly cause hesitation and give them separate attention.\n\nSlow the passage down enough to notice what your hands are doing. If you cannot complete it accurately at that speed, reduce the speed again. ____2____ Repeating an uncontrolled movement quickly gives you little chance to understand it.\n\nOnce the section is manageable, include a little of what comes before and after it. ____3____ A passage learned alone may still feel unfamiliar when approached from the previous phrase.\n\nRecord a short attempt occasionally, then listen without playing. You may notice that a pause feels much longer from the outside than it did while you were searching for a note. ____4____ Treat the recording as information for the next attempt, not as a final judgment on your ability.\n\nFinally, decide when to stop. If each repetition becomes less attentive, more time may not be helping. ____5____ Returning later with a clear question can be more productive than ending the session with a long series of increasingly careless runs.",
+            "explanation": "D turns the noticed pause into a specific next aim, matching the following treatment of recordings as information. A, C, E and F concern connections, time, rest and speed. B and G make unsupported automatic-success claims.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. This helps restore the connections that the separate exercise leaves out."
+              },
+              {
+                "id": "o1",
+                "text": "B. Faster repetition is always evidence that the music has been understood."
+              },
+              {
+                "id": "o2",
+                "text": "C. But the difficult bars may receive only a small share of that time."
+              },
+              {
+                "id": "o3",
+                "text": "D. Note the specific feature you want to change rather than criticising the entire performance."
+              },
+              {
+                "id": "o4",
+                "text": "E. A short break can interrupt that pattern and leave a useful aim for your return."
+              },
+              {
+                "id": "o5",
+                "text": "F. The purpose is control, not reaching an impressive tempo immediately."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once a passage works by itself, it will fit every surrounding phrase automatically."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.insertion.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 5.",
+            "material": "A. Returning to a difficult piece of music\n\nLearning a piece of music is not always a steady journey from the first bar to the last. A player may improve one passage while another remains uncertain. When progress seems to stop, changing the structure of practice can be more useful than simply adding another hour.\n\nIdentify where the difficulty begins. Players often repeat the whole piece, hoping the troublesome section will improve along with the rest. ____1____ Mark the few bars that repeatedly cause hesitation and give them separate attention.\n\nSlow the passage down enough to notice what your hands are doing. If you cannot complete it accurately at that speed, reduce the speed again. ____2____ Repeating an uncontrolled movement quickly gives you little chance to understand it.\n\nOnce the section is manageable, include a little of what comes before and after it. ____3____ A passage learned alone may still feel unfamiliar when approached from the previous phrase.\n\nRecord a short attempt occasionally, then listen without playing. You may notice that a pause feels much longer from the outside than it did while you were searching for a note. ____4____ Treat the recording as information for the next attempt, not as a final judgment on your ability.\n\nFinally, decide when to stop. If each repetition becomes less attentive, more time may not be helping. ____5____ Returning later with a clear question can be more productive than ending the session with a long series of increasingly careless runs.",
+            "explanation": "E responds to deteriorating attention through a short break and prepares returning later. A concerns links between bars, C allocation, D feedback and F speed control. B promotes speed regardless of attention, and G assumes automatic transfer.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. This helps restore the connections that the separate exercise leaves out."
+              },
+              {
+                "id": "o1",
+                "text": "B. Faster repetition is always evidence that the music has been understood."
+              },
+              {
+                "id": "o2",
+                "text": "C. But the difficult bars may receive only a small share of that time."
+              },
+              {
+                "id": "o3",
+                "text": "D. Note the specific feature you want to change rather than criticising the entire performance."
+              },
+              {
+                "id": "o4",
+                "text": "E. A short break can interrupt that pattern and leave a useful aim for your return."
+              },
+              {
+                "id": "o5",
+                "text": "F. The purpose is control, not reaching an impressive tempo immediately."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once a passage works by itself, it will fit every surrounding phrase automatically."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of agree.",
+            "material": "B. Binding a small notebook\n\nHaving ____1____ (agree) to help with a bookbinding workshop, I arrived early to prepare the room. With the tools ____2____ (lay) out on the table, we could check that each pair of students had everything they needed.\n\nThe tutor explained the steps ____3____ (require) to turn folded sheets into a small notebook. Among the visitors was an artist ____4____ sketchbooks were usually made by hand. She showed us a narrow needle and a length of thread, but reminded us that the cover was not the only part worth noticing.\n\nWhat mattered most ____5____ (be) how the pages moved when the book opened. A cover could look neat while the stitching inside made the pages difficult to turn. We learned to distinguish a decorative choice ____6____ a structural one before deciding what to change.\n\nMy first attempt held the sheets too tightly. I had to remove part of the thread and begin again. The second attempt took ____7____ (little) time than the first because I now understood where the needle should go.\n\nIt was tempting ____8____ (believe) that every successful notebook would look alike. Yet the finished examples differed in colour, size and purpose. The tutor listened ____9____ (patient) as each student described a choice. I left with a notebook and a clearer idea of ____10____ it meant to make something that could be used, rather than simply displayed.",
+            "explanation": "Having requires the past participle agreed in this perfect participle clause. Agree is base form and agreeing would duplicate -ing structure.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "agreed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "agree",
+                "agreeing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with the correct form of lay.",
+            "material": "B. Binding a small notebook\n\nHaving ____1____ (agree) to help with a bookbinding workshop, I arrived early to prepare the room. With the tools ____2____ (lay) out on the table, we could check that each pair of students had everything they needed.\n\nThe tutor explained the steps ____3____ (require) to turn folded sheets into a small notebook. Among the visitors was an artist ____4____ sketchbooks were usually made by hand. She showed us a narrow needle and a length of thread, but reminded us that the cover was not the only part worth noticing.\n\nWhat mattered most ____5____ (be) how the pages moved when the book opened. A cover could look neat while the stitching inside made the pages difficult to turn. We learned to distinguish a decorative choice ____6____ a structural one before deciding what to change.\n\nMy first attempt held the sheets too tightly. I had to remove part of the thread and begin again. The second attempt took ____7____ (little) time than the first because I now understood where the needle should go.\n\nIt was tempting ____8____ (believe) that every successful notebook would look alike. Yet the finished examples differed in colour, size and purpose. The tutor listened ____9____ (patient) as each student described a choice. I left with a notebook and a clearer idea of ____10____ it meant to make something that could be used, rather than simply displayed.",
+            "explanation": "The tools receive the action of being laid out, so past participle laid. Lay is base, layed is nonstandard and laying makes the tools agents without an object.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "laid"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "lay",
+                "layed",
+                "laying"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with the correct form of require.",
+            "material": "B. Binding a small notebook\n\nHaving ____1____ (agree) to help with a bookbinding workshop, I arrived early to prepare the room. With the tools ____2____ (lay) out on the table, we could check that each pair of students had everything they needed.\n\nThe tutor explained the steps ____3____ (require) to turn folded sheets into a small notebook. Among the visitors was an artist ____4____ sketchbooks were usually made by hand. She showed us a narrow needle and a length of thread, but reminded us that the cover was not the only part worth noticing.\n\nWhat mattered most ____5____ (be) how the pages moved when the book opened. A cover could look neat while the stitching inside made the pages difficult to turn. We learned to distinguish a decorative choice ____6____ a structural one before deciding what to change.\n\nMy first attempt held the sheets too tightly. I had to remove part of the thread and begin again. The second attempt took ____7____ (little) time than the first because I now understood where the needle should go.\n\nIt was tempting ____8____ (believe) that every successful notebook would look alike. Yet the finished examples differed in colour, size and purpose. The tutor listened ____9____ (patient) as each student described a choice. I left with a notebook and a clearer idea of ____10____ it meant to make something that could be used, rather than simply displayed.",
+            "explanation": "Required passively modifies steps. Requiring would need an object and were required introduces an unlinked finite verb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "required"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "requiring",
+                "were required"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "B. Binding a small notebook\n\nHaving ____1____ (agree) to help with a bookbinding workshop, I arrived early to prepare the room. With the tools ____2____ (lay) out on the table, we could check that each pair of students had everything they needed.\n\nThe tutor explained the steps ____3____ (require) to turn folded sheets into a small notebook. Among the visitors was an artist ____4____ sketchbooks were usually made by hand. She showed us a narrow needle and a length of thread, but reminded us that the cover was not the only part worth noticing.\n\nWhat mattered most ____5____ (be) how the pages moved when the book opened. A cover could look neat while the stitching inside made the pages difficult to turn. We learned to distinguish a decorative choice ____6____ a structural one before deciding what to change.\n\nMy first attempt held the sheets too tightly. I had to remove part of the thread and begin again. The second attempt took ____7____ (little) time than the first because I now understood where the needle should go.\n\nIt was tempting ____8____ (believe) that every successful notebook would look alike. Yet the finished examples differed in colour, size and purpose. The tutor listened ____9____ (patient) as each student described a choice. I left with a notebook and a clearer idea of ____10____ it meant to make something that could be used, rather than simply displayed.",
+            "explanation": "Whose modifies sketchbooks possessively, referring to the artist. Who, which and that cannot directly provide this possessive relation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "whose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "which",
+                "that"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with the correct form of be.",
+            "material": "B. Binding a small notebook\n\nHaving ____1____ (agree) to help with a bookbinding workshop, I arrived early to prepare the room. With the tools ____2____ (lay) out on the table, we could check that each pair of students had everything they needed.\n\nThe tutor explained the steps ____3____ (require) to turn folded sheets into a small notebook. Among the visitors was an artist ____4____ sketchbooks were usually made by hand. She showed us a narrow needle and a length of thread, but reminded us that the cover was not the only part worth noticing.\n\nWhat mattered most ____5____ (be) how the pages moved when the book opened. A cover could look neat while the stitching inside made the pages difficult to turn. We learned to distinguish a decorative choice ____6____ a structural one before deciding what to change.\n\nMy first attempt held the sheets too tightly. I had to remove part of the thread and begin again. The second attempt took ____7____ (little) time than the first because I now understood where the needle should go.\n\nIt was tempting ____8____ (believe) that every successful notebook would look alike. Yet the finished examples differed in colour, size and purpose. The tutor listened ____9____ (patient) as each student described a choice. I left with a notebook and a clearer idea of ____10____ it meant to make something that could be used, rather than simply displayed.",
+            "explanation": "The singular subject clause in the past account normally takes was. Were disagrees with that clause, and been lacks an auxiliary. Any other unlisted tense choice remains reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "were",
+                "been"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "B. Binding a small notebook\n\nHaving ____1____ (agree) to help with a bookbinding workshop, I arrived early to prepare the room. With the tools ____2____ (lay) out on the table, we could check that each pair of students had everything they needed.\n\nThe tutor explained the steps ____3____ (require) to turn folded sheets into a small notebook. Among the visitors was an artist ____4____ sketchbooks were usually made by hand. She showed us a narrow needle and a length of thread, but reminded us that the cover was not the only part worth noticing.\n\nWhat mattered most ____5____ (be) how the pages moved when the book opened. A cover could look neat while the stitching inside made the pages difficult to turn. We learned to distinguish a decorative choice ____6____ a structural one before deciding what to change.\n\nMy first attempt held the sheets too tightly. I had to remove part of the thread and begin again. The second attempt took ____7____ (little) time than the first because I now understood where the needle should go.\n\nIt was tempting ____8____ (believe) that every successful notebook would look alike. Yet the finished examples differed in colour, size and purpose. The tutor listened ____9____ (patient) as each student described a choice. I left with a notebook and a clearer idea of ____10____ it meant to make something that could be used, rather than simply displayed.",
+            "explanation": "Distinguish one thing from another uses from. Between would require distinguish between A and B, not this object-before-gap construction; of and with do not express the intended contrast.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "from"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "between",
+                "of",
+                "with"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with the correct form of little.",
+            "material": "B. Binding a small notebook\n\nHaving ____1____ (agree) to help with a bookbinding workshop, I arrived early to prepare the room. With the tools ____2____ (lay) out on the table, we could check that each pair of students had everything they needed.\n\nThe tutor explained the steps ____3____ (require) to turn folded sheets into a small notebook. Among the visitors was an artist ____4____ sketchbooks were usually made by hand. She showed us a narrow needle and a length of thread, but reminded us that the cover was not the only part worth noticing.\n\nWhat mattered most ____5____ (be) how the pages moved when the book opened. A cover could look neat while the stitching inside made the pages difficult to turn. We learned to distinguish a decorative choice ____6____ a structural one before deciding what to change.\n\nMy first attempt held the sheets too tightly. I had to remove part of the thread and begin again. The second attempt took ____7____ (little) time than the first because I now understood where the needle should go.\n\nIt was tempting ____8____ (believe) that every successful notebook would look alike. Yet the finished examples differed in colour, size and purpose. The tutor listened ____9____ (patient) as each student described a choice. I left with a notebook and a clearer idea of ____10____ it meant to make something that could be used, rather than simply displayed.",
+            "explanation": "Less time than is the comparative with uncountable time. Little is not comparative, least is superlative and fewer requires countable plural items.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "less"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "little",
+                "least",
+                "fewer"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with the correct form of believe.",
+            "material": "B. Binding a small notebook\n\nHaving ____1____ (agree) to help with a bookbinding workshop, I arrived early to prepare the room. With the tools ____2____ (lay) out on the table, we could check that each pair of students had everything they needed.\n\nThe tutor explained the steps ____3____ (require) to turn folded sheets into a small notebook. Among the visitors was an artist ____4____ sketchbooks were usually made by hand. She showed us a narrow needle and a length of thread, but reminded us that the cover was not the only part worth noticing.\n\nWhat mattered most ____5____ (be) how the pages moved when the book opened. A cover could look neat while the stitching inside made the pages difficult to turn. We learned to distinguish a decorative choice ____6____ a structural one before deciding what to change.\n\nMy first attempt held the sheets too tightly. I had to remove part of the thread and begin again. The second attempt took ____7____ (little) time than the first because I now understood where the needle should go.\n\nIt was tempting ____8____ (believe) that every successful notebook would look alike. Yet the finished examples differed in colour, size and purpose. The tutor listened ____9____ (patient) as each student described a choice. I left with a notebook and a clearer idea of ____10____ it meant to make something that could be used, rather than simply displayed.",
+            "explanation": "It was tempting to believe uses the infinitive as the extraposed action. The other forms do not fill this construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to believe"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "believing",
+                "believe",
+                "believed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with the correct form of patient.",
+            "material": "B. Binding a small notebook\n\nHaving ____1____ (agree) to help with a bookbinding workshop, I arrived early to prepare the room. With the tools ____2____ (lay) out on the table, we could check that each pair of students had everything they needed.\n\nThe tutor explained the steps ____3____ (require) to turn folded sheets into a small notebook. Among the visitors was an artist ____4____ sketchbooks were usually made by hand. She showed us a narrow needle and a length of thread, but reminded us that the cover was not the only part worth noticing.\n\nWhat mattered most ____5____ (be) how the pages moved when the book opened. A cover could look neat while the stitching inside made the pages difficult to turn. We learned to distinguish a decorative choice ____6____ a structural one before deciding what to change.\n\nMy first attempt held the sheets too tightly. I had to remove part of the thread and begin again. The second attempt took ____7____ (little) time than the first because I now understood where the needle should go.\n\nIt was tempting ____8____ (believe) that every successful notebook would look alike. Yet the finished examples differed in colour, size and purpose. The tutor listened ____9____ (patient) as each student described a choice. I left with a notebook and a clearer idea of ____10____ it meant to make something that could be used, rather than simply displayed.",
+            "explanation": "Patiently modifies listened. Patient is an adjective and patience a noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "patiently"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "patient",
+                "patience"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "B. Binding a small notebook\n\nHaving ____1____ (agree) to help with a bookbinding workshop, I arrived early to prepare the room. With the tools ____2____ (lay) out on the table, we could check that each pair of students had everything they needed.\n\nThe tutor explained the steps ____3____ (require) to turn folded sheets into a small notebook. Among the visitors was an artist ____4____ sketchbooks were usually made by hand. She showed us a narrow needle and a length of thread, but reminded us that the cover was not the only part worth noticing.\n\nWhat mattered most ____5____ (be) how the pages moved when the book opened. A cover could look neat while the stitching inside made the pages difficult to turn. We learned to distinguish a decorative choice ____6____ a structural one before deciding what to change.\n\nMy first attempt held the sheets too tightly. I had to remove part of the thread and begin again. The second attempt took ____7____ (little) time than the first because I now understood where the needle should go.\n\nIt was tempting ____8____ (believe) that every successful notebook would look alike. Yet the finished examples differed in colour, size and purpose. The tutor listened ____9____ (patient) as each student described a choice. I left with a notebook and a clearer idea of ____10____ it meant to make something that could be used, rather than simply displayed.",
+            "explanation": "What supplies the missing content in what it meant to make something. That leaves no complement for meant, and which has no specified set to select from here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "what"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "that",
+                "which"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "9dfa9b578ca27bf914c142506f0faed695b85a087f003c65300ee57508cac5b4",
+      "reviewNotes": "Three complete new senior mixed practices: five of seven sentence insertion plus one ten-gap grammar passage each. Same-author cohesion, distractor and written-variant review; all unknown written variants remain reviewable. Not past-paper content and not independently teacher- or learner-calibrated. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017#insertion",
+          "family": "shared_insertion",
+          "questionIds": [
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.insertion.q1",
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.insertion.q2",
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.insertion.q3",
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.insertion.q4",
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.insertion.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.music-practice-and-bookbinding-017",
+          "sourceContentHash": "87da18139336637dc12b7958f59cebbe1def0ce76f3c4d9c5f692e8ab0fd7b16"
+        },
+        {
+          "id": "expansion.20261024.senior3.music-practice-and-bookbinding-017#grammar",
+          "family": "passage_form",
+          "questionIds": [
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q1",
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q2",
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q3",
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q4",
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q5",
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q6",
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q7",
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q8",
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q9",
+            "expansion.20261024.senior3.music-practice-and-bookbinding-017.grammar.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.music-practice-and-bookbinding-017",
+          "sourceContentHash": "a87825f268df9e3af6ffa60aaf7c54306a1cfd6b9c6ecead124ccd02405c4bab"
+        }
+      ]
+    }
+  ]
+}
