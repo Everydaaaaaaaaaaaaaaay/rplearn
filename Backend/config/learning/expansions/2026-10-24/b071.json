@@ -1,0 +1,1831 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b071",
+  "createdAt": "2026-10-23T23:21:32.608710+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.used-book-and-capsule-071",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · A second-hand book and a time capsule",
+        "summary": "A second-hand book and a time capsule，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_insertion",
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I insertion and passage-form task structure",
+            "pages": "Reading: five of seven; Use of English: 10-gap passage form",
+            "alignment": "One full five-gap passage sharing seven candidates, plus one full ten-gap grammar passage. Source supplies task rules only; all prose and keys are original."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.wenzhou2025.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete senior mixed practices. Fictional class projects and general reading/cooperation discussion; no invented study or numerical finding. Same-author cohesion, alternative and answer-form review only, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.used-book-and-capsule-071",
+          "family": "shared_insertion_passage_form",
+          "label": "A second-hand book and a time capsule",
+          "candidateSHA256": "dd0de07bfe361c18cc588b0c25745687da0cb19b4ae81fc47abb48f4cdb68c3d",
+          "authorCheckSHA256": "c52bd0198cc1a6213b177e0ce2b90c7986a60baac3abcf58409e3cd54da33b6b",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.used-book-and-capsule-071#insertion",
+            "expansion.20261024.senior1.used-book-and-capsule-071#grammar"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b071；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. A second-hand book and a time capsule\n\nA second-hand textbook can be useful, but another reader's marks are part of what you receive. Underlining, notes and answers may help or distract you. Before making the book your main study tool, take a little time to understand its condition.\n\nCheck that it is the edition you need. A similar cover does not guarantee the same exercises or page order. ____1____ This is especially important when a teacher refers to particular pages during lessons.\n\nLook through more than the opening chapter. A book may be clean at the front but heavily marked later. ____2____ Missing pages or completed exercises can affect how you use it.\n\nTreat margin notes as another reader's ideas, not automatic authority. An explanation may be useful, mistaken or related to a lesson you did not attend. ____3____ Keep the difference clear between the printed text and an added interpretation.\n\nDecide how to add your own work without creating confusion. You might use removable notes or a separate notebook. ____4____ Covering an earlier answer may also make an exercise more useful when you want to try it yourself.\n\nFinally, judge the book by the job you need it to do. ____5____ A readable older copy can be valuable for general practice even when it would not replace a required current edition. A low price is helpful only when the book remains usable for your purpose.\n\nB. A second-hand book and a time capsule\n\nOur class prepared a small time capsule at the end of term. We planned ____1____ (open) it when we returned for a school reunion, rather than bury it where nobody could find it. The head teacher agreed to keep it in a secure cupboard.\n\nEach student wrote a letter to their future self. I described the things ____2____ mattered to me that year, including a friendship I hoped would last. It was difficult to decide what a later version of me would want to remember.\n\nWe also included a copy of the school newspaper and several ____3____ (photo). Before ____4____ (close) the box, we checked that nothing contained food or a battery. The capsule was a collection of memories, not a place to hide unwanted rubbish.\n\nA classmate suggested adding a map of the building. That seemed ____5____ (use) because some rooms were due to change during the summer. We labelled the date clearly so that a future reader would not assume the map still showed the current arrangement.\n\nThe box ____6____ (seal) by our teacher after everyone had checked the list. We kept a second copy of that list outside, together ____7____ the planned opening date and the location of the cupboard.\n\nThe project made us think about the future without pretending we could predict it ____8____ (exact). There was ____9____ sense of excitement in leaving questions unanswered. We looked forward to meeting ____10____ (we) again through the words we had chosen to save."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.insertion.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 1.",
+            "material": "A. A second-hand book and a time capsule\n\nA second-hand textbook can be useful, but another reader's marks are part of what you receive. Underlining, notes and answers may help or distract you. Before making the book your main study tool, take a little time to understand its condition.\n\nCheck that it is the edition you need. A similar cover does not guarantee the same exercises or page order. ____1____ This is especially important when a teacher refers to particular pages during lessons.\n\nLook through more than the opening chapter. A book may be clean at the front but heavily marked later. ____2____ Missing pages or completed exercises can affect how you use it.\n\nTreat margin notes as another reader's ideas, not automatic authority. An explanation may be useful, mistaken or related to a lesson you did not attend. ____3____ Keep the difference clear between the printed text and an added interpretation.\n\nDecide how to add your own work without creating confusion. You might use removable notes or a separate notebook. ____4____ Covering an earlier answer may also make an exercise more useful when you want to try it yourself.\n\nFinally, judge the book by the job you need it to do. ____5____ A readable older copy can be valuable for general practice even when it would not replace a required current edition. A low price is helpful only when the book remains usable for your purpose.",
+            "explanation": "C checks edition identity, preparing page references. A concerns annotations, B new notes, E purpose and F inspecting later sections. D/G replace checking with false guarantees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check an added claim against the text or ask about it."
+              },
+              {
+                "id": "o1",
+                "text": "B. Choose a method that lets you recognise your own notes later."
+              },
+              {
+                "id": "o2",
+                "text": "C. Compare the edition details rather than relying on appearance."
+              },
+              {
+                "id": "o3",
+                "text": "D. Every handwritten answer must be correct because somebody wrote it down."
+              },
+              {
+                "id": "o4",
+                "text": "E. Different uses may allow different compromises."
+              },
+              {
+                "id": "o5",
+                "text": "F. Examine several sections, including the parts you expect to study soon."
+              },
+              {
+                "id": "o6",
+                "text": "G. The cheapest book is always suitable for every course."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.insertion.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 2.",
+            "material": "A. A second-hand book and a time capsule\n\nA second-hand textbook can be useful, but another reader's marks are part of what you receive. Underlining, notes and answers may help or distract you. Before making the book your main study tool, take a little time to understand its condition.\n\nCheck that it is the edition you need. A similar cover does not guarantee the same exercises or page order. ____1____ This is especially important when a teacher refers to particular pages during lessons.\n\nLook through more than the opening chapter. A book may be clean at the front but heavily marked later. ____2____ Missing pages or completed exercises can affect how you use it.\n\nTreat margin notes as another reader's ideas, not automatic authority. An explanation may be useful, mistaken or related to a lesson you did not attend. ____3____ Keep the difference clear between the printed text and an added interpretation.\n\nDecide how to add your own work without creating confusion. You might use removable notes or a separate notebook. ____4____ Covering an earlier answer may also make an exercise more useful when you want to try it yourself.\n\nFinally, judge the book by the job you need it to do. ____5____ A readable older copy can be valuable for general practice even when it would not replace a required current edition. A low price is helpful only when the book remains usable for your purpose.",
+            "explanation": "F widens inspection beyond the clean opening and prepares missing-page/answered-exercise concerns. A/B/C/E address other stages. D/G do not establish physical completeness.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check an added claim against the text or ask about it."
+              },
+              {
+                "id": "o1",
+                "text": "B. Choose a method that lets you recognise your own notes later."
+              },
+              {
+                "id": "o2",
+                "text": "C. Compare the edition details rather than relying on appearance."
+              },
+              {
+                "id": "o3",
+                "text": "D. Every handwritten answer must be correct because somebody wrote it down."
+              },
+              {
+                "id": "o4",
+                "text": "E. Different uses may allow different compromises."
+              },
+              {
+                "id": "o5",
+                "text": "F. Examine several sections, including the parts you expect to study soon."
+              },
+              {
+                "id": "o6",
+                "text": "G. The cheapest book is always suitable for every course."
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.insertion.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 3.",
+            "material": "A. A second-hand book and a time capsule\n\nA second-hand textbook can be useful, but another reader's marks are part of what you receive. Underlining, notes and answers may help or distract you. Before making the book your main study tool, take a little time to understand its condition.\n\nCheck that it is the edition you need. A similar cover does not guarantee the same exercises or page order. ____1____ This is especially important when a teacher refers to particular pages during lessons.\n\nLook through more than the opening chapter. A book may be clean at the front but heavily marked later. ____2____ Missing pages or completed exercises can affect how you use it.\n\nTreat margin notes as another reader's ideas, not automatic authority. An explanation may be useful, mistaken or related to a lesson you did not attend. ____3____ Keep the difference clear between the printed text and an added interpretation.\n\nDecide how to add your own work without creating confusion. You might use removable notes or a separate notebook. ____4____ Covering an earlier answer may also make an exercise more useful when you want to try it yourself.\n\nFinally, judge the book by the job you need it to do. ____5____ A readable older copy can be valuable for general practice even when it would not replace a required current edition. A low price is helpful only when the book remains usable for your purpose.",
+            "explanation": "A checks a handwritten claim rather than granting authority, leading to printed versus added content. B new work, C edition, E fit and F condition are other checks. D directly contradicts fallibility; G price is irrelevant.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check an added claim against the text or ask about it."
+              },
+              {
+                "id": "o1",
+                "text": "B. Choose a method that lets you recognise your own notes later."
+              },
+              {
+                "id": "o2",
+                "text": "C. Compare the edition details rather than relying on appearance."
+              },
+              {
+                "id": "o3",
+                "text": "D. Every handwritten answer must be correct because somebody wrote it down."
+              },
+              {
+                "id": "o4",
+                "text": "E. Different uses may allow different compromises."
+              },
+              {
+                "id": "o5",
+                "text": "F. Examine several sections, including the parts you expect to study soon."
+              },
+              {
+                "id": "o6",
+                "text": "G. The cheapest book is always suitable for every course."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.insertion.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 4.",
+            "material": "A. A second-hand book and a time capsule\n\nA second-hand textbook can be useful, but another reader's marks are part of what you receive. Underlining, notes and answers may help or distract you. Before making the book your main study tool, take a little time to understand its condition.\n\nCheck that it is the edition you need. A similar cover does not guarantee the same exercises or page order. ____1____ This is especially important when a teacher refers to particular pages during lessons.\n\nLook through more than the opening chapter. A book may be clean at the front but heavily marked later. ____2____ Missing pages or completed exercises can affect how you use it.\n\nTreat margin notes as another reader's ideas, not automatic authority. An explanation may be useful, mistaken or related to a lesson you did not attend. ____3____ Keep the difference clear between the printed text and an added interpretation.\n\nDecide how to add your own work without creating confusion. You might use removable notes or a separate notebook. ____4____ Covering an earlier answer may also make an exercise more useful when you want to try it yourself.\n\nFinally, judge the book by the job you need it to do. ____5____ A readable older copy can be valuable for general practice even when it would not replace a required current edition. A low price is helpful only when the book remains usable for your purpose.",
+            "explanation": "B explains removable/separate notes as a way to identify one’s contribution. A checks others’ claims, C edition, E compromise and F condition. D/G do not manage new work.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check an added claim against the text or ask about it."
+              },
+              {
+                "id": "o1",
+                "text": "B. Choose a method that lets you recognise your own notes later."
+              },
+              {
+                "id": "o2",
+                "text": "C. Compare the edition details rather than relying on appearance."
+              },
+              {
+                "id": "o3",
+                "text": "D. Every handwritten answer must be correct because somebody wrote it down."
+              },
+              {
+                "id": "o4",
+                "text": "E. Different uses may allow different compromises."
+              },
+              {
+                "id": "o5",
+                "text": "F. Examine several sections, including the parts you expect to study soon."
+              },
+              {
+                "id": "o6",
+                "text": "G. The cheapest book is always suitable for every course."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.insertion.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 5.",
+            "material": "A. A second-hand book and a time capsule\n\nA second-hand textbook can be useful, but another reader's marks are part of what you receive. Underlining, notes and answers may help or distract you. Before making the book your main study tool, take a little time to understand its condition.\n\nCheck that it is the edition you need. A similar cover does not guarantee the same exercises or page order. ____1____ This is especially important when a teacher refers to particular pages during lessons.\n\nLook through more than the opening chapter. A book may be clean at the front but heavily marked later. ____2____ Missing pages or completed exercises can affect how you use it.\n\nTreat margin notes as another reader's ideas, not automatic authority. An explanation may be useful, mistaken or related to a lesson you did not attend. ____3____ Keep the difference clear between the printed text and an added interpretation.\n\nDecide how to add your own work without creating confusion. You might use removable notes or a separate notebook. ____4____ Covering an earlier answer may also make an exercise more useful when you want to try it yourself.\n\nFinally, judge the book by the job you need it to do. ____5____ A readable older copy can be valuable for general practice even when it would not replace a required current edition. A low price is helpful only when the book remains usable for your purpose.",
+            "explanation": "E introduces different acceptable compromises, illustrated by general practice versus a required edition. A/B/C/F concern particular checks. G denies purpose-based fit and D confuses writing with correctness.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check an added claim against the text or ask about it."
+              },
+              {
+                "id": "o1",
+                "text": "B. Choose a method that lets you recognise your own notes later."
+              },
+              {
+                "id": "o2",
+                "text": "C. Compare the edition details rather than relying on appearance."
+              },
+              {
+                "id": "o3",
+                "text": "D. Every handwritten answer must be correct because somebody wrote it down."
+              },
+              {
+                "id": "o4",
+                "text": "E. Different uses may allow different compromises."
+              },
+              {
+                "id": "o5",
+                "text": "F. Examine several sections, including the parts you expect to study soon."
+              },
+              {
+                "id": "o6",
+                "text": "G. The cheapest book is always suitable for every course."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of open.",
+            "material": "B. A second-hand book and a time capsule\n\nOur class prepared a small time capsule at the end of term. We planned ____1____ (open) it when we returned for a school reunion, rather than bury it where nobody could find it. The head teacher agreed to keep it in a secure cupboard.\n\nEach student wrote a letter to their future self. I described the things ____2____ mattered to me that year, including a friendship I hoped would last. It was difficult to decide what a later version of me would want to remember.\n\nWe also included a copy of the school newspaper and several ____3____ (photo). Before ____4____ (close) the box, we checked that nothing contained food or a battery. The capsule was a collection of memories, not a place to hide unwanted rubbish.\n\nA classmate suggested adding a map of the building. That seemed ____5____ (use) because some rooms were due to change during the summer. We labelled the date clearly so that a future reader would not assume the map still showed the current arrangement.\n\nThe box ____6____ (seal) by our teacher after everyone had checked the list. We kept a second copy of that list outside, together ____7____ the planned opening date and the location of the cupboard.\n\nThe project made us think about the future without pretending we could predict it ____8____ (exact). There was ____9____ sense of excitement in leaving questions unanswered. We looked forward to meeting ____10____ (we) again through the words we had chosen to save.",
+            "explanation": "Planned to open is the direct infinitive pattern; planned on opening is also a grammatical multiword completion. Bare open and finite opened do not directly follow planned.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to open",
+              "on opening"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "open",
+                "opened"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "B. A second-hand book and a time capsule\n\nOur class prepared a small time capsule at the end of term. We planned ____1____ (open) it when we returned for a school reunion, rather than bury it where nobody could find it. The head teacher agreed to keep it in a secure cupboard.\n\nEach student wrote a letter to their future self. I described the things ____2____ mattered to me that year, including a friendship I hoped would last. It was difficult to decide what a later version of me would want to remember.\n\nWe also included a copy of the school newspaper and several ____3____ (photo). Before ____4____ (close) the box, we checked that nothing contained food or a battery. The capsule was a collection of memories, not a place to hide unwanted rubbish.\n\nA classmate suggested adding a map of the building. That seemed ____5____ (use) because some rooms were due to change during the summer. We labelled the date clearly so that a future reader would not assume the map still showed the current arrangement.\n\nThe box ____6____ (seal) by our teacher after everyone had checked the list. We kept a second copy of that list outside, together ____7____ the planned opening date and the location of the cupboard.\n\nThe project made us think about the future without pretending we could predict it ____8____ (exact). There was ____9____ sense of excitement in leaving questions unanswered. We looked forward to meeting ____10____ (we) again through the words we had chosen to save.",
+            "explanation": "Things is the subject antecedent of that/which mattered. Who is human, where not subject and what does not follow this antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with the correct form of photo.",
+            "material": "B. A second-hand book and a time capsule\n\nOur class prepared a small time capsule at the end of term. We planned ____1____ (open) it when we returned for a school reunion, rather than bury it where nobody could find it. The head teacher agreed to keep it in a secure cupboard.\n\nEach student wrote a letter to their future self. I described the things ____2____ mattered to me that year, including a friendship I hoped would last. It was difficult to decide what a later version of me would want to remember.\n\nWe also included a copy of the school newspaper and several ____3____ (photo). Before ____4____ (close) the box, we checked that nothing contained food or a battery. The capsule was a collection of memories, not a place to hide unwanted rubbish.\n\nA classmate suggested adding a map of the building. That seemed ____5____ (use) because some rooms were due to change during the summer. We labelled the date clearly so that a future reader would not assume the map still showed the current arrangement.\n\nThe box ____6____ (seal) by our teacher after everyone had checked the list. We kept a second copy of that list outside, together ____7____ the planned opening date and the location of the cupboard.\n\nThe project made us think about the future without pretending we could predict it ____8____ (exact). There was ____9____ sense of excitement in leaving questions unanswered. We looked forward to meeting ____10____ (we) again through the words we had chosen to save.",
+            "explanation": "Several requires plural photos; photographs is an accepted synonymous plural. Photo is singular and photoes nonstandard.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "photos",
+              "photographs"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "photo",
+                "photoes"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with the correct form of close.",
+            "material": "B. A second-hand book and a time capsule\n\nOur class prepared a small time capsule at the end of term. We planned ____1____ (open) it when we returned for a school reunion, rather than bury it where nobody could find it. The head teacher agreed to keep it in a secure cupboard.\n\nEach student wrote a letter to their future self. I described the things ____2____ mattered to me that year, including a friendship I hoped would last. It was difficult to decide what a later version of me would want to remember.\n\nWe also included a copy of the school newspaper and several ____3____ (photo). Before ____4____ (close) the box, we checked that nothing contained food or a battery. The capsule was a collection of memories, not a place to hide unwanted rubbish.\n\nA classmate suggested adding a map of the building. That seemed ____5____ (use) because some rooms were due to change during the summer. We labelled the date clearly so that a future reader would not assume the map still showed the current arrangement.\n\nThe box ____6____ (seal) by our teacher after everyone had checked the list. We kept a second copy of that list outside, together ____7____ the planned opening date and the location of the cupboard.\n\nThe project made us think about the future without pretending we could predict it ____8____ (exact). There was ____9____ sense of excitement in leaving questions unanswered. We looked forward to meeting ____10____ (we) again through the words we had chosen to save.",
+            "explanation": "Before closing fits the preparation sequence. Having closed describes a completed state after before and is left reviewable rather than assumed valid; it is not a required accepted variant. The base, finite past and to-infinitive do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "closing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "close",
+                "closed",
+                "to close"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with the correct form of use.",
+            "material": "B. A second-hand book and a time capsule\n\nOur class prepared a small time capsule at the end of term. We planned ____1____ (open) it when we returned for a school reunion, rather than bury it where nobody could find it. The head teacher agreed to keep it in a secure cupboard.\n\nEach student wrote a letter to their future self. I described the things ____2____ mattered to me that year, including a friendship I hoped would last. It was difficult to decide what a later version of me would want to remember.\n\nWe also included a copy of the school newspaper and several ____3____ (photo). Before ____4____ (close) the box, we checked that nothing contained food or a battery. The capsule was a collection of memories, not a place to hide unwanted rubbish.\n\nA classmate suggested adding a map of the building. That seemed ____5____ (use) because some rooms were due to change during the summer. We labelled the date clearly so that a future reader would not assume the map still showed the current arrangement.\n\nThe box ____6____ (seal) by our teacher after everyone had checked the list. We kept a second copy of that list outside, together ____7____ the planned opening date and the location of the cupboard.\n\nThe project made us think about the future without pretending we could predict it ____8____ (exact). There was ____9____ sense of excitement in leaving questions unanswered. We looked forward to meeting ____10____ (we) again through the words we had chosen to save.",
+            "explanation": "Useful describes the map’s practical value. Use is noun/verb and usefully adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "useful"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "use",
+                "usefully"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with the correct form of seal.",
+            "material": "B. A second-hand book and a time capsule\n\nOur class prepared a small time capsule at the end of term. We planned ____1____ (open) it when we returned for a school reunion, rather than bury it where nobody could find it. The head teacher agreed to keep it in a secure cupboard.\n\nEach student wrote a letter to their future self. I described the things ____2____ mattered to me that year, including a friendship I hoped would last. It was difficult to decide what a later version of me would want to remember.\n\nWe also included a copy of the school newspaper and several ____3____ (photo). Before ____4____ (close) the box, we checked that nothing contained food or a battery. The capsule was a collection of memories, not a place to hide unwanted rubbish.\n\nA classmate suggested adding a map of the building. That seemed ____5____ (use) because some rooms were due to change during the summer. We labelled the date clearly so that a future reader would not assume the map still showed the current arrangement.\n\nThe box ____6____ (seal) by our teacher after everyone had checked the list. We kept a second copy of that list outside, together ____7____ the planned opening date and the location of the cupboard.\n\nThe project made us think about the future without pretending we could predict it ____8____ (exact). There was ____9____ sense of excitement in leaving questions unanswered. We looked forward to meeting ____10____ (we) again through the words we had chosen to save.",
+            "explanation": "The singular box receives sealing. Past or past-perfect passive fits; sealed lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was sealed",
+              "had been sealed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "sealed",
+                "were sealed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "B. A second-hand book and a time capsule\n\nOur class prepared a small time capsule at the end of term. We planned ____1____ (open) it when we returned for a school reunion, rather than bury it where nobody could find it. The head teacher agreed to keep it in a secure cupboard.\n\nEach student wrote a letter to their future self. I described the things ____2____ mattered to me that year, including a friendship I hoped would last. It was difficult to decide what a later version of me would want to remember.\n\nWe also included a copy of the school newspaper and several ____3____ (photo). Before ____4____ (close) the box, we checked that nothing contained food or a battery. The capsule was a collection of memories, not a place to hide unwanted rubbish.\n\nA classmate suggested adding a map of the building. That seemed ____5____ (use) because some rooms were due to change during the summer. We labelled the date clearly so that a future reader would not assume the map still showed the current arrangement.\n\nThe box ____6____ (seal) by our teacher after everyone had checked the list. We kept a second copy of that list outside, together ____7____ the planned opening date and the location of the cupboard.\n\nThe project made us think about the future without pretending we could predict it ____8____ (exact). There was ____9____ sense of excitement in leaving questions unanswered. We looked forward to meeting ____10____ (we) again through the words we had chosen to save.",
+            "explanation": "Together with links the list to date/location information. Other listed prepositions do not complete together.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "with"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of",
+                "from",
+                "by"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with the correct form of exact.",
+            "material": "B. A second-hand book and a time capsule\n\nOur class prepared a small time capsule at the end of term. We planned ____1____ (open) it when we returned for a school reunion, rather than bury it where nobody could find it. The head teacher agreed to keep it in a secure cupboard.\n\nEach student wrote a letter to their future self. I described the things ____2____ mattered to me that year, including a friendship I hoped would last. It was difficult to decide what a later version of me would want to remember.\n\nWe also included a copy of the school newspaper and several ____3____ (photo). Before ____4____ (close) the box, we checked that nothing contained food or a battery. The capsule was a collection of memories, not a place to hide unwanted rubbish.\n\nA classmate suggested adding a map of the building. That seemed ____5____ (use) because some rooms were due to change during the summer. We labelled the date clearly so that a future reader would not assume the map still showed the current arrangement.\n\nThe box ____6____ (seal) by our teacher after everyone had checked the list. We kept a second copy of that list outside, together ____7____ the planned opening date and the location of the cupboard.\n\nThe project made us think about the future without pretending we could predict it ____8____ (exact). There was ____9____ sense of excitement in leaving questions unanswered. We looked forward to meeting ____10____ (we) again through the words we had chosen to save.",
+            "explanation": "Exactly modifies predict. Exact is adjective and exactness noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "exactly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "exact",
+                "exactness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "B. A second-hand book and a time capsule\n\nOur class prepared a small time capsule at the end of term. We planned ____1____ (open) it when we returned for a school reunion, rather than bury it where nobody could find it. The head teacher agreed to keep it in a secure cupboard.\n\nEach student wrote a letter to their future self. I described the things ____2____ mattered to me that year, including a friendship I hoped would last. It was difficult to decide what a later version of me would want to remember.\n\nWe also included a copy of the school newspaper and several ____3____ (photo). Before ____4____ (close) the box, we checked that nothing contained food or a battery. The capsule was a collection of memories, not a place to hide unwanted rubbish.\n\nA classmate suggested adding a map of the building. That seemed ____5____ (use) because some rooms were due to change during the summer. We labelled the date clearly so that a future reader would not assume the map still showed the current arrangement.\n\nThe box ____6____ (seal) by our teacher after everyone had checked the list. We kept a second copy of that list outside, together ____7____ the planned opening date and the location of the cupboard.\n\nThe project made us think about the future without pretending we could predict it ____8____ (exact). There was ____9____ sense of excitement in leaving questions unanswered. We looked forward to meeting ____10____ (we) again through the words we had chosen to save.",
+            "explanation": "A sense uses a before consonant s. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with the correct form of we.",
+            "material": "B. A second-hand book and a time capsule\n\nOur class prepared a small time capsule at the end of term. We planned ____1____ (open) it when we returned for a school reunion, rather than bury it where nobody could find it. The head teacher agreed to keep it in a secure cupboard.\n\nEach student wrote a letter to their future self. I described the things ____2____ mattered to me that year, including a friendship I hoped would last. It was difficult to decide what a later version of me would want to remember.\n\nWe also included a copy of the school newspaper and several ____3____ (photo). Before ____4____ (close) the box, we checked that nothing contained food or a battery. The capsule was a collection of memories, not a place to hide unwanted rubbish.\n\nA classmate suggested adding a map of the building. That seemed ____5____ (use) because some rooms were due to change during the summer. We labelled the date clearly so that a future reader would not assume the map still showed the current arrangement.\n\nThe box ____6____ (seal) by our teacher after everyone had checked the list. We kept a second copy of that list outside, together ____7____ the planned opening date and the location of the cupboard.\n\nThe project made us think about the future without pretending we could predict it ____8____ (exact). There was ____9____ sense of excitement in leaving questions unanswered. We looked forward to meeting ____10____ (we) again through the words we had chosen to save.",
+            "explanation": "Meeting ourselves refers reflexively to future encounters with our earlier selves. Subject/possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "ourselves"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "58bfd66f255c9caecd9c289e071333fc77bba684d030056f60ba4f81039d3e64",
+      "reviewNotes": "Three new complete senior mixed practices. Fictional class projects and general reading/cooperation discussion; no invented study or numerical finding. Same-author cohesion, alternative and answer-form review only, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.used-book-and-capsule-071#insertion",
+          "family": "shared_insertion",
+          "questionIds": [
+            "expansion.20261024.senior1.used-book-and-capsule-071.insertion.q1",
+            "expansion.20261024.senior1.used-book-and-capsule-071.insertion.q2",
+            "expansion.20261024.senior1.used-book-and-capsule-071.insertion.q3",
+            "expansion.20261024.senior1.used-book-and-capsule-071.insertion.q4",
+            "expansion.20261024.senior1.used-book-and-capsule-071.insertion.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.used-book-and-capsule-071",
+          "sourceContentHash": "e5c2ec5b72fca4dc4468974764830c20b150cbe6531ab686322ed083e70f5794"
+        },
+        {
+          "id": "expansion.20261024.senior1.used-book-and-capsule-071#grammar",
+          "family": "passage_form",
+          "questionIds": [
+            "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q1",
+            "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q2",
+            "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q3",
+            "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q4",
+            "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q5",
+            "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q6",
+            "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q7",
+            "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q8",
+            "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q9",
+            "expansion.20261024.senior1.used-book-and-capsule-071.grammar.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.used-book-and-capsule-071",
+          "sourceContentHash": "64850c7cecdccbfd4379c55eb652a7cfc8a78a9db3b4684ff0355e04804a2a5d"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · Sharing a kitchen and watching materials expand",
+        "summary": "Sharing a kitchen and watching materials expand，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_insertion",
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I insertion and passage-form task structure",
+            "pages": "Reading: five of seven; Use of English: 10-gap passage form",
+            "alignment": "One full five-gap passage sharing seven candidates, plus one full ten-gap grammar passage. Source supplies task rules only; all prose and keys are original."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g11.spring2024.insertionE",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete senior mixed practices. Fictional class projects and general reading/cooperation discussion; no invented study or numerical finding. Same-author cohesion, alternative and answer-form review only, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071",
+          "family": "shared_insertion_passage_form",
+          "label": "Sharing a kitchen and watching materials expand",
+          "candidateSHA256": "a5259393b4e1956e4018011976406dbf878cdee71a1cec54e1a9079f9d1e0f15",
+          "authorCheckSHA256": "67bb4b719c30683de1c6b84cc9675da4c0aad508cb45b81a20ec6a77a0ffe0f5",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071#insertion",
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071#grammar"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b071；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Sharing a kitchen and watching materials expand\n\nA shared kitchen can work well when people understand more than the location of the plates. Different schedules, habits and expectations meet in the same small space. Clear arrangements make everyday cooperation easier without requiring everyone to live in exactly the same way.\n\nFind out when others normally cook. Two people may both need the only large pan at the same time. ____1____ A small change in timing may prevent a repeated disagreement about equipment.\n\nAgree on what is shared and what remains personal. A common shelf for tea does not automatically make every ingredient available to everyone. ____2____ A name on a container can prevent confusion, but it does not replace an agreement about use.\n\nDescribe a problem while it is still specific. Saying that a flatmate is always inconsiderate is harder to resolve than mentioning a pan left dirty yesterday. ____3____ The aim is a change in the arrangement, not a permanent judgment about someone's character.\n\nThink about the next user when finishing. A surface can look clear while the bin is full or the cooker still needs attention. ____4____ Returning the room to a usable state is part of completing your own meal.\n\nFinally, revisit the arrangement when routines change. ____5____ A new job or another resident can make a once-convenient system awkward. Treat the discussion as maintenance of a shared space rather than evidence that sharing has failed.\n\nB. Sharing a kitchen and watching materials expand\n\nMany materials change size when their temperature changes. In a school demonstration, a teacher ____1____ (heat) a metal strip and showed us a small movement at one end. The change was difficult to see without a marker beside it.\n\nThe teacher explained that the strip became slightly ____2____ (long) as it warmed. A model on the table made the movement more visible, but she warned us that a larger drawing was not a measurement of the real change.\n\nAfter ____3____ (observe) the demonstration, we looked at photographs of gaps in structures. Some gaps are deliberately included ____4____ materials need space for movement as conditions vary. Their presence does not automatically mean that someone forgot to join two parts.\n\nOne photograph showed a joint ____5____ had been designed for a particular structure. We were not asked to decide whether a real bridge was safe from a picture. That judgment required ____6____ (inform) about the whole structure and examination by qualified people.\n\nThe visit helped us understand the ____7____ (important) of allowing for change rather than assuming every object keeps exactly the same dimensions. Our teacher invited us ____8____ (compare) the model with the diagram and describe where each simplified the situation.\n\nWe wrote our account ____9____ (careful), keeping observations separate from broader claims. The movement was small, but it offered ____10____ useful starting point for a larger explanation of why engineering plans must consider changing conditions."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.insertion.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 1.",
+            "material": "A. Sharing a kitchen and watching materials expand\n\nA shared kitchen can work well when people understand more than the location of the plates. Different schedules, habits and expectations meet in the same small space. Clear arrangements make everyday cooperation easier without requiring everyone to live in exactly the same way.\n\nFind out when others normally cook. Two people may both need the only large pan at the same time. ____1____ A small change in timing may prevent a repeated disagreement about equipment.\n\nAgree on what is shared and what remains personal. A common shelf for tea does not automatically make every ingredient available to everyone. ____2____ A name on a container can prevent confusion, but it does not replace an agreement about use.\n\nDescribe a problem while it is still specific. Saying that a flatmate is always inconsiderate is harder to resolve than mentioning a pan left dirty yesterday. ____3____ The aim is a change in the arrangement, not a permanent judgment about someone's character.\n\nThink about the next user when finishing. A surface can look clear while the bin is full or the cooker still needs attention. ____4____ Returning the room to a usable state is part of completing your own meal.\n\nFinally, revisit the arrangement when routines change. ____5____ A new job or another resident can make a once-convenient system awkward. Treat the discussion as maintenance of a shared space rather than evidence that sharing has failed.",
+            "explanation": "B addresses the shared-pan timing conflict and prepares changing the schedule. A specific problem, D cleanup, E later review and F food ownership serve other gaps. C imposes sameness and G confuses appearance with completion.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Explain what happened and what would make the next time easier."
+              },
+              {
+                "id": "o1",
+                "text": "B. Discuss the likely clashes before they become urgent."
+              },
+              {
+                "id": "o2",
+                "text": "C. Everyone must cook the same meal at the same hour."
+              },
+              {
+                "id": "o3",
+                "text": "D. Check the shared space, not only the plate you used."
+              },
+              {
+                "id": "o4",
+                "text": "E. Do not assume that last term’s plan still fits this one."
+              },
+              {
+                "id": "o5",
+                "text": "F. Ask before treating another person’s food as communal."
+              },
+              {
+                "id": "o6",
+                "text": "G. A tidy-looking table proves that no cleaning remains anywhere."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.insertion.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 2.",
+            "material": "A. Sharing a kitchen and watching materials expand\n\nA shared kitchen can work well when people understand more than the location of the plates. Different schedules, habits and expectations meet in the same small space. Clear arrangements make everyday cooperation easier without requiring everyone to live in exactly the same way.\n\nFind out when others normally cook. Two people may both need the only large pan at the same time. ____1____ A small change in timing may prevent a repeated disagreement about equipment.\n\nAgree on what is shared and what remains personal. A common shelf for tea does not automatically make every ingredient available to everyone. ____2____ A name on a container can prevent confusion, but it does not replace an agreement about use.\n\nDescribe a problem while it is still specific. Saying that a flatmate is always inconsiderate is harder to resolve than mentioning a pan left dirty yesterday. ____3____ The aim is a change in the arrangement, not a permanent judgment about someone's character.\n\nThink about the next user when finishing. A surface can look clear while the bin is full or the cooker still needs attention. ____4____ Returning the room to a usable state is part of completing your own meal.\n\nFinally, revisit the arrangement when routines change. ____5____ A new job or another resident can make a once-convenient system awkward. Treat the discussion as maintenance of a shared space rather than evidence that sharing has failed.",
+            "explanation": "F limits shared use of personal ingredients, preparing labels versus agreement. A/B/D/E concern communication, timing, cleanup and review. C/G do not establish ownership.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Explain what happened and what would make the next time easier."
+              },
+              {
+                "id": "o1",
+                "text": "B. Discuss the likely clashes before they become urgent."
+              },
+              {
+                "id": "o2",
+                "text": "C. Everyone must cook the same meal at the same hour."
+              },
+              {
+                "id": "o3",
+                "text": "D. Check the shared space, not only the plate you used."
+              },
+              {
+                "id": "o4",
+                "text": "E. Do not assume that last term’s plan still fits this one."
+              },
+              {
+                "id": "o5",
+                "text": "F. Ask before treating another person’s food as communal."
+              },
+              {
+                "id": "o6",
+                "text": "G. A tidy-looking table proves that no cleaning remains anywhere."
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.insertion.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 3.",
+            "material": "A. Sharing a kitchen and watching materials expand\n\nA shared kitchen can work well when people understand more than the location of the plates. Different schedules, habits and expectations meet in the same small space. Clear arrangements make everyday cooperation easier without requiring everyone to live in exactly the same way.\n\nFind out when others normally cook. Two people may both need the only large pan at the same time. ____1____ A small change in timing may prevent a repeated disagreement about equipment.\n\nAgree on what is shared and what remains personal. A common shelf for tea does not automatically make every ingredient available to everyone. ____2____ A name on a container can prevent confusion, but it does not replace an agreement about use.\n\nDescribe a problem while it is still specific. Saying that a flatmate is always inconsiderate is harder to resolve than mentioning a pan left dirty yesterday. ____3____ The aim is a change in the arrangement, not a permanent judgment about someone's character.\n\nThink about the next user when finishing. A surface can look clear while the bin is full or the cooker still needs attention. ____4____ Returning the room to a usable state is part of completing your own meal.\n\nFinally, revisit the arrangement when routines change. ____5____ A new job or another resident can make a once-convenient system awkward. Treat the discussion as maintenance of a shared space rather than evidence that sharing has failed.",
+            "explanation": "A keeps the complaint factual and future-oriented, leading to changing arrangements rather than attacking character. B timing, D cleanup, E review and F ingredients are other topics. C/G offer inappropriate universal rules.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Explain what happened and what would make the next time easier."
+              },
+              {
+                "id": "o1",
+                "text": "B. Discuss the likely clashes before they become urgent."
+              },
+              {
+                "id": "o2",
+                "text": "C. Everyone must cook the same meal at the same hour."
+              },
+              {
+                "id": "o3",
+                "text": "D. Check the shared space, not only the plate you used."
+              },
+              {
+                "id": "o4",
+                "text": "E. Do not assume that last term’s plan still fits this one."
+              },
+              {
+                "id": "o5",
+                "text": "F. Ask before treating another person’s food as communal."
+              },
+              {
+                "id": "o6",
+                "text": "G. A tidy-looking table proves that no cleaning remains anywhere."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.insertion.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 4.",
+            "material": "A. Sharing a kitchen and watching materials expand\n\nA shared kitchen can work well when people understand more than the location of the plates. Different schedules, habits and expectations meet in the same small space. Clear arrangements make everyday cooperation easier without requiring everyone to live in exactly the same way.\n\nFind out when others normally cook. Two people may both need the only large pan at the same time. ____1____ A small change in timing may prevent a repeated disagreement about equipment.\n\nAgree on what is shared and what remains personal. A common shelf for tea does not automatically make every ingredient available to everyone. ____2____ A name on a container can prevent confusion, but it does not replace an agreement about use.\n\nDescribe a problem while it is still specific. Saying that a flatmate is always inconsiderate is harder to resolve than mentioning a pan left dirty yesterday. ____3____ The aim is a change in the arrangement, not a permanent judgment about someone's character.\n\nThink about the next user when finishing. A surface can look clear while the bin is full or the cooker still needs attention. ____4____ Returning the room to a usable state is part of completing your own meal.\n\nFinally, revisit the arrangement when routines change. ____5____ A new job or another resident can make a once-convenient system awkward. Treat the discussion as maintenance of a shared space rather than evidence that sharing has failed.",
+            "explanation": "D develops surfaces/bin/cooker beyond one used plate and leads to readiness for the next person. A/B/E/F concern other steps. G contradicts hidden remaining work and C is unrelated to cleanup.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Explain what happened and what would make the next time easier."
+              },
+              {
+                "id": "o1",
+                "text": "B. Discuss the likely clashes before they become urgent."
+              },
+              {
+                "id": "o2",
+                "text": "C. Everyone must cook the same meal at the same hour."
+              },
+              {
+                "id": "o3",
+                "text": "D. Check the shared space, not only the plate you used."
+              },
+              {
+                "id": "o4",
+                "text": "E. Do not assume that last term’s plan still fits this one."
+              },
+              {
+                "id": "o5",
+                "text": "F. Ask before treating another person’s food as communal."
+              },
+              {
+                "id": "o6",
+                "text": "G. A tidy-looking table proves that no cleaning remains anywhere."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.insertion.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 5.",
+            "material": "A. Sharing a kitchen and watching materials expand\n\nA shared kitchen can work well when people understand more than the location of the plates. Different schedules, habits and expectations meet in the same small space. Clear arrangements make everyday cooperation easier without requiring everyone to live in exactly the same way.\n\nFind out when others normally cook. Two people may both need the only large pan at the same time. ____1____ A small change in timing may prevent a repeated disagreement about equipment.\n\nAgree on what is shared and what remains personal. A common shelf for tea does not automatically make every ingredient available to everyone. ____2____ A name on a container can prevent confusion, but it does not replace an agreement about use.\n\nDescribe a problem while it is still specific. Saying that a flatmate is always inconsiderate is harder to resolve than mentioning a pan left dirty yesterday. ____3____ The aim is a change in the arrangement, not a permanent judgment about someone's character.\n\nThink about the next user when finishing. A surface can look clear while the bin is full or the cooker still needs attention. ____4____ Returning the room to a usable state is part of completing your own meal.\n\nFinally, revisit the arrangement when routines change. ____5____ A new job or another resident can make a once-convenient system awkward. Treat the discussion as maintenance of a shared space rather than evidence that sharing has failed.",
+            "explanation": "E introduces changed routines, explained by a new job/resident. A/B/D/F are earlier cooperation steps. C denies differing schedules and G ignores changing needs.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Explain what happened and what would make the next time easier."
+              },
+              {
+                "id": "o1",
+                "text": "B. Discuss the likely clashes before they become urgent."
+              },
+              {
+                "id": "o2",
+                "text": "C. Everyone must cook the same meal at the same hour."
+              },
+              {
+                "id": "o3",
+                "text": "D. Check the shared space, not only the plate you used."
+              },
+              {
+                "id": "o4",
+                "text": "E. Do not assume that last term’s plan still fits this one."
+              },
+              {
+                "id": "o5",
+                "text": "F. Ask before treating another person’s food as communal."
+              },
+              {
+                "id": "o6",
+                "text": "G. A tidy-looking table proves that no cleaning remains anywhere."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of heat.",
+            "material": "B. Sharing a kitchen and watching materials expand\n\nMany materials change size when their temperature changes. In a school demonstration, a teacher ____1____ (heat) a metal strip and showed us a small movement at one end. The change was difficult to see without a marker beside it.\n\nThe teacher explained that the strip became slightly ____2____ (long) as it warmed. A model on the table made the movement more visible, but she warned us that a larger drawing was not a measurement of the real change.\n\nAfter ____3____ (observe) the demonstration, we looked at photographs of gaps in structures. Some gaps are deliberately included ____4____ materials need space for movement as conditions vary. Their presence does not automatically mean that someone forgot to join two parts.\n\nOne photograph showed a joint ____5____ had been designed for a particular structure. We were not asked to decide whether a real bridge was safe from a picture. That judgment required ____6____ (inform) about the whole structure and examination by qualified people.\n\nThe visit helped us understand the ____7____ (important) of allowing for change rather than assuming every object keeps exactly the same dimensions. Our teacher invited us ____8____ (compare) the model with the diagram and describe where each simplified the situation.\n\nWe wrote our account ____9____ (careful), keeping observations separate from broader claims. The movement was small, but it offered ____10____ useful starting point for a larger explanation of why engineering plans must consider changing conditions.",
+            "explanation": "The school demonstration is narrated in the past: heated. Base and unaided -ing do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "heated"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "heat",
+                "heating"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with the correct form of long.",
+            "material": "B. Sharing a kitchen and watching materials expand\n\nMany materials change size when their temperature changes. In a school demonstration, a teacher ____1____ (heat) a metal strip and showed us a small movement at one end. The change was difficult to see without a marker beside it.\n\nThe teacher explained that the strip became slightly ____2____ (long) as it warmed. A model on the table made the movement more visible, but she warned us that a larger drawing was not a measurement of the real change.\n\nAfter ____3____ (observe) the demonstration, we looked at photographs of gaps in structures. Some gaps are deliberately included ____4____ materials need space for movement as conditions vary. Their presence does not automatically mean that someone forgot to join two parts.\n\nOne photograph showed a joint ____5____ had been designed for a particular structure. We were not asked to decide whether a real bridge was safe from a picture. That judgment required ____6____ (inform) about the whole structure and examination by qualified people.\n\nThe visit helped us understand the ____7____ (important) of allowing for change rather than assuming every object keeps exactly the same dimensions. Our teacher invited us ____8____ (compare) the model with the diagram and describe where each simplified the situation.\n\nWe wrote our account ____9____ (careful), keeping observations separate from broader claims. The movement was small, but it offered ____10____ useful starting point for a larger explanation of why engineering plans must consider changing conditions.",
+            "explanation": "Longer/more long gives the increase during warming. Longest is superlative and more longer doubled comparison; unlisted plain readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "longer",
+              "more long"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "longest",
+                "more longer"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with the correct form of observe.",
+            "material": "B. Sharing a kitchen and watching materials expand\n\nMany materials change size when their temperature changes. In a school demonstration, a teacher ____1____ (heat) a metal strip and showed us a small movement at one end. The change was difficult to see without a marker beside it.\n\nThe teacher explained that the strip became slightly ____2____ (long) as it warmed. A model on the table made the movement more visible, but she warned us that a larger drawing was not a measurement of the real change.\n\nAfter ____3____ (observe) the demonstration, we looked at photographs of gaps in structures. Some gaps are deliberately included ____4____ materials need space for movement as conditions vary. Their presence does not automatically mean that someone forgot to join two parts.\n\nOne photograph showed a joint ____5____ had been designed for a particular structure. We were not asked to decide whether a real bridge was safe from a picture. That judgment required ____6____ (inform) about the whole structure and examination by qualified people.\n\nThe visit helped us understand the ____7____ (important) of allowing for change rather than assuming every object keeps exactly the same dimensions. Our teacher invited us ____8____ (compare) the model with the diagram and describe where each simplified the situation.\n\nWe wrote our account ____9____ (careful), keeping observations separate from broader claims. The movement was small, but it offered ____10____ useful starting point for a larger explanation of why engineering plans must consider changing conditions.",
+            "explanation": "After takes observing. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "observing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "observe",
+                "observed",
+                "to observe"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "B. Sharing a kitchen and watching materials expand\n\nMany materials change size when their temperature changes. In a school demonstration, a teacher ____1____ (heat) a metal strip and showed us a small movement at one end. The change was difficult to see without a marker beside it.\n\nThe teacher explained that the strip became slightly ____2____ (long) as it warmed. A model on the table made the movement more visible, but she warned us that a larger drawing was not a measurement of the real change.\n\nAfter ____3____ (observe) the demonstration, we looked at photographs of gaps in structures. Some gaps are deliberately included ____4____ materials need space for movement as conditions vary. Their presence does not automatically mean that someone forgot to join two parts.\n\nOne photograph showed a joint ____5____ had been designed for a particular structure. We were not asked to decide whether a real bridge was safe from a picture. That judgment required ____6____ (inform) about the whole structure and examination by qualified people.\n\nThe visit helped us understand the ____7____ (important) of allowing for change rather than assuming every object keeps exactly the same dimensions. Our teacher invited us ____8____ (compare) the model with the diagram and describe where each simplified the situation.\n\nWe wrote our account ____9____ (careful), keeping observations separate from broader claims. The movement was small, but it offered ____10____ useful starting point for a larger explanation of why engineering plans must consider changing conditions.",
+            "explanation": "Because/as/since give the reason gaps are included. Although lacks a contrast and unless reverses the stated need.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "because",
+              "as",
+              "since"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "although",
+                "unless"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with one appropriate word.",
+            "material": "B. Sharing a kitchen and watching materials expand\n\nMany materials change size when their temperature changes. In a school demonstration, a teacher ____1____ (heat) a metal strip and showed us a small movement at one end. The change was difficult to see without a marker beside it.\n\nThe teacher explained that the strip became slightly ____2____ (long) as it warmed. A model on the table made the movement more visible, but she warned us that a larger drawing was not a measurement of the real change.\n\nAfter ____3____ (observe) the demonstration, we looked at photographs of gaps in structures. Some gaps are deliberately included ____4____ materials need space for movement as conditions vary. Their presence does not automatically mean that someone forgot to join two parts.\n\nOne photograph showed a joint ____5____ had been designed for a particular structure. We were not asked to decide whether a real bridge was safe from a picture. That judgment required ____6____ (inform) about the whole structure and examination by qualified people.\n\nThe visit helped us understand the ____7____ (important) of allowing for change rather than assuming every object keeps exactly the same dimensions. Our teacher invited us ____8____ (compare) the model with the diagram and describe where each simplified the situation.\n\nWe wrote our account ____9____ (careful), keeping observations separate from broader claims. The movement was small, but it offered ____10____ useful starting point for a larger explanation of why engineering plans must consider changing conditions.",
+            "explanation": "Joint is subject antecedent of that/which had been designed. Who is human, where not subject and what does not fit an expressed antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with the correct form of inform.",
+            "material": "B. Sharing a kitchen and watching materials expand\n\nMany materials change size when their temperature changes. In a school demonstration, a teacher ____1____ (heat) a metal strip and showed us a small movement at one end. The change was difficult to see without a marker beside it.\n\nThe teacher explained that the strip became slightly ____2____ (long) as it warmed. A model on the table made the movement more visible, but she warned us that a larger drawing was not a measurement of the real change.\n\nAfter ____3____ (observe) the demonstration, we looked at photographs of gaps in structures. Some gaps are deliberately included ____4____ materials need space for movement as conditions vary. Their presence does not automatically mean that someone forgot to join two parts.\n\nOne photograph showed a joint ____5____ had been designed for a particular structure. We were not asked to decide whether a real bridge was safe from a picture. That judgment required ____6____ (inform) about the whole structure and examination by qualified people.\n\nThe visit helped us understand the ____7____ (important) of allowing for change rather than assuming every object keeps exactly the same dimensions. Our teacher invited us ____8____ (compare) the model with the diagram and describe where each simplified the situation.\n\nWe wrote our account ____9____ (careful), keeping observations separate from broader claims. The movement was small, but it offered ____10____ useful starting point for a larger explanation of why engineering plans must consider changing conditions.",
+            "explanation": "Required information names knowledge about the structure. Inform is verb and informative adjective.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "information"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "inform",
+                "informative"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with the correct form of important.",
+            "material": "B. Sharing a kitchen and watching materials expand\n\nMany materials change size when their temperature changes. In a school demonstration, a teacher ____1____ (heat) a metal strip and showed us a small movement at one end. The change was difficult to see without a marker beside it.\n\nThe teacher explained that the strip became slightly ____2____ (long) as it warmed. A model on the table made the movement more visible, but she warned us that a larger drawing was not a measurement of the real change.\n\nAfter ____3____ (observe) the demonstration, we looked at photographs of gaps in structures. Some gaps are deliberately included ____4____ materials need space for movement as conditions vary. Their presence does not automatically mean that someone forgot to join two parts.\n\nOne photograph showed a joint ____5____ had been designed for a particular structure. We were not asked to decide whether a real bridge was safe from a picture. That judgment required ____6____ (inform) about the whole structure and examination by qualified people.\n\nThe visit helped us understand the ____7____ (important) of allowing for change rather than assuming every object keeps exactly the same dimensions. Our teacher invited us ____8____ (compare) the model with the diagram and describe where each simplified the situation.\n\nWe wrote our account ____9____ (careful), keeping observations separate from broader claims. The movement was small, but it offered ____10____ useful starting point for a larger explanation of why engineering plans must consider changing conditions.",
+            "explanation": "The importance of requires the noun. Important is adjective and importantly adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "importance"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "important",
+                "importantly"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with the correct form of compare.",
+            "material": "B. Sharing a kitchen and watching materials expand\n\nMany materials change size when their temperature changes. In a school demonstration, a teacher ____1____ (heat) a metal strip and showed us a small movement at one end. The change was difficult to see without a marker beside it.\n\nThe teacher explained that the strip became slightly ____2____ (long) as it warmed. A model on the table made the movement more visible, but she warned us that a larger drawing was not a measurement of the real change.\n\nAfter ____3____ (observe) the demonstration, we looked at photographs of gaps in structures. Some gaps are deliberately included ____4____ materials need space for movement as conditions vary. Their presence does not automatically mean that someone forgot to join two parts.\n\nOne photograph showed a joint ____5____ had been designed for a particular structure. We were not asked to decide whether a real bridge was safe from a picture. That judgment required ____6____ (inform) about the whole structure and examination by qualified people.\n\nThe visit helped us understand the ____7____ (important) of allowing for change rather than assuming every object keeps exactly the same dimensions. Our teacher invited us ____8____ (compare) the model with the diagram and describe where each simplified the situation.\n\nWe wrote our account ____9____ (careful), keeping observations separate from broader claims. The movement was small, but it offered ____10____ useful starting point for a larger explanation of why engineering plans must consider changing conditions.",
+            "explanation": "Invited us takes to compare. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to compare"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "comparing",
+                "compare",
+                "compared"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with the correct form of careful.",
+            "material": "B. Sharing a kitchen and watching materials expand\n\nMany materials change size when their temperature changes. In a school demonstration, a teacher ____1____ (heat) a metal strip and showed us a small movement at one end. The change was difficult to see without a marker beside it.\n\nThe teacher explained that the strip became slightly ____2____ (long) as it warmed. A model on the table made the movement more visible, but she warned us that a larger drawing was not a measurement of the real change.\n\nAfter ____3____ (observe) the demonstration, we looked at photographs of gaps in structures. Some gaps are deliberately included ____4____ materials need space for movement as conditions vary. Their presence does not automatically mean that someone forgot to join two parts.\n\nOne photograph showed a joint ____5____ had been designed for a particular structure. We were not asked to decide whether a real bridge was safe from a picture. That judgment required ____6____ (inform) about the whole structure and examination by qualified people.\n\nThe visit helped us understand the ____7____ (important) of allowing for change rather than assuming every object keeps exactly the same dimensions. Our teacher invited us ____8____ (compare) the model with the diagram and describe where each simplified the situation.\n\nWe wrote our account ____9____ (careful), keeping observations separate from broader claims. The movement was small, but it offered ____10____ useful starting point for a larger explanation of why engineering plans must consider changing conditions.",
+            "explanation": "Carefully modifies wrote. Careful is adjective and carefulness noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careful",
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "B. Sharing a kitchen and watching materials expand\n\nMany materials change size when their temperature changes. In a school demonstration, a teacher ____1____ (heat) a metal strip and showed us a small movement at one end. The change was difficult to see without a marker beside it.\n\nThe teacher explained that the strip became slightly ____2____ (long) as it warmed. A model on the table made the movement more visible, but she warned us that a larger drawing was not a measurement of the real change.\n\nAfter ____3____ (observe) the demonstration, we looked at photographs of gaps in structures. Some gaps are deliberately included ____4____ materials need space for movement as conditions vary. Their presence does not automatically mean that someone forgot to join two parts.\n\nOne photograph showed a joint ____5____ had been designed for a particular structure. We were not asked to decide whether a real bridge was safe from a picture. That judgment required ____6____ (inform) about the whole structure and examination by qualified people.\n\nThe visit helped us understand the ____7____ (important) of allowing for change rather than assuming every object keeps exactly the same dimensions. Our teacher invited us ____8____ (compare) the model with the diagram and describe where each simplified the situation.\n\nWe wrote our account ____9____ (careful), keeping observations separate from broader claims. The movement was small, but it offered ____10____ useful starting point for a larger explanation of why engineering plans must consider changing conditions.",
+            "explanation": "A useful starting point uses consonant /j/. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "0718d7c127a3d59a406fde9e2d5f7aedc09aea7e0e53477e14d897d4f5d9b95a",
+      "reviewNotes": "Three new complete senior mixed practices. Fictional class projects and general reading/cooperation discussion; no invented study or numerical finding. Same-author cohesion, alternative and answer-form review only, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071#insertion",
+          "family": "shared_insertion",
+          "questionIds": [
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.insertion.q1",
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.insertion.q2",
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.insertion.q3",
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.insertion.q4",
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.insertion.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.shared-kitchen-and-expansion-071",
+          "sourceContentHash": "46d4a8e2c2fcf433ee34cd982b1c83694533e4baf3dd78dc0e6ac6fc6e0da55f"
+        },
+        {
+          "id": "expansion.20261024.senior2.shared-kitchen-and-expansion-071#grammar",
+          "family": "passage_form",
+          "questionIds": [
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q1",
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q2",
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q3",
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q4",
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q5",
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q6",
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q7",
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q8",
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q9",
+            "expansion.20261024.senior2.shared-kitchen-and-expansion-071.grammar.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.shared-kitchen-and-expansion-071",
+          "sourceContentHash": "d43b18354f40fb3f0871d2b3a4d6e76501226613279496df7adf9faddb81036b"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior3.tradition-and-translation-071",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高考题型原创 · 10·24新题 · Describing a tradition and translating a message",
+        "summary": "Describing a tradition and translating a message，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_insertion",
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I insertion and passage-form task structure",
+            "pages": "Reading: five of seven; Use of English: 10-gap passage form",
+            "alignment": "One full five-gap passage sharing seven candidates, plus one full ten-gap grammar passage. Source supplies task rules only; all prose and keys are original."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g12.national2025.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete senior mixed practices. Fictional class projects and general reading/cooperation discussion; no invented study or numerical finding. Same-author cohesion, alternative and answer-form review only, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior3.tradition-and-translation-071",
+          "family": "shared_insertion_passage_form",
+          "label": "Describing a tradition and translating a message",
+          "candidateSHA256": "0fe916649af84416124353a43b47457067d592db31fac4b692e274ccdfe4cd0a",
+          "authorCheckSHA256": "aabeab6524bc45524e792e7c9a997068a8cd608cdbaea61705063e5925f3ed8c",
+          "sourceGroupIds": [
+            "expansion.20261024.senior3.tradition-and-translation-071#insertion",
+            "expansion.20261024.senior3.tradition-and-translation-071#grammar"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b071；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Describing a tradition and translating a message\n\nAn account of a local tradition may describe a dance, a festival or a craft as if it had one fixed form. A closer look often reveals choices about whose version is being presented and what period is being remembered. Reading carefully means asking questions without assuming that change makes a practice meaningless.\n\nIdentify who is speaking. A participant, organiser and visitor may notice different features. ____1____ Their different positions can explain a disagreement without proving that one person knows nothing about the event.\n\nNotice the time frame. Something remembered from childhood may describe a particular decade rather than every earlier generation. ____2____ Ask what evidence supports a claim that the practice has always been the same.\n\nDistinguish continuity from exact repetition. A family may replace fragile paper festival lanterns with reusable fabric ones while keeping the annual gathering. ____3____ The important question is what participants think they are carrying forward.\n\nLook for voices that are missing from a confident summary. ____4____ Someone who prepares food, repairs equipment or teaches newcomers may understand a part of the practice not visible during the public performance.\n\nFinally, avoid turning a complicated account into a choice between perfectly authentic and completely invented. ____5____ A useful description can recognise both inherited features and current decisions. That makes the tradition easier to understand as something people do, not merely a label attached to an unchanging object.\n\nB. Describing a tradition and translating a message\n\nTwo students in our language club translated the same short message into English. Their versions were ____1____ (surprise) different, although neither student had intended to change the basic information. The teacher asked us to examine the situation before declaring one version wrong.\n\nThe message concerned a meeting after the last train. One student imagined people waiting at the station; the other imagined a conversation after returning home. The original wording did not settle every detail, so additional context ____2____ (need).\n\nWe wrote a short question to the person ____3____ had sent it. She explained where she expected everyone to be and why the time mattered. That answer made it easier ____4____ (choose) wording that would guide the readers correctly.\n\nAfter ____5____ (revise) our versions, we compared them again. They still used different expressions, but both now described the intended arrangement. The point was not to make every translator's sentence identical ____6____ another's.\n\nWe also learned to describe uncertainty ____7____ (honest). A smooth sentence could conceal a choice that had not yet been justified. Asking for clarification did not show a lack of ____8____ (able); it was part of completing the task.\n\nThe activity gave ____9____ (we) a useful distinction between language that sounded natural and language that fitted the specific message. Both mattered. We ended with ____10____ clearer understanding of why translation sometimes begins with a question rather than a word."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.insertion.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 1.",
+            "material": "A. Describing a tradition and translating a message\n\nAn account of a local tradition may describe a dance, a festival or a craft as if it had one fixed form. A closer look often reveals choices about whose version is being presented and what period is being remembered. Reading carefully means asking questions without assuming that change makes a practice meaningless.\n\nIdentify who is speaking. A participant, organiser and visitor may notice different features. ____1____ Their different positions can explain a disagreement without proving that one person knows nothing about the event.\n\nNotice the time frame. Something remembered from childhood may describe a particular decade rather than every earlier generation. ____2____ Ask what evidence supports a claim that the practice has always been the same.\n\nDistinguish continuity from exact repetition. A family may replace fragile paper festival lanterns with reusable fabric ones while keeping the annual gathering. ____3____ The important question is what participants think they are carrying forward.\n\nLook for voices that are missing from a confident summary. ____4____ Someone who prepares food, repairs equipment or teaches newcomers may understand a part of the practice not visible during the public performance.\n\nFinally, avoid turning a complicated account into a choice between perfectly authentic and completely invented. ____5____ A useful description can recognise both inherited features and current decisions. That makes the tradition easier to understand as something people do, not merely a label attached to an unchanging object.",
+            "explanation": "C connects the speaker’s role with the different positions mentioned next. A adaptation, B time, D missing voices and E final balance serve other gaps. F/G replace inquiry with absolute claims.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. In that example, the lantern material changes while the shared occasion continues."
+              },
+              {
+                "id": "o1",
+                "text": "B. One person’s memory is not automatically a complete historical record."
+              },
+              {
+                "id": "o2",
+                "text": "C. Consider the perspective from which each account is offered."
+              },
+              {
+                "id": "o3",
+                "text": "D. The people visible at the centre are not necessarily everyone involved."
+              },
+              {
+                "id": "o4",
+                "text": "E. Many practices contain both continuity and adaptation."
+              },
+              {
+                "id": "o5",
+                "text": "F. A change in one detail proves that nobody values the past."
+              },
+              {
+                "id": "o6",
+                "text": "G. The oldest-sounding account must be accepted without any question."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.insertion.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 2.",
+            "material": "A. Describing a tradition and translating a message\n\nAn account of a local tradition may describe a dance, a festival or a craft as if it had one fixed form. A closer look often reveals choices about whose version is being presented and what period is being remembered. Reading carefully means asking questions without assuming that change makes a practice meaningless.\n\nIdentify who is speaking. A participant, organiser and visitor may notice different features. ____1____ Their different positions can explain a disagreement without proving that one person knows nothing about the event.\n\nNotice the time frame. Something remembered from childhood may describe a particular decade rather than every earlier generation. ____2____ Ask what evidence supports a claim that the practice has always been the same.\n\nDistinguish continuity from exact repetition. A family may replace fragile paper festival lanterns with reusable fabric ones while keeping the annual gathering. ____3____ The important question is what participants think they are carrying forward.\n\nLook for voices that are missing from a confident summary. ____4____ Someone who prepares food, repairs equipment or teaches newcomers may understand a part of the practice not visible during the public performance.\n\nFinally, avoid turning a complicated account into a choice between perfectly authentic and completely invented. ____5____ A useful description can recognise both inherited features and current decisions. That makes the tradition easier to understand as something people do, not merely a label attached to an unchanging object.",
+            "explanation": "B limits childhood memory to one historical account, preparing evidence about always. A continuity, C perspective, D absent workers and E mixed features concern other stages. G grants automatic authority and F treats change as rejection.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. In that example, the lantern material changes while the shared occasion continues."
+              },
+              {
+                "id": "o1",
+                "text": "B. One person’s memory is not automatically a complete historical record."
+              },
+              {
+                "id": "o2",
+                "text": "C. Consider the perspective from which each account is offered."
+              },
+              {
+                "id": "o3",
+                "text": "D. The people visible at the centre are not necessarily everyone involved."
+              },
+              {
+                "id": "o4",
+                "text": "E. Many practices contain both continuity and adaptation."
+              },
+              {
+                "id": "o5",
+                "text": "F. A change in one detail proves that nobody values the past."
+              },
+              {
+                "id": "o6",
+                "text": "G. The oldest-sounding account must be accepted without any question."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.insertion.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 3.",
+            "material": "A. Describing a tradition and translating a message\n\nAn account of a local tradition may describe a dance, a festival or a craft as if it had one fixed form. A closer look often reveals choices about whose version is being presented and what period is being remembered. Reading carefully means asking questions without assuming that change makes a practice meaningless.\n\nIdentify who is speaking. A participant, organiser and visitor may notice different features. ____1____ Their different positions can explain a disagreement without proving that one person knows nothing about the event.\n\nNotice the time frame. Something remembered from childhood may describe a particular decade rather than every earlier generation. ____2____ Ask what evidence supports a claim that the practice has always been the same.\n\nDistinguish continuity from exact repetition. A family may replace fragile paper festival lanterns with reusable fabric ones while keeping the annual gathering. ____3____ The important question is what participants think they are carrying forward.\n\nLook for voices that are missing from a confident summary. ____4____ Someone who prepares food, repairs equipment or teaches newcomers may understand a part of the practice not visible during the public performance.\n\nFinally, avoid turning a complicated account into a choice between perfectly authentic and completely invented. ____5____ A useful description can recognise both inherited features and current decisions. That makes the tradition easier to understand as something people do, not merely a label attached to an unchanging object.",
+            "explanation": "A refers specifically to the preceding fabric-for-paper lantern example and distinguishes material from the annual occasion. E is the broad final synthesis; B memory, C perspective and D missing workers serve other paragraphs. F/G make absolute claims contradicted by the inquiry.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. In that example, the lantern material changes while the shared occasion continues."
+              },
+              {
+                "id": "o1",
+                "text": "B. One person’s memory is not automatically a complete historical record."
+              },
+              {
+                "id": "o2",
+                "text": "C. Consider the perspective from which each account is offered."
+              },
+              {
+                "id": "o3",
+                "text": "D. The people visible at the centre are not necessarily everyone involved."
+              },
+              {
+                "id": "o4",
+                "text": "E. Many practices contain both continuity and adaptation."
+              },
+              {
+                "id": "o5",
+                "text": "F. A change in one detail proves that nobody values the past."
+              },
+              {
+                "id": "o6",
+                "text": "G. The oldest-sounding account must be accepted without any question."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.insertion.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 4.",
+            "material": "A. Describing a tradition and translating a message\n\nAn account of a local tradition may describe a dance, a festival or a craft as if it had one fixed form. A closer look often reveals choices about whose version is being presented and what period is being remembered. Reading carefully means asking questions without assuming that change makes a practice meaningless.\n\nIdentify who is speaking. A participant, organiser and visitor may notice different features. ____1____ Their different positions can explain a disagreement without proving that one person knows nothing about the event.\n\nNotice the time frame. Something remembered from childhood may describe a particular decade rather than every earlier generation. ____2____ Ask what evidence supports a claim that the practice has always been the same.\n\nDistinguish continuity from exact repetition. A family may replace fragile paper festival lanterns with reusable fabric ones while keeping the annual gathering. ____3____ The important question is what participants think they are carrying forward.\n\nLook for voices that are missing from a confident summary. ____4____ Someone who prepares food, repairs equipment or teaches newcomers may understand a part of the practice not visible during the public performance.\n\nFinally, avoid turning a complicated account into a choice between perfectly authentic and completely invented. ____5____ A useful description can recognise both inherited features and current decisions. That makes the tradition easier to understand as something people do, not merely a label attached to an unchanging object.",
+            "explanation": "D widens participation beyond public performers, illustrated by preparers/repairers/teachers. A/B/C/E concern other questions. F/G do not recover missing perspectives.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. In that example, the lantern material changes while the shared occasion continues."
+              },
+              {
+                "id": "o1",
+                "text": "B. One person’s memory is not automatically a complete historical record."
+              },
+              {
+                "id": "o2",
+                "text": "C. Consider the perspective from which each account is offered."
+              },
+              {
+                "id": "o3",
+                "text": "D. The people visible at the centre are not necessarily everyone involved."
+              },
+              {
+                "id": "o4",
+                "text": "E. Many practices contain both continuity and adaptation."
+              },
+              {
+                "id": "o5",
+                "text": "F. A change in one detail proves that nobody values the past."
+              },
+              {
+                "id": "o6",
+                "text": "G. The oldest-sounding account must be accepted without any question."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.insertion.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 5.",
+            "material": "A. Describing a tradition and translating a message\n\nAn account of a local tradition may describe a dance, a festival or a craft as if it had one fixed form. A closer look often reveals choices about whose version is being presented and what period is being remembered. Reading carefully means asking questions without assuming that change makes a practice meaningless.\n\nIdentify who is speaking. A participant, organiser and visitor may notice different features. ____1____ Their different positions can explain a disagreement without proving that one person knows nothing about the event.\n\nNotice the time frame. Something remembered from childhood may describe a particular decade rather than every earlier generation. ____2____ Ask what evidence supports a claim that the practice has always been the same.\n\nDistinguish continuity from exact repetition. A family may replace fragile paper festival lanterns with reusable fabric ones while keeping the annual gathering. ____3____ The important question is what participants think they are carrying forward.\n\nLook for voices that are missing from a confident summary. ____4____ Someone who prepares food, repairs equipment or teaches newcomers may understand a part of the practice not visible during the public performance.\n\nFinally, avoid turning a complicated account into a choice between perfectly authentic and completely invented. ____5____ A useful description can recognise both inherited features and current decisions. That makes the tradition easier to understand as something people do, not merely a label attached to an unchanging object.",
+            "explanation": "E draws together continuity and adaptation after rejecting a false either/or. A depends on the earlier lantern example and cannot refer directly to the general final paragraph; B/C/D address memory, perspective and participation. F/G impose unwarranted certainty.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. In that example, the lantern material changes while the shared occasion continues."
+              },
+              {
+                "id": "o1",
+                "text": "B. One person’s memory is not automatically a complete historical record."
+              },
+              {
+                "id": "o2",
+                "text": "C. Consider the perspective from which each account is offered."
+              },
+              {
+                "id": "o3",
+                "text": "D. The people visible at the centre are not necessarily everyone involved."
+              },
+              {
+                "id": "o4",
+                "text": "E. Many practices contain both continuity and adaptation."
+              },
+              {
+                "id": "o5",
+                "text": "F. A change in one detail proves that nobody values the past."
+              },
+              {
+                "id": "o6",
+                "text": "G. The oldest-sounding account must be accepted without any question."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.grammar.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of surprise.",
+            "material": "B. Describing a tradition and translating a message\n\nTwo students in our language club translated the same short message into English. Their versions were ____1____ (surprise) different, although neither student had intended to change the basic information. The teacher asked us to examine the situation before declaring one version wrong.\n\nThe message concerned a meeting after the last train. One student imagined people waiting at the station; the other imagined a conversation after returning home. The original wording did not settle every detail, so additional context ____2____ (need).\n\nWe wrote a short question to the person ____3____ had sent it. She explained where she expected everyone to be and why the time mattered. That answer made it easier ____4____ (choose) wording that would guide the readers correctly.\n\nAfter ____5____ (revise) our versions, we compared them again. They still used different expressions, but both now described the intended arrangement. The point was not to make every translator's sentence identical ____6____ another's.\n\nWe also learned to describe uncertainty ____7____ (honest). A smooth sentence could conceal a choice that had not yet been justified. Asking for clarification did not show a lack of ____8____ (able); it was part of completing the task.\n\nThe activity gave ____9____ (we) a useful distinction between language that sounded natural and language that fitted the specific message. Both mattered. We ended with ____10____ clearer understanding of why translation sometimes begins with a question rather than a word.",
+            "explanation": "Surprisingly modifies the adjective different. Surprising is adjective and surprise noun/verb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "surprisingly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "surprising",
+                "surprise"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.grammar.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with the correct form of need.",
+            "material": "B. Describing a tradition and translating a message\n\nTwo students in our language club translated the same short message into English. Their versions were ____1____ (surprise) different, although neither student had intended to change the basic information. The teacher asked us to examine the situation before declaring one version wrong.\n\nThe message concerned a meeting after the last train. One student imagined people waiting at the station; the other imagined a conversation after returning home. The original wording did not settle every detail, so additional context ____2____ (need).\n\nWe wrote a short question to the person ____3____ had sent it. She explained where she expected everyone to be and why the time mattered. That answer made it easier ____4____ (choose) wording that would guide the readers correctly.\n\nAfter ____5____ (revise) our versions, we compared them again. They still used different expressions, but both now described the intended arrangement. The point was not to make every translator's sentence identical ____6____ another's.\n\nWe also learned to describe uncertainty ____7____ (honest). A smooth sentence could conceal a choice that had not yet been justified. Asking for clarification did not show a lack of ____8____ (able); it was part of completing the task.\n\nThe activity gave ____9____ (we) a useful distinction between language that sounded natural and language that fitted the specific message. Both mattered. We ended with ____10____ clearer understanding of why translation sometimes begins with a question rather than a word.",
+            "explanation": "Singular uncountable context receives the need, so was/had been needed. Needed alone lacks passive auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was needed",
+              "had been needed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "needed",
+                "were needed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.grammar.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "B. Describing a tradition and translating a message\n\nTwo students in our language club translated the same short message into English. Their versions were ____1____ (surprise) different, although neither student had intended to change the basic information. The teacher asked us to examine the situation before declaring one version wrong.\n\nThe message concerned a meeting after the last train. One student imagined people waiting at the station; the other imagined a conversation after returning home. The original wording did not settle every detail, so additional context ____2____ (need).\n\nWe wrote a short question to the person ____3____ had sent it. She explained where she expected everyone to be and why the time mattered. That answer made it easier ____4____ (choose) wording that would guide the readers correctly.\n\nAfter ____5____ (revise) our versions, we compared them again. They still used different expressions, but both now described the intended arrangement. The point was not to make every translator's sentence identical ____6____ another's.\n\nWe also learned to describe uncertainty ____7____ (honest). A smooth sentence could conceal a choice that had not yet been justified. Asking for clarification did not show a lack of ____8____ (able); it was part of completing the task.\n\nThe activity gave ____9____ (we) a useful distinction between language that sounded natural and language that fitted the specific message. Both mattered. We ended with ____10____ clearer understanding of why translation sometimes begins with a question rather than a word.",
+            "explanation": "Who/that is the defining human subject. Which is nonhuman, where not subject and whose needs a possessed noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "where",
+                "whose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.grammar.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with the correct form of choose.",
+            "material": "B. Describing a tradition and translating a message\n\nTwo students in our language club translated the same short message into English. Their versions were ____1____ (surprise) different, although neither student had intended to change the basic information. The teacher asked us to examine the situation before declaring one version wrong.\n\nThe message concerned a meeting after the last train. One student imagined people waiting at the station; the other imagined a conversation after returning home. The original wording did not settle every detail, so additional context ____2____ (need).\n\nWe wrote a short question to the person ____3____ had sent it. She explained where she expected everyone to be and why the time mattered. That answer made it easier ____4____ (choose) wording that would guide the readers correctly.\n\nAfter ____5____ (revise) our versions, we compared them again. They still used different expressions, but both now described the intended arrangement. The point was not to make every translator's sentence identical ____6____ another's.\n\nWe also learned to describe uncertainty ____7____ (honest). A smooth sentence could conceal a choice that had not yet been justified. Asking for clarification did not show a lack of ____8____ (able); it was part of completing the task.\n\nThe activity gave ____9____ (we) a useful distinction between language that sounded natural and language that fitted the specific message. Both mattered. We ended with ____10____ clearer understanding of why translation sometimes begins with a question rather than a word.",
+            "explanation": "Easier to choose uses an infinitive. Other listed forms do not complete this adjective construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to choose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "choosing",
+                "choose",
+                "chose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.grammar.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with the correct form of revise.",
+            "material": "B. Describing a tradition and translating a message\n\nTwo students in our language club translated the same short message into English. Their versions were ____1____ (surprise) different, although neither student had intended to change the basic information. The teacher asked us to examine the situation before declaring one version wrong.\n\nThe message concerned a meeting after the last train. One student imagined people waiting at the station; the other imagined a conversation after returning home. The original wording did not settle every detail, so additional context ____2____ (need).\n\nWe wrote a short question to the person ____3____ had sent it. She explained where she expected everyone to be and why the time mattered. That answer made it easier ____4____ (choose) wording that would guide the readers correctly.\n\nAfter ____5____ (revise) our versions, we compared them again. They still used different expressions, but both now described the intended arrangement. The point was not to make every translator's sentence identical ____6____ another's.\n\nWe also learned to describe uncertainty ____7____ (honest). A smooth sentence could conceal a choice that had not yet been justified. Asking for clarification did not show a lack of ____8____ (able); it was part of completing the task.\n\nThe activity gave ____9____ (we) a useful distinction between language that sounded natural and language that fitted the specific message. Both mattered. We ended with ____10____ clearer understanding of why translation sometimes begins with a question rather than a word.",
+            "explanation": "After revising/having revised both express prior revision. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "revising",
+              "having revised"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "revise",
+                "revised",
+                "to revise"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.grammar.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "B. Describing a tradition and translating a message\n\nTwo students in our language club translated the same short message into English. Their versions were ____1____ (surprise) different, although neither student had intended to change the basic information. The teacher asked us to examine the situation before declaring one version wrong.\n\nThe message concerned a meeting after the last train. One student imagined people waiting at the station; the other imagined a conversation after returning home. The original wording did not settle every detail, so additional context ____2____ (need).\n\nWe wrote a short question to the person ____3____ had sent it. She explained where she expected everyone to be and why the time mattered. That answer made it easier ____4____ (choose) wording that would guide the readers correctly.\n\nAfter ____5____ (revise) our versions, we compared them again. They still used different expressions, but both now described the intended arrangement. The point was not to make every translator's sentence identical ____6____ another's.\n\nWe also learned to describe uncertainty ____7____ (honest). A smooth sentence could conceal a choice that had not yet been justified. Asking for clarification did not show a lack of ____8____ (able); it was part of completing the task.\n\nThe activity gave ____9____ (we) a useful distinction between language that sounded natural and language that fitted the specific message. Both mattered. We ended with ____10____ clearer understanding of why translation sometimes begins with a question rather than a word.",
+            "explanation": "Identical to and identical with are recognised variants for matching forms. From contrasts difference and than needs a comparative.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to",
+              "with"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "from",
+                "than"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.grammar.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with the correct form of honest.",
+            "material": "B. Describing a tradition and translating a message\n\nTwo students in our language club translated the same short message into English. Their versions were ____1____ (surprise) different, although neither student had intended to change the basic information. The teacher asked us to examine the situation before declaring one version wrong.\n\nThe message concerned a meeting after the last train. One student imagined people waiting at the station; the other imagined a conversation after returning home. The original wording did not settle every detail, so additional context ____2____ (need).\n\nWe wrote a short question to the person ____3____ had sent it. She explained where she expected everyone to be and why the time mattered. That answer made it easier ____4____ (choose) wording that would guide the readers correctly.\n\nAfter ____5____ (revise) our versions, we compared them again. They still used different expressions, but both now described the intended arrangement. The point was not to make every translator's sentence identical ____6____ another's.\n\nWe also learned to describe uncertainty ____7____ (honest). A smooth sentence could conceal a choice that had not yet been justified. Asking for clarification did not show a lack of ____8____ (able); it was part of completing the task.\n\nThe activity gave ____9____ (we) a useful distinction between language that sounded natural and language that fitted the specific message. Both mattered. We ended with ____10____ clearer understanding of why translation sometimes begins with a question rather than a word.",
+            "explanation": "Honestly modifies describe. Honest is adjective and honesty noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "honestly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "honest",
+                "honesty"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.grammar.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with the correct form of able.",
+            "material": "B. Describing a tradition and translating a message\n\nTwo students in our language club translated the same short message into English. Their versions were ____1____ (surprise) different, although neither student had intended to change the basic information. The teacher asked us to examine the situation before declaring one version wrong.\n\nThe message concerned a meeting after the last train. One student imagined people waiting at the station; the other imagined a conversation after returning home. The original wording did not settle every detail, so additional context ____2____ (need).\n\nWe wrote a short question to the person ____3____ had sent it. She explained where she expected everyone to be and why the time mattered. That answer made it easier ____4____ (choose) wording that would guide the readers correctly.\n\nAfter ____5____ (revise) our versions, we compared them again. They still used different expressions, but both now described the intended arrangement. The point was not to make every translator's sentence identical ____6____ another's.\n\nWe also learned to describe uncertainty ____7____ (honest). A smooth sentence could conceal a choice that had not yet been justified. Asking for clarification did not show a lack of ____8____ (able); it was part of completing the task.\n\nThe activity gave ____9____ (we) a useful distinction between language that sounded natural and language that fitted the specific message. Both mattered. We ended with ____10____ clearer understanding of why translation sometimes begins with a question rather than a word.",
+            "explanation": "A lack of ability requires a noun. Able is adjective and ably adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "ability"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "able",
+                "ably"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.grammar.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with the correct form of we.",
+            "material": "B. Describing a tradition and translating a message\n\nTwo students in our language club translated the same short message into English. Their versions were ____1____ (surprise) different, although neither student had intended to change the basic information. The teacher asked us to examine the situation before declaring one version wrong.\n\nThe message concerned a meeting after the last train. One student imagined people waiting at the station; the other imagined a conversation after returning home. The original wording did not settle every detail, so additional context ____2____ (need).\n\nWe wrote a short question to the person ____3____ had sent it. She explained where she expected everyone to be and why the time mattered. That answer made it easier ____4____ (choose) wording that would guide the readers correctly.\n\nAfter ____5____ (revise) our versions, we compared them again. They still used different expressions, but both now described the intended arrangement. The point was not to make every translator's sentence identical ____6____ another's.\n\nWe also learned to describe uncertainty ____7____ (honest). A smooth sentence could conceal a choice that had not yet been justified. Asking for clarification did not show a lack of ____8____ (able); it was part of completing the task.\n\nThe activity gave ____9____ (we) a useful distinction between language that sounded natural and language that fitted the specific message. Both mattered. We ended with ____10____ clearer understanding of why translation sometimes begins with a question rather than a word.",
+            "explanation": "Gave takes object us. Subject and possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.tradition-and-translation-071.grammar.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "B. Describing a tradition and translating a message\n\nTwo students in our language club translated the same short message into English. Their versions were ____1____ (surprise) different, although neither student had intended to change the basic information. The teacher asked us to examine the situation before declaring one version wrong.\n\nThe message concerned a meeting after the last train. One student imagined people waiting at the station; the other imagined a conversation after returning home. The original wording did not settle every detail, so additional context ____2____ (need).\n\nWe wrote a short question to the person ____3____ had sent it. She explained where she expected everyone to be and why the time mattered. That answer made it easier ____4____ (choose) wording that would guide the readers correctly.\n\nAfter ____5____ (revise) our versions, we compared them again. They still used different expressions, but both now described the intended arrangement. The point was not to make every translator's sentence identical ____6____ another's.\n\nWe also learned to describe uncertainty ____7____ (honest). A smooth sentence could conceal a choice that had not yet been justified. Asking for clarification did not show a lack of ____8____ (able); it was part of completing the task.\n\nThe activity gave ____9____ (we) a useful distinction between language that sounded natural and language that fitted the specific message. Both mattered. We ended with ____10____ clearer understanding of why translation sometimes begins with a question rather than a word.",
+            "explanation": "A clearer understanding uses consonant c. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "c57b94c8a075e31a191a896a54d78e7d85df3e91fac92a8ce8739eef3f7768dc",
+      "reviewNotes": "Three new complete senior mixed practices. Fictional class projects and general reading/cooperation discussion; no invented study or numerical finding. Same-author cohesion, alternative and answer-form review only, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior3.tradition-and-translation-071#insertion",
+          "family": "shared_insertion",
+          "questionIds": [
+            "expansion.20261024.senior3.tradition-and-translation-071.insertion.q1",
+            "expansion.20261024.senior3.tradition-and-translation-071.insertion.q2",
+            "expansion.20261024.senior3.tradition-and-translation-071.insertion.q3",
+            "expansion.20261024.senior3.tradition-and-translation-071.insertion.q4",
+            "expansion.20261024.senior3.tradition-and-translation-071.insertion.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.tradition-and-translation-071",
+          "sourceContentHash": "be07a02e9d74f11f9be544bb2c8d3c50e893de1b3c6db2128490d025e3cb7a2f"
+        },
+        {
+          "id": "expansion.20261024.senior3.tradition-and-translation-071#grammar",
+          "family": "passage_form",
+          "questionIds": [
+            "expansion.20261024.senior3.tradition-and-translation-071.grammar.q1",
+            "expansion.20261024.senior3.tradition-and-translation-071.grammar.q2",
+            "expansion.20261024.senior3.tradition-and-translation-071.grammar.q3",
+            "expansion.20261024.senior3.tradition-and-translation-071.grammar.q4",
+            "expansion.20261024.senior3.tradition-and-translation-071.grammar.q5",
+            "expansion.20261024.senior3.tradition-and-translation-071.grammar.q6",
+            "expansion.20261024.senior3.tradition-and-translation-071.grammar.q7",
+            "expansion.20261024.senior3.tradition-and-translation-071.grammar.q8",
+            "expansion.20261024.senior3.tradition-and-translation-071.grammar.q9",
+            "expansion.20261024.senior3.tradition-and-translation-071.grammar.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.tradition-and-translation-071",
+          "sourceContentHash": "a8ab18b54385bfa7266792c477aa468b26f5f5546d95ecaaba9a6ebd56c91ee8"
+        }
+      ]
+    }
+  ]
+}
