@@ -1,0 +1,712 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b016",
+  "createdAt": "2026-10-23T19:22:12.821222+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.lanas-art-bag-016",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · 阅读判断 · 拉娜的画画包",
+        "summary": "阅读判断 · 拉娜的画画包，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four new complete elementary reading practices with explicit text evidence and distractor explanations. Chinese operational directions are retained for the younger levels; assessed passages, statements and choices are English. Same-author review only, not independent age/difficulty calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.lanas-art-bag-016",
+          "family": "reading_tf",
+          "label": "阅读判断 · 拉娜的画画包",
+          "candidateSHA256": "6fa84e3eb88482c9646360cb5ce5a636c9401c0686ad50ee24b04330f6dfacc7",
+          "authorCheckSHA256": "eb752c4c17cee3e66f4db3d891a27473e092367d41aea5b650a6ae2c5fa70385",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.lanas-art-bag-016#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b016；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Lana's art bag\n\nLana has a yellow bag. She takes it to art club on Friday. There are two pencils, a small box of crayons and a bottle of water in the bag. Her paint is in the classroom.\n\nToday Lana draws a green tree and three red birds. Her friend Sam draws a blue boat. They put their pictures on the wall.\n\nAfter art club, Lana cannot find her water bottle. Sam looks under the table. The bottle is there, next to a chair. Lana thanks him and puts it back in her bag. They go home together."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.lanas-art-bag-016.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读短文，判断每句话是否与短文相符。",
+            "prompt": "Lana's bag is yellow.",
+            "material": "Lana's art bag\n\nLana has a yellow bag. She takes it to art club on Friday. There are two pencils, a small box of crayons and a bottle of water in the bag. Her paint is in the classroom.\n\nToday Lana draws a green tree and three red birds. Her friend Sam draws a blue boat. They put their pictures on the wall.\n\nAfter art club, Lana cannot find her water bottle. Sam looks under the table. The bottle is there, next to a chair. Lana thanks him and puts it back in her bag. They go home together.",
+            "explanation": "The first sentence gives a yellow bag, so True; False contradicts the stated colour.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.lanas-art-bag-016.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读短文，判断每句话是否与短文相符。",
+            "prompt": "Lana takes three pencils to art club.",
+            "material": "Lana's art bag\n\nLana has a yellow bag. She takes it to art club on Friday. There are two pencils, a small box of crayons and a bottle of water in the bag. Her paint is in the classroom.\n\nToday Lana draws a green tree and three red birds. Her friend Sam draws a blue boat. They put their pictures on the wall.\n\nAfter art club, Lana cannot find her water bottle. Sam looks under the table. The bottle is there, next to a chair. Lana thanks him and puts it back in her bag. They go home together.",
+            "explanation": "The bag contains two pencils, not three. Three is the number of birds in her picture, so False.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.lanas-art-bag-016.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读短文，判断每句话是否与短文相符。",
+            "prompt": "Lana's paint is already in the classroom.",
+            "material": "Lana's art bag\n\nLana has a yellow bag. She takes it to art club on Friday. There are two pencils, a small box of crayons and a bottle of water in the bag. Her paint is in the classroom.\n\nToday Lana draws a green tree and three red birds. Her friend Sam draws a blue boat. They put their pictures on the wall.\n\nAfter art club, Lana cannot find her water bottle. Sam looks under the table. The bottle is there, next to a chair. Lana thanks him and puts it back in her bag. They go home together.",
+            "explanation": "The first paragraph says her paint is in the classroom. False would contradict this location.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.lanas-art-bag-016.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读短文，判断每句话是否与短文相符。",
+            "prompt": "Sam draws a green tree.",
+            "material": "Lana's art bag\n\nLana has a yellow bag. She takes it to art club on Friday. There are two pencils, a small box of crayons and a bottle of water in the bag. Her paint is in the classroom.\n\nToday Lana draws a green tree and three red birds. Her friend Sam draws a blue boat. They put their pictures on the wall.\n\nAfter art club, Lana cannot find her water bottle. Sam looks under the table. The bottle is there, next to a chair. Lana thanks him and puts it back in her bag. They go home together.",
+            "explanation": "Lana draws the green tree; Sam draws a blue boat. The statement exchanges their pictures, so False.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.lanas-art-bag-016.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读短文，判断每句话是否与短文相符。",
+            "prompt": "Sam finds the bottle under the table.",
+            "material": "Lana's art bag\n\nLana has a yellow bag. She takes it to art club on Friday. There are two pencils, a small box of crayons and a bottle of water in the bag. Her paint is in the classroom.\n\nToday Lana draws a green tree and three red birds. Her friend Sam draws a blue boat. They put their pictures on the wall.\n\nAfter art club, Lana cannot find her water bottle. Sam looks under the table. The bottle is there, next to a chair. Lana thanks him and puts it back in her bag. They go home together.",
+            "explanation": "Sam looks under the table and the bottle is there beside a chair. True follows the explicit sequence; False does not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "d14b48c38f89c5549fc89e86c5fd3c5412887f366f7eb06bd7b68a87e8964ef3",
+      "reviewNotes": "Four new complete elementary reading practices with explicit text evidence and distractor explanations. Chinese operational directions are retained for the younger levels; assessed passages, statements and choices are English. Same-author review only, not independent age/difficulty calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary4.sports-bag-call-016",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "10·24新题 · 对话阅读 · 体育包电话",
+        "summary": "对话阅读 · 体育包电话，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four new complete elementary reading practices with explicit text evidence and distractor explanations. Chinese operational directions are retained for the younger levels; assessed passages, statements and choices are English. Same-author review only, not independent age/difficulty calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary4.sports-bag-call-016",
+          "family": "reading_choice",
+          "label": "对话阅读 · 体育包电话",
+          "candidateSHA256": "b485fac65e15401eb5e5641eae46a86edd85d3201a4fa223c8f0c2770ed0ac7a",
+          "authorCheckSHA256": "f53b53cb2ad082e88db61a482713e503ba283ff249e8eefe9d958461bdf5a811",
+          "sourceGroupIds": [
+            "expansion.20261024.primary4.sports-bag-call-016#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b016；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The sports bag\n\nMum: Hello, Alex. Are you at school?\nAlex: Yes, Mum. I'm in the classroom. I can't find my sports bag.\nMum: What colour is it?\nAlex: It's black, with a white star. My trainers and a blue T-shirt are inside.\nMum: Is it in your bedroom?\nAlex: I don't think so. I put it beside the front door this morning.\nMum: Let me look. Oh, yes! It's here, behind Dad's coat.\nAlex: Can you bring it to school? Our match starts at half past three.\nMum: I can get there at three. Where shall we meet?\nAlex: At the small gate beside the library, please. The main gate is closed this afternoon.\nMum: All right. Do you need your water bottle too?\nAlex: No, thanks. It's in my school bag.\nMum: See you at three.\nAlex: Thanks, Mum!"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary4.sports-bag-call-016.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整对话，选择合适的答案。",
+            "prompt": "Where is Alex during the call?",
+            "material": "The sports bag\n\nMum: Hello, Alex. Are you at school?\nAlex: Yes, Mum. I'm in the classroom. I can't find my sports bag.\nMum: What colour is it?\nAlex: It's black, with a white star. My trainers and a blue T-shirt are inside.\nMum: Is it in your bedroom?\nAlex: I don't think so. I put it beside the front door this morning.\nMum: Let me look. Oh, yes! It's here, behind Dad's coat.\nAlex: Can you bring it to school? Our match starts at half past three.\nMum: I can get there at three. Where shall we meet?\nAlex: At the small gate beside the library, please. The main gate is closed this afternoon.\nMum: All right. Do you need your water bottle too?\nAlex: No, thanks. It's in my school bag.\nMum: See you at three.\nAlex: Thanks, Mum!",
+            "explanation": "Alex explicitly says he is in the classroom. His bedroom is a suggested bag location, and the gate is their later meeting point.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "In his bedroom."
+              },
+              {
+                "id": "o1",
+                "text": "In his classroom."
+              },
+              {
+                "id": "o2",
+                "text": "At the library gate."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.sports-bag-call-016.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整对话，选择合适的答案。",
+            "prompt": "What does the sports bag look like?",
+            "material": "The sports bag\n\nMum: Hello, Alex. Are you at school?\nAlex: Yes, Mum. I'm in the classroom. I can't find my sports bag.\nMum: What colour is it?\nAlex: It's black, with a white star. My trainers and a blue T-shirt are inside.\nMum: Is it in your bedroom?\nAlex: I don't think so. I put it beside the front door this morning.\nMum: Let me look. Oh, yes! It's here, behind Dad's coat.\nAlex: Can you bring it to school? Our match starts at half past three.\nMum: I can get there at three. Where shall we meet?\nAlex: At the small gate beside the library, please. The main gate is closed this afternoon.\nMum: All right. Do you need your water bottle too?\nAlex: No, thanks. It's in my school bag.\nMum: See you at three.\nAlex: Thanks, Mum!",
+            "explanation": "Alex describes a black bag with a white star. B reverses the colours and C invents different colours.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Black with a white star."
+              },
+              {
+                "id": "o1",
+                "text": "White with a black star."
+              },
+              {
+                "id": "o2",
+                "text": "Blue with a red star."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.sports-bag-call-016.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整对话，选择合适的答案。",
+            "prompt": "Where does Mum find the bag?",
+            "material": "The sports bag\n\nMum: Hello, Alex. Are you at school?\nAlex: Yes, Mum. I'm in the classroom. I can't find my sports bag.\nMum: What colour is it?\nAlex: It's black, with a white star. My trainers and a blue T-shirt are inside.\nMum: Is it in your bedroom?\nAlex: I don't think so. I put it beside the front door this morning.\nMum: Let me look. Oh, yes! It's here, behind Dad's coat.\nAlex: Can you bring it to school? Our match starts at half past three.\nMum: I can get there at three. Where shall we meet?\nAlex: At the small gate beside the library, please. The main gate is closed this afternoon.\nMum: All right. Do you need your water bottle too?\nAlex: No, thanks. It's in my school bag.\nMum: See you at three.\nAlex: Thanks, Mum!",
+            "explanation": "Alex left it beside the front door and Mum finds it behind the coat there. The bedroom was not confirmed, and the library is near the future meeting point.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Under Alex's bed."
+              },
+              {
+                "id": "o1",
+                "text": "Inside the school library."
+              },
+              {
+                "id": "o2",
+                "text": "Beside the front door, behind Dad's coat."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary4.sports-bag-call-016.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整对话，选择合适的答案。",
+            "prompt": "When will Mum meet Alex?",
+            "material": "The sports bag\n\nMum: Hello, Alex. Are you at school?\nAlex: Yes, Mum. I'm in the classroom. I can't find my sports bag.\nMum: What colour is it?\nAlex: It's black, with a white star. My trainers and a blue T-shirt are inside.\nMum: Is it in your bedroom?\nAlex: I don't think so. I put it beside the front door this morning.\nMum: Let me look. Oh, yes! It's here, behind Dad's coat.\nAlex: Can you bring it to school? Our match starts at half past three.\nMum: I can get there at three. Where shall we meet?\nAlex: At the small gate beside the library, please. The main gate is closed this afternoon.\nMum: All right. Do you need your water bottle too?\nAlex: No, thanks. It's in my school bag.\nMum: See you at three.\nAlex: Thanks, Mum!",
+            "explanation": "They agree to meet at three. Half past three is the match start, and half past two is not mentioned.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At half past two."
+              },
+              {
+                "id": "o1",
+                "text": "At three o'clock."
+              },
+              {
+                "id": "o2",
+                "text": "At half past three."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.sports-bag-call-016.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整对话，选择合适的答案。",
+            "prompt": "Why will they use the small gate?",
+            "material": "The sports bag\n\nMum: Hello, Alex. Are you at school?\nAlex: Yes, Mum. I'm in the classroom. I can't find my sports bag.\nMum: What colour is it?\nAlex: It's black, with a white star. My trainers and a blue T-shirt are inside.\nMum: Is it in your bedroom?\nAlex: I don't think so. I put it beside the front door this morning.\nMum: Let me look. Oh, yes! It's here, behind Dad's coat.\nAlex: Can you bring it to school? Our match starts at half past three.\nMum: I can get there at three. Where shall we meet?\nAlex: At the small gate beside the library, please. The main gate is closed this afternoon.\nMum: All right. Do you need your water bottle too?\nAlex: No, thanks. It's in my school bag.\nMum: See you at three.\nAlex: Thanks, Mum!",
+            "explanation": "Alex states that the main gate is closed. His bottle is safely in his school bag, and no match inside the library is suggested.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The main gate is closed that afternoon."
+              },
+              {
+                "id": "o1",
+                "text": "Alex has lost his water bottle there."
+              },
+              {
+                "id": "o2",
+                "text": "The match will be played inside the library."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "911fbb71d5f9f9486ece58706a37f9b1f8b2f9e21b86601c9720b3e53e8ce60c",
+      "reviewNotes": "Four new complete elementary reading practices with explicit text evidence and distractor explanations. Chinese operational directions are retained for the younger levels; assessed passages, statements and choices are English. Same-author review only, not independent age/difficulty calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary5.fox-and-empty-envelope-016",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "10·24新题 · 故事阅读 · 狐狸与空信封",
+        "summary": "故事阅读 · 狐狸与空信封，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.frog",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 来源形式为公开模拟题，尚缺普通学校样本复现；不计真实考试认证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four new complete elementary reading practices with explicit text evidence and distractor explanations. Chinese operational directions are retained for the younger levels; assessed passages, statements and choices are English. Same-author review only, not independent age/difficulty calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary5.fox-and-empty-envelope-016",
+          "family": "reading_choice",
+          "label": "故事阅读 · 狐狸与空信封",
+          "candidateSHA256": "315b98191ae06f6d4eb81f3a08c2c2c72f9fec2e2aefdcc6e06c3419fcdda2f7",
+          "authorCheckSHA256": "5dc89f4ee746957fb98f27e76d9d432178339df01c5e057ebb96a2d936f0ef25",
+          "sourceGroupIds": [
+            "expansion.20261024.primary5.fox-and-empty-envelope-016#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b016；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Fox and the empty envelope\n\nIn a village of talking animals, Fox made beautiful cards. One morning, Rabbit ordered a birthday card for her sister. 'Please put it in an envelope,' she said. 'I'll collect it after lunch.'\n\nFox made a card with silver stars. He put an envelope beside it, then went outside to help a neighbour. While he was away, a breeze blew through the window. The card slipped under a pile of paper, but the envelope stayed on the desk.\n\nWhen Rabbit arrived, Fox handed her the envelope without looking inside. She opened it at home and found nothing. Instead of getting angry, she returned and asked Fox to help her look.\n\nThey found the card together. Fox was sorry. 'The envelope looked ready,' he said.\n\nRabbit smiled. 'A lovely envelope is useful, but the message matters too.'\n\nAfter that, Fox checked every card before closing its envelope. He still decorated the outside carefully. He simply made sure that the part people could not see was ready as well."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary5.fox-and-empty-envelope-016.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整故事，选择合适的答案。",
+            "prompt": "Who was the birthday card for?",
+            "material": "Fox and the empty envelope\n\nIn a village of talking animals, Fox made beautiful cards. One morning, Rabbit ordered a birthday card for her sister. 'Please put it in an envelope,' she said. 'I'll collect it after lunch.'\n\nFox made a card with silver stars. He put an envelope beside it, then went outside to help a neighbour. While he was away, a breeze blew through the window. The card slipped under a pile of paper, but the envelope stayed on the desk.\n\nWhen Rabbit arrived, Fox handed her the envelope without looking inside. She opened it at home and found nothing. Instead of getting angry, she returned and asked Fox to help her look.\n\nThey found the card together. Fox was sorry. 'The envelope looked ready,' he said.\n\nRabbit smiled. 'A lovely envelope is useful, but the message matters too.'\n\nAfter that, Fox checked every card before closing its envelope. He still decorated the outside carefully. He simply made sure that the part people could not see was ready as well.",
+            "explanation": "Rabbit orders it for her sister. The neighbour receives help, not the card, and Rabbit is collecting it for someone else.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Fox's neighbour."
+              },
+              {
+                "id": "o1",
+                "text": "Rabbit herself."
+              },
+              {
+                "id": "o2",
+                "text": "Rabbit's sister."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary5.fox-and-empty-envelope-016.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整故事，选择合适的答案。",
+            "prompt": "Why did the card move from the desk?",
+            "material": "Fox and the empty envelope\n\nIn a village of talking animals, Fox made beautiful cards. One morning, Rabbit ordered a birthday card for her sister. 'Please put it in an envelope,' she said. 'I'll collect it after lunch.'\n\nFox made a card with silver stars. He put an envelope beside it, then went outside to help a neighbour. While he was away, a breeze blew through the window. The card slipped under a pile of paper, but the envelope stayed on the desk.\n\nWhen Rabbit arrived, Fox handed her the envelope without looking inside. She opened it at home and found nothing. Instead of getting angry, she returned and asked Fox to help her look.\n\nThey found the card together. Fox was sorry. 'The envelope looked ready,' he said.\n\nRabbit smiled. 'A lovely envelope is useful, but the message matters too.'\n\nAfter that, Fox checked every card before closing its envelope. He still decorated the outside carefully. He simply made sure that the part people could not see was ready as well.",
+            "explanation": "The wind moves it under a paper pile. No neighbour receives it, and Rabbit arrives after lunch to collect the envelope.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A breeze blew it under some paper."
+              },
+              {
+                "id": "o1",
+                "text": "Fox gave it to his neighbour."
+              },
+              {
+                "id": "o2",
+                "text": "Rabbit took it before lunch."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.fox-and-empty-envelope-016.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整故事，选择合适的答案。",
+            "prompt": "What did Fox fail to do before handing over the envelope?",
+            "material": "Fox and the empty envelope\n\nIn a village of talking animals, Fox made beautiful cards. One morning, Rabbit ordered a birthday card for her sister. 'Please put it in an envelope,' she said. 'I'll collect it after lunch.'\n\nFox made a card with silver stars. He put an envelope beside it, then went outside to help a neighbour. While he was away, a breeze blew through the window. The card slipped under a pile of paper, but the envelope stayed on the desk.\n\nWhen Rabbit arrived, Fox handed her the envelope without looking inside. She opened it at home and found nothing. Instead of getting angry, she returned and asked Fox to help her look.\n\nThey found the card together. Fox was sorry. 'The envelope looked ready,' he said.\n\nRabbit smiled. 'A lovely envelope is useful, but the message matters too.'\n\nAfter that, Fox checked every card before closing its envelope. He still decorated the outside carefully. He simply made sure that the part people could not see was ready as well.",
+            "explanation": "He hands over the envelope without looking inside. The stars are already made and the collection time was agreed that morning.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Paint silver stars on the card."
+              },
+              {
+                "id": "o1",
+                "text": "Check that the card was inside."
+              },
+              {
+                "id": "o2",
+                "text": "Ask when Rabbit would collect it."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary5.fox-and-empty-envelope-016.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整故事，选择合适的答案。",
+            "prompt": "How did Rabbit respond to the empty envelope?",
+            "material": "Fox and the empty envelope\n\nIn a village of talking animals, Fox made beautiful cards. One morning, Rabbit ordered a birthday card for her sister. 'Please put it in an envelope,' she said. 'I'll collect it after lunch.'\n\nFox made a card with silver stars. He put an envelope beside it, then went outside to help a neighbour. While he was away, a breeze blew through the window. The card slipped under a pile of paper, but the envelope stayed on the desk.\n\nWhen Rabbit arrived, Fox handed her the envelope without looking inside. She opened it at home and found nothing. Instead of getting angry, she returned and asked Fox to help her look.\n\nThey found the card together. Fox was sorry. 'The envelope looked ready,' he said.\n\nRabbit smiled. 'A lovely envelope is useful, but the message matters too.'\n\nAfter that, Fox checked every card before closing its envelope. He still decorated the outside carefully. He simply made sure that the part people could not see was ready as well.",
+            "explanation": "She calmly asks Fox to help look and they find it together. Destruction and refusal to speak contradict her response.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She destroyed Fox's other cards."
+              },
+              {
+                "id": "o1",
+                "text": "She refused to speak to him again."
+              },
+              {
+                "id": "o2",
+                "text": "She returned and helped search for the card."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary5.fox-and-empty-envelope-016.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整故事，选择合适的答案。",
+            "prompt": "What did Fox learn?",
+            "material": "Fox and the empty envelope\n\nIn a village of talking animals, Fox made beautiful cards. One morning, Rabbit ordered a birthday card for her sister. 'Please put it in an envelope,' she said. 'I'll collect it after lunch.'\n\nFox made a card with silver stars. He put an envelope beside it, then went outside to help a neighbour. While he was away, a breeze blew through the window. The card slipped under a pile of paper, but the envelope stayed on the desk.\n\nWhen Rabbit arrived, Fox handed her the envelope without looking inside. She opened it at home and found nothing. Instead of getting angry, she returned and asked Fox to help her look.\n\nThey found the card together. Fox was sorry. 'The envelope looked ready,' he said.\n\nRabbit smiled. 'A lovely envelope is useful, but the message matters too.'\n\nAfter that, Fox checked every card before closing its envelope. He still decorated the outside carefully. He simply made sure that the part people could not see was ready as well.",
+            "explanation": "He keeps decorating but also checks the hidden contents. B contradicts continuing decoration; C makes an absolute claim beyond one misplaced card.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A finished appearance does not replace checking what is inside."
+              },
+              {
+                "id": "o1",
+                "text": "An envelope should never be decorated."
+              },
+              {
+                "id": "o2",
+                "text": "Helping a neighbour always causes trouble."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "c1afe809500a153d8fbcfdc7df1936e13f9bd29525355f02980a1aca6ec60adc",
+      "reviewNotes": "Four new complete elementary reading practices with explicit text evidence and distractor explanations. Chinese operational directions are retained for the younger levels; assessed passages, statements and choices are English. Same-author review only, not independent age/difficulty calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary6.four-science-club-projects-016",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "10·24新题 · 信息阅读 · 四个科学社项目",
+        "summary": "信息阅读 · 四个科学社项目，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.dongcheng2025.booktable",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "New four-entry informational comparison table with five questions, using the source's complete table-reading task rules. Activities replace books explicitly; no claim of identical subject matter or independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four new complete elementary reading practices with explicit text evidence and distractor explanations. Chinese operational directions are retained for the younger levels; assessed passages, statements and choices are English. Same-author review only, not independent age/difficulty calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary6.four-science-club-projects-016",
+          "family": "reading_choice",
+          "label": "信息阅读 · 四个科学社项目",
+          "candidateSHA256": "e02eb4da223fb11d43d7178660fa0da49ddb6e3a81758c06a9bd2e3155b8cdce",
+          "authorCheckSHA256": "2717acef76df569108eb61f65232a413642dccae988c4a0e93e3f1c8b5492537",
+          "sourceGroupIds": [
+            "expansion.20261024.primary6.four-science-club-projects-016#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b016；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Science club: choose a Saturday project\n\nThe science club offers four projects this Saturday. Each student may join only one. Book by Thursday and meet in Room 6 ten minutes before your project starts. All materials are included in the price.\n\nProject | Time | Age | Price | What you will do\nPaper Bridges | 9:00-10:30 | 10-12 | 4 pounds | Build a bridge and test how many small blocks it can hold.\nBirdwatch Notebook | 9:30-11:00 | 11-13 | 3 pounds | Observe birds in the school garden and make a simple record.\nMoving Pictures | 11:00-12:00 | 10-13 | 5 pounds | Make a short animation using drawings and a school tablet.\nKitchen Colours | 13:00-14:30 | 12-13 | 4 pounds | Use ordinary foods to investigate changes in colour.\n\nBirdwatch Notebook takes place outdoors. If it rains heavily, students will use photographs in Room 6 instead. The other three projects are indoors. Students in Kitchen Colours must tell the teacher about any food allergies when booking. You will not eat the materials.\n\nYou may take your bridge, notebook or drawings home. School tablets must stay in the classroom. Parents can collect students at the main entrance after each project."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary6.four-science-club-projects-016.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整活动表及说明，选择合适的答案。",
+            "prompt": "Which project is open to a ten-year-old and finishes before eleven?",
+            "material": "Science club: choose a Saturday project\n\nThe science club offers four projects this Saturday. Each student may join only one. Book by Thursday and meet in Room 6 ten minutes before your project starts. All materials are included in the price.\n\nProject | Time | Age | Price | What you will do\nPaper Bridges | 9:00-10:30 | 10-12 | 4 pounds | Build a bridge and test how many small blocks it can hold.\nBirdwatch Notebook | 9:30-11:00 | 11-13 | 3 pounds | Observe birds in the school garden and make a simple record.\nMoving Pictures | 11:00-12:00 | 10-13 | 5 pounds | Make a short animation using drawings and a school tablet.\nKitchen Colours | 13:00-14:30 | 12-13 | 4 pounds | Use ordinary foods to investigate changes in colour.\n\nBirdwatch Notebook takes place outdoors. If it rains heavily, students will use photographs in Room 6 instead. The other three projects are indoors. Students in Kitchen Colours must tell the teacher about any food allergies when booking. You will not eat the materials.\n\nYou may take your bridge, notebook or drawings home. School tablets must stay in the classroom. Parents can collect students at the main entrance after each project.",
+            "explanation": "Paper Bridges accepts ages 10-12 and ends at10:30. Birdwatch requires at least11 and ends at11; Kitchen Colours requires at least12 and runs in the afternoon.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Birdwatch Notebook."
+              },
+              {
+                "id": "o1",
+                "text": "Paper Bridges."
+              },
+              {
+                "id": "o2",
+                "text": "Kitchen Colours."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-science-club-projects-016.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整活动表及说明，选择合适的答案。",
+            "prompt": "How much does Moving Pictures cost?",
+            "material": "Science club: choose a Saturday project\n\nThe science club offers four projects this Saturday. Each student may join only one. Book by Thursday and meet in Room 6 ten minutes before your project starts. All materials are included in the price.\n\nProject | Time | Age | Price | What you will do\nPaper Bridges | 9:00-10:30 | 10-12 | 4 pounds | Build a bridge and test how many small blocks it can hold.\nBirdwatch Notebook | 9:30-11:00 | 11-13 | 3 pounds | Observe birds in the school garden and make a simple record.\nMoving Pictures | 11:00-12:00 | 10-13 | 5 pounds | Make a short animation using drawings and a school tablet.\nKitchen Colours | 13:00-14:30 | 12-13 | 4 pounds | Use ordinary foods to investigate changes in colour.\n\nBirdwatch Notebook takes place outdoors. If it rains heavily, students will use photographs in Room 6 instead. The other three projects are indoors. Students in Kitchen Colours must tell the teacher about any food allergies when booking. You will not eat the materials.\n\nYou may take your bridge, notebook or drawings home. School tablets must stay in the classroom. Parents can collect students at the main entrance after each project.",
+            "explanation": "Moving Pictures costs five pounds. Three is Birdwatch's price and four belongs to Paper Bridges and Kitchen Colours.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Three pounds."
+              },
+              {
+                "id": "o1",
+                "text": "Four pounds."
+              },
+              {
+                "id": "o2",
+                "text": "Five pounds."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-science-club-projects-016.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整活动表及说明，选择合适的答案。",
+            "prompt": "What happens to Birdwatch Notebook in heavy rain?",
+            "material": "Science club: choose a Saturday project\n\nThe science club offers four projects this Saturday. Each student may join only one. Book by Thursday and meet in Room 6 ten minutes before your project starts. All materials are included in the price.\n\nProject | Time | Age | Price | What you will do\nPaper Bridges | 9:00-10:30 | 10-12 | 4 pounds | Build a bridge and test how many small blocks it can hold.\nBirdwatch Notebook | 9:30-11:00 | 11-13 | 3 pounds | Observe birds in the school garden and make a simple record.\nMoving Pictures | 11:00-12:00 | 10-13 | 5 pounds | Make a short animation using drawings and a school tablet.\nKitchen Colours | 13:00-14:30 | 12-13 | 4 pounds | Use ordinary foods to investigate changes in colour.\n\nBirdwatch Notebook takes place outdoors. If it rains heavily, students will use photographs in Room 6 instead. The other three projects are indoors. Students in Kitchen Colours must tell the teacher about any food allergies when booking. You will not eat the materials.\n\nYou may take your bridge, notebook or drawings home. School tablets must stay in the classroom. Parents can collect students at the main entrance after each project.",
+            "explanation": "The note specifies using photographs in Room6. No rescheduling or tablet requirement is given.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Students work with photographs indoors."
+              },
+              {
+                "id": "o1",
+                "text": "It moves to Sunday morning."
+              },
+              {
+                "id": "o2",
+                "text": "Students must bring their own tablets."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-science-club-projects-016.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整活动表及说明，选择合适的答案。",
+            "prompt": "What must students report when booking Kitchen Colours?",
+            "material": "Science club: choose a Saturday project\n\nThe science club offers four projects this Saturday. Each student may join only one. Book by Thursday and meet in Room 6 ten minutes before your project starts. All materials are included in the price.\n\nProject | Time | Age | Price | What you will do\nPaper Bridges | 9:00-10:30 | 10-12 | 4 pounds | Build a bridge and test how many small blocks it can hold.\nBirdwatch Notebook | 9:30-11:00 | 11-13 | 3 pounds | Observe birds in the school garden and make a simple record.\nMoving Pictures | 11:00-12:00 | 10-13 | 5 pounds | Make a short animation using drawings and a school tablet.\nKitchen Colours | 13:00-14:30 | 12-13 | 4 pounds | Use ordinary foods to investigate changes in colour.\n\nBirdwatch Notebook takes place outdoors. If it rains heavily, students will use photographs in Room 6 instead. The other three projects are indoors. Students in Kitchen Colours must tell the teacher about any food allergies when booking. You will not eat the materials.\n\nYou may take your bridge, notebook or drawings home. School tablets must stay in the classroom. Parents can collect students at the main entrance after each project.",
+            "explanation": "Food allergies must be reported despite materials not being eaten. Bridge experience and bird preference are not booking requirements.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "How many bridges they have built."
+              },
+              {
+                "id": "o1",
+                "text": "Any food allergies."
+              },
+              {
+                "id": "o2",
+                "text": "Which bird they like best."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-science-club-projects-016.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整活动表及说明，选择合适的答案。",
+            "prompt": "Which item must stay at school?",
+            "material": "Science club: choose a Saturday project\n\nThe science club offers four projects this Saturday. Each student may join only one. Book by Thursday and meet in Room 6 ten minutes before your project starts. All materials are included in the price.\n\nProject | Time | Age | Price | What you will do\nPaper Bridges | 9:00-10:30 | 10-12 | 4 pounds | Build a bridge and test how many small blocks it can hold.\nBirdwatch Notebook | 9:30-11:00 | 11-13 | 3 pounds | Observe birds in the school garden and make a simple record.\nMoving Pictures | 11:00-12:00 | 10-13 | 5 pounds | Make a short animation using drawings and a school tablet.\nKitchen Colours | 13:00-14:30 | 12-13 | 4 pounds | Use ordinary foods to investigate changes in colour.\n\nBirdwatch Notebook takes place outdoors. If it rains heavily, students will use photographs in Room 6 instead. The other three projects are indoors. Students in Kitchen Colours must tell the teacher about any food allergies when booking. You will not eat the materials.\n\nYou may take your bridge, notebook or drawings home. School tablets must stay in the classroom. Parents can collect students at the main entrance after each project.",
+            "explanation": "School tablets stay in the classroom. The finished bridge, notebook and drawings can go home.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A student's finished notebook."
+              },
+              {
+                "id": "o1",
+                "text": "A student's paper bridge."
+              },
+              {
+                "id": "o2",
+                "text": "The tablet used for animation."
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "b7aa65859bef3b7c112de70419eadf2fa47c612f2102fa02702350156e4362e0",
+      "reviewNotes": "Four new complete elementary reading practices with explicit text evidence and distractor explanations. Chinese operational directions are retained for the younger levels; assessed passages, statements and choices are English. Same-author review only, not independent age/difficulty calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}

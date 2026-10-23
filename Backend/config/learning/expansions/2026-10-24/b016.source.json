@@ -1,0 +1,274 @@
+{
+  "createdAt": "2026-10-23T19:22:12.821222+00:00",
+  "reviewBoundary": "Four new complete elementary reading practices with explicit text evidence and distractor explanations. Chinese operational directions are retained for the younger levels; assessed passages, statements and choices are English. Same-author review only, not independent age/difficulty calibration.",
+  "units": [
+    {
+      "id": "primary3.lanas-art-bag-016",
+      "level": "primary3",
+      "title": "阅读判断 · 拉娜的画画包",
+      "family": "reading_tf",
+      "minutes": 10,
+      "sourceUnitId": "original.bens-bag-reading",
+      "instruction": "读短文，判断每句话是否与短文相符。",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Lana's art bag",
+          "text": "Lana has a yellow bag. She takes it to art club on Friday. There are two pencils, a small box of crayons and a bottle of water in the bag. Her paint is in the classroom.\n\nToday Lana draws a green tree and three red birds. Her friend Sam draws a blue boat. They put their pictures on the wall.\n\nAfter art club, Lana cannot find her water bottle. Sam looks under the table. The bottle is there, next to a chair. Lana thanks him and puts it back in her bag. They go home together.",
+          "questions": [
+            {
+              "prompt": "Lana's bag is yellow.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "The first sentence gives a yellow bag, so True; False contradicts the stated colour."
+            },
+            {
+              "prompt": "Lana takes three pencils to art club.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "The bag contains two pencils, not three. Three is the number of birds in her picture, so False."
+            },
+            {
+              "prompt": "Lana's paint is already in the classroom.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "The first paragraph says her paint is in the classroom. False would contradict this location."
+            },
+            {
+              "prompt": "Sam draws a green tree.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 1,
+              "explanation": "Lana draws the green tree; Sam draws a blue boat. The statement exchanges their pictures, so False."
+            },
+            {
+              "prompt": "Sam finds the bottle under the table.",
+              "options": [
+                "True",
+                "False"
+              ],
+              "answer": 0,
+              "explanation": "Sam looks under the table and the bottle is there beside a chair. True follows the explicit sequence; False does not."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary4.sports-bag-call-016",
+      "level": "primary4",
+      "title": "对话阅读 · 体育包电话",
+      "family": "reading_choice",
+      "minutes": 10,
+      "sourceUnitId": "original.primary4-book-bus-call",
+      "instruction": "读完整对话，选择合适的答案。",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "The sports bag",
+          "text": "Mum: Hello, Alex. Are you at school?\nAlex: Yes, Mum. I'm in the classroom. I can't find my sports bag.\nMum: What colour is it?\nAlex: It's black, with a white star. My trainers and a blue T-shirt are inside.\nMum: Is it in your bedroom?\nAlex: I don't think so. I put it beside the front door this morning.\nMum: Let me look. Oh, yes! It's here, behind Dad's coat.\nAlex: Can you bring it to school? Our match starts at half past three.\nMum: I can get there at three. Where shall we meet?\nAlex: At the small gate beside the library, please. The main gate is closed this afternoon.\nMum: All right. Do you need your water bottle too?\nAlex: No, thanks. It's in my school bag.\nMum: See you at three.\nAlex: Thanks, Mum!",
+          "questions": [
+            {
+              "prompt": "Where is Alex during the call?",
+              "options": [
+                "In his bedroom.",
+                "In his classroom.",
+                "At the library gate."
+              ],
+              "answer": 1,
+              "explanation": "Alex explicitly says he is in the classroom. His bedroom is a suggested bag location, and the gate is their later meeting point."
+            },
+            {
+              "prompt": "What does the sports bag look like?",
+              "options": [
+                "Black with a white star.",
+                "White with a black star.",
+                "Blue with a red star."
+              ],
+              "answer": 0,
+              "explanation": "Alex describes a black bag with a white star. B reverses the colours and C invents different colours."
+            },
+            {
+              "prompt": "Where does Mum find the bag?",
+              "options": [
+                "Under Alex's bed.",
+                "Inside the school library.",
+                "Beside the front door, behind Dad's coat."
+              ],
+              "answer": 2,
+              "explanation": "Alex left it beside the front door and Mum finds it behind the coat there. The bedroom was not confirmed, and the library is near the future meeting point."
+            },
+            {
+              "prompt": "When will Mum meet Alex?",
+              "options": [
+                "At half past two.",
+                "At three o'clock.",
+                "At half past three."
+              ],
+              "answer": 1,
+              "explanation": "They agree to meet at three. Half past three is the match start, and half past two is not mentioned."
+            },
+            {
+              "prompt": "Why will they use the small gate?",
+              "options": [
+                "The main gate is closed that afternoon.",
+                "Alex has lost his water bottle there.",
+                "The match will be played inside the library."
+              ],
+              "answer": 0,
+              "explanation": "Alex states that the main gate is closed. His bottle is safely in his school bag, and no match inside the library is suggested."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary5.fox-and-empty-envelope-016",
+      "level": "primary5",
+      "title": "故事阅读 · 狐狸与空信封",
+      "family": "reading_choice",
+      "minutes": 10,
+      "sourceUnitId": "original.inside-the-book-reading",
+      "instruction": "读完整故事，选择合适的答案。",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Fox and the empty envelope",
+          "text": "In a village of talking animals, Fox made beautiful cards. One morning, Rabbit ordered a birthday card for her sister. 'Please put it in an envelope,' she said. 'I'll collect it after lunch.'\n\nFox made a card with silver stars. He put an envelope beside it, then went outside to help a neighbour. While he was away, a breeze blew through the window. The card slipped under a pile of paper, but the envelope stayed on the desk.\n\nWhen Rabbit arrived, Fox handed her the envelope without looking inside. She opened it at home and found nothing. Instead of getting angry, she returned and asked Fox to help her look.\n\nThey found the card together. Fox was sorry. 'The envelope looked ready,' he said.\n\nRabbit smiled. 'A lovely envelope is useful, but the message matters too.'\n\nAfter that, Fox checked every card before closing its envelope. He still decorated the outside carefully. He simply made sure that the part people could not see was ready as well.",
+          "questions": [
+            {
+              "prompt": "Who was the birthday card for?",
+              "options": [
+                "Fox's neighbour.",
+                "Rabbit herself.",
+                "Rabbit's sister."
+              ],
+              "answer": 2,
+              "explanation": "Rabbit orders it for her sister. The neighbour receives help, not the card, and Rabbit is collecting it for someone else."
+            },
+            {
+              "prompt": "Why did the card move from the desk?",
+              "options": [
+                "A breeze blew it under some paper.",
+                "Fox gave it to his neighbour.",
+                "Rabbit took it before lunch."
+              ],
+              "answer": 0,
+              "explanation": "The wind moves it under a paper pile. No neighbour receives it, and Rabbit arrives after lunch to collect the envelope."
+            },
+            {
+              "prompt": "What did Fox fail to do before handing over the envelope?",
+              "options": [
+                "Paint silver stars on the card.",
+                "Check that the card was inside.",
+                "Ask when Rabbit would collect it."
+              ],
+              "answer": 1,
+              "explanation": "He hands over the envelope without looking inside. The stars are already made and the collection time was agreed that morning."
+            },
+            {
+              "prompt": "How did Rabbit respond to the empty envelope?",
+              "options": [
+                "She destroyed Fox's other cards.",
+                "She refused to speak to him again.",
+                "She returned and helped search for the card."
+              ],
+              "answer": 2,
+              "explanation": "She calmly asks Fox to help look and they find it together. Destruction and refusal to speak contradict her response."
+            },
+            {
+              "prompt": "What did Fox learn?",
+              "options": [
+                "A finished appearance does not replace checking what is inside.",
+                "An envelope should never be decorated.",
+                "Helping a neighbour always causes trouble."
+              ],
+              "answer": 0,
+              "explanation": "He keeps decorating but also checks the hidden contents. B contradicts continuing decoration; C makes an absolute claim beyond one misplaced card."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary6.four-science-club-projects-016",
+      "level": "primary6",
+      "title": "信息阅读 · 四个科学社项目",
+      "family": "reading_choice",
+      "minutes": 10,
+      "sourceUnitId": "original.primary6-four-books-table",
+      "alignmentNote": "New four-entry informational comparison table with five questions, using the source's complete table-reading task rules. Activities replace books explicitly; no claim of identical subject matter or independent age calibration.",
+      "instruction": "读完整活动表及说明，选择合适的答案。",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Science club: choose a Saturday project",
+          "text": "The science club offers four projects this Saturday. Each student may join only one. Book by Thursday and meet in Room 6 ten minutes before your project starts. All materials are included in the price.\n\nProject | Time | Age | Price | What you will do\nPaper Bridges | 9:00-10:30 | 10-12 | 4 pounds | Build a bridge and test how many small blocks it can hold.\nBirdwatch Notebook | 9:30-11:00 | 11-13 | 3 pounds | Observe birds in the school garden and make a simple record.\nMoving Pictures | 11:00-12:00 | 10-13 | 5 pounds | Make a short animation using drawings and a school tablet.\nKitchen Colours | 13:00-14:30 | 12-13 | 4 pounds | Use ordinary foods to investigate changes in colour.\n\nBirdwatch Notebook takes place outdoors. If it rains heavily, students will use photographs in Room 6 instead. The other three projects are indoors. Students in Kitchen Colours must tell the teacher about any food allergies when booking. You will not eat the materials.\n\nYou may take your bridge, notebook or drawings home. School tablets must stay in the classroom. Parents can collect students at the main entrance after each project.",
+          "questions": [
+            {
+              "prompt": "Which project is open to a ten-year-old and finishes before eleven?",
+              "options": [
+                "Birdwatch Notebook.",
+                "Paper Bridges.",
+                "Kitchen Colours."
+              ],
+              "answer": 1,
+              "explanation": "Paper Bridges accepts ages 10-12 and ends at10:30. Birdwatch requires at least11 and ends at11; Kitchen Colours requires at least12 and runs in the afternoon."
+            },
+            {
+              "prompt": "How much does Moving Pictures cost?",
+              "options": [
+                "Three pounds.",
+                "Four pounds.",
+                "Five pounds."
+              ],
+              "answer": 2,
+              "explanation": "Moving Pictures costs five pounds. Three is Birdwatch's price and four belongs to Paper Bridges and Kitchen Colours."
+            },
+            {
+              "prompt": "What happens to Birdwatch Notebook in heavy rain?",
+              "options": [
+                "Students work with photographs indoors.",
+                "It moves to Sunday morning.",
+                "Students must bring their own tablets."
+              ],
+              "answer": 0,
+              "explanation": "The note specifies using photographs in Room6. No rescheduling or tablet requirement is given."
+            },
+            {
+              "prompt": "What must students report when booking Kitchen Colours?",
+              "options": [
+                "How many bridges they have built.",
+                "Any food allergies.",
+                "Which bird they like best."
+              ],
+              "answer": 1,
+              "explanation": "Food allergies must be reported despite materials not being eaten. Bridge experience and bird preference are not booking requirements."
+            },
+            {
+              "prompt": "Which item must stay at school?",
+              "options": [
+                "A student's finished notebook.",
+                "A student's paper bridge.",
+                "The tablet used for animation."
+              ],
+              "answer": 2,
+              "explanation": "School tablets stay in the classroom. The finished bridge, notebook and drawings can go home."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

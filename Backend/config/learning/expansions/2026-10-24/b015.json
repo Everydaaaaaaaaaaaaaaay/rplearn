@@ -1,0 +1,2042 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b015",
+  "createdAt": "2026-10-23T19:18:43.817050+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.woodland-sketches-015",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · A morning of woodland sketches",
+        "summary": "A morning of woodland sketches，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 初2具体形式参照：2024ChangjunGrade8midtermApublicPDF;originalreleaseauthenticationunknown。一篇十空、七给词三无提示；给词不限1词，来源原键非gold。旧作者暂停仍保留；本稿仅作者自审。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six newly authored coherent ten-gap junior grammar passages. Correct forms, legitimate variants and explicit rejected forms are written per item; unknown written answers remain reviewable. Same-author grammar review, no independent teacher or learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.woodland-sketches-015",
+          "family": "passage_form",
+          "label": "A morning of woodland sketches",
+          "candidateSHA256": "3e6d5c864237280d5e2df01948b2817fa4bb01be878132ddcf7c97adc0ff96dd",
+          "authorCheckSHA256": "b24a34048726adc1b4bfdb1134e602b99b6aa906007086985fbcb62d7e74945f",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.woodland-sketches-015#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b015；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A morning of woodland sketches\n\nLast Sunday, our art club ____1____ (visit) a small wood outside town. After ____2____ (walk) for ten minutes, we reached a clearing. We ____3____ (tell) to choose one branch and study it closely before drawing.\n\nEach of us had ____4____ pencil and a notebook. Our teacher, ____5____ grew up near the wood, asked us to notice how the light changed across a leaf. I had expected all the ____6____ (leaf) on my branch to look the same. In fact, some were darker, and one had a hole near its edge.\n\nI worked more ____7____ (slow) than usual. Instead of drawing a tree shape from memory, I decided ____8____ (look) at the real branch after every few lines. My first page was not only a picture ____9____ also a record of small discoveries.\n\nAt lunchtime, we put our notebooks beside one another. Nobody's page was exactly like mine, even though several students had chosen the same tree. The teacher did not select a winner. She asked us to explain one detail we had noticed. Before leaving, I collected the fallen leaves I had used as models and placed ____10____ (they) back on the ground. I wanted to return in another season and try drawing the branch again."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.woodland-sketches-015.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of visit.",
+            "material": "A morning of woodland sketches\n\nLast Sunday, our art club ____1____ (visit) a small wood outside town. After ____2____ (walk) for ten minutes, we reached a clearing. We ____3____ (tell) to choose one branch and study it closely before drawing.\n\nEach of us had ____4____ pencil and a notebook. Our teacher, ____5____ grew up near the wood, asked us to notice how the light changed across a leaf. I had expected all the ____6____ (leaf) on my branch to look the same. In fact, some were darker, and one had a hole near its edge.\n\nI worked more ____7____ (slow) than usual. Instead of drawing a tree shape from memory, I decided ____8____ (look) at the real branch after every few lines. My first page was not only a picture ____9____ also a record of small discoveries.\n\nAt lunchtime, we put our notebooks beside one another. Nobody's page was exactly like mine, even though several students had chosen the same tree. The teacher did not select a winner. She asked us to explain one detail we had noticed. Before leaving, I collected the fallen leaves I had used as models and placed ____10____ (they) back on the ground. I wanted to return in another season and try drawing the branch again.",
+            "explanation": "Last Sunday locates the completed visit in the past, so visited; visit and visits are present forms.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "visited"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "visit",
+                "visits"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.woodland-sketches-015.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with the correct form of walk.",
+            "material": "A morning of woodland sketches\n\nLast Sunday, our art club ____1____ (visit) a small wood outside town. After ____2____ (walk) for ten minutes, we reached a clearing. We ____3____ (tell) to choose one branch and study it closely before drawing.\n\nEach of us had ____4____ pencil and a notebook. Our teacher, ____5____ grew up near the wood, asked us to notice how the light changed across a leaf. I had expected all the ____6____ (leaf) on my branch to look the same. In fact, some were darker, and one had a hole near its edge.\n\nI worked more ____7____ (slow) than usual. Instead of drawing a tree shape from memory, I decided ____8____ (look) at the real branch after every few lines. My first page was not only a picture ____9____ also a record of small discoveries.\n\nAt lunchtime, we put our notebooks beside one another. Nobody's page was exactly like mine, even though several students had chosen the same tree. The teacher did not select a winner. She asked us to explain one detail we had noticed. Before leaving, I collected the fallen leaves I had used as models and placed ____10____ (they) back on the ground. I wanted to return in another season and try drawing the branch again.",
+            "explanation": "After is a preposition here and takes walking, not a finite verb or to-infinitive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "walking"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "walk",
+                "walked",
+                "to walk"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.woodland-sketches-015.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with the correct form of tell.",
+            "material": "A morning of woodland sketches\n\nLast Sunday, our art club ____1____ (visit) a small wood outside town. After ____2____ (walk) for ten minutes, we reached a clearing. We ____3____ (tell) to choose one branch and study it closely before drawing.\n\nEach of us had ____4____ pencil and a notebook. Our teacher, ____5____ grew up near the wood, asked us to notice how the light changed across a leaf. I had expected all the ____6____ (leaf) on my branch to look the same. In fact, some were darker, and one had a hole near its edge.\n\nI worked more ____7____ (slow) than usual. Instead of drawing a tree shape from memory, I decided ____8____ (look) at the real branch after every few lines. My first page was not only a picture ____9____ also a record of small discoveries.\n\nAt lunchtime, we put our notebooks beside one another. Nobody's page was exactly like mine, even though several students had chosen the same tree. The teacher did not select a winner. She asked us to explain one detail we had noticed. Before leaving, I collected the fallen leaves I had used as models and placed ____10____ (they) back on the ground. I wanted to return in another season and try drawing the branch again.",
+            "explanation": "We received instructions during the past visit: were told. Told lacks the passive auxiliary, was disagrees with we, and are changes the time.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "were told"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "told",
+                "was told",
+                "are told"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.woodland-sketches-015.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "A morning of woodland sketches\n\nLast Sunday, our art club ____1____ (visit) a small wood outside town. After ____2____ (walk) for ten minutes, we reached a clearing. We ____3____ (tell) to choose one branch and study it closely before drawing.\n\nEach of us had ____4____ pencil and a notebook. Our teacher, ____5____ grew up near the wood, asked us to notice how the light changed across a leaf. I had expected all the ____6____ (leaf) on my branch to look the same. In fact, some were darker, and one had a hole near its edge.\n\nI worked more ____7____ (slow) than usual. Instead of drawing a tree shape from memory, I decided ____8____ (look) at the real branch after every few lines. My first page was not only a picture ____9____ also a record of small discoveries.\n\nAt lunchtime, we put our notebooks beside one another. Nobody's page was exactly like mine, even though several students had chosen the same tree. The teacher did not select a winner. She asked us to explain one detail we had noticed. Before leaving, I collected the fallen leaves I had used as models and placed ____10____ (they) back on the ground. I wanted to return in another season and try drawing the branch again.",
+            "explanation": "A introduces a singular countable pencil with a consonant sound. An has the wrong sound agreement; some does not fit singular pencil.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an",
+                "some"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.woodland-sketches-015.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with one appropriate word.",
+            "material": "A morning of woodland sketches\n\nLast Sunday, our art club ____1____ (visit) a small wood outside town. After ____2____ (walk) for ten minutes, we reached a clearing. We ____3____ (tell) to choose one branch and study it closely before drawing.\n\nEach of us had ____4____ pencil and a notebook. Our teacher, ____5____ grew up near the wood, asked us to notice how the light changed across a leaf. I had expected all the ____6____ (leaf) on my branch to look the same. In fact, some were darker, and one had a hole near its edge.\n\nI worked more ____7____ (slow) than usual. Instead of drawing a tree shape from memory, I decided ____8____ (look) at the real branch after every few lines. My first page was not only a picture ____9____ also a record of small discoveries.\n\nAt lunchtime, we put our notebooks beside one another. Nobody's page was exactly like mine, even though several students had chosen the same tree. The teacher did not select a winner. She asked us to explain one detail we had noticed. Before leaving, I collected the fallen leaves I had used as models and placed ____10____ (they) back on the ground. I wanted to return in another season and try drawing the branch again.",
+            "explanation": "The non-defining clause refers to the human teacher and needs subject who. That is not used in this comma-marked non-defining clause; which refers to things and where is not a subject.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "that",
+                "where"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.woodland-sketches-015.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with the correct form of leaf.",
+            "material": "A morning of woodland sketches\n\nLast Sunday, our art club ____1____ (visit) a small wood outside town. After ____2____ (walk) for ten minutes, we reached a clearing. We ____3____ (tell) to choose one branch and study it closely before drawing.\n\nEach of us had ____4____ pencil and a notebook. Our teacher, ____5____ grew up near the wood, asked us to notice how the light changed across a leaf. I had expected all the ____6____ (leaf) on my branch to look the same. In fact, some were darker, and one had a hole near its edge.\n\nI worked more ____7____ (slow) than usual. Instead of drawing a tree shape from memory, I decided ____8____ (look) at the real branch after every few lines. My first page was not only a picture ____9____ also a record of small discoveries.\n\nAt lunchtime, we put our notebooks beside one another. Nobody's page was exactly like mine, even though several students had chosen the same tree. The teacher did not select a winner. She asked us to explain one detail we had noticed. Before leaving, I collected the fallen leaves I had used as models and placed ____10____ (they) back on the ground. I wanted to return in another season and try drawing the branch again.",
+            "explanation": "All the leaves on a branch requires the irregular plural leaves. Leaf is singular and leafs is not the standard plural of this noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "leaves"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "leaf",
+                "leafs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.woodland-sketches-015.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with the correct form of slow.",
+            "material": "A morning of woodland sketches\n\nLast Sunday, our art club ____1____ (visit) a small wood outside town. After ____2____ (walk) for ten minutes, we reached a clearing. We ____3____ (tell) to choose one branch and study it closely before drawing.\n\nEach of us had ____4____ pencil and a notebook. Our teacher, ____5____ grew up near the wood, asked us to notice how the light changed across a leaf. I had expected all the ____6____ (leaf) on my branch to look the same. In fact, some were darker, and one had a hole near its edge.\n\nI worked more ____7____ (slow) than usual. Instead of drawing a tree shape from memory, I decided ____8____ (look) at the real branch after every few lines. My first page was not only a picture ____9____ also a record of small discoveries.\n\nAt lunchtime, we put our notebooks beside one another. Nobody's page was exactly like mine, even though several students had chosen the same tree. The teacher did not select a winner. She asked us to explain one detail we had noticed. Before leaving, I collected the fallen leaves I had used as models and placed ____10____ (they) back on the ground. I wanted to return in another season and try drawing the branch again.",
+            "explanation": "More slowly modifies worked. The noun slowness cannot do so; standard written grammar uses slowly rather than adjective slow here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "slowly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "slow",
+                "slowness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.woodland-sketches-015.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with the correct form of look.",
+            "material": "A morning of woodland sketches\n\nLast Sunday, our art club ____1____ (visit) a small wood outside town. After ____2____ (walk) for ten minutes, we reached a clearing. We ____3____ (tell) to choose one branch and study it closely before drawing.\n\nEach of us had ____4____ pencil and a notebook. Our teacher, ____5____ grew up near the wood, asked us to notice how the light changed across a leaf. I had expected all the ____6____ (leaf) on my branch to look the same. In fact, some were darker, and one had a hole near its edge.\n\nI worked more ____7____ (slow) than usual. Instead of drawing a tree shape from memory, I decided ____8____ (look) at the real branch after every few lines. My first page was not only a picture ____9____ also a record of small discoveries.\n\nAt lunchtime, we put our notebooks beside one another. Nobody's page was exactly like mine, even though several students had chosen the same tree. The teacher did not select a winner. She asked us to explain one detail we had noticed. Before leaving, I collected the fallen leaves I had used as models and placed ____10____ (they) back on the ground. I wanted to return in another season and try drawing the branch again.",
+            "explanation": "Decided takes to look. Looking, bare look and looked cannot directly serve as its complement here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to look"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "looking",
+                "look",
+                "looked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.woodland-sketches-015.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "A morning of woodland sketches\n\nLast Sunday, our art club ____1____ (visit) a small wood outside town. After ____2____ (walk) for ten minutes, we reached a clearing. We ____3____ (tell) to choose one branch and study it closely before drawing.\n\nEach of us had ____4____ pencil and a notebook. Our teacher, ____5____ grew up near the wood, asked us to notice how the light changed across a leaf. I had expected all the ____6____ (leaf) on my branch to look the same. In fact, some were darker, and one had a hole near its edge.\n\nI worked more ____7____ (slow) than usual. Instead of drawing a tree shape from memory, I decided ____8____ (look) at the real branch after every few lines. My first page was not only a picture ____9____ also a record of small discoveries.\n\nAt lunchtime, we put our notebooks beside one another. Nobody's page was exactly like mine, even though several students had chosen the same tree. The teacher did not select a winner. She asked us to explain one detail we had noticed. Before leaving, I collected the fallen leaves I had used as models and placed ____10____ (they) back on the ground. I wanted to return in another season and try drawing the branch again.",
+            "explanation": "The paired construction is not only ... but also. The other conjunctions do not complete it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "but"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "and",
+                "or",
+                "so"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.woodland-sketches-015.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with the correct form of they.",
+            "material": "A morning of woodland sketches\n\nLast Sunday, our art club ____1____ (visit) a small wood outside town. After ____2____ (walk) for ten minutes, we reached a clearing. We ____3____ (tell) to choose one branch and study it closely before drawing.\n\nEach of us had ____4____ pencil and a notebook. Our teacher, ____5____ grew up near the wood, asked us to notice how the light changed across a leaf. I had expected all the ____6____ (leaf) on my branch to look the same. In fact, some were darker, and one had a hole near its edge.\n\nI worked more ____7____ (slow) than usual. Instead of drawing a tree shape from memory, I decided ____8____ (look) at the real branch after every few lines. My first page was not only a picture ____9____ also a record of small discoveries.\n\nAt lunchtime, we put our notebooks beside one another. Nobody's page was exactly like mine, even though several students had chosen the same tree. The teacher did not select a winner. She asked us to explain one detail we had noticed. Before leaving, I collected the fallen leaves I had used as models and placed ____10____ (they) back on the ground. I wanted to return in another season and try drawing the branch again.",
+            "explanation": "Placed requires the object pronoun them for the leaves. They is a subject and their needs a following noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "them"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "their"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "5564308c44e32577d3026f6e965a6cab7dd0294009ddf10de99537bf89912302",
+      "reviewNotes": "Six newly authored coherent ten-gap junior grammar passages. Correct forms, legitimate variants and explicit rejected forms are written per item; unknown written answers remain reviewable. Same-author grammar review, no independent teacher or learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.newcomers-board-game-015",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · A game for new classmates",
+        "summary": "A game for new classmates，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 初2具体形式参照：2024ChangjunGrade8midtermApublicPDF;originalreleaseauthenticationunknown。一篇十空、七给词三无提示；给词不限1词，来源原键非gold。旧作者暂停仍保留；本稿仅作者自审。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six newly authored coherent ten-gap junior grammar passages. Correct forms, legitimate variants and explicit rejected forms are written per item; unknown written answers remain reviewable. Same-author grammar review, no independent teacher or learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.newcomers-board-game-015",
+          "family": "passage_form",
+          "label": "A game for new classmates",
+          "candidateSHA256": "c9a1fd1c8ed59e18d12d89a5eff3d3fcd3311514cba284cb49777f6f86b18352",
+          "authorCheckSHA256": "03b13e69a147f201695154126bcf114bb784233165f651403f6aa89153f3d3d8",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.newcomers-board-game-015#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b015；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A game for new classmates\n\nThree weeks ago, our class ____1____ (create) a board game for students who were new to the school. The board showed the library, sports hall and other places. Players had to ____2____ (choose) a route and answer questions about each building.\n\nAt first, the questions were too difficult. We had written them from memory without checking what a newcomer would know. During a trial, two younger ____3____ (child) could not get past the first square. We realised that we needed ____4____ (many) clues than we had provided.\n\nWe added small pictures and made the instructions ____5____ (easy) to follow. A student ____6____ had joined us only a month earlier helped us choose useful information. She pointed out that a picture of the main staircase was more helpful than the name of a teacher's office.\n\nWe spent an afternoon ____7____ (test) the new version. When the players made mistakes, we asked what had confused them instead of simply telling them the answer. By Friday, the board looked less crowded and the game moved more smoothly.\n\nNow we are looking forward ____8____ using it at the welcome event. We have put the cards in ____9____ old shoe box and written the rules on its lid. The project taught us that knowing a place well does not always make ____10____ (we) good at explaining it to someone else."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.newcomers-board-game-015.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of create.",
+            "material": "A game for new classmates\n\nThree weeks ago, our class ____1____ (create) a board game for students who were new to the school. The board showed the library, sports hall and other places. Players had to ____2____ (choose) a route and answer questions about each building.\n\nAt first, the questions were too difficult. We had written them from memory without checking what a newcomer would know. During a trial, two younger ____3____ (child) could not get past the first square. We realised that we needed ____4____ (many) clues than we had provided.\n\nWe added small pictures and made the instructions ____5____ (easy) to follow. A student ____6____ had joined us only a month earlier helped us choose useful information. She pointed out that a picture of the main staircase was more helpful than the name of a teacher's office.\n\nWe spent an afternoon ____7____ (test) the new version. When the players made mistakes, we asked what had confused them instead of simply telling them the answer. By Friday, the board looked less crowded and the game moved more smoothly.\n\nNow we are looking forward ____8____ using it at the welcome event. We have put the cards in ____9____ old shoe box and written the rules on its lid. The project taught us that knowing a place well does not always make ____10____ (we) good at explaining it to someone else.",
+            "explanation": "Three weeks ago requires past created, not present create or creates.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "created"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "create",
+                "creates"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newcomers-board-game-015.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with the correct form of choose.",
+            "material": "A game for new classmates\n\nThree weeks ago, our class ____1____ (create) a board game for students who were new to the school. The board showed the library, sports hall and other places. Players had to ____2____ (choose) a route and answer questions about each building.\n\nAt first, the questions were too difficult. We had written them from memory without checking what a newcomer would know. During a trial, two younger ____3____ (child) could not get past the first square. We realised that we needed ____4____ (many) clues than we had provided.\n\nWe added small pictures and made the instructions ____5____ (easy) to follow. A student ____6____ had joined us only a month earlier helped us choose useful information. She pointed out that a picture of the main staircase was more helpful than the name of a teacher's office.\n\nWe spent an afternoon ____7____ (test) the new version. When the players made mistakes, we asked what had confused them instead of simply telling them the answer. By Friday, the board looked less crowded and the game moved more smoothly.\n\nNow we are looking forward ____8____ using it at the welcome event. We have put the cards in ____9____ old shoe box and written the rules on its lid. The project taught us that knowing a place well does not always make ____10____ (we) good at explaining it to someone else.",
+            "explanation": "Had to already supplies to, so the slot takes bare choose. Choosing, chose or a second to cannot follow it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "choose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "choosing",
+                "chose",
+                "to choose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newcomers-board-game-015.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with the correct form of child.",
+            "material": "A game for new classmates\n\nThree weeks ago, our class ____1____ (create) a board game for students who were new to the school. The board showed the library, sports hall and other places. Players had to ____2____ (choose) a route and answer questions about each building.\n\nAt first, the questions were too difficult. We had written them from memory without checking what a newcomer would know. During a trial, two younger ____3____ (child) could not get past the first square. We realised that we needed ____4____ (many) clues than we had provided.\n\nWe added small pictures and made the instructions ____5____ (easy) to follow. A student ____6____ had joined us only a month earlier helped us choose useful information. She pointed out that a picture of the main staircase was more helpful than the name of a teacher's office.\n\nWe spent an afternoon ____7____ (test) the new version. When the players made mistakes, we asked what had confused them instead of simply telling them the answer. By Friday, the board looked less crowded and the game moved more smoothly.\n\nNow we are looking forward ____8____ using it at the welcome event. We have put the cards in ____9____ old shoe box and written the rules on its lid. The project taught us that knowing a place well does not always make ____10____ (we) good at explaining it to someone else.",
+            "explanation": "Two requires plural children; child is singular and childs is not the standard plural.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "children"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "child",
+                "childs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newcomers-board-game-015.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with the correct form of many.",
+            "material": "A game for new classmates\n\nThree weeks ago, our class ____1____ (create) a board game for students who were new to the school. The board showed the library, sports hall and other places. Players had to ____2____ (choose) a route and answer questions about each building.\n\nAt first, the questions were too difficult. We had written them from memory without checking what a newcomer would know. During a trial, two younger ____3____ (child) could not get past the first square. We realised that we needed ____4____ (many) clues than we had provided.\n\nWe added small pictures and made the instructions ____5____ (easy) to follow. A student ____6____ had joined us only a month earlier helped us choose useful information. She pointed out that a picture of the main staircase was more helpful than the name of a teacher's office.\n\nWe spent an afternoon ____7____ (test) the new version. When the players made mistakes, we asked what had confused them instead of simply telling them the answer. By Friday, the board looked less crowded and the game moved more smoothly.\n\nNow we are looking forward ____8____ using it at the welcome event. We have put the cards in ____9____ old shoe box and written the rules on its lid. The project taught us that knowing a place well does not always make ____10____ (we) good at explaining it to someone else.",
+            "explanation": "Than introduces comparison, so more clues. Many is not comparative and most is superlative.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "more"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "many",
+                "most"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newcomers-board-game-015.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with the correct form of easy.",
+            "material": "A game for new classmates\n\nThree weeks ago, our class ____1____ (create) a board game for students who were new to the school. The board showed the library, sports hall and other places. Players had to ____2____ (choose) a route and answer questions about each building.\n\nAt first, the questions were too difficult. We had written them from memory without checking what a newcomer would know. During a trial, two younger ____3____ (child) could not get past the first square. We realised that we needed ____4____ (many) clues than we had provided.\n\nWe added small pictures and made the instructions ____5____ (easy) to follow. A student ____6____ had joined us only a month earlier helped us choose useful information. She pointed out that a picture of the main staircase was more helpful than the name of a teacher's office.\n\nWe spent an afternoon ____7____ (test) the new version. When the players made mistakes, we asked what had confused them instead of simply telling them the answer. By Friday, the board looked less crowded and the game moved more smoothly.\n\nNow we are looking forward ____8____ using it at the welcome event. We have put the cards in ____9____ old shoe box and written the rules on its lid. The project taught us that knowing a place well does not always make ____10____ (we) good at explaining it to someone else.",
+            "explanation": "Easier expresses an improvement over the trial version. Easy is also a grammatical description after made and is accepted; easiest would assert an unsupported maximum.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "easier",
+              "easy"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "easiest"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newcomers-board-game-015.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "A game for new classmates\n\nThree weeks ago, our class ____1____ (create) a board game for students who were new to the school. The board showed the library, sports hall and other places. Players had to ____2____ (choose) a route and answer questions about each building.\n\nAt first, the questions were too difficult. We had written them from memory without checking what a newcomer would know. During a trial, two younger ____3____ (child) could not get past the first square. We realised that we needed ____4____ (many) clues than we had provided.\n\nWe added small pictures and made the instructions ____5____ (easy) to follow. A student ____6____ had joined us only a month earlier helped us choose useful information. She pointed out that a picture of the main staircase was more helpful than the name of a teacher's office.\n\nWe spent an afternoon ____7____ (test) the new version. When the players made mistakes, we asked what had confused them instead of simply telling them the answer. By Friday, the board looked less crowded and the game moved more smoothly.\n\nNow we are looking forward ____8____ using it at the welcome event. We have put the cards in ____9____ old shoe box and written the rules on its lid. The project taught us that knowing a place well does not always make ____10____ (we) good at explaining it to someone else.",
+            "explanation": "The defining relative clause needs a subject referring to a student: who or that. Which is not appropriate for this person, whose lacks a possessed noun, and where is not a subject.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "whose",
+                "where"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newcomers-board-game-015.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with the correct form of test.",
+            "material": "A game for new classmates\n\nThree weeks ago, our class ____1____ (create) a board game for students who were new to the school. The board showed the library, sports hall and other places. Players had to ____2____ (choose) a route and answer questions about each building.\n\nAt first, the questions were too difficult. We had written them from memory without checking what a newcomer would know. During a trial, two younger ____3____ (child) could not get past the first square. We realised that we needed ____4____ (many) clues than we had provided.\n\nWe added small pictures and made the instructions ____5____ (easy) to follow. A student ____6____ had joined us only a month earlier helped us choose useful information. She pointed out that a picture of the main staircase was more helpful than the name of a teacher's office.\n\nWe spent an afternoon ____7____ (test) the new version. When the players made mistakes, we asked what had confused them instead of simply telling them the answer. By Friday, the board looked less crowded and the game moved more smoothly.\n\nNow we are looking forward ____8____ using it at the welcome event. We have put the cards in ____9____ old shoe box and written the rules on its lid. The project taught us that knowing a place well does not always make ____10____ (we) good at explaining it to someone else.",
+            "explanation": "Spend time doing something takes testing, not a bare verb, finite past form or to-infinitive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "testing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "test",
+                "tested",
+                "to test"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newcomers-board-game-015.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "A game for new classmates\n\nThree weeks ago, our class ____1____ (create) a board game for students who were new to the school. The board showed the library, sports hall and other places. Players had to ____2____ (choose) a route and answer questions about each building.\n\nAt first, the questions were too difficult. We had written them from memory without checking what a newcomer would know. During a trial, two younger ____3____ (child) could not get past the first square. We realised that we needed ____4____ (many) clues than we had provided.\n\nWe added small pictures and made the instructions ____5____ (easy) to follow. A student ____6____ had joined us only a month earlier helped us choose useful information. She pointed out that a picture of the main staircase was more helpful than the name of a teacher's office.\n\nWe spent an afternoon ____7____ (test) the new version. When the players made mistakes, we asked what had confused them instead of simply telling them the answer. By Friday, the board looked less crowded and the game moved more smoothly.\n\nNow we are looking forward ____8____ using it at the welcome event. We have put the cards in ____9____ old shoe box and written the rules on its lid. The project taught us that knowing a place well does not always make ____10____ (we) good at explaining it to someone else.",
+            "explanation": "Look forward to uses the preposition to before using. For, at and with do not complete this fixed phrase.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "for",
+                "at",
+                "with"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newcomers-board-game-015.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "A game for new classmates\n\nThree weeks ago, our class ____1____ (create) a board game for students who were new to the school. The board showed the library, sports hall and other places. Players had to ____2____ (choose) a route and answer questions about each building.\n\nAt first, the questions were too difficult. We had written them from memory without checking what a newcomer would know. During a trial, two younger ____3____ (child) could not get past the first square. We realised that we needed ____4____ (many) clues than we had provided.\n\nWe added small pictures and made the instructions ____5____ (easy) to follow. A student ____6____ had joined us only a month earlier helped us choose useful information. She pointed out that a picture of the main staircase was more helpful than the name of a teacher's office.\n\nWe spent an afternoon ____7____ (test) the new version. When the players made mistakes, we asked what had confused them instead of simply telling them the answer. By Friday, the board looked less crowded and the game moved more smoothly.\n\nNow we are looking forward ____8____ using it at the welcome event. We have put the cards in ____9____ old shoe box and written the rules on its lid. The project taught us that knowing a place well does not always make ____10____ (we) good at explaining it to someone else.",
+            "explanation": "Old begins with a vowel sound and shoe box is a singular countable noun, requiring an. A has wrong sound agreement and some does not fit this singular use.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a",
+                "some"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.newcomers-board-game-015.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with the correct form of we.",
+            "material": "A game for new classmates\n\nThree weeks ago, our class ____1____ (create) a board game for students who were new to the school. The board showed the library, sports hall and other places. Players had to ____2____ (choose) a route and answer questions about each building.\n\nAt first, the questions were too difficult. We had written them from memory without checking what a newcomer would know. During a trial, two younger ____3____ (child) could not get past the first square. We realised that we needed ____4____ (many) clues than we had provided.\n\nWe added small pictures and made the instructions ____5____ (easy) to follow. A student ____6____ had joined us only a month earlier helped us choose useful information. She pointed out that a picture of the main staircase was more helpful than the name of a teacher's office.\n\nWe spent an afternoon ____7____ (test) the new version. When the players made mistakes, we asked what had confused them instead of simply telling them the answer. By Friday, the board looked less crowded and the game moved more smoothly.\n\nNow we are looking forward ____8____ using it at the welcome event. We have put the cards in ____9____ old shoe box and written the rules on its lid. The project taught us that knowing a place well does not always make ____10____ (we) good at explaining it to someone else.",
+            "explanation": "Make takes object us before the description good at explaining. We is subject form and our is possessive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "b0de34577a2385321aef1c52079d4376bb7f31cc17482b232b9a9aca9e923251",
+      "reviewNotes": "Six newly authored coherent ten-gap junior grammar passages. Correct forms, legitimate variants and explicit rejected forms are written per item; unknown written answers remain reviewable. Same-author grammar review, no independent teacher or learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.festival-hand-stamps-015",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · The festival hand stamps",
+        "summary": "The festival hand stamps，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 初2具体形式参照：2024ChangjunGrade8midtermApublicPDF;originalreleaseauthenticationunknown。一篇十空、七给词三无提示；给词不限1词，来源原键非gold。旧作者暂停仍保留；本稿仅作者自审。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six newly authored coherent ten-gap junior grammar passages. Correct forms, legitimate variants and explicit rejected forms are written per item; unknown written answers remain reviewable. Same-author grammar review, no independent teacher or learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.festival-hand-stamps-015",
+          "family": "passage_form",
+          "label": "The festival hand stamps",
+          "candidateSHA256": "77363bc3da1332c1a5aa0abd234d5eb04fd07ff74c53ede98b93e80db473c579",
+          "authorCheckSHA256": "60591d3185737fff78e143ba7da516930cc655bb59201fd902e2f33a070b06d6",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.festival-hand-stamps-015#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b015；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The festival hand stamps\n\nOur school held a music festival last Friday. Visitors received a small paper ticket at the gate, and each ticket ____1____ (check) before they entered the hall. I was one of the volunteers ____2____ helped at the door.\n\nDuring the break, many people went outside for fresh air. Some left ____3____ (they) tickets on their seats. When they returned, we did not know whether they had already paid. The queue grew ____4____ (long), and the next performance was due to start.\n\nOur teacher suggested ____5____ (give) each visitor a small stamp on the back of one hand when they first entered. Then they could come back after the break without showing a ticket again. We used ____6____ washable ink pad, and anyone who did not want a stamp could keep the paper ticket instead.\n\nBefore the next break, we explained the choice ____7____ (clear). The second queue moved much faster. We still checked carefully, but we no longer had to ask the same questions again and again.\n\nAt the end of the evening, another volunteer thanked me ____8____ helping her during the busy period. We collected the unused tickets and put them into two ____9____ (box). The festival had given us a chance not only to hear music but also ____10____ (learn) how a small change could make an entrance easier to manage."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.festival-hand-stamps-015.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of check.",
+            "material": "The festival hand stamps\n\nOur school held a music festival last Friday. Visitors received a small paper ticket at the gate, and each ticket ____1____ (check) before they entered the hall. I was one of the volunteers ____2____ helped at the door.\n\nDuring the break, many people went outside for fresh air. Some left ____3____ (they) tickets on their seats. When they returned, we did not know whether they had already paid. The queue grew ____4____ (long), and the next performance was due to start.\n\nOur teacher suggested ____5____ (give) each visitor a small stamp on the back of one hand when they first entered. Then they could come back after the break without showing a ticket again. We used ____6____ washable ink pad, and anyone who did not want a stamp could keep the paper ticket instead.\n\nBefore the next break, we explained the choice ____7____ (clear). The second queue moved much faster. We still checked carefully, but we no longer had to ask the same questions again and again.\n\nAt the end of the evening, another volunteer thanked me ____8____ helping her during the busy period. We collected the unused tickets and put them into two ____9____ (box). The festival had given us a chance not only to hear music but also ____10____ (learn) how a small change could make an entrance easier to manage.",
+            "explanation": "Each singular ticket received the check in a past event: was checked. Checked alone is active, were disagrees with each ticket, and is changes the time.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was checked"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "checked",
+                "were checked",
+                "is checked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.festival-hand-stamps-015.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "The festival hand stamps\n\nOur school held a music festival last Friday. Visitors received a small paper ticket at the gate, and each ticket ____1____ (check) before they entered the hall. I was one of the volunteers ____2____ helped at the door.\n\nDuring the break, many people went outside for fresh air. Some left ____3____ (they) tickets on their seats. When they returned, we did not know whether they had already paid. The queue grew ____4____ (long), and the next performance was due to start.\n\nOur teacher suggested ____5____ (give) each visitor a small stamp on the back of one hand when they first entered. Then they could come back after the break without showing a ticket again. We used ____6____ washable ink pad, and anyone who did not want a stamp could keep the paper ticket instead.\n\nBefore the next break, we explained the choice ____7____ (clear). The second queue moved much faster. We still checked carefully, but we no longer had to ask the same questions again and again.\n\nAt the end of the evening, another volunteer thanked me ____8____ helping her during the busy period. We collected the unused tickets and put them into two ____9____ (box). The festival had given us a chance not only to hear music but also ____10____ (learn) how a small change could make an entrance easier to manage.",
+            "explanation": "Volunteers are people serving as the subject of helped, so who or that. Which is inappropriate here, whose needs a noun and where cannot be the subject.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "whose",
+                "where"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.festival-hand-stamps-015.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with the correct form of they.",
+            "material": "The festival hand stamps\n\nOur school held a music festival last Friday. Visitors received a small paper ticket at the gate, and each ticket ____1____ (check) before they entered the hall. I was one of the volunteers ____2____ helped at the door.\n\nDuring the break, many people went outside for fresh air. Some left ____3____ (they) tickets on their seats. When they returned, we did not know whether they had already paid. The queue grew ____4____ (long), and the next performance was due to start.\n\nOur teacher suggested ____5____ (give) each visitor a small stamp on the back of one hand when they first entered. Then they could come back after the break without showing a ticket again. We used ____6____ washable ink pad, and anyone who did not want a stamp could keep the paper ticket instead.\n\nBefore the next break, we explained the choice ____7____ (clear). The second queue moved much faster. We still checked carefully, but we no longer had to ask the same questions again and again.\n\nAt the end of the evening, another volunteer thanked me ____8____ helping her during the busy period. We collected the unused tickets and put them into two ____9____ (box). The festival had given us a chance not only to hear music but also ____10____ (learn) how a small change could make an entrance easier to manage.",
+            "explanation": "Tickets needs the possessive determiner their. They is a subject pronoun and them an object, neither modifies tickets possessively.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "their"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "them"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.festival-hand-stamps-015.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with the correct form of long.",
+            "material": "The festival hand stamps\n\nOur school held a music festival last Friday. Visitors received a small paper ticket at the gate, and each ticket ____1____ (check) before they entered the hall. I was one of the volunteers ____2____ helped at the door.\n\nDuring the break, many people went outside for fresh air. Some left ____3____ (they) tickets on their seats. When they returned, we did not know whether they had already paid. The queue grew ____4____ (long), and the next performance was due to start.\n\nOur teacher suggested ____5____ (give) each visitor a small stamp on the back of one hand when they first entered. Then they could come back after the break without showing a ticket again. We used ____6____ washable ink pad, and anyone who did not want a stamp could keep the paper ticket instead.\n\nBefore the next break, we explained the choice ____7____ (clear). The second queue moved much faster. We still checked carefully, but we no longer had to ask the same questions again and again.\n\nAt the end of the evening, another volunteer thanked me ____8____ helping her during the busy period. We collected the unused tickets and put them into two ____9____ (box). The festival had given us a chance not only to hear music but also ____10____ (learn) how a small change could make an entrance easier to manage.",
+            "explanation": "Grew longer expresses increasing length; grew long describes becoming long. Both are accepted. Longest introduces an unsupported maximum and length is not an adjective complement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "longer",
+              "long"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "longest",
+                "length"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.festival-hand-stamps-015.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with the correct form of give.",
+            "material": "The festival hand stamps\n\nOur school held a music festival last Friday. Visitors received a small paper ticket at the gate, and each ticket ____1____ (check) before they entered the hall. I was one of the volunteers ____2____ helped at the door.\n\nDuring the break, many people went outside for fresh air. Some left ____3____ (they) tickets on their seats. When they returned, we did not know whether they had already paid. The queue grew ____4____ (long), and the next performance was due to start.\n\nOur teacher suggested ____5____ (give) each visitor a small stamp on the back of one hand when they first entered. Then they could come back after the break without showing a ticket again. We used ____6____ washable ink pad, and anyone who did not want a stamp could keep the paper ticket instead.\n\nBefore the next break, we explained the choice ____7____ (clear). The second queue moved much faster. We still checked carefully, but we no longer had to ask the same questions again and again.\n\nAt the end of the evening, another volunteer thanked me ____8____ helping her during the busy period. We collected the unused tickets and put them into two ____9____ (box). The festival had given us a chance not only to hear music but also ____10____ (learn) how a small change could make an entrance easier to manage.",
+            "explanation": "Suggested takes giving in this structure. Bare give, past gave and to give do not directly complement suggested.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "giving"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "give",
+                "gave",
+                "to give"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.festival-hand-stamps-015.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "The festival hand stamps\n\nOur school held a music festival last Friday. Visitors received a small paper ticket at the gate, and each ticket ____1____ (check) before they entered the hall. I was one of the volunteers ____2____ helped at the door.\n\nDuring the break, many people went outside for fresh air. Some left ____3____ (they) tickets on their seats. When they returned, we did not know whether they had already paid. The queue grew ____4____ (long), and the next performance was due to start.\n\nOur teacher suggested ____5____ (give) each visitor a small stamp on the back of one hand when they first entered. Then they could come back after the break without showing a ticket again. We used ____6____ washable ink pad, and anyone who did not want a stamp could keep the paper ticket instead.\n\nBefore the next break, we explained the choice ____7____ (clear). The second queue moved much faster. We still checked carefully, but we no longer had to ask the same questions again and again.\n\nAt the end of the evening, another volunteer thanked me ____8____ helping her during the busy period. We collected the unused tickets and put them into two ____9____ (box). The festival had given us a chance not only to hear music but also ____10____ (learn) how a small change could make an entrance easier to manage.",
+            "explanation": "A introduces a singular washable ink pad. The first sound in washable is consonantal, so an is wrong; some does not fit the singular count noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an",
+                "some"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.festival-hand-stamps-015.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with the correct form of clear.",
+            "material": "The festival hand stamps\n\nOur school held a music festival last Friday. Visitors received a small paper ticket at the gate, and each ticket ____1____ (check) before they entered the hall. I was one of the volunteers ____2____ helped at the door.\n\nDuring the break, many people went outside for fresh air. Some left ____3____ (they) tickets on their seats. When they returned, we did not know whether they had already paid. The queue grew ____4____ (long), and the next performance was due to start.\n\nOur teacher suggested ____5____ (give) each visitor a small stamp on the back of one hand when they first entered. Then they could come back after the break without showing a ticket again. We used ____6____ washable ink pad, and anyone who did not want a stamp could keep the paper ticket instead.\n\nBefore the next break, we explained the choice ____7____ (clear). The second queue moved much faster. We still checked carefully, but we no longer had to ask the same questions again and again.\n\nAt the end of the evening, another volunteer thanked me ____8____ helping her during the busy period. We collected the unused tickets and put them into two ____9____ (box). The festival had given us a chance not only to hear music but also ____10____ (learn) how a small change could make an entrance easier to manage.",
+            "explanation": "Clearly modifies explained. Clear is an adjective and clearness is a noun, not the needed adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "clearly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "clear",
+                "clearness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.festival-hand-stamps-015.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "The festival hand stamps\n\nOur school held a music festival last Friday. Visitors received a small paper ticket at the gate, and each ticket ____1____ (check) before they entered the hall. I was one of the volunteers ____2____ helped at the door.\n\nDuring the break, many people went outside for fresh air. Some left ____3____ (they) tickets on their seats. When they returned, we did not know whether they had already paid. The queue grew ____4____ (long), and the next performance was due to start.\n\nOur teacher suggested ____5____ (give) each visitor a small stamp on the back of one hand when they first entered. Then they could come back after the break without showing a ticket again. We used ____6____ washable ink pad, and anyone who did not want a stamp could keep the paper ticket instead.\n\nBefore the next break, we explained the choice ____7____ (clear). The second queue moved much faster. We still checked carefully, but we no longer had to ask the same questions again and again.\n\nAt the end of the evening, another volunteer thanked me ____8____ helping her during the busy period. We collected the unused tickets and put them into two ____9____ (box). The festival had given us a chance not only to hear music but also ____10____ (learn) how a small change could make an entrance easier to manage.",
+            "explanation": "Thank someone for doing something takes for. The other prepositions do not complete this construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "at",
+                "with"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.festival-hand-stamps-015.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with the correct form of box.",
+            "material": "The festival hand stamps\n\nOur school held a music festival last Friday. Visitors received a small paper ticket at the gate, and each ticket ____1____ (check) before they entered the hall. I was one of the volunteers ____2____ helped at the door.\n\nDuring the break, many people went outside for fresh air. Some left ____3____ (they) tickets on their seats. When they returned, we did not know whether they had already paid. The queue grew ____4____ (long), and the next performance was due to start.\n\nOur teacher suggested ____5____ (give) each visitor a small stamp on the back of one hand when they first entered. Then they could come back after the break without showing a ticket again. We used ____6____ washable ink pad, and anyone who did not want a stamp could keep the paper ticket instead.\n\nBefore the next break, we explained the choice ____7____ (clear). The second queue moved much faster. We still checked carefully, but we no longer had to ask the same questions again and again.\n\nAt the end of the evening, another volunteer thanked me ____8____ helping her during the busy period. We collected the unused tickets and put them into two ____9____ (box). The festival had given us a chance not only to hear music but also ____10____ (learn) how a small change could make an entrance easier to manage.",
+            "explanation": "Two requires plural boxes; singular box and misspelt boxs are incorrect.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "boxes"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "box",
+                "boxs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.festival-hand-stamps-015.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with the correct form of learn.",
+            "material": "The festival hand stamps\n\nOur school held a music festival last Friday. Visitors received a small paper ticket at the gate, and each ticket ____1____ (check) before they entered the hall. I was one of the volunteers ____2____ helped at the door.\n\nDuring the break, many people went outside for fresh air. Some left ____3____ (they) tickets on their seats. When they returned, we did not know whether they had already paid. The queue grew ____4____ (long), and the next performance was due to start.\n\nOur teacher suggested ____5____ (give) each visitor a small stamp on the back of one hand when they first entered. Then they could come back after the break without showing a ticket again. We used ____6____ washable ink pad, and anyone who did not want a stamp could keep the paper ticket instead.\n\nBefore the next break, we explained the choice ____7____ (clear). The second queue moved much faster. We still checked carefully, but we no longer had to ask the same questions again and again.\n\nAt the end of the evening, another volunteer thanked me ____8____ helping her during the busy period. We collected the unused tickets and put them into two ____9____ (box). The festival had given us a chance not only to hear music but also ____10____ (learn) how a small change could make an entrance easier to manage.",
+            "explanation": "The coordinated complement can be to hear ... and to learn, or share the first to and use bare learn. Both to learn and learn are accepted. Learned and learning break the infinitive structure.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to learn",
+              "learn"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "learned",
+                "learning"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "d1e4ccbff7b93ca7f11dc61bcf774bc4d44e1c184e55933a62db4986b205c640",
+      "reviewNotes": "Six newly authored coherent ten-gap junior grammar passages. Correct forms, legitimate variants and explicit rejected forms are written per item; unknown written answers remain reviewable. Same-author grammar review, no independent teacher or learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.glasshouse-temperature-015",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · The glasshouse record",
+        "summary": "The glasshouse record，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 初3具体形式参照：2024Suzhouofficialgraduationpapersample_formreference_notallordinaryGrade9terms。一篇十空、七给词三无提示；给词不限1词，来源原键非gold。旧作者暂停仍保留；本稿仅作者自审。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six newly authored coherent ten-gap junior grammar passages. Correct forms, legitimate variants and explicit rejected forms are written per item; unknown written answers remain reviewable. Same-author grammar review, no independent teacher or learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.glasshouse-temperature-015",
+          "family": "passage_form",
+          "label": "The glasshouse record",
+          "candidateSHA256": "7f2180929d35017e53564d08f1c59afdcbfd0b9f379d4301827683aadf0359b7",
+          "authorCheckSHA256": "f153de93fc5477aba053105c50734e0d00c7a4567c9d848f42fe06bc964d61b2",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.glasshouse-temperature-015#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b015；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The glasshouse record\n\nFor the past month, our science class ____1____ (keep) a temperature record in the school glasshouse. Every afternoon, two students read the same thermometer at the same time. We write the result in a notebook ____2____ is kept beside the door.\n\nOne day, a reading was much ____3____ (high) than those around it. We first thought the thermometer was broken. Then we checked a photograph ____4____ (take) that afternoon. The door had been left open while a gardener moved some plants, and the notebook contained a note about bright sunshine falling directly onto the instrument.\n\nOur teacher did not tell us ____5____ (remove) the number. Instead, she asked us to record what we knew about the conditions. An unusual result might be a mistake, but it might also describe something that actually happened. Without the extra note, another reader could not judge the difference.\n\nWe decided to move the thermometer to a place protected ____6____ direct sunlight, following our teacher's instructions. We also added a column ____7____ order to record weather and door conditions. Each new entry now gives a little more information than a number alone.\n\nYesterday, I compared the first page with the latest one. The writing had become ____8____ (tidy), but that was not the main improvement. We had learned to describe our method more ____9____ (careful). The class will continue collecting readings until the end of term, when we hope to explain ____10____ the record can and cannot tell us about the glasshouse."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.glasshouse-temperature-015.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of keep.",
+            "material": "The glasshouse record\n\nFor the past month, our science class ____1____ (keep) a temperature record in the school glasshouse. Every afternoon, two students read the same thermometer at the same time. We write the result in a notebook ____2____ is kept beside the door.\n\nOne day, a reading was much ____3____ (high) than those around it. We first thought the thermometer was broken. Then we checked a photograph ____4____ (take) that afternoon. The door had been left open while a gardener moved some plants, and the notebook contained a note about bright sunshine falling directly onto the instrument.\n\nOur teacher did not tell us ____5____ (remove) the number. Instead, she asked us to record what we knew about the conditions. An unusual result might be a mistake, but it might also describe something that actually happened. Without the extra note, another reader could not judge the difference.\n\nWe decided to move the thermometer to a place protected ____6____ direct sunlight, following our teacher's instructions. We also added a column ____7____ order to record weather and door conditions. Each new entry now gives a little more information than a number alone.\n\nYesterday, I compared the first page with the latest one. The writing had become ____8____ (tidy), but that was not the main improvement. We had learned to describe our method more ____9____ (careful). The class will continue collecting readings until the end of term, when we hope to explain ____10____ the record can and cannot tell us about the glasshouse.",
+            "explanation": "For the past month connects work to now. Present perfect simple and continuous are valid; class may be singular or a British collective plural. Simple past kept and simple present keeps do not express the duration to now.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "has kept",
+              "has been keeping",
+              "have kept",
+              "have been keeping"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "kept",
+                "keeps"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.glasshouse-temperature-015.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "The glasshouse record\n\nFor the past month, our science class ____1____ (keep) a temperature record in the school glasshouse. Every afternoon, two students read the same thermometer at the same time. We write the result in a notebook ____2____ is kept beside the door.\n\nOne day, a reading was much ____3____ (high) than those around it. We first thought the thermometer was broken. Then we checked a photograph ____4____ (take) that afternoon. The door had been left open while a gardener moved some plants, and the notebook contained a note about bright sunshine falling directly onto the instrument.\n\nOur teacher did not tell us ____5____ (remove) the number. Instead, she asked us to record what we knew about the conditions. An unusual result might be a mistake, but it might also describe something that actually happened. Without the extra note, another reader could not judge the difference.\n\nWe decided to move the thermometer to a place protected ____6____ direct sunlight, following our teacher's instructions. We also added a column ____7____ order to record weather and door conditions. Each new entry now gives a little more information than a number alone.\n\nYesterday, I compared the first page with the latest one. The writing had become ____8____ (tidy), but that was not the main improvement. We had learned to describe our method more ____9____ (careful). The class will continue collecting readings until the end of term, when we hope to explain ____10____ the record can and cannot tell us about the glasshouse.",
+            "explanation": "The notebook is the subject antecedent of a defining relative clause: that or which. Who refers to people, where is not a subject, and what does not take an expressed antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.glasshouse-temperature-015.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with the correct form of high.",
+            "material": "The glasshouse record\n\nFor the past month, our science class ____1____ (keep) a temperature record in the school glasshouse. Every afternoon, two students read the same thermometer at the same time. We write the result in a notebook ____2____ is kept beside the door.\n\nOne day, a reading was much ____3____ (high) than those around it. We first thought the thermometer was broken. Then we checked a photograph ____4____ (take) that afternoon. The door had been left open while a gardener moved some plants, and the notebook contained a note about bright sunshine falling directly onto the instrument.\n\nOur teacher did not tell us ____5____ (remove) the number. Instead, she asked us to record what we knew about the conditions. An unusual result might be a mistake, but it might also describe something that actually happened. Without the extra note, another reader could not judge the difference.\n\nWe decided to move the thermometer to a place protected ____6____ direct sunlight, following our teacher's instructions. We also added a column ____7____ order to record weather and door conditions. Each new entry now gives a little more information than a number alone.\n\nYesterday, I compared the first page with the latest one. The writing had become ____8____ (tidy), but that was not the main improvement. We had learned to describe our method more ____9____ (careful). The class will continue collecting readings until the end of term, when we hope to explain ____10____ the record can and cannot tell us about the glasshouse.",
+            "explanation": "Much signals the comparative higher, with than. High is not comparative, highest is superlative, and more higher duplicates comparison.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "higher"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "high",
+                "highest",
+                "more higher"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.glasshouse-temperature-015.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with the correct form of take.",
+            "material": "The glasshouse record\n\nFor the past month, our science class ____1____ (keep) a temperature record in the school glasshouse. Every afternoon, two students read the same thermometer at the same time. We write the result in a notebook ____2____ is kept beside the door.\n\nOne day, a reading was much ____3____ (high) than those around it. We first thought the thermometer was broken. Then we checked a photograph ____4____ (take) that afternoon. The door had been left open while a gardener moved some plants, and the notebook contained a note about bright sunshine falling directly onto the instrument.\n\nOur teacher did not tell us ____5____ (remove) the number. Instead, she asked us to record what we knew about the conditions. An unusual result might be a mistake, but it might also describe something that actually happened. Without the extra note, another reader could not judge the difference.\n\nWe decided to move the thermometer to a place protected ____6____ direct sunlight, following our teacher's instructions. We also added a column ____7____ order to record weather and door conditions. Each new entry now gives a little more information than a number alone.\n\nYesterday, I compared the first page with the latest one. The writing had become ____8____ (tidy), but that was not the main improvement. We had learned to describe our method more ____9____ (careful). The class will continue collecting readings until the end of term, when we hope to explain ____10____ the record can and cannot tell us about the glasshouse.",
+            "explanation": "Taken is a passive participle modifying photograph. Taking wrongly makes the photograph an agent, and was taken introduces an unlinked finite clause.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "taken"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "taking",
+                "was taken"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.glasshouse-temperature-015.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with the correct form of remove.",
+            "material": "The glasshouse record\n\nFor the past month, our science class ____1____ (keep) a temperature record in the school glasshouse. Every afternoon, two students read the same thermometer at the same time. We write the result in a notebook ____2____ is kept beside the door.\n\nOne day, a reading was much ____3____ (high) than those around it. We first thought the thermometer was broken. Then we checked a photograph ____4____ (take) that afternoon. The door had been left open while a gardener moved some plants, and the notebook contained a note about bright sunshine falling directly onto the instrument.\n\nOur teacher did not tell us ____5____ (remove) the number. Instead, she asked us to record what we knew about the conditions. An unusual result might be a mistake, but it might also describe something that actually happened. Without the extra note, another reader could not judge the difference.\n\nWe decided to move the thermometer to a place protected ____6____ direct sunlight, following our teacher's instructions. We also added a column ____7____ order to record weather and door conditions. Each new entry now gives a little more information than a number alone.\n\nYesterday, I compared the first page with the latest one. The writing had become ____8____ (tidy), but that was not the main improvement. We had learned to describe our method more ____9____ (careful). The class will continue collecting readings until the end of term, when we hope to explain ____10____ the record can and cannot tell us about the glasshouse.",
+            "explanation": "Tell someone to do something requires to remove. Removing, bare remove and removed do not fill this complement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to remove"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "removing",
+                "remove",
+                "removed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.glasshouse-temperature-015.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "The glasshouse record\n\nFor the past month, our science class ____1____ (keep) a temperature record in the school glasshouse. Every afternoon, two students read the same thermometer at the same time. We write the result in a notebook ____2____ is kept beside the door.\n\nOne day, a reading was much ____3____ (high) than those around it. We first thought the thermometer was broken. Then we checked a photograph ____4____ (take) that afternoon. The door had been left open while a gardener moved some plants, and the notebook contained a note about bright sunshine falling directly onto the instrument.\n\nOur teacher did not tell us ____5____ (remove) the number. Instead, she asked us to record what we knew about the conditions. An unusual result might be a mistake, but it might also describe something that actually happened. Without the extra note, another reader could not judge the difference.\n\nWe decided to move the thermometer to a place protected ____6____ direct sunlight, following our teacher's instructions. We also added a column ____7____ order to record weather and door conditions. Each new entry now gives a little more information than a number alone.\n\nYesterday, I compared the first page with the latest one. The writing had become ____8____ (tidy), but that was not the main improvement. We had learned to describe our method more ____9____ (careful). The class will continue collecting readings until the end of term, when we hope to explain ____10____ the record can and cannot tell us about the glasshouse.",
+            "explanation": "Both protected from direct sunlight and protected against direct sunlight are legitimate. By would make sunlight the protecting agent, and at does not express the source of protection.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "from",
+              "against"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "by",
+                "at"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.glasshouse-temperature-015.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "The glasshouse record\n\nFor the past month, our science class ____1____ (keep) a temperature record in the school glasshouse. Every afternoon, two students read the same thermometer at the same time. We write the result in a notebook ____2____ is kept beside the door.\n\nOne day, a reading was much ____3____ (high) than those around it. We first thought the thermometer was broken. Then we checked a photograph ____4____ (take) that afternoon. The door had been left open while a gardener moved some plants, and the notebook contained a note about bright sunshine falling directly onto the instrument.\n\nOur teacher did not tell us ____5____ (remove) the number. Instead, she asked us to record what we knew about the conditions. An unusual result might be a mistake, but it might also describe something that actually happened. Without the extra note, another reader could not judge the difference.\n\nWe decided to move the thermometer to a place protected ____6____ direct sunlight, following our teacher's instructions. We also added a column ____7____ order to record weather and door conditions. Each new entry now gives a little more information than a number alone.\n\nYesterday, I compared the first page with the latest one. The writing had become ____8____ (tidy), but that was not the main improvement. We had learned to describe our method more ____9____ (careful). The class will continue collecting readings until the end of term, when we hope to explain ____10____ the record can and cannot tell us about the glasshouse.",
+            "explanation": "In order to record is the fixed purpose construction. For, on and with cannot introduce order to record in this sentence.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "for",
+                "on",
+                "with"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.glasshouse-temperature-015.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with the correct form of tidy.",
+            "material": "The glasshouse record\n\nFor the past month, our science class ____1____ (keep) a temperature record in the school glasshouse. Every afternoon, two students read the same thermometer at the same time. We write the result in a notebook ____2____ is kept beside the door.\n\nOne day, a reading was much ____3____ (high) than those around it. We first thought the thermometer was broken. Then we checked a photograph ____4____ (take) that afternoon. The door had been left open while a gardener moved some plants, and the notebook contained a note about bright sunshine falling directly onto the instrument.\n\nOur teacher did not tell us ____5____ (remove) the number. Instead, she asked us to record what we knew about the conditions. An unusual result might be a mistake, but it might also describe something that actually happened. Without the extra note, another reader could not judge the difference.\n\nWe decided to move the thermometer to a place protected ____6____ direct sunlight, following our teacher's instructions. We also added a column ____7____ order to record weather and door conditions. Each new entry now gives a little more information than a number alone.\n\nYesterday, I compared the first page with the latest one. The writing had become ____8____ (tidy), but that was not the main improvement. We had learned to describe our method more ____9____ (careful). The class will continue collecting readings until the end of term, when we hope to explain ____10____ the record can and cannot tell us about the glasshouse.",
+            "explanation": "Tidier expresses improvement relative to the first page. Tidy is also a legitimate description of the resulting state and is accepted. Tidiest would assert a maximum and tidiness is not an adjective complement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "tidier",
+              "tidy"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "tidiest",
+                "tidiness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.glasshouse-temperature-015.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with the correct form of careful.",
+            "material": "The glasshouse record\n\nFor the past month, our science class ____1____ (keep) a temperature record in the school glasshouse. Every afternoon, two students read the same thermometer at the same time. We write the result in a notebook ____2____ is kept beside the door.\n\nOne day, a reading was much ____3____ (high) than those around it. We first thought the thermometer was broken. Then we checked a photograph ____4____ (take) that afternoon. The door had been left open while a gardener moved some plants, and the notebook contained a note about bright sunshine falling directly onto the instrument.\n\nOur teacher did not tell us ____5____ (remove) the number. Instead, she asked us to record what we knew about the conditions. An unusual result might be a mistake, but it might also describe something that actually happened. Without the extra note, another reader could not judge the difference.\n\nWe decided to move the thermometer to a place protected ____6____ direct sunlight, following our teacher's instructions. We also added a column ____7____ order to record weather and door conditions. Each new entry now gives a little more information than a number alone.\n\nYesterday, I compared the first page with the latest one. The writing had become ____8____ (tidy), but that was not the main improvement. We had learned to describe our method more ____9____ (careful). The class will continue collecting readings until the end of term, when we hope to explain ____10____ the record can and cannot tell us about the glasshouse.",
+            "explanation": "More carefully modifies describe. Careful and carefulness are not adverbs.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careful",
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.glasshouse-temperature-015.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "The glasshouse record\n\nFor the past month, our science class ____1____ (keep) a temperature record in the school glasshouse. Every afternoon, two students read the same thermometer at the same time. We write the result in a notebook ____2____ is kept beside the door.\n\nOne day, a reading was much ____3____ (high) than those around it. We first thought the thermometer was broken. Then we checked a photograph ____4____ (take) that afternoon. The door had been left open while a gardener moved some plants, and the notebook contained a note about bright sunshine falling directly onto the instrument.\n\nOur teacher did not tell us ____5____ (remove) the number. Instead, she asked us to record what we knew about the conditions. An unusual result might be a mistake, but it might also describe something that actually happened. Without the extra note, another reader could not judge the difference.\n\nWe decided to move the thermometer to a place protected ____6____ direct sunlight, following our teacher's instructions. We also added a column ____7____ order to record weather and door conditions. Each new entry now gives a little more information than a number alone.\n\nYesterday, I compared the first page with the latest one. The writing had become ____8____ (tidy), but that was not the main improvement. We had learned to describe our method more ____9____ (careful). The class will continue collecting readings until the end of term, when we hope to explain ____10____ the record can and cannot tell us about the glasshouse.",
+            "explanation": "What introduces the content that the record can and cannot tell us. That leaves tell without the required content object, and which has no stated set or noun to identify here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "what"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "that",
+                "which"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "d0221d6bf87b3b1038a17af3603077d0ab8423f6a240c35e7432dc9e94dba8c6",
+      "reviewNotes": "Six newly authored coherent ten-gap junior grammar passages. Correct forms, legitimate variants and explicit rejected forms are written per item; unknown written answers remain reviewable. Same-author grammar review, no independent teacher or learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.sewing-two-pockets-015",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Two pockets for a costume",
+        "summary": "Two pockets for a costume，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 初3具体形式参照：2024Suzhouofficialgraduationpapersample_formreference_notallordinaryGrade9terms。一篇十空、七给词三无提示；给词不限1词，来源原键非gold。旧作者暂停仍保留；本稿仅作者自审。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six newly authored coherent ten-gap junior grammar passages. Correct forms, legitimate variants and explicit rejected forms are written per item; unknown written answers remain reviewable. Same-author grammar review, no independent teacher or learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.sewing-two-pockets-015",
+          "family": "passage_form",
+          "label": "Two pockets for a costume",
+          "candidateSHA256": "c7134266b665ce5a842f6a02d38329ef782f2b73e37df63603bcf0c55622dae4",
+          "authorCheckSHA256": "aee1d99196ec05d7e5163d51db09213c3657c12c0cbebd008ca2ff2ec6597f04",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.sewing-two-pockets-015#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b015；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Two pockets for a costume\n\nWhen our class prepared a play, I offered to sew pockets onto the main character's coat. I had never done this before, but my aunt agreed ____1____ (show) me how. She gave me two pieces of cloth ____2____ had already been cut to the right size.\n\nFirst, we folded the edges and held them in place with pins. My aunt asked me to work ____3____ (slow) rather than pull the thread as fast as possible. A rushed line of stitches might look uneven and would be harder ____4____ (correct).\n\nThe first pocket took nearly an hour. By the time I finished the second, I ____5____ (learn) how to keep the stitches a similar length. Both pockets were strong enough to hold the small objects needed in the play.\n\nAt rehearsal, the actor put a folded letter into one pocket. Then he tried to reach it with his other hand and found ____6____ difficult to pull the letter out. We had sewn the pocket too far back on the side of the coat. It was tidy, but not convenient for the action.\n\nWe moved it forward and tested the scene again. This time the letter came out ____7____ (easy). I realised that a costume is not only something to look at; it must also work for the person ____8____ wears it.\n\nAfter the performance, I kept a photograph ____9____ the coat and a note about the change. Making the pocket had taught me about sewing. Moving it had taught me to think about ____10____ (someone) else's task as well as my own."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.sewing-two-pockets-015.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of show.",
+            "material": "Two pockets for a costume\n\nWhen our class prepared a play, I offered to sew pockets onto the main character's coat. I had never done this before, but my aunt agreed ____1____ (show) me how. She gave me two pieces of cloth ____2____ had already been cut to the right size.\n\nFirst, we folded the edges and held them in place with pins. My aunt asked me to work ____3____ (slow) rather than pull the thread as fast as possible. A rushed line of stitches might look uneven and would be harder ____4____ (correct).\n\nThe first pocket took nearly an hour. By the time I finished the second, I ____5____ (learn) how to keep the stitches a similar length. Both pockets were strong enough to hold the small objects needed in the play.\n\nAt rehearsal, the actor put a folded letter into one pocket. Then he tried to reach it with his other hand and found ____6____ difficult to pull the letter out. We had sewn the pocket too far back on the side of the coat. It was tidy, but not convenient for the action.\n\nWe moved it forward and tested the scene again. This time the letter came out ____7____ (easy). I realised that a costume is not only something to look at; it must also work for the person ____8____ wears it.\n\nAfter the performance, I kept a photograph ____9____ the coat and a note about the change. Making the pocket had taught me about sewing. Moving it had taught me to think about ____10____ (someone) else's task as well as my own.",
+            "explanation": "Agreed takes the to-infinitive to show. Showing, bare show and showed do not directly complete agreed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to show"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "showing",
+                "show",
+                "showed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.sewing-two-pockets-015.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "Two pockets for a costume\n\nWhen our class prepared a play, I offered to sew pockets onto the main character's coat. I had never done this before, but my aunt agreed ____1____ (show) me how. She gave me two pieces of cloth ____2____ had already been cut to the right size.\n\nFirst, we folded the edges and held them in place with pins. My aunt asked me to work ____3____ (slow) rather than pull the thread as fast as possible. A rushed line of stitches might look uneven and would be harder ____4____ (correct).\n\nThe first pocket took nearly an hour. By the time I finished the second, I ____5____ (learn) how to keep the stitches a similar length. Both pockets were strong enough to hold the small objects needed in the play.\n\nAt rehearsal, the actor put a folded letter into one pocket. Then he tried to reach it with his other hand and found ____6____ difficult to pull the letter out. We had sewn the pocket too far back on the side of the coat. It was tidy, but not convenient for the action.\n\nWe moved it forward and tested the scene again. This time the letter came out ____7____ (easy). I realised that a costume is not only something to look at; it must also work for the person ____8____ wears it.\n\nAfter the performance, I kept a photograph ____9____ the coat and a note about the change. Making the pocket had taught me about sewing. Moving it had taught me to think about ____10____ (someone) else's task as well as my own.",
+            "explanation": "The pieces of cloth are the subject of a defining relative clause: that or which. Who refers to people, where is not a subject and what cannot take this expressed antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.sewing-two-pockets-015.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with the correct form of slow.",
+            "material": "Two pockets for a costume\n\nWhen our class prepared a play, I offered to sew pockets onto the main character's coat. I had never done this before, but my aunt agreed ____1____ (show) me how. She gave me two pieces of cloth ____2____ had already been cut to the right size.\n\nFirst, we folded the edges and held them in place with pins. My aunt asked me to work ____3____ (slow) rather than pull the thread as fast as possible. A rushed line of stitches might look uneven and would be harder ____4____ (correct).\n\nThe first pocket took nearly an hour. By the time I finished the second, I ____5____ (learn) how to keep the stitches a similar length. Both pockets were strong enough to hold the small objects needed in the play.\n\nAt rehearsal, the actor put a folded letter into one pocket. Then he tried to reach it with his other hand and found ____6____ difficult to pull the letter out. We had sewn the pocket too far back on the side of the coat. It was tidy, but not convenient for the action.\n\nWe moved it forward and tested the scene again. This time the letter came out ____7____ (easy). I realised that a costume is not only something to look at; it must also work for the person ____8____ wears it.\n\nAfter the performance, I kept a photograph ____9____ the coat and a note about the change. Making the pocket had taught me about sewing. Moving it had taught me to think about ____10____ (someone) else's task as well as my own.",
+            "explanation": "Slowly is the standard adverb modifying work. Slowness is a noun and cannot fill this slot. Informal flat-adverb slow is also accepted rather than rejected.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "slowly",
+              "slow"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "slowness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.sewing-two-pockets-015.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with the correct form of correct.",
+            "material": "Two pockets for a costume\n\nWhen our class prepared a play, I offered to sew pockets onto the main character's coat. I had never done this before, but my aunt agreed ____1____ (show) me how. She gave me two pieces of cloth ____2____ had already been cut to the right size.\n\nFirst, we folded the edges and held them in place with pins. My aunt asked me to work ____3____ (slow) rather than pull the thread as fast as possible. A rushed line of stitches might look uneven and would be harder ____4____ (correct).\n\nThe first pocket took nearly an hour. By the time I finished the second, I ____5____ (learn) how to keep the stitches a similar length. Both pockets were strong enough to hold the small objects needed in the play.\n\nAt rehearsal, the actor put a folded letter into one pocket. Then he tried to reach it with his other hand and found ____6____ difficult to pull the letter out. We had sewn the pocket too far back on the side of the coat. It was tidy, but not convenient for the action.\n\nWe moved it forward and tested the scene again. This time the letter came out ____7____ (easy). I realised that a costume is not only something to look at; it must also work for the person ____8____ wears it.\n\nAfter the performance, I kept a photograph ____9____ the coat and a note about the change. Making the pocket had taught me about sewing. Moving it had taught me to think about ____10____ (someone) else's task as well as my own.",
+            "explanation": "Harder to correct uses the infinitive to describe difficulty. The other forms cannot complete this construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to correct"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "correcting",
+                "correct",
+                "corrected"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.sewing-two-pockets-015.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with the correct form of learn.",
+            "material": "Two pockets for a costume\n\nWhen our class prepared a play, I offered to sew pockets onto the main character's coat. I had never done this before, but my aunt agreed ____1____ (show) me how. She gave me two pieces of cloth ____2____ had already been cut to the right size.\n\nFirst, we folded the edges and held them in place with pins. My aunt asked me to work ____3____ (slow) rather than pull the thread as fast as possible. A rushed line of stitches might look uneven and would be harder ____4____ (correct).\n\nThe first pocket took nearly an hour. By the time I finished the second, I ____5____ (learn) how to keep the stitches a similar length. Both pockets were strong enough to hold the small objects needed in the play.\n\nAt rehearsal, the actor put a folded letter into one pocket. Then he tried to reach it with his other hand and found ____6____ difficult to pull the letter out. We had sewn the pocket too far back on the side of the coat. It was tidy, but not convenient for the action.\n\nWe moved it forward and tested the scene again. This time the letter came out ____7____ (easy). I realised that a costume is not only something to look at; it must also work for the person ____8____ wears it.\n\nAfter the performance, I kept a photograph ____9____ the coat and a note about the change. Making the pocket had taught me about sewing. Moving it had taught me to think about ____10____ (someone) else's task as well as my own.",
+            "explanation": "By the time of the second completion, learning had already occurred, favouring past perfect had learned or had learnt. Simple learned/learnt can also describe the completed acquisition and are included as reasonable narrative variants.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "had learned",
+              "had learnt",
+              "learned",
+              "learnt"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "learn",
+                "has learned",
+                "have learned"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.sewing-two-pockets-015.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "Two pockets for a costume\n\nWhen our class prepared a play, I offered to sew pockets onto the main character's coat. I had never done this before, but my aunt agreed ____1____ (show) me how. She gave me two pieces of cloth ____2____ had already been cut to the right size.\n\nFirst, we folded the edges and held them in place with pins. My aunt asked me to work ____3____ (slow) rather than pull the thread as fast as possible. A rushed line of stitches might look uneven and would be harder ____4____ (correct).\n\nThe first pocket took nearly an hour. By the time I finished the second, I ____5____ (learn) how to keep the stitches a similar length. Both pockets were strong enough to hold the small objects needed in the play.\n\nAt rehearsal, the actor put a folded letter into one pocket. Then he tried to reach it with his other hand and found ____6____ difficult to pull the letter out. We had sewn the pocket too far back on the side of the coat. It was tidy, but not convenient for the action.\n\nWe moved it forward and tested the scene again. This time the letter came out ____7____ (easy). I realised that a costume is not only something to look at; it must also work for the person ____8____ wears it.\n\nAfter the performance, I kept a photograph ____9____ the coat and a note about the change. Making the pocket had taught me about sewing. Moving it had taught me to think about ____10____ (someone) else's task as well as my own.",
+            "explanation": "Anticipatory it stands for the following to-infinitive: found it difficult to pull the letter out. This and that cannot replace anticipatory it in this construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "it"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "this",
+                "that"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.sewing-two-pockets-015.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with the correct form of easy.",
+            "material": "Two pockets for a costume\n\nWhen our class prepared a play, I offered to sew pockets onto the main character's coat. I had never done this before, but my aunt agreed ____1____ (show) me how. She gave me two pieces of cloth ____2____ had already been cut to the right size.\n\nFirst, we folded the edges and held them in place with pins. My aunt asked me to work ____3____ (slow) rather than pull the thread as fast as possible. A rushed line of stitches might look uneven and would be harder ____4____ (correct).\n\nThe first pocket took nearly an hour. By the time I finished the second, I ____5____ (learn) how to keep the stitches a similar length. Both pockets were strong enough to hold the small objects needed in the play.\n\nAt rehearsal, the actor put a folded letter into one pocket. Then he tried to reach it with his other hand and found ____6____ difficult to pull the letter out. We had sewn the pocket too far back on the side of the coat. It was tidy, but not convenient for the action.\n\nWe moved it forward and tested the scene again. This time the letter came out ____7____ (easy). I realised that a costume is not only something to look at; it must also work for the person ____8____ wears it.\n\nAfter the performance, I kept a photograph ____9____ the coat and a note about the change. Making the pocket had taught me about sewing. Moving it had taught me to think about ____10____ (someone) else's task as well as my own.",
+            "explanation": "Easily modifies came out. Adjective easy and noun easiness do not give the required adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "easily"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "easy",
+                "easiness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.sewing-two-pockets-015.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "Two pockets for a costume\n\nWhen our class prepared a play, I offered to sew pockets onto the main character's coat. I had never done this before, but my aunt agreed ____1____ (show) me how. She gave me two pieces of cloth ____2____ had already been cut to the right size.\n\nFirst, we folded the edges and held them in place with pins. My aunt asked me to work ____3____ (slow) rather than pull the thread as fast as possible. A rushed line of stitches might look uneven and would be harder ____4____ (correct).\n\nThe first pocket took nearly an hour. By the time I finished the second, I ____5____ (learn) how to keep the stitches a similar length. Both pockets were strong enough to hold the small objects needed in the play.\n\nAt rehearsal, the actor put a folded letter into one pocket. Then he tried to reach it with his other hand and found ____6____ difficult to pull the letter out. We had sewn the pocket too far back on the side of the coat. It was tidy, but not convenient for the action.\n\nWe moved it forward and tested the scene again. This time the letter came out ____7____ (easy). I realised that a costume is not only something to look at; it must also work for the person ____8____ wears it.\n\nAfter the performance, I kept a photograph ____9____ the coat and a note about the change. Making the pocket had taught me about sewing. Moving it had taught me to think about ____10____ (someone) else's task as well as my own.",
+            "explanation": "The person is the subject of wears in a defining relative clause, allowing who or that. Which is inappropriate for the person, whose lacks a noun and where is not a subject.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "whose",
+                "where"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.sewing-two-pockets-015.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "Two pockets for a costume\n\nWhen our class prepared a play, I offered to sew pockets onto the main character's coat. I had never done this before, but my aunt agreed ____1____ (show) me how. She gave me two pieces of cloth ____2____ had already been cut to the right size.\n\nFirst, we folded the edges and held them in place with pins. My aunt asked me to work ____3____ (slow) rather than pull the thread as fast as possible. A rushed line of stitches might look uneven and would be harder ____4____ (correct).\n\nThe first pocket took nearly an hour. By the time I finished the second, I ____5____ (learn) how to keep the stitches a similar length. Both pockets were strong enough to hold the small objects needed in the play.\n\nAt rehearsal, the actor put a folded letter into one pocket. Then he tried to reach it with his other hand and found ____6____ difficult to pull the letter out. We had sewn the pocket too far back on the side of the coat. It was tidy, but not convenient for the action.\n\nWe moved it forward and tested the scene again. This time the letter came out ____7____ (easy). I realised that a costume is not only something to look at; it must also work for the person ____8____ wears it.\n\nAfter the performance, I kept a photograph ____9____ the coat and a note about the change. Making the pocket had taught me about sewing. Moving it had taught me to think about ____10____ (someone) else's task as well as my own.",
+            "explanation": "A photograph of the coat identifies its subject. To and from do not describe the coat as the subject shown. Other legitimate unlisted descriptions remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "from"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.sewing-two-pockets-015.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with the correct form of someone.",
+            "material": "Two pockets for a costume\n\nWhen our class prepared a play, I offered to sew pockets onto the main character's coat. I had never done this before, but my aunt agreed ____1____ (show) me how. She gave me two pieces of cloth ____2____ had already been cut to the right size.\n\nFirst, we folded the edges and held them in place with pins. My aunt asked me to work ____3____ (slow) rather than pull the thread as fast as possible. A rushed line of stitches might look uneven and would be harder ____4____ (correct).\n\nThe first pocket took nearly an hour. By the time I finished the second, I ____5____ (learn) how to keep the stitches a similar length. Both pockets were strong enough to hold the small objects needed in the play.\n\nAt rehearsal, the actor put a folded letter into one pocket. Then he tried to reach it with his other hand and found ____6____ difficult to pull the letter out. We had sewn the pocket too far back on the side of the coat. It was tidy, but not convenient for the action.\n\nWe moved it forward and tested the scene again. This time the letter came out ____7____ (easy). I realised that a costume is not only something to look at; it must also work for the person ____8____ wears it.\n\nAfter the performance, I kept a photograph ____9____ the coat and a note about the change. Making the pocket had taught me about sewing. Moving it had taught me to think about ____10____ (someone) else's task as well as my own.",
+            "explanation": "The possessive is formed by someone else's; else already carries the possessive ending, so the slot retains someone. Someones is not the needed form.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "someone"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "someones"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "0c5985bcbfde21ba8699051ff3ee687ce66db73f3838c8de225d4d08e6ebc8de",
+      "reviewNotes": "Six newly authored coherent ten-gap junior grammar passages. Correct forms, legitimate variants and explicit rejected forms are written per item; unknown written answers remain reviewable. Same-author grammar review, no independent teacher or learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.swimming-meet-announcement-015",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · An announcement at the pool",
+        "summary": "An announcement at the pool，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 初3具体形式参照：2024Suzhouofficialgraduationpapersample_formreference_notallordinaryGrade9terms。一篇十空、七给词三无提示；给词不限1词，来源原键非gold。旧作者暂停仍保留；本稿仅作者自审。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six newly authored coherent ten-gap junior grammar passages. Correct forms, legitimate variants and explicit rejected forms are written per item; unknown written answers remain reviewable. Same-author grammar review, no independent teacher or learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.swimming-meet-announcement-015",
+          "family": "passage_form",
+          "label": "An announcement at the pool",
+          "candidateSHA256": "71f776e8de7c0f84a8ff6eb5a1857a3f9ea7e02a9e4ccb2a4c4e5d1ff3a52b97",
+          "authorCheckSHA256": "5682275a02d0923c103523226dac4310d6c0698f0f5df1ff359a0ee710303572",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.swimming-meet-announcement-015#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b015；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "An announcement at the pool\n\nAt our school's swimming competition, I helped make announcements. Before the first race, the organiser handed me a list of names and asked me ____1____ (check) their pronunciation. I expected reading the list aloud to be ____2____ (easy) than announcing the results.\n\nThe first announcement sounded clear from where I was standing. However, a teacher at the far end of the pool could not understand it. The loudspeaker's sound ____3____ (mix) with splashing and conversation. Speaking faster only made the problem worse.\n\nWe tried a short message while another volunteer listened from the opposite side. She suggested that I leave a pause ____4____ one important piece of information and the next. Instead of reading a long sentence, I gave the race number, waited, then read the swimmers' names.\n\nThis worked much ____5____ (well). We also asked people near the speaker to keep quiet during announcements. The pool was never completely silent, but the messages became easier to follow.\n\nLater, one name on the list ____6____ (spell) incorrectly. I checked it with the swimmer before the next race rather than ____7____ (guess). The change took only a moment and saved an awkward correction over the loudspeaker.\n\nAt the end, the organiser thanked all the ____8____ (volunteer). I had learned that making an announcement was not simply a matter of producing words. I needed to think about the people ____9____ were receiving them, and about the conditions in ____10____ they were listening."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.swimming-meet-announcement-015.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of check.",
+            "material": "An announcement at the pool\n\nAt our school's swimming competition, I helped make announcements. Before the first race, the organiser handed me a list of names and asked me ____1____ (check) their pronunciation. I expected reading the list aloud to be ____2____ (easy) than announcing the results.\n\nThe first announcement sounded clear from where I was standing. However, a teacher at the far end of the pool could not understand it. The loudspeaker's sound ____3____ (mix) with splashing and conversation. Speaking faster only made the problem worse.\n\nWe tried a short message while another volunteer listened from the opposite side. She suggested that I leave a pause ____4____ one important piece of information and the next. Instead of reading a long sentence, I gave the race number, waited, then read the swimmers' names.\n\nThis worked much ____5____ (well). We also asked people near the speaker to keep quiet during announcements. The pool was never completely silent, but the messages became easier to follow.\n\nLater, one name on the list ____6____ (spell) incorrectly. I checked it with the swimmer before the next race rather than ____7____ (guess). The change took only a moment and saved an awkward correction over the loudspeaker.\n\nAt the end, the organiser thanked all the ____8____ (volunteer). I had learned that making an announcement was not simply a matter of producing words. I needed to think about the people ____9____ were receiving them, and about the conditions in ____10____ they were listening.",
+            "explanation": "Asked me to check requires the infinitive. Checking, bare check and checked do not directly complement asked me.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to check"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "checking",
+                "check",
+                "checked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.swimming-meet-announcement-015.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with the correct form of easy.",
+            "material": "An announcement at the pool\n\nAt our school's swimming competition, I helped make announcements. Before the first race, the organiser handed me a list of names and asked me ____1____ (check) their pronunciation. I expected reading the list aloud to be ____2____ (easy) than announcing the results.\n\nThe first announcement sounded clear from where I was standing. However, a teacher at the far end of the pool could not understand it. The loudspeaker's sound ____3____ (mix) with splashing and conversation. Speaking faster only made the problem worse.\n\nWe tried a short message while another volunteer listened from the opposite side. She suggested that I leave a pause ____4____ one important piece of information and the next. Instead of reading a long sentence, I gave the race number, waited, then read the swimmers' names.\n\nThis worked much ____5____ (well). We also asked people near the speaker to keep quiet during announcements. The pool was never completely silent, but the messages became easier to follow.\n\nLater, one name on the list ____6____ (spell) incorrectly. I checked it with the swimmer before the next race rather than ____7____ (guess). The change took only a moment and saved an awkward correction over the loudspeaker.\n\nAt the end, the organiser thanked all the ____8____ (volunteer). I had learned that making an announcement was not simply a matter of producing words. I needed to think about the people ____9____ were receiving them, and about the conditions in ____10____ they were listening.",
+            "explanation": "Than explicitly compares the two tasks and requires easier. Easy is not comparative and easiest is superlative.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "easier"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "easy",
+                "easiest"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.swimming-meet-announcement-015.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with the correct form of mix.",
+            "material": "An announcement at the pool\n\nAt our school's swimming competition, I helped make announcements. Before the first race, the organiser handed me a list of names and asked me ____1____ (check) their pronunciation. I expected reading the list aloud to be ____2____ (easy) than announcing the results.\n\nThe first announcement sounded clear from where I was standing. However, a teacher at the far end of the pool could not understand it. The loudspeaker's sound ____3____ (mix) with splashing and conversation. Speaking faster only made the problem worse.\n\nWe tried a short message while another volunteer listened from the opposite side. She suggested that I leave a pause ____4____ one important piece of information and the next. Instead of reading a long sentence, I gave the race number, waited, then read the swimmers' names.\n\nThis worked much ____5____ (well). We also asked people near the speaker to keep quiet during announcements. The pool was never completely silent, but the messages became easier to follow.\n\nLater, one name on the list ____6____ (spell) incorrectly. I checked it with the swimmer before the next race rather than ____7____ (guess). The change took only a moment and saved an awkward correction over the loudspeaker.\n\nAt the end, the organiser thanked all the ____8____ (volunteer). I had learned that making an announcement was not simply a matter of producing words. I needed to think about the people ____9____ were receiving them, and about the conditions in ____10____ they were listening.",
+            "explanation": "The past scene allows active mixed, progressive was mixing or passive was mixed, all describing combined sound. Present forms mixes and is mixing break the past narrative.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "mixed",
+              "was mixing",
+              "was mixed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "mixes",
+                "is mixing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.swimming-meet-announcement-015.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "An announcement at the pool\n\nAt our school's swimming competition, I helped make announcements. Before the first race, the organiser handed me a list of names and asked me ____1____ (check) their pronunciation. I expected reading the list aloud to be ____2____ (easy) than announcing the results.\n\nThe first announcement sounded clear from where I was standing. However, a teacher at the far end of the pool could not understand it. The loudspeaker's sound ____3____ (mix) with splashing and conversation. Speaking faster only made the problem worse.\n\nWe tried a short message while another volunteer listened from the opposite side. She suggested that I leave a pause ____4____ one important piece of information and the next. Instead of reading a long sentence, I gave the race number, waited, then read the swimmers' names.\n\nThis worked much ____5____ (well). We also asked people near the speaker to keep quiet during announcements. The pool was never completely silent, but the messages became easier to follow.\n\nLater, one name on the list ____6____ (spell) incorrectly. I checked it with the swimmer before the next race rather than ____7____ (guess). The change took only a moment and saved an awkward correction over the loudspeaker.\n\nAt the end, the organiser thanked all the ____8____ (volunteer). I had learned that making an announcement was not simply a matter of producing words. I needed to think about the people ____9____ were receiving them, and about the conditions in ____10____ they were listening.",
+            "explanation": "Between one piece and the next marks the interval separating two successive items. Among, across and during do not complete this paired construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "between"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "among",
+                "across",
+                "during"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.swimming-meet-announcement-015.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with the correct form of well.",
+            "material": "An announcement at the pool\n\nAt our school's swimming competition, I helped make announcements. Before the first race, the organiser handed me a list of names and asked me ____1____ (check) their pronunciation. I expected reading the list aloud to be ____2____ (easy) than announcing the results.\n\nThe first announcement sounded clear from where I was standing. However, a teacher at the far end of the pool could not understand it. The loudspeaker's sound ____3____ (mix) with splashing and conversation. Speaking faster only made the problem worse.\n\nWe tried a short message while another volunteer listened from the opposite side. She suggested that I leave a pause ____4____ one important piece of information and the next. Instead of reading a long sentence, I gave the race number, waited, then read the swimmers' names.\n\nThis worked much ____5____ (well). We also asked people near the speaker to keep quiet during announcements. The pool was never completely silent, but the messages became easier to follow.\n\nLater, one name on the list ____6____ (spell) incorrectly. I checked it with the swimmer before the next race rather than ____7____ (guess). The change took only a moment and saved an awkward correction over the loudspeaker.\n\nAt the end, the organiser thanked all the ____8____ (volunteer). I had learned that making an announcement was not simply a matter of producing words. I needed to think about the people ____9____ were receiving them, and about the conditions in ____10____ they were listening.",
+            "explanation": "Much marks comparative better. Well is not comparative, best is superlative and more better duplicates the comparative.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "better"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "well",
+                "best",
+                "more better"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.swimming-meet-announcement-015.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with the correct form of spell.",
+            "material": "An announcement at the pool\n\nAt our school's swimming competition, I helped make announcements. Before the first race, the organiser handed me a list of names and asked me ____1____ (check) their pronunciation. I expected reading the list aloud to be ____2____ (easy) than announcing the results.\n\nThe first announcement sounded clear from where I was standing. However, a teacher at the far end of the pool could not understand it. The loudspeaker's sound ____3____ (mix) with splashing and conversation. Speaking faster only made the problem worse.\n\nWe tried a short message while another volunteer listened from the opposite side. She suggested that I leave a pause ____4____ one important piece of information and the next. Instead of reading a long sentence, I gave the race number, waited, then read the swimmers' names.\n\nThis worked much ____5____ (well). We also asked people near the speaker to keep quiet during announcements. The pool was never completely silent, but the messages became easier to follow.\n\nLater, one name on the list ____6____ (spell) incorrectly. I checked it with the swimmer before the next race rather than ____7____ (guess). The change took only a moment and saved an awkward correction over the loudspeaker.\n\nAt the end, the organiser thanked all the ____8____ (volunteer). I had learned that making an announcement was not simply a matter of producing words. I needed to think about the people ____9____ were receiving them, and about the conditions in ____10____ they were listening.",
+            "explanation": "The singular name had an incorrect spelling in the past, allowing past passive or past-perfect passive and both spellings. Spelled alone lacks a passive auxiliary; is changes time and were disagrees with one name.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was spelled",
+              "was spelt",
+              "had been spelled",
+              "had been spelt"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "spelled",
+                "is spelled",
+                "were spelled"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.swimming-meet-announcement-015.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with the correct form of guess.",
+            "material": "An announcement at the pool\n\nAt our school's swimming competition, I helped make announcements. Before the first race, the organiser handed me a list of names and asked me ____1____ (check) their pronunciation. I expected reading the list aloud to be ____2____ (easy) than announcing the results.\n\nThe first announcement sounded clear from where I was standing. However, a teacher at the far end of the pool could not understand it. The loudspeaker's sound ____3____ (mix) with splashing and conversation. Speaking faster only made the problem worse.\n\nWe tried a short message while another volunteer listened from the opposite side. She suggested that I leave a pause ____4____ one important piece of information and the next. Instead of reading a long sentence, I gave the race number, waited, then read the swimmers' names.\n\nThis worked much ____5____ (well). We also asked people near the speaker to keep quiet during announcements. The pool was never completely silent, but the messages became easier to follow.\n\nLater, one name on the list ____6____ (spell) incorrectly. I checked it with the swimmer before the next race rather than ____7____ (guess). The change took only a moment and saved an awkward correction over the loudspeaker.\n\nAt the end, the organiser thanked all the ____8____ (volunteer). I had learned that making an announcement was not simply a matter of producing words. I needed to think about the people ____9____ were receiving them, and about the conditions in ____10____ they were listening.",
+            "explanation": "Rather than guessing contrasts with checking in this sentence. Bare guess can also coordinate the narrator's actions, so both guessing and guess are accepted.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "guessing",
+              "guess"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "guessed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.swimming-meet-announcement-015.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with the correct form of volunteer.",
+            "material": "An announcement at the pool\n\nAt our school's swimming competition, I helped make announcements. Before the first race, the organiser handed me a list of names and asked me ____1____ (check) their pronunciation. I expected reading the list aloud to be ____2____ (easy) than announcing the results.\n\nThe first announcement sounded clear from where I was standing. However, a teacher at the far end of the pool could not understand it. The loudspeaker's sound ____3____ (mix) with splashing and conversation. Speaking faster only made the problem worse.\n\nWe tried a short message while another volunteer listened from the opposite side. She suggested that I leave a pause ____4____ one important piece of information and the next. Instead of reading a long sentence, I gave the race number, waited, then read the swimmers' names.\n\nThis worked much ____5____ (well). We also asked people near the speaker to keep quiet during announcements. The pool was never completely silent, but the messages became easier to follow.\n\nLater, one name on the list ____6____ (spell) incorrectly. I checked it with the swimmer before the next race rather than ____7____ (guess). The change took only a moment and saved an awkward correction over the loudspeaker.\n\nAt the end, the organiser thanked all the ____8____ (volunteer). I had learned that making an announcement was not simply a matter of producing words. I needed to think about the people ____9____ were receiving them, and about the conditions in ____10____ they were listening.",
+            "explanation": "All the volunteers refers to the plural group. Singular volunteer and possessive volunteer's do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "volunteers"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "volunteer",
+                "volunteer's"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.swimming-meet-announcement-015.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "An announcement at the pool\n\nAt our school's swimming competition, I helped make announcements. Before the first race, the organiser handed me a list of names and asked me ____1____ (check) their pronunciation. I expected reading the list aloud to be ____2____ (easy) than announcing the results.\n\nThe first announcement sounded clear from where I was standing. However, a teacher at the far end of the pool could not understand it. The loudspeaker's sound ____3____ (mix) with splashing and conversation. Speaking faster only made the problem worse.\n\nWe tried a short message while another volunteer listened from the opposite side. She suggested that I leave a pause ____4____ one important piece of information and the next. Instead of reading a long sentence, I gave the race number, waited, then read the swimmers' names.\n\nThis worked much ____5____ (well). We also asked people near the speaker to keep quiet during announcements. The pool was never completely silent, but the messages became easier to follow.\n\nLater, one name on the list ____6____ (spell) incorrectly. I checked it with the swimmer before the next race rather than ____7____ (guess). The change took only a moment and saved an awkward correction over the loudspeaker.\n\nAt the end, the organiser thanked all the ____8____ (volunteer). I had learned that making an announcement was not simply a matter of producing words. I needed to think about the people ____9____ were receiving them, and about the conditions in ____10____ they were listening.",
+            "explanation": "People are subjects of the defining relative clause, permitting who or that. Which is inappropriate for people, where is not a subject and whose requires a following noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "where",
+                "whose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.swimming-meet-announcement-015.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "An announcement at the pool\n\nAt our school's swimming competition, I helped make announcements. Before the first race, the organiser handed me a list of names and asked me ____1____ (check) their pronunciation. I expected reading the list aloud to be ____2____ (easy) than announcing the results.\n\nThe first announcement sounded clear from where I was standing. However, a teacher at the far end of the pool could not understand it. The loudspeaker's sound ____3____ (mix) with splashing and conversation. Speaking faster only made the problem worse.\n\nWe tried a short message while another volunteer listened from the opposite side. She suggested that I leave a pause ____4____ one important piece of information and the next. Instead of reading a long sentence, I gave the race number, waited, then read the swimmers' names.\n\nThis worked much ____5____ (well). We also asked people near the speaker to keep quiet during announcements. The pool was never completely silent, but the messages became easier to follow.\n\nLater, one name on the list ____6____ (spell) incorrectly. I checked it with the swimmer before the next race rather than ____7____ (guess). The change took only a moment and saved an awkward correction over the loudspeaker.\n\nAt the end, the organiser thanked all the ____8____ (volunteer). I had learned that making an announcement was not simply a matter of producing words. I needed to think about the people ____9____ were receiving them, and about the conditions in ____10____ they were listening.",
+            "explanation": "After the expressed preposition in, the relative pronoun is which, referring to conditions. That cannot follow the preposition here, where would duplicate its relation, and what cannot take the expressed antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "junior-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "that",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "cfdce36b35981504eaef6855773c71772c51ea2d43a29f0d2654e5fb02c5e851",
+      "reviewNotes": "Six newly authored coherent ten-gap junior grammar passages. Correct forms, legitimate variants and explicit rejected forms are written per item; unknown written answers remain reviewable. Same-author grammar review, no independent teacher or learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
