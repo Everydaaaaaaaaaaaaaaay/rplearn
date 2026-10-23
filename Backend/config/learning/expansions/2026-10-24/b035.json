@@ -1,0 +1,904 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b035",
+  "createdAt": "2026-10-23T21:03:31.486573+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.print-club-and-pencil-035",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · A print club and a pencil",
+        "summary": "A print club and a pencil，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "xschu-bnu2026-paper-key20261014-record.reading.closed_picture_mixed_section11",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "New separately complete text components are paired for this practice. The source provides the recorded reading-task structure; no old text or keys are copied, and the junior2 source's separate visual questions are not reproduced."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete junior reading practices: two junior2 pairs of four-question texts, plus a junior3 four-email thread five questions and another full reading five questions. Author checks explicit evidence, sequence updates and all alternatives. Fictional events and general physical explanations, not invented studies or independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.print-club-and-pencil-035",
+          "family": "reading_choice",
+          "label": "A print club and a pencil",
+          "candidateSHA256": "7a1c1015eabf0498e25b0db54fd0d9808b8c5fde6032f4b01114dac30b09f080",
+          "authorCheckSHA256": "0c24f9cb406a290bfb8d2ac3235972a416db805b83b93c1db52274baa2c79fe6",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.print-club-and-pencil-035#a",
+            "expansion.20261024.junior2.print-club-and-pencil-035#b"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b035；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Try the after-school print club\n\nThe art department is opening a print club for Years 7-9. It meets on Tuesdays from 16:00 to 17:15 in Art Room 2. The first session is a free introduction; after that, materials cost two pounds per meeting. You do not need to own any printing tools.\n\nAt the first meeting, you will make a design using card and water-based ink. Bring an apron or an old shirt. We provide paper, card and the equipment used in class. Finished prints may be taken home, but the tools must stay in the room.\n\nThere are sixteen places. Sign up with Ms Patel by Friday. If more than sixteen students apply, those who have never attended an art club will be offered places first. The aim is to give new members a chance to try something different.\n\nYou must arrange your journey home. The school bus leaves before the club ends. If you need an adult to collect you, tell the teacher at the start of the session and wait inside until that person arrives.\n\nThe club will not meet on the Tuesday of examination week. Dates are printed on the sign-up form. Ask before joining if you know you cannot attend regularly; unused places can then be offered to others.\n\nB. What makes a pencil shorter?\n\nAn ordinary black pencil looks simple, but its parts have different jobs. The dark writing core is often called lead, although it is made from graphite mixed with other materials rather than the metal lead. Wood around the core helps protect it and gives the writer something easier to hold.\n\nAs a pencil is used, a little of the core is left on the paper. However, writing is not the only reason the pencil becomes shorter. Sharpening removes some wood and core to expose a point. If someone sharpens more often than necessary, useful material may be lost with the shavings.\n\nWhen a pencil becomes too short for a comfortable grip, it may still contain writing material. A pencil holder can extend the part a person holds, allowing the remaining core to be used. The holder does not create more graphite; it makes what is already there easier to handle.\n\nThis also explains why a pencil that looks old is not automatically finished. Its usefulness depends partly on whether enough core remains and whether the writer can control it comfortably. A broken point may need sharpening, while a short body may need a holder. Those are different problems with different solutions.\n\nLooking at the parts separately can change what we decide to throw away. Sometimes an object needs a new way of being held rather than an immediate replacement."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.print-club-and-pencil-035.a.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must a student bring to the first meeting?",
+            "material": "A. Try the after-school print club\n\nThe art department is opening a print club for Years 7-9. It meets on Tuesdays from 16:00 to 17:15 in Art Room 2. The first session is a free introduction; after that, materials cost two pounds per meeting. You do not need to own any printing tools.\n\nAt the first meeting, you will make a design using card and water-based ink. Bring an apron or an old shirt. We provide paper, card and the equipment used in class. Finished prints may be taken home, but the tools must stay in the room.\n\nThere are sixteen places. Sign up with Ms Patel by Friday. If more than sixteen students apply, those who have never attended an art club will be offered places first. The aim is to give new members a chance to try something different.\n\nYou must arrange your journey home. The school bus leaves before the club ends. If you need an adult to collect you, tell the teacher at the start of the session and wait inside until that person arrives.\n\nThe club will not meet on the Tuesday of examination week. Dates are printed on the sign-up form. Ask before joining if you know you cannot attend regularly; unused places can then be offered to others.",
+            "explanation": "Protective old clothing is requested. Tools and materials are provided; the introduction is free and no finished picture is required.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Their own printing tools"
+              },
+              {
+                "id": "o1",
+                "text": "An apron or an old shirt"
+              },
+              {
+                "id": "o2",
+                "text": "A finished picture to sell"
+              },
+              {
+                "id": "o3",
+                "text": "Two pounds for the introduction"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.print-club-and-pencil-035.a.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who receives priority if too many students apply?",
+            "material": "A. Try the after-school print club\n\nThe art department is opening a print club for Years 7-9. It meets on Tuesdays from 16:00 to 17:15 in Art Room 2. The first session is a free introduction; after that, materials cost two pounds per meeting. You do not need to own any printing tools.\n\nAt the first meeting, you will make a design using card and water-based ink. Bring an apron or an old shirt. We provide paper, card and the equipment used in class. Finished prints may be taken home, but the tools must stay in the room.\n\nThere are sixteen places. Sign up with Ms Patel by Friday. If more than sixteen students apply, those who have never attended an art club will be offered places first. The aim is to give new members a chance to try something different.\n\nYou must arrange your journey home. The school bus leaves before the club ends. If you need an adult to collect you, tell the teacher at the start of the session and wait inside until that person arrives.\n\nThe club will not meet on the Tuesday of examination week. Dates are printed on the sign-up form. Ask before joining if you know you cannot attend regularly; unused places can then be offered to others.",
+            "explanation": "Priority goes to students who have not attended an art club. Ownership, being in Year9 and staying later are not the priority rules.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Students who own the most tools"
+              },
+              {
+                "id": "o1",
+                "text": "Those who can stay until 18:00"
+              },
+              {
+                "id": "o2",
+                "text": "Only students in Year 9"
+              },
+              {
+                "id": "o3",
+                "text": "Students new to art clubs"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.print-club-and-pencil-035.a.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why must members plan their journey home?",
+            "material": "A. Try the after-school print club\n\nThe art department is opening a print club for Years 7-9. It meets on Tuesdays from 16:00 to 17:15 in Art Room 2. The first session is a free introduction; after that, materials cost two pounds per meeting. You do not need to own any printing tools.\n\nAt the first meeting, you will make a design using card and water-based ink. Bring an apron or an old shirt. We provide paper, card and the equipment used in class. Finished prints may be taken home, but the tools must stay in the room.\n\nThere are sixteen places. Sign up with Ms Patel by Friday. If more than sixteen students apply, those who have never attended an art club will be offered places first. The aim is to give new members a chance to try something different.\n\nYou must arrange your journey home. The school bus leaves before the club ends. If you need an adult to collect you, tell the teacher at the start of the session and wait inside until that person arrives.\n\nThe club will not meet on the Tuesday of examination week. Dates are printed on the sign-up form. Ask before joining if you know you cannot attend regularly; unused places can then be offered to others.",
+            "explanation": "The school bus leaves earlier. The room is at school, adult collection is allowed and no claim is made about every bus service.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The art room is outside the school grounds."
+              },
+              {
+                "id": "o1",
+                "text": "The school bus leaves before the meeting finishes."
+              },
+              {
+                "id": "o2",
+                "text": "The club ends after every bus service closes."
+              },
+              {
+                "id": "o3",
+                "text": "Adults are not allowed to collect them."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.print-club-and-pencil-035.a.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should a student check about examination week?",
+            "material": "A. Try the after-school print club\n\nThe art department is opening a print club for Years 7-9. It meets on Tuesdays from 16:00 to 17:15 in Art Room 2. The first session is a free introduction; after that, materials cost two pounds per meeting. You do not need to own any printing tools.\n\nAt the first meeting, you will make a design using card and water-based ink. Bring an apron or an old shirt. We provide paper, card and the equipment used in class. Finished prints may be taken home, but the tools must stay in the room.\n\nThere are sixteen places. Sign up with Ms Patel by Friday. If more than sixteen students apply, those who have never attended an art club will be offered places first. The aim is to give new members a chance to try something different.\n\nYou must arrange your journey home. The school bus leaves before the club ends. If you need an adult to collect you, tell the teacher at the start of the session and wait inside until that person arrives.\n\nThe club will not meet on the Tuesday of examination week. Dates are printed on the sign-up form. Ask before joining if you know you cannot attend regularly; unused places can then be offered to others.",
+            "explanation": "The notice says no meeting on the Tuesday of exam week and lists dates on the form. Tool removal, doubled fees and a Friday session are not stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Whether all tools must be taken home"
+              },
+              {
+                "id": "o1",
+                "text": "The dates when Tuesday club does not meet"
+              },
+              {
+                "id": "o2",
+                "text": "Whether the introduction moves to Friday"
+              },
+              {
+                "id": "o3",
+                "text": "Whether the price doubles"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.print-club-and-pencil-035.b.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the wood around the writing core do?",
+            "material": "B. What makes a pencil shorter?\n\nAn ordinary black pencil looks simple, but its parts have different jobs. The dark writing core is often called lead, although it is made from graphite mixed with other materials rather than the metal lead. Wood around the core helps protect it and gives the writer something easier to hold.\n\nAs a pencil is used, a little of the core is left on the paper. However, writing is not the only reason the pencil becomes shorter. Sharpening removes some wood and core to expose a point. If someone sharpens more often than necessary, useful material may be lost with the shavings.\n\nWhen a pencil becomes too short for a comfortable grip, it may still contain writing material. A pencil holder can extend the part a person holds, allowing the remaining core to be used. The holder does not create more graphite; it makes what is already there easier to handle.\n\nThis also explains why a pencil that looks old is not automatically finished. Its usefulness depends partly on whether enough core remains and whether the writer can control it comfortably. A broken point may need sharpening, while a short body may need a holder. Those are different problems with different solutions.\n\nLooking at the parts separately can change what we decide to throw away. Sometimes an object needs a new way of being held rather than an immediate replacement.",
+            "explanation": "Protection and grip are the stated functions. Graphite makes the mark, no metal conversion occurs and protection does not guarantee no break.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It protects the core and helps the writer hold it."
+              },
+              {
+                "id": "o1",
+                "text": "It prevents every possible break."
+              },
+              {
+                "id": "o2",
+                "text": "It produces all the dark marks itself."
+              },
+              {
+                "id": "o3",
+                "text": "It changes graphite into the metal lead."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.print-club-and-pencil-035.b.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why can frequent sharpening waste useful material?",
+            "material": "B. What makes a pencil shorter?\n\nAn ordinary black pencil looks simple, but its parts have different jobs. The dark writing core is often called lead, although it is made from graphite mixed with other materials rather than the metal lead. Wood around the core helps protect it and gives the writer something easier to hold.\n\nAs a pencil is used, a little of the core is left on the paper. However, writing is not the only reason the pencil becomes shorter. Sharpening removes some wood and core to expose a point. If someone sharpens more often than necessary, useful material may be lost with the shavings.\n\nWhen a pencil becomes too short for a comfortable grip, it may still contain writing material. A pencil holder can extend the part a person holds, allowing the remaining core to be used. The holder does not create more graphite; it makes what is already there easier to handle.\n\nThis also explains why a pencil that looks old is not automatically finished. Its usefulness depends partly on whether enough core remains and whether the writer can control it comfortably. A broken point may need sharpening, while a short body may need a holder. Those are different problems with different solutions.\n\nLooking at the parts separately can change what we decide to throw away. Sometimes an object needs a new way of being held rather than an immediate replacement.",
+            "explanation": "Sharpening cuts material away. It does not add graphite, destroy all paper or convert the tool into a pen.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It removes wood and core that might still be useful."
+              },
+              {
+                "id": "o1",
+                "text": "It changes every pencil into a pen."
+              },
+              {
+                "id": "o2",
+                "text": "It adds too much graphite."
+              },
+              {
+                "id": "o3",
+                "text": "It makes all paper unusable."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.print-club-and-pencil-035.b.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the benefit of a pencil holder?",
+            "material": "B. What makes a pencil shorter?\n\nAn ordinary black pencil looks simple, but its parts have different jobs. The dark writing core is often called lead, although it is made from graphite mixed with other materials rather than the metal lead. Wood around the core helps protect it and gives the writer something easier to hold.\n\nAs a pencil is used, a little of the core is left on the paper. However, writing is not the only reason the pencil becomes shorter. Sharpening removes some wood and core to expose a point. If someone sharpens more often than necessary, useful material may be lost with the shavings.\n\nWhen a pencil becomes too short for a comfortable grip, it may still contain writing material. A pencil holder can extend the part a person holds, allowing the remaining core to be used. The holder does not create more graphite; it makes what is already there easier to handle.\n\nThis also explains why a pencil that looks old is not automatically finished. Its usefulness depends partly on whether enough core remains and whether the writer can control it comfortably. A broken point may need sharpening, while a short body may need a holder. Those are different problems with different solutions.\n\nLooking at the parts separately can change what we decide to throw away. Sometimes an object needs a new way of being held rather than an immediate replacement.",
+            "explanation": "The holder extends the grip while using existing core. It creates no graphite, cannot write without core and has no general repair power.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It makes a short remaining pencil easier to grip."
+              },
+              {
+                "id": "o1",
+                "text": "It creates a new supply of graphite."
+              },
+              {
+                "id": "o2",
+                "text": "It removes the need for any writing core."
+              },
+              {
+                "id": "o3",
+                "text": "It repairs every broken wooden object."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.print-club-and-pencil-035.b.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the passage mainly about?",
+            "material": "B. What makes a pencil shorter?\n\nAn ordinary black pencil looks simple, but its parts have different jobs. The dark writing core is often called lead, although it is made from graphite mixed with other materials rather than the metal lead. Wood around the core helps protect it and gives the writer something easier to hold.\n\nAs a pencil is used, a little of the core is left on the paper. However, writing is not the only reason the pencil becomes shorter. Sharpening removes some wood and core to expose a point. If someone sharpens more often than necessary, useful material may be lost with the shavings.\n\nWhen a pencil becomes too short for a comfortable grip, it may still contain writing material. A pencil holder can extend the part a person holds, allowing the remaining core to be used. The holder does not create more graphite; it makes what is already there easier to handle.\n\nThis also explains why a pencil that looks old is not automatically finished. Its usefulness depends partly on whether enough core remains and whether the writer can control it comfortably. A broken point may need sharpening, while a short body may need a holder. Those are different problems with different solutions.\n\nLooking at the parts separately can change what we decide to throw away. Sometimes an object needs a new way of being held rather than an immediate replacement.",
+            "explanation": "The passage distinguishes core, wood, point and grip to select sharpening or a holder. A reverses its point, B changes the subject and C contradicts the material distinction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "How understanding separate parts helps choose a useful response"
+              },
+              {
+                "id": "o1",
+                "text": "How to manufacture every kind of pen"
+              },
+              {
+                "id": "o2",
+                "text": "Why every old object must be replaced"
+              },
+              {
+                "id": "o3",
+                "text": "Why graphite is the same as metal lead"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "a2031589fb93d1ed310ca9c81272e1fc9a43c1e20e8138119eae72a50d037b46",
+      "reviewNotes": "Three new complete junior reading practices: two junior2 pairs of four-question texts, plus a junior3 four-email thread five questions and another full reading five questions. Author checks explicit evidence, sequence updates and all alternatives. Fictional events and general physical explanations, not invented studies or independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.puzzle-trail-and-measuring-jar-035",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · A puzzle trail and a measuring jar",
+        "summary": "A puzzle trail and a measuring jar，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "xschu-bnu2026-paper-key20261014-record.reading.closed_picture_mixed_section11",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "New separately complete text components are paired for this practice. The source provides the recorded reading-task structure; no old text or keys are copied, and the junior2 source's separate visual questions are not reproduced."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete junior reading practices: two junior2 pairs of four-question texts, plus a junior3 four-email thread five questions and another full reading five questions. Author checks explicit evidence, sequence updates and all alternatives. Fictional events and general physical explanations, not invented studies or independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.puzzle-trail-and-measuring-jar-035",
+          "family": "reading_choice",
+          "label": "A puzzle trail and a measuring jar",
+          "candidateSHA256": "872899f60f86432eba8ef708cca314fa5d07f7be7eab343b4a2f5cb35ae96a61",
+          "authorCheckSHA256": "8ac0df3dc3a7dd8cb6472082f7ac5144536c05577b99476bb60aebc30984e65b",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.puzzle-trail-and-measuring-jar-035#a",
+            "expansion.20261024.junior2.puzzle-trail-and-measuring-jar-035#b"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b035；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. The library puzzle trail\n\nThe town library is holding a puzzle trail on Saturday from 10:00 to 16:00. Work in a team of two to four people. At least one team member must be aged twelve or above. Younger children are welcome with that member.\n\nCollect a free answer card from the entrance desk. Six clue cards are displayed around the public rooms. None is in the staff office, and you do not need to climb or move furniture to find them. Write answers on your own card, not on the books or clue displays.\n\nReturn your card by 15:45. Teams with all six answers correct enter a prize draw. The fastest team does not receive an extra chance, so take time to read each clue carefully. If you believe a clue is missing or damaged, ask at the entrance desk.\n\nYou may use reference books, but please leave them on the return table afterwards instead of putting them back in the wrong place. Phones may be used to photograph a clue for your team, but please do not post answers publicly during the event.\n\nNormal library users will still be reading and studying. Keep voices low and leave paths between shelves clear. The children's room will close briefly at 12:30 for a story session; staff will place its clue outside that room during the closure.\n\nB. Marks on a jar\n\nFor an art project, Amira needed to add equal small amounts of water to several mixtures. She found a clear jar and drew equally spaced marks up its side. She assumed that moving from one mark to the next would always mean adding the same amount.\n\nHer father asked her to test that idea with a measuring spoon. They added one spoonful, waited for the water to settle and marked its level. They repeated the process. The spaces between the new marks were not all equal because the jar was wider in some places than in others.\n\nAmira had made a useful scale for height, but not automatically for volume. A given rise in water level could require different amounts in different parts of that jar. By adding the same measured amount each time, she could make a set of marks that matched its actual shape.\n\nShe wrote the number of spoonfuls beside each new mark and used a different colour from her first lines. A short note explained how the second set had been made. This stopped another student from choosing the neater-looking old lines without knowing the difference.\n\nThe jar worked well for the small classroom task. Amira did not claim that it was as precise as professional measuring equipment. She had learned to test what a mark represented before trusting it, and to keep the explanation with the tool."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.puzzle-trail-and-measuring-jar-035.a.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which team meets the age rule?",
+            "material": "A. The library puzzle trail\n\nThe town library is holding a puzzle trail on Saturday from 10:00 to 16:00. Work in a team of two to four people. At least one team member must be aged twelve or above. Younger children are welcome with that member.\n\nCollect a free answer card from the entrance desk. Six clue cards are displayed around the public rooms. None is in the staff office, and you do not need to climb or move furniture to find them. Write answers on your own card, not on the books or clue displays.\n\nReturn your card by 15:45. Teams with all six answers correct enter a prize draw. The fastest team does not receive an extra chance, so take time to read each clue carefully. If you believe a clue is missing or damaged, ask at the entrance desk.\n\nYou may use reference books, but please leave them on the return table afterwards instead of putting them back in the wrong place. Phones may be used to photograph a clue for your team, but please do not post answers publicly during the event.\n\nNormal library users will still be reading and studying. Keep voices low and leave paths between shelves clear. The children's room will close briefly at 12:30 for a story session; staff will place its clue outside that room during the closure.",
+            "explanation": "A thirteen-year-old satisfies the12+ requirement and a younger teammate is welcome. Two11-year-olds lack a qualifying member, a solo child fails team size and five adults exceed the four-person maximum.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Two eleven-year-olds without anyone older"
+              },
+              {
+                "id": "o1",
+                "text": "One thirteen-year-old and one nine-year-old"
+              },
+              {
+                "id": "o2",
+                "text": "Five adults in one team"
+              },
+              {
+                "id": "o3",
+                "text": "One ten-year-old working alone"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.puzzle-trail-and-measuring-jar-035.a.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What determines entry into the prize draw?",
+            "material": "A. The library puzzle trail\n\nThe town library is holding a puzzle trail on Saturday from 10:00 to 16:00. Work in a team of two to four people. At least one team member must be aged twelve or above. Younger children are welcome with that member.\n\nCollect a free answer card from the entrance desk. Six clue cards are displayed around the public rooms. None is in the staff office, and you do not need to climb or move furniture to find them. Write answers on your own card, not on the books or clue displays.\n\nReturn your card by 15:45. Teams with all six answers correct enter a prize draw. The fastest team does not receive an extra chance, so take time to read each clue carefully. If you believe a clue is missing or damaged, ask at the entrance desk.\n\nYou may use reference books, but please leave them on the return table afterwards instead of putting them back in the wrong place. Phones may be used to photograph a clue for your team, but please do not post answers publicly during the event.\n\nNormal library users will still be reading and studying. Keep voices low and leave paths between shelves clear. The children's room will close briefly at 12:30 for a story session; staff will place its clue outside that room during the closure.",
+            "explanation": "Correct answers and timely return qualify. Speed brings no extra chance, photos are optional and no clue is in the staff office.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Finding a clue inside the staff office"
+              },
+              {
+                "id": "o1",
+                "text": "Finishing faster than every other team"
+              },
+              {
+                "id": "o2",
+                "text": "Taking photographs of every room"
+              },
+              {
+                "id": "o3",
+                "text": "Answering all six clues correctly and returning the card on time"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.puzzle-trail-and-measuring-jar-035.a.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should a team do about a damaged clue?",
+            "material": "A. The library puzzle trail\n\nThe town library is holding a puzzle trail on Saturday from 10:00 to 16:00. Work in a team of two to four people. At least one team member must be aged twelve or above. Younger children are welcome with that member.\n\nCollect a free answer card from the entrance desk. Six clue cards are displayed around the public rooms. None is in the staff office, and you do not need to climb or move furniture to find them. Write answers on your own card, not on the books or clue displays.\n\nReturn your card by 15:45. Teams with all six answers correct enter a prize draw. The fastest team does not receive an extra chance, so take time to read each clue carefully. If you believe a clue is missing or damaged, ask at the entrance desk.\n\nYou may use reference books, but please leave them on the return table afterwards instead of putting them back in the wrong place. Phones may be used to photograph a clue for your team, but please do not post answers publicly during the event.\n\nNormal library users will still be reading and studying. Keep voices low and leave paths between shelves clear. The children's room will close briefly at 12:30 for a story session; staff will place its clue outside that room during the closure.",
+            "explanation": "The entrance desk handles missing or damaged clues. Writing in books, moving furniture and public answer posting contradict the rules.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Move furniture to search behind it"
+              },
+              {
+                "id": "o1",
+                "text": "Write its complaint inside a reference book"
+              },
+              {
+                "id": "o2",
+                "text": "Post all answers on a public page"
+              },
+              {
+                "id": "o3",
+                "text": "Ask at the entrance desk"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.puzzle-trail-and-measuring-jar-035.a.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How is access to the children's-room clue maintained during story time?",
+            "material": "A. The library puzzle trail\n\nThe town library is holding a puzzle trail on Saturday from 10:00 to 16:00. Work in a team of two to four people. At least one team member must be aged twelve or above. Younger children are welcome with that member.\n\nCollect a free answer card from the entrance desk. Six clue cards are displayed around the public rooms. None is in the staff office, and you do not need to climb or move furniture to find them. Write answers on your own card, not on the books or clue displays.\n\nReturn your card by 15:45. Teams with all six answers correct enter a prize draw. The fastest team does not receive an extra chance, so take time to read each clue carefully. If you believe a clue is missing or damaged, ask at the entrance desk.\n\nYou may use reference books, but please leave them on the return table afterwards instead of putting them back in the wrong place. Phones may be used to photograph a clue for your team, but please do not post answers publicly during the event.\n\nNormal library users will still be reading and studying. Keep voices low and leave paths between shelves clear. The children's room will close briefly at 12:30 for a story session; staff will place its clue outside that room during the closure.",
+            "explanation": "The clue is moved outside during the brief closure. The event continues, no adult-only rule is introduced and the answer is not simply given.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only adults may enter the room."
+              },
+              {
+                "id": "o1",
+                "text": "Staff place the clue outside the closed room."
+              },
+              {
+                "id": "o2",
+                "text": "Teams receive the answer automatically."
+              },
+              {
+                "id": "o3",
+                "text": "The whole trail is cancelled."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.puzzle-trail-and-measuring-jar-035.b.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What was wrong with Amira's first assumption?",
+            "material": "B. Marks on a jar\n\nFor an art project, Amira needed to add equal small amounts of water to several mixtures. She found a clear jar and drew equally spaced marks up its side. She assumed that moving from one mark to the next would always mean adding the same amount.\n\nHer father asked her to test that idea with a measuring spoon. They added one spoonful, waited for the water to settle and marked its level. They repeated the process. The spaces between the new marks were not all equal because the jar was wider in some places than in others.\n\nAmira had made a useful scale for height, but not automatically for volume. A given rise in water level could require different amounts in different parts of that jar. By adding the same measured amount each time, she could make a set of marks that matched its actual shape.\n\nShe wrote the number of spoonfuls beside each new mark and used a different colour from her first lines. A short note explained how the second set had been made. This stopped another student from choosing the neater-looking old lines without knowing the difference.\n\nThe jar worked well for the small classroom task. Amira did not claim that it was as precise as professional measuring equipment. She had learned to test what a mark represented before trusting it, and to keep the explanation with the tool.",
+            "explanation": "The jar's varying width means equal rises can correspond to different amounts. The other statements contradict basic properties or the described test.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A clear jar cannot hold water."
+              },
+              {
+                "id": "o1",
+                "text": "Water always rises by the same amount after every action."
+              },
+              {
+                "id": "o2",
+                "text": "A measuring spoon changes the jar's shape."
+              },
+              {
+                "id": "o3",
+                "text": "Equal height changes did not necessarily mean equal volumes."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.puzzle-trail-and-measuring-jar-035.b.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How were the second marks made?",
+            "material": "B. Marks on a jar\n\nFor an art project, Amira needed to add equal small amounts of water to several mixtures. She found a clear jar and drew equally spaced marks up its side. She assumed that moving from one mark to the next would always mean adding the same amount.\n\nHer father asked her to test that idea with a measuring spoon. They added one spoonful, waited for the water to settle and marked its level. They repeated the process. The spaces between the new marks were not all equal because the jar was wider in some places than in others.\n\nAmira had made a useful scale for height, but not automatically for volume. A given rise in water level could require different amounts in different parts of that jar. By adding the same measured amount each time, she could make a set of marks that matched its actual shape.\n\nShe wrote the number of spoonfuls beside each new mark and used a different colour from her first lines. A short note explained how the second set had been made. This stopped another student from choosing the neater-looking old lines without knowing the difference.\n\nThe jar worked well for the small classroom task. Amira did not claim that it was as precise as professional measuring equipment. She had learned to test what a mark represented before trusting it, and to keep the explanation with the tool.",
+            "explanation": "Repeated measured additions calibrate the jar. Copying or guessing preserves the original problem, and direct tap filling is not the method.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "By guessing where a straight line would look best"
+              },
+              {
+                "id": "o1",
+                "text": "By copying the spaces from the first marks"
+              },
+              {
+                "id": "o2",
+                "text": "By filling every mixture directly from the tap"
+              },
+              {
+                "id": "o3",
+                "text": "By adding equal spoonfuls and marking each settled level"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.puzzle-trail-and-measuring-jar-035.b.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did Amira add a note?",
+            "material": "B. Marks on a jar\n\nFor an art project, Amira needed to add equal small amounts of water to several mixtures. She found a clear jar and drew equally spaced marks up its side. She assumed that moving from one mark to the next would always mean adding the same amount.\n\nHer father asked her to test that idea with a measuring spoon. They added one spoonful, waited for the water to settle and marked its level. They repeated the process. The spaces between the new marks were not all equal because the jar was wider in some places than in others.\n\nAmira had made a useful scale for height, but not automatically for volume. A given rise in water level could require different amounts in different parts of that jar. By adding the same measured amount each time, she could make a set of marks that matched its actual shape.\n\nShe wrote the number of spoonfuls beside each new mark and used a different colour from her first lines. A short note explained how the second set had been made. This stopped another student from choosing the neater-looking old lines without knowing the difference.\n\nThe jar worked well for the small classroom task. Amira did not claim that it was as precise as professional measuring equipment. She had learned to test what a mark represented before trusting it, and to keep the explanation with the tool.",
+            "explanation": "The note explains the newer calibration so users do not choose old lines merely for neatness. She explicitly avoids a professional-precision claim and does not hide the first attempt or ban water.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To hide that the first lines were wrong"
+              },
+              {
+                "id": "o1",
+                "text": "To explain which marks represented measured amounts"
+              },
+              {
+                "id": "o2",
+                "text": "To prevent anyone from using water"
+              },
+              {
+                "id": "o3",
+                "text": "To prove the jar was professional laboratory equipment"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.puzzle-trail-and-measuring-jar-035.b.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the main lesson?",
+            "material": "B. Marks on a jar\n\nFor an art project, Amira needed to add equal small amounts of water to several mixtures. She found a clear jar and drew equally spaced marks up its side. She assumed that moving from one mark to the next would always mean adding the same amount.\n\nHer father asked her to test that idea with a measuring spoon. They added one spoonful, waited for the water to settle and marked its level. They repeated the process. The spaces between the new marks were not all equal because the jar was wider in some places than in others.\n\nAmira had made a useful scale for height, but not automatically for volume. A given rise in water level could require different amounts in different parts of that jar. By adding the same measured amount each time, she could make a set of marks that matched its actual shape.\n\nShe wrote the number of spoonfuls beside each new mark and used a different colour from her first lines. A short note explained how the second set had been made. This stopped another student from choosing the neater-looking old lines without knowing the difference.\n\nThe jar worked well for the small classroom task. Amira did not claim that it was as precise as professional measuring equipment. She had learned to test what a mark represented before trusting it, and to keep the explanation with the tool.",
+            "explanation": "The account distinguishes height from volume and tests the meaning of marks. A privileges appearance, B demands unnecessary replacement and C ignores shape.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Check what a measurement scale actually represents."
+              },
+              {
+                "id": "o1",
+                "text": "Height and volume are identical in every container."
+              },
+              {
+                "id": "o2",
+                "text": "A neat scale is always the most reliable one."
+              },
+              {
+                "id": "o3",
+                "text": "Every classroom tool must be replaced immediately."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "c683f40b953b53b282d5854b807f73d0edcd1dcc38680949ebb248f3a3ac2b40",
+      "reviewNotes": "Three new complete junior reading practices: two junior2 pairs of four-question texts, plus a junior3 four-email thread five questions and another full reading five questions. Author checks explicit evidence, sequence updates and all alternatives. Fictional events and general physical explanations, not invented studies or independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.book-swap-emails-and-building-game-035",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Book-swap emails and a building game",
+        "summary": "Book-swap emails and a building game，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-chengdu2025-21cnjy23208601.reading.complete_section10",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete four-email thread with five questions plus one complete independent reading with five questions, all three-choice, follows the recorded junior3 specific task. All messages, story details and keys are newly authored; no source-count or independent calibration claim."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete junior reading practices: two junior2 pairs of four-question texts, plus a junior3 four-email thread five questions and another full reading five questions. Author checks explicit evidence, sequence updates and all alternatives. Fictional events and general physical explanations, not invented studies or independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.book-swap-emails-and-building-game-035",
+          "family": "reading_choice",
+          "label": "Book-swap emails and a building game",
+          "candidateSHA256": "46344371901f8e0b962bd83cb46e78911e96cb48efc61cfdd1f75cd7acf27a09",
+          "authorCheckSHA256": "0edb451e910c07e9a6a59df50a00fa13a951fa4746803ee7c24048f3db9d8363",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.book-swap-emails-and-building-game-035#a",
+            "expansion.20261024.junior3.book-swap-emails-and-building-game-035#b"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b035；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Four emails about the book swap\n\nFrom: Ella\nTo: Jay\nDate: 5 May\nSubject: Help at the book swap\nOur school book swap is on Friday 15 May,15:30-16:30. We planned to use the hall. Students may bring up to five books they own and no longer need. Each accepted book earns one book token. Could you help set up at 15:00? We also need posters by Thursday lunchtime.\n\nFrom: Jay\nTo: Ella\nDate: 6 May\nSubject: Re: Help at the book swap\nI can make the posters, but my music lesson ends at 15:40 on Friday. I cannot help set up. Could I do a later job? Also, a friend wants to bring a book borrowed from the school library. I told him that probably would not be allowed. Is that right?\n\nFrom: Ella\nTo: Jay\nDate: 7 May\nSubject: New room and a later job\nYou are right: borrowed library books must be returned to the library, not exchanged. You can welcome visitors from 15:45. The hall floor is being repaired, so the event is now in Room 12 beside the library. Please put the new location on your posters. One more change: everyone who attends will receive one welcome token, even without bringing a book. That is in addition to any tokens earned from books. We want students to feel able to join.\n\nFrom: Jay\nTo: Ella\nDate: 8 May\nSubject: Posters ready\nThe posters now show Room 12 and the 15:30 start. I will deliver them on Thursday morning. I will be at the door by 15:45 on Friday, ready to explain the token system and direct visitors inside. My friend has decided to keep the library book out of his swap bag. Thanks for finding me a job that fits my lesson time.\n\nB. Whose left?\n\nIn a classroom game, I had a picture of a small bridge made from coloured blocks. My partner Sam had the blocks but could not see my picture. We sat opposite each other, and I had to explain how to build the bridge without showing him the card.\n\nAt first, I gave quick instructions. \"Put the red block on the left,\" I said. Sam moved it, but not where I expected. I repeated the instruction more loudly. He moved it again and looked puzzled.\n\nOur teacher asked whose left I meant. From opposite sides of the table, we were using different viewpoints. A louder voice had not made that missing detail clearer.\n\nWe agreed to describe positions using objects we both recognised. Instead of left, I said, \"Put the red block beside the blue block, near the window.\" Sam repeated the instruction in his own words before moving it. Soon the bridge began to match the picture.\n\nWhen we exchanged roles, I discovered how difficult it was to follow a description without seeing the original. I asked more questions instead of guessing. The game was not a test of which partner was cleverer. It showed us how much a useful instruction depended on knowing what the listener could see and understand."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.book-swap-emails-and-building-game-035.a.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the purpose of the event?",
+            "material": "A. Four emails about the book swap\n\nFrom: Ella\nTo: Jay\nDate: 5 May\nSubject: Help at the book swap\nOur school book swap is on Friday 15 May,15:30-16:30. We planned to use the hall. Students may bring up to five books they own and no longer need. Each accepted book earns one book token. Could you help set up at 15:00? We also need posters by Thursday lunchtime.\n\nFrom: Jay\nTo: Ella\nDate: 6 May\nSubject: Re: Help at the book swap\nI can make the posters, but my music lesson ends at 15:40 on Friday. I cannot help set up. Could I do a later job? Also, a friend wants to bring a book borrowed from the school library. I told him that probably would not be allowed. Is that right?\n\nFrom: Ella\nTo: Jay\nDate: 7 May\nSubject: New room and a later job\nYou are right: borrowed library books must be returned to the library, not exchanged. You can welcome visitors from 15:45. The hall floor is being repaired, so the event is now in Room 12 beside the library. Please put the new location on your posters. One more change: everyone who attends will receive one welcome token, even without bringing a book. That is in addition to any tokens earned from books. We want students to feel able to join.\n\nFrom: Jay\nTo: Ella\nDate: 8 May\nSubject: Posters ready\nThe posters now show Room 12 and the 15:30 start. I will deliver them on Thursday morning. I will be at the door by 15:45 on Friday, ready to explain the token system and direct visitors inside. My friend has decided to keep the library book out of his swap bag. Thanks for finding me a job that fits my lesson time.",
+            "explanation": "Owned books are exchanged using tokens. School library stock is excluded, and music is only Jay's scheduling constraint.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To sell all books from the school library"
+              },
+              {
+                "id": "o1",
+                "text": "To exchange students' own unwanted books"
+              },
+              {
+                "id": "o2",
+                "text": "To choose the fastest music student"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.book-swap-emails-and-building-game-035.a.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where will the event take place according to the latest emails?",
+            "material": "A. Four emails about the book swap\n\nFrom: Ella\nTo: Jay\nDate: 5 May\nSubject: Help at the book swap\nOur school book swap is on Friday 15 May,15:30-16:30. We planned to use the hall. Students may bring up to five books they own and no longer need. Each accepted book earns one book token. Could you help set up at 15:00? We also need posters by Thursday lunchtime.\n\nFrom: Jay\nTo: Ella\nDate: 6 May\nSubject: Re: Help at the book swap\nI can make the posters, but my music lesson ends at 15:40 on Friday. I cannot help set up. Could I do a later job? Also, a friend wants to bring a book borrowed from the school library. I told him that probably would not be allowed. Is that right?\n\nFrom: Ella\nTo: Jay\nDate: 7 May\nSubject: New room and a later job\nYou are right: borrowed library books must be returned to the library, not exchanged. You can welcome visitors from 15:45. The hall floor is being repaired, so the event is now in Room 12 beside the library. Please put the new location on your posters. One more change: everyone who attends will receive one welcome token, even without bringing a book. That is in addition to any tokens earned from books. We want students to feel able to join.\n\nFrom: Jay\nTo: Ella\nDate: 8 May\nSubject: Posters ready\nThe posters now show Room 12 and the 15:30 start. I will deliver them on Thursday morning. I will be at the door by 15:45 on Friday, ready to explain the token system and direct visitors inside. My friend has decided to keep the library book out of his swap bag. Thanks for finding me a job that fits my lesson time.",
+            "explanation": "The7May update moves it to Room12, confirmed8May. The hall is the outdated plan and no music-room venue is offered.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "In the hall"
+              },
+              {
+                "id": "o1",
+                "text": "In Jay's music classroom"
+              },
+              {
+                "id": "o2",
+                "text": "In Room 12 beside the library"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.book-swap-emails-and-building-game-035.a.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why will Jay begin helping at 15:45?",
+            "material": "A. Four emails about the book swap\n\nFrom: Ella\nTo: Jay\nDate: 5 May\nSubject: Help at the book swap\nOur school book swap is on Friday 15 May,15:30-16:30. We planned to use the hall. Students may bring up to five books they own and no longer need. Each accepted book earns one book token. Could you help set up at 15:00? We also need posters by Thursday lunchtime.\n\nFrom: Jay\nTo: Ella\nDate: 6 May\nSubject: Re: Help at the book swap\nI can make the posters, but my music lesson ends at 15:40 on Friday. I cannot help set up. Could I do a later job? Also, a friend wants to bring a book borrowed from the school library. I told him that probably would not be allowed. Is that right?\n\nFrom: Ella\nTo: Jay\nDate: 7 May\nSubject: New room and a later job\nYou are right: borrowed library books must be returned to the library, not exchanged. You can welcome visitors from 15:45. The hall floor is being repaired, so the event is now in Room 12 beside the library. Please put the new location on your posters. One more change: everyone who attends will receive one welcome token, even without bringing a book. That is in addition to any tokens earned from books. We want students to feel able to join.\n\nFrom: Jay\nTo: Ella\nDate: 8 May\nSubject: Posters ready\nThe posters now show Room 12 and the 15:30 start. I will deliver them on Thursday morning. I will be at the door by 15:45 on Friday, ready to explain the token system and direct visitors inside. My friend has decided to keep the library book out of his swap bag. Thanks for finding me a job that fits my lesson time.",
+            "explanation": "His lesson prevents setup but allows the later welcome role. The event starts15:30, and posters are prepared earlier.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "All posters must be made after 15:45"
+              },
+              {
+                "id": "o1",
+                "text": "The event does not start until 16:30"
+              },
+              {
+                "id": "o2",
+                "text": "His music lesson ends at 15:40"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.book-swap-emails-and-building-game-035.a.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which book may not be exchanged?",
+            "material": "A. Four emails about the book swap\n\nFrom: Ella\nTo: Jay\nDate: 5 May\nSubject: Help at the book swap\nOur school book swap is on Friday 15 May,15:30-16:30. We planned to use the hall. Students may bring up to five books they own and no longer need. Each accepted book earns one book token. Could you help set up at 15:00? We also need posters by Thursday lunchtime.\n\nFrom: Jay\nTo: Ella\nDate: 6 May\nSubject: Re: Help at the book swap\nI can make the posters, but my music lesson ends at 15:40 on Friday. I cannot help set up. Could I do a later job? Also, a friend wants to bring a book borrowed from the school library. I told him that probably would not be allowed. Is that right?\n\nFrom: Ella\nTo: Jay\nDate: 7 May\nSubject: New room and a later job\nYou are right: borrowed library books must be returned to the library, not exchanged. You can welcome visitors from 15:45. The hall floor is being repaired, so the event is now in Room 12 beside the library. Please put the new location on your posters. One more change: everyone who attends will receive one welcome token, even without bringing a book. That is in addition to any tokens earned from books. We want students to feel able to join.\n\nFrom: Jay\nTo: Ella\nDate: 8 May\nSubject: Posters ready\nThe posters now show Room 12 and the 15:30 start. I will deliver them on Thursday morning. I will be at the door by 15:45 on Friday, ready to explain the token system and direct visitors inside. My friend has decided to keep the library book out of his swap bag. Thanks for finding me a job that fits my lesson time.",
+            "explanation": "Borrowed books remain library property and must return there. Owned unwanted books meet the event's stated condition.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A book borrowed from the school library"
+              },
+              {
+                "id": "o1",
+                "text": "A book the student owns but no longer wants"
+              },
+              {
+                "id": "o2",
+                "text": "A suitable book from the student's own shelf"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.book-swap-emails-and-building-game-035.a.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What may a student who brings no book receive?",
+            "material": "A. Four emails about the book swap\n\nFrom: Ella\nTo: Jay\nDate: 5 May\nSubject: Help at the book swap\nOur school book swap is on Friday 15 May,15:30-16:30. We planned to use the hall. Students may bring up to five books they own and no longer need. Each accepted book earns one book token. Could you help set up at 15:00? We also need posters by Thursday lunchtime.\n\nFrom: Jay\nTo: Ella\nDate: 6 May\nSubject: Re: Help at the book swap\nI can make the posters, but my music lesson ends at 15:40 on Friday. I cannot help set up. Could I do a later job? Also, a friend wants to bring a book borrowed from the school library. I told him that probably would not be allowed. Is that right?\n\nFrom: Ella\nTo: Jay\nDate: 7 May\nSubject: New room and a later job\nYou are right: borrowed library books must be returned to the library, not exchanged. You can welcome visitors from 15:45. The hall floor is being repaired, so the event is now in Room 12 beside the library. Please put the new location on your posters. One more change: everyone who attends will receive one welcome token, even without bringing a book. That is in addition to any tokens earned from books. We want students to feel able to join.\n\nFrom: Jay\nTo: Ella\nDate: 8 May\nSubject: Posters ready\nThe posters now show Room 12 and the 15:30 start. I will deliver them on Thursday morning. I will be at the door by 15:45 on Friday, ready to explain the token system and direct visitors inside. My friend has decided to keep the library book out of his swap bag. Thanks for finding me a job that fits my lesson time.",
+            "explanation": "Every attendee gets one welcome token. Entry is allowed and five earned tokens require accepted books.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Five book tokens automatically"
+              },
+              {
+                "id": "o1",
+                "text": "No entry to the room"
+              },
+              {
+                "id": "o2",
+                "text": "One welcome token"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.book-swap-emails-and-building-game-035.b.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What information did the two students have at first?",
+            "material": "B. Whose left?\n\nIn a classroom game, I had a picture of a small bridge made from coloured blocks. My partner Sam had the blocks but could not see my picture. We sat opposite each other, and I had to explain how to build the bridge without showing him the card.\n\nAt first, I gave quick instructions. \"Put the red block on the left,\" I said. Sam moved it, but not where I expected. I repeated the instruction more loudly. He moved it again and looked puzzled.\n\nOur teacher asked whose left I meant. From opposite sides of the table, we were using different viewpoints. A louder voice had not made that missing detail clearer.\n\nWe agreed to describe positions using objects we both recognised. Instead of left, I said, \"Put the red block beside the blue block, near the window.\" Sam repeated the instruction in his own words before moving it. Soon the bridge began to match the picture.\n\nWhen we exchanged roles, I discovered how difficult it was to follow a description without seeing the original. I asked more questions instead of guessing. The game was not a test of which partner was cleverer. It showed us how much a useful instruction depended on knowing what the listener could see and understand.",
+            "explanation": "The game separates the picture from the builder's blocks. The other options remove that information gap.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Sam had every instruction written out"
+              },
+              {
+                "id": "o1",
+                "text": "Both could see the picture but had no blocks"
+              },
+              {
+                "id": "o2",
+                "text": "The writer had the picture and Sam had the blocks"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.book-swap-emails-and-building-game-035.b.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did repeating the first instruction loudly fail?",
+            "material": "B. Whose left?\n\nIn a classroom game, I had a picture of a small bridge made from coloured blocks. My partner Sam had the blocks but could not see my picture. We sat opposite each other, and I had to explain how to build the bridge without showing him the card.\n\nAt first, I gave quick instructions. \"Put the red block on the left,\" I said. Sam moved it, but not where I expected. I repeated the instruction more loudly. He moved it again and looked puzzled.\n\nOur teacher asked whose left I meant. From opposite sides of the table, we were using different viewpoints. A louder voice had not made that missing detail clearer.\n\nWe agreed to describe positions using objects we both recognised. Instead of left, I said, \"Put the red block beside the blue block, near the window.\" Sam repeated the instruction in his own words before moving it. Soon the bridge began to match the picture.\n\nWhen we exchanged roles, I discovered how difficult it was to follow a description without seeing the original. I asked more questions instead of guessing. The game was not a test of which partner was cleverer. It showed us how much a useful instruction depended on knowing what the listener could see and understand.",
+            "explanation": "The problem was whose left, not volume or a missing block. Sam hears and acts but interprets position differently.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The instruction still left the viewpoint unclear"
+              },
+              {
+                "id": "o1",
+                "text": "Sam could not hear any sound"
+              },
+              {
+                "id": "o2",
+                "text": "The red block was missing"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.book-swap-emails-and-building-game-035.b.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What helped them build more successfully?",
+            "material": "B. Whose left?\n\nIn a classroom game, I had a picture of a small bridge made from coloured blocks. My partner Sam had the blocks but could not see my picture. We sat opposite each other, and I had to explain how to build the bridge without showing him the card.\n\nAt first, I gave quick instructions. \"Put the red block on the left,\" I said. Sam moved it, but not where I expected. I repeated the instruction more loudly. He moved it again and looked puzzled.\n\nOur teacher asked whose left I meant. From opposite sides of the table, we were using different viewpoints. A louder voice had not made that missing detail clearer.\n\nWe agreed to describe positions using objects we both recognised. Instead of left, I said, \"Put the red block beside the blue block, near the window.\" Sam repeated the instruction in his own words before moving it. Soon the bridge began to match the picture.\n\nWhen we exchanged roles, I discovered how difficult it was to follow a description without seeing the original. I asked more questions instead of guessing. The game was not a test of which partner was cleverer. It showed us how much a useful instruction depended on knowing what the listener could see and understand.",
+            "explanation": "Window and blue-block references plus repetition in Sam's words improve clarity. Insults and delayed questions are not used.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Telling Sam he was less clever"
+              },
+              {
+                "id": "o1",
+                "text": "Using shared reference objects and checking understanding"
+              },
+              {
+                "id": "o2",
+                "text": "Keeping every question until the game ended"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.book-swap-emails-and-building-game-035.b.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happened when they exchanged roles?",
+            "material": "B. Whose left?\n\nIn a classroom game, I had a picture of a small bridge made from coloured blocks. My partner Sam had the blocks but could not see my picture. We sat opposite each other, and I had to explain how to build the bridge without showing him the card.\n\nAt first, I gave quick instructions. \"Put the red block on the left,\" I said. Sam moved it, but not where I expected. I repeated the instruction more loudly. He moved it again and looked puzzled.\n\nOur teacher asked whose left I meant. From opposite sides of the table, we were using different viewpoints. A louder voice had not made that missing detail clearer.\n\nWe agreed to describe positions using objects we both recognised. Instead of left, I said, \"Put the red block beside the blue block, near the window.\" Sam repeated the instruction in his own words before moving it. Soon the bridge began to match the picture.\n\nWhen we exchanged roles, I discovered how difficult it was to follow a description without seeing the original. I asked more questions instead of guessing. The game was not a test of which partner was cleverer. It showed us how much a useful instruction depended on knowing what the listener could see and understand.",
+            "explanation": "Being the builder lets the writer experience limited information and ask more questions. A contradicts that response; the game's information gap remains.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The writer understood the listener's difficulty more directly"
+              },
+              {
+                "id": "o1",
+                "text": "The writer found following instructions easier without any questions"
+              },
+              {
+                "id": "o2",
+                "text": "The teacher removed the information gap completely"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.book-swap-emails-and-building-game-035.b.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the best title?",
+            "material": "B. Whose left?\n\nIn a classroom game, I had a picture of a small bridge made from coloured blocks. My partner Sam had the blocks but could not see my picture. We sat opposite each other, and I had to explain how to build the bridge without showing him the card.\n\nAt first, I gave quick instructions. \"Put the red block on the left,\" I said. Sam moved it, but not where I expected. I repeated the instruction more loudly. He moved it again and looked puzzled.\n\nOur teacher asked whose left I meant. From opposite sides of the table, we were using different viewpoints. A louder voice had not made that missing detail clearer.\n\nWe agreed to describe positions using objects we both recognised. Instead of left, I said, \"Put the red block beside the blue block, near the window.\" Sam repeated the instruction in his own words before moving it. Soon the bridge began to match the picture.\n\nWhen we exchanged roles, I discovered how difficult it was to follow a description without seeing the original. I asked more questions instead of guessing. The game was not a test of which partner was cleverer. It showed us how much a useful instruction depended on knowing what the listener could see and understand.",
+            "explanation": "Shared reference and listener understanding are the lesson. Volume alone fails and the text rejects ranking cleverness.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Learning to describe from a shared viewpoint"
+              },
+              {
+                "id": "o1",
+                "text": "A competition to find the cleverest partner"
+              },
+              {
+                "id": "o2",
+                "text": "Why louder is always clearer"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "e8734a6c6b2e01afb74e0b2aa292b80bd54eab3daad69b7361d26da28dbc4efb",
+      "reviewNotes": "Three new complete junior reading practices: two junior2 pairs of four-question texts, plus a junior3 four-email thread five questions and another full reading five questions. Author checks explicit evidence, sequence updates and all alternatives. Fictional events and general physical explanations, not invented studies or independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
