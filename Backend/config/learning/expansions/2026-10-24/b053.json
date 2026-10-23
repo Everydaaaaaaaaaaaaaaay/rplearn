@@ -1,0 +1,920 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b053",
+  "createdAt": "2026-10-23T22:06:52.862765+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.journal-and-birdwatch-053",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · A nature journal and a patient observer",
+        "summary": "A nature journal and a patient observer，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.2024.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "National I final structure: two complete original passages, with three and four four-choice questions. Old source supplies only a level/family drafting reference."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three original senior paired-reading practices, each three plus four questions. Events/schemes and personal narrative fictional. General coastal discussion asserts no fabricated study or numerical result. Same-author evidence and distractor review; not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.journal-and-birdwatch-053",
+          "family": "reading_choice",
+          "label": "A nature journal and a patient observer",
+          "candidateSHA256": "493b4b05324586799abafdf434e1e3139bbf83e5506441e026b07df800eaa184",
+          "authorCheckSHA256": "43b22c41ac01839475ae885874f86cbb53f4e8762fa6e54189c5861d5a782fcb",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.journal-and-birdwatch-053#journal",
+            "expansion.20261024.senior1.journal-and-birdwatch-053#observer"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b053；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Nature Journal Morning\n\nThe Hill Garden is offering a nature-journal morning for students aged fourteen to seventeen. You do not need to be an experienced artist. The aim is to observe a small area closely and record what you notice through words, drawings or both.\n\nMeet at the visitor shelter at 9:15 on Saturday. The guided introduction begins at 9:30 and lasts twenty minutes. After that, participants work independently in the marked garden area until 11:00. A tutor will be available for questions, but there will be no continuous drawing demonstration.\n\nBring a notebook, pencil and something firm to lean on. Water-based paints may be used if you bring your own water container. Do not take water from the wildlife pond or wash brushes in it. Folding stools are welcome, provided they do not block the narrow paths.\n\nChoose one patch to study rather than trying to draw the entire garden. You may photograph your chosen patch for later reference, but do not pick plants or move animals to improve the picture. The journal is a record of what you encounter, not a reason to rearrange the habitat.\n\nThe morning costs four pounds. Booking closes on Thursday at 17:00. If heavy rain is forecast, participants will receive a message on Friday with either a cancellation or revised indoor activity. Do not assume the event has moved indoors unless that message specifically says so.\n\nA reason to stay\n\nOn my first morning with the birdwatching group, I was certain I had chosen the wrong hobby. We had been standing beside a hedge for fifteen minutes. Nobody seemed eager to go anywhere. I had imagined a brisk walk with occasional birds, not a long pause beside an ordinary field.\n\nOur leader, Mae, pointed to a branch. I raised my binoculars too quickly and saw only a blur. By the time I adjusted them, the bird had gone. I lowered them, annoyed that the whole purpose of waiting had disappeared in a second.\n\nMae suggested looking first without the binoculars. \"Find the place with your eyes,\" she said. \"Then bring the view closer.\" She helped me adjust the instrument before we tried again.\n\nDuring the next pause, I noticed that the hedge was not as empty as it had seemed. Leaves moved in different places. A call came from somewhere above the fence. I could not name its maker, but I could follow its direction. When another small bird landed, I knew where to look.\n\nThe view lasted only a few seconds. Still, I saw the bright line above its eye and the way its feet gripped the branch. Mae supplied a possible identification, explaining which feature would help us be more certain. She did not pretend that my brief glimpse had shown everything.\n\nWe walked on eventually. I had covered less distance than on my usual weekend walk, yet I remembered more of one stretch of hedge than I normally remembered of an entire route. The group had not made the field more interesting by adding something to it. It had helped me notice what was already happening there.\n\nAt the next meeting, I still hoped to see birds. I also understood why the pauses belonged to the walk. They were not empty spaces between its worthwhile moments; they made some of those moments possible."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.journal-and-birdwatch-053.journal.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the event mainly intended to develop?",
+            "material": "Nature Journal Morning\n\nThe Hill Garden is offering a nature-journal morning for students aged fourteen to seventeen. You do not need to be an experienced artist. The aim is to observe a small area closely and record what you notice through words, drawings or both.\n\nMeet at the visitor shelter at 9:15 on Saturday. The guided introduction begins at 9:30 and lasts twenty minutes. After that, participants work independently in the marked garden area until 11:00. A tutor will be available for questions, but there will be no continuous drawing demonstration.\n\nBring a notebook, pencil and something firm to lean on. Water-based paints may be used if you bring your own water container. Do not take water from the wildlife pond or wash brushes in it. Folding stools are welcome, provided they do not block the narrow paths.\n\nChoose one patch to study rather than trying to draw the entire garden. You may photograph your chosen patch for later reference, but do not pick plants or move animals to improve the picture. The journal is a record of what you encounter, not a reason to rearrange the habitat.\n\nThe morning costs four pounds. Booking closes on Thursday at 17:00. If heavy rain is forecast, participants will receive a message on Friday with either a cancellation or revised indoor activity. Do not assume the event has moved indoors unless that message specifically says so.",
+            "explanation": "The stated aim is observing one area and recording through words/drawing. Sales, collecting plants and rushing through the whole garden are not its purpose.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Knowledge gained only by taking plants home"
+              },
+              {
+                "id": "o1",
+                "text": "Professional painting for sale"
+              },
+              {
+                "id": "o2",
+                "text": "The ability to draw an entire garden quickly"
+              },
+              {
+                "id": "o3",
+                "text": "Close observation expressed in a personal record"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.journal-and-birdwatch-053.journal.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happens after the twenty-minute introduction?",
+            "material": "Nature Journal Morning\n\nThe Hill Garden is offering a nature-journal morning for students aged fourteen to seventeen. You do not need to be an experienced artist. The aim is to observe a small area closely and record what you notice through words, drawings or both.\n\nMeet at the visitor shelter at 9:15 on Saturday. The guided introduction begins at 9:30 and lasts twenty minutes. After that, participants work independently in the marked garden area until 11:00. A tutor will be available for questions, but there will be no continuous drawing demonstration.\n\nBring a notebook, pencil and something firm to lean on. Water-based paints may be used if you bring your own water container. Do not take water from the wildlife pond or wash brushes in it. Folding stools are welcome, provided they do not block the narrow paths.\n\nChoose one patch to study rather than trying to draw the entire garden. You may photograph your chosen patch for later reference, but do not pick plants or move animals to improve the picture. The journal is a record of what you encounter, not a reason to rearrange the habitat.\n\nThe morning costs four pounds. Booking closes on Thursday at 17:00. If heavy rain is forecast, participants will receive a message on Friday with either a cancellation or revised indoor activity. Do not assume the event has moved indoors unless that message specifically says so.",
+            "explanation": "Independent work lasts until11 with questions possible. It is not a continuous demonstration, immediate finish or pond activity.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The event ends immediately"
+              },
+              {
+                "id": "o1",
+                "text": "Participants enter the wildlife pond"
+              },
+              {
+                "id": "o2",
+                "text": "Everyone watches an uninterrupted demonstration"
+              },
+              {
+                "id": "o3",
+                "text": "Participants work independently with a tutor available"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.journal-and-birdwatch-053.journal.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should a booked participant do if heavy rain is forecast?",
+            "material": "Nature Journal Morning\n\nThe Hill Garden is offering a nature-journal morning for students aged fourteen to seventeen. You do not need to be an experienced artist. The aim is to observe a small area closely and record what you notice through words, drawings or both.\n\nMeet at the visitor shelter at 9:15 on Saturday. The guided introduction begins at 9:30 and lasts twenty minutes. After that, participants work independently in the marked garden area until 11:00. A tutor will be available for questions, but there will be no continuous drawing demonstration.\n\nBring a notebook, pencil and something firm to lean on. Water-based paints may be used if you bring your own water container. Do not take water from the wildlife pond or wash brushes in it. Folding stools are welcome, provided they do not block the narrow paths.\n\nChoose one patch to study rather than trying to draw the entire garden. You may photograph your chosen patch for later reference, but do not pick plants or move animals to improve the picture. The journal is a record of what you encounter, not a reason to rearrange the habitat.\n\nThe morning costs four pounds. Booking closes on Thursday at 17:00. If heavy rain is forecast, participants will receive a message on Friday with either a cancellation or revised indoor activity. Do not assume the event has moved indoors unless that message specifically says so.",
+            "explanation": "The message distinguishes cancellation from a revised activity. Automatic indoor assumptions, pond water and ignoring notices contradict the rules.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Read Friday’s message for the actual arrangement"
+              },
+              {
+                "id": "o1",
+                "text": "Assume an indoor replacement automatically"
+              },
+              {
+                "id": "o2",
+                "text": "Arrive at the pond with a water bucket"
+              },
+              {
+                "id": "o3",
+                "text": "Ignore any cancellation notice"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.journal-and-birdwatch-053.observer.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why was the narrator initially dissatisfied?",
+            "material": "A reason to stay\n\nOn my first morning with the birdwatching group, I was certain I had chosen the wrong hobby. We had been standing beside a hedge for fifteen minutes. Nobody seemed eager to go anywhere. I had imagined a brisk walk with occasional birds, not a long pause beside an ordinary field.\n\nOur leader, Mae, pointed to a branch. I raised my binoculars too quickly and saw only a blur. By the time I adjusted them, the bird had gone. I lowered them, annoyed that the whole purpose of waiting had disappeared in a second.\n\nMae suggested looking first without the binoculars. \"Find the place with your eyes,\" she said. \"Then bring the view closer.\" She helped me adjust the instrument before we tried again.\n\nDuring the next pause, I noticed that the hedge was not as empty as it had seemed. Leaves moved in different places. A call came from somewhere above the fence. I could not name its maker, but I could follow its direction. When another small bird landed, I knew where to look.\n\nThe view lasted only a few seconds. Still, I saw the bright line above its eye and the way its feet gripped the branch. Mae supplied a possible identification, explaining which feature would help us be more certain. She did not pretend that my brief glimpse had shown everything.\n\nWe walked on eventually. I had covered less distance than on my usual weekend walk, yet I remembered more of one stretch of hedge than I normally remembered of an entire route. The group had not made the field more interesting by adding something to it. It had helped me notice what was already happening there.\n\nAt the next meeting, I still hoped to see birds. I also understood why the pauses belonged to the walk. They were not empty spaces between its worthwhile moments; they made some of those moments possible.",
+            "explanation": "A long pause conflicts with the expected brisk walk. Binoculars are used, access is open and beginners receive help rather than expert demands.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The group required expert identification from every beginner"
+              },
+              {
+                "id": "o1",
+                "text": "Mae refused to allow binoculars"
+              },
+              {
+                "id": "o2",
+                "text": "The group’s pace differed from the brisk walk expected"
+              },
+              {
+                "id": "o3",
+                "text": "The field had been closed to all visitors"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.journal-and-birdwatch-053.observer.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did Mae advise about using binoculars?",
+            "material": "A reason to stay\n\nOn my first morning with the birdwatching group, I was certain I had chosen the wrong hobby. We had been standing beside a hedge for fifteen minutes. Nobody seemed eager to go anywhere. I had imagined a brisk walk with occasional birds, not a long pause beside an ordinary field.\n\nOur leader, Mae, pointed to a branch. I raised my binoculars too quickly and saw only a blur. By the time I adjusted them, the bird had gone. I lowered them, annoyed that the whole purpose of waiting had disappeared in a second.\n\nMae suggested looking first without the binoculars. \"Find the place with your eyes,\" she said. \"Then bring the view closer.\" She helped me adjust the instrument before we tried again.\n\nDuring the next pause, I noticed that the hedge was not as empty as it had seemed. Leaves moved in different places. A call came from somewhere above the fence. I could not name its maker, but I could follow its direction. When another small bird landed, I knew where to look.\n\nThe view lasted only a few seconds. Still, I saw the bright line above its eye and the way its feet gripped the branch. Mae supplied a possible identification, explaining which feature would help us be more certain. She did not pretend that my brief glimpse had shown everything.\n\nWe walked on eventually. I had covered less distance than on my usual weekend walk, yet I remembered more of one stretch of hedge than I normally remembered of an entire route. The group had not made the field more interesting by adding something to it. It had helped me notice what was already happening there.\n\nAt the next meeting, I still hoped to see birds. I also understood why the pauses belonged to the walk. They were not empty spaces between its worthwhile moments; they made some of those moments possible.",
+            "explanation": "Mae says find the place with the eyes first. The other procedures are neither advised nor required.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Identify every call before adjusting them"
+              },
+              {
+                "id": "o1",
+                "text": "Keep them pointed permanently at the ground"
+              },
+              {
+                "id": "o2",
+                "text": "Raise them as quickly as possible without looking first"
+              },
+              {
+                "id": "o3",
+                "text": "Locate the bird unaided before raising them"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.journal-and-birdwatch-053.observer.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the narrator gain despite walking less far?",
+            "material": "A reason to stay\n\nOn my first morning with the birdwatching group, I was certain I had chosen the wrong hobby. We had been standing beside a hedge for fifteen minutes. Nobody seemed eager to go anywhere. I had imagined a brisk walk with occasional birds, not a long pause beside an ordinary field.\n\nOur leader, Mae, pointed to a branch. I raised my binoculars too quickly and saw only a blur. By the time I adjusted them, the bird had gone. I lowered them, annoyed that the whole purpose of waiting had disappeared in a second.\n\nMae suggested looking first without the binoculars. \"Find the place with your eyes,\" she said. \"Then bring the view closer.\" She helped me adjust the instrument before we tried again.\n\nDuring the next pause, I noticed that the hedge was not as empty as it had seemed. Leaves moved in different places. A call came from somewhere above the fence. I could not name its maker, but I could follow its direction. When another small bird landed, I knew where to look.\n\nThe view lasted only a few seconds. Still, I saw the bright line above its eye and the way its feet gripped the branch. Mae supplied a possible identification, explaining which feature would help us be more certain. She did not pretend that my brief glimpse had shown everything.\n\nWe walked on eventually. I had covered less distance than on my usual weekend walk, yet I remembered more of one stretch of hedge than I normally remembered of an entire route. The group had not made the field more interesting by adding something to it. It had helped me notice what was already happening there.\n\nAt the next meeting, I still hoped to see birds. I also understood why the pauses belonged to the walk. They were not empty spaces between its worthwhile moments; they made some of those moments possible.",
+            "explanation": "The narrator recalls one hedge more richly. Identification remains tentative, and speed/size are not improved.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A faster way to complete the usual route"
+              },
+              {
+                "id": "o1",
+                "text": "Proof of every bird’s identity"
+              },
+              {
+                "id": "o2",
+                "text": "A more detailed memory of a particular place"
+              },
+              {
+                "id": "o3",
+                "text": "The ability to make the field physically larger"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.journal-and-birdwatch-053.observer.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the final paragraph suggest about pauses?",
+            "material": "A reason to stay\n\nOn my first morning with the birdwatching group, I was certain I had chosen the wrong hobby. We had been standing beside a hedge for fifteen minutes. Nobody seemed eager to go anywhere. I had imagined a brisk walk with occasional birds, not a long pause beside an ordinary field.\n\nOur leader, Mae, pointed to a branch. I raised my binoculars too quickly and saw only a blur. By the time I adjusted them, the bird had gone. I lowered them, annoyed that the whole purpose of waiting had disappeared in a second.\n\nMae suggested looking first without the binoculars. \"Find the place with your eyes,\" she said. \"Then bring the view closer.\" She helped me adjust the instrument before we tried again.\n\nDuring the next pause, I noticed that the hedge was not as empty as it had seemed. Leaves moved in different places. A call came from somewhere above the fence. I could not name its maker, but I could follow its direction. When another small bird landed, I knew where to look.\n\nThe view lasted only a few seconds. Still, I saw the bright line above its eye and the way its feet gripped the branch. Mae supplied a possible identification, explaining which feature would help us be more certain. She did not pretend that my brief glimpse had shown everything.\n\nWe walked on eventually. I had covered less distance than on my usual weekend walk, yet I remembered more of one stretch of hedge than I normally remembered of an entire route. The group had not made the field more interesting by adding something to it. It had helped me notice what was already happening there.\n\nAt the next meeting, I still hoped to see birds. I also understood why the pauses belonged to the walk. They were not empty spaces between its worthwhile moments; they made some of those moments possible.",
+            "explanation": "Pauses enable observation. The text does not generalise failure, require absence or abandon movement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They should replace every form of walking"
+              },
+              {
+                "id": "o1",
+                "text": "They can create the conditions for noticing worthwhile details"
+              },
+              {
+                "id": "o2",
+                "text": "They are always a sign that a group has failed"
+              },
+              {
+                "id": "o3",
+                "text": "They matter only after all birds have left"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "3a194948f2365c5f3a51dafa7808b9ea0b9c2ab53e4b2bac6cb86724c14cdeed",
+      "reviewNotes": "Three original senior paired-reading practices, each three plus four questions. Events/schemes and personal narrative fictional. General coastal discussion asserts no fabricated study or numerical result. Same-author evidence and distractor review; not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.journal-and-birdwatch-053#journal",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.journal-and-birdwatch-053.journal.q1",
+            "expansion.20261024.senior1.journal-and-birdwatch-053.journal.q2",
+            "expansion.20261024.senior1.journal-and-birdwatch-053.journal.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.journal-and-birdwatch-053",
+          "sourceContentHash": "25e62b0de57d85a5f0932ebd237fb1f6f473dcb368cc444f6772fe2699a96596"
+        },
+        {
+          "id": "expansion.20261024.senior1.journal-and-birdwatch-053#observer",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.journal-and-birdwatch-053.observer.q1",
+            "expansion.20261024.senior1.journal-and-birdwatch-053.observer.q2",
+            "expansion.20261024.senior1.journal-and-birdwatch-053.observer.q3",
+            "expansion.20261024.senior1.journal-and-birdwatch-053.observer.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.journal-and-birdwatch-053",
+          "sourceContentHash": "4876f7c6aef8245867e4a2b3cc6769b17ad0d855162600c5600efb0f0a34f238"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.residency-and-tide-053",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · A craft residency and a changing shore",
+        "summary": "A craft residency and a changing shore，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g11.2025.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "National I final structure: two complete original passages, with three and four four-choice questions. Old source supplies only a level/family drafting reference."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three original senior paired-reading practices, each three plus four questions. Events/schemes and personal narrative fictional. General coastal discussion asserts no fabricated study or numerical result. Same-author evidence and distractor review; not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.residency-and-tide-053",
+          "family": "reading_choice",
+          "label": "A craft residency and a changing shore",
+          "candidateSHA256": "53c6c45aaf5902058512e9c2e1fb28ed0173917ddb85e754a718b2eacc1b444d",
+          "authorCheckSHA256": "85ccd6e7560dca86ead1344e963cd1fad77ed3f25c7cc956c3b2ff06c4095891",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.residency-and-tide-053#residency",
+            "expansion.20261024.senior2.residency-and-tide-053#shore"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b053；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Young Makers’ Weekend\n\nThe Harbour Craft Centre invites applicants aged sixteen to nineteen to a residential weekend exploring bookbinding, textile repair and simple printmaking. The weekend is designed for curious beginners rather than students seeking a formal qualification. A small collection of previous work may be included, but it is not required.\n\nParticipants arrive on Friday between 17:00 and 18:00 and leave on Sunday at 16:00. Accommodation is in shared rooms at the centre. Applicants under eighteen must provide the signed consent form supplied with the application. All participants must give an emergency contact.\n\nThe fee is sixty pounds, covering accommodation, meals and basic workshop materials. Travel to the centre is not included. Two supported places are available for applicants who would otherwise find the fee a barrier. To request support, complete the separate short form. Financial information is seen only by the administrator and is not used by workshop tutors when choosing participants.\n\nApplicants should write 150–200 words explaining what they would like to explore and one experience of learning a practical skill. That experience need not be artistic: repairing a bicycle or learning to cook may be relevant. Do not send original objects through the post.\n\nApplications close on 12 April. Offers will be sent by email on 26 April, with seven days to accept. If you decline, tell the centre promptly so another applicant can be offered the place. Buying specialist equipment before receiving an offer is unnecessary; the centre will send a short packing list to confirmed participants.\n\nThe beach is not a fixed edge\n\nA visitor who returns to the same beach after several weeks may find the path to the water much longer or shorter than expected. The tide is one explanation, but it is not the only way a shore changes. Sand itself can be moved, creating a landscape whose apparent stability is partly an effect of looking at it briefly.\n\nWaves bring material towards the beach and carry some away. When they approach at an angle, the movement can also shift sand along the coast. Wind can carry dry grains farther inland, where vegetation or another obstacle may help them accumulate. The exact result depends on local conditions; a single description does not predict every beach.\n\nThis movement complicates the idea that a beach has one proper shape. A storm may remove sand from a visible section without meaning that every grain has disappeared from the wider coastal system. Some material may remain offshore and move again under later conditions. That does not make storm damage unimportant, but it changes the questions worth asking about it.\n\nHuman structures add another influence. A wall may protect what lies immediately behind it while altering how waves interact with the shore. A barrier that traps sand in one place can affect the supply available elsewhere. Judging a structure only by the view directly in front of it may miss consequences beyond that frame.\n\nFor a visitor, the practical lesson is modest. A familiar route across sand should not be treated as permanently safe, and local access advice matters. For someone planning coastal work, the same moving landscape demands a wider view and attention over time.\n\nRecognising change does not mean giving up all efforts to protect a coast. It means describing the thing being protected more accurately. A beach is not simply a line on a map, waiting to be held still. It is part of a set of movements, and a decision that interrupts one movement may change another."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.residency-and-tide-053.residency.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which applicant needs a signed consent form?",
+            "material": "Young Makers’ Weekend\n\nThe Harbour Craft Centre invites applicants aged sixteen to nineteen to a residential weekend exploring bookbinding, textile repair and simple printmaking. The weekend is designed for curious beginners rather than students seeking a formal qualification. A small collection of previous work may be included, but it is not required.\n\nParticipants arrive on Friday between 17:00 and 18:00 and leave on Sunday at 16:00. Accommodation is in shared rooms at the centre. Applicants under eighteen must provide the signed consent form supplied with the application. All participants must give an emergency contact.\n\nThe fee is sixty pounds, covering accommodation, meals and basic workshop materials. Travel to the centre is not included. Two supported places are available for applicants who would otherwise find the fee a barrier. To request support, complete the separate short form. Financial information is seen only by the administrator and is not used by workshop tutors when choosing participants.\n\nApplicants should write 150–200 words explaining what they would like to explore and one experience of learning a practical skill. That experience need not be artistic: repairing a bicycle or learning to cook may be relevant. Do not send original objects through the post.\n\nApplications close on 12 April. Offers will be sent by email on 26 April, with seven days to accept. If you decline, tell the centre promptly so another applicant can be offered the place. Buying specialist equipment before receiving an offer is unnecessary; the centre will send a short packing list to confirmed participants.",
+            "explanation": "Under-eighteens need consent, so17 qualifies. Support and prior skill are unrelated; adults are not given that requirement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only someone requesting financial support"
+              },
+              {
+                "id": "o1",
+                "text": "Every applicant over eighteen"
+              },
+              {
+                "id": "o2",
+                "text": "Only a previous bookbinding student"
+              },
+              {
+                "id": "o3",
+                "text": "A seventeen-year-old applicant"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.residency-and-tide-053.residency.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is excluded from the sixty-pound fee?",
+            "material": "Young Makers’ Weekend\n\nThe Harbour Craft Centre invites applicants aged sixteen to nineteen to a residential weekend exploring bookbinding, textile repair and simple printmaking. The weekend is designed for curious beginners rather than students seeking a formal qualification. A small collection of previous work may be included, but it is not required.\n\nParticipants arrive on Friday between 17:00 and 18:00 and leave on Sunday at 16:00. Accommodation is in shared rooms at the centre. Applicants under eighteen must provide the signed consent form supplied with the application. All participants must give an emergency contact.\n\nThe fee is sixty pounds, covering accommodation, meals and basic workshop materials. Travel to the centre is not included. Two supported places are available for applicants who would otherwise find the fee a barrier. To request support, complete the separate short form. Financial information is seen only by the administrator and is not used by workshop tutors when choosing participants.\n\nApplicants should write 150–200 words explaining what they would like to explore and one experience of learning a practical skill. That experience need not be artistic: repairing a bicycle or learning to cook may be relevant. Do not send original objects through the post.\n\nApplications close on 12 April. Offers will be sent by email on 26 April, with seven days to accept. If you decline, tell the centre promptly so another applicant can be offered the place. Buying specialist equipment before receiving an offer is unnecessary; the centre will send a short packing list to confirmed participants.",
+            "explanation": "Travel is explicitly excluded; the other three are included.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Shared accommodation"
+              },
+              {
+                "id": "o1",
+                "text": "Travel to the centre"
+              },
+              {
+                "id": "o2",
+                "text": "Meals during the weekend"
+              },
+              {
+                "id": "o3",
+                "text": "Basic workshop materials"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.residency-and-tide-053.residency.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What may applicants discuss in the short statement?",
+            "material": "Young Makers’ Weekend\n\nThe Harbour Craft Centre invites applicants aged sixteen to nineteen to a residential weekend exploring bookbinding, textile repair and simple printmaking. The weekend is designed for curious beginners rather than students seeking a formal qualification. A small collection of previous work may be included, but it is not required.\n\nParticipants arrive on Friday between 17:00 and 18:00 and leave on Sunday at 16:00. Accommodation is in shared rooms at the centre. Applicants under eighteen must provide the signed consent form supplied with the application. All participants must give an emergency contact.\n\nThe fee is sixty pounds, covering accommodation, meals and basic workshop materials. Travel to the centre is not included. Two supported places are available for applicants who would otherwise find the fee a barrier. To request support, complete the separate short form. Financial information is seen only by the administrator and is not used by workshop tutors when choosing participants.\n\nApplicants should write 150–200 words explaining what they would like to explore and one experience of learning a practical skill. That experience need not be artistic: repairing a bicycle or learning to cook may be relevant. Do not send original objects through the post.\n\nApplications close on 12 April. Offers will be sent by email on 26 April, with seven days to accept. If you decline, tell the centre promptly so another applicant can be offered the place. Buying specialist equipment before receiving an offer is unnecessary; the centre will send a short packing list to confirmed participants.",
+            "explanation": "Examples expressly include bicycle repair and cooking. Qualifications are not required, purchases discouraged and original objects must not be posted.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A practical learning experience outside the arts"
+              },
+              {
+                "id": "o1",
+                "text": "Only a formally assessed art qualification"
+              },
+              {
+                "id": "o2",
+                "text": "An object enclosed in the postal application"
+              },
+              {
+                "id": "o3",
+                "text": "The price of equipment already purchased"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.residency-and-tide-053.shore.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the first paragraph intended to establish?",
+            "material": "The beach is not a fixed edge\n\nA visitor who returns to the same beach after several weeks may find the path to the water much longer or shorter than expected. The tide is one explanation, but it is not the only way a shore changes. Sand itself can be moved, creating a landscape whose apparent stability is partly an effect of looking at it briefly.\n\nWaves bring material towards the beach and carry some away. When they approach at an angle, the movement can also shift sand along the coast. Wind can carry dry grains farther inland, where vegetation or another obstacle may help them accumulate. The exact result depends on local conditions; a single description does not predict every beach.\n\nThis movement complicates the idea that a beach has one proper shape. A storm may remove sand from a visible section without meaning that every grain has disappeared from the wider coastal system. Some material may remain offshore and move again under later conditions. That does not make storm damage unimportant, but it changes the questions worth asking about it.\n\nHuman structures add another influence. A wall may protect what lies immediately behind it while altering how waves interact with the shore. A barrier that traps sand in one place can affect the supply available elsewhere. Judging a structure only by the view directly in front of it may miss consequences beyond that frame.\n\nFor a visitor, the practical lesson is modest. A familiar route across sand should not be treated as permanently safe, and local access advice matters. For someone planning coastal work, the same moving landscape demands a wider view and attention over time.\n\nRecognising change does not mean giving up all efforts to protect a coast. It means describing the thing being protected more accurately. A beach is not simply a line on a map, waiting to be held still. It is part of a set of movements, and a decision that interrupts one movement may change another.",
+            "explanation": "Tides are one cause and moving sand another. Permanent identity, observer-dependent motion and storms as the sole cause are not claimed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every beach has exactly the same permanent shape"
+              },
+              {
+                "id": "o1",
+                "text": "Sand remains still whenever nobody watches it"
+              },
+              {
+                "id": "o2",
+                "text": "Only a storm can alter a shoreline"
+              },
+              {
+                "id": "o3",
+                "text": "A changed distance to water can reflect more than tides"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.residency-and-tide-053.shore.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the writer mention sand remaining offshore?",
+            "material": "The beach is not a fixed edge\n\nA visitor who returns to the same beach after several weeks may find the path to the water much longer or shorter than expected. The tide is one explanation, but it is not the only way a shore changes. Sand itself can be moved, creating a landscape whose apparent stability is partly an effect of looking at it briefly.\n\nWaves bring material towards the beach and carry some away. When they approach at an angle, the movement can also shift sand along the coast. Wind can carry dry grains farther inland, where vegetation or another obstacle may help them accumulate. The exact result depends on local conditions; a single description does not predict every beach.\n\nThis movement complicates the idea that a beach has one proper shape. A storm may remove sand from a visible section without meaning that every grain has disappeared from the wider coastal system. Some material may remain offshore and move again under later conditions. That does not make storm damage unimportant, but it changes the questions worth asking about it.\n\nHuman structures add another influence. A wall may protect what lies immediately behind it while altering how waves interact with the shore. A barrier that traps sand in one place can affect the supply available elsewhere. Judging a structure only by the view directly in front of it may miss consequences beyond that frame.\n\nFor a visitor, the practical lesson is modest. A familiar route across sand should not be treated as permanently safe, and local access advice matters. For someone planning coastal work, the same moving landscape demands a wider view and attention over time.\n\nRecognising change does not mean giving up all efforts to protect a coast. It means describing the thing being protected more accurately. A beach is not simply a line on a map, waiting to be held still. It is part of a set of movements, and a decision that interrupts one movement may change another.",
+            "explanation": "The example widens the frame beyond visible loss. Damage is still important and neither universal return nor a deadline is promised.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To show that visible loss may not describe the whole coastal system"
+              },
+              {
+                "id": "o1",
+                "text": "To claim that all sand returns by the following morning"
+              },
+              {
+                "id": "o2",
+                "text": "To suggest that beaches contain no material from waves"
+              },
+              {
+                "id": "o3",
+                "text": "To prove that storm damage never matters"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.residency-and-tide-053.shore.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What concern is raised about coastal structures?",
+            "material": "The beach is not a fixed edge\n\nA visitor who returns to the same beach after several weeks may find the path to the water much longer or shorter than expected. The tide is one explanation, but it is not the only way a shore changes. Sand itself can be moved, creating a landscape whose apparent stability is partly an effect of looking at it briefly.\n\nWaves bring material towards the beach and carry some away. When they approach at an angle, the movement can also shift sand along the coast. Wind can carry dry grains farther inland, where vegetation or another obstacle may help them accumulate. The exact result depends on local conditions; a single description does not predict every beach.\n\nThis movement complicates the idea that a beach has one proper shape. A storm may remove sand from a visible section without meaning that every grain has disappeared from the wider coastal system. Some material may remain offshore and move again under later conditions. That does not make storm damage unimportant, but it changes the questions worth asking about it.\n\nHuman structures add another influence. A wall may protect what lies immediately behind it while altering how waves interact with the shore. A barrier that traps sand in one place can affect the supply available elsewhere. Judging a structure only by the view directly in front of it may miss consequences beyond that frame.\n\nFor a visitor, the practical lesson is modest. A familiar route across sand should not be treated as permanently safe, and local access advice matters. For someone planning coastal work, the same moving landscape demands a wider view and attention over time.\n\nRecognising change does not mean giving up all efforts to protect a coast. It means describing the thing being protected more accurately. A beach is not simply a line on a map, waiting to be held still. It is part of a set of movements, and a decision that interrupts one movement may change another.",
+            "explanation": "Walls/barriers can affect wave interaction and sand supply elsewhere. The text rejects universal predictions and does not rely on looks or absence of waves.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They always cause identical results at every beach"
+              },
+              {
+                "id": "o1",
+                "text": "Their effects can extend beyond the immediately protected spot"
+              },
+              {
+                "id": "o2",
+                "text": "They can only work if no waves approach"
+              },
+              {
+                "id": "o3",
+                "text": "Their appearance alone proves their effectiveness"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.residency-and-tide-053.shore.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which view best matches the conclusion?",
+            "material": "The beach is not a fixed edge\n\nA visitor who returns to the same beach after several weeks may find the path to the water much longer or shorter than expected. The tide is one explanation, but it is not the only way a shore changes. Sand itself can be moved, creating a landscape whose apparent stability is partly an effect of looking at it briefly.\n\nWaves bring material towards the beach and carry some away. When they approach at an angle, the movement can also shift sand along the coast. Wind can carry dry grains farther inland, where vegetation or another obstacle may help them accumulate. The exact result depends on local conditions; a single description does not predict every beach.\n\nThis movement complicates the idea that a beach has one proper shape. A storm may remove sand from a visible section without meaning that every grain has disappeared from the wider coastal system. Some material may remain offshore and move again under later conditions. That does not make storm damage unimportant, but it changes the questions worth asking about it.\n\nHuman structures add another influence. A wall may protect what lies immediately behind it while altering how waves interact with the shore. A barrier that traps sand in one place can affect the supply available elsewhere. Judging a structure only by the view directly in front of it may miss consequences beyond that frame.\n\nFor a visitor, the practical lesson is modest. A familiar route across sand should not be treated as permanently safe, and local access advice matters. For someone planning coastal work, the same moving landscape demands a wider view and attention over time.\n\nRecognising change does not mean giving up all efforts to protect a coast. It means describing the thing being protected more accurately. A beach is not simply a line on a map, waiting to be held still. It is part of a set of movements, and a decision that interrupts one movement may change another.",
+            "explanation": "The ending keeps protection but asks for accurate system understanding. Abandonment, map sufficiency and universal local guarantees are rejected.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Protection decisions should account for connected movements"
+              },
+              {
+                "id": "o1",
+                "text": "A map line is a complete account of a beach"
+              },
+              {
+                "id": "o2",
+                "text": "Keeping one visible section unchanged guarantees success everywhere"
+              },
+              {
+                "id": "o3",
+                "text": "Coastal protection must be abandoned in every case"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "e43e60313be383691282cd35431294e11778cbbe00f1f8f2a855f810dce64e67",
+      "reviewNotes": "Three original senior paired-reading practices, each three plus four questions. Events/schemes and personal narrative fictional. General coastal discussion asserts no fabricated study or numerical result. Same-author evidence and distractor review; not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.residency-and-tide-053#residency",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.residency-and-tide-053.residency.q1",
+            "expansion.20261024.senior2.residency-and-tide-053.residency.q2",
+            "expansion.20261024.senior2.residency-and-tide-053.residency.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.residency-and-tide-053",
+          "sourceContentHash": "0e9a6ab79b0f6cc33db5cde1fc6df0e636c8f2c389299d98179c274f6ee16997"
+        },
+        {
+          "id": "expansion.20261024.senior2.residency-and-tide-053#shore",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.residency-and-tide-053.shore.q1",
+            "expansion.20261024.senior2.residency-and-tide-053.shore.q2",
+            "expansion.20261024.senior2.residency-and-tide-053.shore.q3",
+            "expansion.20261024.senior2.residency-and-tide-053.shore.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.residency-and-tide-053",
+          "sourceContentHash": "5999ec4028bab453aa7dd1387590e05210846e8529377a86d1f67dbe1b235f4a"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior3.microgrant-and-bench-053",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高考题型原创 · 10·24新题 · A small grant and a public seat",
+        "summary": "A small grant and a public seat，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade12-tianjinlower2025-21cnjy22402528.reading.complete_section",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "National I final structure: two complete original passages, with three and four four-choice questions. Old source supplies only a level/family drafting reference."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three original senior paired-reading practices, each three plus four questions. Events/schemes and personal narrative fictional. General coastal discussion asserts no fabricated study or numerical result. Same-author evidence and distractor review; not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior3.microgrant-and-bench-053",
+          "family": "reading_choice",
+          "label": "A small grant and a public seat",
+          "candidateSHA256": "c1709433fe0b5129a4d8010839799ee8867d37c106334aea678b925948d45a5f",
+          "authorCheckSHA256": "2465a4e27b19ba9338969ed2a1f38746387fc84edeb70a0c674fa22aaa805b20",
+          "sourceGroupIds": [
+            "expansion.20261024.senior3.microgrant-and-bench-053#grant",
+            "expansion.20261024.senior3.microgrant-and-bench-053#bench"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b053；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Neighbourhood Sound Microgrants\n\nThis fictional scheme offers small grants for projects that help residents notice the sounds of a neighbourhood. Proposals may involve a guided listening walk, a short audio collection or a discussion connecting sounds with local experience. The scheme does not fund amplified concerts or the purchase of equipment for private use.\n\nApplicants may work individually or in groups of up to four. At least one member must be eighteen or over and take responsibility for the budget. Each project may request up to three hundred pounds. Borrowing equipment is encouraged where practical, but essential short-term hire costs can be included.\n\nThe proposal must explain the activity, intended audience and how participants' permission will be obtained if their voices are recorded. Merely being in a public place does not count as agreeing to be included in a published recording. Plans should also state what will happen to recordings after the project, including how a contributor can raise a concern.\n\nSubmit a budget and a description of no more than five hundred words by 1 June. No finished recording is required at application. The panel considers clarity of purpose, practical arrangements and value to the intended community, rather than judging proposals by expensive equipment or professional sound quality.\n\nSuccessful applicants will receive half the grant at the start. The remaining half follows a short report showing how the money was used and what was learned. A project that changes during delivery is not automatically disqualified, but significant changes to spending or publication must be discussed with the scheme coordinator first.\n\nWho is a bench for?\n\nA public bench looks like a simple object: a seat placed where people may want to stop. Yet deciding what makes it successful requires a choice about whose stopping matters. The answer is not necessarily contained in the number of people who sit on it during a busy afternoon.\n\nA seat beside a steep path may be used by fewer people than one outside a popular café. For a walker who needs regular rests, however, the quieter bench may make the path usable at all. Its value includes a journey that becomes possible, not merely minutes of occupation. Removing it because another seat is busier would compare two figures while overlooking their different functions.\n\nDesign introduces further distinctions. A low, backless surface may suit someone pausing briefly with a bag, but be difficult for a person who needs support when sitting or standing. An armrest can provide that support, while the spacing of armrests can also limit how the seat is used. No single feature has a meaning independent of the bodies and activities it meets.\n\nLocation matters in less obvious ways too. A bench facing a blank wall offers a different experience from one overlooking a play area. Shade may be welcome in hot weather yet make the same spot less inviting on a cold morning. An assessment made at one hour in one season cannot automatically stand for the whole year.\n\nNone of this makes counting users pointless. Counts can reveal a broken seat, an inconvenient position or demand that available seating fails to meet. The problem begins when the count is allowed to replace the question it was meant to inform. Busy is an observation; successful is a judgment that needs an account of purpose.\n\nAsking who a bench is for therefore opens rather than closes a design conversation. It invites us to notice both the people occupying it and those whose needs may have been excluded before they could arrive."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior3.microgrant-and-bench-053.grant.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which expense may qualify for funding?",
+            "material": "Neighbourhood Sound Microgrants\n\nThis fictional scheme offers small grants for projects that help residents notice the sounds of a neighbourhood. Proposals may involve a guided listening walk, a short audio collection or a discussion connecting sounds with local experience. The scheme does not fund amplified concerts or the purchase of equipment for private use.\n\nApplicants may work individually or in groups of up to four. At least one member must be eighteen or over and take responsibility for the budget. Each project may request up to three hundred pounds. Borrowing equipment is encouraged where practical, but essential short-term hire costs can be included.\n\nThe proposal must explain the activity, intended audience and how participants' permission will be obtained if their voices are recorded. Merely being in a public place does not count as agreeing to be included in a published recording. Plans should also state what will happen to recordings after the project, including how a contributor can raise a concern.\n\nSubmit a budget and a description of no more than five hundred words by 1 June. No finished recording is required at application. The panel considers clarity of purpose, practical arrangements and value to the intended community, rather than judging proposals by expensive equipment or professional sound quality.\n\nSuccessful applicants will receive half the grant at the start. The remaining half follows a short report showing how the money was used and what was learned. A project that changes during delivery is not automatically disqualified, but significant changes to spending or publication must be discussed with the scheme coordinator first.",
+            "explanation": "Necessary hire is explicitly allowed. Private equipment and amplified concerts are excluded; expense alone is not merit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Essential short-term equipment hire"
+              },
+              {
+                "id": "o1",
+                "text": "Any purchase solely because it is expensive"
+              },
+              {
+                "id": "o2",
+                "text": "A private equipment purchase unrelated to the project"
+              },
+              {
+                "id": "o3",
+                "text": "The cost of an amplified concert"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.microgrant-and-bench-053.grant.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must a plan involving recorded voices address?",
+            "material": "Neighbourhood Sound Microgrants\n\nThis fictional scheme offers small grants for projects that help residents notice the sounds of a neighbourhood. Proposals may involve a guided listening walk, a short audio collection or a discussion connecting sounds with local experience. The scheme does not fund amplified concerts or the purchase of equipment for private use.\n\nApplicants may work individually or in groups of up to four. At least one member must be eighteen or over and take responsibility for the budget. Each project may request up to three hundred pounds. Borrowing equipment is encouraged where practical, but essential short-term hire costs can be included.\n\nThe proposal must explain the activity, intended audience and how participants' permission will be obtained if their voices are recorded. Merely being in a public place does not count as agreeing to be included in a published recording. Plans should also state what will happen to recordings after the project, including how a contributor can raise a concern.\n\nSubmit a budget and a description of no more than five hundred words by 1 June. No finished recording is required at application. The panel considers clarity of purpose, practical arrangements and value to the intended community, rather than judging proposals by expensive equipment or professional sound quality.\n\nSuccessful applicants will receive half the grant at the start. The remaining half follows a short report showing how the money was used and what was learned. A project that changes during delivery is not automatically disqualified, but significant changes to spending or publication must be discussed with the scheme coordinator first.",
+            "explanation": "Permission, later use and concerns are required. Public presence is not consent, and loudness/equipment purchase alone do not satisfy the conditions.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A claim that public presence gives automatic publication consent"
+              },
+              {
+                "id": "o1",
+                "text": "Only the loudness of the location"
+              },
+              {
+                "id": "o2",
+                "text": "The purchase of professional microphones in every case"
+              },
+              {
+                "id": "o3",
+                "text": "Permission and what happens to recordings afterwards"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.microgrant-and-bench-053.grant.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When is the second half of a grant paid?",
+            "material": "Neighbourhood Sound Microgrants\n\nThis fictional scheme offers small grants for projects that help residents notice the sounds of a neighbourhood. Proposals may involve a guided listening walk, a short audio collection or a discussion connecting sounds with local experience. The scheme does not fund amplified concerts or the purchase of equipment for private use.\n\nApplicants may work individually or in groups of up to four. At least one member must be eighteen or over and take responsibility for the budget. Each project may request up to three hundred pounds. Borrowing equipment is encouraged where practical, but essential short-term hire costs can be included.\n\nThe proposal must explain the activity, intended audience and how participants' permission will be obtained if their voices are recorded. Merely being in a public place does not count as agreeing to be included in a published recording. Plans should also state what will happen to recordings after the project, including how a contributor can raise a concern.\n\nSubmit a budget and a description of no more than five hundred words by 1 June. No finished recording is required at application. The panel considers clarity of purpose, practical arrangements and value to the intended community, rather than judging proposals by expensive equipment or professional sound quality.\n\nSuccessful applicants will receive half the grant at the start. The remaining half follows a short report showing how the money was used and what was learned. A project that changes during delivery is not automatically disqualified, but significant changes to spending or publication must be discussed with the scheme coordinator first.",
+            "explanation": "The remaining half follows the report. Equipment cost, pre-decision payment and an absolute no-change condition are not the policy.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "As soon as a costly microphone is ordered"
+              },
+              {
+                "id": "o1",
+                "text": "Only if no project detail changes at all"
+              },
+              {
+                "id": "o2",
+                "text": "After a short report on spending and learning"
+              },
+              {
+                "id": "o3",
+                "text": "Before the application is considered"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.microgrant-and-bench-053.bench.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why might a little-used bench still be valuable?",
+            "material": "Who is a bench for?\n\nA public bench looks like a simple object: a seat placed where people may want to stop. Yet deciding what makes it successful requires a choice about whose stopping matters. The answer is not necessarily contained in the number of people who sit on it during a busy afternoon.\n\nA seat beside a steep path may be used by fewer people than one outside a popular café. For a walker who needs regular rests, however, the quieter bench may make the path usable at all. Its value includes a journey that becomes possible, not merely minutes of occupation. Removing it because another seat is busier would compare two figures while overlooking their different functions.\n\nDesign introduces further distinctions. A low, backless surface may suit someone pausing briefly with a bag, but be difficult for a person who needs support when sitting or standing. An armrest can provide that support, while the spacing of armrests can also limit how the seat is used. No single feature has a meaning independent of the bodies and activities it meets.\n\nLocation matters in less obvious ways too. A bench facing a blank wall offers a different experience from one overlooking a play area. Shade may be welcome in hot weather yet make the same spot less inviting on a cold morning. An assessment made at one hour in one season cannot automatically stand for the whole year.\n\nNone of this makes counting users pointless. Counts can reveal a broken seat, an inconvenient position or demand that available seating fails to meet. The problem begins when the count is allowed to replace the question it was meant to inform. Busy is an observation; successful is a judgment that needs an account of purpose.\n\nAsking who a bench is for therefore opens rather than closes a design conversation. It invites us to notice both the people occupying it and those whose needs may have been excluded before they could arrive.",
+            "explanation": "The path example shows enabling access beyond usage minutes. It does not condemn busy seats, guarantee poor location or eliminate user needs.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It requires no consideration of its users"
+              },
+              {
+                "id": "o1",
+                "text": "Its emptiness guarantees a poor location"
+              },
+              {
+                "id": "o2",
+                "text": "It proves that all busy seating should be removed"
+              },
+              {
+                "id": "o3",
+                "text": "It can enable a journey for someone who needs rests"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.microgrant-and-bench-053.bench.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is suggested by the discussion of armrests?",
+            "material": "Who is a bench for?\n\nA public bench looks like a simple object: a seat placed where people may want to stop. Yet deciding what makes it successful requires a choice about whose stopping matters. The answer is not necessarily contained in the number of people who sit on it during a busy afternoon.\n\nA seat beside a steep path may be used by fewer people than one outside a popular café. For a walker who needs regular rests, however, the quieter bench may make the path usable at all. Its value includes a journey that becomes possible, not merely minutes of occupation. Removing it because another seat is busier would compare two figures while overlooking their different functions.\n\nDesign introduces further distinctions. A low, backless surface may suit someone pausing briefly with a bag, but be difficult for a person who needs support when sitting or standing. An armrest can provide that support, while the spacing of armrests can also limit how the seat is used. No single feature has a meaning independent of the bodies and activities it meets.\n\nLocation matters in less obvious ways too. A bench facing a blank wall offers a different experience from one overlooking a play area. Shade may be welcome in hot weather yet make the same spot less inviting on a cold morning. An assessment made at one hour in one season cannot automatically stand for the whole year.\n\nNone of this makes counting users pointless. Counts can reveal a broken seat, an inconvenient position or demand that available seating fails to meet. The problem begins when the count is allowed to replace the question it was meant to inform. Busy is an observation; successful is a judgment that needs an account of purpose.\n\nAsking who a bench is for therefore opens rather than closes a design conversation. It invites us to notice both the people occupying it and those whose needs may have been excluded before they could arrive.",
+            "explanation": "Armrests can support some activities while constraining others. Uniform effects, irrelevant support and visual judgment alone contradict this contextual analysis.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Appearance alone determines whether a feature is useful"
+              },
+              {
+                "id": "o1",
+                "text": "Every armrest has one identical effect for all people"
+              },
+              {
+                "id": "o2",
+                "text": "Support is irrelevant to sitting and standing"
+              },
+              {
+                "id": "o3",
+                "text": "A design feature’s effects depend on different needs and uses"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.microgrant-and-bench-053.bench.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What limit does the writer identify in a single observation period?",
+            "material": "Who is a bench for?\n\nA public bench looks like a simple object: a seat placed where people may want to stop. Yet deciding what makes it successful requires a choice about whose stopping matters. The answer is not necessarily contained in the number of people who sit on it during a busy afternoon.\n\nA seat beside a steep path may be used by fewer people than one outside a popular café. For a walker who needs regular rests, however, the quieter bench may make the path usable at all. Its value includes a journey that becomes possible, not merely minutes of occupation. Removing it because another seat is busier would compare two figures while overlooking their different functions.\n\nDesign introduces further distinctions. A low, backless surface may suit someone pausing briefly with a bag, but be difficult for a person who needs support when sitting or standing. An armrest can provide that support, while the spacing of armrests can also limit how the seat is used. No single feature has a meaning independent of the bodies and activities it meets.\n\nLocation matters in less obvious ways too. A bench facing a blank wall offers a different experience from one overlooking a play area. Shade may be welcome in hot weather yet make the same spot less inviting on a cold morning. An assessment made at one hour in one season cannot automatically stand for the whole year.\n\nNone of this makes counting users pointless. Counts can reveal a broken seat, an inconvenient position or demand that available seating fails to meet. The problem begins when the count is allowed to replace the question it was meant to inform. Busy is an observation; successful is a judgment that needs an account of purpose.\n\nAsking who a bench is for therefore opens rather than closes a design conversation. It invites us to notice both the people occupying it and those whose needs may have been excluded before they could arrive.",
+            "explanation": "The shade example shows temporal/context variation. The number need not be false, location matters and observation is not discarded.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It necessarily records the wrong number of users"
+              },
+              {
+                "id": "o1",
+                "text": "It proves that location never matters"
+              },
+              {
+                "id": "o2",
+                "text": "It must be replaced by guesses without any observation"
+              },
+              {
+                "id": "o3",
+                "text": "It may miss variations across weather, seasons and time"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.microgrant-and-bench-053.bench.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What distinction is made between “busy” and “successful”?",
+            "material": "Who is a bench for?\n\nA public bench looks like a simple object: a seat placed where people may want to stop. Yet deciding what makes it successful requires a choice about whose stopping matters. The answer is not necessarily contained in the number of people who sit on it during a busy afternoon.\n\nA seat beside a steep path may be used by fewer people than one outside a popular café. For a walker who needs regular rests, however, the quieter bench may make the path usable at all. Its value includes a journey that becomes possible, not merely minutes of occupation. Removing it because another seat is busier would compare two figures while overlooking their different functions.\n\nDesign introduces further distinctions. A low, backless surface may suit someone pausing briefly with a bag, but be difficult for a person who needs support when sitting or standing. An armrest can provide that support, while the spacing of armrests can also limit how the seat is used. No single feature has a meaning independent of the bodies and activities it meets.\n\nLocation matters in less obvious ways too. A bench facing a blank wall offers a different experience from one overlooking a play area. Shade may be welcome in hot weather yet make the same spot less inviting on a cold morning. An assessment made at one hour in one season cannot automatically stand for the whole year.\n\nNone of this makes counting users pointless. Counts can reveal a broken seat, an inconvenient position or demand that available seating fails to meet. The problem begins when the count is allowed to replace the question it was meant to inform. Busy is an observation; successful is a judgment that needs an account of purpose.\n\nAsking who a bench is for therefore opens rather than closes a design conversation. It invites us to notice both the people occupying it and those whose needs may have been excluded before they could arrive.",
+            "explanation": "The penultimate paragraph explicitly separates observation from evaluation. The other statements erase that distinction or invent claims.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The first describes observed use; the second needs a purpose-based evaluation"
+              },
+              {
+                "id": "o1",
+                "text": "A busy bench is always physically broken"
+              },
+              {
+                "id": "o2",
+                "text": "They are perfectly interchangeable in every design decision"
+              },
+              {
+                "id": "o3",
+                "text": "Success can be judged without considering any people"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "ad9cd28d581c2d3f1d386877e318551814c9abfd76fb1d91056d4b4721cab190",
+      "reviewNotes": "Three original senior paired-reading practices, each three plus four questions. Events/schemes and personal narrative fictional. General coastal discussion asserts no fabricated study or numerical result. Same-author evidence and distractor review; not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior3.microgrant-and-bench-053#grant",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.microgrant-and-bench-053.grant.q1",
+            "expansion.20261024.senior3.microgrant-and-bench-053.grant.q2",
+            "expansion.20261024.senior3.microgrant-and-bench-053.grant.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.microgrant-and-bench-053",
+          "sourceContentHash": "be8f5e7c82ffe3395a55657f62ff46e2b938631d8b91d9e6b682128c1e43cb8f"
+        },
+        {
+          "id": "expansion.20261024.senior3.microgrant-and-bench-053#bench",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.microgrant-and-bench-053.bench.q1",
+            "expansion.20261024.senior3.microgrant-and-bench-053.bench.q2",
+            "expansion.20261024.senior3.microgrant-and-bench-053.bench.q3",
+            "expansion.20261024.senior3.microgrant-and-bench-053.bench.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.microgrant-and-bench-053",
+          "sourceContentHash": "66ba1fc79c2d3a582e3769c73cb2e648a71f659be29f0e91fa19f07191d8191c"
+        }
+      ]
+    }
+  ]
+}
