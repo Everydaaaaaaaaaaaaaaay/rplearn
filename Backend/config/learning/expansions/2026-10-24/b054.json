@@ -1,0 +1,2034 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b054",
+  "createdAt": "2026-10-23T22:10:20.567817+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.beans-by-window-054",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Seeds beside a window",
+        "summary": "Seeds beside a window，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage, seven supplied-word gaps plus three one-word gaps. Source supplies level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six original junior whole-passage grammar practices, mixing habitual present explanations and past classroom incidents. Fictional demonstrations, no invented empirical study or quantitative result. Same-author structure and alternative-form review; unknown forms reviewable, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.beans-by-window-054",
+          "family": "passage_form",
+          "label": "Seeds beside a window",
+          "candidateSHA256": "dffa4eee637132c2f14cf4546a8d54dd9a3edc0ba117c143ae4cb8f637ee55b3",
+          "authorCheckSHA256": "75278e38ad79010da2d9653e4eb196a165c2147bc853ad2f8d8522a8e8aa5f05",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.beans-by-window-054#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b054；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Seeds beside a window\n\nEach spring, our science club ____1____ (grow) a few bean plants beside a classroom window. We begin with seeds on damp paper so that the first roots can be seen. Later, the young plants are moved into pots with suitable soil.\n\nThe activity requires regular attention rather ____2____ a single afternoon of work. Someone checks whether the paper remains damp, while another student makes sure the pots have a suitable place to stand. Giving a plant more water is not always ____3____ (good) than giving it the right amount.\n\nBefore ____4____ (start), we label the containers. This prevents us from confusing plants that look similar. Our teacher asks us to describe what happens without deciding in advance what we expect to find.\n\nLast year, one group forgot ____5____ (check) its tray over a holiday. Some seedlings dried out. The teacher did not ask us to pretend that every plant had grown equally well. We explained the problem and changed our rota.\n\nNow, the pupil ____6____ is on duty writes a short note before leaving. Other ____7____ (member) can see whether watering has already been done. The notes belong to the whole group, not just the tallest plant's owner.\n\nWatching roots develop gives ____8____ (we) a view of something usually hidden. We do the work ____9____ (careful), but still expect differences among living things. It is ____10____ useful reminder that care means noticing a plant's condition, not simply repeating one action regardless of what happens."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.beans-by-window-054.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of grow.",
+            "material": "Seeds beside a window\n\nEach spring, our science club ____1____ (grow) a few bean plants beside a classroom window. We begin with seeds on damp paper so that the first roots can be seen. Later, the young plants are moved into pots with suitable soil.\n\nThe activity requires regular attention rather ____2____ a single afternoon of work. Someone checks whether the paper remains damp, while another student makes sure the pots have a suitable place to stand. Giving a plant more water is not always ____3____ (good) than giving it the right amount.\n\nBefore ____4____ (start), we label the containers. This prevents us from confusing plants that look similar. Our teacher asks us to describe what happens without deciding in advance what we expect to find.\n\nLast year, one group forgot ____5____ (check) its tray over a holiday. Some seedlings dried out. The teacher did not ask us to pretend that every plant had grown equally well. We explained the problem and changed our rota.\n\nNow, the pupil ____6____ is on duty writes a short note before leaving. Other ____7____ (member) can see whether watering has already been done. The notes belong to the whole group, not just the tallest plant's owner.\n\nWatching roots develop gives ____8____ (we) a view of something usually hidden. We do the work ____9____ (careful), but still expect differences among living things. It is ____10____ useful reminder that care means noticing a plant's condition, not simply repeating one action regardless of what happens.",
+            "explanation": "Each spring states a habit. Grows uses singular agreement with club; British notional plural grow can refer to the members and is also accepted. Growing alone lacks a finite auxiliary.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "grows",
+              "grow"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "growing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.beans-by-window-054.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "Seeds beside a window\n\nEach spring, our science club ____1____ (grow) a few bean plants beside a classroom window. We begin with seeds on damp paper so that the first roots can be seen. Later, the young plants are moved into pots with suitable soil.\n\nThe activity requires regular attention rather ____2____ a single afternoon of work. Someone checks whether the paper remains damp, while another student makes sure the pots have a suitable place to stand. Giving a plant more water is not always ____3____ (good) than giving it the right amount.\n\nBefore ____4____ (start), we label the containers. This prevents us from confusing plants that look similar. Our teacher asks us to describe what happens without deciding in advance what we expect to find.\n\nLast year, one group forgot ____5____ (check) its tray over a holiday. Some seedlings dried out. The teacher did not ask us to pretend that every plant had grown equally well. We explained the problem and changed our rota.\n\nNow, the pupil ____6____ is on duty writes a short note before leaving. Other ____7____ (member) can see whether watering has already been done. The notes belong to the whole group, not just the tallest plant's owner.\n\nWatching roots develop gives ____8____ (we) a view of something usually hidden. We do the work ____9____ (careful), but still expect differences among living things. It is ____10____ useful reminder that care means noticing a plant's condition, not simply repeating one action regardless of what happens.",
+            "explanation": "Rather than introduces the contrast with one afternoon. Then is time, as/from do not complete rather.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "than"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "then",
+                "as",
+                "from"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.beans-by-window-054.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of good.",
+            "material": "Seeds beside a window\n\nEach spring, our science club ____1____ (grow) a few bean plants beside a classroom window. We begin with seeds on damp paper so that the first roots can be seen. Later, the young plants are moved into pots with suitable soil.\n\nThe activity requires regular attention rather ____2____ a single afternoon of work. Someone checks whether the paper remains damp, while another student makes sure the pots have a suitable place to stand. Giving a plant more water is not always ____3____ (good) than giving it the right amount.\n\nBefore ____4____ (start), we label the containers. This prevents us from confusing plants that look similar. Our teacher asks us to describe what happens without deciding in advance what we expect to find.\n\nLast year, one group forgot ____5____ (check) its tray over a holiday. Some seedlings dried out. The teacher did not ask us to pretend that every plant had grown equally well. We explained the problem and changed our rota.\n\nNow, the pupil ____6____ is on duty writes a short note before leaving. Other ____7____ (member) can see whether watering has already been done. The notes belong to the whole group, not just the tallest plant's owner.\n\nWatching roots develop gives ____8____ (we) a view of something usually hidden. We do the work ____9____ (careful), but still expect differences among living things. It is ____10____ useful reminder that care means noticing a plant's condition, not simply repeating one action regardless of what happens.",
+            "explanation": "Than requires irregular comparative better. Plain good, superlative best and nonstandard gooder do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "better"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "good",
+                "best",
+                "gooder"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.beans-by-window-054.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of start.",
+            "material": "Seeds beside a window\n\nEach spring, our science club ____1____ (grow) a few bean plants beside a classroom window. We begin with seeds on damp paper so that the first roots can be seen. Later, the young plants are moved into pots with suitable soil.\n\nThe activity requires regular attention rather ____2____ a single afternoon of work. Someone checks whether the paper remains damp, while another student makes sure the pots have a suitable place to stand. Giving a plant more water is not always ____3____ (good) than giving it the right amount.\n\nBefore ____4____ (start), we label the containers. This prevents us from confusing plants that look similar. Our teacher asks us to describe what happens without deciding in advance what we expect to find.\n\nLast year, one group forgot ____5____ (check) its tray over a holiday. Some seedlings dried out. The teacher did not ask us to pretend that every plant had grown equally well. We explained the problem and changed our rota.\n\nNow, the pupil ____6____ is on duty writes a short note before leaving. Other ____7____ (member) can see whether watering has already been done. The notes belong to the whole group, not just the tallest plant's owner.\n\nWatching roots develop gives ____8____ (we) a view of something usually hidden. We do the work ____9____ (careful), but still expect differences among living things. It is ____10____ useful reminder that care means noticing a plant's condition, not simply repeating one action regardless of what happens.",
+            "explanation": "Before functions as a preposition taking starting. The other forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "starting"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "start",
+                "started",
+                "to start"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.beans-by-window-054.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of check.",
+            "material": "Seeds beside a window\n\nEach spring, our science club ____1____ (grow) a few bean plants beside a classroom window. We begin with seeds on damp paper so that the first roots can be seen. Later, the young plants are moved into pots with suitable soil.\n\nThe activity requires regular attention rather ____2____ a single afternoon of work. Someone checks whether the paper remains damp, while another student makes sure the pots have a suitable place to stand. Giving a plant more water is not always ____3____ (good) than giving it the right amount.\n\nBefore ____4____ (start), we label the containers. This prevents us from confusing plants that look similar. Our teacher asks us to describe what happens without deciding in advance what we expect to find.\n\nLast year, one group forgot ____5____ (check) its tray over a holiday. Some seedlings dried out. The teacher did not ask us to pretend that every plant had grown equally well. We explained the problem and changed our rota.\n\nNow, the pupil ____6____ is on duty writes a short note before leaving. Other ____7____ (member) can see whether watering has already been done. The notes belong to the whole group, not just the tallest plant's owner.\n\nWatching roots develop gives ____8____ (we) a view of something usually hidden. We do the work ____9____ (careful), but still expect differences among living things. It is ____10____ useful reminder that care means noticing a plant's condition, not simply repeating one action regardless of what happens.",
+            "explanation": "Forgot to check means failed to do the needed check. Forgot checking means lost the memory of having checked, conflicting with the tray drying through an omitted duty.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to check"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "checking",
+                "check",
+                "checked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.beans-by-window-054.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "Seeds beside a window\n\nEach spring, our science club ____1____ (grow) a few bean plants beside a classroom window. We begin with seeds on damp paper so that the first roots can be seen. Later, the young plants are moved into pots with suitable soil.\n\nThe activity requires regular attention rather ____2____ a single afternoon of work. Someone checks whether the paper remains damp, while another student makes sure the pots have a suitable place to stand. Giving a plant more water is not always ____3____ (good) than giving it the right amount.\n\nBefore ____4____ (start), we label the containers. This prevents us from confusing plants that look similar. Our teacher asks us to describe what happens without deciding in advance what we expect to find.\n\nLast year, one group forgot ____5____ (check) its tray over a holiday. Some seedlings dried out. The teacher did not ask us to pretend that every plant had grown equally well. We explained the problem and changed our rota.\n\nNow, the pupil ____6____ is on duty writes a short note before leaving. Other ____7____ (member) can see whether watering has already been done. The notes belong to the whole group, not just the tallest plant's owner.\n\nWatching roots develop gives ____8____ (we) a view of something usually hidden. We do the work ____9____ (careful), but still expect differences among living things. It is ____10____ useful reminder that care means noticing a plant's condition, not simply repeating one action regardless of what happens.",
+            "explanation": "Who/that is the defining human subject. Which is nonhuman, where not subject and whose needs a possessed noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "where",
+                "whose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.beans-by-window-054.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of member.",
+            "material": "Seeds beside a window\n\nEach spring, our science club ____1____ (grow) a few bean plants beside a classroom window. We begin with seeds on damp paper so that the first roots can be seen. Later, the young plants are moved into pots with suitable soil.\n\nThe activity requires regular attention rather ____2____ a single afternoon of work. Someone checks whether the paper remains damp, while another student makes sure the pots have a suitable place to stand. Giving a plant more water is not always ____3____ (good) than giving it the right amount.\n\nBefore ____4____ (start), we label the containers. This prevents us from confusing plants that look similar. Our teacher asks us to describe what happens without deciding in advance what we expect to find.\n\nLast year, one group forgot ____5____ (check) its tray over a holiday. Some seedlings dried out. The teacher did not ask us to pretend that every plant had grown equally well. We explained the problem and changed our rota.\n\nNow, the pupil ____6____ is on duty writes a short note before leaving. Other ____7____ (member) can see whether watering has already been done. The notes belong to the whole group, not just the tallest plant's owner.\n\nWatching roots develop gives ____8____ (we) a view of something usually hidden. We do the work ____9____ (careful), but still expect differences among living things. It is ____10____ useful reminder that care means noticing a plant's condition, not simply repeating one action regardless of what happens.",
+            "explanation": "Other members names several group participants. Singular member would need another structure; membership is the status/collection rather than the people reading the notes.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "members"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "member",
+                "membership"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.beans-by-window-054.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of we.",
+            "material": "Seeds beside a window\n\nEach spring, our science club ____1____ (grow) a few bean plants beside a classroom window. We begin with seeds on damp paper so that the first roots can be seen. Later, the young plants are moved into pots with suitable soil.\n\nThe activity requires regular attention rather ____2____ a single afternoon of work. Someone checks whether the paper remains damp, while another student makes sure the pots have a suitable place to stand. Giving a plant more water is not always ____3____ (good) than giving it the right amount.\n\nBefore ____4____ (start), we label the containers. This prevents us from confusing plants that look similar. Our teacher asks us to describe what happens without deciding in advance what we expect to find.\n\nLast year, one group forgot ____5____ (check) its tray over a holiday. Some seedlings dried out. The teacher did not ask us to pretend that every plant had grown equally well. We explained the problem and changed our rota.\n\nNow, the pupil ____6____ is on duty writes a short note before leaving. Other ____7____ (member) can see whether watering has already been done. The notes belong to the whole group, not just the tallest plant's owner.\n\nWatching roots develop gives ____8____ (we) a view of something usually hidden. We do the work ____9____ (careful), but still expect differences among living things. It is ____10____ useful reminder that care means noticing a plant's condition, not simply repeating one action regardless of what happens.",
+            "explanation": "Gives takes object us. Subject and possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.beans-by-window-054.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of careful.",
+            "material": "Seeds beside a window\n\nEach spring, our science club ____1____ (grow) a few bean plants beside a classroom window. We begin with seeds on damp paper so that the first roots can be seen. Later, the young plants are moved into pots with suitable soil.\n\nThe activity requires regular attention rather ____2____ a single afternoon of work. Someone checks whether the paper remains damp, while another student makes sure the pots have a suitable place to stand. Giving a plant more water is not always ____3____ (good) than giving it the right amount.\n\nBefore ____4____ (start), we label the containers. This prevents us from confusing plants that look similar. Our teacher asks us to describe what happens without deciding in advance what we expect to find.\n\nLast year, one group forgot ____5____ (check) its tray over a holiday. Some seedlings dried out. The teacher did not ask us to pretend that every plant had grown equally well. We explained the problem and changed our rota.\n\nNow, the pupil ____6____ is on duty writes a short note before leaving. Other ____7____ (member) can see whether watering has already been done. The notes belong to the whole group, not just the tallest plant's owner.\n\nWatching roots develop gives ____8____ (we) a view of something usually hidden. We do the work ____9____ (careful), but still expect differences among living things. It is ____10____ useful reminder that care means noticing a plant's condition, not simply repeating one action regardless of what happens.",
+            "explanation": "Carefully modifies do the work. Careful is adjective and carefulness noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careful",
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.beans-by-window-054.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "Seeds beside a window\n\nEach spring, our science club ____1____ (grow) a few bean plants beside a classroom window. We begin with seeds on damp paper so that the first roots can be seen. Later, the young plants are moved into pots with suitable soil.\n\nThe activity requires regular attention rather ____2____ a single afternoon of work. Someone checks whether the paper remains damp, while another student makes sure the pots have a suitable place to stand. Giving a plant more water is not always ____3____ (good) than giving it the right amount.\n\nBefore ____4____ (start), we label the containers. This prevents us from confusing plants that look similar. Our teacher asks us to describe what happens without deciding in advance what we expect to find.\n\nLast year, one group forgot ____5____ (check) its tray over a holiday. Some seedlings dried out. The teacher did not ask us to pretend that every plant had grown equally well. We explained the problem and changed our rota.\n\nNow, the pupil ____6____ is on duty writes a short note before leaving. Other ____7____ (member) can see whether watering has already been done. The notes belong to the whole group, not just the tallest plant's owner.\n\nWatching roots develop gives ____8____ (we) a view of something usually hidden. We do the work ____9____ (careful), but still expect differences among living things. It is ____10____ useful reminder that care means noticing a plant's condition, not simply repeating one action regardless of what happens.",
+            "explanation": "A useful reminder begins with consonant /j/, so a. Unlisted article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "beca8f61c31e0944b172d39382ce8b0fccf794c4c69cd1248bed043681efd15b",
+      "reviewNotes": "Six original junior whole-passage grammar practices, mixing habitual present explanations and past classroom incidents. Fictional demonstrations, no invented empirical study or quantitative result. Same-author structure and alternative-form review; unknown forms reviewable, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.handbells-054",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · One note in a handbell group",
+        "summary": "One note in a handbell group，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage, seven supplied-word gaps plus three one-word gaps. Source supplies level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six original junior whole-passage grammar practices, mixing habitual present explanations and past classroom incidents. Fictional demonstrations, no invented empirical study or quantitative result. Same-author structure and alternative-form review; unknown forms reviewable, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.handbells-054",
+          "family": "passage_form",
+          "label": "One note in a handbell group",
+          "candidateSHA256": "d847fac084ef4b4eb294059a8c16f7e4518c0c62ce682ececa05d03c9342f896",
+          "authorCheckSHA256": "32899ac9965dfd8c91469824c32d60605dfcd49c68c290e1c84a94d80b52e36e",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.handbells-054#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b054；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "One note in a handbell group\n\nIn our school handbell group, each player ____1____ (hold) one or two bells. A complete tune depends on different people sounding their notes at the correct moment. Owning the loudest bell does not make one person the whole group.\n\nOur teacher begins each rehearsal by asking us ____2____ (listen) to the tune without playing. Then we look at the marks ____3____ show when our own notes are needed. The music may sound simple, but staying silent at the right time matters too.\n\nWhen I first joined, I rang my bell whenever I felt nervous. That made the tune ____4____ (difficult) to recognise than it should have been. I wanted to show that I was taking part, yet I needed to wait for my turn.\n\nAfter ____5____ (practise) slowly with a smaller group, I began to hear where my note belonged. A friend helped me count through the rests rather than guessing from the movement of the teacher's hands alone.\n\nAt the winter concert, we played a short piece for ____6____ (we) families. I missed one note but did not ring it late and interrupt the next phrase. The teacher had prepared us ____7____ that possibility.\n\nWe finished together, and several parents smiled at the final sound. Afterwards, I thanked my friend for explaining the rests so ____8____ (patient). I had learned ____9____ important part of making music: sometimes the right contribution is a little silence. Our bells were separate ____10____ (instrument), but the melody belonged to everyone."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.handbells-054.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of hold.",
+            "material": "One note in a handbell group\n\nIn our school handbell group, each player ____1____ (hold) one or two bells. A complete tune depends on different people sounding their notes at the correct moment. Owning the loudest bell does not make one person the whole group.\n\nOur teacher begins each rehearsal by asking us ____2____ (listen) to the tune without playing. Then we look at the marks ____3____ show when our own notes are needed. The music may sound simple, but staying silent at the right time matters too.\n\nWhen I first joined, I rang my bell whenever I felt nervous. That made the tune ____4____ (difficult) to recognise than it should have been. I wanted to show that I was taking part, yet I needed to wait for my turn.\n\nAfter ____5____ (practise) slowly with a smaller group, I began to hear where my note belonged. A friend helped me count through the rests rather than guessing from the movement of the teacher's hands alone.\n\nAt the winter concert, we played a short piece for ____6____ (we) families. I missed one note but did not ring it late and interrupt the next phrase. The teacher had prepared us ____7____ that possibility.\n\nWe finished together, and several parents smiled at the final sound. Afterwards, I thanked my friend for explaining the rests so ____8____ (patient). I had learned ____9____ important part of making music: sometimes the right contribution is a little silence. Our bells were separate ____10____ (instrument), but the melody belonged to everyone.",
+            "explanation": "Each player is singular in a habitual present statement: holds. Hold disagrees; holding lacks auxiliary.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "holds"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "hold",
+                "holding"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.handbells-054.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of listen.",
+            "material": "One note in a handbell group\n\nIn our school handbell group, each player ____1____ (hold) one or two bells. A complete tune depends on different people sounding their notes at the correct moment. Owning the loudest bell does not make one person the whole group.\n\nOur teacher begins each rehearsal by asking us ____2____ (listen) to the tune without playing. Then we look at the marks ____3____ show when our own notes are needed. The music may sound simple, but staying silent at the right time matters too.\n\nWhen I first joined, I rang my bell whenever I felt nervous. That made the tune ____4____ (difficult) to recognise than it should have been. I wanted to show that I was taking part, yet I needed to wait for my turn.\n\nAfter ____5____ (practise) slowly with a smaller group, I began to hear where my note belonged. A friend helped me count through the rests rather than guessing from the movement of the teacher's hands alone.\n\nAt the winter concert, we played a short piece for ____6____ (we) families. I missed one note but did not ring it late and interrupt the next phrase. The teacher had prepared us ____7____ that possibility.\n\nWe finished together, and several parents smiled at the final sound. Afterwards, I thanked my friend for explaining the rests so ____8____ (patient). I had learned ____9____ important part of making music: sometimes the right contribution is a little silence. Our bells were separate ____10____ (instrument), but the melody belonged to everyone.",
+            "explanation": "Asking us takes to listen. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to listen"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "listening",
+                "listen",
+                "listened"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.handbells-054.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "One note in a handbell group\n\nIn our school handbell group, each player ____1____ (hold) one or two bells. A complete tune depends on different people sounding their notes at the correct moment. Owning the loudest bell does not make one person the whole group.\n\nOur teacher begins each rehearsal by asking us ____2____ (listen) to the tune without playing. Then we look at the marks ____3____ show when our own notes are needed. The music may sound simple, but staying silent at the right time matters too.\n\nWhen I first joined, I rang my bell whenever I felt nervous. That made the tune ____4____ (difficult) to recognise than it should have been. I wanted to show that I was taking part, yet I needed to wait for my turn.\n\nAfter ____5____ (practise) slowly with a smaller group, I began to hear where my note belonged. A friend helped me count through the rests rather than guessing from the movement of the teacher's hands alone.\n\nAt the winter concert, we played a short piece for ____6____ (we) families. I missed one note but did not ring it late and interrupt the next phrase. The teacher had prepared us ____7____ that possibility.\n\nWe finished together, and several parents smiled at the final sound. Afterwards, I thanked my friend for explaining the rests so ____8____ (patient). I had learned ____9____ important part of making music: sometimes the right contribution is a little silence. Our bells were separate ____10____ (instrument), but the melody belonged to everyone.",
+            "explanation": "Marks are subject antecedent of that/which show. Who is human, where not subject and what does not follow this antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.handbells-054.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of difficult.",
+            "material": "One note in a handbell group\n\nIn our school handbell group, each player ____1____ (hold) one or two bells. A complete tune depends on different people sounding their notes at the correct moment. Owning the loudest bell does not make one person the whole group.\n\nOur teacher begins each rehearsal by asking us ____2____ (listen) to the tune without playing. Then we look at the marks ____3____ show when our own notes are needed. The music may sound simple, but staying silent at the right time matters too.\n\nWhen I first joined, I rang my bell whenever I felt nervous. That made the tune ____4____ (difficult) to recognise than it should have been. I wanted to show that I was taking part, yet I needed to wait for my turn.\n\nAfter ____5____ (practise) slowly with a smaller group, I began to hear where my note belonged. A friend helped me count through the rests rather than guessing from the movement of the teacher's hands alone.\n\nAt the winter concert, we played a short piece for ____6____ (we) families. I missed one note but did not ring it late and interrupt the next phrase. The teacher had prepared us ____7____ that possibility.\n\nWe finished together, and several parents smiled at the final sound. Afterwards, I thanked my friend for explaining the rests so ____8____ (patient). I had learned ____9____ important part of making music: sometimes the right contribution is a little silence. Our bells were separate ____10____ (instrument), but the melody belonged to everyone.",
+            "explanation": "Than requires comparative more difficult. Plain and superlative forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "more difficult"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "difficult",
+                "most difficult"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.handbells-054.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of practise.",
+            "material": "One note in a handbell group\n\nIn our school handbell group, each player ____1____ (hold) one or two bells. A complete tune depends on different people sounding their notes at the correct moment. Owning the loudest bell does not make one person the whole group.\n\nOur teacher begins each rehearsal by asking us ____2____ (listen) to the tune without playing. Then we look at the marks ____3____ show when our own notes are needed. The music may sound simple, but staying silent at the right time matters too.\n\nWhen I first joined, I rang my bell whenever I felt nervous. That made the tune ____4____ (difficult) to recognise than it should have been. I wanted to show that I was taking part, yet I needed to wait for my turn.\n\nAfter ____5____ (practise) slowly with a smaller group, I began to hear where my note belonged. A friend helped me count through the rests rather than guessing from the movement of the teacher's hands alone.\n\nAt the winter concert, we played a short piece for ____6____ (we) families. I missed one note but did not ring it late and interrupt the next phrase. The teacher had prepared us ____7____ that possibility.\n\nWe finished together, and several parents smiled at the final sound. Afterwards, I thanked my friend for explaining the rests so ____8____ (patient). I had learned ____9____ important part of making music: sometimes the right contribution is a little silence. Our bells were separate ____10____ (instrument), but the melody belonged to everyone.",
+            "explanation": "After takes an -ing form; British practising and American practicing are accepted. Base, past and to-infinitive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "practising",
+              "practicing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "practise",
+                "practised",
+                "to practise"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.handbells-054.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of we.",
+            "material": "One note in a handbell group\n\nIn our school handbell group, each player ____1____ (hold) one or two bells. A complete tune depends on different people sounding their notes at the correct moment. Owning the loudest bell does not make one person the whole group.\n\nOur teacher begins each rehearsal by asking us ____2____ (listen) to the tune without playing. Then we look at the marks ____3____ show when our own notes are needed. The music may sound simple, but staying silent at the right time matters too.\n\nWhen I first joined, I rang my bell whenever I felt nervous. That made the tune ____4____ (difficult) to recognise than it should have been. I wanted to show that I was taking part, yet I needed to wait for my turn.\n\nAfter ____5____ (practise) slowly with a smaller group, I began to hear where my note belonged. A friend helped me count through the rests rather than guessing from the movement of the teacher's hands alone.\n\nAt the winter concert, we played a short piece for ____6____ (we) families. I missed one note but did not ring it late and interrupt the next phrase. The teacher had prepared us ____7____ that possibility.\n\nWe finished together, and several parents smiled at the final sound. Afterwards, I thanked my friend for explaining the rests so ____8____ (patient). I had learned ____9____ important part of making music: sometimes the right contribution is a little silence. Our bells were separate ____10____ (instrument), but the melody belonged to everyone.",
+            "explanation": "Our modifies families. We/us are personal pronouns and ours cannot directly precede the noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "our"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "us",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.handbells-054.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "One note in a handbell group\n\nIn our school handbell group, each player ____1____ (hold) one or two bells. A complete tune depends on different people sounding their notes at the correct moment. Owning the loudest bell does not make one person the whole group.\n\nOur teacher begins each rehearsal by asking us ____2____ (listen) to the tune without playing. Then we look at the marks ____3____ show when our own notes are needed. The music may sound simple, but staying silent at the right time matters too.\n\nWhen I first joined, I rang my bell whenever I felt nervous. That made the tune ____4____ (difficult) to recognise than it should have been. I wanted to show that I was taking part, yet I needed to wait for my turn.\n\nAfter ____5____ (practise) slowly with a smaller group, I began to hear where my note belonged. A friend helped me count through the rests rather than guessing from the movement of the teacher's hands alone.\n\nAt the winter concert, we played a short piece for ____6____ (we) families. I missed one note but did not ring it late and interrupt the next phrase. The teacher had prepared us ____7____ that possibility.\n\nWe finished together, and several parents smiled at the final sound. Afterwards, I thanked my friend for explaining the rests so ____8____ (patient). I had learned ____9____ important part of making music: sometimes the right contribution is a little silence. Our bells were separate ____10____ (instrument), but the melody belonged to everyone.",
+            "explanation": "Prepared us for that possibility uses for. The other prepositions do not complete this preparation construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "at",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.handbells-054.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of patient.",
+            "material": "One note in a handbell group\n\nIn our school handbell group, each player ____1____ (hold) one or two bells. A complete tune depends on different people sounding their notes at the correct moment. Owning the loudest bell does not make one person the whole group.\n\nOur teacher begins each rehearsal by asking us ____2____ (listen) to the tune without playing. Then we look at the marks ____3____ show when our own notes are needed. The music may sound simple, but staying silent at the right time matters too.\n\nWhen I first joined, I rang my bell whenever I felt nervous. That made the tune ____4____ (difficult) to recognise than it should have been. I wanted to show that I was taking part, yet I needed to wait for my turn.\n\nAfter ____5____ (practise) slowly with a smaller group, I began to hear where my note belonged. A friend helped me count through the rests rather than guessing from the movement of the teacher's hands alone.\n\nAt the winter concert, we played a short piece for ____6____ (we) families. I missed one note but did not ring it late and interrupt the next phrase. The teacher had prepared us ____7____ that possibility.\n\nWe finished together, and several parents smiled at the final sound. Afterwards, I thanked my friend for explaining the rests so ____8____ (patient). I had learned ____9____ important part of making music: sometimes the right contribution is a little silence. Our bells were separate ____10____ (instrument), but the melody belonged to everyone.",
+            "explanation": "Patiently modifies explaining. Patient is adjective and patience noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "patiently"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "patient",
+                "patience"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.handbells-054.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "One note in a handbell group\n\nIn our school handbell group, each player ____1____ (hold) one or two bells. A complete tune depends on different people sounding their notes at the correct moment. Owning the loudest bell does not make one person the whole group.\n\nOur teacher begins each rehearsal by asking us ____2____ (listen) to the tune without playing. Then we look at the marks ____3____ show when our own notes are needed. The music may sound simple, but staying silent at the right time matters too.\n\nWhen I first joined, I rang my bell whenever I felt nervous. That made the tune ____4____ (difficult) to recognise than it should have been. I wanted to show that I was taking part, yet I needed to wait for my turn.\n\nAfter ____5____ (practise) slowly with a smaller group, I began to hear where my note belonged. A friend helped me count through the rests rather than guessing from the movement of the teacher's hands alone.\n\nAt the winter concert, we played a short piece for ____6____ (we) families. I missed one note but did not ring it late and interrupt the next phrase. The teacher had prepared us ____7____ that possibility.\n\nWe finished together, and several parents smiled at the final sound. Afterwards, I thanked my friend for explaining the rests so ____8____ (patient). I had learned ____9____ important part of making music: sometimes the right contribution is a little silence. Our bells were separate ____10____ (instrument), but the melody belonged to everyone.",
+            "explanation": "An important part agrees with the vowel sound. A is incorrect sound agreement; other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.handbells-054.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of instrument.",
+            "material": "One note in a handbell group\n\nIn our school handbell group, each player ____1____ (hold) one or two bells. A complete tune depends on different people sounding their notes at the correct moment. Owning the loudest bell does not make one person the whole group.\n\nOur teacher begins each rehearsal by asking us ____2____ (listen) to the tune without playing. Then we look at the marks ____3____ show when our own notes are needed. The music may sound simple, but staying silent at the right time matters too.\n\nWhen I first joined, I rang my bell whenever I felt nervous. That made the tune ____4____ (difficult) to recognise than it should have been. I wanted to show that I was taking part, yet I needed to wait for my turn.\n\nAfter ____5____ (practise) slowly with a smaller group, I began to hear where my note belonged. A friend helped me count through the rests rather than guessing from the movement of the teacher's hands alone.\n\nAt the winter concert, we played a short piece for ____6____ (we) families. I missed one note but did not ring it late and interrupt the next phrase. The teacher had prepared us ____7____ that possibility.\n\nWe finished together, and several parents smiled at the final sound. Afterwards, I thanked my friend for explaining the rests so ____8____ (patient). I had learned ____9____ important part of making music: sometimes the right contribution is a little silence. Our bells were separate ____10____ (instrument), but the melody belonged to everyone.",
+            "explanation": "Plural bells were separate instruments. Instrument is singular and instrumental an adjective.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "instruments"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "instrument",
+                "instrumental"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "bcbaa3d5125d19351da4ee88bcf10cced5920349ae604de3d976f24211465d29",
+      "reviewNotes": "Six original junior whole-passage grammar practices, mixing habitual present explanations and past classroom incidents. Fictional demonstrations, no invented empirical study or quantitative result. Same-author structure and alternative-form review; unknown forms reviewable, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.gallery-sketch-054",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Drawing in the gallery",
+        "summary": "Drawing in the gallery，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage, seven supplied-word gaps plus three one-word gaps. Source supplies level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six original junior whole-passage grammar practices, mixing habitual present explanations and past classroom incidents. Fictional demonstrations, no invented empirical study or quantitative result. Same-author structure and alternative-form review; unknown forms reviewable, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.gallery-sketch-054",
+          "family": "passage_form",
+          "label": "Drawing in the gallery",
+          "candidateSHA256": "bcc4f518867581614dd9180267b65d6d1d5c2be994dc44f23f00f6d2c23e3d8a",
+          "authorCheckSHA256": "569956e7dbae9f1ac5344d6da67b6736f6f5ef63352d65de855d94c29eafbd72",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.gallery-sketch-054#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b054；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Drawing in the gallery\n\nLast month, our art teacher ____1____ (take) us to a small gallery. We were allowed to sketch in pencil, but the staff asked us not to use paint near the pictures. Each student chose one work to study rather than trying to copy the whole room.\n\nI selected a painting of a kitchen ____2____ contained several ordinary objects. At first, I looked only at the bright bowl in the centre. My teacher asked me to notice the spaces around it as well.\n\nBefore ____3____ (draw) any details, I marked the main shapes lightly. That made it ____4____ (easy) to change their positions than it would have been after adding dark lines. The teacher did not tell us to make exact copies. She wanted us to understand how the parts worked together.\n\nA visitor stopped nearby and looked at my sketch. I felt nervous, but she simply asked which picture I had chosen. I pointed ____5____ the kitchen painting, and she noticed a small spoon I had missed.\n\nAt the end of the visit, our ____6____ (drawing) were all different. Some showed careful outlines; others used only a few shapes. We talked ____7____ (quiet) so that we would not disturb the other visitors.\n\nI decided ____8____ (keep) the sketch beside a postcard of the painting. It was not ____9____ perfect copy, but it reminded me of what I had looked at. The spoon added by a stranger's question became my favourite detail. That small exchange helped ____10____ (I) see the picture again."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.gallery-sketch-054.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of take.",
+            "material": "Drawing in the gallery\n\nLast month, our art teacher ____1____ (take) us to a small gallery. We were allowed to sketch in pencil, but the staff asked us not to use paint near the pictures. Each student chose one work to study rather than trying to copy the whole room.\n\nI selected a painting of a kitchen ____2____ contained several ordinary objects. At first, I looked only at the bright bowl in the centre. My teacher asked me to notice the spaces around it as well.\n\nBefore ____3____ (draw) any details, I marked the main shapes lightly. That made it ____4____ (easy) to change their positions than it would have been after adding dark lines. The teacher did not tell us to make exact copies. She wanted us to understand how the parts worked together.\n\nA visitor stopped nearby and looked at my sketch. I felt nervous, but she simply asked which picture I had chosen. I pointed ____5____ the kitchen painting, and she noticed a small spoon I had missed.\n\nAt the end of the visit, our ____6____ (drawing) were all different. Some showed careful outlines; others used only a few shapes. We talked ____7____ (quiet) so that we would not disturb the other visitors.\n\nI decided ____8____ (keep) the sketch beside a postcard of the painting. It was not ____9____ perfect copy, but it reminded me of what I had looked at. The spoon added by a stranger's question became my favourite detail. That small exchange helped ____10____ (I) see the picture again.",
+            "explanation": "Last month requires irregular past took. Take is base/present and taked nonstandard.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "took"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "take",
+                "taked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.gallery-sketch-054.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "Drawing in the gallery\n\nLast month, our art teacher ____1____ (take) us to a small gallery. We were allowed to sketch in pencil, but the staff asked us not to use paint near the pictures. Each student chose one work to study rather than trying to copy the whole room.\n\nI selected a painting of a kitchen ____2____ contained several ordinary objects. At first, I looked only at the bright bowl in the centre. My teacher asked me to notice the spaces around it as well.\n\nBefore ____3____ (draw) any details, I marked the main shapes lightly. That made it ____4____ (easy) to change their positions than it would have been after adding dark lines. The teacher did not tell us to make exact copies. She wanted us to understand how the parts worked together.\n\nA visitor stopped nearby and looked at my sketch. I felt nervous, but she simply asked which picture I had chosen. I pointed ____5____ the kitchen painting, and she noticed a small spoon I had missed.\n\nAt the end of the visit, our ____6____ (drawing) were all different. Some showed careful outlines; others used only a few shapes. We talked ____7____ (quiet) so that we would not disturb the other visitors.\n\nI decided ____8____ (keep) the sketch beside a postcard of the painting. It was not ____9____ perfect copy, but it reminded me of what I had looked at. The spoon added by a stranger's question became my favourite detail. That small exchange helped ____10____ (I) see the picture again.",
+            "explanation": "The painting is subject antecedent of that/which contained. Where would leave contained without a subject; who is human and what does not fit an expressed antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.gallery-sketch-054.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of draw.",
+            "material": "Drawing in the gallery\n\nLast month, our art teacher ____1____ (take) us to a small gallery. We were allowed to sketch in pencil, but the staff asked us not to use paint near the pictures. Each student chose one work to study rather than trying to copy the whole room.\n\nI selected a painting of a kitchen ____2____ contained several ordinary objects. At first, I looked only at the bright bowl in the centre. My teacher asked me to notice the spaces around it as well.\n\nBefore ____3____ (draw) any details, I marked the main shapes lightly. That made it ____4____ (easy) to change their positions than it would have been after adding dark lines. The teacher did not tell us to make exact copies. She wanted us to understand how the parts worked together.\n\nA visitor stopped nearby and looked at my sketch. I felt nervous, but she simply asked which picture I had chosen. I pointed ____5____ the kitchen painting, and she noticed a small spoon I had missed.\n\nAt the end of the visit, our ____6____ (drawing) were all different. Some showed careful outlines; others used only a few shapes. We talked ____7____ (quiet) so that we would not disturb the other visitors.\n\nI decided ____8____ (keep) the sketch beside a postcard of the painting. It was not ____9____ perfect copy, but it reminded me of what I had looked at. The spoon added by a stranger's question became my favourite detail. That small exchange helped ____10____ (I) see the picture again.",
+            "explanation": "Before takes drawing as the non-finite prepositional complement. Other forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "drawing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "draw",
+                "drew",
+                "to draw"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.gallery-sketch-054.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of easy.",
+            "material": "Drawing in the gallery\n\nLast month, our art teacher ____1____ (take) us to a small gallery. We were allowed to sketch in pencil, but the staff asked us not to use paint near the pictures. Each student chose one work to study rather than trying to copy the whole room.\n\nI selected a painting of a kitchen ____2____ contained several ordinary objects. At first, I looked only at the bright bowl in the centre. My teacher asked me to notice the spaces around it as well.\n\nBefore ____3____ (draw) any details, I marked the main shapes lightly. That made it ____4____ (easy) to change their positions than it would have been after adding dark lines. The teacher did not tell us to make exact copies. She wanted us to understand how the parts worked together.\n\nA visitor stopped nearby and looked at my sketch. I felt nervous, but she simply asked which picture I had chosen. I pointed ____5____ the kitchen painting, and she noticed a small spoon I had missed.\n\nAt the end of the visit, our ____6____ (drawing) were all different. Some showed careful outlines; others used only a few shapes. We talked ____7____ (quiet) so that we would not disturb the other visitors.\n\nI decided ____8____ (keep) the sketch beside a postcard of the painting. It was not ____9____ perfect copy, but it reminded me of what I had looked at. The spoon added by a stranger's question became my favourite detail. That small exchange helped ____10____ (I) see the picture again.",
+            "explanation": "Than requires comparative easier/more easy. Plain, superlative and doubled comparative forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "easier",
+              "more easy"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "easy",
+                "easiest",
+                "more easier"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.gallery-sketch-054.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with one appropriate word.",
+            "material": "Drawing in the gallery\n\nLast month, our art teacher ____1____ (take) us to a small gallery. We were allowed to sketch in pencil, but the staff asked us not to use paint near the pictures. Each student chose one work to study rather than trying to copy the whole room.\n\nI selected a painting of a kitchen ____2____ contained several ordinary objects. At first, I looked only at the bright bowl in the centre. My teacher asked me to notice the spaces around it as well.\n\nBefore ____3____ (draw) any details, I marked the main shapes lightly. That made it ____4____ (easy) to change their positions than it would have been after adding dark lines. The teacher did not tell us to make exact copies. She wanted us to understand how the parts worked together.\n\nA visitor stopped nearby and looked at my sketch. I felt nervous, but she simply asked which picture I had chosen. I pointed ____5____ the kitchen painting, and she noticed a small spoon I had missed.\n\nAt the end of the visit, our ____6____ (drawing) were all different. Some showed careful outlines; others used only a few shapes. We talked ____7____ (quiet) so that we would not disturb the other visitors.\n\nI decided ____8____ (keep) the sketch beside a postcard of the painting. It was not ____9____ perfect copy, but it reminded me of what I had looked at. The spoon added by a stranger's question became my favourite detail. That small exchange helped ____10____ (I) see the picture again.",
+            "explanation": "Pointed to/at/toward(s) can all identify the painting. Of and from do not identify the indicated target here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to",
+              "at",
+              "towards",
+              "toward"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of",
+                "from"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.gallery-sketch-054.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of drawing.",
+            "material": "Drawing in the gallery\n\nLast month, our art teacher ____1____ (take) us to a small gallery. We were allowed to sketch in pencil, but the staff asked us not to use paint near the pictures. Each student chose one work to study rather than trying to copy the whole room.\n\nI selected a painting of a kitchen ____2____ contained several ordinary objects. At first, I looked only at the bright bowl in the centre. My teacher asked me to notice the spaces around it as well.\n\nBefore ____3____ (draw) any details, I marked the main shapes lightly. That made it ____4____ (easy) to change their positions than it would have been after adding dark lines. The teacher did not tell us to make exact copies. She wanted us to understand how the parts worked together.\n\nA visitor stopped nearby and looked at my sketch. I felt nervous, but she simply asked which picture I had chosen. I pointed ____5____ the kitchen painting, and she noticed a small spoon I had missed.\n\nAt the end of the visit, our ____6____ (drawing) were all different. Some showed careful outlines; others used only a few shapes. We talked ____7____ (quiet) so that we would not disturb the other visitors.\n\nI decided ____8____ (keep) the sketch beside a postcard of the painting. It was not ____9____ perfect copy, but it reminded me of what I had looked at. The spoon added by a stranger's question became my favourite detail. That small exchange helped ____10____ (I) see the picture again.",
+            "explanation": "Our separate works with were all different are plural drawings. Drawing is singular and drawn a participle.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "drawings"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "drawing",
+                "drawn"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.gallery-sketch-054.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of quiet.",
+            "material": "Drawing in the gallery\n\nLast month, our art teacher ____1____ (take) us to a small gallery. We were allowed to sketch in pencil, but the staff asked us not to use paint near the pictures. Each student chose one work to study rather than trying to copy the whole room.\n\nI selected a painting of a kitchen ____2____ contained several ordinary objects. At first, I looked only at the bright bowl in the centre. My teacher asked me to notice the spaces around it as well.\n\nBefore ____3____ (draw) any details, I marked the main shapes lightly. That made it ____4____ (easy) to change their positions than it would have been after adding dark lines. The teacher did not tell us to make exact copies. She wanted us to understand how the parts worked together.\n\nA visitor stopped nearby and looked at my sketch. I felt nervous, but she simply asked which picture I had chosen. I pointed ____5____ the kitchen painting, and she noticed a small spoon I had missed.\n\nAt the end of the visit, our ____6____ (drawing) were all different. Some showed careful outlines; others used only a few shapes. We talked ____7____ (quiet) so that we would not disturb the other visitors.\n\nI decided ____8____ (keep) the sketch beside a postcard of the painting. It was not ____9____ perfect copy, but it reminded me of what I had looked at. The spoon added by a stranger's question became my favourite detail. That small exchange helped ____10____ (I) see the picture again.",
+            "explanation": "Quietly modifies talked. Quietness is noun; an informal flat-adverb reading is left reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "quietly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "quietness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.gallery-sketch-054.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of keep.",
+            "material": "Drawing in the gallery\n\nLast month, our art teacher ____1____ (take) us to a small gallery. We were allowed to sketch in pencil, but the staff asked us not to use paint near the pictures. Each student chose one work to study rather than trying to copy the whole room.\n\nI selected a painting of a kitchen ____2____ contained several ordinary objects. At first, I looked only at the bright bowl in the centre. My teacher asked me to notice the spaces around it as well.\n\nBefore ____3____ (draw) any details, I marked the main shapes lightly. That made it ____4____ (easy) to change their positions than it would have been after adding dark lines. The teacher did not tell us to make exact copies. She wanted us to understand how the parts worked together.\n\nA visitor stopped nearby and looked at my sketch. I felt nervous, but she simply asked which picture I had chosen. I pointed ____5____ the kitchen painting, and she noticed a small spoon I had missed.\n\nAt the end of the visit, our ____6____ (drawing) were all different. Some showed careful outlines; others used only a few shapes. We talked ____7____ (quiet) so that we would not disturb the other visitors.\n\nI decided ____8____ (keep) the sketch beside a postcard of the painting. It was not ____9____ perfect copy, but it reminded me of what I had looked at. The spoon added by a stranger's question became my favourite detail. That small exchange helped ____10____ (I) see the picture again.",
+            "explanation": "Decided takes to keep. Other listed forms do not complete it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to keep"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "keeping",
+                "keep",
+                "kept"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.gallery-sketch-054.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "Drawing in the gallery\n\nLast month, our art teacher ____1____ (take) us to a small gallery. We were allowed to sketch in pencil, but the staff asked us not to use paint near the pictures. Each student chose one work to study rather than trying to copy the whole room.\n\nI selected a painting of a kitchen ____2____ contained several ordinary objects. At first, I looked only at the bright bowl in the centre. My teacher asked me to notice the spaces around it as well.\n\nBefore ____3____ (draw) any details, I marked the main shapes lightly. That made it ____4____ (easy) to change their positions than it would have been after adding dark lines. The teacher did not tell us to make exact copies. She wanted us to understand how the parts worked together.\n\nA visitor stopped nearby and looked at my sketch. I felt nervous, but she simply asked which picture I had chosen. I pointed ____5____ the kitchen painting, and she noticed a small spoon I had missed.\n\nAt the end of the visit, our ____6____ (drawing) were all different. Some showed careful outlines; others used only a few shapes. We talked ____7____ (quiet) so that we would not disturb the other visitors.\n\nI decided ____8____ (keep) the sketch beside a postcard of the painting. It was not ____9____ perfect copy, but it reminded me of what I had looked at. The spoon added by a stranger's question became my favourite detail. That small exchange helped ____10____ (I) see the picture again.",
+            "explanation": "A perfect copy uses a before a consonant sound. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.gallery-sketch-054.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of I.",
+            "material": "Drawing in the gallery\n\nLast month, our art teacher ____1____ (take) us to a small gallery. We were allowed to sketch in pencil, but the staff asked us not to use paint near the pictures. Each student chose one work to study rather than trying to copy the whole room.\n\nI selected a painting of a kitchen ____2____ contained several ordinary objects. At first, I looked only at the bright bowl in the centre. My teacher asked me to notice the spaces around it as well.\n\nBefore ____3____ (draw) any details, I marked the main shapes lightly. That made it ____4____ (easy) to change their positions than it would have been after adding dark lines. The teacher did not tell us to make exact copies. She wanted us to understand how the parts worked together.\n\nA visitor stopped nearby and looked at my sketch. I felt nervous, but she simply asked which picture I had chosen. I pointed ____5____ the kitchen painting, and she noticed a small spoon I had missed.\n\nAt the end of the visit, our ____6____ (drawing) were all different. Some showed careful outlines; others used only a few shapes. We talked ____7____ (quiet) so that we would not disturb the other visitors.\n\nI decided ____8____ (keep) the sketch beside a postcard of the painting. It was not ____9____ perfect copy, but it reminded me of what I had looked at. The spoon added by a stranger's question became my favourite detail. That small exchange helped ____10____ (I) see the picture again.",
+            "explanation": "Helped takes object me before see. I is subject and my/mine possessive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "me"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "I",
+                "my",
+                "mine"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "1a029abf99f587efc8cb0b541e060011d3c2261e1badc0aa4581560097cf3d8d",
+      "reviewNotes": "Six original junior whole-passage grammar practices, mixing habitual present explanations and past classroom incidents. Fictional demonstrations, no invented empirical study or quantitative result. Same-author structure and alternative-form review; unknown forms reviewable, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.solar-cooker-054",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · A box that used sunlight",
+        "summary": "A box that used sunlight，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage, seven supplied-word gaps plus three one-word gaps. Source supplies level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six original junior whole-passage grammar practices, mixing habitual present explanations and past classroom incidents. Fictional demonstrations, no invented empirical study or quantitative result. Same-author structure and alternative-form review; unknown forms reviewable, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.solar-cooker-054",
+          "family": "passage_form",
+          "label": "A box that used sunlight",
+          "candidateSHA256": "a661ccc1699711f93f49a11a219aff1d8f070af81ec745fd74af9d67f1318001",
+          "authorCheckSHA256": "0dd0c2331a55a994295c6ad74305ca8011ec47957ec6b2ca074e7aea0c87cd24",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.solar-cooker-054#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b054；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A box that used sunlight\n\nOur science club built a simple demonstration cooker from a box and reflective material. We did not expect it ____1____ (replace) an ordinary kitchen. The purpose was to explore how sunlight could warm a small enclosed space.\n\nOur teacher checked the design and supervised each trial. We placed a thermometer inside rather than using our fingers to guess the temperature. The instrument ____2____ (read) at regular intervals, and the time was written beside each result.\n\nOne afternoon, clouds covered the sun halfway through the activity. The temperature stopped rising as ____3____ (quick) as before. Instead of deleting that part of the record, we noted the change in the weather.\n\nA classmate suggested ____4____ (compare) our results with another group's. Their box was a different size, however, so we could not treat the sunlight as the only possible cause of any difference. Our teacher asked us to identify the conditions ____5____ had changed.\n\nThe discussion was more interesting than simply deciding which of the day’s readings was the ____6____ (high). We considered what our trial could show and where it left questions unanswered.\n\nAt the next meeting, we agreed ____7____ a smaller question to investigate. That helped ____8____ (we) make a clearer plan. The box was still a modest classroom model, not evidence that every cooking task could be done in the same way. It had become ____9____ useful tool for asking questions. We learned to describe our work ____10____ (careful), including the conditions that made each observation possible."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.solar-cooker-054.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of replace.",
+            "material": "A box that used sunlight\n\nOur science club built a simple demonstration cooker from a box and reflective material. We did not expect it ____1____ (replace) an ordinary kitchen. The purpose was to explore how sunlight could warm a small enclosed space.\n\nOur teacher checked the design and supervised each trial. We placed a thermometer inside rather than using our fingers to guess the temperature. The instrument ____2____ (read) at regular intervals, and the time was written beside each result.\n\nOne afternoon, clouds covered the sun halfway through the activity. The temperature stopped rising as ____3____ (quick) as before. Instead of deleting that part of the record, we noted the change in the weather.\n\nA classmate suggested ____4____ (compare) our results with another group's. Their box was a different size, however, so we could not treat the sunlight as the only possible cause of any difference. Our teacher asked us to identify the conditions ____5____ had changed.\n\nThe discussion was more interesting than simply deciding which of the day’s readings was the ____6____ (high). We considered what our trial could show and where it left questions unanswered.\n\nAt the next meeting, we agreed ____7____ a smaller question to investigate. That helped ____8____ (we) make a clearer plan. The box was still a modest classroom model, not evidence that every cooking task could be done in the same way. It had become ____9____ useful tool for asking questions. We learned to describe our work ____10____ (careful), including the conditions that made each observation possible.",
+            "explanation": "Expect it takes to replace. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to replace"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "replacing",
+                "replace",
+                "replaced"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.solar-cooker-054.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of read.",
+            "material": "A box that used sunlight\n\nOur science club built a simple demonstration cooker from a box and reflective material. We did not expect it ____1____ (replace) an ordinary kitchen. The purpose was to explore how sunlight could warm a small enclosed space.\n\nOur teacher checked the design and supervised each trial. We placed a thermometer inside rather than using our fingers to guess the temperature. The instrument ____2____ (read) at regular intervals, and the time was written beside each result.\n\nOne afternoon, clouds covered the sun halfway through the activity. The temperature stopped rising as ____3____ (quick) as before. Instead of deleting that part of the record, we noted the change in the weather.\n\nA classmate suggested ____4____ (compare) our results with another group's. Their box was a different size, however, so we could not treat the sunlight as the only possible cause of any difference. Our teacher asked us to identify the conditions ____5____ had changed.\n\nThe discussion was more interesting than simply deciding which of the day’s readings was the ____6____ (high). We considered what our trial could show and where it left questions unanswered.\n\nAt the next meeting, we agreed ____7____ a smaller question to investigate. That helped ____8____ (we) make a clearer plan. The box was still a modest classroom model, not evidence that every cooking task could be done in the same way. It had become ____9____ useful tool for asking questions. We learned to describe our work ____10____ (careful), including the conditions that made each observation possible.",
+            "explanation": "The singular instrument receives readings in the trial narrative. Was read/had been read are passive. Read alone lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was read",
+              "had been read"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "read",
+                "were read"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.solar-cooker-054.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of quick.",
+            "material": "A box that used sunlight\n\nOur science club built a simple demonstration cooker from a box and reflective material. We did not expect it ____1____ (replace) an ordinary kitchen. The purpose was to explore how sunlight could warm a small enclosed space.\n\nOur teacher checked the design and supervised each trial. We placed a thermometer inside rather than using our fingers to guess the temperature. The instrument ____2____ (read) at regular intervals, and the time was written beside each result.\n\nOne afternoon, clouds covered the sun halfway through the activity. The temperature stopped rising as ____3____ (quick) as before. Instead of deleting that part of the record, we noted the change in the weather.\n\nA classmate suggested ____4____ (compare) our results with another group's. Their box was a different size, however, so we could not treat the sunlight as the only possible cause of any difference. Our teacher asked us to identify the conditions ____5____ had changed.\n\nThe discussion was more interesting than simply deciding which of the day’s readings was the ____6____ (high). We considered what our trial could show and where it left questions unanswered.\n\nAt the next meeting, we agreed ____7____ a smaller question to investigate. That helped ____8____ (we) make a clearer plan. The box was still a modest classroom model, not evidence that every cooking task could be done in the same way. It had become ____9____ useful tool for asking questions. We learned to describe our work ____10____ (careful), including the conditions that made each observation possible.",
+            "explanation": "Quickly modifies rising in as quickly as. Quickness is a noun; a flat-adverb quick reading remains reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "quickly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "quickness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.solar-cooker-054.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of compare.",
+            "material": "A box that used sunlight\n\nOur science club built a simple demonstration cooker from a box and reflective material. We did not expect it ____1____ (replace) an ordinary kitchen. The purpose was to explore how sunlight could warm a small enclosed space.\n\nOur teacher checked the design and supervised each trial. We placed a thermometer inside rather than using our fingers to guess the temperature. The instrument ____2____ (read) at regular intervals, and the time was written beside each result.\n\nOne afternoon, clouds covered the sun halfway through the activity. The temperature stopped rising as ____3____ (quick) as before. Instead of deleting that part of the record, we noted the change in the weather.\n\nA classmate suggested ____4____ (compare) our results with another group's. Their box was a different size, however, so we could not treat the sunlight as the only possible cause of any difference. Our teacher asked us to identify the conditions ____5____ had changed.\n\nThe discussion was more interesting than simply deciding which of the day’s readings was the ____6____ (high). We considered what our trial could show and where it left questions unanswered.\n\nAt the next meeting, we agreed ____7____ a smaller question to investigate. That helped ____8____ (we) make a clearer plan. The box was still a modest classroom model, not evidence that every cooking task could be done in the same way. It had become ____9____ useful tool for asking questions. We learned to describe our work ____10____ (careful), including the conditions that made each observation possible.",
+            "explanation": "Suggested directly takes comparing. Other listed forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "comparing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "compare",
+                "to compare",
+                "compared"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.solar-cooker-054.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with one appropriate word.",
+            "material": "A box that used sunlight\n\nOur science club built a simple demonstration cooker from a box and reflective material. We did not expect it ____1____ (replace) an ordinary kitchen. The purpose was to explore how sunlight could warm a small enclosed space.\n\nOur teacher checked the design and supervised each trial. We placed a thermometer inside rather than using our fingers to guess the temperature. The instrument ____2____ (read) at regular intervals, and the time was written beside each result.\n\nOne afternoon, clouds covered the sun halfway through the activity. The temperature stopped rising as ____3____ (quick) as before. Instead of deleting that part of the record, we noted the change in the weather.\n\nA classmate suggested ____4____ (compare) our results with another group's. Their box was a different size, however, so we could not treat the sunlight as the only possible cause of any difference. Our teacher asked us to identify the conditions ____5____ had changed.\n\nThe discussion was more interesting than simply deciding which of the day’s readings was the ____6____ (high). We considered what our trial could show and where it left questions unanswered.\n\nAt the next meeting, we agreed ____7____ a smaller question to investigate. That helped ____8____ (we) make a clearer plan. The box was still a modest classroom model, not evidence that every cooking task could be done in the same way. It had become ____9____ useful tool for asking questions. We learned to describe our work ____10____ (careful), including the conditions that made each observation possible.",
+            "explanation": "Conditions are subject antecedent of that/which had changed. Who is human, where not subject and what does not fit this antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.solar-cooker-054.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of high.",
+            "material": "A box that used sunlight\n\nOur science club built a simple demonstration cooker from a box and reflective material. We did not expect it ____1____ (replace) an ordinary kitchen. The purpose was to explore how sunlight could warm a small enclosed space.\n\nOur teacher checked the design and supervised each trial. We placed a thermometer inside rather than using our fingers to guess the temperature. The instrument ____2____ (read) at regular intervals, and the time was written beside each result.\n\nOne afternoon, clouds covered the sun halfway through the activity. The temperature stopped rising as ____3____ (quick) as before. Instead of deleting that part of the record, we noted the change in the weather.\n\nA classmate suggested ____4____ (compare) our results with another group's. Their box was a different size, however, so we could not treat the sunlight as the only possible cause of any difference. Our teacher asked us to identify the conditions ____5____ had changed.\n\nThe discussion was more interesting than simply deciding which of the day’s readings was the ____6____ (high). We considered what our trial could show and where it left questions unanswered.\n\nAt the next meeting, we agreed ____7____ a smaller question to investigate. That helped ____8____ (we) make a clearer plan. The box was still a modest classroom model, not evidence that every cooking task could be done in the same way. It had become ____9____ useful tool for asking questions. We learned to describe our work ____10____ (careful), including the conditions that made each observation possible.",
+            "explanation": "Which of the day’s readings was the highest ranks the maximum. Higher is only comparative and most highest doubles the superlative. Other possible unlisted readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "highest"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "higher",
+                "most highest"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.solar-cooker-054.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "A box that used sunlight\n\nOur science club built a simple demonstration cooker from a box and reflective material. We did not expect it ____1____ (replace) an ordinary kitchen. The purpose was to explore how sunlight could warm a small enclosed space.\n\nOur teacher checked the design and supervised each trial. We placed a thermometer inside rather than using our fingers to guess the temperature. The instrument ____2____ (read) at regular intervals, and the time was written beside each result.\n\nOne afternoon, clouds covered the sun halfway through the activity. The temperature stopped rising as ____3____ (quick) as before. Instead of deleting that part of the record, we noted the change in the weather.\n\nA classmate suggested ____4____ (compare) our results with another group's. Their box was a different size, however, so we could not treat the sunlight as the only possible cause of any difference. Our teacher asked us to identify the conditions ____5____ had changed.\n\nThe discussion was more interesting than simply deciding which of the day’s readings was the ____6____ (high). We considered what our trial could show and where it left questions unanswered.\n\nAt the next meeting, we agreed ____7____ a smaller question to investigate. That helped ____8____ (we) make a clearer plan. The box was still a modest classroom model, not evidence that every cooking task could be done in the same way. It had become ____9____ useful tool for asking questions. We learned to describe our work ____10____ (careful), including the conditions that made each observation possible.",
+            "explanation": "Agreed on/upon a question means jointly selected it. Of and at do not complete agree here. Other unlisted readings, including an approval construction with to, remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "on",
+              "upon"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of",
+                "at"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.solar-cooker-054.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of we.",
+            "material": "A box that used sunlight\n\nOur science club built a simple demonstration cooker from a box and reflective material. We did not expect it ____1____ (replace) an ordinary kitchen. The purpose was to explore how sunlight could warm a small enclosed space.\n\nOur teacher checked the design and supervised each trial. We placed a thermometer inside rather than using our fingers to guess the temperature. The instrument ____2____ (read) at regular intervals, and the time was written beside each result.\n\nOne afternoon, clouds covered the sun halfway through the activity. The temperature stopped rising as ____3____ (quick) as before. Instead of deleting that part of the record, we noted the change in the weather.\n\nA classmate suggested ____4____ (compare) our results with another group's. Their box was a different size, however, so we could not treat the sunlight as the only possible cause of any difference. Our teacher asked us to identify the conditions ____5____ had changed.\n\nThe discussion was more interesting than simply deciding which of the day’s readings was the ____6____ (high). We considered what our trial could show and where it left questions unanswered.\n\nAt the next meeting, we agreed ____7____ a smaller question to investigate. That helped ____8____ (we) make a clearer plan. The box was still a modest classroom model, not evidence that every cooking task could be done in the same way. It had become ____9____ useful tool for asking questions. We learned to describe our work ____10____ (careful), including the conditions that made each observation possible.",
+            "explanation": "Helped takes object us. Subject and possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.solar-cooker-054.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "A box that used sunlight\n\nOur science club built a simple demonstration cooker from a box and reflective material. We did not expect it ____1____ (replace) an ordinary kitchen. The purpose was to explore how sunlight could warm a small enclosed space.\n\nOur teacher checked the design and supervised each trial. We placed a thermometer inside rather than using our fingers to guess the temperature. The instrument ____2____ (read) at regular intervals, and the time was written beside each result.\n\nOne afternoon, clouds covered the sun halfway through the activity. The temperature stopped rising as ____3____ (quick) as before. Instead of deleting that part of the record, we noted the change in the weather.\n\nA classmate suggested ____4____ (compare) our results with another group's. Their box was a different size, however, so we could not treat the sunlight as the only possible cause of any difference. Our teacher asked us to identify the conditions ____5____ had changed.\n\nThe discussion was more interesting than simply deciding which of the day’s readings was the ____6____ (high). We considered what our trial could show and where it left questions unanswered.\n\nAt the next meeting, we agreed ____7____ a smaller question to investigate. That helped ____8____ (we) make a clearer plan. The box was still a modest classroom model, not evidence that every cooking task could be done in the same way. It had become ____9____ useful tool for asking questions. We learned to describe our work ____10____ (careful), including the conditions that made each observation possible.",
+            "explanation": "A useful tool uses consonant /j/. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.solar-cooker-054.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of careful.",
+            "material": "A box that used sunlight\n\nOur science club built a simple demonstration cooker from a box and reflective material. We did not expect it ____1____ (replace) an ordinary kitchen. The purpose was to explore how sunlight could warm a small enclosed space.\n\nOur teacher checked the design and supervised each trial. We placed a thermometer inside rather than using our fingers to guess the temperature. The instrument ____2____ (read) at regular intervals, and the time was written beside each result.\n\nOne afternoon, clouds covered the sun halfway through the activity. The temperature stopped rising as ____3____ (quick) as before. Instead of deleting that part of the record, we noted the change in the weather.\n\nA classmate suggested ____4____ (compare) our results with another group's. Their box was a different size, however, so we could not treat the sunlight as the only possible cause of any difference. Our teacher asked us to identify the conditions ____5____ had changed.\n\nThe discussion was more interesting than simply deciding which of the day’s readings was the ____6____ (high). We considered what our trial could show and where it left questions unanswered.\n\nAt the next meeting, we agreed ____7____ a smaller question to investigate. That helped ____8____ (we) make a clearer plan. The box was still a modest classroom model, not evidence that every cooking task could be done in the same way. It had become ____9____ useful tool for asking questions. We learned to describe our work ____10____ (careful), including the conditions that made each observation possible.",
+            "explanation": "Carefully modifies describe. Careful and carefulness are adjective/noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careful",
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "1fd7cfd9b711edb64b3f08801dc9dd4fd1d8172b7a3842855044cc80546d5eb6",
+      "reviewNotes": "Six original junior whole-passage grammar practices, mixing habitual present explanations and past classroom incidents. Fictional demonstrations, no invented empirical study or quantitative result. Same-author structure and alternative-form review; unknown forms reviewable, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.weather-notice-054",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · A forecast on the school noticeboard",
+        "summary": "A forecast on the school noticeboard，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage, seven supplied-word gaps plus three one-word gaps. Source supplies level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six original junior whole-passage grammar practices, mixing habitual present explanations and past classroom incidents. Fictional demonstrations, no invented empirical study or quantitative result. Same-author structure and alternative-form review; unknown forms reviewable, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.weather-notice-054",
+          "family": "passage_form",
+          "label": "A forecast on the school noticeboard",
+          "candidateSHA256": "08173874735bd05b2d61b3c40262bd441193f6daa2c72e3b06eff83fdbd08c2e",
+          "authorCheckSHA256": "5e1539ef25dcb3622a0507db2e36922f95df18294330364553c820d3c58c2094",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.weather-notice-054#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b054；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A forecast on the school noticeboard\n\nEvery morning, a member of our geography club ____1____ (prepare) a short weather notice. It combines the forecast for the area with observations made at school. The two sources are clearly labelled because they do not describe exactly the same thing.\n\nA forecast concerns what may happen later, while an observation reports a condition at a particular time. Someone ____2____ reads our notice should be able to tell which kind of information each sentence gives.\n\nWe use simple language rather than ____3____ (copy) long technical descriptions. However, making the wording shorter should not make an uncertain forecast sound definite. A chance of rain does not mean that rain has already started.\n\nLast week, our morning report said the sky was clear. By lunchtime, clouds had arrived. One student thought the notice had been wrong, but the observation had included its time. We added a later update without ____4____ (remove) the earlier one.\n\nKeeping both entries helped us see the change more ____5____ (clear). It also reminded readers that a noticeboard cannot change by itself whenever the weather does. We decided ____6____ (check) it at two agreed times rather than promising constant updates.\n\nThe teacher thanked us ____7____ explaining the limits. Clear ____8____ (label) mattered as much as attractive lettering. A useful report did not need to claim more than its makers knew. For ____9____ (we), the project became ____10____ exercise in choosing words that matched the information available."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.weather-notice-054.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of prepare.",
+            "material": "A forecast on the school noticeboard\n\nEvery morning, a member of our geography club ____1____ (prepare) a short weather notice. It combines the forecast for the area with observations made at school. The two sources are clearly labelled because they do not describe exactly the same thing.\n\nA forecast concerns what may happen later, while an observation reports a condition at a particular time. Someone ____2____ reads our notice should be able to tell which kind of information each sentence gives.\n\nWe use simple language rather than ____3____ (copy) long technical descriptions. However, making the wording shorter should not make an uncertain forecast sound definite. A chance of rain does not mean that rain has already started.\n\nLast week, our morning report said the sky was clear. By lunchtime, clouds had arrived. One student thought the notice had been wrong, but the observation had included its time. We added a later update without ____4____ (remove) the earlier one.\n\nKeeping both entries helped us see the change more ____5____ (clear). It also reminded readers that a noticeboard cannot change by itself whenever the weather does. We decided ____6____ (check) it at two agreed times rather than promising constant updates.\n\nThe teacher thanked us ____7____ explaining the limits. Clear ____8____ (label) mattered as much as attractive lettering. A useful report did not need to claim more than its makers knew. For ____9____ (we), the project became ____10____ exercise in choosing words that matched the information available.",
+            "explanation": "Every morning establishes habit with singular a member, so prepares. Prepare disagrees and preparing lacks auxiliary.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "prepares"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "prepare",
+                "preparing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.weather-notice-054.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "A forecast on the school noticeboard\n\nEvery morning, a member of our geography club ____1____ (prepare) a short weather notice. It combines the forecast for the area with observations made at school. The two sources are clearly labelled because they do not describe exactly the same thing.\n\nA forecast concerns what may happen later, while an observation reports a condition at a particular time. Someone ____2____ reads our notice should be able to tell which kind of information each sentence gives.\n\nWe use simple language rather than ____3____ (copy) long technical descriptions. However, making the wording shorter should not make an uncertain forecast sound definite. A chance of rain does not mean that rain has already started.\n\nLast week, our morning report said the sky was clear. By lunchtime, clouds had arrived. One student thought the notice had been wrong, but the observation had included its time. We added a later update without ____4____ (remove) the earlier one.\n\nKeeping both entries helped us see the change more ____5____ (clear). It also reminded readers that a noticeboard cannot change by itself whenever the weather does. We decided ____6____ (check) it at two agreed times rather than promising constant updates.\n\nThe teacher thanked us ____7____ explaining the limits. Clear ____8____ (label) mattered as much as attractive lettering. A useful report did not need to claim more than its makers knew. For ____9____ (we), the project became ____10____ exercise in choosing words that matched the information available.",
+            "explanation": "Who/that is the human relative subject. Which is nonhuman, where not subject and whose requires a possessed noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "where",
+                "whose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.weather-notice-054.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of copy.",
+            "material": "A forecast on the school noticeboard\n\nEvery morning, a member of our geography club ____1____ (prepare) a short weather notice. It combines the forecast for the area with observations made at school. The two sources are clearly labelled because they do not describe exactly the same thing.\n\nA forecast concerns what may happen later, while an observation reports a condition at a particular time. Someone ____2____ reads our notice should be able to tell which kind of information each sentence gives.\n\nWe use simple language rather than ____3____ (copy) long technical descriptions. However, making the wording shorter should not make an uncertain forecast sound definite. A chance of rain does not mean that rain has already started.\n\nLast week, our morning report said the sky was clear. By lunchtime, clouds had arrived. One student thought the notice had been wrong, but the observation had included its time. We added a later update without ____4____ (remove) the earlier one.\n\nKeeping both entries helped us see the change more ____5____ (clear). It also reminded readers that a noticeboard cannot change by itself whenever the weather does. We decided ____6____ (check) it at two agreed times rather than promising constant updates.\n\nThe teacher thanked us ____7____ explaining the limits. Clear ____8____ (label) mattered as much as attractive lettering. A useful report did not need to claim more than its makers knew. For ____9____ (we), the project became ____10____ exercise in choosing words that matched the information available.",
+            "explanation": "Rather than copying is parallel with use in a contrast of methods; bare copy is also grammatical after the earlier verb structure. Copied is a finite past form incompatible with the habitual construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "copying",
+              "copy"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "copied"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.weather-notice-054.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of remove.",
+            "material": "A forecast on the school noticeboard\n\nEvery morning, a member of our geography club ____1____ (prepare) a short weather notice. It combines the forecast for the area with observations made at school. The two sources are clearly labelled because they do not describe exactly the same thing.\n\nA forecast concerns what may happen later, while an observation reports a condition at a particular time. Someone ____2____ reads our notice should be able to tell which kind of information each sentence gives.\n\nWe use simple language rather than ____3____ (copy) long technical descriptions. However, making the wording shorter should not make an uncertain forecast sound definite. A chance of rain does not mean that rain has already started.\n\nLast week, our morning report said the sky was clear. By lunchtime, clouds had arrived. One student thought the notice had been wrong, but the observation had included its time. We added a later update without ____4____ (remove) the earlier one.\n\nKeeping both entries helped us see the change more ____5____ (clear). It also reminded readers that a noticeboard cannot change by itself whenever the weather does. We decided ____6____ (check) it at two agreed times rather than promising constant updates.\n\nThe teacher thanked us ____7____ explaining the limits. Clear ____8____ (label) mattered as much as attractive lettering. A useful report did not need to claim more than its makers knew. For ____9____ (we), the project became ____10____ exercise in choosing words that matched the information available.",
+            "explanation": "Without takes removing. Other listed forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "removing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "remove",
+                "removed",
+                "to remove"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.weather-notice-054.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of clear.",
+            "material": "A forecast on the school noticeboard\n\nEvery morning, a member of our geography club ____1____ (prepare) a short weather notice. It combines the forecast for the area with observations made at school. The two sources are clearly labelled because they do not describe exactly the same thing.\n\nA forecast concerns what may happen later, while an observation reports a condition at a particular time. Someone ____2____ reads our notice should be able to tell which kind of information each sentence gives.\n\nWe use simple language rather than ____3____ (copy) long technical descriptions. However, making the wording shorter should not make an uncertain forecast sound definite. A chance of rain does not mean that rain has already started.\n\nLast week, our morning report said the sky was clear. By lunchtime, clouds had arrived. One student thought the notice had been wrong, but the observation had included its time. We added a later update without ____4____ (remove) the earlier one.\n\nKeeping both entries helped us see the change more ____5____ (clear). It also reminded readers that a noticeboard cannot change by itself whenever the weather does. We decided ____6____ (check) it at two agreed times rather than promising constant updates.\n\nThe teacher thanked us ____7____ explaining the limits. Clear ____8____ (label) mattered as much as attractive lettering. A useful report did not need to claim more than its makers knew. For ____9____ (we), the project became ____10____ exercise in choosing words that matched the information available.",
+            "explanation": "Clearly modifies see. Clearness is noun; other unlisted readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "clearly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "clearness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.weather-notice-054.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of check.",
+            "material": "A forecast on the school noticeboard\n\nEvery morning, a member of our geography club ____1____ (prepare) a short weather notice. It combines the forecast for the area with observations made at school. The two sources are clearly labelled because they do not describe exactly the same thing.\n\nA forecast concerns what may happen later, while an observation reports a condition at a particular time. Someone ____2____ reads our notice should be able to tell which kind of information each sentence gives.\n\nWe use simple language rather than ____3____ (copy) long technical descriptions. However, making the wording shorter should not make an uncertain forecast sound definite. A chance of rain does not mean that rain has already started.\n\nLast week, our morning report said the sky was clear. By lunchtime, clouds had arrived. One student thought the notice had been wrong, but the observation had included its time. We added a later update without ____4____ (remove) the earlier one.\n\nKeeping both entries helped us see the change more ____5____ (clear). It also reminded readers that a noticeboard cannot change by itself whenever the weather does. We decided ____6____ (check) it at two agreed times rather than promising constant updates.\n\nThe teacher thanked us ____7____ explaining the limits. Clear ____8____ (label) mattered as much as attractive lettering. A useful report did not need to claim more than its makers knew. For ____9____ (we), the project became ____10____ exercise in choosing words that matched the information available.",
+            "explanation": "Decided takes to check. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to check"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "checking",
+                "check",
+                "checked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.weather-notice-054.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "A forecast on the school noticeboard\n\nEvery morning, a member of our geography club ____1____ (prepare) a short weather notice. It combines the forecast for the area with observations made at school. The two sources are clearly labelled because they do not describe exactly the same thing.\n\nA forecast concerns what may happen later, while an observation reports a condition at a particular time. Someone ____2____ reads our notice should be able to tell which kind of information each sentence gives.\n\nWe use simple language rather than ____3____ (copy) long technical descriptions. However, making the wording shorter should not make an uncertain forecast sound definite. A chance of rain does not mean that rain has already started.\n\nLast week, our morning report said the sky was clear. By lunchtime, clouds had arrived. One student thought the notice had been wrong, but the observation had included its time. We added a later update without ____4____ (remove) the earlier one.\n\nKeeping both entries helped us see the change more ____5____ (clear). It also reminded readers that a noticeboard cannot change by itself whenever the weather does. We decided ____6____ (check) it at two agreed times rather than promising constant updates.\n\nThe teacher thanked us ____7____ explaining the limits. Clear ____8____ (label) mattered as much as attractive lettering. A useful report did not need to claim more than its makers knew. For ____9____ (we), the project became ____10____ exercise in choosing words that matched the information available.",
+            "explanation": "Thanked us for explaining gives the action thanked. Other listed prepositions do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "at",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.weather-notice-054.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of label.",
+            "material": "A forecast on the school noticeboard\n\nEvery morning, a member of our geography club ____1____ (prepare) a short weather notice. It combines the forecast for the area with observations made at school. The two sources are clearly labelled because they do not describe exactly the same thing.\n\nA forecast concerns what may happen later, while an observation reports a condition at a particular time. Someone ____2____ reads our notice should be able to tell which kind of information each sentence gives.\n\nWe use simple language rather than ____3____ (copy) long technical descriptions. However, making the wording shorter should not make an uncertain forecast sound definite. A chance of rain does not mean that rain has already started.\n\nLast week, our morning report said the sky was clear. By lunchtime, clouds had arrived. One student thought the notice had been wrong, but the observation had included its time. We added a later update without ____4____ (remove) the earlier one.\n\nKeeping both entries helped us see the change more ____5____ (clear). It also reminded readers that a noticeboard cannot change by itself whenever the weather does. We decided ____6____ (check) it at two agreed times rather than promising constant updates.\n\nThe teacher thanked us ____7____ explaining the limits. Clear ____8____ (label) mattered as much as attractive lettering. A useful report did not need to claim more than its makers knew. For ____9____ (we), the project became ____10____ exercise in choosing words that matched the information available.",
+            "explanation": "Plural labels or the process nouns labelling/labeling both fit Clear ... mattered. Labelled is a participle, not the required noun subject.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "labels",
+              "labelling",
+              "labeling"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "labelled"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.weather-notice-054.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of we.",
+            "material": "A forecast on the school noticeboard\n\nEvery morning, a member of our geography club ____1____ (prepare) a short weather notice. It combines the forecast for the area with observations made at school. The two sources are clearly labelled because they do not describe exactly the same thing.\n\nA forecast concerns what may happen later, while an observation reports a condition at a particular time. Someone ____2____ reads our notice should be able to tell which kind of information each sentence gives.\n\nWe use simple language rather than ____3____ (copy) long technical descriptions. However, making the wording shorter should not make an uncertain forecast sound definite. A chance of rain does not mean that rain has already started.\n\nLast week, our morning report said the sky was clear. By lunchtime, clouds had arrived. One student thought the notice had been wrong, but the observation had included its time. We added a later update without ____4____ (remove) the earlier one.\n\nKeeping both entries helped us see the change more ____5____ (clear). It also reminded readers that a noticeboard cannot change by itself whenever the weather does. We decided ____6____ (check) it at two agreed times rather than promising constant updates.\n\nThe teacher thanked us ____7____ explaining the limits. Clear ____8____ (label) mattered as much as attractive lettering. A useful report did not need to claim more than its makers knew. For ____9____ (we), the project became ____10____ exercise in choosing words that matched the information available.",
+            "explanation": "For takes object pronoun us. We is subject and our/ours possessive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.weather-notice-054.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "A forecast on the school noticeboard\n\nEvery morning, a member of our geography club ____1____ (prepare) a short weather notice. It combines the forecast for the area with observations made at school. The two sources are clearly labelled because they do not describe exactly the same thing.\n\nA forecast concerns what may happen later, while an observation reports a condition at a particular time. Someone ____2____ reads our notice should be able to tell which kind of information each sentence gives.\n\nWe use simple language rather than ____3____ (copy) long technical descriptions. However, making the wording shorter should not make an uncertain forecast sound definite. A chance of rain does not mean that rain has already started.\n\nLast week, our morning report said the sky was clear. By lunchtime, clouds had arrived. One student thought the notice had been wrong, but the observation had included its time. We added a later update without ____4____ (remove) the earlier one.\n\nKeeping both entries helped us see the change more ____5____ (clear). It also reminded readers that a noticeboard cannot change by itself whenever the weather does. We decided ____6____ (check) it at two agreed times rather than promising constant updates.\n\nThe teacher thanked us ____7____ explaining the limits. Clear ____8____ (label) mattered as much as attractive lettering. A useful report did not need to claim more than its makers knew. For ____9____ (we), the project became ____10____ exercise in choosing words that matched the information available.",
+            "explanation": "An exercise uses an before a vowel sound. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "4f6c9e61fd251aa1af09bb4054ddb8092248509c05edf4f404236123ed03f498",
+      "reviewNotes": "Six original junior whole-passage grammar practices, mixing habitual present explanations and past classroom incidents. Fictional demonstrations, no invented empirical study or quantitative result. Same-author structure and alternative-form review; unknown forms reviewable, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.stone-arch-054",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Standing beneath the arch",
+        "summary": "Standing beneath the arch，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage, seven supplied-word gaps plus three one-word gaps. Source supplies level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six original junior whole-passage grammar practices, mixing habitual present explanations and past classroom incidents. Fictional demonstrations, no invented empirical study or quantitative result. Same-author structure and alternative-form review; unknown forms reviewable, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.stone-arch-054",
+          "family": "passage_form",
+          "label": "Standing beneath the arch",
+          "candidateSHA256": "6a14f2b942e456d8fbc02725f798ec51e177108702d755838d7900fb0bdbe691",
+          "authorCheckSHA256": "47145e5b77c4b51f259e3fc4ab03b4709f5e88c9bcd40a3a1039e4a0e8558f1b",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.stone-arch-054#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b054；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Standing beneath the arch\n\nDuring a visit to a restored bridge, our class met an engineer who explained its stone arch. She began by asking us ____1____ (look) at the shape from the side. The stones were arranged so that forces could pass through the arch towards its supports.\n\nWe did not climb on the bridge or remove any part of it. Instead, the engineer used a small model ____2____ showed the arrangement on a table. When its temporary support was taken away correctly, the model remained standing.\n\nI had expected the highest stone to do all the work. The demonstration made it ____3____ (easy) to understand the importance of the rest than a single photograph had. Each piece depended on the surrounding structure.\n\nAfter ____4____ (watch), we tried arranging the model under supervision. Several ____5____ (attempt) failed because the pieces were not positioned properly. The engineer asked us to stop and examine the gaps rather than push harder.\n\nHer explanation was about more than the stones. A real bridge also depends ____6____ the ground, its condition and the loads it carries. The small model helped with one idea; it was not a complete test of a full-sized structure.\n\nBack at school, we described the visit ____7____ (careful). We wanted to distinguish what we had seen from conclusions we could not make. The engineer, ____8____ patience had helped us ask better questions, sent a short note checking our description. It was a ____9____ (remind) that an attractive demonstration can begin understanding without finishing it. We thanked her for giving ____10____ (we) that beginning."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.stone-arch-054.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of look.",
+            "material": "Standing beneath the arch\n\nDuring a visit to a restored bridge, our class met an engineer who explained its stone arch. She began by asking us ____1____ (look) at the shape from the side. The stones were arranged so that forces could pass through the arch towards its supports.\n\nWe did not climb on the bridge or remove any part of it. Instead, the engineer used a small model ____2____ showed the arrangement on a table. When its temporary support was taken away correctly, the model remained standing.\n\nI had expected the highest stone to do all the work. The demonstration made it ____3____ (easy) to understand the importance of the rest than a single photograph had. Each piece depended on the surrounding structure.\n\nAfter ____4____ (watch), we tried arranging the model under supervision. Several ____5____ (attempt) failed because the pieces were not positioned properly. The engineer asked us to stop and examine the gaps rather than push harder.\n\nHer explanation was about more than the stones. A real bridge also depends ____6____ the ground, its condition and the loads it carries. The small model helped with one idea; it was not a complete test of a full-sized structure.\n\nBack at school, we described the visit ____7____ (careful). We wanted to distinguish what we had seen from conclusions we could not make. The engineer, ____8____ patience had helped us ask better questions, sent a short note checking our description. It was a ____9____ (remind) that an attractive demonstration can begin understanding without finishing it. We thanked her for giving ____10____ (we) that beginning.",
+            "explanation": "Asking us takes to look. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to look"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "looking",
+                "look",
+                "looked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.stone-arch-054.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "Standing beneath the arch\n\nDuring a visit to a restored bridge, our class met an engineer who explained its stone arch. She began by asking us ____1____ (look) at the shape from the side. The stones were arranged so that forces could pass through the arch towards its supports.\n\nWe did not climb on the bridge or remove any part of it. Instead, the engineer used a small model ____2____ showed the arrangement on a table. When its temporary support was taken away correctly, the model remained standing.\n\nI had expected the highest stone to do all the work. The demonstration made it ____3____ (easy) to understand the importance of the rest than a single photograph had. Each piece depended on the surrounding structure.\n\nAfter ____4____ (watch), we tried arranging the model under supervision. Several ____5____ (attempt) failed because the pieces were not positioned properly. The engineer asked us to stop and examine the gaps rather than push harder.\n\nHer explanation was about more than the stones. A real bridge also depends ____6____ the ground, its condition and the loads it carries. The small model helped with one idea; it was not a complete test of a full-sized structure.\n\nBack at school, we described the visit ____7____ (careful). We wanted to distinguish what we had seen from conclusions we could not make. The engineer, ____8____ patience had helped us ask better questions, sent a short note checking our description. It was a ____9____ (remind) that an attractive demonstration can begin understanding without finishing it. We thanked her for giving ____10____ (we) that beginning.",
+            "explanation": "Model is subject antecedent of that/which showed. Who is human, where not subject and what does not follow this expressed antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.stone-arch-054.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of easy.",
+            "material": "Standing beneath the arch\n\nDuring a visit to a restored bridge, our class met an engineer who explained its stone arch. She began by asking us ____1____ (look) at the shape from the side. The stones were arranged so that forces could pass through the arch towards its supports.\n\nWe did not climb on the bridge or remove any part of it. Instead, the engineer used a small model ____2____ showed the arrangement on a table. When its temporary support was taken away correctly, the model remained standing.\n\nI had expected the highest stone to do all the work. The demonstration made it ____3____ (easy) to understand the importance of the rest than a single photograph had. Each piece depended on the surrounding structure.\n\nAfter ____4____ (watch), we tried arranging the model under supervision. Several ____5____ (attempt) failed because the pieces were not positioned properly. The engineer asked us to stop and examine the gaps rather than push harder.\n\nHer explanation was about more than the stones. A real bridge also depends ____6____ the ground, its condition and the loads it carries. The small model helped with one idea; it was not a complete test of a full-sized structure.\n\nBack at school, we described the visit ____7____ (careful). We wanted to distinguish what we had seen from conclusions we could not make. The engineer, ____8____ patience had helped us ask better questions, sent a short note checking our description. It was a ____9____ (remind) that an attractive demonstration can begin understanding without finishing it. We thanked her for giving ____10____ (we) that beginning.",
+            "explanation": "Than a photograph had requires comparative easier or more easy. Plain, superlative and double comparative forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "easier",
+              "more easy"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "easy",
+                "easiest",
+                "more easier"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.stone-arch-054.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of watch.",
+            "material": "Standing beneath the arch\n\nDuring a visit to a restored bridge, our class met an engineer who explained its stone arch. She began by asking us ____1____ (look) at the shape from the side. The stones were arranged so that forces could pass through the arch towards its supports.\n\nWe did not climb on the bridge or remove any part of it. Instead, the engineer used a small model ____2____ showed the arrangement on a table. When its temporary support was taken away correctly, the model remained standing.\n\nI had expected the highest stone to do all the work. The demonstration made it ____3____ (easy) to understand the importance of the rest than a single photograph had. Each piece depended on the surrounding structure.\n\nAfter ____4____ (watch), we tried arranging the model under supervision. Several ____5____ (attempt) failed because the pieces were not positioned properly. The engineer asked us to stop and examine the gaps rather than push harder.\n\nHer explanation was about more than the stones. A real bridge also depends ____6____ the ground, its condition and the loads it carries. The small model helped with one idea; it was not a complete test of a full-sized structure.\n\nBack at school, we described the visit ____7____ (careful). We wanted to distinguish what we had seen from conclusions we could not make. The engineer, ____8____ patience had helped us ask better questions, sent a short note checking our description. It was a ____9____ (remind) that an attractive demonstration can begin understanding without finishing it. We thanked her for giving ____10____ (we) that beginning.",
+            "explanation": "After takes watching in the prepositional clause. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "watching"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "watch",
+                "watched",
+                "to watch"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.stone-arch-054.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of attempt.",
+            "material": "Standing beneath the arch\n\nDuring a visit to a restored bridge, our class met an engineer who explained its stone arch. She began by asking us ____1____ (look) at the shape from the side. The stones were arranged so that forces could pass through the arch towards its supports.\n\nWe did not climb on the bridge or remove any part of it. Instead, the engineer used a small model ____2____ showed the arrangement on a table. When its temporary support was taken away correctly, the model remained standing.\n\nI had expected the highest stone to do all the work. The demonstration made it ____3____ (easy) to understand the importance of the rest than a single photograph had. Each piece depended on the surrounding structure.\n\nAfter ____4____ (watch), we tried arranging the model under supervision. Several ____5____ (attempt) failed because the pieces were not positioned properly. The engineer asked us to stop and examine the gaps rather than push harder.\n\nHer explanation was about more than the stones. A real bridge also depends ____6____ the ground, its condition and the loads it carries. The small model helped with one idea; it was not a complete test of a full-sized structure.\n\nBack at school, we described the visit ____7____ (careful). We wanted to distinguish what we had seen from conclusions we could not make. The engineer, ____8____ patience had helped us ask better questions, sent a short note checking our description. It was a ____9____ (remind) that an attractive demonstration can begin understanding without finishing it. We thanked her for giving ____10____ (we) that beginning.",
+            "explanation": "Several requires plural attempts. Attempt is singular and attempting an activity form rather than the numbered trials.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "attempts"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "attempt",
+                "attempting"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.stone-arch-054.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "Standing beneath the arch\n\nDuring a visit to a restored bridge, our class met an engineer who explained its stone arch. She began by asking us ____1____ (look) at the shape from the side. The stones were arranged so that forces could pass through the arch towards its supports.\n\nWe did not climb on the bridge or remove any part of it. Instead, the engineer used a small model ____2____ showed the arrangement on a table. When its temporary support was taken away correctly, the model remained standing.\n\nI had expected the highest stone to do all the work. The demonstration made it ____3____ (easy) to understand the importance of the rest than a single photograph had. Each piece depended on the surrounding structure.\n\nAfter ____4____ (watch), we tried arranging the model under supervision. Several ____5____ (attempt) failed because the pieces were not positioned properly. The engineer asked us to stop and examine the gaps rather than push harder.\n\nHer explanation was about more than the stones. A real bridge also depends ____6____ the ground, its condition and the loads it carries. The small model helped with one idea; it was not a complete test of a full-sized structure.\n\nBack at school, we described the visit ____7____ (careful). We wanted to distinguish what we had seen from conclusions we could not make. The engineer, ____8____ patience had helped us ask better questions, sent a short note checking our description. It was a ____9____ (remind) that an attractive demonstration can begin understanding without finishing it. We thanked her for giving ____10____ (we) that beginning.",
+            "explanation": "Depends on/upon names the supporting conditions. From/with/at do not complete depend here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "on",
+              "upon"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "from",
+                "with",
+                "at"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.stone-arch-054.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of careful.",
+            "material": "Standing beneath the arch\n\nDuring a visit to a restored bridge, our class met an engineer who explained its stone arch. She began by asking us ____1____ (look) at the shape from the side. The stones were arranged so that forces could pass through the arch towards its supports.\n\nWe did not climb on the bridge or remove any part of it. Instead, the engineer used a small model ____2____ showed the arrangement on a table. When its temporary support was taken away correctly, the model remained standing.\n\nI had expected the highest stone to do all the work. The demonstration made it ____3____ (easy) to understand the importance of the rest than a single photograph had. Each piece depended on the surrounding structure.\n\nAfter ____4____ (watch), we tried arranging the model under supervision. Several ____5____ (attempt) failed because the pieces were not positioned properly. The engineer asked us to stop and examine the gaps rather than push harder.\n\nHer explanation was about more than the stones. A real bridge also depends ____6____ the ground, its condition and the loads it carries. The small model helped with one idea; it was not a complete test of a full-sized structure.\n\nBack at school, we described the visit ____7____ (careful). We wanted to distinguish what we had seen from conclusions we could not make. The engineer, ____8____ patience had helped us ask better questions, sent a short note checking our description. It was a ____9____ (remind) that an attractive demonstration can begin understanding without finishing it. We thanked her for giving ____10____ (we) that beginning.",
+            "explanation": "Carefully modifies described. Adjective careful and noun carefulness do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careful",
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.stone-arch-054.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "Standing beneath the arch\n\nDuring a visit to a restored bridge, our class met an engineer who explained its stone arch. She began by asking us ____1____ (look) at the shape from the side. The stones were arranged so that forces could pass through the arch towards its supports.\n\nWe did not climb on the bridge or remove any part of it. Instead, the engineer used a small model ____2____ showed the arrangement on a table. When its temporary support was taken away correctly, the model remained standing.\n\nI had expected the highest stone to do all the work. The demonstration made it ____3____ (easy) to understand the importance of the rest than a single photograph had. Each piece depended on the surrounding structure.\n\nAfter ____4____ (watch), we tried arranging the model under supervision. Several ____5____ (attempt) failed because the pieces were not positioned properly. The engineer asked us to stop and examine the gaps rather than push harder.\n\nHer explanation was about more than the stones. A real bridge also depends ____6____ the ground, its condition and the loads it carries. The small model helped with one idea; it was not a complete test of a full-sized structure.\n\nBack at school, we described the visit ____7____ (careful). We wanted to distinguish what we had seen from conclusions we could not make. The engineer, ____8____ patience had helped us ask better questions, sent a short note checking our description. It was a ____9____ (remind) that an attractive demonstration can begin understanding without finishing it. We thanked her for giving ____10____ (we) that beginning.",
+            "explanation": "Whose supplies possession before patience in the non-defining clause. The other relatives do not fill that relation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "whose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "which",
+                "that"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.stone-arch-054.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of remind.",
+            "material": "Standing beneath the arch\n\nDuring a visit to a restored bridge, our class met an engineer who explained its stone arch. She began by asking us ____1____ (look) at the shape from the side. The stones were arranged so that forces could pass through the arch towards its supports.\n\nWe did not climb on the bridge or remove any part of it. Instead, the engineer used a small model ____2____ showed the arrangement on a table. When its temporary support was taken away correctly, the model remained standing.\n\nI had expected the highest stone to do all the work. The demonstration made it ____3____ (easy) to understand the importance of the rest than a single photograph had. Each piece depended on the surrounding structure.\n\nAfter ____4____ (watch), we tried arranging the model under supervision. Several ____5____ (attempt) failed because the pieces were not positioned properly. The engineer asked us to stop and examine the gaps rather than push harder.\n\nHer explanation was about more than the stones. A real bridge also depends ____6____ the ground, its condition and the loads it carries. The small model helped with one idea; it was not a complete test of a full-sized structure.\n\nBack at school, we described the visit ____7____ (careful). We wanted to distinguish what we had seen from conclusions we could not make. The engineer, ____8____ patience had helped us ask better questions, sent a short note checking our description. It was a ____9____ (remind) that an attractive demonstration can begin understanding without finishing it. We thanked her for giving ____10____ (we) that beginning.",
+            "explanation": "A reminder requires the singular noun naming something that prompts understanding. Remind is a verb and reminded a past/participle form.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "reminder"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "remind",
+                "reminded"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.stone-arch-054.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of we.",
+            "material": "Standing beneath the arch\n\nDuring a visit to a restored bridge, our class met an engineer who explained its stone arch. She began by asking us ____1____ (look) at the shape from the side. The stones were arranged so that forces could pass through the arch towards its supports.\n\nWe did not climb on the bridge or remove any part of it. Instead, the engineer used a small model ____2____ showed the arrangement on a table. When its temporary support was taken away correctly, the model remained standing.\n\nI had expected the highest stone to do all the work. The demonstration made it ____3____ (easy) to understand the importance of the rest than a single photograph had. Each piece depended on the surrounding structure.\n\nAfter ____4____ (watch), we tried arranging the model under supervision. Several ____5____ (attempt) failed because the pieces were not positioned properly. The engineer asked us to stop and examine the gaps rather than push harder.\n\nHer explanation was about more than the stones. A real bridge also depends ____6____ the ground, its condition and the loads it carries. The small model helped with one idea; it was not a complete test of a full-sized structure.\n\nBack at school, we described the visit ____7____ (careful). We wanted to distinguish what we had seen from conclusions we could not make. The engineer, ____8____ patience had helped us ask better questions, sent a short note checking our description. It was a ____9____ (remind) that an attractive demonstration can begin understanding without finishing it. We thanked her for giving ____10____ (we) that beginning.",
+            "explanation": "Giving takes object us. We is subject and our/ours possessive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "fb2f1fac2cc2dd956e62b813aaa1e421ec242f01f5706f21c65268411d015b5a",
+      "reviewNotes": "Six original junior whole-passage grammar practices, mixing habitual present explanations and past classroom incidents. Fictional demonstrations, no invented empirical study or quantitative result. Same-author structure and alternative-form review; unknown forms reviewable, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
