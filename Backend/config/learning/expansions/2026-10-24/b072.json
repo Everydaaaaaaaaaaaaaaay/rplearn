@@ -1,0 +1,612 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b072",
+  "createdAt": "2026-10-23T23:26:24.875490+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.spare-chair-and-birdwatch-072",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · A spare chair and a watching place",
+        "summary": "A spare chair and a watching place，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "xschu-bnu2026-paper-key20261014-record.reading.closed_picture_mixed_section11",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Junior2 has two complete written four-question passages adapting the written-reading part of its level reference. Junior3 retains four emails with five questions and a separate five-question reading, all three-choice. Source supplies response structure, not prose."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three whole-practice originals. Fictional class/workshop/email cases; same-author all-option and evidence review only, not student or teacher calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.spare-chair-and-birdwatch-072",
+          "family": "reading_choice",
+          "label": "A spare chair and a watching place",
+          "candidateSHA256": "98a636beee21cd6b3317dee58b1c52b67ddee7a557fd01bca887ef274e440212",
+          "authorCheckSHA256": "b081af3101ea23be3c79978d37c69875fe6a92199eb3dc121d96e1410c43dded",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.spare-chair-and-birdwatch-072#chair",
+            "expansion.20261024.junior2.spare-chair-and-birdwatch-072#birds"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b072；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The spare chair\n\nThe drama club used our classroom on Friday afternoons. Every week, its members moved the desks to the sides and left a circle of chairs in the middle. On Monday, we had to arrange everything again before our first lesson.\n\nI suggested drawing the desk positions on the floor with tape. Our teacher agreed to removable tape after checking that it would not damage the surface. We marked four corners of each group of desks, rather than drawing around every leg. The club could now return them without needing our class photograph.\n\nThe next Monday, the desks were right, but there was a chair in front of the cupboard. I wrote a sharp note asking the club not to leave furniture in the way. Before I put it up, my friend suggested asking why the chair was there.\n\nA club member explained that an older visitor had come to talk about theatre. She needed a chair with arms, and the club had borrowed one from another room. They had left it near the cupboard for the caretaker to collect, but had forgotten to tell him.\n\nWe added one small box to our room checklist: borrowed furniture. The club would record where an extra item belonged and who was returning it. I kept my note in my bag. The problem needed a clearer handover, not a longer complaint. The room became easier to share once we explained the exceptions as well as the normal arrangement.\n\nWatching without moving closer\n\nOur class wanted to watch birds near the pond. The science teacher asked us to choose a place where we could see them without changing what they were doing. We selected a bench beside the path, well away from the water's edge.\n\nOn our first visit, two students walked towards a bird to get a larger photograph. The bird moved behind some plants. We could no longer see whether it had been eating or resting. The photograph was closer, but our observation had become less useful.\n\nThe next week, we stayed at the bench. Some students used binoculars, while others drew the shapes they could see. We agreed not to give the birds food to bring them nearer. We wanted to record their ordinary behaviour, not their response to our lunch.\n\nAt first, I wrote that a small brown bird was searching for insects. My partner asked what I had actually seen. It had turned several leaves over, but I had not seen what it picked up. I changed my note to describe the leaf-turning and placed my guess in a separate column.\n\nOur report contained fewer confident names and explanations than I expected. It also contained clearer evidence. We could compare what happened on two visits without pretending we had understood every movement. Keeping our distance had helped in two ways: it gave the birds space, and it reminded us that watching something carefully is different from knowing everything about it."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.spare-chair-and-birdwatch-072.chair.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the class use removable tape?",
+            "material": "The spare chair\n\nThe drama club used our classroom on Friday afternoons. Every week, its members moved the desks to the sides and left a circle of chairs in the middle. On Monday, we had to arrange everything again before our first lesson.\n\nI suggested drawing the desk positions on the floor with tape. Our teacher agreed to removable tape after checking that it would not damage the surface. We marked four corners of each group of desks, rather than drawing around every leg. The club could now return them without needing our class photograph.\n\nThe next Monday, the desks were right, but there was a chair in front of the cupboard. I wrote a sharp note asking the club not to leave furniture in the way. Before I put it up, my friend suggested asking why the chair was there.\n\nA club member explained that an older visitor had come to talk about theatre. She needed a chair with arms, and the club had borrowed one from another room. They had left it near the cupboard for the caretaker to collect, but had forgotten to tell him.\n\nWe added one small box to our room checklist: borrowed furniture. The club would record where an extra item belonged and who was returning it. I kept my note in my bag. The problem needed a clearer handover, not a longer complaint. The room became easier to share once we explained the exceptions as well as the normal arrangement.",
+            "explanation": "Tape marks desk positions. It neither bars the club nor decorates storage or assigns audience seats.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To decorate the cupboard"
+              },
+              {
+                "id": "o1",
+                "text": "To stop the club entering the room"
+              },
+              {
+                "id": "o2",
+                "text": "To mark seats for a theatre show"
+              },
+              {
+                "id": "o3",
+                "text": "To show where desk groups belonged"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.spare-chair-and-birdwatch-072.chair.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why was the extra chair different?",
+            "material": "The spare chair\n\nThe drama club used our classroom on Friday afternoons. Every week, its members moved the desks to the sides and left a circle of chairs in the middle. On Monday, we had to arrange everything again before our first lesson.\n\nI suggested drawing the desk positions on the floor with tape. Our teacher agreed to removable tape after checking that it would not damage the surface. We marked four corners of each group of desks, rather than drawing around every leg. The club could now return them without needing our class photograph.\n\nThe next Monday, the desks were right, but there was a chair in front of the cupboard. I wrote a sharp note asking the club not to leave furniture in the way. Before I put it up, my friend suggested asking why the chair was there.\n\nA club member explained that an older visitor had come to talk about theatre. She needed a chair with arms, and the club had borrowed one from another room. They had left it near the cupboard for the caretaker to collect, but had forgotten to tell him.\n\nWe added one small box to our room checklist: borrowed furniture. The club would record where an extra item belonged and who was returning it. I kept my note in my bag. The problem needed a clearer handover, not a longer complaint. The room became easier to share once we explained the exceptions as well as the normal arrangement.",
+            "explanation": "The visitor required arms. The other accounts invent origins or intent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The class had bought a new desk"
+              },
+              {
+                "id": "o1",
+                "text": "It had been made from classroom tape"
+              },
+              {
+                "id": "o2",
+                "text": "A visitor needed a chair with arms"
+              },
+              {
+                "id": "o3",
+                "text": "The club wanted to block the cupboard"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.spare-chair-and-birdwatch-072.chair.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What had the club forgotten to do?",
+            "material": "The spare chair\n\nThe drama club used our classroom on Friday afternoons. Every week, its members moved the desks to the sides and left a circle of chairs in the middle. On Monday, we had to arrange everything again before our first lesson.\n\nI suggested drawing the desk positions on the floor with tape. Our teacher agreed to removable tape after checking that it would not damage the surface. We marked four corners of each group of desks, rather than drawing around every leg. The club could now return them without needing our class photograph.\n\nThe next Monday, the desks were right, but there was a chair in front of the cupboard. I wrote a sharp note asking the club not to leave furniture in the way. Before I put it up, my friend suggested asking why the chair was there.\n\nA club member explained that an older visitor had come to talk about theatre. She needed a chair with arms, and the club had borrowed one from another room. They had left it near the cupboard for the caretaker to collect, but had forgotten to tell him.\n\nWe added one small box to our room checklist: borrowed furniture. The club would record where an extra item belonged and who was returning it. I kept my note in my bag. The problem needed a clearer handover, not a longer complaint. The room became easier to share once we explained the exceptions as well as the normal arrangement.",
+            "explanation": "Collection needed a handover to the caretaker. Leg outlines were deliberately unnecessary, and no cancellation or school-wide removal was intended.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Remove all desks from the school"
+              },
+              {
+                "id": "o1",
+                "text": "Draw every chair leg on the floor"
+              },
+              {
+                "id": "o2",
+                "text": "Cancel its Friday meeting"
+              },
+              {
+                "id": "o3",
+                "text": "Tell the caretaker about collecting the chair"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.spare-chair-and-birdwatch-072.chair.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the final checklist change address?",
+            "material": "The spare chair\n\nThe drama club used our classroom on Friday afternoons. Every week, its members moved the desks to the sides and left a circle of chairs in the middle. On Monday, we had to arrange everything again before our first lesson.\n\nI suggested drawing the desk positions on the floor with tape. Our teacher agreed to removable tape after checking that it would not damage the surface. We marked four corners of each group of desks, rather than drawing around every leg. The club could now return them without needing our class photograph.\n\nThe next Monday, the desks were right, but there was a chair in front of the cupboard. I wrote a sharp note asking the club not to leave furniture in the way. Before I put it up, my friend suggested asking why the chair was there.\n\nA club member explained that an older visitor had come to talk about theatre. She needed a chair with arms, and the club had borrowed one from another room. They had left it near the cupboard for the caretaker to collect, but had forgotten to tell him.\n\nWe added one small box to our room checklist: borrowed furniture. The club would record where an extra item belonged and who was returning it. I kept my note in my bag. The problem needed a clearer handover, not a longer complaint. The room became easier to share once we explained the exceptions as well as the normal arrangement.",
+            "explanation": "Borrowed furniture is an exception with a destination and return owner. Prices, complaint length and casting are not the checklist purpose.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "How to write a longer complaint"
+              },
+              {
+                "id": "o1",
+                "text": "Who should act in the next play"
+              },
+              {
+                "id": "o2",
+                "text": "The price of every desk"
+              },
+              {
+                "id": "o3",
+                "text": "Items outside the usual room arrangement"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.spare-chair-and-birdwatch-072.birds.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the class choose the bench?",
+            "material": "Watching without moving closer\n\nOur class wanted to watch birds near the pond. The science teacher asked us to choose a place where we could see them without changing what they were doing. We selected a bench beside the path, well away from the water's edge.\n\nOn our first visit, two students walked towards a bird to get a larger photograph. The bird moved behind some plants. We could no longer see whether it had been eating or resting. The photograph was closer, but our observation had become less useful.\n\nThe next week, we stayed at the bench. Some students used binoculars, while others drew the shapes they could see. We agreed not to give the birds food to bring them nearer. We wanted to record their ordinary behaviour, not their response to our lunch.\n\nAt first, I wrote that a small brown bird was searching for insects. My partner asked what I had actually seen. It had turned several leaves over, but I had not seen what it picked up. I changed my note to describe the leaf-turning and placed my guess in a separate column.\n\nOur report contained fewer confident names and explanations than I expected. It also contained clearer evidence. We could compare what happened on two visits without pretending we had understood every movement. Keeping our distance had helped in two ways: it gave the birds space, and it reminded us that watching something carefully is different from knowing everything about it.",
+            "explanation": "The bench gives a distant view. It is beside a path, and neither feeding nor guaranteed behaviour is promised.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It was inside the pond"
+              },
+              {
+                "id": "o1",
+                "text": "It guaranteed every bird would eat"
+              },
+              {
+                "id": "o2",
+                "text": "It allowed observation at a distance"
+              },
+              {
+                "id": "o3",
+                "text": "It provided free food for birds"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.spare-chair-and-birdwatch-072.birds.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happened when students approached one bird?",
+            "material": "Watching without moving closer\n\nOur class wanted to watch birds near the pond. The science teacher asked us to choose a place where we could see them without changing what they were doing. We selected a bench beside the path, well away from the water's edge.\n\nOn our first visit, two students walked towards a bird to get a larger photograph. The bird moved behind some plants. We could no longer see whether it had been eating or resting. The photograph was closer, but our observation had become less useful.\n\nThe next week, we stayed at the bench. Some students used binoculars, while others drew the shapes they could see. We agreed not to give the birds food to bring them nearer. We wanted to record their ordinary behaviour, not their response to our lunch.\n\nAt first, I wrote that a small brown bird was searching for insects. My partner asked what I had actually seen. It had turned several leaves over, but I had not seen what it picked up. I changed my note to describe the leaf-turning and placed my guess in a separate column.\n\nOur report contained fewer confident names and explanations than I expected. It also contained clearer evidence. We could compare what happened on two visits without pretending we had understood every movement. Keeping our distance had helped in two ways: it gave the birds space, and it reminded us that watching something carefully is different from knowing everything about it.",
+            "explanation": "It went behind plants. The other actions are not reported in that episode.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It moved out of clear view"
+              },
+              {
+                "id": "o1",
+                "text": "It stayed exactly where it was"
+              },
+              {
+                "id": "o2",
+                "text": "It began turning every leaf"
+              },
+              {
+                "id": "o3",
+                "text": "It posed beside their lunch"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.spare-chair-and-birdwatch-072.birds.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the narrator change the note?",
+            "material": "Watching without moving closer\n\nOur class wanted to watch birds near the pond. The science teacher asked us to choose a place where we could see them without changing what they were doing. We selected a bench beside the path, well away from the water's edge.\n\nOn our first visit, two students walked towards a bird to get a larger photograph. The bird moved behind some plants. We could no longer see whether it had been eating or resting. The photograph was closer, but our observation had become less useful.\n\nThe next week, we stayed at the bench. Some students used binoculars, while others drew the shapes they could see. We agreed not to give the birds food to bring them nearer. We wanted to record their ordinary behaviour, not their response to our lunch.\n\nAt first, I wrote that a small brown bird was searching for insects. My partner asked what I had actually seen. It had turned several leaves over, but I had not seen what it picked up. I changed my note to describe the leaf-turning and placed my guess in a separate column.\n\nOur report contained fewer confident names and explanations than I expected. It also contained clearer evidence. We could compare what happened on two visits without pretending we had understood every movement. Keeping our distance had helped in two ways: it gave the birds space, and it reminded us that watching something carefully is different from knowing everything about it.",
+            "explanation": "Leaf-turning was observed; insect-searching was inferred. Neither absence of leaves, compulsory naming nor an eaten report explains the correction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The note mixed a visible action with an unconfirmed explanation"
+              },
+              {
+                "id": "o1",
+                "text": "The bird had eaten the written report"
+              },
+              {
+                "id": "o2",
+                "text": "The partner had seen no leaves at all"
+              },
+              {
+                "id": "o3",
+                "text": "The teacher required every bird to have a name"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.spare-chair-and-birdwatch-072.birds.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the report described as having?",
+            "material": "Watching without moving closer\n\nOur class wanted to watch birds near the pond. The science teacher asked us to choose a place where we could see them without changing what they were doing. We selected a bench beside the path, well away from the water's edge.\n\nOn our first visit, two students walked towards a bird to get a larger photograph. The bird moved behind some plants. We could no longer see whether it had been eating or resting. The photograph was closer, but our observation had become less useful.\n\nThe next week, we stayed at the bench. Some students used binoculars, while others drew the shapes they could see. We agreed not to give the birds food to bring them nearer. We wanted to record their ordinary behaviour, not their response to our lunch.\n\nAt first, I wrote that a small brown bird was searching for insects. My partner asked what I had actually seen. It had turned several leaves over, but I had not seen what it picked up. I changed my note to describe the leaf-turning and placed my guess in a separate column.\n\nOur report contained fewer confident names and explanations than I expected. It also contained clearer evidence. We could compare what happened on two visits without pretending we had understood every movement. Keeping our distance had helped in two ways: it gave the birds space, and it reminded us that watching something carefully is different from knowing everything about it.",
+            "explanation": "The final paragraph values evidence without complete knowledge. It explicitly lacks universal explanation and includes notes/drawings, not only photographs.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only close photographs and no written notes"
+              },
+              {
+                "id": "o1",
+                "text": "A complete explanation of all bird behaviour"
+              },
+              {
+                "id": "o2",
+                "text": "Clearer evidence with some uncertainty retained"
+              },
+              {
+                "id": "o3",
+                "text": "Proof that all birds eat the same food"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "b41bf26396a1708775fcb151ad08f9529c3f3b6c05ad2f6d74137880ff262bda",
+      "reviewNotes": "Three whole-practice originals. Fictional class/workshop/email cases; same-author all-option and evidence review only, not student or teacher calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.instrument-messages-and-prints-072",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · A music afternoon and a print maker",
+        "summary": "A music afternoon and a print maker，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-chengdu2025-21cnjy23208601.reading.complete_section10",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Junior2 has two complete written four-question passages adapting the written-reading part of its level reference. Junior3 retains four emails with five questions and a separate five-question reading, all three-choice. Source supplies response structure, not prose."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three whole-practice originals. Fictional class/workshop/email cases; same-author all-option and evidence review only, not student or teacher calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.instrument-messages-and-prints-072",
+          "family": "reading_choice",
+          "label": "A music afternoon and a print maker",
+          "candidateSHA256": "536144ab68389c5a502df70f13c1fa0f932f1a695c4b2c56c6c7dce115494047",
+          "authorCheckSHA256": "b06efd850b8f65845b8a2a59c8f878386f25976c7276f63d574d859c0f27606b",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.instrument-messages-and-prints-072#emails",
+            "expansion.20261024.junior3.instrument-messages-and-prints-072#prints"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b072；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four messages about the music afternoon\n\nFrom: Mrs Lee\nSent: Monday, 09:00\nTo: Student helpers\nSubject: Saturday music afternoon\nWe expect twenty visitors at the community centre this Saturday. Please arrive at 13:00 to arrange chairs before doors open at 13:45. The demonstration begins at 14:00. Visitors may try the small percussion instruments afterwards. Please bring your helper badge; instruments and music stands will be provided. Let me know by Wednesday if you cannot come.\n\nFrom: Arun\nSent: Tuesday, 16:20\nTo: Mrs Lee and student helpers\nSubject: Re: Saturday music afternoon\nI can help with the chairs, but I need to leave at 14:30. Would someone else collect the visitor feedback cards at the end? My sister can stay until everything is finished, but she is a visitor rather than a registered helper. I have not promised that she will do the job.\n\nFrom: Mrs Lee\nSent: Wednesday, 10:15\nTo: Student helpers\nSubject: Updated numbers and duties\nThere are now twenty-six visitors, so we need six more chairs. The times are unchanged. Kim has agreed to collect the feedback cards at 15:00. Arun, you can leave as planned. Thank you for checking the role before offering it to someone else. Visitors should be free to enjoy the afternoon without unexpected duties.\n\nFrom: Kim\nSent: Friday, 17:10\nTo: Student helpers\nSubject: Final reminder\nThe main entrance is being repaired. On Saturday, helpers and visitors should use the garden gate on Oak Street. I will put a sign there before 13:00. Badges are still needed. I have printed the feedback cards, so nobody else needs to bring copies. Please read Wednesday's visitor number when setting out the chairs; the number in Monday's message is no longer correct.\n\nThe white parts of the picture\n\nWhen I visited a print maker's workshop, I expected her to spend most of the time adding marks. Instead, she showed me how she removed parts of a soft printing block. The areas left raised would carry ink. The lower areas would stay white on the final paper.\n\nShe drew a simple tree on a practice block and asked me which part I would cut first. I pointed to its trunk. She invited me to think again: did I want a black trunk or a white one? I wanted it black. Cutting it away would produce the opposite result.\n\nWe made a pencil plan with the intended white areas shaded lightly, then checked it against the drawing. The shading was only a planning sign; it would not appear on the finished print. The artist completed the cutting while I watched from a safe position. This was a demonstration, not permission for an untrained visitor to use sharp tools.\n\nAfter rolling ink over the raised surface, she pressed a sheet of paper onto it. The first print showed a small white break in one branch. I called it a mistake. She said it had not been in her plan, but she would examine it before deciding whether to alter the block. It might make the branch look lighter, or it might simply interrupt the shape.\n\nThe workshop changed how I looked at a printed picture. A blank area was not always an unfinished part waiting for more ink. Sometimes it was a deliberate shape made by removing material. I had been paying attention only to what was added, and missing half the decisions."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.instrument-messages-and-prints-072.emails.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How many visitor chairs should helpers set out?",
+            "material": "Four messages about the music afternoon\n\nFrom: Mrs Lee\nSent: Monday, 09:00\nTo: Student helpers\nSubject: Saturday music afternoon\nWe expect twenty visitors at the community centre this Saturday. Please arrive at 13:00 to arrange chairs before doors open at 13:45. The demonstration begins at 14:00. Visitors may try the small percussion instruments afterwards. Please bring your helper badge; instruments and music stands will be provided. Let me know by Wednesday if you cannot come.\n\nFrom: Arun\nSent: Tuesday, 16:20\nTo: Mrs Lee and student helpers\nSubject: Re: Saturday music afternoon\nI can help with the chairs, but I need to leave at 14:30. Would someone else collect the visitor feedback cards at the end? My sister can stay until everything is finished, but she is a visitor rather than a registered helper. I have not promised that she will do the job.\n\nFrom: Mrs Lee\nSent: Wednesday, 10:15\nTo: Student helpers\nSubject: Updated numbers and duties\nThere are now twenty-six visitors, so we need six more chairs. The times are unchanged. Kim has agreed to collect the feedback cards at 15:00. Arun, you can leave as planned. Thank you for checking the role before offering it to someone else. Visitors should be free to enjoy the afternoon without unexpected duties.\n\nFrom: Kim\nSent: Friday, 17:10\nTo: Student helpers\nSubject: Final reminder\nThe main entrance is being repaired. On Saturday, helpers and visitors should use the garden gate on Oak Street. I will put a sign there before 13:00. Badges are still needed. I have printed the feedback cards, so nobody else needs to bring copies. Please read Wednesday's visitor number when setting out the chairs; the number in Monday's message is no longer correct.",
+            "explanation": "Wednesday updates the total to26. Twenty is obsolete and six is only the increase.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Twenty"
+              },
+              {
+                "id": "o1",
+                "text": "Twenty-six"
+              },
+              {
+                "id": "o2",
+                "text": "Six"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.instrument-messages-and-prints-072.emails.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When should helpers arrive?",
+            "material": "Four messages about the music afternoon\n\nFrom: Mrs Lee\nSent: Monday, 09:00\nTo: Student helpers\nSubject: Saturday music afternoon\nWe expect twenty visitors at the community centre this Saturday. Please arrive at 13:00 to arrange chairs before doors open at 13:45. The demonstration begins at 14:00. Visitors may try the small percussion instruments afterwards. Please bring your helper badge; instruments and music stands will be provided. Let me know by Wednesday if you cannot come.\n\nFrom: Arun\nSent: Tuesday, 16:20\nTo: Mrs Lee and student helpers\nSubject: Re: Saturday music afternoon\nI can help with the chairs, but I need to leave at 14:30. Would someone else collect the visitor feedback cards at the end? My sister can stay until everything is finished, but she is a visitor rather than a registered helper. I have not promised that she will do the job.\n\nFrom: Mrs Lee\nSent: Wednesday, 10:15\nTo: Student helpers\nSubject: Updated numbers and duties\nThere are now twenty-six visitors, so we need six more chairs. The times are unchanged. Kim has agreed to collect the feedback cards at 15:00. Arun, you can leave as planned. Thank you for checking the role before offering it to someone else. Visitors should be free to enjoy the afternoon without unexpected duties.\n\nFrom: Kim\nSent: Friday, 17:10\nTo: Student helpers\nSubject: Final reminder\nThe main entrance is being repaired. On Saturday, helpers and visitors should use the garden gate on Oak Street. I will put a sign there before 13:00. Badges are still needed. I have printed the feedback cards, so nobody else needs to bring copies. Please read Wednesday's visitor number when setting out the chairs; the number in Monday's message is no longer correct.",
+            "explanation": "Arrival remains13:00. 13:45 is visitor entry and15:00 feedback collection.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At15:00"
+              },
+              {
+                "id": "o1",
+                "text": "At13:45"
+              },
+              {
+                "id": "o2",
+                "text": "At13:00"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.instrument-messages-and-prints-072.emails.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who will collect feedback cards?",
+            "material": "Four messages about the music afternoon\n\nFrom: Mrs Lee\nSent: Monday, 09:00\nTo: Student helpers\nSubject: Saturday music afternoon\nWe expect twenty visitors at the community centre this Saturday. Please arrive at 13:00 to arrange chairs before doors open at 13:45. The demonstration begins at 14:00. Visitors may try the small percussion instruments afterwards. Please bring your helper badge; instruments and music stands will be provided. Let me know by Wednesday if you cannot come.\n\nFrom: Arun\nSent: Tuesday, 16:20\nTo: Mrs Lee and student helpers\nSubject: Re: Saturday music afternoon\nI can help with the chairs, but I need to leave at 14:30. Would someone else collect the visitor feedback cards at the end? My sister can stay until everything is finished, but she is a visitor rather than a registered helper. I have not promised that she will do the job.\n\nFrom: Mrs Lee\nSent: Wednesday, 10:15\nTo: Student helpers\nSubject: Updated numbers and duties\nThere are now twenty-six visitors, so we need six more chairs. The times are unchanged. Kim has agreed to collect the feedback cards at 15:00. Arun, you can leave as planned. Thank you for checking the role before offering it to someone else. Visitors should be free to enjoy the afternoon without unexpected duties.\n\nFrom: Kim\nSent: Friday, 17:10\nTo: Student helpers\nSubject: Final reminder\nThe main entrance is being repaired. On Saturday, helpers and visitors should use the garden gate on Oak Street. I will put a sign there before 13:00. Badges are still needed. I have printed the feedback cards, so nobody else needs to bring copies. Please read Wednesday's visitor number when setting out the chairs; the number in Monday's message is no longer correct.",
+            "explanation": "Wednesday assigns Kim. The sister has no promised duty and Arun leaves14:30.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Arun’s sister"
+              },
+              {
+                "id": "o1",
+                "text": "Arun after15:00"
+              },
+              {
+                "id": "o2",
+                "text": "Kim"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.instrument-messages-and-prints-072.emails.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Friday’s message change?",
+            "material": "Four messages about the music afternoon\n\nFrom: Mrs Lee\nSent: Monday, 09:00\nTo: Student helpers\nSubject: Saturday music afternoon\nWe expect twenty visitors at the community centre this Saturday. Please arrive at 13:00 to arrange chairs before doors open at 13:45. The demonstration begins at 14:00. Visitors may try the small percussion instruments afterwards. Please bring your helper badge; instruments and music stands will be provided. Let me know by Wednesday if you cannot come.\n\nFrom: Arun\nSent: Tuesday, 16:20\nTo: Mrs Lee and student helpers\nSubject: Re: Saturday music afternoon\nI can help with the chairs, but I need to leave at 14:30. Would someone else collect the visitor feedback cards at the end? My sister can stay until everything is finished, but she is a visitor rather than a registered helper. I have not promised that she will do the job.\n\nFrom: Mrs Lee\nSent: Wednesday, 10:15\nTo: Student helpers\nSubject: Updated numbers and duties\nThere are now twenty-six visitors, so we need six more chairs. The times are unchanged. Kim has agreed to collect the feedback cards at 15:00. Arun, you can leave as planned. Thank you for checking the role before offering it to someone else. Visitors should be free to enjoy the afternoon without unexpected duties.\n\nFrom: Kim\nSent: Friday, 17:10\nTo: Student helpers\nSubject: Final reminder\nThe main entrance is being repaired. On Saturday, helpers and visitors should use the garden gate on Oak Street. I will put a sign there before 13:00. Badges are still needed. I have printed the feedback cards, so nobody else needs to bring copies. Please read Wednesday's visitor number when setting out the chairs; the number in Monday's message is no longer correct.",
+            "explanation": "It redirects entry to the garden gate. Times and badges remain unchanged.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The entrance to use"
+              },
+              {
+                "id": "o1",
+                "text": "The demonstration time"
+              },
+              {
+                "id": "o2",
+                "text": "The requirement to wear badges"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.instrument-messages-and-prints-072.emails.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does Mrs Lee praise Arun’s check?",
+            "material": "Four messages about the music afternoon\n\nFrom: Mrs Lee\nSent: Monday, 09:00\nTo: Student helpers\nSubject: Saturday music afternoon\nWe expect twenty visitors at the community centre this Saturday. Please arrive at 13:00 to arrange chairs before doors open at 13:45. The demonstration begins at 14:00. Visitors may try the small percussion instruments afterwards. Please bring your helper badge; instruments and music stands will be provided. Let me know by Wednesday if you cannot come.\n\nFrom: Arun\nSent: Tuesday, 16:20\nTo: Mrs Lee and student helpers\nSubject: Re: Saturday music afternoon\nI can help with the chairs, but I need to leave at 14:30. Would someone else collect the visitor feedback cards at the end? My sister can stay until everything is finished, but she is a visitor rather than a registered helper. I have not promised that she will do the job.\n\nFrom: Mrs Lee\nSent: Wednesday, 10:15\nTo: Student helpers\nSubject: Updated numbers and duties\nThere are now twenty-six visitors, so we need six more chairs. The times are unchanged. Kim has agreed to collect the feedback cards at 15:00. Arun, you can leave as planned. Thank you for checking the role before offering it to someone else. Visitors should be free to enjoy the afternoon without unexpected duties.\n\nFrom: Kim\nSent: Friday, 17:10\nTo: Student helpers\nSubject: Final reminder\nThe main entrance is being repaired. On Saturday, helpers and visitors should use the garden gate on Oak Street. I will put a sign there before 13:00. Badges are still needed. I have printed the feedback cards, so nobody else needs to bring copies. Please read Wednesday's visitor number when setting out the chairs; the number in Monday's message is no longer correct.",
+            "explanation": "The reply protects visitors from unagreed duties. Fees are absent and helpers are not all released early.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It allowed every helper to leave before the event"
+              },
+              {
+                "id": "o1",
+                "text": "It increased the fee paid by his sister"
+              },
+              {
+                "id": "o2",
+                "text": "It avoided assigning an unexpected job to a visitor"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.instrument-messages-and-prints-072.prints.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which parts of the block carry ink?",
+            "material": "The white parts of the picture\n\nWhen I visited a print maker's workshop, I expected her to spend most of the time adding marks. Instead, she showed me how she removed parts of a soft printing block. The areas left raised would carry ink. The lower areas would stay white on the final paper.\n\nShe drew a simple tree on a practice block and asked me which part I would cut first. I pointed to its trunk. She invited me to think again: did I want a black trunk or a white one? I wanted it black. Cutting it away would produce the opposite result.\n\nWe made a pencil plan with the intended white areas shaded lightly, then checked it against the drawing. The shading was only a planning sign; it would not appear on the finished print. The artist completed the cutting while I watched from a safe position. This was a demonstration, not permission for an untrained visitor to use sharp tools.\n\nAfter rolling ink over the raised surface, she pressed a sheet of paper onto it. The first print showed a small white break in one branch. I called it a mistake. She said it had not been in her plan, but she would examine it before deciding whether to alter the block. It might make the branch look lighter, or it might simply interrupt the shape.\n\nThe workshop changed how I looked at a printed picture. A blank area was not always an unfinished part waiting for more ink. Sometimes it was a deliberate shape made by removing material. I had been paying attention only to what was added, and missing half the decisions.",
+            "explanation": "Raised areas receive ink; cut areas remain white on paper.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only the deepest cuts"
+              },
+              {
+                "id": "o1",
+                "text": "The raised parts"
+              },
+              {
+                "id": "o2",
+                "text": "All parts below the surface"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.instrument-messages-and-prints-072.prints.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the narrator reconsider cutting the trunk?",
+            "material": "The white parts of the picture\n\nWhen I visited a print maker's workshop, I expected her to spend most of the time adding marks. Instead, she showed me how she removed parts of a soft printing block. The areas left raised would carry ink. The lower areas would stay white on the final paper.\n\nShe drew a simple tree on a practice block and asked me which part I would cut first. I pointed to its trunk. She invited me to think again: did I want a black trunk or a white one? I wanted it black. Cutting it away would produce the opposite result.\n\nWe made a pencil plan with the intended white areas shaded lightly, then checked it against the drawing. The shading was only a planning sign; it would not appear on the finished print. The artist completed the cutting while I watched from a safe position. This was a demonstration, not permission for an untrained visitor to use sharp tools.\n\nAfter rolling ink over the raised surface, she pressed a sheet of paper onto it. The first print showed a small white break in one branch. I called it a mistake. She said it had not been in her plan, but she would examine it before deciding whether to alter the block. It might make the branch look lighter, or it might simply interrupt the shape.\n\nThe workshop changed how I looked at a printed picture. A blank area was not always an unfinished part waiting for more ink. Sometimes it was a deliberate shape made by removing material. I had been paying attention only to what was added, and missing half the decisions.",
+            "explanation": "Removing it would make a white trunk, opposite the desired black trunk.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The trunk should print black"
+              },
+              {
+                "id": "o1",
+                "text": "The tree must have no trunk"
+              },
+              {
+                "id": "o2",
+                "text": "The artist wants only white paper"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.instrument-messages-and-prints-072.prints.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the light pencil shading used for?",
+            "material": "The white parts of the picture\n\nWhen I visited a print maker's workshop, I expected her to spend most of the time adding marks. Instead, she showed me how she removed parts of a soft printing block. The areas left raised would carry ink. The lower areas would stay white on the final paper.\n\nShe drew a simple tree on a practice block and asked me which part I would cut first. I pointed to its trunk. She invited me to think again: did I want a black trunk or a white one? I wanted it black. Cutting it away would produce the opposite result.\n\nWe made a pencil plan with the intended white areas shaded lightly, then checked it against the drawing. The shading was only a planning sign; it would not appear on the finished print. The artist completed the cutting while I watched from a safe position. This was a demonstration, not permission for an untrained visitor to use sharp tools.\n\nAfter rolling ink over the raised surface, she pressed a sheet of paper onto it. The first print showed a small white break in one branch. I called it a mistake. She said it had not been in her plan, but she would examine it before deciding whether to alter the block. It might make the branch look lighter, or it might simply interrupt the shape.\n\nThe workshop changed how I looked at a printed picture. A blank area was not always an unfinished part waiting for more ink. Sometimes it was a deliberate shape made by removing material. I had been paying attention only to what was added, and missing half the decisions.",
+            "explanation": "The text explicitly calls it a plan sign, absent in the final print. It gives no independent tool authorization.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Showing where visitors may use tools alone"
+              },
+              {
+                "id": "o1",
+                "text": "Planning which areas should be white"
+              },
+              {
+                "id": "o2",
+                "text": "Adding colour to the final print"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.instrument-messages-and-prints-072.prints.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How does the artist respond to the unplanned break?",
+            "material": "The white parts of the picture\n\nWhen I visited a print maker's workshop, I expected her to spend most of the time adding marks. Instead, she showed me how she removed parts of a soft printing block. The areas left raised would carry ink. The lower areas would stay white on the final paper.\n\nShe drew a simple tree on a practice block and asked me which part I would cut first. I pointed to its trunk. She invited me to think again: did I want a black trunk or a white one? I wanted it black. Cutting it away would produce the opposite result.\n\nWe made a pencil plan with the intended white areas shaded lightly, then checked it against the drawing. The shading was only a planning sign; it would not appear on the finished print. The artist completed the cutting while I watched from a safe position. This was a demonstration, not permission for an untrained visitor to use sharp tools.\n\nAfter rolling ink over the raised surface, she pressed a sheet of paper onto it. The first print showed a small white break in one branch. I called it a mistake. She said it had not been in her plan, but she would examine it before deciding whether to alter the block. It might make the branch look lighter, or it might simply interrupt the shape.\n\nThe workshop changed how I looked at a printed picture. A blank area was not always an unfinished part waiting for more ink. Sometimes it was a deliberate shape made by removing material. I had been paying attention only to what was added, and missing half the decisions.",
+            "explanation": "She evaluates lightness versus interruption. She neither guarantees success nor destroys the work.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She immediately destroys the entire block"
+              },
+              {
+                "id": "o1",
+                "text": "She considers its effect before changing anything"
+              },
+              {
+                "id": "o2",
+                "text": "She declares every accident successful"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.instrument-messages-and-prints-072.prints.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the narrator learn about blank areas?",
+            "material": "The white parts of the picture\n\nWhen I visited a print maker's workshop, I expected her to spend most of the time adding marks. Instead, she showed me how she removed parts of a soft printing block. The areas left raised would carry ink. The lower areas would stay white on the final paper.\n\nShe drew a simple tree on a practice block and asked me which part I would cut first. I pointed to its trunk. She invited me to think again: did I want a black trunk or a white one? I wanted it black. Cutting it away would produce the opposite result.\n\nWe made a pencil plan with the intended white areas shaded lightly, then checked it against the drawing. The shading was only a planning sign; it would not appear on the finished print. The artist completed the cutting while I watched from a safe position. This was a demonstration, not permission for an untrained visitor to use sharp tools.\n\nAfter rolling ink over the raised surface, she pressed a sheet of paper onto it. The first print showed a small white break in one branch. I called it a mistake. She said it had not been in her plan, but she would examine it before deciding whether to alter the block. It might make the branch look lighter, or it might simply interrupt the shape.\n\nThe workshop changed how I looked at a printed picture. A blank area was not always an unfinished part waiting for more ink. Sometimes it was a deliberate shape made by removing material. I had been paying attention only to what was added, and missing half the decisions.",
+            "explanation": "The conclusion recognises intentional white shape. It rejects automatic incompleteness and the print uses ink.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They always show unfinished work"
+              },
+              {
+                "id": "o1",
+                "text": "They prove that no ink was used anywhere"
+              },
+              {
+                "id": "o2",
+                "text": "They can be deliberate parts of a design"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "ddd49b63d30d1cf95b5b528c6bf107d6668c5ee49108f1a2a554ed990347b718",
+      "reviewNotes": "Three whole-practice originals. Fictional class/workshop/email cases; same-author all-option and evidence review only, not student or teacher calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
