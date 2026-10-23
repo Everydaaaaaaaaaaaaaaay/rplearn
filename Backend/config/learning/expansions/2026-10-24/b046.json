@@ -1,0 +1,804 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b046",
+  "createdAt": "2026-10-23T21:43:27.247111+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.exchange-and-riverside-diaries-046",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Two diaries: a visitor and a riverside ride",
+        "summary": "Two diaries: a visitor and a riverside ride，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.shared_insertion"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Pairs two complete four-gap/five-candidate diaries, each with a use-once rule and one unused sentence, following the recorded task structure."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete new junior insertion texts paired as two practices. Diary and guide source structures retained, including candidate counts and quoted/heading gaps. Same-author cohesion and all-alternative review only, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.exchange-and-riverside-diaries-046",
+          "family": "shared_insertion",
+          "label": "Two diaries: a visitor and a riverside ride",
+          "candidateSHA256": "5c8c36894d762108a772136c144ab7698cb3f92fdc92f0a219b5bf895ae4af7b",
+          "authorCheckSHA256": "91834bcf3e85a75bfb5730e4279276fdaad894b72381052e369c97791c371a59",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.exchange-and-riverside-diaries-046#visitor",
+            "expansion.20261024.junior2.exchange-and-riverside-diaries-046#ride"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b046；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A visitor at lunch\n\nTuesday, 14 May\n\nToday a student from our partner school spent the morning with our class. At lunch, I showed her the canteen menu. She could read some English, but several dish names were unfamiliar. ____1____ Then we walked along the counter together.\n\nShe pointed to a dish and asked whether it contained eggs. I was about to guess from its appearance. ____2____ So I asked the member of staff instead. He checked the ingredients and gave her a clear answer.\n\nWe chose our food and found two seats. I worried that I would have to keep talking throughout lunch. In fact, my visitor asked me about the clubs on a poster behind us. ____3____ Soon I was explaining our film club and asking what activities she enjoyed at home.\n\nAfter lunch, she thanked me for helping. I had expected to need impressive facts about our school. What mattered more was taking time with ordinary questions. ____4____ Tomorrow I will show her where the club meets, and she has promised to bring a photograph of her own school.\n\nA different route to the river\n\nSunday, 22 June\n\nThis morning my aunt and I cycled to the riverside café. We usually take the main road, but part of it was closed for repairs. Before leaving, we checked a map. ____1____ It was longer, but it used quieter streets.\n\nAt the first turn, I wanted to keep going straight. My aunt asked us to stop somewhere safe and look again. ____2____ The river was on the other side of that line, so we needed the road leading to the bridge.\n\nWe reached the café later than usual. I apologised for my mistake, but my aunt was not annoyed. We had allowed extra time and had no appointment to miss. ____3____ We sat outside and watched boats pass while we waited for our drinks.\n\nOn the way home, I recognised several corners without looking at the map. Still, we checked before the bridge because two streets looked similar. ____4____ Knowing when to stop and confirm the route had been more useful than pretending I could remember every turn."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.exchange-and-riverside-diaries-046.visitor.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "A visitor at lunch\n\nTuesday, 14 May\n\nToday a student from our partner school spent the morning with our class. At lunch, I showed her the canteen menu. She could read some English, but several dish names were unfamiliar. ____1____ Then we walked along the counter together.\n\nShe pointed to a dish and asked whether it contained eggs. I was about to guess from its appearance. ____2____ So I asked the member of staff instead. He checked the ingredients and gave her a clear answer.\n\nWe chose our food and found two seats. I worried that I would have to keep talking throughout lunch. In fact, my visitor asked me about the clubs on a poster behind us. ____3____ Soon I was explaining our film club and asking what activities she enjoyed at home.\n\nAfter lunch, she thanked me for helping. I had expected to need impressive facts about our school. What mattered more was taking time with ordinary questions. ____4____ Tomorrow I will show her where the club meets, and she has promised to bring a photograph of her own school.",
+            "explanation": "B responds to unfamiliar dish names while preserving the visitor’s choice. A refers to a later question, C reflects at the end and D cautions about ingredients. E contradicts the lunch they enjoy.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Her question gave our conversation a natural beginning."
+              },
+              {
+                "id": "o1",
+                "text": "B. I explained the words I knew without choosing for her."
+              },
+              {
+                "id": "o2",
+                "text": "C. A friendly visit could grow from those small exchanges."
+              },
+              {
+                "id": "o3",
+                "text": "D. But the colour of the food could not tell me everything in it."
+              },
+              {
+                "id": "o4",
+                "text": "E. I decided she should eat nothing and leave immediately."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.exchange-and-riverside-diaries-046.visitor.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "A visitor at lunch\n\nTuesday, 14 May\n\nToday a student from our partner school spent the morning with our class. At lunch, I showed her the canteen menu. She could read some English, but several dish names were unfamiliar. ____1____ Then we walked along the counter together.\n\nShe pointed to a dish and asked whether it contained eggs. I was about to guess from its appearance. ____2____ So I asked the member of staff instead. He checked the ingredients and gave her a clear answer.\n\nWe chose our food and found two seats. I worried that I would have to keep talking throughout lunch. In fact, my visitor asked me about the clubs on a poster behind us. ____3____ Soon I was explaining our film club and asking what activities she enjoyed at home.\n\nAfter lunch, she thanked me for helping. I had expected to need impressive facts about our school. What mattered more was taking time with ordinary questions. ____4____ Tomorrow I will show her where the club meets, and she has promised to bring a photograph of her own school.",
+            "explanation": "D checks the unsafe impulse to infer ingredients from appearance and leads to asking staff. A is the club question, B menu language and C final reflection. E abandons the visit rather than checking.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Her question gave our conversation a natural beginning."
+              },
+              {
+                "id": "o1",
+                "text": "B. I explained the words I knew without choosing for her."
+              },
+              {
+                "id": "o2",
+                "text": "C. A friendly visit could grow from those small exchanges."
+              },
+              {
+                "id": "o3",
+                "text": "D. But the colour of the food could not tell me everything in it."
+              },
+              {
+                "id": "o4",
+                "text": "E. I decided she should eat nothing and leave immediately."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.exchange-and-riverside-diaries-046.visitor.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "A visitor at lunch\n\nTuesday, 14 May\n\nToday a student from our partner school spent the morning with our class. At lunch, I showed her the canteen menu. She could read some English, but several dish names were unfamiliar. ____1____ Then we walked along the counter together.\n\nShe pointed to a dish and asked whether it contained eggs. I was about to guess from its appearance. ____2____ So I asked the member of staff instead. He checked the ingredients and gave her a clear answer.\n\nWe chose our food and found two seats. I worried that I would have to keep talking throughout lunch. In fact, my visitor asked me about the clubs on a poster behind us. ____3____ Soon I was explaining our film club and asking what activities she enjoyed at home.\n\nAfter lunch, she thanked me for helping. I had expected to need impressive facts about our school. What mattered more was taking time with ordinary questions. ____4____ Tomorrow I will show her where the club meets, and she has promised to bring a photograph of her own school.",
+            "explanation": "A refers to the visitor asking about the poster and prepares the club conversation. B belongs at the menu, C concludes and D concerns ingredients. E contradicts the continuing friendly lunch.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Her question gave our conversation a natural beginning."
+              },
+              {
+                "id": "o1",
+                "text": "B. I explained the words I knew without choosing for her."
+              },
+              {
+                "id": "o2",
+                "text": "C. A friendly visit could grow from those small exchanges."
+              },
+              {
+                "id": "o3",
+                "text": "D. But the colour of the food could not tell me everything in it."
+              },
+              {
+                "id": "o4",
+                "text": "E. I decided she should eat nothing and leave immediately."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.exchange-and-riverside-diaries-046.visitor.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "A visitor at lunch\n\nTuesday, 14 May\n\nToday a student from our partner school spent the morning with our class. At lunch, I showed her the canteen menu. She could read some English, but several dish names were unfamiliar. ____1____ Then we walked along the counter together.\n\nShe pointed to a dish and asked whether it contained eggs. I was about to guess from its appearance. ____2____ So I asked the member of staff instead. He checked the ingredients and gave her a clear answer.\n\nWe chose our food and found two seats. I worried that I would have to keep talking throughout lunch. In fact, my visitor asked me about the clubs on a poster behind us. ____3____ Soon I was explaining our film club and asking what activities she enjoyed at home.\n\nAfter lunch, she thanked me for helping. I had expected to need impressive facts about our school. What mattered more was taking time with ordinary questions. ____4____ Tomorrow I will show her where the club meets, and she has promised to bring a photograph of her own school.",
+            "explanation": "C sums up ordinary questions leading to friendship and the next meeting. A is the earlier starting question, B menu help and D ingredients. E is incompatible with the planned next-day visit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Her question gave our conversation a natural beginning."
+              },
+              {
+                "id": "o1",
+                "text": "B. I explained the words I knew without choosing for her."
+              },
+              {
+                "id": "o2",
+                "text": "C. A friendly visit could grow from those small exchanges."
+              },
+              {
+                "id": "o3",
+                "text": "D. But the colour of the food could not tell me everything in it."
+              },
+              {
+                "id": "o4",
+                "text": "E. I decided she should eat nothing and leave immediately."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.exchange-and-riverside-diaries-046.ride.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "A different route to the river\n\nSunday, 22 June\n\nThis morning my aunt and I cycled to the riverside café. We usually take the main road, but part of it was closed for repairs. Before leaving, we checked a map. ____1____ It was longer, but it used quieter streets.\n\nAt the first turn, I wanted to keep going straight. My aunt asked us to stop somewhere safe and look again. ____2____ The river was on the other side of that line, so we needed the road leading to the bridge.\n\nWe reached the café later than usual. I apologised for my mistake, but my aunt was not annoyed. We had allowed extra time and had no appointment to miss. ____3____ We sat outside and watched boats pass while we waited for our drinks.\n\nOn the way home, I recognised several corners without looking at the map. Still, we checked before the bridge because two streets looked similar. ____4____ Knowing when to stop and confirm the route had been more useful than pretending I could remember every turn.",
+            "explanation": "B explains the new route and gives longer one in the following sentence a referent. A is café time, C later reflection and E a particular map error. D contradicts consulting the map on the journey.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. The pause gave us a chance to enjoy the place without rushing."
+              },
+              {
+                "id": "o1",
+                "text": "B. We chose an alternative route through a nearby village."
+              },
+              {
+                "id": "o2",
+                "text": "C. I had learned part of the route, not every detail of it."
+              },
+              {
+                "id": "o3",
+                "text": "D. We threw the map away before leaving the house."
+              },
+              {
+                "id": "o4",
+                "text": "E. I had confused the railway line with the river on the map."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.exchange-and-riverside-diaries-046.ride.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "A different route to the river\n\nSunday, 22 June\n\nThis morning my aunt and I cycled to the riverside café. We usually take the main road, but part of it was closed for repairs. Before leaving, we checked a map. ____1____ It was longer, but it used quieter streets.\n\nAt the first turn, I wanted to keep going straight. My aunt asked us to stop somewhere safe and look again. ____2____ The river was on the other side of that line, so we needed the road leading to the bridge.\n\nWe reached the café later than usual. I apologised for my mistake, but my aunt was not annoyed. We had allowed extra time and had no appointment to miss. ____3____ We sat outside and watched boats pass while we waited for our drinks.\n\nOn the way home, I recognised several corners without looking at the map. Still, we checked before the bridge because two streets looked similar. ____4____ Knowing when to stop and confirm the route had been more useful than pretending I could remember every turn.",
+            "explanation": "E names the mistaken line, explaining the river on the other side and the bridge correction. A concerns the café, B initial planning and C final learning. D makes the ongoing map check impossible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. The pause gave us a chance to enjoy the place without rushing."
+              },
+              {
+                "id": "o1",
+                "text": "B. We chose an alternative route through a nearby village."
+              },
+              {
+                "id": "o2",
+                "text": "C. I had learned part of the route, not every detail of it."
+              },
+              {
+                "id": "o3",
+                "text": "D. We threw the map away before leaving the house."
+              },
+              {
+                "id": "o4",
+                "text": "E. I had confused the railway line with the river on the map."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.junior2.exchange-and-riverside-diaries-046.ride.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "A different route to the river\n\nSunday, 22 June\n\nThis morning my aunt and I cycled to the riverside café. We usually take the main road, but part of it was closed for repairs. Before leaving, we checked a map. ____1____ It was longer, but it used quieter streets.\n\nAt the first turn, I wanted to keep going straight. My aunt asked us to stop somewhere safe and look again. ____2____ The river was on the other side of that line, so we needed the road leading to the bridge.\n\nWe reached the café later than usual. I apologised for my mistake, but my aunt was not annoyed. We had allowed extra time and had no appointment to miss. ____3____ We sat outside and watched boats pass while we waited for our drinks.\n\nOn the way home, I recognised several corners without looking at the map. Still, we checked before the bridge because two streets looked similar. ____4____ Knowing when to stop and confirm the route had been more useful than pretending I could remember every turn.",
+            "explanation": "A develops having no urgent appointment into an unhurried café stop. B is departure, C conclusion and E the earlier error. D contradicts their careful use of the map.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. The pause gave us a chance to enjoy the place without rushing."
+              },
+              {
+                "id": "o1",
+                "text": "B. We chose an alternative route through a nearby village."
+              },
+              {
+                "id": "o2",
+                "text": "C. I had learned part of the route, not every detail of it."
+              },
+              {
+                "id": "o3",
+                "text": "D. We threw the map away before leaving the house."
+              },
+              {
+                "id": "o4",
+                "text": "E. I had confused the railway line with the river on the map."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.exchange-and-riverside-diaries-046.ride.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "A different route to the river\n\nSunday, 22 June\n\nThis morning my aunt and I cycled to the riverside café. We usually take the main road, but part of it was closed for repairs. Before leaving, we checked a map. ____1____ It was longer, but it used quieter streets.\n\nAt the first turn, I wanted to keep going straight. My aunt asked us to stop somewhere safe and look again. ____2____ The river was on the other side of that line, so we needed the road leading to the bridge.\n\nWe reached the café later than usual. I apologised for my mistake, but my aunt was not annoyed. We had allowed extra time and had no appointment to miss. ____3____ We sat outside and watched boats pass while we waited for our drinks.\n\nOn the way home, I recognised several corners without looking at the map. Still, we checked before the bridge because two streets looked similar. ____4____ Knowing when to stop and confirm the route had been more useful than pretending I could remember every turn.",
+            "explanation": "C balances recognition with checking similar streets, preparing the lesson about confirming details. A, B and E concern other stages. D conflicts with the repeated useful map checks.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. The pause gave us a chance to enjoy the place without rushing."
+              },
+              {
+                "id": "o1",
+                "text": "B. We chose an alternative route through a nearby village."
+              },
+              {
+                "id": "o2",
+                "text": "C. I had learned part of the route, not every detail of it."
+              },
+              {
+                "id": "o3",
+                "text": "D. We threw the map away before leaving the house."
+              },
+              {
+                "id": "o4",
+                "text": "E. I had confused the railway line with the river on the map."
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "fe6a6a6482e0570d5020eb5b33021f9edf144e46958cb482b46beafd0b3503b4",
+      "reviewNotes": "Four complete new junior insertion texts paired as two practices. Diary and guide source structures retained, including candidate counts and quoted/heading gaps. Same-author cohesion and all-alternative review only, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.recipe-and-plant-guides-046",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Two guides: recipes and plant care",
+        "summary": "Two guides: recipes and plant care，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_insertion"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Pairs two complete five-gap/seven-option guides. Three printed headings, quoted gap2 and missing-heading gap5 retained; no extra use-once instruction is imposed."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete new junior insertion texts paired as two practices. Diary and guide source structures retained, including candidate counts and quoted/heading gaps. Same-author cohesion and all-alternative review only, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.recipe-and-plant-guides-046",
+          "family": "shared_insertion",
+          "label": "Two guides: recipes and plant care",
+          "candidateSHA256": "1391c7ef1094a558d3ec063d2a7641a4f101b9692b95361b1c3db7e210e172af",
+          "authorCheckSHA256": "046c8020ca89c17475f27722b6988673faca37d84574aac838388e7bc797b855",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.recipe-and-plant-guides-046#recipes",
+            "expansion.20261024.junior3.recipe-and-plant-guides-046#plantcare"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b046；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Sharing a family recipe\n\nSharing a family recipe can be a pleasant way to learn about one another. Before asking for one, explain what the class plans to do with it. A recipe for a private display is different from one that will be published online. ____1____ Nobody should discover afterwards that a personal contribution has travelled further than expected.\n\nMake participation a choice\n\nNot everyone wants to describe food from home. Begin your invitation with, \"____2____\" A student can still help arrange the display without giving a family recipe.\n\nExplain unfamiliar measures\n\nA small cup or spoon may mean something very specific in one kitchen. ____3____ Giving a volume or showing the actual container makes the instructions more useful to someone cooking elsewhere.\n\nKeep personal details private\n\nAn interesting recipe does not need a home address or a child's full family history. ____4____ Ask before including even a short personal note, rather than assuming that everything shared in class belongs on the display.\n\n____5____\n\nBefore the display opens, let each contributor read the final version. A missing ingredient or changed number can make a real difference. The student should also be able to remove a personal detail that no longer feels comfortable to share.\n\nLooking after a borrowed plant\n\nA neighbour may ask you to care for a plant while away. Saying yes is easier when you know what the task involves. Some plants need more frequent attention than others. ____1____ A clear request helps you decide whether you can actually provide the care.\n\nAsk for a demonstration\n\nWatching once can be easier than remembering a long explanation. You might say, \"____2____\" Notice how the owner checks whether water is needed, not only how much is poured.\n\nKeep the place suitable\n\nThe windowsill may already have been chosen for its light and temperature. ____3____ If the plant must be moved temporarily, ask where else it can safely stand.\n\nReport a problem early\n\nA change in the plant's appearance may have several possible causes. ____4____ Describe what you see and ask for advice rather than adding extra water every time something looks wrong.\n\n____5____\n\nBefore the owner leaves, agree on how to get in touch. Check whether someone else can help if you become unavailable. This is particularly useful when a short absence unexpectedly becomes longer, and the plant needs care beyond the original dates."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.recipe-and-plant-guides-046.recipes.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "Sharing a family recipe\n\nSharing a family recipe can be a pleasant way to learn about one another. Before asking for one, explain what the class plans to do with it. A recipe for a private display is different from one that will be published online. ____1____ Nobody should discover afterwards that a personal contribution has travelled further than expected.\n\nMake participation a choice\n\nNot everyone wants to describe food from home. Begin your invitation with, \"____2____\" A student can still help arrange the display without giving a family recipe.\n\nExplain unfamiliar measures\n\nA small cup or spoon may mean something very specific in one kitchen. ____3____ Giving a volume or showing the actual container makes the instructions more useful to someone cooking elsewhere.\n\nKeep personal details private\n\nAn interesting recipe does not need a home address or a child's full family history. ____4____ Ask before including even a short personal note, rather than assuming that everything shared in class belongs on the display.\n\n____5____\n\nBefore the display opens, let each contributor read the final version. A missing ingredient or changed number can make a real difference. The student should also be able to remove a personal detail that no longer feels comfortable to share.",
+            "explanation": "B states audience and publication scope, preventing the surprise described next. A is final checking, C voluntary invitation, D measures and E privacy. F forces contribution and G ignores errors.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check the finished version together"
+              },
+              {
+                "id": "o1",
+                "text": "B. Tell contributors where their work will be seen."
+              },
+              {
+                "id": "o2",
+                "text": "C. Take part only if you feel happy to do so."
+              },
+              {
+                "id": "o3",
+                "text": "D. Do not assume that every reader owns the same size."
+              },
+              {
+                "id": "o4",
+                "text": "E. Include only the information needed for the agreed purpose."
+              },
+              {
+                "id": "o5",
+                "text": "F. Every family must provide a recipe, even if they object."
+              },
+              {
+                "id": "o6",
+                "text": "G. A final copy can never contain a mistake."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.recipe-and-plant-guides-046.recipes.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "Sharing a family recipe\n\nSharing a family recipe can be a pleasant way to learn about one another. Before asking for one, explain what the class plans to do with it. A recipe for a private display is different from one that will be published online. ____1____ Nobody should discover afterwards that a personal contribution has travelled further than expected.\n\nMake participation a choice\n\nNot everyone wants to describe food from home. Begin your invitation with, \"____2____\" A student can still help arrange the display without giving a family recipe.\n\nExplain unfamiliar measures\n\nA small cup or spoon may mean something very specific in one kitchen. ____3____ Giving a volume or showing the actual container makes the instructions more useful to someone cooking elsewhere.\n\nKeep personal details private\n\nAn interesting recipe does not need a home address or a child's full family history. ____4____ Ask before including even a short personal note, rather than assuming that everything shared in class belongs on the display.\n\n____5____\n\nBefore the display opens, let each contributor read the final version. A missing ingredient or changed number can make a real difference. The student should also be able to remove a personal detail that no longer feels comfortable to share.",
+            "explanation": "C is a quoted invitation making participation optional, supported by another role being available. A is a heading, B scope, D measures and E information limits. F contradicts choice; G is irrelevant to permission.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check the finished version together"
+              },
+              {
+                "id": "o1",
+                "text": "B. Tell contributors where their work will be seen."
+              },
+              {
+                "id": "o2",
+                "text": "C. Take part only if you feel happy to do so."
+              },
+              {
+                "id": "o3",
+                "text": "D. Do not assume that every reader owns the same size."
+              },
+              {
+                "id": "o4",
+                "text": "E. Include only the information needed for the agreed purpose."
+              },
+              {
+                "id": "o5",
+                "text": "F. Every family must provide a recipe, even if they object."
+              },
+              {
+                "id": "o6",
+                "text": "G. A final copy can never contain a mistake."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.recipe-and-plant-guides-046.recipes.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "Sharing a family recipe\n\nSharing a family recipe can be a pleasant way to learn about one another. Before asking for one, explain what the class plans to do with it. A recipe for a private display is different from one that will be published online. ____1____ Nobody should discover afterwards that a personal contribution has travelled further than expected.\n\nMake participation a choice\n\nNot everyone wants to describe food from home. Begin your invitation with, \"____2____\" A student can still help arrange the display without giving a family recipe.\n\nExplain unfamiliar measures\n\nA small cup or spoon may mean something very specific in one kitchen. ____3____ Giving a volume or showing the actual container makes the instructions more useful to someone cooking elsewhere.\n\nKeep personal details private\n\nAn interesting recipe does not need a home address or a child's full family history. ____4____ Ask before including even a short personal note, rather than assuming that everything shared in class belongs on the display.\n\n____5____\n\nBefore the display opens, let each contributor read the final version. A missing ingredient or changed number can make a real difference. The student should also be able to remove a personal detail that no longer feels comfortable to share.",
+            "explanation": "D explains why a home-specific cup needs volume or an example. A, B, C and E concern checking, audience, choice and privacy. F and G are unsupported absolute demands.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check the finished version together"
+              },
+              {
+                "id": "o1",
+                "text": "B. Tell contributors where their work will be seen."
+              },
+              {
+                "id": "o2",
+                "text": "C. Take part only if you feel happy to do so."
+              },
+              {
+                "id": "o3",
+                "text": "D. Do not assume that every reader owns the same size."
+              },
+              {
+                "id": "o4",
+                "text": "E. Include only the information needed for the agreed purpose."
+              },
+              {
+                "id": "o5",
+                "text": "F. Every family must provide a recipe, even if they object."
+              },
+              {
+                "id": "o6",
+                "text": "G. A final copy can never contain a mistake."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.recipe-and-plant-guides-046.recipes.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "Sharing a family recipe\n\nSharing a family recipe can be a pleasant way to learn about one another. Before asking for one, explain what the class plans to do with it. A recipe for a private display is different from one that will be published online. ____1____ Nobody should discover afterwards that a personal contribution has travelled further than expected.\n\nMake participation a choice\n\nNot everyone wants to describe food from home. Begin your invitation with, \"____2____\" A student can still help arrange the display without giving a family recipe.\n\nExplain unfamiliar measures\n\nA small cup or spoon may mean something very specific in one kitchen. ____3____ Giving a volume or showing the actual container makes the instructions more useful to someone cooking elsewhere.\n\nKeep personal details private\n\nAn interesting recipe does not need a home address or a child's full family history. ____4____ Ask before including even a short personal note, rather than assuming that everything shared in class belongs on the display.\n\n____5____\n\nBefore the display opens, let each contributor read the final version. A missing ingredient or changed number can make a real difference. The student should also be able to remove a personal detail that no longer feels comfortable to share.",
+            "explanation": "E limits details to the agreed purpose and prepares asking before personal notes. A is the final heading, B scope, C choice and D measurement. F compels disclosure and G denies possible mistakes.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check the finished version together"
+              },
+              {
+                "id": "o1",
+                "text": "B. Tell contributors where their work will be seen."
+              },
+              {
+                "id": "o2",
+                "text": "C. Take part only if you feel happy to do so."
+              },
+              {
+                "id": "o3",
+                "text": "D. Do not assume that every reader owns the same size."
+              },
+              {
+                "id": "o4",
+                "text": "E. Include only the information needed for the agreed purpose."
+              },
+              {
+                "id": "o5",
+                "text": "F. Every family must provide a recipe, even if they object."
+              },
+              {
+                "id": "o6",
+                "text": "G. A final copy can never contain a mistake."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.junior3.recipe-and-plant-guides-046.recipes.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 5.",
+            "material": "Sharing a family recipe\n\nSharing a family recipe can be a pleasant way to learn about one another. Before asking for one, explain what the class plans to do with it. A recipe for a private display is different from one that will be published online. ____1____ Nobody should discover afterwards that a personal contribution has travelled further than expected.\n\nMake participation a choice\n\nNot everyone wants to describe food from home. Begin your invitation with, \"____2____\" A student can still help arrange the display without giving a family recipe.\n\nExplain unfamiliar measures\n\nA small cup or spoon may mean something very specific in one kitchen. ____3____ Giving a volume or showing the actual container makes the instructions more useful to someone cooking elsewhere.\n\nKeep personal details private\n\nAn interesting recipe does not need a home address or a child's full family history. ____4____ Ask before including even a short personal note, rather than assuming that everything shared in class belongs on the display.\n\n____5____\n\nBefore the display opens, let each contributor read the final version. A missing ingredient or changed number can make a real difference. The student should also be able to remove a personal detail that no longer feels comfortable to share.",
+            "explanation": "A heads the final paragraph on contributor review and corrections. B, C, D and E are sentences for other gaps. F and G oppose the guide’s voluntary, checked publication.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check the finished version together"
+              },
+              {
+                "id": "o1",
+                "text": "B. Tell contributors where their work will be seen."
+              },
+              {
+                "id": "o2",
+                "text": "C. Take part only if you feel happy to do so."
+              },
+              {
+                "id": "o3",
+                "text": "D. Do not assume that every reader owns the same size."
+              },
+              {
+                "id": "o4",
+                "text": "E. Include only the information needed for the agreed purpose."
+              },
+              {
+                "id": "o5",
+                "text": "F. Every family must provide a recipe, even if they object."
+              },
+              {
+                "id": "o6",
+                "text": "G. A final copy can never contain a mistake."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.recipe-and-plant-guides-046.plantcare.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "Looking after a borrowed plant\n\nA neighbour may ask you to care for a plant while away. Saying yes is easier when you know what the task involves. Some plants need more frequent attention than others. ____1____ A clear request helps you decide whether you can actually provide the care.\n\nAsk for a demonstration\n\nWatching once can be easier than remembering a long explanation. You might say, \"____2____\" Notice how the owner checks whether water is needed, not only how much is poured.\n\nKeep the place suitable\n\nThe windowsill may already have been chosen for its light and temperature. ____3____ If the plant must be moved temporarily, ask where else it can safely stand.\n\nReport a problem early\n\nA change in the plant's appearance may have several possible causes. ____4____ Describe what you see and ask for advice rather than adding extra water every time something looks wrong.\n\n____5____\n\nBefore the owner leaves, agree on how to get in touch. Check whether someone else can help if you become unavailable. This is particularly useful when a short absence unexpectedly becomes longer, and the plant needs care beyond the original dates.",
+            "explanation": "E requests timing and tasks, developed by the clear request and decision about capacity. A is problem reports, B demonstration, C final heading and F position. D and G make false universal guarantees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Tell the owner promptly if a leaf or stem changes unexpectedly."
+              },
+              {
+                "id": "o1",
+                "text": "B. Could you show me what you normally do?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Set up a way to communicate"
+              },
+              {
+                "id": "o3",
+                "text": "D. Watering every hour is suitable for every plant."
+              },
+              {
+                "id": "o4",
+                "text": "E. Find out the dates and the kind of attention required."
+              },
+              {
+                "id": "o5",
+                "text": "F. Do not move it simply to make the room look tidier."
+              },
+              {
+                "id": "o6",
+                "text": "G. A written contact number makes all further care unnecessary."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.junior3.recipe-and-plant-guides-046.plantcare.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "Looking after a borrowed plant\n\nA neighbour may ask you to care for a plant while away. Saying yes is easier when you know what the task involves. Some plants need more frequent attention than others. ____1____ A clear request helps you decide whether you can actually provide the care.\n\nAsk for a demonstration\n\nWatching once can be easier than remembering a long explanation. You might say, \"____2____\" Notice how the owner checks whether water is needed, not only how much is poured.\n\nKeep the place suitable\n\nThe windowsill may already have been chosen for its light and temperature. ____3____ If the plant must be moved temporarily, ask where else it can safely stand.\n\nReport a problem early\n\nA change in the plant's appearance may have several possible causes. ____4____ Describe what you see and ask for advice rather than adding extra water every time something looks wrong.\n\n____5____\n\nBefore the owner leaves, agree on how to get in touch. Check whether someone else can help if you become unavailable. This is particularly useful when a short absence unexpectedly becomes longer, and the plant needs care beyond the original dates.",
+            "explanation": "B is a quoted request for the demonstration named in the heading, leading to observing the owner’s check. A reports trouble, C is a heading, E planning and F position. D replaces observation with an unsupported schedule; G dismisses care.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Tell the owner promptly if a leaf or stem changes unexpectedly."
+              },
+              {
+                "id": "o1",
+                "text": "B. Could you show me what you normally do?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Set up a way to communicate"
+              },
+              {
+                "id": "o3",
+                "text": "D. Watering every hour is suitable for every plant."
+              },
+              {
+                "id": "o4",
+                "text": "E. Find out the dates and the kind of attention required."
+              },
+              {
+                "id": "o5",
+                "text": "F. Do not move it simply to make the room look tidier."
+              },
+              {
+                "id": "o6",
+                "text": "G. A written contact number makes all further care unnecessary."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.recipe-and-plant-guides-046.plantcare.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "Looking after a borrowed plant\n\nA neighbour may ask you to care for a plant while away. Saying yes is easier when you know what the task involves. Some plants need more frequent attention than others. ____1____ A clear request helps you decide whether you can actually provide the care.\n\nAsk for a demonstration\n\nWatching once can be easier than remembering a long explanation. You might say, \"____2____\" Notice how the owner checks whether water is needed, not only how much is poured.\n\nKeep the place suitable\n\nThe windowsill may already have been chosen for its light and temperature. ____3____ If the plant must be moved temporarily, ask where else it can safely stand.\n\nReport a problem early\n\nA change in the plant's appearance may have several possible causes. ____4____ Describe what you see and ask for advice rather than adding extra water every time something looks wrong.\n\n____5____\n\nBefore the owner leaves, agree on how to get in touch. Check whether someone else can help if you become unavailable. This is particularly useful when a short absence unexpectedly becomes longer, and the plant needs care beyond the original dates.",
+            "explanation": "F preserves the chosen light and temperature unless a move is necessary. A, B, C and E concern other stages. D ignores different needs and G incorrectly replaces care with a number.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Tell the owner promptly if a leaf or stem changes unexpectedly."
+              },
+              {
+                "id": "o1",
+                "text": "B. Could you show me what you normally do?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Set up a way to communicate"
+              },
+              {
+                "id": "o3",
+                "text": "D. Watering every hour is suitable for every plant."
+              },
+              {
+                "id": "o4",
+                "text": "E. Find out the dates and the kind of attention required."
+              },
+              {
+                "id": "o5",
+                "text": "F. Do not move it simply to make the room look tidier."
+              },
+              {
+                "id": "o6",
+                "text": "G. A written contact number makes all further care unnecessary."
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.junior3.recipe-and-plant-guides-046.plantcare.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "Looking after a borrowed plant\n\nA neighbour may ask you to care for a plant while away. Saying yes is easier when you know what the task involves. Some plants need more frequent attention than others. ____1____ A clear request helps you decide whether you can actually provide the care.\n\nAsk for a demonstration\n\nWatching once can be easier than remembering a long explanation. You might say, \"____2____\" Notice how the owner checks whether water is needed, not only how much is poured.\n\nKeep the place suitable\n\nThe windowsill may already have been chosen for its light and temperature. ____3____ If the plant must be moved temporarily, ask where else it can safely stand.\n\nReport a problem early\n\nA change in the plant's appearance may have several possible causes. ____4____ Describe what you see and ask for advice rather than adding extra water every time something looks wrong.\n\n____5____\n\nBefore the owner leaves, agree on how to get in touch. Check whether someone else can help if you become unavailable. This is particularly useful when a short absence unexpectedly becomes longer, and the plant needs care beyond the original dates.",
+            "explanation": "A gives an early report of observed change and leads to asking advice without guessing a cause. B demonstrates routine, C communication heading, E dates and F position. D prescribes excessive universal watering and G denies ongoing care.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Tell the owner promptly if a leaf or stem changes unexpectedly."
+              },
+              {
+                "id": "o1",
+                "text": "B. Could you show me what you normally do?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Set up a way to communicate"
+              },
+              {
+                "id": "o3",
+                "text": "D. Watering every hour is suitable for every plant."
+              },
+              {
+                "id": "o4",
+                "text": "E. Find out the dates and the kind of attention required."
+              },
+              {
+                "id": "o5",
+                "text": "F. Do not move it simply to make the room look tidier."
+              },
+              {
+                "id": "o6",
+                "text": "G. A written contact number makes all further care unnecessary."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.recipe-and-plant-guides-046.plantcare.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 5.",
+            "material": "Looking after a borrowed plant\n\nA neighbour may ask you to care for a plant while away. Saying yes is easier when you know what the task involves. Some plants need more frequent attention than others. ____1____ A clear request helps you decide whether you can actually provide the care.\n\nAsk for a demonstration\n\nWatching once can be easier than remembering a long explanation. You might say, \"____2____\" Notice how the owner checks whether water is needed, not only how much is poured.\n\nKeep the place suitable\n\nThe windowsill may already have been chosen for its light and temperature. ____3____ If the plant must be moved temporarily, ask where else it can safely stand.\n\nReport a problem early\n\nA change in the plant's appearance may have several possible causes. ____4____ Describe what you see and ask for advice rather than adding extra water every time something looks wrong.\n\n____5____\n\nBefore the owner leaves, agree on how to get in touch. Check whether someone else can help if you become unavailable. This is particularly useful when a short absence unexpectedly becomes longer, and the plant needs care beyond the original dates.",
+            "explanation": "C is the heading for contact methods, backup helpers and changed dates. A, B, E and F are sentences for earlier gaps. D and G contradict responsive care.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Tell the owner promptly if a leaf or stem changes unexpectedly."
+              },
+              {
+                "id": "o1",
+                "text": "B. Could you show me what you normally do?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Set up a way to communicate"
+              },
+              {
+                "id": "o3",
+                "text": "D. Watering every hour is suitable for every plant."
+              },
+              {
+                "id": "o4",
+                "text": "E. Find out the dates and the kind of attention required."
+              },
+              {
+                "id": "o5",
+                "text": "F. Do not move it simply to make the room look tidier."
+              },
+              {
+                "id": "o6",
+                "text": "G. A written contact number makes all further care unnecessary."
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "9a164018fb5298be1b2834108eca775a711dc607a96d1a9e454ab1577453b05f",
+      "reviewNotes": "Four complete new junior insertion texts paired as two practices. Diary and guide source structures retained, including candidate counts and quoted/heading gaps. Same-author cohesion and all-alternative review only, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
