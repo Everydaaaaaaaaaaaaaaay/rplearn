@@ -1,0 +1,1106 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b021",
+  "createdAt": "2026-10-23T19:44:23.458589+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.postcard-for-previous-owner-021",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · A postcard for the previous owner",
+        "summary": "A postcard for the previous owner，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.choice_cloze"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete cloze task structure",
+            "pages": "Use of English: 15-gap cloze",
+            "alignment": "One complete original 15-gap passage, four options per gap; the source supplies task rules, not copied text or keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade11-yinchuan2026-21cnjy25860535.cloze",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 参照既有公开转载银川二中2025—2026高二下期中完整一篇15空、每空四独立候选、每题1分。原校施测未认证，原键非gold；新稿人物与事件虚构，逐候选全篇回填是作者自审，独立教研/学生难度、商用和生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Two new complete senior2 15-gap four-choice cloze narratives. Contextual keys, all alternatives and shuffled candidate positions checked by the author before freeze. Original fictional incidents, not past-paper content or independently calibrated difficulty."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.postcard-for-previous-owner-021",
+          "family": "choice_cloze",
+          "label": "A postcard for the previous owner",
+          "candidateSHA256": "ec4c2a9b0a2497c692eeb918a48a94fb9fad6cae100816b03571a1e969f4aea1",
+          "authorCheckSHA256": "adbcd8c0535c31c7b761f05e5efdafffa47ade6dbc51e1e1b92a961b096d53fc",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.postcard-for-previous-owner-021#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b021；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q1",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 1.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "Mum recognises the signed name as the friend Mrs Lin mentioned. Copying, improving and hiding do not describe identifying a familiar name.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "improved"
+              },
+              {
+                "id": "o1",
+                "text": "recognised"
+              },
+              {
+                "id": "o2",
+                "text": "copied"
+              },
+              {
+                "id": "o3",
+                "text": "hid"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q2",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 2.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "Mrs Lin comes to collect the card already at the new house. Deliver would bring it there, print produce a copy and replace substitute another card.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "replace"
+              },
+              {
+                "id": "o1",
+                "text": "collect"
+              },
+              {
+                "id": "o2",
+                "text": "print"
+              },
+              {
+                "id": "o3",
+                "text": "deliver"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q3",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 3.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "Yearly cards maintained contact despite rare meetings: continued. Stopped and failed contradict the ongoing card; changed does not express the sustained exchange described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "failed"
+              },
+              {
+                "id": "o1",
+                "text": "stopped"
+              },
+              {
+                "id": "o2",
+                "text": "changed"
+              },
+              {
+                "id": "o3",
+                "text": "continued"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q4",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 4.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "Branches reduce incoming light, so blocked. Measuring does not affect it, and reflected/produced would add or redirect light rather than create the stated obstruction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "reflected"
+              },
+              {
+                "id": "o1",
+                "text": "produced"
+              },
+              {
+                "id": "o2",
+                "text": "measured"
+              },
+              {
+                "id": "o3",
+                "text": "blocked"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q5",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 5.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "The friend pictured with Mrs Lin is the sender whose continuing cards are explained. Buyer, artist and reader are unestablished roles.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "artist"
+              },
+              {
+                "id": "o1",
+                "text": "sender"
+              },
+              {
+                "id": "o2",
+                "text": "buyer"
+              },
+              {
+                "id": "o3",
+                "text": "reader"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q6",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 6.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "An unexpected offer followed by a smile suggests pleased surprise. Anger, boredom and shame have no support in this response.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "angry"
+              },
+              {
+                "id": "o1",
+                "text": "bored"
+              },
+              {
+                "id": "o2",
+                "text": "ashamed"
+              },
+              {
+                "id": "o3",
+                "text": "surprised"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q7",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 7.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "Moving an obstructing chair makes the trunk clear in the photograph. Invisible reverses the purpose; smaller and distant concern scale or position rather than removing the obstruction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "invisible"
+              },
+              {
+                "id": "o1",
+                "text": "smaller"
+              },
+              {
+                "id": "o2",
+                "text": "clear"
+              },
+              {
+                "id": "o3",
+                "text": "distant"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q8",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 8.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "The wrongly routed card arose from an old address, so she now gives the correct address. Age and price do not route mail, and a password is neither needed nor appropriate to the exchange.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "password"
+              },
+              {
+                "id": "o1",
+                "text": "address"
+              },
+              {
+                "id": "o2",
+                "text": "age"
+              },
+              {
+                "id": "o3",
+                "text": "price"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q9",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 9.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "A new friendly postcard acknowledges the helpful photograph by thanking them. Blame, a charge and a warning conflict with the appreciative exchange.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "warned"
+              },
+              {
+                "id": "o1",
+                "text": "thanked"
+              },
+              {
+                "id": "o2",
+                "text": "blamed"
+              },
+              {
+                "id": "o3",
+                "text": "charged"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q10",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 10.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "They still trim necessary branches, so do not leave all untouched. Unnoticed concerns attention rather than pruning; broken and painted are not the care choices described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "broken"
+              },
+              {
+                "id": "o1",
+                "text": "unnoticed"
+              },
+              {
+                "id": "o2",
+                "text": "painted"
+              },
+              {
+                "id": "o3",
+                "text": "untouched"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q11",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 11.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "Blocking light made the tree seem an obstacle. Invitation, instrument and experiment do not describe the earlier inconvenience.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "experiment"
+              },
+              {
+                "id": "o1",
+                "text": "invitation"
+              },
+              {
+                "id": "o2",
+                "text": "obstacle"
+              },
+              {
+                "id": "o3",
+                "text": "instrument"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q12",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 12.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "Previous residents lived there before the new family. Beside describes location, without absence and against opposition, not the sequence of inhabitants.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "before"
+              },
+              {
+                "id": "o1",
+                "text": "without"
+              },
+              {
+                "id": "o2",
+                "text": "against"
+              },
+              {
+                "id": "o3",
+                "text": "beside"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q13",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 13.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "The misdirected card gives a reason to listen to the home's history. It creates no rule, debt or danger warning.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "rule"
+              },
+              {
+                "id": "o1",
+                "text": "warning"
+              },
+              {
+                "id": "o2",
+                "text": "debt"
+              },
+              {
+                "id": "o3",
+                "text": "reason"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q14",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 14.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "The new exchange continues the tree's story. It is not bought, established as a disputed proof or hidden.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "purchase"
+              },
+              {
+                "id": "o1",
+                "text": "conceal"
+              },
+              {
+                "id": "o2",
+                "text": "continue"
+              },
+              {
+                "id": "o3",
+                "text": "prove"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q15",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 15.",
+            "material": "A postcard for the previous owner\n\nA postcard arrived for our house's previous owner. It showed an apple tree and asked whether the tree outside our kitchen was flowering too. I was about to return it when Mum ____1____ the name signed below the message.\n\n\"Mrs Lin mentioned this friend when she gave us the keys. They exchanged pictures every spring.\"\n\nMum called Mrs Lin, who asked to ____2____ the card. On arriving, she held it silently. Her friend had moved abroad years earlier. Meetings were rare, but the postcards had ____3____. The friend apparently had not received her new address.\n\nThrough the window, I saw the apple tree. I had wanted it trimmed because its branches ____4____ the light. But Mrs Lin showed me an old photograph: she stood beneath it with the postcard's ____5____. They had planted it together.\n\n\"Would you like a new photograph?\" I asked. She looked ____6____, then smiled.\n\nOutside, I moved a chair so the trunk would be ____7____ in the picture. Mrs Lin stood beside it, holding the card. She sent the photograph with her correct ____8____ clearly below.\n\nNext spring, a postcard arrived addressed to us. Her friend ____9____ us for the photograph. We replied with a picture of the first flowers.\n\nWe still trimmed the tree when necessary. Caring about its story did not mean leaving every branch ____10____. But it was no longer merely an ____11____ outside the window. It connected our home with lives that had been there ____12____ us.\n\nThe card had given us a ____13____ to listen. We inherited a house, but could choose to ____14____ its stories. Each spring, photographing the tree became a small ____15____ of our own.",
+            "explanation": "An annual spring photograph becomes a tradition. Repeated intentional exchange is not an accident, contest or problem.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "competition"
+              },
+              {
+                "id": "o1",
+                "text": "accident"
+              },
+              {
+                "id": "o2",
+                "text": "tradition"
+              },
+              {
+                "id": "o3",
+                "text": "problem"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "d24317da19caa3586b7b17bac05b21922401bdd8dea7717517218756386014ec",
+      "reviewNotes": "Two new complete senior2 15-gap four-choice cloze narratives. Contextual keys, all alternatives and shuffled candidate positions checked by the author before freeze. Original fictional incidents, not past-paper content or independently calibrated difficulty. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.postcard-for-previous-owner-021#whole",
+          "family": "choice_cloze",
+          "questionIds": [
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q1",
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q2",
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q3",
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q4",
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q5",
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q6",
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q7",
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q8",
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q9",
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q10",
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q11",
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q12",
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q13",
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q14",
+            "expansion.20261024.senior2.postcard-for-previous-owner-021.whole.q15"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.postcard-for-previous-owner-021",
+          "sourceContentHash": "4562b567355817e846fa981aa91a99fc5fe47082ad87d7ac2844fb695b05fcf7"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.sunrise-walk-delay-021",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · The morning we missed the sunrise",
+        "summary": "The morning we missed the sunrise，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.choice_cloze"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete cloze task structure",
+            "pages": "Use of English: 15-gap cloze",
+            "alignment": "One complete original 15-gap passage, four options per gap; the source supplies task rules, not copied text or keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade11-yinchuan2026-21cnjy25860535.cloze",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 参照既有公开转载银川二中2025—2026高二下期中完整一篇15空、每空四独立候选、每题1分。原校施测未认证，原键非gold；新稿人物与事件虚构，逐候选全篇回填是作者自审，独立教研/学生难度、商用和生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Two new complete senior2 15-gap four-choice cloze narratives. Contextual keys, all alternatives and shuffled candidate positions checked by the author before freeze. Original fictional incidents, not past-paper content or independently calibrated difficulty."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.sunrise-walk-delay-021",
+          "family": "choice_cloze",
+          "label": "The morning we missed the sunrise",
+          "candidateSHA256": "0e2c620ec3e79d131c0fec298ff334f85bb68cc6ad54d1a7413e20e5ccc76179",
+          "authorCheckSHA256": "704009b683786ba9a977da862f5e083ff3f42126d4b64e33cb6226ff906daaf4",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.sunrise-walk-delay-021#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b021；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q1",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 1.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "Checked route and communicated timing make the plan appear complete. No cost or secrecy is discussed, and the organiser believes it possible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "secret"
+              },
+              {
+                "id": "o1",
+                "text": "impossible"
+              },
+              {
+                "id": "o2",
+                "text": "expensive"
+              },
+              {
+                "id": "o3",
+                "text": "complete"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q2",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 2.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "The organiser initially wants to blame Daniel for the delay. Reward and introduce do not express annoyance, and follow does not respond to the spoiled schedule.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "reward"
+              },
+              {
+                "id": "o1",
+                "text": "blame"
+              },
+              {
+                "id": "o2",
+                "text": "introduce"
+              },
+              {
+                "id": "o3",
+                "text": "follow"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q3",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 3.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "Saving breath means short, brief answers. Politeness and honesty are not the length distinction; loudly would use rather than save breath.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "loudly"
+              },
+              {
+                "id": "o1",
+                "text": "briefly"
+              },
+              {
+                "id": "o2",
+                "text": "politely"
+              },
+              {
+                "id": "o3",
+                "text": "honestly"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q4",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 4.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "The organiser assumes a stop means another rest during the climb. A map, bicycle or promise is not the expected recovery pause.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "bicycle"
+              },
+              {
+                "id": "o1",
+                "text": "rest"
+              },
+              {
+                "id": "o2",
+                "text": "map"
+              },
+              {
+                "id": "o3",
+                "text": "promise"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q5",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 5.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "Taking photographs and sitting to appreciate the view shows enjoying it. Predicting concerns the future, repairing an object and advertising public promotion, not appreciating the present scene.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "repairing"
+              },
+              {
+                "id": "o1",
+                "text": "predicting"
+              },
+              {
+                "id": "o2",
+                "text": "enjoying"
+              },
+              {
+                "id": "o3",
+                "text": "advertising"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q6",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 6.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "The valley view differs from the planned summit sunrise. It is not a forgotten view, a measured quantity or a borrowed possession.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "forgotten"
+              },
+              {
+                "id": "o1",
+                "text": "borrowed"
+              },
+              {
+                "id": "o2",
+                "text": "planned"
+              },
+              {
+                "id": "o3",
+                "text": "measured"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q7",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 7.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "The sun is already up when they arrive, so the sunrise moment was missed. Recorded and repeated imply capturing or experiencing it; created does not fit a natural event they cannot produce.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "recorded"
+              },
+              {
+                "id": "o1",
+                "text": "repeated"
+              },
+              {
+                "id": "o2",
+                "text": "created"
+              },
+              {
+                "id": "o3",
+                "text": "missed"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q8",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 8.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "The organiser refuses the payment offer after recognising Daniel's effort. Agreed would accept it, waited merely postpones a response, and vanished would mean leaving rather than responding.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "vanished"
+              },
+              {
+                "id": "o1",
+                "text": "agreed"
+              },
+              {
+                "id": "o2",
+                "text": "refused"
+              },
+              {
+                "id": "o3",
+                "text": "waited"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q9",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 9.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "Reaching the summit at sunrise was one target. Friend, camera and valley do not name the fixed standard used to judge the outing.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "valley"
+              },
+              {
+                "id": "o1",
+                "text": "camera"
+              },
+              {
+                "id": "o2",
+                "text": "friend"
+              },
+              {
+                "id": "o3",
+                "text": "target"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q10",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 10.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "The organiser still respects departure times because promises matter. Changes and disappears do not explain that value, while waits is not an appropriate claim about keeping a promise.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "disappears"
+              },
+              {
+                "id": "o1",
+                "text": "changes"
+              },
+              {
+                "id": "o2",
+                "text": "waits"
+              },
+              {
+                "id": "o3",
+                "text": "matters"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q11",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 11.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "A plan should support the experience, not displace attention to it. Replace and prevent undermine the experience; hide conceals it rather than enables it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "replace"
+              },
+              {
+                "id": "o1",
+                "text": "support"
+              },
+              {
+                "id": "o2",
+                "text": "prevent"
+              },
+              {
+                "id": "o3",
+                "text": "hide"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q12",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 12.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "The unplanned valley view illustrates leaving room for the unexpected. Price, speed and proximity are not the category of discovery.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cheapest"
+              },
+              {
+                "id": "o1",
+                "text": "unexpected"
+              },
+              {
+                "id": "o2",
+                "text": "fastest"
+              },
+              {
+                "id": "o3",
+                "text": "nearest"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q13",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 13.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "Even changed timing leaves worthwhile things possible. Silence, identicality and formality do not express remaining opportunities.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "possible"
+              },
+              {
+                "id": "o1",
+                "text": "identical"
+              },
+              {
+                "id": "o2",
+                "text": "silent"
+              },
+              {
+                "id": "o3",
+                "text": "formal"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q14",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 14.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "Five friends still spend the morning together. They are outdoors and not alone, with no foreign travel described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "together"
+              },
+              {
+                "id": "o1",
+                "text": "abroad"
+              },
+              {
+                "id": "o2",
+                "text": "indoors"
+              },
+              {
+                "id": "o3",
+                "text": "alone"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q15",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word or phrase for blank 15.",
+            "material": "The morning we missed the sunrise\n\nI promised four friends a sunrise view from a hilltop at six. After checking the route and sharing our departure time, my plan seemed ____1____.\n\nDaniel arrived ten minutes late with a flat bicycle tyre. I wanted to ____2____ him for spoiling the schedule. Then he apologised: he had walked the last two kilometres.\n\nWe climbed quickly. As the sky grew pale, I checked my watch repeatedly. My friends tried to talk, but I answered ____3____, saving breath for the hill.\n\nDaniel stopped beside a wall. I assumed he needed another ____4____. Instead, he pointed to mist between the fields and light touching the trees.\n\n\"Look!\"\n\n\"We must reach the top,\" I replied. Nobody moved. One friend took photographs; another sat on the wall. They were ____5____ the morning I was hurrying past.\n\nI turned. It was not the view I had ____6____, but it was beautiful. I pocketed my watch and joined them.\n\nAt the summit, the sun was already above the horizon. The promised moment was ____7____. Nevertheless, we stayed, sharing breakfast and finding our route in the valley below.\n\nDaniel later offered to pay for drinks because he had delayed us. I ____8____. He had made a real effort to come.\n\nThat evening, our group chat filled with photographs. Few showed the summit; most showed mist, breakfast and friends. I had nearly judged everything against one ____9____.\n\nI still plan departure times: keeping promises ____10____. But plans should ____11____ an experience, not make me blind to it. Next time, I will allow more room for the ____12____. When timing changes, I hope to notice what remains ____13____. We missed the advertised sunrise, but not the chance to spend a morning ____14____. Those things, I learned, were not ____15____.",
+            "explanation": "Missing a scheduled sunrise and missing shared time are not identical. The passage distinguishes them, not their usefulness, simplicity or necessity.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "useful"
+              },
+              {
+                "id": "o1",
+                "text": "necessary"
+              },
+              {
+                "id": "o2",
+                "text": "identical"
+              },
+              {
+                "id": "o3",
+                "text": "simple"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "247eb57cff63e3d55d7811e5abbf00aa927f3e79c91250b98d2df12b1dc23295",
+      "reviewNotes": "Two new complete senior2 15-gap four-choice cloze narratives. Contextual keys, all alternatives and shuffled candidate positions checked by the author before freeze. Original fictional incidents, not past-paper content or independently calibrated difficulty. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.sunrise-walk-delay-021#whole",
+          "family": "choice_cloze",
+          "questionIds": [
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q1",
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q2",
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q3",
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q4",
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q5",
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q6",
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q7",
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q8",
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q9",
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q10",
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q11",
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q12",
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q13",
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q14",
+            "expansion.20261024.senior2.sunrise-walk-delay-021.whole.q15"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.sunrise-walk-delay-021",
+          "sourceContentHash": "ae373f5daaa08502c75220da2441c305575d257b44bfd76194e3f6b893b77daf"
+        }
+      ]
+    }
+  ]
+}
