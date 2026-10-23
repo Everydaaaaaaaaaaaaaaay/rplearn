@@ -1,0 +1,804 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b059",
+  "createdAt": "2026-10-23T22:26:41.327007+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.climbing-and-comic-diaries-059",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Two diaries: climbing and a comic swap",
+        "summary": "Two diaries: climbing and a comic swap，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.shared_insertion"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete four-gap/five-option diaries paired as a practice. Each uses each candidate at most once, with one unused sentence."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four new whole insertion texts paired into two junior practices. Recorded diary and guide structures, candidate counts, quotation/heading positions retained. Same-author cohesion and all-alternative review, fictional cases, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.climbing-and-comic-diaries-059",
+          "family": "shared_insertion",
+          "label": "Two diaries: climbing and a comic swap",
+          "candidateSHA256": "9d82bad8299342e2879da98d21756728aa424b535066c26ae2a8885f5cbab0d1",
+          "authorCheckSHA256": "63ebd65b16451a45eb0bb807dff23c70537a27e59268c26a7f5aa37c72cc91ee",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.climbing-and-comic-diaries-059#climb",
+            "expansion.20261024.junior2.climbing-and-comic-diaries-059#comic"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b059；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "My first climbing lesson\n\nSaturday, 8 February\n\nToday I went to an indoor climbing centre with our youth group. A qualified instructor checked our equipment and explained the activity before we approached the wall. ____1____ I had expected to start climbing immediately, but the preparation was part of the lesson.\n\nOn my first attempt, I reached a blue hold and stopped. The next hold looked too far away. I stretched one arm as high as possible, but could not reach it. ____2____ With my foot in a better position, the same handhold was suddenly close enough.\n\nI did not reach the top on that attempt. Our instructor helped me come down safely, then asked what had worked. ____3____ Remembering one useful movement felt better than judging the whole attempt only by its height.\n\nBefore trying again, I watched another beginner. She paused often but kept looking for her feet as well as her hands. On my second climb, I did the same. ____4____ I still needed the instructor's guidance, but I no longer thought climbing meant pulling harder with my arms alone.\n\nA comic I could not swap\n\nFriday, 11 October\n\nOur class held a comic swap after lessons. Each person could bring something they owned and exchange it with a willing partner. I brought two comics from the shelf beside my bed. ____1____ I had forgotten that my cousin had only lent it to me.\n\nAt the swap, a friend chose that comic. I was about to agree when I noticed my cousin's name inside. ____2____ It was not mine to give away, even though it had been in my room for weeks.\n\nI apologised and showed my friend the other comic. She had already read it, so we did not exchange anything. That was disappointing, but nobody said a swap was compulsory. ____3____ We talked about the ending while other pairs made their choices.\n\nAt home, I returned the borrowed comic to its separate folder and sent my cousin a message. Next time, I will check ownership before packing. ____4____ An enjoyable exchange still depends on having the right to offer what you bring."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.climbing-and-comic-diaries-059.climb.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "My first climbing lesson\n\nSaturday, 8 February\n\nToday I went to an indoor climbing centre with our youth group. A qualified instructor checked our equipment and explained the activity before we approached the wall. ____1____ I had expected to start climbing immediately, but the preparation was part of the lesson.\n\nOn my first attempt, I reached a blue hold and stopped. The next hold looked too far away. I stretched one arm as high as possible, but could not reach it. ____2____ With my foot in a better position, the same handhold was suddenly close enough.\n\nI did not reach the top on that attempt. Our instructor helped me come down safely, then asked what had worked. ____3____ Remembering one useful movement felt better than judging the whole attempt only by its height.\n\nBefore trying again, I watched another beginner. She paused often but kept looking for her feet as well as her hands. On my second climb, I did the same. ____4____ I still needed the instructor's guidance, but I no longer thought climbing meant pulling harder with my arms alone.",
+            "explanation": "C explains the equipment/instruction preparation and the narrator’s impatience. D concerns the later reach, A reflection and B second climb. E contradicts qualified supervision.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. I could describe how moving my foot had changed the reach."
+              },
+              {
+                "id": "o1",
+                "text": "B. That helped me find a steadier way to continue."
+              },
+              {
+                "id": "o2",
+                "text": "C. We had to understand the safety instructions first."
+              },
+              {
+                "id": "o3",
+                "text": "D. The instructor asked me to notice a lower foothold."
+              },
+              {
+                "id": "o4",
+                "text": "E. We were told to remove all the checked equipment and climb alone."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.climbing-and-comic-diaries-059.climb.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "My first climbing lesson\n\nSaturday, 8 February\n\nToday I went to an indoor climbing centre with our youth group. A qualified instructor checked our equipment and explained the activity before we approached the wall. ____1____ I had expected to start climbing immediately, but the preparation was part of the lesson.\n\nOn my first attempt, I reached a blue hold and stopped. The next hold looked too far away. I stretched one arm as high as possible, but could not reach it. ____2____ With my foot in a better position, the same handhold was suddenly close enough.\n\nI did not reach the top on that attempt. Our instructor helped me come down safely, then asked what had worked. ____3____ Remembering one useful movement felt better than judging the whole attempt only by its height.\n\nBefore trying again, I watched another beginner. She paused often but kept looking for her feet as well as her hands. On my second climb, I did the same. ____4____ I still needed the instructor's guidance, but I no longer thought climbing meant pulling harder with my arms alone.",
+            "explanation": "D introduces the foot change that makes the handhold reachable. A is later explanation, B the second climb and C initial safety. E contradicts safe learning.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. I could describe how moving my foot had changed the reach."
+              },
+              {
+                "id": "o1",
+                "text": "B. That helped me find a steadier way to continue."
+              },
+              {
+                "id": "o2",
+                "text": "C. We had to understand the safety instructions first."
+              },
+              {
+                "id": "o3",
+                "text": "D. The instructor asked me to notice a lower foothold."
+              },
+              {
+                "id": "o4",
+                "text": "E. We were told to remove all the checked equipment and climb alone."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.climbing-and-comic-diaries-059.climb.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "My first climbing lesson\n\nSaturday, 8 February\n\nToday I went to an indoor climbing centre with our youth group. A qualified instructor checked our equipment and explained the activity before we approached the wall. ____1____ I had expected to start climbing immediately, but the preparation was part of the lesson.\n\nOn my first attempt, I reached a blue hold and stopped. The next hold looked too far away. I stretched one arm as high as possible, but could not reach it. ____2____ With my foot in a better position, the same handhold was suddenly close enough.\n\nI did not reach the top on that attempt. Our instructor helped me come down safely, then asked what had worked. ____3____ Remembering one useful movement felt better than judging the whole attempt only by its height.\n\nBefore trying again, I watched another beginner. She paused often but kept looking for her feet as well as her hands. On my second climb, I did the same. ____4____ I still needed the instructor's guidance, but I no longer thought climbing meant pulling harder with my arms alone.",
+            "explanation": "A answers the instructor’s question about what worked and leads to remembering one movement. B concerns trying again, C preparation and D the earlier cue. E abandons the supervision maintained throughout.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. I could describe how moving my foot had changed the reach."
+              },
+              {
+                "id": "o1",
+                "text": "B. That helped me find a steadier way to continue."
+              },
+              {
+                "id": "o2",
+                "text": "C. We had to understand the safety instructions first."
+              },
+              {
+                "id": "o3",
+                "text": "D. The instructor asked me to notice a lower foothold."
+              },
+              {
+                "id": "o4",
+                "text": "E. We were told to remove all the checked equipment and climb alone."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.climbing-and-comic-diaries-059.climb.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "My first climbing lesson\n\nSaturday, 8 February\n\nToday I went to an indoor climbing centre with our youth group. A qualified instructor checked our equipment and explained the activity before we approached the wall. ____1____ I had expected to start climbing immediately, but the preparation was part of the lesson.\n\nOn my first attempt, I reached a blue hold and stopped. The next hold looked too far away. I stretched one arm as high as possible, but could not reach it. ____2____ With my foot in a better position, the same handhold was suddenly close enough.\n\nI did not reach the top on that attempt. Our instructor helped me come down safely, then asked what had worked. ____3____ Remembering one useful movement felt better than judging the whole attempt only by its height.\n\nBefore trying again, I watched another beginner. She paused often but kept looking for her feet as well as her hands. On my second climb, I did the same. ____4____ I still needed the instructor's guidance, but I no longer thought climbing meant pulling harder with my arms alone.",
+            "explanation": "B refers to looking for feet as well as hands and links to the final wider view of climbing. A, C and D belong to earlier stages. E conflicts with still needing instruction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. I could describe how moving my foot had changed the reach."
+              },
+              {
+                "id": "o1",
+                "text": "B. That helped me find a steadier way to continue."
+              },
+              {
+                "id": "o2",
+                "text": "C. We had to understand the safety instructions first."
+              },
+              {
+                "id": "o3",
+                "text": "D. The instructor asked me to notice a lower foothold."
+              },
+              {
+                "id": "o4",
+                "text": "E. We were told to remove all the checked equipment and climb alone."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.climbing-and-comic-diaries-059.comic.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "A comic I could not swap\n\nFriday, 11 October\n\nOur class held a comic swap after lessons. Each person could bring something they owned and exchange it with a willing partner. I brought two comics from the shelf beside my bed. ____1____ I had forgotten that my cousin had only lent it to me.\n\nAt the swap, a friend chose that comic. I was about to agree when I noticed my cousin's name inside. ____2____ It was not mine to give away, even though it had been in my room for weeks.\n\nI apologised and showed my friend the other comic. She had already read it, so we did not exchange anything. That was disappointing, but nobody said a swap was compulsory. ____3____ We talked about the ending while other pairs made their choices.\n\nAt home, I returned the borrowed comic to its separate folder and sent my cousin a message. Next time, I will check ownership before packing. ____4____ An enjoyable exchange still depends on having the right to offer what you bring.",
+            "explanation": "B identifies the borrowed item and leads to forgetting it was a loan. A is the final principle, C the later refusal and D the alternative activity. E contradicts the honest correction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Keeping a book nearby does not make it my property."
+              },
+              {
+                "id": "o1",
+                "text": "B. One had a robot on its cover and belonged to my cousin."
+              },
+              {
+                "id": "o2",
+                "text": "C. I put it aside and explained why it was unavailable."
+              },
+              {
+                "id": "o3",
+                "text": "D. My friend let me look through her comic instead."
+              },
+              {
+                "id": "o4",
+                "text": "E. I crossed out the name so I could pretend the comic was mine."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.climbing-and-comic-diaries-059.comic.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "A comic I could not swap\n\nFriday, 11 October\n\nOur class held a comic swap after lessons. Each person could bring something they owned and exchange it with a willing partner. I brought two comics from the shelf beside my bed. ____1____ I had forgotten that my cousin had only lent it to me.\n\nAt the swap, a friend chose that comic. I was about to agree when I noticed my cousin's name inside. ____2____ It was not mine to give away, even though it had been in my room for weeks.\n\nI apologised and showed my friend the other comic. She had already read it, so we did not exchange anything. That was disappointing, but nobody said a swap was compulsory. ____3____ We talked about the ending while other pairs made their choices.\n\nAt home, I returned the borrowed comic to its separate folder and sent my cousin a message. Next time, I will check ownership before packing. ____4____ An enjoyable exchange still depends on having the right to offer what you bring.",
+            "explanation": "C responds to the owner’s name and leads to not having the right to give it away. A concludes, B describes the earlier item and D follows no swap. E would conceal the problem instead.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Keeping a book nearby does not make it my property."
+              },
+              {
+                "id": "o1",
+                "text": "B. One had a robot on its cover and belonged to my cousin."
+              },
+              {
+                "id": "o2",
+                "text": "C. I put it aside and explained why it was unavailable."
+              },
+              {
+                "id": "o3",
+                "text": "D. My friend let me look through her comic instead."
+              },
+              {
+                "id": "o4",
+                "text": "E. I crossed out the name so I could pretend the comic was mine."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.climbing-and-comic-diaries-059.comic.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "A comic I could not swap\n\nFriday, 11 October\n\nOur class held a comic swap after lessons. Each person could bring something they owned and exchange it with a willing partner. I brought two comics from the shelf beside my bed. ____1____ I had forgotten that my cousin had only lent it to me.\n\nAt the swap, a friend chose that comic. I was about to agree when I noticed my cousin's name inside. ____2____ It was not mine to give away, even though it had been in my room for weeks.\n\nI apologised and showed my friend the other comic. She had already read it, so we did not exchange anything. That was disappointing, but nobody said a swap was compulsory. ____3____ We talked about the ending while other pairs made their choices.\n\nAt home, I returned the borrowed comic to its separate folder and sent my cousin a message. Next time, I will check ownership before packing. ____4____ An enjoyable exchange still depends on having the right to offer what you bring.",
+            "explanation": "D gives the alternative shared reading that leads to discussing the ending. A/B/C concern ownership and the refused exchange. E contradicts setting it aside.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Keeping a book nearby does not make it my property."
+              },
+              {
+                "id": "o1",
+                "text": "B. One had a robot on its cover and belonged to my cousin."
+              },
+              {
+                "id": "o2",
+                "text": "C. I put it aside and explained why it was unavailable."
+              },
+              {
+                "id": "o3",
+                "text": "D. My friend let me look through her comic instead."
+              },
+              {
+                "id": "o4",
+                "text": "E. I crossed out the name so I could pretend the comic was mine."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.climbing-and-comic-diaries-059.comic.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once; one sentence is not needed.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "A comic I could not swap\n\nFriday, 11 October\n\nOur class held a comic swap after lessons. Each person could bring something they owned and exchange it with a willing partner. I brought two comics from the shelf beside my bed. ____1____ I had forgotten that my cousin had only lent it to me.\n\nAt the swap, a friend chose that comic. I was about to agree when I noticed my cousin's name inside. ____2____ It was not mine to give away, even though it had been in my room for weeks.\n\nI apologised and showed my friend the other comic. She had already read it, so we did not exchange anything. That was disappointing, but nobody said a swap was compulsory. ____3____ We talked about the ending while other pairs made their choices.\n\nAt home, I returned the borrowed comic to its separate folder and sent my cousin a message. Next time, I will check ownership before packing. ____4____ An enjoyable exchange still depends on having the right to offer what you bring.",
+            "explanation": "A sums up why weeks in the bedroom did not transfer ownership. B/C/D are earlier details. E denies the permission principle and conflicts with returning it to a separate folder.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Keeping a book nearby does not make it my property."
+              },
+              {
+                "id": "o1",
+                "text": "B. One had a robot on its cover and belonged to my cousin."
+              },
+              {
+                "id": "o2",
+                "text": "C. I put it aside and explained why it was unavailable."
+              },
+              {
+                "id": "o3",
+                "text": "D. My friend let me look through her comic instead."
+              },
+              {
+                "id": "o4",
+                "text": "E. I crossed out the name so I could pretend the comic was mine."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "496ee7b66958a2f6e364e1a82c326e57dc3ace05ea1ac2bf2c83de4e629fd7f8",
+      "reviewNotes": "Four new whole insertion texts paired into two junior practices. Recorded diary and guide structures, candidate counts, quotation/heading positions retained. Same-author cohesion and all-alternative review, fictional cases, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.study-and-present-guides-059",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Two guides: a study corner and a present",
+        "summary": "Two guides: a study corner and a present，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_insertion"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete five-gap/seven-option guides, preserving three printed headings, a quoted gap2 and missing-heading gap5. No added use-once rule."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four new whole insertion texts paired into two junior practices. Recorded diary and guide structures, candidate counts, quotation/heading positions retained. Same-author cohesion and all-alternative review, fictional cases, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.study-and-present-guides-059",
+          "family": "shared_insertion",
+          "label": "Two guides: a study corner and a present",
+          "candidateSHA256": "aaeff84f0dbfe00b26da3fbfbf03e297f89c5a5305c6b9f4d038905d082b208c",
+          "authorCheckSHA256": "cac2294708ad4c0c1765b70d9bb8d36d0645e2df679fc9e3c88058f55c51235e",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.study-and-present-guides-059#study",
+            "expansion.20261024.junior3.study-and-present-guides-059#present"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b059；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Finding a place for homework\n\nA place for homework does not have to be a room used by nobody else. Many families share tables and quiet corners. Start by noticing when and how the available space is used. ____1____ A place that is empty in the afternoon may become busy when another person returns home.\n\nAgree on a useful time\n\nAsk rather than simply leaving your things across the whole table. You could say, \"____2____\" A clear request is easier to discuss than an assumption that everyone knows your plan.\n\nKeep what you need close\n\nGetting up repeatedly to find ordinary supplies can interrupt concentration. ____3____ A small container makes it possible to set up and clear away without moving an entire cupboard.\n\nSeparate work from distractions\n\nThink about what usually pulls your attention away. ____4____ If you need a device for the task, keep the relevant page open rather than switching between it and unrelated messages.\n\n____5____\n\nAfter a few days, consider whether the arrangement works for you and the people sharing the space. Perhaps the agreed time clashes with dinner preparation, or the lighting is poor after dark. A small change can be more useful than insisting that the first plan must remain perfect.\n\nChoosing a present with care\n\nChoosing a present begins with the person receiving it, not simply with an attractive shop display. Think about what they actually enjoy and use. A hobby can suggest an idea, but it does not mean every object linked to that hobby will suit them. ____1____ The detail helps you move from a general interest to a useful choice.\n\nAsk without spoiling everything\n\nA small question can be better than a confident guess. You might say, \"____2____\" The answer can reveal a preference without requiring you to announce the exact present.\n\nConsider practical limits\n\nA large object may be difficult for someone with little storage space. ____3____ The thought behind a gift should include the work needed to keep or use it, not only the excitement of opening it.\n\nKeep the choice comfortable\n\nAn expensive gift can make some people feel they must respond in the same way. ____4____ A modest present that fits the relationship may be easier to enjoy without worry.\n\n____5____\n\nOnce you have chosen, think about how to pass it on. Remove the price label where appropriate and check whether the person will need instructions or an exchange receipt. A simple explanation of why you chose it can matter more than elaborate wrapping."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.study-and-present-guides-059.study.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "Finding a place for homework\n\nA place for homework does not have to be a room used by nobody else. Many families share tables and quiet corners. Start by noticing when and how the available space is used. ____1____ A place that is empty in the afternoon may become busy when another person returns home.\n\nAgree on a useful time\n\nAsk rather than simply leaving your things across the whole table. You could say, \"____2____\" A clear request is easier to discuss than an assumption that everyone knows your plan.\n\nKeep what you need close\n\nGetting up repeatedly to find ordinary supplies can interrupt concentration. ____3____ A small container makes it possible to set up and clear away without moving an entire cupboard.\n\nSeparate work from distractions\n\nThink about what usually pulls your attention away. ____4____ If you need a device for the task, keep the relevant page open rather than switching between it and unrelated messages.\n\n____5____\n\nAfter a few days, consider whether the arrangement works for you and the people sharing the space. Perhaps the agreed time clashes with dinner preparation, or the lighting is poor after dark. A small change can be more useful than insisting that the first plan must remain perfect.",
+            "explanation": "C connects shared space with different household schedules and the afternoon/evening example. A is a request, B final review, D supplies and E distractions. F/G impose unfair or defeatist absolutes.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could I use this end of the table until six?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Review the arrangement"
+              },
+              {
+                "id": "o2",
+                "text": "C. Consider the household’s routine before choosing your own."
+              },
+              {
+                "id": "o3",
+                "text": "D. Gather the pens and books needed for that session."
+              },
+              {
+                "id": "o4",
+                "text": "E. Put unnecessary games or notifications out of immediate reach."
+              },
+              {
+                "id": "o5",
+                "text": "F. A shared table belongs permanently to whoever arrives first."
+              },
+              {
+                "id": "o6",
+                "text": "G. Changing a plan always proves that studying is impossible."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.study-and-present-guides-059.study.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "Finding a place for homework\n\nA place for homework does not have to be a room used by nobody else. Many families share tables and quiet corners. Start by noticing when and how the available space is used. ____1____ A place that is empty in the afternoon may become busy when another person returns home.\n\nAgree on a useful time\n\nAsk rather than simply leaving your things across the whole table. You could say, \"____2____\" A clear request is easier to discuss than an assumption that everyone knows your plan.\n\nKeep what you need close\n\nGetting up repeatedly to find ordinary supplies can interrupt concentration. ____3____ A small container makes it possible to set up and clear away without moving an entire cupboard.\n\nSeparate work from distractions\n\nThink about what usually pulls your attention away. ____4____ If you need a device for the task, keep the relevant page open rather than switching between it and unrelated messages.\n\n____5____\n\nAfter a few days, consider whether the arrangement works for you and the people sharing the space. Perhaps the agreed time clashes with dinner preparation, or the lighting is poor after dark. A small change can be more useful than insisting that the first plan must remain perfect.",
+            "explanation": "A is a quoted first-person request with a specific place and endpoint, picked up by clear request. B is heading, C planning, D supplies and E distractions. F assumes ownership and G prevents adjustment.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could I use this end of the table until six?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Review the arrangement"
+              },
+              {
+                "id": "o2",
+                "text": "C. Consider the household’s routine before choosing your own."
+              },
+              {
+                "id": "o3",
+                "text": "D. Gather the pens and books needed for that session."
+              },
+              {
+                "id": "o4",
+                "text": "E. Put unnecessary games or notifications out of immediate reach."
+              },
+              {
+                "id": "o5",
+                "text": "F. A shared table belongs permanently to whoever arrives first."
+              },
+              {
+                "id": "o6",
+                "text": "G. Changing a plan always proves that studying is impossible."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.study-and-present-guides-059.study.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "Finding a place for homework\n\nA place for homework does not have to be a room used by nobody else. Many families share tables and quiet corners. Start by noticing when and how the available space is used. ____1____ A place that is empty in the afternoon may become busy when another person returns home.\n\nAgree on a useful time\n\nAsk rather than simply leaving your things across the whole table. You could say, \"____2____\" A clear request is easier to discuss than an assumption that everyone knows your plan.\n\nKeep what you need close\n\nGetting up repeatedly to find ordinary supplies can interrupt concentration. ____3____ A small container makes it possible to set up and clear away without moving an entire cupboard.\n\nSeparate work from distractions\n\nThink about what usually pulls your attention away. ____4____ If you need a device for the task, keep the relevant page open rather than switching between it and unrelated messages.\n\n____5____\n\nAfter a few days, consider whether the arrangement works for you and the people sharing the space. Perhaps the agreed time clashes with dinner preparation, or the lighting is poor after dark. A small change can be more useful than insisting that the first plan must remain perfect.",
+            "explanation": "D gathers ordinary supplies, leading to the small container. A time request, B review, C routine and E distraction control serve other gaps. F/G do not organise materials.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could I use this end of the table until six?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Review the arrangement"
+              },
+              {
+                "id": "o2",
+                "text": "C. Consider the household’s routine before choosing your own."
+              },
+              {
+                "id": "o3",
+                "text": "D. Gather the pens and books needed for that session."
+              },
+              {
+                "id": "o4",
+                "text": "E. Put unnecessary games or notifications out of immediate reach."
+              },
+              {
+                "id": "o5",
+                "text": "F. A shared table belongs permanently to whoever arrives first."
+              },
+              {
+                "id": "o6",
+                "text": "G. Changing a plan always proves that studying is impossible."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.study-and-present-guides-059.study.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "Finding a place for homework\n\nA place for homework does not have to be a room used by nobody else. Many families share tables and quiet corners. Start by noticing when and how the available space is used. ____1____ A place that is empty in the afternoon may become busy when another person returns home.\n\nAgree on a useful time\n\nAsk rather than simply leaving your things across the whole table. You could say, \"____2____\" A clear request is easier to discuss than an assumption that everyone knows your plan.\n\nKeep what you need close\n\nGetting up repeatedly to find ordinary supplies can interrupt concentration. ____3____ A small container makes it possible to set up and clear away without moving an entire cupboard.\n\nSeparate work from distractions\n\nThink about what usually pulls your attention away. ____4____ If you need a device for the task, keep the relevant page open rather than switching between it and unrelated messages.\n\n____5____\n\nAfter a few days, consider whether the arrangement works for you and the people sharing the space. Perhaps the agreed time clashes with dinner preparation, or the lighting is poor after dark. A small change can be more useful than insisting that the first plan must remain perfect.",
+            "explanation": "E names avoidable distractions and leads to keeping only relevant device content. A/B/C/D concern other stages. F/G do not address attention.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could I use this end of the table until six?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Review the arrangement"
+              },
+              {
+                "id": "o2",
+                "text": "C. Consider the household’s routine before choosing your own."
+              },
+              {
+                "id": "o3",
+                "text": "D. Gather the pens and books needed for that session."
+              },
+              {
+                "id": "o4",
+                "text": "E. Put unnecessary games or notifications out of immediate reach."
+              },
+              {
+                "id": "o5",
+                "text": "F. A shared table belongs permanently to whoever arrives first."
+              },
+              {
+                "id": "o6",
+                "text": "G. Changing a plan always proves that studying is impossible."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.junior3.study-and-present-guides-059.study.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 5.",
+            "material": "Finding a place for homework\n\nA place for homework does not have to be a room used by nobody else. Many families share tables and quiet corners. Start by noticing when and how the available space is used. ____1____ A place that is empty in the afternoon may become busy when another person returns home.\n\nAgree on a useful time\n\nAsk rather than simply leaving your things across the whole table. You could say, \"____2____\" A clear request is easier to discuss than an assumption that everyone knows your plan.\n\nKeep what you need close\n\nGetting up repeatedly to find ordinary supplies can interrupt concentration. ____3____ A small container makes it possible to set up and clear away without moving an entire cupboard.\n\nSeparate work from distractions\n\nThink about what usually pulls your attention away. ____4____ If you need a device for the task, keep the relevant page open rather than switching between it and unrelated messages.\n\n____5____\n\nAfter a few days, consider whether the arrangement works for you and the people sharing the space. Perhaps the agreed time clashes with dinner preparation, or the lighting is poor after dark. A small change can be more useful than insisting that the first plan must remain perfect.",
+            "explanation": "B heads the paragraph checking the plan after days and changing it when needed. A/C/D/E are earlier action sentences. F/G contradict cooperative adjustment.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could I use this end of the table until six?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Review the arrangement"
+              },
+              {
+                "id": "o2",
+                "text": "C. Consider the household’s routine before choosing your own."
+              },
+              {
+                "id": "o3",
+                "text": "D. Gather the pens and books needed for that session."
+              },
+              {
+                "id": "o4",
+                "text": "E. Put unnecessary games or notifications out of immediate reach."
+              },
+              {
+                "id": "o5",
+                "text": "F. A shared table belongs permanently to whoever arrives first."
+              },
+              {
+                "id": "o6",
+                "text": "G. Changing a plan always proves that studying is impossible."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.study-and-present-guides-059.present.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "Choosing a present with care\n\nChoosing a present begins with the person receiving it, not simply with an attractive shop display. Think about what they actually enjoy and use. A hobby can suggest an idea, but it does not mean every object linked to that hobby will suit them. ____1____ The detail helps you move from a general interest to a useful choice.\n\nAsk without spoiling everything\n\nA small question can be better than a confident guess. You might say, \"____2____\" The answer can reveal a preference without requiring you to announce the exact present.\n\nConsider practical limits\n\nA large object may be difficult for someone with little storage space. ____3____ The thought behind a gift should include the work needed to keep or use it, not only the excitement of opening it.\n\nKeep the choice comfortable\n\nAn expensive gift can make some people feel they must respond in the same way. ____4____ A modest present that fits the relationship may be easier to enjoy without worry.\n\n____5____\n\nOnce you have chosen, think about how to pass it on. Remove the price label where appropriate and check whether the person will need instructions or an exchange receipt. A simple explanation of why you chose it can matter more than elaborate wrapping.",
+            "explanation": "C asks for a specific hobby preference, providing the detail in the next sentence. A cost, B final heading, E quoted example and F care concern later gaps. D/G are unsupported absolutes.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Do not assume that spending more always expresses more care."
+              },
+              {
+                "id": "o1",
+                "text": "B. Prepare it for giving"
+              },
+              {
+                "id": "o2",
+                "text": "C. Ask which part of the hobby matters most to them."
+              },
+              {
+                "id": "o3",
+                "text": "D. Every person wants the largest present available."
+              },
+              {
+                "id": "o4",
+                "text": "E. Would you rather read a long story or a collection of short ones?"
+              },
+              {
+                "id": "o5",
+                "text": "F. Something that needs special care may also create an unwanted task."
+              },
+              {
+                "id": "o6",
+                "text": "G. A present can never be exchanged under any circumstances."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.study-and-present-guides-059.present.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "Choosing a present with care\n\nChoosing a present begins with the person receiving it, not simply with an attractive shop display. Think about what they actually enjoy and use. A hobby can suggest an idea, but it does not mean every object linked to that hobby will suit them. ____1____ The detail helps you move from a general interest to a useful choice.\n\nAsk without spoiling everything\n\nA small question can be better than a confident guess. You might say, \"____2____\" The answer can reveal a preference without requiring you to announce the exact present.\n\nConsider practical limits\n\nA large object may be difficult for someone with little storage space. ____3____ The thought behind a gift should include the work needed to keep or use it, not only the excitement of opening it.\n\nKeep the choice comfortable\n\nAn expensive gift can make some people feel they must respond in the same way. ____4____ A modest present that fits the relationship may be easier to enjoy without worry.\n\n____5____\n\nOnce you have chosen, think about how to pass it on. Remove the price label where appropriate and check whether the person will need instructions or an exchange receipt. A simple explanation of why you chose it can matter more than elaborate wrapping.",
+            "explanation": "E is a quoted preference question with two reading choices, leading to useful information without naming the present. A/C/F are general directions and B a heading. D/G do not ask a preference.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Do not assume that spending more always expresses more care."
+              },
+              {
+                "id": "o1",
+                "text": "B. Prepare it for giving"
+              },
+              {
+                "id": "o2",
+                "text": "C. Ask which part of the hobby matters most to them."
+              },
+              {
+                "id": "o3",
+                "text": "D. Every person wants the largest present available."
+              },
+              {
+                "id": "o4",
+                "text": "E. Would you rather read a long story or a collection of short ones?"
+              },
+              {
+                "id": "o5",
+                "text": "F. Something that needs special care may also create an unwanted task."
+              },
+              {
+                "id": "o6",
+                "text": "G. A present can never be exchanged under any circumstances."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.junior3.study-and-present-guides-059.present.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "Choosing a present with care\n\nChoosing a present begins with the person receiving it, not simply with an attractive shop display. Think about what they actually enjoy and use. A hobby can suggest an idea, but it does not mean every object linked to that hobby will suit them. ____1____ The detail helps you move from a general interest to a useful choice.\n\nAsk without spoiling everything\n\nA small question can be better than a confident guess. You might say, \"____2____\" The answer can reveal a preference without requiring you to announce the exact present.\n\nConsider practical limits\n\nA large object may be difficult for someone with little storage space. ____3____ The thought behind a gift should include the work needed to keep or use it, not only the excitement of opening it.\n\nKeep the choice comfortable\n\nAn expensive gift can make some people feel they must respond in the same way. ____4____ A modest present that fits the relationship may be easier to enjoy without worry.\n\n____5____\n\nOnce you have chosen, think about how to pass it on. Remove the price label where appropriate and check whether the person will need instructions or an exchange receipt. A simple explanation of why you chose it can matter more than elaborate wrapping.",
+            "explanation": "F develops practical burden beyond object size and leads to maintenance/use work. A cost, B preparation, C interests and E quote fit other stages. D ignores space and G rejects exchange without basis.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Do not assume that spending more always expresses more care."
+              },
+              {
+                "id": "o1",
+                "text": "B. Prepare it for giving"
+              },
+              {
+                "id": "o2",
+                "text": "C. Ask which part of the hobby matters most to them."
+              },
+              {
+                "id": "o3",
+                "text": "D. Every person wants the largest present available."
+              },
+              {
+                "id": "o4",
+                "text": "E. Would you rather read a long story or a collection of short ones?"
+              },
+              {
+                "id": "o5",
+                "text": "F. Something that needs special care may also create an unwanted task."
+              },
+              {
+                "id": "o6",
+                "text": "G. A present can never be exchanged under any circumstances."
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.junior3.study-and-present-guides-059.present.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "Choosing a present with care\n\nChoosing a present begins with the person receiving it, not simply with an attractive shop display. Think about what they actually enjoy and use. A hobby can suggest an idea, but it does not mean every object linked to that hobby will suit them. ____1____ The detail helps you move from a general interest to a useful choice.\n\nAsk without spoiling everything\n\nA small question can be better than a confident guess. You might say, \"____2____\" The answer can reveal a preference without requiring you to announce the exact present.\n\nConsider practical limits\n\nA large object may be difficult for someone with little storage space. ____3____ The thought behind a gift should include the work needed to keep or use it, not only the excitement of opening it.\n\nKeep the choice comfortable\n\nAn expensive gift can make some people feel they must respond in the same way. ____4____ A modest present that fits the relationship may be easier to enjoy without worry.\n\n____5____\n\nOnce you have chosen, think about how to pass it on. Remove the price label where appropriate and check whether the person will need instructions or an exchange receipt. A simple explanation of why you chose it can matter more than elaborate wrapping.",
+            "explanation": "A qualifies price as a measure of care and prepares the modest-present suggestion. B/C/E/F address other tasks. D confuses size with suitability and G imposes an unsupported rule.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Do not assume that spending more always expresses more care."
+              },
+              {
+                "id": "o1",
+                "text": "B. Prepare it for giving"
+              },
+              {
+                "id": "o2",
+                "text": "C. Ask which part of the hobby matters most to them."
+              },
+              {
+                "id": "o3",
+                "text": "D. Every person wants the largest present available."
+              },
+              {
+                "id": "o4",
+                "text": "E. Would you rather read a long story or a collection of short ones?"
+              },
+              {
+                "id": "o5",
+                "text": "F. Something that needs special care may also create an unwanted task."
+              },
+              {
+                "id": "o6",
+                "text": "G. A present can never be exchanged under any circumstances."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.study-and-present-guides-059.present.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the complete guide and choose the best option for each gap. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 5.",
+            "material": "Choosing a present with care\n\nChoosing a present begins with the person receiving it, not simply with an attractive shop display. Think about what they actually enjoy and use. A hobby can suggest an idea, but it does not mean every object linked to that hobby will suit them. ____1____ The detail helps you move from a general interest to a useful choice.\n\nAsk without spoiling everything\n\nA small question can be better than a confident guess. You might say, \"____2____\" The answer can reveal a preference without requiring you to announce the exact present.\n\nConsider practical limits\n\nA large object may be difficult for someone with little storage space. ____3____ The thought behind a gift should include the work needed to keep or use it, not only the excitement of opening it.\n\nKeep the choice comfortable\n\nAn expensive gift can make some people feel they must respond in the same way. ____4____ A modest present that fits the relationship may be easier to enjoy without worry.\n\n____5____\n\nOnce you have chosen, think about how to pass it on. Remove the price label where appropriate and check whether the person will need instructions or an exchange receipt. A simple explanation of why you chose it can matter more than elaborate wrapping.",
+            "explanation": "B heads the practical giving steps: label, instructions and possible receipt. A/C/E/F are earlier sentences. D/G contradict the thoughtful flexibility of the guide.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Do not assume that spending more always expresses more care."
+              },
+              {
+                "id": "o1",
+                "text": "B. Prepare it for giving"
+              },
+              {
+                "id": "o2",
+                "text": "C. Ask which part of the hobby matters most to them."
+              },
+              {
+                "id": "o3",
+                "text": "D. Every person wants the largest present available."
+              },
+              {
+                "id": "o4",
+                "text": "E. Would you rather read a long story or a collection of short ones?"
+              },
+              {
+                "id": "o5",
+                "text": "F. Something that needs special care may also create an unwanted task."
+              },
+              {
+                "id": "o6",
+                "text": "G. A present can never be exchanged under any circumstances."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "37ab21edbdfa7a6c6b671b20efd3b763096fa6c26a305f05f33f153dcd3fd91d",
+      "reviewNotes": "Four new whole insertion texts paired into two junior practices. Recorded diary and guide structures, candidate counts, quotation/heading positions retained. Same-author cohesion and all-alternative review, fictional cases, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
