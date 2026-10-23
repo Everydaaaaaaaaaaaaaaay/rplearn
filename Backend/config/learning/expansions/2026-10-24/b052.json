@@ -1,0 +1,1866 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b052",
+  "createdAt": "2026-10-23T22:01:51.252206+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.undergraduate.evening-walking-group-052",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "undergraduate",
+        "title": "10·24新题 · Walking home together",
+        "summary": "Walking home together，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "cet4.2016.sample.wordbank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 形式复用已核官方2016四级样卷，一篇10空/15词；不是新增来源或年度真卷，也未建立产品难度/CEFR标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three whole-passage adult originals: ten-gap/fifteen-word CET4 and CET6 banks plus eight-gap C1 word formation. Fictional cases. Same-author lexical and variant review, not independent calibration. Unlisted written forms reviewable."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.undergraduate.evening-walking-group-052",
+          "family": "shared_bank",
+          "label": "Walking home together",
+          "candidateSHA256": "5ef734a41fce45e13613c7c088ec506cdd43dc85618fff37cd8a8864c159a708",
+          "authorCheckSHA256": "798738510c64b72daa83178ce0ac9c2ee673bc9a0182d158c6c61c8e02abe0aa",
+          "sourceGroupIds": [
+            "expansion.20261024.undergraduate.evening-walking-group-052#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b052；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Walking home together\n\nA group of students started walking home together after their evening classes. The original ____1____ was simple: anyone taking the same route could meet outside the library at nine. There was no requirement to attend every evening, and nobody had to explain why they wanted company.\n\nThe route had to be ____2____ for everyone joining it. A short flight of steps made one path inconvenient for a member with an injured knee, so the group chose a slightly longer route with a ____3____ surface. Saving a few minutes was not useful if one person could not comfortably follow.\n\nClear ____4____ helped newcomers find the meeting point. The group described a particular library entrance rather than assuming everyone knew which door was meant. They also made the departure time ____5____: the walk began at nine, not whenever the most impatient member wanted to leave.\n\nStudents were asked to send a message if they had said they were coming but were ____6____. Otherwise, the group might wait for someone who had made other plans. The message did not need a personal explanation; it only needed to prevent unnecessary ____7____.\n\nThe arrangement remained ____8____. People could join on one night and travel another way on the next. It was not a service promising an escort to every possible address. Members were encouraged to ____9____ the plan if a class timetable changed or the chosen path became unavailable.\n\nOver time, the walks became a pleasant end to the day. Some evenings were full of conversation; others were quiet. What made the arrangement ____10____ was not a complicated system but a few shared expectations about where to meet, when to leave and how to communicate a change."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.undergraduate.evening-walking-group-052.whole.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 1.",
+            "material": "Walking home together\n\nA group of students started walking home together after their evening classes. The original ____1____ was simple: anyone taking the same route could meet outside the library at nine. There was no requirement to attend every evening, and nobody had to explain why they wanted company.\n\nThe route had to be ____2____ for everyone joining it. A short flight of steps made one path inconvenient for a member with an injured knee, so the group chose a slightly longer route with a ____3____ surface. Saving a few minutes was not useful if one person could not comfortably follow.\n\nClear ____4____ helped newcomers find the meeting point. The group described a particular library entrance rather than assuming everyone knew which door was meant. They also made the departure time ____5____: the walk began at nine, not whenever the most impatient member wanted to leave.\n\nStudents were asked to send a message if they had said they were coming but were ____6____. Otherwise, the group might wait for someone who had made other plans. The message did not need a personal explanation; it only needed to prevent unnecessary ____7____.\n\nThe arrangement remained ____8____. People could join on one night and travel another way on the next. It was not a service promising an escort to every possible address. Members were encouraged to ____9____ the plan if a class timetable changed or the chosen path became unavailable.\n\nOver time, the walks became a pleasant end to the day. Some evenings were full of conversation; others were quiet. What made the arrangement ____10____ was not a complicated system but a few shared expectations about where to meet, when to leave and how to communicate a change.",
+            "explanation": "Arrangement names the agreed meeting plan described next. Instructions are directions within a plan, damage harm, delay waiting and purchase buying; the other words do not name the overall setup.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. absent"
+              },
+              {
+                "id": "o1",
+                "text": "B. accessible"
+              },
+              {
+                "id": "o2",
+                "text": "C. arrangement"
+              },
+              {
+                "id": "o3",
+                "text": "D. damage"
+              },
+              {
+                "id": "o4",
+                "text": "E. delay"
+              },
+              {
+                "id": "o5",
+                "text": "F. fragile"
+              },
+              {
+                "id": "o6",
+                "text": "G. fixed"
+              },
+              {
+                "id": "o7",
+                "text": "H. instructions"
+              },
+              {
+                "id": "o8",
+                "text": "I. level"
+              },
+              {
+                "id": "o9",
+                "text": "J. optional"
+              },
+              {
+                "id": "o10",
+                "text": "K. purchase"
+              },
+              {
+                "id": "o11",
+                "text": "L. reconsider"
+              },
+              {
+                "id": "o12",
+                "text": "M. successful"
+              },
+              {
+                "id": "o13",
+                "text": "N. temporary"
+              },
+              {
+                "id": "o14",
+                "text": "O. flexibly"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.evening-walking-group-052.whole.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 2.",
+            "material": "Walking home together\n\nA group of students started walking home together after their evening classes. The original ____1____ was simple: anyone taking the same route could meet outside the library at nine. There was no requirement to attend every evening, and nobody had to explain why they wanted company.\n\nThe route had to be ____2____ for everyone joining it. A short flight of steps made one path inconvenient for a member with an injured knee, so the group chose a slightly longer route with a ____3____ surface. Saving a few minutes was not useful if one person could not comfortably follow.\n\nClear ____4____ helped newcomers find the meeting point. The group described a particular library entrance rather than assuming everyone knew which door was meant. They also made the departure time ____5____: the walk began at nine, not whenever the most impatient member wanted to leave.\n\nStudents were asked to send a message if they had said they were coming but were ____6____. Otherwise, the group might wait for someone who had made other plans. The message did not need a personal explanation; it only needed to prevent unnecessary ____7____.\n\nThe arrangement remained ____8____. People could join on one night and travel another way on the next. It was not a service promising an escort to every possible address. Members were encouraged to ____9____ the plan if a class timetable changed or the chosen path became unavailable.\n\nOver time, the walks became a pleasant end to the day. Some evenings were full of conversation; others were quiet. What made the arrangement ____10____ was not a complicated system but a few shared expectations about where to meet, when to leave and how to communicate a change.",
+            "explanation": "Accessible fits a route usable by everyone including a person with a knee injury. Level refers to the surface chosen next, not overall access; optional concerns participation and fixed time. Other adjectives do not mean usable for all.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. absent"
+              },
+              {
+                "id": "o1",
+                "text": "B. accessible"
+              },
+              {
+                "id": "o2",
+                "text": "C. arrangement"
+              },
+              {
+                "id": "o3",
+                "text": "D. damage"
+              },
+              {
+                "id": "o4",
+                "text": "E. delay"
+              },
+              {
+                "id": "o5",
+                "text": "F. fragile"
+              },
+              {
+                "id": "o6",
+                "text": "G. fixed"
+              },
+              {
+                "id": "o7",
+                "text": "H. instructions"
+              },
+              {
+                "id": "o8",
+                "text": "I. level"
+              },
+              {
+                "id": "o9",
+                "text": "J. optional"
+              },
+              {
+                "id": "o10",
+                "text": "K. purchase"
+              },
+              {
+                "id": "o11",
+                "text": "L. reconsider"
+              },
+              {
+                "id": "o12",
+                "text": "M. successful"
+              },
+              {
+                "id": "o13",
+                "text": "N. temporary"
+              },
+              {
+                "id": "o14",
+                "text": "O. flexibly"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.evening-walking-group-052.whole.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 3.",
+            "material": "Walking home together\n\nA group of students started walking home together after their evening classes. The original ____1____ was simple: anyone taking the same route could meet outside the library at nine. There was no requirement to attend every evening, and nobody had to explain why they wanted company.\n\nThe route had to be ____2____ for everyone joining it. A short flight of steps made one path inconvenient for a member with an injured knee, so the group chose a slightly longer route with a ____3____ surface. Saving a few minutes was not useful if one person could not comfortably follow.\n\nClear ____4____ helped newcomers find the meeting point. The group described a particular library entrance rather than assuming everyone knew which door was meant. They also made the departure time ____5____: the walk began at nine, not whenever the most impatient member wanted to leave.\n\nStudents were asked to send a message if they had said they were coming but were ____6____. Otherwise, the group might wait for someone who had made other plans. The message did not need a personal explanation; it only needed to prevent unnecessary ____7____.\n\nThe arrangement remained ____8____. People could join on one night and travel another way on the next. It was not a service promising an escort to every possible address. Members were encouraged to ____9____ the plan if a class timetable changed or the chosen path became unavailable.\n\nOver time, the walks became a pleasant end to the day. Some evenings were full of conversation; others were quiet. What made the arrangement ____10____ was not a complicated system but a few shared expectations about where to meet, when to leave and how to communicate a change.",
+            "explanation": "Level describes a surface without the inconvenient steps. Fixed concerns stability, fragile vulnerability and temporary duration; flexibly is an adverb. The other candidates do not name a step-free surface.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. absent"
+              },
+              {
+                "id": "o1",
+                "text": "B. accessible"
+              },
+              {
+                "id": "o2",
+                "text": "C. arrangement"
+              },
+              {
+                "id": "o3",
+                "text": "D. damage"
+              },
+              {
+                "id": "o4",
+                "text": "E. delay"
+              },
+              {
+                "id": "o5",
+                "text": "F. fragile"
+              },
+              {
+                "id": "o6",
+                "text": "G. fixed"
+              },
+              {
+                "id": "o7",
+                "text": "H. instructions"
+              },
+              {
+                "id": "o8",
+                "text": "I. level"
+              },
+              {
+                "id": "o9",
+                "text": "J. optional"
+              },
+              {
+                "id": "o10",
+                "text": "K. purchase"
+              },
+              {
+                "id": "o11",
+                "text": "L. reconsider"
+              },
+              {
+                "id": "o12",
+                "text": "M. successful"
+              },
+              {
+                "id": "o13",
+                "text": "N. temporary"
+              },
+              {
+                "id": "o14",
+                "text": "O. flexibly"
+              }
+            ],
+            "answer": "o8"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.evening-walking-group-052.whole.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 4.",
+            "material": "Walking home together\n\nA group of students started walking home together after their evening classes. The original ____1____ was simple: anyone taking the same route could meet outside the library at nine. There was no requirement to attend every evening, and nobody had to explain why they wanted company.\n\nThe route had to be ____2____ for everyone joining it. A short flight of steps made one path inconvenient for a member with an injured knee, so the group chose a slightly longer route with a ____3____ surface. Saving a few minutes was not useful if one person could not comfortably follow.\n\nClear ____4____ helped newcomers find the meeting point. The group described a particular library entrance rather than assuming everyone knew which door was meant. They also made the departure time ____5____: the walk began at nine, not whenever the most impatient member wanted to leave.\n\nStudents were asked to send a message if they had said they were coming but were ____6____. Otherwise, the group might wait for someone who had made other plans. The message did not need a personal explanation; it only needed to prevent unnecessary ____7____.\n\nThe arrangement remained ____8____. People could join on one night and travel another way on the next. It was not a service promising an escort to every possible address. Members were encouraged to ____9____ the plan if a class timetable changed or the chosen path became unavailable.\n\nOver time, the walks became a pleasant end to the day. Some evenings were full of conversation; others were quiet. What made the arrangement ____10____ was not a complicated system but a few shared expectations about where to meet, when to leave and how to communicate a change.",
+            "explanation": "Instructions give newcomers the entrance and meeting-point directions. Arrangement is the overall plan, while delay/damage/purchase do not name directions. Other bank entries cannot be plural guidance here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. absent"
+              },
+              {
+                "id": "o1",
+                "text": "B. accessible"
+              },
+              {
+                "id": "o2",
+                "text": "C. arrangement"
+              },
+              {
+                "id": "o3",
+                "text": "D. damage"
+              },
+              {
+                "id": "o4",
+                "text": "E. delay"
+              },
+              {
+                "id": "o5",
+                "text": "F. fragile"
+              },
+              {
+                "id": "o6",
+                "text": "G. fixed"
+              },
+              {
+                "id": "o7",
+                "text": "H. instructions"
+              },
+              {
+                "id": "o8",
+                "text": "I. level"
+              },
+              {
+                "id": "o9",
+                "text": "J. optional"
+              },
+              {
+                "id": "o10",
+                "text": "K. purchase"
+              },
+              {
+                "id": "o11",
+                "text": "L. reconsider"
+              },
+              {
+                "id": "o12",
+                "text": "M. successful"
+              },
+              {
+                "id": "o13",
+                "text": "N. temporary"
+              },
+              {
+                "id": "o14",
+                "text": "O. flexibly"
+              }
+            ],
+            "answer": "o7"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.evening-walking-group-052.whole.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 5.",
+            "material": "Walking home together\n\nA group of students started walking home together after their evening classes. The original ____1____ was simple: anyone taking the same route could meet outside the library at nine. There was no requirement to attend every evening, and nobody had to explain why they wanted company.\n\nThe route had to be ____2____ for everyone joining it. A short flight of steps made one path inconvenient for a member with an injured knee, so the group chose a slightly longer route with a ____3____ surface. Saving a few minutes was not useful if one person could not comfortably follow.\n\nClear ____4____ helped newcomers find the meeting point. The group described a particular library entrance rather than assuming everyone knew which door was meant. They also made the departure time ____5____: the walk began at nine, not whenever the most impatient member wanted to leave.\n\nStudents were asked to send a message if they had said they were coming but were ____6____. Otherwise, the group might wait for someone who had made other plans. The message did not need a personal explanation; it only needed to prevent unnecessary ____7____.\n\nThe arrangement remained ____8____. People could join on one night and travel another way on the next. It was not a service promising an escort to every possible address. Members were encouraged to ____9____ the plan if a class timetable changed or the chosen path became unavailable.\n\nOver time, the walks became a pleasant end to the day. Some evenings were full of conversation; others were quiet. What made the arrangement ____10____ was not a complicated system but a few shared expectations about where to meet, when to leave and how to communicate a change.",
+            "explanation": "Fixed establishes nine as the settled departure time, contrasted with individual wishes. Temporary concerns duration, fragile vulnerability, and flexibly is an adverb rather than the required complement. Other bank adjectives do not set the agreed time.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. absent"
+              },
+              {
+                "id": "o1",
+                "text": "B. accessible"
+              },
+              {
+                "id": "o2",
+                "text": "C. arrangement"
+              },
+              {
+                "id": "o3",
+                "text": "D. damage"
+              },
+              {
+                "id": "o4",
+                "text": "E. delay"
+              },
+              {
+                "id": "o5",
+                "text": "F. fragile"
+              },
+              {
+                "id": "o6",
+                "text": "G. fixed"
+              },
+              {
+                "id": "o7",
+                "text": "H. instructions"
+              },
+              {
+                "id": "o8",
+                "text": "I. level"
+              },
+              {
+                "id": "o9",
+                "text": "J. optional"
+              },
+              {
+                "id": "o10",
+                "text": "K. purchase"
+              },
+              {
+                "id": "o11",
+                "text": "L. reconsider"
+              },
+              {
+                "id": "o12",
+                "text": "M. successful"
+              },
+              {
+                "id": "o13",
+                "text": "N. temporary"
+              },
+              {
+                "id": "o14",
+                "text": "O. flexibly"
+              }
+            ],
+            "answer": "o6"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.evening-walking-group-052.whole.q6",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 6.",
+            "material": "Walking home together\n\nA group of students started walking home together after their evening classes. The original ____1____ was simple: anyone taking the same route could meet outside the library at nine. There was no requirement to attend every evening, and nobody had to explain why they wanted company.\n\nThe route had to be ____2____ for everyone joining it. A short flight of steps made one path inconvenient for a member with an injured knee, so the group chose a slightly longer route with a ____3____ surface. Saving a few minutes was not useful if one person could not comfortably follow.\n\nClear ____4____ helped newcomers find the meeting point. The group described a particular library entrance rather than assuming everyone knew which door was meant. They also made the departure time ____5____: the walk began at nine, not whenever the most impatient member wanted to leave.\n\nStudents were asked to send a message if they had said they were coming but were ____6____. Otherwise, the group might wait for someone who had made other plans. The message did not need a personal explanation; it only needed to prevent unnecessary ____7____.\n\nThe arrangement remained ____8____. People could join on one night and travel another way on the next. It was not a service promising an escort to every possible address. Members were encouraged to ____9____ the plan if a class timetable changed or the chosen path became unavailable.\n\nOver time, the walks became a pleasant end to the day. Some evenings were full of conversation; others were quiet. What made the arrangement ____10____ was not a complicated system but a few shared expectations about where to meet, when to leave and how to communicate a change.",
+            "explanation": "Absent describes someone expected but not attending. Accessible refers to reachability, optional a choice and successful an outcome; the other entries do not express nonattendance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. absent"
+              },
+              {
+                "id": "o1",
+                "text": "B. accessible"
+              },
+              {
+                "id": "o2",
+                "text": "C. arrangement"
+              },
+              {
+                "id": "o3",
+                "text": "D. damage"
+              },
+              {
+                "id": "o4",
+                "text": "E. delay"
+              },
+              {
+                "id": "o5",
+                "text": "F. fragile"
+              },
+              {
+                "id": "o6",
+                "text": "G. fixed"
+              },
+              {
+                "id": "o7",
+                "text": "H. instructions"
+              },
+              {
+                "id": "o8",
+                "text": "I. level"
+              },
+              {
+                "id": "o9",
+                "text": "J. optional"
+              },
+              {
+                "id": "o10",
+                "text": "K. purchase"
+              },
+              {
+                "id": "o11",
+                "text": "L. reconsider"
+              },
+              {
+                "id": "o12",
+                "text": "M. successful"
+              },
+              {
+                "id": "o13",
+                "text": "N. temporary"
+              },
+              {
+                "id": "o14",
+                "text": "O. flexibly"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.evening-walking-group-052.whole.q7",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 7.",
+            "material": "Walking home together\n\nA group of students started walking home together after their evening classes. The original ____1____ was simple: anyone taking the same route could meet outside the library at nine. There was no requirement to attend every evening, and nobody had to explain why they wanted company.\n\nThe route had to be ____2____ for everyone joining it. A short flight of steps made one path inconvenient for a member with an injured knee, so the group chose a slightly longer route with a ____3____ surface. Saving a few minutes was not useful if one person could not comfortably follow.\n\nClear ____4____ helped newcomers find the meeting point. The group described a particular library entrance rather than assuming everyone knew which door was meant. They also made the departure time ____5____: the walk began at nine, not whenever the most impatient member wanted to leave.\n\nStudents were asked to send a message if they had said they were coming but were ____6____. Otherwise, the group might wait for someone who had made other plans. The message did not need a personal explanation; it only needed to prevent unnecessary ____7____.\n\nThe arrangement remained ____8____. People could join on one night and travel another way on the next. It was not a service promising an escort to every possible address. Members were encouraged to ____9____ the plan if a class timetable changed or the chosen path became unavailable.\n\nOver time, the walks became a pleasant end to the day. Some evenings were full of conversation; others were quiet. What made the arrangement ____10____ was not a complicated system but a few shared expectations about where to meet, when to leave and how to communicate a change.",
+            "explanation": "Delay is unnecessary waiting for someone not coming. Damage is harm, purchase buying and arrangement the plan, not time lost waiting.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. absent"
+              },
+              {
+                "id": "o1",
+                "text": "B. accessible"
+              },
+              {
+                "id": "o2",
+                "text": "C. arrangement"
+              },
+              {
+                "id": "o3",
+                "text": "D. damage"
+              },
+              {
+                "id": "o4",
+                "text": "E. delay"
+              },
+              {
+                "id": "o5",
+                "text": "F. fragile"
+              },
+              {
+                "id": "o6",
+                "text": "G. fixed"
+              },
+              {
+                "id": "o7",
+                "text": "H. instructions"
+              },
+              {
+                "id": "o8",
+                "text": "I. level"
+              },
+              {
+                "id": "o9",
+                "text": "J. optional"
+              },
+              {
+                "id": "o10",
+                "text": "K. purchase"
+              },
+              {
+                "id": "o11",
+                "text": "L. reconsider"
+              },
+              {
+                "id": "o12",
+                "text": "M. successful"
+              },
+              {
+                "id": "o13",
+                "text": "N. temporary"
+              },
+              {
+                "id": "o14",
+                "text": "O. flexibly"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.evening-walking-group-052.whole.q8",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 8.",
+            "material": "Walking home together\n\nA group of students started walking home together after their evening classes. The original ____1____ was simple: anyone taking the same route could meet outside the library at nine. There was no requirement to attend every evening, and nobody had to explain why they wanted company.\n\nThe route had to be ____2____ for everyone joining it. A short flight of steps made one path inconvenient for a member with an injured knee, so the group chose a slightly longer route with a ____3____ surface. Saving a few minutes was not useful if one person could not comfortably follow.\n\nClear ____4____ helped newcomers find the meeting point. The group described a particular library entrance rather than assuming everyone knew which door was meant. They also made the departure time ____5____: the walk began at nine, not whenever the most impatient member wanted to leave.\n\nStudents were asked to send a message if they had said they were coming but were ____6____. Otherwise, the group might wait for someone who had made other plans. The message did not need a personal explanation; it only needed to prevent unnecessary ____7____.\n\nThe arrangement remained ____8____. People could join on one night and travel another way on the next. It was not a service promising an escort to every possible address. Members were encouraged to ____9____ the plan if a class timetable changed or the chosen path became unavailable.\n\nOver time, the walks became a pleasant end to the day. Some evenings were full of conversation; others were quiet. What made the arrangement ____10____ was not a complicated system but a few shared expectations about where to meet, when to leave and how to communicate a change.",
+            "explanation": "Optional means attendance is a choice night by night. Fixed imposes a settled arrangement, temporary concerns duration and accessible usability. Fragile concerns vulnerability, not voluntary attendance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. absent"
+              },
+              {
+                "id": "o1",
+                "text": "B. accessible"
+              },
+              {
+                "id": "o2",
+                "text": "C. arrangement"
+              },
+              {
+                "id": "o3",
+                "text": "D. damage"
+              },
+              {
+                "id": "o4",
+                "text": "E. delay"
+              },
+              {
+                "id": "o5",
+                "text": "F. fragile"
+              },
+              {
+                "id": "o6",
+                "text": "G. fixed"
+              },
+              {
+                "id": "o7",
+                "text": "H. instructions"
+              },
+              {
+                "id": "o8",
+                "text": "I. level"
+              },
+              {
+                "id": "o9",
+                "text": "J. optional"
+              },
+              {
+                "id": "o10",
+                "text": "K. purchase"
+              },
+              {
+                "id": "o11",
+                "text": "L. reconsider"
+              },
+              {
+                "id": "o12",
+                "text": "M. successful"
+              },
+              {
+                "id": "o13",
+                "text": "N. temporary"
+              },
+              {
+                "id": "o14",
+                "text": "O. flexibly"
+              }
+            ],
+            "answer": "o9"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.evening-walking-group-052.whole.q9",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 9.",
+            "material": "Walking home together\n\nA group of students started walking home together after their evening classes. The original ____1____ was simple: anyone taking the same route could meet outside the library at nine. There was no requirement to attend every evening, and nobody had to explain why they wanted company.\n\nThe route had to be ____2____ for everyone joining it. A short flight of steps made one path inconvenient for a member with an injured knee, so the group chose a slightly longer route with a ____3____ surface. Saving a few minutes was not useful if one person could not comfortably follow.\n\nClear ____4____ helped newcomers find the meeting point. The group described a particular library entrance rather than assuming everyone knew which door was meant. They also made the departure time ____5____: the walk began at nine, not whenever the most impatient member wanted to leave.\n\nStudents were asked to send a message if they had said they were coming but were ____6____. Otherwise, the group might wait for someone who had made other plans. The message did not need a personal explanation; it only needed to prevent unnecessary ____7____.\n\nThe arrangement remained ____8____. People could join on one night and travel another way on the next. It was not a service promising an escort to every possible address. Members were encouraged to ____9____ the plan if a class timetable changed or the chosen path became unavailable.\n\nOver time, the walks became a pleasant end to the day. Some evenings were full of conversation; others were quiet. What made the arrangement ____10____ was not a complicated system but a few shared expectations about where to meet, when to leave and how to communicate a change.",
+            "explanation": "Reconsider means think about the plan again when conditions change. Purchase means buy, not review a plan; the remaining bank words do not supply the base verb needed after to.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. absent"
+              },
+              {
+                "id": "o1",
+                "text": "B. accessible"
+              },
+              {
+                "id": "o2",
+                "text": "C. arrangement"
+              },
+              {
+                "id": "o3",
+                "text": "D. damage"
+              },
+              {
+                "id": "o4",
+                "text": "E. delay"
+              },
+              {
+                "id": "o5",
+                "text": "F. fragile"
+              },
+              {
+                "id": "o6",
+                "text": "G. fixed"
+              },
+              {
+                "id": "o7",
+                "text": "H. instructions"
+              },
+              {
+                "id": "o8",
+                "text": "I. level"
+              },
+              {
+                "id": "o9",
+                "text": "J. optional"
+              },
+              {
+                "id": "o10",
+                "text": "K. purchase"
+              },
+              {
+                "id": "o11",
+                "text": "L. reconsider"
+              },
+              {
+                "id": "o12",
+                "text": "M. successful"
+              },
+              {
+                "id": "o13",
+                "text": "N. temporary"
+              },
+              {
+                "id": "o14",
+                "text": "O. flexibly"
+              }
+            ],
+            "answer": "o11"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.evening-walking-group-052.whole.q10",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 10.",
+            "material": "Walking home together\n\nA group of students started walking home together after their evening classes. The original ____1____ was simple: anyone taking the same route could meet outside the library at nine. There was no requirement to attend every evening, and nobody had to explain why they wanted company.\n\nThe route had to be ____2____ for everyone joining it. A short flight of steps made one path inconvenient for a member with an injured knee, so the group chose a slightly longer route with a ____3____ surface. Saving a few minutes was not useful if one person could not comfortably follow.\n\nClear ____4____ helped newcomers find the meeting point. The group described a particular library entrance rather than assuming everyone knew which door was meant. They also made the departure time ____5____: the walk began at nine, not whenever the most impatient member wanted to leave.\n\nStudents were asked to send a message if they had said they were coming but were ____6____. Otherwise, the group might wait for someone who had made other plans. The message did not need a personal explanation; it only needed to prevent unnecessary ____7____.\n\nThe arrangement remained ____8____. People could join on one night and travel another way on the next. It was not a service promising an escort to every possible address. Members were encouraged to ____9____ the plan if a class timetable changed or the chosen path became unavailable.\n\nOver time, the walks became a pleasant end to the day. Some evenings were full of conversation; others were quiet. What made the arrangement ____10____ was not a complicated system but a few shared expectations about where to meet, when to leave and how to communicate a change.",
+            "explanation": "Successful evaluates the arrangement’s useful outcome. Accessible concerns usability, optional choice, temporary duration and explicit disclosure; none names overall achievement as directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. absent"
+              },
+              {
+                "id": "o1",
+                "text": "B. accessible"
+              },
+              {
+                "id": "o2",
+                "text": "C. arrangement"
+              },
+              {
+                "id": "o3",
+                "text": "D. damage"
+              },
+              {
+                "id": "o4",
+                "text": "E. delay"
+              },
+              {
+                "id": "o5",
+                "text": "F. fragile"
+              },
+              {
+                "id": "o6",
+                "text": "G. fixed"
+              },
+              {
+                "id": "o7",
+                "text": "H. instructions"
+              },
+              {
+                "id": "o8",
+                "text": "I. level"
+              },
+              {
+                "id": "o9",
+                "text": "J. optional"
+              },
+              {
+                "id": "o10",
+                "text": "K. purchase"
+              },
+              {
+                "id": "o11",
+                "text": "L. reconsider"
+              },
+              {
+                "id": "o12",
+                "text": "M. successful"
+              },
+              {
+                "id": "o13",
+                "text": "N. temporary"
+              },
+              {
+                "id": "o14",
+                "text": "O. flexibly"
+              }
+            ],
+            "answer": "o12"
+          }
+        ]
+      },
+      "contentHash": "d917a5a9c1595e59289d2cb5061f49a5e56448a8b9a1a848ff7c0e0fe3458f86",
+      "reviewNotes": "Three whole-passage adult originals: ten-gap/fifteen-word CET4 and CET6 banks plus eight-gap C1 word formation. Fictional cases. Same-author lexical and variant review, not independent calibration. Unlisted written forms reviewable. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.postgraduate.lottery-festival-seats-052",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "postgraduate",
+        "title": "10·24新题 · Allocating the small hall",
+        "summary": "Allocating the small hall，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "cet6.2016.sample.wordbank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 形式参照已核官方2016四/六级相应样卷的一篇十空/十五词，词形不变、每项最多一次、五项不用；不混配听力或他档字数。完整内容为虚构，源键风险保留，未做独立教研、目标学生、商用、生产或产品等级标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three whole-passage adult originals: ten-gap/fifteen-word CET4 and CET6 banks plus eight-gap C1 word formation. Fictional cases. Same-author lexical and variant review, not independent calibration. Unlisted written forms reviewable."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.postgraduate.lottery-festival-seats-052",
+          "family": "shared_bank",
+          "label": "Allocating the small hall",
+          "candidateSHA256": "863cd80308d9d8f55dff0b141fb33bb2e5518bd7032cbd77a8e8b03d3ce6faad",
+          "authorCheckSHA256": "ba4d539998b8906f013f8eeeb26bba05b4f50d4f1aea3ca69bff6332ad3f194c",
+          "sourceGroupIds": [
+            "expansion.20261024.postgraduate.lottery-festival-seats-052#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b052；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Allocating the small hall\n\nA local festival introduced a free discussion in a hall with limited seating. Previous events had used first-come booking, but organisers worried that this favoured people able to remain online at the exact release time. They proposed a lottery as an ____1____ method of allocating places.\n\nThe change did not increase the hall's ____2____. It changed how demand beyond that limit was handled. Organisers therefore needed to be ____3____ about what the lottery could and could not achieve. A more convenient application period was not the same as a guarantee that every applicant would attend.\n\nApplications remained open for a week. Entries submitted on the first and last day had an ____4____ chance in the draw. This removed the advantage of speed within the application period, although it did not remove every possible ____5____. Someone who never heard about the event could still not apply.\n\nThe team published the selection ____6____, including how duplicate entries and cancellations would be handled. Accessibility requirements were considered separately rather than treated as an attempt to gain an unfair advantage. The aim was to distinguish practical support from a general ____7____ for a particular applicant.\n\nAfter the draw, a waiting list provided a way to ____8____ seats released by cancellations. Organisers asked successful applicants to confirm attendance, while making clear that confirmation was not evidence of a paid purchase: the event remained free.\n\nThe final report described both the benefits and ____9____ of the new method. A lottery distributed a scarce opportunity differently; it did not make scarcity disappear. Keeping that distinction ____10____ helped people evaluate the policy without expecting it to solve every problem associated with access."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.postgraduate.lottery-festival-seats-052.whole.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 1.",
+            "material": "Allocating the small hall\n\nA local festival introduced a free discussion in a hall with limited seating. Previous events had used first-come booking, but organisers worried that this favoured people able to remain online at the exact release time. They proposed a lottery as an ____1____ method of allocating places.\n\nThe change did not increase the hall's ____2____. It changed how demand beyond that limit was handled. Organisers therefore needed to be ____3____ about what the lottery could and could not achieve. A more convenient application period was not the same as a guarantee that every applicant would attend.\n\nApplications remained open for a week. Entries submitted on the first and last day had an ____4____ chance in the draw. This removed the advantage of speed within the application period, although it did not remove every possible ____5____. Someone who never heard about the event could still not apply.\n\nThe team published the selection ____6____, including how duplicate entries and cancellations would be handled. Accessibility requirements were considered separately rather than treated as an attempt to gain an unfair advantage. The aim was to distinguish practical support from a general ____7____ for a particular applicant.\n\nAfter the draw, a waiting list provided a way to ____8____ seats released by cancellations. Organisers asked successful applicants to confirm attendance, while making clear that confirmation was not evidence of a paid purchase: the event remained free.\n\nThe final report described both the benefits and ____9____ of the new method. A lottery distributed a scarce opportunity differently; it did not make scarcity disappear. Keeping that distinction ____10____ helped people evaluate the policy without expecting it to solve every problem associated with access.",
+            "explanation": "Alternative means another method replacing first-come booking. Sequential means in order, simultaneous at the same time, compulsory required and central important; none expresses the replacement method.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. alternative"
+              },
+              {
+                "id": "o1",
+                "text": "B. capacity"
+              },
+              {
+                "id": "o2",
+                "text": "C. equal"
+              },
+              {
+                "id": "o3",
+                "text": "D. exclusion"
+              },
+              {
+                "id": "o4",
+                "text": "E. central"
+              },
+              {
+                "id": "o5",
+                "text": "F. limitations"
+              },
+              {
+                "id": "o6",
+                "text": "G. preference"
+              },
+              {
+                "id": "o7",
+                "text": "H. procedure"
+              },
+              {
+                "id": "o8",
+                "text": "I. reallocate"
+              },
+              {
+                "id": "o9",
+                "text": "J. scarcity"
+              },
+              {
+                "id": "o10",
+                "text": "K. sequential"
+              },
+              {
+                "id": "o11",
+                "text": "L. simultaneous"
+              },
+              {
+                "id": "o12",
+                "text": "M. transparent"
+              },
+              {
+                "id": "o13",
+                "text": "N. compulsory"
+              },
+              {
+                "id": "o14",
+                "text": "O. withdraw"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.lottery-festival-seats-052.whole.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 2.",
+            "material": "Allocating the small hall\n\nA local festival introduced a free discussion in a hall with limited seating. Previous events had used first-come booking, but organisers worried that this favoured people able to remain online at the exact release time. They proposed a lottery as an ____1____ method of allocating places.\n\nThe change did not increase the hall's ____2____. It changed how demand beyond that limit was handled. Organisers therefore needed to be ____3____ about what the lottery could and could not achieve. A more convenient application period was not the same as a guarantee that every applicant would attend.\n\nApplications remained open for a week. Entries submitted on the first and last day had an ____4____ chance in the draw. This removed the advantage of speed within the application period, although it did not remove every possible ____5____. Someone who never heard about the event could still not apply.\n\nThe team published the selection ____6____, including how duplicate entries and cancellations would be handled. Accessibility requirements were considered separately rather than treated as an attempt to gain an unfair advantage. The aim was to distinguish practical support from a general ____7____ for a particular applicant.\n\nAfter the draw, a waiting list provided a way to ____8____ seats released by cancellations. Organisers asked successful applicants to confirm attendance, while making clear that confirmation was not evidence of a paid purchase: the event remained free.\n\nThe final report described both the benefits and ____9____ of the new method. A lottery distributed a scarce opportunity differently; it did not make scarcity disappear. Keeping that distinction ____10____ helped people evaluate the policy without expecting it to solve every problem associated with access.",
+            "explanation": "Capacity names the hall’s maximum accommodation. Scarcity is insufficiency of places rather than the physical limit itself; exclusion nonparticipation, procedure method and preference favour do not name the hall’s seating limit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. alternative"
+              },
+              {
+                "id": "o1",
+                "text": "B. capacity"
+              },
+              {
+                "id": "o2",
+                "text": "C. equal"
+              },
+              {
+                "id": "o3",
+                "text": "D. exclusion"
+              },
+              {
+                "id": "o4",
+                "text": "E. central"
+              },
+              {
+                "id": "o5",
+                "text": "F. limitations"
+              },
+              {
+                "id": "o6",
+                "text": "G. preference"
+              },
+              {
+                "id": "o7",
+                "text": "H. procedure"
+              },
+              {
+                "id": "o8",
+                "text": "I. reallocate"
+              },
+              {
+                "id": "o9",
+                "text": "J. scarcity"
+              },
+              {
+                "id": "o10",
+                "text": "K. sequential"
+              },
+              {
+                "id": "o11",
+                "text": "L. simultaneous"
+              },
+              {
+                "id": "o12",
+                "text": "M. transparent"
+              },
+              {
+                "id": "o13",
+                "text": "N. compulsory"
+              },
+              {
+                "id": "o14",
+                "text": "O. withdraw"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.lottery-festival-seats-052.whole.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 3.",
+            "material": "Allocating the small hall\n\nA local festival introduced a free discussion in a hall with limited seating. Previous events had used first-come booking, but organisers worried that this favoured people able to remain online at the exact release time. They proposed a lottery as an ____1____ method of allocating places.\n\nThe change did not increase the hall's ____2____. It changed how demand beyond that limit was handled. Organisers therefore needed to be ____3____ about what the lottery could and could not achieve. A more convenient application period was not the same as a guarantee that every applicant would attend.\n\nApplications remained open for a week. Entries submitted on the first and last day had an ____4____ chance in the draw. This removed the advantage of speed within the application period, although it did not remove every possible ____5____. Someone who never heard about the event could still not apply.\n\nThe team published the selection ____6____, including how duplicate entries and cancellations would be handled. Accessibility requirements were considered separately rather than treated as an attempt to gain an unfair advantage. The aim was to distinguish practical support from a general ____7____ for a particular applicant.\n\nAfter the draw, a waiting list provided a way to ____8____ seats released by cancellations. Organisers asked successful applicants to confirm attendance, while making clear that confirmation was not evidence of a paid purchase: the event remained free.\n\nThe final report described both the benefits and ____9____ of the new method. A lottery distributed a scarce opportunity differently; it did not make scarcity disappear. Keeping that distinction ____10____ helped people evaluate the policy without expecting it to solve every problem associated with access.",
+            "explanation": "Transparent about what a policy can achieve means open and clear about its limits. Alternative, equal, central, sequential, simultaneous and compulsory do not complete be ... about with that disclosure meaning; the other items have unsuitable grammatical roles.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. alternative"
+              },
+              {
+                "id": "o1",
+                "text": "B. capacity"
+              },
+              {
+                "id": "o2",
+                "text": "C. equal"
+              },
+              {
+                "id": "o3",
+                "text": "D. exclusion"
+              },
+              {
+                "id": "o4",
+                "text": "E. central"
+              },
+              {
+                "id": "o5",
+                "text": "F. limitations"
+              },
+              {
+                "id": "o6",
+                "text": "G. preference"
+              },
+              {
+                "id": "o7",
+                "text": "H. procedure"
+              },
+              {
+                "id": "o8",
+                "text": "I. reallocate"
+              },
+              {
+                "id": "o9",
+                "text": "J. scarcity"
+              },
+              {
+                "id": "o10",
+                "text": "K. sequential"
+              },
+              {
+                "id": "o11",
+                "text": "L. simultaneous"
+              },
+              {
+                "id": "o12",
+                "text": "M. transparent"
+              },
+              {
+                "id": "o13",
+                "text": "N. compulsory"
+              },
+              {
+                "id": "o14",
+                "text": "O. withdraw"
+              }
+            ],
+            "answer": "o12"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.lottery-festival-seats-052.whole.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 4.",
+            "material": "Allocating the small hall\n\nA local festival introduced a free discussion in a hall with limited seating. Previous events had used first-come booking, but organisers worried that this favoured people able to remain online at the exact release time. They proposed a lottery as an ____1____ method of allocating places.\n\nThe change did not increase the hall's ____2____. It changed how demand beyond that limit was handled. Organisers therefore needed to be ____3____ about what the lottery could and could not achieve. A more convenient application period was not the same as a guarantee that every applicant would attend.\n\nApplications remained open for a week. Entries submitted on the first and last day had an ____4____ chance in the draw. This removed the advantage of speed within the application period, although it did not remove every possible ____5____. Someone who never heard about the event could still not apply.\n\nThe team published the selection ____6____, including how duplicate entries and cancellations would be handled. Accessibility requirements were considered separately rather than treated as an attempt to gain an unfair advantage. The aim was to distinguish practical support from a general ____7____ for a particular applicant.\n\nAfter the draw, a waiting list provided a way to ____8____ seats released by cancellations. Organisers asked successful applicants to confirm attendance, while making clear that confirmation was not evidence of a paid purchase: the event remained free.\n\nThe final report described both the benefits and ____9____ of the new method. A lottery distributed a scarce opportunity differently; it did not make scarcity disappear. Keeping that distinction ____10____ helped people evaluate the policy without expecting it to solve every problem associated with access.",
+            "explanation": "An equal chance gives neither first nor last day an advantage. Alternative concerns a different method, compulsory a requirement, simultaneous timing and sequential order; none expresses equal probability.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. alternative"
+              },
+              {
+                "id": "o1",
+                "text": "B. capacity"
+              },
+              {
+                "id": "o2",
+                "text": "C. equal"
+              },
+              {
+                "id": "o3",
+                "text": "D. exclusion"
+              },
+              {
+                "id": "o4",
+                "text": "E. central"
+              },
+              {
+                "id": "o5",
+                "text": "F. limitations"
+              },
+              {
+                "id": "o6",
+                "text": "G. preference"
+              },
+              {
+                "id": "o7",
+                "text": "H. procedure"
+              },
+              {
+                "id": "o8",
+                "text": "I. reallocate"
+              },
+              {
+                "id": "o9",
+                "text": "J. scarcity"
+              },
+              {
+                "id": "o10",
+                "text": "K. sequential"
+              },
+              {
+                "id": "o11",
+                "text": "L. simultaneous"
+              },
+              {
+                "id": "o12",
+                "text": "M. transparent"
+              },
+              {
+                "id": "o13",
+                "text": "N. compulsory"
+              },
+              {
+                "id": "o14",
+                "text": "O. withdraw"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.lottery-festival-seats-052.whole.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 5.",
+            "material": "Allocating the small hall\n\nA local festival introduced a free discussion in a hall with limited seating. Previous events had used first-come booking, but organisers worried that this favoured people able to remain online at the exact release time. They proposed a lottery as an ____1____ method of allocating places.\n\nThe change did not increase the hall's ____2____. It changed how demand beyond that limit was handled. Organisers therefore needed to be ____3____ about what the lottery could and could not achieve. A more convenient application period was not the same as a guarantee that every applicant would attend.\n\nApplications remained open for a week. Entries submitted on the first and last day had an ____4____ chance in the draw. This removed the advantage of speed within the application period, although it did not remove every possible ____5____. Someone who never heard about the event could still not apply.\n\nThe team published the selection ____6____, including how duplicate entries and cancellations would be handled. Accessibility requirements were considered separately rather than treated as an attempt to gain an unfair advantage. The aim was to distinguish practical support from a general ____7____ for a particular applicant.\n\nAfter the draw, a waiting list provided a way to ____8____ seats released by cancellations. Organisers asked successful applicants to confirm attendance, while making clear that confirmation was not evidence of a paid purchase: the event remained free.\n\nThe final report described both the benefits and ____9____ of the new method. A lottery distributed a scarce opportunity differently; it did not make scarcity disappear. Keeping that distinction ____10____ helped people evaluate the policy without expecting it to solve every problem associated with access.",
+            "explanation": "Exclusion names being unable to participate because the person never heard. Scarcity is limited supply, preference favour and limitations the later general drawbacks. Other entries do not name missing the application opportunity.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. alternative"
+              },
+              {
+                "id": "o1",
+                "text": "B. capacity"
+              },
+              {
+                "id": "o2",
+                "text": "C. equal"
+              },
+              {
+                "id": "o3",
+                "text": "D. exclusion"
+              },
+              {
+                "id": "o4",
+                "text": "E. central"
+              },
+              {
+                "id": "o5",
+                "text": "F. limitations"
+              },
+              {
+                "id": "o6",
+                "text": "G. preference"
+              },
+              {
+                "id": "o7",
+                "text": "H. procedure"
+              },
+              {
+                "id": "o8",
+                "text": "I. reallocate"
+              },
+              {
+                "id": "o9",
+                "text": "J. scarcity"
+              },
+              {
+                "id": "o10",
+                "text": "K. sequential"
+              },
+              {
+                "id": "o11",
+                "text": "L. simultaneous"
+              },
+              {
+                "id": "o12",
+                "text": "M. transparent"
+              },
+              {
+                "id": "o13",
+                "text": "N. compulsory"
+              },
+              {
+                "id": "o14",
+                "text": "O. withdraw"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.lottery-festival-seats-052.whole.q6",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 6.",
+            "material": "Allocating the small hall\n\nA local festival introduced a free discussion in a hall with limited seating. Previous events had used first-come booking, but organisers worried that this favoured people able to remain online at the exact release time. They proposed a lottery as an ____1____ method of allocating places.\n\nThe change did not increase the hall's ____2____. It changed how demand beyond that limit was handled. Organisers therefore needed to be ____3____ about what the lottery could and could not achieve. A more convenient application period was not the same as a guarantee that every applicant would attend.\n\nApplications remained open for a week. Entries submitted on the first and last day had an ____4____ chance in the draw. This removed the advantage of speed within the application period, although it did not remove every possible ____5____. Someone who never heard about the event could still not apply.\n\nThe team published the selection ____6____, including how duplicate entries and cancellations would be handled. Accessibility requirements were considered separately rather than treated as an attempt to gain an unfair advantage. The aim was to distinguish practical support from a general ____7____ for a particular applicant.\n\nAfter the draw, a waiting list provided a way to ____8____ seats released by cancellations. Organisers asked successful applicants to confirm attendance, while making clear that confirmation was not evidence of a paid purchase: the event remained free.\n\nThe final report described both the benefits and ____9____ of the new method. A lottery distributed a scarce opportunity differently; it did not make scarcity disappear. Keeping that distinction ____10____ helped people evaluate the policy without expecting it to solve every problem associated with access.",
+            "explanation": "Procedure covers the published rules for duplicates and cancellations. Preference is favour, capacity seats and scarcity limited supply; other nouns do not name the selection steps.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. alternative"
+              },
+              {
+                "id": "o1",
+                "text": "B. capacity"
+              },
+              {
+                "id": "o2",
+                "text": "C. equal"
+              },
+              {
+                "id": "o3",
+                "text": "D. exclusion"
+              },
+              {
+                "id": "o4",
+                "text": "E. central"
+              },
+              {
+                "id": "o5",
+                "text": "F. limitations"
+              },
+              {
+                "id": "o6",
+                "text": "G. preference"
+              },
+              {
+                "id": "o7",
+                "text": "H. procedure"
+              },
+              {
+                "id": "o8",
+                "text": "I. reallocate"
+              },
+              {
+                "id": "o9",
+                "text": "J. scarcity"
+              },
+              {
+                "id": "o10",
+                "text": "K. sequential"
+              },
+              {
+                "id": "o11",
+                "text": "L. simultaneous"
+              },
+              {
+                "id": "o12",
+                "text": "M. transparent"
+              },
+              {
+                "id": "o13",
+                "text": "N. compulsory"
+              },
+              {
+                "id": "o14",
+                "text": "O. withdraw"
+              }
+            ],
+            "answer": "o7"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.lottery-festival-seats-052.whole.q7",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 7.",
+            "material": "Allocating the small hall\n\nA local festival introduced a free discussion in a hall with limited seating. Previous events had used first-come booking, but organisers worried that this favoured people able to remain online at the exact release time. They proposed a lottery as an ____1____ method of allocating places.\n\nThe change did not increase the hall's ____2____. It changed how demand beyond that limit was handled. Organisers therefore needed to be ____3____ about what the lottery could and could not achieve. A more convenient application period was not the same as a guarantee that every applicant would attend.\n\nApplications remained open for a week. Entries submitted on the first and last day had an ____4____ chance in the draw. This removed the advantage of speed within the application period, although it did not remove every possible ____5____. Someone who never heard about the event could still not apply.\n\nThe team published the selection ____6____, including how duplicate entries and cancellations would be handled. Accessibility requirements were considered separately rather than treated as an attempt to gain an unfair advantage. The aim was to distinguish practical support from a general ____7____ for a particular applicant.\n\nAfter the draw, a waiting list provided a way to ____8____ seats released by cancellations. Organisers asked successful applicants to confirm attendance, while making clear that confirmation was not evidence of a paid purchase: the event remained free.\n\nThe final report described both the benefits and ____9____ of the new method. A lottery distributed a scarce opportunity differently; it did not make scarcity disappear. Keeping that distinction ____10____ helped people evaluate the policy without expecting it to solve every problem associated with access.",
+            "explanation": "Preference for a particular applicant means favouring that person. Accessibility support is distinguished from such favour. Exclusion is keeping someone out, procedure rules and capacity supply, not personal advantage.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. alternative"
+              },
+              {
+                "id": "o1",
+                "text": "B. capacity"
+              },
+              {
+                "id": "o2",
+                "text": "C. equal"
+              },
+              {
+                "id": "o3",
+                "text": "D. exclusion"
+              },
+              {
+                "id": "o4",
+                "text": "E. central"
+              },
+              {
+                "id": "o5",
+                "text": "F. limitations"
+              },
+              {
+                "id": "o6",
+                "text": "G. preference"
+              },
+              {
+                "id": "o7",
+                "text": "H. procedure"
+              },
+              {
+                "id": "o8",
+                "text": "I. reallocate"
+              },
+              {
+                "id": "o9",
+                "text": "J. scarcity"
+              },
+              {
+                "id": "o10",
+                "text": "K. sequential"
+              },
+              {
+                "id": "o11",
+                "text": "L. simultaneous"
+              },
+              {
+                "id": "o12",
+                "text": "M. transparent"
+              },
+              {
+                "id": "o13",
+                "text": "N. compulsory"
+              },
+              {
+                "id": "o14",
+                "text": "O. withdraw"
+              }
+            ],
+            "answer": "o6"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.lottery-festival-seats-052.whole.q8",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 8.",
+            "material": "Allocating the small hall\n\nA local festival introduced a free discussion in a hall with limited seating. Previous events had used first-come booking, but organisers worried that this favoured people able to remain online at the exact release time. They proposed a lottery as an ____1____ method of allocating places.\n\nThe change did not increase the hall's ____2____. It changed how demand beyond that limit was handled. Organisers therefore needed to be ____3____ about what the lottery could and could not achieve. A more convenient application period was not the same as a guarantee that every applicant would attend.\n\nApplications remained open for a week. Entries submitted on the first and last day had an ____4____ chance in the draw. This removed the advantage of speed within the application period, although it did not remove every possible ____5____. Someone who never heard about the event could still not apply.\n\nThe team published the selection ____6____, including how duplicate entries and cancellations would be handled. Accessibility requirements were considered separately rather than treated as an attempt to gain an unfair advantage. The aim was to distinguish practical support from a general ____7____ for a particular applicant.\n\nAfter the draw, a waiting list provided a way to ____8____ seats released by cancellations. Organisers asked successful applicants to confirm attendance, while making clear that confirmation was not evidence of a paid purchase: the event remained free.\n\nThe final report described both the benefits and ____9____ of the new method. A lottery distributed a scarce opportunity differently; it did not make scarcity disappear. Keeping that distinction ____10____ helped people evaluate the policy without expecting it to solve every problem associated with access.",
+            "explanation": "Reallocate means assign released seats to waiting applicants. Withdraw would remove seats rather than give them to replacements; other entries are not base verbs for redistribution.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. alternative"
+              },
+              {
+                "id": "o1",
+                "text": "B. capacity"
+              },
+              {
+                "id": "o2",
+                "text": "C. equal"
+              },
+              {
+                "id": "o3",
+                "text": "D. exclusion"
+              },
+              {
+                "id": "o4",
+                "text": "E. central"
+              },
+              {
+                "id": "o5",
+                "text": "F. limitations"
+              },
+              {
+                "id": "o6",
+                "text": "G. preference"
+              },
+              {
+                "id": "o7",
+                "text": "H. procedure"
+              },
+              {
+                "id": "o8",
+                "text": "I. reallocate"
+              },
+              {
+                "id": "o9",
+                "text": "J. scarcity"
+              },
+              {
+                "id": "o10",
+                "text": "K. sequential"
+              },
+              {
+                "id": "o11",
+                "text": "L. simultaneous"
+              },
+              {
+                "id": "o12",
+                "text": "M. transparent"
+              },
+              {
+                "id": "o13",
+                "text": "N. compulsory"
+              },
+              {
+                "id": "o14",
+                "text": "O. withdraw"
+              }
+            ],
+            "answer": "o8"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.lottery-festival-seats-052.whole.q9",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 9.",
+            "material": "Allocating the small hall\n\nA local festival introduced a free discussion in a hall with limited seating. Previous events had used first-come booking, but organisers worried that this favoured people able to remain online at the exact release time. They proposed a lottery as an ____1____ method of allocating places.\n\nThe change did not increase the hall's ____2____. It changed how demand beyond that limit was handled. Organisers therefore needed to be ____3____ about what the lottery could and could not achieve. A more convenient application period was not the same as a guarantee that every applicant would attend.\n\nApplications remained open for a week. Entries submitted on the first and last day had an ____4____ chance in the draw. This removed the advantage of speed within the application period, although it did not remove every possible ____5____. Someone who never heard about the event could still not apply.\n\nThe team published the selection ____6____, including how duplicate entries and cancellations would be handled. Accessibility requirements were considered separately rather than treated as an attempt to gain an unfair advantage. The aim was to distinguish practical support from a general ____7____ for a particular applicant.\n\nAfter the draw, a waiting list provided a way to ____8____ seats released by cancellations. Organisers asked successful applicants to confirm attendance, while making clear that confirmation was not evidence of a paid purchase: the event remained free.\n\nThe final report described both the benefits and ____9____ of the new method. A lottery distributed a scarce opportunity differently; it did not make scarcity disappear. Keeping that distinction ____10____ helped people evaluate the policy without expecting it to solve every problem associated with access.",
+            "explanation": "Limitations are the method’s bounds, paired with benefits. Exclusion is one possible access problem but singular/uncountable and not the plural summary of several bounds; capacity is hall size, scarcity shortage and preference favour.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. alternative"
+              },
+              {
+                "id": "o1",
+                "text": "B. capacity"
+              },
+              {
+                "id": "o2",
+                "text": "C. equal"
+              },
+              {
+                "id": "o3",
+                "text": "D. exclusion"
+              },
+              {
+                "id": "o4",
+                "text": "E. central"
+              },
+              {
+                "id": "o5",
+                "text": "F. limitations"
+              },
+              {
+                "id": "o6",
+                "text": "G. preference"
+              },
+              {
+                "id": "o7",
+                "text": "H. procedure"
+              },
+              {
+                "id": "o8",
+                "text": "I. reallocate"
+              },
+              {
+                "id": "o9",
+                "text": "J. scarcity"
+              },
+              {
+                "id": "o10",
+                "text": "K. sequential"
+              },
+              {
+                "id": "o11",
+                "text": "L. simultaneous"
+              },
+              {
+                "id": "o12",
+                "text": "M. transparent"
+              },
+              {
+                "id": "o13",
+                "text": "N. compulsory"
+              },
+              {
+                "id": "o14",
+                "text": "O. withdraw"
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.lottery-festival-seats-052.whole.q10",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Choose one word for each gap. Use each word at most once; five are not needed.",
+            "prompt": "Choose the word for blank 10.",
+            "material": "Allocating the small hall\n\nA local festival introduced a free discussion in a hall with limited seating. Previous events had used first-come booking, but organisers worried that this favoured people able to remain online at the exact release time. They proposed a lottery as an ____1____ method of allocating places.\n\nThe change did not increase the hall's ____2____. It changed how demand beyond that limit was handled. Organisers therefore needed to be ____3____ about what the lottery could and could not achieve. A more convenient application period was not the same as a guarantee that every applicant would attend.\n\nApplications remained open for a week. Entries submitted on the first and last day had an ____4____ chance in the draw. This removed the advantage of speed within the application period, although it did not remove every possible ____5____. Someone who never heard about the event could still not apply.\n\nThe team published the selection ____6____, including how duplicate entries and cancellations would be handled. Accessibility requirements were considered separately rather than treated as an attempt to gain an unfair advantage. The aim was to distinguish practical support from a general ____7____ for a particular applicant.\n\nAfter the draw, a waiting list provided a way to ____8____ seats released by cancellations. Organisers asked successful applicants to confirm attendance, while making clear that confirmation was not evidence of a paid purchase: the event remained free.\n\nThe final report described both the benefits and ____9____ of the new method. A lottery distributed a scarce opportunity differently; it did not make scarcity disappear. Keeping that distinction ____10____ helped people evaluate the policy without expecting it to solve every problem associated with access.",
+            "explanation": "Keeping the distinction central means treating it as a main consideration in evaluating the policy. Transparent is already required at gap3 and cannot be reused; the remaining adjectives do not express the distinction’s importance to evaluation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. alternative"
+              },
+              {
+                "id": "o1",
+                "text": "B. capacity"
+              },
+              {
+                "id": "o2",
+                "text": "C. equal"
+              },
+              {
+                "id": "o3",
+                "text": "D. exclusion"
+              },
+              {
+                "id": "o4",
+                "text": "E. central"
+              },
+              {
+                "id": "o5",
+                "text": "F. limitations"
+              },
+              {
+                "id": "o6",
+                "text": "G. preference"
+              },
+              {
+                "id": "o7",
+                "text": "H. procedure"
+              },
+              {
+                "id": "o8",
+                "text": "I. reallocate"
+              },
+              {
+                "id": "o9",
+                "text": "J. scarcity"
+              },
+              {
+                "id": "o10",
+                "text": "K. sequential"
+              },
+              {
+                "id": "o11",
+                "text": "L. simultaneous"
+              },
+              {
+                "id": "o12",
+                "text": "M. transparent"
+              },
+              {
+                "id": "o13",
+                "text": "N. compulsory"
+              },
+              {
+                "id": "o14",
+                "text": "O. withdraw"
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "61f316623b6f32e2328a0492cfff304765eb3fc58084f89933d2e583e04c56df",
+      "reviewNotes": "Three whole-passage adult originals: ten-gap/fifteen-word CET4 and CET6 banks plus eight-gap C1 word formation. Fictional cases. Same-author lexical and variant review, not independent calibration. Unlisted written forms reviewable. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.advanced.conversation-group-052",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "10·24新题 · Starting to speak together",
+        "summary": "Starting to speak together，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.c1.sample1.part3",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 完整形式参照已核普通卷/官方样卷；八空构形不等高级档与C1等值。作者自审与本机对照不等独立教研、学生、商用、生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three whole-passage adult originals: ten-gap/fifteen-word CET4 and CET6 banks plus eight-gap C1 word formation. Fictional cases. Same-author lexical and variant review, not independent calibration. Unlisted written forms reviewable."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.advanced.conversation-group-052",
+          "family": "passage_form",
+          "label": "Starting to speak together",
+          "candidateSHA256": "17222d9e8d16092c452dec70bf8ddd34eb1d628d1af9030a788b551f61713196",
+          "authorCheckSHA256": "02c8bdd6144c5aae00de2b420dda7084758c9500ed32a96f5cfc8085fa360393",
+          "sourceGroupIds": [
+            "expansion.20261024.advanced.conversation-group-052#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b052；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Starting to speak together\n\nSeveral complete ____1____ (BEGIN) joined our adult conversation group. A degree of ____2____ (CERTAIN) was natural: nobody knew what the first meeting would require. The organiser avoided asking everyone to make a long speech immediately.\n\nInstead, we worked in pairs to plan an imaginary day out. The task required ____3____ (COOPERATE), since each person held different information about opening times and travel. A confident speaker could not simply supply every answer without listening.\n\nAs I became more ____4____ (DEPEND), I stopped waiting for the organiser to choose every word for me. When I did need help, I asked her ____5____ (DIRECT) rather than sending a question through my partner. That small change made the exchange feel more like an ordinary conversation.\n\nSpeaking fluently at once had seemed ____6____ (POSSIBLE): I could barely introduce myself. Breaking the activity into manageable decisions allowed us to participate before we felt fully ready. Our confidence improved ____7____ (GRADUAL), through repeated attempts rather than a sudden transformation.\n\nAt the end, each pair described its plan. The result was a shared ____8____ (ACHIEVE), not proof that we had mastered the language. We had simply found a way to use what we knew and discover what we still needed."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.advanced.conversation-group-052.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 1 with one word formed from BEGIN.",
+            "material": "Starting to speak together\n\nSeveral complete ____1____ (BEGIN) joined our adult conversation group. A degree of ____2____ (CERTAIN) was natural: nobody knew what the first meeting would require. The organiser avoided asking everyone to make a long speech immediately.\n\nInstead, we worked in pairs to plan an imaginary day out. The task required ____3____ (COOPERATE), since each person held different information about opening times and travel. A confident speaker could not simply supply every answer without listening.\n\nAs I became more ____4____ (DEPEND), I stopped waiting for the organiser to choose every word for me. When I did need help, I asked her ____5____ (DIRECT) rather than sending a question through my partner. That small change made the exchange feel more like an ordinary conversation.\n\nSpeaking fluently at once had seemed ____6____ (POSSIBLE): I could barely introduce myself. Breaking the activity into manageable decisions allowed us to participate before we felt fully ready. Our confidence improved ____7____ (GRADUAL), through repeated attempts rather than a sudden transformation.\n\nAt the end, each pair described its plan. The result was a shared ____8____ (ACHIEVE), not proof that we had mastered the language. We had simply found a way to use what we knew and discover what we still needed.",
+            "explanation": "Several complete beginners uses a plural count noun for novice people. Beginner is singular and beginning an event/time.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "beginners"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "beginner",
+                "beginning"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.conversation-group-052.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 2 with one word formed from CERTAIN.",
+            "material": "Starting to speak together\n\nSeveral complete ____1____ (BEGIN) joined our adult conversation group. A degree of ____2____ (CERTAIN) was natural: nobody knew what the first meeting would require. The organiser avoided asking everyone to make a long speech immediately.\n\nInstead, we worked in pairs to plan an imaginary day out. The task required ____3____ (COOPERATE), since each person held different information about opening times and travel. A confident speaker could not simply supply every answer without listening.\n\nAs I became more ____4____ (DEPEND), I stopped waiting for the organiser to choose every word for me. When I did need help, I asked her ____5____ (DIRECT) rather than sending a question through my partner. That small change made the exchange feel more like an ordinary conversation.\n\nSpeaking fluently at once had seemed ____6____ (POSSIBLE): I could barely introduce myself. Breaking the activity into manageable decisions allowed us to participate before we felt fully ready. Our confidence improved ____7____ (GRADUAL), through repeated attempts rather than a sudden transformation.\n\nAt the end, each pair described its plan. The result was a shared ____8____ (ACHIEVE), not proof that we had mastered the language. We had simply found a way to use what we knew and discover what we still needed.",
+            "explanation": "A degree of uncertainty names the initial lack of confidence. Certain and certainly are adjective/adverb forms.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "uncertainty"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "certain",
+                "certainly"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.conversation-group-052.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 3 with one word formed from COOPERATE.",
+            "material": "Starting to speak together\n\nSeveral complete ____1____ (BEGIN) joined our adult conversation group. A degree of ____2____ (CERTAIN) was natural: nobody knew what the first meeting would require. The organiser avoided asking everyone to make a long speech immediately.\n\nInstead, we worked in pairs to plan an imaginary day out. The task required ____3____ (COOPERATE), since each person held different information about opening times and travel. A confident speaker could not simply supply every answer without listening.\n\nAs I became more ____4____ (DEPEND), I stopped waiting for the organiser to choose every word for me. When I did need help, I asked her ____5____ (DIRECT) rather than sending a question through my partner. That small change made the exchange feel more like an ordinary conversation.\n\nSpeaking fluently at once had seemed ____6____ (POSSIBLE): I could barely introduce myself. Breaking the activity into manageable decisions allowed us to participate before we felt fully ready. Our confidence improved ____7____ (GRADUAL), through repeated attempts rather than a sudden transformation.\n\nAt the end, each pair described its plan. The result was a shared ____8____ (ACHIEVE), not proof that we had mastered the language. We had simply found a way to use what we knew and discover what we still needed.",
+            "explanation": "Required takes a noun for joint work: cooperation, also standard hyphenated co-operation. Adjective/adverb forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "cooperation",
+              "co-operation"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "cooperative",
+                "cooperatively"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.conversation-group-052.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 4 with one word formed from DEPEND.",
+            "material": "Starting to speak together\n\nSeveral complete ____1____ (BEGIN) joined our adult conversation group. A degree of ____2____ (CERTAIN) was natural: nobody knew what the first meeting would require. The organiser avoided asking everyone to make a long speech immediately.\n\nInstead, we worked in pairs to plan an imaginary day out. The task required ____3____ (COOPERATE), since each person held different information about opening times and travel. A confident speaker could not simply supply every answer without listening.\n\nAs I became more ____4____ (DEPEND), I stopped waiting for the organiser to choose every word for me. When I did need help, I asked her ____5____ (DIRECT) rather than sending a question through my partner. That small change made the exchange feel more like an ordinary conversation.\n\nSpeaking fluently at once had seemed ____6____ (POSSIBLE): I could barely introduce myself. Breaking the activity into manageable decisions allowed us to participate before we felt fully ready. Our confidence improved ____7____ (GRADUAL), through repeated attempts rather than a sudden transformation.\n\nAt the end, each pair described its plan. The result was a shared ____8____ (ACHIEVE), not proof that we had mastered the language. We had simply found a way to use what we knew and discover what we still needed.",
+            "explanation": "More independent describes a person able to make decisions. Independence is a noun and independently an adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "independent"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "independence",
+                "independently"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.conversation-group-052.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 5 with one word formed from DIRECT.",
+            "material": "Starting to speak together\n\nSeveral complete ____1____ (BEGIN) joined our adult conversation group. A degree of ____2____ (CERTAIN) was natural: nobody knew what the first meeting would require. The organiser avoided asking everyone to make a long speech immediately.\n\nInstead, we worked in pairs to plan an imaginary day out. The task required ____3____ (COOPERATE), since each person held different information about opening times and travel. A confident speaker could not simply supply every answer without listening.\n\nAs I became more ____4____ (DEPEND), I stopped waiting for the organiser to choose every word for me. When I did need help, I asked her ____5____ (DIRECT) rather than sending a question through my partner. That small change made the exchange feel more like an ordinary conversation.\n\nSpeaking fluently at once had seemed ____6____ (POSSIBLE): I could barely introduce myself. Breaking the activity into manageable decisions allowed us to participate before we felt fully ready. Our confidence improved ____7____ (GRADUAL), through repeated attempts rather than a sudden transformation.\n\nAt the end, each pair described its plan. The result was a shared ____8____ (ACHIEVE), not proof that we had mastered the language. We had simply found a way to use what we knew and discover what we still needed.",
+            "explanation": "Directly modifies asked. Direct is adjective and direction noun; indirect forms would reverse the stated choice not to send a message through someone else.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "directly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "direct",
+                "direction"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.conversation-group-052.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 6 with one word formed from POSSIBLE.",
+            "material": "Starting to speak together\n\nSeveral complete ____1____ (BEGIN) joined our adult conversation group. A degree of ____2____ (CERTAIN) was natural: nobody knew what the first meeting would require. The organiser avoided asking everyone to make a long speech immediately.\n\nInstead, we worked in pairs to plan an imaginary day out. The task required ____3____ (COOPERATE), since each person held different information about opening times and travel. A confident speaker could not simply supply every answer without listening.\n\nAs I became more ____4____ (DEPEND), I stopped waiting for the organiser to choose every word for me. When I did need help, I asked her ____5____ (DIRECT) rather than sending a question through my partner. That small change made the exchange feel more like an ordinary conversation.\n\nSpeaking fluently at once had seemed ____6____ (POSSIBLE): I could barely introduce myself. Breaking the activity into manageable decisions allowed us to participate before we felt fully ready. Our confidence improved ____7____ (GRADUAL), through repeated attempts rather than a sudden transformation.\n\nAt the end, each pair described its plan. The result was a shared ____8____ (ACHIEVE), not proof that we had mastered the language. We had simply found a way to use what we knew and discover what we still needed.",
+            "explanation": "Barely being able to introduce oneself makes immediate fluency seem impossible. Possibility is a noun and possibly an adverb; neither serves as the adjective complement here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "impossible"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "possibility",
+                "possibly"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.conversation-group-052.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 7 with one word formed from GRADUAL.",
+            "material": "Starting to speak together\n\nSeveral complete ____1____ (BEGIN) joined our adult conversation group. A degree of ____2____ (CERTAIN) was natural: nobody knew what the first meeting would require. The organiser avoided asking everyone to make a long speech immediately.\n\nInstead, we worked in pairs to plan an imaginary day out. The task required ____3____ (COOPERATE), since each person held different information about opening times and travel. A confident speaker could not simply supply every answer without listening.\n\nAs I became more ____4____ (DEPEND), I stopped waiting for the organiser to choose every word for me. When I did need help, I asked her ____5____ (DIRECT) rather than sending a question through my partner. That small change made the exchange feel more like an ordinary conversation.\n\nSpeaking fluently at once had seemed ____6____ (POSSIBLE): I could barely introduce myself. Breaking the activity into manageable decisions allowed us to participate before we felt fully ready. Our confidence improved ____7____ (GRADUAL), through repeated attempts rather than a sudden transformation.\n\nAt the end, each pair described its plan. The result was a shared ____8____ (ACHIEVE), not proof that we had mastered the language. We had simply found a way to use what we knew and discover what we still needed.",
+            "explanation": "Gradually modifies improved. Gradual is adjective and graduation a different noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "gradually"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "gradual",
+                "graduation"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.conversation-group-052.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 8 with one word formed from ACHIEVE.",
+            "material": "Starting to speak together\n\nSeveral complete ____1____ (BEGIN) joined our adult conversation group. A degree of ____2____ (CERTAIN) was natural: nobody knew what the first meeting would require. The organiser avoided asking everyone to make a long speech immediately.\n\nInstead, we worked in pairs to plan an imaginary day out. The task required ____3____ (COOPERATE), since each person held different information about opening times and travel. A confident speaker could not simply supply every answer without listening.\n\nAs I became more ____4____ (DEPEND), I stopped waiting for the organiser to choose every word for me. When I did need help, I asked her ____5____ (DIRECT) rather than sending a question through my partner. That small change made the exchange feel more like an ordinary conversation.\n\nSpeaking fluently at once had seemed ____6____ (POSSIBLE): I could barely introduce myself. Breaking the activity into manageable decisions allowed us to participate before we felt fully ready. Our confidence improved ____7____ (GRADUAL), through repeated attempts rather than a sudden transformation.\n\nAt the end, each pair described its plan. The result was a shared ____8____ (ACHIEVE), not proof that we had mastered the language. We had simply found a way to use what we knew and discover what we still needed.",
+            "explanation": "A shared achievement names an accomplished result. Achieve is verb and achievable adjective.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "achievement"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "achieve",
+                "achievable"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "92c687c4bc2829c792eb6c94907364ba9a2b49dc10838198a2f43dd83ac052b1",
+      "reviewNotes": "Three whole-passage adult originals: ten-gap/fifteen-word CET4 and CET6 banks plus eight-gap C1 word formation. Fictional cases. Same-author lexical and variant review, not independent calibration. Unlisted written forms reviewable. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
