@@ -1,0 +1,2030 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b040",
+  "createdAt": "2026-10-23T21:26:38.142578+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.silent-film-club-040",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · A film without dialogue",
+        "summary": "A film without dialogue，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "A complete coherent ten-gap passage, with seven supplied-word prompts and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new complete junior grammar passages. Fictional situations. Same-author prompt-form, context and alternative-answer review; unknown written forms remain reviewable. No independent calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.silent-film-club-040",
+          "family": "passage_form",
+          "label": "A film without dialogue",
+          "candidateSHA256": "6381852da3827bd40ad4d2422fe75cac5899b1a1ad236548c2bd4245d2d5bcb0",
+          "authorCheckSHA256": "a47e8abf317d702b1cc762095d9746726bb96d4270492338d93e4f443f43f400",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.silent-film-club-040#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b040；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A film without dialogue\n\nLast Friday, our film club ____1____ (watch) a short silent comedy. At first I was disappointed because I wanted to hear what the characters were saying. Our teacher asked us to notice how much information came from their ____2____ (face) and movements.\n\nThe main character was a waiter ____3____ carried too many plates at once. Every time someone opened the kitchen door, he had to change direction. We could understand his problem without ____4____ (hear) a single word.\n\nAfterwards, we worked in groups to make a short scene of our own. My group decided ____5____ (show) a person trying to catch a bus. We did not have a real bus, so we used three chairs and a sign. A classmate held the sign while the rest of us acted.\n\nOur first performance was difficult to follow. We moved too ____6____ (quick), and nobody knew who was waiting for whom. The second attempt was ____7____ (clear) than the first because we gave each movement a little more time.\n\nAt the end, we laughed ____8____ the funniest moments, including our own mistakes. The teacher did not choose a winning group. Instead, she asked each of ____9____ (we) which action had communicated the most. I left with ____10____ idea for another scene, this time about a visitor who could not find the right classroom."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.silent-film-club-040.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of watch.",
+            "material": "A film without dialogue\n\nLast Friday, our film club ____1____ (watch) a short silent comedy. At first I was disappointed because I wanted to hear what the characters were saying. Our teacher asked us to notice how much information came from their ____2____ (face) and movements.\n\nThe main character was a waiter ____3____ carried too many plates at once. Every time someone opened the kitchen door, he had to change direction. We could understand his problem without ____4____ (hear) a single word.\n\nAfterwards, we worked in groups to make a short scene of our own. My group decided ____5____ (show) a person trying to catch a bus. We did not have a real bus, so we used three chairs and a sign. A classmate held the sign while the rest of us acted.\n\nOur first performance was difficult to follow. We moved too ____6____ (quick), and nobody knew who was waiting for whom. The second attempt was ____7____ (clear) than the first because we gave each movement a little more time.\n\nAt the end, we laughed ____8____ the funniest moments, including our own mistakes. The teacher did not choose a winning group. Instead, she asked each of ____9____ (we) which action had communicated the most. I left with ____10____ idea for another scene, this time about a visitor who could not find the right classroom.",
+            "explanation": "Last Friday establishes a completed past event: watched. Watch is present/base; watching lacks an auxiliary.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "watched"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "watch",
+                "watching"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.silent-film-club-040.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of face.",
+            "material": "A film without dialogue\n\nLast Friday, our film club ____1____ (watch) a short silent comedy. At first I was disappointed because I wanted to hear what the characters were saying. Our teacher asked us to notice how much information came from their ____2____ (face) and movements.\n\nThe main character was a waiter ____3____ carried too many plates at once. Every time someone opened the kitchen door, he had to change direction. We could understand his problem without ____4____ (hear) a single word.\n\nAfterwards, we worked in groups to make a short scene of our own. My group decided ____5____ (show) a person trying to catch a bus. We did not have a real bus, so we used three chairs and a sign. A classmate held the sign while the rest of us acted.\n\nOur first performance was difficult to follow. We moved too ____6____ (quick), and nobody knew who was waiting for whom. The second attempt was ____7____ (clear) than the first because we gave each movement a little more time.\n\nAt the end, we laughed ____8____ the funniest moments, including our own mistakes. The teacher did not choose a winning group. Instead, she asked each of ____9____ (we) which action had communicated the most. I left with ____10____ idea for another scene, this time about a visitor who could not find the right classroom.",
+            "explanation": "Their plural characters have faces. Singular face and activity facing do not name the several expressions observed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "faces"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "face",
+                "facing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.silent-film-club-040.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "A film without dialogue\n\nLast Friday, our film club ____1____ (watch) a short silent comedy. At first I was disappointed because I wanted to hear what the characters were saying. Our teacher asked us to notice how much information came from their ____2____ (face) and movements.\n\nThe main character was a waiter ____3____ carried too many plates at once. Every time someone opened the kitchen door, he had to change direction. We could understand his problem without ____4____ (hear) a single word.\n\nAfterwards, we worked in groups to make a short scene of our own. My group decided ____5____ (show) a person trying to catch a bus. We did not have a real bus, so we used three chairs and a sign. A classmate held the sign while the rest of us acted.\n\nOur first performance was difficult to follow. We moved too ____6____ (quick), and nobody knew who was waiting for whom. The second attempt was ____7____ (clear) than the first because we gave each movement a little more time.\n\nAt the end, we laughed ____8____ the funniest moments, including our own mistakes. The teacher did not choose a winning group. Instead, she asked each of ____9____ (we) which action had communicated the most. I left with ____10____ idea for another scene, this time about a visitor who could not find the right classroom.",
+            "explanation": "Who or that is the defining human relative subject. Which is nonhuman and whose would require a following possessed noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "whose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.silent-film-club-040.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of hear.",
+            "material": "A film without dialogue\n\nLast Friday, our film club ____1____ (watch) a short silent comedy. At first I was disappointed because I wanted to hear what the characters were saying. Our teacher asked us to notice how much information came from their ____2____ (face) and movements.\n\nThe main character was a waiter ____3____ carried too many plates at once. Every time someone opened the kitchen door, he had to change direction. We could understand his problem without ____4____ (hear) a single word.\n\nAfterwards, we worked in groups to make a short scene of our own. My group decided ____5____ (show) a person trying to catch a bus. We did not have a real bus, so we used three chairs and a sign. A classmate held the sign while the rest of us acted.\n\nOur first performance was difficult to follow. We moved too ____6____ (quick), and nobody knew who was waiting for whom. The second attempt was ____7____ (clear) than the first because we gave each movement a little more time.\n\nAt the end, we laughed ____8____ the funniest moments, including our own mistakes. The teacher did not choose a winning group. Instead, she asked each of ____9____ (we) which action had communicated the most. I left with ____10____ idea for another scene, this time about a visitor who could not find the right classroom.",
+            "explanation": "Without takes hearing. The base, finite past and to-infinitive forms do not complete this preposition.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "hearing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "hear",
+                "heard",
+                "to hear"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.silent-film-club-040.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of show.",
+            "material": "A film without dialogue\n\nLast Friday, our film club ____1____ (watch) a short silent comedy. At first I was disappointed because I wanted to hear what the characters were saying. Our teacher asked us to notice how much information came from their ____2____ (face) and movements.\n\nThe main character was a waiter ____3____ carried too many plates at once. Every time someone opened the kitchen door, he had to change direction. We could understand his problem without ____4____ (hear) a single word.\n\nAfterwards, we worked in groups to make a short scene of our own. My group decided ____5____ (show) a person trying to catch a bus. We did not have a real bus, so we used three chairs and a sign. A classmate held the sign while the rest of us acted.\n\nOur first performance was difficult to follow. We moved too ____6____ (quick), and nobody knew who was waiting for whom. The second attempt was ____7____ (clear) than the first because we gave each movement a little more time.\n\nAt the end, we laughed ____8____ the funniest moments, including our own mistakes. The teacher did not choose a winning group. Instead, she asked each of ____9____ (we) which action had communicated the most. I left with ____10____ idea for another scene, this time about a visitor who could not find the right classroom.",
+            "explanation": "Decided takes the to-infinitive to show. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to show"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "showing",
+                "show",
+                "showed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.silent-film-club-040.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of quick.",
+            "material": "A film without dialogue\n\nLast Friday, our film club ____1____ (watch) a short silent comedy. At first I was disappointed because I wanted to hear what the characters were saying. Our teacher asked us to notice how much information came from their ____2____ (face) and movements.\n\nThe main character was a waiter ____3____ carried too many plates at once. Every time someone opened the kitchen door, he had to change direction. We could understand his problem without ____4____ (hear) a single word.\n\nAfterwards, we worked in groups to make a short scene of our own. My group decided ____5____ (show) a person trying to catch a bus. We did not have a real bus, so we used three chairs and a sign. A classmate held the sign while the rest of us acted.\n\nOur first performance was difficult to follow. We moved too ____6____ (quick), and nobody knew who was waiting for whom. The second attempt was ____7____ (clear) than the first because we gave each movement a little more time.\n\nAt the end, we laughed ____8____ the funniest moments, including our own mistakes. The teacher did not choose a winning group. Instead, she asked each of ____9____ (we) which action had communicated the most. I left with ____10____ idea for another scene, this time about a visitor who could not find the right classroom.",
+            "explanation": "Quickly modifies moved. Quickness is a noun. Informal flat-adverb quick is not automatically rejected.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "quickly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "quickness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.silent-film-club-040.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of clear.",
+            "material": "A film without dialogue\n\nLast Friday, our film club ____1____ (watch) a short silent comedy. At first I was disappointed because I wanted to hear what the characters were saying. Our teacher asked us to notice how much information came from their ____2____ (face) and movements.\n\nThe main character was a waiter ____3____ carried too many plates at once. Every time someone opened the kitchen door, he had to change direction. We could understand his problem without ____4____ (hear) a single word.\n\nAfterwards, we worked in groups to make a short scene of our own. My group decided ____5____ (show) a person trying to catch a bus. We did not have a real bus, so we used three chairs and a sign. A classmate held the sign while the rest of us acted.\n\nOur first performance was difficult to follow. We moved too ____6____ (quick), and nobody knew who was waiting for whom. The second attempt was ____7____ (clear) than the first because we gave each movement a little more time.\n\nAt the end, we laughed ____8____ the funniest moments, including our own mistakes. The teacher did not choose a winning group. Instead, she asked each of ____9____ (we) which action had communicated the most. I left with ____10____ idea for another scene, this time about a visitor who could not find the right classroom.",
+            "explanation": "Than requires a comparative: clearer or more clear. Clear lacks comparison, clearest is superlative and more clearer duplicates it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "clearer",
+              "more clear"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "clear",
+                "clearest",
+                "more clearer"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.silent-film-club-040.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "A film without dialogue\n\nLast Friday, our film club ____1____ (watch) a short silent comedy. At first I was disappointed because I wanted to hear what the characters were saying. Our teacher asked us to notice how much information came from their ____2____ (face) and movements.\n\nThe main character was a waiter ____3____ carried too many plates at once. Every time someone opened the kitchen door, he had to change direction. We could understand his problem without ____4____ (hear) a single word.\n\nAfterwards, we worked in groups to make a short scene of our own. My group decided ____5____ (show) a person trying to catch a bus. We did not have a real bus, so we used three chairs and a sign. A classmate held the sign while the rest of us acted.\n\nOur first performance was difficult to follow. We moved too ____6____ (quick), and nobody knew who was waiting for whom. The second attempt was ____7____ (clear) than the first because we gave each movement a little more time.\n\nAt the end, we laughed ____8____ the funniest moments, including our own mistakes. The teacher did not choose a winning group. Instead, she asked each of ____9____ (we) which action had communicated the most. I left with ____10____ idea for another scene, this time about a visitor who could not find the right classroom.",
+            "explanation": "Laughed at the moments uses at. To, of and from do not complete this reaction construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "of",
+                "from"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.silent-film-club-040.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of we.",
+            "material": "A film without dialogue\n\nLast Friday, our film club ____1____ (watch) a short silent comedy. At first I was disappointed because I wanted to hear what the characters were saying. Our teacher asked us to notice how much information came from their ____2____ (face) and movements.\n\nThe main character was a waiter ____3____ carried too many plates at once. Every time someone opened the kitchen door, he had to change direction. We could understand his problem without ____4____ (hear) a single word.\n\nAfterwards, we worked in groups to make a short scene of our own. My group decided ____5____ (show) a person trying to catch a bus. We did not have a real bus, so we used three chairs and a sign. A classmate held the sign while the rest of us acted.\n\nOur first performance was difficult to follow. We moved too ____6____ (quick), and nobody knew who was waiting for whom. The second attempt was ____7____ (clear) than the first because we gave each movement a little more time.\n\nAt the end, we laughed ____8____ the funniest moments, including our own mistakes. The teacher did not choose a winning group. Instead, she asked each of ____9____ (we) which action had communicated the most. I left with ____10____ idea for another scene, this time about a visitor who could not find the right classroom.",
+            "explanation": "The preposition of takes object form us. We is subject form, our/ours possessive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.silent-film-club-040.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "A film without dialogue\n\nLast Friday, our film club ____1____ (watch) a short silent comedy. At first I was disappointed because I wanted to hear what the characters were saying. Our teacher asked us to notice how much information came from their ____2____ (face) and movements.\n\nThe main character was a waiter ____3____ carried too many plates at once. Every time someone opened the kitchen door, he had to change direction. We could understand his problem without ____4____ (hear) a single word.\n\nAfterwards, we worked in groups to make a short scene of our own. My group decided ____5____ (show) a person trying to catch a bus. We did not have a real bus, so we used three chairs and a sign. A classmate held the sign while the rest of us acted.\n\nOur first performance was difficult to follow. We moved too ____6____ (quick), and nobody knew who was waiting for whom. The second attempt was ____7____ (clear) than the first because we gave each movement a little more time.\n\nAt the end, we laughed ____8____ the funniest moments, including our own mistakes. The teacher did not choose a winning group. Instead, she asked each of ____9____ (we) which action had communicated the most. I left with ____10____ idea for another scene, this time about a visitor who could not find the right classroom.",
+            "explanation": "An idea naturally introduces the proposed new scene and agrees with a vowel sound. A has wrong sound agreement; other unlisted article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "7a948f1ee403cb51c0181969a8db54c29136f04a3d2790d4271c0b03b32bfded",
+      "reviewNotes": "Six new complete junior grammar passages. Fictional situations. Same-author prompt-form, context and alternative-answer review; unknown written forms remain reviewable. No independent calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.rainy-day-treasure-040",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · The treasure stayed indoors",
+        "summary": "The treasure stayed indoors，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "A complete coherent ten-gap passage, with seven supplied-word prompts and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new complete junior grammar passages. Fictional situations. Same-author prompt-form, context and alternative-answer review; unknown written forms remain reviewable. No independent calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.rainy-day-treasure-040",
+          "family": "passage_form",
+          "label": "The treasure stayed indoors",
+          "candidateSHA256": "f4636004ff65b40f406fb878baa37625a8942f00bd7f65fa42c8a3eaa54fe404",
+          "authorCheckSHA256": "d349c1ab9ceb8f85754a47f6085f6f575b1bd55d9216de482b2b0b964951ecc6",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.rainy-day-treasure-040#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b040；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The treasure stayed indoors\n\nWe had planned a treasure hunt in the garden for my sister's birthday. On Sunday morning, however, heavy rain ____1____ (change) our plans. Dad looked at the wet grass and suggested moving the game inside.\n\nWe needed new clues because the old ones mentioned trees and flowerpots. My sister helped us write ____2____ (they) on small cards. One card sent players to a shelf ____3____ held our family photographs. Another led to the cupboard under the stairs.\n\nBefore ____4____ (hide) the cards, we checked that nobody would need to climb on furniture. The game was for young children, so every clue had to be somewhere they could reach. We also decided ____5____ (leave) the kitchen out because Mum was preparing hot food there.\n\nWhen the guests arrived, they worked in pairs. They read the cards ____6____ (careful), then ran to tell their partners where to look. We asked them to walk near the stairs, but they could move faster in the living room.\n\nThe treasure was a box of paper crowns. There were enough crowns ____7____ everyone, including two children who arrived late. My sister thought the indoor hunt was ____8____ (good) than our first plan. Nobody had muddy shoes, and the rain made the house feel like ____9____ adventure shelter. By the time we finished, all the ____10____ (child) were wearing their bright paper prizes."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.rainy-day-treasure-040.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of change.",
+            "material": "The treasure stayed indoors\n\nWe had planned a treasure hunt in the garden for my sister's birthday. On Sunday morning, however, heavy rain ____1____ (change) our plans. Dad looked at the wet grass and suggested moving the game inside.\n\nWe needed new clues because the old ones mentioned trees and flowerpots. My sister helped us write ____2____ (they) on small cards. One card sent players to a shelf ____3____ held our family photographs. Another led to the cupboard under the stairs.\n\nBefore ____4____ (hide) the cards, we checked that nobody would need to climb on furniture. The game was for young children, so every clue had to be somewhere they could reach. We also decided ____5____ (leave) the kitchen out because Mum was preparing hot food there.\n\nWhen the guests arrived, they worked in pairs. They read the cards ____6____ (careful), then ran to tell their partners where to look. We asked them to walk near the stairs, but they could move faster in the living room.\n\nThe treasure was a box of paper crowns. There were enough crowns ____7____ everyone, including two children who arrived late. My sister thought the indoor hunt was ____8____ (good) than our first plan. Nobody had muddy shoes, and the rain made the house feel like ____9____ adventure shelter. By the time we finished, all the ____10____ (child) were wearing their bright paper prizes.",
+            "explanation": "On Sunday morning in this past account, rain changed the plans. Base change and unaided changing do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "changed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "change",
+                "changing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.rainy-day-treasure-040.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of they.",
+            "material": "The treasure stayed indoors\n\nWe had planned a treasure hunt in the garden for my sister's birthday. On Sunday morning, however, heavy rain ____1____ (change) our plans. Dad looked at the wet grass and suggested moving the game inside.\n\nWe needed new clues because the old ones mentioned trees and flowerpots. My sister helped us write ____2____ (they) on small cards. One card sent players to a shelf ____3____ held our family photographs. Another led to the cupboard under the stairs.\n\nBefore ____4____ (hide) the cards, we checked that nobody would need to climb on furniture. The game was for young children, so every clue had to be somewhere they could reach. We also decided ____5____ (leave) the kitchen out because Mum was preparing hot food there.\n\nWhen the guests arrived, they worked in pairs. They read the cards ____6____ (careful), then ran to tell their partners where to look. We asked them to walk near the stairs, but they could move faster in the living room.\n\nThe treasure was a box of paper crowns. There were enough crowns ____7____ everyone, including two children who arrived late. My sister thought the indoor hunt was ____8____ (good) than our first plan. Nobody had muddy shoes, and the rain made the house feel like ____9____ adventure shelter. By the time we finished, all the ____10____ (child) were wearing their bright paper prizes.",
+            "explanation": "Write takes object pronoun them referring to new clues. They is subject, their possessive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "them"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "their"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.rainy-day-treasure-040.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "The treasure stayed indoors\n\nWe had planned a treasure hunt in the garden for my sister's birthday. On Sunday morning, however, heavy rain ____1____ (change) our plans. Dad looked at the wet grass and suggested moving the game inside.\n\nWe needed new clues because the old ones mentioned trees and flowerpots. My sister helped us write ____2____ (they) on small cards. One card sent players to a shelf ____3____ held our family photographs. Another led to the cupboard under the stairs.\n\nBefore ____4____ (hide) the cards, we checked that nobody would need to climb on furniture. The game was for young children, so every clue had to be somewhere they could reach. We also decided ____5____ (leave) the kitchen out because Mum was preparing hot food there.\n\nWhen the guests arrived, they worked in pairs. They read the cards ____6____ (careful), then ran to tell their partners where to look. We asked them to walk near the stairs, but they could move faster in the living room.\n\nThe treasure was a box of paper crowns. There were enough crowns ____7____ everyone, including two children who arrived late. My sister thought the indoor hunt was ____8____ (good) than our first plan. Nobody had muddy shoes, and the rain made the house feel like ____9____ adventure shelter. By the time we finished, all the ____10____ (child) were wearing their bright paper prizes.",
+            "explanation": "The shelf is subject antecedent for that/which held. Where is not a subject; who refers to people, and what does not follow this expressed antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.rainy-day-treasure-040.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of hide.",
+            "material": "The treasure stayed indoors\n\nWe had planned a treasure hunt in the garden for my sister's birthday. On Sunday morning, however, heavy rain ____1____ (change) our plans. Dad looked at the wet grass and suggested moving the game inside.\n\nWe needed new clues because the old ones mentioned trees and flowerpots. My sister helped us write ____2____ (they) on small cards. One card sent players to a shelf ____3____ held our family photographs. Another led to the cupboard under the stairs.\n\nBefore ____4____ (hide) the cards, we checked that nobody would need to climb on furniture. The game was for young children, so every clue had to be somewhere they could reach. We also decided ____5____ (leave) the kitchen out because Mum was preparing hot food there.\n\nWhen the guests arrived, they worked in pairs. They read the cards ____6____ (careful), then ran to tell their partners where to look. We asked them to walk near the stairs, but they could move faster in the living room.\n\nThe treasure was a box of paper crowns. There were enough crowns ____7____ everyone, including two children who arrived late. My sister thought the indoor hunt was ____8____ (good) than our first plan. Nobody had muddy shoes, and the rain made the house feel like ____9____ adventure shelter. By the time we finished, all the ____10____ (child) were wearing their bright paper prizes.",
+            "explanation": "Before as preposition takes hiding. Other listed forms do not complete the -ing clause.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "hiding"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "hide",
+                "hid",
+                "to hide"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.rainy-day-treasure-040.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of leave.",
+            "material": "The treasure stayed indoors\n\nWe had planned a treasure hunt in the garden for my sister's birthday. On Sunday morning, however, heavy rain ____1____ (change) our plans. Dad looked at the wet grass and suggested moving the game inside.\n\nWe needed new clues because the old ones mentioned trees and flowerpots. My sister helped us write ____2____ (they) on small cards. One card sent players to a shelf ____3____ held our family photographs. Another led to the cupboard under the stairs.\n\nBefore ____4____ (hide) the cards, we checked that nobody would need to climb on furniture. The game was for young children, so every clue had to be somewhere they could reach. We also decided ____5____ (leave) the kitchen out because Mum was preparing hot food there.\n\nWhen the guests arrived, they worked in pairs. They read the cards ____6____ (careful), then ran to tell their partners where to look. We asked them to walk near the stairs, but they could move faster in the living room.\n\nThe treasure was a box of paper crowns. There were enough crowns ____7____ everyone, including two children who arrived late. My sister thought the indoor hunt was ____8____ (good) than our first plan. Nobody had muddy shoes, and the rain made the house feel like ____9____ adventure shelter. By the time we finished, all the ____10____ (child) were wearing their bright paper prizes.",
+            "explanation": "Decided takes to leave. The bare, -ing and past forms do not follow directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to leave"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "leaving",
+                "leave",
+                "left"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.rainy-day-treasure-040.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of careful.",
+            "material": "The treasure stayed indoors\n\nWe had planned a treasure hunt in the garden for my sister's birthday. On Sunday morning, however, heavy rain ____1____ (change) our plans. Dad looked at the wet grass and suggested moving the game inside.\n\nWe needed new clues because the old ones mentioned trees and flowerpots. My sister helped us write ____2____ (they) on small cards. One card sent players to a shelf ____3____ held our family photographs. Another led to the cupboard under the stairs.\n\nBefore ____4____ (hide) the cards, we checked that nobody would need to climb on furniture. The game was for young children, so every clue had to be somewhere they could reach. We also decided ____5____ (leave) the kitchen out because Mum was preparing hot food there.\n\nWhen the guests arrived, they worked in pairs. They read the cards ____6____ (careful), then ran to tell their partners where to look. We asked them to walk near the stairs, but they could move faster in the living room.\n\nThe treasure was a box of paper crowns. There were enough crowns ____7____ everyone, including two children who arrived late. My sister thought the indoor hunt was ____8____ (good) than our first plan. Nobody had muddy shoes, and the rain made the house feel like ____9____ adventure shelter. By the time we finished, all the ____10____ (child) were wearing their bright paper prizes.",
+            "explanation": "Carefully modifies read. Adjective and noun forms do not fit the adverb slot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careful",
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.rainy-day-treasure-040.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "The treasure stayed indoors\n\nWe had planned a treasure hunt in the garden for my sister's birthday. On Sunday morning, however, heavy rain ____1____ (change) our plans. Dad looked at the wet grass and suggested moving the game inside.\n\nWe needed new clues because the old ones mentioned trees and flowerpots. My sister helped us write ____2____ (they) on small cards. One card sent players to a shelf ____3____ held our family photographs. Another led to the cupboard under the stairs.\n\nBefore ____4____ (hide) the cards, we checked that nobody would need to climb on furniture. The game was for young children, so every clue had to be somewhere they could reach. We also decided ____5____ (leave) the kitchen out because Mum was preparing hot food there.\n\nWhen the guests arrived, they worked in pairs. They read the cards ____6____ (careful), then ran to tell their partners where to look. We asked them to walk near the stairs, but they could move faster in the living room.\n\nThe treasure was a box of paper crowns. There were enough crowns ____7____ everyone, including two children who arrived late. My sister thought the indoor hunt was ____8____ (good) than our first plan. Nobody had muddy shoes, and the rain made the house feel like ____9____ adventure shelter. By the time we finished, all the ____10____ (child) were wearing their bright paper prizes.",
+            "explanation": "Enough crowns for everyone states the recipients covered. Of, at and from do not express that sufficiency relationship.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of",
+                "at",
+                "from"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.rainy-day-treasure-040.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of good.",
+            "material": "The treasure stayed indoors\n\nWe had planned a treasure hunt in the garden for my sister's birthday. On Sunday morning, however, heavy rain ____1____ (change) our plans. Dad looked at the wet grass and suggested moving the game inside.\n\nWe needed new clues because the old ones mentioned trees and flowerpots. My sister helped us write ____2____ (they) on small cards. One card sent players to a shelf ____3____ held our family photographs. Another led to the cupboard under the stairs.\n\nBefore ____4____ (hide) the cards, we checked that nobody would need to climb on furniture. The game was for young children, so every clue had to be somewhere they could reach. We also decided ____5____ (leave) the kitchen out because Mum was preparing hot food there.\n\nWhen the guests arrived, they worked in pairs. They read the cards ____6____ (careful), then ran to tell their partners where to look. We asked them to walk near the stairs, but they could move faster in the living room.\n\nThe treasure was a box of paper crowns. There were enough crowns ____7____ everyone, including two children who arrived late. My sister thought the indoor hunt was ____8____ (good) than our first plan. Nobody had muddy shoes, and the rain made the house feel like ____9____ adventure shelter. By the time we finished, all the ____10____ (child) were wearing their bright paper prizes.",
+            "explanation": "Than requires comparative better. Good is plain, best superlative and gooder nonstandard.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "better"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "good",
+                "best",
+                "gooder"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.rainy-day-treasure-040.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "The treasure stayed indoors\n\nWe had planned a treasure hunt in the garden for my sister's birthday. On Sunday morning, however, heavy rain ____1____ (change) our plans. Dad looked at the wet grass and suggested moving the game inside.\n\nWe needed new clues because the old ones mentioned trees and flowerpots. My sister helped us write ____2____ (they) on small cards. One card sent players to a shelf ____3____ held our family photographs. Another led to the cupboard under the stairs.\n\nBefore ____4____ (hide) the cards, we checked that nobody would need to climb on furniture. The game was for young children, so every clue had to be somewhere they could reach. We also decided ____5____ (leave) the kitchen out because Mum was preparing hot food there.\n\nWhen the guests arrived, they worked in pairs. They read the cards ____6____ (careful), then ran to tell their partners where to look. We asked them to walk near the stairs, but they could move faster in the living room.\n\nThe treasure was a box of paper crowns. There were enough crowns ____7____ everyone, including two children who arrived late. My sister thought the indoor hunt was ____8____ (good) than our first plan. Nobody had muddy shoes, and the rain made the house feel like ____9____ adventure shelter. By the time we finished, all the ____10____ (child) were wearing their bright paper prizes.",
+            "explanation": "An adventure shelter uses an before a vowel sound. A has incorrect sound agreement; unlisted article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.rainy-day-treasure-040.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of child.",
+            "material": "The treasure stayed indoors\n\nWe had planned a treasure hunt in the garden for my sister's birthday. On Sunday morning, however, heavy rain ____1____ (change) our plans. Dad looked at the wet grass and suggested moving the game inside.\n\nWe needed new clues because the old ones mentioned trees and flowerpots. My sister helped us write ____2____ (they) on small cards. One card sent players to a shelf ____3____ held our family photographs. Another led to the cupboard under the stairs.\n\nBefore ____4____ (hide) the cards, we checked that nobody would need to climb on furniture. The game was for young children, so every clue had to be somewhere they could reach. We also decided ____5____ (leave) the kitchen out because Mum was preparing hot food there.\n\nWhen the guests arrived, they worked in pairs. They read the cards ____6____ (careful), then ran to tell their partners where to look. We asked them to walk near the stairs, but they could move faster in the living room.\n\nThe treasure was a box of paper crowns. There were enough crowns ____7____ everyone, including two children who arrived late. My sister thought the indoor hunt was ____8____ (good) than our first plan. Nobody had muddy shoes, and the rain made the house feel like ____9____ adventure shelter. By the time we finished, all the ____10____ (child) were wearing their bright paper prizes.",
+            "explanation": "All the children requires the irregular plural. Child is singular; childs is nonstandard.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "children"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "child",
+                "childs"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "4a0de56e746ecac0356163cb31e0e63cb4da3a43061afc3a2b9384406f115d32",
+      "reviewNotes": "Six new complete junior grammar passages. Fictional situations. Same-author prompt-form, context and alternative-answer review; unknown written forms remain reviewable. No independent calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.bike-pump-040",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Air for the old bicycle",
+        "summary": "Air for the old bicycle，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "A complete coherent ten-gap passage, with seven supplied-word prompts and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new complete junior grammar passages. Fictional situations. Same-author prompt-form, context and alternative-answer review; unknown written forms remain reviewable. No independent calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.bike-pump-040",
+          "family": "passage_form",
+          "label": "Air for the old bicycle",
+          "candidateSHA256": "aa69404e0938a29d4903be3d1bdb67edd5f67a9ed95a8090b5c9d1483f2d7cf7",
+          "authorCheckSHA256": "fcde31006da316c950c1c19d415a916c5a6c01cccb759894629718a6d4a0d00a",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.bike-pump-040#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b040；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Air for the old bicycle\n\nMy cousin gave me an old bicycle, but one tyre was flat. On Saturday, I took it to a community workshop. A volunteer ____1____ (welcome) me and asked whether I wanted to learn how to use the pump myself.\n\nFirst, she showed me the small valve ____2____ was hidden under a plastic cap. I put the cap in a bowl so that I would not lose it. Then we attached the pump and checked that it fitted ____3____ (safe).\n\nI began to pump as fast as I could. The volunteer stopped me. Working more slowly made it ____4____ (easy) to watch the pressure than rushing did. She explained that the number printed on the tyre gave useful limits; guessing by how hard it felt was not enough.\n\nAfter ____5____ (fill) the tyre, we removed the pump and replaced the cap. The wheel turned smoothly, but the volunteer reminded me that a full tyre did not prove the whole bicycle was ready to ride.\n\nWe looked ____6____ the brakes and lights as well. A second volunteer helped us check the other parts. I thanked both of ____7____ (they) for their time. I had expected a quick repair, but I left with ____8____ better understanding of what needed checking. Now I always ask for help if I am uncertain, rather than ____9____ (pretend) I know. The workshop also gave me a list of simple ____10____ (check) to keep beside the bike."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.bike-pump-040.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of welcome.",
+            "material": "Air for the old bicycle\n\nMy cousin gave me an old bicycle, but one tyre was flat. On Saturday, I took it to a community workshop. A volunteer ____1____ (welcome) me and asked whether I wanted to learn how to use the pump myself.\n\nFirst, she showed me the small valve ____2____ was hidden under a plastic cap. I put the cap in a bowl so that I would not lose it. Then we attached the pump and checked that it fitted ____3____ (safe).\n\nI began to pump as fast as I could. The volunteer stopped me. Working more slowly made it ____4____ (easy) to watch the pressure than rushing did. She explained that the number printed on the tyre gave useful limits; guessing by how hard it felt was not enough.\n\nAfter ____5____ (fill) the tyre, we removed the pump and replaced the cap. The wheel turned smoothly, but the volunteer reminded me that a full tyre did not prove the whole bicycle was ready to ride.\n\nWe looked ____6____ the brakes and lights as well. A second volunteer helped us check the other parts. I thanked both of ____7____ (they) for their time. I had expected a quick repair, but I left with ____8____ better understanding of what needed checking. Now I always ask for help if I am uncertain, rather than ____9____ (pretend) I know. The workshop also gave me a list of simple ____10____ (check) to keep beside the bike.",
+            "explanation": "On Saturday within this completed narrative, the volunteer welcomed the narrator. Other listed forms do not supply a past finite verb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "welcomed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "welcome",
+                "welcoming"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bike-pump-040.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "Air for the old bicycle\n\nMy cousin gave me an old bicycle, but one tyre was flat. On Saturday, I took it to a community workshop. A volunteer ____1____ (welcome) me and asked whether I wanted to learn how to use the pump myself.\n\nFirst, she showed me the small valve ____2____ was hidden under a plastic cap. I put the cap in a bowl so that I would not lose it. Then we attached the pump and checked that it fitted ____3____ (safe).\n\nI began to pump as fast as I could. The volunteer stopped me. Working more slowly made it ____4____ (easy) to watch the pressure than rushing did. She explained that the number printed on the tyre gave useful limits; guessing by how hard it felt was not enough.\n\nAfter ____5____ (fill) the tyre, we removed the pump and replaced the cap. The wheel turned smoothly, but the volunteer reminded me that a full tyre did not prove the whole bicycle was ready to ride.\n\nWe looked ____6____ the brakes and lights as well. A second volunteer helped us check the other parts. I thanked both of ____7____ (they) for their time. I had expected a quick repair, but I left with ____8____ better understanding of what needed checking. Now I always ask for help if I am uncertain, rather than ____9____ (pretend) I know. The workshop also gave me a list of simple ____10____ (check) to keep beside the bike.",
+            "explanation": "That/which is the subject for valve in the defining relative clause. Who is human, where not subject, what incompatible with an explicit antecedent here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bike-pump-040.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of safe.",
+            "material": "Air for the old bicycle\n\nMy cousin gave me an old bicycle, but one tyre was flat. On Saturday, I took it to a community workshop. A volunteer ____1____ (welcome) me and asked whether I wanted to learn how to use the pump myself.\n\nFirst, she showed me the small valve ____2____ was hidden under a plastic cap. I put the cap in a bowl so that I would not lose it. Then we attached the pump and checked that it fitted ____3____ (safe).\n\nI began to pump as fast as I could. The volunteer stopped me. Working more slowly made it ____4____ (easy) to watch the pressure than rushing did. She explained that the number printed on the tyre gave useful limits; guessing by how hard it felt was not enough.\n\nAfter ____5____ (fill) the tyre, we removed the pump and replaced the cap. The wheel turned smoothly, but the volunteer reminded me that a full tyre did not prove the whole bicycle was ready to ride.\n\nWe looked ____6____ the brakes and lights as well. A second volunteer helped us check the other parts. I thanked both of ____7____ (they) for their time. I had expected a quick repair, but I left with ____8____ better understanding of what needed checking. Now I always ask for help if I am uncertain, rather than ____9____ (pretend) I know. The workshop also gave me a list of simple ____10____ (check) to keep beside the bike.",
+            "explanation": "Safely modifies fitted. Safety is a noun. Any unlisted alternative receives review rather than an automatic rejection.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "safely"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "safety"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bike-pump-040.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of easy.",
+            "material": "Air for the old bicycle\n\nMy cousin gave me an old bicycle, but one tyre was flat. On Saturday, I took it to a community workshop. A volunteer ____1____ (welcome) me and asked whether I wanted to learn how to use the pump myself.\n\nFirst, she showed me the small valve ____2____ was hidden under a plastic cap. I put the cap in a bowl so that I would not lose it. Then we attached the pump and checked that it fitted ____3____ (safe).\n\nI began to pump as fast as I could. The volunteer stopped me. Working more slowly made it ____4____ (easy) to watch the pressure than rushing did. She explained that the number printed on the tyre gave useful limits; guessing by how hard it felt was not enough.\n\nAfter ____5____ (fill) the tyre, we removed the pump and replaced the cap. The wheel turned smoothly, but the volunteer reminded me that a full tyre did not prove the whole bicycle was ready to ride.\n\nWe looked ____6____ the brakes and lights as well. A second volunteer helped us check the other parts. I thanked both of ____7____ (they) for their time. I had expected a quick repair, but I left with ____8____ better understanding of what needed checking. Now I always ask for help if I am uncertain, rather than ____9____ (pretend) I know. The workshop also gave me a list of simple ____10____ (check) to keep beside the bike.",
+            "explanation": "Than rushing did creates a comparison requiring easier or more easy. Plain easy, superlative easiest and doubled more easier do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "easier",
+              "more easy"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "easy",
+                "easiest",
+                "more easier"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bike-pump-040.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of fill.",
+            "material": "Air for the old bicycle\n\nMy cousin gave me an old bicycle, but one tyre was flat. On Saturday, I took it to a community workshop. A volunteer ____1____ (welcome) me and asked whether I wanted to learn how to use the pump myself.\n\nFirst, she showed me the small valve ____2____ was hidden under a plastic cap. I put the cap in a bowl so that I would not lose it. Then we attached the pump and checked that it fitted ____3____ (safe).\n\nI began to pump as fast as I could. The volunteer stopped me. Working more slowly made it ____4____ (easy) to watch the pressure than rushing did. She explained that the number printed on the tyre gave useful limits; guessing by how hard it felt was not enough.\n\nAfter ____5____ (fill) the tyre, we removed the pump and replaced the cap. The wheel turned smoothly, but the volunteer reminded me that a full tyre did not prove the whole bicycle was ready to ride.\n\nWe looked ____6____ the brakes and lights as well. A second volunteer helped us check the other parts. I thanked both of ____7____ (they) for their time. I had expected a quick repair, but I left with ____8____ better understanding of what needed checking. Now I always ask for help if I am uncertain, rather than ____9____ (pretend) I know. The workshop also gave me a list of simple ____10____ (check) to keep beside the bike.",
+            "explanation": "After as preposition takes filling. The bare, past and to-infinitive forms do not complete it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "filling"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "fill",
+                "filled",
+                "to fill"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bike-pump-040.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "Air for the old bicycle\n\nMy cousin gave me an old bicycle, but one tyre was flat. On Saturday, I took it to a community workshop. A volunteer ____1____ (welcome) me and asked whether I wanted to learn how to use the pump myself.\n\nFirst, she showed me the small valve ____2____ was hidden under a plastic cap. I put the cap in a bowl so that I would not lose it. Then we attached the pump and checked that it fitted ____3____ (safe).\n\nI began to pump as fast as I could. The volunteer stopped me. Working more slowly made it ____4____ (easy) to watch the pressure than rushing did. She explained that the number printed on the tyre gave useful limits; guessing by how hard it felt was not enough.\n\nAfter ____5____ (fill) the tyre, we removed the pump and replaced the cap. The wheel turned smoothly, but the volunteer reminded me that a full tyre did not prove the whole bicycle was ready to ride.\n\nWe looked ____6____ the brakes and lights as well. A second volunteer helped us check the other parts. I thanked both of ____7____ (they) for their time. I had expected a quick repair, but I left with ____8____ better understanding of what needed checking. Now I always ask for help if I am uncertain, rather than ____9____ (pretend) I know. The workshop also gave me a list of simple ____10____ (check) to keep beside the bike.",
+            "explanation": "Looked at introduces the objects inspected. Of, from and by do not complete the intended inspection construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of",
+                "from",
+                "by"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bike-pump-040.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of they.",
+            "material": "Air for the old bicycle\n\nMy cousin gave me an old bicycle, but one tyre was flat. On Saturday, I took it to a community workshop. A volunteer ____1____ (welcome) me and asked whether I wanted to learn how to use the pump myself.\n\nFirst, she showed me the small valve ____2____ was hidden under a plastic cap. I put the cap in a bowl so that I would not lose it. Then we attached the pump and checked that it fitted ____3____ (safe).\n\nI began to pump as fast as I could. The volunteer stopped me. Working more slowly made it ____4____ (easy) to watch the pressure than rushing did. She explained that the number printed on the tyre gave useful limits; guessing by how hard it felt was not enough.\n\nAfter ____5____ (fill) the tyre, we removed the pump and replaced the cap. The wheel turned smoothly, but the volunteer reminded me that a full tyre did not prove the whole bicycle was ready to ride.\n\nWe looked ____6____ the brakes and lights as well. A second volunteer helped us check the other parts. I thanked both of ____7____ (they) for their time. I had expected a quick repair, but I left with ____8____ better understanding of what needed checking. Now I always ask for help if I am uncertain, rather than ____9____ (pretend) I know. The workshop also gave me a list of simple ____10____ (check) to keep beside the bike.",
+            "explanation": "Both of takes object pronoun them. They is subject and their/theirs possessive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "them"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "their",
+                "theirs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bike-pump-040.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "Air for the old bicycle\n\nMy cousin gave me an old bicycle, but one tyre was flat. On Saturday, I took it to a community workshop. A volunteer ____1____ (welcome) me and asked whether I wanted to learn how to use the pump myself.\n\nFirst, she showed me the small valve ____2____ was hidden under a plastic cap. I put the cap in a bowl so that I would not lose it. Then we attached the pump and checked that it fitted ____3____ (safe).\n\nI began to pump as fast as I could. The volunteer stopped me. Working more slowly made it ____4____ (easy) to watch the pressure than rushing did. She explained that the number printed on the tyre gave useful limits; guessing by how hard it felt was not enough.\n\nAfter ____5____ (fill) the tyre, we removed the pump and replaced the cap. The wheel turned smoothly, but the volunteer reminded me that a full tyre did not prove the whole bicycle was ready to ride.\n\nWe looked ____6____ the brakes and lights as well. A second volunteer helped us check the other parts. I thanked both of ____7____ (they) for their time. I had expected a quick repair, but I left with ____8____ better understanding of what needed checking. Now I always ask for help if I am uncertain, rather than ____9____ (pretend) I know. The workshop also gave me a list of simple ____10____ (check) to keep beside the bike.",
+            "explanation": "A better understanding is the ordinary new-instance construction. An has incorrect sound agreement. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bike-pump-040.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of pretend.",
+            "material": "Air for the old bicycle\n\nMy cousin gave me an old bicycle, but one tyre was flat. On Saturday, I took it to a community workshop. A volunteer ____1____ (welcome) me and asked whether I wanted to learn how to use the pump myself.\n\nFirst, she showed me the small valve ____2____ was hidden under a plastic cap. I put the cap in a bowl so that I would not lose it. Then we attached the pump and checked that it fitted ____3____ (safe).\n\nI began to pump as fast as I could. The volunteer stopped me. Working more slowly made it ____4____ (easy) to watch the pressure than rushing did. She explained that the number printed on the tyre gave useful limits; guessing by how hard it felt was not enough.\n\nAfter ____5____ (fill) the tyre, we removed the pump and replaced the cap. The wheel turned smoothly, but the volunteer reminded me that a full tyre did not prove the whole bicycle was ready to ride.\n\nWe looked ____6____ the brakes and lights as well. A second volunteer helped us check the other parts. I thanked both of ____7____ (they) for their time. I had expected a quick repair, but I left with ____8____ better understanding of what needed checking. Now I always ask for help if I am uncertain, rather than ____9____ (pretend) I know. The workshop also gave me a list of simple ____10____ (check) to keep beside the bike.",
+            "explanation": "Rather than can take pretending parallel with asking, or bare pretend after the earlier coordinated verb structure. Pretended does not fit the narrator’s general present habit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "pretending",
+              "pretend"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "pretended"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bike-pump-040.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of check.",
+            "material": "Air for the old bicycle\n\nMy cousin gave me an old bicycle, but one tyre was flat. On Saturday, I took it to a community workshop. A volunteer ____1____ (welcome) me and asked whether I wanted to learn how to use the pump myself.\n\nFirst, she showed me the small valve ____2____ was hidden under a plastic cap. I put the cap in a bowl so that I would not lose it. Then we attached the pump and checked that it fitted ____3____ (safe).\n\nI began to pump as fast as I could. The volunteer stopped me. Working more slowly made it ____4____ (easy) to watch the pressure than rushing did. She explained that the number printed on the tyre gave useful limits; guessing by how hard it felt was not enough.\n\nAfter ____5____ (fill) the tyre, we removed the pump and replaced the cap. The wheel turned smoothly, but the volunteer reminded me that a full tyre did not prove the whole bicycle was ready to ride.\n\nWe looked ____6____ the brakes and lights as well. A second volunteer helped us check the other parts. I thanked both of ____7____ (they) for their time. I had expected a quick repair, but I left with ____8____ better understanding of what needed checking. Now I always ask for help if I am uncertain, rather than ____9____ (pretend) I know. The workshop also gave me a list of simple ____10____ (check) to keep beside the bike.",
+            "explanation": "A list of simple checks uses plural count noun checks for several inspection actions. Check is singular without a determiner; checked is participle.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "checks"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "check",
+                "checked"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "61e99de30a9d17a47fea8e6e5d54a0acec4aa2678945ea4492819fb2fc59358e",
+      "reviewNotes": "Six new complete junior grammar passages. Fictional situations. Same-author prompt-form, context and alternative-answer review; unknown written forms remain reviewable. No independent calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.radio-weather-040",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · A voice on the school radio",
+        "summary": "A voice on the school radio，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "A complete coherent ten-gap passage, with seven supplied-word prompts and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new complete junior grammar passages. Fictional situations. Same-author prompt-form, context and alternative-answer review; unknown written forms remain reviewable. No independent calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.radio-weather-040",
+          "family": "passage_form",
+          "label": "A voice on the school radio",
+          "candidateSHA256": "c625ccecc8e493e87138c288766dd872fdd644255b0533135744d22ab4011cc0",
+          "authorCheckSHA256": "8b37d6cf0ac932233db86f66290a678b1606a0d6f2822b172da5f84517cf0307",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.radio-weather-040#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b040；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A voice on the school radio\n\nOur school radio team usually records short interviews. Last month, we ____1____ (ask) to make an announcement about a change to the sports day. Heavy rain was expected, so the outdoor events would take place on Friday instead of Thursday.\n\nI wrote the first version, ____2____ contained every detail from the teacher's email. It was accurate but much too long. My partner suggested ____3____ (put) the new date at the beginning, where listeners were most likely to hear it.\n\nWe read the text aloud and timed ____4____ (we). Some sentences looked clear on paper but sounded confusing. For example, two different times appeared close together, and it was easy to remember the wrong one.\n\nAfter we had made the wording ____5____ (simple), we asked a classmate to listen without seeing the script. She could repeat the date but was uncertain ____6____ where students should meet. That showed us which part needed another change.\n\nThe final announcement ____7____ (record) in a quiet room. We left a short pause after the important information and avoided background music. The teacher checked it before it was played.\n\nLater, several students thanked us for speaking ____8____ (clear). They had heard the new arrangements while walking between lessons. I learned that writing for the ear was different ____9____ writing for the eye. A listener cannot always return to a sentence, so useful ____10____ (announce) need a clear order as well as correct facts."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.radio-weather-040.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of ask.",
+            "material": "A voice on the school radio\n\nOur school radio team usually records short interviews. Last month, we ____1____ (ask) to make an announcement about a change to the sports day. Heavy rain was expected, so the outdoor events would take place on Friday instead of Thursday.\n\nI wrote the first version, ____2____ contained every detail from the teacher's email. It was accurate but much too long. My partner suggested ____3____ (put) the new date at the beginning, where listeners were most likely to hear it.\n\nWe read the text aloud and timed ____4____ (we). Some sentences looked clear on paper but sounded confusing. For example, two different times appeared close together, and it was easy to remember the wrong one.\n\nAfter we had made the wording ____5____ (simple), we asked a classmate to listen without seeing the script. She could repeat the date but was uncertain ____6____ where students should meet. That showed us which part needed another change.\n\nThe final announcement ____7____ (record) in a quiet room. We left a short pause after the important information and avoided background music. The teacher checked it before it was played.\n\nLater, several students thanked us for speaking ____8____ (clear). They had heard the new arrangements while walking between lessons. I learned that writing for the ear was different ____9____ writing for the eye. A listener cannot always return to a sentence, so useful ____10____ (announce) need a clear order as well as correct facts.",
+            "explanation": "The plural team members we receive the request last month: were asked. Asked lacks passive auxiliary, was disagrees and are uses present time.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "were asked"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "asked",
+                "was asked",
+                "are asked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.radio-weather-040.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "A voice on the school radio\n\nOur school radio team usually records short interviews. Last month, we ____1____ (ask) to make an announcement about a change to the sports day. Heavy rain was expected, so the outdoor events would take place on Friday instead of Thursday.\n\nI wrote the first version, ____2____ contained every detail from the teacher's email. It was accurate but much too long. My partner suggested ____3____ (put) the new date at the beginning, where listeners were most likely to hear it.\n\nWe read the text aloud and timed ____4____ (we). Some sentences looked clear on paper but sounded confusing. For example, two different times appeared close together, and it was easy to remember the wrong one.\n\nAfter we had made the wording ____5____ (simple), we asked a classmate to listen without seeing the script. She could repeat the date but was uncertain ____6____ where students should meet. That showed us which part needed another change.\n\nThe final announcement ____7____ (record) in a quiet room. We left a short pause after the important information and avoided background music. The teacher checked it before it was played.\n\nLater, several students thanked us for speaking ____8____ (clear). They had heard the new arrangements while walking between lessons. I learned that writing for the ear was different ____9____ writing for the eye. A listener cannot always return to a sentence, so useful ____10____ (announce) need a clear order as well as correct facts.",
+            "explanation": "The comma introduces a non-defining clause referring to the version, so which. That does not introduce this non-defining clause, who is human and what lacks this antecedent relation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "that",
+                "who",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.radio-weather-040.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of put.",
+            "material": "A voice on the school radio\n\nOur school radio team usually records short interviews. Last month, we ____1____ (ask) to make an announcement about a change to the sports day. Heavy rain was expected, so the outdoor events would take place on Friday instead of Thursday.\n\nI wrote the first version, ____2____ contained every detail from the teacher's email. It was accurate but much too long. My partner suggested ____3____ (put) the new date at the beginning, where listeners were most likely to hear it.\n\nWe read the text aloud and timed ____4____ (we). Some sentences looked clear on paper but sounded confusing. For example, two different times appeared close together, and it was easy to remember the wrong one.\n\nAfter we had made the wording ____5____ (simple), we asked a classmate to listen without seeing the script. She could repeat the date but was uncertain ____6____ where students should meet. That showed us which part needed another change.\n\nThe final announcement ____7____ (record) in a quiet room. We left a short pause after the important information and avoided background music. The teacher checked it before it was played.\n\nLater, several students thanked us for speaking ____8____ (clear). They had heard the new arrangements while walking between lessons. I learned that writing for the ear was different ____9____ writing for the eye. A listener cannot always return to a sentence, so useful ____10____ (announce) need a clear order as well as correct facts.",
+            "explanation": "Suggested takes putting. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "putting"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "put",
+                "to put",
+                "puts"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.radio-weather-040.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of we.",
+            "material": "A voice on the school radio\n\nOur school radio team usually records short interviews. Last month, we ____1____ (ask) to make an announcement about a change to the sports day. Heavy rain was expected, so the outdoor events would take place on Friday instead of Thursday.\n\nI wrote the first version, ____2____ contained every detail from the teacher's email. It was accurate but much too long. My partner suggested ____3____ (put) the new date at the beginning, where listeners were most likely to hear it.\n\nWe read the text aloud and timed ____4____ (we). Some sentences looked clear on paper but sounded confusing. For example, two different times appeared close together, and it was easy to remember the wrong one.\n\nAfter we had made the wording ____5____ (simple), we asked a classmate to listen without seeing the script. She could repeat the date but was uncertain ____6____ where students should meet. That showed us which part needed another change.\n\nThe final announcement ____7____ (record) in a quiet room. We left a short pause after the important information and avoided background music. The teacher checked it before it was played.\n\nLater, several students thanked us for speaking ____8____ (clear). They had heard the new arrangements while walking between lessons. I learned that writing for the ear was different ____9____ writing for the eye. A listener cannot always return to a sentence, so useful ____10____ (announce) need a clear order as well as correct facts.",
+            "explanation": "We timed ourselves, the same people reading and being timed. Subject and possessive forms do not supply the reflexive object.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "ourselves"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.radio-weather-040.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of simple.",
+            "material": "A voice on the school radio\n\nOur school radio team usually records short interviews. Last month, we ____1____ (ask) to make an announcement about a change to the sports day. Heavy rain was expected, so the outdoor events would take place on Friday instead of Thursday.\n\nI wrote the first version, ____2____ contained every detail from the teacher's email. It was accurate but much too long. My partner suggested ____3____ (put) the new date at the beginning, where listeners were most likely to hear it.\n\nWe read the text aloud and timed ____4____ (we). Some sentences looked clear on paper but sounded confusing. For example, two different times appeared close together, and it was easy to remember the wrong one.\n\nAfter we had made the wording ____5____ (simple), we asked a classmate to listen without seeing the script. She could repeat the date but was uncertain ____6____ where students should meet. That showed us which part needed another change.\n\nThe final announcement ____7____ (record) in a quiet room. We left a short pause after the important information and avoided background music. The teacher checked it before it was played.\n\nLater, several students thanked us for speaking ____8____ (clear). They had heard the new arrangements while walking between lessons. I learned that writing for the ear was different ____9____ writing for the eye. A listener cannot always return to a sentence, so useful ____10____ (announce) need a clear order as well as correct facts.",
+            "explanation": "Simpler or more simple states the improvement from the earlier version. Simplest is maximum, and more simpler doubles comparison. Plain simple is left reviewable as a valid resultative reading.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "simpler",
+              "more simple"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "simplest",
+                "more simpler"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.radio-weather-040.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "A voice on the school radio\n\nOur school radio team usually records short interviews. Last month, we ____1____ (ask) to make an announcement about a change to the sports day. Heavy rain was expected, so the outdoor events would take place on Friday instead of Thursday.\n\nI wrote the first version, ____2____ contained every detail from the teacher's email. It was accurate but much too long. My partner suggested ____3____ (put) the new date at the beginning, where listeners were most likely to hear it.\n\nWe read the text aloud and timed ____4____ (we). Some sentences looked clear on paper but sounded confusing. For example, two different times appeared close together, and it was easy to remember the wrong one.\n\nAfter we had made the wording ____5____ (simple), we asked a classmate to listen without seeing the script. She could repeat the date but was uncertain ____6____ where students should meet. That showed us which part needed another change.\n\nThe final announcement ____7____ (record) in a quiet room. We left a short pause after the important information and avoided background music. The teacher checked it before it was played.\n\nLater, several students thanked us for speaking ____8____ (clear). They had heard the new arrangements while walking between lessons. I learned that writing for the ear was different ____9____ writing for the eye. A listener cannot always return to a sentence, so useful ____10____ (announce) need a clear order as well as correct facts.",
+            "explanation": "Uncertain about where and uncertain of where both introduce the unknown meeting place. From/by do not complete this uncertainty construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "about",
+              "of"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "from",
+                "by"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.radio-weather-040.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of record.",
+            "material": "A voice on the school radio\n\nOur school radio team usually records short interviews. Last month, we ____1____ (ask) to make an announcement about a change to the sports day. Heavy rain was expected, so the outdoor events would take place on Friday instead of Thursday.\n\nI wrote the first version, ____2____ contained every detail from the teacher's email. It was accurate but much too long. My partner suggested ____3____ (put) the new date at the beginning, where listeners were most likely to hear it.\n\nWe read the text aloud and timed ____4____ (we). Some sentences looked clear on paper but sounded confusing. For example, two different times appeared close together, and it was easy to remember the wrong one.\n\nAfter we had made the wording ____5____ (simple), we asked a classmate to listen without seeing the script. She could repeat the date but was uncertain ____6____ where students should meet. That showed us which part needed another change.\n\nThe final announcement ____7____ (record) in a quiet room. We left a short pause after the important information and avoided background music. The teacher checked it before it was played.\n\nLater, several students thanked us for speaking ____8____ (clear). They had heard the new arrangements while walking between lessons. I learned that writing for the ear was different ____9____ writing for the eye. A listener cannot always return to a sentence, so useful ____10____ (announce) need a clear order as well as correct facts.",
+            "explanation": "The singular announcement receives recording. Past or past-perfect passive can fit. Recorded lacks auxiliary; were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was recorded",
+              "had been recorded"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "recorded",
+                "were recorded"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.radio-weather-040.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of clear.",
+            "material": "A voice on the school radio\n\nOur school radio team usually records short interviews. Last month, we ____1____ (ask) to make an announcement about a change to the sports day. Heavy rain was expected, so the outdoor events would take place on Friday instead of Thursday.\n\nI wrote the first version, ____2____ contained every detail from the teacher's email. It was accurate but much too long. My partner suggested ____3____ (put) the new date at the beginning, where listeners were most likely to hear it.\n\nWe read the text aloud and timed ____4____ (we). Some sentences looked clear on paper but sounded confusing. For example, two different times appeared close together, and it was easy to remember the wrong one.\n\nAfter we had made the wording ____5____ (simple), we asked a classmate to listen without seeing the script. She could repeat the date but was uncertain ____6____ where students should meet. That showed us which part needed another change.\n\nThe final announcement ____7____ (record) in a quiet room. We left a short pause after the important information and avoided background music. The teacher checked it before it was played.\n\nLater, several students thanked us for speaking ____8____ (clear). They had heard the new arrangements while walking between lessons. I learned that writing for the ear was different ____9____ writing for the eye. A listener cannot always return to a sentence, so useful ____10____ (announce) need a clear order as well as correct facts.",
+            "explanation": "Clearly modifies speaking. Clearness is a noun; informal clear is not automatically rejected.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "clearly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "clearness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.radio-weather-040.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "A voice on the school radio\n\nOur school radio team usually records short interviews. Last month, we ____1____ (ask) to make an announcement about a change to the sports day. Heavy rain was expected, so the outdoor events would take place on Friday instead of Thursday.\n\nI wrote the first version, ____2____ contained every detail from the teacher's email. It was accurate but much too long. My partner suggested ____3____ (put) the new date at the beginning, where listeners were most likely to hear it.\n\nWe read the text aloud and timed ____4____ (we). Some sentences looked clear on paper but sounded confusing. For example, two different times appeared close together, and it was easy to remember the wrong one.\n\nAfter we had made the wording ____5____ (simple), we asked a classmate to listen without seeing the script. She could repeat the date but was uncertain ____6____ where students should meet. That showed us which part needed another change.\n\nThe final announcement ____7____ (record) in a quiet room. We left a short pause after the important information and avoided background music. The teacher checked it before it was played.\n\nLater, several students thanked us for speaking ____8____ (clear). They had heard the new arrangements while walking between lessons. I learned that writing for the ear was different ____9____ writing for the eye. A listener cannot always return to a sentence, so useful ____10____ (announce) need a clear order as well as correct facts.",
+            "explanation": "Different from, different to and different than are recognised variants here. Of and by do not express the comparison.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "from",
+              "to",
+              "than"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of",
+                "by"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.radio-weather-040.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of announce.",
+            "material": "A voice on the school radio\n\nOur school radio team usually records short interviews. Last month, we ____1____ (ask) to make an announcement about a change to the sports day. Heavy rain was expected, so the outdoor events would take place on Friday instead of Thursday.\n\nI wrote the first version, ____2____ contained every detail from the teacher's email. It was accurate but much too long. My partner suggested ____3____ (put) the new date at the beginning, where listeners were most likely to hear it.\n\nWe read the text aloud and timed ____4____ (we). Some sentences looked clear on paper but sounded confusing. For example, two different times appeared close together, and it was easy to remember the wrong one.\n\nAfter we had made the wording ____5____ (simple), we asked a classmate to listen without seeing the script. She could repeat the date but was uncertain ____6____ where students should meet. That showed us which part needed another change.\n\nThe final announcement ____7____ (record) in a quiet room. We left a short pause after the important information and avoided background music. The teacher checked it before it was played.\n\nLater, several students thanked us for speaking ____8____ (clear). They had heard the new arrangements while walking between lessons. I learned that writing for the ear was different ____9____ writing for the eye. A listener cannot always return to a sentence, so useful ____10____ (announce) need a clear order as well as correct facts.",
+            "explanation": "Need is plural here, so plural noun announcements. Base verb announce and participle announced do not name the items needing order.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "announcements"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "announce",
+                "announced"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "9c4180a1b38f735d3243b82a7f3d3df826cb5210214b9f69ade57d9c2cdd4273",
+      "reviewNotes": "Six new complete junior grammar passages. Fictional situations. Same-author prompt-form, context and alternative-answer review; unknown written forms remain reviewable. No independent calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.binding-a-notebook-040",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · A notebook made by hand",
+        "summary": "A notebook made by hand，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "A complete coherent ten-gap passage, with seven supplied-word prompts and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new complete junior grammar passages. Fictional situations. Same-author prompt-form, context and alternative-answer review; unknown written forms remain reviewable. No independent calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.binding-a-notebook-040",
+          "family": "passage_form",
+          "label": "A notebook made by hand",
+          "candidateSHA256": "6fda09aec38316827e3ae10d11de76a8d29486a955c1a765f037e211cfd801bc",
+          "authorCheckSHA256": "f019150bf8fa98717bc4baa232b7c03dccff34d13f15997eec2cf7f469b7b234",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.binding-a-notebook-040#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b040；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A notebook made by hand\n\nAt a weekend workshop, I learned to bind a small notebook. We began with sheets of paper ____1____ had been folded in half. The instructor asked us to check the edges before making holes for the thread.\n\nMy first set of holes was uneven. Instead of ____2____ (throw) the paper away, I used it to practise the next step. That allowed me to understand the movement before working on the final pages.\n\nThe thread passed through each hole twice. We had to pull it ____3____ (gentle), because too much force could tear the paper. I found the rhythm difficult at first, but it became ____4____ (easy) than I expected once I stopped watching everyone else.\n\nOur instructor encouraged us ____5____ (choose) different covers. I used a piece of clean packaging with a blue pattern. Its folds were already visible, but I liked the way they became part of the design.\n\nWhen the notebooks were finished, we placed ____6____ (they) on a table. No two looked exactly the same. One participant had added a pocket ____7____ the inside of the back cover, and she showed us how she had made it.\n\nI wrote my name on the first page and left the rest blank. There was ____8____ sense of possibility in the small book. Later that evening, I ____9____ (fill) its opening pages with sketches of the workshop. The imperfect practice sheets stayed beside it, reminding me how much ____10____ (patient) a useful new skill could require."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.binding-a-notebook-040.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with one appropriate word.",
+            "material": "A notebook made by hand\n\nAt a weekend workshop, I learned to bind a small notebook. We began with sheets of paper ____1____ had been folded in half. The instructor asked us to check the edges before making holes for the thread.\n\nMy first set of holes was uneven. Instead of ____2____ (throw) the paper away, I used it to practise the next step. That allowed me to understand the movement before working on the final pages.\n\nThe thread passed through each hole twice. We had to pull it ____3____ (gentle), because too much force could tear the paper. I found the rhythm difficult at first, but it became ____4____ (easy) than I expected once I stopped watching everyone else.\n\nOur instructor encouraged us ____5____ (choose) different covers. I used a piece of clean packaging with a blue pattern. Its folds were already visible, but I liked the way they became part of the design.\n\nWhen the notebooks were finished, we placed ____6____ (they) on a table. No two looked exactly the same. One participant had added a pocket ____7____ the inside of the back cover, and she showed us how she had made it.\n\nI wrote my name on the first page and left the rest blank. There was ____8____ sense of possibility in the small book. Later that evening, I ____9____ (fill) its opening pages with sketches of the workshop. The imperfect practice sheets stayed beside it, reminding me how much ____10____ (patient) a useful new skill could require.",
+            "explanation": "The sheets are subject antecedent of that/which had been folded. Who is human; where not subject; what does not take this expressed antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.binding-a-notebook-040.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of throw.",
+            "material": "A notebook made by hand\n\nAt a weekend workshop, I learned to bind a small notebook. We began with sheets of paper ____1____ had been folded in half. The instructor asked us to check the edges before making holes for the thread.\n\nMy first set of holes was uneven. Instead of ____2____ (throw) the paper away, I used it to practise the next step. That allowed me to understand the movement before working on the final pages.\n\nThe thread passed through each hole twice. We had to pull it ____3____ (gentle), because too much force could tear the paper. I found the rhythm difficult at first, but it became ____4____ (easy) than I expected once I stopped watching everyone else.\n\nOur instructor encouraged us ____5____ (choose) different covers. I used a piece of clean packaging with a blue pattern. Its folds were already visible, but I liked the way they became part of the design.\n\nWhen the notebooks were finished, we placed ____6____ (they) on a table. No two looked exactly the same. One participant had added a pocket ____7____ the inside of the back cover, and she showed us how she had made it.\n\nI wrote my name on the first page and left the rest blank. There was ____8____ sense of possibility in the small book. Later that evening, I ____9____ (fill) its opening pages with sketches of the workshop. The imperfect practice sheets stayed beside it, reminding me how much ____10____ (patient) a useful new skill could require.",
+            "explanation": "Instead of takes throwing. Other listed forms do not fit the preposition.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "throwing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "throw",
+                "threw",
+                "to throw"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.binding-a-notebook-040.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of gentle.",
+            "material": "A notebook made by hand\n\nAt a weekend workshop, I learned to bind a small notebook. We began with sheets of paper ____1____ had been folded in half. The instructor asked us to check the edges before making holes for the thread.\n\nMy first set of holes was uneven. Instead of ____2____ (throw) the paper away, I used it to practise the next step. That allowed me to understand the movement before working on the final pages.\n\nThe thread passed through each hole twice. We had to pull it ____3____ (gentle), because too much force could tear the paper. I found the rhythm difficult at first, but it became ____4____ (easy) than I expected once I stopped watching everyone else.\n\nOur instructor encouraged us ____5____ (choose) different covers. I used a piece of clean packaging with a blue pattern. Its folds were already visible, but I liked the way they became part of the design.\n\nWhen the notebooks were finished, we placed ____6____ (they) on a table. No two looked exactly the same. One participant had added a pocket ____7____ the inside of the back cover, and she showed us how she had made it.\n\nI wrote my name on the first page and left the rest blank. There was ____8____ sense of possibility in the small book. Later that evening, I ____9____ (fill) its opening pages with sketches of the workshop. The imperfect practice sheets stayed beside it, reminding me how much ____10____ (patient) a useful new skill could require.",
+            "explanation": "Gently modifies pull. Gentle is adjective and gentleness noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "gently"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "gentle",
+                "gentleness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.binding-a-notebook-040.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of easy.",
+            "material": "A notebook made by hand\n\nAt a weekend workshop, I learned to bind a small notebook. We began with sheets of paper ____1____ had been folded in half. The instructor asked us to check the edges before making holes for the thread.\n\nMy first set of holes was uneven. Instead of ____2____ (throw) the paper away, I used it to practise the next step. That allowed me to understand the movement before working on the final pages.\n\nThe thread passed through each hole twice. We had to pull it ____3____ (gentle), because too much force could tear the paper. I found the rhythm difficult at first, but it became ____4____ (easy) than I expected once I stopped watching everyone else.\n\nOur instructor encouraged us ____5____ (choose) different covers. I used a piece of clean packaging with a blue pattern. Its folds were already visible, but I liked the way they became part of the design.\n\nWhen the notebooks were finished, we placed ____6____ (they) on a table. No two looked exactly the same. One participant had added a pocket ____7____ the inside of the back cover, and she showed us how she had made it.\n\nI wrote my name on the first page and left the rest blank. There was ____8____ sense of possibility in the small book. Later that evening, I ____9____ (fill) its opening pages with sketches of the workshop. The imperfect practice sheets stayed beside it, reminding me how much ____10____ (patient) a useful new skill could require.",
+            "explanation": "Than requires the comparative easier or more easy. Plain, superlative and double comparative alternatives fail this structure.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "easier",
+              "more easy"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "easy",
+                "easiest",
+                "more easier"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.binding-a-notebook-040.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of choose.",
+            "material": "A notebook made by hand\n\nAt a weekend workshop, I learned to bind a small notebook. We began with sheets of paper ____1____ had been folded in half. The instructor asked us to check the edges before making holes for the thread.\n\nMy first set of holes was uneven. Instead of ____2____ (throw) the paper away, I used it to practise the next step. That allowed me to understand the movement before working on the final pages.\n\nThe thread passed through each hole twice. We had to pull it ____3____ (gentle), because too much force could tear the paper. I found the rhythm difficult at first, but it became ____4____ (easy) than I expected once I stopped watching everyone else.\n\nOur instructor encouraged us ____5____ (choose) different covers. I used a piece of clean packaging with a blue pattern. Its folds were already visible, but I liked the way they became part of the design.\n\nWhen the notebooks were finished, we placed ____6____ (they) on a table. No two looked exactly the same. One participant had added a pocket ____7____ the inside of the back cover, and she showed us how she had made it.\n\nI wrote my name on the first page and left the rest blank. There was ____8____ sense of possibility in the small book. Later that evening, I ____9____ (fill) its opening pages with sketches of the workshop. The imperfect practice sheets stayed beside it, reminding me how much ____10____ (patient) a useful new skill could require.",
+            "explanation": "Encouraged us takes to choose. Other listed forms do not directly complete this verb-object pattern.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to choose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "choosing",
+                "choose",
+                "chose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.binding-a-notebook-040.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of they.",
+            "material": "A notebook made by hand\n\nAt a weekend workshop, I learned to bind a small notebook. We began with sheets of paper ____1____ had been folded in half. The instructor asked us to check the edges before making holes for the thread.\n\nMy first set of holes was uneven. Instead of ____2____ (throw) the paper away, I used it to practise the next step. That allowed me to understand the movement before working on the final pages.\n\nThe thread passed through each hole twice. We had to pull it ____3____ (gentle), because too much force could tear the paper. I found the rhythm difficult at first, but it became ____4____ (easy) than I expected once I stopped watching everyone else.\n\nOur instructor encouraged us ____5____ (choose) different covers. I used a piece of clean packaging with a blue pattern. Its folds were already visible, but I liked the way they became part of the design.\n\nWhen the notebooks were finished, we placed ____6____ (they) on a table. No two looked exactly the same. One participant had added a pocket ____7____ the inside of the back cover, and she showed us how she had made it.\n\nI wrote my name on the first page and left the rest blank. There was ____8____ sense of possibility in the small book. Later that evening, I ____9____ (fill) its opening pages with sketches of the workshop. The imperfect practice sheets stayed beside it, reminding me how much ____10____ (patient) a useful new skill could require.",
+            "explanation": "Placed takes object pronoun them for the notebooks. They is subject; their/theirs possessive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "them"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "their",
+                "theirs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.binding-a-notebook-040.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "A notebook made by hand\n\nAt a weekend workshop, I learned to bind a small notebook. We began with sheets of paper ____1____ had been folded in half. The instructor asked us to check the edges before making holes for the thread.\n\nMy first set of holes was uneven. Instead of ____2____ (throw) the paper away, I used it to practise the next step. That allowed me to understand the movement before working on the final pages.\n\nThe thread passed through each hole twice. We had to pull it ____3____ (gentle), because too much force could tear the paper. I found the rhythm difficult at first, but it became ____4____ (easy) than I expected once I stopped watching everyone else.\n\nOur instructor encouraged us ____5____ (choose) different covers. I used a piece of clean packaging with a blue pattern. Its folds were already visible, but I liked the way they became part of the design.\n\nWhen the notebooks were finished, we placed ____6____ (they) on a table. No two looked exactly the same. One participant had added a pocket ____7____ the inside of the back cover, and she showed us how she had made it.\n\nI wrote my name on the first page and left the rest blank. There was ____8____ sense of possibility in the small book. Later that evening, I ____9____ (fill) its opening pages with sketches of the workshop. The imperfect practice sheets stayed beside it, reminding me how much ____10____ (patient) a useful new skill could require.",
+            "explanation": "A pocket on the inside of a cover names the attachment surface. For, by and of do not express that placement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "for",
+                "by",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.binding-a-notebook-040.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "A notebook made by hand\n\nAt a weekend workshop, I learned to bind a small notebook. We began with sheets of paper ____1____ had been folded in half. The instructor asked us to check the edges before making holes for the thread.\n\nMy first set of holes was uneven. Instead of ____2____ (throw) the paper away, I used it to practise the next step. That allowed me to understand the movement before working on the final pages.\n\nThe thread passed through each hole twice. We had to pull it ____3____ (gentle), because too much force could tear the paper. I found the rhythm difficult at first, but it became ____4____ (easy) than I expected once I stopped watching everyone else.\n\nOur instructor encouraged us ____5____ (choose) different covers. I used a piece of clean packaging with a blue pattern. Its folds were already visible, but I liked the way they became part of the design.\n\nWhen the notebooks were finished, we placed ____6____ (they) on a table. No two looked exactly the same. One participant had added a pocket ____7____ the inside of the back cover, and she showed us how she had made it.\n\nI wrote my name on the first page and left the rest blank. There was ____8____ sense of possibility in the small book. Later that evening, I ____9____ (fill) its opening pages with sketches of the workshop. The imperfect practice sheets stayed beside it, reminding me how much ____10____ (patient) a useful new skill could require.",
+            "explanation": "A sense of possibility is the ordinary new-feeling construction. An conflicts with the consonant sound of sense. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.binding-a-notebook-040.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of fill.",
+            "material": "A notebook made by hand\n\nAt a weekend workshop, I learned to bind a small notebook. We began with sheets of paper ____1____ had been folded in half. The instructor asked us to check the edges before making holes for the thread.\n\nMy first set of holes was uneven. Instead of ____2____ (throw) the paper away, I used it to practise the next step. That allowed me to understand the movement before working on the final pages.\n\nThe thread passed through each hole twice. We had to pull it ____3____ (gentle), because too much force could tear the paper. I found the rhythm difficult at first, but it became ____4____ (easy) than I expected once I stopped watching everyone else.\n\nOur instructor encouraged us ____5____ (choose) different covers. I used a piece of clean packaging with a blue pattern. Its folds were already visible, but I liked the way they became part of the design.\n\nWhen the notebooks were finished, we placed ____6____ (they) on a table. No two looked exactly the same. One participant had added a pocket ____7____ the inside of the back cover, and she showed us how she had made it.\n\nI wrote my name on the first page and left the rest blank. There was ____8____ sense of possibility in the small book. Later that evening, I ____9____ (fill) its opening pages with sketches of the workshop. The imperfect practice sheets stayed beside it, reminding me how much ____10____ (patient) a useful new skill could require.",
+            "explanation": "Later that evening is the completed past event filled. Base fill and unaided filling do not supply the finite narrative verb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "filled"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "fill",
+                "filling"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.binding-a-notebook-040.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of patient.",
+            "material": "A notebook made by hand\n\nAt a weekend workshop, I learned to bind a small notebook. We began with sheets of paper ____1____ had been folded in half. The instructor asked us to check the edges before making holes for the thread.\n\nMy first set of holes was uneven. Instead of ____2____ (throw) the paper away, I used it to practise the next step. That allowed me to understand the movement before working on the final pages.\n\nThe thread passed through each hole twice. We had to pull it ____3____ (gentle), because too much force could tear the paper. I found the rhythm difficult at first, but it became ____4____ (easy) than I expected once I stopped watching everyone else.\n\nOur instructor encouraged us ____5____ (choose) different covers. I used a piece of clean packaging with a blue pattern. Its folds were already visible, but I liked the way they became part of the design.\n\nWhen the notebooks were finished, we placed ____6____ (they) on a table. No two looked exactly the same. One participant had added a pocket ____7____ the inside of the back cover, and she showed us how she had made it.\n\nI wrote my name on the first page and left the rest blank. There was ____8____ sense of possibility in the small book. Later that evening, I ____9____ (fill) its opening pages with sketches of the workshop. The imperfect practice sheets stayed beside it, reminding me how much ____10____ (patient) a useful new skill could require.",
+            "explanation": "How much requires uncountable noun patience here. Patient is adjective and patiently adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "patience"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "patient",
+                "patiently"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "d0274f6bca49cf934c54ea083cb48f64de23d5238a4855d1673259df767ac2dc",
+      "reviewNotes": "Six new complete junior grammar passages. Fictional situations. Same-author prompt-form, context and alternative-answer review; unknown written forms remain reviewable. No independent calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.ferry-daytrip-040",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · The earlier ferry",
+        "summary": "The earlier ferry，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "A complete coherent ten-gap passage, with seven supplied-word prompts and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new complete junior grammar passages. Fictional situations. Same-author prompt-form, context and alternative-answer review; unknown written forms remain reviewable. No independent calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.ferry-daytrip-040",
+          "family": "passage_form",
+          "label": "The earlier ferry",
+          "candidateSHA256": "d963b40d09dd7e113a60166a5814fd7b9eb4938594c8930b7799dec4d0f61b78",
+          "authorCheckSHA256": "9a44d43a6411eb422e06f54eb6e8eaf86b0795379b743c10af76103098a06f5b",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.ferry-daytrip-040#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b040；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The earlier ferry\n\nOur family had booked an afternoon ferry for a day trip across the bay. The evening before, the operator sent a message ____1____ (explain) that strong winds were forecast for later in the day. We could travel on an earlier service or change the booking to another date.\n\nDad asked everyone ____2____ (check) the new departure time. We chose the early ferry because the operator said it was still scheduled to run, but we kept watching for updates. A forecast was not a promise that the conditions would remain unchanged.\n\nAt the terminal, the passengers ____3____ (direct) to a sheltered waiting area. A member of staff, ____4____ name badge read \"Ruth\", explained when boarding would begin. She answered our questions ____5____ (patient), including mine about whether the same ticket was valid.\n\nThe crossing was ____6____ (short) than I had imagined. From inside the cabin, I watched small waves pass the windows. We followed the crew's instructions and stayed away from the outside deck while it was closed.\n\nOn the island, we chose a walk near the village instead ____7____ climbing to the exposed viewpoint. We still enjoyed ____8____ (we), although the day differed from our first plan. Before returning, we checked the ferry notice once more. Flexibility had been ____9____ important part of the trip, and the clear ____10____ (message) from staff had made our choices easier."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.ferry-daytrip-040.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of explain.",
+            "material": "The earlier ferry\n\nOur family had booked an afternoon ferry for a day trip across the bay. The evening before, the operator sent a message ____1____ (explain) that strong winds were forecast for later in the day. We could travel on an earlier service or change the booking to another date.\n\nDad asked everyone ____2____ (check) the new departure time. We chose the early ferry because the operator said it was still scheduled to run, but we kept watching for updates. A forecast was not a promise that the conditions would remain unchanged.\n\nAt the terminal, the passengers ____3____ (direct) to a sheltered waiting area. A member of staff, ____4____ name badge read \"Ruth\", explained when boarding would begin. She answered our questions ____5____ (patient), including mine about whether the same ticket was valid.\n\nThe crossing was ____6____ (short) than I had imagined. From inside the cabin, I watched small waves pass the windows. We followed the crew's instructions and stayed away from the outside deck while it was closed.\n\nOn the island, we chose a walk near the village instead ____7____ climbing to the exposed viewpoint. We still enjoyed ____8____ (we), although the day differed from our first plan. Before returning, we checked the ferry notice once more. Flexibility had been ____9____ important part of the trip, and the clear ____10____ (message) from staff had made our choices easier.",
+            "explanation": "Explaining describes the message’s content; to explain describes its purpose. Explained is passive without the required active content relation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "explaining",
+              "to explain"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "explained"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ferry-daytrip-040.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of check.",
+            "material": "The earlier ferry\n\nOur family had booked an afternoon ferry for a day trip across the bay. The evening before, the operator sent a message ____1____ (explain) that strong winds were forecast for later in the day. We could travel on an earlier service or change the booking to another date.\n\nDad asked everyone ____2____ (check) the new departure time. We chose the early ferry because the operator said it was still scheduled to run, but we kept watching for updates. A forecast was not a promise that the conditions would remain unchanged.\n\nAt the terminal, the passengers ____3____ (direct) to a sheltered waiting area. A member of staff, ____4____ name badge read \"Ruth\", explained when boarding would begin. She answered our questions ____5____ (patient), including mine about whether the same ticket was valid.\n\nThe crossing was ____6____ (short) than I had imagined. From inside the cabin, I watched small waves pass the windows. We followed the crew's instructions and stayed away from the outside deck while it was closed.\n\nOn the island, we chose a walk near the village instead ____7____ climbing to the exposed viewpoint. We still enjoyed ____8____ (we), although the day differed from our first plan. Before returning, we checked the ferry notice once more. Flexibility had been ____9____ important part of the trip, and the clear ____10____ (message) from staff had made our choices easier.",
+            "explanation": "Asked everyone takes to check. Bare, -ing and past forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to check"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "checking",
+                "check",
+                "checked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ferry-daytrip-040.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of direct.",
+            "material": "The earlier ferry\n\nOur family had booked an afternoon ferry for a day trip across the bay. The evening before, the operator sent a message ____1____ (explain) that strong winds were forecast for later in the day. We could travel on an earlier service or change the booking to another date.\n\nDad asked everyone ____2____ (check) the new departure time. We chose the early ferry because the operator said it was still scheduled to run, but we kept watching for updates. A forecast was not a promise that the conditions would remain unchanged.\n\nAt the terminal, the passengers ____3____ (direct) to a sheltered waiting area. A member of staff, ____4____ name badge read \"Ruth\", explained when boarding would begin. She answered our questions ____5____ (patient), including mine about whether the same ticket was valid.\n\nThe crossing was ____6____ (short) than I had imagined. From inside the cabin, I watched small waves pass the windows. We followed the crew's instructions and stayed away from the outside deck while it was closed.\n\nOn the island, we chose a walk near the village instead ____7____ climbing to the exposed viewpoint. We still enjoyed ____8____ (we), although the day differed from our first plan. Before returning, we checked the ferry notice once more. Flexibility had been ____9____ important part of the trip, and the clear ____10____ (message) from staff had made our choices easier.",
+            "explanation": "Plural passengers receive direction. Past or past-perfect passive fits the narrative; directed alone lacks auxiliary and was disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "were directed",
+              "had been directed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "directed",
+                "was directed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ferry-daytrip-040.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "The earlier ferry\n\nOur family had booked an afternoon ferry for a day trip across the bay. The evening before, the operator sent a message ____1____ (explain) that strong winds were forecast for later in the day. We could travel on an earlier service or change the booking to another date.\n\nDad asked everyone ____2____ (check) the new departure time. We chose the early ferry because the operator said it was still scheduled to run, but we kept watching for updates. A forecast was not a promise that the conditions would remain unchanged.\n\nAt the terminal, the passengers ____3____ (direct) to a sheltered waiting area. A member of staff, ____4____ name badge read \"Ruth\", explained when boarding would begin. She answered our questions ____5____ (patient), including mine about whether the same ticket was valid.\n\nThe crossing was ____6____ (short) than I had imagined. From inside the cabin, I watched small waves pass the windows. We followed the crew's instructions and stayed away from the outside deck while it was closed.\n\nOn the island, we chose a walk near the village instead ____7____ climbing to the exposed viewpoint. We still enjoyed ____8____ (we), although the day differed from our first plan. Before returning, we checked the ferry notice once more. Flexibility had been ____9____ important part of the trip, and the clear ____10____ (message) from staff had made our choices easier.",
+            "explanation": "Whose modifies name badge possessively. Who, which and that cannot directly fill this possessive position.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "whose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "which",
+                "that"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ferry-daytrip-040.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of patient.",
+            "material": "The earlier ferry\n\nOur family had booked an afternoon ferry for a day trip across the bay. The evening before, the operator sent a message ____1____ (explain) that strong winds were forecast for later in the day. We could travel on an earlier service or change the booking to another date.\n\nDad asked everyone ____2____ (check) the new departure time. We chose the early ferry because the operator said it was still scheduled to run, but we kept watching for updates. A forecast was not a promise that the conditions would remain unchanged.\n\nAt the terminal, the passengers ____3____ (direct) to a sheltered waiting area. A member of staff, ____4____ name badge read \"Ruth\", explained when boarding would begin. She answered our questions ____5____ (patient), including mine about whether the same ticket was valid.\n\nThe crossing was ____6____ (short) than I had imagined. From inside the cabin, I watched small waves pass the windows. We followed the crew's instructions and stayed away from the outside deck while it was closed.\n\nOn the island, we chose a walk near the village instead ____7____ climbing to the exposed viewpoint. We still enjoyed ____8____ (we), although the day differed from our first plan. Before returning, we checked the ferry notice once more. Flexibility had been ____9____ important part of the trip, and the clear ____10____ (message) from staff had made our choices easier.",
+            "explanation": "Patiently modifies answered. Patient is adjective and patience noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "patiently"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "patient",
+                "patience"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ferry-daytrip-040.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of short.",
+            "material": "The earlier ferry\n\nOur family had booked an afternoon ferry for a day trip across the bay. The evening before, the operator sent a message ____1____ (explain) that strong winds were forecast for later in the day. We could travel on an earlier service or change the booking to another date.\n\nDad asked everyone ____2____ (check) the new departure time. We chose the early ferry because the operator said it was still scheduled to run, but we kept watching for updates. A forecast was not a promise that the conditions would remain unchanged.\n\nAt the terminal, the passengers ____3____ (direct) to a sheltered waiting area. A member of staff, ____4____ name badge read \"Ruth\", explained when boarding would begin. She answered our questions ____5____ (patient), including mine about whether the same ticket was valid.\n\nThe crossing was ____6____ (short) than I had imagined. From inside the cabin, I watched small waves pass the windows. We followed the crew's instructions and stayed away from the outside deck while it was closed.\n\nOn the island, we chose a walk near the village instead ____7____ climbing to the exposed viewpoint. We still enjoyed ____8____ (we), although the day differed from our first plan. Before returning, we checked the ferry notice once more. Flexibility had been ____9____ important part of the trip, and the clear ____10____ (message) from staff had made our choices easier.",
+            "explanation": "Than requires shorter or grammatical more short. Plain short and superlative shortest do not fit, nor double comparative more shorter.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "shorter",
+              "more short"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "short",
+                "shortest",
+                "more shorter"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ferry-daytrip-040.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "The earlier ferry\n\nOur family had booked an afternoon ferry for a day trip across the bay. The evening before, the operator sent a message ____1____ (explain) that strong winds were forecast for later in the day. We could travel on an earlier service or change the booking to another date.\n\nDad asked everyone ____2____ (check) the new departure time. We chose the early ferry because the operator said it was still scheduled to run, but we kept watching for updates. A forecast was not a promise that the conditions would remain unchanged.\n\nAt the terminal, the passengers ____3____ (direct) to a sheltered waiting area. A member of staff, ____4____ name badge read \"Ruth\", explained when boarding would begin. She answered our questions ____5____ (patient), including mine about whether the same ticket was valid.\n\nThe crossing was ____6____ (short) than I had imagined. From inside the cabin, I watched small waves pass the windows. We followed the crew's instructions and stayed away from the outside deck while it was closed.\n\nOn the island, we chose a walk near the village instead ____7____ climbing to the exposed viewpoint. We still enjoyed ____8____ (we), although the day differed from our first plan. Before returning, we checked the ferry notice once more. Flexibility had been ____9____ important part of the trip, and the clear ____10____ (message) from staff had made our choices easier.",
+            "explanation": "Instead of takes the -ing action climbing. To, with and at do not complete this construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "with",
+                "at"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ferry-daytrip-040.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of we.",
+            "material": "The earlier ferry\n\nOur family had booked an afternoon ferry for a day trip across the bay. The evening before, the operator sent a message ____1____ (explain) that strong winds were forecast for later in the day. We could travel on an earlier service or change the booking to another date.\n\nDad asked everyone ____2____ (check) the new departure time. We chose the early ferry because the operator said it was still scheduled to run, but we kept watching for updates. A forecast was not a promise that the conditions would remain unchanged.\n\nAt the terminal, the passengers ____3____ (direct) to a sheltered waiting area. A member of staff, ____4____ name badge read \"Ruth\", explained when boarding would begin. She answered our questions ____5____ (patient), including mine about whether the same ticket was valid.\n\nThe crossing was ____6____ (short) than I had imagined. From inside the cabin, I watched small waves pass the windows. We followed the crew's instructions and stayed away from the outside deck while it was closed.\n\nOn the island, we chose a walk near the village instead ____7____ climbing to the exposed viewpoint. We still enjoyed ____8____ (we), although the day differed from our first plan. Before returning, we checked the ferry notice once more. Flexibility had been ____9____ important part of the trip, and the clear ____10____ (message) from staff had made our choices easier.",
+            "explanation": "Enjoyed ourselves requires the reflexive object for the same family members. Subject and possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "ourselves"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ferry-daytrip-040.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "The earlier ferry\n\nOur family had booked an afternoon ferry for a day trip across the bay. The evening before, the operator sent a message ____1____ (explain) that strong winds were forecast for later in the day. We could travel on an earlier service or change the booking to another date.\n\nDad asked everyone ____2____ (check) the new departure time. We chose the early ferry because the operator said it was still scheduled to run, but we kept watching for updates. A forecast was not a promise that the conditions would remain unchanged.\n\nAt the terminal, the passengers ____3____ (direct) to a sheltered waiting area. A member of staff, ____4____ name badge read \"Ruth\", explained when boarding would begin. She answered our questions ____5____ (patient), including mine about whether the same ticket was valid.\n\nThe crossing was ____6____ (short) than I had imagined. From inside the cabin, I watched small waves pass the windows. We followed the crew's instructions and stayed away from the outside deck while it was closed.\n\nOn the island, we chose a walk near the village instead ____7____ climbing to the exposed viewpoint. We still enjoyed ____8____ (we), although the day differed from our first plan. Before returning, we checked the ferry notice once more. Flexibility had been ____9____ important part of the trip, and the clear ____10____ (message) from staff had made our choices easier.",
+            "explanation": "An important part is the ordinary newly introduced role and uses an before a vowel sound. A has incorrect sound agreement; other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ferry-daytrip-040.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of message.",
+            "material": "The earlier ferry\n\nOur family had booked an afternoon ferry for a day trip across the bay. The evening before, the operator sent a message ____1____ (explain) that strong winds were forecast for later in the day. We could travel on an earlier service or change the booking to another date.\n\nDad asked everyone ____2____ (check) the new departure time. We chose the early ferry because the operator said it was still scheduled to run, but we kept watching for updates. A forecast was not a promise that the conditions would remain unchanged.\n\nAt the terminal, the passengers ____3____ (direct) to a sheltered waiting area. A member of staff, ____4____ name badge read \"Ruth\", explained when boarding would begin. She answered our questions ____5____ (patient), including mine about whether the same ticket was valid.\n\nThe crossing was ____6____ (short) than I had imagined. From inside the cabin, I watched small waves pass the windows. We followed the crew's instructions and stayed away from the outside deck while it was closed.\n\nOn the island, we chose a walk near the village instead ____7____ climbing to the exposed viewpoint. We still enjoyed ____8____ (we), although the day differed from our first plan. Before returning, we checked the ferry notice once more. Flexibility had been ____9____ important part of the trip, and the clear ____10____ (message) from staff had made our choices easier.",
+            "explanation": "The several communications from the operator and staff are messages. Singular message without a determiner does not fit this noun phrase; messaging names an activity rather than the individual notices.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "messages"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "message",
+                "messaging"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "64ae42ba4eeec92d581444ac25939ce543d009f5a6841fbb5504b7774be09ea7",
+      "reviewNotes": "Six new complete junior grammar passages. Fictional situations. Same-author prompt-form, context and alternative-answer review; unknown written forms remain reviewable. No independent calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
