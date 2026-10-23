@@ -25,6 +25,19 @@ async function main() {
     );
   await requireMaintenanceScope();
   const selected = batch === "all" ? undefined : batch;
+  if (action === "withdraw") {
+    const database = createDatabase(loadConfig());
+    try {
+      console.log(
+        JSON.stringify(
+          await new LearningExpansionRepository(database).withdraw(selected),
+        ),
+      );
+    } finally {
+      await database.close();
+    }
+    return;
+  }
   const catalog = loadExpansionCatalog(selected);
   if (action === "validate") {
     for (const manifest of catalog.manifests) await loadExpansionImages(manifest.batch);
@@ -61,7 +74,7 @@ async function main() {
           ),
         ),
       );
-    } else console.log(JSON.stringify(await repository.withdraw(selected)));
+    }
   } finally {
     await db.close();
   }

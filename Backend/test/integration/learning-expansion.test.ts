@@ -30,7 +30,11 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
     });
     afterAll(async () => {
       for (const id of users) await db.sql`delete from app.users where id=${id}`;
-      for (const id of [old.id, ...catalog.units.map((u) => u.id)]) {
+      for (const id of [
+        old.id,
+        "expansion.20261024.future-unknown",
+        ...catalog.units.map((u) => u.id),
+      ]) {
         await db.sql`delete from app.learning_unit_versions where unit_id=${id}`;
         await db.sql`delete from app.learning_units where id=${id}`;
       }
@@ -92,9 +96,15 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       const oldBefore =
         await db.sql`select v.payload,u.published from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version where u.id=${old.id}`;
       await engine.publish({ ...first, version: 2, title: first.title + " revised" });
+      // Simulate a later batch unknown to the compatible release's local catalog.
+      await engine.publish({
+        ...first,
+        id: "expansion.20261024.future-unknown",
+        title: "Future authored batch",
+      });
       const withdrawn = await expansion.withdraw();
-      expect(withdrawn.withdrawnUnits).toBe(3);
-      expect(withdrawn.changedPublishedHashes).toBe(1);
+      expect(withdrawn.withdrawnUnits).toBe(4);
+      expect(withdrawn.changedPublishedHashes).toBe(2);
       expect(withdrawn.retiredAttempts).toBe(2);
       expect(
         contentHash(

@@ -1,5 +1,5 @@
 import type { DatabaseResource } from "../../db/client.js";
-import { contentHash } from "./content.js";
+import { contentHash, type LearningUnit } from "./content.js";
 import { loadExpansionCatalog } from "./expansion-catalog.js";
 import { LearningEngineRepository } from "./engine-repository.js";
 import type { LearningImageAsset } from "./images.js";
@@ -23,9 +23,15 @@ export class LearningExpansionRepository {
     return { batch, units: catalog.units.length, hash: catalog.hash };
   }
 
-  /** One transaction withdraws only this run's exact known IDs; no payload/answer/reward is deleted. */
+  /** The full-run switch also works from an earlier compatible release/catalog. */
   async withdraw(batch?: string) {
-    const { units } = loadExpansionCatalog(batch);
+    let units: LearningUnit[] = [];
+    try {
+      units = loadExpansionCatalog(batch).units;
+    } catch (error) {
+      // Broken new content must not disable the emergency full-cohort switch.
+      if (batch) throw error;
+    }
     const ids = units.map((u) => u.id);
     return this.database.sql.begin(async (sql) => {
       await sql`set local lock_timeout='5s'`;
@@ -34,7 +40,8 @@ export class LearningExpansionRepository {
       const rows = await sql<{ id: string; content_hash: string }[]>`
         select u.id,v.content_hash from app.learning_units u
         join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
-        where u.id=any(${ids})`;
+        where u.id=any(${ids}) or (${batch === undefined} and u.id like 'expansion.20261024.%')`;
+      const targetIds = rows.map((row) => row.id);
       // A later reviewed version still belongs to this new cohort and must be
       // withdrawable. Report hash drift without blocking the requested rollback.
       const expected = new Map(units.map((u) => [u.id, contentHash(u)]));
@@ -42,7 +49,7 @@ export class LearningExpansionRepository {
         (row) => expected.get(row.id) !== row.content_hash,
       ).length;
       const withdrawn =
-        await sql`update app.learning_units set published=false where id=any(${ids}) and published returning id`;
+        await sql`update app.learning_units set published=false where id=any(${targetIds}) and published returning id`;
       const attempts = await sql<
         {
           user_id: string;
@@ -52,7 +59,7 @@ export class LearningExpansionRepository {
         }[]
       >`
         update app.learning_attempts set superseded_at=now(),revision=revision+1
-        where unit_id=any(${ids}) and superseded_at is null
+        where unit_id=any(${targetIds}) and superseded_at is null
         returning user_id,character_id,cycle_id,first_completed_at`;
       for (const attempt of attempts.filter((a) => a.first_completed_at === null))
         await sql`update app.learning_characters set cycle_id=gen_random_uuid(),revision=revision+1
