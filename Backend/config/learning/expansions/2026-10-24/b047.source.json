@@ -1,0 +1,727 @@
+{
+  "createdAt": "2026-10-23T21:46:38.480345+00:00",
+  "reviewBoundary": "Three new complete senior mixed practices. Same-author cohesion and all-alternative review, written-form variants and explicit rejection boundaries checked. Fictional cases; not past papers or independent calibration.",
+  "units": [
+    {
+      "id": "senior1.juggling-and-book-box-047",
+      "level": "senior1",
+      "title": "Learning to juggle and sharing books",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade10-club-routines-insertion",
+      "alignmentNote": "Level/family source references only; final structure follows National I with one complete five-gap seven-option insertion plus one complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Learning to juggle and sharing books",
+          "text": "Learning to juggle is easier when dropping a ball is treated as part of the practice. Three balls in the air may be the final aim, but beginning with all three can make it difficult to understand what went wrong.\n\nStart with one soft ball. Throw it gently from one hand to the other, keeping the height fairly consistent. ____1____ A regular path gives the receiving hand a predictable place to wait.\n\nNext, practise with two balls. Follow a simple demonstration and notice when the second throw begins. ____2____ If you hold the second ball until the first has already landed, you lose the rhythm you are trying to establish.\n\nKeep your eyes around the top of the throws rather than chasing each hand. At first, this may feel less secure. ____3____ That wider view helps you notice the pattern instead of making every catch a separate emergency.\n\nPractise in short sessions with room around you. When a ball falls, stop and pick it up rather than trying to run after it among nearby furniture. ____4____ Tired hands and growing frustration rarely make the next attempt easier.\n\nWhen you introduce the third ball, expect the pattern to break several times. Return to two if necessary. ____5____ What matters is building a movement you understand, not proving that you can avoid every beginner's mistake.",
+          "candidates": [
+            "A. That rhythm matters more than throwing as high as possible.",
+            "B. It should leave your hand while the first is still in the air.",
+            "C. A step back can be a useful part of moving forward.",
+            "D. You will gradually learn to see more than one ball at once.",
+            "E. Take a break when concentration begins to fade.",
+            "F. A dropped ball proves that practising can no longer help.",
+            "G. Always begin with the largest possible number of objects."
+          ],
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 0,
+              "explanation": "A develops consistent height and the regular path in the next sentence. B concerns the second ball, C returning to an earlier step, D vision and E rest. F/G contradict gradual practice."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 1,
+              "explanation": "B specifies the timing of the second throw, directly contrasted with waiting until the first lands. A is height, C a later step back, D vision and E breaks. F and G remove useful learning stages."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 3,
+              "explanation": "D explains how looking at the top develops a wider view mentioned next. A and B describe throws, C returning to two balls and E fatigue. F/G contradict skill-building."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 4,
+              "explanation": "E links short sessions to the warning about tiredness and frustration. A, B, C and D concern technique rather than a rest interval. F and G are unsupported absolutes."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 2,
+              "explanation": "C reframes returning to two balls as progress and prepares the final emphasis on understanding. A/B/D/E concern specific earlier techniques. F and G deny the legitimate step back."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade10-slotgrammar-group-photo",
+          "title": "B. Learning to juggle and sharing books",
+          "text": "A small box of books appeared beside our community hall last spring. It ____1____ (build) by a retired carpenter, who wanted neighbours to exchange things they had enjoyed reading. A simple sign invited people to take a book or leave one for someone else.\n\nAt first, I wondered ____2____ the books would stay dry. The carpenter showed me the roof and the door, explaining how they kept out ordinary rain. After a severe storm, however, someone still needed to check inside.\n\nMy sister volunteered ____3____ (visit) the box on her way home from school. She did not have to arrange the books by size or colour. Her job was to notice any wet pages and tell the organiser ____4____ problems that needed attention.\n\nOne afternoon, she found a handwritten note inside a novel. It thanked the person ____5____ had left it there, saying that the story had made a long hospital wait more bearable. My sister read the note ____6____ (quiet), then put it back for the next reader.\n\nSince then, several neighbours ____7____ (offer) to help care for the box. Their names are kept on a list so that nobody feels responsible for every day. Sharing books has become ____8____ way of sharing a small task as well. The project is ____9____ (simple) than a library, but it still depends on people giving it some of ____10____ (they) time.",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of build.",
+              "acceptedAnswers": [
+                "was built",
+                "had been built"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "built",
+                  "were built"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The singular box receives building before or at its appearance: was built or had been built. Built lacks passive auxiliary; were disagrees."
+            },
+            {
+              "prompt": "Fill gap 2 with one appropriate word.",
+              "acceptedAnswers": [
+                "whether",
+                "if",
+                "how"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "that",
+                  "which"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whether/if introduces uncertainty about dryness; how asks the means and fits the explanation of roof/door. That wrongly asserts the content as the object of wonder; which leaves the clause without a needed role."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of visit.",
+              "acceptedAnswers": [
+                "to visit"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "visiting",
+                  "visit",
+                  "visited"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Volunteered takes a to-infinitive to visit. The listed other forms do not directly complete it."
+            },
+            {
+              "prompt": "Fill gap 4 with one appropriate word.",
+              "acceptedAnswers": [
+                "about",
+                "of"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "from",
+                  "by"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Tell the organiser about/of problems both introduce the reported issue. From/by do not complete the reporting construction."
+            },
+            {
+              "prompt": "Fill gap 5 with one appropriate word.",
+              "acceptedAnswers": [
+                "who",
+                "that"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "which",
+                  "whose"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Who or that is the defining human relative subject. Which is nonhuman and whose lacks a possessed noun."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of quiet.",
+              "acceptedAnswers": [
+                "quietly"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "quietness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Quietly modifies read. Quietness is a noun; any informal flat-adverb reading remains reviewable."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of offer.",
+              "acceptedAnswers": [
+                "have offered",
+                "have been offering"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "offers",
+                  "has offered"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Since then with plural neighbours supports present perfect have offered or ongoing have been offering. Offers/has offered disagree with the plural subject."
+            },
+            {
+              "prompt": "Fill gap 8 with one appropriate word.",
+              "acceptedAnswers": [
+                "a"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "an"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A way is a standard newly introduced manner. An has incorrect sound agreement. Other article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 9 with the correct form of simple.",
+              "acceptedAnswers": [
+                "simpler",
+                "more simple"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "simple",
+                  "simplest",
+                  "more simpler"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Than requires a comparative simpler or more simple. Plain, superlative and doubled comparative forms do not fit."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of they.",
+              "acceptedAnswers": [
+                "their"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "they",
+                  "them",
+                  "theirs"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Possessive determiner their modifies time. They/them are pronouns of other case; theirs cannot directly precede a noun."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior2.film-reviews-and-costumes-047",
+      "level": "senior2",
+      "title": "Choosing a review and changing a costume",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade11-investigation-insertion",
+      "alignmentNote": "Level/family source references only; final structure follows National I with one complete five-gap seven-option insertion plus one complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Choosing a review and changing a costume",
+          "text": "Film reviews can help you choose what to watch, but a review is also a particular person's response. Reading it well involves more than checking whether the final judgment is positive. You need to understand the standards behind that judgment.\n\nLook for the qualities the reviewer values. One may focus on careful plotting, another on visual invention. ____1____ Two reviewers can describe the same feature accurately yet disagree about how much it matters.\n\nSeparate a plot summary from an evaluation. A summary tells you what happens; an evaluation explains how effectively the film does its work. ____2____ That explanation gives you something to compare with your own preferences.\n\nNotice how much evidence supports an opinion. A reviewer may call a scene moving without saying what made it so. ____3____ A concrete example can make the judgment easier to understand even if you eventually disagree.\n\nThink about the kind of experience you want. A slow pace praised for allowing reflection might be unwelcome when you want a lively comedy. ____4____ Your disagreement may reflect a different purpose rather than a failure by either you or the critic.\n\nFinally, return to a review after seeing the film if you are interested. ____5____ Comparing your response with the review can reveal a detail you missed or help you explain why a praised moment did not work for you.",
+          "candidates": [
+            "A. Ask what the reviewer says the scene actually does.",
+            "B. A review that contains any plot information must be useless.",
+            "C. Their priorities shape the conclusion they reach.",
+            "D. You do not have to make the review’s priorities your own.",
+            "E. Your direct experience now gives the conversation another starting point.",
+            "F. Look for reasons, not only a list of events.",
+            "G. Every reader must share the opinion of the most confident critic."
+          ],
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 2,
+              "explanation": "C connects valued qualities with differing judgments of the same feature. A evidence, D personal preference, E later viewing and F evaluation belong elsewhere. B/G impose unsupported absolutes."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 5,
+              "explanation": "F distinguishes reasons for effectiveness from a sequence of events, developed by that explanation. A concerns one scene, C standards, D preference and E post-viewing. B wrongly dismisses all summary and G removes judgment."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 0,
+              "explanation": "A asks for the concrete action underlying the vague emotional adjective, preparing the example sentence. C/F are broader framing, D preferences and E later experience. B/G do not supply evidence."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 3,
+              "explanation": "D explains why the viewer need not adopt the critic’s desired pace, leading to different purposes. A evidence, C priorities, E after-viewing and F evaluation are other stages. G directly contradicts individuality; B concerns summary."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 4,
+              "explanation": "E refers to having now seen the film and prepares comparison. A, C, D and F concern earlier reading strategies. B/G replace reflective comparison with fixed rules."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade11-grammar-prop-cupboard",
+          "title": "B. Choosing a review and changing a costume",
+          "text": "The costume for our school performance arrived two weeks before opening night. It looked impressive on the hanger, but when I tried ____1____ (walk) across the stage in it, the long coat caught beneath my shoes. Our costume helper asked me to stop before I fell.\n\nShe pinned the bottom temporarily, ____2____ (make) it possible to move while she checked the length. I had worried that changing the coat would spoil its appearance. In fact, it was hard to see the change ____3____ the audience's seats.\n\nThe helper explained that clothing for performance had to support action as well as create an image. A sleeve ____4____ covered my hands might suit a still photograph but make it difficult to handle a letter during the scene.\n\nWe practised that movement several ____5____ (time). After she had adjusted the sleeve, I could take the letter ____6____ (easy) without looking down. Another actor checked how the coat appeared when I turned away from the lights.\n\nBy the next rehearsal, the final changes ____7____ (complete). We kept the removed pieces in case they were needed later. I thanked the helper ____8____ noticing a problem I had first blamed on myself. Learning the part meant understanding how words, movement and costume worked together. The coat no longer felt like something I had to fight; it had become ____9____ useful part of the role. I was able ____10____ (concentrate) on the scene again.",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of walk.",
+              "acceptedAnswers": [
+                "walking",
+                "to walk"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "walk",
+                  "walked"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Tried walking describes testing the action; tried to walk describes attempting it. Both fit. Bare walk and walked do not directly follow tried."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of make.",
+              "acceptedAnswers": [
+                "making"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "make",
+                  "made"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Making introduces the active result of pinning. Bare make lacks coordination, and made does not attach as this non-finite result clause."
+            },
+            {
+              "prompt": "Fill gap 3 with one appropriate word.",
+              "acceptedAnswers": [
+                "from"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "of",
+                  "by",
+                  "between"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "From the audience’s seats gives the viewpoint from which the change is seen. Of, by and between do not complete this viewpoint phrase."
+            },
+            {
+              "prompt": "Fill gap 4 with one appropriate word.",
+              "acceptedAnswers": [
+                "that",
+                "which"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "where",
+                  "what"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The sleeve is subject of a defining relative clause; that or which fits. Who is human, where not subject and what incompatible with an explicit antecedent."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of time.",
+              "acceptedAnswers": [
+                "times"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "time",
+                  "timing"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Several requires plural count noun times for repeated attempts. Time is singular; timing is the manner of scheduling."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of easy.",
+              "acceptedAnswers": [
+                "easily"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "easy",
+                  "easiness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Easily modifies could take. Easy is adjective and easiness noun."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of complete.",
+              "acceptedAnswers": [
+                "had been completed",
+                "were completed"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "completed",
+                  "was completed"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Plural changes receive completion before/by the next rehearsal. Past-perfect passive or simple passive fits; completed alone lacks auxiliary and was disagrees."
+            },
+            {
+              "prompt": "Fill gap 8 with one appropriate word.",
+              "acceptedAnswers": [
+                "for"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "to",
+                  "at",
+                  "with"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Thanked the helper for noticing uses for. Other listed prepositions do not express the thanked action."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "a"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "an"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A useful part uses a because useful begins with a consonant /j/ sound. Other article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of concentrate.",
+              "acceptedAnswers": [
+                "to concentrate"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "concentrating",
+                  "concentrate",
+                  "concentrated"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Able takes the to-infinitive to concentrate. Other listed forms do not complete be able."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior3.debate-and-courtyard-clock-047",
+      "level": "senior3",
+      "title": "Arguing a position and fixing a clock",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade12-print-room-insertion",
+      "alignmentNote": "Level/family source references only; final structure follows National I with one complete five-gap seven-option insertion plus one complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Arguing a position and fixing a clock",
+          "text": "A classroom debate may require you to defend a position you do not personally hold. The exercise can be valuable if its purpose is to understand an argument rather than to perform certainty. Preparing well means taking the assigned view seriously without pretending that all its claims are beyond question.\n\nBegin by stating the position precisely. A broad slogan may conceal several separate proposals. ____1____ Otherwise, you may spend your preparation defending a claim that the actual debate never required.\n\nLook for the strongest support available to that position. Choosing an obviously weak argument makes the exercise easier but less informative. ____2____ You need to understand why a thoughtful person might find the view persuasive.\n\nIdentify its difficult points as well. Acknowledging a limitation does not automatically surrender the whole argument. ____3____ This can lead to a more defensible claim than insisting that the proposal works equally well in every case.\n\nDuring the debate, listen for what the other side is actually saying. A prepared reply may address an objection nobody has made. ____4____ A brief pause to understand the point can produce a better response than an immediate speech from your notes.\n\nAfterwards, distinguish the quality of your performance from any change in your opinion. ____5____ You may still reject the position while understanding its attraction and limits more clearly than before.",
+          "candidates": [
+            "A. It may help you specify the conditions under which the position is strongest.",
+            "B. Winning applause proves that a position has no limitations.",
+            "C. Check exactly which version you have been asked to discuss.",
+            "D. Treat the exchange as a conversation rather than two speeches passing one another.",
+            "E. Understanding an argument does not oblige you to adopt it.",
+            "F. Aim for a convincing case rather than an easy target.",
+            "G. Ignore every objection until your entire prepared speech is complete."
+          ],
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 2,
+              "explanation": "C narrows a slogan to the required claim, preventing misdirected defence. A limitations, D listening, E final opinion and F strength belong elsewhere. B/G block genuine evaluation."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 5,
+              "explanation": "F contrasts a strong case with deliberately weak support and leads to a thoughtful person’s reasons. A concerns limits, C scope, D exchange and E adoption. B/G substitute applause or avoidance for reasoning."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 0,
+              "explanation": "A explains how admitting limits can refine the claim, developed by conditions rather than every case. C scope, D listening, E adoption and F strongest support are other steps. B contradicts limitations and G excludes objections."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 3,
+              "explanation": "D addresses irrelevant prepared replies by making the debate responsive, preparing the pause to understand. A/C/E/F concern other stages. G directly rejects listening; B confuses applause with validity."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 4,
+              "explanation": "E separates understanding from personal acceptance and leads to still rejecting the position. A, C, D and F are preparation/debate techniques. B/G deny the reflective distinction."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade12-grammar-data-cards",
+          "title": "B. Arguing a position and fixing a clock",
+          "text": "The clock in our school courtyard had stopped long before I joined the repair club. We were not permitted to work on its mechanism ourselves, but a qualified repairer agreed ____1____ (let) us observe. Before opening the case, she explained the precautions that protected both the clock and the people nearby.\n\nWhat interested me most ____2____ (be) the number of small adjustments involved. I had imagined one broken part that could simply be replaced. Instead, the repairer first examined how several parts moved in relation to one another.\n\nShe described the fault ____3____ (careful), distinguishing it from the wear that could be expected in an old mechanism. We were encouraged to ask questions, but she would not make a movement just to satisfy our ____4____ (curious) if it might damage something.\n\nThe following week, we watched the clock ____5____ (return) to its normal position. Its face looked much as it had before. The most important change was one that a passing student might not notice until the hands moved.\n\nOur teacher asked for a short account ____6____ what we had learned. Rather than presenting ____7____ (we) as the people who had repaired it, we described the specialist's work and our role as observers. The repairer, ____8____ patience had made our questions possible, checked the wording. Seeing the clock run again was ____9____ pleasure, but understanding the limits of our own contribution was an ____10____ (equal) important lesson.",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of let.",
+              "acceptedAnswers": [
+                "to let"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "letting",
+                  "let",
+                  "lets"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Agreed takes to let. The -ing, bare and third-person forms do not directly complete agreed."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of be.",
+              "acceptedAnswers": [
+                "was"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "were",
+                  "been"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The subject clause What interested me most is singular in this past account and takes was. Were disagrees; been lacks an auxiliary."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of careful.",
+              "acceptedAnswers": [
+                "carefully"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "careful",
+                  "carefulness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Carefully modifies described. Careful is adjective and carefulness noun."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of curious.",
+              "acceptedAnswers": [
+                "curiosity"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "curious",
+                  "curiously"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Our requires the noun curiosity as the object of satisfy. Curious and curiously do not fill it."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of return.",
+              "acceptedAnswers": [
+                "being returned",
+                "returned",
+                "returning",
+                "return"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "returns"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Watched permits object plus bare infinitive return or -ing returning for the observed movement, and passive being returned or returned when its installation is emphasised. Returns is a finite third-person verb and cannot directly follow watched the clock."
+            },
+            {
+              "prompt": "Fill gap 6 with one appropriate word.",
+              "acceptedAnswers": [
+                "of",
+                "about"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "from",
+                  "by"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "An account of/about what was learned uses either content preposition. From/by would name source or agent, not the content here."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of we.",
+              "acceptedAnswers": [
+                "ourselves"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "our",
+                  "ours"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Presenting ourselves requires a reflexive object for the same observing group. We is subject; our/ours possessive."
+            },
+            {
+              "prompt": "Fill gap 8 with one appropriate word.",
+              "acceptedAnswers": [
+                "whose"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "which",
+                  "that"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whose modifies patience possessively in the non-defining clause. Other listed relatives do not supply that relation."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "a"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "an"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A pleasure uses a before a consonant sound and treats the experience as an instance of enjoyment. Other possible unlisted readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of equal.",
+              "acceptedAnswers": [
+                "equally"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "equal",
+                  "equality"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Equally modifies important. Equal is adjective and equality noun."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

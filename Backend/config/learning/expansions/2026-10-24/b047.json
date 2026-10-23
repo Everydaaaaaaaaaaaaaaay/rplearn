@@ -1,0 +1,1830 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b047",
+  "createdAt": "2026-10-23T21:46:38.480345+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.juggling-and-book-box-047",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · Learning to juggle and sharing books",
+        "summary": "Learning to juggle and sharing books，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_insertion",
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I insertion and passage-form task structure",
+            "pages": "Reading: five of seven; Use of English: 10-gap passage form",
+            "alignment": "One full five-gap passage sharing seven candidates, plus one full ten-gap grammar passage. Source supplies task rules only; all prose and keys are original."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.wenzhou2025.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Level/family source references only; final structure follows National I with one complete five-gap seven-option insertion plus one complete ten-gap grammar passage."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete senior mixed practices. Same-author cohesion and all-alternative review, written-form variants and explicit rejection boundaries checked. Fictional cases; not past papers or independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.juggling-and-book-box-047",
+          "family": "shared_insertion_passage_form",
+          "label": "Learning to juggle and sharing books",
+          "candidateSHA256": "0d1451084ff8e08ff6bba41b7b0add9fd6d8607c6569f0191c7f988c92ad26f4",
+          "authorCheckSHA256": "e883146f0d34e51f8debe766e5f5741ea8dfd17aa723d2c591d83c110e60822f",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.juggling-and-book-box-047#insertion",
+            "expansion.20261024.senior1.juggling-and-book-box-047#grammar"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b047；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Learning to juggle and sharing books\n\nLearning to juggle is easier when dropping a ball is treated as part of the practice. Three balls in the air may be the final aim, but beginning with all three can make it difficult to understand what went wrong.\n\nStart with one soft ball. Throw it gently from one hand to the other, keeping the height fairly consistent. ____1____ A regular path gives the receiving hand a predictable place to wait.\n\nNext, practise with two balls. Follow a simple demonstration and notice when the second throw begins. ____2____ If you hold the second ball until the first has already landed, you lose the rhythm you are trying to establish.\n\nKeep your eyes around the top of the throws rather than chasing each hand. At first, this may feel less secure. ____3____ That wider view helps you notice the pattern instead of making every catch a separate emergency.\n\nPractise in short sessions with room around you. When a ball falls, stop and pick it up rather than trying to run after it among nearby furniture. ____4____ Tired hands and growing frustration rarely make the next attempt easier.\n\nWhen you introduce the third ball, expect the pattern to break several times. Return to two if necessary. ____5____ What matters is building a movement you understand, not proving that you can avoid every beginner's mistake.\n\nB. Learning to juggle and sharing books\n\nA small box of books appeared beside our community hall last spring. It ____1____ (build) by a retired carpenter, who wanted neighbours to exchange things they had enjoyed reading. A simple sign invited people to take a book or leave one for someone else.\n\nAt first, I wondered ____2____ the books would stay dry. The carpenter showed me the roof and the door, explaining how they kept out ordinary rain. After a severe storm, however, someone still needed to check inside.\n\nMy sister volunteered ____3____ (visit) the box on her way home from school. She did not have to arrange the books by size or colour. Her job was to notice any wet pages and tell the organiser ____4____ problems that needed attention.\n\nOne afternoon, she found a handwritten note inside a novel. It thanked the person ____5____ had left it there, saying that the story had made a long hospital wait more bearable. My sister read the note ____6____ (quiet), then put it back for the next reader.\n\nSince then, several neighbours ____7____ (offer) to help care for the box. Their names are kept on a list so that nobody feels responsible for every day. Sharing books has become ____8____ way of sharing a small task as well. The project is ____9____ (simple) than a library, but it still depends on people giving it some of ____10____ (they) time."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.insertion.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 1.",
+            "material": "A. Learning to juggle and sharing books\n\nLearning to juggle is easier when dropping a ball is treated as part of the practice. Three balls in the air may be the final aim, but beginning with all three can make it difficult to understand what went wrong.\n\nStart with one soft ball. Throw it gently from one hand to the other, keeping the height fairly consistent. ____1____ A regular path gives the receiving hand a predictable place to wait.\n\nNext, practise with two balls. Follow a simple demonstration and notice when the second throw begins. ____2____ If you hold the second ball until the first has already landed, you lose the rhythm you are trying to establish.\n\nKeep your eyes around the top of the throws rather than chasing each hand. At first, this may feel less secure. ____3____ That wider view helps you notice the pattern instead of making every catch a separate emergency.\n\nPractise in short sessions with room around you. When a ball falls, stop and pick it up rather than trying to run after it among nearby furniture. ____4____ Tired hands and growing frustration rarely make the next attempt easier.\n\nWhen you introduce the third ball, expect the pattern to break several times. Return to two if necessary. ____5____ What matters is building a movement you understand, not proving that you can avoid every beginner's mistake.",
+            "explanation": "A develops consistent height and the regular path in the next sentence. B concerns the second ball, C returning to an earlier step, D vision and E rest. F/G contradict gradual practice.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. That rhythm matters more than throwing as high as possible."
+              },
+              {
+                "id": "o1",
+                "text": "B. It should leave your hand while the first is still in the air."
+              },
+              {
+                "id": "o2",
+                "text": "C. A step back can be a useful part of moving forward."
+              },
+              {
+                "id": "o3",
+                "text": "D. You will gradually learn to see more than one ball at once."
+              },
+              {
+                "id": "o4",
+                "text": "E. Take a break when concentration begins to fade."
+              },
+              {
+                "id": "o5",
+                "text": "F. A dropped ball proves that practising can no longer help."
+              },
+              {
+                "id": "o6",
+                "text": "G. Always begin with the largest possible number of objects."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.insertion.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 2.",
+            "material": "A. Learning to juggle and sharing books\n\nLearning to juggle is easier when dropping a ball is treated as part of the practice. Three balls in the air may be the final aim, but beginning with all three can make it difficult to understand what went wrong.\n\nStart with one soft ball. Throw it gently from one hand to the other, keeping the height fairly consistent. ____1____ A regular path gives the receiving hand a predictable place to wait.\n\nNext, practise with two balls. Follow a simple demonstration and notice when the second throw begins. ____2____ If you hold the second ball until the first has already landed, you lose the rhythm you are trying to establish.\n\nKeep your eyes around the top of the throws rather than chasing each hand. At first, this may feel less secure. ____3____ That wider view helps you notice the pattern instead of making every catch a separate emergency.\n\nPractise in short sessions with room around you. When a ball falls, stop and pick it up rather than trying to run after it among nearby furniture. ____4____ Tired hands and growing frustration rarely make the next attempt easier.\n\nWhen you introduce the third ball, expect the pattern to break several times. Return to two if necessary. ____5____ What matters is building a movement you understand, not proving that you can avoid every beginner's mistake.",
+            "explanation": "B specifies the timing of the second throw, directly contrasted with waiting until the first lands. A is height, C a later step back, D vision and E breaks. F and G remove useful learning stages.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. That rhythm matters more than throwing as high as possible."
+              },
+              {
+                "id": "o1",
+                "text": "B. It should leave your hand while the first is still in the air."
+              },
+              {
+                "id": "o2",
+                "text": "C. A step back can be a useful part of moving forward."
+              },
+              {
+                "id": "o3",
+                "text": "D. You will gradually learn to see more than one ball at once."
+              },
+              {
+                "id": "o4",
+                "text": "E. Take a break when concentration begins to fade."
+              },
+              {
+                "id": "o5",
+                "text": "F. A dropped ball proves that practising can no longer help."
+              },
+              {
+                "id": "o6",
+                "text": "G. Always begin with the largest possible number of objects."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.insertion.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 3.",
+            "material": "A. Learning to juggle and sharing books\n\nLearning to juggle is easier when dropping a ball is treated as part of the practice. Three balls in the air may be the final aim, but beginning with all three can make it difficult to understand what went wrong.\n\nStart with one soft ball. Throw it gently from one hand to the other, keeping the height fairly consistent. ____1____ A regular path gives the receiving hand a predictable place to wait.\n\nNext, practise with two balls. Follow a simple demonstration and notice when the second throw begins. ____2____ If you hold the second ball until the first has already landed, you lose the rhythm you are trying to establish.\n\nKeep your eyes around the top of the throws rather than chasing each hand. At first, this may feel less secure. ____3____ That wider view helps you notice the pattern instead of making every catch a separate emergency.\n\nPractise in short sessions with room around you. When a ball falls, stop and pick it up rather than trying to run after it among nearby furniture. ____4____ Tired hands and growing frustration rarely make the next attempt easier.\n\nWhen you introduce the third ball, expect the pattern to break several times. Return to two if necessary. ____5____ What matters is building a movement you understand, not proving that you can avoid every beginner's mistake.",
+            "explanation": "D explains how looking at the top develops a wider view mentioned next. A and B describe throws, C returning to two balls and E fatigue. F/G contradict skill-building.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. That rhythm matters more than throwing as high as possible."
+              },
+              {
+                "id": "o1",
+                "text": "B. It should leave your hand while the first is still in the air."
+              },
+              {
+                "id": "o2",
+                "text": "C. A step back can be a useful part of moving forward."
+              },
+              {
+                "id": "o3",
+                "text": "D. You will gradually learn to see more than one ball at once."
+              },
+              {
+                "id": "o4",
+                "text": "E. Take a break when concentration begins to fade."
+              },
+              {
+                "id": "o5",
+                "text": "F. A dropped ball proves that practising can no longer help."
+              },
+              {
+                "id": "o6",
+                "text": "G. Always begin with the largest possible number of objects."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.insertion.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 4.",
+            "material": "A. Learning to juggle and sharing books\n\nLearning to juggle is easier when dropping a ball is treated as part of the practice. Three balls in the air may be the final aim, but beginning with all three can make it difficult to understand what went wrong.\n\nStart with one soft ball. Throw it gently from one hand to the other, keeping the height fairly consistent. ____1____ A regular path gives the receiving hand a predictable place to wait.\n\nNext, practise with two balls. Follow a simple demonstration and notice when the second throw begins. ____2____ If you hold the second ball until the first has already landed, you lose the rhythm you are trying to establish.\n\nKeep your eyes around the top of the throws rather than chasing each hand. At first, this may feel less secure. ____3____ That wider view helps you notice the pattern instead of making every catch a separate emergency.\n\nPractise in short sessions with room around you. When a ball falls, stop and pick it up rather than trying to run after it among nearby furniture. ____4____ Tired hands and growing frustration rarely make the next attempt easier.\n\nWhen you introduce the third ball, expect the pattern to break several times. Return to two if necessary. ____5____ What matters is building a movement you understand, not proving that you can avoid every beginner's mistake.",
+            "explanation": "E links short sessions to the warning about tiredness and frustration. A, B, C and D concern technique rather than a rest interval. F and G are unsupported absolutes.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. That rhythm matters more than throwing as high as possible."
+              },
+              {
+                "id": "o1",
+                "text": "B. It should leave your hand while the first is still in the air."
+              },
+              {
+                "id": "o2",
+                "text": "C. A step back can be a useful part of moving forward."
+              },
+              {
+                "id": "o3",
+                "text": "D. You will gradually learn to see more than one ball at once."
+              },
+              {
+                "id": "o4",
+                "text": "E. Take a break when concentration begins to fade."
+              },
+              {
+                "id": "o5",
+                "text": "F. A dropped ball proves that practising can no longer help."
+              },
+              {
+                "id": "o6",
+                "text": "G. Always begin with the largest possible number of objects."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.insertion.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 5.",
+            "material": "A. Learning to juggle and sharing books\n\nLearning to juggle is easier when dropping a ball is treated as part of the practice. Three balls in the air may be the final aim, but beginning with all three can make it difficult to understand what went wrong.\n\nStart with one soft ball. Throw it gently from one hand to the other, keeping the height fairly consistent. ____1____ A regular path gives the receiving hand a predictable place to wait.\n\nNext, practise with two balls. Follow a simple demonstration and notice when the second throw begins. ____2____ If you hold the second ball until the first has already landed, you lose the rhythm you are trying to establish.\n\nKeep your eyes around the top of the throws rather than chasing each hand. At first, this may feel less secure. ____3____ That wider view helps you notice the pattern instead of making every catch a separate emergency.\n\nPractise in short sessions with room around you. When a ball falls, stop and pick it up rather than trying to run after it among nearby furniture. ____4____ Tired hands and growing frustration rarely make the next attempt easier.\n\nWhen you introduce the third ball, expect the pattern to break several times. Return to two if necessary. ____5____ What matters is building a movement you understand, not proving that you can avoid every beginner's mistake.",
+            "explanation": "C reframes returning to two balls as progress and prepares the final emphasis on understanding. A/B/D/E concern specific earlier techniques. F and G deny the legitimate step back.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. That rhythm matters more than throwing as high as possible."
+              },
+              {
+                "id": "o1",
+                "text": "B. It should leave your hand while the first is still in the air."
+              },
+              {
+                "id": "o2",
+                "text": "C. A step back can be a useful part of moving forward."
+              },
+              {
+                "id": "o3",
+                "text": "D. You will gradually learn to see more than one ball at once."
+              },
+              {
+                "id": "o4",
+                "text": "E. Take a break when concentration begins to fade."
+              },
+              {
+                "id": "o5",
+                "text": "F. A dropped ball proves that practising can no longer help."
+              },
+              {
+                "id": "o6",
+                "text": "G. Always begin with the largest possible number of objects."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of build.",
+            "material": "B. Learning to juggle and sharing books\n\nA small box of books appeared beside our community hall last spring. It ____1____ (build) by a retired carpenter, who wanted neighbours to exchange things they had enjoyed reading. A simple sign invited people to take a book or leave one for someone else.\n\nAt first, I wondered ____2____ the books would stay dry. The carpenter showed me the roof and the door, explaining how they kept out ordinary rain. After a severe storm, however, someone still needed to check inside.\n\nMy sister volunteered ____3____ (visit) the box on her way home from school. She did not have to arrange the books by size or colour. Her job was to notice any wet pages and tell the organiser ____4____ problems that needed attention.\n\nOne afternoon, she found a handwritten note inside a novel. It thanked the person ____5____ had left it there, saying that the story had made a long hospital wait more bearable. My sister read the note ____6____ (quiet), then put it back for the next reader.\n\nSince then, several neighbours ____7____ (offer) to help care for the box. Their names are kept on a list so that nobody feels responsible for every day. Sharing books has become ____8____ way of sharing a small task as well. The project is ____9____ (simple) than a library, but it still depends on people giving it some of ____10____ (they) time.",
+            "explanation": "The singular box receives building before or at its appearance: was built or had been built. Built lacks passive auxiliary; were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was built",
+              "had been built"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "built",
+                "were built"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "B. Learning to juggle and sharing books\n\nA small box of books appeared beside our community hall last spring. It ____1____ (build) by a retired carpenter, who wanted neighbours to exchange things they had enjoyed reading. A simple sign invited people to take a book or leave one for someone else.\n\nAt first, I wondered ____2____ the books would stay dry. The carpenter showed me the roof and the door, explaining how they kept out ordinary rain. After a severe storm, however, someone still needed to check inside.\n\nMy sister volunteered ____3____ (visit) the box on her way home from school. She did not have to arrange the books by size or colour. Her job was to notice any wet pages and tell the organiser ____4____ problems that needed attention.\n\nOne afternoon, she found a handwritten note inside a novel. It thanked the person ____5____ had left it there, saying that the story had made a long hospital wait more bearable. My sister read the note ____6____ (quiet), then put it back for the next reader.\n\nSince then, several neighbours ____7____ (offer) to help care for the box. Their names are kept on a list so that nobody feels responsible for every day. Sharing books has become ____8____ way of sharing a small task as well. The project is ____9____ (simple) than a library, but it still depends on people giving it some of ____10____ (they) time.",
+            "explanation": "Whether/if introduces uncertainty about dryness; how asks the means and fits the explanation of roof/door. That wrongly asserts the content as the object of wonder; which leaves the clause without a needed role.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "whether",
+              "if",
+              "how"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "that",
+                "which"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with the correct form of visit.",
+            "material": "B. Learning to juggle and sharing books\n\nA small box of books appeared beside our community hall last spring. It ____1____ (build) by a retired carpenter, who wanted neighbours to exchange things they had enjoyed reading. A simple sign invited people to take a book or leave one for someone else.\n\nAt first, I wondered ____2____ the books would stay dry. The carpenter showed me the roof and the door, explaining how they kept out ordinary rain. After a severe storm, however, someone still needed to check inside.\n\nMy sister volunteered ____3____ (visit) the box on her way home from school. She did not have to arrange the books by size or colour. Her job was to notice any wet pages and tell the organiser ____4____ problems that needed attention.\n\nOne afternoon, she found a handwritten note inside a novel. It thanked the person ____5____ had left it there, saying that the story had made a long hospital wait more bearable. My sister read the note ____6____ (quiet), then put it back for the next reader.\n\nSince then, several neighbours ____7____ (offer) to help care for the box. Their names are kept on a list so that nobody feels responsible for every day. Sharing books has become ____8____ way of sharing a small task as well. The project is ____9____ (simple) than a library, but it still depends on people giving it some of ____10____ (they) time.",
+            "explanation": "Volunteered takes a to-infinitive to visit. The listed other forms do not directly complete it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to visit"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "visiting",
+                "visit",
+                "visited"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "B. Learning to juggle and sharing books\n\nA small box of books appeared beside our community hall last spring. It ____1____ (build) by a retired carpenter, who wanted neighbours to exchange things they had enjoyed reading. A simple sign invited people to take a book or leave one for someone else.\n\nAt first, I wondered ____2____ the books would stay dry. The carpenter showed me the roof and the door, explaining how they kept out ordinary rain. After a severe storm, however, someone still needed to check inside.\n\nMy sister volunteered ____3____ (visit) the box on her way home from school. She did not have to arrange the books by size or colour. Her job was to notice any wet pages and tell the organiser ____4____ problems that needed attention.\n\nOne afternoon, she found a handwritten note inside a novel. It thanked the person ____5____ had left it there, saying that the story had made a long hospital wait more bearable. My sister read the note ____6____ (quiet), then put it back for the next reader.\n\nSince then, several neighbours ____7____ (offer) to help care for the box. Their names are kept on a list so that nobody feels responsible for every day. Sharing books has become ____8____ way of sharing a small task as well. The project is ____9____ (simple) than a library, but it still depends on people giving it some of ____10____ (they) time.",
+            "explanation": "Tell the organiser about/of problems both introduce the reported issue. From/by do not complete the reporting construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "about",
+              "of"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "from",
+                "by"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with one appropriate word.",
+            "material": "B. Learning to juggle and sharing books\n\nA small box of books appeared beside our community hall last spring. It ____1____ (build) by a retired carpenter, who wanted neighbours to exchange things they had enjoyed reading. A simple sign invited people to take a book or leave one for someone else.\n\nAt first, I wondered ____2____ the books would stay dry. The carpenter showed me the roof and the door, explaining how they kept out ordinary rain. After a severe storm, however, someone still needed to check inside.\n\nMy sister volunteered ____3____ (visit) the box on her way home from school. She did not have to arrange the books by size or colour. Her job was to notice any wet pages and tell the organiser ____4____ problems that needed attention.\n\nOne afternoon, she found a handwritten note inside a novel. It thanked the person ____5____ had left it there, saying that the story had made a long hospital wait more bearable. My sister read the note ____6____ (quiet), then put it back for the next reader.\n\nSince then, several neighbours ____7____ (offer) to help care for the box. Their names are kept on a list so that nobody feels responsible for every day. Sharing books has become ____8____ way of sharing a small task as well. The project is ____9____ (simple) than a library, but it still depends on people giving it some of ____10____ (they) time.",
+            "explanation": "Who or that is the defining human relative subject. Which is nonhuman and whose lacks a possessed noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "whose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with the correct form of quiet.",
+            "material": "B. Learning to juggle and sharing books\n\nA small box of books appeared beside our community hall last spring. It ____1____ (build) by a retired carpenter, who wanted neighbours to exchange things they had enjoyed reading. A simple sign invited people to take a book or leave one for someone else.\n\nAt first, I wondered ____2____ the books would stay dry. The carpenter showed me the roof and the door, explaining how they kept out ordinary rain. After a severe storm, however, someone still needed to check inside.\n\nMy sister volunteered ____3____ (visit) the box on her way home from school. She did not have to arrange the books by size or colour. Her job was to notice any wet pages and tell the organiser ____4____ problems that needed attention.\n\nOne afternoon, she found a handwritten note inside a novel. It thanked the person ____5____ had left it there, saying that the story had made a long hospital wait more bearable. My sister read the note ____6____ (quiet), then put it back for the next reader.\n\nSince then, several neighbours ____7____ (offer) to help care for the box. Their names are kept on a list so that nobody feels responsible for every day. Sharing books has become ____8____ way of sharing a small task as well. The project is ____9____ (simple) than a library, but it still depends on people giving it some of ____10____ (they) time.",
+            "explanation": "Quietly modifies read. Quietness is a noun; any informal flat-adverb reading remains reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "quietly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "quietness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with the correct form of offer.",
+            "material": "B. Learning to juggle and sharing books\n\nA small box of books appeared beside our community hall last spring. It ____1____ (build) by a retired carpenter, who wanted neighbours to exchange things they had enjoyed reading. A simple sign invited people to take a book or leave one for someone else.\n\nAt first, I wondered ____2____ the books would stay dry. The carpenter showed me the roof and the door, explaining how they kept out ordinary rain. After a severe storm, however, someone still needed to check inside.\n\nMy sister volunteered ____3____ (visit) the box on her way home from school. She did not have to arrange the books by size or colour. Her job was to notice any wet pages and tell the organiser ____4____ problems that needed attention.\n\nOne afternoon, she found a handwritten note inside a novel. It thanked the person ____5____ had left it there, saying that the story had made a long hospital wait more bearable. My sister read the note ____6____ (quiet), then put it back for the next reader.\n\nSince then, several neighbours ____7____ (offer) to help care for the box. Their names are kept on a list so that nobody feels responsible for every day. Sharing books has become ____8____ way of sharing a small task as well. The project is ____9____ (simple) than a library, but it still depends on people giving it some of ____10____ (they) time.",
+            "explanation": "Since then with plural neighbours supports present perfect have offered or ongoing have been offering. Offers/has offered disagree with the plural subject.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "have offered",
+              "have been offering"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "offers",
+                "has offered"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "B. Learning to juggle and sharing books\n\nA small box of books appeared beside our community hall last spring. It ____1____ (build) by a retired carpenter, who wanted neighbours to exchange things they had enjoyed reading. A simple sign invited people to take a book or leave one for someone else.\n\nAt first, I wondered ____2____ the books would stay dry. The carpenter showed me the roof and the door, explaining how they kept out ordinary rain. After a severe storm, however, someone still needed to check inside.\n\nMy sister volunteered ____3____ (visit) the box on her way home from school. She did not have to arrange the books by size or colour. Her job was to notice any wet pages and tell the organiser ____4____ problems that needed attention.\n\nOne afternoon, she found a handwritten note inside a novel. It thanked the person ____5____ had left it there, saying that the story had made a long hospital wait more bearable. My sister read the note ____6____ (quiet), then put it back for the next reader.\n\nSince then, several neighbours ____7____ (offer) to help care for the box. Their names are kept on a list so that nobody feels responsible for every day. Sharing books has become ____8____ way of sharing a small task as well. The project is ____9____ (simple) than a library, but it still depends on people giving it some of ____10____ (they) time.",
+            "explanation": "A way is a standard newly introduced manner. An has incorrect sound agreement. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with the correct form of simple.",
+            "material": "B. Learning to juggle and sharing books\n\nA small box of books appeared beside our community hall last spring. It ____1____ (build) by a retired carpenter, who wanted neighbours to exchange things they had enjoyed reading. A simple sign invited people to take a book or leave one for someone else.\n\nAt first, I wondered ____2____ the books would stay dry. The carpenter showed me the roof and the door, explaining how they kept out ordinary rain. After a severe storm, however, someone still needed to check inside.\n\nMy sister volunteered ____3____ (visit) the box on her way home from school. She did not have to arrange the books by size or colour. Her job was to notice any wet pages and tell the organiser ____4____ problems that needed attention.\n\nOne afternoon, she found a handwritten note inside a novel. It thanked the person ____5____ had left it there, saying that the story had made a long hospital wait more bearable. My sister read the note ____6____ (quiet), then put it back for the next reader.\n\nSince then, several neighbours ____7____ (offer) to help care for the box. Their names are kept on a list so that nobody feels responsible for every day. Sharing books has become ____8____ way of sharing a small task as well. The project is ____9____ (simple) than a library, but it still depends on people giving it some of ____10____ (they) time.",
+            "explanation": "Than requires a comparative simpler or more simple. Plain, superlative and doubled comparative forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "simpler",
+              "more simple"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "simple",
+                "simplest",
+                "more simpler"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with the correct form of they.",
+            "material": "B. Learning to juggle and sharing books\n\nA small box of books appeared beside our community hall last spring. It ____1____ (build) by a retired carpenter, who wanted neighbours to exchange things they had enjoyed reading. A simple sign invited people to take a book or leave one for someone else.\n\nAt first, I wondered ____2____ the books would stay dry. The carpenter showed me the roof and the door, explaining how they kept out ordinary rain. After a severe storm, however, someone still needed to check inside.\n\nMy sister volunteered ____3____ (visit) the box on her way home from school. She did not have to arrange the books by size or colour. Her job was to notice any wet pages and tell the organiser ____4____ problems that needed attention.\n\nOne afternoon, she found a handwritten note inside a novel. It thanked the person ____5____ had left it there, saying that the story had made a long hospital wait more bearable. My sister read the note ____6____ (quiet), then put it back for the next reader.\n\nSince then, several neighbours ____7____ (offer) to help care for the box. Their names are kept on a list so that nobody feels responsible for every day. Sharing books has become ____8____ way of sharing a small task as well. The project is ____9____ (simple) than a library, but it still depends on people giving it some of ____10____ (they) time.",
+            "explanation": "Possessive determiner their modifies time. They/them are pronouns of other case; theirs cannot directly precede a noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "their"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "them",
+                "theirs"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "84db7d0927c178ffc3cd357fb3a8bf609fa407a0cdc6a1201233ca63ac304cdf",
+      "reviewNotes": "Three new complete senior mixed practices. Same-author cohesion and all-alternative review, written-form variants and explicit rejection boundaries checked. Fictional cases; not past papers or independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.juggling-and-book-box-047#insertion",
+          "family": "shared_insertion",
+          "questionIds": [
+            "expansion.20261024.senior1.juggling-and-book-box-047.insertion.q1",
+            "expansion.20261024.senior1.juggling-and-book-box-047.insertion.q2",
+            "expansion.20261024.senior1.juggling-and-book-box-047.insertion.q3",
+            "expansion.20261024.senior1.juggling-and-book-box-047.insertion.q4",
+            "expansion.20261024.senior1.juggling-and-book-box-047.insertion.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.juggling-and-book-box-047",
+          "sourceContentHash": "06cb3f7750ba44824376c25c4e86dd2bcfada5d982768f4d92f2de40e81505da"
+        },
+        {
+          "id": "expansion.20261024.senior1.juggling-and-book-box-047#grammar",
+          "family": "passage_form",
+          "questionIds": [
+            "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q1",
+            "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q2",
+            "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q3",
+            "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q4",
+            "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q5",
+            "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q6",
+            "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q7",
+            "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q8",
+            "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q9",
+            "expansion.20261024.senior1.juggling-and-book-box-047.grammar.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.juggling-and-book-box-047",
+          "sourceContentHash": "5cb389589b0d0184ce92b44f77913cf15c953c08af7ef23bd0891fed6f681970"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.film-reviews-and-costumes-047",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · Choosing a review and changing a costume",
+        "summary": "Choosing a review and changing a costume，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_insertion",
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I insertion and passage-form task structure",
+            "pages": "Reading: five of seven; Use of English: 10-gap passage form",
+            "alignment": "One full five-gap passage sharing seven candidates, plus one full ten-gap grammar passage. Source supplies task rules only; all prose and keys are original."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g11.spring2024.insertionE",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Level/family source references only; final structure follows National I with one complete five-gap seven-option insertion plus one complete ten-gap grammar passage."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete senior mixed practices. Same-author cohesion and all-alternative review, written-form variants and explicit rejection boundaries checked. Fictional cases; not past papers or independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.film-reviews-and-costumes-047",
+          "family": "shared_insertion_passage_form",
+          "label": "Choosing a review and changing a costume",
+          "candidateSHA256": "2b6816400f842b03d003eda1c46ce439723a8c438642c2974e3fdac4ded6d2d8",
+          "authorCheckSHA256": "aafebd5a0392caba59ec36f295a7c3bbab5c7350c4f356bbf6d1b8ca94377bcb",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.film-reviews-and-costumes-047#insertion",
+            "expansion.20261024.senior2.film-reviews-and-costumes-047#grammar"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b047；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Choosing a review and changing a costume\n\nFilm reviews can help you choose what to watch, but a review is also a particular person's response. Reading it well involves more than checking whether the final judgment is positive. You need to understand the standards behind that judgment.\n\nLook for the qualities the reviewer values. One may focus on careful plotting, another on visual invention. ____1____ Two reviewers can describe the same feature accurately yet disagree about how much it matters.\n\nSeparate a plot summary from an evaluation. A summary tells you what happens; an evaluation explains how effectively the film does its work. ____2____ That explanation gives you something to compare with your own preferences.\n\nNotice how much evidence supports an opinion. A reviewer may call a scene moving without saying what made it so. ____3____ A concrete example can make the judgment easier to understand even if you eventually disagree.\n\nThink about the kind of experience you want. A slow pace praised for allowing reflection might be unwelcome when you want a lively comedy. ____4____ Your disagreement may reflect a different purpose rather than a failure by either you or the critic.\n\nFinally, return to a review after seeing the film if you are interested. ____5____ Comparing your response with the review can reveal a detail you missed or help you explain why a praised moment did not work for you.\n\nB. Choosing a review and changing a costume\n\nThe costume for our school performance arrived two weeks before opening night. It looked impressive on the hanger, but when I tried ____1____ (walk) across the stage in it, the long coat caught beneath my shoes. Our costume helper asked me to stop before I fell.\n\nShe pinned the bottom temporarily, ____2____ (make) it possible to move while she checked the length. I had worried that changing the coat would spoil its appearance. In fact, it was hard to see the change ____3____ the audience's seats.\n\nThe helper explained that clothing for performance had to support action as well as create an image. A sleeve ____4____ covered my hands might suit a still photograph but make it difficult to handle a letter during the scene.\n\nWe practised that movement several ____5____ (time). After she had adjusted the sleeve, I could take the letter ____6____ (easy) without looking down. Another actor checked how the coat appeared when I turned away from the lights.\n\nBy the next rehearsal, the final changes ____7____ (complete). We kept the removed pieces in case they were needed later. I thanked the helper ____8____ noticing a problem I had first blamed on myself. Learning the part meant understanding how words, movement and costume worked together. The coat no longer felt like something I had to fight; it had become ____9____ useful part of the role. I was able ____10____ (concentrate) on the scene again."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.insertion.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 1.",
+            "material": "A. Choosing a review and changing a costume\n\nFilm reviews can help you choose what to watch, but a review is also a particular person's response. Reading it well involves more than checking whether the final judgment is positive. You need to understand the standards behind that judgment.\n\nLook for the qualities the reviewer values. One may focus on careful plotting, another on visual invention. ____1____ Two reviewers can describe the same feature accurately yet disagree about how much it matters.\n\nSeparate a plot summary from an evaluation. A summary tells you what happens; an evaluation explains how effectively the film does its work. ____2____ That explanation gives you something to compare with your own preferences.\n\nNotice how much evidence supports an opinion. A reviewer may call a scene moving without saying what made it so. ____3____ A concrete example can make the judgment easier to understand even if you eventually disagree.\n\nThink about the kind of experience you want. A slow pace praised for allowing reflection might be unwelcome when you want a lively comedy. ____4____ Your disagreement may reflect a different purpose rather than a failure by either you or the critic.\n\nFinally, return to a review after seeing the film if you are interested. ____5____ Comparing your response with the review can reveal a detail you missed or help you explain why a praised moment did not work for you.",
+            "explanation": "C connects valued qualities with differing judgments of the same feature. A evidence, D personal preference, E later viewing and F evaluation belong elsewhere. B/G impose unsupported absolutes.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Ask what the reviewer says the scene actually does."
+              },
+              {
+                "id": "o1",
+                "text": "B. A review that contains any plot information must be useless."
+              },
+              {
+                "id": "o2",
+                "text": "C. Their priorities shape the conclusion they reach."
+              },
+              {
+                "id": "o3",
+                "text": "D. You do not have to make the review’s priorities your own."
+              },
+              {
+                "id": "o4",
+                "text": "E. Your direct experience now gives the conversation another starting point."
+              },
+              {
+                "id": "o5",
+                "text": "F. Look for reasons, not only a list of events."
+              },
+              {
+                "id": "o6",
+                "text": "G. Every reader must share the opinion of the most confident critic."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.insertion.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 2.",
+            "material": "A. Choosing a review and changing a costume\n\nFilm reviews can help you choose what to watch, but a review is also a particular person's response. Reading it well involves more than checking whether the final judgment is positive. You need to understand the standards behind that judgment.\n\nLook for the qualities the reviewer values. One may focus on careful plotting, another on visual invention. ____1____ Two reviewers can describe the same feature accurately yet disagree about how much it matters.\n\nSeparate a plot summary from an evaluation. A summary tells you what happens; an evaluation explains how effectively the film does its work. ____2____ That explanation gives you something to compare with your own preferences.\n\nNotice how much evidence supports an opinion. A reviewer may call a scene moving without saying what made it so. ____3____ A concrete example can make the judgment easier to understand even if you eventually disagree.\n\nThink about the kind of experience you want. A slow pace praised for allowing reflection might be unwelcome when you want a lively comedy. ____4____ Your disagreement may reflect a different purpose rather than a failure by either you or the critic.\n\nFinally, return to a review after seeing the film if you are interested. ____5____ Comparing your response with the review can reveal a detail you missed or help you explain why a praised moment did not work for you.",
+            "explanation": "F distinguishes reasons for effectiveness from a sequence of events, developed by that explanation. A concerns one scene, C standards, D preference and E post-viewing. B wrongly dismisses all summary and G removes judgment.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Ask what the reviewer says the scene actually does."
+              },
+              {
+                "id": "o1",
+                "text": "B. A review that contains any plot information must be useless."
+              },
+              {
+                "id": "o2",
+                "text": "C. Their priorities shape the conclusion they reach."
+              },
+              {
+                "id": "o3",
+                "text": "D. You do not have to make the review’s priorities your own."
+              },
+              {
+                "id": "o4",
+                "text": "E. Your direct experience now gives the conversation another starting point."
+              },
+              {
+                "id": "o5",
+                "text": "F. Look for reasons, not only a list of events."
+              },
+              {
+                "id": "o6",
+                "text": "G. Every reader must share the opinion of the most confident critic."
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.insertion.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 3.",
+            "material": "A. Choosing a review and changing a costume\n\nFilm reviews can help you choose what to watch, but a review is also a particular person's response. Reading it well involves more than checking whether the final judgment is positive. You need to understand the standards behind that judgment.\n\nLook for the qualities the reviewer values. One may focus on careful plotting, another on visual invention. ____1____ Two reviewers can describe the same feature accurately yet disagree about how much it matters.\n\nSeparate a plot summary from an evaluation. A summary tells you what happens; an evaluation explains how effectively the film does its work. ____2____ That explanation gives you something to compare with your own preferences.\n\nNotice how much evidence supports an opinion. A reviewer may call a scene moving without saying what made it so. ____3____ A concrete example can make the judgment easier to understand even if you eventually disagree.\n\nThink about the kind of experience you want. A slow pace praised for allowing reflection might be unwelcome when you want a lively comedy. ____4____ Your disagreement may reflect a different purpose rather than a failure by either you or the critic.\n\nFinally, return to a review after seeing the film if you are interested. ____5____ Comparing your response with the review can reveal a detail you missed or help you explain why a praised moment did not work for you.",
+            "explanation": "A asks for the concrete action underlying the vague emotional adjective, preparing the example sentence. C/F are broader framing, D preferences and E later experience. B/G do not supply evidence.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Ask what the reviewer says the scene actually does."
+              },
+              {
+                "id": "o1",
+                "text": "B. A review that contains any plot information must be useless."
+              },
+              {
+                "id": "o2",
+                "text": "C. Their priorities shape the conclusion they reach."
+              },
+              {
+                "id": "o3",
+                "text": "D. You do not have to make the review’s priorities your own."
+              },
+              {
+                "id": "o4",
+                "text": "E. Your direct experience now gives the conversation another starting point."
+              },
+              {
+                "id": "o5",
+                "text": "F. Look for reasons, not only a list of events."
+              },
+              {
+                "id": "o6",
+                "text": "G. Every reader must share the opinion of the most confident critic."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.insertion.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 4.",
+            "material": "A. Choosing a review and changing a costume\n\nFilm reviews can help you choose what to watch, but a review is also a particular person's response. Reading it well involves more than checking whether the final judgment is positive. You need to understand the standards behind that judgment.\n\nLook for the qualities the reviewer values. One may focus on careful plotting, another on visual invention. ____1____ Two reviewers can describe the same feature accurately yet disagree about how much it matters.\n\nSeparate a plot summary from an evaluation. A summary tells you what happens; an evaluation explains how effectively the film does its work. ____2____ That explanation gives you something to compare with your own preferences.\n\nNotice how much evidence supports an opinion. A reviewer may call a scene moving without saying what made it so. ____3____ A concrete example can make the judgment easier to understand even if you eventually disagree.\n\nThink about the kind of experience you want. A slow pace praised for allowing reflection might be unwelcome when you want a lively comedy. ____4____ Your disagreement may reflect a different purpose rather than a failure by either you or the critic.\n\nFinally, return to a review after seeing the film if you are interested. ____5____ Comparing your response with the review can reveal a detail you missed or help you explain why a praised moment did not work for you.",
+            "explanation": "D explains why the viewer need not adopt the critic’s desired pace, leading to different purposes. A evidence, C priorities, E after-viewing and F evaluation are other stages. G directly contradicts individuality; B concerns summary.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Ask what the reviewer says the scene actually does."
+              },
+              {
+                "id": "o1",
+                "text": "B. A review that contains any plot information must be useless."
+              },
+              {
+                "id": "o2",
+                "text": "C. Their priorities shape the conclusion they reach."
+              },
+              {
+                "id": "o3",
+                "text": "D. You do not have to make the review’s priorities your own."
+              },
+              {
+                "id": "o4",
+                "text": "E. Your direct experience now gives the conversation another starting point."
+              },
+              {
+                "id": "o5",
+                "text": "F. Look for reasons, not only a list of events."
+              },
+              {
+                "id": "o6",
+                "text": "G. Every reader must share the opinion of the most confident critic."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.insertion.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 5.",
+            "material": "A. Choosing a review and changing a costume\n\nFilm reviews can help you choose what to watch, but a review is also a particular person's response. Reading it well involves more than checking whether the final judgment is positive. You need to understand the standards behind that judgment.\n\nLook for the qualities the reviewer values. One may focus on careful plotting, another on visual invention. ____1____ Two reviewers can describe the same feature accurately yet disagree about how much it matters.\n\nSeparate a plot summary from an evaluation. A summary tells you what happens; an evaluation explains how effectively the film does its work. ____2____ That explanation gives you something to compare with your own preferences.\n\nNotice how much evidence supports an opinion. A reviewer may call a scene moving without saying what made it so. ____3____ A concrete example can make the judgment easier to understand even if you eventually disagree.\n\nThink about the kind of experience you want. A slow pace praised for allowing reflection might be unwelcome when you want a lively comedy. ____4____ Your disagreement may reflect a different purpose rather than a failure by either you or the critic.\n\nFinally, return to a review after seeing the film if you are interested. ____5____ Comparing your response with the review can reveal a detail you missed or help you explain why a praised moment did not work for you.",
+            "explanation": "E refers to having now seen the film and prepares comparison. A, C, D and F concern earlier reading strategies. B/G replace reflective comparison with fixed rules.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Ask what the reviewer says the scene actually does."
+              },
+              {
+                "id": "o1",
+                "text": "B. A review that contains any plot information must be useless."
+              },
+              {
+                "id": "o2",
+                "text": "C. Their priorities shape the conclusion they reach."
+              },
+              {
+                "id": "o3",
+                "text": "D. You do not have to make the review’s priorities your own."
+              },
+              {
+                "id": "o4",
+                "text": "E. Your direct experience now gives the conversation another starting point."
+              },
+              {
+                "id": "o5",
+                "text": "F. Look for reasons, not only a list of events."
+              },
+              {
+                "id": "o6",
+                "text": "G. Every reader must share the opinion of the most confident critic."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of walk.",
+            "material": "B. Choosing a review and changing a costume\n\nThe costume for our school performance arrived two weeks before opening night. It looked impressive on the hanger, but when I tried ____1____ (walk) across the stage in it, the long coat caught beneath my shoes. Our costume helper asked me to stop before I fell.\n\nShe pinned the bottom temporarily, ____2____ (make) it possible to move while she checked the length. I had worried that changing the coat would spoil its appearance. In fact, it was hard to see the change ____3____ the audience's seats.\n\nThe helper explained that clothing for performance had to support action as well as create an image. A sleeve ____4____ covered my hands might suit a still photograph but make it difficult to handle a letter during the scene.\n\nWe practised that movement several ____5____ (time). After she had adjusted the sleeve, I could take the letter ____6____ (easy) without looking down. Another actor checked how the coat appeared when I turned away from the lights.\n\nBy the next rehearsal, the final changes ____7____ (complete). We kept the removed pieces in case they were needed later. I thanked the helper ____8____ noticing a problem I had first blamed on myself. Learning the part meant understanding how words, movement and costume worked together. The coat no longer felt like something I had to fight; it had become ____9____ useful part of the role. I was able ____10____ (concentrate) on the scene again.",
+            "explanation": "Tried walking describes testing the action; tried to walk describes attempting it. Both fit. Bare walk and walked do not directly follow tried.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "walking",
+              "to walk"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "walk",
+                "walked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with the correct form of make.",
+            "material": "B. Choosing a review and changing a costume\n\nThe costume for our school performance arrived two weeks before opening night. It looked impressive on the hanger, but when I tried ____1____ (walk) across the stage in it, the long coat caught beneath my shoes. Our costume helper asked me to stop before I fell.\n\nShe pinned the bottom temporarily, ____2____ (make) it possible to move while she checked the length. I had worried that changing the coat would spoil its appearance. In fact, it was hard to see the change ____3____ the audience's seats.\n\nThe helper explained that clothing for performance had to support action as well as create an image. A sleeve ____4____ covered my hands might suit a still photograph but make it difficult to handle a letter during the scene.\n\nWe practised that movement several ____5____ (time). After she had adjusted the sleeve, I could take the letter ____6____ (easy) without looking down. Another actor checked how the coat appeared when I turned away from the lights.\n\nBy the next rehearsal, the final changes ____7____ (complete). We kept the removed pieces in case they were needed later. I thanked the helper ____8____ noticing a problem I had first blamed on myself. Learning the part meant understanding how words, movement and costume worked together. The coat no longer felt like something I had to fight; it had become ____9____ useful part of the role. I was able ____10____ (concentrate) on the scene again.",
+            "explanation": "Making introduces the active result of pinning. Bare make lacks coordination, and made does not attach as this non-finite result clause.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "making"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "make",
+                "made"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "B. Choosing a review and changing a costume\n\nThe costume for our school performance arrived two weeks before opening night. It looked impressive on the hanger, but when I tried ____1____ (walk) across the stage in it, the long coat caught beneath my shoes. Our costume helper asked me to stop before I fell.\n\nShe pinned the bottom temporarily, ____2____ (make) it possible to move while she checked the length. I had worried that changing the coat would spoil its appearance. In fact, it was hard to see the change ____3____ the audience's seats.\n\nThe helper explained that clothing for performance had to support action as well as create an image. A sleeve ____4____ covered my hands might suit a still photograph but make it difficult to handle a letter during the scene.\n\nWe practised that movement several ____5____ (time). After she had adjusted the sleeve, I could take the letter ____6____ (easy) without looking down. Another actor checked how the coat appeared when I turned away from the lights.\n\nBy the next rehearsal, the final changes ____7____ (complete). We kept the removed pieces in case they were needed later. I thanked the helper ____8____ noticing a problem I had first blamed on myself. Learning the part meant understanding how words, movement and costume worked together. The coat no longer felt like something I had to fight; it had become ____9____ useful part of the role. I was able ____10____ (concentrate) on the scene again.",
+            "explanation": "From the audience’s seats gives the viewpoint from which the change is seen. Of, by and between do not complete this viewpoint phrase.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "from"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of",
+                "by",
+                "between"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "B. Choosing a review and changing a costume\n\nThe costume for our school performance arrived two weeks before opening night. It looked impressive on the hanger, but when I tried ____1____ (walk) across the stage in it, the long coat caught beneath my shoes. Our costume helper asked me to stop before I fell.\n\nShe pinned the bottom temporarily, ____2____ (make) it possible to move while she checked the length. I had worried that changing the coat would spoil its appearance. In fact, it was hard to see the change ____3____ the audience's seats.\n\nThe helper explained that clothing for performance had to support action as well as create an image. A sleeve ____4____ covered my hands might suit a still photograph but make it difficult to handle a letter during the scene.\n\nWe practised that movement several ____5____ (time). After she had adjusted the sleeve, I could take the letter ____6____ (easy) without looking down. Another actor checked how the coat appeared when I turned away from the lights.\n\nBy the next rehearsal, the final changes ____7____ (complete). We kept the removed pieces in case they were needed later. I thanked the helper ____8____ noticing a problem I had first blamed on myself. Learning the part meant understanding how words, movement and costume worked together. The coat no longer felt like something I had to fight; it had become ____9____ useful part of the role. I was able ____10____ (concentrate) on the scene again.",
+            "explanation": "The sleeve is subject of a defining relative clause; that or which fits. Who is human, where not subject and what incompatible with an explicit antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with the correct form of time.",
+            "material": "B. Choosing a review and changing a costume\n\nThe costume for our school performance arrived two weeks before opening night. It looked impressive on the hanger, but when I tried ____1____ (walk) across the stage in it, the long coat caught beneath my shoes. Our costume helper asked me to stop before I fell.\n\nShe pinned the bottom temporarily, ____2____ (make) it possible to move while she checked the length. I had worried that changing the coat would spoil its appearance. In fact, it was hard to see the change ____3____ the audience's seats.\n\nThe helper explained that clothing for performance had to support action as well as create an image. A sleeve ____4____ covered my hands might suit a still photograph but make it difficult to handle a letter during the scene.\n\nWe practised that movement several ____5____ (time). After she had adjusted the sleeve, I could take the letter ____6____ (easy) without looking down. Another actor checked how the coat appeared when I turned away from the lights.\n\nBy the next rehearsal, the final changes ____7____ (complete). We kept the removed pieces in case they were needed later. I thanked the helper ____8____ noticing a problem I had first blamed on myself. Learning the part meant understanding how words, movement and costume worked together. The coat no longer felt like something I had to fight; it had become ____9____ useful part of the role. I was able ____10____ (concentrate) on the scene again.",
+            "explanation": "Several requires plural count noun times for repeated attempts. Time is singular; timing is the manner of scheduling.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "times"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "time",
+                "timing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with the correct form of easy.",
+            "material": "B. Choosing a review and changing a costume\n\nThe costume for our school performance arrived two weeks before opening night. It looked impressive on the hanger, but when I tried ____1____ (walk) across the stage in it, the long coat caught beneath my shoes. Our costume helper asked me to stop before I fell.\n\nShe pinned the bottom temporarily, ____2____ (make) it possible to move while she checked the length. I had worried that changing the coat would spoil its appearance. In fact, it was hard to see the change ____3____ the audience's seats.\n\nThe helper explained that clothing for performance had to support action as well as create an image. A sleeve ____4____ covered my hands might suit a still photograph but make it difficult to handle a letter during the scene.\n\nWe practised that movement several ____5____ (time). After she had adjusted the sleeve, I could take the letter ____6____ (easy) without looking down. Another actor checked how the coat appeared when I turned away from the lights.\n\nBy the next rehearsal, the final changes ____7____ (complete). We kept the removed pieces in case they were needed later. I thanked the helper ____8____ noticing a problem I had first blamed on myself. Learning the part meant understanding how words, movement and costume worked together. The coat no longer felt like something I had to fight; it had become ____9____ useful part of the role. I was able ____10____ (concentrate) on the scene again.",
+            "explanation": "Easily modifies could take. Easy is adjective and easiness noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "easily"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "easy",
+                "easiness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with the correct form of complete.",
+            "material": "B. Choosing a review and changing a costume\n\nThe costume for our school performance arrived two weeks before opening night. It looked impressive on the hanger, but when I tried ____1____ (walk) across the stage in it, the long coat caught beneath my shoes. Our costume helper asked me to stop before I fell.\n\nShe pinned the bottom temporarily, ____2____ (make) it possible to move while she checked the length. I had worried that changing the coat would spoil its appearance. In fact, it was hard to see the change ____3____ the audience's seats.\n\nThe helper explained that clothing for performance had to support action as well as create an image. A sleeve ____4____ covered my hands might suit a still photograph but make it difficult to handle a letter during the scene.\n\nWe practised that movement several ____5____ (time). After she had adjusted the sleeve, I could take the letter ____6____ (easy) without looking down. Another actor checked how the coat appeared when I turned away from the lights.\n\nBy the next rehearsal, the final changes ____7____ (complete). We kept the removed pieces in case they were needed later. I thanked the helper ____8____ noticing a problem I had first blamed on myself. Learning the part meant understanding how words, movement and costume worked together. The coat no longer felt like something I had to fight; it had become ____9____ useful part of the role. I was able ____10____ (concentrate) on the scene again.",
+            "explanation": "Plural changes receive completion before/by the next rehearsal. Past-perfect passive or simple passive fits; completed alone lacks auxiliary and was disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "had been completed",
+              "were completed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "completed",
+                "was completed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "B. Choosing a review and changing a costume\n\nThe costume for our school performance arrived two weeks before opening night. It looked impressive on the hanger, but when I tried ____1____ (walk) across the stage in it, the long coat caught beneath my shoes. Our costume helper asked me to stop before I fell.\n\nShe pinned the bottom temporarily, ____2____ (make) it possible to move while she checked the length. I had worried that changing the coat would spoil its appearance. In fact, it was hard to see the change ____3____ the audience's seats.\n\nThe helper explained that clothing for performance had to support action as well as create an image. A sleeve ____4____ covered my hands might suit a still photograph but make it difficult to handle a letter during the scene.\n\nWe practised that movement several ____5____ (time). After she had adjusted the sleeve, I could take the letter ____6____ (easy) without looking down. Another actor checked how the coat appeared when I turned away from the lights.\n\nBy the next rehearsal, the final changes ____7____ (complete). We kept the removed pieces in case they were needed later. I thanked the helper ____8____ noticing a problem I had first blamed on myself. Learning the part meant understanding how words, movement and costume worked together. The coat no longer felt like something I had to fight; it had become ____9____ useful part of the role. I was able ____10____ (concentrate) on the scene again.",
+            "explanation": "Thanked the helper for noticing uses for. Other listed prepositions do not express the thanked action.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "at",
+                "with"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "B. Choosing a review and changing a costume\n\nThe costume for our school performance arrived two weeks before opening night. It looked impressive on the hanger, but when I tried ____1____ (walk) across the stage in it, the long coat caught beneath my shoes. Our costume helper asked me to stop before I fell.\n\nShe pinned the bottom temporarily, ____2____ (make) it possible to move while she checked the length. I had worried that changing the coat would spoil its appearance. In fact, it was hard to see the change ____3____ the audience's seats.\n\nThe helper explained that clothing for performance had to support action as well as create an image. A sleeve ____4____ covered my hands might suit a still photograph but make it difficult to handle a letter during the scene.\n\nWe practised that movement several ____5____ (time). After she had adjusted the sleeve, I could take the letter ____6____ (easy) without looking down. Another actor checked how the coat appeared when I turned away from the lights.\n\nBy the next rehearsal, the final changes ____7____ (complete). We kept the removed pieces in case they were needed later. I thanked the helper ____8____ noticing a problem I had first blamed on myself. Learning the part meant understanding how words, movement and costume worked together. The coat no longer felt like something I had to fight; it had become ____9____ useful part of the role. I was able ____10____ (concentrate) on the scene again.",
+            "explanation": "A useful part uses a because useful begins with a consonant /j/ sound. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with the correct form of concentrate.",
+            "material": "B. Choosing a review and changing a costume\n\nThe costume for our school performance arrived two weeks before opening night. It looked impressive on the hanger, but when I tried ____1____ (walk) across the stage in it, the long coat caught beneath my shoes. Our costume helper asked me to stop before I fell.\n\nShe pinned the bottom temporarily, ____2____ (make) it possible to move while she checked the length. I had worried that changing the coat would spoil its appearance. In fact, it was hard to see the change ____3____ the audience's seats.\n\nThe helper explained that clothing for performance had to support action as well as create an image. A sleeve ____4____ covered my hands might suit a still photograph but make it difficult to handle a letter during the scene.\n\nWe practised that movement several ____5____ (time). After she had adjusted the sleeve, I could take the letter ____6____ (easy) without looking down. Another actor checked how the coat appeared when I turned away from the lights.\n\nBy the next rehearsal, the final changes ____7____ (complete). We kept the removed pieces in case they were needed later. I thanked the helper ____8____ noticing a problem I had first blamed on myself. Learning the part meant understanding how words, movement and costume worked together. The coat no longer felt like something I had to fight; it had become ____9____ useful part of the role. I was able ____10____ (concentrate) on the scene again.",
+            "explanation": "Able takes the to-infinitive to concentrate. Other listed forms do not complete be able.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to concentrate"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "concentrating",
+                "concentrate",
+                "concentrated"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "890eae7123a5da55df79990b0e3087390a418b8d5023c8ee303fc444c9bcd637",
+      "reviewNotes": "Three new complete senior mixed practices. Same-author cohesion and all-alternative review, written-form variants and explicit rejection boundaries checked. Fictional cases; not past papers or independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.film-reviews-and-costumes-047#insertion",
+          "family": "shared_insertion",
+          "questionIds": [
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.insertion.q1",
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.insertion.q2",
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.insertion.q3",
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.insertion.q4",
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.insertion.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.film-reviews-and-costumes-047",
+          "sourceContentHash": "9097ec5b33477f100433ec6b42ec58ce8a5ab3df70111d88da8292a62c5f1172"
+        },
+        {
+          "id": "expansion.20261024.senior2.film-reviews-and-costumes-047#grammar",
+          "family": "passage_form",
+          "questionIds": [
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q1",
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q2",
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q3",
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q4",
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q5",
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q6",
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q7",
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q8",
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q9",
+            "expansion.20261024.senior2.film-reviews-and-costumes-047.grammar.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.film-reviews-and-costumes-047",
+          "sourceContentHash": "76941613a9b058d6c55e793adefeb874b807143e6560932fc0d3528d7108bb15"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高考题型原创 · 10·24新题 · Arguing a position and fixing a clock",
+        "summary": "Arguing a position and fixing a clock，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_insertion",
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I insertion and passage-form task structure",
+            "pages": "Reading: five of seven; Use of English: 10-gap passage form",
+            "alignment": "One full five-gap passage sharing seven candidates, plus one full ten-gap grammar passage. Source supplies task rules only; all prose and keys are original."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g12.national2025.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Level/family source references only; final structure follows National I with one complete five-gap seven-option insertion plus one complete ten-gap grammar passage."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete senior mixed practices. Same-author cohesion and all-alternative review, written-form variants and explicit rejection boundaries checked. Fictional cases; not past papers or independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047",
+          "family": "shared_insertion_passage_form",
+          "label": "Arguing a position and fixing a clock",
+          "candidateSHA256": "c25ab40d39c73f407b44d3f25460c361c24346091bc8f7567bdc270449952f02",
+          "authorCheckSHA256": "4e7b8121933ded48d1106143f40221dc91b9f477f6b2924b8e414f09baf42e48",
+          "sourceGroupIds": [
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047#insertion",
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047#grammar"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b047；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Arguing a position and fixing a clock\n\nA classroom debate may require you to defend a position you do not personally hold. The exercise can be valuable if its purpose is to understand an argument rather than to perform certainty. Preparing well means taking the assigned view seriously without pretending that all its claims are beyond question.\n\nBegin by stating the position precisely. A broad slogan may conceal several separate proposals. ____1____ Otherwise, you may spend your preparation defending a claim that the actual debate never required.\n\nLook for the strongest support available to that position. Choosing an obviously weak argument makes the exercise easier but less informative. ____2____ You need to understand why a thoughtful person might find the view persuasive.\n\nIdentify its difficult points as well. Acknowledging a limitation does not automatically surrender the whole argument. ____3____ This can lead to a more defensible claim than insisting that the proposal works equally well in every case.\n\nDuring the debate, listen for what the other side is actually saying. A prepared reply may address an objection nobody has made. ____4____ A brief pause to understand the point can produce a better response than an immediate speech from your notes.\n\nAfterwards, distinguish the quality of your performance from any change in your opinion. ____5____ You may still reject the position while understanding its attraction and limits more clearly than before.\n\nB. Arguing a position and fixing a clock\n\nThe clock in our school courtyard had stopped long before I joined the repair club. We were not permitted to work on its mechanism ourselves, but a qualified repairer agreed ____1____ (let) us observe. Before opening the case, she explained the precautions that protected both the clock and the people nearby.\n\nWhat interested me most ____2____ (be) the number of small adjustments involved. I had imagined one broken part that could simply be replaced. Instead, the repairer first examined how several parts moved in relation to one another.\n\nShe described the fault ____3____ (careful), distinguishing it from the wear that could be expected in an old mechanism. We were encouraged to ask questions, but she would not make a movement just to satisfy our ____4____ (curious) if it might damage something.\n\nThe following week, we watched the clock ____5____ (return) to its normal position. Its face looked much as it had before. The most important change was one that a passing student might not notice until the hands moved.\n\nOur teacher asked for a short account ____6____ what we had learned. Rather than presenting ____7____ (we) as the people who had repaired it, we described the specialist's work and our role as observers. The repairer, ____8____ patience had made our questions possible, checked the wording. Seeing the clock run again was ____9____ pleasure, but understanding the limits of our own contribution was an ____10____ (equal) important lesson."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.insertion.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 1.",
+            "material": "A. Arguing a position and fixing a clock\n\nA classroom debate may require you to defend a position you do not personally hold. The exercise can be valuable if its purpose is to understand an argument rather than to perform certainty. Preparing well means taking the assigned view seriously without pretending that all its claims are beyond question.\n\nBegin by stating the position precisely. A broad slogan may conceal several separate proposals. ____1____ Otherwise, you may spend your preparation defending a claim that the actual debate never required.\n\nLook for the strongest support available to that position. Choosing an obviously weak argument makes the exercise easier but less informative. ____2____ You need to understand why a thoughtful person might find the view persuasive.\n\nIdentify its difficult points as well. Acknowledging a limitation does not automatically surrender the whole argument. ____3____ This can lead to a more defensible claim than insisting that the proposal works equally well in every case.\n\nDuring the debate, listen for what the other side is actually saying. A prepared reply may address an objection nobody has made. ____4____ A brief pause to understand the point can produce a better response than an immediate speech from your notes.\n\nAfterwards, distinguish the quality of your performance from any change in your opinion. ____5____ You may still reject the position while understanding its attraction and limits more clearly than before.",
+            "explanation": "C narrows a slogan to the required claim, preventing misdirected defence. A limitations, D listening, E final opinion and F strength belong elsewhere. B/G block genuine evaluation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. It may help you specify the conditions under which the position is strongest."
+              },
+              {
+                "id": "o1",
+                "text": "B. Winning applause proves that a position has no limitations."
+              },
+              {
+                "id": "o2",
+                "text": "C. Check exactly which version you have been asked to discuss."
+              },
+              {
+                "id": "o3",
+                "text": "D. Treat the exchange as a conversation rather than two speeches passing one another."
+              },
+              {
+                "id": "o4",
+                "text": "E. Understanding an argument does not oblige you to adopt it."
+              },
+              {
+                "id": "o5",
+                "text": "F. Aim for a convincing case rather than an easy target."
+              },
+              {
+                "id": "o6",
+                "text": "G. Ignore every objection until your entire prepared speech is complete."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.insertion.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 2.",
+            "material": "A. Arguing a position and fixing a clock\n\nA classroom debate may require you to defend a position you do not personally hold. The exercise can be valuable if its purpose is to understand an argument rather than to perform certainty. Preparing well means taking the assigned view seriously without pretending that all its claims are beyond question.\n\nBegin by stating the position precisely. A broad slogan may conceal several separate proposals. ____1____ Otherwise, you may spend your preparation defending a claim that the actual debate never required.\n\nLook for the strongest support available to that position. Choosing an obviously weak argument makes the exercise easier but less informative. ____2____ You need to understand why a thoughtful person might find the view persuasive.\n\nIdentify its difficult points as well. Acknowledging a limitation does not automatically surrender the whole argument. ____3____ This can lead to a more defensible claim than insisting that the proposal works equally well in every case.\n\nDuring the debate, listen for what the other side is actually saying. A prepared reply may address an objection nobody has made. ____4____ A brief pause to understand the point can produce a better response than an immediate speech from your notes.\n\nAfterwards, distinguish the quality of your performance from any change in your opinion. ____5____ You may still reject the position while understanding its attraction and limits more clearly than before.",
+            "explanation": "F contrasts a strong case with deliberately weak support and leads to a thoughtful person’s reasons. A concerns limits, C scope, D exchange and E adoption. B/G substitute applause or avoidance for reasoning.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. It may help you specify the conditions under which the position is strongest."
+              },
+              {
+                "id": "o1",
+                "text": "B. Winning applause proves that a position has no limitations."
+              },
+              {
+                "id": "o2",
+                "text": "C. Check exactly which version you have been asked to discuss."
+              },
+              {
+                "id": "o3",
+                "text": "D. Treat the exchange as a conversation rather than two speeches passing one another."
+              },
+              {
+                "id": "o4",
+                "text": "E. Understanding an argument does not oblige you to adopt it."
+              },
+              {
+                "id": "o5",
+                "text": "F. Aim for a convincing case rather than an easy target."
+              },
+              {
+                "id": "o6",
+                "text": "G. Ignore every objection until your entire prepared speech is complete."
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.insertion.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 3.",
+            "material": "A. Arguing a position and fixing a clock\n\nA classroom debate may require you to defend a position you do not personally hold. The exercise can be valuable if its purpose is to understand an argument rather than to perform certainty. Preparing well means taking the assigned view seriously without pretending that all its claims are beyond question.\n\nBegin by stating the position precisely. A broad slogan may conceal several separate proposals. ____1____ Otherwise, you may spend your preparation defending a claim that the actual debate never required.\n\nLook for the strongest support available to that position. Choosing an obviously weak argument makes the exercise easier but less informative. ____2____ You need to understand why a thoughtful person might find the view persuasive.\n\nIdentify its difficult points as well. Acknowledging a limitation does not automatically surrender the whole argument. ____3____ This can lead to a more defensible claim than insisting that the proposal works equally well in every case.\n\nDuring the debate, listen for what the other side is actually saying. A prepared reply may address an objection nobody has made. ____4____ A brief pause to understand the point can produce a better response than an immediate speech from your notes.\n\nAfterwards, distinguish the quality of your performance from any change in your opinion. ____5____ You may still reject the position while understanding its attraction and limits more clearly than before.",
+            "explanation": "A explains how admitting limits can refine the claim, developed by conditions rather than every case. C scope, D listening, E adoption and F strongest support are other steps. B contradicts limitations and G excludes objections.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. It may help you specify the conditions under which the position is strongest."
+              },
+              {
+                "id": "o1",
+                "text": "B. Winning applause proves that a position has no limitations."
+              },
+              {
+                "id": "o2",
+                "text": "C. Check exactly which version you have been asked to discuss."
+              },
+              {
+                "id": "o3",
+                "text": "D. Treat the exchange as a conversation rather than two speeches passing one another."
+              },
+              {
+                "id": "o4",
+                "text": "E. Understanding an argument does not oblige you to adopt it."
+              },
+              {
+                "id": "o5",
+                "text": "F. Aim for a convincing case rather than an easy target."
+              },
+              {
+                "id": "o6",
+                "text": "G. Ignore every objection until your entire prepared speech is complete."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.insertion.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 4.",
+            "material": "A. Arguing a position and fixing a clock\n\nA classroom debate may require you to defend a position you do not personally hold. The exercise can be valuable if its purpose is to understand an argument rather than to perform certainty. Preparing well means taking the assigned view seriously without pretending that all its claims are beyond question.\n\nBegin by stating the position precisely. A broad slogan may conceal several separate proposals. ____1____ Otherwise, you may spend your preparation defending a claim that the actual debate never required.\n\nLook for the strongest support available to that position. Choosing an obviously weak argument makes the exercise easier but less informative. ____2____ You need to understand why a thoughtful person might find the view persuasive.\n\nIdentify its difficult points as well. Acknowledging a limitation does not automatically surrender the whole argument. ____3____ This can lead to a more defensible claim than insisting that the proposal works equally well in every case.\n\nDuring the debate, listen for what the other side is actually saying. A prepared reply may address an objection nobody has made. ____4____ A brief pause to understand the point can produce a better response than an immediate speech from your notes.\n\nAfterwards, distinguish the quality of your performance from any change in your opinion. ____5____ You may still reject the position while understanding its attraction and limits more clearly than before.",
+            "explanation": "D addresses irrelevant prepared replies by making the debate responsive, preparing the pause to understand. A/C/E/F concern other stages. G directly rejects listening; B confuses applause with validity.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. It may help you specify the conditions under which the position is strongest."
+              },
+              {
+                "id": "o1",
+                "text": "B. Winning applause proves that a position has no limitations."
+              },
+              {
+                "id": "o2",
+                "text": "C. Check exactly which version you have been asked to discuss."
+              },
+              {
+                "id": "o3",
+                "text": "D. Treat the exchange as a conversation rather than two speeches passing one another."
+              },
+              {
+                "id": "o4",
+                "text": "E. Understanding an argument does not oblige you to adopt it."
+              },
+              {
+                "id": "o5",
+                "text": "F. Aim for a convincing case rather than an easy target."
+              },
+              {
+                "id": "o6",
+                "text": "G. Ignore every objection until your entire prepared speech is complete."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.insertion.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+            "prompt": "Choose the sentence for gap 5.",
+            "material": "A. Arguing a position and fixing a clock\n\nA classroom debate may require you to defend a position you do not personally hold. The exercise can be valuable if its purpose is to understand an argument rather than to perform certainty. Preparing well means taking the assigned view seriously without pretending that all its claims are beyond question.\n\nBegin by stating the position precisely. A broad slogan may conceal several separate proposals. ____1____ Otherwise, you may spend your preparation defending a claim that the actual debate never required.\n\nLook for the strongest support available to that position. Choosing an obviously weak argument makes the exercise easier but less informative. ____2____ You need to understand why a thoughtful person might find the view persuasive.\n\nIdentify its difficult points as well. Acknowledging a limitation does not automatically surrender the whole argument. ____3____ This can lead to a more defensible claim than insisting that the proposal works equally well in every case.\n\nDuring the debate, listen for what the other side is actually saying. A prepared reply may address an objection nobody has made. ____4____ A brief pause to understand the point can produce a better response than an immediate speech from your notes.\n\nAfterwards, distinguish the quality of your performance from any change in your opinion. ____5____ You may still reject the position while understanding its attraction and limits more clearly than before.",
+            "explanation": "E separates understanding from personal acceptance and leads to still rejecting the position. A, C, D and F are preparation/debate techniques. B/G deny the reflective distinction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. It may help you specify the conditions under which the position is strongest."
+              },
+              {
+                "id": "o1",
+                "text": "B. Winning applause proves that a position has no limitations."
+              },
+              {
+                "id": "o2",
+                "text": "C. Check exactly which version you have been asked to discuss."
+              },
+              {
+                "id": "o3",
+                "text": "D. Treat the exchange as a conversation rather than two speeches passing one another."
+              },
+              {
+                "id": "o4",
+                "text": "E. Understanding an argument does not oblige you to adopt it."
+              },
+              {
+                "id": "o5",
+                "text": "F. Aim for a convincing case rather than an easy target."
+              },
+              {
+                "id": "o6",
+                "text": "G. Ignore every objection until your entire prepared speech is complete."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of let.",
+            "material": "B. Arguing a position and fixing a clock\n\nThe clock in our school courtyard had stopped long before I joined the repair club. We were not permitted to work on its mechanism ourselves, but a qualified repairer agreed ____1____ (let) us observe. Before opening the case, she explained the precautions that protected both the clock and the people nearby.\n\nWhat interested me most ____2____ (be) the number of small adjustments involved. I had imagined one broken part that could simply be replaced. Instead, the repairer first examined how several parts moved in relation to one another.\n\nShe described the fault ____3____ (careful), distinguishing it from the wear that could be expected in an old mechanism. We were encouraged to ask questions, but she would not make a movement just to satisfy our ____4____ (curious) if it might damage something.\n\nThe following week, we watched the clock ____5____ (return) to its normal position. Its face looked much as it had before. The most important change was one that a passing student might not notice until the hands moved.\n\nOur teacher asked for a short account ____6____ what we had learned. Rather than presenting ____7____ (we) as the people who had repaired it, we described the specialist's work and our role as observers. The repairer, ____8____ patience had made our questions possible, checked the wording. Seeing the clock run again was ____9____ pleasure, but understanding the limits of our own contribution was an ____10____ (equal) important lesson.",
+            "explanation": "Agreed takes to let. The -ing, bare and third-person forms do not directly complete agreed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to let"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "letting",
+                "let",
+                "lets"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with the correct form of be.",
+            "material": "B. Arguing a position and fixing a clock\n\nThe clock in our school courtyard had stopped long before I joined the repair club. We were not permitted to work on its mechanism ourselves, but a qualified repairer agreed ____1____ (let) us observe. Before opening the case, she explained the precautions that protected both the clock and the people nearby.\n\nWhat interested me most ____2____ (be) the number of small adjustments involved. I had imagined one broken part that could simply be replaced. Instead, the repairer first examined how several parts moved in relation to one another.\n\nShe described the fault ____3____ (careful), distinguishing it from the wear that could be expected in an old mechanism. We were encouraged to ask questions, but she would not make a movement just to satisfy our ____4____ (curious) if it might damage something.\n\nThe following week, we watched the clock ____5____ (return) to its normal position. Its face looked much as it had before. The most important change was one that a passing student might not notice until the hands moved.\n\nOur teacher asked for a short account ____6____ what we had learned. Rather than presenting ____7____ (we) as the people who had repaired it, we described the specialist's work and our role as observers. The repairer, ____8____ patience had made our questions possible, checked the wording. Seeing the clock run again was ____9____ pleasure, but understanding the limits of our own contribution was an ____10____ (equal) important lesson.",
+            "explanation": "The subject clause What interested me most is singular in this past account and takes was. Were disagrees; been lacks an auxiliary.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "were",
+                "been"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with the correct form of careful.",
+            "material": "B. Arguing a position and fixing a clock\n\nThe clock in our school courtyard had stopped long before I joined the repair club. We were not permitted to work on its mechanism ourselves, but a qualified repairer agreed ____1____ (let) us observe. Before opening the case, she explained the precautions that protected both the clock and the people nearby.\n\nWhat interested me most ____2____ (be) the number of small adjustments involved. I had imagined one broken part that could simply be replaced. Instead, the repairer first examined how several parts moved in relation to one another.\n\nShe described the fault ____3____ (careful), distinguishing it from the wear that could be expected in an old mechanism. We were encouraged to ask questions, but she would not make a movement just to satisfy our ____4____ (curious) if it might damage something.\n\nThe following week, we watched the clock ____5____ (return) to its normal position. Its face looked much as it had before. The most important change was one that a passing student might not notice until the hands moved.\n\nOur teacher asked for a short account ____6____ what we had learned. Rather than presenting ____7____ (we) as the people who had repaired it, we described the specialist's work and our role as observers. The repairer, ____8____ patience had made our questions possible, checked the wording. Seeing the clock run again was ____9____ pleasure, but understanding the limits of our own contribution was an ____10____ (equal) important lesson.",
+            "explanation": "Carefully modifies described. Careful is adjective and carefulness noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careful",
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with the correct form of curious.",
+            "material": "B. Arguing a position and fixing a clock\n\nThe clock in our school courtyard had stopped long before I joined the repair club. We were not permitted to work on its mechanism ourselves, but a qualified repairer agreed ____1____ (let) us observe. Before opening the case, she explained the precautions that protected both the clock and the people nearby.\n\nWhat interested me most ____2____ (be) the number of small adjustments involved. I had imagined one broken part that could simply be replaced. Instead, the repairer first examined how several parts moved in relation to one another.\n\nShe described the fault ____3____ (careful), distinguishing it from the wear that could be expected in an old mechanism. We were encouraged to ask questions, but she would not make a movement just to satisfy our ____4____ (curious) if it might damage something.\n\nThe following week, we watched the clock ____5____ (return) to its normal position. Its face looked much as it had before. The most important change was one that a passing student might not notice until the hands moved.\n\nOur teacher asked for a short account ____6____ what we had learned. Rather than presenting ____7____ (we) as the people who had repaired it, we described the specialist's work and our role as observers. The repairer, ____8____ patience had made our questions possible, checked the wording. Seeing the clock run again was ____9____ pleasure, but understanding the limits of our own contribution was an ____10____ (equal) important lesson.",
+            "explanation": "Our requires the noun curiosity as the object of satisfy. Curious and curiously do not fill it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "curiosity"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "curious",
+                "curiously"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with the correct form of return.",
+            "material": "B. Arguing a position and fixing a clock\n\nThe clock in our school courtyard had stopped long before I joined the repair club. We were not permitted to work on its mechanism ourselves, but a qualified repairer agreed ____1____ (let) us observe. Before opening the case, she explained the precautions that protected both the clock and the people nearby.\n\nWhat interested me most ____2____ (be) the number of small adjustments involved. I had imagined one broken part that could simply be replaced. Instead, the repairer first examined how several parts moved in relation to one another.\n\nShe described the fault ____3____ (careful), distinguishing it from the wear that could be expected in an old mechanism. We were encouraged to ask questions, but she would not make a movement just to satisfy our ____4____ (curious) if it might damage something.\n\nThe following week, we watched the clock ____5____ (return) to its normal position. Its face looked much as it had before. The most important change was one that a passing student might not notice until the hands moved.\n\nOur teacher asked for a short account ____6____ what we had learned. Rather than presenting ____7____ (we) as the people who had repaired it, we described the specialist's work and our role as observers. The repairer, ____8____ patience had made our questions possible, checked the wording. Seeing the clock run again was ____9____ pleasure, but understanding the limits of our own contribution was an ____10____ (equal) important lesson.",
+            "explanation": "Watched permits object plus bare infinitive return or -ing returning for the observed movement, and passive being returned or returned when its installation is emphasised. Returns is a finite third-person verb and cannot directly follow watched the clock.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "being returned",
+              "returned",
+              "returning",
+              "return"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "returns"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "B. Arguing a position and fixing a clock\n\nThe clock in our school courtyard had stopped long before I joined the repair club. We were not permitted to work on its mechanism ourselves, but a qualified repairer agreed ____1____ (let) us observe. Before opening the case, she explained the precautions that protected both the clock and the people nearby.\n\nWhat interested me most ____2____ (be) the number of small adjustments involved. I had imagined one broken part that could simply be replaced. Instead, the repairer first examined how several parts moved in relation to one another.\n\nShe described the fault ____3____ (careful), distinguishing it from the wear that could be expected in an old mechanism. We were encouraged to ask questions, but she would not make a movement just to satisfy our ____4____ (curious) if it might damage something.\n\nThe following week, we watched the clock ____5____ (return) to its normal position. Its face looked much as it had before. The most important change was one that a passing student might not notice until the hands moved.\n\nOur teacher asked for a short account ____6____ what we had learned. Rather than presenting ____7____ (we) as the people who had repaired it, we described the specialist's work and our role as observers. The repairer, ____8____ patience had made our questions possible, checked the wording. Seeing the clock run again was ____9____ pleasure, but understanding the limits of our own contribution was an ____10____ (equal) important lesson.",
+            "explanation": "An account of/about what was learned uses either content preposition. From/by would name source or agent, not the content here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "of",
+              "about"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "from",
+                "by"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with the correct form of we.",
+            "material": "B. Arguing a position and fixing a clock\n\nThe clock in our school courtyard had stopped long before I joined the repair club. We were not permitted to work on its mechanism ourselves, but a qualified repairer agreed ____1____ (let) us observe. Before opening the case, she explained the precautions that protected both the clock and the people nearby.\n\nWhat interested me most ____2____ (be) the number of small adjustments involved. I had imagined one broken part that could simply be replaced. Instead, the repairer first examined how several parts moved in relation to one another.\n\nShe described the fault ____3____ (careful), distinguishing it from the wear that could be expected in an old mechanism. We were encouraged to ask questions, but she would not make a movement just to satisfy our ____4____ (curious) if it might damage something.\n\nThe following week, we watched the clock ____5____ (return) to its normal position. Its face looked much as it had before. The most important change was one that a passing student might not notice until the hands moved.\n\nOur teacher asked for a short account ____6____ what we had learned. Rather than presenting ____7____ (we) as the people who had repaired it, we described the specialist's work and our role as observers. The repairer, ____8____ patience had made our questions possible, checked the wording. Seeing the clock run again was ____9____ pleasure, but understanding the limits of our own contribution was an ____10____ (equal) important lesson.",
+            "explanation": "Presenting ourselves requires a reflexive object for the same observing group. We is subject; our/ours possessive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "ourselves"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "B. Arguing a position and fixing a clock\n\nThe clock in our school courtyard had stopped long before I joined the repair club. We were not permitted to work on its mechanism ourselves, but a qualified repairer agreed ____1____ (let) us observe. Before opening the case, she explained the precautions that protected both the clock and the people nearby.\n\nWhat interested me most ____2____ (be) the number of small adjustments involved. I had imagined one broken part that could simply be replaced. Instead, the repairer first examined how several parts moved in relation to one another.\n\nShe described the fault ____3____ (careful), distinguishing it from the wear that could be expected in an old mechanism. We were encouraged to ask questions, but she would not make a movement just to satisfy our ____4____ (curious) if it might damage something.\n\nThe following week, we watched the clock ____5____ (return) to its normal position. Its face looked much as it had before. The most important change was one that a passing student might not notice until the hands moved.\n\nOur teacher asked for a short account ____6____ what we had learned. Rather than presenting ____7____ (we) as the people who had repaired it, we described the specialist's work and our role as observers. The repairer, ____8____ patience had made our questions possible, checked the wording. Seeing the clock run again was ____9____ pleasure, but understanding the limits of our own contribution was an ____10____ (equal) important lesson.",
+            "explanation": "Whose modifies patience possessively in the non-defining clause. Other listed relatives do not supply that relation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "whose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "which",
+                "that"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "B. Arguing a position and fixing a clock\n\nThe clock in our school courtyard had stopped long before I joined the repair club. We were not permitted to work on its mechanism ourselves, but a qualified repairer agreed ____1____ (let) us observe. Before opening the case, she explained the precautions that protected both the clock and the people nearby.\n\nWhat interested me most ____2____ (be) the number of small adjustments involved. I had imagined one broken part that could simply be replaced. Instead, the repairer first examined how several parts moved in relation to one another.\n\nShe described the fault ____3____ (careful), distinguishing it from the wear that could be expected in an old mechanism. We were encouraged to ask questions, but she would not make a movement just to satisfy our ____4____ (curious) if it might damage something.\n\nThe following week, we watched the clock ____5____ (return) to its normal position. Its face looked much as it had before. The most important change was one that a passing student might not notice until the hands moved.\n\nOur teacher asked for a short account ____6____ what we had learned. Rather than presenting ____7____ (we) as the people who had repaired it, we described the specialist's work and our role as observers. The repairer, ____8____ patience had made our questions possible, checked the wording. Seeing the clock run again was ____9____ pleasure, but understanding the limits of our own contribution was an ____10____ (equal) important lesson.",
+            "explanation": "A pleasure uses a before a consonant sound and treats the experience as an instance of enjoyment. Other possible unlisted readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with the correct form of equal.",
+            "material": "B. Arguing a position and fixing a clock\n\nThe clock in our school courtyard had stopped long before I joined the repair club. We were not permitted to work on its mechanism ourselves, but a qualified repairer agreed ____1____ (let) us observe. Before opening the case, she explained the precautions that protected both the clock and the people nearby.\n\nWhat interested me most ____2____ (be) the number of small adjustments involved. I had imagined one broken part that could simply be replaced. Instead, the repairer first examined how several parts moved in relation to one another.\n\nShe described the fault ____3____ (careful), distinguishing it from the wear that could be expected in an old mechanism. We were encouraged to ask questions, but she would not make a movement just to satisfy our ____4____ (curious) if it might damage something.\n\nThe following week, we watched the clock ____5____ (return) to its normal position. Its face looked much as it had before. The most important change was one that a passing student might not notice until the hands moved.\n\nOur teacher asked for a short account ____6____ what we had learned. Rather than presenting ____7____ (we) as the people who had repaired it, we described the specialist's work and our role as observers. The repairer, ____8____ patience had made our questions possible, checked the wording. Seeing the clock run again was ____9____ pleasure, but understanding the limits of our own contribution was an ____10____ (equal) important lesson.",
+            "explanation": "Equally modifies important. Equal is adjective and equality noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "equally"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "equal",
+                "equality"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "144df0c7027e0b430e20094dd6e6c6b9454a2c0bb9fe9be04bb7f0c7345b4bcd",
+      "reviewNotes": "Three new complete senior mixed practices. Same-author cohesion and all-alternative review, written-form variants and explicit rejection boundaries checked. Fictional cases; not past papers or independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047#insertion",
+          "family": "shared_insertion",
+          "questionIds": [
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.insertion.q1",
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.insertion.q2",
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.insertion.q3",
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.insertion.q4",
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.insertion.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.debate-and-courtyard-clock-047",
+          "sourceContentHash": "cbbf6851505cc301cd6bb4597de806fc34baffaa012f85faf894272f7393f27a"
+        },
+        {
+          "id": "expansion.20261024.senior3.debate-and-courtyard-clock-047#grammar",
+          "family": "passage_form",
+          "questionIds": [
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q1",
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q2",
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q3",
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q4",
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q5",
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q6",
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q7",
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q8",
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q9",
+            "expansion.20261024.senior3.debate-and-courtyard-clock-047.grammar.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.debate-and-courtyard-clock-047",
+          "sourceContentHash": "f06c9e8533348b85781c1ba9a44ca35f146e79dd95353da954c3feb1e6804ebf"
+        }
+      ]
+    }
+  ]
+}
