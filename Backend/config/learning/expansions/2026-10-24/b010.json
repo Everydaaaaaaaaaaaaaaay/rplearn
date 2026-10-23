@@ -1,0 +1,1332 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b010",
+  "createdAt": "2026-10-23T18:55:38.503775+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.empty-bowl-cloze-010",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · 完形填空 · 空碗的重量",
+        "summary": "完形填空 · 空碗的重量，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.choice_cloze"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.cloze",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 参照既存公开转载原PDF第7页初二C卷语言运用第一节：一篇寓言、十空、每空三独立候选、每题1.5分共15分。设置/审核校名只是原页署名，原校实际施测未认证；旧结构记录全输入为未知，本批核原完整页图并保存视觉转录，原36/40/43近义语用风险保留，原键非gold。另编三个不同的拟人动物故事，不复制原蚂蚁蚱蜢情节，寓言不作真实动物行为或普遍人生规律。逐候选回填为作者自审，独立教研、学生难度/用时、商用与生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four newly written complete cloze narratives for junior learners, not sentence substitutions in an old passage. Each gap has an explicit contextual key and a rationale covering every distractor. Same-author review and schema/grading checks only; no independent learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.empty-bowl-cloze-010",
+          "family": "choice_cloze",
+          "label": "完形填空 · 空碗的重量",
+          "candidateSHA256": "e2e1587de827516a596526c79fad99b486e2459373681da071fc30f7024ef48c",
+          "authorCheckSHA256": "1e9a9eaddaf36758f5f3d4030b24b038ab7eb70e1a63b840939c0f419e30a581",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.empty-bowl-cloze-010#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b010；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The empty bowl\n\nI wanted to bake a cake for Dad's birthday. My grandmother agreed to help, but she said I should do the measuring myself. I put a large bowl on the kitchen scales and began to add flour.\n\nThe recipe said 200 grams. When the number reached 200, I ____1____ pouring. There was surprisingly little flour in the bowl. 'This cake will be very ____2____,' I said.\n\nGrandma did not add more flour immediately. She asked me to take the bowl ____3____ the scales. Then she put the empty bowl back. The number was 160.\n\n'I counted the weight of the bowl as well!' I said. Grandma ____4____. She showed me a button that made the number return to zero while the empty bowl was still on the scales. Now the scales would show only the weight of what I ____5____.\n\nWe started again. This time I checked the number before and after putting in each ingredient. I also wrote a short ____6____ beside the recipe: 'Put bowl on scales, then press zero.' I wanted to remember the right order next time.\n\nThe cake came out well. Dad asked whether I had made it all by ____7____. 'Mostly,' I said, 'but Grandma helped me understand a mistake.'\n\nLater, I used a different bowl to weigh some apples. It was much lighter than the first one. I knew that simply taking 160 away from every reading would not ____8____. Each bowl had its own weight.\n\nBefore I put in the apples, I checked that the display showed ____9____. Baking had taught me that a useful number depends on knowing exactly what you are ____10____."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.empty-bowl-cloze-010.whole.q1",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 1.",
+            "material": "The empty bowl\n\nI wanted to bake a cake for Dad's birthday. My grandmother agreed to help, but she said I should do the measuring myself. I put a large bowl on the kitchen scales and began to add flour.\n\nThe recipe said 200 grams. When the number reached 200, I ____1____ pouring. There was surprisingly little flour in the bowl. 'This cake will be very ____2____,' I said.\n\nGrandma did not add more flour immediately. She asked me to take the bowl ____3____ the scales. Then she put the empty bowl back. The number was 160.\n\n'I counted the weight of the bowl as well!' I said. Grandma ____4____. She showed me a button that made the number return to zero while the empty bowl was still on the scales. Now the scales would show only the weight of what I ____5____.\n\nWe started again. This time I checked the number before and after putting in each ingredient. I also wrote a short ____6____ beside the recipe: 'Put bowl on scales, then press zero.' I wanted to remember the right order next time.\n\nThe cake came out well. Dad asked whether I had made it all by ____7____. 'Mostly,' I said, 'but Grandma helped me understand a mistake.'\n\nLater, I used a different bowl to weigh some apples. It was much lighter than the first one. I knew that simply taking 160 away from every reading would not ____8____. Each bowl had its own weight.\n\nBefore I put in the apples, I checked that the display showed ____9____. Baking had taught me that a useful number depends on knowing exactly what you are ____10____.",
+            "explanation": "Reaching the target makes the narrator stop pouring. Enjoyed describes a feeling rather than the boundary action; forgot does not fit the intentional response to the number.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "stopped"
+              },
+              {
+                "id": "o1",
+                "text": "enjoyed"
+              },
+              {
+                "id": "o2",
+                "text": "forgot"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.empty-bowl-cloze-010.whole.q2",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 2.",
+            "material": "The empty bowl\n\nI wanted to bake a cake for Dad's birthday. My grandmother agreed to help, but she said I should do the measuring myself. I put a large bowl on the kitchen scales and began to add flour.\n\nThe recipe said 200 grams. When the number reached 200, I ____1____ pouring. There was surprisingly little flour in the bowl. 'This cake will be very ____2____,' I said.\n\nGrandma did not add more flour immediately. She asked me to take the bowl ____3____ the scales. Then she put the empty bowl back. The number was 160.\n\n'I counted the weight of the bowl as well!' I said. Grandma ____4____. She showed me a button that made the number return to zero while the empty bowl was still on the scales. Now the scales would show only the weight of what I ____5____.\n\nWe started again. This time I checked the number before and after putting in each ingredient. I also wrote a short ____6____ beside the recipe: 'Put bowl on scales, then press zero.' I wanted to remember the right order next time.\n\nThe cake came out well. Dad asked whether I had made it all by ____7____. 'Mostly,' I said, 'but Grandma helped me understand a mistake.'\n\nLater, I used a different bowl to weigh some apples. It was much lighter than the first one. I knew that simply taking 160 away from every reading would not ____8____. Each bowl had its own weight.\n\nBefore I put in the apples, I checked that the display showed ____9____. Baking had taught me that a useful number depends on knowing exactly what you are ____10____.",
+            "explanation": "Surprisingly little flour suggests a small cake. No price comparison supports expensive, and no delay supports late.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "expensive"
+              },
+              {
+                "id": "o1",
+                "text": "small"
+              },
+              {
+                "id": "o2",
+                "text": "late"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.empty-bowl-cloze-010.whole.q3",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 3.",
+            "material": "The empty bowl\n\nI wanted to bake a cake for Dad's birthday. My grandmother agreed to help, but she said I should do the measuring myself. I put a large bowl on the kitchen scales and began to add flour.\n\nThe recipe said 200 grams. When the number reached 200, I ____1____ pouring. There was surprisingly little flour in the bowl. 'This cake will be very ____2____,' I said.\n\nGrandma did not add more flour immediately. She asked me to take the bowl ____3____ the scales. Then she put the empty bowl back. The number was 160.\n\n'I counted the weight of the bowl as well!' I said. Grandma ____4____. She showed me a button that made the number return to zero while the empty bowl was still on the scales. Now the scales would show only the weight of what I ____5____.\n\nWe started again. This time I checked the number before and after putting in each ingredient. I also wrote a short ____6____ beside the recipe: 'Put bowl on scales, then press zero.' I wanted to remember the right order next time.\n\nThe cake came out well. Dad asked whether I had made it all by ____7____. 'Mostly,' I said, 'but Grandma helped me understand a mistake.'\n\nLater, I used a different bowl to weigh some apples. It was much lighter than the first one. I knew that simply taking 160 away from every reading would not ____8____. Each bowl had its own weight.\n\nBefore I put in the apples, I checked that the display showed ____9____. Baking had taught me that a useful number depends on knowing exactly what you are ____10____.",
+            "explanation": "Take the bowl off the scales removes it so the empty bowl can be put back. Through and towards do not describe removal from the weighing surface.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "through"
+              },
+              {
+                "id": "o1",
+                "text": "towards"
+              },
+              {
+                "id": "o2",
+                "text": "off"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.empty-bowl-cloze-010.whole.q4",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 4.",
+            "material": "The empty bowl\n\nI wanted to bake a cake for Dad's birthday. My grandmother agreed to help, but she said I should do the measuring myself. I put a large bowl on the kitchen scales and began to add flour.\n\nThe recipe said 200 grams. When the number reached 200, I ____1____ pouring. There was surprisingly little flour in the bowl. 'This cake will be very ____2____,' I said.\n\nGrandma did not add more flour immediately. She asked me to take the bowl ____3____ the scales. Then she put the empty bowl back. The number was 160.\n\n'I counted the weight of the bowl as well!' I said. Grandma ____4____. She showed me a button that made the number return to zero while the empty bowl was still on the scales. Now the scales would show only the weight of what I ____5____.\n\nWe started again. This time I checked the number before and after putting in each ingredient. I also wrote a short ____6____ beside the recipe: 'Put bowl on scales, then press zero.' I wanted to remember the right order next time.\n\nThe cake came out well. Dad asked whether I had made it all by ____7____. 'Mostly,' I said, 'but Grandma helped me understand a mistake.'\n\nLater, I used a different bowl to weigh some apples. It was much lighter than the first one. I knew that simply taking 160 away from every reading would not ____8____. Each bowl had its own weight.\n\nBefore I put in the apples, I checked that the display showed ____9____. Baking had taught me that a useful number depends on knowing exactly what you are ____10____.",
+            "explanation": "Grandma confirms the discovery and demonstrates zeroing, so agreed. She remains present, ruling out disappeared, and no complaint is described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "agreed"
+              },
+              {
+                "id": "o1",
+                "text": "disappeared"
+              },
+              {
+                "id": "o2",
+                "text": "complained"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.empty-bowl-cloze-010.whole.q5",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 5.",
+            "material": "The empty bowl\n\nI wanted to bake a cake for Dad's birthday. My grandmother agreed to help, but she said I should do the measuring myself. I put a large bowl on the kitchen scales and began to add flour.\n\nThe recipe said 200 grams. When the number reached 200, I ____1____ pouring. There was surprisingly little flour in the bowl. 'This cake will be very ____2____,' I said.\n\nGrandma did not add more flour immediately. She asked me to take the bowl ____3____ the scales. Then she put the empty bowl back. The number was 160.\n\n'I counted the weight of the bowl as well!' I said. Grandma ____4____. She showed me a button that made the number return to zero while the empty bowl was still on the scales. Now the scales would show only the weight of what I ____5____.\n\nWe started again. This time I checked the number before and after putting in each ingredient. I also wrote a short ____6____ beside the recipe: 'Put bowl on scales, then press zero.' I wanted to remember the right order next time.\n\nThe cake came out well. Dad asked whether I had made it all by ____7____. 'Mostly,' I said, 'but Grandma helped me understand a mistake.'\n\nLater, I used a different bowl to weigh some apples. It was much lighter than the first one. I knew that simply taking 160 away from every reading would not ____8____. Each bowl had its own weight.\n\nBefore I put in the apples, I checked that the display showed ____9____. Baking had taught me that a useful number depends on knowing exactly what you are ____10____.",
+            "explanation": "Zeroing leaves the weight of newly added ingredients. Remembered is not a physical load and washed does not express putting ingredients into the bowl.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "remembered"
+              },
+              {
+                "id": "o1",
+                "text": "added"
+              },
+              {
+                "id": "o2",
+                "text": "washed"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.empty-bowl-cloze-010.whole.q6",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 6.",
+            "material": "The empty bowl\n\nI wanted to bake a cake for Dad's birthday. My grandmother agreed to help, but she said I should do the measuring myself. I put a large bowl on the kitchen scales and began to add flour.\n\nThe recipe said 200 grams. When the number reached 200, I ____1____ pouring. There was surprisingly little flour in the bowl. 'This cake will be very ____2____,' I said.\n\nGrandma did not add more flour immediately. She asked me to take the bowl ____3____ the scales. Then she put the empty bowl back. The number was 160.\n\n'I counted the weight of the bowl as well!' I said. Grandma ____4____. She showed me a button that made the number return to zero while the empty bowl was still on the scales. Now the scales would show only the weight of what I ____5____.\n\nWe started again. This time I checked the number before and after putting in each ingredient. I also wrote a short ____6____ beside the recipe: 'Put bowl on scales, then press zero.' I wanted to remember the right order next time.\n\nThe cake came out well. Dad asked whether I had made it all by ____7____. 'Mostly,' I said, 'but Grandma helped me understand a mistake.'\n\nLater, I used a different bowl to weigh some apples. It was much lighter than the first one. I knew that simply taking 160 away from every reading would not ____8____. Each bowl had its own weight.\n\nBefore I put in the apples, I checked that the display showed ____9____. Baking had taught me that a useful number depends on knowing exactly what you are ____10____.",
+            "explanation": "The quoted procedural reminder is a note. It is neither a humorous joke nor a narrative story.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "joke"
+              },
+              {
+                "id": "o1",
+                "text": "story"
+              },
+              {
+                "id": "o2",
+                "text": "note"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.empty-bowl-cloze-010.whole.q7",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 7.",
+            "material": "The empty bowl\n\nI wanted to bake a cake for Dad's birthday. My grandmother agreed to help, but she said I should do the measuring myself. I put a large bowl on the kitchen scales and began to add flour.\n\nThe recipe said 200 grams. When the number reached 200, I ____1____ pouring. There was surprisingly little flour in the bowl. 'This cake will be very ____2____,' I said.\n\nGrandma did not add more flour immediately. She asked me to take the bowl ____3____ the scales. Then she put the empty bowl back. The number was 160.\n\n'I counted the weight of the bowl as well!' I said. Grandma ____4____. She showed me a button that made the number return to zero while the empty bowl was still on the scales. Now the scales would show only the weight of what I ____5____.\n\nWe started again. This time I checked the number before and after putting in each ingredient. I also wrote a short ____6____ beside the recipe: 'Put bowl on scales, then press zero.' I wanted to remember the right order next time.\n\nThe cake came out well. Dad asked whether I had made it all by ____7____. 'Mostly,' I said, 'but Grandma helped me understand a mistake.'\n\nLater, I used a different bowl to weigh some apples. It was much lighter than the first one. I knew that simply taking 160 away from every reading would not ____8____. Each bowl had its own weight.\n\nBefore I put in the apples, I checked that the display showed ____9____. Baking had taught me that a useful number depends on knowing exactly what you are ____10____.",
+            "explanation": "The narrator reports whether I had made it by myself. Herself would refer to a female third person and himself to a male third person, not I.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "myself"
+              },
+              {
+                "id": "o1",
+                "text": "herself"
+              },
+              {
+                "id": "o2",
+                "text": "himself"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.empty-bowl-cloze-010.whole.q8",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 8.",
+            "material": "The empty bowl\n\nI wanted to bake a cake for Dad's birthday. My grandmother agreed to help, but she said I should do the measuring myself. I put a large bowl on the kitchen scales and began to add flour.\n\nThe recipe said 200 grams. When the number reached 200, I ____1____ pouring. There was surprisingly little flour in the bowl. 'This cake will be very ____2____,' I said.\n\nGrandma did not add more flour immediately. She asked me to take the bowl ____3____ the scales. Then she put the empty bowl back. The number was 160.\n\n'I counted the weight of the bowl as well!' I said. Grandma ____4____. She showed me a button that made the number return to zero while the empty bowl was still on the scales. Now the scales would show only the weight of what I ____5____.\n\nWe started again. This time I checked the number before and after putting in each ingredient. I also wrote a short ____6____ beside the recipe: 'Put bowl on scales, then press zero.' I wanted to remember the right order next time.\n\nThe cake came out well. Dad asked whether I had made it all by ____7____. 'Mostly,' I said, 'but Grandma helped me understand a mistake.'\n\nLater, I used a different bowl to weigh some apples. It was much lighter than the first one. I knew that simply taking 160 away from every reading would not ____8____. Each bowl had its own weight.\n\nBefore I put in the apples, I checked that the display showed ____9____. Baking had taught me that a useful number depends on knowing exactly what you are ____10____.",
+            "explanation": "Subtracting the old bowl's weight cannot work for every different bowl. Wait and hurt do not describe whether this calculation is effective.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "wait"
+              },
+              {
+                "id": "o1",
+                "text": "work"
+              },
+              {
+                "id": "o2",
+                "text": "hurt"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.empty-bowl-cloze-010.whole.q9",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 9.",
+            "material": "The empty bowl\n\nI wanted to bake a cake for Dad's birthday. My grandmother agreed to help, but she said I should do the measuring myself. I put a large bowl on the kitchen scales and began to add flour.\n\nThe recipe said 200 grams. When the number reached 200, I ____1____ pouring. There was surprisingly little flour in the bowl. 'This cake will be very ____2____,' I said.\n\nGrandma did not add more flour immediately. She asked me to take the bowl ____3____ the scales. Then she put the empty bowl back. The number was 160.\n\n'I counted the weight of the bowl as well!' I said. Grandma ____4____. She showed me a button that made the number return to zero while the empty bowl was still on the scales. Now the scales would show only the weight of what I ____5____.\n\nWe started again. This time I checked the number before and after putting in each ingredient. I also wrote a short ____6____ beside the recipe: 'Put bowl on scales, then press zero.' I wanted to remember the right order next time.\n\nThe cake came out well. Dad asked whether I had made it all by ____7____. 'Mostly,' I said, 'but Grandma helped me understand a mistake.'\n\nLater, I used a different bowl to weigh some apples. It was much lighter than the first one. I knew that simply taking 160 away from every reading would not ____8____. Each bowl had its own weight.\n\nBefore I put in the apples, I checked that the display showed ____9____. Baking had taught me that a useful number depends on knowing exactly what you are ____10____.",
+            "explanation": "The empty new bowl must be zeroed before adding apples. 160 belonged to the old bowl and 200 to the flour target, so neither is the initial display wanted.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "160"
+              },
+              {
+                "id": "o1",
+                "text": "200"
+              },
+              {
+                "id": "o2",
+                "text": "zero"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.empty-bowl-cloze-010.whole.q10",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 10.",
+            "material": "The empty bowl\n\nI wanted to bake a cake for Dad's birthday. My grandmother agreed to help, but she said I should do the measuring myself. I put a large bowl on the kitchen scales and began to add flour.\n\nThe recipe said 200 grams. When the number reached 200, I ____1____ pouring. There was surprisingly little flour in the bowl. 'This cake will be very ____2____,' I said.\n\nGrandma did not add more flour immediately. She asked me to take the bowl ____3____ the scales. Then she put the empty bowl back. The number was 160.\n\n'I counted the weight of the bowl as well!' I said. Grandma ____4____. She showed me a button that made the number return to zero while the empty bowl was still on the scales. Now the scales would show only the weight of what I ____5____.\n\nWe started again. This time I checked the number before and after putting in each ingredient. I also wrote a short ____6____ beside the recipe: 'Put bowl on scales, then press zero.' I wanted to remember the right order next time.\n\nThe cake came out well. Dad asked whether I had made it all by ____7____. 'Mostly,' I said, 'but Grandma helped me understand a mistake.'\n\nLater, I used a different bowl to weigh some apples. It was much lighter than the first one. I knew that simply taking 160 away from every reading would not ____8____. Each bowl had its own weight.\n\nBefore I put in the apples, I checked that the display showed ____9____. Baking had taught me that a useful number depends on knowing exactly what you are ____10____.",
+            "explanation": "The story concerns identifying what a weight measures. No sale or concealment supports selling or hiding.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "measuring"
+              },
+              {
+                "id": "o1",
+                "text": "selling"
+              },
+              {
+                "id": "o2",
+                "text": "hiding"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "55024c2b3f48662d0d1a0f7c9f5970d7817e20af6a16f4b0797fd3acba28a26e",
+      "reviewNotes": "Four newly written complete cloze narratives for junior learners, not sentence substitutions in an old passage. Each gap has an explicit contextual key and a rationale covering every distractor. Same-author review and schema/grading checks only; no independent learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.folded-postcard-cloze-010",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · 完形填空 · 明信片上的折痕",
+        "summary": "完形填空 · 明信片上的折痕，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.choice_cloze"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.cloze",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 参照既存公开转载原PDF第7页初二C卷语言运用第一节：一篇寓言、十空、每空三独立候选、每题1.5分共15分。设置/审核校名只是原页署名，原校实际施测未认证；旧结构记录全输入为未知，本批核原完整页图并保存视觉转录，原36/40/43近义语用风险保留，原键非gold。另编三个不同的拟人动物故事，不复制原蚂蚁蚱蜢情节，寓言不作真实动物行为或普遍人生规律。逐候选回填为作者自审，独立教研、学生难度/用时、商用与生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four newly written complete cloze narratives for junior learners, not sentence substitutions in an old passage. Each gap has an explicit contextual key and a rationale covering every distractor. Same-author review and schema/grading checks only; no independent learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.folded-postcard-cloze-010",
+          "family": "choice_cloze",
+          "label": "完形填空 · 明信片上的折痕",
+          "candidateSHA256": "e2e0e10219607daa685f4ad04bfb85509da6969afefdd1f0a506c9fd6e759b14",
+          "authorCheckSHA256": "c67b2ab0c83246910af38e1684ca333772a1211a3b4bc59108263ecaba4ddef7",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.folded-postcard-cloze-010#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b010；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The folded postcard\n\nDuring a holiday, Leo bought a postcard showing a mountain village. He planned to send it to his cousin, but first he wanted to find the place where the photograph had been taken.\n\n'It must be near the square,' he said. The church was in the middle of the picture, with a narrow street on its ____1____ side. Leo walked along the street to the right of the church, but the view looked wrong. The church appeared much ____2____ than it did on the card.\n\nHe went farther away. Now its size looked right, but a tall building stood in front of it. Leo was ready to ____3____ when a shopkeeper noticed the postcard in his hand.\n\n'May I see the whole card?' she asked. Leo unfolded it. He had bent one edge back so it would fit into his pocket. A small bridge had been ____4____ by the fold.\n\n'That bridge is across the river,' the shopkeeper said. 'The photograph was taken from the path on the other ____5____.'\n\nLeo crossed the bridge and followed the riverside path. At one point he stopped and held up the card. The church, street and bridge were all in the ____6____ places. He had found the view.\n\nHe took his own photograph, then sat down to write to his cousin. He described not only the village but also his ____7____ in finding the spot.\n\nBefore posting the card, he carefully made it ____8____ again. 'You need the whole picture,' he wrote at the end.\n\nWhen his cousin replied, she said the story was more interesting than a list of sights. Leo had spent an hour looking for one place, but the postcard now held a ____9____ of his own. Next time he used a picture as a guide, he would check that no part of it was ____10____."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.folded-postcard-cloze-010.whole.q1",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 1.",
+            "material": "The folded postcard\n\nDuring a holiday, Leo bought a postcard showing a mountain village. He planned to send it to his cousin, but first he wanted to find the place where the photograph had been taken.\n\n'It must be near the square,' he said. The church was in the middle of the picture, with a narrow street on its ____1____ side. Leo walked along the street to the right of the church, but the view looked wrong. The church appeared much ____2____ than it did on the card.\n\nHe went farther away. Now its size looked right, but a tall building stood in front of it. Leo was ready to ____3____ when a shopkeeper noticed the postcard in his hand.\n\n'May I see the whole card?' she asked. Leo unfolded it. He had bent one edge back so it would fit into his pocket. A small bridge had been ____4____ by the fold.\n\n'That bridge is across the river,' the shopkeeper said. 'The photograph was taken from the path on the other ____5____.'\n\nLeo crossed the bridge and followed the riverside path. At one point he stopped and held up the card. The church, street and bridge were all in the ____6____ places. He had found the view.\n\nHe took his own photograph, then sat down to write to his cousin. He described not only the village but also his ____7____ in finding the spot.\n\nBefore posting the card, he carefully made it ____8____ again. 'You need the whole picture,' he wrote at the end.\n\nWhen his cousin replied, she said the story was more interesting than a list of sights. Leo had spent an hour looking for one place, but the postcard now held a ____9____ of his own. Next time he used a picture as a guide, he would check that no part of it was ____10____.",
+            "explanation": "The next sentence explicitly says Leo follows the street to the right. Left contradicts that cue and upper does not match the lateral direction used.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "left"
+              },
+              {
+                "id": "o1",
+                "text": "right"
+              },
+              {
+                "id": "o2",
+                "text": "upper"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.folded-postcard-cloze-010.whole.q2",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 2.",
+            "material": "The folded postcard\n\nDuring a holiday, Leo bought a postcard showing a mountain village. He planned to send it to his cousin, but first he wanted to find the place where the photograph had been taken.\n\n'It must be near the square,' he said. The church was in the middle of the picture, with a narrow street on its ____1____ side. Leo walked along the street to the right of the church, but the view looked wrong. The church appeared much ____2____ than it did on the card.\n\nHe went farther away. Now its size looked right, but a tall building stood in front of it. Leo was ready to ____3____ when a shopkeeper noticed the postcard in his hand.\n\n'May I see the whole card?' she asked. Leo unfolded it. He had bent one edge back so it would fit into his pocket. A small bridge had been ____4____ by the fold.\n\n'That bridge is across the river,' the shopkeeper said. 'The photograph was taken from the path on the other ____5____.'\n\nLeo crossed the bridge and followed the riverside path. At one point he stopped and held up the card. The church, street and bridge were all in the ____6____ places. He had found the view.\n\nHe took his own photograph, then sat down to write to his cousin. He described not only the village but also his ____7____ in finding the spot.\n\nBefore posting the card, he carefully made it ____8____ again. 'You need the whole picture,' he wrote at the end.\n\nWhen his cousin replied, she said the story was more interesting than a list of sights. Leo had spent an hour looking for one place, but the postcard now held a ____9____ of his own. Next time he used a picture as a guide, he would check that no part of it was ____10____.",
+            "explanation": "Moving farther away then makes its size look right, showing it initially appeared larger. Quieter concerns sound, and older concerns age, neither solved by distance in the stated way.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "larger"
+              },
+              {
+                "id": "o1",
+                "text": "quieter"
+              },
+              {
+                "id": "o2",
+                "text": "older"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.folded-postcard-cloze-010.whole.q3",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best phrase for blank 3.",
+            "material": "The folded postcard\n\nDuring a holiday, Leo bought a postcard showing a mountain village. He planned to send it to his cousin, but first he wanted to find the place where the photograph had been taken.\n\n'It must be near the square,' he said. The church was in the middle of the picture, with a narrow street on its ____1____ side. Leo walked along the street to the right of the church, but the view looked wrong. The church appeared much ____2____ than it did on the card.\n\nHe went farther away. Now its size looked right, but a tall building stood in front of it. Leo was ready to ____3____ when a shopkeeper noticed the postcard in his hand.\n\n'May I see the whole card?' she asked. Leo unfolded it. He had bent one edge back so it would fit into his pocket. A small bridge had been ____4____ by the fold.\n\n'That bridge is across the river,' the shopkeeper said. 'The photograph was taken from the path on the other ____5____.'\n\nLeo crossed the bridge and followed the riverside path. At one point he stopped and held up the card. The church, street and bridge were all in the ____6____ places. He had found the view.\n\nHe took his own photograph, then sat down to write to his cousin. He described not only the village but also his ____7____ in finding the spot.\n\nBefore posting the card, he carefully made it ____8____ again. 'You need the whole picture,' he wrote at the end.\n\nWhen his cousin replied, she said the story was more interesting than a list of sights. Leo had spent an hour looking for one place, but the postcard now held a ____9____ of his own. Next time he used a picture as a guide, he would check that no part of it was ____10____.",
+            "explanation": "Repeated failed views make Leo ready to give up. Nothing suggests sleep for wake up or a debt for pay back.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "wake up"
+              },
+              {
+                "id": "o1",
+                "text": "pay back"
+              },
+              {
+                "id": "o2",
+                "text": "give up"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.folded-postcard-cloze-010.whole.q4",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 4.",
+            "material": "The folded postcard\n\nDuring a holiday, Leo bought a postcard showing a mountain village. He planned to send it to his cousin, but first he wanted to find the place where the photograph had been taken.\n\n'It must be near the square,' he said. The church was in the middle of the picture, with a narrow street on its ____1____ side. Leo walked along the street to the right of the church, but the view looked wrong. The church appeared much ____2____ than it did on the card.\n\nHe went farther away. Now its size looked right, but a tall building stood in front of it. Leo was ready to ____3____ when a shopkeeper noticed the postcard in his hand.\n\n'May I see the whole card?' she asked. Leo unfolded it. He had bent one edge back so it would fit into his pocket. A small bridge had been ____4____ by the fold.\n\n'That bridge is across the river,' the shopkeeper said. 'The photograph was taken from the path on the other ____5____.'\n\nLeo crossed the bridge and followed the riverside path. At one point he stopped and held up the card. The church, street and bridge were all in the ____6____ places. He had found the view.\n\nHe took his own photograph, then sat down to write to his cousin. He described not only the village but also his ____7____ in finding the spot.\n\nBefore posting the card, he carefully made it ____8____ again. 'You need the whole picture,' he wrote at the end.\n\nWhen his cousin replied, she said the story was more interesting than a list of sights. Leo had spent an hour looking for one place, but the postcard now held a ____9____ of his own. Next time he used a picture as a guide, he would check that no part of it was ____10____.",
+            "explanation": "Folding the edge hides the printed bridge. The fold neither builds a real bridge nor crosses it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "built"
+              },
+              {
+                "id": "o1",
+                "text": "hidden"
+              },
+              {
+                "id": "o2",
+                "text": "crossed"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.folded-postcard-cloze-010.whole.q5",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 5.",
+            "material": "The folded postcard\n\nDuring a holiday, Leo bought a postcard showing a mountain village. He planned to send it to his cousin, but first he wanted to find the place where the photograph had been taken.\n\n'It must be near the square,' he said. The church was in the middle of the picture, with a narrow street on its ____1____ side. Leo walked along the street to the right of the church, but the view looked wrong. The church appeared much ____2____ than it did on the card.\n\nHe went farther away. Now its size looked right, but a tall building stood in front of it. Leo was ready to ____3____ when a shopkeeper noticed the postcard in his hand.\n\n'May I see the whole card?' she asked. Leo unfolded it. He had bent one edge back so it would fit into his pocket. A small bridge had been ____4____ by the fold.\n\n'That bridge is across the river,' the shopkeeper said. 'The photograph was taken from the path on the other ____5____.'\n\nLeo crossed the bridge and followed the riverside path. At one point he stopped and held up the card. The church, street and bridge were all in the ____6____ places. He had found the view.\n\nHe took his own photograph, then sat down to write to his cousin. He described not only the village but also his ____7____ in finding the spot.\n\nBefore posting the card, he carefully made it ____8____ again. 'You need the whole picture,' he wrote at the end.\n\nWhen his cousin replied, she said the story was more interesting than a list of sights. Leo had spent an hour looking for one place, but the postcard now held a ____9____ of his own. Next time he used a picture as a guide, he would check that no part of it was ____10____.",
+            "explanation": "He must cross the river to the other side. Floor concerns a building and page a document, not the opposite riverbank.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "side"
+              },
+              {
+                "id": "o1",
+                "text": "floor"
+              },
+              {
+                "id": "o2",
+                "text": "page"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.folded-postcard-cloze-010.whole.q6",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 6.",
+            "material": "The folded postcard\n\nDuring a holiday, Leo bought a postcard showing a mountain village. He planned to send it to his cousin, but first he wanted to find the place where the photograph had been taken.\n\n'It must be near the square,' he said. The church was in the middle of the picture, with a narrow street on its ____1____ side. Leo walked along the street to the right of the church, but the view looked wrong. The church appeared much ____2____ than it did on the card.\n\nHe went farther away. Now its size looked right, but a tall building stood in front of it. Leo was ready to ____3____ when a shopkeeper noticed the postcard in his hand.\n\n'May I see the whole card?' she asked. Leo unfolded it. He had bent one edge back so it would fit into his pocket. A small bridge had been ____4____ by the fold.\n\n'That bridge is across the river,' the shopkeeper said. 'The photograph was taken from the path on the other ____5____.'\n\nLeo crossed the bridge and followed the riverside path. At one point he stopped and held up the card. The church, street and bridge were all in the ____6____ places. He had found the view.\n\nHe took his own photograph, then sat down to write to his cousin. He described not only the village but also his ____7____ in finding the spot.\n\nBefore posting the card, he carefully made it ____8____ again. 'You need the whole picture,' he wrote at the end.\n\nWhen his cousin replied, she said the story was more interesting than a list of sights. Leo had spent an hour looking for one place, but the postcard now held a ____9____ of his own. Next time he used a picture as a guide, he would check that no part of it was ____10____.",
+            "explanation": "Finding the view means the landmarks align in the same places as on the card. Wrong denies the match, and empty cannot describe places already occupied by those landmarks.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "empty"
+              },
+              {
+                "id": "o1",
+                "text": "wrong"
+              },
+              {
+                "id": "o2",
+                "text": "same"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.folded-postcard-cloze-010.whole.q7",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 7.",
+            "material": "The folded postcard\n\nDuring a holiday, Leo bought a postcard showing a mountain village. He planned to send it to his cousin, but first he wanted to find the place where the photograph had been taken.\n\n'It must be near the square,' he said. The church was in the middle of the picture, with a narrow street on its ____1____ side. Leo walked along the street to the right of the church, but the view looked wrong. The church appeared much ____2____ than it did on the card.\n\nHe went farther away. Now its size looked right, but a tall building stood in front of it. Leo was ready to ____3____ when a shopkeeper noticed the postcard in his hand.\n\n'May I see the whole card?' she asked. Leo unfolded it. He had bent one edge back so it would fit into his pocket. A small bridge had been ____4____ by the fold.\n\n'That bridge is across the river,' the shopkeeper said. 'The photograph was taken from the path on the other ____5____.'\n\nLeo crossed the bridge and followed the riverside path. At one point he stopped and held up the card. The church, street and bridge were all in the ____6____ places. He had found the view.\n\nHe took his own photograph, then sat down to write to his cousin. He described not only the village but also his ____7____ in finding the spot.\n\nBefore posting the card, he carefully made it ____8____ again. 'You need the whole picture,' he wrote at the end.\n\nWhen his cousin replied, she said the story was more interesting than a list of sights. Leo had spent an hour looking for one place, but the postcard now held a ____9____ of his own. Next time he used a picture as a guide, he would check that no part of it was ____10____.",
+            "explanation": "The search involved difficulty finding the spot. There was no promise made about the search and no prize awarded.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "promise"
+              },
+              {
+                "id": "o1",
+                "text": "difficulty"
+              },
+              {
+                "id": "o2",
+                "text": "prize"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.folded-postcard-cloze-010.whole.q8",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 8.",
+            "material": "The folded postcard\n\nDuring a holiday, Leo bought a postcard showing a mountain village. He planned to send it to his cousin, but first he wanted to find the place where the photograph had been taken.\n\n'It must be near the square,' he said. The church was in the middle of the picture, with a narrow street on its ____1____ side. Leo walked along the street to the right of the church, but the view looked wrong. The church appeared much ____2____ than it did on the card.\n\nHe went farther away. Now its size looked right, but a tall building stood in front of it. Leo was ready to ____3____ when a shopkeeper noticed the postcard in his hand.\n\n'May I see the whole card?' she asked. Leo unfolded it. He had bent one edge back so it would fit into his pocket. A small bridge had been ____4____ by the fold.\n\n'That bridge is across the river,' the shopkeeper said. 'The photograph was taken from the path on the other ____5____.'\n\nLeo crossed the bridge and followed the riverside path. At one point he stopped and held up the card. The church, street and bridge were all in the ____6____ places. He had found the view.\n\nHe took his own photograph, then sat down to write to his cousin. He described not only the village but also his ____7____ in finding the spot.\n\nBefore posting the card, he carefully made it ____8____ again. 'You need the whole picture,' he wrote at the end.\n\nWhen his cousin replied, she said the story was more interesting than a list of sights. Leo had spent an hour looking for one place, but the postcard now held a ____9____ of his own. Next time he used a picture as a guide, he would check that no part of it was ____10____.",
+            "explanation": "Unfolding and smoothing the card makes it flat. Wet and dark have no role in restoring the folded image before posting.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "flat"
+              },
+              {
+                "id": "o1",
+                "text": "wet"
+              },
+              {
+                "id": "o2",
+                "text": "dark"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.folded-postcard-cloze-010.whole.q9",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 9.",
+            "material": "The folded postcard\n\nDuring a holiday, Leo bought a postcard showing a mountain village. He planned to send it to his cousin, but first he wanted to find the place where the photograph had been taken.\n\n'It must be near the square,' he said. The church was in the middle of the picture, with a narrow street on its ____1____ side. Leo walked along the street to the right of the church, but the view looked wrong. The church appeared much ____2____ than it did on the card.\n\nHe went farther away. Now its size looked right, but a tall building stood in front of it. Leo was ready to ____3____ when a shopkeeper noticed the postcard in his hand.\n\n'May I see the whole card?' she asked. Leo unfolded it. He had bent one edge back so it would fit into his pocket. A small bridge had been ____4____ by the fold.\n\n'That bridge is across the river,' the shopkeeper said. 'The photograph was taken from the path on the other ____5____.'\n\nLeo crossed the bridge and followed the riverside path. At one point he stopped and held up the card. The church, street and bridge were all in the ____6____ places. He had found the view.\n\nHe took his own photograph, then sat down to write to his cousin. He described not only the village but also his ____7____ in finding the spot.\n\nBefore posting the card, he carefully made it ____8____ again. 'You need the whole picture,' he wrote at the end.\n\nWhen his cousin replied, she said the story was more interesting than a list of sights. Leo had spent an hour looking for one place, but the postcard now held a ____9____ of his own. Next time he used a picture as a guide, he would check that no part of it was ____10____.",
+            "explanation": "His personal search gives the postcard a memory of his own. The passage values a story rather than a price or the postal address.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "price"
+              },
+              {
+                "id": "o1",
+                "text": "address"
+              },
+              {
+                "id": "o2",
+                "text": "memory"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.folded-postcard-cloze-010.whole.q10",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 10.",
+            "material": "The folded postcard\n\nDuring a holiday, Leo bought a postcard showing a mountain village. He planned to send it to his cousin, but first he wanted to find the place where the photograph had been taken.\n\n'It must be near the square,' he said. The church was in the middle of the picture, with a narrow street on its ____1____ side. Leo walked along the street to the right of the church, but the view looked wrong. The church appeared much ____2____ than it did on the card.\n\nHe went farther away. Now its size looked right, but a tall building stood in front of it. Leo was ready to ____3____ when a shopkeeper noticed the postcard in his hand.\n\n'May I see the whole card?' she asked. Leo unfolded it. He had bent one edge back so it would fit into his pocket. A small bridge had been ____4____ by the fold.\n\n'That bridge is across the river,' the shopkeeper said. 'The photograph was taken from the path on the other ____5____.'\n\nLeo crossed the bridge and followed the riverside path. At one point he stopped and held up the card. The church, street and bridge were all in the ____6____ places. He had found the view.\n\nHe took his own photograph, then sat down to write to his cousin. He described not only the village but also his ____7____ in finding the spot.\n\nBefore posting the card, he carefully made it ____8____ again. 'You need the whole picture,' he wrote at the end.\n\nWhen his cousin replied, she said the story was more interesting than a list of sights. Leo had spent an hour looking for one place, but the postcard now held a ____9____ of his own. Next time he used a picture as a guide, he would check that no part of it was ____10____.",
+            "explanation": "The hidden bridge caused the error, so he checks that no part is missing from view. Popularity and colour do not address an incomplete guiding image.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "popular"
+              },
+              {
+                "id": "o1",
+                "text": "missing"
+              },
+              {
+                "id": "o2",
+                "text": "colourful"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "6ecf6a0d0bbc9e43a4f7a80d223556e71caefde855ff4d0bc96bc4a5e4720074",
+      "reviewNotes": "Four newly written complete cloze narratives for junior learners, not sentence substitutions in an old passage. Each gap has an explicit contextual key and a rationale covering every distractor. Same-author review and schema/grading checks only; no independent learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.two-afternoons-cloze-010",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · 完形填空 · 两个下午的电影",
+        "summary": "完形填空 · 两个下午的电影，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.choice_cloze"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-boxing2025-21cnjy24857076.cloze",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 参照既存公开转载题首2024—2025第一学期期末教育集团九年级英语一篇消费趋势报道：十空各四独立候选；原节只印10小题/计10分，未逐题印分值，本稿按每题1分分配。博兴只保留原转载标签，不据文件名补正文地区。原电子产品/物体、built/created近义与具体手机型号/首创/调查比例等未独立核验，原键非gold、原施测未认证。本稿学校机构、受访者、人数、引语和服务案例均作者虚构，只作完整信息短文练习，不当实测数据或真实产品评价；不照抄原品牌宣传。作者逐候选回填不替代独立教研、学生难度用时、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four newly written complete cloze narratives for junior learners, not sentence substitutions in an old passage. Each gap has an explicit contextual key and a rationale covering every distractor. Same-author review and schema/grading checks only; no independent learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.two-afternoons-cloze-010",
+          "family": "choice_cloze",
+          "label": "完形填空 · 两个下午的电影",
+          "candidateSHA256": "caa31f7b76e32b9c889bedcc162aceb01b0415205c2718b0d8adf57ed2e6eac6",
+          "authorCheckSHA256": "98c2aa11e67ee9bf6abbd22863417f0e1d3aeeacd612ed703e77dda67b40e1fa",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.two-afternoons-cloze-010#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b010；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Two afternoons in one film\n\nOur class was making a film about a girl who missed a bus. We filmed her leaving school on Monday and running towards the bus stop on Wednesday.\n\nWhen we watched both parts together, everyone laughed. At school, our actor carried a red umbrella. In the street, her hands were ____1____. We had forgotten the umbrella on Wednesday.\n\n\"Perhaps viewers will not notice,\" someone said. But the umbrella covered half her face in the first shot. It was hard to ____2____.\n\nWe could film the street scene again, but our actor had returned her borrowed uniform. Finding the same clothes and gathering everyone would take another week. We needed another ____3____.\n\nOur teacher asked what could happen between the scenes. In the last school image, a friend stood beside the door, with her face outside the picture. \"She could ____4____ the umbrella to that friend,\" I suggested.\n\nWe filmed just two hands and the umbrella. No uniforms were needed. Our actor's voice saying \"Please keep this for me\" explained the ____5____. We inserted the shot between the original scenes.\n\nNow the umbrella did not simply ____6____. Its absence had a reason. The girl wanted her hands free to run.\n\nAfterwards, someone kept a list of what each actor wore and ____7____. We had learned to check objects as well as lines. A film need not show every second, but its parts must ____8____.\n\nAt the screening, viewers followed the story easily. They did not need to know that the extra shot came from a third day. They needed a ____9____ story, and those few seconds had helped us ____10____ one."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.two-afternoons-cloze-010.whole.q1",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 1.",
+            "material": "Two afternoons in one film\n\nOur class was making a film about a girl who missed a bus. We filmed her leaving school on Monday and running towards the bus stop on Wednesday.\n\nWhen we watched both parts together, everyone laughed. At school, our actor carried a red umbrella. In the street, her hands were ____1____. We had forgotten the umbrella on Wednesday.\n\n\"Perhaps viewers will not notice,\" someone said. But the umbrella covered half her face in the first shot. It was hard to ____2____.\n\nWe could film the street scene again, but our actor had returned her borrowed uniform. Finding the same clothes and gathering everyone would take another week. We needed another ____3____.\n\nOur teacher asked what could happen between the scenes. In the last school image, a friend stood beside the door, with her face outside the picture. \"She could ____4____ the umbrella to that friend,\" I suggested.\n\nWe filmed just two hands and the umbrella. No uniforms were needed. Our actor's voice saying \"Please keep this for me\" explained the ____5____. We inserted the shot between the original scenes.\n\nNow the umbrella did not simply ____6____. Its absence had a reason. The girl wanted her hands free to run.\n\nAfterwards, someone kept a list of what each actor wore and ____7____. We had learned to check objects as well as lines. A film need not show every second, but its parts must ____8____.\n\nAt the screening, viewers followed the story easily. They did not need to know that the extra shot came from a third day. They needed a ____9____ story, and those few seconds had helped us ____10____ one.",
+            "explanation": "The forgotten umbrella means she carries nothing: empty hands. Cold and dirty concern conditions not mentioned; heavy contradicts absence of an object.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cold"
+              },
+              {
+                "id": "o1",
+                "text": "dirty"
+              },
+              {
+                "id": "o2",
+                "text": "empty"
+              },
+              {
+                "id": "o3",
+                "text": "heavy"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.two-afternoons-cloze-010.whole.q2",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 2.",
+            "material": "Two afternoons in one film\n\nOur class was making a film about a girl who missed a bus. We filmed her leaving school on Monday and running towards the bus stop on Wednesday.\n\nWhen we watched both parts together, everyone laughed. At school, our actor carried a red umbrella. In the street, her hands were ____1____. We had forgotten the umbrella on Wednesday.\n\n\"Perhaps viewers will not notice,\" someone said. But the umbrella covered half her face in the first shot. It was hard to ____2____.\n\nWe could film the street scene again, but our actor had returned her borrowed uniform. Finding the same clothes and gathering everyone would take another week. We needed another ____3____.\n\nOur teacher asked what could happen between the scenes. In the last school image, a friend stood beside the door, with her face outside the picture. \"She could ____4____ the umbrella to that friend,\" I suggested.\n\nWe filmed just two hands and the umbrella. No uniforms were needed. Our actor's voice saying \"Please keep this for me\" explained the ____5____. We inserted the shot between the original scenes.\n\nNow the umbrella did not simply ____6____. Its absence had a reason. The girl wanted her hands free to run.\n\nAfterwards, someone kept a list of what each actor wore and ____7____. We had learned to check objects as well as lines. A film need not show every second, but its parts must ____8____.\n\nAt the screening, viewers followed the story easily. They did not need to know that the extra shot came from a third day. They needed a ____9____ story, and those few seconds had helped us ____10____ one.",
+            "explanation": "The bright umbrella in front of her face is hard for viewers to ignore. Borrow, open and repair concern handling the umbrella, not noticing continuity.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "ignore"
+              },
+              {
+                "id": "o1",
+                "text": "borrow"
+              },
+              {
+                "id": "o2",
+                "text": "open"
+              },
+              {
+                "id": "o3",
+                "text": "repair"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.two-afternoons-cloze-010.whole.q3",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 3.",
+            "material": "Two afternoons in one film\n\nOur class was making a film about a girl who missed a bus. We filmed her leaving school on Monday and running towards the bus stop on Wednesday.\n\nWhen we watched both parts together, everyone laughed. At school, our actor carried a red umbrella. In the street, her hands were ____1____. We had forgotten the umbrella on Wednesday.\n\n\"Perhaps viewers will not notice,\" someone said. But the umbrella covered half her face in the first shot. It was hard to ____2____.\n\nWe could film the street scene again, but our actor had returned her borrowed uniform. Finding the same clothes and gathering everyone would take another week. We needed another ____3____.\n\nOur teacher asked what could happen between the scenes. In the last school image, a friend stood beside the door, with her face outside the picture. \"She could ____4____ the umbrella to that friend,\" I suggested.\n\nWe filmed just two hands and the umbrella. No uniforms were needed. Our actor's voice saying \"Please keep this for me\" explained the ____5____. We inserted the shot between the original scenes.\n\nNow the umbrella did not simply ____6____. Its absence had a reason. The girl wanted her hands free to run.\n\nAfterwards, someone kept a list of what each actor wore and ____7____. We had learned to check objects as well as lines. A film need not show every second, but its parts must ____8____.\n\nAt the screening, viewers followed the story easily. They did not need to know that the extra shot came from a third day. They needed a ____9____ story, and those few seconds had helped us ____10____ one.",
+            "explanation": "They need an alternative solution to reshooting. A uniform is one missing resource, not the desired overall approach; audience and street do not address the continuity problem.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "uniform"
+              },
+              {
+                "id": "o1",
+                "text": "audience"
+              },
+              {
+                "id": "o2",
+                "text": "street"
+              },
+              {
+                "id": "o3",
+                "text": "solution"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.two-afternoons-cloze-010.whole.q4",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 4.",
+            "material": "Two afternoons in one film\n\nOur class was making a film about a girl who missed a bus. We filmed her leaving school on Monday and running towards the bus stop on Wednesday.\n\nWhen we watched both parts together, everyone laughed. At school, our actor carried a red umbrella. In the street, her hands were ____1____. We had forgotten the umbrella on Wednesday.\n\n\"Perhaps viewers will not notice,\" someone said. But the umbrella covered half her face in the first shot. It was hard to ____2____.\n\nWe could film the street scene again, but our actor had returned her borrowed uniform. Finding the same clothes and gathering everyone would take another week. We needed another ____3____.\n\nOur teacher asked what could happen between the scenes. In the last school image, a friend stood beside the door, with her face outside the picture. \"She could ____4____ the umbrella to that friend,\" I suggested.\n\nWe filmed just two hands and the umbrella. No uniforms were needed. Our actor's voice saying \"Please keep this for me\" explained the ____5____. We inserted the shot between the original scenes.\n\nNow the umbrella did not simply ____6____. Its absence had a reason. The girl wanted her hands free to run.\n\nAfterwards, someone kept a list of what each actor wore and ____7____. We had learned to check objects as well as lines. A film need not show every second, but its parts must ____8____.\n\nAt the screening, viewers followed the story easily. They did not need to know that the extra shot came from a third day. They needed a ____9____ story, and those few seconds had helped us ____10____ one.",
+            "explanation": "Passing the umbrella to a friend explains free hands and is shown by the added hands-only shot. Compare and describe leave it with her; sell has no support in the friendly request to keep it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "compare"
+              },
+              {
+                "id": "o1",
+                "text": "pass"
+              },
+              {
+                "id": "o2",
+                "text": "describe"
+              },
+              {
+                "id": "o3",
+                "text": "sell"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.two-afternoons-cloze-010.whole.q5",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 5.",
+            "material": "Two afternoons in one film\n\nOur class was making a film about a girl who missed a bus. We filmed her leaving school on Monday and running towards the bus stop on Wednesday.\n\nWhen we watched both parts together, everyone laughed. At school, our actor carried a red umbrella. In the street, her hands were ____1____. We had forgotten the umbrella on Wednesday.\n\n\"Perhaps viewers will not notice,\" someone said. But the umbrella covered half her face in the first shot. It was hard to ____2____.\n\nWe could film the street scene again, but our actor had returned her borrowed uniform. Finding the same clothes and gathering everyone would take another week. We needed another ____3____.\n\nOur teacher asked what could happen between the scenes. In the last school image, a friend stood beside the door, with her face outside the picture. \"She could ____4____ the umbrella to that friend,\" I suggested.\n\nWe filmed just two hands and the umbrella. No uniforms were needed. Our actor's voice saying \"Please keep this for me\" explained the ____5____. We inserted the shot between the original scenes.\n\nNow the umbrella did not simply ____6____. Its absence had a reason. The girl wanted her hands free to run.\n\nAfterwards, someone kept a list of what each actor wore and ____7____. We had learned to check objects as well as lines. A film need not show every second, but its parts must ____8____.\n\nAt the screening, viewers followed the story easily. They did not need to know that the extra shot came from a third day. They needed a ____9____ story, and those few seconds had helped us ____10____ one.",
+            "explanation": "The spoken request explains the filmed action of handing it over. Weather is not discussed, production delay is not part of the story, and uniforms are deliberately outside the new shot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "weather"
+              },
+              {
+                "id": "o1",
+                "text": "delay"
+              },
+              {
+                "id": "o2",
+                "text": "action"
+              },
+              {
+                "id": "o3",
+                "text": "uniform"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.two-afternoons-cloze-010.whole.q6",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 6.",
+            "material": "Two afternoons in one film\n\nOur class was making a film about a girl who missed a bus. We filmed her leaving school on Monday and running towards the bus stop on Wednesday.\n\nWhen we watched both parts together, everyone laughed. At school, our actor carried a red umbrella. In the street, her hands were ____1____. We had forgotten the umbrella on Wednesday.\n\n\"Perhaps viewers will not notice,\" someone said. But the umbrella covered half her face in the first shot. It was hard to ____2____.\n\nWe could film the street scene again, but our actor had returned her borrowed uniform. Finding the same clothes and gathering everyone would take another week. We needed another ____3____.\n\nOur teacher asked what could happen between the scenes. In the last school image, a friend stood beside the door, with her face outside the picture. \"She could ____4____ the umbrella to that friend,\" I suggested.\n\nWe filmed just two hands and the umbrella. No uniforms were needed. Our actor's voice saying \"Please keep this for me\" explained the ____5____. We inserted the shot between the original scenes.\n\nNow the umbrella did not simply ____6____. Its absence had a reason. The girl wanted her hands free to run.\n\nAfterwards, someone kept a list of what each actor wore and ____7____. We had learned to check objects as well as lines. A film need not show every second, but its parts must ____8____.\n\nAt the screening, viewers followed the story easily. They did not need to know that the extra shot came from a third day. They needed a ____9____ story, and those few seconds had helped us ____10____ one.",
+            "explanation": "The new shot gives a reason for the umbrella's disappearance from the next scene. Shine, break and grow are not the unexplained change between the original shots.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "disappear"
+              },
+              {
+                "id": "o1",
+                "text": "shine"
+              },
+              {
+                "id": "o2",
+                "text": "break"
+              },
+              {
+                "id": "o3",
+                "text": "grow"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.two-afternoons-cloze-010.whole.q7",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 7.",
+            "material": "Two afternoons in one film\n\nOur class was making a film about a girl who missed a bus. We filmed her leaving school on Monday and running towards the bus stop on Wednesday.\n\nWhen we watched both parts together, everyone laughed. At school, our actor carried a red umbrella. In the street, her hands were ____1____. We had forgotten the umbrella on Wednesday.\n\n\"Perhaps viewers will not notice,\" someone said. But the umbrella covered half her face in the first shot. It was hard to ____2____.\n\nWe could film the street scene again, but our actor had returned her borrowed uniform. Finding the same clothes and gathering everyone would take another week. We needed another ____3____.\n\nOur teacher asked what could happen between the scenes. In the last school image, a friend stood beside the door, with her face outside the picture. \"She could ____4____ the umbrella to that friend,\" I suggested.\n\nWe filmed just two hands and the umbrella. No uniforms were needed. Our actor's voice saying \"Please keep this for me\" explained the ____5____. We inserted the shot between the original scenes.\n\nNow the umbrella did not simply ____6____. Its absence had a reason. The girl wanted her hands free to run.\n\nAfterwards, someone kept a list of what each actor wore and ____7____. We had learned to check objects as well as lines. A film need not show every second, but its parts must ____8____.\n\nAt the screening, viewers followed the story easily. They did not need to know that the extra shot came from a third day. They needed a ____9____ story, and those few seconds had helped us ____10____ one.",
+            "explanation": "The list tracks clothing and carried objects for continuity. Believed, heard and promised describe mental or verbal content rather than the visible object problem.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "believed"
+              },
+              {
+                "id": "o1",
+                "text": "heard"
+              },
+              {
+                "id": "o2",
+                "text": "promised"
+              },
+              {
+                "id": "o3",
+                "text": "carried"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.two-afternoons-cloze-010.whole.q8",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 8.",
+            "material": "Two afternoons in one film\n\nOur class was making a film about a girl who missed a bus. We filmed her leaving school on Monday and running towards the bus stop on Wednesday.\n\nWhen we watched both parts together, everyone laughed. At school, our actor carried a red umbrella. In the street, her hands were ____1____. We had forgotten the umbrella on Wednesday.\n\n\"Perhaps viewers will not notice,\" someone said. But the umbrella covered half her face in the first shot. It was hard to ____2____.\n\nWe could film the street scene again, but our actor had returned her borrowed uniform. Finding the same clothes and gathering everyone would take another week. We needed another ____3____.\n\nOur teacher asked what could happen between the scenes. In the last school image, a friend stood beside the door, with her face outside the picture. \"She could ____4____ the umbrella to that friend,\" I suggested.\n\nWe filmed just two hands and the umbrella. No uniforms were needed. Our actor's voice saying \"Please keep this for me\" explained the ____5____. We inserted the shot between the original scenes.\n\nNow the umbrella did not simply ____6____. Its absence had a reason. The girl wanted her hands free to run.\n\nAfterwards, someone kept a list of what each actor wore and ____7____. We had learned to check objects as well as lines. A film need not show every second, but its parts must ____8____.\n\nAt the screening, viewers followed the story easily. They did not need to know that the extra shot came from a third day. They needed a ____9____ story, and those few seconds had helped us ____10____ one.",
+            "explanation": "Omitted seconds are acceptable if shown parts connect coherently. Compete and wait do not express continuity; repeat would require unnecessary duplication rather than connection.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "compete"
+              },
+              {
+                "id": "o1",
+                "text": "connect"
+              },
+              {
+                "id": "o2",
+                "text": "repeat"
+              },
+              {
+                "id": "o3",
+                "text": "wait"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.two-afternoons-cloze-010.whole.q9",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 9.",
+            "material": "Two afternoons in one film\n\nOur class was making a film about a girl who missed a bus. We filmed her leaving school on Monday and running towards the bus stop on Wednesday.\n\nWhen we watched both parts together, everyone laughed. At school, our actor carried a red umbrella. In the street, her hands were ____1____. We had forgotten the umbrella on Wednesday.\n\n\"Perhaps viewers will not notice,\" someone said. But the umbrella covered half her face in the first shot. It was hard to ____2____.\n\nWe could film the street scene again, but our actor had returned her borrowed uniform. Finding the same clothes and gathering everyone would take another week. We needed another ____3____.\n\nOur teacher asked what could happen between the scenes. In the last school image, a friend stood beside the door, with her face outside the picture. \"She could ____4____ the umbrella to that friend,\" I suggested.\n\nWe filmed just two hands and the umbrella. No uniforms were needed. Our actor's voice saying \"Please keep this for me\" explained the ____5____. We inserted the shot between the original scenes.\n\nNow the umbrella did not simply ____6____. Its absence had a reason. The girl wanted her hands free to run.\n\nAfterwards, someone kept a list of what each actor wore and ____7____. We had learned to check objects as well as lines. A film need not show every second, but its parts must ____8____.\n\nAt the screening, viewers followed the story easily. They did not need to know that the extra shot came from a third day. They needed a ____9____ story, and those few seconds had helped us ____10____ one.",
+            "explanation": "Following without confusion requires a clear story. Secret is contrary to communicating it; longer is not the goal; silent contradicts the explanatory spoken line.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "secret"
+              },
+              {
+                "id": "o1",
+                "text": "longer"
+              },
+              {
+                "id": "o2",
+                "text": "clear"
+              },
+              {
+                "id": "o3",
+                "text": "silent"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.two-afternoons-cloze-010.whole.q10",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 10.",
+            "material": "Two afternoons in one film\n\nOur class was making a film about a girl who missed a bus. We filmed her leaving school on Monday and running towards the bus stop on Wednesday.\n\nWhen we watched both parts together, everyone laughed. At school, our actor carried a red umbrella. In the street, her hands were ____1____. We had forgotten the umbrella on Wednesday.\n\n\"Perhaps viewers will not notice,\" someone said. But the umbrella covered half her face in the first shot. It was hard to ____2____.\n\nWe could film the street scene again, but our actor had returned her borrowed uniform. Finding the same clothes and gathering everyone would take another week. We needed another ____3____.\n\nOur teacher asked what could happen between the scenes. In the last school image, a friend stood beside the door, with her face outside the picture. \"She could ____4____ the umbrella to that friend,\" I suggested.\n\nWe filmed just two hands and the umbrella. No uniforms were needed. Our actor's voice saying \"Please keep this for me\" explained the ____5____. We inserted the shot between the original scenes.\n\nNow the umbrella did not simply ____6____. Its absence had a reason. The girl wanted her hands free to run.\n\nAfterwards, someone kept a list of what each actor wore and ____7____. We had learned to check objects as well as lines. A film need not show every second, but its parts must ____8____.\n\nAt the screening, viewers followed the story easily. They did not need to know that the extra shot came from a third day. They needed a ____9____ story, and those few seconds had helped us ____10____ one.",
+            "explanation": "The added shot helps create a clear story. Cancel and forget undo the task; measure has no appropriate story-production meaning here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "create"
+              },
+              {
+                "id": "o1",
+                "text": "cancel"
+              },
+              {
+                "id": "o2",
+                "text": "forget"
+              },
+              {
+                "id": "o3",
+                "text": "measure"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "5dd2876c55e723912bbdda72564afb46c82dddb205b40beaccf9df93a7432391",
+      "reviewNotes": "Four newly written complete cloze narratives for junior learners, not sentence substitutions in an old passage. Each gap has an explicit contextual key and a rationale covering every distractor. Same-author review and schema/grading checks only; no independent learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.aquarium-notebook-cloze-010",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · 完形填空 · 水族馆里的笔记",
+        "summary": "完形填空 · 水族馆里的笔记，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.choice_cloze"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-boxing2025-21cnjy24857076.cloze",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 参照既存公开转载题首2024—2025第一学期期末教育集团九年级英语一篇消费趋势报道：十空各四独立候选；原节只印10小题/计10分，未逐题印分值，本稿按每题1分分配。博兴只保留原转载标签，不据文件名补正文地区。原电子产品/物体、built/created近义与具体手机型号/首创/调查比例等未独立核验，原键非gold、原施测未认证。本稿学校机构、受访者、人数、引语和服务案例均作者虚构，只作完整信息短文练习，不当实测数据或真实产品评价；不照抄原品牌宣传。作者逐候选回填不替代独立教研、学生难度用时、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four newly written complete cloze narratives for junior learners, not sentence substitutions in an old passage. Each gap has an explicit contextual key and a rationale covering every distractor. Same-author review and schema/grading checks only; no independent learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.aquarium-notebook-cloze-010",
+          "family": "choice_cloze",
+          "label": "完形填空 · 水族馆里的笔记",
+          "candidateSHA256": "abc0bcf6f47d82ace7ffe012d12a072be658779f0162b8a52fd0452c550f01bb",
+          "authorCheckSHA256": "757b6374816ae37af103a36040956986515b35b583ace6b0f35b2e015f411b94",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.aquarium-notebook-cloze-010#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b010；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The aquarium notebook\n\nAt the aquarium, our teacher asked us to draw one fish carefully. I chose a silver fish with a dark mark near its tail. Whenever it approached the glass, I added another detail.\n\nSoon I noticed a problem. In one sketch the mark was round; in another it looked like a line. The fish also seemed to change length. I thought I was bad at ____1____.\n\nMy friend Nia asked whether I was watching the same fish. \"Of course! It has a dark mark,\" I said. She pointed across the tank. There were ____2____ fish with similar marks. I had drawn whichever one came closest.\n\nA staff member showed us a white area on one fish's fin. We could recognise it from both sides. I recorded this feature as a ____3____.\n\nThen I waited. My fish did not always swim where I wanted. Instead of ____4____ to another fish, I left parts of the drawing blank until it returned.\n\nI also noted whether it faced me or moved sideways. Position affected the shape I ____5____, although the animal itself had not changed.\n\nBack at school, I kept the first sketches beside the final one. I did not throw them ____6____: they recorded my discovery of the problem.\n\nThe teacher especially liked my notes. They explained ____7____ I had chosen each detail, which a neat picture alone could not show.\n\nNow, when observing one animal, I check its ____8____ before adding a mark. The notebook helped me separate changes in the fish from changes in my ____9____. My final drawing was something I could ____10____, not just something that looked finished."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.aquarium-notebook-cloze-010.whole.q1",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 1.",
+            "material": "The aquarium notebook\n\nAt the aquarium, our teacher asked us to draw one fish carefully. I chose a silver fish with a dark mark near its tail. Whenever it approached the glass, I added another detail.\n\nSoon I noticed a problem. In one sketch the mark was round; in another it looked like a line. The fish also seemed to change length. I thought I was bad at ____1____.\n\nMy friend Nia asked whether I was watching the same fish. \"Of course! It has a dark mark,\" I said. She pointed across the tank. There were ____2____ fish with similar marks. I had drawn whichever one came closest.\n\nA staff member showed us a white area on one fish's fin. We could recognise it from both sides. I recorded this feature as a ____3____.\n\nThen I waited. My fish did not always swim where I wanted. Instead of ____4____ to another fish, I left parts of the drawing blank until it returned.\n\nI also noted whether it faced me or moved sideways. Position affected the shape I ____5____, although the animal itself had not changed.\n\nBack at school, I kept the first sketches beside the final one. I did not throw them ____6____: they recorded my discovery of the problem.\n\nThe teacher especially liked my notes. They explained ____7____ I had chosen each detail, which a neat picture alone could not show.\n\nNow, when observing one animal, I check its ____8____ before adding a mark. The notebook helped me separate changes in the fish from changes in my ____9____. My final drawing was something I could ____10____, not just something that looked finished.",
+            "explanation": "The narrator initially blames drawing skill for inconsistent sketches. They are not swimming or teaching, and the specific concern is shape rather than inability to wait.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "swimming"
+              },
+              {
+                "id": "o1",
+                "text": "drawing"
+              },
+              {
+                "id": "o2",
+                "text": "teaching"
+              },
+              {
+                "id": "o3",
+                "text": "waiting"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.aquarium-notebook-cloze-010.whole.q2",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 2.",
+            "material": "The aquarium notebook\n\nAt the aquarium, our teacher asked us to draw one fish carefully. I chose a silver fish with a dark mark near its tail. Whenever it approached the glass, I added another detail.\n\nSoon I noticed a problem. In one sketch the mark was round; in another it looked like a line. The fish also seemed to change length. I thought I was bad at ____1____.\n\nMy friend Nia asked whether I was watching the same fish. \"Of course! It has a dark mark,\" I said. She pointed across the tank. There were ____2____ fish with similar marks. I had drawn whichever one came closest.\n\nA staff member showed us a white area on one fish's fin. We could recognise it from both sides. I recorded this feature as a ____3____.\n\nThen I waited. My fish did not always swim where I wanted. Instead of ____4____ to another fish, I left parts of the drawing blank until it returned.\n\nI also noted whether it faced me or moved sideways. Position affected the shape I ____5____, although the animal itself had not changed.\n\nBack at school, I kept the first sketches beside the final one. I did not throw them ____6____: they recorded my discovery of the problem.\n\nThe teacher especially liked my notes. They explained ____7____ I had chosen each detail, which a neat picture alone could not show.\n\nNow, when observing one animal, I check its ____8____ before adding a mark. The notebook helped me separate changes in the fish from changes in my ____9____. My final drawing was something I could ____10____, not just something that looked finished.",
+            "explanation": "Several similarly marked fish explain accidental switching. No contradicts their presence; invisible contradicts Nia pointing them out; wooden contradicts the live fish described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "no"
+              },
+              {
+                "id": "o1",
+                "text": "invisible"
+              },
+              {
+                "id": "o2",
+                "text": "several"
+              },
+              {
+                "id": "o3",
+                "text": "wooden"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.aquarium-notebook-cloze-010.whole.q3",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 3.",
+            "material": "The aquarium notebook\n\nAt the aquarium, our teacher asked us to draw one fish carefully. I chose a silver fish with a dark mark near its tail. Whenever it approached the glass, I added another detail.\n\nSoon I noticed a problem. In one sketch the mark was round; in another it looked like a line. The fish also seemed to change length. I thought I was bad at ____1____.\n\nMy friend Nia asked whether I was watching the same fish. \"Of course! It has a dark mark,\" I said. She pointed across the tank. There were ____2____ fish with similar marks. I had drawn whichever one came closest.\n\nA staff member showed us a white area on one fish's fin. We could recognise it from both sides. I recorded this feature as a ____3____.\n\nThen I waited. My fish did not always swim where I wanted. Instead of ____4____ to another fish, I left parts of the drawing blank until it returned.\n\nI also noted whether it faced me or moved sideways. Position affected the shape I ____5____, although the animal itself had not changed.\n\nBack at school, I kept the first sketches beside the final one. I did not throw them ____6____: they recorded my discovery of the problem.\n\nThe teacher especially liked my notes. They explained ____7____ I had chosen each detail, which a neat picture alone could not show.\n\nNow, when observing one animal, I check its ____8____ before adding a mark. The notebook helped me separate changes in the fish from changes in my ____9____. My final drawing was something I could ____10____, not just something that looked finished.",
+            "explanation": "The white fin feature guides identification. It is not a humorous joke, a danger warning or a title for the work.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "joke"
+              },
+              {
+                "id": "o1",
+                "text": "warning"
+              },
+              {
+                "id": "o2",
+                "text": "title"
+              },
+              {
+                "id": "o3",
+                "text": "guide"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.aquarium-notebook-cloze-010.whole.q4",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 4.",
+            "material": "The aquarium notebook\n\nAt the aquarium, our teacher asked us to draw one fish carefully. I chose a silver fish with a dark mark near its tail. Whenever it approached the glass, I added another detail.\n\nSoon I noticed a problem. In one sketch the mark was round; in another it looked like a line. The fish also seemed to change length. I thought I was bad at ____1____.\n\nMy friend Nia asked whether I was watching the same fish. \"Of course! It has a dark mark,\" I said. She pointed across the tank. There were ____2____ fish with similar marks. I had drawn whichever one came closest.\n\nA staff member showed us a white area on one fish's fin. We could recognise it from both sides. I recorded this feature as a ____3____.\n\nThen I waited. My fish did not always swim where I wanted. Instead of ____4____ to another fish, I left parts of the drawing blank until it returned.\n\nI also noted whether it faced me or moved sideways. Position affected the shape I ____5____, although the animal itself had not changed.\n\nBack at school, I kept the first sketches beside the final one. I did not throw them ____6____: they recorded my discovery of the problem.\n\nThe teacher especially liked my notes. They explained ____7____ I had chosen each detail, which a neat picture alone could not show.\n\nNow, when observing one animal, I check its ____8____ before adding a mark. The notebook helped me separate changes in the fish from changes in my ____9____. My final drawing was something I could ____10____, not just something that looked finished.",
+            "explanation": "The narrator stops switching to whichever fish is near. Listening or speaking to fish does not match the visual task; returning to another fish is not the stated habit of changing targets.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "switching"
+              },
+              {
+                "id": "o1",
+                "text": "listening"
+              },
+              {
+                "id": "o2",
+                "text": "speaking"
+              },
+              {
+                "id": "o3",
+                "text": "returning"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.aquarium-notebook-cloze-010.whole.q5",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 5.",
+            "material": "The aquarium notebook\n\nAt the aquarium, our teacher asked us to draw one fish carefully. I chose a silver fish with a dark mark near its tail. Whenever it approached the glass, I added another detail.\n\nSoon I noticed a problem. In one sketch the mark was round; in another it looked like a line. The fish also seemed to change length. I thought I was bad at ____1____.\n\nMy friend Nia asked whether I was watching the same fish. \"Of course! It has a dark mark,\" I said. She pointed across the tank. There were ____2____ fish with similar marks. I had drawn whichever one came closest.\n\nA staff member showed us a white area on one fish's fin. We could recognise it from both sides. I recorded this feature as a ____3____.\n\nThen I waited. My fish did not always swim where I wanted. Instead of ____4____ to another fish, I left parts of the drawing blank until it returned.\n\nI also noted whether it faced me or moved sideways. Position affected the shape I ____5____, although the animal itself had not changed.\n\nBack at school, I kept the first sketches beside the final one. I did not throw them ____6____: they recorded my discovery of the problem.\n\nThe teacher especially liked my notes. They explained ____7____ I had chosen each detail, which a neat picture alone could not show.\n\nNow, when observing one animal, I check its ____8____ before adding a mark. The notebook helped me separate changes in the fish from changes in my ____9____. My final drawing was something I could ____10____, not just something that looked finished.",
+            "explanation": "Viewing direction affects the shape seen. The fish is neither bought, weighed nor touched by the observer.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "bought"
+              },
+              {
+                "id": "o1",
+                "text": "saw"
+              },
+              {
+                "id": "o2",
+                "text": "weighed"
+              },
+              {
+                "id": "o3",
+                "text": "touched"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.aquarium-notebook-cloze-010.whole.q6",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 6.",
+            "material": "The aquarium notebook\n\nAt the aquarium, our teacher asked us to draw one fish carefully. I chose a silver fish with a dark mark near its tail. Whenever it approached the glass, I added another detail.\n\nSoon I noticed a problem. In one sketch the mark was round; in another it looked like a line. The fish also seemed to change length. I thought I was bad at ____1____.\n\nMy friend Nia asked whether I was watching the same fish. \"Of course! It has a dark mark,\" I said. She pointed across the tank. There were ____2____ fish with similar marks. I had drawn whichever one came closest.\n\nA staff member showed us a white area on one fish's fin. We could recognise it from both sides. I recorded this feature as a ____3____.\n\nThen I waited. My fish did not always swim where I wanted. Instead of ____4____ to another fish, I left parts of the drawing blank until it returned.\n\nI also noted whether it faced me or moved sideways. Position affected the shape I ____5____, although the animal itself had not changed.\n\nBack at school, I kept the first sketches beside the final one. I did not throw them ____6____: they recorded my discovery of the problem.\n\nThe teacher especially liked my notes. They explained ____7____ I had chosen each detail, which a neat picture alone could not show.\n\nNow, when observing one animal, I check its ____8____ before adding a mark. The notebook helped me separate changes in the fish from changes in my ____9____. My final drawing was something I could ____10____, not just something that looked finished.",
+            "explanation": "Not throwing pages away preserves the record. Throw up, in and back do not express discarding the sketches in this context.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "up"
+              },
+              {
+                "id": "o1",
+                "text": "in"
+              },
+              {
+                "id": "o2",
+                "text": "away"
+              },
+              {
+                "id": "o3",
+                "text": "back"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.aquarium-notebook-cloze-010.whole.q7",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 7.",
+            "material": "The aquarium notebook\n\nAt the aquarium, our teacher asked us to draw one fish carefully. I chose a silver fish with a dark mark near its tail. Whenever it approached the glass, I added another detail.\n\nSoon I noticed a problem. In one sketch the mark was round; in another it looked like a line. The fish also seemed to change length. I thought I was bad at ____1____.\n\nMy friend Nia asked whether I was watching the same fish. \"Of course! It has a dark mark,\" I said. She pointed across the tank. There were ____2____ fish with similar marks. I had drawn whichever one came closest.\n\nA staff member showed us a white area on one fish's fin. We could recognise it from both sides. I recorded this feature as a ____3____.\n\nThen I waited. My fish did not always swim where I wanted. Instead of ____4____ to another fish, I left parts of the drawing blank until it returned.\n\nI also noted whether it faced me or moved sideways. Position affected the shape I ____5____, although the animal itself had not changed.\n\nBack at school, I kept the first sketches beside the final one. I did not throw them ____6____: they recorded my discovery of the problem.\n\nThe teacher especially liked my notes. They explained ____7____ I had chosen each detail, which a neat picture alone could not show.\n\nNow, when observing one animal, I check its ____8____ before adding a mark. The notebook helped me separate changes in the fish from changes in my ____9____. My final drawing was something I could ____10____, not just something that looked finished.",
+            "explanation": "The notes give reasons for each selected detail: why. Where and when concern place/time rather than justification; whether expresses an unresolved yes/no choice rather than an explanation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "where"
+              },
+              {
+                "id": "o1",
+                "text": "when"
+              },
+              {
+                "id": "o2",
+                "text": "whether"
+              },
+              {
+                "id": "o3",
+                "text": "why"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.aquarium-notebook-cloze-010.whole.q8",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 8.",
+            "material": "The aquarium notebook\n\nAt the aquarium, our teacher asked us to draw one fish carefully. I chose a silver fish with a dark mark near its tail. Whenever it approached the glass, I added another detail.\n\nSoon I noticed a problem. In one sketch the mark was round; in another it looked like a line. The fish also seemed to change length. I thought I was bad at ____1____.\n\nMy friend Nia asked whether I was watching the same fish. \"Of course! It has a dark mark,\" I said. She pointed across the tank. There were ____2____ fish with similar marks. I had drawn whichever one came closest.\n\nA staff member showed us a white area on one fish's fin. We could recognise it from both sides. I recorded this feature as a ____3____.\n\nThen I waited. My fish did not always swim where I wanted. Instead of ____4____ to another fish, I left parts of the drawing blank until it returned.\n\nI also noted whether it faced me or moved sideways. Position affected the shape I ____5____, although the animal itself had not changed.\n\nBack at school, I kept the first sketches beside the final one. I did not throw them ____6____: they recorded my discovery of the problem.\n\nThe teacher especially liked my notes. They explained ____7____ I had chosen each detail, which a neat picture alone could not show.\n\nNow, when observing one animal, I check its ____8____ before adding a mark. The notebook helped me separate changes in the fish from changes in my ____9____. My final drawing was something I could ____10____, not just something that looked finished.",
+            "explanation": "The key is identifying the same animal by its fin. Price, ownership and a personal name are not information used to recognise it in the tank.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "identity"
+              },
+              {
+                "id": "o1",
+                "text": "price"
+              },
+              {
+                "id": "o2",
+                "text": "owner"
+              },
+              {
+                "id": "o3",
+                "text": "name"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.aquarium-notebook-cloze-010.whole.q9",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 9.",
+            "material": "The aquarium notebook\n\nAt the aquarium, our teacher asked us to draw one fish carefully. I chose a silver fish with a dark mark near its tail. Whenever it approached the glass, I added another detail.\n\nSoon I noticed a problem. In one sketch the mark was round; in another it looked like a line. The fish also seemed to change length. I thought I was bad at ____1____.\n\nMy friend Nia asked whether I was watching the same fish. \"Of course! It has a dark mark,\" I said. She pointed across the tank. There were ____2____ fish with similar marks. I had drawn whichever one came closest.\n\nA staff member showed us a white area on one fish's fin. We could recognise it from both sides. I recorded this feature as a ____3____.\n\nThen I waited. My fish did not always swim where I wanted. Instead of ____4____ to another fish, I left parts of the drawing blank until it returned.\n\nI also noted whether it faced me or moved sideways. Position affected the shape I ____5____, although the animal itself had not changed.\n\nBack at school, I kept the first sketches beside the final one. I did not throw them ____6____: they recorded my discovery of the problem.\n\nThe teacher especially liked my notes. They explained ____7____ I had chosen each detail, which a neat picture alone could not show.\n\nNow, when observing one animal, I check its ____8____ before adding a mark. The notebook helped me separate changes in the fish from changes in my ____9____. My final drawing was something I could ____10____, not just something that looked finished.",
+            "explanation": "Facing or sideways movement changes the observer's viewpoint and apparent shape. Homework, teacher and notebook do not describe that visual angle.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "homework"
+              },
+              {
+                "id": "o1",
+                "text": "viewpoint"
+              },
+              {
+                "id": "o2",
+                "text": "teacher"
+              },
+              {
+                "id": "o3",
+                "text": "notebook"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.aquarium-notebook-cloze-010.whole.q10",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Choose the best word for blank 10.",
+            "material": "The aquarium notebook\n\nAt the aquarium, our teacher asked us to draw one fish carefully. I chose a silver fish with a dark mark near its tail. Whenever it approached the glass, I added another detail.\n\nSoon I noticed a problem. In one sketch the mark was round; in another it looked like a line. The fish also seemed to change length. I thought I was bad at ____1____.\n\nMy friend Nia asked whether I was watching the same fish. \"Of course! It has a dark mark,\" I said. She pointed across the tank. There were ____2____ fish with similar marks. I had drawn whichever one came closest.\n\nA staff member showed us a white area on one fish's fin. We could recognise it from both sides. I recorded this feature as a ____3____.\n\nThen I waited. My fish did not always swim where I wanted. Instead of ____4____ to another fish, I left parts of the drawing blank until it returned.\n\nI also noted whether it faced me or moved sideways. Position affected the shape I ____5____, although the animal itself had not changed.\n\nBack at school, I kept the first sketches beside the final one. I did not throw them ____6____: they recorded my discovery of the problem.\n\nThe teacher especially liked my notes. They explained ____7____ I had chosen each detail, which a neat picture alone could not show.\n\nNow, when observing one animal, I check its ____8____ before adding a mark. The notebook helped me separate changes in the fish from changes in my ____9____. My final drawing was something I could ____10____, not just something that looked finished.",
+            "explanation": "The notes make the evidence behind the picture explainable. A picture cannot be fed, borrowing is unrelated, and hiding it conflicts with showing sketches and notes to the teacher.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "feed"
+              },
+              {
+                "id": "o1",
+                "text": "borrow"
+              },
+              {
+                "id": "o2",
+                "text": "explain"
+              },
+              {
+                "id": "o3",
+                "text": "hide"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "d42d96b12e38db0351da5168c2f9f908386e6d226e32704dd817a61439bfb1dd",
+      "reviewNotes": "Four newly written complete cloze narratives for junior learners, not sentence substitutions in an old passage. Each gap has an explicit contextual key and a rationale covering every distractor. Same-author review and schema/grading checks only; no independent learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
