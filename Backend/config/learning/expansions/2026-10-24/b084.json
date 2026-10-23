@@ -1,0 +1,920 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b084",
+  "createdAt": "2026-10-23T23:53:22.192100+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.magazines-and-signwriter-084",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · Three magazines and a sign writer",
+        "summary": "Three magazines and a sign writer，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.2024.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three paired senior readings. Fictional magazines/sign writer/repair day/residency; qualified fruit and draft-analysis discussion. Same-author all-option/evidence review, no invented findings or independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.magazines-and-signwriter-084",
+          "family": "reading_choice",
+          "label": "Three magazines and a sign writer",
+          "candidateSHA256": "9eeb182ec31bb8b87f4cd482ccc98d7fbda130f2aca842c86db6075bb4be96fb",
+          "authorCheckSHA256": "cbe32b57b70c3b33c1353996070eaf746f55a5a24b1778b9375337abae98d795",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.magazines-and-signwriter-084#magazines",
+            "expansion.20261024.senior1.magazines-and-signwriter-084#sign"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b084；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Three magazines for curious readers\n\nThe school library is adding three monthly magazines to its reading corner. Students may read the current issue in the library; earlier issues can be borrowed for one week. The descriptions below will help readers choose where to begin.\n\nField Notes follows everyday wildlife in gardens, streets and small parks. Each issue focuses on observations readers can make without collecting animals or disturbing nests. Short articles explain common patterns, while a regular sketch page shows how to record shape and movement. It suits readers who enjoy looking closely outdoors rather than simply learning lists of species names.\n\nMaking It examines ordinary objects from the inside. A recent issue followed a bicycle pump from its handle to its valve. Drawings and interviews explain how materials and moving parts work together. Some issues include simple paper models, but the magazine does not provide instructions for repairing electrical appliances or other hazardous equipment.\n\nWords in Motion is about language in use. It compares signs, conversations, translations and song lyrics, asking how wording changes with purpose and audience. The magazine includes a short fiction section and a column answering readers' questions about expressions they have encountered.\n\nNone requires specialist knowledge. Readers who would like a particular older issue should ask at the desk, since earlier copies are kept in storage rather than beside the latest ones. The library welcomes suggestions, but a request does not guarantee that an out-of-print issue can be obtained.\n\nThe last letter on the shop window\n\nThe bakery on our street had a painted name across its window. When it changed owners, the new baker asked a sign writer to add one word beneath it. I watched from outside while waiting for my mother, expecting the work to take only a few minutes.\n\nThe sign writer first placed a paper guide inside the window. Then she stepped back and looked from the opposite pavement. A letter that seemed perfectly placed from close up looked crowded at a distance. She moved the guide slightly and checked again.\n\nI asked why she did not measure equal spaces between every letter. She showed me the difference between a narrow letter and a wide one. Equal measured gaps did not always create an even visual rhythm. She was judging how the whole word appeared, not merely the length of each empty strip.\n\nOnce satisfied, she began painting. From my side of the glass, her hand seemed to move in an unfamiliar direction. She was working on the inside, arranging the letters so that people outside could read them. It required thinking about the view from the other side.\n\nThe final letter took longer than I expected. She adjusted a small curve, then stopped. I could not see what had changed until she pointed to the relationship with its neighbour. The correction was tiny, but the end of the word no longer seemed to lean away.\n\nMy mother returned before the paint had dried. On our way home, I noticed other shop signs: hurried printed notices, careful lettering and one partly hidden by a plant. I had expected to watch a person add a word. Instead, I had watched someone design a reading experience from the pavement. The sign's success depended on the position of the person who would use it."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.magazines-and-signwriter-084.magazines.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which magazine is most suitable for studying a bicycle pump?",
+            "material": "Three magazines for curious readers\n\nThe school library is adding three monthly magazines to its reading corner. Students may read the current issue in the library; earlier issues can be borrowed for one week. The descriptions below will help readers choose where to begin.\n\nField Notes follows everyday wildlife in gardens, streets and small parks. Each issue focuses on observations readers can make without collecting animals or disturbing nests. Short articles explain common patterns, while a regular sketch page shows how to record shape and movement. It suits readers who enjoy looking closely outdoors rather than simply learning lists of species names.\n\nMaking It examines ordinary objects from the inside. A recent issue followed a bicycle pump from its handle to its valve. Drawings and interviews explain how materials and moving parts work together. Some issues include simple paper models, but the magazine does not provide instructions for repairing electrical appliances or other hazardous equipment.\n\nWords in Motion is about language in use. It compares signs, conversations, translations and song lyrics, asking how wording changes with purpose and audience. The magazine includes a short fiction section and a column answering readers' questions about expressions they have encountered.\n\nNone requires specialist knowledge. Readers who would like a particular older issue should ask at the desk, since earlier copies are kept in storage rather than beside the latest ones. The library welcomes suggestions, but a request does not guarantee that an out-of-print issue can be obtained.",
+            "explanation": "Making It explains objects and specifically features a pump. Wildlife/language magazines have other subjects; all-three-only is false.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Field Notes"
+              },
+              {
+                "id": "o1",
+                "text": "Words in Motion"
+              },
+              {
+                "id": "o2",
+                "text": "Making It"
+              },
+              {
+                "id": "o3",
+                "text": "All three focus only on pumps"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.magazines-and-signwriter-084.magazines.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What can readers do with a previous issue?",
+            "material": "Three magazines for curious readers\n\nThe school library is adding three monthly magazines to its reading corner. Students may read the current issue in the library; earlier issues can be borrowed for one week. The descriptions below will help readers choose where to begin.\n\nField Notes follows everyday wildlife in gardens, streets and small parks. Each issue focuses on observations readers can make without collecting animals or disturbing nests. Short articles explain common patterns, while a regular sketch page shows how to record shape and movement. It suits readers who enjoy looking closely outdoors rather than simply learning lists of species names.\n\nMaking It examines ordinary objects from the inside. A recent issue followed a bicycle pump from its handle to its valve. Drawings and interviews explain how materials and moving parts work together. Some issues include simple paper models, but the magazine does not provide instructions for repairing electrical appliances or other hazardous equipment.\n\nWords in Motion is about language in use. It compares signs, conversations, translations and song lyrics, asking how wording changes with purpose and audience. The magazine includes a short fiction section and a column answering readers' questions about expressions they have encountered.\n\nNone requires specialist knowledge. Readers who would like a particular older issue should ask at the desk, since earlier copies are kept in storage rather than beside the latest ones. The library welcomes suggestions, but a request does not guarantee that an out-of-print issue can be obtained.",
+            "explanation": "Earlier issues are borrowable for a week, stored separately and subject to availability. Permanent keeping/guaranteed supply are not offered.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Keep it permanently without asking"
+              },
+              {
+                "id": "o1",
+                "text": "Demand that every out-of-print copy be supplied"
+              },
+              {
+                "id": "o2",
+                "text": "Borrow it for one week if available"
+              },
+              {
+                "id": "o3",
+                "text": "Always find it beside the current issue"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.magazines-and-signwriter-084.magazines.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What do the magazines have in common?",
+            "material": "Three magazines for curious readers\n\nThe school library is adding three monthly magazines to its reading corner. Students may read the current issue in the library; earlier issues can be borrowed for one week. The descriptions below will help readers choose where to begin.\n\nField Notes follows everyday wildlife in gardens, streets and small parks. Each issue focuses on observations readers can make without collecting animals or disturbing nests. Short articles explain common patterns, while a regular sketch page shows how to record shape and movement. It suits readers who enjoy looking closely outdoors rather than simply learning lists of species names.\n\nMaking It examines ordinary objects from the inside. A recent issue followed a bicycle pump from its handle to its valve. Drawings and interviews explain how materials and moving parts work together. Some issues include simple paper models, but the magazine does not provide instructions for repairing electrical appliances or other hazardous equipment.\n\nWords in Motion is about language in use. It compares signs, conversations, translations and song lyrics, asking how wording changes with purpose and audience. The magazine includes a short fiction section and a column answering readers' questions about expressions they have encountered.\n\nNone requires specialist knowledge. Readers who would like a particular older issue should ask at the desk, since earlier copies are kept in storage rather than beside the latest ones. The library welcomes suggestions, but a request does not guarantee that an out-of-print issue can be obtained.",
+            "explanation": "The final paragraph states no specialist knowledge. Hazardous repairs are excluded, subjects differ and all are monthly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They contain only species lists"
+              },
+              {
+                "id": "o1",
+                "text": "They can be read without specialist knowledge"
+              },
+              {
+                "id": "o2",
+                "text": "They are published every day"
+              },
+              {
+                "id": "o3",
+                "text": "They all teach electrical repairs"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.magazines-and-signwriter-084.sign.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the sign writer view the guide from across the street?",
+            "material": "The last letter on the shop window\n\nThe bakery on our street had a painted name across its window. When it changed owners, the new baker asked a sign writer to add one word beneath it. I watched from outside while waiting for my mother, expecting the work to take only a few minutes.\n\nThe sign writer first placed a paper guide inside the window. Then she stepped back and looked from the opposite pavement. A letter that seemed perfectly placed from close up looked crowded at a distance. She moved the guide slightly and checked again.\n\nI asked why she did not measure equal spaces between every letter. She showed me the difference between a narrow letter and a wide one. Equal measured gaps did not always create an even visual rhythm. She was judging how the whole word appeared, not merely the length of each empty strip.\n\nOnce satisfied, she began painting. From my side of the glass, her hand seemed to move in an unfamiliar direction. She was working on the inside, arranging the letters so that people outside could read them. It required thinking about the view from the other side.\n\nThe final letter took longer than I expected. She adjusted a small curve, then stopped. I could not see what had changed until she pointed to the relationship with its neighbour. The correction was tiny, but the end of the word no longer seemed to lean away.\n\nMy mother returned before the paint had dried. On our way home, I noticed other shop signs: hurried printed notices, careful lettering and one partly hidden by a plant. I had expected to watch a person add a word. Instead, I had watched someone design a reading experience from the pavement. The sign's success depended on the position of the person who would use it.",
+            "explanation": "The distant view reveals crowding. It does not reject every measurement, request copying or expose paper to wind.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To assess how the letters appear from a reader’s distance"
+              },
+              {
+                "id": "o1",
+                "text": "To ask another shop to copy the name"
+              },
+              {
+                "id": "o2",
+                "text": "To avoid measuring the glass at all"
+              },
+              {
+                "id": "o3",
+                "text": "To let the paper blow away"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.magazines-and-signwriter-084.sign.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does she explain about equal measured gaps?",
+            "material": "The last letter on the shop window\n\nThe bakery on our street had a painted name across its window. When it changed owners, the new baker asked a sign writer to add one word beneath it. I watched from outside while waiting for my mother, expecting the work to take only a few minutes.\n\nThe sign writer first placed a paper guide inside the window. Then she stepped back and looked from the opposite pavement. A letter that seemed perfectly placed from close up looked crowded at a distance. She moved the guide slightly and checked again.\n\nI asked why she did not measure equal spaces between every letter. She showed me the difference between a narrow letter and a wide one. Equal measured gaps did not always create an even visual rhythm. She was judging how the whole word appeared, not merely the length of each empty strip.\n\nOnce satisfied, she began painting. From my side of the glass, her hand seemed to move in an unfamiliar direction. She was working on the inside, arranging the letters so that people outside could read them. It required thinking about the view from the other side.\n\nThe final letter took longer than I expected. She adjusted a small curve, then stopped. I could not see what had changed until she pointed to the relationship with its neighbour. The correction was tiny, but the end of the word no longer seemed to lean away.\n\nMy mother returned before the paint had dried. On our way home, I noticed other shop signs: hurried printed notices, careful lettering and one partly hidden by a plant. I had expected to watch a person add a word. Instead, I had watched someone design a reading experience from the pavement. The sign's success depended on the position of the person who would use it.",
+            "explanation": "Different letter widths affect visual rhythm. The text makes a qualified claim, not universal unreadability or shape irrelevance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They may not create an even visual effect"
+              },
+              {
+                "id": "o1",
+                "text": "They are required only for narrow letters"
+              },
+              {
+                "id": "o2",
+                "text": "They remove the need to consider letter shapes"
+              },
+              {
+                "id": "o3",
+                "text": "They always make every word unreadable"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.magazines-and-signwriter-084.sign.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the direction of painting unfamiliar to the narrator?",
+            "material": "The last letter on the shop window\n\nThe bakery on our street had a painted name across its window. When it changed owners, the new baker asked a sign writer to add one word beneath it. I watched from outside while waiting for my mother, expecting the work to take only a few minutes.\n\nThe sign writer first placed a paper guide inside the window. Then she stepped back and looked from the opposite pavement. A letter that seemed perfectly placed from close up looked crowded at a distance. She moved the guide slightly and checked again.\n\nI asked why she did not measure equal spaces between every letter. She showed me the difference between a narrow letter and a wide one. Equal measured gaps did not always create an even visual rhythm. She was judging how the whole word appeared, not merely the length of each empty strip.\n\nOnce satisfied, she began painting. From my side of the glass, her hand seemed to move in an unfamiliar direction. She was working on the inside, arranging the letters so that people outside could read them. It required thinking about the view from the other side.\n\nThe final letter took longer than I expected. She adjusted a small curve, then stopped. I could not see what had changed until she pointed to the relationship with its neighbour. The correction was tiny, but the end of the word no longer seemed to lean away.\n\nMy mother returned before the paint had dried. On our way home, I noticed other shop signs: hurried printed notices, careful lettering and one partly hidden by a plant. I had expected to watch a person add a word. Instead, I had watched someone design a reading experience from the pavement. The sign's success depended on the position of the person who would use it.",
+            "explanation": "Working from inside reverses the painter’s relation to the outside view. Nonsense/camera/code are not stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The narrator is watching through a camera"
+              },
+              {
+                "id": "o1",
+                "text": "The sign is painted inside for readers outside"
+              },
+              {
+                "id": "o2",
+                "text": "The baker has requested a secret code"
+              },
+              {
+                "id": "o3",
+                "text": "The sign writer is deliberately writing nonsense"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.magazines-and-signwriter-084.sign.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the narrator’s final understanding?",
+            "material": "The last letter on the shop window\n\nThe bakery on our street had a painted name across its window. When it changed owners, the new baker asked a sign writer to add one word beneath it. I watched from outside while waiting for my mother, expecting the work to take only a few minutes.\n\nThe sign writer first placed a paper guide inside the window. Then she stepped back and looked from the opposite pavement. A letter that seemed perfectly placed from close up looked crowded at a distance. She moved the guide slightly and checked again.\n\nI asked why she did not measure equal spaces between every letter. She showed me the difference between a narrow letter and a wide one. Equal measured gaps did not always create an even visual rhythm. She was judging how the whole word appeared, not merely the length of each empty strip.\n\nOnce satisfied, she began painting. From my side of the glass, her hand seemed to move in an unfamiliar direction. She was working on the inside, arranging the letters so that people outside could read them. It required thinking about the view from the other side.\n\nThe final letter took longer than I expected. She adjusted a small curve, then stopped. I could not see what had changed until she pointed to the relationship with its neighbour. The correction was tiny, but the end of the word no longer seemed to lean away.\n\nMy mother returned before the paint had dried. On our way home, I noticed other shop signs: hurried printed notices, careful lettering and one partly hidden by a plant. I had expected to watch a person add a word. Instead, I had watched someone design a reading experience from the pavement. The sign's success depended on the position of the person who would use it.",
+            "explanation": "The conclusion centres the pavement reader. Small corrections can help; printed communication is not universally rejected and audience matters.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Printed notices can never communicate"
+              },
+              {
+                "id": "o1",
+                "text": "Every small correction is invisible and useless"
+              },
+              {
+                "id": "o2",
+                "text": "Lettering should be judged from the intended reader’s position"
+              },
+              {
+                "id": "o3",
+                "text": "A shop name matters only to its painter"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "76f0ea5ac8e1609d4404ad6d7ed5171b70fb5125517f1ba053ad1a9eafce2ed2",
+      "reviewNotes": "Three paired senior readings. Fictional magazines/sign writer/repair day/residency; qualified fruit and draft-analysis discussion. Same-author all-option/evidence review, no invented findings or independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.magazines-and-signwriter-084#magazines",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.magazines-and-signwriter-084.magazines.q1",
+            "expansion.20261024.senior1.magazines-and-signwriter-084.magazines.q2",
+            "expansion.20261024.senior1.magazines-and-signwriter-084.magazines.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.magazines-and-signwriter-084",
+          "sourceContentHash": "a63a262ce6679f623c43047d7ccd1e932e0cea3bd63b23bae29ff36204462e8b"
+        },
+        {
+          "id": "expansion.20261024.senior1.magazines-and-signwriter-084#sign",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.magazines-and-signwriter-084.sign.q1",
+            "expansion.20261024.senior1.magazines-and-signwriter-084.sign.q2",
+            "expansion.20261024.senior1.magazines-and-signwriter-084.sign.q3",
+            "expansion.20261024.senior1.magazines-and-signwriter-084.sign.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.magazines-and-signwriter-084",
+          "sourceContentHash": "f28cca8af9ef7b66dfad5af50eddf537d231e66cba8447fa2fe17f56021ebe34"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.repair-sessions-and-fruit-084",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · Repair sessions and the colour of fruit",
+        "summary": "Repair sessions and the colour of fruit，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g11.2025.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three paired senior readings. Fictional magazines/sign writer/repair day/residency; qualified fruit and draft-analysis discussion. Same-author all-option/evidence review, no invented findings or independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.repair-sessions-and-fruit-084",
+          "family": "reading_choice",
+          "label": "Repair sessions and the colour of fruit",
+          "candidateSHA256": "835a78d88f90b33b2ed5d32a4f7230c314efa6fcad516b58f00b900a128e0ecd",
+          "authorCheckSHA256": "3c2ac84f032f2b24b58cbb549d247ba6600848280f1e5cd915ae4b39003bbd15",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.repair-sessions-and-fruit-084#repair",
+            "expansion.20261024.senior2.repair-sessions-and-fruit-084#fruit"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b084；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A repair day with clear limits\n\nThe Riverside Community Hall will host a repair day on Sunday from 10:00 to 16:00. Volunteer repairers will examine small household items with visitors. The event aims to share skills and reduce waste, but it is not a commercial repair service and cannot promise a successful repair.\n\nBook a thirty-minute assessment slot and describe your item in advance. Bring one item per booking. Suitable examples include clothing, simple non-electrical toys and small pieces of furniture that one person can carry. Gas appliances, electrical equipment and items involving hazardous materials will not be accepted.\n\nIf an instruction booklet or spare part is already available, bring it with the item. Do not dismantle something beyond your knowledge in preparation. A repairer may decide that an item is unsuitable for the session, even if it belongs to a normally accepted category.\n\nVisitors remain with their items and discuss the work with the volunteer. Children under sixteen must attend with an adult. Nobody is expected to use unfamiliar tools without guidance, and volunteers may stop work where they judge conditions unsafe.\n\nThe assessment is free. Any proposed material cost will be discussed before it is incurred. If a repair cannot be completed, you must take the item home; the hall is not a waste collection point. Please cancel a booking you no longer need so the slot can be offered to someone else.\n\nColour is a clue, not a complete verdict\n\nAt a fruit stall, colour is one of the first features a shopper notices. It can provide useful information, but the relationship between colour and readiness to eat is not the same for every fruit or variety. A red surface is not a universal certificate of sweetness.\n\nThe visible colour comes from pigments in the fruit's outer tissues. As some fruits develop, changes in pigments can accompany other changes in texture, aroma and flavour. These processes are related, but they are not identical. A fruit may acquire an attractive colour without matching the taste a particular shopper expects.\n\nVariety makes a difference. Two kinds of apple can have different characteristic colours when mature. Comparing a green variety with a red one as though both were following the same colour scale would confuse a difference between varieties with a difference in readiness. The same caution applies to using a photograph of one fruit as a guide to every other.\n\nGrowing and storage conditions add further complications. Light exposure may affect the colour on one side, while a shopper sees only the most visible surface. Handling can leave marks that say more about a journey to market than about the fruit's original condition. Neither a perfectly even surface nor a small mark provides a complete account by itself.\n\nThis does not mean appearance should be ignored. It means appearance should be interpreted alongside relevant knowledge: which fruit it is, how it normally changes and what the buyer wants to do with it. Fruit intended for cooking may be chosen for different qualities from fruit intended to be eaten immediately.\n\nThe stallholder's explanation and the shopper's experience can therefore complement what is visible. Good judgment uses several appropriate clues rather than turning one familiar sign into an automatic rule. Colour remains valuable information, but it becomes more useful when we understand the question it can and cannot answer."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.repair-sessions-and-fruit-084.repair.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which item is within the listed scope?",
+            "material": "A repair day with clear limits\n\nThe Riverside Community Hall will host a repair day on Sunday from 10:00 to 16:00. Volunteer repairers will examine small household items with visitors. The event aims to share skills and reduce waste, but it is not a commercial repair service and cannot promise a successful repair.\n\nBook a thirty-minute assessment slot and describe your item in advance. Bring one item per booking. Suitable examples include clothing, simple non-electrical toys and small pieces of furniture that one person can carry. Gas appliances, electrical equipment and items involving hazardous materials will not be accepted.\n\nIf an instruction booklet or spare part is already available, bring it with the item. Do not dismantle something beyond your knowledge in preparation. A repairer may decide that an item is unsuitable for the session, even if it belongs to a normally accepted category.\n\nVisitors remain with their items and discuss the work with the volunteer. Children under sixteen must attend with an adult. Nobody is expected to use unfamiliar tools without guidance, and volunteers may stop work where they judge conditions unsafe.\n\nThe assessment is free. Any proposed material cost will be discussed before it is incurred. If a repair cannot be completed, you must take the item home; the hall is not a waste collection point. Please cancel a booking you no longer need so the slot can be offered to someone else.",
+            "explanation": "Simple non-electrical toys are included; gas/electrical/hazardous items are excluded.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A gas heater"
+              },
+              {
+                "id": "o1",
+                "text": "A small non-electrical toy"
+              },
+              {
+                "id": "o2",
+                "text": "A damaged electrical kettle"
+              },
+              {
+                "id": "o3",
+                "text": "A container of hazardous chemicals"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.repair-sessions-and-fruit-084.repair.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must visitors do during the session?",
+            "material": "A repair day with clear limits\n\nThe Riverside Community Hall will host a repair day on Sunday from 10:00 to 16:00. Volunteer repairers will examine small household items with visitors. The event aims to share skills and reduce waste, but it is not a commercial repair service and cannot promise a successful repair.\n\nBook a thirty-minute assessment slot and describe your item in advance. Bring one item per booking. Suitable examples include clothing, simple non-electrical toys and small pieces of furniture that one person can carry. Gas appliances, electrical equipment and items involving hazardous materials will not be accepted.\n\nIf an instruction booklet or spare part is already available, bring it with the item. Do not dismantle something beyond your knowledge in preparation. A repairer may decide that an item is unsuitable for the session, even if it belongs to a normally accepted category.\n\nVisitors remain with their items and discuss the work with the volunteer. Children under sixteen must attend with an adult. Nobody is expected to use unfamiliar tools without guidance, and volunteers may stop work where they judge conditions unsafe.\n\nThe assessment is free. Any proposed material cost will be discussed before it is incurred. If a repair cannot be completed, you must take the item home; the hall is not a waste collection point. Please cancel a booking you no longer need so the slot can be offered to someone else.",
+            "explanation": "Visitors stay and discuss repairs. Tool guidance/cost agreement are required, not abandoned items or automatic prepayment.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Leave the items and return next month"
+              },
+              {
+                "id": "o1",
+                "text": "Use every unfamiliar tool alone"
+              },
+              {
+                "id": "o2",
+                "text": "Pay for materials before any discussion"
+              },
+              {
+                "id": "o3",
+                "text": "Remain with their items"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.repair-sessions-and-fruit-084.repair.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happens if an item cannot be repaired?",
+            "material": "A repair day with clear limits\n\nThe Riverside Community Hall will host a repair day on Sunday from 10:00 to 16:00. Volunteer repairers will examine small household items with visitors. The event aims to share skills and reduce waste, but it is not a commercial repair service and cannot promise a successful repair.\n\nBook a thirty-minute assessment slot and describe your item in advance. Bring one item per booking. Suitable examples include clothing, simple non-electrical toys and small pieces of furniture that one person can carry. Gas appliances, electrical equipment and items involving hazardous materials will not be accepted.\n\nIf an instruction booklet or spare part is already available, bring it with the item. Do not dismantle something beyond your knowledge in preparation. A repairer may decide that an item is unsuitable for the session, even if it belongs to a normally accepted category.\n\nVisitors remain with their items and discuss the work with the volunteer. Children under sixteen must attend with an adult. Nobody is expected to use unfamiliar tools without guidance, and volunteers may stop work where they judge conditions unsafe.\n\nThe assessment is free. Any proposed material cost will be discussed before it is incurred. If a repair cannot be completed, you must take the item home; the hall is not a waste collection point. Please cancel a booking you no longer need so the slot can be offered to someone else.",
+            "explanation": "Unrepaired items go home with visitors. Disposal/replacement/storage guarantees are explicitly or implicitly absent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The volunteer guarantees a replacement"
+              },
+              {
+                "id": "o1",
+                "text": "The visitor takes it home"
+              },
+              {
+                "id": "o2",
+                "text": "The booking becomes a permanent storage agreement"
+              },
+              {
+                "id": "o3",
+                "text": "The hall automatically disposes of it"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.repair-sessions-and-fruit-084.fruit.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the author’s main caution?",
+            "material": "Colour is a clue, not a complete verdict\n\nAt a fruit stall, colour is one of the first features a shopper notices. It can provide useful information, but the relationship between colour and readiness to eat is not the same for every fruit or variety. A red surface is not a universal certificate of sweetness.\n\nThe visible colour comes from pigments in the fruit's outer tissues. As some fruits develop, changes in pigments can accompany other changes in texture, aroma and flavour. These processes are related, but they are not identical. A fruit may acquire an attractive colour without matching the taste a particular shopper expects.\n\nVariety makes a difference. Two kinds of apple can have different characteristic colours when mature. Comparing a green variety with a red one as though both were following the same colour scale would confuse a difference between varieties with a difference in readiness. The same caution applies to using a photograph of one fruit as a guide to every other.\n\nGrowing and storage conditions add further complications. Light exposure may affect the colour on one side, while a shopper sees only the most visible surface. Handling can leave marks that say more about a journey to market than about the fruit's original condition. Neither a perfectly even surface nor a small mark provides a complete account by itself.\n\nThis does not mean appearance should be ignored. It means appearance should be interpreted alongside relevant knowledge: which fruit it is, how it normally changes and what the buyer wants to do with it. Fruit intended for cooking may be chosen for different qualities from fruit intended to be eaten immediately.\n\nThe stallholder's explanation and the shopper's experience can therefore complement what is visible. Good judgment uses several appropriate clues rather than turning one familiar sign into an automatic rule. Colour remains valuable information, but it becomes more useful when we understand the question it can and cannot answer.",
+            "explanation": "The passage argues for interpreted colour among several clues. It rejects universal red sweetness and does not reject appearance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only photographs can show maturity"
+              },
+              {
+                "id": "o1",
+                "text": "Colour alone cannot determine every fruit’s eating quality"
+              },
+              {
+                "id": "o2",
+                "text": "Fruit appearance should never be considered"
+              },
+              {
+                "id": "o3",
+                "text": "All red fruit tastes exactly the same"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.repair-sessions-and-fruit-084.fruit.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why compare green and red apple varieties?",
+            "material": "Colour is a clue, not a complete verdict\n\nAt a fruit stall, colour is one of the first features a shopper notices. It can provide useful information, but the relationship between colour and readiness to eat is not the same for every fruit or variety. A red surface is not a universal certificate of sweetness.\n\nThe visible colour comes from pigments in the fruit's outer tissues. As some fruits develop, changes in pigments can accompany other changes in texture, aroma and flavour. These processes are related, but they are not identical. A fruit may acquire an attractive colour without matching the taste a particular shopper expects.\n\nVariety makes a difference. Two kinds of apple can have different characteristic colours when mature. Comparing a green variety with a red one as though both were following the same colour scale would confuse a difference between varieties with a difference in readiness. The same caution applies to using a photograph of one fruit as a guide to every other.\n\nGrowing and storage conditions add further complications. Light exposure may affect the colour on one side, while a shopper sees only the most visible surface. Handling can leave marks that say more about a journey to market than about the fruit's original condition. Neither a perfectly even surface nor a small mark provides a complete account by itself.\n\nThis does not mean appearance should be ignored. It means appearance should be interpreted alongside relevant knowledge: which fruit it is, how it normally changes and what the buyer wants to do with it. Fruit intended for cooking may be chosen for different qualities from fruit intended to be eaten immediately.\n\nThe stallholder's explanation and the shopper's experience can therefore complement what is visible. Good judgment uses several appropriate clues rather than turning one familiar sign into an automatic rule. Colour remains valuable information, but it becomes more useful when we understand the question it can and cannot answer.",
+            "explanation": "Characteristic variety colours differ. The other claims are universal or physically unrelated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To prove green apples are always immature"
+              },
+              {
+                "id": "o1",
+                "text": "To establish that photographs cause pigment changes"
+              },
+              {
+                "id": "o2",
+                "text": "To show that different varieties do not share one colour scale"
+              },
+              {
+                "id": "o3",
+                "text": "To claim red apples never change"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.repair-sessions-and-fruit-084.fruit.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What can a surface mark reveal?",
+            "material": "Colour is a clue, not a complete verdict\n\nAt a fruit stall, colour is one of the first features a shopper notices. It can provide useful information, but the relationship between colour and readiness to eat is not the same for every fruit or variety. A red surface is not a universal certificate of sweetness.\n\nThe visible colour comes from pigments in the fruit's outer tissues. As some fruits develop, changes in pigments can accompany other changes in texture, aroma and flavour. These processes are related, but they are not identical. A fruit may acquire an attractive colour without matching the taste a particular shopper expects.\n\nVariety makes a difference. Two kinds of apple can have different characteristic colours when mature. Comparing a green variety with a red one as though both were following the same colour scale would confuse a difference between varieties with a difference in readiness. The same caution applies to using a photograph of one fruit as a guide to every other.\n\nGrowing and storage conditions add further complications. Light exposure may affect the colour on one side, while a shopper sees only the most visible surface. Handling can leave marks that say more about a journey to market than about the fruit's original condition. Neither a perfectly even surface nor a small mark provides a complete account by itself.\n\nThis does not mean appearance should be ignored. It means appearance should be interpreted alongside relevant knowledge: which fruit it is, how it normally changes and what the buyer wants to do with it. Fruit intended for cooking may be chosen for different qualities from fruit intended to be eaten immediately.\n\nThe stallholder's explanation and the shopper's experience can therefore complement what is visible. Good judgment uses several appropriate clues rather than turning one familiar sign into an automatic rule. Colour remains valuable information, but it becomes more useful when we understand the question it can and cannot answer.",
+            "explanation": "Handling marks may reflect transport. The passage gives no total history, sugar guarantee or eating date.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A complete history of every stage"
+              },
+              {
+                "id": "o1",
+                "text": "The guaranteed amount of sugar"
+              },
+              {
+                "id": "o2",
+                "text": "The exact date the fruit will be eaten"
+              },
+              {
+                "id": "o3",
+                "text": "Something about handling rather than the original growing condition"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.repair-sessions-and-fruit-084.fruit.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What approach does the author recommend?",
+            "material": "Colour is a clue, not a complete verdict\n\nAt a fruit stall, colour is one of the first features a shopper notices. It can provide useful information, but the relationship between colour and readiness to eat is not the same for every fruit or variety. A red surface is not a universal certificate of sweetness.\n\nThe visible colour comes from pigments in the fruit's outer tissues. As some fruits develop, changes in pigments can accompany other changes in texture, aroma and flavour. These processes are related, but they are not identical. A fruit may acquire an attractive colour without matching the taste a particular shopper expects.\n\nVariety makes a difference. Two kinds of apple can have different characteristic colours when mature. Comparing a green variety with a red one as though both were following the same colour scale would confuse a difference between varieties with a difference in readiness. The same caution applies to using a photograph of one fruit as a guide to every other.\n\nGrowing and storage conditions add further complications. Light exposure may affect the colour on one side, while a shopper sees only the most visible surface. Handling can leave marks that say more about a journey to market than about the fruit's original condition. Neither a perfectly even surface nor a small mark provides a complete account by itself.\n\nThis does not mean appearance should be ignored. It means appearance should be interpreted alongside relevant knowledge: which fruit it is, how it normally changes and what the buyer wants to do with it. Fruit intended for cooking may be chosen for different qualities from fruit intended to be eaten immediately.\n\nThe stallholder's explanation and the shopper's experience can therefore complement what is visible. Good judgment uses several appropriate clues rather than turning one familiar sign into an automatic rule. Colour remains valuable information, but it becomes more useful when we understand the question it can and cannot answer.",
+            "explanation": "Variety, normal changes and use combine with experience. Automatic redness/ignored knowledge/uniform storage contradict the conclusion.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Choose the reddest item for every purpose"
+              },
+              {
+                "id": "o1",
+                "text": "Treat all storage conditions as identical"
+              },
+              {
+                "id": "o2",
+                "text": "Ignore knowledge from experience"
+              },
+              {
+                "id": "o3",
+                "text": "Combine relevant clues according to the fruit and intended use"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "bb1c78323a1cc5afea9f8768f1dde1c4e37df5f25919b25bd697f462abc86905",
+      "reviewNotes": "Three paired senior readings. Fictional magazines/sign writer/repair day/residency; qualified fruit and draft-analysis discussion. Same-author all-option/evidence review, no invented findings or independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.repair-sessions-and-fruit-084#repair",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.repair-sessions-and-fruit-084.repair.q1",
+            "expansion.20261024.senior2.repair-sessions-and-fruit-084.repair.q2",
+            "expansion.20261024.senior2.repair-sessions-and-fruit-084.repair.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.repair-sessions-and-fruit-084",
+          "sourceContentHash": "2607eca1dfeaaad559e7391032e538ff5f35fdc24bfe0f5cb980da188df4bd59"
+        },
+        {
+          "id": "expansion.20261024.senior2.repair-sessions-and-fruit-084#fruit",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.repair-sessions-and-fruit-084.fruit.q1",
+            "expansion.20261024.senior2.repair-sessions-and-fruit-084.fruit.q2",
+            "expansion.20261024.senior2.repair-sessions-and-fruit-084.fruit.q3",
+            "expansion.20261024.senior2.repair-sessions-and-fruit-084.fruit.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.repair-sessions-and-fruit-084",
+          "sourceContentHash": "87cce7a76c2e53d8b44bc7c09f73afa31865b27c65384954140977001d3c6b7a"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior3.residency-and-drafts-084",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高考题型原创 · 10·24新题 · A writing residency and the evidence of drafts",
+        "summary": "A writing residency and the evidence of drafts，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade12-tianjinlower2025-21cnjy22402528.reading.complete_section",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three paired senior readings. Fictional magazines/sign writer/repair day/residency; qualified fruit and draft-analysis discussion. Same-author all-option/evidence review, no invented findings or independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior3.residency-and-drafts-084",
+          "family": "reading_choice",
+          "label": "A writing residency and the evidence of drafts",
+          "candidateSHA256": "f9ac684ba0f8c1d156cceb5cc07c5f1095f835ae04302d5c8997adb38a0cfac0",
+          "authorCheckSHA256": "5436e1876e9b74164b2f5678ce35295f7c1cd7a9979c2a45fed10c8915edc448",
+          "sourceGroupIds": [
+            "expansion.20261024.senior3.residency-and-drafts-084#residency",
+            "expansion.20261024.senior3.residency-and-drafts-084#drafts"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b084；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A short residency for essay writers\n\nNorth Field Arts House invites applications for a two-week essay-writing residency. It is intended for writers with a substantial nonfiction project already under way. Applicants need not have a published book, but they should be able to describe the question and form of the work they plan to develop.\n\nThe residency provides a private bedroom, a shared kitchen and a quiet workroom. Travel, meals and personal expenses are not included. There is no requirement to produce a fixed number of pages, and the house does not promise publication or representation.\n\nSubmit a project description of no more than 800 words and a sample of between 2000 and 3000 words. Both must be in English. The sample may come from an earlier project if it demonstrates the kind of work relevant to the proposed essay. Do not submit a whole manuscript in place of the requested extract.\n\nApplications close at 17:00 on 30 November. Shortlisted applicants will be invited to a video conversation in December. The selection panel considers the project's clarity, the sample and whether the house's facilities fit the writer's needs; awards or publication history alone do not determine selection.\n\nResidents give one informal discussion about a question arising from their work. This is a conversation with the other residents, not a public performance or a finished-book launch. Access needs should be discussed with the coordinator before accepting a place, since the historic building has limitations that cannot all be removed.\n\nWhat an abandoned sentence can show\n\nA writer's draft can be tempting evidence. Crossed-out lines, arrows and replacement words seem to offer a view of thought in motion. Yet the page records marks made during writing, not every thought that led to them. Reading it well requires curiosity and restraint together.\n\nA cancelled sentence shows that a form of words was present and then rejected or displaced. It does not, on its own, establish why. The writer may have changed an argument, avoided repetition, shortened a paragraph or simply moved the sentence elsewhere. A confident account of motive needs more support than a line through the words.\n\nThe sequence of revisions can also be uncertain. An arrow may connect two passages without revealing whether they were written minutes or months apart. Different inks or layers of handwriting may suggest an order, but such clues need examination. The tidy chronology produced by an editor may be a reconstruction rather than something directly visible on the sheet.\n\nComparing versions helps. A phrase absent from one draft may return in another, perhaps serving a different purpose. What looks like a final rejection on a single page can become one stage in a longer process. Publication does not always end that process either; some writers revise later editions.\n\nThese limitations do not make drafts useless. They change the claims we can responsibly make. A draft can support a precise account of textual change even when the writer's private reason remains unknown. Distinguishing those questions allows the physical evidence to contribute without being asked to reveal an inaccessible inner life.\n\nFor a reader, the pleasure of drafts may lie partly in that open space. The finished work becomes less inevitable: another sentence was possible, another order tried. We can recognise the decisions visible in the record while leaving room for the ones it does not preserve. A marked page can tell us much without becoming a transparent window into its maker's mind."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior3.residency-and-drafts-084.residency.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who may apply without a published book?",
+            "material": "A short residency for essay writers\n\nNorth Field Arts House invites applications for a two-week essay-writing residency. It is intended for writers with a substantial nonfiction project already under way. Applicants need not have a published book, but they should be able to describe the question and form of the work they plan to develop.\n\nThe residency provides a private bedroom, a shared kitchen and a quiet workroom. Travel, meals and personal expenses are not included. There is no requirement to produce a fixed number of pages, and the house does not promise publication or representation.\n\nSubmit a project description of no more than 800 words and a sample of between 2000 and 3000 words. Both must be in English. The sample may come from an earlier project if it demonstrates the kind of work relevant to the proposed essay. Do not submit a whole manuscript in place of the requested extract.\n\nApplications close at 17:00 on 30 November. Shortlisted applicants will be invited to a video conversation in December. The selection panel considers the project's clarity, the sample and whether the house's facilities fit the writer's needs; awards or publication history alone do not determine selection.\n\nResidents give one informal discussion about a question arising from their work. This is a conversation with the other residents, not a public performance or a finished-book launch. Access needs should be discussed with the coordinator before accepting a place, since the historic building has limitations that cannot all be removed.",
+            "explanation": "The stated eligibility is an existing substantial nonfiction project; book publication and awards are not mandatory or determinative.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A writer with a substantial nonfiction project under way"
+              },
+              {
+                "id": "o1",
+                "text": "Anyone seeking guaranteed book publication"
+              },
+              {
+                "id": "o2",
+                "text": "Only previous award winners"
+              },
+              {
+                "id": "o3",
+                "text": "Only writers submitting an entire manuscript"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.residency-and-drafts-084.residency.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the residency include?",
+            "material": "A short residency for essay writers\n\nNorth Field Arts House invites applications for a two-week essay-writing residency. It is intended for writers with a substantial nonfiction project already under way. Applicants need not have a published book, but they should be able to describe the question and form of the work they plan to develop.\n\nThe residency provides a private bedroom, a shared kitchen and a quiet workroom. Travel, meals and personal expenses are not included. There is no requirement to produce a fixed number of pages, and the house does not promise publication or representation.\n\nSubmit a project description of no more than 800 words and a sample of between 2000 and 3000 words. Both must be in English. The sample may come from an earlier project if it demonstrates the kind of work relevant to the proposed essay. Do not submit a whole manuscript in place of the requested extract.\n\nApplications close at 17:00 on 30 November. Shortlisted applicants will be invited to a video conversation in December. The selection panel considers the project's clarity, the sample and whether the house's facilities fit the writer's needs; awards or publication history alone do not determine selection.\n\nResidents give one informal discussion about a question arising from their work. This is a conversation with the other residents, not a public performance or a finished-book launch. Access needs should be discussed with the coordinator before accepting a place, since the historic building has limitations that cannot all be removed.",
+            "explanation": "Accommodation/kitchen/workroom are included. Travel/meals are excluded and no representation or public launch is promised.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "All travel and meals"
+              },
+              {
+                "id": "o1",
+                "text": "Guaranteed representation"
+              },
+              {
+                "id": "o2",
+                "text": "A bedroom and shared working/living facilities"
+              },
+              {
+                "id": "o3",
+                "text": "A paid public book launch"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.residency-and-drafts-084.residency.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the required resident discussion?",
+            "material": "A short residency for essay writers\n\nNorth Field Arts House invites applications for a two-week essay-writing residency. It is intended for writers with a substantial nonfiction project already under way. Applicants need not have a published book, but they should be able to describe the question and form of the work they plan to develop.\n\nThe residency provides a private bedroom, a shared kitchen and a quiet workroom. Travel, meals and personal expenses are not included. There is no requirement to produce a fixed number of pages, and the house does not promise publication or representation.\n\nSubmit a project description of no more than 800 words and a sample of between 2000 and 3000 words. Both must be in English. The sample may come from an earlier project if it demonstrates the kind of work relevant to the proposed essay. Do not submit a whole manuscript in place of the requested extract.\n\nApplications close at 17:00 on 30 November. Shortlisted applicants will be invited to a video conversation in December. The selection panel considers the project's clarity, the sample and whether the house's facilities fit the writer's needs; awards or publication history alone do not determine selection.\n\nResidents give one informal discussion about a question arising from their work. This is a conversation with the other residents, not a public performance or a finished-book launch. Access needs should be discussed with the coordinator before accepting a place, since the historic building has limitations that cannot all be removed.",
+            "explanation": "The discussion is with residents about an ongoing question. It is neither public launch, selection ceremony nor application replacement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "An informal exchange about a question from the work"
+              },
+              {
+                "id": "o1",
+                "text": "A finished manuscript reading for the public"
+              },
+              {
+                "id": "o2",
+                "text": "A substitute for the written application"
+              },
+              {
+                "id": "o3",
+                "text": "An awards ceremony deciding selection"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.residency-and-drafts-084.drafts.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does a cancelled sentence establish by itself?",
+            "material": "What an abandoned sentence can show\n\nA writer's draft can be tempting evidence. Crossed-out lines, arrows and replacement words seem to offer a view of thought in motion. Yet the page records marks made during writing, not every thought that led to them. Reading it well requires curiosity and restraint together.\n\nA cancelled sentence shows that a form of words was present and then rejected or displaced. It does not, on its own, establish why. The writer may have changed an argument, avoided repetition, shortened a paragraph or simply moved the sentence elsewhere. A confident account of motive needs more support than a line through the words.\n\nThe sequence of revisions can also be uncertain. An arrow may connect two passages without revealing whether they were written minutes or months apart. Different inks or layers of handwriting may suggest an order, but such clues need examination. The tidy chronology produced by an editor may be a reconstruction rather than something directly visible on the sheet.\n\nComparing versions helps. A phrase absent from one draft may return in another, perhaps serving a different purpose. What looks like a final rejection on a single page can become one stage in a longer process. Publication does not always end that process either; some writers revise later editions.\n\nThese limitations do not make drafts useless. They change the claims we can responsibly make. A draft can support a precise account of textual change even when the writer's private reason remains unknown. Distinguishing those questions allows the physical evidence to contribute without being asked to reveal an inaccessible inner life.\n\nFor a reader, the pleasure of drafts may lie partly in that open space. The finished work becomes less inevitable: another sentence was possible, another order tried. We can recognise the decisions visible in the record while leaving room for the ones it does not preserve. A marked page can tell us much without becoming a transparent window into its maker's mind.",
+            "explanation": "It establishes a textual occurrence/change. Motive, full chronology and total abandonment need additional evidence.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The writer’s exact private motive"
+              },
+              {
+                "id": "o1",
+                "text": "The date of every later revision"
+              },
+              {
+                "id": "o2",
+                "text": "That those words were present and then rejected or displaced"
+              },
+              {
+                "id": "o3",
+                "text": "That the writer abandoned the entire work"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.residency-and-drafts-084.drafts.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the author question a tidy revision chronology?",
+            "material": "What an abandoned sentence can show\n\nA writer's draft can be tempting evidence. Crossed-out lines, arrows and replacement words seem to offer a view of thought in motion. Yet the page records marks made during writing, not every thought that led to them. Reading it well requires curiosity and restraint together.\n\nA cancelled sentence shows that a form of words was present and then rejected or displaced. It does not, on its own, establish why. The writer may have changed an argument, avoided repetition, shortened a paragraph or simply moved the sentence elsewhere. A confident account of motive needs more support than a line through the words.\n\nThe sequence of revisions can also be uncertain. An arrow may connect two passages without revealing whether they were written minutes or months apart. Different inks or layers of handwriting may suggest an order, but such clues need examination. The tidy chronology produced by an editor may be a reconstruction rather than something directly visible on the sheet.\n\nComparing versions helps. A phrase absent from one draft may return in another, perhaps serving a different purpose. What looks like a final rejection on a single page can become one stage in a longer process. Publication does not always end that process either; some writers revise later editions.\n\nThese limitations do not make drafts useless. They change the claims we can responsibly make. A draft can support a precise account of textual change even when the writer's private reason remains unknown. Distinguishing those questions allows the physical evidence to contribute without being asked to reveal an inaccessible inner life.\n\nFor a reader, the pleasure of drafts may lie partly in that open space. The finished work becomes less inevitable: another sentence was possible, another order tried. We can recognise the decisions visible in the record while leaving room for the ones it does not preserve. A marked page can tell us much without becoming a transparent window into its maker's mind.",
+            "explanation": "Marks may not establish timing; an editor reconstructs. Arrows/inks are limited clues and comparison is useful.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Different inks prove a complete psychological history"
+              },
+              {
+                "id": "o1",
+                "text": "It may be an editorial reconstruction from incomplete clues"
+              },
+              {
+                "id": "o2",
+                "text": "Draft pages can never be compared"
+              },
+              {
+                "id": "o3",
+                "text": "Every arrow records an exact date"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.residency-and-drafts-084.drafts.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What can comparison of versions reveal?",
+            "material": "What an abandoned sentence can show\n\nA writer's draft can be tempting evidence. Crossed-out lines, arrows and replacement words seem to offer a view of thought in motion. Yet the page records marks made during writing, not every thought that led to them. Reading it well requires curiosity and restraint together.\n\nA cancelled sentence shows that a form of words was present and then rejected or displaced. It does not, on its own, establish why. The writer may have changed an argument, avoided repetition, shortened a paragraph or simply moved the sentence elsewhere. A confident account of motive needs more support than a line through the words.\n\nThe sequence of revisions can also be uncertain. An arrow may connect two passages without revealing whether they were written minutes or months apart. Different inks or layers of handwriting may suggest an order, but such clues need examination. The tidy chronology produced by an editor may be a reconstruction rather than something directly visible on the sheet.\n\nComparing versions helps. A phrase absent from one draft may return in another, perhaps serving a different purpose. What looks like a final rejection on a single page can become one stage in a longer process. Publication does not always end that process either; some writers revise later editions.\n\nThese limitations do not make drafts useless. They change the claims we can responsibly make. A draft can support a precise account of textual change even when the writer's private reason remains unknown. Distinguishing those questions allows the physical evidence to contribute without being asked to reveal an inaccessible inner life.\n\nFor a reader, the pleasure of drafts may lie partly in that open space. The finished work becomes less inevitable: another sentence was possible, another order tried. We can recognise the decisions visible in the record while leaving room for the ones it does not preserve. A marked page can tell us much without becoming a transparent window into its maker's mind.",
+            "explanation": "The passage explicitly describes return/reuse and later-edition revision. The universal alternatives contradict it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every crossed-out phrase is permanently forbidden"
+              },
+              {
+                "id": "o1",
+                "text": "A phrase apparently rejected may return for a new purpose"
+              },
+              {
+                "id": "o2",
+                "text": "Only the published version contains language"
+              },
+              {
+                "id": "o3",
+                "text": "Publication always prevents further revision"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.residency-and-drafts-084.drafts.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which claim best represents the author’s position?",
+            "material": "What an abandoned sentence can show\n\nA writer's draft can be tempting evidence. Crossed-out lines, arrows and replacement words seem to offer a view of thought in motion. Yet the page records marks made during writing, not every thought that led to them. Reading it well requires curiosity and restraint together.\n\nA cancelled sentence shows that a form of words was present and then rejected or displaced. It does not, on its own, establish why. The writer may have changed an argument, avoided repetition, shortened a paragraph or simply moved the sentence elsewhere. A confident account of motive needs more support than a line through the words.\n\nThe sequence of revisions can also be uncertain. An arrow may connect two passages without revealing whether they were written minutes or months apart. Different inks or layers of handwriting may suggest an order, but such clues need examination. The tidy chronology produced by an editor may be a reconstruction rather than something directly visible on the sheet.\n\nComparing versions helps. A phrase absent from one draft may return in another, perhaps serving a different purpose. What looks like a final rejection on a single page can become one stage in a longer process. Publication does not always end that process either; some writers revise later editions.\n\nThese limitations do not make drafts useless. They change the claims we can responsibly make. A draft can support a precise account of textual change even when the writer's private reason remains unknown. Distinguishing those questions allows the physical evidence to contribute without being asked to reveal an inaccessible inner life.\n\nFor a reader, the pleasure of drafts may lie partly in that open space. The finished work becomes less inevitable: another sentence was possible, another order tried. We can recognise the decisions visible in the record while leaving room for the ones it does not preserve. A marked page can tell us much without becoming a transparent window into its maker's mind.",
+            "explanation": "The conclusion values visible decisions with limits on motive. It rejects uselessness, transparency and inevitability.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Drafts provide no evidence worth studying"
+              },
+              {
+                "id": "o1",
+                "text": "A finished work could never have taken another form"
+              },
+              {
+                "id": "o2",
+                "text": "Drafts reveal textual decisions while leaving some motives inaccessible"
+              },
+              {
+                "id": "o3",
+                "text": "Every visible mark directly expresses a complete thought"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "25c4e287c92f6669be3e1ac432b78768921bf6959edfc1b1e72807047cbad48f",
+      "reviewNotes": "Three paired senior readings. Fictional magazines/sign writer/repair day/residency; qualified fruit and draft-analysis discussion. Same-author all-option/evidence review, no invented findings or independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior3.residency-and-drafts-084#residency",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.residency-and-drafts-084.residency.q1",
+            "expansion.20261024.senior3.residency-and-drafts-084.residency.q2",
+            "expansion.20261024.senior3.residency-and-drafts-084.residency.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.residency-and-drafts-084",
+          "sourceContentHash": "04593351eb6367433944c4a3749998482494bedfa852ee673b2c7230752370e0"
+        },
+        {
+          "id": "expansion.20261024.senior3.residency-and-drafts-084#drafts",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.residency-and-drafts-084.drafts.q1",
+            "expansion.20261024.senior3.residency-and-drafts-084.drafts.q2",
+            "expansion.20261024.senior3.residency-and-drafts-084.drafts.q3",
+            "expansion.20261024.senior3.residency-and-drafts-084.drafts.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.residency-and-drafts-084",
+          "sourceContentHash": "85a1296bf195570952b9200faff3e9e1eb63a761cdfd5c282f032d833ccbef70"
+        }
+      ]
+    }
+  ]
+}
