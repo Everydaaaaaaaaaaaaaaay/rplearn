@@ -1,0 +1,804 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b082",
+  "createdAt": "2026-10-23T23:49:22.801382+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.ferry-and-rehearsal-diaries-082",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Two diaries: a ferry and a rehearsal",
+        "summary": "Two diaries: a ferry and a rehearsal，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.shared_insertion"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete four-gap/five-option diary passages. Each candidate at most once; one unused sentence in each."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior insertion originals in two practices. Diary and guide-specific heading/quotation/candidate structure retained. Same-author all-placement review, fictional cases, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.ferry-and-rehearsal-diaries-082",
+          "family": "shared_insertion",
+          "label": "Two diaries: a ferry and a rehearsal",
+          "candidateSHA256": "04242283ff21e35971b0e64a943b86eab0a498b7e61a2297943c220c83f6960c",
+          "authorCheckSHA256": "6228fd0bb0761d54845ee7fdf26a4218dd78aa204e8f3477061e0e64b556e7c8",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.ferry-and-rehearsal-diaries-082#ferry",
+            "expansion.20261024.junior2.ferry-and-rehearsal-diaries-082#sound"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b082；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "An earlier boat\n\nSunday, 9 March\n\nWe planned to take the ferry across the river today. Dad had checked the sailing times on Friday, but Mum asked us to look again before leaving. ____1____ The notice explained that work at the landing place had changed the afternoon service.\n\nOur planned boat would leave thirty minutes earlier. We could still catch it if we left home at once, but my brother had not finished packing his bag. ____2____ He chose the one thing he wanted for the short journey, rather than bringing his whole toy box.\n\nAt the landing place, a staff member showed us which queue to join. A second queue was for a boat going farther along the river. ____3____ The people in front of us were travelling to a village we had never visited.\n\nOur crossing lasted only fifteen minutes. I stood with Dad where the staff said it was safe to watch the water. On the other bank, we bought lunch and planned our walk. ____4____ This time, the timetable we used was the new one.\n\nListening from the back row\n\nThursday, 13 March\n\nToday our music group rehearsed in the hall instead of the classroom. I usually played beside the piano, where I could hear every note clearly. ____1____ From there, the balance sounded different.\n\nOur teacher asked another student to play my part while I listened. The piano was much louder than I had realised, and the quiet opening of the recorder tune was difficult to hear. ____2____ We tried it again, this time with the pianist playing more softly.\n\nThe change helped, but I still missed the first note. I had been looking down at the music when the group began. ____3____ Once I could see the starting signal, I came in with the others.\n\nAt the end, we returned the chairs to their normal places. I wrote two reminders at the top of my page: listen across the room, and watch the start. ____4____ It was a better result than simply playing the same passage louder."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.ferry-and-rehearsal-diaries-082.ferry.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "An earlier boat\n\nSunday, 9 March\n\nWe planned to take the ferry across the river today. Dad had checked the sailing times on Friday, but Mum asked us to look again before leaving. ____1____ The notice explained that work at the landing place had changed the afternoon service.\n\nOur planned boat would leave thirty minutes earlier. We could still catch it if we left home at once, but my brother had not finished packing his bag. ____2____ He chose the one thing he wanted for the short journey, rather than bringing his whole toy box.\n\nAt the landing place, a staff member showed us which queue to join. A second queue was for a boat going farther along the river. ____3____ The people in front of us were travelling to a village we had never visited.\n\nOur crossing lasted only fifteen minutes. I stood with Dad where the staff said it was safe to watch the water. On the other bank, we bought lunch and planned our walk. ____4____ This time, the timetable we used was the new one.",
+            "explanation": "B introduces the update explained by the next sentence. C packs, D checks a queue and A return timing fit later gaps; E contradicts the notice.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. We checked the return journey before walking away."
+              },
+              {
+                "id": "o1",
+                "text": "B. The first page we opened contained an update."
+              },
+              {
+                "id": "o2",
+                "text": "C. He put his small red car into the bag and closed it."
+              },
+              {
+                "id": "o3",
+                "text": "D. We asked about the destination before following them."
+              },
+              {
+                "id": "o4",
+                "text": "E. The afternoon service had never changed in any way."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.ferry-and-rehearsal-diaries-082.ferry.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "An earlier boat\n\nSunday, 9 March\n\nWe planned to take the ferry across the river today. Dad had checked the sailing times on Friday, but Mum asked us to look again before leaving. ____1____ The notice explained that work at the landing place had changed the afternoon service.\n\nOur planned boat would leave thirty minutes earlier. We could still catch it if we left home at once, but my brother had not finished packing his bag. ____2____ He chose the one thing he wanted for the short journey, rather than bringing his whole toy box.\n\nAt the landing place, a staff member showed us which queue to join. A second queue was for a boat going farther along the river. ____3____ The people in front of us were travelling to a village we had never visited.\n\nOur crossing lasted only fifteen minutes. I stood with Dad where the staff said it was safe to watch the water. On the other bank, we bought lunch and planned our walk. ____4____ This time, the timetable we used was the new one.",
+            "explanation": "C completes the brother’s packing and supplies the one toy mentioned next. A/B/D concern timetables/queues; E denies the real change.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. We checked the return journey before walking away."
+              },
+              {
+                "id": "o1",
+                "text": "B. The first page we opened contained an update."
+              },
+              {
+                "id": "o2",
+                "text": "C. He put his small red car into the bag and closed it."
+              },
+              {
+                "id": "o3",
+                "text": "D. We asked about the destination before following them."
+              },
+              {
+                "id": "o4",
+                "text": "E. The afternoon service had never changed in any way."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.ferry-and-rehearsal-diaries-082.ferry.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "An earlier boat\n\nSunday, 9 March\n\nWe planned to take the ferry across the river today. Dad had checked the sailing times on Friday, but Mum asked us to look again before leaving. ____1____ The notice explained that work at the landing place had changed the afternoon service.\n\nOur planned boat would leave thirty minutes earlier. We could still catch it if we left home at once, but my brother had not finished packing his bag. ____2____ He chose the one thing he wanted for the short journey, rather than bringing his whole toy box.\n\nAt the landing place, a staff member showed us which queue to join. A second queue was for a boat going farther along the river. ____3____ The people in front of us were travelling to a village we had never visited.\n\nOur crossing lasted only fifteen minutes. I stood with Dad where the staff said it was safe to watch the water. On the other bank, we bought lunch and planned our walk. ____4____ This time, the timetable we used was the new one.",
+            "explanation": "D checks the queue’s destination, preparing the different village. A/B concern service timing and C the bag. E contradicts the update rather than avoiding a wrong boat.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. We checked the return journey before walking away."
+              },
+              {
+                "id": "o1",
+                "text": "B. The first page we opened contained an update."
+              },
+              {
+                "id": "o2",
+                "text": "C. He put his small red car into the bag and closed it."
+              },
+              {
+                "id": "o3",
+                "text": "D. We asked about the destination before following them."
+              },
+              {
+                "id": "o4",
+                "text": "E. The afternoon service had never changed in any way."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.ferry-and-rehearsal-diaries-082.ferry.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "An earlier boat\n\nSunday, 9 March\n\nWe planned to take the ferry across the river today. Dad had checked the sailing times on Friday, but Mum asked us to look again before leaving. ____1____ The notice explained that work at the landing place had changed the afternoon service.\n\nOur planned boat would leave thirty minutes earlier. We could still catch it if we left home at once, but my brother had not finished packing his bag. ____2____ He chose the one thing he wanted for the short journey, rather than bringing his whole toy box.\n\nAt the landing place, a staff member showed us which queue to join. A second queue was for a boat going farther along the river. ____3____ The people in front of us were travelling to a village we had never visited.\n\nOur crossing lasted only fifteen minutes. I stood with Dad where the staff said it was safe to watch the water. On the other bank, we bought lunch and planned our walk. ____4____ This time, the timetable we used was the new one.",
+            "explanation": "A connects arrival with a return check, and this time refers to using the new timetable. B was initial discovery, C packing and D outbound queue. E is false.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. We checked the return journey before walking away."
+              },
+              {
+                "id": "o1",
+                "text": "B. The first page we opened contained an update."
+              },
+              {
+                "id": "o2",
+                "text": "C. He put his small red car into the bag and closed it."
+              },
+              {
+                "id": "o3",
+                "text": "D. We asked about the destination before following them."
+              },
+              {
+                "id": "o4",
+                "text": "E. The afternoon service had never changed in any way."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.ferry-and-rehearsal-diaries-082.sound.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "Listening from the back row\n\nThursday, 13 March\n\nToday our music group rehearsed in the hall instead of the classroom. I usually played beside the piano, where I could hear every note clearly. ____1____ From there, the balance sounded different.\n\nOur teacher asked another student to play my part while I listened. The piano was much louder than I had realised, and the quiet opening of the recorder tune was difficult to hear. ____2____ We tried it again, this time with the pianist playing more softly.\n\nThe change helped, but I still missed the first note. I had been looking down at the music when the group began. ____3____ Once I could see the starting signal, I came in with the others.\n\nAt the end, we returned the chairs to their normal places. I wrote two reminders at the top of my page: listen across the room, and watch the start. ____4____ It was a better result than simply playing the same passage louder.",
+            "explanation": "C establishes the new listening position picked up by From there. D reports balance, A improves sight and B sums up later learning; E conflicts with the softer-piano test.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. The teacher moved my stand slightly so I could see her hand."
+              },
+              {
+                "id": "o1",
+                "text": "B. I had learned something about both sound and timing."
+              },
+              {
+                "id": "o2",
+                "text": "C. She sent me to listen from the back row first."
+              },
+              {
+                "id": "o3",
+                "text": "D. I described the missing recorder sound to the group."
+              },
+              {
+                "id": "o4",
+                "text": "E. The only solution was for every instrument to play as loudly as possible."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.ferry-and-rehearsal-diaries-082.sound.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "Listening from the back row\n\nThursday, 13 March\n\nToday our music group rehearsed in the hall instead of the classroom. I usually played beside the piano, where I could hear every note clearly. ____1____ From there, the balance sounded different.\n\nOur teacher asked another student to play my part while I listened. The piano was much louder than I had realised, and the quiet opening of the recorder tune was difficult to hear. ____2____ We tried it again, this time with the pianist playing more softly.\n\nThe change helped, but I still missed the first note. I had been looking down at the music when the group began. ____3____ Once I could see the starting signal, I came in with the others.\n\nAt the end, we returned the chairs to their normal places. I wrote two reminders at the top of my page: listen across the room, and watch the start. ____4____ It was a better result than simply playing the same passage louder.",
+            "explanation": "D reports the observed recorder problem and motivates softer piano. C is position, A view and B final learning. E would worsen balance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. The teacher moved my stand slightly so I could see her hand."
+              },
+              {
+                "id": "o1",
+                "text": "B. I had learned something about both sound and timing."
+              },
+              {
+                "id": "o2",
+                "text": "C. She sent me to listen from the back row first."
+              },
+              {
+                "id": "o3",
+                "text": "D. I described the missing recorder sound to the group."
+              },
+              {
+                "id": "o4",
+                "text": "E. The only solution was for every instrument to play as loudly as possible."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.ferry-and-rehearsal-diaries-082.sound.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "Listening from the back row\n\nThursday, 13 March\n\nToday our music group rehearsed in the hall instead of the classroom. I usually played beside the piano, where I could hear every note clearly. ____1____ From there, the balance sounded different.\n\nOur teacher asked another student to play my part while I listened. The piano was much louder than I had realised, and the quiet opening of the recorder tune was difficult to hear. ____2____ We tried it again, this time with the pianist playing more softly.\n\nThe change helped, but I still missed the first note. I had been looking down at the music when the group began. ____3____ Once I could see the starting signal, I came in with the others.\n\nAt the end, we returned the chairs to their normal places. I wrote two reminders at the top of my page: listen across the room, and watch the start. ____4____ It was a better result than simply playing the same passage louder.",
+            "explanation": "A creates a view of the teacher’s hand, referred to by starting signal. C/D concern hearing and B summary; E does not fix seeing the cue.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. The teacher moved my stand slightly so I could see her hand."
+              },
+              {
+                "id": "o1",
+                "text": "B. I had learned something about both sound and timing."
+              },
+              {
+                "id": "o2",
+                "text": "C. She sent me to listen from the back row first."
+              },
+              {
+                "id": "o3",
+                "text": "D. I described the missing recorder sound to the group."
+              },
+              {
+                "id": "o4",
+                "text": "E. The only solution was for every instrument to play as loudly as possible."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.ferry-and-rehearsal-diaries-082.sound.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "Listening from the back row\n\nThursday, 13 March\n\nToday our music group rehearsed in the hall instead of the classroom. I usually played beside the piano, where I could hear every note clearly. ____1____ From there, the balance sounded different.\n\nOur teacher asked another student to play my part while I listened. The piano was much louder than I had realised, and the quiet opening of the recorder tune was difficult to hear. ____2____ We tried it again, this time with the pianist playing more softly.\n\nThe change helped, but I still missed the first note. I had been looking down at the music when the group began. ____3____ Once I could see the starting signal, I came in with the others.\n\nAt the end, we returned the chairs to their normal places. I wrote two reminders at the top of my page: listen across the room, and watch the start. ____4____ It was a better result than simply playing the same passage louder.",
+            "explanation": "B summarises sound and timing, the two written reminders. A/C/D are earlier actions; E contradicts the final rejection of merely louder playing.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. The teacher moved my stand slightly so I could see her hand."
+              },
+              {
+                "id": "o1",
+                "text": "B. I had learned something about both sound and timing."
+              },
+              {
+                "id": "o2",
+                "text": "C. She sent me to listen from the back row first."
+              },
+              {
+                "id": "o3",
+                "text": "D. I described the missing recorder sound to the group."
+              },
+              {
+                "id": "o4",
+                "text": "E. The only solution was for every instrument to play as loudly as possible."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "284c18cd17a692176b71276f8e41f0d4a8d57bc573a8a03fcee84c4e05f70738",
+      "reviewNotes": "Four complete junior insertion originals in two practices. Diary and guide-specific heading/quotation/candidate structure retained. Same-author all-placement review, fictional cases, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.routes-and-requests-guides-082",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Two guides: finding a route and making a request",
+        "summary": "Two guides: finding a route and making a request，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.shared_insertion"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete five-gap/seven-option guides. Three headings remain printed; gap2 is inside quotation marks and gap5 is a heading. Two unused candidates in each; do not import an extra once-only rule."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior insertion originals in two practices. Diary and guide-specific heading/quotation/candidate structure retained. Same-author all-placement review, fictional cases, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.routes-and-requests-guides-082",
+          "family": "shared_insertion",
+          "label": "Two guides: finding a route and making a request",
+          "candidateSHA256": "27cba14312bbe24aaeef9b6362108a402e828412851be4fa9a0c55a4df867f3f",
+          "authorCheckSHA256": "b90ca2fd2c62c166d51979c8139e2c6418acc6bd7a125fb36d520d972eacd56e",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.routes-and-requests-guides-082#route",
+            "expansion.20261024.junior3.routes-and-requests-guides-082#request"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b082；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Planning a walk in a new town\n\nFinding a route in a new town begins with knowing where you want to arrive. A place name alone may be unclear if several buildings use it. ____1____ That small check can prevent a confident walk to the wrong branch of a museum or library.\n\nAsk a precise question\n\nWhen asking for help, give a useful starting point. You might say, \"____2____\" A person can answer more easily when they know both your destination and your current position.\n\nChoose a suitable route\n\nThe shortest line on a map may include steps or a steep hill. ____3____ A slightly longer walk may fit your group better than the route suggested first.\n\nKeep the information current\n\nRoadwork or a closed gate can change a familiar path. ____4____ If a sign at the site disagrees with an old saved route, pause and check rather than forcing your way through.\n\n____5____\n\nBefore leaving the destination, consider how you will get back. The return route may look different after dark, and public transport may run less often later. Keep enough time and an appropriate plan for the whole outing.\n\nAsking someone to change a plan\n\nSometimes a shared plan no longer works for you. Asking for a change can be easier when you explain the specific problem rather than suggesting that everyone else has been inconsiderate. ____1____ This helps separate the difficulty from a judgment about the other people.\n\nMake the request specific\n\nA vague complaint can leave others unsure what you want. You might say, \"____2____\" A clear alternative gives them something concrete to consider.\n\nListen to the reply\n\nOthers may have limits you did not know about. ____3____ A question about their situation can reveal another way to solve the problem without demanding your first choice.\n\nAgree on what changes\n\nIf the group finds an alternative, make sure everyone understands the new arrangement. ____4____ Otherwise, one person may follow the old plan while another follows the new one.\n\n____5____\n\nAfterwards, notice whether the change solved the original difficulty. Thank people for helping, and mention any remaining problem while it is still specific. An arrangement can be revised without treating the whole relationship as a failure."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.routes-and-requests-guides-082.route.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "Planning a walk in a new town\n\nFinding a route in a new town begins with knowing where you want to arrive. A place name alone may be unclear if several buildings use it. ____1____ That small check can prevent a confident walk to the wrong branch of a museum or library.\n\nAsk a precise question\n\nWhen asking for help, give a useful starting point. You might say, \"____2____\" A person can answer more easily when they know both your destination and your current position.\n\nChoose a suitable route\n\nThe shortest line on a map may include steps or a steep hill. ____3____ A slightly longer walk may fit your group better than the route suggested first.\n\nKeep the information current\n\nRoadwork or a closed gate can change a familiar path. ____4____ If a sign at the site disagrees with an old saved route, pause and check rather than forcing your way through.\n\n____5____\n\nBefore leaving the destination, consider how you will get back. The return route may look different after dark, and public transport may run less often later. Keep enough time and an appropriate plan for the whole outing.",
+            "explanation": "D specifies address/entrance and explains avoiding the wrong branch. B quoted question, F route suitability, A updates and C return heading fit later gaps. E/G impose unsafe or universal assumptions.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check whether the directions reflect recent local changes."
+              },
+              {
+                "id": "o1",
+                "text": "B. Is this the way from the station to the museum on King Street?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Include the journey back"
+              },
+              {
+                "id": "o3",
+                "text": "D. Confirm the full address and the entrance you need."
+              },
+              {
+                "id": "o4",
+                "text": "E. A closed gate is permission to climb over it."
+              },
+              {
+                "id": "o5",
+                "text": "F. Consider distance, access and the needs of the people walking."
+              },
+              {
+                "id": "o6",
+                "text": "G. The shortest route must be suitable for every person."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.routes-and-requests-guides-082.route.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "Planning a walk in a new town\n\nFinding a route in a new town begins with knowing where you want to arrive. A place name alone may be unclear if several buildings use it. ____1____ That small check can prevent a confident walk to the wrong branch of a museum or library.\n\nAsk a precise question\n\nWhen asking for help, give a useful starting point. You might say, \"____2____\" A person can answer more easily when they know both your destination and your current position.\n\nChoose a suitable route\n\nThe shortest line on a map may include steps or a steep hill. ____3____ A slightly longer walk may fit your group better than the route suggested first.\n\nKeep the information current\n\nRoadwork or a closed gate can change a familiar path. ____4____ If a sign at the site disagrees with an old saved route, pause and check rather than forcing your way through.\n\n____5____\n\nBefore leaving the destination, consider how you will get back. The return route may look different after dark, and public transport may run less often later. Keep enough time and an appropriate plan for the whole outing.",
+            "explanation": "B is a first-person location-to-destination question suited to the surrounding quote. A/D/F are general directions and C a heading. E/G do not ask for help.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check whether the directions reflect recent local changes."
+              },
+              {
+                "id": "o1",
+                "text": "B. Is this the way from the station to the museum on King Street?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Include the journey back"
+              },
+              {
+                "id": "o3",
+                "text": "D. Confirm the full address and the entrance you need."
+              },
+              {
+                "id": "o4",
+                "text": "E. A closed gate is permission to climb over it."
+              },
+              {
+                "id": "o5",
+                "text": "F. Consider distance, access and the needs of the people walking."
+              },
+              {
+                "id": "o6",
+                "text": "G. The shortest route must be suitable for every person."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.routes-and-requests-guides-082.route.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "Planning a walk in a new town\n\nFinding a route in a new town begins with knowing where you want to arrive. A place name alone may be unclear if several buildings use it. ____1____ That small check can prevent a confident walk to the wrong branch of a museum or library.\n\nAsk a precise question\n\nWhen asking for help, give a useful starting point. You might say, \"____2____\" A person can answer more easily when they know both your destination and your current position.\n\nChoose a suitable route\n\nThe shortest line on a map may include steps or a steep hill. ____3____ A slightly longer walk may fit your group better than the route suggested first.\n\nKeep the information current\n\nRoadwork or a closed gate can change a familiar path. ____4____ If a sign at the site disagrees with an old saved route, pause and check rather than forcing your way through.\n\n____5____\n\nBefore leaving the destination, consider how you will get back. The return route may look different after dark, and public transport may run less often later. Keep enough time and an appropriate plan for the whole outing.",
+            "explanation": "F checks needs/access beyond shortest distance, preparing a longer suitable route. A/B/C/D concern other stages. G denies varied access needs; E ignores closure.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check whether the directions reflect recent local changes."
+              },
+              {
+                "id": "o1",
+                "text": "B. Is this the way from the station to the museum on King Street?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Include the journey back"
+              },
+              {
+                "id": "o3",
+                "text": "D. Confirm the full address and the entrance you need."
+              },
+              {
+                "id": "o4",
+                "text": "E. A closed gate is permission to climb over it."
+              },
+              {
+                "id": "o5",
+                "text": "F. Consider distance, access and the needs of the people walking."
+              },
+              {
+                "id": "o6",
+                "text": "G. The shortest route must be suitable for every person."
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.junior3.routes-and-requests-guides-082.route.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "Planning a walk in a new town\n\nFinding a route in a new town begins with knowing where you want to arrive. A place name alone may be unclear if several buildings use it. ____1____ That small check can prevent a confident walk to the wrong branch of a museum or library.\n\nAsk a precise question\n\nWhen asking for help, give a useful starting point. You might say, \"____2____\" A person can answer more easily when they know both your destination and your current position.\n\nChoose a suitable route\n\nThe shortest line on a map may include steps or a steep hill. ____3____ A slightly longer walk may fit your group better than the route suggested first.\n\nKeep the information current\n\nRoadwork or a closed gate can change a familiar path. ____4____ If a sign at the site disagrees with an old saved route, pause and check rather than forcing your way through.\n\n____5____\n\nBefore leaving the destination, consider how you will get back. The return route may look different after dark, and public transport may run less often later. Keep enough time and an appropriate plan for the whole outing.",
+            "explanation": "A asks for current information, illustrated by roadwork/signs. B/C/D/F concern questions, return, address and suitability. E/G contradict caution or varied needs.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check whether the directions reflect recent local changes."
+              },
+              {
+                "id": "o1",
+                "text": "B. Is this the way from the station to the museum on King Street?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Include the journey back"
+              },
+              {
+                "id": "o3",
+                "text": "D. Confirm the full address and the entrance you need."
+              },
+              {
+                "id": "o4",
+                "text": "E. A closed gate is permission to climb over it."
+              },
+              {
+                "id": "o5",
+                "text": "F. Consider distance, access and the needs of the people walking."
+              },
+              {
+                "id": "o6",
+                "text": "G. The shortest route must be suitable for every person."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.routes-and-requests-guides-082.route.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 5.",
+            "material": "Planning a walk in a new town\n\nFinding a route in a new town begins with knowing where you want to arrive. A place name alone may be unclear if several buildings use it. ____1____ That small check can prevent a confident walk to the wrong branch of a museum or library.\n\nAsk a precise question\n\nWhen asking for help, give a useful starting point. You might say, \"____2____\" A person can answer more easily when they know both your destination and your current position.\n\nChoose a suitable route\n\nThe shortest line on a map may include steps or a steep hill. ____3____ A slightly longer walk may fit your group better than the route suggested first.\n\nKeep the information current\n\nRoadwork or a closed gate can change a familiar path. ____4____ If a sign at the site disagrees with an old saved route, pause and check rather than forcing your way through.\n\n____5____\n\nBefore leaving the destination, consider how you will get back. The return route may look different after dark, and public transport may run less often later. Keep enough time and an appropriate plan for the whole outing.",
+            "explanation": "C heads the return-planning paragraph. A/B/D/F address outward information, while E/G do not concern a safe whole outing.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Check whether the directions reflect recent local changes."
+              },
+              {
+                "id": "o1",
+                "text": "B. Is this the way from the station to the museum on King Street?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Include the journey back"
+              },
+              {
+                "id": "o3",
+                "text": "D. Confirm the full address and the entrance you need."
+              },
+              {
+                "id": "o4",
+                "text": "E. A closed gate is permission to climb over it."
+              },
+              {
+                "id": "o5",
+                "text": "F. Consider distance, access and the needs of the people walking."
+              },
+              {
+                "id": "o6",
+                "text": "G. The shortest route must be suitable for every person."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.routes-and-requests-guides-082.request.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "Asking someone to change a plan\n\nSometimes a shared plan no longer works for you. Asking for a change can be easier when you explain the specific problem rather than suggesting that everyone else has been inconsiderate. ____1____ This helps separate the difficulty from a judgment about the other people.\n\nMake the request specific\n\nA vague complaint can leave others unsure what you want. You might say, \"____2____\" A clear alternative gives them something concrete to consider.\n\nListen to the reply\n\nOthers may have limits you did not know about. ____3____ A question about their situation can reveal another way to solve the problem without demanding your first choice.\n\nAgree on what changes\n\nIf the group finds an alternative, make sure everyone understands the new arrangement. ____4____ Otherwise, one person may follow the old plan while another follows the new one.\n\n____5____\n\nAfterwards, notice whether the change solved the original difficulty. Thank people for helping, and mention any remaining problem while it is still specific. An arrangement can be revised without treating the whole relationship as a failure.",
+            "explanation": "D identifies a specific difficulty, picked up by This, rather than blame. A quote, F other limits, E confirmation and C review serve later gaps. B/G impose unreasonable demands or judgments.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could we meet at four instead, so I can come after my appointment?"
+              },
+              {
+                "id": "o1",
+                "text": "B. They must accept your suggestion even if it creates a new difficulty."
+              },
+              {
+                "id": "o2",
+                "text": "C. Review how it worked"
+              },
+              {
+                "id": "o3",
+                "text": "D. Describe which part of the arrangement has become difficult for you."
+              },
+              {
+                "id": "o4",
+                "text": "E. Repeat the agreed time, place or responsibility before ending the discussion."
+              },
+              {
+                "id": "o5",
+                "text": "F. Their first answer may therefore be different from the one you hoped for."
+              },
+              {
+                "id": "o6",
+                "text": "G. A changed plan means that nobody can ever be trusted again."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.routes-and-requests-guides-082.request.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "Asking someone to change a plan\n\nSometimes a shared plan no longer works for you. Asking for a change can be easier when you explain the specific problem rather than suggesting that everyone else has been inconsiderate. ____1____ This helps separate the difficulty from a judgment about the other people.\n\nMake the request specific\n\nA vague complaint can leave others unsure what you want. You might say, \"____2____\" A clear alternative gives them something concrete to consider.\n\nListen to the reply\n\nOthers may have limits you did not know about. ____3____ A question about their situation can reveal another way to solve the problem without demanding your first choice.\n\nAgree on what changes\n\nIf the group finds an alternative, make sure everyone understands the new arrangement. ____4____ Otherwise, one person may follow the old plan while another follows the new one.\n\n____5____\n\nAfterwards, notice whether the change solved the original difficulty. Thank people for helping, and mention any remaining problem while it is still specific. An arrangement can be revised without treating the whole relationship as a failure.",
+            "explanation": "A is the specific quoted alternative with a reason. D/E/F are general descriptions and C a heading. B/G do not request a workable change.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could we meet at four instead, so I can come after my appointment?"
+              },
+              {
+                "id": "o1",
+                "text": "B. They must accept your suggestion even if it creates a new difficulty."
+              },
+              {
+                "id": "o2",
+                "text": "C. Review how it worked"
+              },
+              {
+                "id": "o3",
+                "text": "D. Describe which part of the arrangement has become difficult for you."
+              },
+              {
+                "id": "o4",
+                "text": "E. Repeat the agreed time, place or responsibility before ending the discussion."
+              },
+              {
+                "id": "o5",
+                "text": "F. Their first answer may therefore be different from the one you hoped for."
+              },
+              {
+                "id": "o6",
+                "text": "G. A changed plan means that nobody can ever be trusted again."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.routes-and-requests-guides-082.request.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "Asking someone to change a plan\n\nSometimes a shared plan no longer works for you. Asking for a change can be easier when you explain the specific problem rather than suggesting that everyone else has been inconsiderate. ____1____ This helps separate the difficulty from a judgment about the other people.\n\nMake the request specific\n\nA vague complaint can leave others unsure what you want. You might say, \"____2____\" A clear alternative gives them something concrete to consider.\n\nListen to the reply\n\nOthers may have limits you did not know about. ____3____ A question about their situation can reveal another way to solve the problem without demanding your first choice.\n\nAgree on what changes\n\nIf the group finds an alternative, make sure everyone understands the new arrangement. ____4____ Otherwise, one person may follow the old plan while another follows the new one.\n\n____5____\n\nAfterwards, notice whether the change solved the original difficulty. Thank people for helping, and mention any remaining problem while it is still specific. An arrangement can be revised without treating the whole relationship as a failure.",
+            "explanation": "F follows from hidden limits and leads to asking about their situation. A/D/E concern request/problem/agreement; C final review. B ignores their limits.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could we meet at four instead, so I can come after my appointment?"
+              },
+              {
+                "id": "o1",
+                "text": "B. They must accept your suggestion even if it creates a new difficulty."
+              },
+              {
+                "id": "o2",
+                "text": "C. Review how it worked"
+              },
+              {
+                "id": "o3",
+                "text": "D. Describe which part of the arrangement has become difficult for you."
+              },
+              {
+                "id": "o4",
+                "text": "E. Repeat the agreed time, place or responsibility before ending the discussion."
+              },
+              {
+                "id": "o5",
+                "text": "F. Their first answer may therefore be different from the one you hoped for."
+              },
+              {
+                "id": "o6",
+                "text": "G. A changed plan means that nobody can ever be trusted again."
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.junior3.routes-and-requests-guides-082.request.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "Asking someone to change a plan\n\nSometimes a shared plan no longer works for you. Asking for a change can be easier when you explain the specific problem rather than suggesting that everyone else has been inconsiderate. ____1____ This helps separate the difficulty from a judgment about the other people.\n\nMake the request specific\n\nA vague complaint can leave others unsure what you want. You might say, \"____2____\" A clear alternative gives them something concrete to consider.\n\nListen to the reply\n\nOthers may have limits you did not know about. ____3____ A question about their situation can reveal another way to solve the problem without demanding your first choice.\n\nAgree on what changes\n\nIf the group finds an alternative, make sure everyone understands the new arrangement. ____4____ Otherwise, one person may follow the old plan while another follows the new one.\n\n____5____\n\nAfterwards, notice whether the change solved the original difficulty. Thank people for helping, and mention any remaining problem while it is still specific. An arrangement can be revised without treating the whole relationship as a failure.",
+            "explanation": "E repeats the agreed details, preventing old/new confusion. A initial request, D problem, F response and C review belong elsewhere. B/G do not confirm the arrangement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could we meet at four instead, so I can come after my appointment?"
+              },
+              {
+                "id": "o1",
+                "text": "B. They must accept your suggestion even if it creates a new difficulty."
+              },
+              {
+                "id": "o2",
+                "text": "C. Review how it worked"
+              },
+              {
+                "id": "o3",
+                "text": "D. Describe which part of the arrangement has become difficult for you."
+              },
+              {
+                "id": "o4",
+                "text": "E. Repeat the agreed time, place or responsibility before ending the discussion."
+              },
+              {
+                "id": "o5",
+                "text": "F. Their first answer may therefore be different from the one you hoped for."
+              },
+              {
+                "id": "o6",
+                "text": "G. A changed plan means that nobody can ever be trusted again."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.junior3.routes-and-requests-guides-082.request.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 5.",
+            "material": "Asking someone to change a plan\n\nSometimes a shared plan no longer works for you. Asking for a change can be easier when you explain the specific problem rather than suggesting that everyone else has been inconsiderate. ____1____ This helps separate the difficulty from a judgment about the other people.\n\nMake the request specific\n\nA vague complaint can leave others unsure what you want. You might say, \"____2____\" A clear alternative gives them something concrete to consider.\n\nListen to the reply\n\nOthers may have limits you did not know about. ____3____ A question about their situation can reveal another way to solve the problem without demanding your first choice.\n\nAgree on what changes\n\nIf the group finds an alternative, make sure everyone understands the new arrangement. ____4____ Otherwise, one person may follow the old plan while another follows the new one.\n\n____5____\n\nAfterwards, notice whether the change solved the original difficulty. Thank people for helping, and mention any remaining problem while it is still specific. An arrangement can be revised without treating the whole relationship as a failure.",
+            "explanation": "C heads checking whether the change helped. A/D/E/F concern earlier stages. B/G reject mutual adjustment rather than evaluate it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could we meet at four instead, so I can come after my appointment?"
+              },
+              {
+                "id": "o1",
+                "text": "B. They must accept your suggestion even if it creates a new difficulty."
+              },
+              {
+                "id": "o2",
+                "text": "C. Review how it worked"
+              },
+              {
+                "id": "o3",
+                "text": "D. Describe which part of the arrangement has become difficult for you."
+              },
+              {
+                "id": "o4",
+                "text": "E. Repeat the agreed time, place or responsibility before ending the discussion."
+              },
+              {
+                "id": "o5",
+                "text": "F. Their first answer may therefore be different from the one you hoped for."
+              },
+              {
+                "id": "o6",
+                "text": "G. A changed plan means that nobody can ever be trusted again."
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "b814d27ca2c7713f5d095d17f5c07bc2a81db407e251303ac0172ad6ff5595c5",
+      "reviewNotes": "Four complete junior insertion originals in two practices. Diary and guide-specific heading/quotation/candidate structure retained. Same-author all-placement review, fictional cases, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
