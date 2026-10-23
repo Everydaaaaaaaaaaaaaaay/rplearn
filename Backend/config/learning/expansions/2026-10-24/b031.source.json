@@ -1,0 +1,444 @@
+{
+  "createdAt": "2026-10-23T20:38:36.951294+00:00",
+  "reviewBoundary": "Six new five-conversation primary2 practices with English situations and replies. Author checks the communicative response and all alternatives; candidate positions shuffled before freeze. Multi-turn context is explicitly provisional, not independent age or teacher calibration.",
+  "units": [
+    {
+      "id": "primary2.kite-making-031",
+      "level": "primary2",
+      "title": "Making a kite",
+      "family": "function_choice",
+      "minutes": 8,
+      "sourceUnitId": "original.primary2-five-small-functions",
+      "alignmentNote": "Five short functional conversations form a complete set. Some add a preceding context line; this is an explicit provisional language adaptation of the source task, not a claim of exact original-paper vocabulary or independent age calibration.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Making a kite",
+          "text": "Choose the best reply in each short conversation.\n\n1. Child: This paper is too small for my kite.\nTeacher: ____\n\n2. Teacher: Which colour do you want for the tail?\nChild: ____\n\n3. Child: I cannot hold the paper and the string. Can you help?\nFriend: ____\n\n4. Teacher: Please write your name on the kite.\nChild: ____\n\n5. Child: The kite is ready. Shall we try it outside?\nTeacher: ____",
+          "questions": [
+            {
+              "prompt": "Child: This paper is too small for my kite.\nTeacher: ____",
+              "options": [
+                "I have a dog.",
+                "She is my aunt.",
+                "It is Monday.",
+                "Try this bigger piece."
+              ],
+              "answer": 3,
+              "explanation": "A bigger piece responds to paper being too small. Day, family identity and pet ownership do not help with the size problem."
+            },
+            {
+              "prompt": "Teacher: Which colour do you want for the tail?\nChild: ____",
+              "options": [
+                "I am seven.",
+                "Yellow, please.",
+                "It is on the floor.",
+                "He can swim."
+              ],
+              "answer": 1,
+              "explanation": "Yellow selects a colour. Location, age and swimming ability do not answer Which colour."
+            },
+            {
+              "prompt": "Child: I cannot hold the paper and the string. Can you help?\nFriend: ____",
+              "options": [
+                "She is a nurse.",
+                "Good night.",
+                "Yes. I can hold the paper.",
+                "It is a green frog."
+              ],
+              "answer": 2,
+              "explanation": "Offering to hold the paper directly helps the stated two-handed task. Naming a frog, saying good night and giving a job do not."
+            },
+            {
+              "prompt": "Teacher: Please write your name on the kite.\nChild: ____",
+              "options": [
+                "He is my dad.",
+                "My shoes are blue.",
+                "All right. Where is the pen?",
+                "There are two birds."
+              ],
+              "answer": 2,
+              "explanation": "Agreeing and asking for a pen supports writing a name. Shoe colour, bird count and Dad's identity do not respond to the instruction."
+            },
+            {
+              "prompt": "Child: The kite is ready. Shall we try it outside?\nTeacher: ____",
+              "options": [
+                "Yes. Let us go to the field.",
+                "It is in my bag.",
+                "She likes milk.",
+                "I am fine, thanks."
+              ],
+              "answer": 0,
+              "explanation": "Going to the field accepts the proposed outdoor test. Location of an unspecified object, milk preference and health do not answer the suggestion."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary2.school-photo-line-031",
+      "level": "primary2",
+      "title": "The school photograph",
+      "family": "function_choice",
+      "minutes": 8,
+      "sourceUnitId": "original.primary2-five-small-functions",
+      "alignmentNote": "Five short functional conversations form a complete set. Some add a preceding context line; this is an explicit provisional language adaptation of the source task, not a claim of exact original-paper vocabulary or independent age calibration.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "The school photograph",
+          "text": "Choose the best reply in each short conversation.\n\n1. Teacher: Please stand next to Tom for the photograph.\nChild: ____\n\n2. Child: Can my little brother be in the picture too?\nTeacher: ____\n\n3. Photographer: Are all your friends here?\nChild: ____\n\n4. Teacher: Whose hat is on this chair?\nChild: ____\n\n5. Photographer: Everyone, look this way and smile!\nChild: ____",
+          "questions": [
+            {
+              "prompt": "Teacher: Please stand next to Tom for the photograph.\nChild: ____",
+              "options": [
+                "It is a bus.",
+                "Here, beside Tom?",
+                "I like pears.",
+                "My pencil is long."
+              ],
+              "answer": 1,
+              "explanation": "Asking whether this place beside Tom is correct checks the instruction. Fruit preference, naming a bus and pencil length do not address position."
+            },
+            {
+              "prompt": "Child: Can my little brother be in the picture too?\nTeacher: ____",
+              "options": [
+                "The book is new.",
+                "I can see four apples.",
+                "Yes. He can stand with you.",
+                "It is cloudy."
+              ],
+              "answer": 2,
+              "explanation": "Allowing the brother to stand with the child answers permission. Weather, book condition and apple count do not."
+            },
+            {
+              "prompt": "Photographer: Are all your friends here?\nChild: ____",
+              "options": [
+                "It is under the chair.",
+                "Not yet. Anna is coming.",
+                "My bag is yellow.",
+                "I like this cake."
+              ],
+              "answer": 1,
+              "explanation": "Anna still coming means not all friends have arrived. The other replies give unrelated colour, location and preference."
+            },
+            {
+              "prompt": "Teacher: Whose hat is on this chair?\nChild: ____",
+              "options": [
+                "It is mine. I will take it.",
+                "He is in the garden.",
+                "The bird can fly.",
+                "I am eight."
+              ],
+              "answer": 0,
+              "explanation": "It is mine identifies ownership and offers removal. Age, a person's location and bird ability do not answer Whose."
+            },
+            {
+              "prompt": "Photographer: Everyone, look this way and smile!\nChild: ____",
+              "options": [
+                "Like this?",
+                "There are three windows.",
+                "I want some rice.",
+                "It is my sister's bag."
+              ],
+              "answer": 0,
+              "explanation": "Like this? checks the requested pose while responding to the photographer. Window count, bag ownership and hunger do not."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary2.story-circle-031",
+      "level": "primary2",
+      "title": "In the story circle",
+      "family": "function_choice",
+      "minutes": 8,
+      "sourceUnitId": "original.primary2-five-small-functions",
+      "alignmentNote": "Five short functional conversations form a complete set. Some add a preceding context line; this is an explicit provisional language adaptation of the source task, not a claim of exact original-paper vocabulary or independent age calibration.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "In the story circle",
+          "text": "Choose the best reply in each short conversation.\n\n1. Child: I cannot hear the story from here.\nTeacher: ____\n\n2. Teacher: We will read one more page.\nChild: Can I ask my question now?\nTeacher: ____\n\n3. Teacher: Who wants to read the next line?\nChild: ____\n\n4. Child: What does the rabbit do next in the story?\nFriend: ____\n\n5. Teacher: Shall we put the books back now?\nChild: ____",
+          "questions": [
+            {
+              "prompt": "Child: I cannot hear the story from here.\nTeacher: ____",
+              "options": [
+                "My name is Lee.",
+                "The cat is small.",
+                "It is a red apple.",
+                "Come and sit nearer."
+              ],
+              "answer": 3,
+              "explanation": "Moving nearer helps hearing. Object naming, an introduction and cat size do not solve the distance problem."
+            },
+            {
+              "prompt": "Teacher: We will read one more page.\nChild: Can I ask my question now?\nTeacher: ____",
+              "options": [
+                "It is on the desk.",
+                "He likes football.",
+                "I have two pens.",
+                "Please wait until the page is finished."
+              ],
+              "answer": 3,
+              "explanation": "Waiting until the page ends responds to the timing request and announced reading. The other replies concern location, a hobby and possessions."
+            },
+            {
+              "prompt": "Teacher: Who wants to read the next line?\nChild: ____",
+              "options": [
+                "I do. May I try?",
+                "It is raining.",
+                "The door is brown.",
+                "She is my grandma."
+              ],
+              "answer": 0,
+              "explanation": "I do. May I try? volunteers to read. Weather, family identity and door colour do not identify a willing reader."
+            },
+            {
+              "prompt": "Child: What does the rabbit do next in the story?\nFriend: ____",
+              "options": [
+                "It is my ruler.",
+                "I can ride a bike.",
+                "It is half past two.",
+                "Let us turn the page and see."
+              ],
+              "answer": 3,
+              "explanation": "Turning the page seeks the next story event. Ruler ownership, biking ability and clock time do not answer about the narrative."
+            },
+            {
+              "prompt": "Teacher: Shall we put the books back now?\nChild: ____",
+              "options": [
+                "There is a bird outside.",
+                "Yes. I will carry these two.",
+                "My coat is pink.",
+                "I am six."
+              ],
+              "answer": 1,
+              "explanation": "Offering to carry two books helps return them. Bird observation, age and coat colour do not respond to the shared task."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary2.fruit-stall-choices-031",
+      "level": "primary2",
+      "title": "At the fruit stall",
+      "family": "function_choice",
+      "minutes": 8,
+      "sourceUnitId": "original.primary2-five-small-functions",
+      "alignmentNote": "Five short functional conversations form a complete set. Some add a preceding context line; this is an explicit provisional language adaptation of the source task, not a claim of exact original-paper vocabulary or independent age calibration.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "At the fruit stall",
+          "text": "Choose the best reply in each short conversation.\n\n1. Seller: Would you like a small bag or a big bag?\nChild: ____\n\n2. Child: How much is one apple?\nSeller: ____\n\n3. Child: These oranges are heavy.\nDad: ____\n\n4. Seller: Do you need anything else?\nChild: ____\n\n5. Child: I asked for three apples, but there are only two.\nSeller: ____",
+          "questions": [
+            {
+              "prompt": "Seller: Would you like a small bag or a big bag?\nChild: ____",
+              "options": [
+                "A small bag, please.",
+                "It is Tuesday.",
+                "She is my friend.",
+                "I can sing."
+              ],
+              "answer": 0,
+              "explanation": "A small bag selects an offered size. Friend identity, day and singing ability do not choose a bag."
+            },
+            {
+              "prompt": "Child: How much is one apple?\nSeller: ____",
+              "options": [
+                "It is on the bus.",
+                "I am happy.",
+                "He is tall.",
+                "Two yuan."
+              ],
+              "answer": 3,
+              "explanation": "Two yuan gives the requested price. Location, height and feeling do not answer How much."
+            },
+            {
+              "prompt": "Child: These oranges are heavy.\nDad: ____",
+              "options": [
+                "I will carry the bag.",
+                "My name is Tim.",
+                "It is a yellow duck.",
+                "She can dance."
+              ],
+              "answer": 0,
+              "explanation": "Offering to carry responds to the weight difficulty. Object naming, self-introduction and dancing ability do not help."
+            },
+            {
+              "prompt": "Seller: Do you need anything else?\nChild: ____",
+              "options": [
+                "I have a blue pen.",
+                "He is in the kitchen.",
+                "The window is open.",
+                "No, thank you. That is all."
+              ],
+              "answer": 3,
+              "explanation": "No, thank you. That is all finishes the purchase. Window state, pen ownership and a person's location do not answer further need."
+            },
+            {
+              "prompt": "Child: I asked for three apples, but there are only two.\nSeller: ____",
+              "options": [
+                "Sorry. Here is one more.",
+                "She likes books.",
+                "I can swim.",
+                "It is sunny."
+              ],
+              "answer": 0,
+              "explanation": "One more corrects the shortage from two to three. Ability, weather and preference do not address the counting error."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary2.quiet-at-friends-home-031",
+      "level": "primary2",
+      "title": "At a friend's home",
+      "family": "function_choice",
+      "minutes": 8,
+      "sourceUnitId": "original.primary2-five-small-functions",
+      "alignmentNote": "Five short functional conversations form a complete set. Some add a preceding context line; this is an explicit provisional language adaptation of the source task, not a claim of exact original-paper vocabulary or independent age calibration.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "At a friend's home",
+          "text": "Choose the best reply in each short conversation.\n\n1. Friend: Please leave your shoes by the door.\nChild: ____\n\n2. Child: I am thirsty after our game.\nFriend: ____\n\n3. Mum: The baby is asleep.\nChild: Can I sing here?\nMum: ____\n\n4. Child: May I use this pencil to draw?\nFriend: ____\n\n5. Child: It is time for me to go. Thank you for the lovely afternoon.\nFriend: ____",
+          "questions": [
+            {
+              "prompt": "Friend: Please leave your shoes by the door.\nChild: ____",
+              "options": [
+                "I have five crayons.",
+                "All right. I will put them here.",
+                "He is my brother.",
+                "It is a black cat."
+              ],
+              "answer": 1,
+              "explanation": "Acknowledging and placing shoes responds to the house request. Cat description, crayon count and brother identity do not."
+            },
+            {
+              "prompt": "Child: I am thirsty after our game.\nFriend: ____",
+              "options": [
+                "It is in the tree.",
+                "My ruler is short.",
+                "She is nine.",
+                "Would you like some water?"
+              ],
+              "answer": 3,
+              "explanation": "Offering water responds to thirst. A tree location, age and ruler length are unrelated."
+            },
+            {
+              "prompt": "Mum: The baby is asleep.\nChild: Can I sing here?\nMum: ____",
+              "options": [
+                "Please be quiet here.",
+                "It is an egg.",
+                "I like oranges.",
+                "The bag is blue."
+              ],
+              "answer": 0,
+              "explanation": "Quietness follows the sleeping baby context and declines loud singing. Naming food, a preference and bag colour do not answer the request."
+            },
+            {
+              "prompt": "Child: May I use this pencil to draw?\nFriend: ____",
+              "options": [
+                "I can run fast.",
+                "She is my teacher.",
+                "It is Thursday.",
+                "Yes. Here is some paper too."
+              ],
+              "answer": 3,
+              "explanation": "Permission plus paper supports drawing. Ability, day and a teacher's identity do not grant the request."
+            },
+            {
+              "prompt": "Child: It is time for me to go. Thank you for the lovely afternoon.\nFriend: ____",
+              "options": [
+                "It is under the bed.",
+                "My hat is red.",
+                "Come again soon!",
+                "I have two cats."
+              ],
+              "answer": 2,
+              "explanation": "Come again soon warmly responds to thanks and departure. Bed location, hat colour and cat ownership do not."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary2.garden-gate-visit-031",
+      "level": "primary2",
+      "title": "At the garden gate",
+      "family": "function_choice",
+      "minutes": 8,
+      "sourceUnitId": "original.primary2-five-small-functions",
+      "alignmentNote": "Five short functional conversations form a complete set. Some add a preceding context line; this is an explicit provisional language adaptation of the source task, not a claim of exact original-paper vocabulary or independent age calibration.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "At the garden gate",
+          "text": "Choose the best reply in each short conversation.\n\n1. Child: This gate is hard to open.\nGrandpa: ____\n\n2. Grandpa: The path is wet.\nChild: Can I run to the tree?\nGrandpa: ____\n\n3. Child: May I pick this flower?\nGrandpa: ____\n\n4. Child: Which basket is for the pears?\nGrandpa: ____\n\n5. Grandpa: Can you carry this empty basket?\nChild: ____",
+          "questions": [
+            {
+              "prompt": "Child: This gate is hard to open.\nGrandpa: ____",
+              "options": [
+                "It is an orange.",
+                "Let me help you.",
+                "I like blue.",
+                "She is my mum."
+              ],
+              "answer": 1,
+              "explanation": "Offering help addresses the difficult gate. Naming a fruit, family identity and colour preference do not."
+            },
+            {
+              "prompt": "Grandpa: The path is wet.\nChild: Can I run to the tree?\nGrandpa: ____",
+              "options": [
+                "Walk slowly, please.",
+                "I have a sister.",
+                "It is my ball.",
+                "He can draw."
+              ],
+              "answer": 0,
+              "explanation": "Walking slowly responds to the wet-path context and running request. The other replies give unrelated ownership, family and ability."
+            },
+            {
+              "prompt": "Child: May I pick this flower?\nGrandpa: ____",
+              "options": [
+                "There are two chairs.",
+                "Please leave it for everyone to see.",
+                "It is seven o'clock.",
+                "My bag is brown."
+              ],
+              "answer": 1,
+              "explanation": "Leaving the flower answers the permission request with a reason. Time, bag colour and chair count do not."
+            },
+            {
+              "prompt": "Child: Which basket is for the pears?\nGrandpa: ____",
+              "options": [
+                "It is a windy day.",
+                "I am ten years old.",
+                "The one beside the gate.",
+                "She is very kind."
+              ],
+              "answer": 2,
+              "explanation": "The one beside the gate identifies the basket. Age, character and weather do not select one."
+            },
+            {
+              "prompt": "Grandpa: Can you carry this empty basket?\nChild: ____",
+              "options": [
+                "She is at school.",
+                "Yes. It is not heavy.",
+                "It is a dog.",
+                "I like this song."
+              ],
+              "answer": 1,
+              "explanation": "Yes with a light-weight explanation responds to carrying ability. Object naming, song preference and another person's location do not."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
