@@ -1,0 +1,943 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b008",
+  "createdAt": "2026-10-23T18:44:00Z",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.undergraduate.repair-desk-and-map-008",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "undergraduate",
+        "title": "10·24新题 · The repair desk and the missing map",
+        "summary": "The repair desk and the missing map，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "cet4.2016.sample.complete_sectionC",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 参照官方2016四级Section C原两篇/每篇五题四选的整节，原创两篇各300—350词、全部十题。旧单篇五题代表保留为另一具体配置，不把家族三稿说成所有具体模式各三稿。来源46/55原键风险保持；内容虚构，未做独立教研、学生、商用、生产或产品等级标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "New original prose for adult learners, with explicitly authored complete question sets and a same-author check of keys and every distractor. Invented institutions and events are narrative examples, not reported research. Structural alignment only; no independent teacher review or learner difficulty calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.undergraduate.repair-desk-and-map-008",
+          "family": "reading_choice",
+          "label": "The repair desk and the missing map",
+          "candidateSHA256": "fdfad66f2a86913adc13c225c430cdf51a918d62204dc8ca237b6a41348b52fb",
+          "authorCheckSHA256": "a7f19d420ae2f5ffbce43a31c01a4db635ebc2703f171c5d95fe777aa900a941",
+          "sourceGroupIds": [
+            "expansion.20261024.undergraduate.repair-desk-and-map-008#a",
+            "expansion.20261024.undergraduate.repair-desk-and-map-008#b"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b008；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. A different kind of repair desk\n\nWhen a repair desk opened in Westfield's student centre, its shelves filled quickly with broken kettles, lamps and headphones. Volunteers had offered to examine small electrical goods for free. Students welcomed the service, but within a month the waiting list was so long that some owners graduated before their objects were ready.\n\nThe volunteers first blamed a shortage of tools. Yet a closer look at their records revealed a different problem. Much of each appointment was spent finding out what had happened: Had the lamp fallen? Had the kettle stopped suddenly or gradually? Owners rarely included these details when leaving an item. Without them, volunteers sometimes repeated tests that an owner had already tried.\n\nThe team considered asking students to complete a long online form. They rejected it after several students said they would find the technical language difficult. Instead, a volunteer met each owner for five minutes and wrote a short account in ordinary words. Owners were also invited to stay for the first test, though attendance was optional.\n\nThis change did not turn every visitor into a repair expert. Nor did it make spare parts arrive sooner. It did, however, help the team decide which objects could be repaired at the desk and which needed a specialist. Students whose goods could not be fixed received that news early, rather than after weeks of silence.\n\nAt the end of term, the desk reported fewer completed repairs than it had originally hoped for. Its organisers nevertheless regarded the new approach as an improvement. They now counted another outcome: whether an owner left knowing what to do next. A successful service, they concluded, could include a clear explanation of why it could not provide the repair itself. The desk's aim remained to keep useful objects in use, but its volunteers had learned that taking responsibility sometimes meant handing a job on.\n\nB. What a route map leaves out\n\nFor her first month delivering books to housebound readers, Mina used the route suggested by a navigation app. It joined the addresses by the shortest roads, and its estimated journey time looked impressively low. In practice, however, she was regularly late. A narrow street had no safe place to park, one building's entrance faced a different road, and the lift in another block was often busy at lunchtime.\n\nAn experienced volunteer lent Mina a paper map covered in handwritten notes. A small star marked a place to leave the van. An arrow showed a side entrance. Beside one address someone had written, 'Come before twelve if possible.' None of these details changed the location of a reader's home. They changed the effort required to reach it.\n\nMina began keeping similar notes, but she soon noticed a weakness in the old map. Some advice depended on circumstances that no longer existed. A shop that had allowed parking had changed owners. A gate that was usually locked was now open. Because no dates appeared beside the notes, Mina could not tell what to trust.\n\nThe volunteers decided to combine the app with a shared notebook. Each new entry had to describe a specific obstacle and include the date it was observed. Notes were reviewed during a short meeting every month. The app still supplied the basic route; the notebook helped volunteers adjust it to conditions that were hard to represent as distances.\n\nMina no longer expected a single tool to contain everything she needed. She also stopped treating local knowledge as automatically reliable simply because it came from experience. A useful note needed to be checked just as a digital estimate did. What improved the deliveries was not choosing paper over a screen, but creating a way for both kinds of information to correct one another. Even then, the team left a little extra time for the unexpected conversation at a reader's door."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.undergraduate.repair-desk-and-map-008.a.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What initially made students wait so long?",
+            "material": "A. A different kind of repair desk\n\nWhen a repair desk opened in Westfield's student centre, its shelves filled quickly with broken kettles, lamps and headphones. Volunteers had offered to examine small electrical goods for free. Students welcomed the service, but within a month the waiting list was so long that some owners graduated before their objects were ready.\n\nThe volunteers first blamed a shortage of tools. Yet a closer look at their records revealed a different problem. Much of each appointment was spent finding out what had happened: Had the lamp fallen? Had the kettle stopped suddenly or gradually? Owners rarely included these details when leaving an item. Without them, volunteers sometimes repeated tests that an owner had already tried.\n\nThe team considered asking students to complete a long online form. They rejected it after several students said they would find the technical language difficult. Instead, a volunteer met each owner for five minutes and wrote a short account in ordinary words. Owners were also invited to stay for the first test, though attendance was optional.\n\nThis change did not turn every visitor into a repair expert. Nor did it make spare parts arrive sooner. It did, however, help the team decide which objects could be repaired at the desk and which needed a specialist. Students whose goods could not be fixed received that news early, rather than after weeks of silence.\n\nAt the end of term, the desk reported fewer completed repairs than it had originally hoped for. Its organisers nevertheless regarded the new approach as an improvement. They now counted another outcome: whether an owner left knowing what to do next. A successful service, they concluded, could include a clear explanation of why it could not provide the repair itself. The desk's aim remained to keep useful objects in use, but its volunteers had learned that taking responsibility sometimes meant handing a job on.",
+            "explanation": "The shelves filled quickly and a long waiting list developed after a popular free offer. A invents an eligibility rule; C contradicts the stated electrical goods; D invents a purchase requirement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The desk accepted only students who were about to graduate."
+              },
+              {
+                "id": "o1",
+                "text": "The demand for the free service exceeded its early capacity."
+              },
+              {
+                "id": "o2",
+                "text": "Volunteers refused to examine electrical equipment."
+              },
+              {
+                "id": "o3",
+                "text": "Owners were required to purchase special tools."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.repair-desk-and-map-008.a.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the records reveal about appointments?",
+            "material": "A. A different kind of repair desk\n\nWhen a repair desk opened in Westfield's student centre, its shelves filled quickly with broken kettles, lamps and headphones. Volunteers had offered to examine small electrical goods for free. Students welcomed the service, but within a month the waiting list was so long that some owners graduated before their objects were ready.\n\nThe volunteers first blamed a shortage of tools. Yet a closer look at their records revealed a different problem. Much of each appointment was spent finding out what had happened: Had the lamp fallen? Had the kettle stopped suddenly or gradually? Owners rarely included these details when leaving an item. Without them, volunteers sometimes repeated tests that an owner had already tried.\n\nThe team considered asking students to complete a long online form. They rejected it after several students said they would find the technical language difficult. Instead, a volunteer met each owner for five minutes and wrote a short account in ordinary words. Owners were also invited to stay for the first test, though attendance was optional.\n\nThis change did not turn every visitor into a repair expert. Nor did it make spare parts arrive sooner. It did, however, help the team decide which objects could be repaired at the desk and which needed a specialist. Students whose goods could not be fixed received that news early, rather than after weeks of silence.\n\nAt the end of term, the desk reported fewer completed repairs than it had originally hoped for. Its organisers nevertheless regarded the new approach as an improvement. They now counted another outcome: whether an owner left knowing what to do next. A successful service, they concluded, could include a clear explanation of why it could not provide the repair itself. The desk's aim remained to keep useful objects in use, but its volunteers had learned that taking responsibility sometimes meant handing a job on.",
+            "explanation": "Much of each appointment went on discovering the object's history. A, B and D are not stated: the passage identifies missing details, not broken tools, dishonesty or priority treatment.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Tools broke more often than the goods being repaired."
+              },
+              {
+                "id": "o1",
+                "text": "Most owners deliberately hid information."
+              },
+              {
+                "id": "o2",
+                "text": "Gathering basic information took considerable time."
+              },
+              {
+                "id": "o3",
+                "text": "Graduating students received repeated priority tests."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.repair-desk-and-map-008.a.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why was the proposed online form rejected?",
+            "material": "A. A different kind of repair desk\n\nWhen a repair desk opened in Westfield's student centre, its shelves filled quickly with broken kettles, lamps and headphones. Volunteers had offered to examine small electrical goods for free. Students welcomed the service, but within a month the waiting list was so long that some owners graduated before their objects were ready.\n\nThe volunteers first blamed a shortage of tools. Yet a closer look at their records revealed a different problem. Much of each appointment was spent finding out what had happened: Had the lamp fallen? Had the kettle stopped suddenly or gradually? Owners rarely included these details when leaving an item. Without them, volunteers sometimes repeated tests that an owner had already tried.\n\nThe team considered asking students to complete a long online form. They rejected it after several students said they would find the technical language difficult. Instead, a volunteer met each owner for five minutes and wrote a short account in ordinary words. Owners were also invited to stay for the first test, though attendance was optional.\n\nThis change did not turn every visitor into a repair expert. Nor did it make spare parts arrive sooner. It did, however, help the team decide which objects could be repaired at the desk and which needed a specialist. Students whose goods could not be fixed received that news early, rather than after weeks of silence.\n\nAt the end of term, the desk reported fewer completed repairs than it had originally hoped for. Its organisers nevertheless regarded the new approach as an improvement. They now counted another outcome: whether an owner left knowing what to do next. A successful service, they concluded, could include a clear explanation of why it could not provide the repair itself. The desk's aim remained to keep useful objects in use, but its volunteers had learned that taking responsibility sometimes meant handing a job on.",
+            "explanation": "Students reported difficulty with technical language. B generalises beyond this objection; C confuses the optional attendance with the rejected form; D introduces a cost-display problem absent from the text.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Its language could be difficult for some students."
+              },
+              {
+                "id": "o1",
+                "text": "Students were unwilling to use the internet."
+              },
+              {
+                "id": "o2",
+                "text": "It would require every owner to attend a test."
+              },
+              {
+                "id": "o3",
+                "text": "It could not display the cost of spare parts."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.repair-desk-and-map-008.a.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What was one benefit of the five-minute conversation?",
+            "material": "A. A different kind of repair desk\n\nWhen a repair desk opened in Westfield's student centre, its shelves filled quickly with broken kettles, lamps and headphones. Volunteers had offered to examine small electrical goods for free. Students welcomed the service, but within a month the waiting list was so long that some owners graduated before their objects were ready.\n\nThe volunteers first blamed a shortage of tools. Yet a closer look at their records revealed a different problem. Much of each appointment was spent finding out what had happened: Had the lamp fallen? Had the kettle stopped suddenly or gradually? Owners rarely included these details when leaving an item. Without them, volunteers sometimes repeated tests that an owner had already tried.\n\nThe team considered asking students to complete a long online form. They rejected it after several students said they would find the technical language difficult. Instead, a volunteer met each owner for five minutes and wrote a short account in ordinary words. Owners were also invited to stay for the first test, though attendance was optional.\n\nThis change did not turn every visitor into a repair expert. Nor did it make spare parts arrive sooner. It did, however, help the team decide which objects could be repaired at the desk and which needed a specialist. Students whose goods could not be fixed received that news early, rather than after weeks of silence.\n\nAt the end of term, the desk reported fewer completed repairs than it had originally hoped for. Its organisers nevertheless regarded the new approach as an improvement. They now counted another outcome: whether an owner left knowing what to do next. A successful service, they concluded, could include a clear explanation of why it could not provide the repair itself. The desk's aim remained to keep useful objects in use, but its volunteers had learned that taking responsibility sometimes meant handing a job on.",
+            "explanation": "The conversation helped decide which goods needed a specialist and provided early news when a repair was impossible. A and C are expressly denied in substance; B reverses the value of referring work to specialists.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It guaranteed delivery of parts within a week."
+              },
+              {
+                "id": "o1",
+                "text": "It removed the need for specialist repair services."
+              },
+              {
+                "id": "o2",
+                "text": "It made every student able to repair a kettle."
+              },
+              {
+                "id": "o3",
+                "text": "It enabled unsuitable jobs to be identified sooner."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.repair-desk-and-map-008.a.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How did the organisers broaden their idea of success?",
+            "material": "A. A different kind of repair desk\n\nWhen a repair desk opened in Westfield's student centre, its shelves filled quickly with broken kettles, lamps and headphones. Volunteers had offered to examine small electrical goods for free. Students welcomed the service, but within a month the waiting list was so long that some owners graduated before their objects were ready.\n\nThe volunteers first blamed a shortage of tools. Yet a closer look at their records revealed a different problem. Much of each appointment was spent finding out what had happened: Had the lamp fallen? Had the kettle stopped suddenly or gradually? Owners rarely included these details when leaving an item. Without them, volunteers sometimes repeated tests that an owner had already tried.\n\nThe team considered asking students to complete a long online form. They rejected it after several students said they would find the technical language difficult. Instead, a volunteer met each owner for five minutes and wrote a short account in ordinary words. Owners were also invited to stay for the first test, though attendance was optional.\n\nThis change did not turn every visitor into a repair expert. Nor did it make spare parts arrive sooner. It did, however, help the team decide which objects could be repaired at the desk and which needed a specialist. Students whose goods could not be fixed received that news early, rather than after weeks of silence.\n\nAt the end of term, the desk reported fewer completed repairs than it had originally hoped for. Its organisers nevertheless regarded the new approach as an improvement. They now counted another outcome: whether an owner left knowing what to do next. A successful service, they concluded, could include a clear explanation of why it could not provide the repair itself. The desk's aim remained to keep useful objects in use, but its volunteers had learned that taking responsibility sometimes meant handing a job on.",
+            "explanation": "They added whether an owner knew what to do next. A misrepresents a new outcome as false counting; C contradicts the continuing repair aim; D invents a volunteer-recruitment measure.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They treated all uncompleted repairs as completed ones."
+              },
+              {
+                "id": "o1",
+                "text": "They included giving owners a useful next step."
+              },
+              {
+                "id": "o2",
+                "text": "They replaced repairing objects with selling new ones."
+              },
+              {
+                "id": "o3",
+                "text": "They measured only how many visitors became volunteers."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.repair-desk-and-map-008.b.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why was the app's route less efficient than it appeared?",
+            "material": "B. What a route map leaves out\n\nFor her first month delivering books to housebound readers, Mina used the route suggested by a navigation app. It joined the addresses by the shortest roads, and its estimated journey time looked impressively low. In practice, however, she was regularly late. A narrow street had no safe place to park, one building's entrance faced a different road, and the lift in another block was often busy at lunchtime.\n\nAn experienced volunteer lent Mina a paper map covered in handwritten notes. A small star marked a place to leave the van. An arrow showed a side entrance. Beside one address someone had written, 'Come before twelve if possible.' None of these details changed the location of a reader's home. They changed the effort required to reach it.\n\nMina began keeping similar notes, but she soon noticed a weakness in the old map. Some advice depended on circumstances that no longer existed. A shop that had allowed parking had changed owners. A gate that was usually locked was now open. Because no dates appeared beside the notes, Mina could not tell what to trust.\n\nThe volunteers decided to combine the app with a shared notebook. Each new entry had to describe a specific obstacle and include the date it was observed. Notes were reviewed during a short meeting every month. The app still supplied the basic route; the notebook helped volunteers adjust it to conditions that were hard to represent as distances.\n\nMina no longer expected a single tool to contain everything she needed. She also stopped treating local knowledge as automatically reliable simply because it came from experience. A useful note needed to be checked just as a digital estimate did. What improved the deliveries was not choosing paper over a screen, but creating a way for both kinds of information to correct one another. Even then, the team left a little extra time for the unexpected conversation at a reader's door.",
+            "explanation": "Parking, the position of entrances and lift delays made reaching homes harder than road distances suggested. B and C invent fundamental app errors; D contradicts its shortest-road route.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It failed to account for practical access difficulties."
+              },
+              {
+                "id": "o1",
+                "text": "It placed all the readers in the wrong town."
+              },
+              {
+                "id": "o2",
+                "text": "It assumed that Mina would walk between addresses."
+              },
+              {
+                "id": "o3",
+                "text": "It deliberately avoided the shortest roads."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.repair-desk-and-map-008.b.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the handwritten notes mainly contribute?",
+            "material": "B. What a route map leaves out\n\nFor her first month delivering books to housebound readers, Mina used the route suggested by a navigation app. It joined the addresses by the shortest roads, and its estimated journey time looked impressively low. In practice, however, she was regularly late. A narrow street had no safe place to park, one building's entrance faced a different road, and the lift in another block was often busy at lunchtime.\n\nAn experienced volunteer lent Mina a paper map covered in handwritten notes. A small star marked a place to leave the van. An arrow showed a side entrance. Beside one address someone had written, 'Come before twelve if possible.' None of these details changed the location of a reader's home. They changed the effort required to reach it.\n\nMina began keeping similar notes, but she soon noticed a weakness in the old map. Some advice depended on circumstances that no longer existed. A shop that had allowed parking had changed owners. A gate that was usually locked was now open. Because no dates appeared beside the notes, Mina could not tell what to trust.\n\nThe volunteers decided to combine the app with a shared notebook. Each new entry had to describe a specific obstacle and include the date it was observed. Notes were reviewed during a short meeting every month. The app still supplied the basic route; the notebook helped volunteers adjust it to conditions that were hard to represent as distances.\n\nMina no longer expected a single tool to contain everything she needed. She also stopped treating local knowledge as automatically reliable simply because it came from experience. A useful note needed to be checked just as a digital estimate did. What improved the deliveries was not choosing paper over a screen, but creating a way for both kinds of information to correct one another. Even then, the team left a little extra time for the unexpected conversation at a reader's door.",
+            "explanation": "The notes identify parking, entrances and a useful arrival time. A conflicts with the unchanged locations; B turns limited information into a universal claim; D overstates an informal suggestion as an approved timetable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "New postal addresses for all the readers."
+              },
+              {
+                "id": "o1",
+                "text": "Evidence that digital maps were always inaccurate."
+              },
+              {
+                "id": "o2",
+                "text": "Details about how to reach particular homes."
+              },
+              {
+                "id": "o3",
+                "text": "A fixed timetable that every reader had approved."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.repair-desk-and-map-008.b.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What made some of the old notes difficult to use?",
+            "material": "B. What a route map leaves out\n\nFor her first month delivering books to housebound readers, Mina used the route suggested by a navigation app. It joined the addresses by the shortest roads, and its estimated journey time looked impressively low. In practice, however, she was regularly late. A narrow street had no safe place to park, one building's entrance faced a different road, and the lift in another block was often busy at lunchtime.\n\nAn experienced volunteer lent Mina a paper map covered in handwritten notes. A small star marked a place to leave the van. An arrow showed a side entrance. Beside one address someone had written, 'Come before twelve if possible.' None of these details changed the location of a reader's home. They changed the effort required to reach it.\n\nMina began keeping similar notes, but she soon noticed a weakness in the old map. Some advice depended on circumstances that no longer existed. A shop that had allowed parking had changed owners. A gate that was usually locked was now open. Because no dates appeared beside the notes, Mina could not tell what to trust.\n\nThe volunteers decided to combine the app with a shared notebook. Each new entry had to describe a specific obstacle and include the date it was observed. Notes were reviewed during a short meeting every month. The app still supplied the basic route; the notebook helped volunteers adjust it to conditions that were hard to represent as distances.\n\nMina no longer expected a single tool to contain everything she needed. She also stopped treating local knowledge as automatically reliable simply because it came from experience. A useful note needed to be checked just as a digital estimate did. What improved the deliveries was not choosing paper over a screen, but creating a way for both kinds of information to correct one another. Even then, the team left a little extra time for the unexpected conversation at a reader's door.",
+            "explanation": "Changed ownership and gate access made undated advice uncertain. The passage does not identify inexperienced authors, exhaustive routes or dependence on the app, so A, B and C lack support.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They had been written only by new volunteers."
+              },
+              {
+                "id": "o1",
+                "text": "They described every possible route in equal detail."
+              },
+              {
+                "id": "o2",
+                "text": "They could not be read without the app."
+              },
+              {
+                "id": "o3",
+                "text": "They lacked dates despite changing circumstances."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.repair-desk-and-map-008.b.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What role did the shared notebook play?",
+            "material": "B. What a route map leaves out\n\nFor her first month delivering books to housebound readers, Mina used the route suggested by a navigation app. It joined the addresses by the shortest roads, and its estimated journey time looked impressively low. In practice, however, she was regularly late. A narrow street had no safe place to park, one building's entrance faced a different road, and the lift in another block was often busy at lunchtime.\n\nAn experienced volunteer lent Mina a paper map covered in handwritten notes. A small star marked a place to leave the van. An arrow showed a side entrance. Beside one address someone had written, 'Come before twelve if possible.' None of these details changed the location of a reader's home. They changed the effort required to reach it.\n\nMina began keeping similar notes, but she soon noticed a weakness in the old map. Some advice depended on circumstances that no longer existed. A shop that had allowed parking had changed owners. A gate that was usually locked was now open. Because no dates appeared beside the notes, Mina could not tell what to trust.\n\nThe volunteers decided to combine the app with a shared notebook. Each new entry had to describe a specific obstacle and include the date it was observed. Notes were reviewed during a short meeting every month. The app still supplied the basic route; the notebook helped volunteers adjust it to conditions that were hard to represent as distances.\n\nMina no longer expected a single tool to contain everything she needed. She also stopped treating local knowledge as automatically reliable simply because it came from experience. A useful note needed to be checked just as a digital estimate did. What improved the deliveries was not choosing paper over a screen, but creating a way for both kinds of information to correct one another. Even then, the team left a little extra time for the unexpected conversation at a reader's door.",
+            "explanation": "Dated specific observations, reviewed monthly, supplemented the app's basic route. A contradicts the retained app; C contradicts the extra time at the end; D confuses delivery access notes with book reviews.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It replaced the app's route calculations entirely."
+              },
+              {
+                "id": "o1",
+                "text": "It supplied checked local details to adjust the basic route."
+              },
+              {
+                "id": "o2",
+                "text": "It allowed the team to remove all spare time."
+              },
+              {
+                "id": "o3",
+                "text": "It stored readers' opinions about the books they borrowed."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.repair-desk-and-map-008.b.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which view would Mina most likely support?",
+            "material": "B. What a route map leaves out\n\nFor her first month delivering books to housebound readers, Mina used the route suggested by a navigation app. It joined the addresses by the shortest roads, and its estimated journey time looked impressively low. In practice, however, she was regularly late. A narrow street had no safe place to park, one building's entrance faced a different road, and the lift in another block was often busy at lunchtime.\n\nAn experienced volunteer lent Mina a paper map covered in handwritten notes. A small star marked a place to leave the van. An arrow showed a side entrance. Beside one address someone had written, 'Come before twelve if possible.' None of these details changed the location of a reader's home. They changed the effort required to reach it.\n\nMina began keeping similar notes, but she soon noticed a weakness in the old map. Some advice depended on circumstances that no longer existed. A shop that had allowed parking had changed owners. A gate that was usually locked was now open. Because no dates appeared beside the notes, Mina could not tell what to trust.\n\nThe volunteers decided to combine the app with a shared notebook. Each new entry had to describe a specific obstacle and include the date it was observed. Notes were reviewed during a short meeting every month. The app still supplied the basic route; the notebook helped volunteers adjust it to conditions that were hard to represent as distances.\n\nMina no longer expected a single tool to contain everything she needed. She also stopped treating local knowledge as automatically reliable simply because it came from experience. A useful note needed to be checked just as a digital estimate did. What improved the deliveries was not choosing paper over a screen, but creating a way for both kinds of information to correct one another. Even then, the team left a little extra time for the unexpected conversation at a reader's door.",
+            "explanation": "The final paragraph explicitly values mutual correction between tools and checks on experience. A rejects those checks; B ignores remaining unexpected conversations; D reverses the continued use of a notebook.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Experience is trustworthy even when conditions change."
+              },
+              {
+                "id": "o1",
+                "text": "A sufficiently detailed map can prevent every delay."
+              },
+              {
+                "id": "o2",
+                "text": "Different sources are useful when they can be checked against each other."
+              },
+              {
+                "id": "o3",
+                "text": "Paper records should be discarded as soon as an app is available."
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "011d605d390b262456bff55933ada920d485efe29eb165c40d2f4de42f8c7324",
+      "reviewNotes": "New original prose for adult learners, with explicitly authored complete question sets and a same-author check of keys and every distractor. Invented institutions and events are narrative examples, not reported research. Structural alignment only; no independent teacher review or learner difficulty calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.postgraduate.waiting-room-and-archive-008",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "postgraduate",
+        "title": "10·24新题 · Waiting time and an unfinished archive",
+        "summary": "Waiting time and an unfinished archive，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "cet6.2016.sample.complete_sectionC",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 参照官方2016六级Section C原两篇/每篇五题四选的整节，原创各篇400—450词、全部十题。旧单篇五题代表保留为另一具体配置，不把家族三稿说成每个具体模式各三稿。源48原键风险保持；研究/历史等均虚构，非现实科学历史事实或目标人群等值认证，独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "New original prose for adult learners, with explicitly authored complete question sets and a same-author check of keys and every distractor. Invented institutions and events are narrative examples, not reported research. Structural alignment only; no independent teacher review or learner difficulty calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.postgraduate.waiting-room-and-archive-008",
+          "family": "reading_choice",
+          "label": "Waiting time and an unfinished archive",
+          "candidateSHA256": "56d3c4e7cfadee35c484f390a3f3c436a68b56ae104c985b41207dfd8a0fb060",
+          "authorCheckSHA256": "0bd5ac80083c53f456e5dcc6393723112fec1e32cd2943f2c028b557383c44fe",
+          "sourceGroupIds": [
+            "expansion.20261024.postgraduate.waiting-room-and-archive-008#a",
+            "expansion.20261024.postgraduate.waiting-room-and-archive-008#b"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b008；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. The queue that disappeared from the report\n\nA municipal advice centre once celebrated a sharp reduction in waiting times. Its new report showed that visitors spent fewer minutes between receiving a ticket and meeting an adviser. The improvement was real within those boundaries. Yet the benches outside the building were increasingly crowded before the doors opened. A system intended to make performance visible had made one part of the experience unusually hard to see.\n\nThe change began when the centre introduced appointments alongside its walk-in service. To keep the indoor queue manageable, staff distributed a limited number of tickets each morning. People who arrived after the tickets ran out were asked to return another day. Since they never received a ticket, they never entered the waiting-time calculation. Those who did obtain one had often waited outside for an hour. The published figure therefore answered a narrower question than readers assumed.\n\nIt would be easy to describe the report as dishonest. That explanation, however, misses how an ordinary administrative definition shaped the result. The software recorded ticket times automatically; measuring earlier waiting required additional observation. Managers had inherited the definition from a smaller office where tickets were available throughout the day. They had not reconsidered it when the centre's workload grew. No employee needed to invent a number for the measure to become misleading.\n\nAfter visitors raised the issue, the centre tested several alternatives. Recording the moment each person reached the street was impractical and would have involved collecting information about people who might simply be passing. Instead, observers counted the outside queue at set intervals for a limited period. Staff also recorded how many people were turned away and how often they had already tried to visit. These measures did not produce a perfect description, but they exposed costs that the original average concealed.\n\nThe managers retained the ticket-based figure because it still helped them organise advisers' schedules. They changed its label, published the additional measures beside it and stopped using it alone to judge success. Faster service after admission mattered; so did the possibility of being admitted at all.\n\nThe lesson extends beyond queues. A measure can be accurate, consistently collected and still support a mistaken conclusion. Its usefulness depends partly on whether its boundaries remain appropriate to the decision being made. Improving measurement need not mean rejecting every existing indicator. Sometimes it means making clear which experience an indicator represents, whose experience it excludes, and what other evidence is needed before acting on it.\n\nB. Finding the absent voices\n\nWhen Lena began cataloguing a collection of neighbourhood newsletters, she expected the difficult work to be reading faded print. Instead, she found that the greatest obstacle was deciding what the collection could reasonably claim to represent. Boxes of carefully preserved issues offered a vivid account of local festivals, campaigns and disputes. But an impressive quantity of material did not guarantee an equally complete picture of the neighbourhood.\n\nThe earliest newsletters had been produced by a residents' association whose members owned most of the houses near the square. Tenants from the surrounding apartment blocks appeared mainly as subjects of articles, rarely as named contributors. Several newsletters referred to lively meetings in a community hall, yet the collection contained no minutes from those meetings. The archive recorded what its creators had selected for publication, not every conversation that had taken place.\n\nLena initially proposed filling the gaps through interviews. That would certainly add perspectives, her supervisor agreed, but it would not make absence disappear. People available for interview decades later were themselves a selective group. Memories could be shaped by subsequent events, and a confident recollection was not necessarily a precise one. Treating oral accounts as a transparent correction to printed records would simply exchange one unexamined source for another.\n\nThe team therefore changed its catalogue in two ways. First, it described how the newsletters had been produced and donated, including what was known about the association's membership. Second, it created a linked interview collection whose records included the circumstances of each conversation. Interviewees could distinguish what they remembered directly from what they had heard from others. Where accounts disagreed, the disagreement remained visible rather than being silently resolved into a single sentence.\n\nSome volunteers worried that these qualifications would make the archive seem unreliable. Lena argued that they made particular uses of it more defensible. A researcher studying the association's public language could draw strongly on the newsletters. Someone estimating the views of all residents would need a wider range of evidence. The same collection could be excellent for one question and insufficient for another.\n\nNor did the team describe every missing item as evidence of deliberate exclusion. A document might never have existed, might have been lost accidentally, or might remain in a private drawer. Where the reason was unknown, the catalogue said so. Its account of the past became less seamless but more open to revision. For Lena, an archive's authority depended less on sounding complete than on helping readers understand the limits within which its surviving records could speak."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.postgraduate.waiting-room-and-archive-008.a.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the apparent paradox described in the opening paragraph?",
+            "material": "A. The queue that disappeared from the report\n\nA municipal advice centre once celebrated a sharp reduction in waiting times. Its new report showed that visitors spent fewer minutes between receiving a ticket and meeting an adviser. The improvement was real within those boundaries. Yet the benches outside the building were increasingly crowded before the doors opened. A system intended to make performance visible had made one part of the experience unusually hard to see.\n\nThe change began when the centre introduced appointments alongside its walk-in service. To keep the indoor queue manageable, staff distributed a limited number of tickets each morning. People who arrived after the tickets ran out were asked to return another day. Since they never received a ticket, they never entered the waiting-time calculation. Those who did obtain one had often waited outside for an hour. The published figure therefore answered a narrower question than readers assumed.\n\nIt would be easy to describe the report as dishonest. That explanation, however, misses how an ordinary administrative definition shaped the result. The software recorded ticket times automatically; measuring earlier waiting required additional observation. Managers had inherited the definition from a smaller office where tickets were available throughout the day. They had not reconsidered it when the centre's workload grew. No employee needed to invent a number for the measure to become misleading.\n\nAfter visitors raised the issue, the centre tested several alternatives. Recording the moment each person reached the street was impractical and would have involved collecting information about people who might simply be passing. Instead, observers counted the outside queue at set intervals for a limited period. Staff also recorded how many people were turned away and how often they had already tried to visit. These measures did not produce a perfect description, but they exposed costs that the original average concealed.\n\nThe managers retained the ticket-based figure because it still helped them organise advisers' schedules. They changed its label, published the additional measures beside it and stopped using it alone to judge success. Faster service after admission mattered; so did the possibility of being admitted at all.\n\nThe lesson extends beyond queues. A measure can be accurate, consistently collected and still support a mistaken conclusion. Its usefulness depends partly on whether its boundaries remain appropriate to the decision being made. Improving measurement need not mean rejecting every existing indicator. Sometimes it means making clear which experience an indicator represents, whose experience it excludes, and what other evidence is needed before acting on it.",
+            "explanation": "The ticket-to-adviser wait fell while pre-opening queues grew outside its scope. A invents staffing effects; C invents visitor preference; D contradicts both the improvement and continued tickets.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "More advisers produced fewer available appointments."
+              },
+              {
+                "id": "o1",
+                "text": "A reported improvement coexisted with an unmeasured burden on visitors."
+              },
+              {
+                "id": "o2",
+                "text": "Visitors preferred the street despite an empty waiting room."
+              },
+              {
+                "id": "o3",
+                "text": "The centre recorded longer waits after removing its ticket system."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.waiting-room-and-archive-008.a.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the report omit people turned away?",
+            "material": "A. The queue that disappeared from the report\n\nA municipal advice centre once celebrated a sharp reduction in waiting times. Its new report showed that visitors spent fewer minutes between receiving a ticket and meeting an adviser. The improvement was real within those boundaries. Yet the benches outside the building were increasingly crowded before the doors opened. A system intended to make performance visible had made one part of the experience unusually hard to see.\n\nThe change began when the centre introduced appointments alongside its walk-in service. To keep the indoor queue manageable, staff distributed a limited number of tickets each morning. People who arrived after the tickets ran out were asked to return another day. Since they never received a ticket, they never entered the waiting-time calculation. Those who did obtain one had often waited outside for an hour. The published figure therefore answered a narrower question than readers assumed.\n\nIt would be easy to describe the report as dishonest. That explanation, however, misses how an ordinary administrative definition shaped the result. The software recorded ticket times automatically; measuring earlier waiting required additional observation. Managers had inherited the definition from a smaller office where tickets were available throughout the day. They had not reconsidered it when the centre's workload grew. No employee needed to invent a number for the measure to become misleading.\n\nAfter visitors raised the issue, the centre tested several alternatives. Recording the moment each person reached the street was impractical and would have involved collecting information about people who might simply be passing. Instead, observers counted the outside queue at set intervals for a limited period. Staff also recorded how many people were turned away and how often they had already tried to visit. These measures did not produce a perfect description, but they exposed costs that the original average concealed.\n\nThe managers retained the ticket-based figure because it still helped them organise advisers' schedules. They changed its label, published the additional measures beside it and stopped using it alone to judge success. Faster service after admission mattered; so did the possibility of being admitted at all.\n\nThe lesson extends beyond queues. A measure can be accurate, consistently collected and still support a mistaken conclusion. Its usefulness depends partly on whether its boundaries remain appropriate to the decision being made. Improving measurement need not mean rejecting every existing indicator. Sometimes it means making clear which experience an indicator represents, whose experience it excludes, and what other evidence is needed before acting on it.",
+            "explanation": "People without tickets never entered the calculation. A and B invent reasons for absence; C invents deliberate deletion rather than the definition's exclusion.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They had chosen appointments instead of the walk-in service."
+              },
+              {
+                "id": "o1",
+                "text": "They were considered to have received advice elsewhere."
+              },
+              {
+                "id": "o2",
+                "text": "The observers were instructed to delete their records."
+              },
+              {
+                "id": "o3",
+                "text": "The calculation began only when a ticket was issued."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.waiting-room-and-archive-008.a.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the author suggest about the original definition?",
+            "material": "A. The queue that disappeared from the report\n\nA municipal advice centre once celebrated a sharp reduction in waiting times. Its new report showed that visitors spent fewer minutes between receiving a ticket and meeting an adviser. The improvement was real within those boundaries. Yet the benches outside the building were increasingly crowded before the doors opened. A system intended to make performance visible had made one part of the experience unusually hard to see.\n\nThe change began when the centre introduced appointments alongside its walk-in service. To keep the indoor queue manageable, staff distributed a limited number of tickets each morning. People who arrived after the tickets ran out were asked to return another day. Since they never received a ticket, they never entered the waiting-time calculation. Those who did obtain one had often waited outside for an hour. The published figure therefore answered a narrower question than readers assumed.\n\nIt would be easy to describe the report as dishonest. That explanation, however, misses how an ordinary administrative definition shaped the result. The software recorded ticket times automatically; measuring earlier waiting required additional observation. Managers had inherited the definition from a smaller office where tickets were available throughout the day. They had not reconsidered it when the centre's workload grew. No employee needed to invent a number for the measure to become misleading.\n\nAfter visitors raised the issue, the centre tested several alternatives. Recording the moment each person reached the street was impractical and would have involved collecting information about people who might simply be passing. Instead, observers counted the outside queue at set intervals for a limited period. Staff also recorded how many people were turned away and how often they had already tried to visit. These measures did not produce a perfect description, but they exposed costs that the original average concealed.\n\nThe managers retained the ticket-based figure because it still helped them organise advisers' schedules. They changed its label, published the additional measures beside it and stopped using it alone to judge success. Faster service after admission mattered; so did the possibility of being admitted at all.\n\nThe lesson extends beyond queues. A measure can be accurate, consistently collected and still support a mistaken conclusion. Its usefulness depends partly on whether its boundaries remain appropriate to the decision being made. Improving measurement need not mean rejecting every existing indicator. Sometimes it means making clear which experience an indicator represents, whose experience it excludes, and what other evidence is needed before acting on it.",
+            "explanation": "The definition came from a smaller office with all-day ticket availability and was not reconsidered under heavier demand. B attributes an unsupported intention; C conflicts with automatic consistent collection; D reverses the size comparison.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It had become unsuitable as the context changed."
+              },
+              {
+                "id": "o1",
+                "text": "It was deliberately designed to discourage visitors."
+              },
+              {
+                "id": "o2",
+                "text": "It was technically impossible to apply consistently."
+              },
+              {
+                "id": "o3",
+                "text": "It was inherited from a much larger advice centre."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.waiting-room-and-archive-008.a.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why were several additional measures introduced?",
+            "material": "A. The queue that disappeared from the report\n\nA municipal advice centre once celebrated a sharp reduction in waiting times. Its new report showed that visitors spent fewer minutes between receiving a ticket and meeting an adviser. The improvement was real within those boundaries. Yet the benches outside the building were increasingly crowded before the doors opened. A system intended to make performance visible had made one part of the experience unusually hard to see.\n\nThe change began when the centre introduced appointments alongside its walk-in service. To keep the indoor queue manageable, staff distributed a limited number of tickets each morning. People who arrived after the tickets ran out were asked to return another day. Since they never received a ticket, they never entered the waiting-time calculation. Those who did obtain one had often waited outside for an hour. The published figure therefore answered a narrower question than readers assumed.\n\nIt would be easy to describe the report as dishonest. That explanation, however, misses how an ordinary administrative definition shaped the result. The software recorded ticket times automatically; measuring earlier waiting required additional observation. Managers had inherited the definition from a smaller office where tickets were available throughout the day. They had not reconsidered it when the centre's workload grew. No employee needed to invent a number for the measure to become misleading.\n\nAfter visitors raised the issue, the centre tested several alternatives. Recording the moment each person reached the street was impractical and would have involved collecting information about people who might simply be passing. Instead, observers counted the outside queue at set intervals for a limited period. Staff also recorded how many people were turned away and how often they had already tried to visit. These measures did not produce a perfect description, but they exposed costs that the original average concealed.\n\nThe managers retained the ticket-based figure because it still helped them organise advisers' schedules. They changed its label, published the additional measures beside it and stopped using it alone to judge success. Faster service after admission mattered; so did the possibility of being admitted at all.\n\nThe lesson extends beyond queues. A measure can be accurate, consistently collected and still support a mistaken conclusion. Its usefulness depends partly on whether its boundaries remain appropriate to the decision being made. Improving measurement need not mean rejecting every existing indicator. Sometimes it means making clear which experience an indicator represents, whose experience it excludes, and what other evidence is needed before acting on it.",
+            "explanation": "Limited observation and turn-away records made hidden burdens visible; tracking every street arrival was rejected. A is the rejected intrusive approach; B contradicts retaining the old measure; D invents a responsibility placed on visitors.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To identify every person who passed the building."
+              },
+              {
+                "id": "o1",
+                "text": "To avoid acknowledging the value of indoor waiting times."
+              },
+              {
+                "id": "o2",
+                "text": "To reveal excluded costs without attempting an impractical complete record."
+              },
+              {
+                "id": "o3",
+                "text": "To make individual visitors responsible for improving the software."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.waiting-room-and-archive-008.a.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which statement best expresses the author's main argument?",
+            "material": "A. The queue that disappeared from the report\n\nA municipal advice centre once celebrated a sharp reduction in waiting times. Its new report showed that visitors spent fewer minutes between receiving a ticket and meeting an adviser. The improvement was real within those boundaries. Yet the benches outside the building were increasingly crowded before the doors opened. A system intended to make performance visible had made one part of the experience unusually hard to see.\n\nThe change began when the centre introduced appointments alongside its walk-in service. To keep the indoor queue manageable, staff distributed a limited number of tickets each morning. People who arrived after the tickets ran out were asked to return another day. Since they never received a ticket, they never entered the waiting-time calculation. Those who did obtain one had often waited outside for an hour. The published figure therefore answered a narrower question than readers assumed.\n\nIt would be easy to describe the report as dishonest. That explanation, however, misses how an ordinary administrative definition shaped the result. The software recorded ticket times automatically; measuring earlier waiting required additional observation. Managers had inherited the definition from a smaller office where tickets were available throughout the day. They had not reconsidered it when the centre's workload grew. No employee needed to invent a number for the measure to become misleading.\n\nAfter visitors raised the issue, the centre tested several alternatives. Recording the moment each person reached the street was impractical and would have involved collecting information about people who might simply be passing. Instead, observers counted the outside queue at set intervals for a limited period. Staff also recorded how many people were turned away and how often they had already tried to visit. These measures did not produce a perfect description, but they exposed costs that the original average concealed.\n\nThe managers retained the ticket-based figure because it still helped them organise advisers' schedules. They changed its label, published the additional measures beside it and stopped using it alone to judge success. Faster service after admission mattered; so did the possibility of being admitted at all.\n\nThe lesson extends beyond queues. A measure can be accurate, consistently collected and still support a mistaken conclusion. Its usefulness depends partly on whether its boundaries remain appropriate to the decision being made. Improving measurement need not mean rejecting every existing indicator. Sometimes it means making clear which experience an indicator represents, whose experience it excludes, and what other evidence is needed before acting on it.",
+            "explanation": "The conclusion links usefulness to boundaries and other evidence. A falsely privileges manual data; C conflicts with retaining and relabelling the indicator; D contradicts the explanation that no invented number was necessary.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only data collected manually can describe public services fairly."
+              },
+              {
+                "id": "o1",
+                "text": "Accurate indicators need appropriate boundaries and complementary evidence."
+              },
+              {
+                "id": "o2",
+                "text": "A misleading average should always be removed from every report."
+              },
+              {
+                "id": "o3",
+                "text": "Performance reports necessarily depend on employees falsifying numbers."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.waiting-room-and-archive-008.b.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What assumption did Lena have to reconsider?",
+            "material": "B. Finding the absent voices\n\nWhen Lena began cataloguing a collection of neighbourhood newsletters, she expected the difficult work to be reading faded print. Instead, she found that the greatest obstacle was deciding what the collection could reasonably claim to represent. Boxes of carefully preserved issues offered a vivid account of local festivals, campaigns and disputes. But an impressive quantity of material did not guarantee an equally complete picture of the neighbourhood.\n\nThe earliest newsletters had been produced by a residents' association whose members owned most of the houses near the square. Tenants from the surrounding apartment blocks appeared mainly as subjects of articles, rarely as named contributors. Several newsletters referred to lively meetings in a community hall, yet the collection contained no minutes from those meetings. The archive recorded what its creators had selected for publication, not every conversation that had taken place.\n\nLena initially proposed filling the gaps through interviews. That would certainly add perspectives, her supervisor agreed, but it would not make absence disappear. People available for interview decades later were themselves a selective group. Memories could be shaped by subsequent events, and a confident recollection was not necessarily a precise one. Treating oral accounts as a transparent correction to printed records would simply exchange one unexamined source for another.\n\nThe team therefore changed its catalogue in two ways. First, it described how the newsletters had been produced and donated, including what was known about the association's membership. Second, it created a linked interview collection whose records included the circumstances of each conversation. Interviewees could distinguish what they remembered directly from what they had heard from others. Where accounts disagreed, the disagreement remained visible rather than being silently resolved into a single sentence.\n\nSome volunteers worried that these qualifications would make the archive seem unreliable. Lena argued that they made particular uses of it more defensible. A researcher studying the association's public language could draw strongly on the newsletters. Someone estimating the views of all residents would need a wider range of evidence. The same collection could be excellent for one question and insufficient for another.\n\nNor did the team describe every missing item as evidence of deliberate exclusion. A document might never have existed, might have been lost accidentally, or might remain in a private drawer. Where the reason was unknown, the catalogue said so. Its account of the past became less seamless but more open to revision. For Lena, an archive's authority depended less on sounding complete than on helping readers understand the limits within which its surviving records could speak.",
+            "explanation": "She discovers that quantity does not ensure representative completeness. A exaggerates the technical difficulty; B and D concern subjects and capabilities she does not reject.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "That faded print can ever be read accurately."
+              },
+              {
+                "id": "o1",
+                "text": "That neighbourhood festivals deserve historical study."
+              },
+              {
+                "id": "o2",
+                "text": "That abundant surviving material necessarily gives a complete account."
+              },
+              {
+                "id": "o3",
+                "text": "That a residents' association can produce a newsletter."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.waiting-room-and-archive-008.b.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What limitation of the newsletters is identified?",
+            "material": "B. Finding the absent voices\n\nWhen Lena began cataloguing a collection of neighbourhood newsletters, she expected the difficult work to be reading faded print. Instead, she found that the greatest obstacle was deciding what the collection could reasonably claim to represent. Boxes of carefully preserved issues offered a vivid account of local festivals, campaigns and disputes. But an impressive quantity of material did not guarantee an equally complete picture of the neighbourhood.\n\nThe earliest newsletters had been produced by a residents' association whose members owned most of the houses near the square. Tenants from the surrounding apartment blocks appeared mainly as subjects of articles, rarely as named contributors. Several newsletters referred to lively meetings in a community hall, yet the collection contained no minutes from those meetings. The archive recorded what its creators had selected for publication, not every conversation that had taken place.\n\nLena initially proposed filling the gaps through interviews. That would certainly add perspectives, her supervisor agreed, but it would not make absence disappear. People available for interview decades later were themselves a selective group. Memories could be shaped by subsequent events, and a confident recollection was not necessarily a precise one. Treating oral accounts as a transparent correction to printed records would simply exchange one unexamined source for another.\n\nThe team therefore changed its catalogue in two ways. First, it described how the newsletters had been produced and donated, including what was known about the association's membership. Second, it created a linked interview collection whose records included the circumstances of each conversation. Interviewees could distinguish what they remembered directly from what they had heard from others. Where accounts disagreed, the disagreement remained visible rather than being silently resolved into a single sentence.\n\nSome volunteers worried that these qualifications would make the archive seem unreliable. Lena argued that they made particular uses of it more defensible. A researcher studying the association's public language could draw strongly on the newsletters. Someone estimating the views of all residents would need a wider range of evidence. The same collection could be excellent for one question and insufficient for another.\n\nNor did the team describe every missing item as evidence of deliberate exclusion. A document might never have existed, might have been lost accidentally, or might remain in a private drawer. Where the reason was unknown, the catalogue said so. Its account of the past became less seamless but more open to revision. For Lena, an archive's authority depended less on sounding complete than on helping readers understand the limits within which its surviving records could speak.",
+            "explanation": "Owners in the association selected the published account; tenants were usually subjects rather than contributors. B contradicts missing minutes; C confuses original print with later interviews; D ignores the actual mentions of tenants.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They reflected the publication choices of a particular group."
+              },
+              {
+                "id": "o1",
+                "text": "They contained the full minutes of every local meeting."
+              },
+              {
+                "id": "o2",
+                "text": "They were all written retrospectively by interviewees."
+              },
+              {
+                "id": "o3",
+                "text": "They avoided mentioning apartment tenants entirely."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.waiting-room-and-archive-008.b.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the supervisor qualify Lena's interview proposal?",
+            "material": "B. Finding the absent voices\n\nWhen Lena began cataloguing a collection of neighbourhood newsletters, she expected the difficult work to be reading faded print. Instead, she found that the greatest obstacle was deciding what the collection could reasonably claim to represent. Boxes of carefully preserved issues offered a vivid account of local festivals, campaigns and disputes. But an impressive quantity of material did not guarantee an equally complete picture of the neighbourhood.\n\nThe earliest newsletters had been produced by a residents' association whose members owned most of the houses near the square. Tenants from the surrounding apartment blocks appeared mainly as subjects of articles, rarely as named contributors. Several newsletters referred to lively meetings in a community hall, yet the collection contained no minutes from those meetings. The archive recorded what its creators had selected for publication, not every conversation that had taken place.\n\nLena initially proposed filling the gaps through interviews. That would certainly add perspectives, her supervisor agreed, but it would not make absence disappear. People available for interview decades later were themselves a selective group. Memories could be shaped by subsequent events, and a confident recollection was not necessarily a precise one. Treating oral accounts as a transparent correction to printed records would simply exchange one unexamined source for another.\n\nThe team therefore changed its catalogue in two ways. First, it described how the newsletters had been produced and donated, including what was known about the association's membership. Second, it created a linked interview collection whose records included the circumstances of each conversation. Interviewees could distinguish what they remembered directly from what they had heard from others. Where accounts disagreed, the disagreement remained visible rather than being silently resolved into a single sentence.\n\nSome volunteers worried that these qualifications would make the archive seem unreliable. Lena argued that they made particular uses of it more defensible. A researcher studying the association's public language could draw strongly on the newsletters. Someone estimating the views of all residents would need a wider range of evidence. The same collection could be excellent for one question and insufficient for another.\n\nNor did the team describe every missing item as evidence of deliberate exclusion. A document might never have existed, might have been lost accidentally, or might remain in a private drawer. Where the reason was unknown, the catalogue said so. Its account of the past became less seamless but more open to revision. For Lena, an archive's authority depended less on sounding complete than on helping readers understand the limits within which its surviving records could speak.",
+            "explanation": "Survival, availability and retrospective memory introduce their own limits. A imposes a universal hierarchy absent from the text; B invents contributor overlap; C states the uncritical assumption the supervisor rejects.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Oral evidence is always less valuable than printed evidence."
+              },
+              {
+                "id": "o1",
+                "text": "All surviving residents had already contributed newsletters."
+              },
+              {
+                "id": "o2",
+                "text": "Later memories could supply an entirely neutral record."
+              },
+              {
+                "id": "o3",
+                "text": "Interviews also involve selection and problems of interpretation."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.waiting-room-and-archive-008.b.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How did the team handle conflicting interview accounts?",
+            "material": "B. Finding the absent voices\n\nWhen Lena began cataloguing a collection of neighbourhood newsletters, she expected the difficult work to be reading faded print. Instead, she found that the greatest obstacle was deciding what the collection could reasonably claim to represent. Boxes of carefully preserved issues offered a vivid account of local festivals, campaigns and disputes. But an impressive quantity of material did not guarantee an equally complete picture of the neighbourhood.\n\nThe earliest newsletters had been produced by a residents' association whose members owned most of the houses near the square. Tenants from the surrounding apartment blocks appeared mainly as subjects of articles, rarely as named contributors. Several newsletters referred to lively meetings in a community hall, yet the collection contained no minutes from those meetings. The archive recorded what its creators had selected for publication, not every conversation that had taken place.\n\nLena initially proposed filling the gaps through interviews. That would certainly add perspectives, her supervisor agreed, but it would not make absence disappear. People available for interview decades later were themselves a selective group. Memories could be shaped by subsequent events, and a confident recollection was not necessarily a precise one. Treating oral accounts as a transparent correction to printed records would simply exchange one unexamined source for another.\n\nThe team therefore changed its catalogue in two ways. First, it described how the newsletters had been produced and donated, including what was known about the association's membership. Second, it created a linked interview collection whose records included the circumstances of each conversation. Interviewees could distinguish what they remembered directly from what they had heard from others. Where accounts disagreed, the disagreement remained visible rather than being silently resolved into a single sentence.\n\nSome volunteers worried that these qualifications would make the archive seem unreliable. Lena argued that they made particular uses of it more defensible. A researcher studying the association's public language could draw strongly on the newsletters. Someone estimating the views of all residents would need a wider range of evidence. The same collection could be excellent for one question and insufficient for another.\n\nNor did the team describe every missing item as evidence of deliberate exclusion. A document might never have existed, might have been lost accidentally, or might remain in a private drawer. Where the reason was unknown, the catalogue said so. Its account of the past became less seamless but more open to revision. For Lena, an archive's authority depended less on sounding complete than on helping readers understand the limits within which its surviving records could speak.",
+            "explanation": "Disagreement remained visible instead of being silently resolved. A, C and D each describe a procedure expressly inconsistent with that choice.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It removed both accounts from the collection."
+              },
+              {
+                "id": "o1",
+                "text": "It preserved the disagreement for readers to assess."
+              },
+              {
+                "id": "o2",
+                "text": "It accepted whichever speaker sounded more confident."
+              },
+              {
+                "id": "o3",
+                "text": "It rewrote the accounts to make them agree."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.waiting-room-and-archive-008.b.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Lena mean by making uses of the archive 'more defensible'?",
+            "material": "B. Finding the absent voices\n\nWhen Lena began cataloguing a collection of neighbourhood newsletters, she expected the difficult work to be reading faded print. Instead, she found that the greatest obstacle was deciding what the collection could reasonably claim to represent. Boxes of carefully preserved issues offered a vivid account of local festivals, campaigns and disputes. But an impressive quantity of material did not guarantee an equally complete picture of the neighbourhood.\n\nThe earliest newsletters had been produced by a residents' association whose members owned most of the houses near the square. Tenants from the surrounding apartment blocks appeared mainly as subjects of articles, rarely as named contributors. Several newsletters referred to lively meetings in a community hall, yet the collection contained no minutes from those meetings. The archive recorded what its creators had selected for publication, not every conversation that had taken place.\n\nLena initially proposed filling the gaps through interviews. That would certainly add perspectives, her supervisor agreed, but it would not make absence disappear. People available for interview decades later were themselves a selective group. Memories could be shaped by subsequent events, and a confident recollection was not necessarily a precise one. Treating oral accounts as a transparent correction to printed records would simply exchange one unexamined source for another.\n\nThe team therefore changed its catalogue in two ways. First, it described how the newsletters had been produced and donated, including what was known about the association's membership. Second, it created a linked interview collection whose records included the circumstances of each conversation. Interviewees could distinguish what they remembered directly from what they had heard from others. Where accounts disagreed, the disagreement remained visible rather than being silently resolved into a single sentence.\n\nSome volunteers worried that these qualifications would make the archive seem unreliable. Lena argued that they made particular uses of it more defensible. A researcher studying the association's public language could draw strongly on the newsletters. Someone estimating the views of all residents would need a wider range of evidence. The same collection could be excellent for one question and insufficient for another.\n\nNor did the team describe every missing item as evidence of deliberate exclusion. A document might never have existed, might have been lost accidentally, or might remain in a private drawer. Where the reason was unknown, the catalogue said so. Its account of the past became less seamless but more open to revision. For Lena, an archive's authority depended less on sounding complete than on helping readers understand the limits within which its surviving records could speak.",
+            "explanation": "Different questions require different evidence, and the catalogue clarifies those limits. A adds an ideological restriction; B ignores the several possible reasons for absence; D contradicts the distinction between association language and all residents' views.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Readers should use it only to praise the association."
+              },
+              {
+                "id": "o1",
+                "text": "Missing documents can be treated as proof of deliberate suppression."
+              },
+              {
+                "id": "o2",
+                "text": "Claims can be matched to the evidence's particular strengths and limits."
+              },
+              {
+                "id": "o3",
+                "text": "Every historical question can be answered from the same newsletters."
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "aa856e8ae7bab455a51fe452b7437cdb05fd747c7021b581283c510798969e76",
+      "reviewNotes": "New original prose for adult learners, with explicitly authored complete question sets and a same-author check of keys and every distractor. Invented institutions and events are narrative examples, not reported research. Structural alignment only; no independent teacher review or learner difficulty calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.advanced.unfinished-prototype-008",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "10·24新题 · The authority of an unfinished prototype",
+        "summary": "The authority of an unfinished prototype，共6题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.cambridge.c1.paper1.2022.part5",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 高级档候选模式：参考已核C1样卷完整形式，尚未建立产品高级档与C1等值或目标人群难度标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "New original prose for adult learners, with explicitly authored complete question sets and a same-author check of keys and every distractor. Invented institutions and events are narrative examples, not reported research. Structural alignment only; no independent teacher review or learner difficulty calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.advanced.unfinished-prototype-008",
+          "family": "reading_choice",
+          "label": "The authority of an unfinished prototype",
+          "candidateSHA256": "4829aa2e0dafded64c7618d0cfb283604067587a0b4302375a2dc7ad46a1de79",
+          "authorCheckSHA256": "039728832ac3bae3722001bd488889e8a3c9452082eb5e2221077108bc64c11d",
+          "sourceGroupIds": [
+            "expansion.20261024.advanced.unfinished-prototype-008#a"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b008；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The authority of an unfinished prototype\n\nAt the first public meeting about a new riverside shelter, architect Mara Bell arrived with a model made from plain card. Its roof was crooked, its walls could be moved, and the benches were represented by loose wooden blocks. Several members of the committee looked disappointed. They had expected the polished images normally used to announce a building project: warm evening light, a few tastefully placed trees and inhabitants who seemed already to know where to stand. Bell's model appeared to offer considerably less. That, she explained, was precisely its purpose.\n\nThe committee had not yet agreed what the shelter was for. Cyclists wanted somewhere to wait out a shower without obstructing the path. Older residents wanted seats facing the river. A local youth group wanted a space large enough for informal performances. An elegant image might have accommodated all three groups visually while concealing the decisions their activities required. A person holding a bicycle occupies space differently from a seated spectator, however discreetly both can be drawn into a rendering. Bell wanted those differences discussed before they hardened into walls.\n\nThe card model did provoke discussion, although not immediately the kind she had anticipated. Participants began by rearranging the benches to suit their own preferences, often without explaining why. Bell then asked them to describe a particular visit: where they would arrive, what they would carry, who might accompany them and what would happen if another group was already there. Once the model was connected to these ordinary sequences of action, movements of a wooden block became arguments that other people could question. The object itself had not created participation; the way the meeting used it had made participation more specific.\n\nThis distinction mattered to Bell because she had seen rough models acquire an undeserved reputation for openness. A designer can invite people to move a bench while quietly treating the building's position, budget and access arrangements as beyond discussion. The visible freedom may concern only details whose alteration poses little inconvenience. Conversely, a detailed drawing can support meaningful disagreement if its author makes the underlying assumptions explicit and permits them to change. Neither roughness nor polish supplies an ethical guarantee.\n\nThere were also limits to what the shelter model could establish. A resident proposed lowering part of the roof so that rain would be less likely to blow onto the seats. The suggestion looked persuasive at the table, but the engineer later explained that its effect depended on wind direction and on drainage details absent from the model. Bell recorded it as a proposal requiring investigation, rather than as a conclusion endorsed by the meeting. The distinction disappointed the resident, who felt that an idea accepted in public ought not to be reconsidered in an office. Bell understood the objection. She nevertheless thought that pretending a card roof could settle a technical question would ultimately be a less respectful response.\n\nWhen the committee met again, she brought both the original model and a more precise set of drawings. Beside them was a list of earlier suggestions, each marked as incorporated, still under investigation or rejected, with an explanation. Several decisions had changed, including the position of an entrance. Others had not, sometimes because two valued uses could not occupy the same small area. The discussion was less celebratory than the committee's initial publicity plans had imagined. It was also easier to tell what had actually been decided.\n\nBell did not abandon attractive presentations. Once the main choices were settled, images helped residents imagine how the shelter would sit along the river. She resisted only the tendency to let that imagined future borrow the authority of a completed fact. A prototype's contribution, in her view, was not to make every possibility equally achievable. It was to keep the difference between a possibility, a commitment and an unresolved question visible long enough for people to respond intelligently."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.advanced.unfinished-prototype-008.a.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the writer imply about the polished images the committee expected?",
+            "material": "The authority of an unfinished prototype\n\nAt the first public meeting about a new riverside shelter, architect Mara Bell arrived with a model made from plain card. Its roof was crooked, its walls could be moved, and the benches were represented by loose wooden blocks. Several members of the committee looked disappointed. They had expected the polished images normally used to announce a building project: warm evening light, a few tastefully placed trees and inhabitants who seemed already to know where to stand. Bell's model appeared to offer considerably less. That, she explained, was precisely its purpose.\n\nThe committee had not yet agreed what the shelter was for. Cyclists wanted somewhere to wait out a shower without obstructing the path. Older residents wanted seats facing the river. A local youth group wanted a space large enough for informal performances. An elegant image might have accommodated all three groups visually while concealing the decisions their activities required. A person holding a bicycle occupies space differently from a seated spectator, however discreetly both can be drawn into a rendering. Bell wanted those differences discussed before they hardened into walls.\n\nThe card model did provoke discussion, although not immediately the kind she had anticipated. Participants began by rearranging the benches to suit their own preferences, often without explaining why. Bell then asked them to describe a particular visit: where they would arrive, what they would carry, who might accompany them and what would happen if another group was already there. Once the model was connected to these ordinary sequences of action, movements of a wooden block became arguments that other people could question. The object itself had not created participation; the way the meeting used it had made participation more specific.\n\nThis distinction mattered to Bell because she had seen rough models acquire an undeserved reputation for openness. A designer can invite people to move a bench while quietly treating the building's position, budget and access arrangements as beyond discussion. The visible freedom may concern only details whose alteration poses little inconvenience. Conversely, a detailed drawing can support meaningful disagreement if its author makes the underlying assumptions explicit and permits them to change. Neither roughness nor polish supplies an ethical guarantee.\n\nThere were also limits to what the shelter model could establish. A resident proposed lowering part of the roof so that rain would be less likely to blow onto the seats. The suggestion looked persuasive at the table, but the engineer later explained that its effect depended on wind direction and on drainage details absent from the model. Bell recorded it as a proposal requiring investigation, rather than as a conclusion endorsed by the meeting. The distinction disappointed the resident, who felt that an idea accepted in public ought not to be reconsidered in an office. Bell understood the objection. She nevertheless thought that pretending a card roof could settle a technical question would ultimately be a less respectful response.\n\nWhen the committee met again, she brought both the original model and a more precise set of drawings. Beside them was a list of earlier suggestions, each marked as incorporated, still under investigation or rejected, with an explanation. Several decisions had changed, including the position of an entrance. Others had not, sometimes because two valued uses could not occupy the same small area. The discussion was less celebratory than the committee's initial publicity plans had imagined. It was also easier to tell what had actually been decided.\n\nBell did not abandon attractive presentations. Once the main choices were settled, images helped residents imagine how the shelter would sit along the river. She resisted only the tendency to let that imagined future borrow the authority of a completed fact. A prototype's contribution, in her view, was not to make every possibility equally achievable. It was to keep the difference between a possibility, a commitment and an unresolved question visible long enough for people to respond intelligently.",
+            "explanation": "The attractive scene can visually accommodate incompatible uses and lend an unsettled future the appearance of completion. A is not the objection; C invents exclusion of youth; D invents a cost comparison.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Their technical accuracy would have been difficult for residents to understand."
+              },
+              {
+                "id": "o1",
+                "text": "They could make unresolved choices appear harmoniously settled."
+              },
+              {
+                "id": "o2",
+                "text": "They would necessarily exclude any representation of young people."
+              },
+              {
+                "id": "o3",
+                "text": "Their production would cost more than constructing the shelter itself."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.advanced.unfinished-prototype-008.a.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What changed the nature of the first meeting's discussion?",
+            "material": "The authority of an unfinished prototype\n\nAt the first public meeting about a new riverside shelter, architect Mara Bell arrived with a model made from plain card. Its roof was crooked, its walls could be moved, and the benches were represented by loose wooden blocks. Several members of the committee looked disappointed. They had expected the polished images normally used to announce a building project: warm evening light, a few tastefully placed trees and inhabitants who seemed already to know where to stand. Bell's model appeared to offer considerably less. That, she explained, was precisely its purpose.\n\nThe committee had not yet agreed what the shelter was for. Cyclists wanted somewhere to wait out a shower without obstructing the path. Older residents wanted seats facing the river. A local youth group wanted a space large enough for informal performances. An elegant image might have accommodated all three groups visually while concealing the decisions their activities required. A person holding a bicycle occupies space differently from a seated spectator, however discreetly both can be drawn into a rendering. Bell wanted those differences discussed before they hardened into walls.\n\nThe card model did provoke discussion, although not immediately the kind she had anticipated. Participants began by rearranging the benches to suit their own preferences, often without explaining why. Bell then asked them to describe a particular visit: where they would arrive, what they would carry, who might accompany them and what would happen if another group was already there. Once the model was connected to these ordinary sequences of action, movements of a wooden block became arguments that other people could question. The object itself had not created participation; the way the meeting used it had made participation more specific.\n\nThis distinction mattered to Bell because she had seen rough models acquire an undeserved reputation for openness. A designer can invite people to move a bench while quietly treating the building's position, budget and access arrangements as beyond discussion. The visible freedom may concern only details whose alteration poses little inconvenience. Conversely, a detailed drawing can support meaningful disagreement if its author makes the underlying assumptions explicit and permits them to change. Neither roughness nor polish supplies an ethical guarantee.\n\nThere were also limits to what the shelter model could establish. A resident proposed lowering part of the roof so that rain would be less likely to blow onto the seats. The suggestion looked persuasive at the table, but the engineer later explained that its effect depended on wind direction and on drainage details absent from the model. Bell recorded it as a proposal requiring investigation, rather than as a conclusion endorsed by the meeting. The distinction disappointed the resident, who felt that an idea accepted in public ought not to be reconsidered in an office. Bell understood the objection. She nevertheless thought that pretending a card roof could settle a technical question would ultimately be a less respectful response.\n\nWhen the committee met again, she brought both the original model and a more precise set of drawings. Beside them was a list of earlier suggestions, each marked as incorporated, still under investigation or rejected, with an explanation. Several decisions had changed, including the position of an entrance. Others had not, sometimes because two valued uses could not occupy the same small area. The discussion was less celebratory than the committee's initial publicity plans had imagined. It was also easier to tell what had actually been decided.\n\nBell did not abandon attractive presentations. Once the main choices were settled, images helped residents imagine how the shelter would sit along the river. She resisted only the tendency to let that imagined future borrow the authority of a completed fact. A prototype's contribution, in her view, was not to make every possibility equally achievable. It was to keep the difference between a possibility, a commitment and an unresolved question visible long enough for people to respond intelligently.",
+            "explanation": "Describing arrival, belongings, companions and competing uses turned movements into assessable arguments. A happened neither then nor in that form; B invents a participation restriction; C reverses continued use of movable parts.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Bell replaced the card model with engineering calculations."
+              },
+              {
+                "id": "o1",
+                "text": "The committee limited participation to the three group leaders."
+              },
+              {
+                "id": "o2",
+                "text": "Residents agreed to stop moving the model's loose parts."
+              },
+              {
+                "id": "o3",
+                "text": "Participants linked changes to concrete accounts of using the space."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.advanced.unfinished-prototype-008.a.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the writer discuss the freedom to move a bench?",
+            "material": "The authority of an unfinished prototype\n\nAt the first public meeting about a new riverside shelter, architect Mara Bell arrived with a model made from plain card. Its roof was crooked, its walls could be moved, and the benches were represented by loose wooden blocks. Several members of the committee looked disappointed. They had expected the polished images normally used to announce a building project: warm evening light, a few tastefully placed trees and inhabitants who seemed already to know where to stand. Bell's model appeared to offer considerably less. That, she explained, was precisely its purpose.\n\nThe committee had not yet agreed what the shelter was for. Cyclists wanted somewhere to wait out a shower without obstructing the path. Older residents wanted seats facing the river. A local youth group wanted a space large enough for informal performances. An elegant image might have accommodated all three groups visually while concealing the decisions their activities required. A person holding a bicycle occupies space differently from a seated spectator, however discreetly both can be drawn into a rendering. Bell wanted those differences discussed before they hardened into walls.\n\nThe card model did provoke discussion, although not immediately the kind she had anticipated. Participants began by rearranging the benches to suit their own preferences, often without explaining why. Bell then asked them to describe a particular visit: where they would arrive, what they would carry, who might accompany them and what would happen if another group was already there. Once the model was connected to these ordinary sequences of action, movements of a wooden block became arguments that other people could question. The object itself had not created participation; the way the meeting used it had made participation more specific.\n\nThis distinction mattered to Bell because she had seen rough models acquire an undeserved reputation for openness. A designer can invite people to move a bench while quietly treating the building's position, budget and access arrangements as beyond discussion. The visible freedom may concern only details whose alteration poses little inconvenience. Conversely, a detailed drawing can support meaningful disagreement if its author makes the underlying assumptions explicit and permits them to change. Neither roughness nor polish supplies an ethical guarantee.\n\nThere were also limits to what the shelter model could establish. A resident proposed lowering part of the roof so that rain would be less likely to blow onto the seats. The suggestion looked persuasive at the table, but the engineer later explained that its effect depended on wind direction and on drainage details absent from the model. Bell recorded it as a proposal requiring investigation, rather than as a conclusion endorsed by the meeting. The distinction disappointed the resident, who felt that an idea accepted in public ought not to be reconsidered in an office. Bell understood the objection. She nevertheless thought that pretending a card roof could settle a technical question would ultimately be a less respectful response.\n\nWhen the committee met again, she brought both the original model and a more precise set of drawings. Beside them was a list of earlier suggestions, each marked as incorporated, still under investigation or rejected, with an explanation. Several decisions had changed, including the position of an entrance. Others had not, sometimes because two valued uses could not occupy the same small area. The discussion was less celebratory than the committee's initial publicity plans had imagined. It was also easier to tell what had actually been decided.\n\nBell did not abandon attractive presentations. Once the main choices were settled, images helped residents imagine how the shelter would sit along the river. She resisted only the tendency to let that imagined future borrow the authority of a completed fact. A prototype's contribution, in her view, was not to make every possibility equally achievable. It was to keep the difference between a possibility, a commitment and an unresolved question visible long enough for people to respond intelligently.",
+            "explanation": "Minor visible freedom can conceal fixed position, budget and access decisions. B confuses the illustration with a priority claim; C contradicts the explicit possibility of meaningful debate over detailed drawings; D rejects participation more broadly than Bell does.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To show how apparent participation can leave major assumptions untouched."
+              },
+              {
+                "id": "o1",
+                "text": "To argue that seating is inherently more important than site access."
+              },
+              {
+                "id": "o2",
+                "text": "To establish that detailed drawings prevent meaningful disagreement."
+              },
+              {
+                "id": "o3",
+                "text": "To suggest that designers should avoid inviting any public changes."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.advanced.unfinished-prototype-008.a.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How should Bell's response to the proposed lower roof be understood?",
+            "material": "The authority of an unfinished prototype\n\nAt the first public meeting about a new riverside shelter, architect Mara Bell arrived with a model made from plain card. Its roof was crooked, its walls could be moved, and the benches were represented by loose wooden blocks. Several members of the committee looked disappointed. They had expected the polished images normally used to announce a building project: warm evening light, a few tastefully placed trees and inhabitants who seemed already to know where to stand. Bell's model appeared to offer considerably less. That, she explained, was precisely its purpose.\n\nThe committee had not yet agreed what the shelter was for. Cyclists wanted somewhere to wait out a shower without obstructing the path. Older residents wanted seats facing the river. A local youth group wanted a space large enough for informal performances. An elegant image might have accommodated all three groups visually while concealing the decisions their activities required. A person holding a bicycle occupies space differently from a seated spectator, however discreetly both can be drawn into a rendering. Bell wanted those differences discussed before they hardened into walls.\n\nThe card model did provoke discussion, although not immediately the kind she had anticipated. Participants began by rearranging the benches to suit their own preferences, often without explaining why. Bell then asked them to describe a particular visit: where they would arrive, what they would carry, who might accompany them and what would happen if another group was already there. Once the model was connected to these ordinary sequences of action, movements of a wooden block became arguments that other people could question. The object itself had not created participation; the way the meeting used it had made participation more specific.\n\nThis distinction mattered to Bell because she had seen rough models acquire an undeserved reputation for openness. A designer can invite people to move a bench while quietly treating the building's position, budget and access arrangements as beyond discussion. The visible freedom may concern only details whose alteration poses little inconvenience. Conversely, a detailed drawing can support meaningful disagreement if its author makes the underlying assumptions explicit and permits them to change. Neither roughness nor polish supplies an ethical guarantee.\n\nThere were also limits to what the shelter model could establish. A resident proposed lowering part of the roof so that rain would be less likely to blow onto the seats. The suggestion looked persuasive at the table, but the engineer later explained that its effect depended on wind direction and on drainage details absent from the model. Bell recorded it as a proposal requiring investigation, rather than as a conclusion endorsed by the meeting. The distinction disappointed the resident, who felt that an idea accepted in public ought not to be reconsidered in an office. Bell understood the objection. She nevertheless thought that pretending a card roof could settle a technical question would ultimately be a less respectful response.\n\nWhen the committee met again, she brought both the original model and a more precise set of drawings. Beside them was a list of earlier suggestions, each marked as incorporated, still under investigation or rejected, with an explanation. Several decisions had changed, including the position of an entrance. Others had not, sometimes because two valued uses could not occupy the same small area. The discussion was less celebratory than the committee's initial publicity plans had imagined. It was also easier to tell what had actually been decided.\n\nBell did not abandon attractive presentations. Once the main choices were settled, images helped residents imagine how the shelter would sit along the river. She resisted only the tendency to let that imagined future borrow the authority of a completed fact. A prototype's contribution, in her view, was not to make every possibility equally achievable. It was to keep the difference between a possibility, a commitment and an unresolved question visible long enough for people to respond intelligently.",
+            "explanation": "She retained it for investigation because wind and drainage were not represented. A substitutes a hierarchy of people for an evidence limit; B contradicts the design changes from public input; D invents prior engineering approval.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She valued the engineer's preferences more than all residents' experiences."
+              },
+              {
+                "id": "o1",
+                "text": "She considered public discussion irrelevant to the eventual design."
+              },
+              {
+                "id": "o2",
+                "text": "She distinguished a promising suggestion from a technically established solution."
+              },
+              {
+                "id": "o3",
+                "text": "She withdrew a commitment that the engineer had already approved."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.advanced.unfinished-prototype-008.a.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What was significant about the materials at the second meeting?",
+            "material": "The authority of an unfinished prototype\n\nAt the first public meeting about a new riverside shelter, architect Mara Bell arrived with a model made from plain card. Its roof was crooked, its walls could be moved, and the benches were represented by loose wooden blocks. Several members of the committee looked disappointed. They had expected the polished images normally used to announce a building project: warm evening light, a few tastefully placed trees and inhabitants who seemed already to know where to stand. Bell's model appeared to offer considerably less. That, she explained, was precisely its purpose.\n\nThe committee had not yet agreed what the shelter was for. Cyclists wanted somewhere to wait out a shower without obstructing the path. Older residents wanted seats facing the river. A local youth group wanted a space large enough for informal performances. An elegant image might have accommodated all three groups visually while concealing the decisions their activities required. A person holding a bicycle occupies space differently from a seated spectator, however discreetly both can be drawn into a rendering. Bell wanted those differences discussed before they hardened into walls.\n\nThe card model did provoke discussion, although not immediately the kind she had anticipated. Participants began by rearranging the benches to suit their own preferences, often without explaining why. Bell then asked them to describe a particular visit: where they would arrive, what they would carry, who might accompany them and what would happen if another group was already there. Once the model was connected to these ordinary sequences of action, movements of a wooden block became arguments that other people could question. The object itself had not created participation; the way the meeting used it had made participation more specific.\n\nThis distinction mattered to Bell because she had seen rough models acquire an undeserved reputation for openness. A designer can invite people to move a bench while quietly treating the building's position, budget and access arrangements as beyond discussion. The visible freedom may concern only details whose alteration poses little inconvenience. Conversely, a detailed drawing can support meaningful disagreement if its author makes the underlying assumptions explicit and permits them to change. Neither roughness nor polish supplies an ethical guarantee.\n\nThere were also limits to what the shelter model could establish. A resident proposed lowering part of the roof so that rain would be less likely to blow onto the seats. The suggestion looked persuasive at the table, but the engineer later explained that its effect depended on wind direction and on drainage details absent from the model. Bell recorded it as a proposal requiring investigation, rather than as a conclusion endorsed by the meeting. The distinction disappointed the resident, who felt that an idea accepted in public ought not to be reconsidered in an office. Bell understood the objection. She nevertheless thought that pretending a card roof could settle a technical question would ultimately be a less respectful response.\n\nWhen the committee met again, she brought both the original model and a more precise set of drawings. Beside them was a list of earlier suggestions, each marked as incorporated, still under investigation or rejected, with an explanation. Several decisions had changed, including the position of an entrance. Others had not, sometimes because two valued uses could not occupy the same small area. The discussion was less celebratory than the committee's initial publicity plans had imagined. It was also easier to tell what had actually been decided.\n\nBell did not abandon attractive presentations. Once the main choices were settled, images helped residents imagine how the shelter would sit along the river. She resisted only the tendency to let that imagined future borrow the authority of a completed fact. A prototype's contribution, in her view, was not to make every possibility equally achievable. It was to keep the difference between a possibility, a commitment and an unresolved question visible long enough for people to respond intelligently.",
+            "explanation": "The list marked suggestions incorporated, under investigation or rejected and explained each status. A conflicts with incompatible valued uses; C ignores the explanations and introduces a vote; D contradicts the changed entrance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They proved that all the residents' preferred uses could be accommodated."
+              },
+              {
+                "id": "o1",
+                "text": "They allowed people to trace the treatment of earlier proposals."
+              },
+              {
+                "id": "o2",
+                "text": "They replaced explanations with a vote on attractive images."
+              },
+              {
+                "id": "o3",
+                "text": "They showed that no design decisions had changed after consultation."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.advanced.unfinished-prototype-008.a.q6",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which statement best captures Bell's view of prototypes?",
+            "material": "The authority of an unfinished prototype\n\nAt the first public meeting about a new riverside shelter, architect Mara Bell arrived with a model made from plain card. Its roof was crooked, its walls could be moved, and the benches were represented by loose wooden blocks. Several members of the committee looked disappointed. They had expected the polished images normally used to announce a building project: warm evening light, a few tastefully placed trees and inhabitants who seemed already to know where to stand. Bell's model appeared to offer considerably less. That, she explained, was precisely its purpose.\n\nThe committee had not yet agreed what the shelter was for. Cyclists wanted somewhere to wait out a shower without obstructing the path. Older residents wanted seats facing the river. A local youth group wanted a space large enough for informal performances. An elegant image might have accommodated all three groups visually while concealing the decisions their activities required. A person holding a bicycle occupies space differently from a seated spectator, however discreetly both can be drawn into a rendering. Bell wanted those differences discussed before they hardened into walls.\n\nThe card model did provoke discussion, although not immediately the kind she had anticipated. Participants began by rearranging the benches to suit their own preferences, often without explaining why. Bell then asked them to describe a particular visit: where they would arrive, what they would carry, who might accompany them and what would happen if another group was already there. Once the model was connected to these ordinary sequences of action, movements of a wooden block became arguments that other people could question. The object itself had not created participation; the way the meeting used it had made participation more specific.\n\nThis distinction mattered to Bell because she had seen rough models acquire an undeserved reputation for openness. A designer can invite people to move a bench while quietly treating the building's position, budget and access arrangements as beyond discussion. The visible freedom may concern only details whose alteration poses little inconvenience. Conversely, a detailed drawing can support meaningful disagreement if its author makes the underlying assumptions explicit and permits them to change. Neither roughness nor polish supplies an ethical guarantee.\n\nThere were also limits to what the shelter model could establish. A resident proposed lowering part of the roof so that rain would be less likely to blow onto the seats. The suggestion looked persuasive at the table, but the engineer later explained that its effect depended on wind direction and on drainage details absent from the model. Bell recorded it as a proposal requiring investigation, rather than as a conclusion endorsed by the meeting. The distinction disappointed the resident, who felt that an idea accepted in public ought not to be reconsidered in an office. Bell understood the objection. She nevertheless thought that pretending a card roof could settle a technical question would ultimately be a less respectful response.\n\nWhen the committee met again, she brought both the original model and a more precise set of drawings. Beside them was a list of earlier suggestions, each marked as incorporated, still under investigation or rejected, with an explanation. Several decisions had changed, including the position of an entrance. Others had not, sometimes because two valued uses could not occupy the same small area. The discussion was less celebratory than the committee's initial publicity plans had imagined. It was also easier to tell what had actually been decided.\n\nBell did not abandon attractive presentations. Once the main choices were settled, images helped residents imagine how the shelter would sit along the river. She resisted only the tendency to let that imagined future borrow the authority of a completed fact. A prototype's contribution, in her view, was not to make every possibility equally achievable. It was to keep the difference between a possibility, a commitment and an unresolved question visible long enough for people to respond intelligently.",
+            "explanation": "The conclusion explicitly separates possibilities, commitments and unresolved questions. A ignores later precise drawings and attractive images; B contradicts the roof investigation; C conflicts with acknowledged trade-offs and the less celebratory second meeting.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They should remain rough throughout every stage of a project."
+              },
+              {
+                "id": "o1",
+                "text": "They make further technical investigation unnecessary once residents agree."
+              },
+              {
+                "id": "o2",
+                "text": "They are valuable chiefly because they secure unanimous support."
+              },
+              {
+                "id": "o3",
+                "text": "They help people distinguish what might happen from what is settled or unresolved."
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "039cfddf35fc204a98562f28388afee931ec7adadcf172cf44e161a0edae70af",
+      "reviewNotes": "New original prose for adult learners, with explicitly authored complete question sets and a same-author check of keys and every distractor. Invented institutions and events are narrative examples, not reported research. Structural alignment only; no independent teacher review or learner difficulty calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}

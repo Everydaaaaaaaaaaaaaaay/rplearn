@@ -1,0 +1,1836 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b009",
+  "createdAt": "2026-10-23T18:50:00Z",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.interviews-and-sundial-009",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · 七选五与语法填空 · 采访与日晷",
+        "summary": "七选五与语法填空 · 采访与日晷，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_insertion",
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I insertion and passage-form task structure",
+            "pages": "Reading: five of seven; Use of English: 10-gap passage form",
+            "alignment": "One full five-gap passage sharing seven candidates, plus one full ten-gap grammar passage. Source supplies task rules only; all prose and keys are original."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.wenzhou2025.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three newly authored complete senior practices. Each combines one five-gap seven-candidate insertion text and one coherent ten-gap grammar text. Same-author review checks cohesion, unused alternatives, grammar variants and explicit wrong forms; unlisted written variants go to review. No independent teacher validation or learner calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.interviews-and-sundial-009",
+          "family": "shared_insertion_passage_form",
+          "label": "七选五与语法填空 · 采访与日晷",
+          "candidateSHA256": "1e6f99c0922c2ce68289ce2ac7ffffb54fb81e33327bec98de0ac05385c4b8c4",
+          "authorCheckSHA256": "c36d294824679d7d2d9306cd8d15bec32f929294e5ecd403264fb397be552a7c",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.interviews-and-sundial-009#insertion",
+            "expansion.20261024.senior1.interviews-and-sundial-009#grammar"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b009；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Your first newspaper interview\n\nYou have joined the school newspaper and are about to interview someone for the first time. You may feel that a good reporter must always know what to say. In fact, some preparation and careful listening matter more than a loud, confident voice.\n\nBefore arranging the interview, decide what you want readers to learn. A conversation about winning a race will be different from one about starting a new club. ____1____ This focus will help you choose a few useful questions instead of preparing a long list of unrelated ones.\n\nSend the person a short message explaining your topic and asking for a suitable time. ____2____ A ten-minute conversation during a quiet break may be more useful than stopping someone who is already late for class.\n\nDuring the interview, listen to the whole answer. Do not spend every moment looking for the next question on your page. ____3____ For example, if a player mentions a difficult decision, you could ask what made it difficult. Such a follow-up grows naturally from the answer.\n\nMake notes, but check any detail you are uncertain about. ____4____ It is better to ask someone to repeat a name than to print the wrong one. If you want to record the conversation, get permission first.\n\nFinally, explain when the article is likely to appear and thank the person. ____5____ Your written questions may have started the interview, but another person's time and experience made the story possible.\n\nB. A shadow on the wall\n\nHill School's science club ____1____ (found) in 2019. Last month its members visited the ____2____ (old) building on the school grounds; none of the other buildings was as old. After ____3____ (visit) the small exhibition inside, they noticed ____4____ unusual metal shape above the door. A teacher explained that it was part of a sundial, an instrument ____5____ shows the time by the position of a shadow.\n\nBack in their classroom, the students looked ____6____ (careful) at photographs of the wall. They decided ____7____ (share) what they had learned with younger ____8____ (child) at the school. Working in pairs, they made simple paper models and placed them beside a sunny window. They soon discovered that moving a model changed its reading, so they marked one position on the table and left each model there.\n\nOn the exhibition day, the club not only displayed the models ____9____ also invited visitors to watch the shadows move. The visitors asked many questions. When the event ended, the club kept the models and stored ____10____ (they) in a cupboard for the next science lesson. The old object above the door had given the students a new way to notice the passing of an ordinary afternoon."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.insertion.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 1.",
+            "material": "A. Your first newspaper interview\n\nYou have joined the school newspaper and are about to interview someone for the first time. You may feel that a good reporter must always know what to say. In fact, some preparation and careful listening matter more than a loud, confident voice.\n\nBefore arranging the interview, decide what you want readers to learn. A conversation about winning a race will be different from one about starting a new club. ____1____ This focus will help you choose a few useful questions instead of preparing a long list of unrelated ones.\n\nSend the person a short message explaining your topic and asking for a suitable time. ____2____ A ten-minute conversation during a quiet break may be more useful than stopping someone who is already late for class.\n\nDuring the interview, listen to the whole answer. Do not spend every moment looking for the next question on your page. ____3____ For example, if a player mentions a difficult decision, you could ask what made it difficult. Such a follow-up grows naturally from the answer.\n\nMake notes, but check any detail you are uncertain about. ____4____ It is better to ask someone to repeat a name than to print the wrong one. If you want to record the conversation, get permission first.\n\nFinally, explain when the article is likely to appear and thank the person. ____5____ Your written questions may have started the interview, but another person's time and experience made the story possible.",
+            "explanation": "A's 'that choice' refers to deciding the article's focus, developed by 'This focus'. B needs a heard answer; D belongs to arranging time; E to thanks; F to checking details. C promotes unchecked publication and G discards notes, contrary to the task.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Treat that choice as the centre of your plan."
+              },
+              {
+                "id": "o1",
+                "text": "B. An interesting detail may suggest a question you had not prepared."
+              },
+              {
+                "id": "o2",
+                "text": "C. Publishing before checking is the quickest way to earn trust."
+              },
+              {
+                "id": "o3",
+                "text": "D. They should be able to choose a moment when they are not rushed."
+              },
+              {
+                "id": "o4",
+                "text": "E. This shows that you value the help they have given you."
+              },
+              {
+                "id": "o5",
+                "text": "F. In particular, names and numbers need to be accurate."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once the interview is over, there is no reason to use your notes."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.insertion.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 2.",
+            "material": "A. Your first newspaper interview\n\nYou have joined the school newspaper and are about to interview someone for the first time. You may feel that a good reporter must always know what to say. In fact, some preparation and careful listening matter more than a loud, confident voice.\n\nBefore arranging the interview, decide what you want readers to learn. A conversation about winning a race will be different from one about starting a new club. ____1____ This focus will help you choose a few useful questions instead of preparing a long list of unrelated ones.\n\nSend the person a short message explaining your topic and asking for a suitable time. ____2____ A ten-minute conversation during a quiet break may be more useful than stopping someone who is already late for class.\n\nDuring the interview, listen to the whole answer. Do not spend every moment looking for the next question on your page. ____3____ For example, if a player mentions a difficult decision, you could ask what made it difficult. Such a follow-up grows naturally from the answer.\n\nMake notes, but check any detail you are uncertain about. ____4____ It is better to ask someone to repeat a name than to print the wrong one. If you want to record the conversation, get permission first.\n\nFinally, explain when the article is likely to appear and thank the person. ____5____ Your written questions may have started the interview, but another person's time and experience made the story possible.",
+            "explanation": "D develops asking for a suitable time and leads directly to the unhurried ten-minute example. A concerns topic selection; B follow-up listening; E gratitude; F factual checks. C and G contradict responsible reporting and do not connect to timing.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Treat that choice as the centre of your plan."
+              },
+              {
+                "id": "o1",
+                "text": "B. An interesting detail may suggest a question you had not prepared."
+              },
+              {
+                "id": "o2",
+                "text": "C. Publishing before checking is the quickest way to earn trust."
+              },
+              {
+                "id": "o3",
+                "text": "D. They should be able to choose a moment when they are not rushed."
+              },
+              {
+                "id": "o4",
+                "text": "E. This shows that you value the help they have given you."
+              },
+              {
+                "id": "o5",
+                "text": "F. In particular, names and numbers need to be accurate."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once the interview is over, there is no reason to use your notes."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.insertion.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 3.",
+            "material": "A. Your first newspaper interview\n\nYou have joined the school newspaper and are about to interview someone for the first time. You may feel that a good reporter must always know what to say. In fact, some preparation and careful listening matter more than a loud, confident voice.\n\nBefore arranging the interview, decide what you want readers to learn. A conversation about winning a race will be different from one about starting a new club. ____1____ This focus will help you choose a few useful questions instead of preparing a long list of unrelated ones.\n\nSend the person a short message explaining your topic and asking for a suitable time. ____2____ A ten-minute conversation during a quiet break may be more useful than stopping someone who is already late for class.\n\nDuring the interview, listen to the whole answer. Do not spend every moment looking for the next question on your page. ____3____ For example, if a player mentions a difficult decision, you could ask what made it difficult. Such a follow-up grows naturally from the answer.\n\nMake notes, but check any detail you are uncertain about. ____4____ It is better to ask someone to repeat a name than to print the wrong one. If you want to record the conversation, get permission first.\n\nFinally, explain when the article is likely to appear and thank the person. ____5____ Your written questions may have started the interview, but another person's time and experience made the story possible.",
+            "explanation": "B links listening to an unexpected follow-up, illustrated by the player's difficult decision. A does not explain a new question, D changes to scheduling, E to thanks, F to accuracy. C and G neither fit the example nor support careful reporting.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Treat that choice as the centre of your plan."
+              },
+              {
+                "id": "o1",
+                "text": "B. An interesting detail may suggest a question you had not prepared."
+              },
+              {
+                "id": "o2",
+                "text": "C. Publishing before checking is the quickest way to earn trust."
+              },
+              {
+                "id": "o3",
+                "text": "D. They should be able to choose a moment when they are not rushed."
+              },
+              {
+                "id": "o4",
+                "text": "E. This shows that you value the help they have given you."
+              },
+              {
+                "id": "o5",
+                "text": "F. In particular, names and numbers need to be accurate."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once the interview is over, there is no reason to use your notes."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.insertion.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 4.",
+            "material": "A. Your first newspaper interview\n\nYou have joined the school newspaper and are about to interview someone for the first time. You may feel that a good reporter must always know what to say. In fact, some preparation and careful listening matter more than a loud, confident voice.\n\nBefore arranging the interview, decide what you want readers to learn. A conversation about winning a race will be different from one about starting a new club. ____1____ This focus will help you choose a few useful questions instead of preparing a long list of unrelated ones.\n\nSend the person a short message explaining your topic and asking for a suitable time. ____2____ A ten-minute conversation during a quiet break may be more useful than stopping someone who is already late for class.\n\nDuring the interview, listen to the whole answer. Do not spend every moment looking for the next question on your page. ____3____ For example, if a player mentions a difficult decision, you could ask what made it difficult. Such a follow-up grows naturally from the answer.\n\nMake notes, but check any detail you are uncertain about. ____4____ It is better to ask someone to repeat a name than to print the wrong one. If you want to record the conversation, get permission first.\n\nFinally, explain when the article is likely to appear and thank the person. ____5____ Your written questions may have started the interview, but another person's time and experience made the story possible.",
+            "explanation": "F specifies which details need checking, followed by repeating a name. A has no suitable 'choice' here; B concerns follow-ups, D scheduling, E thanks. C contradicts checking before printing and G dismisses notes rather than checking them.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Treat that choice as the centre of your plan."
+              },
+              {
+                "id": "o1",
+                "text": "B. An interesting detail may suggest a question you had not prepared."
+              },
+              {
+                "id": "o2",
+                "text": "C. Publishing before checking is the quickest way to earn trust."
+              },
+              {
+                "id": "o3",
+                "text": "D. They should be able to choose a moment when they are not rushed."
+              },
+              {
+                "id": "o4",
+                "text": "E. This shows that you value the help they have given you."
+              },
+              {
+                "id": "o5",
+                "text": "F. In particular, names and numbers need to be accurate."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once the interview is over, there is no reason to use your notes."
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.insertion.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 5.",
+            "material": "A. Your first newspaper interview\n\nYou have joined the school newspaper and are about to interview someone for the first time. You may feel that a good reporter must always know what to say. In fact, some preparation and careful listening matter more than a loud, confident voice.\n\nBefore arranging the interview, decide what you want readers to learn. A conversation about winning a race will be different from one about starting a new club. ____1____ This focus will help you choose a few useful questions instead of preparing a long list of unrelated ones.\n\nSend the person a short message explaining your topic and asking for a suitable time. ____2____ A ten-minute conversation during a quiet break may be more useful than stopping someone who is already late for class.\n\nDuring the interview, listen to the whole answer. Do not spend every moment looking for the next question on your page. ____3____ For example, if a player mentions a difficult decision, you could ask what made it difficult. Such a follow-up grows naturally from the answer.\n\nMake notes, but check any detail you are uncertain about. ____4____ It is better to ask someone to repeat a name than to print the wrong one. If you want to record the conversation, get permission first.\n\nFinally, explain when the article is likely to appear and thank the person. ____5____ Your written questions may have started the interview, but another person's time and experience made the story possible.",
+            "explanation": "E's 'This' points to thanking the interviewee and leads to recognition of their contribution. A, B, D and F introduce earlier planning, listening, timing or checking stages. C promotes unreliable practice; G conflicts with using evidence to write the article.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Treat that choice as the centre of your plan."
+              },
+              {
+                "id": "o1",
+                "text": "B. An interesting detail may suggest a question you had not prepared."
+              },
+              {
+                "id": "o2",
+                "text": "C. Publishing before checking is the quickest way to earn trust."
+              },
+              {
+                "id": "o3",
+                "text": "D. They should be able to choose a moment when they are not rushed."
+              },
+              {
+                "id": "o4",
+                "text": "E. This shows that you value the help they have given you."
+              },
+              {
+                "id": "o5",
+                "text": "F. In particular, names and numbers need to be accurate."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once the interview is over, there is no reason to use your notes."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of found.",
+            "material": "B. A shadow on the wall\n\nHill School's science club ____1____ (found) in 2019. Last month its members visited the ____2____ (old) building on the school grounds; none of the other buildings was as old. After ____3____ (visit) the small exhibition inside, they noticed ____4____ unusual metal shape above the door. A teacher explained that it was part of a sundial, an instrument ____5____ shows the time by the position of a shadow.\n\nBack in their classroom, the students looked ____6____ (careful) at photographs of the wall. They decided ____7____ (share) what they had learned with younger ____8____ (child) at the school. Working in pairs, they made simple paper models and placed them beside a sunny window. They soon discovered that moving a model changed its reading, so they marked one position on the table and left each model there.\n\nOn the exhibition day, the club not only displayed the models ____9____ also invited visitors to watch the shadows move. The visitors asked many questions. When the event ended, the club kept the models and stored ____10____ (they) in a cupboard for the next science lesson. The old object above the door had given the students a new way to notice the passing of an ordinary afternoon.",
+            "explanation": "The club received the action in a finished past year: was founded. Founded alone has no passive auxiliary; was found means discovered rather than established; is founded conflicts with the dated event.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was founded"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "founded",
+                "was found",
+                "is founded"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with the correct form of old.",
+            "material": "B. A shadow on the wall\n\nHill School's science club ____1____ (found) in 2019. Last month its members visited the ____2____ (old) building on the school grounds; none of the other buildings was as old. After ____3____ (visit) the small exhibition inside, they noticed ____4____ unusual metal shape above the door. A teacher explained that it was part of a sundial, an instrument ____5____ shows the time by the position of a shadow.\n\nBack in their classroom, the students looked ____6____ (careful) at photographs of the wall. They decided ____7____ (share) what they had learned with younger ____8____ (child) at the school. Working in pairs, they made simple paper models and placed them beside a sunny window. They soon discovered that moving a model changed its reading, so they marked one position on the table and left each model there.\n\nOn the exhibition day, the club not only displayed the models ____9____ also invited visitors to watch the shadows move. The visitors asked many questions. When the event ended, the club kept the models and stored ____10____ (they) in a cupboard for the next science lesson. The old object above the door had given the students a new way to notice the passing of an ordinary afternoon.",
+            "explanation": "The following clause compares it with every other building, requiring the superlative oldest after the. Old is not comparative, and older compares without establishing the maximum.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "oldest"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "old",
+                "older"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with the correct form of visit.",
+            "material": "B. A shadow on the wall\n\nHill School's science club ____1____ (found) in 2019. Last month its members visited the ____2____ (old) building on the school grounds; none of the other buildings was as old. After ____3____ (visit) the small exhibition inside, they noticed ____4____ unusual metal shape above the door. A teacher explained that it was part of a sundial, an instrument ____5____ shows the time by the position of a shadow.\n\nBack in their classroom, the students looked ____6____ (careful) at photographs of the wall. They decided ____7____ (share) what they had learned with younger ____8____ (child) at the school. Working in pairs, they made simple paper models and placed them beside a sunny window. They soon discovered that moving a model changed its reading, so they marked one position on the table and left each model there.\n\nOn the exhibition day, the club not only displayed the models ____9____ also invited visitors to watch the shadows move. The visitors asked many questions. When the event ended, the club kept the models and stored ____10____ (they) in a cupboard for the next science lesson. The old object above the door had given the students a new way to notice the passing of an ordinary afternoon.",
+            "explanation": "After is a preposition here and takes visiting. A bare verb, finite past verb or to-infinitive does not fit this construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "visiting"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "visit",
+                "visited",
+                "to visit"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "B. A shadow on the wall\n\nHill School's science club ____1____ (found) in 2019. Last month its members visited the ____2____ (old) building on the school grounds; none of the other buildings was as old. After ____3____ (visit) the small exhibition inside, they noticed ____4____ unusual metal shape above the door. A teacher explained that it was part of a sundial, an instrument ____5____ shows the time by the position of a shadow.\n\nBack in their classroom, the students looked ____6____ (careful) at photographs of the wall. They decided ____7____ (share) what they had learned with younger ____8____ (child) at the school. Working in pairs, they made simple paper models and placed them beside a sunny window. They soon discovered that moving a model changed its reading, so they marked one position on the table and left each model there.\n\nOn the exhibition day, the club not only displayed the models ____9____ also invited visitors to watch the shadows move. The visitors asked many questions. When the event ended, the club kept the models and stored ____10____ (they) in a cupboard for the next science lesson. The old object above the door had given the students a new way to notice the passing of an ordinary afternoon.",
+            "explanation": "This first mention of a singular countable shape requires an indefinite article; unusual begins with a vowel sound, so an. A has the wrong sound agreement, and some does not fit the singular noun here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a",
+                "some"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with one appropriate word.",
+            "material": "B. A shadow on the wall\n\nHill School's science club ____1____ (found) in 2019. Last month its members visited the ____2____ (old) building on the school grounds; none of the other buildings was as old. After ____3____ (visit) the small exhibition inside, they noticed ____4____ unusual metal shape above the door. A teacher explained that it was part of a sundial, an instrument ____5____ shows the time by the position of a shadow.\n\nBack in their classroom, the students looked ____6____ (careful) at photographs of the wall. They decided ____7____ (share) what they had learned with younger ____8____ (child) at the school. Working in pairs, they made simple paper models and placed them beside a sunny window. They soon discovered that moving a model changed its reading, so they marked one position on the table and left each model there.\n\nOn the exhibition day, the club not only displayed the models ____9____ also invited visitors to watch the shadows move. The visitors asked many questions. When the event ended, the club kept the models and stored ____10____ (they) in a cupboard for the next science lesson. The old object above the door had given the students a new way to notice the passing of an ordinary afternoon.",
+            "explanation": "The defining relative clause needs a subject referring to an instrument; that and which both work. Who refers to people, where is not a subject, and what cannot take this expressed antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with the correct form of careful.",
+            "material": "B. A shadow on the wall\n\nHill School's science club ____1____ (found) in 2019. Last month its members visited the ____2____ (old) building on the school grounds; none of the other buildings was as old. After ____3____ (visit) the small exhibition inside, they noticed ____4____ unusual metal shape above the door. A teacher explained that it was part of a sundial, an instrument ____5____ shows the time by the position of a shadow.\n\nBack in their classroom, the students looked ____6____ (careful) at photographs of the wall. They decided ____7____ (share) what they had learned with younger ____8____ (child) at the school. Working in pairs, they made simple paper models and placed them beside a sunny window. They soon discovered that moving a model changed its reading, so they marked one position on the table and left each model there.\n\nOn the exhibition day, the club not only displayed the models ____9____ also invited visitors to watch the shadows move. The visitors asked many questions. When the event ended, the club kept the models and stored ____10____ (they) in a cupboard for the next science lesson. The old object above the door had given the students a new way to notice the passing of an ordinary afternoon.",
+            "explanation": "Carefully modifies looked at. The adjective careful and noun carefulness do not perform that adverbial function.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careful",
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with the correct form of share.",
+            "material": "B. A shadow on the wall\n\nHill School's science club ____1____ (found) in 2019. Last month its members visited the ____2____ (old) building on the school grounds; none of the other buildings was as old. After ____3____ (visit) the small exhibition inside, they noticed ____4____ unusual metal shape above the door. A teacher explained that it was part of a sundial, an instrument ____5____ shows the time by the position of a shadow.\n\nBack in their classroom, the students looked ____6____ (careful) at photographs of the wall. They decided ____7____ (share) what they had learned with younger ____8____ (child) at the school. Working in pairs, they made simple paper models and placed them beside a sunny window. They soon discovered that moving a model changed its reading, so they marked one position on the table and left each model there.\n\nOn the exhibition day, the club not only displayed the models ____9____ also invited visitors to watch the shadows move. The visitors asked many questions. When the event ended, the club kept the models and stored ____10____ (they) in a cupboard for the next science lesson. The old object above the door had given the students a new way to notice the passing of an ordinary afternoon.",
+            "explanation": "Decide takes a to-infinitive complement: decided to share. Sharing, a bare share or shared cannot directly fill this slot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to share"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "sharing",
+                "share",
+                "shared"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with the correct form of child.",
+            "material": "B. A shadow on the wall\n\nHill School's science club ____1____ (found) in 2019. Last month its members visited the ____2____ (old) building on the school grounds; none of the other buildings was as old. After ____3____ (visit) the small exhibition inside, they noticed ____4____ unusual metal shape above the door. A teacher explained that it was part of a sundial, an instrument ____5____ shows the time by the position of a shadow.\n\nBack in their classroom, the students looked ____6____ (careful) at photographs of the wall. They decided ____7____ (share) what they had learned with younger ____8____ (child) at the school. Working in pairs, they made simple paper models and placed them beside a sunny window. They soon discovered that moving a model changed its reading, so they marked one position on the table and left each model there.\n\nOn the exhibition day, the club not only displayed the models ____9____ also invited visitors to watch the shadows move. The visitors asked many questions. When the event ended, the club kept the models and stored ____10____ (they) in a cupboard for the next science lesson. The old object above the door had given the students a new way to notice the passing of an ordinary afternoon.",
+            "explanation": "The general group of younger pupils needs plural children. Singular child lacks a determiner, and childs is not the plural.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "children"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "child",
+                "childs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "B. A shadow on the wall\n\nHill School's science club ____1____ (found) in 2019. Last month its members visited the ____2____ (old) building on the school grounds; none of the other buildings was as old. After ____3____ (visit) the small exhibition inside, they noticed ____4____ unusual metal shape above the door. A teacher explained that it was part of a sundial, an instrument ____5____ shows the time by the position of a shadow.\n\nBack in their classroom, the students looked ____6____ (careful) at photographs of the wall. They decided ____7____ (share) what they had learned with younger ____8____ (child) at the school. Working in pairs, they made simple paper models and placed them beside a sunny window. They soon discovered that moving a model changed its reading, so they marked one position on the table and left each model there.\n\nOn the exhibition day, the club not only displayed the models ____9____ also invited visitors to watch the shadows move. The visitors asked many questions. When the event ended, the club kept the models and stored ____10____ (they) in a cupboard for the next science lesson. The old object above the door had given the students a new way to notice the passing of an ordinary afternoon.",
+            "explanation": "The paired construction is not only ... but also. And, or and so do not complete that construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "but"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "and",
+                "or",
+                "so"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with the correct form of they.",
+            "material": "B. A shadow on the wall\n\nHill School's science club ____1____ (found) in 2019. Last month its members visited the ____2____ (old) building on the school grounds; none of the other buildings was as old. After ____3____ (visit) the small exhibition inside, they noticed ____4____ unusual metal shape above the door. A teacher explained that it was part of a sundial, an instrument ____5____ shows the time by the position of a shadow.\n\nBack in their classroom, the students looked ____6____ (careful) at photographs of the wall. They decided ____7____ (share) what they had learned with younger ____8____ (child) at the school. Working in pairs, they made simple paper models and placed them beside a sunny window. They soon discovered that moving a model changed its reading, so they marked one position on the table and left each model there.\n\nOn the exhibition day, the club not only displayed the models ____9____ also invited visitors to watch the shadows move. The visitors asked many questions. When the event ended, the club kept the models and stored ____10____ (they) in a cupboard for the next science lesson. The old object above the door had given the students a new way to notice the passing of an ordinary afternoon.",
+            "explanation": "Stored needs an object pronoun referring to the models: them. They is subject form; their requires a following noun; theirs is possessive and does not refer to these already specified models in this sentence.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "them"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "their",
+                "theirs"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "8b67e3f301c0a77608bb21e1907da713c7e0b7d35c4f7802ce0efe2197718a7b",
+      "reviewNotes": "Three newly authored complete senior practices. Each combines one five-gap seven-candidate insertion text and one coherent ten-gap grammar text. Same-author review checks cohesion, unused alternatives, grammar variants and explicit wrong forms; unlisted written variants go to review. No independent teacher validation or learner calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.interviews-and-sundial-009#insertion",
+          "family": "shared_insertion",
+          "questionIds": [
+            "expansion.20261024.senior1.interviews-and-sundial-009.insertion.q1",
+            "expansion.20261024.senior1.interviews-and-sundial-009.insertion.q2",
+            "expansion.20261024.senior1.interviews-and-sundial-009.insertion.q3",
+            "expansion.20261024.senior1.interviews-and-sundial-009.insertion.q4",
+            "expansion.20261024.senior1.interviews-and-sundial-009.insertion.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.interviews-and-sundial-009",
+          "sourceContentHash": "4367d86bd552df2b9ea1f1c69cc8a4cf774bcc5fec8435cbc080443729d47111"
+        },
+        {
+          "id": "expansion.20261024.senior1.interviews-and-sundial-009#grammar",
+          "family": "passage_form",
+          "questionIds": [
+            "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q1",
+            "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q2",
+            "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q3",
+            "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q4",
+            "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q5",
+            "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q6",
+            "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q7",
+            "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q8",
+            "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q9",
+            "expansion.20261024.senior1.interviews-and-sundial-009.grammar.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.interviews-and-sundial-009",
+          "sourceContentHash": "f291197406d545141e7cd8a7cbce122966755096f92d320f48c07f9f550567ff"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.notes-and-shadow-play-009",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · 七选五与语法填空 · 笔记与影戏",
+        "summary": "七选五与语法填空 · 笔记与影戏，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_insertion",
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I insertion and passage-form task structure",
+            "pages": "Reading: five of seven; Use of English: 10-gap passage form",
+            "alignment": "One full five-gap passage sharing seven candidates, plus one full ten-gap grammar passage. Source supplies task rules only; all prose and keys are original."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g11.spring2024.insertionE",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three newly authored complete senior practices. Each combines one five-gap seven-candidate insertion text and one coherent ten-gap grammar text. Same-author review checks cohesion, unused alternatives, grammar variants and explicit wrong forms; unlisted written variants go to review. No independent teacher validation or learner calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.notes-and-shadow-play-009",
+          "family": "shared_insertion_passage_form",
+          "label": "七选五与语法填空 · 笔记与影戏",
+          "candidateSHA256": "4dc8803311227773b1e1dd88b99166c12dfa4539f8d672acae88515d4beb7513",
+          "authorCheckSHA256": "8b4870eb08c811e702efad577a954e8b692e2f3c6e0668c168d4d480ef7df408",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.notes-and-shadow-play-009#insertion",
+            "expansion.20261024.senior2.notes-and-shadow-play-009#grammar"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b009；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Notes that remain useful\n\nOpening a notebook a week after a lesson can be a surprising experience. A page that seemed perfectly clear at the time may now look like a list of disconnected words. Useful notes need to help the person you will be later, when the teacher's explanation is no longer in your ears.\n\nStart by giving each page a clear topic and date. ____1____ Without those small signs, even accurate details may be difficult to place when you return to the notebook before an exam.\n\nDuring the lesson, do not try to copy every sentence. Listen for the relationship between ideas. ____2____ For instance, an arrow labelled 'because' records something that two isolated facts cannot show. Use a symbol only if you will still understand it next week.\n\nLeave room beside a point that you have not understood. Some students are tempted to fill every space so that the page looks complete. ____3____ A visible question tells you what to ask about; a confident-looking line copied without understanding does not.\n\nSoon after the lesson, close the book and try to explain its main idea aloud. Then check your account against the page. ____4____ Add a short explanation at that point, while the lesson is still fresh enough to recall.\n\nFinally, let the notebook change as your understanding develops. You may find a better example in a later lesson or discover that two topics are connected. ____5____ The aim is a record you can think with, not a page that remains exactly as it looked on the day it was written.\n\nB. Behind the paper screen\n\nFor the past three weeks, our drama group ____1____ (prepare) a shadow play, and today we are ready to perform it. The story is about a traveller ____2____ loses a map but finds help in an unfamiliar village. Instead of using a large stage, we are working behind ____3____ white paper screen.\n\nAt first, we cut the figures from thin paper. They bent so ____4____ (easy) that their shapes were difficult to control. Our teacher suggested ____5____ (use) thicker card. That solved one problem, but the heavier figures needed stronger handles. After several attempts, we found a way to attach wooden sticks to ____6____ (they) without covering any important part of the picture.\n\nYesterday, our final practice ____7____ (interrupt) by a power cut. We could not use the lamp, so we sat beside the window and read our lines aloud. The unexpected pause helped us notice that the traveller's last speech was much ____8____ (long) than the others. We shortened it before leaving.\n\nNow the light is working again. We are not certain ____9____ the audience will enjoy every scene, but we know the story clearly. As we take our places, our teacher reminds us that the figures must stay close ____10____ the screen if we want their shadows to have clear edges."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.insertion.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 1.",
+            "material": "A. Notes that remain useful\n\nOpening a notebook a week after a lesson can be a surprising experience. A page that seemed perfectly clear at the time may now look like a list of disconnected words. Useful notes need to help the person you will be later, when the teacher's explanation is no longer in your ears.\n\nStart by giving each page a clear topic and date. ____1____ Without those small signs, even accurate details may be difficult to place when you return to the notebook before an exam.\n\nDuring the lesson, do not try to copy every sentence. Listen for the relationship between ideas. ____2____ For instance, an arrow labelled 'because' records something that two isolated facts cannot show. Use a symbol only if you will still understand it next week.\n\nLeave room beside a point that you have not understood. Some students are tempted to fill every space so that the page looks complete. ____3____ A visible question tells you what to ask about; a confident-looking line copied without understanding does not.\n\nSoon after the lesson, close the book and try to explain its main idea aloud. Then check your account against the page. ____4____ Add a short explanation at that point, while the lesson is still fresh enough to recall.\n\nFinally, let the notebook change as your understanding develops. You may find a better example in a later lesson or discover that two topics are connected. ____5____ The aim is a record you can think with, not a page that remains exactly as it looked on the day it was written.",
+            "explanation": "C refers to the topic and date as contextual details; 'those small signs' then continues the link. A concerns an unresolved question, D later changes, E logical relations and F a recall check. B wrongly claims dating removes checking; G wrongly values incomprehensibility.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. A blank space with a question mark can actually be more useful."
+              },
+              {
+                "id": "o1",
+                "text": "B. Once a page is dated, it will never need to be checked again."
+              },
+              {
+                "id": "o2",
+                "text": "C. These details help you recover the context of what follows."
+              },
+              {
+                "id": "o3",
+                "text": "D. Add those links instead of protecting the original page from every change."
+              },
+              {
+                "id": "o4",
+                "text": "E. A cause, a contrast or a sequence is often worth noting explicitly."
+              },
+              {
+                "id": "o5",
+                "text": "F. You will quickly notice where the notes fail to support your explanation."
+              },
+              {
+                "id": "o6",
+                "text": "G. The best symbols are those that nobody else could possibly understand."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.insertion.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 2.",
+            "material": "A. Notes that remain useful\n\nOpening a notebook a week after a lesson can be a surprising experience. A page that seemed perfectly clear at the time may now look like a list of disconnected words. Useful notes need to help the person you will be later, when the teacher's explanation is no longer in your ears.\n\nStart by giving each page a clear topic and date. ____1____ Without those small signs, even accurate details may be difficult to place when you return to the notebook before an exam.\n\nDuring the lesson, do not try to copy every sentence. Listen for the relationship between ideas. ____2____ For instance, an arrow labelled 'because' records something that two isolated facts cannot show. Use a symbol only if you will still understand it next week.\n\nLeave room beside a point that you have not understood. Some students are tempted to fill every space so that the page looks complete. ____3____ A visible question tells you what to ask about; a confident-looking line copied without understanding does not.\n\nSoon after the lesson, close the book and try to explain its main idea aloud. Then check your account against the page. ____4____ Add a short explanation at that point, while the lesson is still fresh enough to recall.\n\nFinally, let the notebook change as your understanding develops. You may find a better example in a later lesson or discover that two topics are connected. ____5____ The aim is a record you can think with, not a page that remains exactly as it looked on the day it was written.",
+            "explanation": "E specifies relationships and introduces the 'because' arrow example. A lacks a gap in understanding here, C belongs to date/topic, D later additions and F testing recall. B and G contradict later checking and readable symbols.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. A blank space with a question mark can actually be more useful."
+              },
+              {
+                "id": "o1",
+                "text": "B. Once a page is dated, it will never need to be checked again."
+              },
+              {
+                "id": "o2",
+                "text": "C. These details help you recover the context of what follows."
+              },
+              {
+                "id": "o3",
+                "text": "D. Add those links instead of protecting the original page from every change."
+              },
+              {
+                "id": "o4",
+                "text": "E. A cause, a contrast or a sequence is often worth noting explicitly."
+              },
+              {
+                "id": "o5",
+                "text": "F. You will quickly notice where the notes fail to support your explanation."
+              },
+              {
+                "id": "o6",
+                "text": "G. The best symbols are those that nobody else could possibly understand."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.insertion.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 3.",
+            "material": "A. Notes that remain useful\n\nOpening a notebook a week after a lesson can be a surprising experience. A page that seemed perfectly clear at the time may now look like a list of disconnected words. Useful notes need to help the person you will be later, when the teacher's explanation is no longer in your ears.\n\nStart by giving each page a clear topic and date. ____1____ Without those small signs, even accurate details may be difficult to place when you return to the notebook before an exam.\n\nDuring the lesson, do not try to copy every sentence. Listen for the relationship between ideas. ____2____ For instance, an arrow labelled 'because' records something that two isolated facts cannot show. Use a symbol only if you will still understand it next week.\n\nLeave room beside a point that you have not understood. Some students are tempted to fill every space so that the page looks complete. ____3____ A visible question tells you what to ask about; a confident-looking line copied without understanding does not.\n\nSoon after the lesson, close the book and try to explain its main idea aloud. Then check your account against the page. ____4____ Add a short explanation at that point, while the lesson is still fresh enough to recall.\n\nFinally, let the notebook change as your understanding develops. You may find a better example in a later lesson or discover that two topics are connected. ____5____ The aim is a record you can think with, not a page that remains exactly as it looked on the day it was written.",
+            "explanation": "A contrasts a useful question mark with filling every space, developed by 'A visible question'. C, D, E and F concern context, revisions, relations and recall rather than leaving space. B and G offer unsupported absolute rules.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. A blank space with a question mark can actually be more useful."
+              },
+              {
+                "id": "o1",
+                "text": "B. Once a page is dated, it will never need to be checked again."
+              },
+              {
+                "id": "o2",
+                "text": "C. These details help you recover the context of what follows."
+              },
+              {
+                "id": "o3",
+                "text": "D. Add those links instead of protecting the original page from every change."
+              },
+              {
+                "id": "o4",
+                "text": "E. A cause, a contrast or a sequence is often worth noting explicitly."
+              },
+              {
+                "id": "o5",
+                "text": "F. You will quickly notice where the notes fail to support your explanation."
+              },
+              {
+                "id": "o6",
+                "text": "G. The best symbols are those that nobody else could possibly understand."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.insertion.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 4.",
+            "material": "A. Notes that remain useful\n\nOpening a notebook a week after a lesson can be a surprising experience. A page that seemed perfectly clear at the time may now look like a list of disconnected words. Useful notes need to help the person you will be later, when the teacher's explanation is no longer in your ears.\n\nStart by giving each page a clear topic and date. ____1____ Without those small signs, even accurate details may be difficult to place when you return to the notebook before an exam.\n\nDuring the lesson, do not try to copy every sentence. Listen for the relationship between ideas. ____2____ For instance, an arrow labelled 'because' records something that two isolated facts cannot show. Use a symbol only if you will still understand it next week.\n\nLeave room beside a point that you have not understood. Some students are tempted to fill every space so that the page looks complete. ____3____ A visible question tells you what to ask about; a confident-looking line copied without understanding does not.\n\nSoon after the lesson, close the book and try to explain its main idea aloud. Then check your account against the page. ____4____ Add a short explanation at that point, while the lesson is still fresh enough to recall.\n\nFinally, let the notebook change as your understanding develops. You may find a better example in a later lesson or discover that two topics are connected. ____5____ The aim is a record you can think with, not a page that remains exactly as it looked on the day it was written.",
+            "explanation": "F explains what comparing the spoken account with notes reveals; 'at that point' then refers to the unsupported part. A concerns an in-class question, C contextual headings, D later links and E logical relations. B and G undermine the check rather than describe it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. A blank space with a question mark can actually be more useful."
+              },
+              {
+                "id": "o1",
+                "text": "B. Once a page is dated, it will never need to be checked again."
+              },
+              {
+                "id": "o2",
+                "text": "C. These details help you recover the context of what follows."
+              },
+              {
+                "id": "o3",
+                "text": "D. Add those links instead of protecting the original page from every change."
+              },
+              {
+                "id": "o4",
+                "text": "E. A cause, a contrast or a sequence is often worth noting explicitly."
+              },
+              {
+                "id": "o5",
+                "text": "F. You will quickly notice where the notes fail to support your explanation."
+              },
+              {
+                "id": "o6",
+                "text": "G. The best symbols are those that nobody else could possibly understand."
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.insertion.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 5.",
+            "material": "A. Notes that remain useful\n\nOpening a notebook a week after a lesson can be a surprising experience. A page that seemed perfectly clear at the time may now look like a list of disconnected words. Useful notes need to help the person you will be later, when the teacher's explanation is no longer in your ears.\n\nStart by giving each page a clear topic and date. ____1____ Without those small signs, even accurate details may be difficult to place when you return to the notebook before an exam.\n\nDuring the lesson, do not try to copy every sentence. Listen for the relationship between ideas. ____2____ For instance, an arrow labelled 'because' records something that two isolated facts cannot show. Use a symbol only if you will still understand it next week.\n\nLeave room beside a point that you have not understood. Some students are tempted to fill every space so that the page looks complete. ____3____ A visible question tells you what to ask about; a confident-looking line copied without understanding does not.\n\nSoon after the lesson, close the book and try to explain its main idea aloud. Then check your account against the page. ____4____ Add a short explanation at that point, while the lesson is still fresh enough to recall.\n\nFinally, let the notebook change as your understanding develops. You may find a better example in a later lesson or discover that two topics are connected. ____5____ The aim is a record you can think with, not a page that remains exactly as it looked on the day it was written.",
+            "explanation": "D's 'those links' refers to the newly discovered connections and supports a changing notebook. A, C, E and F shift to earlier stages without that reference. B denies further checking, and G promotes opaque symbols instead of usable understanding.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. A blank space with a question mark can actually be more useful."
+              },
+              {
+                "id": "o1",
+                "text": "B. Once a page is dated, it will never need to be checked again."
+              },
+              {
+                "id": "o2",
+                "text": "C. These details help you recover the context of what follows."
+              },
+              {
+                "id": "o3",
+                "text": "D. Add those links instead of protecting the original page from every change."
+              },
+              {
+                "id": "o4",
+                "text": "E. A cause, a contrast or a sequence is often worth noting explicitly."
+              },
+              {
+                "id": "o5",
+                "text": "F. You will quickly notice where the notes fail to support your explanation."
+              },
+              {
+                "id": "o6",
+                "text": "G. The best symbols are those that nobody else could possibly understand."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with the correct form of prepare.",
+            "material": "B. Behind the paper screen\n\nFor the past three weeks, our drama group ____1____ (prepare) a shadow play, and today we are ready to perform it. The story is about a traveller ____2____ loses a map but finds help in an unfamiliar village. Instead of using a large stage, we are working behind ____3____ white paper screen.\n\nAt first, we cut the figures from thin paper. They bent so ____4____ (easy) that their shapes were difficult to control. Our teacher suggested ____5____ (use) thicker card. That solved one problem, but the heavier figures needed stronger handles. After several attempts, we found a way to attach wooden sticks to ____6____ (they) without covering any important part of the picture.\n\nYesterday, our final practice ____7____ (interrupt) by a power cut. We could not use the lamp, so we sat beside the window and read our lines aloud. The unexpected pause helped us notice that the traveller's last speech was much ____8____ (long) than the others. We shortened it before leaving.\n\nNow the light is working again. We are not certain ____9____ the audience will enjoy every scene, but we know the story clearly. As we take our places, our teacher reminds us that the figures must stay close ____10____ the screen if we want their shadows to have clear edges.",
+            "explanation": "For the past three weeks connects preparation to today. Both present perfect simple and continuous are legitimate; singular has and British collective plural have are accepted. Simple past, present continuous alone and simple present do not express the duration leading to now.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "has been preparing",
+              "has prepared",
+              "have been preparing",
+              "have prepared"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "prepared",
+                "is preparing",
+                "prepares"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "B. Behind the paper screen\n\nFor the past three weeks, our drama group ____1____ (prepare) a shadow play, and today we are ready to perform it. The story is about a traveller ____2____ loses a map but finds help in an unfamiliar village. Instead of using a large stage, we are working behind ____3____ white paper screen.\n\nAt first, we cut the figures from thin paper. They bent so ____4____ (easy) that their shapes were difficult to control. Our teacher suggested ____5____ (use) thicker card. That solved one problem, but the heavier figures needed stronger handles. After several attempts, we found a way to attach wooden sticks to ____6____ (they) without covering any important part of the picture.\n\nYesterday, our final practice ____7____ (interrupt) by a power cut. We could not use the lamp, so we sat beside the window and read our lines aloud. The unexpected pause helped us notice that the traveller's last speech was much ____8____ (long) than the others. We shortened it before leaving.\n\nNow the light is working again. We are not certain ____9____ the audience will enjoy every scene, but we know the story clearly. As we take our places, our teacher reminds us that the figures must stay close ____10____ the screen if we want their shadows to have clear edges.",
+            "explanation": "The traveller is the subject of the defining relative clause, so who or that. Which is inappropriate for this person; whose needs a possessed noun, and where cannot serve as subject.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "whose",
+                "where"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "B. Behind the paper screen\n\nFor the past three weeks, our drama group ____1____ (prepare) a shadow play, and today we are ready to perform it. The story is about a traveller ____2____ loses a map but finds help in an unfamiliar village. Instead of using a large stage, we are working behind ____3____ white paper screen.\n\nAt first, we cut the figures from thin paper. They bent so ____4____ (easy) that their shapes were difficult to control. Our teacher suggested ____5____ (use) thicker card. That solved one problem, but the heavier figures needed stronger handles. After several attempts, we found a way to attach wooden sticks to ____6____ (they) without covering any important part of the picture.\n\nYesterday, our final practice ____7____ (interrupt) by a power cut. We could not use the lamp, so we sat beside the window and read our lines aloud. The unexpected pause helped us notice that the traveller's last speech was much ____8____ (long) than the others. We shortened it before leaving.\n\nNow the light is working again. We are not certain ____9____ the audience will enjoy every scene, but we know the story clearly. As we take our places, our teacher reminds us that the figures must stay close ____10____ the screen if we want their shadows to have clear edges.",
+            "explanation": "A introduces a singular countable screen, with white beginning in a consonant sound. An has wrong sound agreement; some does not fit the singular countable noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an",
+                "some"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with the correct form of easy.",
+            "material": "B. Behind the paper screen\n\nFor the past three weeks, our drama group ____1____ (prepare) a shadow play, and today we are ready to perform it. The story is about a traveller ____2____ loses a map but finds help in an unfamiliar village. Instead of using a large stage, we are working behind ____3____ white paper screen.\n\nAt first, we cut the figures from thin paper. They bent so ____4____ (easy) that their shapes were difficult to control. Our teacher suggested ____5____ (use) thicker card. That solved one problem, but the heavier figures needed stronger handles. After several attempts, we found a way to attach wooden sticks to ____6____ (they) without covering any important part of the picture.\n\nYesterday, our final practice ____7____ (interrupt) by a power cut. We could not use the lamp, so we sat beside the window and read our lines aloud. The unexpected pause helped us notice that the traveller's last speech was much ____8____ (long) than the others. We shortened it before leaving.\n\nNow the light is working again. We are not certain ____9____ the audience will enjoy every scene, but we know the story clearly. As we take our places, our teacher reminds us that the figures must stay close ____10____ the screen if we want their shadows to have clear edges.",
+            "explanation": "Easily modifies bent and completes so ... that. Easy is an adjective, and easiness is a noun, neither suitable here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "easily"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "easy",
+                "easiness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with the correct form of use.",
+            "material": "B. Behind the paper screen\n\nFor the past three weeks, our drama group ____1____ (prepare) a shadow play, and today we are ready to perform it. The story is about a traveller ____2____ loses a map but finds help in an unfamiliar village. Instead of using a large stage, we are working behind ____3____ white paper screen.\n\nAt first, we cut the figures from thin paper. They bent so ____4____ (easy) that their shapes were difficult to control. Our teacher suggested ____5____ (use) thicker card. That solved one problem, but the heavier figures needed stronger handles. After several attempts, we found a way to attach wooden sticks to ____6____ (they) without covering any important part of the picture.\n\nYesterday, our final practice ____7____ (interrupt) by a power cut. We could not use the lamp, so we sat beside the window and read our lines aloud. The unexpected pause helped us notice that the traveller's last speech was much ____8____ (long) than the others. We shortened it before leaving.\n\nNow the light is working again. We are not certain ____9____ the audience will enjoy every scene, but we know the story clearly. As we take our places, our teacher reminds us that the figures must stay close ____10____ the screen if we want their shadows to have clear edges.",
+            "explanation": "Suggest takes an -ing complement here: suggested using. A to-infinitive, bare verb or past form cannot directly follow suggested in this construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "using"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "to use",
+                "use",
+                "used"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with the correct form of they.",
+            "material": "B. Behind the paper screen\n\nFor the past three weeks, our drama group ____1____ (prepare) a shadow play, and today we are ready to perform it. The story is about a traveller ____2____ loses a map but finds help in an unfamiliar village. Instead of using a large stage, we are working behind ____3____ white paper screen.\n\nAt first, we cut the figures from thin paper. They bent so ____4____ (easy) that their shapes were difficult to control. Our teacher suggested ____5____ (use) thicker card. That solved one problem, but the heavier figures needed stronger handles. After several attempts, we found a way to attach wooden sticks to ____6____ (they) without covering any important part of the picture.\n\nYesterday, our final practice ____7____ (interrupt) by a power cut. We could not use the lamp, so we sat beside the window and read our lines aloud. The unexpected pause helped us notice that the traveller's last speech was much ____8____ (long) than the others. We shortened it before leaving.\n\nNow the light is working again. We are not certain ____9____ the audience will enjoy every scene, but we know the story clearly. As we take our places, our teacher reminds us that the figures must stay close ____10____ the screen if we want their shadows to have clear edges.",
+            "explanation": "The preposition to takes object form them, referring to the figures. They is a subject form; their requires a following noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "them"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "their"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with the correct form of interrupt.",
+            "material": "B. Behind the paper screen\n\nFor the past three weeks, our drama group ____1____ (prepare) a shadow play, and today we are ready to perform it. The story is about a traveller ____2____ loses a map but finds help in an unfamiliar village. Instead of using a large stage, we are working behind ____3____ white paper screen.\n\nAt first, we cut the figures from thin paper. They bent so ____4____ (easy) that their shapes were difficult to control. Our teacher suggested ____5____ (use) thicker card. That solved one problem, but the heavier figures needed stronger handles. After several attempts, we found a way to attach wooden sticks to ____6____ (they) without covering any important part of the picture.\n\nYesterday, our final practice ____7____ (interrupt) by a power cut. We could not use the lamp, so we sat beside the window and read our lines aloud. The unexpected pause helped us notice that the traveller's last speech was much ____8____ (long) than the others. We shortened it before leaving.\n\nNow the light is working again. We are not certain ____9____ the audience will enjoy every scene, but we know the story clearly. As we take our places, our teacher reminds us that the figures must stay close ____10____ the screen if we want their shadows to have clear edges.",
+            "explanation": "The singular practice received the interruption yesterday, requiring was interrupted. Interrupted alone is active, is gives the wrong time, and were mismatches the singular subject.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was interrupted"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "interrupted",
+                "is interrupted",
+                "were interrupted"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with the correct form of long.",
+            "material": "B. Behind the paper screen\n\nFor the past three weeks, our drama group ____1____ (prepare) a shadow play, and today we are ready to perform it. The story is about a traveller ____2____ loses a map but finds help in an unfamiliar village. Instead of using a large stage, we are working behind ____3____ white paper screen.\n\nAt first, we cut the figures from thin paper. They bent so ____4____ (easy) that their shapes were difficult to control. Our teacher suggested ____5____ (use) thicker card. That solved one problem, but the heavier figures needed stronger handles. After several attempts, we found a way to attach wooden sticks to ____6____ (they) without covering any important part of the picture.\n\nYesterday, our final practice ____7____ (interrupt) by a power cut. We could not use the lamp, so we sat beside the window and read our lines aloud. The unexpected pause helped us notice that the traveller's last speech was much ____8____ (long) than the others. We shortened it before leaving.\n\nNow the light is working again. We are not certain ____9____ the audience will enjoy every scene, but we know the story clearly. As we take our places, our teacher reminds us that the figures must stay close ____10____ the screen if we want their shadows to have clear edges.",
+            "explanation": "Much and than introduce the comparative longer. Long is not comparative, longest is superlative, and more longer duplicates comparison.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "longer"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "long",
+                "longest",
+                "more longer"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "B. Behind the paper screen\n\nFor the past three weeks, our drama group ____1____ (prepare) a shadow play, and today we are ready to perform it. The story is about a traveller ____2____ loses a map but finds help in an unfamiliar village. Instead of using a large stage, we are working behind ____3____ white paper screen.\n\nAt first, we cut the figures from thin paper. They bent so ____4____ (easy) that their shapes were difficult to control. Our teacher suggested ____5____ (use) thicker card. That solved one problem, but the heavier figures needed stronger handles. After several attempts, we found a way to attach wooden sticks to ____6____ (they) without covering any important part of the picture.\n\nYesterday, our final practice ____7____ (interrupt) by a power cut. We could not use the lamp, so we sat beside the window and read our lines aloud. The unexpected pause helped us notice that the traveller's last speech was much ____8____ (long) than the others. We shortened it before leaving.\n\nNow the light is working again. We are not certain ____9____ the audience will enjoy every scene, but we know the story clearly. As we take our places, our teacher reminds us that the figures must stay close ____10____ the screen if we want their shadows to have clear edges.",
+            "explanation": "The clause expresses uncertainty about a yes/no possibility, so whether or if. What and which cannot introduce this already complete statement as a yes/no question.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "whether",
+              "if"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "what",
+                "which"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "B. Behind the paper screen\n\nFor the past three weeks, our drama group ____1____ (prepare) a shadow play, and today we are ready to perform it. The story is about a traveller ____2____ loses a map but finds help in an unfamiliar village. Instead of using a large stage, we are working behind ____3____ white paper screen.\n\nAt first, we cut the figures from thin paper. They bent so ____4____ (easy) that their shapes were difficult to control. Our teacher suggested ____5____ (use) thicker card. That solved one problem, but the heavier figures needed stronger handles. After several attempts, we found a way to attach wooden sticks to ____6____ (they) without covering any important part of the picture.\n\nYesterday, our final practice ____7____ (interrupt) by a power cut. We could not use the lamp, so we sat beside the window and read our lines aloud. The unexpected pause helped us notice that the traveller's last speech was much ____8____ (long) than the others. We shortened it before leaving.\n\nNow the light is working again. We are not certain ____9____ the audience will enjoy every scene, but we know the story clearly. As we take our places, our teacher reminds us that the figures must stay close ____10____ the screen if we want their shadows to have clear edges.",
+            "explanation": "The expression is close to the screen. At, on and with do not complete close with this meaning of nearness.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "at",
+                "on",
+                "with"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "d25c1396151e274b688939e714cafdece7a20ac034c59bf01f51f91d79c8382a",
+      "reviewNotes": "Three newly authored complete senior practices. Each combines one five-gap seven-candidate insertion text and one coherent ten-gap grammar text. Same-author review checks cohesion, unused alternatives, grammar variants and explicit wrong forms; unlisted written variants go to review. No independent teacher validation or learner calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.notes-and-shadow-play-009#insertion",
+          "family": "shared_insertion",
+          "questionIds": [
+            "expansion.20261024.senior2.notes-and-shadow-play-009.insertion.q1",
+            "expansion.20261024.senior2.notes-and-shadow-play-009.insertion.q2",
+            "expansion.20261024.senior2.notes-and-shadow-play-009.insertion.q3",
+            "expansion.20261024.senior2.notes-and-shadow-play-009.insertion.q4",
+            "expansion.20261024.senior2.notes-and-shadow-play-009.insertion.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.notes-and-shadow-play-009",
+          "sourceContentHash": "b9d5e3acf7a5b517899e01187f2c5f0c3fd15d8055de67b31c43a622d3b984ee"
+        },
+        {
+          "id": "expansion.20261024.senior2.notes-and-shadow-play-009#grammar",
+          "family": "passage_form",
+          "questionIds": [
+            "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q1",
+            "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q2",
+            "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q3",
+            "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q4",
+            "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q5",
+            "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q6",
+            "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q7",
+            "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q8",
+            "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q9",
+            "expansion.20261024.senior2.notes-and-shadow-play-009.grammar.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.notes-and-shadow-play-009",
+          "sourceContentHash": "b7fff0f4b1449db9f8c8edd6afea8beb064b841926872ddbddc061cda1754983"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior3.comparisons-and-footpath-009",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高考题型原创 · 10·24新题 · 七选五与语法填空 · 比较与小径",
+        "summary": "七选五与语法填空 · 比较与小径，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_insertion",
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I insertion and passage-form task structure",
+            "pages": "Reading: five of seven; Use of English: 10-gap passage form",
+            "alignment": "One full five-gap passage sharing seven candidates, plus one full ten-gap grammar passage. Source supplies task rules only; all prose and keys are original."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g12.national2025.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three newly authored complete senior practices. Each combines one five-gap seven-candidate insertion text and one coherent ten-gap grammar text. Same-author review checks cohesion, unused alternatives, grammar variants and explicit wrong forms; unlisted written variants go to review. No independent teacher validation or learner calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior3.comparisons-and-footpath-009",
+          "family": "shared_insertion_passage_form",
+          "label": "七选五与语法填空 · 比较与小径",
+          "candidateSHA256": "4ab62b21688bfa4779bcb77fced152da857d45a3008ffc1fceebf2e369fb6b93",
+          "authorCheckSHA256": "ee6e28641d0b05a626a5635ed2024f45c2e66a3824675ca654940f56da613e4e",
+          "sourceGroupIds": [
+            "expansion.20261024.senior3.comparisons-and-footpath-009#insertion",
+            "expansion.20261024.senior3.comparisons-and-footpath-009#grammar"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b009；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Making a fair comparison\n\nComparing two things seems simple: look at both and decide which is better. Yet a comparison becomes useful only when we know what 'better' is meant to describe. Before choosing between two school projects, two journeys or two methods, it helps to examine the question itself.\n\nBegin with the purpose. If you are selecting a route for a class walk, the shortest distance may seem the obvious standard. ____1____ A route that saves ten minutes but includes a steep flight of steps may not serve the group well.\n\nNext, compare like with like. A photograph of one garden in spring and another in winter tells you something about the photographs, but much less about which garden is usually greener. ____2____ Where you cannot make them similar, say clearly how they differ.\n\nBe cautious when several things change at once. Suppose a club moves to a larger room and changes its meeting time, then gains new members. ____3____ You need further evidence before giving either change all the credit.\n\nIt also helps to describe the size of a difference. Two groups may finish a task at different times, but the gap could be a few seconds or half an hour. ____4____ Without it, a dramatic-sounding claim may hide a very small practical effect.\n\nFinally, keep the conclusion within the comparison you actually made. Finding that one plan suits this week's walk does not prove that it is always the best route. ____5____ A careful conclusion is useful partly because it tells you when another comparison will be needed.\n\nB. Reading a footpath\n\nLast Saturday, a local walking group invited me to help record the condition of a footpath. Before we set off, our leader explained that we were responsible ____1____ measuring the width at several points rather than only at the entrance: the path became narrower farther uphill.\n\nWe carried a notebook ____2____ (divide) into sections for surface, slope and obstacles. At the first bend, a fallen branch ____3____ (block) half the path. We photographed it and measured the space beside it. There was still enough room for a person to pass, but the ground was ____4____ (wet) than it had been near the road.\n\nOur leader asked us to avoid ____5____ (make) general claims such as 'the route is easy'. An experienced walker and someone using a walking aid might understand that word ____6____ (different). Instead, we wrote down what we could observe. We also noted the date, because conditions could change after heavy rain.\n\nNear the top we met ____7____ elderly resident who used the path every week. She showed us a side gate ____8____ position was missing from our map. With her permission, we added it to the record.\n\nBy noon, we had collected enough information ____9____ (produce) a short guide. It would not make the decision ____10____ every visitor, but it could give them clearer evidence on which to base their own choice."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.insertion.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 1.",
+            "material": "A. Making a fair comparison\n\nComparing two things seems simple: look at both and decide which is better. Yet a comparison becomes useful only when we know what 'better' is meant to describe. Before choosing between two school projects, two journeys or two methods, it helps to examine the question itself.\n\nBegin with the purpose. If you are selecting a route for a class walk, the shortest distance may seem the obvious standard. ____1____ A route that saves ten minutes but includes a steep flight of steps may not serve the group well.\n\nNext, compare like with like. A photograph of one garden in spring and another in winter tells you something about the photographs, but much less about which garden is usually greener. ____2____ Where you cannot make them similar, say clearly how they differ.\n\nBe cautious when several things change at once. Suppose a club moves to a larger room and changes its meeting time, then gains new members. ____3____ You need further evidence before giving either change all the credit.\n\nIt also helps to describe the size of a difference. Two groups may finish a task at different times, but the gap could be a few seconds or half an hour. ____4____ Without it, a dramatic-sounding claim may hide a very small practical effect.\n\nFinally, keep the conclusion within the comparison you actually made. Finding that one plan suits this week's walk does not prove that it is always the best route. ____5____ A careful conclusion is useful partly because it tells you when another comparison will be needed.",
+            "explanation": "E qualifies distance by accessibility and leads to the steep-steps example. A concerns changed club conditions; B difference size; C generalisation; F comparable observation. D wrongly says simultaneous changes clarify separate effects, and G wrongly discards purpose.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. The increase alone cannot tell you which change attracted them."
+              },
+              {
+                "id": "o1",
+                "text": "B. This information helps others judge whether the difference matters."
+              },
+              {
+                "id": "o2",
+                "text": "C. A result from one situation need not apply to every other one."
+              },
+              {
+                "id": "o3",
+                "text": "D. The more factors you change together, the easier their separate effects are to identify."
+              },
+              {
+                "id": "o4",
+                "text": "E. But accessibility may matter more if some walkers have difficulty climbing."
+              },
+              {
+                "id": "o5",
+                "text": "F. Try to keep the conditions of observation as similar as possible."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once a winner is named, the purpose of the comparison no longer matters."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.insertion.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 2.",
+            "material": "A. Making a fair comparison\n\nComparing two things seems simple: look at both and decide which is better. Yet a comparison becomes useful only when we know what 'better' is meant to describe. Before choosing between two school projects, two journeys or two methods, it helps to examine the question itself.\n\nBegin with the purpose. If you are selecting a route for a class walk, the shortest distance may seem the obvious standard. ____1____ A route that saves ten minutes but includes a steep flight of steps may not serve the group well.\n\nNext, compare like with like. A photograph of one garden in spring and another in winter tells you something about the photographs, but much less about which garden is usually greener. ____2____ Where you cannot make them similar, say clearly how they differ.\n\nBe cautious when several things change at once. Suppose a club moves to a larger room and changes its meeting time, then gains new members. ____3____ You need further evidence before giving either change all the credit.\n\nIt also helps to describe the size of a difference. Two groups may finish a task at different times, but the gap could be a few seconds or half an hour. ____4____ Without it, a dramatic-sounding claim may hide a very small practical effect.\n\nFinally, keep the conclusion within the comparison you actually made. Finding that one plan suits this week's walk does not prove that it is always the best route. ____5____ A careful conclusion is useful partly because it tells you when another comparison will be needed.",
+            "explanation": "F follows the seasonal mismatch and gives 'them' in the next sentence a clear antecedent: observation conditions. A has no member increase here; B lacks a quantified difference; C concerns scope; E concerns walking access. D and G undermine fair comparison.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. The increase alone cannot tell you which change attracted them."
+              },
+              {
+                "id": "o1",
+                "text": "B. This information helps others judge whether the difference matters."
+              },
+              {
+                "id": "o2",
+                "text": "C. A result from one situation need not apply to every other one."
+              },
+              {
+                "id": "o3",
+                "text": "D. The more factors you change together, the easier their separate effects are to identify."
+              },
+              {
+                "id": "o4",
+                "text": "E. But accessibility may matter more if some walkers have difficulty climbing."
+              },
+              {
+                "id": "o5",
+                "text": "F. Try to keep the conditions of observation as similar as possible."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once a winner is named, the purpose of the comparison no longer matters."
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.insertion.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 3.",
+            "material": "A. Making a fair comparison\n\nComparing two things seems simple: look at both and decide which is better. Yet a comparison becomes useful only when we know what 'better' is meant to describe. Before choosing between two school projects, two journeys or two methods, it helps to examine the question itself.\n\nBegin with the purpose. If you are selecting a route for a class walk, the shortest distance may seem the obvious standard. ____1____ A route that saves ten minutes but includes a steep flight of steps may not serve the group well.\n\nNext, compare like with like. A photograph of one garden in spring and another in winter tells you something about the photographs, but much less about which garden is usually greener. ____2____ Where you cannot make them similar, say clearly how they differ.\n\nBe cautious when several things change at once. Suppose a club moves to a larger room and changes its meeting time, then gains new members. ____3____ You need further evidence before giving either change all the credit.\n\nIt also helps to describe the size of a difference. Two groups may finish a task at different times, but the gap could be a few seconds or half an hour. ____4____ Without it, a dramatic-sounding claim may hide a very small practical effect.\n\nFinally, keep the conclusion within the comparison you actually made. Finding that one plan suits this week's walk does not prove that it is always the best route. ____5____ A careful conclusion is useful partly because it tells you when another comparison will be needed.",
+            "explanation": "A's increase refers to new members and its two changes to room and time; the next sentence asks for more evidence. B, C, E and F concern scale, generalisation, access and observation conditions, not attribution here. D directly reverses the warning; G is irrelevant to causation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. The increase alone cannot tell you which change attracted them."
+              },
+              {
+                "id": "o1",
+                "text": "B. This information helps others judge whether the difference matters."
+              },
+              {
+                "id": "o2",
+                "text": "C. A result from one situation need not apply to every other one."
+              },
+              {
+                "id": "o3",
+                "text": "D. The more factors you change together, the easier their separate effects are to identify."
+              },
+              {
+                "id": "o4",
+                "text": "E. But accessibility may matter more if some walkers have difficulty climbing."
+              },
+              {
+                "id": "o5",
+                "text": "F. Try to keep the conditions of observation as similar as possible."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once a winner is named, the purpose of the comparison no longer matters."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.insertion.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 4.",
+            "material": "A. Making a fair comparison\n\nComparing two things seems simple: look at both and decide which is better. Yet a comparison becomes useful only when we know what 'better' is meant to describe. Before choosing between two school projects, two journeys or two methods, it helps to examine the question itself.\n\nBegin with the purpose. If you are selecting a route for a class walk, the shortest distance may seem the obvious standard. ____1____ A route that saves ten minutes but includes a steep flight of steps may not serve the group well.\n\nNext, compare like with like. A photograph of one garden in spring and another in winter tells you something about the photographs, but much less about which garden is usually greener. ____2____ Where you cannot make them similar, say clearly how they differ.\n\nBe cautious when several things change at once. Suppose a club moves to a larger room and changes its meeting time, then gains new members. ____3____ You need further evidence before giving either change all the credit.\n\nIt also helps to describe the size of a difference. Two groups may finish a task at different times, but the gap could be a few seconds or half an hour. ____4____ Without it, a dramatic-sounding claim may hide a very small practical effect.\n\nFinally, keep the conclusion within the comparison you actually made. Finding that one plan suits this week's walk does not prove that it is always the best route. ____5____ A careful conclusion is useful partly because it tells you when another comparison will be needed.",
+            "explanation": "B links quantified seconds or minutes with practical importance; 'Without it' refers to that information. A concerns new members, C scope, E access, F similar conditions. D incorrectly links more changes with clarity, and G rejects the purpose of assessing a difference.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. The increase alone cannot tell you which change attracted them."
+              },
+              {
+                "id": "o1",
+                "text": "B. This information helps others judge whether the difference matters."
+              },
+              {
+                "id": "o2",
+                "text": "C. A result from one situation need not apply to every other one."
+              },
+              {
+                "id": "o3",
+                "text": "D. The more factors you change together, the easier their separate effects are to identify."
+              },
+              {
+                "id": "o4",
+                "text": "E. But accessibility may matter more if some walkers have difficulty climbing."
+              },
+              {
+                "id": "o5",
+                "text": "F. Try to keep the conditions of observation as similar as possible."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once a winner is named, the purpose of the comparison no longer matters."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.insertion.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+            "prompt": "Choose the sentence for gap 5.",
+            "material": "A. Making a fair comparison\n\nComparing two things seems simple: look at both and decide which is better. Yet a comparison becomes useful only when we know what 'better' is meant to describe. Before choosing between two school projects, two journeys or two methods, it helps to examine the question itself.\n\nBegin with the purpose. If you are selecting a route for a class walk, the shortest distance may seem the obvious standard. ____1____ A route that saves ten minutes but includes a steep flight of steps may not serve the group well.\n\nNext, compare like with like. A photograph of one garden in spring and another in winter tells you something about the photographs, but much less about which garden is usually greener. ____2____ Where you cannot make them similar, say clearly how they differ.\n\nBe cautious when several things change at once. Suppose a club moves to a larger room and changes its meeting time, then gains new members. ____3____ You need further evidence before giving either change all the credit.\n\nIt also helps to describe the size of a difference. Two groups may finish a task at different times, but the gap could be a few seconds or half an hour. ____4____ Without it, a dramatic-sounding claim may hide a very small practical effect.\n\nFinally, keep the conclusion within the comparison you actually made. Finding that one plan suits this week's walk does not prove that it is always the best route. ____5____ A careful conclusion is useful partly because it tells you when another comparison will be needed.",
+            "explanation": "C restates the limited generalisability of one week's route and prepares the need for another comparison. A, B, E and F shift to causal attribution, size, access and conditions. D and G make unwarranted absolute claims rather than limiting conclusions.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. The increase alone cannot tell you which change attracted them."
+              },
+              {
+                "id": "o1",
+                "text": "B. This information helps others judge whether the difference matters."
+              },
+              {
+                "id": "o2",
+                "text": "C. A result from one situation need not apply to every other one."
+              },
+              {
+                "id": "o3",
+                "text": "D. The more factors you change together, the easier their separate effects are to identify."
+              },
+              {
+                "id": "o4",
+                "text": "E. But accessibility may matter more if some walkers have difficulty climbing."
+              },
+              {
+                "id": "o5",
+                "text": "F. Try to keep the conditions of observation as similar as possible."
+              },
+              {
+                "id": "o6",
+                "text": "G. Once a winner is named, the purpose of the comparison no longer matters."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 1 with one appropriate word.",
+            "material": "B. Reading a footpath\n\nLast Saturday, a local walking group invited me to help record the condition of a footpath. Before we set off, our leader explained that we were responsible ____1____ measuring the width at several points rather than only at the entrance: the path became narrower farther uphill.\n\nWe carried a notebook ____2____ (divide) into sections for surface, slope and obstacles. At the first bend, a fallen branch ____3____ (block) half the path. We photographed it and measured the space beside it. There was still enough room for a person to pass, but the ground was ____4____ (wet) than it had been near the road.\n\nOur leader asked us to avoid ____5____ (make) general claims such as 'the route is easy'. An experienced walker and someone using a walking aid might understand that word ____6____ (different). Instead, we wrote down what we could observe. We also noted the date, because conditions could change after heavy rain.\n\nNear the top we met ____7____ elderly resident who used the path every week. She showed us a side gate ____8____ position was missing from our map. With her permission, we added it to the record.\n\nBy noon, we had collected enough information ____9____ (produce) a short guide. It would not make the decision ____10____ every visitor, but it could give them clearer evidence on which to base their own choice.",
+            "explanation": "Responsible for doing something takes for before the -ing form. Of, to and with do not complete this construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of",
+                "to",
+                "with"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 2 with the correct form of divide.",
+            "material": "B. Reading a footpath\n\nLast Saturday, a local walking group invited me to help record the condition of a footpath. Before we set off, our leader explained that we were responsible ____1____ measuring the width at several points rather than only at the entrance: the path became narrower farther uphill.\n\nWe carried a notebook ____2____ (divide) into sections for surface, slope and obstacles. At the first bend, a fallen branch ____3____ (block) half the path. We photographed it and measured the space beside it. There was still enough room for a person to pass, but the ground was ____4____ (wet) than it had been near the road.\n\nOur leader asked us to avoid ____5____ (make) general claims such as 'the route is easy'. An experienced walker and someone using a walking aid might understand that word ____6____ (different). Instead, we wrote down what we could observe. We also noted the date, because conditions could change after heavy rain.\n\nNear the top we met ____7____ elderly resident who used the path every week. She showed us a side gate ____8____ position was missing from our map. With her permission, we added it to the record.\n\nBy noon, we had collected enough information ____9____ (produce) a short guide. It would not make the decision ____10____ every visitor, but it could give them clearer evidence on which to base their own choice.",
+            "explanation": "Divided is a passive participle modifying notebook. Dividing gives an inappropriate active relationship; was divided creates a second finite verb without a relative word.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "divided"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "dividing",
+                "was divided"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 3 with the correct form of block.",
+            "material": "B. Reading a footpath\n\nLast Saturday, a local walking group invited me to help record the condition of a footpath. Before we set off, our leader explained that we were responsible ____1____ measuring the width at several points rather than only at the entrance: the path became narrower farther uphill.\n\nWe carried a notebook ____2____ (divide) into sections for surface, slope and obstacles. At the first bend, a fallen branch ____3____ (block) half the path. We photographed it and measured the space beside it. There was still enough room for a person to pass, but the ground was ____4____ (wet) than it had been near the road.\n\nOur leader asked us to avoid ____5____ (make) general claims such as 'the route is easy'. An experienced walker and someone using a walking aid might understand that word ____6____ (different). Instead, we wrote down what we could observe. We also noted the date, because conditions could change after heavy rain.\n\nNear the top we met ____7____ elderly resident who used the path every week. She showed us a side gate ____8____ position was missing from our map. With her permission, we added it to the record.\n\nBy noon, we had collected enough information ____9____ (produce) a short guide. It would not make the decision ____10____ every visitor, but it could give them clearer evidence on which to base their own choice.",
+            "explanation": "Both blocked, describing the past state, and was blocking, describing the situation encountered, are natural. Blocks breaks the past narrative; was blocked wrongly makes the branch the recipient instead of the obstacle doing the blocking.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "blocked",
+              "was blocking"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "blocks",
+                "was blocked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 4 with the correct form of wet.",
+            "material": "B. Reading a footpath\n\nLast Saturday, a local walking group invited me to help record the condition of a footpath. Before we set off, our leader explained that we were responsible ____1____ measuring the width at several points rather than only at the entrance: the path became narrower farther uphill.\n\nWe carried a notebook ____2____ (divide) into sections for surface, slope and obstacles. At the first bend, a fallen branch ____3____ (block) half the path. We photographed it and measured the space beside it. There was still enough room for a person to pass, but the ground was ____4____ (wet) than it had been near the road.\n\nOur leader asked us to avoid ____5____ (make) general claims such as 'the route is easy'. An experienced walker and someone using a walking aid might understand that word ____6____ (different). Instead, we wrote down what we could observe. We also noted the date, because conditions could change after heavy rain.\n\nNear the top we met ____7____ elderly resident who used the path every week. She showed us a side gate ____8____ position was missing from our map. With her permission, we added it to the record.\n\nBy noon, we had collected enough information ____9____ (produce) a short guide. It would not make the decision ____10____ every visitor, but it could give them clearer evidence on which to base their own choice.",
+            "explanation": "Than marks a comparison between locations, requiring wetter. Wet is not comparative; wettest is superlative; more wetter doubles the comparison.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "wetter"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "wet",
+                "wettest",
+                "more wetter"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 5 with the correct form of make.",
+            "material": "B. Reading a footpath\n\nLast Saturday, a local walking group invited me to help record the condition of a footpath. Before we set off, our leader explained that we were responsible ____1____ measuring the width at several points rather than only at the entrance: the path became narrower farther uphill.\n\nWe carried a notebook ____2____ (divide) into sections for surface, slope and obstacles. At the first bend, a fallen branch ____3____ (block) half the path. We photographed it and measured the space beside it. There was still enough room for a person to pass, but the ground was ____4____ (wet) than it had been near the road.\n\nOur leader asked us to avoid ____5____ (make) general claims such as 'the route is easy'. An experienced walker and someone using a walking aid might understand that word ____6____ (different). Instead, we wrote down what we could observe. We also noted the date, because conditions could change after heavy rain.\n\nNear the top we met ____7____ elderly resident who used the path every week. She showed us a side gate ____8____ position was missing from our map. With her permission, we added it to the record.\n\nBy noon, we had collected enough information ____9____ (produce) a short guide. It would not make the decision ____10____ every visitor, but it could give them clearer evidence on which to base their own choice.",
+            "explanation": "Avoid takes an -ing complement: avoid making claims. To make, bare make and made do not fit that construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "making"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "to make",
+                "make",
+                "made"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 6 with the correct form of different.",
+            "material": "B. Reading a footpath\n\nLast Saturday, a local walking group invited me to help record the condition of a footpath. Before we set off, our leader explained that we were responsible ____1____ measuring the width at several points rather than only at the entrance: the path became narrower farther uphill.\n\nWe carried a notebook ____2____ (divide) into sections for surface, slope and obstacles. At the first bend, a fallen branch ____3____ (block) half the path. We photographed it and measured the space beside it. There was still enough room for a person to pass, but the ground was ____4____ (wet) than it had been near the road.\n\nOur leader asked us to avoid ____5____ (make) general claims such as 'the route is easy'. An experienced walker and someone using a walking aid might understand that word ____6____ (different). Instead, we wrote down what we could observe. We also noted the date, because conditions could change after heavy rain.\n\nNear the top we met ____7____ elderly resident who used the path every week. She showed us a side gate ____8____ position was missing from our map. With her permission, we added it to the record.\n\nBy noon, we had collected enough information ____9____ (produce) a short guide. It would not make the decision ____10____ every visitor, but it could give them clearer evidence on which to base their own choice.",
+            "explanation": "Differently modifies understand. Different is an adjective and difference a noun, neither suitable for this adverbial slot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "differently"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "different",
+                "difference"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "B. Reading a footpath\n\nLast Saturday, a local walking group invited me to help record the condition of a footpath. Before we set off, our leader explained that we were responsible ____1____ measuring the width at several points rather than only at the entrance: the path became narrower farther uphill.\n\nWe carried a notebook ____2____ (divide) into sections for surface, slope and obstacles. At the first bend, a fallen branch ____3____ (block) half the path. We photographed it and measured the space beside it. There was still enough room for a person to pass, but the ground was ____4____ (wet) than it had been near the road.\n\nOur leader asked us to avoid ____5____ (make) general claims such as 'the route is easy'. An experienced walker and someone using a walking aid might understand that word ____6____ (different). Instead, we wrote down what we could observe. We also noted the date, because conditions could change after heavy rain.\n\nNear the top we met ____7____ elderly resident who used the path every week. She showed us a side gate ____8____ position was missing from our map. With her permission, we added it to the record.\n\nBy noon, we had collected enough information ____9____ (produce) a short guide. It would not make the decision ____10____ every visitor, but it could give them clearer evidence on which to base their own choice.",
+            "explanation": "An introduces one elderly resident; elderly begins with a vowel sound. A has the wrong sound agreement and some does not fit this singular countable use.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a",
+                "some"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "B. Reading a footpath\n\nLast Saturday, a local walking group invited me to help record the condition of a footpath. Before we set off, our leader explained that we were responsible ____1____ measuring the width at several points rather than only at the entrance: the path became narrower farther uphill.\n\nWe carried a notebook ____2____ (divide) into sections for surface, slope and obstacles. At the first bend, a fallen branch ____3____ (block) half the path. We photographed it and measured the space beside it. There was still enough room for a person to pass, but the ground was ____4____ (wet) than it had been near the road.\n\nOur leader asked us to avoid ____5____ (make) general claims such as 'the route is easy'. An experienced walker and someone using a walking aid might understand that word ____6____ (different). Instead, we wrote down what we could observe. We also noted the date, because conditions could change after heavy rain.\n\nNear the top we met ____7____ elderly resident who used the path every week. She showed us a side gate ____8____ position was missing from our map. With her permission, we added it to the record.\n\nBy noon, we had collected enough information ____9____ (produce) a short guide. It would not make the decision ____10____ every visitor, but it could give them clearer evidence on which to base their own choice.",
+            "explanation": "Whose expresses the gate's possession of a position and can refer to things. Which and who cannot directly modify position possessively; where cannot fill that possessive role.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "whose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "who",
+                "where"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 9 with the correct form of produce.",
+            "material": "B. Reading a footpath\n\nLast Saturday, a local walking group invited me to help record the condition of a footpath. Before we set off, our leader explained that we were responsible ____1____ measuring the width at several points rather than only at the entrance: the path became narrower farther uphill.\n\nWe carried a notebook ____2____ (divide) into sections for surface, slope and obstacles. At the first bend, a fallen branch ____3____ (block) half the path. We photographed it and measured the space beside it. There was still enough room for a person to pass, but the ground was ____4____ (wet) than it had been near the road.\n\nOur leader asked us to avoid ____5____ (make) general claims such as 'the route is easy'. An experienced walker and someone using a walking aid might understand that word ____6____ (different). Instead, we wrote down what we could observe. We also noted the date, because conditions could change after heavy rain.\n\nNear the top we met ____7____ elderly resident who used the path every week. She showed us a side gate ____8____ position was missing from our map. With her permission, we added it to the record.\n\nBy noon, we had collected enough information ____9____ (produce) a short guide. It would not make the decision ____10____ every visitor, but it could give them clearer evidence on which to base their own choice.",
+            "explanation": "Enough information to produce a guide uses the infinitive to express what the amount enables. Producing, bare produce and produced do not fit this enough ... to construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to produce"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "producing",
+                "produce",
+                "produced"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "B. Reading a footpath\n\nLast Saturday, a local walking group invited me to help record the condition of a footpath. Before we set off, our leader explained that we were responsible ____1____ measuring the width at several points rather than only at the entrance: the path became narrower farther uphill.\n\nWe carried a notebook ____2____ (divide) into sections for surface, slope and obstacles. At the first bend, a fallen branch ____3____ (block) half the path. We photographed it and measured the space beside it. There was still enough room for a person to pass, but the ground was ____4____ (wet) than it had been near the road.\n\nOur leader asked us to avoid ____5____ (make) general claims such as 'the route is easy'. An experienced walker and someone using a walking aid might understand that word ____6____ (different). Instead, we wrote down what we could observe. We also noted the date, because conditions could change after heavy rain.\n\nNear the top we met ____7____ elderly resident who used the path every week. She showed us a side gate ____8____ position was missing from our map. With her permission, we added it to the record.\n\nBy noon, we had collected enough information ____9____ (produce) a short guide. It would not make the decision ____10____ every visitor, but it could give them clearer evidence on which to base their own choice.",
+            "explanation": "Make the decision for someone means decide on their behalf, contrasted with their own choice. By, from and of do not express that relationship here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "by",
+                "from",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "4e78270c34ee0437fda3f6ec3abd00cf0c53164eedc2742ef80b4bed8d443e59",
+      "reviewNotes": "Three newly authored complete senior practices. Each combines one five-gap seven-candidate insertion text and one coherent ten-gap grammar text. Same-author review checks cohesion, unused alternatives, grammar variants and explicit wrong forms; unlisted written variants go to review. No independent teacher validation or learner calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior3.comparisons-and-footpath-009#insertion",
+          "family": "shared_insertion",
+          "questionIds": [
+            "expansion.20261024.senior3.comparisons-and-footpath-009.insertion.q1",
+            "expansion.20261024.senior3.comparisons-and-footpath-009.insertion.q2",
+            "expansion.20261024.senior3.comparisons-and-footpath-009.insertion.q3",
+            "expansion.20261024.senior3.comparisons-and-footpath-009.insertion.q4",
+            "expansion.20261024.senior3.comparisons-and-footpath-009.insertion.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.comparisons-and-footpath-009",
+          "sourceContentHash": "18be8c265fdc6fe5e112cce2e57010711cdb169c1bb008e22c87a5500a342c43"
+        },
+        {
+          "id": "expansion.20261024.senior3.comparisons-and-footpath-009#grammar",
+          "family": "passage_form",
+          "questionIds": [
+            "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q1",
+            "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q2",
+            "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q3",
+            "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q4",
+            "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q5",
+            "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q6",
+            "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q7",
+            "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q8",
+            "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q9",
+            "expansion.20261024.senior3.comparisons-and-footpath-009.grammar.q10"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.comparisons-and-footpath-009",
+          "sourceContentHash": "145305f5d1b35eb5f5f5e723616276b5f3f343dbaab6e9399f3b6244399433f7"
+        }
+      ]
+    }
+  ]
+}

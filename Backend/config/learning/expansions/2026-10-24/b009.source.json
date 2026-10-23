@@ -1,0 +1,730 @@
+{
+  "createdAt": "2026-10-23T18:50:00Z",
+  "reviewBoundary": "Three newly authored complete senior practices. Each combines one five-gap seven-candidate insertion text and one coherent ten-gap grammar text. Same-author review checks cohesion, unused alternatives, grammar variants and explicit wrong forms; unlisted written variants go to review. No independent teacher validation or learner calibration claimed.",
+  "units": [
+    {
+      "id": "senior1.interviews-and-sundial-009",
+      "level": "senior1",
+      "title": "七选五与语法填空 · 采访与日晷",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade10-club-routines-insertion",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Your first newspaper interview",
+          "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+          "text": "You have joined the school newspaper and are about to interview someone for the first time. You may feel that a good reporter must always know what to say. In fact, some preparation and careful listening matter more than a loud, confident voice.\n\nBefore arranging the interview, decide what you want readers to learn. A conversation about winning a race will be different from one about starting a new club. ____1____ This focus will help you choose a few useful questions instead of preparing a long list of unrelated ones.\n\nSend the person a short message explaining your topic and asking for a suitable time. ____2____ A ten-minute conversation during a quiet break may be more useful than stopping someone who is already late for class.\n\nDuring the interview, listen to the whole answer. Do not spend every moment looking for the next question on your page. ____3____ For example, if a player mentions a difficult decision, you could ask what made it difficult. Such a follow-up grows naturally from the answer.\n\nMake notes, but check any detail you are uncertain about. ____4____ It is better to ask someone to repeat a name than to print the wrong one. If you want to record the conversation, get permission first.\n\nFinally, explain when the article is likely to appear and thank the person. ____5____ Your written questions may have started the interview, but another person's time and experience made the story possible.",
+          "candidates": [
+            "A. Treat that choice as the centre of your plan.",
+            "B. An interesting detail may suggest a question you had not prepared.",
+            "C. Publishing before checking is the quickest way to earn trust.",
+            "D. They should be able to choose a moment when they are not rushed.",
+            "E. This shows that you value the help they have given you.",
+            "F. In particular, names and numbers need to be accurate.",
+            "G. Once the interview is over, there is no reason to use your notes."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 0,
+              "explanation": "A's 'that choice' refers to deciding the article's focus, developed by 'This focus'. B needs a heard answer; D belongs to arranging time; E to thanks; F to checking details. C promotes unchecked publication and G discards notes, contrary to the task."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 3,
+              "explanation": "D develops asking for a suitable time and leads directly to the unhurried ten-minute example. A concerns topic selection; B follow-up listening; E gratitude; F factual checks. C and G contradict responsible reporting and do not connect to timing."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 1,
+              "explanation": "B links listening to an unexpected follow-up, illustrated by the player's difficult decision. A does not explain a new question, D changes to scheduling, E to thanks, F to accuracy. C and G neither fit the example nor support careful reporting."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 5,
+              "explanation": "F specifies which details need checking, followed by repeating a name. A has no suitable 'choice' here; B concerns follow-ups, D scheduling, E thanks. C contradicts checking before printing and G dismisses notes rather than checking them."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 4,
+              "explanation": "E's 'This' points to thanking the interviewee and leads to recognition of their contribution. A, B, D and F introduce earlier planning, listening, timing or checking stages. C promotes unreliable practice; G conflicts with using evidence to write the article."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade10-slotgrammar-cafe-bell",
+          "title": "B. A shadow on the wall",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "Hill School's science club ____1____ (found) in 2019. Last month its members visited the ____2____ (old) building on the school grounds; none of the other buildings was as old. After ____3____ (visit) the small exhibition inside, they noticed ____4____ unusual metal shape above the door. A teacher explained that it was part of a sundial, an instrument ____5____ shows the time by the position of a shadow.\n\nBack in their classroom, the students looked ____6____ (careful) at photographs of the wall. They decided ____7____ (share) what they had learned with younger ____8____ (child) at the school. Working in pairs, they made simple paper models and placed them beside a sunny window. They soon discovered that moving a model changed its reading, so they marked one position on the table and left each model there.\n\nOn the exhibition day, the club not only displayed the models ____9____ also invited visitors to watch the shadows move. The visitors asked many questions. When the event ended, the club kept the models and stored ____10____ (they) in a cupboard for the next science lesson. The old object above the door had given the students a new way to notice the passing of an ordinary afternoon.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of found.",
+              "acceptedAnswers": [
+                "was founded"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "founded",
+                  "was found",
+                  "is founded"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The club received the action in a finished past year: was founded. Founded alone has no passive auxiliary; was found means discovered rather than established; is founded conflicts with the dated event."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of old.",
+              "acceptedAnswers": [
+                "oldest"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "old",
+                  "older"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The following clause compares it with every other building, requiring the superlative oldest after the. Old is not comparative, and older compares without establishing the maximum."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of visit.",
+              "acceptedAnswers": [
+                "visiting"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "visit",
+                  "visited",
+                  "to visit"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "After is a preposition here and takes visiting. A bare verb, finite past verb or to-infinitive does not fit this construction."
+            },
+            {
+              "prompt": "Fill gap 4 with one appropriate word.",
+              "acceptedAnswers": [
+                "an"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "a",
+                  "some"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "This first mention of a singular countable shape requires an indefinite article; unusual begins with a vowel sound, so an. A has the wrong sound agreement, and some does not fit the singular noun here."
+            },
+            {
+              "prompt": "Fill gap 5 with one appropriate word.",
+              "acceptedAnswers": [
+                "that",
+                "which"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "where",
+                  "what"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The defining relative clause needs a subject referring to an instrument; that and which both work. Who refers to people, where is not a subject, and what cannot take this expressed antecedent."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of careful.",
+              "acceptedAnswers": [
+                "carefully"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "careful",
+                  "carefulness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Carefully modifies looked at. The adjective careful and noun carefulness do not perform that adverbial function."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of share.",
+              "acceptedAnswers": [
+                "to share"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "sharing",
+                  "share",
+                  "shared"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Decide takes a to-infinitive complement: decided to share. Sharing, a bare share or shared cannot directly fill this slot."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of child.",
+              "acceptedAnswers": [
+                "children"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "child",
+                  "childs"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The general group of younger pupils needs plural children. Singular child lacks a determiner, and childs is not the plural."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "but"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "and",
+                  "or",
+                  "so"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The paired construction is not only ... but also. And, or and so do not complete that construction."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of they.",
+              "acceptedAnswers": [
+                "them"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "they",
+                  "their",
+                  "theirs"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Stored needs an object pronoun referring to the models: them. They is subject form; their requires a following noun; theirs is possessive and does not refer to these already specified models in this sentence."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior2.notes-and-shadow-play-009",
+      "level": "senior2",
+      "title": "七选五与语法填空 · 笔记与影戏",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade11-investigation-insertion",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Notes that remain useful",
+          "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+          "text": "Opening a notebook a week after a lesson can be a surprising experience. A page that seemed perfectly clear at the time may now look like a list of disconnected words. Useful notes need to help the person you will be later, when the teacher's explanation is no longer in your ears.\n\nStart by giving each page a clear topic and date. ____1____ Without those small signs, even accurate details may be difficult to place when you return to the notebook before an exam.\n\nDuring the lesson, do not try to copy every sentence. Listen for the relationship between ideas. ____2____ For instance, an arrow labelled 'because' records something that two isolated facts cannot show. Use a symbol only if you will still understand it next week.\n\nLeave room beside a point that you have not understood. Some students are tempted to fill every space so that the page looks complete. ____3____ A visible question tells you what to ask about; a confident-looking line copied without understanding does not.\n\nSoon after the lesson, close the book and try to explain its main idea aloud. Then check your account against the page. ____4____ Add a short explanation at that point, while the lesson is still fresh enough to recall.\n\nFinally, let the notebook change as your understanding develops. You may find a better example in a later lesson or discover that two topics are connected. ____5____ The aim is a record you can think with, not a page that remains exactly as it looked on the day it was written.",
+          "candidates": [
+            "A. A blank space with a question mark can actually be more useful.",
+            "B. Once a page is dated, it will never need to be checked again.",
+            "C. These details help you recover the context of what follows.",
+            "D. Add those links instead of protecting the original page from every change.",
+            "E. A cause, a contrast or a sequence is often worth noting explicitly.",
+            "F. You will quickly notice where the notes fail to support your explanation.",
+            "G. The best symbols are those that nobody else could possibly understand."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 2,
+              "explanation": "C refers to the topic and date as contextual details; 'those small signs' then continues the link. A concerns an unresolved question, D later changes, E logical relations and F a recall check. B wrongly claims dating removes checking; G wrongly values incomprehensibility."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 4,
+              "explanation": "E specifies relationships and introduces the 'because' arrow example. A lacks a gap in understanding here, C belongs to date/topic, D later additions and F testing recall. B and G contradict later checking and readable symbols."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 0,
+              "explanation": "A contrasts a useful question mark with filling every space, developed by 'A visible question'. C, D, E and F concern context, revisions, relations and recall rather than leaving space. B and G offer unsupported absolute rules."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 5,
+              "explanation": "F explains what comparing the spoken account with notes reveals; 'at that point' then refers to the unsupported part. A concerns an in-class question, C contextual headings, D later links and E logical relations. B and G undermine the check rather than describe it."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 3,
+              "explanation": "D's 'those links' refers to the newly discovered connections and supports a changing notebook. A, C, E and F shift to earlier stages without that reference. B denies further checking, and G promotes opaque symbols instead of usable understanding."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade11-grammar-prop-cupboard",
+          "title": "B. Behind the paper screen",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "For the past three weeks, our drama group ____1____ (prepare) a shadow play, and today we are ready to perform it. The story is about a traveller ____2____ loses a map but finds help in an unfamiliar village. Instead of using a large stage, we are working behind ____3____ white paper screen.\n\nAt first, we cut the figures from thin paper. They bent so ____4____ (easy) that their shapes were difficult to control. Our teacher suggested ____5____ (use) thicker card. That solved one problem, but the heavier figures needed stronger handles. After several attempts, we found a way to attach wooden sticks to ____6____ (they) without covering any important part of the picture.\n\nYesterday, our final practice ____7____ (interrupt) by a power cut. We could not use the lamp, so we sat beside the window and read our lines aloud. The unexpected pause helped us notice that the traveller's last speech was much ____8____ (long) than the others. We shortened it before leaving.\n\nNow the light is working again. We are not certain ____9____ the audience will enjoy every scene, but we know the story clearly. As we take our places, our teacher reminds us that the figures must stay close ____10____ the screen if we want their shadows to have clear edges.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of prepare.",
+              "acceptedAnswers": [
+                "has been preparing",
+                "has prepared",
+                "have been preparing",
+                "have prepared"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "prepared",
+                  "is preparing",
+                  "prepares"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "For the past three weeks connects preparation to today. Both present perfect simple and continuous are legitimate; singular has and British collective plural have are accepted. Simple past, present continuous alone and simple present do not express the duration leading to now."
+            },
+            {
+              "prompt": "Fill gap 2 with one appropriate word.",
+              "acceptedAnswers": [
+                "who",
+                "that"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "which",
+                  "whose",
+                  "where"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The traveller is the subject of the defining relative clause, so who or that. Which is inappropriate for this person; whose needs a possessed noun, and where cannot serve as subject."
+            },
+            {
+              "prompt": "Fill gap 3 with one appropriate word.",
+              "acceptedAnswers": [
+                "a"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "an",
+                  "some"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A introduces a singular countable screen, with white beginning in a consonant sound. An has wrong sound agreement; some does not fit the singular countable noun."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of easy.",
+              "acceptedAnswers": [
+                "easily"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "easy",
+                  "easiness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Easily modifies bent and completes so ... that. Easy is an adjective, and easiness is a noun, neither suitable here."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of use.",
+              "acceptedAnswers": [
+                "using"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "to use",
+                  "use",
+                  "used"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Suggest takes an -ing complement here: suggested using. A to-infinitive, bare verb or past form cannot directly follow suggested in this construction."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of they.",
+              "acceptedAnswers": [
+                "them"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "they",
+                  "their"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The preposition to takes object form them, referring to the figures. They is a subject form; their requires a following noun."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of interrupt.",
+              "acceptedAnswers": [
+                "was interrupted"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "interrupted",
+                  "is interrupted",
+                  "were interrupted"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The singular practice received the interruption yesterday, requiring was interrupted. Interrupted alone is active, is gives the wrong time, and were mismatches the singular subject."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of long.",
+              "acceptedAnswers": [
+                "longer"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "long",
+                  "longest",
+                  "more longer"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Much and than introduce the comparative longer. Long is not comparative, longest is superlative, and more longer duplicates comparison."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "whether",
+                "if"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "what",
+                  "which"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The clause expresses uncertainty about a yes/no possibility, so whether or if. What and which cannot introduce this already complete statement as a yes/no question."
+            },
+            {
+              "prompt": "Fill gap 10 with one appropriate word.",
+              "acceptedAnswers": [
+                "to"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "at",
+                  "on",
+                  "with"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The expression is close to the screen. At, on and with do not complete close with this meaning of nearness."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior3.comparisons-and-footpath-009",
+      "level": "senior3",
+      "title": "七选五与语法填空 · 比较与小径",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade12-print-room-insertion",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Making a fair comparison",
+          "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+          "text": "Comparing two things seems simple: look at both and decide which is better. Yet a comparison becomes useful only when we know what 'better' is meant to describe. Before choosing between two school projects, two journeys or two methods, it helps to examine the question itself.\n\nBegin with the purpose. If you are selecting a route for a class walk, the shortest distance may seem the obvious standard. ____1____ A route that saves ten minutes but includes a steep flight of steps may not serve the group well.\n\nNext, compare like with like. A photograph of one garden in spring and another in winter tells you something about the photographs, but much less about which garden is usually greener. ____2____ Where you cannot make them similar, say clearly how they differ.\n\nBe cautious when several things change at once. Suppose a club moves to a larger room and changes its meeting time, then gains new members. ____3____ You need further evidence before giving either change all the credit.\n\nIt also helps to describe the size of a difference. Two groups may finish a task at different times, but the gap could be a few seconds or half an hour. ____4____ Without it, a dramatic-sounding claim may hide a very small practical effect.\n\nFinally, keep the conclusion within the comparison you actually made. Finding that one plan suits this week's walk does not prove that it is always the best route. ____5____ A careful conclusion is useful partly because it tells you when another comparison will be needed.",
+          "candidates": [
+            "A. The increase alone cannot tell you which change attracted them.",
+            "B. This information helps others judge whether the difference matters.",
+            "C. A result from one situation need not apply to every other one.",
+            "D. The more factors you change together, the easier their separate effects are to identify.",
+            "E. But accessibility may matter more if some walkers have difficulty climbing.",
+            "F. Try to keep the conditions of observation as similar as possible.",
+            "G. Once a winner is named, the purpose of the comparison no longer matters."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 4,
+              "explanation": "E qualifies distance by accessibility and leads to the steep-steps example. A concerns changed club conditions; B difference size; C generalisation; F comparable observation. D wrongly says simultaneous changes clarify separate effects, and G wrongly discards purpose."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 5,
+              "explanation": "F follows the seasonal mismatch and gives 'them' in the next sentence a clear antecedent: observation conditions. A has no member increase here; B lacks a quantified difference; C concerns scope; E concerns walking access. D and G undermine fair comparison."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 0,
+              "explanation": "A's increase refers to new members and its two changes to room and time; the next sentence asks for more evidence. B, C, E and F concern scale, generalisation, access and observation conditions, not attribution here. D directly reverses the warning; G is irrelevant to causation."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 1,
+              "explanation": "B links quantified seconds or minutes with practical importance; 'Without it' refers to that information. A concerns new members, C scope, E access, F similar conditions. D incorrectly links more changes with clarity, and G rejects the purpose of assessing a difference."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 2,
+              "explanation": "C restates the limited generalisability of one week's route and prepares the need for another comparison. A, B, E and F shift to causal attribution, size, access and conditions. D and G make unwarranted absolute claims rather than limiting conclusions."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade12-grammar-data-cards",
+          "title": "B. Reading a footpath",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "Last Saturday, a local walking group invited me to help record the condition of a footpath. Before we set off, our leader explained that we were responsible ____1____ measuring the width at several points rather than only at the entrance: the path became narrower farther uphill.\n\nWe carried a notebook ____2____ (divide) into sections for surface, slope and obstacles. At the first bend, a fallen branch ____3____ (block) half the path. We photographed it and measured the space beside it. There was still enough room for a person to pass, but the ground was ____4____ (wet) than it had been near the road.\n\nOur leader asked us to avoid ____5____ (make) general claims such as 'the route is easy'. An experienced walker and someone using a walking aid might understand that word ____6____ (different). Instead, we wrote down what we could observe. We also noted the date, because conditions could change after heavy rain.\n\nNear the top we met ____7____ elderly resident who used the path every week. She showed us a side gate ____8____ position was missing from our map. With her permission, we added it to the record.\n\nBy noon, we had collected enough information ____9____ (produce) a short guide. It would not make the decision ____10____ every visitor, but it could give them clearer evidence on which to base their own choice.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with one appropriate word.",
+              "acceptedAnswers": [
+                "for"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "of",
+                  "to",
+                  "with"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Responsible for doing something takes for before the -ing form. Of, to and with do not complete this construction."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of divide.",
+              "acceptedAnswers": [
+                "divided"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "dividing",
+                  "was divided"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Divided is a passive participle modifying notebook. Dividing gives an inappropriate active relationship; was divided creates a second finite verb without a relative word."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of block.",
+              "acceptedAnswers": [
+                "blocked",
+                "was blocking"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "blocks",
+                  "was blocked"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Both blocked, describing the past state, and was blocking, describing the situation encountered, are natural. Blocks breaks the past narrative; was blocked wrongly makes the branch the recipient instead of the obstacle doing the blocking."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of wet.",
+              "acceptedAnswers": [
+                "wetter"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "wet",
+                  "wettest",
+                  "more wetter"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Than marks a comparison between locations, requiring wetter. Wet is not comparative; wettest is superlative; more wetter doubles the comparison."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of make.",
+              "acceptedAnswers": [
+                "making"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "to make",
+                  "make",
+                  "made"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Avoid takes an -ing complement: avoid making claims. To make, bare make and made do not fit that construction."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of different.",
+              "acceptedAnswers": [
+                "differently"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "different",
+                  "difference"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Differently modifies understand. Different is an adjective and difference a noun, neither suitable for this adverbial slot."
+            },
+            {
+              "prompt": "Fill gap 7 with one appropriate word.",
+              "acceptedAnswers": [
+                "an"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "a",
+                  "some"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "An introduces one elderly resident; elderly begins with a vowel sound. A has the wrong sound agreement and some does not fit this singular countable use."
+            },
+            {
+              "prompt": "Fill gap 8 with one appropriate word.",
+              "acceptedAnswers": [
+                "whose"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "which",
+                  "who",
+                  "where"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whose expresses the gate's possession of a position and can refer to things. Which and who cannot directly modify position possessively; where cannot fill that possessive role."
+            },
+            {
+              "prompt": "Fill gap 9 with the correct form of produce.",
+              "acceptedAnswers": [
+                "to produce"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "producing",
+                  "produce",
+                  "produced"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Enough information to produce a guide uses the infinitive to express what the amount enables. Producing, bare produce and produced do not fit this enough ... to construction."
+            },
+            {
+              "prompt": "Fill gap 10 with one appropriate word.",
+              "acceptedAnswers": [
+                "for"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "by",
+                  "from",
+                  "of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Make the decision for someone means decide on their behalf, contrasted with their own choice. By, from and of do not express that relationship here."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
