@@ -1,0 +1,1024 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b066",
+  "createdAt": "2026-10-23T23:00:19.329547+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.autumn-leaf-picture-066",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · A picture made from leaves",
+        "summary": "A picture made from leaves，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade7-suzhou2025-21cnjy23303742.passageForm",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap narrative, seven supplied-word prompts and three one-word gaps, using the recorded junior1 whole-passage grammar structure. Vocabulary is provisional, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete new junior1 ten-gap grammar narratives. Seven supplied-word and three one-word gaps each; same-author contextual/form/variant review. Fictional cases, provisional level vocabulary and no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.autumn-leaf-picture-066",
+          "family": "passage_form",
+          "label": "A picture made from leaves",
+          "candidateSHA256": "8c29026832152666bb235399c66c28db1d38e47bc4101408b6939c5d6e34588f",
+          "authorCheckSHA256": "2f78665cd701cab4402b5b62b061e8ebc4d4ab46cb25ba2d22fd4b1d914c8615",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.autumn-leaf-picture-066#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b066；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A picture made from leaves\n\nOn Sunday, I ____1____ (collect) fallen leaves in the park with Grandma. We did not pick leaves from the trees. The ones on the ground had many different colours, and we chose a few that were clean and dry.\n\nAt home, Grandma asked me ____2____ (make) a picture with them. I wanted to create a bird, but the first arrangement looked more like a boat. We laughed and moved the leaves around before using any glue.\n\nI looked ____3____ (careful) at the shapes. A long leaf could be a tail, while a round one could form part of the body. There was ____4____ orange leaf with a curved edge that became a wing.\n\nAfter ____5____ (choose) the pieces, we placed them on thick paper. My second bird was ____6____ (big) than the first, so I had to leave more room around it. Grandma reminded me to think about the whole page, not only one wing.\n\nI thanked her ____7____ the help, then wrote the date on the back. The finished picture ____8____ (show) a bird sitting on a branch. It did not look exactly like a real bird, but I liked its autumn colours.\n\nLater, my little brother asked whether he could try. We gave ____9____ (he) a few spare leaves and a fresh page. I looked forward ____10____ seeing what he would make. The same leaf, I discovered, could become part of many different pictures."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.autumn-leaf-picture-066.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of collect.",
+            "material": "A picture made from leaves\n\nOn Sunday, I ____1____ (collect) fallen leaves in the park with Grandma. We did not pick leaves from the trees. The ones on the ground had many different colours, and we chose a few that were clean and dry.\n\nAt home, Grandma asked me ____2____ (make) a picture with them. I wanted to create a bird, but the first arrangement looked more like a boat. We laughed and moved the leaves around before using any glue.\n\nI looked ____3____ (careful) at the shapes. A long leaf could be a tail, while a round one could form part of the body. There was ____4____ orange leaf with a curved edge that became a wing.\n\nAfter ____5____ (choose) the pieces, we placed them on thick paper. My second bird was ____6____ (big) than the first, so I had to leave more room around it. Grandma reminded me to think about the whole page, not only one wing.\n\nI thanked her ____7____ the help, then wrote the date on the back. The finished picture ____8____ (show) a bird sitting on a branch. It did not look exactly like a real bird, but I liked its autumn colours.\n\nLater, my little brother asked whether he could try. We gave ____9____ (he) a few spare leaves and a fresh page. I looked forward ____10____ seeing what he would make. The same leaf, I discovered, could become part of many different pictures.",
+            "explanation": "On Sunday in this past account takes collected. Base and unaided -ing forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "collected"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "collect",
+                "collecting"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.autumn-leaf-picture-066.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of make.",
+            "material": "A picture made from leaves\n\nOn Sunday, I ____1____ (collect) fallen leaves in the park with Grandma. We did not pick leaves from the trees. The ones on the ground had many different colours, and we chose a few that were clean and dry.\n\nAt home, Grandma asked me ____2____ (make) a picture with them. I wanted to create a bird, but the first arrangement looked more like a boat. We laughed and moved the leaves around before using any glue.\n\nI looked ____3____ (careful) at the shapes. A long leaf could be a tail, while a round one could form part of the body. There was ____4____ orange leaf with a curved edge that became a wing.\n\nAfter ____5____ (choose) the pieces, we placed them on thick paper. My second bird was ____6____ (big) than the first, so I had to leave more room around it. Grandma reminded me to think about the whole page, not only one wing.\n\nI thanked her ____7____ the help, then wrote the date on the back. The finished picture ____8____ (show) a bird sitting on a branch. It did not look exactly like a real bird, but I liked its autumn colours.\n\nLater, my little brother asked whether he could try. We gave ____9____ (he) a few spare leaves and a fresh page. I looked forward ____10____ seeing what he would make. The same leaf, I discovered, could become part of many different pictures.",
+            "explanation": "Asked me takes to make. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to make"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "making",
+                "make",
+                "made"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.autumn-leaf-picture-066.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of careful.",
+            "material": "A picture made from leaves\n\nOn Sunday, I ____1____ (collect) fallen leaves in the park with Grandma. We did not pick leaves from the trees. The ones on the ground had many different colours, and we chose a few that were clean and dry.\n\nAt home, Grandma asked me ____2____ (make) a picture with them. I wanted to create a bird, but the first arrangement looked more like a boat. We laughed and moved the leaves around before using any glue.\n\nI looked ____3____ (careful) at the shapes. A long leaf could be a tail, while a round one could form part of the body. There was ____4____ orange leaf with a curved edge that became a wing.\n\nAfter ____5____ (choose) the pieces, we placed them on thick paper. My second bird was ____6____ (big) than the first, so I had to leave more room around it. Grandma reminded me to think about the whole page, not only one wing.\n\nI thanked her ____7____ the help, then wrote the date on the back. The finished picture ____8____ (show) a bird sitting on a branch. It did not look exactly like a real bird, but I liked its autumn colours.\n\nLater, my little brother asked whether he could try. We gave ____9____ (he) a few spare leaves and a fresh page. I looked forward ____10____ seeing what he would make. The same leaf, I discovered, could become part of many different pictures.",
+            "explanation": "Carefully modifies looked. Careful is adjective and carefulness noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careful",
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.autumn-leaf-picture-066.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "A picture made from leaves\n\nOn Sunday, I ____1____ (collect) fallen leaves in the park with Grandma. We did not pick leaves from the trees. The ones on the ground had many different colours, and we chose a few that were clean and dry.\n\nAt home, Grandma asked me ____2____ (make) a picture with them. I wanted to create a bird, but the first arrangement looked more like a boat. We laughed and moved the leaves around before using any glue.\n\nI looked ____3____ (careful) at the shapes. A long leaf could be a tail, while a round one could form part of the body. There was ____4____ orange leaf with a curved edge that became a wing.\n\nAfter ____5____ (choose) the pieces, we placed them on thick paper. My second bird was ____6____ (big) than the first, so I had to leave more room around it. Grandma reminded me to think about the whole page, not only one wing.\n\nI thanked her ____7____ the help, then wrote the date on the back. The finished picture ____8____ (show) a bird sitting on a branch. It did not look exactly like a real bird, but I liked its autumn colours.\n\nLater, my little brother asked whether he could try. We gave ____9____ (he) a few spare leaves and a fresh page. I looked forward ____10____ seeing what he would make. The same leaf, I discovered, could become part of many different pictures.",
+            "explanation": "An orange leaf uses an before a vowel sound. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.autumn-leaf-picture-066.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of choose.",
+            "material": "A picture made from leaves\n\nOn Sunday, I ____1____ (collect) fallen leaves in the park with Grandma. We did not pick leaves from the trees. The ones on the ground had many different colours, and we chose a few that were clean and dry.\n\nAt home, Grandma asked me ____2____ (make) a picture with them. I wanted to create a bird, but the first arrangement looked more like a boat. We laughed and moved the leaves around before using any glue.\n\nI looked ____3____ (careful) at the shapes. A long leaf could be a tail, while a round one could form part of the body. There was ____4____ orange leaf with a curved edge that became a wing.\n\nAfter ____5____ (choose) the pieces, we placed them on thick paper. My second bird was ____6____ (big) than the first, so I had to leave more room around it. Grandma reminded me to think about the whole page, not only one wing.\n\nI thanked her ____7____ the help, then wrote the date on the back. The finished picture ____8____ (show) a bird sitting on a branch. It did not look exactly like a real bird, but I liked its autumn colours.\n\nLater, my little brother asked whether he could try. We gave ____9____ (he) a few spare leaves and a fresh page. I looked forward ____10____ seeing what he would make. The same leaf, I discovered, could become part of many different pictures.",
+            "explanation": "After choosing or having chosen gives the prior selection. Bare, finite past and to-infinitive forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "choosing",
+              "having chosen"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "choose",
+                "chose",
+                "to choose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.autumn-leaf-picture-066.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of big.",
+            "material": "A picture made from leaves\n\nOn Sunday, I ____1____ (collect) fallen leaves in the park with Grandma. We did not pick leaves from the trees. The ones on the ground had many different colours, and we chose a few that were clean and dry.\n\nAt home, Grandma asked me ____2____ (make) a picture with them. I wanted to create a bird, but the first arrangement looked more like a boat. We laughed and moved the leaves around before using any glue.\n\nI looked ____3____ (careful) at the shapes. A long leaf could be a tail, while a round one could form part of the body. There was ____4____ orange leaf with a curved edge that became a wing.\n\nAfter ____5____ (choose) the pieces, we placed them on thick paper. My second bird was ____6____ (big) than the first, so I had to leave more room around it. Grandma reminded me to think about the whole page, not only one wing.\n\nI thanked her ____7____ the help, then wrote the date on the back. The finished picture ____8____ (show) a bird sitting on a branch. It did not look exactly like a real bird, but I liked its autumn colours.\n\nLater, my little brother asked whether he could try. We gave ____9____ (he) a few spare leaves and a fresh page. I looked forward ____10____ seeing what he would make. The same leaf, I discovered, could become part of many different pictures.",
+            "explanation": "Than requires comparative bigger. Plain, superlative and double comparative do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "bigger"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "big",
+                "biggest",
+                "more bigger"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.autumn-leaf-picture-066.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "A picture made from leaves\n\nOn Sunday, I ____1____ (collect) fallen leaves in the park with Grandma. We did not pick leaves from the trees. The ones on the ground had many different colours, and we chose a few that were clean and dry.\n\nAt home, Grandma asked me ____2____ (make) a picture with them. I wanted to create a bird, but the first arrangement looked more like a boat. We laughed and moved the leaves around before using any glue.\n\nI looked ____3____ (careful) at the shapes. A long leaf could be a tail, while a round one could form part of the body. There was ____4____ orange leaf with a curved edge that became a wing.\n\nAfter ____5____ (choose) the pieces, we placed them on thick paper. My second bird was ____6____ (big) than the first, so I had to leave more room around it. Grandma reminded me to think about the whole page, not only one wing.\n\nI thanked her ____7____ the help, then wrote the date on the back. The finished picture ____8____ (show) a bird sitting on a branch. It did not look exactly like a real bird, but I liked its autumn colours.\n\nLater, my little brother asked whether he could try. We gave ____9____ (he) a few spare leaves and a fresh page. I looked forward ____10____ seeing what he would make. The same leaf, I discovered, could become part of many different pictures.",
+            "explanation": "Thanked her for the help uses for. Other listed prepositions do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "at",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.autumn-leaf-picture-066.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of show.",
+            "material": "A picture made from leaves\n\nOn Sunday, I ____1____ (collect) fallen leaves in the park with Grandma. We did not pick leaves from the trees. The ones on the ground had many different colours, and we chose a few that were clean and dry.\n\nAt home, Grandma asked me ____2____ (make) a picture with them. I wanted to create a bird, but the first arrangement looked more like a boat. We laughed and moved the leaves around before using any glue.\n\nI looked ____3____ (careful) at the shapes. A long leaf could be a tail, while a round one could form part of the body. There was ____4____ orange leaf with a curved edge that became a wing.\n\nAfter ____5____ (choose) the pieces, we placed them on thick paper. My second bird was ____6____ (big) than the first, so I had to leave more room around it. Grandma reminded me to think about the whole page, not only one wing.\n\nI thanked her ____7____ the help, then wrote the date on the back. The finished picture ____8____ (show) a bird sitting on a branch. It did not look exactly like a real bird, but I liked its autumn colours.\n\nLater, my little brother asked whether he could try. We gave ____9____ (he) a few spare leaves and a fresh page. I looked forward ____10____ seeing what he would make. The same leaf, I discovered, could become part of many different pictures.",
+            "explanation": "Showed continues the past narrative; shows can describe the finished picture’s current content. Showing/shown alone do not provide a finite active verb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "showed",
+              "shows"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "showing",
+                "shown"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.autumn-leaf-picture-066.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of he.",
+            "material": "A picture made from leaves\n\nOn Sunday, I ____1____ (collect) fallen leaves in the park with Grandma. We did not pick leaves from the trees. The ones on the ground had many different colours, and we chose a few that were clean and dry.\n\nAt home, Grandma asked me ____2____ (make) a picture with them. I wanted to create a bird, but the first arrangement looked more like a boat. We laughed and moved the leaves around before using any glue.\n\nI looked ____3____ (careful) at the shapes. A long leaf could be a tail, while a round one could form part of the body. There was ____4____ orange leaf with a curved edge that became a wing.\n\nAfter ____5____ (choose) the pieces, we placed them on thick paper. My second bird was ____6____ (big) than the first, so I had to leave more room around it. Grandma reminded me to think about the whole page, not only one wing.\n\nI thanked her ____7____ the help, then wrote the date on the back. The finished picture ____8____ (show) a bird sitting on a branch. It did not look exactly like a real bird, but I liked its autumn colours.\n\nLater, my little brother asked whether he could try. We gave ____9____ (he) a few spare leaves and a fresh page. I looked forward ____10____ seeing what he would make. The same leaf, I discovered, could become part of many different pictures.",
+            "explanation": "Gave takes object him for the brother. He is subject, his possessive and himself would wrongly refer to we.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "him"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "he",
+                "his",
+                "himself"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.autumn-leaf-picture-066.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "A picture made from leaves\n\nOn Sunday, I ____1____ (collect) fallen leaves in the park with Grandma. We did not pick leaves from the trees. The ones on the ground had many different colours, and we chose a few that were clean and dry.\n\nAt home, Grandma asked me ____2____ (make) a picture with them. I wanted to create a bird, but the first arrangement looked more like a boat. We laughed and moved the leaves around before using any glue.\n\nI looked ____3____ (careful) at the shapes. A long leaf could be a tail, while a round one could form part of the body. There was ____4____ orange leaf with a curved edge that became a wing.\n\nAfter ____5____ (choose) the pieces, we placed them on thick paper. My second bird was ____6____ (big) than the first, so I had to leave more room around it. Grandma reminded me to think about the whole page, not only one wing.\n\nI thanked her ____7____ the help, then wrote the date on the back. The finished picture ____8____ (show) a bird sitting on a branch. It did not look exactly like a real bird, but I liked its autumn colours.\n\nLater, my little brother asked whether he could try. We gave ____9____ (he) a few spare leaves and a fresh page. I looked forward ____10____ seeing what he would make. The same leaf, I discovered, could become part of many different pictures.",
+            "explanation": "Looked forward to takes the -ing activity seeing. The other prepositions do not complete this expression.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "for",
+                "at",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "98fd5d3e4099fcc40bc4645ec8ec00a14c4c41b9e91f32ca1edaa896a79c3349",
+      "reviewNotes": "Three complete new junior1 ten-gap grammar narratives. Seven supplied-word and three one-word gaps each; same-author contextual/form/variant review. Fictional cases, provisional level vocabulary and no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.paper-wind-play-066",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · Wind made from paper",
+        "summary": "Wind made from paper，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade7-suzhou2025-21cnjy23303742.passageForm",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap narrative, seven supplied-word prompts and three one-word gaps, using the recorded junior1 whole-passage grammar structure. Vocabulary is provisional, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete new junior1 ten-gap grammar narratives. Seven supplied-word and three one-word gaps each; same-author contextual/form/variant review. Fictional cases, provisional level vocabulary and no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.paper-wind-play-066",
+          "family": "passage_form",
+          "label": "Wind made from paper",
+          "candidateSHA256": "751c0a9b4cdb8eea61697aff0339bfb6f3dd4bd6d14f4143aa0c31020b665cf3",
+          "authorCheckSHA256": "ac1df4448b9cd8b5e4ce33b06d68f7630b88f5370e699b6ca22a16c8b6016a96",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.paper-wind-play-066#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b066；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Wind made from paper\n\nOur English club made a short radio play last week. It ____1____ (record) in a quiet classroom after lessons. The story took place on a windy night, but we had no real wind in the room.\n\nOur teacher asked us ____2____ (think) about ways to make the sound. One student suggested opening the window. That would also let in traffic noise, so we tried another idea. We moved a large sheet of paper slowly near the microphone.\n\nThe first attempt was too loud. We listened to the recording and laughed, then moved the paper ____3____ (far) away than before. The sound became softer and fitted the scene better.\n\nA classmate ____4____ enjoyed acting read the opening lines. The rest of us waited quietly until our parts began. We had to listen as well as speak, because a missed turn could leave a long gap in the story.\n\nAfter ____5____ (finish), we gave the files clear names instead ____6____ leaving them as a list of numbers. This made it easier for our teacher to find the version we wanted to share.\n\nThe play had several ____7____ (voice), but everyone helped with the whole result. I was surprised by how ____8____ (use) one piece of paper could be. It was ____9____ small part of the recording, yet it helped create the night we imagined. We thanked our teacher for giving ____10____ (we) time to try more than one idea."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.paper-wind-play-066.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of record.",
+            "material": "Wind made from paper\n\nOur English club made a short radio play last week. It ____1____ (record) in a quiet classroom after lessons. The story took place on a windy night, but we had no real wind in the room.\n\nOur teacher asked us ____2____ (think) about ways to make the sound. One student suggested opening the window. That would also let in traffic noise, so we tried another idea. We moved a large sheet of paper slowly near the microphone.\n\nThe first attempt was too loud. We listened to the recording and laughed, then moved the paper ____3____ (far) away than before. The sound became softer and fitted the scene better.\n\nA classmate ____4____ enjoyed acting read the opening lines. The rest of us waited quietly until our parts began. We had to listen as well as speak, because a missed turn could leave a long gap in the story.\n\nAfter ____5____ (finish), we gave the files clear names instead ____6____ leaving them as a list of numbers. This made it easier for our teacher to find the version we wanted to share.\n\nThe play had several ____7____ (voice), but everyone helped with the whole result. I was surprised by how ____8____ (use) one piece of paper could be. It was ____9____ small part of the recording, yet it helped create the night we imagined. We thanked our teacher for giving ____10____ (we) time to try more than one idea.",
+            "explanation": "The singular play receives recording in the past. Was/had been recorded fit; recorded alone lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was recorded",
+              "had been recorded"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "recorded",
+                "were recorded"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-wind-play-066.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of think.",
+            "material": "Wind made from paper\n\nOur English club made a short radio play last week. It ____1____ (record) in a quiet classroom after lessons. The story took place on a windy night, but we had no real wind in the room.\n\nOur teacher asked us ____2____ (think) about ways to make the sound. One student suggested opening the window. That would also let in traffic noise, so we tried another idea. We moved a large sheet of paper slowly near the microphone.\n\nThe first attempt was too loud. We listened to the recording and laughed, then moved the paper ____3____ (far) away than before. The sound became softer and fitted the scene better.\n\nA classmate ____4____ enjoyed acting read the opening lines. The rest of us waited quietly until our parts began. We had to listen as well as speak, because a missed turn could leave a long gap in the story.\n\nAfter ____5____ (finish), we gave the files clear names instead ____6____ leaving them as a list of numbers. This made it easier for our teacher to find the version we wanted to share.\n\nThe play had several ____7____ (voice), but everyone helped with the whole result. I was surprised by how ____8____ (use) one piece of paper could be. It was ____9____ small part of the recording, yet it helped create the night we imagined. We thanked our teacher for giving ____10____ (we) time to try more than one idea.",
+            "explanation": "Asked us takes to think. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to think"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "thinking",
+                "think",
+                "thought"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-wind-play-066.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of far.",
+            "material": "Wind made from paper\n\nOur English club made a short radio play last week. It ____1____ (record) in a quiet classroom after lessons. The story took place on a windy night, but we had no real wind in the room.\n\nOur teacher asked us ____2____ (think) about ways to make the sound. One student suggested opening the window. That would also let in traffic noise, so we tried another idea. We moved a large sheet of paper slowly near the microphone.\n\nThe first attempt was too loud. We listened to the recording and laughed, then moved the paper ____3____ (far) away than before. The sound became softer and fitted the scene better.\n\nA classmate ____4____ enjoyed acting read the opening lines. The rest of us waited quietly until our parts began. We had to listen as well as speak, because a missed turn could leave a long gap in the story.\n\nAfter ____5____ (finish), we gave the files clear names instead ____6____ leaving them as a list of numbers. This made it easier for our teacher to find the version we wanted to share.\n\nThe play had several ____7____ (voice), but everyone helped with the whole result. I was surprised by how ____8____ (use) one piece of paper could be. It was ____9____ small part of the recording, yet it helped create the night we imagined. We thanked our teacher for giving ____10____ (we) time to try more than one idea.",
+            "explanation": "Than requires comparative farther/further. Plain far, superlative farthest and doubled more further do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "farther",
+              "further"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "far",
+                "farthest",
+                "more further"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-wind-play-066.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "Wind made from paper\n\nOur English club made a short radio play last week. It ____1____ (record) in a quiet classroom after lessons. The story took place on a windy night, but we had no real wind in the room.\n\nOur teacher asked us ____2____ (think) about ways to make the sound. One student suggested opening the window. That would also let in traffic noise, so we tried another idea. We moved a large sheet of paper slowly near the microphone.\n\nThe first attempt was too loud. We listened to the recording and laughed, then moved the paper ____3____ (far) away than before. The sound became softer and fitted the scene better.\n\nA classmate ____4____ enjoyed acting read the opening lines. The rest of us waited quietly until our parts began. We had to listen as well as speak, because a missed turn could leave a long gap in the story.\n\nAfter ____5____ (finish), we gave the files clear names instead ____6____ leaving them as a list of numbers. This made it easier for our teacher to find the version we wanted to share.\n\nThe play had several ____7____ (voice), but everyone helped with the whole result. I was surprised by how ____8____ (use) one piece of paper could be. It was ____9____ small part of the recording, yet it helped create the night we imagined. We thanked our teacher for giving ____10____ (we) time to try more than one idea.",
+            "explanation": "Who/that is the defining human subject. Which is nonhuman, where not subject and whose lacks a possessed noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "where",
+                "whose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-wind-play-066.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of finish.",
+            "material": "Wind made from paper\n\nOur English club made a short radio play last week. It ____1____ (record) in a quiet classroom after lessons. The story took place on a windy night, but we had no real wind in the room.\n\nOur teacher asked us ____2____ (think) about ways to make the sound. One student suggested opening the window. That would also let in traffic noise, so we tried another idea. We moved a large sheet of paper slowly near the microphone.\n\nThe first attempt was too loud. We listened to the recording and laughed, then moved the paper ____3____ (far) away than before. The sound became softer and fitted the scene better.\n\nA classmate ____4____ enjoyed acting read the opening lines. The rest of us waited quietly until our parts began. We had to listen as well as speak, because a missed turn could leave a long gap in the story.\n\nAfter ____5____ (finish), we gave the files clear names instead ____6____ leaving them as a list of numbers. This made it easier for our teacher to find the version we wanted to share.\n\nThe play had several ____7____ (voice), but everyone helped with the whole result. I was surprised by how ____8____ (use) one piece of paper could be. It was ____9____ small part of the recording, yet it helped create the night we imagined. We thanked our teacher for giving ____10____ (we) time to try more than one idea.",
+            "explanation": "After finishing/having finished both fit completed recording work. Other listed forms do not directly follow the preposition.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "finishing",
+              "having finished"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "finish",
+                "finished",
+                "to finish"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-wind-play-066.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "Wind made from paper\n\nOur English club made a short radio play last week. It ____1____ (record) in a quiet classroom after lessons. The story took place on a windy night, but we had no real wind in the room.\n\nOur teacher asked us ____2____ (think) about ways to make the sound. One student suggested opening the window. That would also let in traffic noise, so we tried another idea. We moved a large sheet of paper slowly near the microphone.\n\nThe first attempt was too loud. We listened to the recording and laughed, then moved the paper ____3____ (far) away than before. The sound became softer and fitted the scene better.\n\nA classmate ____4____ enjoyed acting read the opening lines. The rest of us waited quietly until our parts began. We had to listen as well as speak, because a missed turn could leave a long gap in the story.\n\nAfter ____5____ (finish), we gave the files clear names instead ____6____ leaving them as a list of numbers. This made it easier for our teacher to find the version we wanted to share.\n\nThe play had several ____7____ (voice), but everyone helped with the whole result. I was surprised by how ____8____ (use) one piece of paper could be. It was ____9____ small part of the recording, yet it helped create the night we imagined. We thanked our teacher for giving ____10____ (we) time to try more than one idea.",
+            "explanation": "Instead of takes the -ing activity leaving. Other listed prepositions do not complete instead.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "with",
+                "at"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-wind-play-066.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of voice.",
+            "material": "Wind made from paper\n\nOur English club made a short radio play last week. It ____1____ (record) in a quiet classroom after lessons. The story took place on a windy night, but we had no real wind in the room.\n\nOur teacher asked us ____2____ (think) about ways to make the sound. One student suggested opening the window. That would also let in traffic noise, so we tried another idea. We moved a large sheet of paper slowly near the microphone.\n\nThe first attempt was too loud. We listened to the recording and laughed, then moved the paper ____3____ (far) away than before. The sound became softer and fitted the scene better.\n\nA classmate ____4____ enjoyed acting read the opening lines. The rest of us waited quietly until our parts began. We had to listen as well as speak, because a missed turn could leave a long gap in the story.\n\nAfter ____5____ (finish), we gave the files clear names instead ____6____ leaving them as a list of numbers. This made it easier for our teacher to find the version we wanted to share.\n\nThe play had several ____7____ (voice), but everyone helped with the whole result. I was surprised by how ____8____ (use) one piece of paper could be. It was ____9____ small part of the recording, yet it helped create the night we imagined. We thanked our teacher for giving ____10____ (we) time to try more than one idea.",
+            "explanation": "Several requires plural voices. Voice is singular and voicing an activity rather than the performers’ voices.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "voices"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "voice",
+                "voicing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-wind-play-066.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of use.",
+            "material": "Wind made from paper\n\nOur English club made a short radio play last week. It ____1____ (record) in a quiet classroom after lessons. The story took place on a windy night, but we had no real wind in the room.\n\nOur teacher asked us ____2____ (think) about ways to make the sound. One student suggested opening the window. That would also let in traffic noise, so we tried another idea. We moved a large sheet of paper slowly near the microphone.\n\nThe first attempt was too loud. We listened to the recording and laughed, then moved the paper ____3____ (far) away than before. The sound became softer and fitted the scene better.\n\nA classmate ____4____ enjoyed acting read the opening lines. The rest of us waited quietly until our parts began. We had to listen as well as speak, because a missed turn could leave a long gap in the story.\n\nAfter ____5____ (finish), we gave the files clear names instead ____6____ leaving them as a list of numbers. This made it easier for our teacher to find the version we wanted to share.\n\nThe play had several ____7____ (voice), but everyone helped with the whole result. I was surprised by how ____8____ (use) one piece of paper could be. It was ____9____ small part of the recording, yet it helped create the night we imagined. We thanked our teacher for giving ____10____ (we) time to try more than one idea.",
+            "explanation": "How useful describes the paper’s helpful quality. Use is noun/verb and usefully adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "useful"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "use",
+                "usefully"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-wind-play-066.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "Wind made from paper\n\nOur English club made a short radio play last week. It ____1____ (record) in a quiet classroom after lessons. The story took place on a windy night, but we had no real wind in the room.\n\nOur teacher asked us ____2____ (think) about ways to make the sound. One student suggested opening the window. That would also let in traffic noise, so we tried another idea. We moved a large sheet of paper slowly near the microphone.\n\nThe first attempt was too loud. We listened to the recording and laughed, then moved the paper ____3____ (far) away than before. The sound became softer and fitted the scene better.\n\nA classmate ____4____ enjoyed acting read the opening lines. The rest of us waited quietly until our parts began. We had to listen as well as speak, because a missed turn could leave a long gap in the story.\n\nAfter ____5____ (finish), we gave the files clear names instead ____6____ leaving them as a list of numbers. This made it easier for our teacher to find the version we wanted to share.\n\nThe play had several ____7____ (voice), but everyone helped with the whole result. I was surprised by how ____8____ (use) one piece of paper could be. It was ____9____ small part of the recording, yet it helped create the night we imagined. We thanked our teacher for giving ____10____ (we) time to try more than one idea.",
+            "explanation": "A small part uses a before a consonant sound. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-wind-play-066.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of we.",
+            "material": "Wind made from paper\n\nOur English club made a short radio play last week. It ____1____ (record) in a quiet classroom after lessons. The story took place on a windy night, but we had no real wind in the room.\n\nOur teacher asked us ____2____ (think) about ways to make the sound. One student suggested opening the window. That would also let in traffic noise, so we tried another idea. We moved a large sheet of paper slowly near the microphone.\n\nThe first attempt was too loud. We listened to the recording and laughed, then moved the paper ____3____ (far) away than before. The sound became softer and fitted the scene better.\n\nA classmate ____4____ enjoyed acting read the opening lines. The rest of us waited quietly until our parts began. We had to listen as well as speak, because a missed turn could leave a long gap in the story.\n\nAfter ____5____ (finish), we gave the files clear names instead ____6____ leaving them as a list of numbers. This made it easier for our teacher to find the version we wanted to share.\n\nThe play had several ____7____ (voice), but everyone helped with the whole result. I was surprised by how ____8____ (use) one piece of paper could be. It was ____9____ small part of the recording, yet it helped create the night we imagined. We thanked our teacher for giving ____10____ (we) time to try more than one idea.",
+            "explanation": "Giving takes object us. Subject/possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "e2040f11133c1a7ae270e27947d9d48878bd0dd77641b5f301f2c5587386e057",
+      "reviewNotes": "Three complete new junior1 ten-gap grammar narratives. Seven supplied-word and three one-word gaps each; same-author contextual/form/variant review. Fictional cases, provisional level vocabulary and no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.reading-wall-066",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · The wall of small book reviews",
+        "summary": "The wall of small book reviews，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade7-suzhou2025-21cnjy23303742.passageForm",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap narrative, seven supplied-word prompts and three one-word gaps, using the recorded junior1 whole-passage grammar structure. Vocabulary is provisional, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete new junior1 ten-gap grammar narratives. Seven supplied-word and three one-word gaps each; same-author contextual/form/variant review. Fictional cases, provisional level vocabulary and no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.reading-wall-066",
+          "family": "passage_form",
+          "label": "The wall of small book reviews",
+          "candidateSHA256": "fce3281589d5c71be05fcd6c5d0c8a1d841757d7216f49147e6961ecde86550a",
+          "authorCheckSHA256": "63196c29803b0fd84a9413fa57e0cea2ed9bbd530c21061efbe105cac8279143",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.reading-wall-066#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b066；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The wall of small book reviews\n\nAt the start of term, our class teacher ____1____ (put) a large sheet of paper on the wall. She invited us to write short notes about books we had enjoyed. Each note needed a title and one reason to try the book.\n\nI first copied a long description from the cover of my novel. The teacher asked whether those were my own words. I decided ____2____ (write) a shorter note about the character I remembered best.\n\nA friend ____3____ liked funny stories read my note and borrowed the book. Later, she added her own response. She liked a different part, so our two notes did not look the same. That made the wall more ____4____ (interest), not less useful.\n\nBefore ____5____ (add) a new note, we checked that the book's title was clear. Several ____6____ (child) in another class wanted to use our suggestions too. A title written carelessly could make a good recommendation hard to follow.\n\nWe used first names instead ____7____ full personal details. The notes were about reading, not a list of information about every student. Our teacher also reminded us to ask before moving someone else's contribution.\n\nBy the end of the month, the wall looked ____8____ (colourful) than it had at the beginning. It had become ____9____ useful place to begin a conversation. The teacher thanked ____10____ (we) for keeping the reasons specific. \"A good book\" was a start, but explaining what we enjoyed helped another reader choose."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.reading-wall-066.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of put.",
+            "material": "The wall of small book reviews\n\nAt the start of term, our class teacher ____1____ (put) a large sheet of paper on the wall. She invited us to write short notes about books we had enjoyed. Each note needed a title and one reason to try the book.\n\nI first copied a long description from the cover of my novel. The teacher asked whether those were my own words. I decided ____2____ (write) a shorter note about the character I remembered best.\n\nA friend ____3____ liked funny stories read my note and borrowed the book. Later, she added her own response. She liked a different part, so our two notes did not look the same. That made the wall more ____4____ (interest), not less useful.\n\nBefore ____5____ (add) a new note, we checked that the book's title was clear. Several ____6____ (child) in another class wanted to use our suggestions too. A title written carelessly could make a good recommendation hard to follow.\n\nWe used first names instead ____7____ full personal details. The notes were about reading, not a list of information about every student. Our teacher also reminded us to ask before moving someone else's contribution.\n\nBy the end of the month, the wall looked ____8____ (colourful) than it had at the beginning. It had become ____9____ useful place to begin a conversation. The teacher thanked ____10____ (we) for keeping the reasons specific. \"A good book\" was a start, but explaining what we enjoyed helped another reader choose.",
+            "explanation": "Put is the irregular past form as well as the base. Putted is a different/nonstandard form here and putting lacks auxiliary.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "put"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "putted",
+                "putting"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.reading-wall-066.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of write.",
+            "material": "The wall of small book reviews\n\nAt the start of term, our class teacher ____1____ (put) a large sheet of paper on the wall. She invited us to write short notes about books we had enjoyed. Each note needed a title and one reason to try the book.\n\nI first copied a long description from the cover of my novel. The teacher asked whether those were my own words. I decided ____2____ (write) a shorter note about the character I remembered best.\n\nA friend ____3____ liked funny stories read my note and borrowed the book. Later, she added her own response. She liked a different part, so our two notes did not look the same. That made the wall more ____4____ (interest), not less useful.\n\nBefore ____5____ (add) a new note, we checked that the book's title was clear. Several ____6____ (child) in another class wanted to use our suggestions too. A title written carelessly could make a good recommendation hard to follow.\n\nWe used first names instead ____7____ full personal details. The notes were about reading, not a list of information about every student. Our teacher also reminded us to ask before moving someone else's contribution.\n\nBy the end of the month, the wall looked ____8____ (colourful) than it had at the beginning. It had become ____9____ useful place to begin a conversation. The teacher thanked ____10____ (we) for keeping the reasons specific. \"A good book\" was a start, but explaining what we enjoyed helped another reader choose.",
+            "explanation": "Decided takes to write. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to write"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "writing",
+                "write",
+                "wrote"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.reading-wall-066.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "The wall of small book reviews\n\nAt the start of term, our class teacher ____1____ (put) a large sheet of paper on the wall. She invited us to write short notes about books we had enjoyed. Each note needed a title and one reason to try the book.\n\nI first copied a long description from the cover of my novel. The teacher asked whether those were my own words. I decided ____2____ (write) a shorter note about the character I remembered best.\n\nA friend ____3____ liked funny stories read my note and borrowed the book. Later, she added her own response. She liked a different part, so our two notes did not look the same. That made the wall more ____4____ (interest), not less useful.\n\nBefore ____5____ (add) a new note, we checked that the book's title was clear. Several ____6____ (child) in another class wanted to use our suggestions too. A title written carelessly could make a good recommendation hard to follow.\n\nWe used first names instead ____7____ full personal details. The notes were about reading, not a list of information about every student. Our teacher also reminded us to ask before moving someone else's contribution.\n\nBy the end of the month, the wall looked ____8____ (colourful) than it had at the beginning. It had become ____9____ useful place to begin a conversation. The teacher thanked ____10____ (we) for keeping the reasons specific. \"A good book\" was a start, but explaining what we enjoyed helped another reader choose.",
+            "explanation": "Who/that is the human relative subject. Which is nonhuman, where not subject and whose needs a possessed noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "where",
+                "whose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.reading-wall-066.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of interest.",
+            "material": "The wall of small book reviews\n\nAt the start of term, our class teacher ____1____ (put) a large sheet of paper on the wall. She invited us to write short notes about books we had enjoyed. Each note needed a title and one reason to try the book.\n\nI first copied a long description from the cover of my novel. The teacher asked whether those were my own words. I decided ____2____ (write) a shorter note about the character I remembered best.\n\nA friend ____3____ liked funny stories read my note and borrowed the book. Later, she added her own response. She liked a different part, so our two notes did not look the same. That made the wall more ____4____ (interest), not less useful.\n\nBefore ____5____ (add) a new note, we checked that the book's title was clear. Several ____6____ (child) in another class wanted to use our suggestions too. A title written carelessly could make a good recommendation hard to follow.\n\nWe used first names instead ____7____ full personal details. The notes were about reading, not a list of information about every student. Our teacher also reminded us to ask before moving someone else's contribution.\n\nBy the end of the month, the wall looked ____8____ (colourful) than it had at the beginning. It had become ____9____ useful place to begin a conversation. The teacher thanked ____10____ (we) for keeping the reasons specific. \"A good book\" was a start, but explaining what we enjoyed helped another reader choose.",
+            "explanation": "The varied wall creates interest, so interesting. Interested describes someone feeling interest; interest is noun/verb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "interesting"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "interested",
+                "interest"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.reading-wall-066.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of add.",
+            "material": "The wall of small book reviews\n\nAt the start of term, our class teacher ____1____ (put) a large sheet of paper on the wall. She invited us to write short notes about books we had enjoyed. Each note needed a title and one reason to try the book.\n\nI first copied a long description from the cover of my novel. The teacher asked whether those were my own words. I decided ____2____ (write) a shorter note about the character I remembered best.\n\nA friend ____3____ liked funny stories read my note and borrowed the book. Later, she added her own response. She liked a different part, so our two notes did not look the same. That made the wall more ____4____ (interest), not less useful.\n\nBefore ____5____ (add) a new note, we checked that the book's title was clear. Several ____6____ (child) in another class wanted to use our suggestions too. A title written carelessly could make a good recommendation hard to follow.\n\nWe used first names instead ____7____ full personal details. The notes were about reading, not a list of information about every student. Our teacher also reminded us to ask before moving someone else's contribution.\n\nBy the end of the month, the wall looked ____8____ (colourful) than it had at the beginning. It had become ____9____ useful place to begin a conversation. The teacher thanked ____10____ (we) for keeping the reasons specific. \"A good book\" was a start, but explaining what we enjoyed helped another reader choose.",
+            "explanation": "Before takes adding. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "adding"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "add",
+                "added",
+                "to add"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.reading-wall-066.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of child.",
+            "material": "The wall of small book reviews\n\nAt the start of term, our class teacher ____1____ (put) a large sheet of paper on the wall. She invited us to write short notes about books we had enjoyed. Each note needed a title and one reason to try the book.\n\nI first copied a long description from the cover of my novel. The teacher asked whether those were my own words. I decided ____2____ (write) a shorter note about the character I remembered best.\n\nA friend ____3____ liked funny stories read my note and borrowed the book. Later, she added her own response. She liked a different part, so our two notes did not look the same. That made the wall more ____4____ (interest), not less useful.\n\nBefore ____5____ (add) a new note, we checked that the book's title was clear. Several ____6____ (child) in another class wanted to use our suggestions too. A title written carelessly could make a good recommendation hard to follow.\n\nWe used first names instead ____7____ full personal details. The notes were about reading, not a list of information about every student. Our teacher also reminded us to ask before moving someone else's contribution.\n\nBy the end of the month, the wall looked ____8____ (colourful) than it had at the beginning. It had become ____9____ useful place to begin a conversation. The teacher thanked ____10____ (we) for keeping the reasons specific. \"A good book\" was a start, but explaining what we enjoyed helped another reader choose.",
+            "explanation": "Several requires irregular plural children. Child is singular and childs nonstandard.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "children"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "child",
+                "childs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.reading-wall-066.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "The wall of small book reviews\n\nAt the start of term, our class teacher ____1____ (put) a large sheet of paper on the wall. She invited us to write short notes about books we had enjoyed. Each note needed a title and one reason to try the book.\n\nI first copied a long description from the cover of my novel. The teacher asked whether those were my own words. I decided ____2____ (write) a shorter note about the character I remembered best.\n\nA friend ____3____ liked funny stories read my note and borrowed the book. Later, she added her own response. She liked a different part, so our two notes did not look the same. That made the wall more ____4____ (interest), not less useful.\n\nBefore ____5____ (add) a new note, we checked that the book's title was clear. Several ____6____ (child) in another class wanted to use our suggestions too. A title written carelessly could make a good recommendation hard to follow.\n\nWe used first names instead ____7____ full personal details. The notes were about reading, not a list of information about every student. Our teacher also reminded us to ask before moving someone else's contribution.\n\nBy the end of the month, the wall looked ____8____ (colourful) than it had at the beginning. It had become ____9____ useful place to begin a conversation. The teacher thanked ____10____ (we) for keeping the reasons specific. \"A good book\" was a start, but explaining what we enjoyed helped another reader choose.",
+            "explanation": "Instead of takes the noun phrase full personal details. Other listed prepositions do not complete instead.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "for",
+                "at"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.reading-wall-066.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of colourful.",
+            "material": "The wall of small book reviews\n\nAt the start of term, our class teacher ____1____ (put) a large sheet of paper on the wall. She invited us to write short notes about books we had enjoyed. Each note needed a title and one reason to try the book.\n\nI first copied a long description from the cover of my novel. The teacher asked whether those were my own words. I decided ____2____ (write) a shorter note about the character I remembered best.\n\nA friend ____3____ liked funny stories read my note and borrowed the book. Later, she added her own response. She liked a different part, so our two notes did not look the same. That made the wall more ____4____ (interest), not less useful.\n\nBefore ____5____ (add) a new note, we checked that the book's title was clear. Several ____6____ (child) in another class wanted to use our suggestions too. A title written carelessly could make a good recommendation hard to follow.\n\nWe used first names instead ____7____ full personal details. The notes were about reading, not a list of information about every student. Our teacher also reminded us to ask before moving someone else's contribution.\n\nBy the end of the month, the wall looked ____8____ (colourful) than it had at the beginning. It had become ____9____ useful place to begin a conversation. The teacher thanked ____10____ (we) for keeping the reasons specific. \"A good book\" was a start, but explaining what we enjoyed helped another reader choose.",
+            "explanation": "Than requires comparative more colourful/colorful; both spellings accepted. Plain, superlative and invented double comparison do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "more colourful",
+              "more colorful"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "colourful",
+                "most colourful",
+                "more colourfuller"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.reading-wall-066.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "The wall of small book reviews\n\nAt the start of term, our class teacher ____1____ (put) a large sheet of paper on the wall. She invited us to write short notes about books we had enjoyed. Each note needed a title and one reason to try the book.\n\nI first copied a long description from the cover of my novel. The teacher asked whether those were my own words. I decided ____2____ (write) a shorter note about the character I remembered best.\n\nA friend ____3____ liked funny stories read my note and borrowed the book. Later, she added her own response. She liked a different part, so our two notes did not look the same. That made the wall more ____4____ (interest), not less useful.\n\nBefore ____5____ (add) a new note, we checked that the book's title was clear. Several ____6____ (child) in another class wanted to use our suggestions too. A title written carelessly could make a good recommendation hard to follow.\n\nWe used first names instead ____7____ full personal details. The notes were about reading, not a list of information about every student. Our teacher also reminded us to ask before moving someone else's contribution.\n\nBy the end of the month, the wall looked ____8____ (colourful) than it had at the beginning. It had become ____9____ useful place to begin a conversation. The teacher thanked ____10____ (we) for keeping the reasons specific. \"A good book\" was a start, but explaining what we enjoyed helped another reader choose.",
+            "explanation": "A useful place uses consonant /j/, so a. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.reading-wall-066.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of we.",
+            "material": "The wall of small book reviews\n\nAt the start of term, our class teacher ____1____ (put) a large sheet of paper on the wall. She invited us to write short notes about books we had enjoyed. Each note needed a title and one reason to try the book.\n\nI first copied a long description from the cover of my novel. The teacher asked whether those were my own words. I decided ____2____ (write) a shorter note about the character I remembered best.\n\nA friend ____3____ liked funny stories read my note and borrowed the book. Later, she added her own response. She liked a different part, so our two notes did not look the same. That made the wall more ____4____ (interest), not less useful.\n\nBefore ____5____ (add) a new note, we checked that the book's title was clear. Several ____6____ (child) in another class wanted to use our suggestions too. A title written carelessly could make a good recommendation hard to follow.\n\nWe used first names instead ____7____ full personal details. The notes were about reading, not a list of information about every student. Our teacher also reminded us to ask before moving someone else's contribution.\n\nBy the end of the month, the wall looked ____8____ (colourful) than it had at the beginning. It had become ____9____ useful place to begin a conversation. The teacher thanked ____10____ (we) for keeping the reasons specific. \"A good book\" was a start, but explaining what we enjoyed helped another reader choose.",
+            "explanation": "Thanked takes object us. Subject and possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "77b948077d5aeef4cc6094fb0d2d85750d3be169517dabc4d78c7887be882b1b",
+      "reviewNotes": "Three complete new junior1 ten-gap grammar narratives. Seven supplied-word and three one-word gaps each; same-author contextual/form/variant review. Fictional cases, provisional level vocabulary and no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
