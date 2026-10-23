@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+"""Serialize explicitly authored passages/questions; never invent content or answer keys."""
+import argparse
+import copy
+import hashlib
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+DIRECTORY = ROOT / 'Backend/config/learning/expansions/2026-10-24'
+
+
+def digest(value):
+    raw = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':'))
+    return hashlib.sha256(raw.encode()).hexdigest()
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('batch')
+    parser.add_argument('--revise-draft', action='store_true', help='Only before first publication; database immutable hashes still prevent version replacement')
+    args = parser.parse_args()
+    if len(args.batch) != 4 or args.batch[0] != 'b' or not args.batch[1:].isdigit():
+        raise ValueError('Expected b000-style batch')
+    source = json.loads((DIRECTORY / f'{args.batch}.source.json').read_text())
+    originals = {e['unit']['id']: e['unit'] for e in json.loads((ROOT / 'Backend/config/learning/originals/catalog.json').read_text())['units']}
+    entries = []
+    for draft in source['units']:
+        unit_id = 'expansion.20261024.' + draft['id']
+        reviewed_source = originals[draft['sourceUnitId']]
+        if reviewed_source['level'] != draft['level']:
+            raise ValueError('Do not silently transfer a source to another level')
+        questions = []
+        components = []
+        for part in draft['materials']:
+            material = part['title'] + '\n\n' + part['text']
+            part_ids = []
+            for number, item in enumerate(part['questions'], 1):
+                qid = f"{unit_id}.{part['id']}.q{number}"
+                part_ids.append(qid)
+                if len(item['options']) < 2 or not 0 <= item['answer'] < len(item['options']):
+                    raise ValueError('Invalid hand-authored candidate set or key')
+                questions.append(dict(
+                    id=qid, goalId='original.' + draft['family'], type='choice',
+                    instruction=('看图，选择与英文词组对应的图片。' if draft['level'] == 'primary1' else '选择合适的应答。' if draft['level'] == 'primary2' and draft['family'] == 'function_choice' else 'Read the complete material and choose the best answer.'),
+                    prompt=item['prompt'], material=material,
+                    options=[dict(id=f'o{i}', text=text, **({'imageAssetId': item['optionImages'][i]} if 'optionImages' in item else {})) for i, text in enumerate(item['options'])],
+                    answer=f"o{item['answer']}", explanation=item['explanation'],
+                    hint='Use the complete material and the question together.',
+                    difficultyReason='New provisional original for this level; no independent learner calibration claimed.',
+                ))
+            components.append(dict(id=f"{unit_id}#{part['id']}", family='reading_choice', questionIds=part_ids,
+                sourceNumbers=list(range(1, len(part_ids) + 1)), sourceUnitId=unit_id, sourceContentHash=digest(part)))
+        senior = draft['level'].startswith('senior')
+        if senior and (len(components) != 2 or any(len(c['questionIds']) not in (3, 4) for c in components)):
+            raise ValueError('Senior reading practice needs two complete 3/4-question passages')
+        material = '\n\n'.join(part['title'] + '\n\n' + part['text'] for part in draft['materials'])
+        source_hash = digest(draft)
+        author_check = dict(boundary=source['reviewBoundary'], questions=[dict(id=q['id'], key=q['answer'], rationale=q['explanation']) for q in questions])
+        references = copy.deepcopy(reviewed_source['references'])
+        for reference in references:
+            reference['alignment'] = ('Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. ' + reference['alignment'])[:500]
+        if senior:
+            references.insert(0, dict(sourceId='gaokao.2025.national1', unit='2025 National I complete reading task structure', pages='Reading section', alignment='Two complete original readings; the source paper supplies task rules, not copied text or answer keys.'))
+        notice = '2026-10-24新题批次 ' + args.batch + '；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。'
+        unit = dict(id=unit_id, version=1, schemaVersion=1, scoringVersion=1, roleKey='companion', roleVersion=1,
+            level=draft['level'], title=('高考题型原创 · 10·24新题 · ' if senior else '10·24新题 · ') + draft['title'],
+            summary=draft['title'] + f"，共{len(questions)}题。", scene='先阅读完整材料，再按题目要求作答。',
+            estimatedMinutes=draft['minutes'], goalIds=['original.' + draft['family']], prerequisiteGoalIds=[],
+            references=references, authorship=dict(kind='authored', author='Codex 2026-10-24 new authoring', reviewedBy='Same author content review; not independent teacher review', reviewedAt='2026-10-24', reviewNotes=source['reviewBoundary']),
+            beats=[], originalGroup=dict(id=unit_id, family=draft['family'], label=draft['title'],
+                candidateSHA256=source_hash, authorCheckSHA256=digest(author_check), sourceGroupIds=[c['id'] for c in components], sourceNotice=notice, material=material), questions=questions)
+        entry = dict(unit=unit, contentHash=digest(unit), reviewNotes=source['reviewBoundary'] + ' 每道题保存了正确键和所有干扰项的具体辨析。')
+        if senior:
+            entry['components'] = components
+        entries.append(entry)
+    manifest = dict(version=1, run='2026-10-24', batch=args.batch, createdAt=source['createdAt'], entries=entries)
+    if source.get('imageAssets'):
+        manifest['imageAssets'] = source['imageAssets']
+    target = DIRECTORY / f'{args.batch}.json'
+    if target.exists() and json.loads(target.read_text()) != manifest and not args.revise_draft:
+        raise ValueError('Frozen batch already exists with different content; create a new batch')
+    target.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+    index_path = DIRECTORY / 'index.json'
+    index = json.loads(index_path.read_text())
+    if args.batch not in index['batches']:
+        index['batches'].append(args.batch)
+    if any(e['unit']['level'].startswith('senior') for e in entries):
+        if args.batch not in index.setdefault('gaokaoBatches', []):
+            index['gaokaoBatches'].append(args.batch)
+    index_path.write_text(json.dumps(index, indent=2) + '\n')
+    print(json.dumps(dict(batch=args.batch, units=len(entries), questions=sum(len(e['unit']['questions']) for e in entries), hash=digest([manifest]))))
+
+
+if __name__ == '__main__':
+    main()

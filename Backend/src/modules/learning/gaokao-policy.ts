@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { z } from "zod";
 import { contentHash, unitSchema, type LearningUnit } from "./content.js";
+import { expansionGaokaoPractices } from "./expansion-catalog.js";
 
 export const isHighSchool = (level: string) => /^senior[123]$/.test(level);
 
@@ -75,6 +76,7 @@ export function gaokaoCatalog() {
   if (authored.practices.some((p) => p.kind !== "authored"))
     throw new Error("原创题不得冒充高考真题。");
   parsed.practices.push(...authored.practices);
+  parsed.practices.push(...expansionGaokaoPractices());
   const ids = new Set<string>();
   for (const p of parsed.practices) {
     const u = p.unit;

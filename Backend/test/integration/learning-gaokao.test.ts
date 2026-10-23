@@ -125,7 +125,12 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       const content = await engine.read(a.user, (s) => s.publishedContent(true));
       expect(
         content.filter((r) => r.level.startsWith("senior")).map((r) => r.count),
-      ).toEqual([16, 22, 22]);
+      ).toEqual(
+        ["senior1", "senior2", "senior3"].map(
+          (level) =>
+            gaokaoCatalog().practices.filter((p) => p.unit.level === level).length,
+        ),
+      );
     });
     it("旧18题练习退出活动入口，答案、冻结稿、完成时间及已得积分原样保留", async () => {
       const a = await account(),

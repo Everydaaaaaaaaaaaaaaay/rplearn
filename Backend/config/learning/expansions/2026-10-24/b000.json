@@ -1,0 +1,611 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b000",
+  "createdAt": "2026-10-24T01:20:00+08:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.school-morning-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · 校门口的早晨",
+        "summary": "校门口的早晨，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 完整具体形式参照公开来源；原校/年级难度未独立认证，作者自审不等独立教师或学生验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "本轮新创作；逐题自审与程序检查，不声称独立教师审核或学生稳定性验证。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.school-morning-001",
+          "family": "function_choice",
+          "label": "校门口的早晨",
+          "candidateSHA256": "51d67f57c68db8cfe2a934c6daa00868411b5101797ba6165e28e3789658c204",
+          "authorCheckSHA256": "3c2dc7cad84ed51251081ef3c49fc5a0f3a504e0ba936df05d938b1f5c891490",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.school-morning-001#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b000；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "At the school gate\n\nRead the five short conversations. Choose the reply that completes each conversation.\n\n1. Ben: Good morning, Amy!\nAmy: ___\n\n2. Amy: What's your name?\nNew boy: ___\n\n3. Ben: How are you today?\nAmy: ___\n\n4. New boy: Is this your blue bag, Ben?\nBen: ___\n\n5. Amy: Let's go to class.\nBen: ___"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.school-morning-001.whole.q1",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Ben: Good morning, Amy!\nAmy: ____",
+            "material": "At the school gate\n\nRead the five short conversations. Choose the reply that completes each conversation.\n\n1. Ben: Good morning, Amy!\nAmy: ___\n\n2. Amy: What's your name?\nNew boy: ___\n\n3. Ben: How are you today?\nAmy: ___\n\n4. New boy: Is this your blue bag, Ben?\nBen: ___\n\n5. Amy: Let's go to class.\nBen: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Good morning, Ben!"
+              },
+              {
+                "id": "o1",
+                "text": "Good night, Ben!"
+              },
+              {
+                "id": "o2",
+                "text": "I'm seven."
+              },
+              {
+                "id": "o3",
+                "text": "It's a bag."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "清晨见面的Good morning用同样问候回应。Good night用于夜间告别；年龄和物品回答不能回应问候。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary2.school-morning-001.whole.q2",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Amy: What's your name?\nNew boy: ____",
+            "material": "At the school gate\n\nRead the five short conversations. Choose the reply that completes each conversation.\n\n1. Ben: Good morning, Amy!\nAmy: ___\n\n2. Amy: What's your name?\nNew boy: ___\n\n3. Ben: How are you today?\nAmy: ___\n\n4. New boy: Is this your blue bag, Ben?\nBen: ___\n\n5. Amy: Let's go to class.\nBen: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I'm fine, thank you."
+              },
+              {
+                "id": "o1",
+                "text": "My name is Leo."
+              },
+              {
+                "id": "o2",
+                "text": "It's blue."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, it is."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "What's your name询问姓名，My name is Leo直接回答。其余分别回答身体状态、颜色和一般疑问句，均不回答名字。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary2.school-morning-001.whole.q3",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Ben: How are you today?\nAmy: ____",
+            "material": "At the school gate\n\nRead the five short conversations. Choose the reply that completes each conversation.\n\n1. Ben: Good morning, Amy!\nAmy: ___\n\n2. Amy: What's your name?\nNew boy: ___\n\n3. Ben: How are you today?\nAmy: ___\n\n4. New boy: Is this your blue bag, Ben?\nBen: ___\n\n5. Amy: Let's go to class.\nBen: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "This is my pencil."
+              },
+              {
+                "id": "o1",
+                "text": "My name is Amy."
+              },
+              {
+                "id": "o2",
+                "text": "I'm fine, thank you."
+              },
+              {
+                "id": "o3",
+                "text": "Goodbye, Ben."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "How are you询问状态，I'm fine, thank you合适。铅笔介绍、姓名及告别均与所问不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary2.school-morning-001.whole.q4",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "New boy: Is this your blue bag, Ben?\nBen: ____",
+            "material": "At the school gate\n\nRead the five short conversations. Choose the reply that completes each conversation.\n\n1. Ben: Good morning, Amy!\nAmy: ___\n\n2. Amy: What's your name?\nNew boy: ___\n\n3. Ben: How are you today?\nAmy: ___\n\n4. New boy: Is this your blue bag, Ben?\nBen: ___\n\n5. Amy: Let's go to class.\nBen: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I like apples."
+              },
+              {
+                "id": "o1",
+                "text": "Good afternoon."
+              },
+              {
+                "id": "o2",
+                "text": "I'm eight."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, it is. Thank you."
+              }
+            ],
+            "answer": "o3",
+            "explanation": "Is this your blue bag是确认归属的一般疑问句，Yes, it is作答并致谢自然。喜好、下午问候和年龄均未回答书包归属。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary2.school-morning-001.whole.q5",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Amy: Let's go to class.\nBen: ____",
+            "material": "At the school gate\n\nRead the five short conversations. Choose the reply that completes each conversation.\n\n1. Ben: Good morning, Amy!\nAmy: ___\n\n2. Amy: What's your name?\nNew boy: ___\n\n3. Ben: How are you today?\nAmy: ___\n\n4. New boy: Is this your blue bag, Ben?\nBen: ___\n\n5. Amy: Let's go to class.\nBen: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "OK! Let's go."
+              },
+              {
+                "id": "o1",
+                "text": "It's a cat."
+              },
+              {
+                "id": "o2",
+                "text": "My name is Ben."
+              },
+              {
+                "id": "o3",
+                "text": "No, I'm not."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "Let's go to class提出共同去教室，OK! Let's go接受建议。物品、姓名和对am/is人称问句的否认都不回应邀请。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "6c2e5b28eb5236ba12f8b8ae8ed7438616ceb4a6e85f7fe22f51580f5ad38e15",
+      "reviewNotes": "本轮新创作；逐题自审与程序检查，不声称独立教师审核或学生稳定性验证。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.art-table-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · 美术桌边的对话",
+        "summary": "美术桌边的对话，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 完整具体形式参照公开来源；原校/年级难度未独立认证，作者自审不等独立教师或学生验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "本轮新创作；逐题自审与程序检查，不声称独立教师审核或学生稳定性验证。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.art-table-002",
+          "family": "function_choice",
+          "label": "美术桌边的对话",
+          "candidateSHA256": "540681dd9cb5d52903d2f987633c3936e695eb0dccf00c36c4f36c8852718526",
+          "authorCheckSHA256": "fdeb59651cb9fbc2eb98f931579f2e7abc60822bd4fb18de1c82c37cdf07b70d",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.art-table-002#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b000；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "At the art table\n\nRead the five short conversations. Choose the reply that completes each conversation.\n\n1. May: What colour is your new crayon?\nJack: ___\n\n2. Jack: May I use your red crayon, please?\nMay: ___\n\n3. Jack: Thank you, May.\nMay: ___\n\n4. May: Look at my picture!\nJack: ___\n\n5. Jack: It's time to go home. Goodbye!\nMay: ___"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.art-table-002.whole.q1",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "May: What colour is your new crayon?\nJack: ____",
+            "material": "At the art table\n\nRead the five short conversations. Choose the reply that completes each conversation.\n\n1. May: What colour is your new crayon?\nJack: ___\n\n2. Jack: May I use your red crayon, please?\nMay: ___\n\n3. Jack: Thank you, May.\nMay: ___\n\n4. May: Look at my picture!\nJack: ___\n\n5. Jack: It's time to go home. Goodbye!\nMay: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It's a ruler."
+              },
+              {
+                "id": "o1",
+                "text": "It's green."
+              },
+              {
+                "id": "o2",
+                "text": "I'm Jack."
+              },
+              {
+                "id": "o3",
+                "text": "Good night."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "问句明确询问crayon颜色，green回答颜色。ruler是物品，Jack是姓名，Good night是告别，均不匹配。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary2.art-table-002.whole.q2",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Jack: May I use your red crayon, please?\nMay: ____",
+            "material": "At the art table\n\nRead the five short conversations. Choose the reply that completes each conversation.\n\n1. May: What colour is your new crayon?\nJack: ___\n\n2. Jack: May I use your red crayon, please?\nMay: ___\n\n3. Jack: Thank you, May.\nMay: ___\n\n4. May: Look at my picture!\nJack: ___\n\n5. Jack: It's time to go home. Goodbye!\nMay: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I'm six."
+              },
+              {
+                "id": "o1",
+                "text": "It's a dog."
+              },
+              {
+                "id": "o2",
+                "text": "Sure. Here you are."
+              },
+              {
+                "id": "o3",
+                "text": "Good morning."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "May I use请求借用蜡笔，Sure. Here you are同意并递物。年龄、动物命名和问候都没有回答请求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary2.art-table-002.whole.q3",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Jack: Thank you, May.\nMay: ____",
+            "material": "At the art table\n\nRead the five short conversations. Choose the reply that completes each conversation.\n\n1. May: What colour is your new crayon?\nJack: ___\n\n2. Jack: May I use your red crayon, please?\nMay: ___\n\n3. Jack: Thank you, May.\nMay: ___\n\n4. May: Look at my picture!\nJack: ___\n\n5. Jack: It's time to go home. Goodbye!\nMay: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It's red."
+              },
+              {
+                "id": "o1",
+                "text": "I'm fine."
+              },
+              {
+                "id": "o2",
+                "text": "My name is May."
+              },
+              {
+                "id": "o3",
+                "text": "You're welcome."
+              }
+            ],
+            "answer": "o3",
+            "explanation": "Thank you之后You're welcome回应感谢。颜色、状态及姓名分别回答其他问题，不能在这里构成感谢应答。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary2.art-table-002.whole.q4",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "May: Look at my picture!\nJack: ____",
+            "material": "At the art table\n\nRead the five short conversations. Choose the reply that completes each conversation.\n\n1. May: What colour is your new crayon?\nJack: ___\n\n2. Jack: May I use your red crayon, please?\nMay: ___\n\n3. Jack: Thank you, May.\nMay: ___\n\n4. May: Look at my picture!\nJack: ___\n\n5. Jack: It's time to go home. Goodbye!\nMay: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Wow! It's beautiful."
+              },
+              {
+                "id": "o1",
+                "text": "I'm seven."
+              },
+              {
+                "id": "o2",
+                "text": "My name is Jack."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, I am."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "Look at my picture邀请观看作品，赞赏作品beautiful自然。年龄、姓名和am问句肯定未回应作品展示。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary2.art-table-002.whole.q5",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Jack: It's time to go home. Goodbye!\nMay: ____",
+            "material": "At the art table\n\nRead the five short conversations. Choose the reply that completes each conversation.\n\n1. May: What colour is your new crayon?\nJack: ___\n\n2. Jack: May I use your red crayon, please?\nMay: ___\n\n3. Jack: Thank you, May.\nMay: ___\n\n4. May: Look at my picture!\nJack: ___\n\n5. Jack: It's time to go home. Goodbye!\nMay: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It's yellow."
+              },
+              {
+                "id": "o1",
+                "text": "Goodbye! See you tomorrow."
+              },
+              {
+                "id": "o2",
+                "text": "It's my crayon."
+              },
+              {
+                "id": "o3",
+                "text": "I'm fine, thanks."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "对方明确回家并Goodbye，Goodbye! See you tomorrow是告别回应。其余颜色、归属和状态答句不能完成此次告别。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "248677db3befd9615bfdb20ef0f415a56dfe66d1c251a71d81a9ac210e9fa84c",
+      "reviewNotes": "本轮新创作；逐题自审与程序检查，不声称独立教师审核或学生稳定性验证。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.fix-it-shelf-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · 社区修理架",
+        "summary": "社区修理架，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "xschu-bnu2026-paper-key20261014-record.reading.closed_picture_mixed_section11",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 参照北师大实验标签2026初二上公开PDF第五节：A共享四设备图和三人物头像/需求3题，B六段第一人称社团叙事4题，C六段数字陪伴报告4题，3+4+4共11题各四候选，每题2分22分；不是包含另四道开放读答的总32分，开放部分暂停。原B跨页末段不拆成七段；原C第41题声称画线但图中文字无可见线，冲突保留，原创明确在C第3段画线。原键非gold，原校施测未认证，题册宣称12题页而公开重排为10题页冲突保留。A无明确复用禁令，不以原答案不同强加每图限用一次；原扫描笔图只能确认可见物体，未编造其产品功能。新设备格图为自有示意，三头像复用自有装饰图不作视觉等值；正文另编需求。B四词注/C五词注绑定此具体配置，汉字长度不当年级标准。三个新社团故事和调查都虚构：同总样本下不同指标可重叠，不能把自报相关当因果或现实研究。全文、题"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "本轮新创作；逐题自审与程序检查，不声称独立教师审核或学生稳定性验证。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.fix-it-shelf-001",
+          "family": "reading_choice",
+          "label": "社区修理架",
+          "candidateSHA256": "4d1c66cad2f9ffabae071989cd7508d77a6ed5bab7119994adec6f6610fb9d8d",
+          "authorCheckSHA256": "5dfcb07eca9b6ea176ce2e5427be176eee8d698833b0b10e1f884e3516de5ecc",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.fix-it-shelf-001#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b000；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A shelf for another chance\n\nLast winter, Mina put a small wooden shelf beside the front desk of her neighbourhood centre. A card above it said, 'Broken things may need a small repair, not a rubbish bin.' People could leave a broken household object on the shelf with a note explaining the problem. On Saturday mornings, volunteers tried to repair it.\n\nAt first, Mina expected mostly lamps and clocks. Instead, the shelf filled with schoolbags. Several had broken zips, but the cloth was still strong. One parent explained that buying a new bag was often easier than finding someone to repair a zip. Mina asked Rosa, a retired shop owner, to teach the volunteers basic sewing skills.\n\nThe volunteers did not promise to repair everything. They refused dangerous electrical work and returned objects they could not safely fix. When a repair needed a new part, they called the owner before spending any money. A repaired object stayed on a separate collection shelf for a week. If it was not collected, Mina contacted its owner again rather than giving it away.\n\nAfter two months, Mina stopped counting only how many objects had been repaired. She also began counting how many people had learned a repair skill. One Saturday, a boy who had brought in a torn pencil case returned with his sister. This time, he showed her how to sew a small tear. Mina felt that the shelf was finally doing more than saving objects."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.fix-it-shelf-001.whole.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did people need to leave with a broken object?",
+            "material": "A shelf for another chance\n\nLast winter, Mina put a small wooden shelf beside the front desk of her neighbourhood centre. A card above it said, 'Broken things may need a small repair, not a rubbish bin.' People could leave a broken household object on the shelf with a note explaining the problem. On Saturday mornings, volunteers tried to repair it.\n\nAt first, Mina expected mostly lamps and clocks. Instead, the shelf filled with schoolbags. Several had broken zips, but the cloth was still strong. One parent explained that buying a new bag was often easier than finding someone to repair a zip. Mina asked Rosa, a retired shop owner, to teach the volunteers basic sewing skills.\n\nThe volunteers did not promise to repair everything. They refused dangerous electrical work and returned objects they could not safely fix. When a repair needed a new part, they called the owner before spending any money. A repaired object stayed on a separate collection shelf for a week. If it was not collected, Mina contacted its owner again rather than giving it away.\n\nAfter two months, Mina stopped counting only how many objects had been repaired. She also began counting how many people had learned a repair skill. One Saturday, a boy who had brought in a torn pencil case returned with his sister. This time, he showed her how to sew a small tear. Mina felt that the shelf was finally doing more than saving objects.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A photograph of its owner."
+              },
+              {
+                "id": "o1",
+                "text": "Money for a new object."
+              },
+              {
+                "id": "o2",
+                "text": "A note about its problem."
+              },
+              {
+                "id": "o3",
+                "text": "A promise to become a volunteer."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "首段直接要求a note explaining the problem，C准确。原文没有要求主人照片、购买新品的钱或志愿承诺。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior2.fix-it-shelf-001.whole.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did Mina invite Rosa to help?",
+            "material": "A shelf for another chance\n\nLast winter, Mina put a small wooden shelf beside the front desk of her neighbourhood centre. A card above it said, 'Broken things may need a small repair, not a rubbish bin.' People could leave a broken household object on the shelf with a note explaining the problem. On Saturday mornings, volunteers tried to repair it.\n\nAt first, Mina expected mostly lamps and clocks. Instead, the shelf filled with schoolbags. Several had broken zips, but the cloth was still strong. One parent explained that buying a new bag was often easier than finding someone to repair a zip. Mina asked Rosa, a retired shop owner, to teach the volunteers basic sewing skills.\n\nThe volunteers did not promise to repair everything. They refused dangerous electrical work and returned objects they could not safely fix. When a repair needed a new part, they called the owner before spending any money. A repaired object stayed on a separate collection shelf for a week. If it was not collected, Mina contacted its owner again rather than giving it away.\n\nAfter two months, Mina stopped counting only how many objects had been repaired. She also began counting how many people had learned a repair skill. One Saturday, a boy who had brought in a torn pencil case returned with his sister. This time, he showed her how to sew a small tear. Mina felt that the shelf was finally doing more than saving objects.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Many bags needed sewing repairs."
+              },
+              {
+                "id": "o1",
+                "text": "The centre needed a new front desk."
+              },
+              {
+                "id": "o2",
+                "text": "Rosa wanted to sell new schoolbags."
+              },
+              {
+                "id": "o3",
+                "text": "The volunteers needed electrical training."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "第二段先说书包拉链坏而布料结实，再请Rosa教basic sewing skills，A对应需求。前台不需要更换，未说售卖新包，危险电器工作反而被拒绝。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior2.fix-it-shelf-001.whole.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happened when a repair required a new part?",
+            "material": "A shelf for another chance\n\nLast winter, Mina put a small wooden shelf beside the front desk of her neighbourhood centre. A card above it said, 'Broken things may need a small repair, not a rubbish bin.' People could leave a broken household object on the shelf with a note explaining the problem. On Saturday mornings, volunteers tried to repair it.\n\nAt first, Mina expected mostly lamps and clocks. Instead, the shelf filled with schoolbags. Several had broken zips, but the cloth was still strong. One parent explained that buying a new bag was often easier than finding someone to repair a zip. Mina asked Rosa, a retired shop owner, to teach the volunteers basic sewing skills.\n\nThe volunteers did not promise to repair everything. They refused dangerous electrical work and returned objects they could not safely fix. When a repair needed a new part, they called the owner before spending any money. A repaired object stayed on a separate collection shelf for a week. If it was not collected, Mina contacted its owner again rather than giving it away.\n\nAfter two months, Mina stopped counting only how many objects had been repaired. She also began counting how many people had learned a repair skill. One Saturday, a boy who had brought in a torn pencil case returned with his sister. This time, he showed her how to sew a small tear. Mina felt that the shelf was finally doing more than saving objects.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The volunteers bought it without asking."
+              },
+              {
+                "id": "o1",
+                "text": "The owner was contacted before money was spent."
+              },
+              {
+                "id": "o2",
+                "text": "The object was put straight into a rubbish bin."
+              },
+              {
+                "id": "o3",
+                "text": "The owner had to repair the object alone."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "第三段明确called the owner before spending any money。A与先询问相反；C不是需要新零件的处理；D没有依据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior2.fix-it-shelf-001.whole.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did Mina do if an object was not collected after a week?",
+            "material": "A shelf for another chance\n\nLast winter, Mina put a small wooden shelf beside the front desk of her neighbourhood centre. A card above it said, 'Broken things may need a small repair, not a rubbish bin.' People could leave a broken household object on the shelf with a note explaining the problem. On Saturday mornings, volunteers tried to repair it.\n\nAt first, Mina expected mostly lamps and clocks. Instead, the shelf filled with schoolbags. Several had broken zips, but the cloth was still strong. One parent explained that buying a new bag was often easier than finding someone to repair a zip. Mina asked Rosa, a retired shop owner, to teach the volunteers basic sewing skills.\n\nThe volunteers did not promise to repair everything. They refused dangerous electrical work and returned objects they could not safely fix. When a repair needed a new part, they called the owner before spending any money. A repaired object stayed on a separate collection shelf for a week. If it was not collected, Mina contacted its owner again rather than giving it away.\n\nAfter two months, Mina stopped counting only how many objects had been repaired. She also began counting how many people had learned a repair skill. One Saturday, a boy who had brought in a torn pencil case returned with his sister. This time, he showed her how to sew a small tear. Mina felt that the shelf was finally doing more than saving objects.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She sold it to pay for repairs."
+              },
+              {
+                "id": "o1",
+                "text": "She gave it to another family."
+              },
+              {
+                "id": "o2",
+                "text": "She threw it away immediately."
+              },
+              {
+                "id": "o3",
+                "text": "She contacted its owner again."
+              }
+            ],
+            "answer": "o3",
+            "explanation": "第三段说明未领取时再次联系主人rather than giving it away，D正确；售卖、转赠或立即丢弃均不符合规则。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.junior2.fix-it-shelf-001.whole.q5",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why was Mina pleased when the boy returned with his sister?",
+            "material": "A shelf for another chance\n\nLast winter, Mina put a small wooden shelf beside the front desk of her neighbourhood centre. A card above it said, 'Broken things may need a small repair, not a rubbish bin.' People could leave a broken household object on the shelf with a note explaining the problem. On Saturday mornings, volunteers tried to repair it.\n\nAt first, Mina expected mostly lamps and clocks. Instead, the shelf filled with schoolbags. Several had broken zips, but the cloth was still strong. One parent explained that buying a new bag was often easier than finding someone to repair a zip. Mina asked Rosa, a retired shop owner, to teach the volunteers basic sewing skills.\n\nThe volunteers did not promise to repair everything. They refused dangerous electrical work and returned objects they could not safely fix. When a repair needed a new part, they called the owner before spending any money. A repaired object stayed on a separate collection shelf for a week. If it was not collected, Mina contacted its owner again rather than giving it away.\n\nAfter two months, Mina stopped counting only how many objects had been repaired. She also began counting how many people had learned a repair skill. One Saturday, a boy who had brought in a torn pencil case returned with his sister. This time, he showed her how to sew a small tear. Mina felt that the shelf was finally doing more than saving objects.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He had bought a more expensive pencil case."
+              },
+              {
+                "id": "o1",
+                "text": "He was passing on a skill he had learned."
+              },
+              {
+                "id": "o2",
+                "text": "His sister offered to build another shelf."
+              },
+              {
+                "id": "o3",
+                "text": "All the broken objects had been repaired."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "末段男孩教妹妹缝小裂口，证明技能继续传递，B对应新增目标。未购买昂贵文具盒，未承诺建架，也没有所有物品均修好的结论。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "ac6933855bfc90716bae0c2ec90c0cedcf0030ad49e869231c0f954ca0771ace",
+      "reviewNotes": "本轮新创作；逐题自审与程序检查，不声称独立教师审核或学生稳定性验证。 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}

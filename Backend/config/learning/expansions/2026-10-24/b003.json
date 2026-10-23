@@ -1,0 +1,680 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b003",
+  "createdAt": "2026-10-24T01:45:00+08:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.labels-and-deliveries-003",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · 阅读理解 · 两篇 · 展签与送货",
+        "summary": "阅读理解 · 两篇 · 展签与送货，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.2024.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "新原创文章与完整设问，逐题对照证据自审各候选；未进行独立教师或学生标定，不声称该档难度或产出质量已稳定。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.labels-and-deliveries-003",
+          "family": "reading_choice",
+          "label": "阅读理解 · 两篇 · 展签与送货",
+          "candidateSHA256": "d7d22bcdf874f261690f85eff2cd3003ac27935f1f850f807c242fb5edbae4af",
+          "authorCheckSHA256": "7607346bb3de601395edaea30d8fc89ace489edef9dbbf1791fdf3512d048341",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.labels-and-deliveries-003#a",
+            "expansion.20261024.senior1.labels-and-deliveries-003#b"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b003；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. A label can be another kind of doorway\n\nAt the entrance to a small history museum, visitors could choose a large-print guide. It contained all the information printed beside the objects, but in bigger letters. The guide seemed an obvious way to make the exhibition easier to use. Then a visitor asked a question that the museum's designer, Ellis, had not expected: 'How do I know which page goes with the object in front of me?'\n\nEllis followed several visitors through the rooms. The labels used collection numbers, while the guide arranged objects by date. To match one with the other, visitors had to find a small number, remember it and search through the guide. Larger letters did not remove those steps. For someone who found small text difficult to read, the first step could be the hardest of all.\n\nThe museum could not immediately replace every label. Instead, Ellis added a large, simple symbol beside each group of objects and repeated it at the top of the relevant guide pages. He chose symbols with different outlines rather than relying only on colours. The guide's information stayed in date order, but its symbols offered another route into it.\n\nDuring a trial, visitors reached the right pages more quickly. One person, however, found a symbol confusing because it looked like a direction arrow. Ellis changed that design before making the guides available throughout the museum. The staff also kept a few copies of the earlier version so that they could explain exactly what had changed.\n\nThe project did not solve every access problem. Some visitors still needed audio descriptions or help moving between rooms. For Ellis, its lesson was that making information physically readable was only part of the task. People also needed a clear connection between the information and the thing they were trying to understand.\n\nB. Listening to the quiet part of a delivery\n\nWhen a food distributor replaced several diesel delivery vehicles with electric ones, residents near its city depot welcomed the quieter engines. The company expected fewer complaints about early-morning deliveries. Yet in the following month, calls about noise hardly changed. The manager, Pavel, decided to spend a morning on a delivery route rather than order another survey.\n\nFrom inside the vehicle, the route seemed much quieter. Outside it, Pavel noticed sounds that had previously been hidden by the engine. Metal wheels struck cracks in the pavement. Empty containers knocked together as they were loaded. At one shop, a driver had to pull a heavy cage over a raised doorway because the unloading space was blocked by boxes.\n\nPavel first considered moving deliveries to later in the morning. Shop owners explained that this would leave staff unloading goods while serving customers. He therefore asked drivers and shop workers to identify places where a small change could make a difference. They cleared the blocked doorway, replaced damaged wheels and tested soft covers that kept empty containers from hitting one another.\n\nThe team did not put soft wheels on every cage at once. A pair that worked well on smooth floors was harder to push over rough outdoor surfaces. Drivers compared several designs on actual routes before the company chose replacements. They also agreed on a simple rule: when possible, lift the final empty container into the vehicle rather than throw it onto the others.\n\nComplaints declined over the next two months. Pavel was careful not to credit the change to a single piece of equipment. The quieter vehicles had helped him hear the rest of the problem, but the improvement came from treating the delivery as a whole sequence of actions. Technology had opened an opportunity; attention to ordinary movements had made more of it."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.labels-and-deliveries-003.a.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What difficulty did the visitor's question reveal?",
+            "material": "A. A label can be another kind of doorway\n\nAt the entrance to a small history museum, visitors could choose a large-print guide. It contained all the information printed beside the objects, but in bigger letters. The guide seemed an obvious way to make the exhibition easier to use. Then a visitor asked a question that the museum's designer, Ellis, had not expected: 'How do I know which page goes with the object in front of me?'\n\nEllis followed several visitors through the rooms. The labels used collection numbers, while the guide arranged objects by date. To match one with the other, visitors had to find a small number, remember it and search through the guide. Larger letters did not remove those steps. For someone who found small text difficult to read, the first step could be the hardest of all.\n\nThe museum could not immediately replace every label. Instead, Ellis added a large, simple symbol beside each group of objects and repeated it at the top of the relevant guide pages. He chose symbols with different outlines rather than relying only on colours. The guide's information stayed in date order, but its symbols offered another route into it.\n\nDuring a trial, visitors reached the right pages more quickly. One person, however, found a symbol confusing because it looked like a direction arrow. Ellis changed that design before making the guides available throughout the museum. The staff also kept a few copies of the earlier version so that they could explain exactly what had changed.\n\nThe project did not solve every access problem. Some visitors still needed audio descriptions or help moving between rooms. For Ellis, its lesson was that making information physically readable was only part of the task. People also needed a clear connection between the information and the thing they were trying to understand.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The museum had removed the objects described in the guide."
+              },
+              {
+                "id": "o1",
+                "text": "Visitors could not easily connect an object with the correct guide page."
+              },
+              {
+                "id": "o2",
+                "text": "The large-print guide contained no dates at all."
+              },
+              {
+                "id": "o3",
+                "text": "The museum required visitors to remember every historical fact."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "首段提问怎样把眼前物品与页码对应，第二段解释编号和日期排序不一致。并非展品撤走、无日期或背历史事实。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.labels-and-deliveries-003.a.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did Ellis use symbols with different outlines?",
+            "material": "A. A label can be another kind of doorway\n\nAt the entrance to a small history museum, visitors could choose a large-print guide. It contained all the information printed beside the objects, but in bigger letters. The guide seemed an obvious way to make the exhibition easier to use. Then a visitor asked a question that the museum's designer, Ellis, had not expected: 'How do I know which page goes with the object in front of me?'\n\nEllis followed several visitors through the rooms. The labels used collection numbers, while the guide arranged objects by date. To match one with the other, visitors had to find a small number, remember it and search through the guide. Larger letters did not remove those steps. For someone who found small text difficult to read, the first step could be the hardest of all.\n\nThe museum could not immediately replace every label. Instead, Ellis added a large, simple symbol beside each group of objects and repeated it at the top of the relevant guide pages. He chose symbols with different outlines rather than relying only on colours. The guide's information stayed in date order, but its symbols offered another route into it.\n\nDuring a trial, visitors reached the right pages more quickly. One person, however, found a symbol confusing because it looked like a direction arrow. Ellis changed that design before making the guides available throughout the museum. The staff also kept a few copies of the earlier version so that they could explain exactly what had changed.\n\nThe project did not solve every access problem. Some visitors still needed audio descriptions or help moving between rooms. For Ellis, its lesson was that making information physically readable was only part of the task. People also needed a clear connection between the information and the thing they were trying to understand.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To avoid making colour the only way to distinguish groups."
+              },
+              {
+                "id": "o1",
+                "text": "To replace all the exhibition's historical information."
+              },
+              {
+                "id": "o2",
+                "text": "To make every symbol look like a direction arrow."
+              },
+              {
+                "id": "o3",
+                "text": "To prevent visitors from using the guide in date order."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "第三段明确different outlines rather than relying only on colours。信息和日期排序仍在；方向箭头外形反而造成误会后被改。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.labels-and-deliveries-003.a.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happened as a result of feedback during the trial?",
+            "material": "A. A label can be another kind of doorway\n\nAt the entrance to a small history museum, visitors could choose a large-print guide. It contained all the information printed beside the objects, but in bigger letters. The guide seemed an obvious way to make the exhibition easier to use. Then a visitor asked a question that the museum's designer, Ellis, had not expected: 'How do I know which page goes with the object in front of me?'\n\nEllis followed several visitors through the rooms. The labels used collection numbers, while the guide arranged objects by date. To match one with the other, visitors had to find a small number, remember it and search through the guide. Larger letters did not remove those steps. For someone who found small text difficult to read, the first step could be the hardest of all.\n\nThe museum could not immediately replace every label. Instead, Ellis added a large, simple symbol beside each group of objects and repeated it at the top of the relevant guide pages. He chose symbols with different outlines rather than relying only on colours. The guide's information stayed in date order, but its symbols offered another route into it.\n\nDuring a trial, visitors reached the right pages more quickly. One person, however, found a symbol confusing because it looked like a direction arrow. Ellis changed that design before making the guides available throughout the museum. The staff also kept a few copies of the earlier version so that they could explain exactly what had changed.\n\nThe project did not solve every access problem. Some visitors still needed audio descriptions or help moving between rooms. For Ellis, its lesson was that making information physically readable was only part of the task. People also needed a clear connection between the information and the thing they were trying to understand.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The museum stopped lending guides to visitors."
+              },
+              {
+                "id": "o1",
+                "text": "The information was rearranged by collection number."
+              },
+              {
+                "id": "o2",
+                "text": "The museum removed all symbols from the labels."
+              },
+              {
+                "id": "o3",
+                "text": "One confusing symbol was redesigned."
+              }
+            ],
+            "answer": "o3",
+            "explanation": "第四段一符号像方向箭头导致混淆，Ellis在全馆推广前修改它。未停借、未重排、未撤全部符号。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.labels-and-deliveries-003.a.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which idea does the passage mainly develop?",
+            "material": "A. A label can be another kind of doorway\n\nAt the entrance to a small history museum, visitors could choose a large-print guide. It contained all the information printed beside the objects, but in bigger letters. The guide seemed an obvious way to make the exhibition easier to use. Then a visitor asked a question that the museum's designer, Ellis, had not expected: 'How do I know which page goes with the object in front of me?'\n\nEllis followed several visitors through the rooms. The labels used collection numbers, while the guide arranged objects by date. To match one with the other, visitors had to find a small number, remember it and search through the guide. Larger letters did not remove those steps. For someone who found small text difficult to read, the first step could be the hardest of all.\n\nThe museum could not immediately replace every label. Instead, Ellis added a large, simple symbol beside each group of objects and repeated it at the top of the relevant guide pages. He chose symbols with different outlines rather than relying only on colours. The guide's information stayed in date order, but its symbols offered another route into it.\n\nDuring a trial, visitors reached the right pages more quickly. One person, however, found a symbol confusing because it looked like a direction arrow. Ellis changed that design before making the guides available throughout the museum. The staff also kept a few copies of the earlier version so that they could explain exactly what had changed.\n\nThe project did not solve every access problem. Some visitors still needed audio descriptions or help moving between rooms. For Ellis, its lesson was that making information physically readable was only part of the task. People also needed a clear connection between the information and the thing they were trying to understand.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Large-print information can meet every visitor's needs."
+              },
+              {
+                "id": "o1",
+                "text": "Museum objects should always be arranged by colour."
+              },
+              {
+                "id": "o2",
+                "text": "Readable information also needs a clear route linking it to its context."
+              },
+              {
+                "id": "o3",
+                "text": "Visitors learn most effectively when all labels are removed."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "末段明确可读性只是部分，还要关联信息与对象。A过度覆盖所有需求，B/D均不是措施或主张。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.labels-and-deliveries-003.b.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did Pavel join a delivery route?",
+            "material": "B. Listening to the quiet part of a delivery\n\nWhen a food distributor replaced several diesel delivery vehicles with electric ones, residents near its city depot welcomed the quieter engines. The company expected fewer complaints about early-morning deliveries. Yet in the following month, calls about noise hardly changed. The manager, Pavel, decided to spend a morning on a delivery route rather than order another survey.\n\nFrom inside the vehicle, the route seemed much quieter. Outside it, Pavel noticed sounds that had previously been hidden by the engine. Metal wheels struck cracks in the pavement. Empty containers knocked together as they were loaded. At one shop, a driver had to pull a heavy cage over a raised doorway because the unloading space was blocked by boxes.\n\nPavel first considered moving deliveries to later in the morning. Shop owners explained that this would leave staff unloading goods while serving customers. He therefore asked drivers and shop workers to identify places where a small change could make a difference. They cleared the blocked doorway, replaced damaged wheels and tested soft covers that kept empty containers from hitting one another.\n\nThe team did not put soft wheels on every cage at once. A pair that worked well on smooth floors was harder to push over rough outdoor surfaces. Drivers compared several designs on actual routes before the company chose replacements. They also agreed on a simple rule: when possible, lift the final empty container into the vehicle rather than throw it onto the others.\n\nComplaints declined over the next two months. Pavel was careful not to credit the change to a single piece of equipment. The quieter vehicles had helped him hear the rest of the problem, but the improvement came from treating the delivery as a whole sequence of actions. Technology had opened an opportunity; attention to ordinary movements had made more of it.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The distributor had stopped receiving customer orders."
+              },
+              {
+                "id": "o1",
+                "text": "The electric vehicles could no longer reach the city centre."
+              },
+              {
+                "id": "o2",
+                "text": "Noise complaints had stayed high despite quieter engines."
+              },
+              {
+                "id": "o3",
+                "text": "Residents wanted the company to return to diesel vehicles."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "第一段电动车上线后噪声投诉几乎未变，所以经理随车观察。未说无订单、车辆无法进城或居民要求恢复柴油。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.labels-and-deliveries-003.b.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did Pavel discover outside the vehicle?",
+            "material": "B. Listening to the quiet part of a delivery\n\nWhen a food distributor replaced several diesel delivery vehicles with electric ones, residents near its city depot welcomed the quieter engines. The company expected fewer complaints about early-morning deliveries. Yet in the following month, calls about noise hardly changed. The manager, Pavel, decided to spend a morning on a delivery route rather than order another survey.\n\nFrom inside the vehicle, the route seemed much quieter. Outside it, Pavel noticed sounds that had previously been hidden by the engine. Metal wheels struck cracks in the pavement. Empty containers knocked together as they were loaded. At one shop, a driver had to pull a heavy cage over a raised doorway because the unloading space was blocked by boxes.\n\nPavel first considered moving deliveries to later in the morning. Shop owners explained that this would leave staff unloading goods while serving customers. He therefore asked drivers and shop workers to identify places where a small change could make a difference. They cleared the blocked doorway, replaced damaged wheels and tested soft covers that kept empty containers from hitting one another.\n\nThe team did not put soft wheels on every cage at once. A pair that worked well on smooth floors was harder to push over rough outdoor surfaces. Drivers compared several designs on actual routes before the company chose replacements. They also agreed on a simple rule: when possible, lift the final empty container into the vehicle rather than throw it onto the others.\n\nComplaints declined over the next two months. Pavel was careful not to credit the change to a single piece of equipment. The quieter vehicles had helped him hear the rest of the problem, but the improvement came from treating the delivery as a whole sequence of actions. Technology had opened an opportunity; attention to ordinary movements had made more of it.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The electric engine was louder than the old diesel engine."
+              },
+              {
+                "id": "o1",
+                "text": "Handling containers and moving cages created important sources of noise."
+              },
+              {
+                "id": "o2",
+                "text": "Every shop had already built a quiet unloading area."
+              },
+              {
+                "id": "o3",
+                "text": "All complaints came from people who worked inside the depot."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "第二段列车轮撞地裂、空箱碰撞和拖笼跨门槛。发动机更静，卸货通道有堵塞，未限定投诉者在仓库内。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.labels-and-deliveries-003.b.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why were different wheel designs tested on actual routes?",
+            "material": "B. Listening to the quiet part of a delivery\n\nWhen a food distributor replaced several diesel delivery vehicles with electric ones, residents near its city depot welcomed the quieter engines. The company expected fewer complaints about early-morning deliveries. Yet in the following month, calls about noise hardly changed. The manager, Pavel, decided to spend a morning on a delivery route rather than order another survey.\n\nFrom inside the vehicle, the route seemed much quieter. Outside it, Pavel noticed sounds that had previously been hidden by the engine. Metal wheels struck cracks in the pavement. Empty containers knocked together as they were loaded. At one shop, a driver had to pull a heavy cage over a raised doorway because the unloading space was blocked by boxes.\n\nPavel first considered moving deliveries to later in the morning. Shop owners explained that this would leave staff unloading goods while serving customers. He therefore asked drivers and shop workers to identify places where a small change could make a difference. They cleared the blocked doorway, replaced damaged wheels and tested soft covers that kept empty containers from hitting one another.\n\nThe team did not put soft wheels on every cage at once. A pair that worked well on smooth floors was harder to push over rough outdoor surfaces. Drivers compared several designs on actual routes before the company chose replacements. They also agreed on a simple rule: when possible, lift the final empty container into the vehicle rather than throw it onto the others.\n\nComplaints declined over the next two months. Pavel was careful not to credit the change to a single piece of equipment. The quieter vehicles had helped him hear the rest of the problem, but the improvement came from treating the delivery as a whole sequence of actions. Technology had opened an opportunity; attention to ordinary movements had made more of it.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A design suitable for smooth floors might be difficult to use outdoors."
+              },
+              {
+                "id": "o1",
+                "text": "Drivers were asked to choose wheels only by their colour."
+              },
+              {
+                "id": "o2",
+                "text": "The company wanted to remove all cages from deliveries."
+              },
+              {
+                "id": "o3",
+                "text": "The shop owners had refused to clear their doorways."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "第四段软轮在平地好用却在粗糙路面难推，须实际路线比较。未按色选、不取消笼车，通道已经清理。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.labels-and-deliveries-003.b.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What best describes Pavel's final understanding?",
+            "material": "B. Listening to the quiet part of a delivery\n\nWhen a food distributor replaced several diesel delivery vehicles with electric ones, residents near its city depot welcomed the quieter engines. The company expected fewer complaints about early-morning deliveries. Yet in the following month, calls about noise hardly changed. The manager, Pavel, decided to spend a morning on a delivery route rather than order another survey.\n\nFrom inside the vehicle, the route seemed much quieter. Outside it, Pavel noticed sounds that had previously been hidden by the engine. Metal wheels struck cracks in the pavement. Empty containers knocked together as they were loaded. At one shop, a driver had to pull a heavy cage over a raised doorway because the unloading space was blocked by boxes.\n\nPavel first considered moving deliveries to later in the morning. Shop owners explained that this would leave staff unloading goods while serving customers. He therefore asked drivers and shop workers to identify places where a small change could make a difference. They cleared the blocked doorway, replaced damaged wheels and tested soft covers that kept empty containers from hitting one another.\n\nThe team did not put soft wheels on every cage at once. A pair that worked well on smooth floors was harder to push over rough outdoor surfaces. Drivers compared several designs on actual routes before the company chose replacements. They also agreed on a simple rule: when possible, lift the final empty container into the vehicle rather than throw it onto the others.\n\nComplaints declined over the next two months. Pavel was careful not to credit the change to a single piece of equipment. The quieter vehicles had helped him hear the rest of the problem, but the improvement came from treating the delivery as a whole sequence of actions. Technology had opened an opportunity; attention to ordinary movements had made more of it.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Changing the engine alone is always enough to remove delivery noise."
+              },
+              {
+                "id": "o1",
+                "text": "Shop workers should be excluded from decisions about deliveries."
+              },
+              {
+                "id": "o2",
+                "text": "Moving every delivery to a later time is the only practical solution."
+              },
+              {
+                "id": "o3",
+                "text": "Useful improvements can depend on several connected actions."
+              }
+            ],
+            "answer": "o3",
+            "explanation": "末段把改善归于整段动作流程而非单一设备。A正是初期被否定假设；B与共同找问题相反；C被门店工作冲突限制。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "4fa8052f9158c3c54c10b5e10fefb2eb84dc22b27434ee645bff4582806e5095",
+      "reviewNotes": "新原创文章与完整设问，逐题对照证据自审各候选；未进行独立教师或学生标定，不声称该档难度或产出质量已稳定。 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.labels-and-deliveries-003#a",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.labels-and-deliveries-003.a.q1",
+            "expansion.20261024.senior1.labels-and-deliveries-003.a.q2",
+            "expansion.20261024.senior1.labels-and-deliveries-003.a.q3",
+            "expansion.20261024.senior1.labels-and-deliveries-003.a.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.labels-and-deliveries-003",
+          "sourceContentHash": "c0c1dba2844860de42ec7a9f23e08881251b89fc1d527d14d6e55b1a5fe51a32"
+        },
+        {
+          "id": "expansion.20261024.senior1.labels-and-deliveries-003#b",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.labels-and-deliveries-003.b.q1",
+            "expansion.20261024.senior1.labels-and-deliveries-003.b.q2",
+            "expansion.20261024.senior1.labels-and-deliveries-003.b.q3",
+            "expansion.20261024.senior1.labels-and-deliveries-003.b.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.labels-and-deliveries-003",
+          "sourceContentHash": "104947f8d94636603ae2835151cf26c026b7a08c1a6d63ac7afa4a0a010e8898"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.path-and-calendar-004",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · 阅读理解 · 两篇 · 河岸小路与计划表",
+        "summary": "阅读理解 · 两篇 · 河岸小路与计划表，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.2024.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "新原创文章与完整设问，逐题对照证据自审各候选；未进行独立教师或学生标定，不声称该档难度或产出质量已稳定。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.path-and-calendar-004",
+          "family": "reading_choice",
+          "label": "阅读理解 · 两篇 · 河岸小路与计划表",
+          "candidateSHA256": "c27c919e0b0bba7284d25cf571a2b49672165027ff6f37a41c7348a72e4a194e",
+          "authorCheckSHA256": "d58b0f7302ee08eb1f3aecfca8f0bd7dc9642272b5de6dc205465d33700a66b3",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.path-and-calendar-004#a",
+            "expansion.20261024.senior1.path-and-calendar-004#b"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b003；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. More than a shorter line on the map\n\nA riverside path had been closed for years because two short sections were difficult to maintain after heavy rain. When the town announced plans to reopen it, the first design connected the sections with a straight paved track. On a map, the new line looked simple and efficient. People who lived nearby were pleased that the route might finally return.\n\nBefore the plan was approved, landscape designer Anika invited residents to walk along the accessible parts with her. She asked them to point out places where they usually stopped. An older man showed her a low wall sheltered from the wind. A parent described a wide corner where children could wait safely while adults caught up. Several people mentioned a bend where the river became audible even when it was hidden by trees.\n\nNone of these places appeared as a destination on the design map. The straight track would pass behind the sheltered wall and cut off the wide corner. It would also take walkers farther from the bend. Anika realised that the path's usefulness had never depended only on the time needed to travel from one end to the other.\n\nThe final route still used a firm surface through the wet sections, but it curved towards the wall and kept the waiting space. At the bend, the team made a small opening in the existing barrier so that visitors using wheelchairs could reach the stopping point without entering soft ground. They did not remove the trees simply to give everyone the same view.\n\nA year after reopening, the town counted more users, although it had no reliable count from before the closure for a direct comparison. Anika considered the conversations recorded during planning equally important. They had revealed what a clean line on a map could miss: a route can be valuable partly because it gives people reasons to pause.\n\nB. A calendar with space for the unexpected\n\nAt the beginning of the term, Erin created a study calendar in which every evening was carefully divided. Maths filled one hour, history another, and reading the final half hour before bed. She was pleased with its neat appearance. By the second week, however, she was already working on tasks that the calendar said should have been finished days before.\n\nErin initially blamed herself for failing to follow the plan. Then her tutor asked her to keep a record of what actually happened for five days. The record contained more than time spent studying. It showed a bus arriving late, a younger brother needing help with a project, and a science assignment that required finding a missing library book. None of these appeared in the original calendar.\n\nThe tutor did not suggest abandoning plans. Instead, she asked Erin to estimate tasks from recent experience, identify which deadlines could not move and leave some time unassigned. Erin also separated starting a task from finishing it. An essay could begin with choosing evidence on Monday, even if a complete draft would not be ready until Wednesday.\n\nIn the revised calendar, three evenings included a short spare block. If nothing unexpected happened, Erin could use it to review notes or stop work a little earlier. When a club meeting ran late, she moved unfinished reading into one of those blocks instead of taking time from sleep. She checked the plan at the end of each week and adjusted the following one.\n\nThe new version looked less impressive on the wall because it contained more empty space. It also worked better. Erin came to see planning as a way to make decisions before feeling rushed, rather than a promise that the week would contain no surprises. The empty blocks were not signs of missing effort; they were part of the work the plan was doing."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.path-and-calendar-004.a.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the first design mainly emphasise?",
+            "material": "A. More than a shorter line on the map\n\nA riverside path had been closed for years because two short sections were difficult to maintain after heavy rain. When the town announced plans to reopen it, the first design connected the sections with a straight paved track. On a map, the new line looked simple and efficient. People who lived nearby were pleased that the route might finally return.\n\nBefore the plan was approved, landscape designer Anika invited residents to walk along the accessible parts with her. She asked them to point out places where they usually stopped. An older man showed her a low wall sheltered from the wind. A parent described a wide corner where children could wait safely while adults caught up. Several people mentioned a bend where the river became audible even when it was hidden by trees.\n\nNone of these places appeared as a destination on the design map. The straight track would pass behind the sheltered wall and cut off the wide corner. It would also take walkers farther from the bend. Anika realised that the path's usefulness had never depended only on the time needed to travel from one end to the other.\n\nThe final route still used a firm surface through the wet sections, but it curved towards the wall and kept the waiting space. At the bend, the team made a small opening in the existing barrier so that visitors using wheelchairs could reach the stopping point without entering soft ground. They did not remove the trees simply to give everyone the same view.\n\nA year after reopening, the town counted more users, although it had no reliable count from before the closure for a direct comparison. Anika considered the conversations recorded during planning equally important. They had revealed what a clean line on a map could miss: a route can be valuable partly because it gives people reasons to pause.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Creating the shortest, simplest connection between sections."
+              },
+              {
+                "id": "o1",
+                "text": "Adding as many stopping places as possible."
+              },
+              {
+                "id": "o2",
+                "text": "Removing every tree between the path and the river."
+              },
+              {
+                "id": "o3",
+                "text": "Replacing the riverside route with a road for cars."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "首段straight paved track和simple and efficient反映最直接连接。多停留点来自后续访谈，不涉及全伐树或改机动车道。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.path-and-calendar-004.a.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the residents' observations have in common?",
+            "material": "A. More than a shorter line on the map\n\nA riverside path had been closed for years because two short sections were difficult to maintain after heavy rain. When the town announced plans to reopen it, the first design connected the sections with a straight paved track. On a map, the new line looked simple and efficient. People who lived nearby were pleased that the route might finally return.\n\nBefore the plan was approved, landscape designer Anika invited residents to walk along the accessible parts with her. She asked them to point out places where they usually stopped. An older man showed her a low wall sheltered from the wind. A parent described a wide corner where children could wait safely while adults caught up. Several people mentioned a bend where the river became audible even when it was hidden by trees.\n\nNone of these places appeared as a destination on the design map. The straight track would pass behind the sheltered wall and cut off the wide corner. It would also take walkers farther from the bend. Anika realised that the path's usefulness had never depended only on the time needed to travel from one end to the other.\n\nThe final route still used a firm surface through the wet sections, but it curved towards the wall and kept the waiting space. At the bend, the team made a small opening in the existing barrier so that visitors using wheelchairs could reach the stopping point without entering soft ground. They did not remove the trees simply to give everyone the same view.\n\nA year after reopening, the town counted more users, although it had no reliable count from before the closure for a direct comparison. Anika considered the conversations recorded during planning equally important. They had revealed what a clean line on a map could miss: a route can be valuable partly because it gives people reasons to pause.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They all concerned destinations outside the town."
+              },
+              {
+                "id": "o1",
+                "text": "They showed that people wanted to walk faster."
+              },
+              {
+                "id": "o2",
+                "text": "They described meaningful places to stop along the route."
+              },
+              {
+                "id": "o3",
+                "text": "They proved that the wet sections had never caused problems."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "第二段挡风矮墙、儿童等候角、听水弯都是途中停留点，C概括。无城外终点、统一加速或否定积水问题。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.path-and-calendar-004.a.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How did the final design improve access at the bend?",
+            "material": "A. More than a shorter line on the map\n\nA riverside path had been closed for years because two short sections were difficult to maintain after heavy rain. When the town announced plans to reopen it, the first design connected the sections with a straight paved track. On a map, the new line looked simple and efficient. People who lived nearby were pleased that the route might finally return.\n\nBefore the plan was approved, landscape designer Anika invited residents to walk along the accessible parts with her. She asked them to point out places where they usually stopped. An older man showed her a low wall sheltered from the wind. A parent described a wide corner where children could wait safely while adults caught up. Several people mentioned a bend where the river became audible even when it was hidden by trees.\n\nNone of these places appeared as a destination on the design map. The straight track would pass behind the sheltered wall and cut off the wide corner. It would also take walkers farther from the bend. Anika realised that the path's usefulness had never depended only on the time needed to travel from one end to the other.\n\nThe final route still used a firm surface through the wet sections, but it curved towards the wall and kept the waiting space. At the bend, the team made a small opening in the existing barrier so that visitors using wheelchairs could reach the stopping point without entering soft ground. They did not remove the trees simply to give everyone the same view.\n\nA year after reopening, the town counted more users, although it had no reliable count from before the closure for a direct comparison. Anika considered the conversations recorded during planning equally important. They had revealed what a clean line on a map could miss: a route can be valuable partly because it gives people reasons to pause.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "By replacing all the trees with a viewing platform."
+              },
+              {
+                "id": "o1",
+                "text": "By opening part of a barrier to reach firm ground at the stopping point."
+              },
+              {
+                "id": "o2",
+                "text": "By requiring wheelchair users to leave the path and cross soft ground."
+              },
+              {
+                "id": "o3",
+                "text": "By removing the stopping point from the public route."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "第四段在旧围挡开小口，让轮椅不用穿过软地即可到停留处。没砍树建平台，C/D反向。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.path-and-calendar-004.a.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the author mention the lack of a reliable earlier user count?",
+            "material": "A. More than a shorter line on the map\n\nA riverside path had been closed for years because two short sections were difficult to maintain after heavy rain. When the town announced plans to reopen it, the first design connected the sections with a straight paved track. On a map, the new line looked simple and efficient. People who lived nearby were pleased that the route might finally return.\n\nBefore the plan was approved, landscape designer Anika invited residents to walk along the accessible parts with her. She asked them to point out places where they usually stopped. An older man showed her a low wall sheltered from the wind. A parent described a wide corner where children could wait safely while adults caught up. Several people mentioned a bend where the river became audible even when it was hidden by trees.\n\nNone of these places appeared as a destination on the design map. The straight track would pass behind the sheltered wall and cut off the wide corner. It would also take walkers farther from the bend. Anika realised that the path's usefulness had never depended only on the time needed to travel from one end to the other.\n\nThe final route still used a firm surface through the wet sections, but it curved towards the wall and kept the waiting space. At the bend, the team made a small opening in the existing barrier so that visitors using wheelchairs could reach the stopping point without entering soft ground. They did not remove the trees simply to give everyone the same view.\n\nA year after reopening, the town counted more users, although it had no reliable count from before the closure for a direct comparison. Anika considered the conversations recorded during planning equally important. They had revealed what a clean line on a map could miss: a route can be valuable partly because it gives people reasons to pause.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To show that no one had ever used the old path."
+              },
+              {
+                "id": "o1",
+                "text": "To suggest that the planning conversations were invented."
+              },
+              {
+                "id": "o2",
+                "text": "To prove that the new route had fewer users than the old one."
+              },
+              {
+                "id": "o3",
+                "text": "To limit the comparison that can be made from the later count."
+              }
+            ],
+            "answer": "o3",
+            "explanation": "末段无关闭前可靠基线，不能把开通后人数直接作前后量化比较。并非过去无人、访谈造假或人数下降。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.path-and-calendar-004.b.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did Erin's five-day record help her recognise?",
+            "material": "B. A calendar with space for the unexpected\n\nAt the beginning of the term, Erin created a study calendar in which every evening was carefully divided. Maths filled one hour, history another, and reading the final half hour before bed. She was pleased with its neat appearance. By the second week, however, she was already working on tasks that the calendar said should have been finished days before.\n\nErin initially blamed herself for failing to follow the plan. Then her tutor asked her to keep a record of what actually happened for five days. The record contained more than time spent studying. It showed a bus arriving late, a younger brother needing help with a project, and a science assignment that required finding a missing library book. None of these appeared in the original calendar.\n\nThe tutor did not suggest abandoning plans. Instead, she asked Erin to estimate tasks from recent experience, identify which deadlines could not move and leave some time unassigned. Erin also separated starting a task from finishing it. An essay could begin with choosing evidence on Monday, even if a complete draft would not be ready until Wednesday.\n\nIn the revised calendar, three evenings included a short spare block. If nothing unexpected happened, Erin could use it to review notes or stop work a little earlier. When a club meeting ran late, she moved unfinished reading into one of those blocks instead of taking time from sleep. She checked the plan at the end of each week and adjusted the following one.\n\nThe new version looked less impressive on the wall because it contained more empty space. It also worked better. Erin came to see planning as a way to make decisions before feeling rushed, rather than a promise that the week would contain no surprises. The empty blocks were not signs of missing effort; they were part of the work the plan was doing.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Most school tasks could be completed without any preparation."
+              },
+              {
+                "id": "o1",
+                "text": "Her original plan had left no space for ordinary interruptions."
+              },
+              {
+                "id": "o2",
+                "text": "Her bus was late on every journey throughout the term."
+              },
+              {
+                "id": "o3",
+                "text": "Her tutor wanted her to stop planning her studies."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "第二段迟到、照顾弟弟、缺书等都不在原计划，体现未预留常见意外。没说无需准备、公交每次迟到；导师明确不主张放弃计划。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.path-and-calendar-004.b.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the passage describe beginning an essay on Monday?",
+            "material": "B. A calendar with space for the unexpected\n\nAt the beginning of the term, Erin created a study calendar in which every evening was carefully divided. Maths filled one hour, history another, and reading the final half hour before bed. She was pleased with its neat appearance. By the second week, however, she was already working on tasks that the calendar said should have been finished days before.\n\nErin initially blamed herself for failing to follow the plan. Then her tutor asked her to keep a record of what actually happened for five days. The record contained more than time spent studying. It showed a bus arriving late, a younger brother needing help with a project, and a science assignment that required finding a missing library book. None of these appeared in the original calendar.\n\nThe tutor did not suggest abandoning plans. Instead, she asked Erin to estimate tasks from recent experience, identify which deadlines could not move and leave some time unassigned. Erin also separated starting a task from finishing it. An essay could begin with choosing evidence on Monday, even if a complete draft would not be ready until Wednesday.\n\nIn the revised calendar, three evenings included a short spare block. If nothing unexpected happened, Erin could use it to review notes or stop work a little earlier. When a club meeting ran late, she moved unfinished reading into one of those blocks instead of taking time from sleep. She checked the plan at the end of each week and adjusted the following one.\n\nThe new version looked less impressive on the wall because it contained more empty space. It also worked better. Erin came to see planning as a way to make decisions before feeling rushed, rather than a promise that the week would contain no surprises. The empty blocks were not signs of missing effort; they were part of the work the plan was doing.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To show how a larger task can be divided into stages."
+              },
+              {
+                "id": "o1",
+                "text": "To argue that every essay must be finished in one evening."
+              },
+              {
+                "id": "o2",
+                "text": "To suggest that choosing evidence should happen after writing."
+              },
+              {
+                "id": "o3",
+                "text": "To prove that Wednesday is the best day for every deadline."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "第三段把选证据和成稿分到不同日，说明大任务分阶段。B相反，C次序倒置，D错误普遍化日期。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.path-and-calendar-004.b.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How did Erin use a spare block when the club meeting finished late?",
+            "material": "B. A calendar with space for the unexpected\n\nAt the beginning of the term, Erin created a study calendar in which every evening was carefully divided. Maths filled one hour, history another, and reading the final half hour before bed. She was pleased with its neat appearance. By the second week, however, she was already working on tasks that the calendar said should have been finished days before.\n\nErin initially blamed herself for failing to follow the plan. Then her tutor asked her to keep a record of what actually happened for five days. The record contained more than time spent studying. It showed a bus arriving late, a younger brother needing help with a project, and a science assignment that required finding a missing library book. None of these appeared in the original calendar.\n\nThe tutor did not suggest abandoning plans. Instead, she asked Erin to estimate tasks from recent experience, identify which deadlines could not move and leave some time unassigned. Erin also separated starting a task from finishing it. An essay could begin with choosing evidence on Monday, even if a complete draft would not be ready until Wednesday.\n\nIn the revised calendar, three evenings included a short spare block. If nothing unexpected happened, Erin could use it to review notes or stop work a little earlier. When a club meeting ran late, she moved unfinished reading into one of those blocks instead of taking time from sleep. She checked the plan at the end of each week and adjusted the following one.\n\nThe new version looked less impressive on the wall because it contained more empty space. It also worked better. Erin came to see planning as a way to make decisions before feeling rushed, rather than a promise that the week would contain no surprises. The empty blocks were not signs of missing effort; they were part of the work the plan was doing.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She cancelled all her reading for that term."
+              },
+              {
+                "id": "o1",
+                "text": "She filled it by adding a second club meeting."
+              },
+              {
+                "id": "o2",
+                "text": "She used it to catch up on unfinished reading without losing sleep."
+              },
+              {
+                "id": "o3",
+                "text": "She removed every deadline from the calendar."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "第四段明确把未完阅读移入spare block而非占睡眠。其余取消整学期阅读、加会议或清空所有期限均无依据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.path-and-calendar-004.b.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the passage suggest about the empty blocks?",
+            "material": "B. A calendar with space for the unexpected\n\nAt the beginning of the term, Erin created a study calendar in which every evening was carefully divided. Maths filled one hour, history another, and reading the final half hour before bed. She was pleased with its neat appearance. By the second week, however, she was already working on tasks that the calendar said should have been finished days before.\n\nErin initially blamed herself for failing to follow the plan. Then her tutor asked her to keep a record of what actually happened for five days. The record contained more than time spent studying. It showed a bus arriving late, a younger brother needing help with a project, and a science assignment that required finding a missing library book. None of these appeared in the original calendar.\n\nThe tutor did not suggest abandoning plans. Instead, she asked Erin to estimate tasks from recent experience, identify which deadlines could not move and leave some time unassigned. Erin also separated starting a task from finishing it. An essay could begin with choosing evidence on Monday, even if a complete draft would not be ready until Wednesday.\n\nIn the revised calendar, three evenings included a short spare block. If nothing unexpected happened, Erin could use it to review notes or stop work a little earlier. When a club meeting ran late, she moved unfinished reading into one of those blocks instead of taking time from sleep. She checked the plan at the end of each week and adjusted the following one.\n\nThe new version looked less impressive on the wall because it contained more empty space. It also worked better. Erin came to see planning as a way to make decisions before feeling rushed, rather than a promise that the week would contain no surprises. The empty blocks were not signs of missing effort; they were part of the work the plan was doing.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They show that Erin no longer values effort."
+              },
+              {
+                "id": "o1",
+                "text": "They are useful only if they remain unused all week."
+              },
+              {
+                "id": "o2",
+                "text": "They make the plan unnecessary once the term begins."
+              },
+              {
+                "id": "o3",
+                "text": "They help the plan respond to events that cannot be predicted exactly."
+              }
+            ],
+            "answer": "o3",
+            "explanation": "末段空白时间承担应对surprises功能，并非缺少努力。需要时可使用，不是必须空着；计划仍每周调整，非不再需要。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "a963f0502e417c86eaed7b42939b43a9f4e1d069907c857728861cdcd17794d5",
+      "reviewNotes": "新原创文章与完整设问，逐题对照证据自审各候选；未进行独立教师或学生标定，不声称该档难度或产出质量已稳定。 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.path-and-calendar-004#a",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.path-and-calendar-004.a.q1",
+            "expansion.20261024.senior1.path-and-calendar-004.a.q2",
+            "expansion.20261024.senior1.path-and-calendar-004.a.q3",
+            "expansion.20261024.senior1.path-and-calendar-004.a.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.path-and-calendar-004",
+          "sourceContentHash": "59d5f5f2f112df2a2699b04cce9fbffdeb9a2dcd2ccd708c421698e77d3f1313"
+        },
+        {
+          "id": "expansion.20261024.senior1.path-and-calendar-004#b",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.path-and-calendar-004.b.q1",
+            "expansion.20261024.senior1.path-and-calendar-004.b.q2",
+            "expansion.20261024.senior1.path-and-calendar-004.b.q3",
+            "expansion.20261024.senior1.path-and-calendar-004.b.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.path-and-calendar-004",
+          "sourceContentHash": "8159f599d6f71edaa639610f693e979c742d2e570ab2cafc59d97ce2b21aaab3"
+        }
+      ]
+    }
+  ]
+}

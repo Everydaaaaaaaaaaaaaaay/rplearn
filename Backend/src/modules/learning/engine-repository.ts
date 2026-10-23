@@ -75,6 +75,8 @@ export class LearningEngineRepository {
   ): Promise<T> {
     const hash = contentHash(input);
     const result = await this.database.sql.begin(async (sql) => {
+      // Batch withdrawal takes the exclusive counterpart; no answer can race it.
+      await sql`select pg_advisory_xact_lock_shared(hashtextextended('learning-publication',0))`;
       await sql`select pg_advisory_xact_lock(hashtextextended(${`learning:${userId}`}, 0))`;
       const [existing] = await sql<
         { operation: string; request_hash: string; response: T }[]
@@ -762,7 +764,7 @@ export class LearningSession {
     )
       reject(
         "LEARNING_PRACTICE_REPLACED",
-        "高中练习已按高考题组更新，原作答和积分已保留。请退出并开启新练习。",
+        "本练习已更新或撤回，原作答和积分已保留。请退出并开启新练习。",
       );
   }
 

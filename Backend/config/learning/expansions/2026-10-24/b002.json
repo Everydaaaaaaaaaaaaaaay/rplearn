@@ -1,0 +1,881 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b002",
+  "createdAt": "2026-10-24T01:35:00+08:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.lunch-table-003",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · 午餐桌边",
+        "summary": "午餐桌边，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 完整具体形式参照公开来源；原校/年级难度未独立认证，作者自审不等独立教师或学生验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "本轮新原创完整题组，已对照全文逐题自审正确键和干扰项；不声称独立教师审核、学生难度标定或产出质量已稳定。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.lunch-table-003",
+          "family": "function_choice",
+          "label": "午餐桌边",
+          "candidateSHA256": "db181086fe59a136b91852ba82767d9dca05c1f4730c2d5e3cc86f4b66631bde",
+          "authorCheckSHA256": "3cd51988248c379f963b254b57b68218adac1249e9022b659f7c89d7d24d691f",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.lunch-table-003#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b002；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "At lunch\n\nChoose the reply that completes each short conversation.\n\n1. Lily: Would you like a banana?\nTom: ___\n\n2. Tom: Here is your water, Lily.\nLily: ___\n\n3. Lily: Do you like apples?\nTom: ___\n\n4. Tom: How many oranges are there?\nLily: ___\n\n5. Lily: What's this in your lunch box?\nTom: ___"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.lunch-table-003.whole.q1",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Lily: Would you like a banana?\nTom: ____",
+            "material": "At lunch\n\nChoose the reply that completes each short conversation.\n\n1. Lily: Would you like a banana?\nTom: ___\n\n2. Tom: Here is your water, Lily.\nLily: ___\n\n3. Lily: Do you like apples?\nTom: ___\n\n4. Tom: How many oranges are there?\nLily: ___\n\n5. Lily: What's this in your lunch box?\nTom: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It's blue."
+              },
+              {
+                "id": "o1",
+                "text": "I'm Tom."
+              },
+              {
+                "id": "o2",
+                "text": "Yes, please."
+              },
+              {
+                "id": "o3",
+                "text": "There are two."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "Would you like提供食物，Yes, please礼貌接受。颜色、名字和数量都没有回答是否要香蕉。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary2.lunch-table-003.whole.q2",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Tom: Here is your water, Lily.\nLily: ____",
+            "material": "At lunch\n\nChoose the reply that completes each short conversation.\n\n1. Lily: Would you like a banana?\nTom: ___\n\n2. Tom: Here is your water, Lily.\nLily: ___\n\n3. Lily: Do you like apples?\nTom: ___\n\n4. Tom: How many oranges are there?\nLily: ___\n\n5. Lily: What's this in your lunch box?\nTom: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Good night."
+              },
+              {
+                "id": "o1",
+                "text": "Thank you."
+              },
+              {
+                "id": "o2",
+                "text": "It's yellow."
+              },
+              {
+                "id": "o3",
+                "text": "I'm eight."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "Here is your water递来饮水，应答Thank you。夜间告别、颜色及年龄均不回应递物。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary2.lunch-table-003.whole.q3",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Lily: Do you like apples?\nTom: ____",
+            "material": "At lunch\n\nChoose the reply that completes each short conversation.\n\n1. Lily: Would you like a banana?\nTom: ___\n\n2. Tom: Here is your water, Lily.\nLily: ___\n\n3. Lily: Do you like apples?\nTom: ___\n\n4. Tom: How many oranges are there?\nLily: ___\n\n5. Lily: What's this in your lunch box?\nTom: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It's an apple."
+              },
+              {
+                "id": "o1",
+                "text": "They are red."
+              },
+              {
+                "id": "o2",
+                "text": "There are three."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, I do."
+              }
+            ],
+            "answer": "o3",
+            "explanation": "Do you like询问喜好，Yes, I do正确。物品、颜色和数量陈述未回答喜好问题。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary2.lunch-table-003.whole.q4",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Tom: How many oranges are there?\nLily: ____",
+            "material": "At lunch\n\nChoose the reply that completes each short conversation.\n\n1. Lily: Would you like a banana?\nTom: ___\n\n2. Tom: Here is your water, Lily.\nLily: ___\n\n3. Lily: Do you like apples?\nTom: ___\n\n4. Tom: How many oranges are there?\nLily: ___\n\n5. Lily: What's this in your lunch box?\nTom: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "There are three."
+              },
+              {
+                "id": "o1",
+                "text": "It's orange."
+              },
+              {
+                "id": "o2",
+                "text": "My name is Lily."
+              },
+              {
+                "id": "o3",
+                "text": "You're welcome."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "How many oranges询问数量，There are three直接作答。颜色、名字和回应感谢均不匹配。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary2.lunch-table-003.whole.q5",
+            "goalId": "original.function_choice",
+            "type": "choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Lily: What's this in your lunch box?\nTom: ____",
+            "material": "At lunch\n\nChoose the reply that completes each short conversation.\n\n1. Lily: Would you like a banana?\nTom: ___\n\n2. Tom: Here is your water, Lily.\nLily: ___\n\n3. Lily: Do you like apples?\nTom: ___\n\n4. Tom: How many oranges are there?\nLily: ___\n\n5. Lily: What's this in your lunch box?\nTom: ___",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I'm fine."
+              },
+              {
+                "id": "o1",
+                "text": "Goodbye."
+              },
+              {
+                "id": "o2",
+                "text": "It's a sandwich."
+              },
+              {
+                "id": "o3",
+                "text": "I'm seven."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "What's this询问盒内物品，It's a sandwich直接回答。身体状态、告别和年龄均与问题无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "b8b51fd99cbc78a68ea610ac38e2f71c2af71f745dddd8a370239be2c9c069b6",
+      "reviewNotes": "本轮新原创完整题组，已对照全文逐题自审正确键和干扰项；不声称独立教师审核、学生难度标定或产出质量已稳定。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.return-and-notice-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · 阅读理解 · 两篇 · 杯子与候车亭",
+        "summary": "阅读理解 · 两篇 · 杯子与候车亭，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.2024.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "本轮新原创完整题组，已对照全文逐题自审正确键和干扰项；不声称独立教师审核、学生难度标定或产出质量已稳定。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.return-and-notice-001",
+          "family": "reading_choice",
+          "label": "阅读理解 · 两篇 · 杯子与候车亭",
+          "candidateSHA256": "347fedd4d2a0f25116736d02f29c1452b90f7e8e7390fd33a58d6f19694ab12d",
+          "authorCheckSHA256": "5d1df85aa52d360c56fd2df4dcd5e42a18d06a7b96ee845fbf7a72358c8274e2",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.return-and-notice-001#a",
+            "expansion.20261024.senior1.return-and-notice-001#b"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b002；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. A place for the cup to come back\n\nWhen the owner of a small station café introduced reusable cups, she expected the deposit to do most of the work. Customers paid two extra pounds and got the money back when they returned a cup. The cups were strong, easy to wash and popular with regular visitors. Yet after a month, nearly half were still missing.\n\nThe owner, Leah, asked customers what had happened. Few had deliberately kept a cup. Some had carried it onto a train and could not return to the same station. Others had left it at an office, then forgotten about it until their next visit. A larger deposit might have encouraged them to remember, but it would also have made a morning drink more expensive.\n\nLeah tried a different approach. Two nearby cafés agreed to accept her cups, and she agreed to accept theirs. A simple sticker showed all three return points. The businesses kept a shared record so that returning a cup at a different café did not leave one owner paying for another owner's customers. No new phone application was required.\n\nReturns increased, although not immediately. For the first week, staff had to explain that any of the three cafés could take a cup back. Leah also placed a return box beside the door, where people could leave a cup without joining the queue for drinks. Customers still had to speak to a staff member if they wanted their deposit in cash.\n\nAfter three months, the owners chose to continue the arrangement. They had not proved that every customer cared more about waste than before. What they had shown, Leah believed, was narrower and more useful: people were more likely to complete a good intention when the last step fitted into the route they already took.\n\nB. Looking beyond the finished photograph\n\nFor a local photography competition, sixteen-year-old Daniel planned to take a picture of the old bus shelter near his home. Its roof had a curved glass panel, and late sunlight made a bright pattern on the pavement. He had seen the pattern many times, but he had never stopped to work out exactly when it appeared.\n\nHis first attempt was disappointing. He arrived at five o'clock, the time printed on a photograph he had taken in spring. It was now September, and the light fell on a different part of the shelter. A bus blocked the view just as he pressed the button. Daniel could have removed it later on a computer, but he wanted the photograph to record a real moment.\n\nOver the next week he visited at several different times. He wrote down where the light fell, how long each bus waited and which parts of the shelter remained in shadow. A woman who cleaned the shelter noticed his notebook. She explained that buses stayed longer on Tuesdays because a nearby market brought more passengers. She also pointed out a clear view from a small public path behind the shelter.\n\nDaniel's final photograph included a bus. This time it was not blocking the pattern: its dark side made the bright pavement easier to see. The picture did not win first prize, but the judges praised the way it connected an ordinary structure with the movement of the street.\n\nWhen his teacher asked what he had learned, Daniel did not describe a new camera setting. He talked about returning to one place, noticing what changed and listening to someone who knew it in a different way. The photograph had taken only a second. Preparing to notice that second, he said, had taken a week."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.return-and-notice-001.a.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did Leah learn from speaking to customers?",
+            "material": "A. A place for the cup to come back\n\nWhen the owner of a small station café introduced reusable cups, she expected the deposit to do most of the work. Customers paid two extra pounds and got the money back when they returned a cup. The cups were strong, easy to wash and popular with regular visitors. Yet after a month, nearly half were still missing.\n\nThe owner, Leah, asked customers what had happened. Few had deliberately kept a cup. Some had carried it onto a train and could not return to the same station. Others had left it at an office, then forgotten about it until their next visit. A larger deposit might have encouraged them to remember, but it would also have made a morning drink more expensive.\n\nLeah tried a different approach. Two nearby cafés agreed to accept her cups, and she agreed to accept theirs. A simple sticker showed all three return points. The businesses kept a shared record so that returning a cup at a different café did not leave one owner paying for another owner's customers. No new phone application was required.\n\nReturns increased, although not immediately. For the first week, staff had to explain that any of the three cafés could take a cup back. Leah also placed a return box beside the door, where people could leave a cup without joining the queue for drinks. Customers still had to speak to a staff member if they wanted their deposit in cash.\n\nAfter three months, the owners chose to continue the arrangement. They had not proved that every customer cared more about waste than before. What they had shown, Leah believed, was narrower and more useful: people were more likely to complete a good intention when the last step fitted into the route they already took.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Most missing cups had been sold to other passengers."
+              },
+              {
+                "id": "o1",
+                "text": "Returning to the original café was often inconvenient."
+              },
+              {
+                "id": "o2",
+                "text": "The cups were too weak for journeys by train."
+              },
+              {
+                "id": "o3",
+                "text": "Customers wanted every deposit to be increased."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "第二段列出乘火车离开原站、杯子留在办公室等，核心是原点归还不便。没有转售、强度差或普遍要求提高押金的证据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.return-and-notice-001.a.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the cafés keep a shared record?",
+            "material": "A. A place for the cup to come back\n\nWhen the owner of a small station café introduced reusable cups, she expected the deposit to do most of the work. Customers paid two extra pounds and got the money back when they returned a cup. The cups were strong, easy to wash and popular with regular visitors. Yet after a month, nearly half were still missing.\n\nThe owner, Leah, asked customers what had happened. Few had deliberately kept a cup. Some had carried it onto a train and could not return to the same station. Others had left it at an office, then forgotten about it until their next visit. A larger deposit might have encouraged them to remember, but it would also have made a morning drink more expensive.\n\nLeah tried a different approach. Two nearby cafés agreed to accept her cups, and she agreed to accept theirs. A simple sticker showed all three return points. The businesses kept a shared record so that returning a cup at a different café did not leave one owner paying for another owner's customers. No new phone application was required.\n\nReturns increased, although not immediately. For the first week, staff had to explain that any of the three cafés could take a cup back. Leah also placed a return box beside the door, where people could leave a cup without joining the queue for drinks. Customers still had to speak to a staff member if they wanted their deposit in cash.\n\nAfter three months, the owners chose to continue the arrangement. They had not proved that every customer cared more about waste than before. What they had shown, Leah believed, was narrower and more useful: people were more likely to complete a good intention when the last step fitted into the route they already took.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To identify customers who disliked reusable cups."
+              },
+              {
+                "id": "o1",
+                "text": "To decide which café should close its return point."
+              },
+              {
+                "id": "o2",
+                "text": "To balance the costs of accepting each other's cups."
+              },
+              {
+                "id": "o3",
+                "text": "To record how many drinks each passenger bought."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "第三段明确为避免某店为另一店顾客承担返还成本，C正确。记录不用于态度识别、关闭网点或统计乘客饮品购买量。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.return-and-notice-001.a.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What could customers do at the box beside the door?",
+            "material": "A. A place for the cup to come back\n\nWhen the owner of a small station café introduced reusable cups, she expected the deposit to do most of the work. Customers paid two extra pounds and got the money back when they returned a cup. The cups were strong, easy to wash and popular with regular visitors. Yet after a month, nearly half were still missing.\n\nThe owner, Leah, asked customers what had happened. Few had deliberately kept a cup. Some had carried it onto a train and could not return to the same station. Others had left it at an office, then forgotten about it until their next visit. A larger deposit might have encouraged them to remember, but it would also have made a morning drink more expensive.\n\nLeah tried a different approach. Two nearby cafés agreed to accept her cups, and she agreed to accept theirs. A simple sticker showed all three return points. The businesses kept a shared record so that returning a cup at a different café did not leave one owner paying for another owner's customers. No new phone application was required.\n\nReturns increased, although not immediately. For the first week, staff had to explain that any of the three cafés could take a cup back. Leah also placed a return box beside the door, where people could leave a cup without joining the queue for drinks. Customers still had to speak to a staff member if they wanted their deposit in cash.\n\nAfter three months, the owners chose to continue the arrangement. They had not proved that every customer cared more about waste than before. What they had shown, Leah believed, was narrower and more useful: people were more likely to complete a good intention when the last step fitted into the route they already took.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Leave a cup without waiting in the drinks queue."
+              },
+              {
+                "id": "o1",
+                "text": "Collect a cash deposit without contacting staff."
+              },
+              {
+                "id": "o2",
+                "text": "Choose a new cup without paying for a drink."
+              },
+              {
+                "id": "o3",
+                "text": "Exchange train tickets for a free reusable cup."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "第四段明确return box使人不用排买饮品队即可放杯。现金押金仍须找店员，B与原文相反；免费领杯、票换杯均未提及。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.return-and-notice-001.a.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which conclusion is best supported by the café arrangement?",
+            "material": "A. A place for the cup to come back\n\nWhen the owner of a small station café introduced reusable cups, she expected the deposit to do most of the work. Customers paid two extra pounds and got the money back when they returned a cup. The cups were strong, easy to wash and popular with regular visitors. Yet after a month, nearly half were still missing.\n\nThe owner, Leah, asked customers what had happened. Few had deliberately kept a cup. Some had carried it onto a train and could not return to the same station. Others had left it at an office, then forgotten about it until their next visit. A larger deposit might have encouraged them to remember, but it would also have made a morning drink more expensive.\n\nLeah tried a different approach. Two nearby cafés agreed to accept her cups, and she agreed to accept theirs. A simple sticker showed all three return points. The businesses kept a shared record so that returning a cup at a different café did not leave one owner paying for another owner's customers. No new phone application was required.\n\nReturns increased, although not immediately. For the first week, staff had to explain that any of the three cafés could take a cup back. Leah also placed a return box beside the door, where people could leave a cup without joining the queue for drinks. Customers still had to speak to a staff member if they wanted their deposit in cash.\n\nAfter three months, the owners chose to continue the arrangement. They had not proved that every customer cared more about waste than before. What they had shown, Leah believed, was narrower and more useful: people were more likely to complete a good intention when the last step fitted into the route they already took.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Higher deposits always reduce the number of missing cups."
+              },
+              {
+                "id": "o1",
+                "text": "A phone application is necessary for shared return schemes."
+              },
+              {
+                "id": "o2",
+                "text": "All customers had developed a stronger concern for waste."
+              },
+              {
+                "id": "o3",
+                "text": "A convenient final step can help people carry out an intention."
+              }
+            ],
+            "answer": "o3",
+            "explanation": "末段将结果限定为把最后一步嵌入日常路线有助执行善意。未试更高押金，无需新App，且明确没有证明所有人更关心垃圾。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.return-and-notice-001.b.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the time on Daniel's spring photograph fail to guide him in September?",
+            "material": "B. Looking beyond the finished photograph\n\nFor a local photography competition, sixteen-year-old Daniel planned to take a picture of the old bus shelter near his home. Its roof had a curved glass panel, and late sunlight made a bright pattern on the pavement. He had seen the pattern many times, but he had never stopped to work out exactly when it appeared.\n\nHis first attempt was disappointing. He arrived at five o'clock, the time printed on a photograph he had taken in spring. It was now September, and the light fell on a different part of the shelter. A bus blocked the view just as he pressed the button. Daniel could have removed it later on a computer, but he wanted the photograph to record a real moment.\n\nOver the next week he visited at several different times. He wrote down where the light fell, how long each bus waited and which parts of the shelter remained in shadow. A woman who cleaned the shelter noticed his notebook. She explained that buses stayed longer on Tuesdays because a nearby market brought more passengers. She also pointed out a clear view from a small public path behind the shelter.\n\nDaniel's final photograph included a bus. This time it was not blocking the pattern: its dark side made the bright pavement easier to see. The picture did not win first prize, but the judges praised the way it connected an ordinary structure with the movement of the street.\n\nWhen his teacher asked what he had learned, Daniel did not describe a new camera setting. He talked about returning to one place, noticing what changed and listening to someone who knew it in a different way. The photograph had taken only a second. Preparing to notice that second, he said, had taken a week.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The shelter had been moved to another street."
+              },
+              {
+                "id": "o1",
+                "text": "His camera had recorded the wrong time."
+              },
+              {
+                "id": "o2",
+                "text": "The seasonal change had altered the position of the light."
+              },
+              {
+                "id": "o3",
+                "text": "The glass panel had been replaced with a solid roof."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "第二段春季五点与九月五点光照位置不同，C概括季节变化。亭子迁址、时钟错误和屋顶更换都无依据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.return-and-notice-001.b.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How did the cleaner help Daniel?",
+            "material": "B. Looking beyond the finished photograph\n\nFor a local photography competition, sixteen-year-old Daniel planned to take a picture of the old bus shelter near his home. Its roof had a curved glass panel, and late sunlight made a bright pattern on the pavement. He had seen the pattern many times, but he had never stopped to work out exactly when it appeared.\n\nHis first attempt was disappointing. He arrived at five o'clock, the time printed on a photograph he had taken in spring. It was now September, and the light fell on a different part of the shelter. A bus blocked the view just as he pressed the button. Daniel could have removed it later on a computer, but he wanted the photograph to record a real moment.\n\nOver the next week he visited at several different times. He wrote down where the light fell, how long each bus waited and which parts of the shelter remained in shadow. A woman who cleaned the shelter noticed his notebook. She explained that buses stayed longer on Tuesdays because a nearby market brought more passengers. She also pointed out a clear view from a small public path behind the shelter.\n\nDaniel's final photograph included a bus. This time it was not blocking the pattern: its dark side made the bright pavement easier to see. The picture did not win first prize, but the judges praised the way it connected an ordinary structure with the movement of the street.\n\nWhen his teacher asked what he had learned, Daniel did not describe a new camera setting. He talked about returning to one place, noticing what changed and listening to someone who knew it in a different way. The photograph had taken only a second. Preparing to notice that second, he said, had taken a week.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She removed all the buses from his chosen view."
+              },
+              {
+                "id": "o1",
+                "text": "She offered knowledge of the timetable pattern and another viewpoint."
+              },
+              {
+                "id": "o2",
+                "text": "She lent him a camera designed for street photography."
+              },
+              {
+                "id": "o3",
+                "text": "She asked the judges to look closely at his notebook."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "第三段她解释周二因集市停车更久，并指出后方小路视角。没有移走公交、借相机或联系评委。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.return-and-notice-001.b.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What role did the bus play in the final photograph?",
+            "material": "B. Looking beyond the finished photograph\n\nFor a local photography competition, sixteen-year-old Daniel planned to take a picture of the old bus shelter near his home. Its roof had a curved glass panel, and late sunlight made a bright pattern on the pavement. He had seen the pattern many times, but he had never stopped to work out exactly when it appeared.\n\nHis first attempt was disappointing. He arrived at five o'clock, the time printed on a photograph he had taken in spring. It was now September, and the light fell on a different part of the shelter. A bus blocked the view just as he pressed the button. Daniel could have removed it later on a computer, but he wanted the photograph to record a real moment.\n\nOver the next week he visited at several different times. He wrote down where the light fell, how long each bus waited and which parts of the shelter remained in shadow. A woman who cleaned the shelter noticed his notebook. She explained that buses stayed longer on Tuesdays because a nearby market brought more passengers. She also pointed out a clear view from a small public path behind the shelter.\n\nDaniel's final photograph included a bus. This time it was not blocking the pattern: its dark side made the bright pavement easier to see. The picture did not win first prize, but the judges praised the way it connected an ordinary structure with the movement of the street.\n\nWhen his teacher asked what he had learned, Daniel did not describe a new camera setting. He talked about returning to one place, noticing what changed and listening to someone who knew it in a different way. The photograph had taken only a second. Preparing to notice that second, he said, had taken a week.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It helped the bright pattern stand out."
+              },
+              {
+                "id": "o1",
+                "text": "It completely hid the curved glass panel."
+              },
+              {
+                "id": "o2",
+                "text": "It showed that the shelter was no longer used."
+              },
+              {
+                "id": "o3",
+                "text": "It replaced the pavement as the only subject."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "第四段dark side made the bright pavement easier to see，车的暗面衬托亮纹。完全遮亭、停用和唯独拍车都不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.return-and-notice-001.b.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the main lesson Daniel took from the project?",
+            "material": "B. Looking beyond the finished photograph\n\nFor a local photography competition, sixteen-year-old Daniel planned to take a picture of the old bus shelter near his home. Its roof had a curved glass panel, and late sunlight made a bright pattern on the pavement. He had seen the pattern many times, but he had never stopped to work out exactly when it appeared.\n\nHis first attempt was disappointing. He arrived at five o'clock, the time printed on a photograph he had taken in spring. It was now September, and the light fell on a different part of the shelter. A bus blocked the view just as he pressed the button. Daniel could have removed it later on a computer, but he wanted the photograph to record a real moment.\n\nOver the next week he visited at several different times. He wrote down where the light fell, how long each bus waited and which parts of the shelter remained in shadow. A woman who cleaned the shelter noticed his notebook. She explained that buses stayed longer on Tuesdays because a nearby market brought more passengers. She also pointed out a clear view from a small public path behind the shelter.\n\nDaniel's final photograph included a bus. This time it was not blocking the pattern: its dark side made the bright pavement easier to see. The picture did not win first prize, but the judges praised the way it connected an ordinary structure with the movement of the street.\n\nWhen his teacher asked what he had learned, Daniel did not describe a new camera setting. He talked about returning to one place, noticing what changed and listening to someone who knew it in a different way. The photograph had taken only a second. Preparing to notice that second, he said, had taken a week.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Winning a prize is the best measure of a photograph."
+              },
+              {
+                "id": "o1",
+                "text": "Computer editing is more useful than visiting a location."
+              },
+              {
+                "id": "o2",
+                "text": "A better camera removes the need for careful preparation."
+              },
+              {
+                "id": "o3",
+                "text": "Patient observation and other people's knowledge can improve one's work."
+              }
+            ],
+            "answer": "o3",
+            "explanation": "末段强调反复观察变化、倾听熟悉地点者，D综合全文。作品未夺冠却有收获，A不符；他坚持真实瞬间，B不符；没有升级相机且重视准备，C不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "524c1361069592351f0b6ee70536fcc3765f8c6f698f727b78bbe9efd3c4f115",
+      "reviewNotes": "本轮新原创完整题组，已对照全文逐题自审正确键和干扰项；不声称独立教师审核、学生难度标定或产出质量已稳定。 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.return-and-notice-001#a",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.return-and-notice-001.a.q1",
+            "expansion.20261024.senior1.return-and-notice-001.a.q2",
+            "expansion.20261024.senior1.return-and-notice-001.a.q3",
+            "expansion.20261024.senior1.return-and-notice-001.a.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.return-and-notice-001",
+          "sourceContentHash": "2bb2393adbac035e99898c85dca781329b250f865a3bcb0a258ed57e6b44b448"
+        },
+        {
+          "id": "expansion.20261024.senior1.return-and-notice-001#b",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.return-and-notice-001.b.q1",
+            "expansion.20261024.senior1.return-and-notice-001.b.q2",
+            "expansion.20261024.senior1.return-and-notice-001.b.q3",
+            "expansion.20261024.senior1.return-and-notice-001.b.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.return-and-notice-001",
+          "sourceContentHash": "fa4129975a9886e1027cacb2b94a69aa8384a2e44cdc84cc19a29c593bba74f2"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.library-and-seedlings-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · 阅读理解 · 两篇 · 流动书架与幼苗",
+        "summary": "阅读理解 · 两篇 · 流动书架与幼苗，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.2024.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "本轮新原创完整题组，已对照全文逐题自审正确键和干扰项；不声称独立教师审核、学生难度标定或产出质量已稳定。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.library-and-seedlings-002",
+          "family": "reading_choice",
+          "label": "阅读理解 · 两篇 · 流动书架与幼苗",
+          "candidateSHA256": "8a23f0b894f15c0acb6dcb31047176dcd0a37804c679ca69e44e20ff174be080",
+          "authorCheckSHA256": "8832c661d2ef22acb1f92dce76ec2c43e434e34161aac2b3284bfadb8ce61ae9",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.library-and-seedlings-002#a",
+            "expansion.20261024.senior1.library-and-seedlings-002#b"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b002；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. The library that needed a smaller vehicle\n\nThe town's mobile library was a large van with shelves along both sides. Every Wednesday it visited three villages, carrying books to people who found the main library difficult to reach. When road repairs closed the entrance to one village, the library team expected to miss only a week. The work, however, was extended twice.\n\nResidents suggested parking at the edge of the village. For some readers that would have been enough, but the walking route included a steep hill. The librarian, Nisha, was especially concerned about readers who used walking aids. Moving the service closer on a map did not necessarily make it easier to use.\n\nA volunteer offered a cargo bicycle with a large covered box. It could use a narrow path that remained open during the repairs. The bicycle could carry far fewer books than the van, so Nisha could not simply move the van's usual selection into the box. She invited readers to request books by telephone a few days before each visit. She also left room for a small changing collection, so that readers could still discover something they had not asked for.\n\nThe first delivery revealed another problem. A paper list at the bottom of the box became difficult to find when it rained. The team put books into labelled reusable bags and attached the list inside a waterproof cover. They kept the familiar Wednesday schedule instead of introducing extra visits that volunteers might not be able to maintain.\n\nThe bicycle service ended when the road reopened. Its value was not that it could replace every library van. The team kept the request system, which helped them choose books more carefully for all three villages. A temporary restriction had made them ask a lasting question: which part of a service must remain fixed, and which part can change to help the people who use it?\n\nB. What the seedlings could actually tell them\n\nA school gardening club wanted to find out whether used tea leaves helped bean seedlings grow. Its members had seen videos recommending the practice, but they noticed that the videos often compared plants in different pots or different places. They decided to design a comparison of their own.\n\nThe club planted twenty beans from the same packet in pots of the same size. Ten pots received a measured amount of dried tea leaves mixed into the soil; the other ten received none. Both sets stood on the same long table. Each day, two students used marked containers to give the pots equal amounts of water. Every few days they exchanged the positions of the pots so that one set would not always receive more light.\n\nThree weeks later, the seedlings with tea leaves were, on average, slightly taller. However, the heights within each set varied greatly, and two seedlings without tea leaves were taller than any of the others. Some members wanted to announce that the tea treatment had worked. Their teacher asked them to look again at the size of the difference and the amount of variation.\n\nInstead of preparing a poster saying 'Tea makes beans grow faster', the students described exactly what they had done and shown. They included the height of every seedling, not just the two most impressive plants. They also noted that they had tested one type of bean in one kind of soil for only three weeks.\n\nNext term, they planned to repeat the comparison and try a second amount of tea leaves. Their first experiment had not given them a simple gardening rule. It had given them something they could use more widely: a way to ask whether a neat conclusion was stronger than the observations supporting it."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.library-and-seedlings-002.a.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why was parking the van at the village edge insufficient for some readers?",
+            "material": "A. The library that needed a smaller vehicle\n\nThe town's mobile library was a large van with shelves along both sides. Every Wednesday it visited three villages, carrying books to people who found the main library difficult to reach. When road repairs closed the entrance to one village, the library team expected to miss only a week. The work, however, was extended twice.\n\nResidents suggested parking at the edge of the village. For some readers that would have been enough, but the walking route included a steep hill. The librarian, Nisha, was especially concerned about readers who used walking aids. Moving the service closer on a map did not necessarily make it easier to use.\n\nA volunteer offered a cargo bicycle with a large covered box. It could use a narrow path that remained open during the repairs. The bicycle could carry far fewer books than the van, so Nisha could not simply move the van's usual selection into the box. She invited readers to request books by telephone a few days before each visit. She also left room for a small changing collection, so that readers could still discover something they had not asked for.\n\nThe first delivery revealed another problem. A paper list at the bottom of the box became difficult to find when it rained. The team put books into labelled reusable bags and attached the list inside a waterproof cover. They kept the familiar Wednesday schedule instead of introducing extra visits that volunteers might not be able to maintain.\n\nThe bicycle service ended when the road reopened. Its value was not that it could replace every library van. The team kept the request system, which helped them choose books more carefully for all three villages. A temporary restriction had made them ask a lasting question: which part of a service must remain fixed, and which part can change to help the people who use it?",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The parking area was reserved for market traders."
+              },
+              {
+                "id": "o1",
+                "text": "The remaining walk included a difficult hill."
+              },
+              {
+                "id": "o2",
+                "text": "The readers could borrow books only inside a building."
+              },
+              {
+                "id": "o3",
+                "text": "The van was unable to carry books in wet weather."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "第二段明确剩余步行路有陡坡，对使用助行工具者尤其不便。停车限制、只能在建筑内借书和车不能雨天载书均未说。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.library-and-seedlings-002.a.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What was the main reason for introducing telephone requests?",
+            "material": "A. The library that needed a smaller vehicle\n\nThe town's mobile library was a large van with shelves along both sides. Every Wednesday it visited three villages, carrying books to people who found the main library difficult to reach. When road repairs closed the entrance to one village, the library team expected to miss only a week. The work, however, was extended twice.\n\nResidents suggested parking at the edge of the village. For some readers that would have been enough, but the walking route included a steep hill. The librarian, Nisha, was especially concerned about readers who used walking aids. Moving the service closer on a map did not necessarily make it easier to use.\n\nA volunteer offered a cargo bicycle with a large covered box. It could use a narrow path that remained open during the repairs. The bicycle could carry far fewer books than the van, so Nisha could not simply move the van's usual selection into the box. She invited readers to request books by telephone a few days before each visit. She also left room for a small changing collection, so that readers could still discover something they had not asked for.\n\nThe first delivery revealed another problem. A paper list at the bottom of the box became difficult to find when it rained. The team put books into labelled reusable bags and attached the list inside a waterproof cover. They kept the familiar Wednesday schedule instead of introducing extra visits that volunteers might not be able to maintain.\n\nThe bicycle service ended when the road reopened. Its value was not that it could replace every library van. The team kept the request system, which helped them choose books more carefully for all three villages. A temporary restriction had made them ask a lasting question: which part of a service must remain fixed, and which part can change to help the people who use it?",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To charge readers before delivering their books."
+              },
+              {
+                "id": "o1",
+                "text": "To stop readers from discovering unfamiliar books."
+              },
+              {
+                "id": "o2",
+                "text": "To make the bicycle's limited carrying space more useful."
+              },
+              {
+                "id": "o3",
+                "text": "To replace the librarian with a computer service."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "第三段先说明自行车载书少，再安排提前点书以精准配载。没有收费，仍留探索选书；没有电脑替代馆员。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.library-and-seedlings-002.a.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the team deliberately keep unchanged?",
+            "material": "A. The library that needed a smaller vehicle\n\nThe town's mobile library was a large van with shelves along both sides. Every Wednesday it visited three villages, carrying books to people who found the main library difficult to reach. When road repairs closed the entrance to one village, the library team expected to miss only a week. The work, however, was extended twice.\n\nResidents suggested parking at the edge of the village. For some readers that would have been enough, but the walking route included a steep hill. The librarian, Nisha, was especially concerned about readers who used walking aids. Moving the service closer on a map did not necessarily make it easier to use.\n\nA volunteer offered a cargo bicycle with a large covered box. It could use a narrow path that remained open during the repairs. The bicycle could carry far fewer books than the van, so Nisha could not simply move the van's usual selection into the box. She invited readers to request books by telephone a few days before each visit. She also left room for a small changing collection, so that readers could still discover something they had not asked for.\n\nThe first delivery revealed another problem. A paper list at the bottom of the box became difficult to find when it rained. The team put books into labelled reusable bags and attached the list inside a waterproof cover. They kept the familiar Wednesday schedule instead of introducing extra visits that volunteers might not be able to maintain.\n\nThe bicycle service ended when the road reopened. Its value was not that it could replace every library van. The team kept the request system, which helped them choose books more carefully for all three villages. A temporary restriction had made them ask a lasting question: which part of a service must remain fixed, and which part can change to help the people who use it?",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The number of books carried on each trip."
+              },
+              {
+                "id": "o1",
+                "text": "The location of the paper list in the box."
+              },
+              {
+                "id": "o2",
+                "text": "The way all books were packed for delivery."
+              },
+              {
+                "id": "o3",
+                "text": "The regular day of the weekly visit."
+              }
+            ],
+            "answer": "o3",
+            "explanation": "第四段kept the familiar Wednesday schedule。载书量已减少，清单位置和包装已因雨调整，前三项不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.library-and-seedlings-002.a.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What continued after the road reopened?",
+            "material": "A. The library that needed a smaller vehicle\n\nThe town's mobile library was a large van with shelves along both sides. Every Wednesday it visited three villages, carrying books to people who found the main library difficult to reach. When road repairs closed the entrance to one village, the library team expected to miss only a week. The work, however, was extended twice.\n\nResidents suggested parking at the edge of the village. For some readers that would have been enough, but the walking route included a steep hill. The librarian, Nisha, was especially concerned about readers who used walking aids. Moving the service closer on a map did not necessarily make it easier to use.\n\nA volunteer offered a cargo bicycle with a large covered box. It could use a narrow path that remained open during the repairs. The bicycle could carry far fewer books than the van, so Nisha could not simply move the van's usual selection into the box. She invited readers to request books by telephone a few days before each visit. She also left room for a small changing collection, so that readers could still discover something they had not asked for.\n\nThe first delivery revealed another problem. A paper list at the bottom of the box became difficult to find when it rained. The team put books into labelled reusable bags and attached the list inside a waterproof cover. They kept the familiar Wednesday schedule instead of introducing extra visits that volunteers might not be able to maintain.\n\nThe bicycle service ended when the road reopened. Its value was not that it could replace every library van. The team kept the request system, which helped them choose books more carefully for all three villages. A temporary restriction had made them ask a lasting question: which part of a service must remain fixed, and which part can change to help the people who use it?",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The system of requesting books in advance."
+              },
+              {
+                "id": "o1",
+                "text": "The permanent replacement of every van with a bicycle."
+              },
+              {
+                "id": "o2",
+                "text": "The closure of the village entrance each Wednesday."
+              },
+              {
+                "id": "o3",
+                "text": "The removal of all unrequested books from the service."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "末段明确保留request system。自行车服务已结束，路重开，且一直留有未点选的探索书，不支持其余三项。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.library-and-seedlings-002.b.q1",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the students exchange the positions of the pots?",
+            "material": "B. What the seedlings could actually tell them\n\nA school gardening club wanted to find out whether used tea leaves helped bean seedlings grow. Its members had seen videos recommending the practice, but they noticed that the videos often compared plants in different pots or different places. They decided to design a comparison of their own.\n\nThe club planted twenty beans from the same packet in pots of the same size. Ten pots received a measured amount of dried tea leaves mixed into the soil; the other ten received none. Both sets stood on the same long table. Each day, two students used marked containers to give the pots equal amounts of water. Every few days they exchanged the positions of the pots so that one set would not always receive more light.\n\nThree weeks later, the seedlings with tea leaves were, on average, slightly taller. However, the heights within each set varied greatly, and two seedlings without tea leaves were taller than any of the others. Some members wanted to announce that the tea treatment had worked. Their teacher asked them to look again at the size of the difference and the amount of variation.\n\nInstead of preparing a poster saying 'Tea makes beans grow faster', the students described exactly what they had done and shown. They included the height of every seedling, not just the two most impressive plants. They also noted that they had tested one type of bean in one kind of soil for only three weeks.\n\nNext term, they planned to repeat the comparison and try a second amount of tea leaves. Their first experiment had not given them a simple gardening rule. It had given them something they could use more widely: a way to ask whether a neat conclusion was stronger than the observations supporting it.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To reduce the effect of unequal light on the comparison."
+              },
+              {
+                "id": "o1",
+                "text": "To give the tea-treated plants more water."
+              },
+              {
+                "id": "o2",
+                "text": "To separate tall seedlings from short ones."
+              },
+              {
+                "id": "o3",
+                "text": "To prevent the bean plants from growing roots."
+              }
+            ],
+            "answer": "o0",
+            "explanation": "第二段明确交换位置防止一组总获更多光，A正确。水量保持相同，不按身高分组，也不抑制生根。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.library-and-seedlings-002.b.q2",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the teacher question the students' first conclusion?",
+            "material": "B. What the seedlings could actually tell them\n\nA school gardening club wanted to find out whether used tea leaves helped bean seedlings grow. Its members had seen videos recommending the practice, but they noticed that the videos often compared plants in different pots or different places. They decided to design a comparison of their own.\n\nThe club planted twenty beans from the same packet in pots of the same size. Ten pots received a measured amount of dried tea leaves mixed into the soil; the other ten received none. Both sets stood on the same long table. Each day, two students used marked containers to give the pots equal amounts of water. Every few days they exchanged the positions of the pots so that one set would not always receive more light.\n\nThree weeks later, the seedlings with tea leaves were, on average, slightly taller. However, the heights within each set varied greatly, and two seedlings without tea leaves were taller than any of the others. Some members wanted to announce that the tea treatment had worked. Their teacher asked them to look again at the size of the difference and the amount of variation.\n\nInstead of preparing a poster saying 'Tea makes beans grow faster', the students described exactly what they had done and shown. They included the height of every seedling, not just the two most impressive plants. They also noted that they had tested one type of bean in one kind of soil for only three weeks.\n\nNext term, they planned to repeat the comparison and try a second amount of tea leaves. Their first experiment had not given them a simple gardening rule. It had given them something they could use more widely: a way to ask whether a neat conclusion was stronger than the observations supporting it.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "No seedling with tea leaves had grown at all."
+              },
+              {
+                "id": "o1",
+                "text": "The tea leaves had been placed in every pot."
+              },
+              {
+                "id": "o2",
+                "text": "A small average difference existed alongside large variation."
+              },
+              {
+                "id": "o3",
+                "text": "The students had forgotten to record any heights."
+              }
+            ],
+            "answer": "o2",
+            "explanation": "第三段平均略高但组内差异大，且未处理组也有最高个体。没有全不长、全盆加茶或完全无记录。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.library-and-seedlings-002.b.q3",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which detail made the students' final report more informative?",
+            "material": "B. What the seedlings could actually tell them\n\nA school gardening club wanted to find out whether used tea leaves helped bean seedlings grow. Its members had seen videos recommending the practice, but they noticed that the videos often compared plants in different pots or different places. They decided to design a comparison of their own.\n\nThe club planted twenty beans from the same packet in pots of the same size. Ten pots received a measured amount of dried tea leaves mixed into the soil; the other ten received none. Both sets stood on the same long table. Each day, two students used marked containers to give the pots equal amounts of water. Every few days they exchanged the positions of the pots so that one set would not always receive more light.\n\nThree weeks later, the seedlings with tea leaves were, on average, slightly taller. However, the heights within each set varied greatly, and two seedlings without tea leaves were taller than any of the others. Some members wanted to announce that the tea treatment had worked. Their teacher asked them to look again at the size of the difference and the amount of variation.\n\nInstead of preparing a poster saying 'Tea makes beans grow faster', the students described exactly what they had done and shown. They included the height of every seedling, not just the two most impressive plants. They also noted that they had tested one type of bean in one kind of soil for only three weeks.\n\nNext term, they planned to repeat the comparison and try a second amount of tea leaves. Their first experiment had not given them a simple gardening rule. It had given them something they could use more widely: a way to ask whether a neat conclusion was stronger than the observations supporting it.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It included only the two tallest seedlings."
+              },
+              {
+                "id": "o1",
+                "text": "It presented every seedling's height and the study's limits."
+              },
+              {
+                "id": "o2",
+                "text": "It turned one short comparison into a universal rule."
+              },
+              {
+                "id": "o3",
+                "text": "It removed all results that did not support the tea treatment."
+              }
+            ],
+            "answer": "o1",
+            "explanation": "第四段报告全部幼苗高度，并说明单一豆种、土壤和三周限制。A/D为挑选数据，与全文相反；C为过度推广，被明确避免。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.senior1.library-and-seedlings-002.b.q4",
+            "goalId": "original.reading_choice",
+            "type": "choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What broader skill did the experiment help students develop?",
+            "material": "B. What the seedlings could actually tell them\n\nA school gardening club wanted to find out whether used tea leaves helped bean seedlings grow. Its members had seen videos recommending the practice, but they noticed that the videos often compared plants in different pots or different places. They decided to design a comparison of their own.\n\nThe club planted twenty beans from the same packet in pots of the same size. Ten pots received a measured amount of dried tea leaves mixed into the soil; the other ten received none. Both sets stood on the same long table. Each day, two students used marked containers to give the pots equal amounts of water. Every few days they exchanged the positions of the pots so that one set would not always receive more light.\n\nThree weeks later, the seedlings with tea leaves were, on average, slightly taller. However, the heights within each set varied greatly, and two seedlings without tea leaves were taller than any of the others. Some members wanted to announce that the tea treatment had worked. Their teacher asked them to look again at the size of the difference and the amount of variation.\n\nInstead of preparing a poster saying 'Tea makes beans grow faster', the students described exactly what they had done and shown. They included the height of every seedling, not just the two most impressive plants. They also noted that they had tested one type of bean in one kind of soil for only three weeks.\n\nNext term, they planned to repeat the comparison and try a second amount of tea leaves. Their first experiment had not given them a simple gardening rule. It had given them something they could use more widely: a way to ask whether a neat conclusion was stronger than the observations supporting it.",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Choosing videos with the shortest instructions."
+              },
+              {
+                "id": "o1",
+                "text": "Measuring plants without using any equipment."
+              },
+              {
+                "id": "o2",
+                "text": "Producing certain answers from every small experiment."
+              },
+              {
+                "id": "o3",
+                "text": "Checking whether a claim goes beyond its evidence."
+              }
+            ],
+            "answer": "o3",
+            "explanation": "末段把收获表述为判断结论是否比观察证据更强，D准确。并非选视频、无工具测量，也没有保证小试验给确定结论。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "32667e28bfc703b9de880fd04a96a73b5273f5271811c039887eb381789313c4",
+      "reviewNotes": "本轮新原创完整题组，已对照全文逐题自审正确键和干扰项；不声称独立教师审核、学生难度标定或产出质量已稳定。 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.library-and-seedlings-002#a",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.library-and-seedlings-002.a.q1",
+            "expansion.20261024.senior1.library-and-seedlings-002.a.q2",
+            "expansion.20261024.senior1.library-and-seedlings-002.a.q3",
+            "expansion.20261024.senior1.library-and-seedlings-002.a.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.library-and-seedlings-002",
+          "sourceContentHash": "12f17dd0d85c846bfeba8e157c153d7bfcd7d33a5b7d38b191d8dc98edb4f857"
+        },
+        {
+          "id": "expansion.20261024.senior1.library-and-seedlings-002#b",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.library-and-seedlings-002.b.q1",
+            "expansion.20261024.senior1.library-and-seedlings-002.b.q2",
+            "expansion.20261024.senior1.library-and-seedlings-002.b.q3",
+            "expansion.20261024.senior1.library-and-seedlings-002.b.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.library-and-seedlings-002",
+          "sourceContentHash": "79f53e9064f7e8514a24eaffdbefc57efe2d785a05ab5b8b7b3057ab685a0cef"
+        }
+      ]
+    }
+  ]
+}

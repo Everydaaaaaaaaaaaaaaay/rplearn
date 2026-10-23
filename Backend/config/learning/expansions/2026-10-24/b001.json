@@ -1,0 +1,3356 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b001",
+  "createdAt": "2026-10-23T17:28:12.293Z",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.picture-words-001",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · 看图识词 01",
+        "summary": "看图识词 01，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.picture-words-001",
+          "family": "word_picture_matching",
+          "label": "看图识词 01",
+          "candidateSHA256": "d3bae0d52af8bfc4c4b194574f10bf23253621b950a5b3af2306c94c1a8982f3",
+          "authorCheckSHA256": "2791bc837a5f34562bd2ee2e9052989e11ee5a9be096049b56fb1285ae957f0b",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.picture-words-001#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b001；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Picture cards\n\n看图，选择与英文词组对应的一张。"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.picture-words-001.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: one apple.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.595d25b3607347255d9af64bce80de53946d95d5a6d9d09af6f5ca755efe11f7"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.b337334ae004447908c9e041a516f67049b730fadd3754c93325144b50bbdda9"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.6bbfdcb60e06de38b6ca1263deb5bf02e7bc966a0dc3cfa20e04805e005b11de"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.2979dc455c6aa53293ca3a0643eb475acbab7b8359cc048347ef64157610ec3b"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "The phrase is \"one apple\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-001.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: two apples.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.595d25b3607347255d9af64bce80de53946d95d5a6d9d09af6f5ca755efe11f7"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.b337334ae004447908c9e041a516f67049b730fadd3754c93325144b50bbdda9"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.6bbfdcb60e06de38b6ca1263deb5bf02e7bc966a0dc3cfa20e04805e005b11de"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.2979dc455c6aa53293ca3a0643eb475acbab7b8359cc048347ef64157610ec3b"
+              }
+            ],
+            "answer": "o3",
+            "explanation": "The phrase is \"two apples\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-001.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: one pear.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.595d25b3607347255d9af64bce80de53946d95d5a6d9d09af6f5ca755efe11f7"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.b337334ae004447908c9e041a516f67049b730fadd3754c93325144b50bbdda9"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.6bbfdcb60e06de38b6ca1263deb5bf02e7bc966a0dc3cfa20e04805e005b11de"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.2979dc455c6aa53293ca3a0643eb475acbab7b8359cc048347ef64157610ec3b"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "The phrase is \"one pear\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-001.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: two pears.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.595d25b3607347255d9af64bce80de53946d95d5a6d9d09af6f5ca755efe11f7"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.b337334ae004447908c9e041a516f67049b730fadd3754c93325144b50bbdda9"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.6bbfdcb60e06de38b6ca1263deb5bf02e7bc966a0dc3cfa20e04805e005b11de"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.2979dc455c6aa53293ca3a0643eb475acbab7b8359cc048347ef64157610ec3b"
+              }
+            ],
+            "answer": "o2",
+            "explanation": "The phrase is \"two pears\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "f019866aa85064b3988e21b89a308c1fcd169f795549c7b6652e01f06acdc2a6",
+      "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.picture-words-002",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · 看图识词 02",
+        "summary": "看图识词 02，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.picture-words-002",
+          "family": "word_picture_matching",
+          "label": "看图识词 02",
+          "candidateSHA256": "6351b0f12e7b21b4f0afd150c871a34fd0cfdd3b58019c3bcf19ab0857bb3288",
+          "authorCheckSHA256": "a9a4fd751b78273a4f467ed358abc141d1b23496a22982ec4005df8075623e10",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.picture-words-002#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b001；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Picture cards\n\n看图，选择与英文词组对应的一张。"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.picture-words-002.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: three apples.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.19861ad205f4f417348863fd5b062f85d6adef45350d9f0021ada57a9010b91a"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.3d7fe8f4d2a652a098ed855b57a4ee98e6a92aa3eb9a4899c4223c52843dd8a8"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.fdab70a5552b3bd0ade278cd7bf0bcd23221b6ed6aa81a7b4154d0be39bb21a9"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.92c73b94cea13b82a2756cff1b3ac76301dd5d52f6cf2f3c60d09e7e9eae9cfd"
+              }
+            ],
+            "answer": "o2",
+            "explanation": "The phrase is \"three apples\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-002.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: four apples.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.19861ad205f4f417348863fd5b062f85d6adef45350d9f0021ada57a9010b91a"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.3d7fe8f4d2a652a098ed855b57a4ee98e6a92aa3eb9a4899c4223c52843dd8a8"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.fdab70a5552b3bd0ade278cd7bf0bcd23221b6ed6aa81a7b4154d0be39bb21a9"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.92c73b94cea13b82a2756cff1b3ac76301dd5d52f6cf2f3c60d09e7e9eae9cfd"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "The phrase is \"four apples\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-002.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: three pears.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.19861ad205f4f417348863fd5b062f85d6adef45350d9f0021ada57a9010b91a"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.3d7fe8f4d2a652a098ed855b57a4ee98e6a92aa3eb9a4899c4223c52843dd8a8"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.fdab70a5552b3bd0ade278cd7bf0bcd23221b6ed6aa81a7b4154d0be39bb21a9"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.92c73b94cea13b82a2756cff1b3ac76301dd5d52f6cf2f3c60d09e7e9eae9cfd"
+              }
+            ],
+            "answer": "o3",
+            "explanation": "The phrase is \"three pears\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-002.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: four pears.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.19861ad205f4f417348863fd5b062f85d6adef45350d9f0021ada57a9010b91a"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.3d7fe8f4d2a652a098ed855b57a4ee98e6a92aa3eb9a4899c4223c52843dd8a8"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.fdab70a5552b3bd0ade278cd7bf0bcd23221b6ed6aa81a7b4154d0be39bb21a9"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.92c73b94cea13b82a2756cff1b3ac76301dd5d52f6cf2f3c60d09e7e9eae9cfd"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "The phrase is \"four pears\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "c6de5d9d025cd2d7183b15ff0d1543fe21df55f6bb6c49e02015ef386105f0a4",
+      "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.picture-words-003",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · 看图识词 03",
+        "summary": "看图识词 03，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.picture-words-003",
+          "family": "word_picture_matching",
+          "label": "看图识词 03",
+          "candidateSHA256": "ecb8b05ad91b94dbdcea13adb16a5317939dd9247f809b336bf443ef3e70e51a",
+          "authorCheckSHA256": "43b62b7948872ea733528034fe402aa9e2a4795089d97642f2a377328081cdfe",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.picture-words-003#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b001；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Picture cards\n\n看图，选择与英文词组对应的一张。"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.picture-words-003.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: one banana.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.6e4ac04e72ed51dc7eccab46f31b4a54cf0a7642a1544bd4141cf10a9e9956e7"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.8400284e029bdf53bc5859252d2c403b08467a9f3d82bc342ffcee4bda5340ed"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.11e3f06abd68464d9c981d23ff47ad0a4d3d38de5ab9c83ae21ef56178eab582"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.6d6a09cd11f82956b15211a099042d87ff15f263a363269d0c3508c8b6677fa5"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "The phrase is \"one banana\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-003.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: two bananas.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.6e4ac04e72ed51dc7eccab46f31b4a54cf0a7642a1544bd4141cf10a9e9956e7"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.8400284e029bdf53bc5859252d2c403b08467a9f3d82bc342ffcee4bda5340ed"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.11e3f06abd68464d9c981d23ff47ad0a4d3d38de5ab9c83ae21ef56178eab582"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.6d6a09cd11f82956b15211a099042d87ff15f263a363269d0c3508c8b6677fa5"
+              }
+            ],
+            "answer": "o3",
+            "explanation": "The phrase is \"two bananas\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-003.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: one orange.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.6e4ac04e72ed51dc7eccab46f31b4a54cf0a7642a1544bd4141cf10a9e9956e7"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.8400284e029bdf53bc5859252d2c403b08467a9f3d82bc342ffcee4bda5340ed"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.11e3f06abd68464d9c981d23ff47ad0a4d3d38de5ab9c83ae21ef56178eab582"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.6d6a09cd11f82956b15211a099042d87ff15f263a363269d0c3508c8b6677fa5"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "The phrase is \"one orange\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-003.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: two oranges.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.6e4ac04e72ed51dc7eccab46f31b4a54cf0a7642a1544bd4141cf10a9e9956e7"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.8400284e029bdf53bc5859252d2c403b08467a9f3d82bc342ffcee4bda5340ed"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.11e3f06abd68464d9c981d23ff47ad0a4d3d38de5ab9c83ae21ef56178eab582"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.6d6a09cd11f82956b15211a099042d87ff15f263a363269d0c3508c8b6677fa5"
+              }
+            ],
+            "answer": "o2",
+            "explanation": "The phrase is \"two oranges\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "cb4f7ac5962a96e36d8543f7d18a77ac9896965480d619a5193d33dd738ce2bf",
+      "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.picture-words-004",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · 看图识词 04",
+        "summary": "看图识词 04，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.picture-words-004",
+          "family": "word_picture_matching",
+          "label": "看图识词 04",
+          "candidateSHA256": "aa8218122649a2b11aaa1c527d759809326eec4cc5d7c6b636f8282bc20fa171",
+          "authorCheckSHA256": "af13fa6739c63af6f1e589a9d711917f6880c0997ab260f91411a0ebd31adefb",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.picture-words-004#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b001；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Picture cards\n\n看图，选择与英文词组对应的一张。"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.picture-words-004.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: three bananas.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.7a7dbbb7139c68109885d02ed6370452a506bac4e54abdf6d998eea13a5b0a56"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.279a8510a3d2cf335bb1eb4ffc9d6643001ebca15e5de17103e99aa1a84c6301"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.f12c6becc745cbb8e1bd4ff8b5cac6d22aa55e20757bc4e7b8b64ee253f3e93f"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e91d735ed9d4ba861b40fddf9853e7a54a1c2359c03646ab4accfbc95f469ccb"
+              }
+            ],
+            "answer": "o2",
+            "explanation": "The phrase is \"three bananas\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-004.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: four bananas.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.7a7dbbb7139c68109885d02ed6370452a506bac4e54abdf6d998eea13a5b0a56"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.279a8510a3d2cf335bb1eb4ffc9d6643001ebca15e5de17103e99aa1a84c6301"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.f12c6becc745cbb8e1bd4ff8b5cac6d22aa55e20757bc4e7b8b64ee253f3e93f"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e91d735ed9d4ba861b40fddf9853e7a54a1c2359c03646ab4accfbc95f469ccb"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "The phrase is \"four bananas\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-004.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: three oranges.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.7a7dbbb7139c68109885d02ed6370452a506bac4e54abdf6d998eea13a5b0a56"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.279a8510a3d2cf335bb1eb4ffc9d6643001ebca15e5de17103e99aa1a84c6301"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.f12c6becc745cbb8e1bd4ff8b5cac6d22aa55e20757bc4e7b8b64ee253f3e93f"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e91d735ed9d4ba861b40fddf9853e7a54a1c2359c03646ab4accfbc95f469ccb"
+              }
+            ],
+            "answer": "o3",
+            "explanation": "The phrase is \"three oranges\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-004.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: four oranges.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.7a7dbbb7139c68109885d02ed6370452a506bac4e54abdf6d998eea13a5b0a56"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.279a8510a3d2cf335bb1eb4ffc9d6643001ebca15e5de17103e99aa1a84c6301"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.f12c6becc745cbb8e1bd4ff8b5cac6d22aa55e20757bc4e7b8b64ee253f3e93f"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e91d735ed9d4ba861b40fddf9853e7a54a1c2359c03646ab4accfbc95f469ccb"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "The phrase is \"four oranges\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "ee09611aef7bd0b8c3f7d80cbd756ad8f887dbf1ecac85d7c9e72b58094796fe",
+      "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.picture-words-005",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · 看图识词 05",
+        "summary": "看图识词 05，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.picture-words-005",
+          "family": "word_picture_matching",
+          "label": "看图识词 05",
+          "candidateSHA256": "70c24a4479c46ca194a2e469226d52a77c4f2f22716291543100e9b7630f709e",
+          "authorCheckSHA256": "d8ef8a13eb6726698d73b91ab464bc54bd9b1eee831123963f978e304bc267a8",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.picture-words-005#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b001；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Picture cards\n\n看图，选择与英文词组对应的一张。"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.picture-words-005.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: one cat.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.813bccf0c324172eace644da565c6b613462e4a51ac28a01a968a9f30da660f8"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.59de67dbde04576ddfd71c035f6dfdb294a60a8bcc375d660ef9a725db9ad94c"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.13939d481b052aabc467667b34f7a6f4cd9375148878a34582a71f4bf98ee23f"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.56a204dd3252348901bf342ed6686037df5bd9205a26234aaee9114a1c3ffc3e"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "The phrase is \"one cat\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-005.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: two cats.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.813bccf0c324172eace644da565c6b613462e4a51ac28a01a968a9f30da660f8"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.59de67dbde04576ddfd71c035f6dfdb294a60a8bcc375d660ef9a725db9ad94c"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.13939d481b052aabc467667b34f7a6f4cd9375148878a34582a71f4bf98ee23f"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.56a204dd3252348901bf342ed6686037df5bd9205a26234aaee9114a1c3ffc3e"
+              }
+            ],
+            "answer": "o3",
+            "explanation": "The phrase is \"two cats\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-005.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: one dog.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.813bccf0c324172eace644da565c6b613462e4a51ac28a01a968a9f30da660f8"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.59de67dbde04576ddfd71c035f6dfdb294a60a8bcc375d660ef9a725db9ad94c"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.13939d481b052aabc467667b34f7a6f4cd9375148878a34582a71f4bf98ee23f"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.56a204dd3252348901bf342ed6686037df5bd9205a26234aaee9114a1c3ffc3e"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "The phrase is \"one dog\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-005.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: two dogs.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.813bccf0c324172eace644da565c6b613462e4a51ac28a01a968a9f30da660f8"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.59de67dbde04576ddfd71c035f6dfdb294a60a8bcc375d660ef9a725db9ad94c"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.13939d481b052aabc467667b34f7a6f4cd9375148878a34582a71f4bf98ee23f"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.56a204dd3252348901bf342ed6686037df5bd9205a26234aaee9114a1c3ffc3e"
+              }
+            ],
+            "answer": "o2",
+            "explanation": "The phrase is \"two dogs\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "c6faceaa4fedb452eea2ecc0a98288efecd39c3d9e98119d9c564d747729b4c3",
+      "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.picture-words-006",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · 看图识词 06",
+        "summary": "看图识词 06，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.picture-words-006",
+          "family": "word_picture_matching",
+          "label": "看图识词 06",
+          "candidateSHA256": "259648eef6a14b6fed58b51e9151da77c5e0c5492221c7c90300897f7ee10a1a",
+          "authorCheckSHA256": "b77a49fcb1ee9a55b8df173d0696f4e35ef6717594ac370a4e97d0df3ce8b80c",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.picture-words-006#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b001；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Picture cards\n\n看图，选择与英文词组对应的一张。"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.picture-words-006.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: three cats.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.c5930f29d589c0ae17cf78f846f62ad3c3e9f23a40d3b71a3d3e94a225ce25bd"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.f858fcdc1f79a7ffbe432c1eaf4433264a765e65585c885bee0641647462b120"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.37177795fcae4d5dda6efe6caadcb52926a33520f04c6737a60da5925e5692a7"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.da50f1105a03d6767dd4c58ea74bc72135ac4e3379f6b6e9ebe13f26e9da62d8"
+              }
+            ],
+            "answer": "o2",
+            "explanation": "The phrase is \"three cats\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-006.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: four cats.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.c5930f29d589c0ae17cf78f846f62ad3c3e9f23a40d3b71a3d3e94a225ce25bd"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.f858fcdc1f79a7ffbe432c1eaf4433264a765e65585c885bee0641647462b120"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.37177795fcae4d5dda6efe6caadcb52926a33520f04c6737a60da5925e5692a7"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.da50f1105a03d6767dd4c58ea74bc72135ac4e3379f6b6e9ebe13f26e9da62d8"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "The phrase is \"four cats\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-006.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: three dogs.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.c5930f29d589c0ae17cf78f846f62ad3c3e9f23a40d3b71a3d3e94a225ce25bd"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.f858fcdc1f79a7ffbe432c1eaf4433264a765e65585c885bee0641647462b120"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.37177795fcae4d5dda6efe6caadcb52926a33520f04c6737a60da5925e5692a7"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.da50f1105a03d6767dd4c58ea74bc72135ac4e3379f6b6e9ebe13f26e9da62d8"
+              }
+            ],
+            "answer": "o3",
+            "explanation": "The phrase is \"three dogs\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-006.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: four dogs.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.c5930f29d589c0ae17cf78f846f62ad3c3e9f23a40d3b71a3d3e94a225ce25bd"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.f858fcdc1f79a7ffbe432c1eaf4433264a765e65585c885bee0641647462b120"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.37177795fcae4d5dda6efe6caadcb52926a33520f04c6737a60da5925e5692a7"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.da50f1105a03d6767dd4c58ea74bc72135ac4e3379f6b6e9ebe13f26e9da62d8"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "The phrase is \"four dogs\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "e40865d645583c61948cc614a58080bb2b91c405ac6f880b7155e40b12be21dd",
+      "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.picture-words-007",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · 看图识词 07",
+        "summary": "看图识词 07，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.picture-words-007",
+          "family": "word_picture_matching",
+          "label": "看图识词 07",
+          "candidateSHA256": "24cd11f3493023221fe851632b1d42127d530fe0d7027fe12eda97e412b017a8",
+          "authorCheckSHA256": "15132b9229d4a318ed40b440155a593c9e38010ce8971edad7dc68b0aecdeac8",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.picture-words-007#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b001；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Picture cards\n\n看图，选择与英文词组对应的一张。"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.picture-words-007.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: one bird.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.abcdf9894d5c201a4bfdd006790ebcdcae78343095ebf0e70800c4ab42cafda1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.6bb4425e22a828691ba57684027fd8eaa526af6090044511466f88583b0b73d3"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.9e85efcfd8bbe1778e84ed57681a23c03bab9df76810a4468d731a1eb87c2e4f"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.aab505043922f3e58c064e0582af8994aa4e07c565963cdd648273e2fb32f17c"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "The phrase is \"one bird\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-007.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: two birds.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.abcdf9894d5c201a4bfdd006790ebcdcae78343095ebf0e70800c4ab42cafda1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.6bb4425e22a828691ba57684027fd8eaa526af6090044511466f88583b0b73d3"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.9e85efcfd8bbe1778e84ed57681a23c03bab9df76810a4468d731a1eb87c2e4f"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.aab505043922f3e58c064e0582af8994aa4e07c565963cdd648273e2fb32f17c"
+              }
+            ],
+            "answer": "o3",
+            "explanation": "The phrase is \"two birds\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-007.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: one monkey.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.abcdf9894d5c201a4bfdd006790ebcdcae78343095ebf0e70800c4ab42cafda1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.6bb4425e22a828691ba57684027fd8eaa526af6090044511466f88583b0b73d3"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.9e85efcfd8bbe1778e84ed57681a23c03bab9df76810a4468d731a1eb87c2e4f"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.aab505043922f3e58c064e0582af8994aa4e07c565963cdd648273e2fb32f17c"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "The phrase is \"one monkey\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-007.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: two monkeys.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.abcdf9894d5c201a4bfdd006790ebcdcae78343095ebf0e70800c4ab42cafda1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.6bb4425e22a828691ba57684027fd8eaa526af6090044511466f88583b0b73d3"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.9e85efcfd8bbe1778e84ed57681a23c03bab9df76810a4468d731a1eb87c2e4f"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.aab505043922f3e58c064e0582af8994aa4e07c565963cdd648273e2fb32f17c"
+              }
+            ],
+            "answer": "o2",
+            "explanation": "The phrase is \"two monkeys\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "73cb9c6d0be1734a30e027938f594c715882fdc602c9703c5de043a66b33f647",
+      "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.picture-words-008",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · 看图识词 08",
+        "summary": "看图识词 08，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.picture-words-008",
+          "family": "word_picture_matching",
+          "label": "看图识词 08",
+          "candidateSHA256": "7beea32886454e106006b1b29953ade564cf4cff6fefd6a217f4316d17e3b526",
+          "authorCheckSHA256": "61b05f439469f6f4f47d6b1ce4a1bc6fc71a81641dcd272c1b98e5a148fe974e",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.picture-words-008#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b001；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Picture cards\n\n看图，选择与英文词组对应的一张。"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.picture-words-008.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: three birds.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.70ee2f0e0f9bc326e84f285679e97dc6af39c8d189cf447d24e797bedcf01b19"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.85171f230bc0bd15381b8d152dc5e2db6ea2345269528a806f548c31a472f879"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.236f9c27537fa41eb00f95c74daa96b9e51f8b784c1c6bd3a0b63b5a8e04e99b"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.b87fa80a0381760ab05886baf5c9beb4bda71525863bf720738856eddffef3fb"
+              }
+            ],
+            "answer": "o2",
+            "explanation": "The phrase is \"three birds\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-008.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: four birds.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.70ee2f0e0f9bc326e84f285679e97dc6af39c8d189cf447d24e797bedcf01b19"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.85171f230bc0bd15381b8d152dc5e2db6ea2345269528a806f548c31a472f879"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.236f9c27537fa41eb00f95c74daa96b9e51f8b784c1c6bd3a0b63b5a8e04e99b"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.b87fa80a0381760ab05886baf5c9beb4bda71525863bf720738856eddffef3fb"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "The phrase is \"four birds\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-008.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: three monkeys.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.70ee2f0e0f9bc326e84f285679e97dc6af39c8d189cf447d24e797bedcf01b19"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.85171f230bc0bd15381b8d152dc5e2db6ea2345269528a806f548c31a472f879"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.236f9c27537fa41eb00f95c74daa96b9e51f8b784c1c6bd3a0b63b5a8e04e99b"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.b87fa80a0381760ab05886baf5c9beb4bda71525863bf720738856eddffef3fb"
+              }
+            ],
+            "answer": "o3",
+            "explanation": "The phrase is \"three monkeys\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-008.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: four monkeys.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.70ee2f0e0f9bc326e84f285679e97dc6af39c8d189cf447d24e797bedcf01b19"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.85171f230bc0bd15381b8d152dc5e2db6ea2345269528a806f548c31a472f879"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.236f9c27537fa41eb00f95c74daa96b9e51f8b784c1c6bd3a0b63b5a8e04e99b"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.b87fa80a0381760ab05886baf5c9beb4bda71525863bf720738856eddffef3fb"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "The phrase is \"four monkeys\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "64440b7d921c7eb90abf02f3fa1d8de192164b0ab719b21452d6c645c8719ae2",
+      "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.picture-words-009",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · 看图识词 09",
+        "summary": "看图识词 09，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.picture-words-009",
+          "family": "word_picture_matching",
+          "label": "看图识词 09",
+          "candidateSHA256": "4dfc6e15f180242fe4d6e93a60ba2a9540efe02cfec23123dbd53179b8d0f4cf",
+          "authorCheckSHA256": "eac01ac1f71c61d851f19e2284bac3a7ef0bf96937decdeba7a9c6b6e395be5c",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.picture-words-009#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b001；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Picture cards\n\n看图，选择与英文词组对应的一张。"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.picture-words-009.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: one book.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1688ca3dfba16e5e1669d36dbecfc8022c79230b9e01b2b879f30d7a9bf392d5"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.a9d8956d458f361b68197f883d506b2d4b46580b457b4ca31cb2f65e4bc4d81b"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d8c601062d0220e6536d02f42745edb66eb4409f78fe07d8326b110a401d4143"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e209c4c43b942bf0a577a16af423d1342d94e594dbe46e588b1f2e0eeb8e1650"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "The phrase is \"one book\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-009.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: two books.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1688ca3dfba16e5e1669d36dbecfc8022c79230b9e01b2b879f30d7a9bf392d5"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.a9d8956d458f361b68197f883d506b2d4b46580b457b4ca31cb2f65e4bc4d81b"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d8c601062d0220e6536d02f42745edb66eb4409f78fe07d8326b110a401d4143"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e209c4c43b942bf0a577a16af423d1342d94e594dbe46e588b1f2e0eeb8e1650"
+              }
+            ],
+            "answer": "o3",
+            "explanation": "The phrase is \"two books\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-009.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: one bag.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1688ca3dfba16e5e1669d36dbecfc8022c79230b9e01b2b879f30d7a9bf392d5"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.a9d8956d458f361b68197f883d506b2d4b46580b457b4ca31cb2f65e4bc4d81b"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d8c601062d0220e6536d02f42745edb66eb4409f78fe07d8326b110a401d4143"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e209c4c43b942bf0a577a16af423d1342d94e594dbe46e588b1f2e0eeb8e1650"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "The phrase is \"one bag\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-009.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: two bags.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1688ca3dfba16e5e1669d36dbecfc8022c79230b9e01b2b879f30d7a9bf392d5"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.a9d8956d458f361b68197f883d506b2d4b46580b457b4ca31cb2f65e4bc4d81b"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d8c601062d0220e6536d02f42745edb66eb4409f78fe07d8326b110a401d4143"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e209c4c43b942bf0a577a16af423d1342d94e594dbe46e588b1f2e0eeb8e1650"
+              }
+            ],
+            "answer": "o2",
+            "explanation": "The phrase is \"two bags\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "615b0572daa429cc0188357b03f0f068cef0cbc0f39d205085631d71d629fe1e",
+      "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.picture-words-010",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · 看图识词 10",
+        "summary": "看图识词 10，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.picture-words-010",
+          "family": "word_picture_matching",
+          "label": "看图识词 10",
+          "candidateSHA256": "1525f8aac2490fba554baaa95d0b22e9503a48edeeee80d0cdf6642c49a4db61",
+          "authorCheckSHA256": "bf637681de22d203db5ba12ca799ba332679bc6fff2b2be58ba50a56934cdf9e",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.picture-words-010#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b001；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Picture cards\n\n看图，选择与英文词组对应的一张。"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.picture-words-010.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: three books.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.776a6d87a69ad588ab48b9eedfafcb6b279cd13a7190d05a746e984f3fb957b1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.52225b19aea6394cd8450e970405f4188cb44dc13fb1414fdbb43a953854d2cc"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d9bc721002c822f14e22a3b3ca1a7af1d3c9f2b833203c049ff3d7991d340a69"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.c1579d4c0b376b76784eccc12975fdf1126510499176f2e996e792f1b9a709b9"
+              }
+            ],
+            "answer": "o2",
+            "explanation": "The phrase is \"three books\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-010.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: four books.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.776a6d87a69ad588ab48b9eedfafcb6b279cd13a7190d05a746e984f3fb957b1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.52225b19aea6394cd8450e970405f4188cb44dc13fb1414fdbb43a953854d2cc"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d9bc721002c822f14e22a3b3ca1a7af1d3c9f2b833203c049ff3d7991d340a69"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.c1579d4c0b376b76784eccc12975fdf1126510499176f2e996e792f1b9a709b9"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "The phrase is \"four books\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-010.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: three bags.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.776a6d87a69ad588ab48b9eedfafcb6b279cd13a7190d05a746e984f3fb957b1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.52225b19aea6394cd8450e970405f4188cb44dc13fb1414fdbb43a953854d2cc"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d9bc721002c822f14e22a3b3ca1a7af1d3c9f2b833203c049ff3d7991d340a69"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.c1579d4c0b376b76784eccc12975fdf1126510499176f2e996e792f1b9a709b9"
+              }
+            ],
+            "answer": "o3",
+            "explanation": "The phrase is \"three bags\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-010.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: four bags.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.776a6d87a69ad588ab48b9eedfafcb6b279cd13a7190d05a746e984f3fb957b1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.52225b19aea6394cd8450e970405f4188cb44dc13fb1414fdbb43a953854d2cc"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d9bc721002c822f14e22a3b3ca1a7af1d3c9f2b833203c049ff3d7991d340a69"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.c1579d4c0b376b76784eccc12975fdf1126510499176f2e996e792f1b9a709b9"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "The phrase is \"four bags\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "967e74476b2fc9e049d64628d39eb30925c56af5240456655de65e0ecf7ad42b",
+      "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.picture-words-011",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · 看图识词 11",
+        "summary": "看图识词 11，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.picture-words-011",
+          "family": "word_picture_matching",
+          "label": "看图识词 11",
+          "candidateSHA256": "ce97993a6433098dad99abcedee349dd48d5d23a4654fc5a56d0c0b8bf0dbe8c",
+          "authorCheckSHA256": "42f1dcb33caf426ec5c3cd0883790107a07ecce85bbb2beb4f84970cde145866",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.picture-words-011#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b001；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Picture cards\n\n看图，选择与英文词组对应的一张。"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.picture-words-011.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: one pencil.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.f648b701d9a43a851622a81e94accdff3ffb318ea818844e7f24ccf7cf791224"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.d85c817beab5f4cd1f62b13e5d2bd603ccb81c248e3a03975a7cd9b281cff210"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.c1bed09e035113c1a94cd85b3d428a7d2ccaf58a4384f4ff3a9c739a225afe9a"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.df7b376b82d815f83526d31dc30eac5fbcbaaea78b94d2a74e9ea813548b8125"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "The phrase is \"one pencil\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-011.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: two pencils.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.f648b701d9a43a851622a81e94accdff3ffb318ea818844e7f24ccf7cf791224"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.d85c817beab5f4cd1f62b13e5d2bd603ccb81c248e3a03975a7cd9b281cff210"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.c1bed09e035113c1a94cd85b3d428a7d2ccaf58a4384f4ff3a9c739a225afe9a"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.df7b376b82d815f83526d31dc30eac5fbcbaaea78b94d2a74e9ea813548b8125"
+              }
+            ],
+            "answer": "o3",
+            "explanation": "The phrase is \"two pencils\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-011.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: one ruler.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.f648b701d9a43a851622a81e94accdff3ffb318ea818844e7f24ccf7cf791224"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.d85c817beab5f4cd1f62b13e5d2bd603ccb81c248e3a03975a7cd9b281cff210"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.c1bed09e035113c1a94cd85b3d428a7d2ccaf58a4384f4ff3a9c739a225afe9a"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.df7b376b82d815f83526d31dc30eac5fbcbaaea78b94d2a74e9ea813548b8125"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "The phrase is \"one ruler\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-011.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: two rulers.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.f648b701d9a43a851622a81e94accdff3ffb318ea818844e7f24ccf7cf791224"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.d85c817beab5f4cd1f62b13e5d2bd603ccb81c248e3a03975a7cd9b281cff210"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.c1bed09e035113c1a94cd85b3d428a7d2ccaf58a4384f4ff3a9c739a225afe9a"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.df7b376b82d815f83526d31dc30eac5fbcbaaea78b94d2a74e9ea813548b8125"
+              }
+            ],
+            "answer": "o2",
+            "explanation": "The phrase is \"two rulers\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "0e506a34e8dc4afa650b840e2ccc9367d61287d448e10dcd742cf533065860fa",
+      "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.picture-words-012",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · 看图识词 12",
+        "summary": "看图识词 12，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.picture-words-012",
+          "family": "word_picture_matching",
+          "label": "看图识词 12",
+          "candidateSHA256": "a76a20305555873ca5aeb6754233b07efa2413f7e61b8da604cb4887111c49d6",
+          "authorCheckSHA256": "79ba994238051e54105f26717abb067abe5f636ed32cc46eb2309c40db6b9e5f",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.picture-words-012#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b001；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Picture cards\n\n看图，选择与英文词组对应的一张。"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.picture-words-012.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: three pencils.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.be4087024fdbb2d8658a81cb11c0289e3df80502c873ff2d7358453eb1b570c5"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.85f46a5d2ec71cf21a2cbd14205db2bac8caf91f57c0bff79ee5b8a08997901e"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.4551705a8070d3badf3692249f21aac3888824277005a7c43c046161ec63b605"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e5aca582438afd8ae56937acee85da98eaf88a67bc0445b76ea82d979cd8a97a"
+              }
+            ],
+            "answer": "o2",
+            "explanation": "The phrase is \"three pencils\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-012.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: four pencils.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.be4087024fdbb2d8658a81cb11c0289e3df80502c873ff2d7358453eb1b570c5"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.85f46a5d2ec71cf21a2cbd14205db2bac8caf91f57c0bff79ee5b8a08997901e"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.4551705a8070d3badf3692249f21aac3888824277005a7c43c046161ec63b605"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e5aca582438afd8ae56937acee85da98eaf88a67bc0445b76ea82d979cd8a97a"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "The phrase is \"four pencils\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-012.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: three rulers.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.be4087024fdbb2d8658a81cb11c0289e3df80502c873ff2d7358453eb1b570c5"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.85f46a5d2ec71cf21a2cbd14205db2bac8caf91f57c0bff79ee5b8a08997901e"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.4551705a8070d3badf3692249f21aac3888824277005a7c43c046161ec63b605"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e5aca582438afd8ae56937acee85da98eaf88a67bc0445b76ea82d979cd8a97a"
+              }
+            ],
+            "answer": "o3",
+            "explanation": "The phrase is \"three rulers\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-012.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: four rulers.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.be4087024fdbb2d8658a81cb11c0289e3df80502c873ff2d7358453eb1b570c5"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.85f46a5d2ec71cf21a2cbd14205db2bac8caf91f57c0bff79ee5b8a08997901e"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.4551705a8070d3badf3692249f21aac3888824277005a7c43c046161ec63b605"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e5aca582438afd8ae56937acee85da98eaf88a67bc0445b76ea82d979cd8a97a"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "The phrase is \"four rulers\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "592072513f01311bfcdf60bb02d6bb5012e85e41310a3f964dfedadf40023cd3",
+      "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.picture-words-013",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · 看图识词 13",
+        "summary": "看图识词 13，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.picture-words-013",
+          "family": "word_picture_matching",
+          "label": "看图识词 13",
+          "candidateSHA256": "8d43e9130f8c52eedd0709268c7032b7a6d4f2fd69b9400e59ff4757f803005c",
+          "authorCheckSHA256": "f8e513f66103889049d82a296bde36bc65ceb6a226b7f2412c922017cf2006e2",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.picture-words-013#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b001；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Picture cards\n\n看图，选择与英文词组对应的一张。"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.picture-words-013.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: one tiger.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.94ebb4f70e3d6de67138c7b8f56cd3324f677af73905bebcde34fe70296314f7"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.bdd003f2dee7acd0a59f61e9339635856d863dc6a1ec41d22b7b56643b4d6991"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.df42cfbe737c6fce325f037572f6e075d69160328b84e6f946bdbe2378e700bf"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fe5937537d5af5e9a6fa3f1310013f0755f1cb232239fac17b0c41b85d416d98"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "The phrase is \"one tiger\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-013.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: two tigers.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.94ebb4f70e3d6de67138c7b8f56cd3324f677af73905bebcde34fe70296314f7"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.bdd003f2dee7acd0a59f61e9339635856d863dc6a1ec41d22b7b56643b4d6991"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.df42cfbe737c6fce325f037572f6e075d69160328b84e6f946bdbe2378e700bf"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fe5937537d5af5e9a6fa3f1310013f0755f1cb232239fac17b0c41b85d416d98"
+              }
+            ],
+            "answer": "o3",
+            "explanation": "The phrase is \"two tigers\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-013.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: one eye.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.94ebb4f70e3d6de67138c7b8f56cd3324f677af73905bebcde34fe70296314f7"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.bdd003f2dee7acd0a59f61e9339635856d863dc6a1ec41d22b7b56643b4d6991"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.df42cfbe737c6fce325f037572f6e075d69160328b84e6f946bdbe2378e700bf"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fe5937537d5af5e9a6fa3f1310013f0755f1cb232239fac17b0c41b85d416d98"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "The phrase is \"one eye\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-013.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: two eyes.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.94ebb4f70e3d6de67138c7b8f56cd3324f677af73905bebcde34fe70296314f7"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.bdd003f2dee7acd0a59f61e9339635856d863dc6a1ec41d22b7b56643b4d6991"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.df42cfbe737c6fce325f037572f6e075d69160328b84e6f946bdbe2378e700bf"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fe5937537d5af5e9a6fa3f1310013f0755f1cb232239fac17b0c41b85d416d98"
+              }
+            ],
+            "answer": "o2",
+            "explanation": "The phrase is \"two eyes\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "9a38da070349195ec44fea6828f168e4456edf73e31f5b77e8b5cdb81e227846",
+      "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.picture-words-014",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · 看图识词 14",
+        "summary": "看图识词 14，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 只参照2016一年级转载的四词/四图配对结构；原件首项in与书包图冲突，源键不使用。这里四词与原创图分别重核，不称原卷已修复或学生难度已标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。"
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.picture-words-014",
+          "family": "word_picture_matching",
+          "label": "看图识词 14",
+          "candidateSHA256": "7700811aa06c707d71518a93291325cc00fd535dc5e37c202bdbf2c8774e9cc8",
+          "authorCheckSHA256": "8d8a7b331b6e8152282de2a20bb88a9cb806ca473dd9f60f7642d5e029bff8fd",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.picture-words-014#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b001；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Picture cards\n\n看图，选择与英文词组对应的一张。"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.picture-words-014.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: three tigers.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.256bce0cc5656dd1595c3f08b06dd0c766ec736a392ec351a530d6f50e08f952"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.6c2a2a1c92e7b513a96c904c77003ecd5cc2ad18f5a2229848abec9f4f05b0f7"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.2d37db9ff12fdb71b2853e3ea5192423f883cf0928dd08eedb47c5cc65fc5dce"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.eef91b0a00123f6d05743fc54789d688d9654a5f16897517fa6abe88e61e6f97"
+              }
+            ],
+            "answer": "o2",
+            "explanation": "The phrase is \"three tigers\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-014.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: four tigers.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.256bce0cc5656dd1595c3f08b06dd0c766ec736a392ec351a530d6f50e08f952"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.6c2a2a1c92e7b513a96c904c77003ecd5cc2ad18f5a2229848abec9f4f05b0f7"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.2d37db9ff12fdb71b2853e3ea5192423f883cf0928dd08eedb47c5cc65fc5dce"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.eef91b0a00123f6d05743fc54789d688d9654a5f16897517fa6abe88e61e6f97"
+              }
+            ],
+            "answer": "o0",
+            "explanation": "The phrase is \"four tigers\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-014.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: three eyes.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.256bce0cc5656dd1595c3f08b06dd0c766ec736a392ec351a530d6f50e08f952"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.6c2a2a1c92e7b513a96c904c77003ecd5cc2ad18f5a2229848abec9f4f05b0f7"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.2d37db9ff12fdb71b2853e3ea5192423f883cf0928dd08eedb47c5cc65fc5dce"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.eef91b0a00123f6d05743fc54789d688d9654a5f16897517fa6abe88e61e6f97"
+              }
+            ],
+            "answer": "o3",
+            "explanation": "The phrase is \"three eyes\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          },
+          {
+            "id": "expansion.20261024.primary1.picture-words-014.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "type": "choice",
+            "instruction": "看图，选择与英文词组对应的图片。",
+            "prompt": "Choose: four eyes.",
+            "material": "Picture cards\n\n看图，选择与英文词组对应的一张。",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.256bce0cc5656dd1595c3f08b06dd0c766ec736a392ec351a530d6f50e08f952"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.6c2a2a1c92e7b513a96c904c77003ecd5cc2ad18f5a2229848abec9f4f05b0f7"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.2d37db9ff12fdb71b2853e3ea5192423f883cf0928dd08eedb47c5cc65fc5dce"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.eef91b0a00123f6d05743fc54789d688d9654a5f16897517fa6abe88e61e6f97"
+              }
+            ],
+            "answer": "o1",
+            "explanation": "The phrase is \"four eyes\". Match both the named object and its exact quantity. The other three cards differ in the object, the quantity, or both; none has the same combination.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed."
+          }
+        ]
+      },
+      "contentHash": "d32d0e9be51481a559ffb07b014a503c0625c0dda496df122e8021617a976e1a",
+      "reviewNotes": "2026-10-24新原创图词组合；沿用有来源的四图匹配任务，数量词加名词是本批明确适配，不声称原卷同配置、独立教师审核或一年级实测等值。逐卡核对对象/数量和选项键。 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ],
+  "imageAssets": [
+    {
+      "id": "image.b337334ae004447908c9e041a516f67049b730fadd3754c93325144b50bbdda9",
+      "sha256": "b337334ae004447908c9e041a516f67049b730fadd3754c93325144b50bbdda9",
+      "byteSize": 6930,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: one apple. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/apple-1.svg; component primary1-apple.svg reused with SHA 079bf6d890030b6da4c0f3145d2558388a3783c38a7c84b11db2c23517c6d99b.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.2979dc455c6aa53293ca3a0643eb475acbab7b8359cc048347ef64157610ec3b",
+      "sha256": "2979dc455c6aa53293ca3a0643eb475acbab7b8359cc048347ef64157610ec3b",
+      "byteSize": 5945,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: two apples. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/apple-2.svg; component primary1-apple.svg reused with SHA 079bf6d890030b6da4c0f3145d2558388a3783c38a7c84b11db2c23517c6d99b.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.595d25b3607347255d9af64bce80de53946d95d5a6d9d09af6f5ca755efe11f7",
+      "sha256": "595d25b3607347255d9af64bce80de53946d95d5a6d9d09af6f5ca755efe11f7",
+      "byteSize": 6919,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: one pear. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/pear-1.svg; component primary1-pear.svg reused with SHA cc2173eeab198b3bb58347a4827410d2c5cc6a24bb896a5b667fe7fce202bcb7.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.6bbfdcb60e06de38b6ca1263deb5bf02e7bc966a0dc3cfa20e04805e005b11de",
+      "sha256": "6bbfdcb60e06de38b6ca1263deb5bf02e7bc966a0dc3cfa20e04805e005b11de",
+      "byteSize": 5938,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: two pears. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/pear-2.svg; component primary1-pear.svg reused with SHA cc2173eeab198b3bb58347a4827410d2c5cc6a24bb896a5b667fe7fce202bcb7.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.fdab70a5552b3bd0ade278cd7bf0bcd23221b6ed6aa81a7b4154d0be39bb21a9",
+      "sha256": "fdab70a5552b3bd0ade278cd7bf0bcd23221b6ed6aa81a7b4154d0be39bb21a9",
+      "byteSize": 8658,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: three apples. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/apple-3.svg; component primary1-apple.svg reused with SHA 079bf6d890030b6da4c0f3145d2558388a3783c38a7c84b11db2c23517c6d99b.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.19861ad205f4f417348863fd5b062f85d6adef45350d9f0021ada57a9010b91a",
+      "sha256": "19861ad205f4f417348863fd5b062f85d6adef45350d9f0021ada57a9010b91a",
+      "byteSize": 8940,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: four apples. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/apple-4.svg; component primary1-apple.svg reused with SHA 079bf6d890030b6da4c0f3145d2558388a3783c38a7c84b11db2c23517c6d99b.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.92c73b94cea13b82a2756cff1b3ac76301dd5d52f6cf2f3c60d09e7e9eae9cfd",
+      "sha256": "92c73b94cea13b82a2756cff1b3ac76301dd5d52f6cf2f3c60d09e7e9eae9cfd",
+      "byteSize": 8514,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: three pears. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/pear-3.svg; component primary1-pear.svg reused with SHA cc2173eeab198b3bb58347a4827410d2c5cc6a24bb896a5b667fe7fce202bcb7.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.3d7fe8f4d2a652a098ed855b57a4ee98e6a92aa3eb9a4899c4223c52843dd8a8",
+      "sha256": "3d7fe8f4d2a652a098ed855b57a4ee98e6a92aa3eb9a4899c4223c52843dd8a8",
+      "byteSize": 8849,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: four pears. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/pear-4.svg; component primary1-pear.svg reused with SHA cc2173eeab198b3bb58347a4827410d2c5cc6a24bb896a5b667fe7fce202bcb7.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.8400284e029bdf53bc5859252d2c403b08467a9f3d82bc342ffcee4bda5340ed",
+      "sha256": "8400284e029bdf53bc5859252d2c403b08467a9f3d82bc342ffcee4bda5340ed",
+      "byteSize": 7250,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: one banana. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/banana-1.svg; component primary1-banana.svg reused with SHA 829f242bb85ec75b62c3bd72f56ed0511e4950ed357fa7abf12d7b055d02c994.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.6d6a09cd11f82956b15211a099042d87ff15f263a363269d0c3508c8b6677fa5",
+      "sha256": "6d6a09cd11f82956b15211a099042d87ff15f263a363269d0c3508c8b6677fa5",
+      "byteSize": 6130,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: two bananas. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/banana-2.svg; component primary1-banana.svg reused with SHA 829f242bb85ec75b62c3bd72f56ed0511e4950ed357fa7abf12d7b055d02c994.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.6e4ac04e72ed51dc7eccab46f31b4a54cf0a7642a1544bd4141cf10a9e9956e7",
+      "sha256": "6e4ac04e72ed51dc7eccab46f31b4a54cf0a7642a1544bd4141cf10a9e9956e7",
+      "byteSize": 6502,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: one orange. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/orange-1.svg; component primary1-orange.svg reused with SHA b2b3a75ea303d26bcce0e6264e9bbaeb0295133f73024cbbfa9e8233533caee1.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.11e3f06abd68464d9c981d23ff47ad0a4d3d38de5ab9c83ae21ef56178eab582",
+      "sha256": "11e3f06abd68464d9c981d23ff47ad0a4d3d38de5ab9c83ae21ef56178eab582",
+      "byteSize": 5522,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: two oranges. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/orange-2.svg; component primary1-orange.svg reused with SHA b2b3a75ea303d26bcce0e6264e9bbaeb0295133f73024cbbfa9e8233533caee1.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.f12c6becc745cbb8e1bd4ff8b5cac6d22aa55e20757bc4e7b8b64ee253f3e93f",
+      "sha256": "f12c6becc745cbb8e1bd4ff8b5cac6d22aa55e20757bc4e7b8b64ee253f3e93f",
+      "byteSize": 9070,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: three bananas. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/banana-3.svg; component primary1-banana.svg reused with SHA 829f242bb85ec75b62c3bd72f56ed0511e4950ed357fa7abf12d7b055d02c994.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.7a7dbbb7139c68109885d02ed6370452a506bac4e54abdf6d998eea13a5b0a56",
+      "sha256": "7a7dbbb7139c68109885d02ed6370452a506bac4e54abdf6d998eea13a5b0a56",
+      "byteSize": 9281,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: four bananas. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/banana-4.svg; component primary1-banana.svg reused with SHA 829f242bb85ec75b62c3bd72f56ed0511e4950ed357fa7abf12d7b055d02c994.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.e91d735ed9d4ba861b40fddf9853e7a54a1c2359c03646ab4accfbc95f469ccb",
+      "sha256": "e91d735ed9d4ba861b40fddf9853e7a54a1c2359c03646ab4accfbc95f469ccb",
+      "byteSize": 7922,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: three oranges. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/orange-3.svg; component primary1-orange.svg reused with SHA b2b3a75ea303d26bcce0e6264e9bbaeb0295133f73024cbbfa9e8233533caee1.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.279a8510a3d2cf335bb1eb4ffc9d6643001ebca15e5de17103e99aa1a84c6301",
+      "sha256": "279a8510a3d2cf335bb1eb4ffc9d6643001ebca15e5de17103e99aa1a84c6301",
+      "byteSize": 8207,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: four oranges. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/orange-4.svg; component primary1-orange.svg reused with SHA b2b3a75ea303d26bcce0e6264e9bbaeb0295133f73024cbbfa9e8233533caee1.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.59de67dbde04576ddfd71c035f6dfdb294a60a8bcc375d660ef9a725db9ad94c",
+      "sha256": "59de67dbde04576ddfd71c035f6dfdb294a60a8bcc375d660ef9a725db9ad94c",
+      "byteSize": 11601,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: one cat. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/cat-1.svg; component primary1-animal-cat.svg reused with SHA e3f6e53ca51c4cad0d2a801dd94c93736e90166b078549b21e841709adec970c.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.56a204dd3252348901bf342ed6686037df5bd9205a26234aaee9114a1c3ffc3e",
+      "sha256": "56a204dd3252348901bf342ed6686037df5bd9205a26234aaee9114a1c3ffc3e",
+      "byteSize": 9963,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: two cats. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/cat-2.svg; component primary1-animal-cat.svg reused with SHA e3f6e53ca51c4cad0d2a801dd94c93736e90166b078549b21e841709adec970c.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.813bccf0c324172eace644da565c6b613462e4a51ac28a01a968a9f30da660f8",
+      "sha256": "813bccf0c324172eace644da565c6b613462e4a51ac28a01a968a9f30da660f8",
+      "byteSize": 13959,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: one dog. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/dog-1.svg; component primary1-animal-dog.svg reused with SHA 2217e6d01de72d914cff3436be3a4c7c2faede254010e092900b72f8820844f3.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.13939d481b052aabc467667b34f7a6f4cd9375148878a34582a71f4bf98ee23f",
+      "sha256": "13939d481b052aabc467667b34f7a6f4cd9375148878a34582a71f4bf98ee23f",
+      "byteSize": 11398,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: two dogs. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/dog-2.svg; component primary1-animal-dog.svg reused with SHA 2217e6d01de72d914cff3436be3a4c7c2faede254010e092900b72f8820844f3.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.37177795fcae4d5dda6efe6caadcb52926a33520f04c6737a60da5925e5692a7",
+      "sha256": "37177795fcae4d5dda6efe6caadcb52926a33520f04c6737a60da5925e5692a7",
+      "byteSize": 15559,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: three cats. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/cat-3.svg; component primary1-animal-cat.svg reused with SHA e3f6e53ca51c4cad0d2a801dd94c93736e90166b078549b21e841709adec970c.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.c5930f29d589c0ae17cf78f846f62ad3c3e9f23a40d3b71a3d3e94a225ce25bd",
+      "sha256": "c5930f29d589c0ae17cf78f846f62ad3c3e9f23a40d3b71a3d3e94a225ce25bd",
+      "byteSize": 16139,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: four cats. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/cat-4.svg; component primary1-animal-cat.svg reused with SHA e3f6e53ca51c4cad0d2a801dd94c93736e90166b078549b21e841709adec970c.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.da50f1105a03d6767dd4c58ea74bc72135ac4e3379f6b6e9ebe13f26e9da62d8",
+      "sha256": "da50f1105a03d6767dd4c58ea74bc72135ac4e3379f6b6e9ebe13f26e9da62d8",
+      "byteSize": 18426,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: three dogs. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/dog-3.svg; component primary1-animal-dog.svg reused with SHA 2217e6d01de72d914cff3436be3a4c7c2faede254010e092900b72f8820844f3.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.f858fcdc1f79a7ffbe432c1eaf4433264a765e65585c885bee0641647462b120",
+      "sha256": "f858fcdc1f79a7ffbe432c1eaf4433264a765e65585c885bee0641647462b120",
+      "byteSize": 18919,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: four dogs. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/dog-4.svg; component primary1-animal-dog.svg reused with SHA 2217e6d01de72d914cff3436be3a4c7c2faede254010e092900b72f8820844f3.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.6bb4425e22a828691ba57684027fd8eaa526af6090044511466f88583b0b73d3",
+      "sha256": "6bb4425e22a828691ba57684027fd8eaa526af6090044511466f88583b0b73d3",
+      "byteSize": 9427,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: one bird. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/bird-1.svg; component primary1-animal-bird.svg reused with SHA ce6e6b82ab9c3a3494d22ba11bafeadce18f08c66423c388fc03ab4381c881b9.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.aab505043922f3e58c064e0582af8994aa4e07c565963cdd648273e2fb32f17c",
+      "sha256": "aab505043922f3e58c064e0582af8994aa4e07c565963cdd648273e2fb32f17c",
+      "byteSize": 8012,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: two birds. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/bird-2.svg; component primary1-animal-bird.svg reused with SHA ce6e6b82ab9c3a3494d22ba11bafeadce18f08c66423c388fc03ab4381c881b9.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.abcdf9894d5c201a4bfdd006790ebcdcae78343095ebf0e70800c4ab42cafda1",
+      "sha256": "abcdf9894d5c201a4bfdd006790ebcdcae78343095ebf0e70800c4ab42cafda1",
+      "byteSize": 14432,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: one monkey. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/monkey-1.svg; component primary1-animal-monkey.svg reused with SHA 90eebbbe0432f07c656f5252ca013ed6eb4ce0c8e6d185d29d0d0a044dd4e7d0.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.9e85efcfd8bbe1778e84ed57681a23c03bab9df76810a4468d731a1eb87c2e4f",
+      "sha256": "9e85efcfd8bbe1778e84ed57681a23c03bab9df76810a4468d731a1eb87c2e4f",
+      "byteSize": 11800,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: two monkeys. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/monkey-2.svg; component primary1-animal-monkey.svg reused with SHA 90eebbbe0432f07c656f5252ca013ed6eb4ce0c8e6d185d29d0d0a044dd4e7d0.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.236f9c27537fa41eb00f95c74daa96b9e51f8b784c1c6bd3a0b63b5a8e04e99b",
+      "sha256": "236f9c27537fa41eb00f95c74daa96b9e51f8b784c1c6bd3a0b63b5a8e04e99b",
+      "byteSize": 12335,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: three birds. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/bird-3.svg; component primary1-animal-bird.svg reused with SHA ce6e6b82ab9c3a3494d22ba11bafeadce18f08c66423c388fc03ab4381c881b9.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.70ee2f0e0f9bc326e84f285679e97dc6af39c8d189cf447d24e797bedcf01b19",
+      "sha256": "70ee2f0e0f9bc326e84f285679e97dc6af39c8d189cf447d24e797bedcf01b19",
+      "byteSize": 12715,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: four birds. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/bird-4.svg; component primary1-animal-bird.svg reused with SHA ce6e6b82ab9c3a3494d22ba11bafeadce18f08c66423c388fc03ab4381c881b9.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.b87fa80a0381760ab05886baf5c9beb4bda71525863bf720738856eddffef3fb",
+      "sha256": "b87fa80a0381760ab05886baf5c9beb4bda71525863bf720738856eddffef3fb",
+      "byteSize": 19005,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: three monkeys. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/monkey-3.svg; component primary1-animal-monkey.svg reused with SHA 90eebbbe0432f07c656f5252ca013ed6eb4ce0c8e6d185d29d0d0a044dd4e7d0.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.85171f230bc0bd15381b8d152dc5e2db6ea2345269528a806f548c31a472f879",
+      "sha256": "85171f230bc0bd15381b8d152dc5e2db6ea2345269528a806f548c31a472f879",
+      "byteSize": 19439,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: four monkeys. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/monkey-4.svg; component primary1-animal-monkey.svg reused with SHA 90eebbbe0432f07c656f5252ca013ed6eb4ce0c8e6d185d29d0d0a044dd4e7d0.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.a9d8956d458f361b68197f883d506b2d4b46580b457b4ca31cb2f65e4bc4d81b",
+      "sha256": "a9d8956d458f361b68197f883d506b2d4b46580b457b4ca31cb2f65e4bc4d81b",
+      "byteSize": 3611,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: one book. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/book-1.svg; component primary1-book.svg reused with SHA 466758c25458038235d3e8d94d015aeff59af2d5982ba3b6d754cd0c474e3ec1.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.e209c4c43b942bf0a577a16af423d1342d94e594dbe46e588b1f2e0eeb8e1650",
+      "sha256": "e209c4c43b942bf0a577a16af423d1342d94e594dbe46e588b1f2e0eeb8e1650",
+      "byteSize": 3391,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: two books. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/book-2.svg; component primary1-book.svg reused with SHA 466758c25458038235d3e8d94d015aeff59af2d5982ba3b6d754cd0c474e3ec1.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.1688ca3dfba16e5e1669d36dbecfc8022c79230b9e01b2b879f30d7a9bf392d5",
+      "sha256": "1688ca3dfba16e5e1669d36dbecfc8022c79230b9e01b2b879f30d7a9bf392d5",
+      "byteSize": 6109,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: one bag. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/bag-1.svg; component primary1-schoolbag.svg reused with SHA 94e9eb0a7449f713b2088321e0353d342e10b6f8d6ea45f321eebff6c631febb.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.d8c601062d0220e6536d02f42745edb66eb4409f78fe07d8326b110a401d4143",
+      "sha256": "d8c601062d0220e6536d02f42745edb66eb4409f78fe07d8326b110a401d4143",
+      "byteSize": 5495,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: two bags. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/bag-2.svg; component primary1-schoolbag.svg reused with SHA 94e9eb0a7449f713b2088321e0353d342e10b6f8d6ea45f321eebff6c631febb.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.d9bc721002c822f14e22a3b3ca1a7af1d3c9f2b833203c049ff3d7991d340a69",
+      "sha256": "d9bc721002c822f14e22a3b3ca1a7af1d3c9f2b833203c049ff3d7991d340a69",
+      "byteSize": 4445,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: three books. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/book-3.svg; component primary1-book.svg reused with SHA 466758c25458038235d3e8d94d015aeff59af2d5982ba3b6d754cd0c474e3ec1.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.776a6d87a69ad588ab48b9eedfafcb6b279cd13a7190d05a746e984f3fb957b1",
+      "sha256": "776a6d87a69ad588ab48b9eedfafcb6b279cd13a7190d05a746e984f3fb957b1",
+      "byteSize": 4548,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: four books. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/book-4.svg; component primary1-book.svg reused with SHA 466758c25458038235d3e8d94d015aeff59af2d5982ba3b6d754cd0c474e3ec1.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.c1579d4c0b376b76784eccc12975fdf1126510499176f2e996e792f1b9a709b9",
+      "sha256": "c1579d4c0b376b76784eccc12975fdf1126510499176f2e996e792f1b9a709b9",
+      "byteSize": 7890,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: three bags. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/bag-3.svg; component primary1-schoolbag.svg reused with SHA 94e9eb0a7449f713b2088321e0353d342e10b6f8d6ea45f321eebff6c631febb.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.52225b19aea6394cd8450e970405f4188cb44dc13fb1414fdbb43a953854d2cc",
+      "sha256": "52225b19aea6394cd8450e970405f4188cb44dc13fb1414fdbb43a953854d2cc",
+      "byteSize": 8154,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: four bags. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/bag-4.svg; component primary1-schoolbag.svg reused with SHA 94e9eb0a7449f713b2088321e0353d342e10b6f8d6ea45f321eebff6c631febb.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.d85c817beab5f4cd1f62b13e5d2bd603ccb81c248e3a03975a7cd9b281cff210",
+      "sha256": "d85c817beab5f4cd1f62b13e5d2bd603ccb81c248e3a03975a7cd9b281cff210",
+      "byteSize": 5010,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: one pencil. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/pencil-1.svg; component primary1-pencil.svg reused with SHA 4d5f7fa2a33ea069448723f0174f5efe19deac67968aacf4db561b72c8ca5a90.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.df7b376b82d815f83526d31dc30eac5fbcbaaea78b94d2a74e9ea813548b8125",
+      "sha256": "df7b376b82d815f83526d31dc30eac5fbcbaaea78b94d2a74e9ea813548b8125",
+      "byteSize": 4600,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: two pencils. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/pencil-2.svg; component primary1-pencil.svg reused with SHA 4d5f7fa2a33ea069448723f0174f5efe19deac67968aacf4db561b72c8ca5a90.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.f648b701d9a43a851622a81e94accdff3ffb318ea818844e7f24ccf7cf791224",
+      "sha256": "f648b701d9a43a851622a81e94accdff3ffb318ea818844e7f24ccf7cf791224",
+      "byteSize": 5761,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: one ruler. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/ruler-1.svg; component primary1-ruler.svg reused with SHA b8c722b22b8642fa9a4b9f3c09657557738fe3730d0d9752d447f55955cedaf6.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.c1bed09e035113c1a94cd85b3d428a7d2ccaf58a4384f4ff3a9c739a225afe9a",
+      "sha256": "c1bed09e035113c1a94cd85b3d428a7d2ccaf58a4384f4ff3a9c739a225afe9a",
+      "byteSize": 5029,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: two rulers. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/ruler-2.svg; component primary1-ruler.svg reused with SHA b8c722b22b8642fa9a4b9f3c09657557738fe3730d0d9752d447f55955cedaf6.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.4551705a8070d3badf3692249f21aac3888824277005a7c43c046161ec63b605",
+      "sha256": "4551705a8070d3badf3692249f21aac3888824277005a7c43c046161ec63b605",
+      "byteSize": 6460,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: three pencils. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/pencil-3.svg; component primary1-pencil.svg reused with SHA 4d5f7fa2a33ea069448723f0174f5efe19deac67968aacf4db561b72c8ca5a90.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.be4087024fdbb2d8658a81cb11c0289e3df80502c873ff2d7358453eb1b570c5",
+      "sha256": "be4087024fdbb2d8658a81cb11c0289e3df80502c873ff2d7358453eb1b570c5",
+      "byteSize": 6678,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: four pencils. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/pencil-4.svg; component primary1-pencil.svg reused with SHA 4d5f7fa2a33ea069448723f0174f5efe19deac67968aacf4db561b72c8ca5a90.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.e5aca582438afd8ae56937acee85da98eaf88a67bc0445b76ea82d979cd8a97a",
+      "sha256": "e5aca582438afd8ae56937acee85da98eaf88a67bc0445b76ea82d979cd8a97a",
+      "byteSize": 7333,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: three rulers. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/ruler-3.svg; component primary1-ruler.svg reused with SHA b8c722b22b8642fa9a4b9f3c09657557738fe3730d0d9752d447f55955cedaf6.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.85f46a5d2ec71cf21a2cbd14205db2bac8caf91f57c0bff79ee5b8a08997901e",
+      "sha256": "85f46a5d2ec71cf21a2cbd14205db2bac8caf91f57c0bff79ee5b8a08997901e",
+      "byteSize": 7519,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: four rulers. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/ruler-4.svg; component primary1-ruler.svg reused with SHA b8c722b22b8642fa9a4b9f3c09657557738fe3730d0d9752d447f55955cedaf6.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.bdd003f2dee7acd0a59f61e9339635856d863dc6a1ec41d22b7b56643b4d6991",
+      "sha256": "bdd003f2dee7acd0a59f61e9339635856d863dc6a1ec41d22b7b56643b4d6991",
+      "byteSize": 14904,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: one tiger. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/tiger-1.svg; component primary1-animal-tiger.svg reused with SHA 2bafb168bb7c1b649948d46c5a5d9026a24819038a659f126fe3d6baf0d96209.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.fe5937537d5af5e9a6fa3f1310013f0755f1cb232239fac17b0c41b85d416d98",
+      "sha256": "fe5937537d5af5e9a6fa3f1310013f0755f1cb232239fac17b0c41b85d416d98",
+      "byteSize": 12495,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: two tigers. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/tiger-2.svg; component primary1-animal-tiger.svg reused with SHA 2bafb168bb7c1b649948d46c5a5d9026a24819038a659f126fe3d6baf0d96209.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.94ebb4f70e3d6de67138c7b8f56cd3324f677af73905bebcde34fe70296314f7",
+      "sha256": "94ebb4f70e3d6de67138c7b8f56cd3324f677af73905bebcde34fe70296314f7",
+      "byteSize": 7698,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: one eye. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/eye-1.svg; component primary1-eye.svg reused with SHA d0a508d48a0c18e6c446b08be545dcddc578b4ec895f5529f1b11276770653a6.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.df42cfbe737c6fce325f037572f6e075d69160328b84e6f946bdbe2378e700bf",
+      "sha256": "df42cfbe737c6fce325f037572f6e075d69160328b84e6f946bdbe2378e700bf",
+      "byteSize": 6474,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: two eyes. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/eye-2.svg; component primary1-eye.svg reused with SHA d0a508d48a0c18e6c446b08be545dcddc578b4ec895f5529f1b11276770653a6.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.2d37db9ff12fdb71b2853e3ea5192423f883cf0928dd08eedb47c5cc65fc5dce",
+      "sha256": "2d37db9ff12fdb71b2853e3ea5192423f883cf0928dd08eedb47c5cc65fc5dce",
+      "byteSize": 19815,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: three tigers. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/tiger-3.svg; component primary1-animal-tiger.svg reused with SHA 2bafb168bb7c1b649948d46c5a5d9026a24819038a659f126fe3d6baf0d96209.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.256bce0cc5656dd1595c3f08b06dd0c766ec736a392ec351a530d6f50e08f952",
+      "sha256": "256bce0cc5656dd1595c3f08b06dd0c766ec736a392ec351a530d6f50e08f952",
+      "byteSize": 20456,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: four tigers. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/tiger-4.svg; component primary1-animal-tiger.svg reused with SHA 2bafb168bb7c1b649948d46c5a5d9026a24819038a659f126fe3d6baf0d96209.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.eef91b0a00123f6d05743fc54789d688d9654a5f16897517fa6abe88e61e6f97",
+      "sha256": "eef91b0a00123f6d05743fc54789d688d9654a5f16897517fa6abe88e61e6f97",
+      "byteSize": 9748,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: three eyes. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/eye-3.svg; component primary1-eye.svg reused with SHA d0a508d48a0c18e6c446b08be545dcddc578b4ec895f5529f1b11276770653a6.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    },
+    {
+      "id": "image.6c2a2a1c92e7b513a96c904c77003ecd5cc2ad18f5a2229848abec9f4f05b0f7",
+      "sha256": "6c2a2a1c92e7b513a96c904c77003ecd5cc2ad18f5a2229848abec9f4f05b0f7",
+      "byteSize": 9963,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Original picture card: four eyes. Separate complete objects on white; no written words or numbers.",
+      "source": "Owned vector Backend/config/learning/expansions/2026-10-24/visual-sources/eye-4.svg; component primary1-eye.svg reused with SHA d0a508d48a0c18e6c446b08be545dcddc578b4ec895f5529f1b11276770653a6.",
+      "reviewedBy": "Codex vector composition and image inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "New quantity-and-noun picture set. Reuses owned editable drawings without changing old files. No independent teacher/learner calibration claimed."
+    }
+  ]
+}

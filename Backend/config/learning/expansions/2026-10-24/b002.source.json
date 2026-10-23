@@ -1,0 +1,302 @@
+{
+  "createdAt": "2026-10-24T01:35:00+08:00",
+  "reviewBoundary": "本轮新原创完整题组，已对照全文逐题自审正确键和干扰项；不声称独立教师审核、学生难度标定或产出质量已稳定。",
+  "units": [
+    {
+      "id": "primary2.lunch-table-003",
+      "level": "primary2",
+      "title": "午餐桌边",
+      "family": "function_choice",
+      "minutes": 8,
+      "sourceUnitId": "original.primary2-five-small-functions",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "At lunch",
+          "text": "Choose the reply that completes each short conversation.\n\n1. Lily: Would you like a banana?\nTom: ___\n\n2. Tom: Here is your water, Lily.\nLily: ___\n\n3. Lily: Do you like apples?\nTom: ___\n\n4. Tom: How many oranges are there?\nLily: ___\n\n5. Lily: What's this in your lunch box?\nTom: ___",
+          "questions": [
+            {
+              "prompt": "Lily: Would you like a banana?\nTom: ____",
+              "options": [
+                "It's blue.",
+                "I'm Tom.",
+                "Yes, please.",
+                "There are two."
+              ],
+              "answer": 2,
+              "explanation": "Would you like提供食物，Yes, please礼貌接受。颜色、名字和数量都没有回答是否要香蕉。"
+            },
+            {
+              "prompt": "Tom: Here is your water, Lily.\nLily: ____",
+              "options": [
+                "Good night.",
+                "Thank you.",
+                "It's yellow.",
+                "I'm eight."
+              ],
+              "answer": 1,
+              "explanation": "Here is your water递来饮水，应答Thank you。夜间告别、颜色及年龄均不回应递物。"
+            },
+            {
+              "prompt": "Lily: Do you like apples?\nTom: ____",
+              "options": [
+                "It's an apple.",
+                "They are red.",
+                "There are three.",
+                "Yes, I do."
+              ],
+              "answer": 3,
+              "explanation": "Do you like询问喜好，Yes, I do正确。物品、颜色和数量陈述未回答喜好问题。"
+            },
+            {
+              "prompt": "Tom: How many oranges are there?\nLily: ____",
+              "options": [
+                "There are three.",
+                "It's orange.",
+                "My name is Lily.",
+                "You're welcome."
+              ],
+              "answer": 0,
+              "explanation": "How many oranges询问数量，There are three直接作答。颜色、名字和回应感谢均不匹配。"
+            },
+            {
+              "prompt": "Lily: What's this in your lunch box?\nTom: ____",
+              "options": [
+                "I'm fine.",
+                "Goodbye.",
+                "It's a sandwich.",
+                "I'm seven."
+              ],
+              "answer": 2,
+              "explanation": "What's this询问盒内物品，It's a sandwich直接回答。身体状态、告别和年龄均与问题无关。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior1.return-and-notice-001",
+      "level": "senior1",
+      "title": "阅读理解 · 两篇 · 杯子与候车亭",
+      "family": "reading_choice",
+      "minutes": 18,
+      "sourceUnitId": "original.grade10-roof-reading-v0.2",
+      "materials": [
+        {
+          "id": "a",
+          "title": "A. A place for the cup to come back",
+          "text": "When the owner of a small station café introduced reusable cups, she expected the deposit to do most of the work. Customers paid two extra pounds and got the money back when they returned a cup. The cups were strong, easy to wash and popular with regular visitors. Yet after a month, nearly half were still missing.\n\nThe owner, Leah, asked customers what had happened. Few had deliberately kept a cup. Some had carried it onto a train and could not return to the same station. Others had left it at an office, then forgotten about it until their next visit. A larger deposit might have encouraged them to remember, but it would also have made a morning drink more expensive.\n\nLeah tried a different approach. Two nearby cafés agreed to accept her cups, and she agreed to accept theirs. A simple sticker showed all three return points. The businesses kept a shared record so that returning a cup at a different café did not leave one owner paying for another owner's customers. No new phone application was required.\n\nReturns increased, although not immediately. For the first week, staff had to explain that any of the three cafés could take a cup back. Leah also placed a return box beside the door, where people could leave a cup without joining the queue for drinks. Customers still had to speak to a staff member if they wanted their deposit in cash.\n\nAfter three months, the owners chose to continue the arrangement. They had not proved that every customer cared more about waste than before. What they had shown, Leah believed, was narrower and more useful: people were more likely to complete a good intention when the last step fitted into the route they already took.",
+          "questions": [
+            {
+              "prompt": "What did Leah learn from speaking to customers?",
+              "options": [
+                "Most missing cups had been sold to other passengers.",
+                "Returning to the original café was often inconvenient.",
+                "The cups were too weak for journeys by train.",
+                "Customers wanted every deposit to be increased."
+              ],
+              "answer": 1,
+              "explanation": "第二段列出乘火车离开原站、杯子留在办公室等，核心是原点归还不便。没有转售、强度差或普遍要求提高押金的证据。"
+            },
+            {
+              "prompt": "Why did the cafés keep a shared record?",
+              "options": [
+                "To identify customers who disliked reusable cups.",
+                "To decide which café should close its return point.",
+                "To balance the costs of accepting each other's cups.",
+                "To record how many drinks each passenger bought."
+              ],
+              "answer": 2,
+              "explanation": "第三段明确为避免某店为另一店顾客承担返还成本，C正确。记录不用于态度识别、关闭网点或统计乘客饮品购买量。"
+            },
+            {
+              "prompt": "What could customers do at the box beside the door?",
+              "options": [
+                "Leave a cup without waiting in the drinks queue.",
+                "Collect a cash deposit without contacting staff.",
+                "Choose a new cup without paying for a drink.",
+                "Exchange train tickets for a free reusable cup."
+              ],
+              "answer": 0,
+              "explanation": "第四段明确return box使人不用排买饮品队即可放杯。现金押金仍须找店员，B与原文相反；免费领杯、票换杯均未提及。"
+            },
+            {
+              "prompt": "Which conclusion is best supported by the café arrangement?",
+              "options": [
+                "Higher deposits always reduce the number of missing cups.",
+                "A phone application is necessary for shared return schemes.",
+                "All customers had developed a stronger concern for waste.",
+                "A convenient final step can help people carry out an intention."
+              ],
+              "answer": 3,
+              "explanation": "末段将结果限定为把最后一步嵌入日常路线有助执行善意。未试更高押金，无需新App，且明确没有证明所有人更关心垃圾。"
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "title": "B. Looking beyond the finished photograph",
+          "text": "For a local photography competition, sixteen-year-old Daniel planned to take a picture of the old bus shelter near his home. Its roof had a curved glass panel, and late sunlight made a bright pattern on the pavement. He had seen the pattern many times, but he had never stopped to work out exactly when it appeared.\n\nHis first attempt was disappointing. He arrived at five o'clock, the time printed on a photograph he had taken in spring. It was now September, and the light fell on a different part of the shelter. A bus blocked the view just as he pressed the button. Daniel could have removed it later on a computer, but he wanted the photograph to record a real moment.\n\nOver the next week he visited at several different times. He wrote down where the light fell, how long each bus waited and which parts of the shelter remained in shadow. A woman who cleaned the shelter noticed his notebook. She explained that buses stayed longer on Tuesdays because a nearby market brought more passengers. She also pointed out a clear view from a small public path behind the shelter.\n\nDaniel's final photograph included a bus. This time it was not blocking the pattern: its dark side made the bright pavement easier to see. The picture did not win first prize, but the judges praised the way it connected an ordinary structure with the movement of the street.\n\nWhen his teacher asked what he had learned, Daniel did not describe a new camera setting. He talked about returning to one place, noticing what changed and listening to someone who knew it in a different way. The photograph had taken only a second. Preparing to notice that second, he said, had taken a week.",
+          "questions": [
+            {
+              "prompt": "Why did the time on Daniel's spring photograph fail to guide him in September?",
+              "options": [
+                "The shelter had been moved to another street.",
+                "His camera had recorded the wrong time.",
+                "The seasonal change had altered the position of the light.",
+                "The glass panel had been replaced with a solid roof."
+              ],
+              "answer": 2,
+              "explanation": "第二段春季五点与九月五点光照位置不同，C概括季节变化。亭子迁址、时钟错误和屋顶更换都无依据。"
+            },
+            {
+              "prompt": "How did the cleaner help Daniel?",
+              "options": [
+                "She removed all the buses from his chosen view.",
+                "She offered knowledge of the timetable pattern and another viewpoint.",
+                "She lent him a camera designed for street photography.",
+                "She asked the judges to look closely at his notebook."
+              ],
+              "answer": 1,
+              "explanation": "第三段她解释周二因集市停车更久，并指出后方小路视角。没有移走公交、借相机或联系评委。"
+            },
+            {
+              "prompt": "What role did the bus play in the final photograph?",
+              "options": [
+                "It helped the bright pattern stand out.",
+                "It completely hid the curved glass panel.",
+                "It showed that the shelter was no longer used.",
+                "It replaced the pavement as the only subject."
+              ],
+              "answer": 0,
+              "explanation": "第四段dark side made the bright pavement easier to see，车的暗面衬托亮纹。完全遮亭、停用和唯独拍车都不符。"
+            },
+            {
+              "prompt": "What is the main lesson Daniel took from the project?",
+              "options": [
+                "Winning a prize is the best measure of a photograph.",
+                "Computer editing is more useful than visiting a location.",
+                "A better camera removes the need for careful preparation.",
+                "Patient observation and other people's knowledge can improve one's work."
+              ],
+              "answer": 3,
+              "explanation": "末段强调反复观察变化、倾听熟悉地点者，D综合全文。作品未夺冠却有收获，A不符；他坚持真实瞬间，B不符；没有升级相机且重视准备，C不符。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior1.library-and-seedlings-002",
+      "level": "senior1",
+      "title": "阅读理解 · 两篇 · 流动书架与幼苗",
+      "family": "reading_choice",
+      "minutes": 18,
+      "sourceUnitId": "original.grade10-roof-reading-v0.2",
+      "materials": [
+        {
+          "id": "a",
+          "title": "A. The library that needed a smaller vehicle",
+          "text": "The town's mobile library was a large van with shelves along both sides. Every Wednesday it visited three villages, carrying books to people who found the main library difficult to reach. When road repairs closed the entrance to one village, the library team expected to miss only a week. The work, however, was extended twice.\n\nResidents suggested parking at the edge of the village. For some readers that would have been enough, but the walking route included a steep hill. The librarian, Nisha, was especially concerned about readers who used walking aids. Moving the service closer on a map did not necessarily make it easier to use.\n\nA volunteer offered a cargo bicycle with a large covered box. It could use a narrow path that remained open during the repairs. The bicycle could carry far fewer books than the van, so Nisha could not simply move the van's usual selection into the box. She invited readers to request books by telephone a few days before each visit. She also left room for a small changing collection, so that readers could still discover something they had not asked for.\n\nThe first delivery revealed another problem. A paper list at the bottom of the box became difficult to find when it rained. The team put books into labelled reusable bags and attached the list inside a waterproof cover. They kept the familiar Wednesday schedule instead of introducing extra visits that volunteers might not be able to maintain.\n\nThe bicycle service ended when the road reopened. Its value was not that it could replace every library van. The team kept the request system, which helped them choose books more carefully for all three villages. A temporary restriction had made them ask a lasting question: which part of a service must remain fixed, and which part can change to help the people who use it?",
+          "questions": [
+            {
+              "prompt": "Why was parking the van at the village edge insufficient for some readers?",
+              "options": [
+                "The parking area was reserved for market traders.",
+                "The remaining walk included a difficult hill.",
+                "The readers could borrow books only inside a building.",
+                "The van was unable to carry books in wet weather."
+              ],
+              "answer": 1,
+              "explanation": "第二段明确剩余步行路有陡坡，对使用助行工具者尤其不便。停车限制、只能在建筑内借书和车不能雨天载书均未说。"
+            },
+            {
+              "prompt": "What was the main reason for introducing telephone requests?",
+              "options": [
+                "To charge readers before delivering their books.",
+                "To stop readers from discovering unfamiliar books.",
+                "To make the bicycle's limited carrying space more useful.",
+                "To replace the librarian with a computer service."
+              ],
+              "answer": 2,
+              "explanation": "第三段先说明自行车载书少，再安排提前点书以精准配载。没有收费，仍留探索选书；没有电脑替代馆员。"
+            },
+            {
+              "prompt": "What did the team deliberately keep unchanged?",
+              "options": [
+                "The number of books carried on each trip.",
+                "The location of the paper list in the box.",
+                "The way all books were packed for delivery.",
+                "The regular day of the weekly visit."
+              ],
+              "answer": 3,
+              "explanation": "第四段kept the familiar Wednesday schedule。载书量已减少，清单位置和包装已因雨调整，前三项不符。"
+            },
+            {
+              "prompt": "What continued after the road reopened?",
+              "options": [
+                "The system of requesting books in advance.",
+                "The permanent replacement of every van with a bicycle.",
+                "The closure of the village entrance each Wednesday.",
+                "The removal of all unrequested books from the service."
+              ],
+              "answer": 0,
+              "explanation": "末段明确保留request system。自行车服务已结束，路重开，且一直留有未点选的探索书，不支持其余三项。"
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "title": "B. What the seedlings could actually tell them",
+          "text": "A school gardening club wanted to find out whether used tea leaves helped bean seedlings grow. Its members had seen videos recommending the practice, but they noticed that the videos often compared plants in different pots or different places. They decided to design a comparison of their own.\n\nThe club planted twenty beans from the same packet in pots of the same size. Ten pots received a measured amount of dried tea leaves mixed into the soil; the other ten received none. Both sets stood on the same long table. Each day, two students used marked containers to give the pots equal amounts of water. Every few days they exchanged the positions of the pots so that one set would not always receive more light.\n\nThree weeks later, the seedlings with tea leaves were, on average, slightly taller. However, the heights within each set varied greatly, and two seedlings without tea leaves were taller than any of the others. Some members wanted to announce that the tea treatment had worked. Their teacher asked them to look again at the size of the difference and the amount of variation.\n\nInstead of preparing a poster saying 'Tea makes beans grow faster', the students described exactly what they had done and shown. They included the height of every seedling, not just the two most impressive plants. They also noted that they had tested one type of bean in one kind of soil for only three weeks.\n\nNext term, they planned to repeat the comparison and try a second amount of tea leaves. Their first experiment had not given them a simple gardening rule. It had given them something they could use more widely: a way to ask whether a neat conclusion was stronger than the observations supporting it.",
+          "questions": [
+            {
+              "prompt": "Why did the students exchange the positions of the pots?",
+              "options": [
+                "To reduce the effect of unequal light on the comparison.",
+                "To give the tea-treated plants more water.",
+                "To separate tall seedlings from short ones.",
+                "To prevent the bean plants from growing roots."
+              ],
+              "answer": 0,
+              "explanation": "第二段明确交换位置防止一组总获更多光，A正确。水量保持相同，不按身高分组，也不抑制生根。"
+            },
+            {
+              "prompt": "Why did the teacher question the students' first conclusion?",
+              "options": [
+                "No seedling with tea leaves had grown at all.",
+                "The tea leaves had been placed in every pot.",
+                "A small average difference existed alongside large variation.",
+                "The students had forgotten to record any heights."
+              ],
+              "answer": 2,
+              "explanation": "第三段平均略高但组内差异大，且未处理组也有最高个体。没有全不长、全盆加茶或完全无记录。"
+            },
+            {
+              "prompt": "Which detail made the students' final report more informative?",
+              "options": [
+                "It included only the two tallest seedlings.",
+                "It presented every seedling's height and the study's limits.",
+                "It turned one short comparison into a universal rule.",
+                "It removed all results that did not support the tea treatment."
+              ],
+              "answer": 1,
+              "explanation": "第四段报告全部幼苗高度，并说明单一豆种、土壤和三周限制。A/D为挑选数据，与全文相反；C为过度推广，被明确避免。"
+            },
+            {
+              "prompt": "What broader skill did the experiment help students develop?",
+              "options": [
+                "Choosing videos with the shortest instructions.",
+                "Measuring plants without using any equipment.",
+                "Producing certain answers from every small experiment.",
+                "Checking whether a claim goes beyond its evidence."
+              ],
+              "answer": 3,
+              "explanation": "末段把收获表述为判断结论是否比观察证据更强，D准确。并非选视频、无工具测量，也没有保证小试验给确定结论。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

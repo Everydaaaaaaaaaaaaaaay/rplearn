@@ -4,6 +4,7 @@ import {
   maintenanceStage,
 } from "../infrastructure/maintenance.js";
 import { loadGaokaoCatalog } from "../modules/learning/gaokao-catalog.js";
+import { gaokaoCatalog } from "../modules/learning/gaokao-policy.js";
 import { loadConfig } from "../config/env.js";
 import { createDatabase } from "../db/client.js";
 import { createMediaObjectStore } from "../modules/media/object-store.js";
@@ -49,12 +50,11 @@ async function main() {
       operation,
       hash: catalog.hash,
       units: catalog.units.length,
-      pastPaperPractices: catalog.units.filter(
-        (u) => !u.id.startsWith("gaokao.authored."),
+      pastPaperPractices: gaokaoCatalog().practices.filter(
+        (p) => p.kind === "past-paper",
       ).length,
-      authoredPractices: catalog.units.filter((u) =>
-        u.id.startsWith("gaokao.authored."),
-      ).length,
+      authoredPractices: gaokaoCatalog().practices.filter((p) => p.kind === "authored")
+        .length,
       uniqueQuestions: new Set(
         catalog.units.flatMap((u) => u.questions.map((q) => q.id)),
       ).size,

@@ -25,6 +25,12 @@ case "${action}" in
   gaokao-publish)
     [[ "$#" = 2 && "$2" =~ ^[a-f0-9]{64}$ ]] || exit 2
     command=(/opt/lingotrip/runtime/bin/node --max-old-space-size=128 --env-file=/etc/lingotrip/backend.env --env-file=/etc/lingotrip/release.env dist/cli/learning-gaokao.js publish "$2") ;;
+  expansion-validate|expansion-withdraw)
+    [[ "$#" = 2 && "$2" =~ ^(b[0-9]{3}|all)$ ]] || exit 2
+    command=(/opt/lingotrip/runtime/bin/node --max-old-space-size=128 --env-file=/etc/lingotrip/backend.env --env-file=/etc/lingotrip/release.env dist/cli/learning-expansion.js "${action#expansion-}" "$2") ;;
+  expansion-publish)
+    [[ "$#" = 3 && "$2" =~ ^b[0-9]{3}$ && "$3" =~ ^[a-f0-9]{64}$ ]] || exit 2
+    command=(/opt/lingotrip/runtime/bin/node --max-old-space-size=128 --env-file=/etc/lingotrip/backend.env --env-file=/etc/lingotrip/release.env dist/cli/learning-expansion.js publish "$2" "$3") ;;
   catalog-publish|bank-publish)
     [[ "$#" = 2 && "$2" =~ ^[a-f0-9]{64}$ ]] || exit 2
     name="${action%-publish}"
