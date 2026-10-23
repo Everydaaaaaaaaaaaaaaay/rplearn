@@ -1,0 +1,1214 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b041",
+  "createdAt": "2026-10-23T21:28:43.248685+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.rainy-doorway-041",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · At the wet doorway",
+        "summary": "At the wet doorway，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete set of five short communicative-response choices; limited extra context is an explicit provisional adaptation, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six original five-response primary2 sets. Communicative situations and assessed text are English. Same-author intended-response and all-alternative review; no independent age calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.rainy-doorway-041",
+          "family": "function_choice",
+          "label": "At the wet doorway",
+          "candidateSHA256": "501293751ddf56e85e1cfb3fae4b967587bf7b4043f11db7bc843dadedfaa9a7",
+          "authorCheckSHA256": "6ffc00066209b708c564e059b95ab822c0970044d8899f62ec3d066abaa6af28",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.rainy-doorway-041#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b041；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "At the wet doorway\n\nChoose the best reply in each conversation.\n\n1. Child: My umbrella is dripping. Where can I put it?\nTeacher: ____\n\n2. Teacher: Are your socks wet too?\nChild: ____\n\n3. Child: I cannot close this umbrella.\nFriend: ____\n\n4. Teacher: Please wipe your shoes on the mat.\nChild: ____\n\n5. Child: Is the rain stopping?\nTeacher: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.rainy-doorway-041.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: My umbrella is dripping. Where can I put it?\nTeacher: ____",
+            "material": "At the wet doorway\n\nChoose the best reply in each conversation.\n\n1. Child: My umbrella is dripping. Where can I put it?\nTeacher: ____\n\n2. Teacher: Are your socks wet too?\nChild: ____\n\n3. Child: I cannot close this umbrella.\nFriend: ____\n\n4. Teacher: Please wipe your shoes on the mat.\nChild: ____\n\n5. Child: Is the rain stopping?\nTeacher: ____",
+            "explanation": "The bucket is a place for a wet umbrella. Time, a name and a birthday do not answer where to put it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At half past three."
+              },
+              {
+                "id": "o1",
+                "text": "My name is Brown."
+              },
+              {
+                "id": "o2",
+                "text": "It is her birthday."
+              },
+              {
+                "id": "o3",
+                "text": "In this bucket by the door."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.rainy-doorway-041.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Are your socks wet too?\nChild: ____",
+            "material": "At the wet doorway\n\nChoose the best reply in each conversation.\n\n1. Child: My umbrella is dripping. Where can I put it?\nTeacher: ____\n\n2. Teacher: Are your socks wet too?\nChild: ____\n\n3. Child: I cannot close this umbrella.\nFriend: ____\n\n4. Teacher: Please wipe your shoes on the mat.\nChild: ____\n\n5. Child: Is the rain stopping?\nTeacher: ____",
+            "explanation": "The reply directly denies wet socks and identifies wet shoes. A location, a food request and another child’s class do not answer this condition question.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She is in Class Two."
+              },
+              {
+                "id": "o1",
+                "text": "They are under the tree."
+              },
+              {
+                "id": "o2",
+                "text": "No. Only my shoes are wet."
+              },
+              {
+                "id": "o3",
+                "text": "I want three bananas."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.rainy-doorway-041.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: I cannot close this umbrella.\nFriend: ____",
+            "material": "At the wet doorway\n\nChoose the best reply in each conversation.\n\n1. Child: My umbrella is dripping. Where can I put it?\nTeacher: ____\n\n2. Teacher: Are your socks wet too?\nChild: ____\n\n3. Child: I cannot close this umbrella.\nFriend: ____\n\n4. Teacher: Please wipe your shoes on the mat.\nChild: ____\n\n5. Child: Is the rain stopping?\nTeacher: ____",
+            "explanation": "Let me try offers help with the difficult umbrella. Colour description, age and identifying birds do not help.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I am six years old."
+              },
+              {
+                "id": "o1",
+                "text": "It is a green hill."
+              },
+              {
+                "id": "o2",
+                "text": "Let me try."
+              },
+              {
+                "id": "o3",
+                "text": "They are birds."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.rainy-doorway-041.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Please wipe your shoes on the mat.\nChild: ____",
+            "material": "At the wet doorway\n\nChoose the best reply in each conversation.\n\n1. Child: My umbrella is dripping. Where can I put it?\nTeacher: ____\n\n2. Teacher: Are your socks wet too?\nChild: ____\n\n3. Child: I cannot close this umbrella.\nFriend: ____\n\n4. Teacher: Please wipe your shoes on the mat.\nChild: ____\n\n5. Child: Is the rain stopping?\nTeacher: ____",
+            "explanation": "Agreeing and checking the action responds to the instruction. The other statements do not concern cleaning shoes.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He can jump."
+              },
+              {
+                "id": "o1",
+                "text": "I have a sister."
+              },
+              {
+                "id": "o2",
+                "text": "All right. Like this?"
+              },
+              {
+                "id": "o3",
+                "text": "The sun is yellow."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.rainy-doorway-041.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Is the rain stopping?\nTeacher: ____",
+            "material": "At the wet doorway\n\nChoose the best reply in each conversation.\n\n1. Child: My umbrella is dripping. Where can I put it?\nTeacher: ____\n\n2. Teacher: Are your socks wet too?\nChild: ____\n\n3. Child: I cannot close this umbrella.\nFriend: ____\n\n4. Teacher: Please wipe your shoes on the mat.\nChild: ____\n\n5. Child: Is the rain stopping?\nTeacher: ____",
+            "explanation": "Yes with the sun appearing answers the weather change. Naming possessions, preference and a person’s location do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She is at home."
+              },
+              {
+                "id": "o1",
+                "text": "Yes. We can see the sun now."
+              },
+              {
+                "id": "o2",
+                "text": "It is my lunch box."
+              },
+              {
+                "id": "o3",
+                "text": "I like this sandwich."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "9b53b977044893689f4393a849879efcc9eb16ffb04c82c5551cc7f749e7a4da",
+      "reviewNotes": "Six original five-response primary2 sets. Communicative situations and assessed text are English. Same-author intended-response and all-alternative review; no independent age calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.lunch-table-space-041",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · Room at the lunch table",
+        "summary": "Room at the lunch table，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete set of five short communicative-response choices; limited extra context is an explicit provisional adaptation, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six original five-response primary2 sets. Communicative situations and assessed text are English. Same-author intended-response and all-alternative review; no independent age calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.lunch-table-space-041",
+          "family": "function_choice",
+          "label": "Room at the lunch table",
+          "candidateSHA256": "8490dd156554f127ed25ed3e3bd0a6d93b797a03bc38422b9f312acf519c9691",
+          "authorCheckSHA256": "a6c00869b4924807e0bbebc3c86c0ea17a200e802c4936bfc0f8c588fe54f3a8",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.lunch-table-space-041#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b041；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Room at the lunch table\n\nChoose the best reply in each conversation.\n\n1. Child: Is anyone sitting here?\nFriend: ____\n\n2. Child: I have dropped my spoon.\nTeacher: ____\n\n3. Friend: Would you like more rice?\nChild: ____\n\n4. Child: This soup is very hot.\nTeacher: ____\n\n5. Teacher: Where do the empty cups go?\nChild: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.lunch-table-space-041.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Is anyone sitting here?\nFriend: ____",
+            "material": "Room at the lunch table\n\nChoose the best reply in each conversation.\n\n1. Child: Is anyone sitting here?\nFriend: ____\n\n2. Child: I have dropped my spoon.\nTeacher: ____\n\n3. Friend: Would you like more rice?\nChild: ____\n\n4. Child: This soup is very hot.\nTeacher: ____\n\n5. Teacher: Where do the empty cups go?\nChild: ____",
+            "explanation": "The reply confirms the seat is available and invites sitting. Possessions, time and a parent’s job do not answer seat availability.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "My dad is a cook."
+              },
+              {
+                "id": "o1",
+                "text": "It is ten o’clock."
+              },
+              {
+                "id": "o2",
+                "text": "I have a red pencil."
+              },
+              {
+                "id": "o3",
+                "text": "No. You can sit next to me."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.lunch-table-space-041.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: I have dropped my spoon.\nTeacher: ____",
+            "material": "Room at the lunch table\n\nChoose the best reply in each conversation.\n\n1. Child: Is anyone sitting here?\nFriend: ____\n\n2. Child: I have dropped my spoon.\nTeacher: ____\n\n3. Friend: Would you like more rice?\nChild: ____\n\n4. Child: This soup is very hot.\nTeacher: ____\n\n5. Teacher: Where do the empty cups go?\nChild: ____",
+            "explanation": "A clean replacement spoon addresses the dropped utensil. Cat state, weather and age do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Here is a clean one."
+              },
+              {
+                "id": "o1",
+                "text": "The cat is asleep."
+              },
+              {
+                "id": "o2",
+                "text": "She is seven."
+              },
+              {
+                "id": "o3",
+                "text": "It is cold outside."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.lunch-table-space-041.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Friend: Would you like more rice?\nChild: ____",
+            "material": "Room at the lunch table\n\nChoose the best reply in each conversation.\n\n1. Child: Is anyone sitting here?\nFriend: ____\n\n2. Child: I have dropped my spoon.\nTeacher: ____\n\n3. Friend: Would you like more rice?\nChild: ____\n\n4. Child: This soup is very hot.\nTeacher: ____\n\n5. Teacher: Where do the empty cups go?\nChild: ____",
+            "explanation": "Declining politely and saying enough answers the offer. Location, shoes and ability are unrelated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is behind the chair."
+              },
+              {
+                "id": "o1",
+                "text": "No, thank you. I have enough."
+              },
+              {
+                "id": "o2",
+                "text": "He can read."
+              },
+              {
+                "id": "o3",
+                "text": "My shoes are new."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.lunch-table-space-041.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: This soup is very hot.\nTeacher: ____",
+            "material": "Room at the lunch table\n\nChoose the best reply in each conversation.\n\n1. Child: Is anyone sitting here?\nFriend: ____\n\n2. Child: I have dropped my spoon.\nTeacher: ____\n\n3. Friend: Would you like more rice?\nChild: ____\n\n4. Child: This soup is very hot.\nTeacher: ____\n\n5. Teacher: Where do the empty cups go?\nChild: ____",
+            "explanation": "Waiting allows hot soup to cool. A bag description, family count and a hobby do not address temperature.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is a nice blue bag."
+              },
+              {
+                "id": "o1",
+                "text": "She likes dancing."
+              },
+              {
+                "id": "o2",
+                "text": "I have two brothers."
+              },
+              {
+                "id": "o3",
+                "text": "Wait a little before you eat it."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.lunch-table-space-041.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Where do the empty cups go?\nChild: ____",
+            "material": "Room at the lunch table\n\nChoose the best reply in each conversation.\n\n1. Child: Is anyone sitting here?\nFriend: ____\n\n2. Child: I have dropped my spoon.\nTeacher: ____\n\n3. Friend: Would you like more rice?\nChild: ____\n\n4. Child: This soup is very hot.\nTeacher: ____\n\n5. Teacher: Where do the empty cups go?\nChild: ____",
+            "explanation": "The tray is the requested place for cups. Feeling, day and family identity do not answer where.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is Saturday."
+              },
+              {
+                "id": "o1",
+                "text": "He is my uncle."
+              },
+              {
+                "id": "o2",
+                "text": "I am very happy."
+              },
+              {
+                "id": "o3",
+                "text": "On this tray."
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "db8e0e86791886fa1d878c8cd2a27242846b9a8a5b4136a89fbc79435997b2e5",
+      "reviewNotes": "Six original five-response primary2 sets. Communicative situations and assessed text are English. Same-author intended-response and all-alternative review; no independent age calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.birthday-preparations-041",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · Before the birthday party",
+        "summary": "Before the birthday party，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete set of five short communicative-response choices; limited extra context is an explicit provisional adaptation, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six original five-response primary2 sets. Communicative situations and assessed text are English. Same-author intended-response and all-alternative review; no independent age calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.birthday-preparations-041",
+          "family": "function_choice",
+          "label": "Before the birthday party",
+          "candidateSHA256": "b13629c9ebeaa48cc1afe6ca09612aad41f8fc7a1b4fe3b9bfbf337001f89e5e",
+          "authorCheckSHA256": "4a49844b7a837ef30d8734caadd1feef612728e985bf93655595cf03326a831b",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.birthday-preparations-041#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b041；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Before the birthday party\n\nChoose the best reply in each conversation.\n\n1. Dad: We need one chair for each child. Are there enough?\nChild: ____\n\n2. Child: Where shall I put the birthday card?\nMum: ____\n\n3. Friend: May I help with the party?\nChild: ____\n\n4. Mum: Who is the cake for?\nChild: ____\n\n5. Child: The candles are ready. Shall we call everyone?\nDad: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.birthday-preparations-041.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Dad: We need one chair for each child. Are there enough?\nChild: ____",
+            "material": "Before the birthday party\n\nChoose the best reply in each conversation.\n\n1. Dad: We need one chair for each child. Are there enough?\nChild: ____\n\n2. Child: Where shall I put the birthday card?\nMum: ____\n\n3. Friend: May I help with the party?\nChild: ____\n\n4. Mum: Who is the cake for?\nChild: ____\n\n5. Child: The candles are ready. Shall we call everyone?\nDad: ____",
+            "explanation": "The reply states a shortage and needed chairs. Cake colour, a song preference and location do not answer whether seating is enough.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The cake is pink."
+              },
+              {
+                "id": "o1",
+                "text": "She is in the park."
+              },
+              {
+                "id": "o2",
+                "text": "No. We need two more."
+              },
+              {
+                "id": "o3",
+                "text": "I like this song."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.birthday-preparations-041.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Where shall I put the birthday card?\nMum: ____",
+            "material": "Before the birthday party\n\nChoose the best reply in each conversation.\n\n1. Dad: We need one chair for each child. Are there enough?\nChild: ____\n\n2. Child: Where shall I put the birthday card?\nMum: ____\n\n3. Friend: May I help with the party?\nChild: ____\n\n4. Mum: Who is the cake for?\nChild: ____\n\n5. Child: The candles are ready. Shall we call everyone?\nDad: ____",
+            "explanation": "Beside the present gives the place for the card. Ability, day and duck count do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I can run fast."
+              },
+              {
+                "id": "o1",
+                "text": "Beside the present, please."
+              },
+              {
+                "id": "o2",
+                "text": "It is Thursday."
+              },
+              {
+                "id": "o3",
+                "text": "There are three ducks."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.birthday-preparations-041.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Friend: May I help with the party?\nChild: ____",
+            "material": "Before the birthday party\n\nChoose the best reply in each conversation.\n\n1. Dad: We need one chair for each child. Are there enough?\nChild: ____\n\n2. Child: Where shall I put the birthday card?\nMum: ____\n\n3. Friend: May I help with the party?\nChild: ____\n\n4. Mum: Who is the cake for?\nChild: ____\n\n5. Child: The candles are ready. Shall we call everyone?\nDad: ____",
+            "explanation": "Giving a useful task accepts the offer of help. Age, door colour and pet ownership do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes. Please put these cups on the table."
+              },
+              {
+                "id": "o1",
+                "text": "I am eight."
+              },
+              {
+                "id": "o2",
+                "text": "She has a cat."
+              },
+              {
+                "id": "o3",
+                "text": "The door is brown."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.birthday-preparations-041.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Mum: Who is the cake for?\nChild: ____",
+            "material": "Before the birthday party\n\nChoose the best reply in each conversation.\n\n1. Dad: We need one chair for each child. Are there enough?\nChild: ____\n\n2. Child: Where shall I put the birthday card?\nMum: ____\n\n3. Friend: May I help with the party?\nChild: ____\n\n4. Mum: Who is the cake for?\nChild: ____\n\n5. Child: The candles are ready. Shall we call everyone?\nDad: ____",
+            "explanation": "For my brother identifies the recipient. Size, location and ability do not answer for whom.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is very big."
+              },
+              {
+                "id": "o1",
+                "text": "It is on the plate."
+              },
+              {
+                "id": "o2",
+                "text": "I can make a cake."
+              },
+              {
+                "id": "o3",
+                "text": "For my brother. It is his birthday."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.birthday-preparations-041.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: The candles are ready. Shall we call everyone?\nDad: ____",
+            "material": "Before the birthday party\n\nChoose the best reply in each conversation.\n\n1. Dad: We need one chair for each child. Are there enough?\nChild: ____\n\n2. Child: Where shall I put the birthday card?\nMum: ____\n\n3. Friend: May I help with the party?\nChild: ____\n\n4. Mum: Who is the cake for?\nChild: ____\n\n5. Child: The candles are ready. Shall we call everyone?\nDad: ____",
+            "explanation": "Calling guests in accepts the suggestion. Other replies do not concern gathering people.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I have a white hat."
+              },
+              {
+                "id": "o1",
+                "text": "It is my pencil."
+              },
+              {
+                "id": "o2",
+                "text": "The fish is small."
+              },
+              {
+                "id": "o3",
+                "text": "Yes. Ask them to come in."
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "dccb4bbc0b76eb0324f074ed0ffba1bc0552e95527980f86dfc172a93744d9b7",
+      "reviewNotes": "Six original five-response primary2 sets. Communicative situations and assessed text are English. Same-author intended-response and all-alternative review; no independent age calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.bus-trip-company-041",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · On a bus journey",
+        "summary": "On a bus journey，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete set of five short communicative-response choices; limited extra context is an explicit provisional adaptation, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six original five-response primary2 sets. Communicative situations and assessed text are English. Same-author intended-response and all-alternative review; no independent age calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.bus-trip-company-041",
+          "family": "function_choice",
+          "label": "On a bus journey",
+          "candidateSHA256": "f974b2e60588c5814a39921c8f6721f56471cfa0a4e97cdab3177cbee24e3892",
+          "authorCheckSHA256": "16e562ddd2781dc7424f2525d012bb8be15ef4b05d1c1da5477305278fcb59c1",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.bus-trip-company-041#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b041；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "On a bus journey\n\nChoose the best reply in each conversation.\n\n1. Child: May I sit by the window?\nDad: ____\n\n2. Child: Is this our stop?\nDad: ____\n\n3. Dad: The bus is moving. Please hold on.\nChild: ____\n\n4. Child: That lady has no seat.\nDad: ____\n\n5. Driver: Please take your bag when you leave.\nChild: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.bus-trip-company-041.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: May I sit by the window?\nDad: ____",
+            "material": "On a bus journey\n\nChoose the best reply in each conversation.\n\n1. Child: May I sit by the window?\nDad: ____\n\n2. Child: Is this our stop?\nDad: ____\n\n3. Dad: The bus is moving. Please hold on.\nChild: ____\n\n4. Child: That lady has no seat.\nDad: ____\n\n5. Driver: Please take your bag when you leave.\nChild: ____",
+            "explanation": "Permission and Dad’s seat plan directly answer the request. Location, job and coat colour do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "My coat is green."
+              },
+              {
+                "id": "o1",
+                "text": "She is a nurse."
+              },
+              {
+                "id": "o2",
+                "text": "Yes. I will sit beside you."
+              },
+              {
+                "id": "o3",
+                "text": "It is in my bag."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.bus-trip-company-041.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Is this our stop?\nDad: ____",
+            "material": "On a bus journey\n\nChoose the best reply in each conversation.\n\n1. Child: May I sit by the window?\nDad: ____\n\n2. Child: Is this our stop?\nDad: ____\n\n3. Dad: The bus is moving. Please hold on.\nChild: ____\n\n4. Child: That lady has no seat.\nDad: ____\n\n5. Driver: Please take your bag when you leave.\nChild: ____",
+            "explanation": "The reply identifies the correct stop as the next one. Flower description, body count and swimming ability do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I have ten fingers."
+              },
+              {
+                "id": "o1",
+                "text": "It is a yellow flower."
+              },
+              {
+                "id": "o2",
+                "text": "He can swim."
+              },
+              {
+                "id": "o3",
+                "text": "Not yet. We get off at the next one."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.bus-trip-company-041.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Dad: The bus is moving. Please hold on.\nChild: ____",
+            "material": "On a bus journey\n\nChoose the best reply in each conversation.\n\n1. Child: May I sit by the window?\nDad: ____\n\n2. Child: Is this our stop?\nDad: ____\n\n3. Dad: The bus is moving. Please hold on.\nChild: ____\n\n4. Child: That lady has no seat.\nDad: ____\n\n5. Driver: Please take your bag when you leave.\nChild: ____",
+            "explanation": "Holding the rail follows the safety instruction. Introduction, weather and identity do not confirm holding on.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is sunny today."
+              },
+              {
+                "id": "o1",
+                "text": "All right. I have the rail."
+              },
+              {
+                "id": "o2",
+                "text": "My name is Lily."
+              },
+              {
+                "id": "o3",
+                "text": "They are my friends."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.bus-trip-company-041.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: That lady has no seat.\nDad: ____",
+            "material": "On a bus journey\n\nChoose the best reply in each conversation.\n\n1. Child: May I sit by the window?\nDad: ____\n\n2. Child: Is this our stop?\nDad: ____\n\n3. Dad: The bus is moving. Please hold on.\nChild: ____\n\n4. Child: That lady has no seat.\nDad: ____\n\n5. Driver: Please take your bag when you leave.\nChild: ____",
+            "explanation": "Offering the child’s seat addresses the standing passenger. Time, food preference and bike ownership do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I like apples."
+              },
+              {
+                "id": "o1",
+                "text": "It is half past five."
+              },
+              {
+                "id": "o2",
+                "text": "He has a blue bike."
+              },
+              {
+                "id": "o3",
+                "text": "You can offer her yours."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.bus-trip-company-041.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Driver: Please take your bag when you leave.\nChild: ____",
+            "material": "On a bus journey\n\nChoose the best reply in each conversation.\n\n1. Child: May I sit by the window?\nDad: ____\n\n2. Child: Is this our stop?\nDad: ____\n\n3. Dad: The bus is moving. Please hold on.\nChild: ____\n\n4. Child: That lady has no seat.\nDad: ____\n\n5. Driver: Please take your bag when you leave.\nChild: ____",
+            "explanation": "Thanks acknowledges the reminder to take a bag. Age, window state and bird observation do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She is nine."
+              },
+              {
+                "id": "o1",
+                "text": "Thank you for reminding me."
+              },
+              {
+                "id": "o2",
+                "text": "The window is open."
+              },
+              {
+                "id": "o3",
+                "text": "I can see a bird."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "b5dcf8c139b1e60dcc68de0b625897c7168073f06f4a85f4d559f61c2dc61638",
+      "reviewNotes": "Six original five-response primary2 sets. Communicative situations and assessed text are English. Same-author intended-response and all-alternative review; no independent age calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.toy-train-fix-041",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · The toy train will not go",
+        "summary": "The toy train will not go，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete set of five short communicative-response choices; limited extra context is an explicit provisional adaptation, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six original five-response primary2 sets. Communicative situations and assessed text are English. Same-author intended-response and all-alternative review; no independent age calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.toy-train-fix-041",
+          "family": "function_choice",
+          "label": "The toy train will not go",
+          "candidateSHA256": "6733f9bb482bbb89698df0bdcdbc1ad5f7bac3443b3976a681d3e818c60aa59e",
+          "authorCheckSHA256": "532f7bc8ced7df5ea1c0cf7485999470c68b82c912208dc08fec25e12fd03825",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.toy-train-fix-041#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b041；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The toy train will not go\n\nChoose the best reply in each conversation.\n\n1. Child: My toy train does not move. Can you look at it?\nDad: ____\n\n2. Dad: Where is the train’s battery?\nChild: ____\n\n3. Child: Do we need a new battery?\nDad: ____\n\n4. Dad: Please give me the small screwdriver.\nChild: ____\n\n5. Child: It works now! Thank you, Dad.\nDad: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.toy-train-fix-041.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: My toy train does not move. Can you look at it?\nDad: ____",
+            "material": "The toy train will not go\n\nChoose the best reply in each conversation.\n\n1. Child: My toy train does not move. Can you look at it?\nDad: ____\n\n2. Dad: Where is the train’s battery?\nChild: ____\n\n3. Child: Do we need a new battery?\nDad: ____\n\n4. Dad: Please give me the small screwdriver.\nChild: ____\n\n5. Child: It works now! Thank you, Dad.\nDad: ____",
+            "explanation": "Asking the child to bring it accepts the inspection request. Day, shoe colour and identity do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She is my teacher."
+              },
+              {
+                "id": "o1",
+                "text": "It is Monday."
+              },
+              {
+                "id": "o2",
+                "text": "Yes. Bring it here."
+              },
+              {
+                "id": "o3",
+                "text": "My shoes are black."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.toy-train-fix-041.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Dad: Where is the train’s battery?\nChild: ____",
+            "material": "The toy train will not go\n\nChoose the best reply in each conversation.\n\n1. Child: My toy train does not move. Can you look at it?\nDad: ____\n\n2. Dad: Where is the train’s battery?\nChild: ____\n\n3. Child: Do we need a new battery?\nDad: ____\n\n4. Dad: Please give me the small screwdriver.\nChild: ____\n\n5. Child: It works now! Thank you, Dad.\nDad: ____",
+            "explanation": "The box location answers where the battery is. Time, preference and height do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is seven o’clock."
+              },
+              {
+                "id": "o1",
+                "text": "Inside this little box."
+              },
+              {
+                "id": "o2",
+                "text": "I like trains."
+              },
+              {
+                "id": "o3",
+                "text": "He is very tall."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.toy-train-fix-041.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Do we need a new battery?\nDad: ____",
+            "material": "The toy train will not go\n\nChoose the best reply in each conversation.\n\n1. Child: My toy train does not move. Can you look at it?\nDad: ____\n\n2. Dad: Where is the train’s battery?\nChild: ____\n\n3. Child: Do we need a new battery?\nDad: ____\n\n4. Dad: Please give me the small screwdriver.\nChild: ____\n\n5. Child: It works now! Thank you, Dad.\nDad: ____",
+            "explanation": "A powerless battery gives the reason for replacement. Singing, an unrelated location and hunger do not answer the need.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I am hungry."
+              },
+              {
+                "id": "o1",
+                "text": "Yes. This one has no power."
+              },
+              {
+                "id": "o2",
+                "text": "She can sing."
+              },
+              {
+                "id": "o3",
+                "text": "It is under the bed."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.toy-train-fix-041.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Dad: Please give me the small screwdriver.\nChild: ____",
+            "material": "The toy train will not go\n\nChoose the best reply in each conversation.\n\n1. Child: My toy train does not move. Can you look at it?\nDad: ____\n\n2. Dad: Where is the train’s battery?\nChild: ____\n\n3. Child: Do we need a new battery?\nDad: ____\n\n4. Dad: Please give me the small screwdriver.\nChild: ____\n\n5. Child: It works now! Thank you, Dad.\nDad: ____",
+            "explanation": "Checking which small tool to hand over responds to the request. Bird count, bag colour and weather do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is raining."
+              },
+              {
+                "id": "o1",
+                "text": "This little one?"
+              },
+              {
+                "id": "o2",
+                "text": "There are two birds."
+              },
+              {
+                "id": "o3",
+                "text": "My bag is red."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.toy-train-fix-041.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: It works now! Thank you, Dad.\nDad: ____",
+            "material": "The toy train will not go\n\nChoose the best reply in each conversation.\n\n1. Child: My toy train does not move. Can you look at it?\nDad: ____\n\n2. Dad: Where is the train’s battery?\nChild: ____\n\n3. Child: Do we need a new battery?\nDad: ____\n\n4. Dad: Please give me the small screwdriver.\nChild: ____\n\n5. Child: It works now! Thank you, Dad.\nDad: ____",
+            "explanation": "You’re welcome answers thanks and Have fun suits the repaired toy. Other statements do not respond to gratitude.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "There is a bus."
+              },
+              {
+                "id": "o1",
+                "text": "You’re welcome. Have fun!"
+              },
+              {
+                "id": "o2",
+                "text": "It is my ruler."
+              },
+              {
+                "id": "o3",
+                "text": "She likes milk."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "21204fc4d7f7dc7b2070183677f3c29d6f1ce39ed7cda7e1837dbe3418c97ce7",
+      "reviewNotes": "Six original five-response primary2 sets. Communicative situations and assessed text are English. Same-author intended-response and all-alternative review; no independent age calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.book-cover-help-041",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · A cover for my book",
+        "summary": "A cover for my book，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete set of five short communicative-response choices; limited extra context is an explicit provisional adaptation, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six original five-response primary2 sets. Communicative situations and assessed text are English. Same-author intended-response and all-alternative review; no independent age calibration claimed."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.book-cover-help-041",
+          "family": "function_choice",
+          "label": "A cover for my book",
+          "candidateSHA256": "3ed8d8cdcaa0e6c6e38a5fd34c8f80cc7ebef0a502eb9511f87880395fabe0d8",
+          "authorCheckSHA256": "d77e82c88b51763e5421965b37812a1012c3875a63193409ca79a01ddc820028",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.book-cover-help-041#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b041；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A cover for my book\n\nChoose the best reply in each conversation.\n\n1. Child: Can I use this paper to cover my book?\nTeacher: ____\n\n2. Teacher: Which book needs a cover?\nChild: ____\n\n3. Child: I cannot keep the paper flat.\nTeacher: ____\n\n4. Teacher: Do you want to draw on the new cover?\nChild: ____\n\n5. Child: My name is very small. Can you read it?\nTeacher: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.book-cover-help-041.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Can I use this paper to cover my book?\nTeacher: ____",
+            "material": "A cover for my book\n\nChoose the best reply in each conversation.\n\n1. Child: Can I use this paper to cover my book?\nTeacher: ____\n\n2. Teacher: Which book needs a cover?\nChild: ____\n\n3. Child: I cannot keep the paper flat.\nTeacher: ____\n\n4. Teacher: Do you want to draw on the new cover?\nChild: ____\n\n5. Child: My name is very small. Can you read it?\nTeacher: ____",
+            "explanation": "Permission with enough paper answers the request. Pet ownership, time and ability do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I have a dog."
+              },
+              {
+                "id": "o1",
+                "text": "She can skate."
+              },
+              {
+                "id": "o2",
+                "text": "Yes. There is enough for you."
+              },
+              {
+                "id": "o3",
+                "text": "It is nine o’clock."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.book-cover-help-041.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Which book needs a cover?\nChild: ____",
+            "material": "A cover for my book\n\nChoose the best reply in each conversation.\n\n1. Child: Can I use this paper to cover my book?\nTeacher: ____\n\n2. Teacher: Which book needs a cover?\nChild: ____\n\n3. Child: I cannot keep the paper flat.\nTeacher: ____\n\n4. Teacher: Do you want to draw on the new cover?\nChild: ____\n\n5. Child: My name is very small. Can you read it?\nTeacher: ____",
+            "explanation": "Naming the damaged storybook selects the book. Weather, health and another group’s location do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is hot today."
+              },
+              {
+                "id": "o1",
+                "text": "They are on the bus."
+              },
+              {
+                "id": "o2",
+                "text": "I am fine."
+              },
+              {
+                "id": "o3",
+                "text": "The storybook with the torn cover."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.book-cover-help-041.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: I cannot keep the paper flat.\nTeacher: ____",
+            "material": "A cover for my book\n\nChoose the best reply in each conversation.\n\n1. Child: Can I use this paper to cover my book?\nTeacher: ____\n\n2. Teacher: Which book needs a cover?\nChild: ____\n\n3. Child: I cannot keep the paper flat.\nTeacher: ____\n\n4. Teacher: Do you want to draw on the new cover?\nChild: ____\n\n5. Child: My name is very small. Can you read it?\nTeacher: ____",
+            "explanation": "A heavy book holds paper flat. Taste, family identity and thirst do not solve the problem.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I want some water."
+              },
+              {
+                "id": "o1",
+                "text": "He is my cousin."
+              },
+              {
+                "id": "o2",
+                "text": "The apple is sweet."
+              },
+              {
+                "id": "o3",
+                "text": "Put this heavy book on it."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.book-cover-help-041.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Do you want to draw on the new cover?\nChild: ____",
+            "material": "A cover for my book\n\nChoose the best reply in each conversation.\n\n1. Child: Can I use this paper to cover my book?\nTeacher: ____\n\n2. Teacher: Which book needs a cover?\nChild: ____\n\n3. Child: I cannot keep the paper flat.\nTeacher: ____\n\n4. Teacher: Do you want to draw on the new cover?\nChild: ____\n\n5. Child: My name is very small. Can you read it?\nTeacher: ____",
+            "explanation": "The child accepts and states a drawing plan. Location, age and sport ability do not answer the offer.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She is five."
+              },
+              {
+                "id": "o1",
+                "text": "Yes. I will draw a little house."
+              },
+              {
+                "id": "o2",
+                "text": "It is in the kitchen."
+              },
+              {
+                "id": "o3",
+                "text": "He can play tennis."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.book-cover-help-041.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: My name is very small. Can you read it?\nTeacher: ____",
+            "material": "A cover for my book\n\nChoose the best reply in each conversation.\n\n1. Child: Can I use this paper to cover my book?\nTeacher: ____\n\n2. Teacher: Which book needs a cover?\nChild: ____\n\n3. Child: I cannot keep the paper flat.\nTeacher: ____\n\n4. Teacher: Do you want to draw on the new cover?\nChild: ____\n\n5. Child: My name is very small. Can you read it?\nTeacher: ____",
+            "explanation": "The reply addresses readability and suggests larger writing. Lunch identity, possessions and weekday do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Not very well. Please write it bigger."
+              },
+              {
+                "id": "o1",
+                "text": "It is my lunch."
+              },
+              {
+                "id": "o2",
+                "text": "It is Friday."
+              },
+              {
+                "id": "o3",
+                "text": "I have three pencils."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "a2dc2acb939912a47e6211580877fb2fad4b4c86d6fc95941e31ea86125e7aaf",
+      "reviewNotes": "Six original five-response primary2 sets. Communicative situations and assessed text are English. Same-author intended-response and all-alternative review; no independent age calibration claimed. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
