@@ -1,0 +1,1818 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b057",
+  "createdAt": "2026-10-23T22:20:17.898484+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.bakery-bag-057",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · At the bakery",
+        "summary": "At the bakery，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete short communicative-response choices, with provisional added context and vocabulary. Not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.bakery-bag-057",
+          "family": "function_choice",
+          "label": "At the bakery",
+          "candidateSHA256": "d93f00b6e5a833d848f355a9b096155c7a40f339f22aeec8e738433b1dcbea65",
+          "authorCheckSHA256": "99a9cbe8fc3f948af2698078600b64892abf9079d1c6c52dd854c16eafd7f057",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.bakery-bag-057#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b057；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "At the bakery\n\nChoose the best reply in each conversation.\n\n1. Child: Is this bread for sale?\nBaker: ____\n\n2. Baker: Which cake would you like?\nChild: ____\n\n3. Child: May I have a bag for the bread?\nBaker: ____\n\n4. Baker: The cake is for later. Can you carry the box flat?\nChild: ____\n\n5. Child: This is the wrong bag. Mine has a cake inside.\nBaker: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.bakery-bag-057.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Is this bread for sale?\nBaker: ____",
+            "material": "At the bakery\n\nChoose the best reply in each conversation.\n\n1. Child: Is this bread for sale?\nBaker: ____\n\n2. Baker: Which cake would you like?\nChild: ____\n\n3. Child: May I have a bag for the bread?\nBaker: ____\n\n4. Baker: The cake is for later. Can you carry the box flat?\nChild: ____\n\n5. Child: This is the wrong bag. Mine has a cake inside.\nBaker: ____",
+            "explanation": "Yes plus a price confirms the sale. Age, time and door count do not answer whether bread can be bought.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I am two years old."
+              },
+              {
+                "id": "o1",
+                "text": "There are two doors."
+              },
+              {
+                "id": "o2",
+                "text": "Yes. It is two yuan."
+              },
+              {
+                "id": "o3",
+                "text": "It is two o’clock."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.bakery-bag-057.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Baker: Which cake would you like?\nChild: ____",
+            "material": "At the bakery\n\nChoose the best reply in each conversation.\n\n1. Child: Is this bread for sale?\nBaker: ____\n\n2. Baker: Which cake would you like?\nChild: ____\n\n3. Child: May I have a bag for the bread?\nBaker: ____\n\n4. Baker: The cake is for later. Can you carry the box flat?\nChild: ____\n\n5. Child: This is the wrong bag. Mine has a cake inside.\nBaker: ____",
+            "explanation": "The little round one selects a cake. Location, ability and family identity do not choose an item.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I can ride a bike."
+              },
+              {
+                "id": "o1",
+                "text": "It is in the park."
+              },
+              {
+                "id": "o2",
+                "text": "The little round one, please."
+              },
+              {
+                "id": "o3",
+                "text": "He is my dad."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.bakery-bag-057.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: May I have a bag for the bread?\nBaker: ____",
+            "material": "At the bakery\n\nChoose the best reply in each conversation.\n\n1. Child: Is this bread for sale?\nBaker: ____\n\n2. Baker: Which cake would you like?\nChild: ____\n\n3. Child: May I have a bag for the bread?\nBaker: ____\n\n4. Baker: The cake is for later. Can you carry the box flat?\nChild: ____\n\n5. Child: This is the wrong bag. Mine has a cake inside.\nBaker: ____",
+            "explanation": "Providing a bag grants the request. Another person’s location, wet shoes and identifying a bird do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "My shoes are wet."
+              },
+              {
+                "id": "o1",
+                "text": "Of course. Here you are."
+              },
+              {
+                "id": "o2",
+                "text": "It is a bird."
+              },
+              {
+                "id": "o3",
+                "text": "She is at school."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.bakery-bag-057.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Baker: The cake is for later. Can you carry the box flat?\nChild: ____",
+            "material": "At the bakery\n\nChoose the best reply in each conversation.\n\n1. Child: Is this bread for sale?\nBaker: ____\n\n2. Baker: Which cake would you like?\nChild: ____\n\n3. Child: May I have a bag for the bread?\nBaker: ____\n\n4. Baker: The cake is for later. Can you carry the box flat?\nChild: ____\n\n5. Child: This is the wrong bag. Mine has a cake inside.\nBaker: ____",
+            "explanation": "Holding the box with both hands responds to carrying it flat. Day, introduction and preference do not confirm the action.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "My name is Ann."
+              },
+              {
+                "id": "o1",
+                "text": "Yes. I will hold it with both hands."
+              },
+              {
+                "id": "o2",
+                "text": "It is Sunday."
+              },
+              {
+                "id": "o3",
+                "text": "I like this game."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.bakery-bag-057.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: This is the wrong bag. Mine has a cake inside.\nBaker: ____",
+            "material": "At the bakery\n\nChoose the best reply in each conversation.\n\n1. Child: Is this bread for sale?\nBaker: ____\n\n2. Baker: Which cake would you like?\nChild: ____\n\n3. Child: May I have a bag for the bread?\nBaker: ____\n\n4. Baker: The cake is for later. Can you carry the box flat?\nChild: ____\n\n5. Child: This is the wrong bag. Mine has a cake inside.\nBaker: ____",
+            "explanation": "Checking the bags addresses the mistaken purchase. Weather, a bus and sister identity do not correct it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I can see a bus."
+              },
+              {
+                "id": "o1",
+                "text": "Sorry. Let me check the bags."
+              },
+              {
+                "id": "o2",
+                "text": "She is my sister."
+              },
+              {
+                "id": "o3",
+                "text": "It is sunny."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "11af890f94e9f495f53bcd49a2e3a258ae858498cad8865ed940cf8fd0637e33",
+      "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.pond-watch-057",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · Watching by the pond",
+        "summary": "Watching by the pond，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete short communicative-response choices, with provisional added context and vocabulary. Not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.pond-watch-057",
+          "family": "function_choice",
+          "label": "Watching by the pond",
+          "candidateSHA256": "70b38713b2cbcb32c91db9fe596c37b8ca5a741cca4b8411a379bcaf77864145",
+          "authorCheckSHA256": "8695e2991736ead23c1ac66f3df9964fb56f93503e81e91c97b3e46a78203eb2",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.pond-watch-057#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b057；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Watching by the pond\n\nChoose the best reply in each conversation.\n\n1. Child: Can I feed these fish my sandwich?\nTeacher: ____\n\n2. Teacher: What can you see near the water?\nChild: ____\n\n3. Child: That small duck is hard to see.\nTeacher: ____\n\n4. Teacher: Please stay behind the low fence.\nChild: ____\n\n5. Child: Shall we come back and draw the ducks tomorrow?\nTeacher: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.pond-watch-057.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Can I feed these fish my sandwich?\nTeacher: ____",
+            "material": "Watching by the pond\n\nChoose the best reply in each conversation.\n\n1. Child: Can I feed these fish my sandwich?\nTeacher: ____\n\n2. Teacher: What can you see near the water?\nChild: ____\n\n3. Child: That small duck is hard to see.\nTeacher: ____\n\n4. Teacher: Please stay behind the low fence.\nChild: ____\n\n5. Child: Shall we come back and draw the ducks tomorrow?\nTeacher: ____",
+            "explanation": "The reply declines feeding and offers watching. Location, age and door state do not answer permission.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "No. Please just watch them."
+              },
+              {
+                "id": "o1",
+                "text": "I am seven."
+              },
+              {
+                "id": "o2",
+                "text": "The door is open."
+              },
+              {
+                "id": "o3",
+                "text": "It is in my bag."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.pond-watch-057.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: What can you see near the water?\nChild: ____",
+            "material": "Watching by the pond\n\nChoose the best reply in each conversation.\n\n1. Child: Can I feed these fish my sandwich?\nTeacher: ____\n\n2. Teacher: What can you see near the water?\nChild: ____\n\n3. Child: That small duck is hard to see.\nTeacher: ____\n\n4. Teacher: Please stay behind the low fence.\nChild: ____\n\n5. Child: Shall we come back and draw the ducks tomorrow?\nTeacher: ____",
+            "explanation": "Two ducks reports visible things near water. Coat identity, preference and day do not answer what is seen.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Two ducks on the grass."
+              },
+              {
+                "id": "o1",
+                "text": "It is my coat."
+              },
+              {
+                "id": "o2",
+                "text": "It is Monday."
+              },
+              {
+                "id": "o3",
+                "text": "I like this book."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.pond-watch-057.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: That small duck is hard to see.\nTeacher: ____",
+            "material": "Watching by the pond\n\nChoose the best reply in each conversation.\n\n1. Child: Can I feed these fish my sandwich?\nTeacher: ____\n\n2. Teacher: What can you see near the water?\nChild: ____\n\n3. Child: That small duck is hard to see.\nTeacher: ____\n\n4. Teacher: Please stay behind the low fence.\nChild: ____\n\n5. Child: Shall we come back and draw the ducks tomorrow?\nTeacher: ____",
+            "explanation": "The location cue helps find the duck. Possessions, another person’s ability and colour do not direct the view.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Look beside the big stone."
+              },
+              {
+                "id": "o1",
+                "text": "I have a pen."
+              },
+              {
+                "id": "o2",
+                "text": "My hat is blue."
+              },
+              {
+                "id": "o3",
+                "text": "She can swim."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.pond-watch-057.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Please stay behind the low fence.\nChild: ____",
+            "material": "Watching by the pond\n\nChoose the best reply in each conversation.\n\n1. Child: Can I feed these fish my sandwich?\nTeacher: ____\n\n2. Teacher: What can you see near the water?\nChild: ____\n\n3. Child: That small duck is hard to see.\nTeacher: ____\n\n4. Teacher: Please stay behind the low fence.\nChild: ____\n\n5. Child: Shall we come back and draw the ducks tomorrow?\nTeacher: ____",
+            "explanation": "Agreement to remain behind the fence follows the instruction. Birthday, apple count and height do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "All right. I can see from here."
+              },
+              {
+                "id": "o1",
+                "text": "He is tall."
+              },
+              {
+                "id": "o2",
+                "text": "There are four apples."
+              },
+              {
+                "id": "o3",
+                "text": "It is my birthday."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.pond-watch-057.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Shall we come back and draw the ducks tomorrow?\nTeacher: ____",
+            "material": "Watching by the pond\n\nChoose the best reply in each conversation.\n\n1. Child: Can I feed these fish my sandwich?\nTeacher: ____\n\n2. Teacher: What can you see near the water?\nChild: ____\n\n3. Child: That small duck is hard to see.\nTeacher: ____\n\n4. Teacher: Please stay behind the low fence.\nChild: ____\n\n5. Child: Shall we come back and draw the ducks tomorrow?\nTeacher: ____",
+            "explanation": "Accepting and asking for a drawing book responds to the plan. Name, location and food preference do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes. Bring your drawing book."
+              },
+              {
+                "id": "o1",
+                "text": "My name is Green."
+              },
+              {
+                "id": "o2",
+                "text": "It is under the bed."
+              },
+              {
+                "id": "o3",
+                "text": "She likes rice."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "14765e4e6866b3c24a94c6e61979ad66b4f86514a921b582be946a952163ff3a",
+      "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.new-classmate-057",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · Meeting a new classmate",
+        "summary": "Meeting a new classmate，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete short communicative-response choices, with provisional added context and vocabulary. Not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.new-classmate-057",
+          "family": "function_choice",
+          "label": "Meeting a new classmate",
+          "candidateSHA256": "443f2cabcfe40ecf600cf0101a33bc94ba49eef3b826529d9da383f1906b3e6c",
+          "authorCheckSHA256": "9218c581e8833d1e5c50dc64b334d9e41cb18f70d05a4cf90fb144b9abfba305",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.new-classmate-057#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b057；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Meeting a new classmate\n\nChoose the best reply in each conversation.\n\n1. Teacher: This is our new classmate, Mina.\nChild: ____\n\n2. Mina: I do not know where to sit.\nChild: ____\n\n3. Mina: What is our teacher’s name?\nChild: ____\n\n4. Mina: I cannot find the library.\nChild: ____\n\n5. Mina: Thank you for helping me today.\nChild: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.new-classmate-057.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: This is our new classmate, Mina.\nChild: ____",
+            "material": "Meeting a new classmate\n\nChoose the best reply in each conversation.\n\n1. Teacher: This is our new classmate, Mina.\nChild: ____\n\n2. Mina: I do not know where to sit.\nChild: ____\n\n3. Mina: What is our teacher’s name?\nChild: ____\n\n4. Mina: I cannot find the library.\nChild: ____\n\n5. Mina: Thank you for helping me today.\nChild: ____",
+            "explanation": "Greeting Mina and introducing oneself responds to meeting a classmate. Time, bag weight and window size do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "My bag is heavy."
+              },
+              {
+                "id": "o1",
+                "text": "The window is small."
+              },
+              {
+                "id": "o2",
+                "text": "Hello, Mina. I am Ben."
+              },
+              {
+                "id": "o3",
+                "text": "It is half past eight."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.new-classmate-057.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Mina: I do not know where to sit.\nChild: ____",
+            "material": "Meeting a new classmate\n\nChoose the best reply in each conversation.\n\n1. Teacher: This is our new classmate, Mina.\nChild: ____\n\n2. Mina: I do not know where to sit.\nChild: ____\n\n3. Mina: What is our teacher’s name?\nChild: ____\n\n4. Mina: I cannot find the library.\nChild: ____\n\n5. Mina: Thank you for helping me today.\nChild: ____",
+            "explanation": "Offering an empty chair solves the seating question. Food preference, day and ability do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "There is an empty chair beside me."
+              },
+              {
+                "id": "o1",
+                "text": "It is Tuesday."
+              },
+              {
+                "id": "o2",
+                "text": "I like noodles."
+              },
+              {
+                "id": "o3",
+                "text": "He can jump."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.new-classmate-057.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Mina: What is our teacher’s name?\nChild: ____",
+            "material": "Meeting a new classmate\n\nChoose the best reply in each conversation.\n\n1. Teacher: This is our new classmate, Mina.\nChild: ____\n\n2. Mina: I do not know where to sit.\nChild: ____\n\n3. Mina: What is our teacher’s name?\nChild: ____\n\n4. Mina: I cannot find the library.\nChild: ____\n\n5. Mina: Thank you for helping me today.\nChild: ____",
+            "explanation": "Ms Hill names the teacher. Colour, time and location do not answer the name question.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is green."
+              },
+              {
+                "id": "o1",
+                "text": "At nine o’clock."
+              },
+              {
+                "id": "o2",
+                "text": "Ms Hill."
+              },
+              {
+                "id": "o3",
+                "text": "In the garden."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.new-classmate-057.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Mina: I cannot find the library.\nChild: ____",
+            "material": "Meeting a new classmate\n\nChoose the best reply in each conversation.\n\n1. Teacher: This is our new classmate, Mina.\nChild: ____\n\n2. Mina: I do not know where to sit.\nChild: ____\n\n3. Mina: What is our teacher’s name?\nChild: ____\n\n4. Mina: I cannot find the library.\nChild: ____\n\n5. Mina: Thank you for helping me today.\nChild: ____",
+            "explanation": "Offering directions helps find the library. Shoes, naming a cat and book ownership do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I have three books."
+              },
+              {
+                "id": "o1",
+                "text": "I can show you the way."
+              },
+              {
+                "id": "o2",
+                "text": "It is a little cat."
+              },
+              {
+                "id": "o3",
+                "text": "My shoes are new."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.new-classmate-057.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Mina: Thank you for helping me today.\nChild: ____",
+            "material": "Meeting a new classmate\n\nChoose the best reply in each conversation.\n\n1. Teacher: This is our new classmate, Mina.\nChild: ____\n\n2. Mina: I do not know where to sit.\nChild: ____\n\n3. Mina: What is our teacher’s name?\nChild: ____\n\n4. Mina: I cannot find the library.\nChild: ____\n\n5. Mina: Thank you for helping me today.\nChild: ____",
+            "explanation": "You’re welcome answers gratitude and the farewell fits classmates. Bus description, age and a fruit request do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is a red bus."
+              },
+              {
+                "id": "o1",
+                "text": "She is eight."
+              },
+              {
+                "id": "o2",
+                "text": "I want a pear."
+              },
+              {
+                "id": "o3",
+                "text": "You’re welcome. See you tomorrow."
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "c45433b1a3a197d73a72be1f78b1e79894159b23b7a9f2b9d8521a78ebf4dc3c",
+      "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.picnic-packing-057",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · Packing the picnic basket",
+        "summary": "Packing the picnic basket，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete short communicative-response choices, with provisional added context and vocabulary. Not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.picnic-packing-057",
+          "family": "function_choice",
+          "label": "Packing the picnic basket",
+          "candidateSHA256": "8969127ee490abe28595bb8153bd573a6e5de5817ffd5617db195fa2118b5048",
+          "authorCheckSHA256": "a604de76c1293f717051a9559d26c1308dbed30cc547b31862beb4def880ca90",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.picnic-packing-057#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b057；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Packing the picnic basket\n\nChoose the best reply in each conversation.\n\n1. Dad: Do we have cups for everyone?\nChild: ____\n\n2. Child: Where should I put the cold drinks?\nDad: ____\n\n3. Dad: These sandwiches are for lunch, not breakfast.\nChild: ____\n\n4. Child: Can I bring my ball too?\nDad: ____\n\n5. Dad: We are ready to go. Have you got your hat?\nChild: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.picnic-packing-057.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Dad: Do we have cups for everyone?\nChild: ____",
+            "material": "Packing the picnic basket\n\nChoose the best reply in each conversation.\n\n1. Dad: Do we have cups for everyone?\nChild: ____\n\n2. Child: Where should I put the cold drinks?\nDad: ____\n\n3. Dad: These sandwiches are for lunch, not breakfast.\nChild: ____\n\n4. Child: Can I bring my ball too?\nDad: ____\n\n5. Dad: We are ready to go. Have you got your hat?\nChild: ____",
+            "explanation": "The count explains insufficient cups. Grass, ability and coat colour do not answer whether everyone has one.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "No. There are four people but only three cups."
+              },
+              {
+                "id": "o1",
+                "text": "The grass is wet."
+              },
+              {
+                "id": "o2",
+                "text": "I can dance."
+              },
+              {
+                "id": "o3",
+                "text": "My coat is brown."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.picnic-packing-057.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Where should I put the cold drinks?\nDad: ____",
+            "material": "Packing the picnic basket\n\nChoose the best reply in each conversation.\n\n1. Dad: Do we have cups for everyone?\nChild: ____\n\n2. Child: Where should I put the cold drinks?\nDad: ____\n\n3. Dad: These sandwiches are for lunch, not breakfast.\nChild: ____\n\n4. Child: Can I bring my ball too?\nDad: ____\n\n5. Dad: We are ready to go. Have you got your hat?\nChild: ____",
+            "explanation": "The cool bag is the requested storage place. Time, job and animal identification do not answer where.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is a white horse."
+              },
+              {
+                "id": "o1",
+                "text": "In this cool bag."
+              },
+              {
+                "id": "o2",
+                "text": "He is a doctor."
+              },
+              {
+                "id": "o3",
+                "text": "At three o’clock."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.picnic-packing-057.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Dad: These sandwiches are for lunch, not breakfast.\nChild: ____",
+            "material": "Packing the picnic basket\n\nChoose the best reply in each conversation.\n\n1. Dad: Do we have cups for everyone?\nChild: ____\n\n2. Child: Where should I put the cold drinks?\nDad: ____\n\n3. Dad: These sandwiches are for lunch, not breakfast.\nChild: ____\n\n4. Child: Can I bring my ball too?\nDad: ____\n\n5. Dad: We are ready to go. Have you got your hat?\nChild: ____",
+            "explanation": "Leaving them packed respects saving lunch. Family, location and weather do not acknowledge the instruction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "All right. I will leave them in the basket."
+              },
+              {
+                "id": "o1",
+                "text": "I have a sister."
+              },
+              {
+                "id": "o2",
+                "text": "It is windy."
+              },
+              {
+                "id": "o3",
+                "text": "She is at the shop."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.picnic-packing-057.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Can I bring my ball too?\nDad: ____",
+            "material": "Packing the picnic basket\n\nChoose the best reply in each conversation.\n\n1. Dad: Do we have cups for everyone?\nChild: ____\n\n2. Child: Where should I put the cold drinks?\nDad: ____\n\n3. Dad: These sandwiches are for lunch, not breakfast.\nChild: ____\n\n4. Child: Can I bring my ball too?\nDad: ____\n\n5. Dad: We are ready to go. Have you got your hat?\nChild: ____",
+            "explanation": "Permission with a carrying instruction answers the ball request. Possession, emotion and food preference do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I am happy."
+              },
+              {
+                "id": "o1",
+                "text": "It is my ruler."
+              },
+              {
+                "id": "o2",
+                "text": "She likes oranges."
+              },
+              {
+                "id": "o3",
+                "text": "Yes. Carry it in your small bag."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.picnic-packing-057.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Dad: We are ready to go. Have you got your hat?\nChild: ____",
+            "material": "Packing the picnic basket\n\nChoose the best reply in each conversation.\n\n1. Dad: Do we have cups for everyone?\nChild: ____\n\n2. Child: Where should I put the cold drinks?\nDad: ____\n\n3. Dad: These sandwiches are for lunch, not breakfast.\nChild: ____\n\n4. Child: Can I bring my ball too?\nDad: ____\n\n5. Dad: We are ready to go. Have you got your hat?\nChild: ____",
+            "explanation": "Not yet plus retrieving the hat answers readiness. Animal ability, tree count and noise do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Not yet. I will get it now."
+              },
+              {
+                "id": "o1",
+                "text": "The dog can run."
+              },
+              {
+                "id": "o2",
+                "text": "It is very quiet."
+              },
+              {
+                "id": "o3",
+                "text": "There are two trees."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "33df90b3f0a4586deab239f4b79295d02d55cb0da7af57fc2cdc630bde66b472",
+      "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.clothes-sort-057",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · Sorting clothes for the school sale",
+        "summary": "Sorting clothes for the school sale，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete short communicative-response choices, with provisional added context and vocabulary. Not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.clothes-sort-057",
+          "family": "function_choice",
+          "label": "Sorting clothes for the school sale",
+          "candidateSHA256": "989cf048f34ae3c99acb8305dfd5f0c8f0af4f429c886f45b76fd55c7a984a64",
+          "authorCheckSHA256": "cd359e60fb3c611850041c2765de737a72f87078de727d457123c8b2459997a5",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.clothes-sort-057#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b057；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Sorting clothes for the school sale\n\nChoose the best reply in each conversation.\n\n1. Teacher: Put the small shirts in this box, please.\nChild: ____\n\n2. Child: Is this coat clean enough for the sale?\nTeacher: ____\n\n3. Teacher: Whose scarf is this? It is not for sale.\nChild: ____\n\n4. Child: This box is full. Where can the other shirts go?\nTeacher: ____\n\n5. Teacher: Thank you. Everything is ready for tomorrow.\nChild: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.clothes-sort-057.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Put the small shirts in this box, please.\nChild: ____",
+            "material": "Sorting clothes for the school sale\n\nChoose the best reply in each conversation.\n\n1. Teacher: Put the small shirts in this box, please.\nChild: ____\n\n2. Child: Is this coat clean enough for the sale?\nTeacher: ____\n\n3. Teacher: Whose scarf is this? It is not for sale.\nChild: ____\n\n4. Child: This box is full. Where can the other shirts go?\nTeacher: ____\n\n5. Teacher: Thank you. Everything is ready for tomorrow.\nChild: ____",
+            "explanation": "Selecting small shirts follows sorting instructions. Time, pet ownership and sport preference do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I like football."
+              },
+              {
+                "id": "o1",
+                "text": "She has a dog."
+              },
+              {
+                "id": "o2",
+                "text": "It is five o’clock."
+              },
+              {
+                "id": "o3",
+                "text": "All right. These two are small."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.clothes-sort-057.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Is this coat clean enough for the sale?\nTeacher: ____",
+            "material": "Sorting clothes for the school sale\n\nChoose the best reply in each conversation.\n\n1. Teacher: Put the small shirts in this box, please.\nChild: ____\n\n2. Child: Is this coat clean enough for the sale?\nTeacher: ____\n\n3. Teacher: Whose scarf is this? It is not for sale.\nChild: ____\n\n4. Child: This box is full. Where can the other shirts go?\nTeacher: ____\n\n5. Teacher: Thank you. Everything is ready for tomorrow.\nChild: ____",
+            "explanation": "A direct judgment of cleanliness answers suitability. Location, day and ability do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is Thursday."
+              },
+              {
+                "id": "o1",
+                "text": "He is in the hall."
+              },
+              {
+                "id": "o2",
+                "text": "Yes. It is clean and ready."
+              },
+              {
+                "id": "o3",
+                "text": "I can sing."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.clothes-sort-057.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Whose scarf is this? It is not for sale.\nChild: ____",
+            "material": "Sorting clothes for the school sale\n\nChoose the best reply in each conversation.\n\n1. Teacher: Put the small shirts in this box, please.\nChild: ____\n\n2. Child: Is this coat clean enough for the sale?\nTeacher: ____\n\n3. Teacher: Whose scarf is this? It is not for sale.\nChild: ____\n\n4. Child: This box is full. Where can the other shirts go?\nTeacher: ____\n\n5. Teacher: Thank you. Everything is ready for tomorrow.\nChild: ____",
+            "explanation": "Ownership and accidental placement explain the scarf. Weather, pen count and occupation do not answer whose.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is cold outside."
+              },
+              {
+                "id": "o1",
+                "text": "I have two pens."
+              },
+              {
+                "id": "o2",
+                "text": "She is a nurse."
+              },
+              {
+                "id": "o3",
+                "text": "It is mine. I left it here."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.clothes-sort-057.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: This box is full. Where can the other shirts go?\nTeacher: ____",
+            "material": "Sorting clothes for the school sale\n\nChoose the best reply in each conversation.\n\n1. Teacher: Put the small shirts in this box, please.\nChild: ____\n\n2. Child: Is this coat clean enough for the sale?\nTeacher: ____\n\n3. Teacher: Whose scarf is this? It is not for sale.\nChild: ____\n\n4. Child: This box is full. Where can the other shirts go?\nTeacher: ____\n\n5. Teacher: Thank you. Everything is ready for tomorrow.\nChild: ____",
+            "explanation": "An empty box provides room for the remaining shirts. Birthday, ability and preference do not solve storage.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is my birthday."
+              },
+              {
+                "id": "o1",
+                "text": "He can swim."
+              },
+              {
+                "id": "o2",
+                "text": "I like this colour."
+              },
+              {
+                "id": "o3",
+                "text": "Use the empty box under the table."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.clothes-sort-057.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Thank you. Everything is ready for tomorrow.\nChild: ____",
+            "material": "Sorting clothes for the school sale\n\nChoose the best reply in each conversation.\n\n1. Teacher: Put the small shirts in this box, please.\nChild: ____\n\n2. Child: Is this coat clean enough for the sale?\nTeacher: ____\n\n3. Teacher: Whose scarf is this? It is not for sale.\nChild: ____\n\n4. Child: This box is full. Where can the other shirts go?\nTeacher: ____\n\n5. Teacher: Thank you. Everything is ready for tomorrow.\nChild: ____",
+            "explanation": "Acknowledging thanks and offering cleanup continues the shared task. Naming fish, family and age do not respond to gratitude.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She is my aunt."
+              },
+              {
+                "id": "o1",
+                "text": "It is a blue fish."
+              },
+              {
+                "id": "o2",
+                "text": "I am nine."
+              },
+              {
+                "id": "o3",
+                "text": "You’re welcome. Shall I put the empty bags away?"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "c74a3e2667348e7d3731040f47bd1f778b7fa355a22af7e507a71253162769a6",
+      "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.striped-socks-day-057",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · Two different socks",
+        "summary": "Two different socks，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.striped-socks-day-057",
+          "family": "reading_tf",
+          "label": "Two different socks",
+          "candidateSHA256": "01eb26a287ab11bb4dfaea768609f0bcb000bcf31cfdd737d093cd44acafe9e6",
+          "authorCheckSHA256": "2e4d74c7a114187aa6ebb0757e75b7d6c8e23a59f1305c185d6591d8932825d5",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.striped-socks-day-057#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b057；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Two different socks\n\nIt is Friday. The children can wear funny socks to school today. Eva puts on one red sock and one yellow sock. Her brother Max laughs. \"Your socks are different!\" he says.\n\n\"I know,\" says Eva. \"Look at the school note.\"\n\nMax reads it. Then he takes off his two blue socks. He puts on one blue sock and one green sock instead.\n\nAt school, their teacher has socks with cats on them. Eva's friend has long purple socks. The children look at all the colours before they sit down for their first lesson."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.striped-socks-day-057.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "It is funny-sock day at school.",
+            "material": "Two different socks\n\nIt is Friday. The children can wear funny socks to school today. Eva puts on one red sock and one yellow sock. Her brother Max laughs. \"Your socks are different!\" he says.\n\n\"I know,\" says Eva. \"Look at the school note.\"\n\nMax reads it. Then he takes off his two blue socks. He puts on one blue sock and one green sock instead.\n\nAt school, their teacher has socks with cats on them. Eva's friend has long purple socks. The children look at all the colours before they sit down for their first lesson.",
+            "explanation": "The note allows funny socks on Friday.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.striped-socks-day-057.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Eva wears two red socks.",
+            "material": "Two different socks\n\nIt is Friday. The children can wear funny socks to school today. Eva puts on one red sock and one yellow sock. Her brother Max laughs. \"Your socks are different!\" he says.\n\n\"I know,\" says Eva. \"Look at the school note.\"\n\nMax reads it. Then he takes off his two blue socks. He puts on one blue sock and one green sock instead.\n\nAt school, their teacher has socks with cats on them. Eva's friend has long purple socks. The children look at all the colours before they sit down for their first lesson.",
+            "explanation": "She wears one red and one yellow.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.striped-socks-day-057.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Max reads the school note.",
+            "material": "Two different socks\n\nIt is Friday. The children can wear funny socks to school today. Eva puts on one red sock and one yellow sock. Her brother Max laughs. \"Your socks are different!\" he says.\n\n\"I know,\" says Eva. \"Look at the school note.\"\n\nMax reads it. Then he takes off his two blue socks. He puts on one blue sock and one green sock instead.\n\nAt school, their teacher has socks with cats on them. Eva's friend has long purple socks. The children look at all the colours before they sit down for their first lesson.",
+            "explanation": "Eva points it out and Max reads it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.striped-socks-day-057.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Max wears two blue socks to school.",
+            "material": "Two different socks\n\nIt is Friday. The children can wear funny socks to school today. Eva puts on one red sock and one yellow sock. Her brother Max laughs. \"Your socks are different!\" he says.\n\n\"I know,\" says Eva. \"Look at the school note.\"\n\nMax reads it. Then he takes off his two blue socks. He puts on one blue sock and one green sock instead.\n\nAt school, their teacher has socks with cats on them. Eva's friend has long purple socks. The children look at all the colours before they sit down for their first lesson.",
+            "explanation": "He changes to one blue and one green before school.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.striped-socks-day-057.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "The teacher’s socks have cats on them.",
+            "material": "Two different socks\n\nIt is Friday. The children can wear funny socks to school today. Eva puts on one red sock and one yellow sock. Her brother Max laughs. \"Your socks are different!\" he says.\n\n\"I know,\" says Eva. \"Look at the school note.\"\n\nMax reads it. Then he takes off his two blue socks. He puts on one blue sock and one green sock instead.\n\nAt school, their teacher has socks with cats on them. Eva's friend has long purple socks. The children look at all the colours before they sit down for their first lesson.",
+            "explanation": "The teacher’s socks show cats.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "930fc261ef6a36b02025cd32aa522d725f29651f1406e405874efeb9d2f9025f",
+      "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.grandma-written-message-057",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · A message for Grandma",
+        "summary": "A message for Grandma，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.grandma-written-message-057",
+          "family": "reading_tf",
+          "label": "A message for Grandma",
+          "candidateSHA256": "42177a5807a76233227f599a889826ce6e1605f7f8ba44662bd4f66dc23c55f3",
+          "authorCheckSHA256": "c77453a55768e63f0b0996309d00e5f5a109ef4fc69debd1228fcc411b35e75c",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.grandma-written-message-057#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b057；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A message for Grandma\n\nNoah wants to tell Grandma about his school garden. He draws a tomato plant on a card. The tomatoes in his picture are red and yellow.\n\nMum asks, \"Do you want to write a message too?\" Noah writes, \"We have six plants. I water them on Monday.\"\n\nGrandma lives nearby, so they walk to her house after school. She puts the card on her fridge. Then she shows Noah a small plant on her kitchen window. It has green tomatoes. \"Mine are not ready yet,\" she says. Noah wants to come back and see them when they are red."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.grandma-written-message-057.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Noah draws a plant on the card.",
+            "material": "A message for Grandma\n\nNoah wants to tell Grandma about his school garden. He draws a tomato plant on a card. The tomatoes in his picture are red and yellow.\n\nMum asks, \"Do you want to write a message too?\" Noah writes, \"We have six plants. I water them on Monday.\"\n\nGrandma lives nearby, so they walk to her house after school. She puts the card on her fridge. Then she shows Noah a small plant on her kitchen window. It has green tomatoes. \"Mine are not ready yet,\" she says. Noah wants to come back and see them when they are red.",
+            "explanation": "He draws a tomato plant.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.grandma-written-message-057.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "The tomatoes in his picture are all green.",
+            "material": "A message for Grandma\n\nNoah wants to tell Grandma about his school garden. He draws a tomato plant on a card. The tomatoes in his picture are red and yellow.\n\nMum asks, \"Do you want to write a message too?\" Noah writes, \"We have six plants. I water them on Monday.\"\n\nGrandma lives nearby, so they walk to her house after school. She puts the card on her fridge. Then she shows Noah a small plant on her kitchen window. It has green tomatoes. \"Mine are not ready yet,\" she says. Noah wants to come back and see them when they are red.",
+            "explanation": "His drawn tomatoes are red and yellow; Grandma’s actual tomatoes are green.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.grandma-written-message-057.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Noah waters the school plants on Monday.",
+            "material": "A message for Grandma\n\nNoah wants to tell Grandma about his school garden. He draws a tomato plant on a card. The tomatoes in his picture are red and yellow.\n\nMum asks, \"Do you want to write a message too?\" Noah writes, \"We have six plants. I water them on Monday.\"\n\nGrandma lives nearby, so they walk to her house after school. She puts the card on her fridge. Then she shows Noah a small plant on her kitchen window. It has green tomatoes. \"Mine are not ready yet,\" she says. Noah wants to come back and see them when they are red.",
+            "explanation": "His written message gives Monday.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.grandma-written-message-057.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "They travel to Grandma’s house by train.",
+            "material": "A message for Grandma\n\nNoah wants to tell Grandma about his school garden. He draws a tomato plant on a card. The tomatoes in his picture are red and yellow.\n\nMum asks, \"Do you want to write a message too?\" Noah writes, \"We have six plants. I water them on Monday.\"\n\nGrandma lives nearby, so they walk to her house after school. She puts the card on her fridge. Then she shows Noah a small plant on her kitchen window. It has green tomatoes. \"Mine are not ready yet,\" she says. Noah wants to come back and see them when they are red.",
+            "explanation": "She lives nearby and they walk.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.grandma-written-message-057.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Grandma puts the card in a cupboard.",
+            "material": "A message for Grandma\n\nNoah wants to tell Grandma about his school garden. He draws a tomato plant on a card. The tomatoes in his picture are red and yellow.\n\nMum asks, \"Do you want to write a message too?\" Noah writes, \"We have six plants. I water them on Monday.\"\n\nGrandma lives nearby, so they walk to her house after school. She puts the card on her fridge. Then she shows Noah a small plant on her kitchen window. It has green tomatoes. \"Mine are not ready yet,\" she says. Noah wants to come back and see them when they are red.",
+            "explanation": "She puts it on the fridge.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "1b0c17e29ed66698eb4c9d935b8ec4f1b4eb1b634bd6d3397ac2c42ec966f5fd",
+      "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.cat-blanket-057",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · The blanket on the chair",
+        "summary": "The blanket on the chair，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.cat-blanket-057",
+          "family": "reading_tf",
+          "label": "The blanket on the chair",
+          "candidateSHA256": "0d8dd84cb50b455891e8e1f57fc4e63cadca422ae55f322c6f61657b63e3c373",
+          "authorCheckSHA256": "353430730de8c227ea73556347beac761d4c0e78185571ec1f3c090980f3da13",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.cat-blanket-057#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b057；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The blanket on the chair\n\nMum puts a small blanket on the chair for our cat Dot. The blanket is soft and blue. Dot looks at it, then jumps into an empty paper box on the floor.\n\nI put the blanket inside the box. Dot walks around it and gets in. Soon she is asleep.\n\nMy brother wants to use the box for his toy cars. I show him Dot. \"She is sleeping here now,\" I say.\n\nHe finds another box beside the desk. He puts his cars in that one. Dot stays in her warm box, with her tail over her nose."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.cat-blanket-057.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Dot is a dog.",
+            "material": "The blanket on the chair\n\nMum puts a small blanket on the chair for our cat Dot. The blanket is soft and blue. Dot looks at it, then jumps into an empty paper box on the floor.\n\nI put the blanket inside the box. Dot walks around it and gets in. Soon she is asleep.\n\nMy brother wants to use the box for his toy cars. I show him Dot. \"She is sleeping here now,\" I say.\n\nHe finds another box beside the desk. He puts his cars in that one. Dot stays in her warm box, with her tail over her nose.",
+            "explanation": "Dot is the family’s cat.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.cat-blanket-057.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "The blanket is soft and blue.",
+            "material": "The blanket on the chair\n\nMum puts a small blanket on the chair for our cat Dot. The blanket is soft and blue. Dot looks at it, then jumps into an empty paper box on the floor.\n\nI put the blanket inside the box. Dot walks around it and gets in. Soon she is asleep.\n\nMy brother wants to use the box for his toy cars. I show him Dot. \"She is sleeping here now,\" I say.\n\nHe finds another box beside the desk. He puts his cars in that one. Dot stays in her warm box, with her tail over her nose.",
+            "explanation": "Both qualities are stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.cat-blanket-057.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Dot first chooses the box on the floor.",
+            "material": "The blanket on the chair\n\nMum puts a small blanket on the chair for our cat Dot. The blanket is soft and blue. Dot looks at it, then jumps into an empty paper box on the floor.\n\nI put the blanket inside the box. Dot walks around it and gets in. Soon she is asleep.\n\nMy brother wants to use the box for his toy cars. I show him Dot. \"She is sleeping here now,\" I say.\n\nHe finds another box beside the desk. He puts his cars in that one. Dot stays in her warm box, with her tail over her nose.",
+            "explanation": "She jumps into it instead of onto the prepared chair.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.cat-blanket-057.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "The brother wakes Dot and takes her box.",
+            "material": "The blanket on the chair\n\nMum puts a small blanket on the chair for our cat Dot. The blanket is soft and blue. Dot looks at it, then jumps into an empty paper box on the floor.\n\nI put the blanket inside the box. Dot walks around it and gets in. Soon she is asleep.\n\nMy brother wants to use the box for his toy cars. I show him Dot. \"She is sleeping here now,\" I say.\n\nHe finds another box beside the desk. He puts his cars in that one. Dot stays in her warm box, with her tail over her nose.",
+            "explanation": "He chooses another box rather than disturbing her.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.cat-blanket-057.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Dot sleeps with her tail over her nose.",
+            "material": "The blanket on the chair\n\nMum puts a small blanket on the chair for our cat Dot. The blanket is soft and blue. Dot looks at it, then jumps into an empty paper box on the floor.\n\nI put the blanket inside the box. Dot walks around it and gets in. Soon she is asleep.\n\nMy brother wants to use the box for his toy cars. I show him Dot. \"She is sleeping here now,\" I say.\n\nHe finds another box beside the desk. He puts his cars in that one. Dot stays in her warm box, with her tail over her nose.",
+            "explanation": "The final sentence gives that position.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "352cc67a175f836cbe45205dbca43fbff399ad469f6bef7f2884faaad7dcc464",
+      "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.beach-shoe-bucket-057",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · The shoe in the bucket",
+        "summary": "The shoe in the bucket，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.beach-shoe-bucket-057",
+          "family": "reading_tf",
+          "label": "The shoe in the bucket",
+          "candidateSHA256": "6af4b9794cb4cd50ad8e7c8a3afab06e2a6a06df8ae23b32502dc4eb4f95f3e6",
+          "authorCheckSHA256": "f0908cba6467b0294417e10c31d3ae6c0e44e1450890be06a1b190a0a529da82",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.beach-shoe-bucket-057#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b057；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The shoe in the bucket\n\nLuca goes to the beach with his parents. He takes off his shoes and puts them beside Dad's bag. Then he and Mum build a sandcastle.\n\nDad fills a yellow bucket with water. When he brings it back, he sees one small shoe near the water. He picks it up and puts it in the empty blue bucket.\n\nLater, Luca looks for his shoes. One is beside the bag, but the other is missing. Dad shows him the blue bucket. The shoe is sandy but dry. Luca shakes out the sand and puts both shoes on before they leave."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.beach-shoe-bucket-057.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Luca goes to the beach alone.",
+            "material": "The shoe in the bucket\n\nLuca goes to the beach with his parents. He takes off his shoes and puts them beside Dad's bag. Then he and Mum build a sandcastle.\n\nDad fills a yellow bucket with water. When he brings it back, he sees one small shoe near the water. He picks it up and puts it in the empty blue bucket.\n\nLater, Luca looks for his shoes. One is beside the bag, but the other is missing. Dad shows him the blue bucket. The shoe is sandy but dry. Luca shakes out the sand and puts both shoes on before they leave.",
+            "explanation": "He is with his parents.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.beach-shoe-bucket-057.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Luca builds a sandcastle with Mum.",
+            "material": "The shoe in the bucket\n\nLuca goes to the beach with his parents. He takes off his shoes and puts them beside Dad's bag. Then he and Mum build a sandcastle.\n\nDad fills a yellow bucket with water. When he brings it back, he sees one small shoe near the water. He picks it up and puts it in the empty blue bucket.\n\nLater, Luca looks for his shoes. One is beside the bag, but the other is missing. Dad shows him the blue bucket. The shoe is sandy but dry. Luca shakes out the sand and puts both shoes on before they leave.",
+            "explanation": "They build it together.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.beach-shoe-bucket-057.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Dad uses a yellow bucket for water.",
+            "material": "The shoe in the bucket\n\nLuca goes to the beach with his parents. He takes off his shoes and puts them beside Dad's bag. Then he and Mum build a sandcastle.\n\nDad fills a yellow bucket with water. When he brings it back, he sees one small shoe near the water. He picks it up and puts it in the empty blue bucket.\n\nLater, Luca looks for his shoes. One is beside the bag, but the other is missing. Dad shows him the blue bucket. The shoe is sandy but dry. Luca shakes out the sand and puts both shoes on before they leave.",
+            "explanation": "The yellow bucket is filled with water.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.beach-shoe-bucket-057.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Dad puts the shoe in the water bucket.",
+            "material": "The shoe in the bucket\n\nLuca goes to the beach with his parents. He takes off his shoes and puts them beside Dad's bag. Then he and Mum build a sandcastle.\n\nDad fills a yellow bucket with water. When he brings it back, he sees one small shoe near the water. He picks it up and puts it in the empty blue bucket.\n\nLater, Luca looks for his shoes. One is beside the bag, but the other is missing. Dad shows him the blue bucket. The shoe is sandy but dry. Luca shakes out the sand and puts both shoes on before they leave.",
+            "explanation": "He uses the separate empty blue bucket.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.beach-shoe-bucket-057.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Luca puts his shoes on before leaving.",
+            "material": "The shoe in the bucket\n\nLuca goes to the beach with his parents. He takes off his shoes and puts them beside Dad's bag. Then he and Mum build a sandcastle.\n\nDad fills a yellow bucket with water. When he brings it back, he sees one small shoe near the water. He picks it up and puts it in the empty blue bucket.\n\nLater, Luca looks for his shoes. One is beside the bag, but the other is missing. Dad shows him the blue bucket. The shoe is sandy but dry. Luca shakes out the sand and puts both shoes on before they leave.",
+            "explanation": "He removes the sand and puts both on.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "81e93d56cf69132409134052b1f66a8f2adf22e46af996bb3c7f27cc65685e9c",
+      "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.class-photo-envelope-057",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · The class photograph",
+        "summary": "The class photograph，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.class-photo-envelope-057",
+          "family": "reading_tf",
+          "label": "The class photograph",
+          "candidateSHA256": "589ed16c93e6e89c8f6c6587a7ddc0a5424ebb279da522c82c1406d66c40d1de",
+          "authorCheckSHA256": "d7f28b65d61894f2e0bbd33215f76e7dbfc0d1864f5749e9724a08a577d46257",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.class-photo-envelope-057#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b057；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The class photograph\n\nTara brings a class photograph home in a big envelope. She puts it on the kitchen table. Her little sister wants to see it too.\n\n\"Where are you?\" asks her sister. Tara points to the back row. She is beside a boy with glasses. Their teacher is in the middle of the front row.\n\nDad finds a frame in a cupboard. It is too small for the photograph. Mum finds a bigger one in the living room. The picture fits this frame.\n\nThey put it on Tara's desk. Her sister can look at it, but Tara asks her to leave the glass clean."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.class-photo-envelope-057.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Tara carries the photograph in an envelope.",
+            "material": "The class photograph\n\nTara brings a class photograph home in a big envelope. She puts it on the kitchen table. Her little sister wants to see it too.\n\n\"Where are you?\" asks her sister. Tara points to the back row. She is beside a boy with glasses. Their teacher is in the middle of the front row.\n\nDad finds a frame in a cupboard. It is too small for the photograph. Mum finds a bigger one in the living room. The picture fits this frame.\n\nThey put it on Tara's desk. Her sister can look at it, but Tara asks her to leave the glass clean.",
+            "explanation": "The envelope is large.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.class-photo-envelope-057.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Tara is in the front row.",
+            "material": "The class photograph\n\nTara brings a class photograph home in a big envelope. She puts it on the kitchen table. Her little sister wants to see it too.\n\n\"Where are you?\" asks her sister. Tara points to the back row. She is beside a boy with glasses. Their teacher is in the middle of the front row.\n\nDad finds a frame in a cupboard. It is too small for the photograph. Mum finds a bigger one in the living room. The picture fits this frame.\n\nThey put it on Tara's desk. Her sister can look at it, but Tara asks her to leave the glass clean.",
+            "explanation": "She is in the back row.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.class-photo-envelope-057.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "The teacher is in the middle of the front row.",
+            "material": "The class photograph\n\nTara brings a class photograph home in a big envelope. She puts it on the kitchen table. Her little sister wants to see it too.\n\n\"Where are you?\" asks her sister. Tara points to the back row. She is beside a boy with glasses. Their teacher is in the middle of the front row.\n\nDad finds a frame in a cupboard. It is too small for the photograph. Mum finds a bigger one in the living room. The picture fits this frame.\n\nThey put it on Tara's desk. Her sister can look at it, but Tara asks her to leave the glass clean.",
+            "explanation": "That position is stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.class-photo-envelope-057.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "Dad’s first frame is too big.",
+            "material": "The class photograph\n\nTara brings a class photograph home in a big envelope. She puts it on the kitchen table. Her little sister wants to see it too.\n\n\"Where are you?\" asks her sister. Tara points to the back row. She is beside a boy with glasses. Their teacher is in the middle of the front row.\n\nDad finds a frame in a cupboard. It is too small for the photograph. Mum finds a bigger one in the living room. The picture fits this frame.\n\nThey put it on Tara's desk. Her sister can look at it, but Tara asks her to leave the glass clean.",
+            "explanation": "It is too small; Mum finds a larger one.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.class-photo-envelope-057.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "读完整材料，判断句子是否相符。",
+            "prompt": "The framed photograph goes on Tara’s desk.",
+            "material": "The class photograph\n\nTara brings a class photograph home in a big envelope. She puts it on the kitchen table. Her little sister wants to see it too.\n\n\"Where are you?\" asks her sister. Tara points to the back row. She is beside a boy with glasses. Their teacher is in the middle of the front row.\n\nDad finds a frame in a cupboard. It is too small for the photograph. Mum finds a bigger one in the living room. The picture fits this frame.\n\nThey put it on Tara's desk. Her sister can look at it, but Tara asks her to leave the glass clean.",
+            "explanation": "They place it there.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "3677df3cdd4305f788bf1d835ccb9833f52700205274e64677f02dbb535b682d",
+      "reviewNotes": "Five primary2 five-response practices and five primary3 five-statement complete readings. Fictional everyday contexts; all assessed text English. Same-author communicative/evidence/polarity review, provisional vocabulary adaptation without independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
