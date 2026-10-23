@@ -1,0 +1,904 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b049",
+  "createdAt": "2026-10-23T21:51:53.456135+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.breakfast-and-flipbooks-049",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Breakfast club and moving pictures",
+        "summary": "Breakfast club and moving pictures，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "xschu-bnu2026-paper-key20261014-record.reading.closed_picture_mixed_section11",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete written four-question passages for junior2 explicitly adapt the written-reading part of its source. Junior3 retains a four-email thread with five questions plus a separate five-question reading, all three-choice. No source prose copied."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete junior practices: four four-choice written passages for junior2; a four-email thread and independent three-choice passage for junior3. Fictional cases, no invented research/statistics. Same-author evidence, message chronology and distractor review only."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.breakfast-and-flipbooks-049",
+          "family": "reading_choice",
+          "label": "Breakfast club and moving pictures",
+          "candidateSHA256": "7dae4baf29d080f99a71ad86ce5870c7a3478f4278830d31797abb4dfc4d32eb",
+          "authorCheckSHA256": "6486e93a501dce03905d125c54bf286dca38f9dac8aa67b148f3ec73d1ddfb2b",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.breakfast-and-flipbooks-049#breakfast",
+            "expansion.20261024.junior2.breakfast-and-flipbooks-049#flipbook"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b049；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A quieter start\n\nOur school opened a breakfast club in the dining room. I expected it to be mainly for students who had not eaten at home. There was toast and fruit, but food was not the only reason people came.\n\nSome students arrived early because of the bus timetable. Before the club opened, they waited outside their classrooms. Others wanted a place to finish reading before lessons. A teacher was always present, and conversation was welcome, but loud music was not.\n\nI helped twice a week. At first, I tried to persuade everyone to join a game after eating. One student politely refused three times. I thought he did not like the club. Then he explained that the quiet ten minutes with his book were the best part of his morning.\n\nWe changed our arrangement. Games stayed at one end of the room, while a small sign marked a quiet table at the other. Nobody had to explain why they chose either area. The student began arriving earlier and sometimes helped put the books away.\n\nThe club did not become two separate groups. People moved between the tables when they wanted. What changed was our idea of a good welcome. Inviting someone into a place did not mean deciding exactly how they should enjoy it. By leaving different ways to take part, we gave more students a reason to stay.\n\nA small book that seems to move\n\nDraw a ball near the bottom of one page, then draw it a little higher on the next. Continue across several pages, changing its position slightly each time. When the pages are turned quickly in order, the separate drawings can seem to form a moving ball. That is the basic idea of a flipbook.\n\nThe drawings do not need to be detailed. In fact, a simple shape is often easier for a beginner to keep consistent. What matters is how one image changes into the next. If the ball suddenly becomes much larger for no reason, viewers may notice the change in size instead of the movement you intended.\n\nThe spacing between positions affects the impression. Small changes can suggest slower movement, while larger changes can suggest a faster one, provided the sequence is still easy to follow. A jump that is too large may make the ball appear to vanish and return elsewhere.\n\nIt helps to test a few pages before drawing the whole sequence. Hold the pages at the same edge each time and practise turning them smoothly. A drawing placed too close to the held edge may be difficult to see.\n\nA flipbook is a small project, but it shows how a planned series of still images can create an impression of action. Making one also gives beginners a reason to look closely at an ordinary movement they might otherwise take for granted."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.breakfast-and-flipbooks-049.breakfast.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did some students arrive before lessons?",
+            "material": "A quieter start\n\nOur school opened a breakfast club in the dining room. I expected it to be mainly for students who had not eaten at home. There was toast and fruit, but food was not the only reason people came.\n\nSome students arrived early because of the bus timetable. Before the club opened, they waited outside their classrooms. Others wanted a place to finish reading before lessons. A teacher was always present, and conversation was welcome, but loud music was not.\n\nI helped twice a week. At first, I tried to persuade everyone to join a game after eating. One student politely refused three times. I thought he did not like the club. Then he explained that the quiet ten minutes with his book were the best part of his morning.\n\nWe changed our arrangement. Games stayed at one end of the room, while a small sign marked a quiet table at the other. Nobody had to explain why they chose either area. The student began arriving earlier and sometimes helped put the books away.\n\nThe club did not become two separate groups. People moved between the tables when they wanted. What changed was our idea of a good welcome. Inviting someone into a place did not mean deciding exactly how they should enjoy it. By leaving different ways to take part, we gave more students a reason to stay.",
+            "explanation": "Bus timing is directly stated. Avoiding food, compulsory games and bookless classrooms are not given reasons.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They had to play a game before school"
+              },
+              {
+                "id": "o1",
+                "text": "Their bus timetable brought them early"
+              },
+              {
+                "id": "o2",
+                "text": "Their classrooms had no books"
+              },
+              {
+                "id": "o3",
+                "text": "They had been told to avoid breakfast"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.breakfast-and-flipbooks-049.breakfast.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did one student keep refusing the game?",
+            "material": "A quieter start\n\nOur school opened a breakfast club in the dining room. I expected it to be mainly for students who had not eaten at home. There was toast and fruit, but food was not the only reason people came.\n\nSome students arrived early because of the bus timetable. Before the club opened, they waited outside their classrooms. Others wanted a place to finish reading before lessons. A teacher was always present, and conversation was welcome, but loud music was not.\n\nI helped twice a week. At first, I tried to persuade everyone to join a game after eating. One student politely refused three times. I thought he did not like the club. Then he explained that the quiet ten minutes with his book were the best part of his morning.\n\nWe changed our arrangement. Games stayed at one end of the room, while a small sign marked a quiet table at the other. Nobody had to explain why they chose either area. The student began arriving earlier and sometimes helped put the books away.\n\nThe club did not become two separate groups. People moved between the tables when they wanted. What changed was our idea of a good welcome. Inviting someone into a place did not mean deciding exactly how they should enjoy it. By leaving different ways to take part, we gave more students a reason to stay.",
+            "explanation": "He explicitly values reading. He attends the room and the club prohibits loud music; closure is not his aim.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He could not enter the dining room"
+              },
+              {
+                "id": "o1",
+                "text": "He valued quiet time to read"
+              },
+              {
+                "id": "o2",
+                "text": "He was waiting for loud music"
+              },
+              {
+                "id": "o3",
+                "text": "He wanted the club to close"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.breakfast-and-flipbooks-049.breakfast.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the organisers change?",
+            "material": "A quieter start\n\nOur school opened a breakfast club in the dining room. I expected it to be mainly for students who had not eaten at home. There was toast and fruit, but food was not the only reason people came.\n\nSome students arrived early because of the bus timetable. Before the club opened, they waited outside their classrooms. Others wanted a place to finish reading before lessons. A teacher was always present, and conversation was welcome, but loud music was not.\n\nI helped twice a week. At first, I tried to persuade everyone to join a game after eating. One student politely refused three times. I thought he did not like the club. Then he explained that the quiet ten minutes with his book were the best part of his morning.\n\nWe changed our arrangement. Games stayed at one end of the room, while a small sign marked a quiet table at the other. Nobody had to explain why they chose either area. The student began arriving earlier and sometimes helped put the books away.\n\nThe club did not become two separate groups. People moved between the tables when they wanted. What changed was our idea of a good welcome. Inviting someone into a place did not mean deciding exactly how they should enjoy it. By leaving different ways to take part, we gave more students a reason to stay.",
+            "explanation": "Two areas offer choice without explanation. Games remain and food is not tied to playing.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They provided both a game area and a quiet table"
+              },
+              {
+                "id": "o1",
+                "text": "They served food only to students who played"
+              },
+              {
+                "id": "o2",
+                "text": "They required written reasons for sitting quietly"
+              },
+              {
+                "id": "o3",
+                "text": "They removed every game from the room"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.breakfast-and-flipbooks-049.breakfast.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the narrator learn about welcoming people?",
+            "material": "A quieter start\n\nOur school opened a breakfast club in the dining room. I expected it to be mainly for students who had not eaten at home. There was toast and fruit, but food was not the only reason people came.\n\nSome students arrived early because of the bus timetable. Before the club opened, they waited outside their classrooms. Others wanted a place to finish reading before lessons. A teacher was always present, and conversation was welcome, but loud music was not.\n\nI helped twice a week. At first, I tried to persuade everyone to join a game after eating. One student politely refused three times. I thought he did not like the club. Then he explained that the quiet ten minutes with his book were the best part of his morning.\n\nWe changed our arrangement. Games stayed at one end of the room, while a small sign marked a quiet table at the other. Nobody had to explain why they chose either area. The student began arriving earlier and sometimes helped put the books away.\n\nThe club did not become two separate groups. People moved between the tables when they wanted. What changed was our idea of a good welcome. Inviting someone into a place did not mean deciding exactly how they should enjoy it. By leaving different ways to take part, we gave more students a reason to stay.",
+            "explanation": "The final paragraph states inclusion through choices. Uniform activity and excluding quiet readers contradict the change; removing breakfast is never proposed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A successful club makes everyone do the same thing"
+              },
+              {
+                "id": "o1",
+                "text": "Food should be removed from a breakfast club"
+              },
+              {
+                "id": "o2",
+                "text": "Different people may need different ways to participate"
+              },
+              {
+                "id": "o3",
+                "text": "Quiet students should be asked to leave"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.breakfast-and-flipbooks-049.flipbook.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the main idea of a flipbook?",
+            "material": "A small book that seems to move\n\nDraw a ball near the bottom of one page, then draw it a little higher on the next. Continue across several pages, changing its position slightly each time. When the pages are turned quickly in order, the separate drawings can seem to form a moving ball. That is the basic idea of a flipbook.\n\nThe drawings do not need to be detailed. In fact, a simple shape is often easier for a beginner to keep consistent. What matters is how one image changes into the next. If the ball suddenly becomes much larger for no reason, viewers may notice the change in size instead of the movement you intended.\n\nThe spacing between positions affects the impression. Small changes can suggest slower movement, while larger changes can suggest a faster one, provided the sequence is still easy to follow. A jump that is too large may make the ball appear to vanish and return elsewhere.\n\nIt helps to test a few pages before drawing the whole sequence. Hold the pages at the same edge each time and practise turning them smoothly. A drawing placed too close to the held edge may be difficult to see.\n\nA flipbook is a small project, but it shows how a planned series of still images can create an impression of action. Making one also gives beginners a reason to look closely at an ordinary movement they might otherwise take for granted.",
+            "explanation": "Rapidly ordered images suggest motion. Nothing becomes real, writing alone is not the method and no electronics are required.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A sequence of still drawings can create apparent movement"
+              },
+              {
+                "id": "o1",
+                "text": "The book needs electronic parts to work"
+              },
+              {
+                "id": "o2",
+                "text": "One detailed drawing becomes a real object"
+              },
+              {
+                "id": "o3",
+                "text": "Pages must contain only written instructions"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.breakfast-and-flipbooks-049.flipbook.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why may a simple shape help a beginner?",
+            "material": "A small book that seems to move\n\nDraw a ball near the bottom of one page, then draw it a little higher on the next. Continue across several pages, changing its position slightly each time. When the pages are turned quickly in order, the separate drawings can seem to form a moving ball. That is the basic idea of a flipbook.\n\nThe drawings do not need to be detailed. In fact, a simple shape is often easier for a beginner to keep consistent. What matters is how one image changes into the next. If the ball suddenly becomes much larger for no reason, viewers may notice the change in size instead of the movement you intended.\n\nThe spacing between positions affects the impression. Small changes can suggest slower movement, while larger changes can suggest a faster one, provided the sequence is still easy to follow. A jump that is too large may make the ball appear to vanish and return elsewhere.\n\nIt helps to test a few pages before drawing the whole sequence. Hold the pages at the same edge each time and practise turning them smoothly. A drawing placed too close to the held edge may be difficult to see.\n\nA flipbook is a small project, but it shows how a planned series of still images can create an impression of action. Making one also gives beginners a reason to look closely at an ordinary movement they might otherwise take for granted.",
+            "explanation": "Consistency is the stated advantage. A sequence and manual turning are still needed; edges remain.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It guarantees that every page turns automatically"
+              },
+              {
+                "id": "o1",
+                "text": "It is easier to keep consistent across pages"
+              },
+              {
+                "id": "o2",
+                "text": "It makes the held edge disappear"
+              },
+              {
+                "id": "o3",
+                "text": "It removes the need for more than one drawing"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.breakfast-and-flipbooks-049.flipbook.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What can happen if the ball’s position changes too much between pages?",
+            "material": "A small book that seems to move\n\nDraw a ball near the bottom of one page, then draw it a little higher on the next. Continue across several pages, changing its position slightly each time. When the pages are turned quickly in order, the separate drawings can seem to form a moving ball. That is the basic idea of a flipbook.\n\nThe drawings do not need to be detailed. In fact, a simple shape is often easier for a beginner to keep consistent. What matters is how one image changes into the next. If the ball suddenly becomes much larger for no reason, viewers may notice the change in size instead of the movement you intended.\n\nThe spacing between positions affects the impression. Small changes can suggest slower movement, while larger changes can suggest a faster one, provided the sequence is still easy to follow. A jump that is too large may make the ball appear to vanish and return elsewhere.\n\nIt helps to test a few pages before drawing the whole sequence. Hold the pages at the same edge each time and practise turning them smoothly. A drawing placed too close to the held edge may be difficult to see.\n\nA flipbook is a small project, but it shows how a planned series of still images can create an impression of action. Making one also gives beginners a reason to look closely at an ordinary movement they might otherwise take for granted.",
+            "explanation": "An excessive jump can look like vanishing/reappearing. Slow movement comes from small spacing; clarity and colour change are not effects stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It may seem to disappear and reappear"
+              },
+              {
+                "id": "o1",
+                "text": "The pages must change colour"
+              },
+              {
+                "id": "o2",
+                "text": "Every drawing becomes clearer"
+              },
+              {
+                "id": "o3",
+                "text": "It will always move more slowly"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.breakfast-and-flipbooks-049.flipbook.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why should makers test a few pages first?",
+            "material": "A small book that seems to move\n\nDraw a ball near the bottom of one page, then draw it a little higher on the next. Continue across several pages, changing its position slightly each time. When the pages are turned quickly in order, the separate drawings can seem to form a moving ball. That is the basic idea of a flipbook.\n\nThe drawings do not need to be detailed. In fact, a simple shape is often easier for a beginner to keep consistent. What matters is how one image changes into the next. If the ball suddenly becomes much larger for no reason, viewers may notice the change in size instead of the movement you intended.\n\nThe spacing between positions affects the impression. Small changes can suggest slower movement, while larger changes can suggest a faster one, provided the sequence is still easy to follow. A jump that is too large may make the ball appear to vanish and return elsewhere.\n\nIt helps to test a few pages before drawing the whole sequence. Hold the pages at the same edge each time and practise turning them smoothly. A drawing placed too close to the held edge may be difficult to see.\n\nA flipbook is a small project, but it shows how a planned series of still images can create an impression of action. Making one also gives beginners a reason to look closely at an ordinary movement they might otherwise take for granted.",
+            "explanation": "Testing reveals placement and handling issues before full work. It does not prohibit detail, eliminate completion or change paper weight.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To make the book’s paper heavier"
+              },
+              {
+                "id": "o1",
+                "text": "To avoid drawing any further pages"
+              },
+              {
+                "id": "o2",
+                "text": "To prove that detailed drawings are impossible"
+              },
+              {
+                "id": "o3",
+                "text": "To check visibility and smooth turning before completing the sequence"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "ff0852213bc637b30a082034e53ee5dcd715710c1a458fd419eed0123192007e",
+      "reviewNotes": "Three new complete junior practices: four four-choice written passages for junior2; a four-email thread and independent three-choice passage for junior3. Fictional cases, no invented research/statistics. Same-author evidence, message chronology and distractor review only. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.dance-and-fridge-049",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Two partners and a shared fridge",
+        "summary": "Two partners and a shared fridge，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "xschu-bnu2026-paper-key20261014-record.reading.closed_picture_mixed_section11",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete written four-question passages for junior2 explicitly adapt the written-reading part of its source. Junior3 retains a four-email thread with five questions plus a separate five-question reading, all three-choice. No source prose copied."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete junior practices: four four-choice written passages for junior2; a four-email thread and independent three-choice passage for junior3. Fictional cases, no invented research/statistics. Same-author evidence, message chronology and distractor review only."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.dance-and-fridge-049",
+          "family": "reading_choice",
+          "label": "Two partners and a shared fridge",
+          "candidateSHA256": "f7504012841b4d602604b69b3d8effe1cb493fb089e3596f02631f3b0c288123",
+          "authorCheckSHA256": "678fc82ebe53c8ad8808f3d69da860c1ac2d70cb93b04da7d58758432100b9d8",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.dance-and-fridge-049#dance",
+            "expansion.20261024.junior2.dance-and-fridge-049#fridge"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b049；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Not a solo performance\n\nI joined a beginner's dance class with my friend Rowan. We practised the steps separately at home, and I could complete my part without thinking very hard. At our next lesson, however, moving together was much more difficult.\n\nWhenever Rowan hesitated, I tried to pull us into the next step. That made him lose his balance. I thought I was helping us stay on time. Our teacher asked us to stop and walk through the pattern slowly, without music.\n\nShe explained that a partner was not a piece of equipment to move into position. Each person needed enough information and space to respond. I had been looking mainly at my own feet, so I often noticed Rowan's difficulty only after I had already moved.\n\nWe tried again. I kept the steps small and paid attention to where he was. Rowan also told me when my movement was unclear. We made fewer dramatic gestures, but the pattern began to feel more connected.\n\nAt the end, the teacher played the music again. We still missed a turn, then smiled and continued from the next familiar step. Nobody applauded; it was an ordinary practice lesson. Yet I felt more satisfied than after my faultless rehearsals alone. I had begun to understand that doing my part correctly was only one part of doing something together.\n\nA fridge for the neighbourhood\n\nA community centre in our town runs a shared fridge. Local food shops and residents may offer suitable food that would otherwise go unused. Visitors can take items without payment, but the fridge is not simply a place to leave anything from a kitchen.\n\nVolunteers check donations against the centre's written rules. Food must be within its use-by date where one is given, and certain items are not accepted. The rules also explain packaging and temperature requirements. A volunteer who is unsure sets an item aside and asks the coordinator rather than guessing.\n\nEach morning, the team checks that the fridge is operating correctly and cleans the storage area. They arrange items so that dates and labels can be seen. A full fridge is not helpful if people cannot tell what is inside a container or whether it has been stored properly.\n\nVisitors are asked to take what they expect to use. They do not have to explain their personal circumstances or prove that they deserve a particular item. A notice gives the opening hours and the coordinator's contact details for anyone who wants to help.\n\nThe project reduces some waste, but it also depends on regular work. Donating food is only the beginning of making it available. Checks, clear information and respect for the people using the service are part of the arrangement too."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.dance-and-fridge-049.dance.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What had the narrator practised at home?",
+            "material": "Not a solo performance\n\nI joined a beginner's dance class with my friend Rowan. We practised the steps separately at home, and I could complete my part without thinking very hard. At our next lesson, however, moving together was much more difficult.\n\nWhenever Rowan hesitated, I tried to pull us into the next step. That made him lose his balance. I thought I was helping us stay on time. Our teacher asked us to stop and walk through the pattern slowly, without music.\n\nShe explained that a partner was not a piece of equipment to move into position. Each person needed enough information and space to respond. I had been looking mainly at my own feet, so I often noticed Rowan's difficulty only after I had already moved.\n\nWe tried again. I kept the steps small and paid attention to where he was. Rowan also told me when my movement was unclear. We made fewer dramatic gestures, but the pattern began to feel more connected.\n\nAt the end, the teacher played the music again. We still missed a turn, then smiled and continued from the next familiar step. Nobody applauded; it was an ordinary practice lesson. Yet I felt more satisfied than after my faultless rehearsals alone. I had begun to understand that doing my part correctly was only one part of doing something together.",
+            "explanation": "Home practice was separate steps. Teacher-led partner work happens in class, and no audience or movement-free practice is described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A performance before an audience"
+              },
+              {
+                "id": "o1",
+                "text": "Every movement with the teacher"
+              },
+              {
+                "id": "o2",
+                "text": "The narrator’s own steps separately"
+              },
+              {
+                "id": "o3",
+                "text": "Only listening without moving"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.dance-and-fridge-049.dance.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did pulling Rowan forward cause trouble?",
+            "material": "Not a solo performance\n\nI joined a beginner's dance class with my friend Rowan. We practised the steps separately at home, and I could complete my part without thinking very hard. At our next lesson, however, moving together was much more difficult.\n\nWhenever Rowan hesitated, I tried to pull us into the next step. That made him lose his balance. I thought I was helping us stay on time. Our teacher asked us to stop and walk through the pattern slowly, without music.\n\nShe explained that a partner was not a piece of equipment to move into position. Each person needed enough information and space to respond. I had been looking mainly at my own feet, so I often noticed Rowan's difficulty only after I had already moved.\n\nWe tried again. I kept the steps small and paid attention to where he was. Rowan also told me when my movement was unclear. We made fewer dramatic gestures, but the pattern began to feel more connected.\n\nAt the end, the teacher played the music again. We still missed a turn, then smiled and continued from the next familiar step. Nobody applauded; it was an ordinary practice lesson. Yet I felt more satisfied than after my faultless rehearsals alone. I had begun to understand that doing my part correctly was only one part of doing something together.",
+            "explanation": "The pull unbalances Rowan; the teacher explains response and space. It does not stop music or erase turns, and it restricts rather than increases his control.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It reduced his chance to respond and upset his balance"
+              },
+              {
+                "id": "o1",
+                "text": "It removed every difficult turn"
+              },
+              {
+                "id": "o2",
+                "text": "It gave him too much space"
+              },
+              {
+                "id": "o3",
+                "text": "It made the music stop permanently"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.dance-and-fridge-049.dance.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What changed in the second attempt?",
+            "material": "Not a solo performance\n\nI joined a beginner's dance class with my friend Rowan. We practised the steps separately at home, and I could complete my part without thinking very hard. At our next lesson, however, moving together was much more difficult.\n\nWhenever Rowan hesitated, I tried to pull us into the next step. That made him lose his balance. I thought I was helping us stay on time. Our teacher asked us to stop and walk through the pattern slowly, without music.\n\nShe explained that a partner was not a piece of equipment to move into position. Each person needed enough information and space to respond. I had been looking mainly at my own feet, so I often noticed Rowan's difficulty only after I had already moved.\n\nWe tried again. I kept the steps small and paid attention to where he was. Rowan also told me when my movement was unclear. We made fewer dramatic gestures, but the pattern began to feel more connected.\n\nAt the end, the teacher played the music again. We still missed a turn, then smiled and continued from the next familiar step. Nobody applauded; it was an ordinary practice lesson. Yet I felt more satisfied than after my faultless rehearsals alone. I had begun to understand that doing my part correctly was only one part of doing something together.",
+            "explanation": "The narrator attends to Rowan and Rowan explains unclear cues. Silence, forcing and abandoning the pattern contradict this.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Rowan was told never to speak"
+              },
+              {
+                "id": "o1",
+                "text": "They stopped learning the pattern"
+              },
+              {
+                "id": "o2",
+                "text": "Both partners gave information and the narrator watched Rowan more"
+              },
+              {
+                "id": "o3",
+                "text": "The narrator used larger movements to force the pace"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.dance-and-fridge-049.dance.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why was the narrator pleased at the end?",
+            "material": "Not a solo performance\n\nI joined a beginner's dance class with my friend Rowan. We practised the steps separately at home, and I could complete my part without thinking very hard. At our next lesson, however, moving together was much more difficult.\n\nWhenever Rowan hesitated, I tried to pull us into the next step. That made him lose his balance. I thought I was helping us stay on time. Our teacher asked us to stop and walk through the pattern slowly, without music.\n\nShe explained that a partner was not a piece of equipment to move into position. Each person needed enough information and space to respond. I had been looking mainly at my own feet, so I often noticed Rowan's difficulty only after I had already moved.\n\nWe tried again. I kept the steps small and paid attention to where he was. Rowan also told me when my movement was unclear. We made fewer dramatic gestures, but the pattern began to feel more connected.\n\nAt the end, the teacher played the music again. We still missed a turn, then smiled and continued from the next familiar step. Nobody applauded; it was an ordinary practice lesson. Yet I felt more satisfied than after my faultless rehearsals alone. I had begun to understand that doing my part correctly was only one part of doing something together.",
+            "explanation": "The ending contrasts coordinated practice with perfect solo steps. There is no public show, prize or removal of the partner.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Rowan no longer needed to take part"
+              },
+              {
+                "id": "o1",
+                "text": "They were learning to coordinate rather than just perform individual steps"
+              },
+              {
+                "id": "o2",
+                "text": "Their teacher promised a competition prize"
+              },
+              {
+                "id": "o3",
+                "text": "They had completed a flawless public performance"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.dance-and-fridge-049.fridge.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What do volunteers do if uncertain about a donation?",
+            "material": "A fridge for the neighbourhood\n\nA community centre in our town runs a shared fridge. Local food shops and residents may offer suitable food that would otherwise go unused. Visitors can take items without payment, but the fridge is not simply a place to leave anything from a kitchen.\n\nVolunteers check donations against the centre's written rules. Food must be within its use-by date where one is given, and certain items are not accepted. The rules also explain packaging and temperature requirements. A volunteer who is unsure sets an item aside and asks the coordinator rather than guessing.\n\nEach morning, the team checks that the fridge is operating correctly and cleans the storage area. They arrange items so that dates and labels can be seen. A full fridge is not helpful if people cannot tell what is inside a container or whether it has been stored properly.\n\nVisitors are asked to take what they expect to use. They do not have to explain their personal circumstances or prove that they deserve a particular item. A notice gives the opening hours and the coordinator's contact details for anyone who wants to help.\n\nThe project reduces some waste, but it also depends on regular work. Donating food is only the beginning of making it available. Checks, clear information and respect for the people using the service are part of the arrangement too.",
+            "explanation": "The rules require setting aside and seeking advice. Unchecked placement, altered dates and visitor testing are not allowed procedures.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Require a visitor to test it"
+              },
+              {
+                "id": "o1",
+                "text": "Place it in the fridge without checking"
+              },
+              {
+                "id": "o2",
+                "text": "Change its use-by date"
+              },
+              {
+                "id": "o3",
+                "text": "Ask the coordinator rather than guess"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.dance-and-fridge-049.fridge.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why are dates and labels kept visible?",
+            "material": "A fridge for the neighbourhood\n\nA community centre in our town runs a shared fridge. Local food shops and residents may offer suitable food that would otherwise go unused. Visitors can take items without payment, but the fridge is not simply a place to leave anything from a kitchen.\n\nVolunteers check donations against the centre's written rules. Food must be within its use-by date where one is given, and certain items are not accepted. The rules also explain packaging and temperature requirements. A volunteer who is unsure sets an item aside and asks the coordinator rather than guessing.\n\nEach morning, the team checks that the fridge is operating correctly and cleans the storage area. They arrange items so that dates and labels can be seen. A full fridge is not helpful if people cannot tell what is inside a container or whether it has been stored properly.\n\nVisitors are asked to take what they expect to use. They do not have to explain their personal circumstances or prove that they deserve a particular item. A notice gives the opening hours and the coordinator's contact details for anyone who wants to help.\n\nThe project reduces some waste, but it also depends on regular work. Donating food is only the beginning of making it available. Checks, clear information and respect for the people using the service are part of the arrangement too.",
+            "explanation": "Visibility supports informed use. It is the opposite of hiding and does not change freshness or remove cleaning.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To avoid cleaning the fridge"
+              },
+              {
+                "id": "o1",
+                "text": "To make every item look newly cooked"
+              },
+              {
+                "id": "o2",
+                "text": "So volunteers can hide what each container holds"
+              },
+              {
+                "id": "o3",
+                "text": "So visitors can understand the stored food and its information"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.dance-and-fridge-049.fridge.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must visitors explain before taking food?",
+            "material": "A fridge for the neighbourhood\n\nA community centre in our town runs a shared fridge. Local food shops and residents may offer suitable food that would otherwise go unused. Visitors can take items without payment, but the fridge is not simply a place to leave anything from a kitchen.\n\nVolunteers check donations against the centre's written rules. Food must be within its use-by date where one is given, and certain items are not accepted. The rules also explain packaging and temperature requirements. A volunteer who is unsure sets an item aside and asks the coordinator rather than guessing.\n\nEach morning, the team checks that the fridge is operating correctly and cleans the storage area. They arrange items so that dates and labels can be seen. A full fridge is not helpful if people cannot tell what is inside a container or whether it has been stored properly.\n\nVisitors are asked to take what they expect to use. They do not have to explain their personal circumstances or prove that they deserve a particular item. A notice gives the opening hours and the coordinator's contact details for anyone who wants to help.\n\nThe project reduces some waste, but it also depends on regular work. Donating food is only the beginning of making it available. Checks, clear information and respect for the people using the service are part of the arrangement too.",
+            "explanation": "The passage explicitly rejects personal proof. Family history, deservingness and financial details are not required.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "No personal justification is required"
+              },
+              {
+                "id": "o1",
+                "text": "How much money they have"
+              },
+              {
+                "id": "o2",
+                "text": "Why they deserve each item"
+              },
+              {
+                "id": "o3",
+                "text": "Their complete family history"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.dance-and-fridge-049.fridge.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the writer’s main point?",
+            "material": "A fridge for the neighbourhood\n\nA community centre in our town runs a shared fridge. Local food shops and residents may offer suitable food that would otherwise go unused. Visitors can take items without payment, but the fridge is not simply a place to leave anything from a kitchen.\n\nVolunteers check donations against the centre's written rules. Food must be within its use-by date where one is given, and certain items are not accepted. The rules also explain packaging and temperature requirements. A volunteer who is unsure sets an item aside and asks the coordinator rather than guessing.\n\nEach morning, the team checks that the fridge is operating correctly and cleans the storage area. They arrange items so that dates and labels can be seen. A full fridge is not helpful if people cannot tell what is inside a container or whether it has been stored properly.\n\nVisitors are asked to take what they expect to use. They do not have to explain their personal circumstances or prove that they deserve a particular item. A notice gives the opening hours and the coordinator's contact details for anyone who wants to help.\n\nThe project reduces some waste, but it also depends on regular work. Donating food is only the beginning of making it available. Checks, clear information and respect for the people using the service are part of the arrangement too.",
+            "explanation": "The conclusion states the broader work. Other options deny safety/organisation or contradict respectful access.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Volunteers should judge the worth of each visitor"
+              },
+              {
+                "id": "o1",
+                "text": "A useful shared fridge needs checks and ongoing organisation as well as donations"
+              },
+              {
+                "id": "o2",
+                "text": "A full fridge never needs information or cleaning"
+              },
+              {
+                "id": "o3",
+                "text": "Any food becomes suitable as soon as it is donated"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "53be97c555e360ca8d2283433943028db8d5642bba52480c5c5014978cbddb78",
+      "reviewNotes": "Three new complete junior practices: four four-choice written passages for junior2; a four-email thread and independent three-choice passage for junior3. Fictional cases, no invented research/statistics. Same-author evidence, message chronology and distractor review only. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.repair-cafe-thread-049",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · A repair afternoon and a piano tuner",
+        "summary": "A repair afternoon and a piano tuner，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-chengdu2025-21cnjy23208601.reading.complete_section10",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete written four-question passages for junior2 explicitly adapt the written-reading part of its source. Junior3 retains a four-email thread with five questions plus a separate five-question reading, all three-choice. No source prose copied."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three new complete junior practices: four four-choice written passages for junior2; a four-email thread and independent three-choice passage for junior3. Fictional cases, no invented research/statistics. Same-author evidence, message chronology and distractor review only."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.repair-cafe-thread-049",
+          "family": "reading_choice",
+          "label": "A repair afternoon and a piano tuner",
+          "candidateSHA256": "c27c9979e067743cb9896dfc253139babd7c6a5d40556f690149048ba6fec96c",
+          "authorCheckSHA256": "83e3f402ee93711206a46bc1e9708161b20f423b650bfc24be1515dd9c15d814",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.repair-cafe-thread-049#emails",
+            "expansion.20261024.junior3.repair-cafe-thread-049#piano"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b049；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four emails about a repair afternoon\n\nEmail 1 — Monday, 3 March, 09:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: Saturday repair afternoon\nThe community repair afternoon is planned for Saturday, 8 March, in the west hall. Visitors will bring small household items for qualified volunteers to inspect. Student helpers will welcome visitors and explain the queue. Please arrive at 12:30 for a briefing; doors open at 13:00. Do not attempt repairs yourselves. Reply by Wednesday if you can help.\n\nEmail 2 — Tuesday, 4 March, 16:00\nFrom: Daniel\nTo: Ms Chen\nSubject: Re: Saturday repair afternoon\nI can help, but my music lesson ends at 12:30. I could reach the centre by 13:00. Should I still come, or would missing the briefing mean I cannot take part? I am happy to do a later job if that is more useful.\n\nEmail 3 — Wednesday, 5 March, 10:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: Updated room and briefing\nThe west hall's heating has failed, so we will use the east hall. The event date and public opening time are unchanged. I will give the main briefing at 12:30 and repeat it for late helpers at 13:15. Daniel and anyone else arriving after 12:30 should wait at the welcome desk until the repeat briefing. Please do not start directing visitors before hearing the instructions.\n\nEmail 4 — Friday, 7 March, 14:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: One final reminder\nPlease use the side entrance nearest the east hall. The main entrance will be reserved for visitors carrying items. Wear your school badge. We have enough helpers for the queue, but need two people to put chairs away at 16:00. Reply to this email if you can stay for that task. Thank you for supporting the qualified repair volunteers.\n\nListening to the room\n\nA piano tuner visited our school before a concert. I expected him to sit down, play a few notes and finish quickly. Instead, he first asked when the instrument had last been moved and whether the hall had been unusually warm or cold.\n\nHe explained that the piano was not separate from its surroundings. Conditions could affect the instrument, and moving it could change what needed attention. That did not mean every problem had the same cause. He needed to examine this piano rather than repair an imagined average one.\n\nWhile he worked, I waited for him to play a complete tune. He mostly played small groups of notes, listening and adjusting. The repeated fragments sounded strange to me, but they gave him information that a familiar melody might distract us from noticing.\n\nAfterwards, he let our music teacher try a piece. She asked about one passage, and he listened again. There was no dramatic announcement that the piano had become perfect forever. It was ready for the concert, with advice about its care and a reminder to report further changes.\n\nI had thought expertise would look like instant certainty. What I saw was a sequence of precise questions, focused listening and small decisions. The tuner did not know less because he examined the circumstances. His knowledge helped him recognise which circumstances were worth examining."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.repair-cafe-thread-049.emails.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the student helpers’ planned role?",
+            "material": "Four emails about a repair afternoon\n\nEmail 1 — Monday, 3 March, 09:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: Saturday repair afternoon\nThe community repair afternoon is planned for Saturday, 8 March, in the west hall. Visitors will bring small household items for qualified volunteers to inspect. Student helpers will welcome visitors and explain the queue. Please arrive at 12:30 for a briefing; doors open at 13:00. Do not attempt repairs yourselves. Reply by Wednesday if you can help.\n\nEmail 2 — Tuesday, 4 March, 16:00\nFrom: Daniel\nTo: Ms Chen\nSubject: Re: Saturday repair afternoon\nI can help, but my music lesson ends at 12:30. I could reach the centre by 13:00. Should I still come, or would missing the briefing mean I cannot take part? I am happy to do a later job if that is more useful.\n\nEmail 3 — Wednesday, 5 March, 10:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: Updated room and briefing\nThe west hall's heating has failed, so we will use the east hall. The event date and public opening time are unchanged. I will give the main briefing at 12:30 and repeat it for late helpers at 13:15. Daniel and anyone else arriving after 12:30 should wait at the welcome desk until the repeat briefing. Please do not start directing visitors before hearing the instructions.\n\nEmail 4 — Friday, 7 March, 14:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: One final reminder\nPlease use the side entrance nearest the east hall. The main entrance will be reserved for visitors carrying items. Wear your school badge. We have enough helpers for the queue, but need two people to put chairs away at 16:00. Reply to this email if you can stay for that task. Thank you for supporting the qualified repair volunteers.",
+            "explanation": "Email1 assigns welcome and queue roles while explicitly prohibiting repairs. No guarantee of repair is given.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Inspect electrical items without supervision"
+              },
+              {
+                "id": "o1",
+                "text": "Welcome visitors and explain the queue"
+              },
+              {
+                "id": "o2",
+                "text": "Promise that every item can be repaired"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.repair-cafe-thread-049.emails.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does Daniel write his email?",
+            "material": "Four emails about a repair afternoon\n\nEmail 1 — Monday, 3 March, 09:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: Saturday repair afternoon\nThe community repair afternoon is planned for Saturday, 8 March, in the west hall. Visitors will bring small household items for qualified volunteers to inspect. Student helpers will welcome visitors and explain the queue. Please arrive at 12:30 for a briefing; doors open at 13:00. Do not attempt repairs yourselves. Reply by Wednesday if you can help.\n\nEmail 2 — Tuesday, 4 March, 16:00\nFrom: Daniel\nTo: Ms Chen\nSubject: Re: Saturday repair afternoon\nI can help, but my music lesson ends at 12:30. I could reach the centre by 13:00. Should I still come, or would missing the briefing mean I cannot take part? I am happy to do a later job if that is more useful.\n\nEmail 3 — Wednesday, 5 March, 10:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: Updated room and briefing\nThe west hall's heating has failed, so we will use the east hall. The event date and public opening time are unchanged. I will give the main briefing at 12:30 and repeat it for late helpers at 13:15. Daniel and anyone else arriving after 12:30 should wait at the welcome desk until the repeat briefing. Please do not start directing visitors before hearing the instructions.\n\nEmail 4 — Friday, 7 March, 14:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: One final reminder\nPlease use the side entrance nearest the east hall. The main entrance will be reserved for visitors carrying items. Wear your school badge. We have enough helpers for the queue, but need two people to put chairs away at 16:00. Reply to this email if you can stay for that task. Thank you for supporting the qualified repair volunteers.",
+            "explanation": "He explains timing and asks about later participation. He neither cancels the event nor asks Ms Chen to alter his lesson.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To announce that the whole event is cancelled"
+              },
+              {
+                "id": "o1",
+                "text": "To ask whether he can help after missing the first briefing"
+              },
+              {
+                "id": "o2",
+                "text": "To request an earlier music lesson from Ms Chen"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.repair-cafe-thread-049.emails.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which arrangement changes on Wednesday?",
+            "material": "Four emails about a repair afternoon\n\nEmail 1 — Monday, 3 March, 09:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: Saturday repair afternoon\nThe community repair afternoon is planned for Saturday, 8 March, in the west hall. Visitors will bring small household items for qualified volunteers to inspect. Student helpers will welcome visitors and explain the queue. Please arrive at 12:30 for a briefing; doors open at 13:00. Do not attempt repairs yourselves. Reply by Wednesday if you can help.\n\nEmail 2 — Tuesday, 4 March, 16:00\nFrom: Daniel\nTo: Ms Chen\nSubject: Re: Saturday repair afternoon\nI can help, but my music lesson ends at 12:30. I could reach the centre by 13:00. Should I still come, or would missing the briefing mean I cannot take part? I am happy to do a later job if that is more useful.\n\nEmail 3 — Wednesday, 5 March, 10:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: Updated room and briefing\nThe west hall's heating has failed, so we will use the east hall. The event date and public opening time are unchanged. I will give the main briefing at 12:30 and repeat it for late helpers at 13:15. Daniel and anyone else arriving after 12:30 should wait at the welcome desk until the repeat briefing. Please do not start directing visitors before hearing the instructions.\n\nEmail 4 — Friday, 7 March, 14:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: One final reminder\nPlease use the side entrance nearest the east hall. The main entrance will be reserved for visitors carrying items. Wear your school badge. We have enough helpers for the queue, but need two people to put chairs away at 16:00. Reply to this email if you can stay for that task. Thank you for supporting the qualified repair volunteers.",
+            "explanation": "Email3 changes west to east hall and explicitly preserves date and public opening time.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The hall used for the event"
+              },
+              {
+                "id": "o1",
+                "text": "The Saturday event date"
+              },
+              {
+                "id": "o2",
+                "text": "The 13:00 public opening time"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.repair-cafe-thread-049.emails.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should Daniel do when he arrives at 13:00?",
+            "material": "Four emails about a repair afternoon\n\nEmail 1 — Monday, 3 March, 09:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: Saturday repair afternoon\nThe community repair afternoon is planned for Saturday, 8 March, in the west hall. Visitors will bring small household items for qualified volunteers to inspect. Student helpers will welcome visitors and explain the queue. Please arrive at 12:30 for a briefing; doors open at 13:00. Do not attempt repairs yourselves. Reply by Wednesday if you can help.\n\nEmail 2 — Tuesday, 4 March, 16:00\nFrom: Daniel\nTo: Ms Chen\nSubject: Re: Saturday repair afternoon\nI can help, but my music lesson ends at 12:30. I could reach the centre by 13:00. Should I still come, or would missing the briefing mean I cannot take part? I am happy to do a later job if that is more useful.\n\nEmail 3 — Wednesday, 5 March, 10:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: Updated room and briefing\nThe west hall's heating has failed, so we will use the east hall. The event date and public opening time are unchanged. I will give the main briefing at 12:30 and repeat it for late helpers at 13:15. Daniel and anyone else arriving after 12:30 should wait at the welcome desk until the repeat briefing. Please do not start directing visitors before hearing the instructions.\n\nEmail 4 — Friday, 7 March, 14:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: One final reminder\nPlease use the side entrance nearest the east hall. The main entrance will be reserved for visitors carrying items. Wear your school badge. We have enough helpers for the queue, but need two people to put chairs away at 16:00. Reply to this email if you can stay for that task. Thank you for supporting the qualified repair volunteers.",
+            "explanation": "Late helpers must wait for the repeat briefing. Starting first violates instructions, and west hall has been replaced.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Look for the original briefing in the west hall"
+              },
+              {
+                "id": "o1",
+                "text": "Wait at the welcome desk for the 13:15 briefing"
+              },
+              {
+                "id": "o2",
+                "text": "Begin directing visitors immediately"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.repair-cafe-thread-049.emails.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who should reply to Friday’s email?",
+            "material": "Four emails about a repair afternoon\n\nEmail 1 — Monday, 3 March, 09:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: Saturday repair afternoon\nThe community repair afternoon is planned for Saturday, 8 March, in the west hall. Visitors will bring small household items for qualified volunteers to inspect. Student helpers will welcome visitors and explain the queue. Please arrive at 12:30 for a briefing; doors open at 13:00. Do not attempt repairs yourselves. Reply by Wednesday if you can help.\n\nEmail 2 — Tuesday, 4 March, 16:00\nFrom: Daniel\nTo: Ms Chen\nSubject: Re: Saturday repair afternoon\nI can help, but my music lesson ends at 12:30. I could reach the centre by 13:00. Should I still come, or would missing the briefing mean I cannot take part? I am happy to do a later job if that is more useful.\n\nEmail 3 — Wednesday, 5 March, 10:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: Updated room and briefing\nThe west hall's heating has failed, so we will use the east hall. The event date and public opening time are unchanged. I will give the main briefing at 12:30 and repeat it for late helpers at 13:15. Daniel and anyone else arriving after 12:30 should wait at the welcome desk until the repeat briefing. Please do not start directing visitors before hearing the instructions.\n\nEmail 4 — Friday, 7 March, 14:00\nFrom: Ms Chen\nTo: Student Helpers\nSubject: One final reminder\nPlease use the side entrance nearest the east hall. The main entrance will be reserved for visitors carrying items. Wear your school badge. We have enough helpers for the queue, but need two people to put chairs away at 16:00. Reply to this email if you can stay for that task. Thank you for supporting the qualified repair volunteers.",
+            "explanation": "The final email asks for two cleanup helpers to reply. Visitors are not its recipients and repairs are not the student role.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only students who can repair household items"
+              },
+              {
+                "id": "o1",
+                "text": "Every visitor bringing a broken item"
+              },
+              {
+                "id": "o2",
+                "text": "Helpers able to stay and put chairs away at 16:00"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.repair-cafe-thread-049.piano.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What surprised the narrator at the beginning?",
+            "material": "Listening to the room\n\nA piano tuner visited our school before a concert. I expected him to sit down, play a few notes and finish quickly. Instead, he first asked when the instrument had last been moved and whether the hall had been unusually warm or cold.\n\nHe explained that the piano was not separate from its surroundings. Conditions could affect the instrument, and moving it could change what needed attention. That did not mean every problem had the same cause. He needed to examine this piano rather than repair an imagined average one.\n\nWhile he worked, I waited for him to play a complete tune. He mostly played small groups of notes, listening and adjusting. The repeated fragments sounded strange to me, but they gave him information that a familiar melody might distract us from noticing.\n\nAfterwards, he let our music teacher try a piece. She asked about one passage, and he listened again. There was no dramatic announcement that the piano had become perfect forever. It was ready for the concert, with advice about its care and a reminder to report further changes.\n\nI had thought expertise would look like instant certainty. What I saw was a sequence of precise questions, focused listening and small decisions. The tuner did not know less because he examined the circumstances. His knowledge helped him recognise which circumstances were worth examining.",
+            "explanation": "He first asks about movement and temperature. No refusal or removal is described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The tuner asked about the piano’s circumstances before adjusting it"
+              },
+              {
+                "id": "o1",
+                "text": "The piano had been removed from the school"
+              },
+              {
+                "id": "o2",
+                "text": "The tuner refused to enter the hall"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.repair-cafe-thread-049.piano.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does “an imagined average one” refer to?",
+            "material": "Listening to the room\n\nA piano tuner visited our school before a concert. I expected him to sit down, play a few notes and finish quickly. Instead, he first asked when the instrument had last been moved and whether the hall had been unusually warm or cold.\n\nHe explained that the piano was not separate from its surroundings. Conditions could affect the instrument, and moving it could change what needed attention. That did not mean every problem had the same cause. He needed to examine this piano rather than repair an imagined average one.\n\nWhile he worked, I waited for him to play a complete tune. He mostly played small groups of notes, listening and adjusting. The repeated fragments sounded strange to me, but they gave him information that a familiar melody might distract us from noticing.\n\nAfterwards, he let our music teacher try a piece. She asked about one passage, and he listened again. There was no dramatic announcement that the piano had become perfect forever. It was ready for the concert, with advice about its care and a reminder to report further changes.\n\nI had thought expertise would look like instant certainty. What I saw was a sequence of precise questions, focused listening and small decisions. The tuner did not know less because he examined the circumstances. His knowledge helped him recognise which circumstances were worth examining.",
+            "explanation": "The phrase contrasts individual diagnosis with generic assumptions. It does not describe the programme or a piece of music.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A generic piano treated without considering this instrument’s situation"
+              },
+              {
+                "id": "o1",
+                "text": "The school’s actual concert programme"
+              },
+              {
+                "id": "o2",
+                "text": "A particular tune the teacher wanted to play"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.repair-cafe-thread-049.piano.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the tuner play short groups of notes?",
+            "material": "Listening to the room\n\nA piano tuner visited our school before a concert. I expected him to sit down, play a few notes and finish quickly. Instead, he first asked when the instrument had last been moved and whether the hall had been unusually warm or cold.\n\nHe explained that the piano was not separate from its surroundings. Conditions could affect the instrument, and moving it could change what needed attention. That did not mean every problem had the same cause. He needed to examine this piano rather than repair an imagined average one.\n\nWhile he worked, I waited for him to play a complete tune. He mostly played small groups of notes, listening and adjusting. The repeated fragments sounded strange to me, but they gave him information that a familiar melody might distract us from noticing.\n\nAfterwards, he let our music teacher try a piece. She asked about one passage, and he listened again. There was no dramatic announcement that the piano had become perfect forever. It was ready for the concert, with advice about its care and a reminder to report further changes.\n\nI had thought expertise would look like instant certainty. What I saw was a sequence of precise questions, focused listening and small decisions. The tuner did not know less because he examined the circumstances. His knowledge helped him recognise which circumstances were worth examining.",
+            "explanation": "The fragments provide focused information. Incompetence and exclusion are not suggested.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They helped him hear details relevant to adjustments"
+              },
+              {
+                "id": "o1",
+                "text": "He was unable to play any note correctly"
+              },
+              {
+                "id": "o2",
+                "text": "He wanted to prevent the teacher from listening"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.repair-cafe-thread-049.piano.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did the tuner claim after finishing?",
+            "material": "Listening to the room\n\nA piano tuner visited our school before a concert. I expected him to sit down, play a few notes and finish quickly. Instead, he first asked when the instrument had last been moved and whether the hall had been unusually warm or cold.\n\nHe explained that the piano was not separate from its surroundings. Conditions could affect the instrument, and moving it could change what needed attention. That did not mean every problem had the same cause. He needed to examine this piano rather than repair an imagined average one.\n\nWhile he worked, I waited for him to play a complete tune. He mostly played small groups of notes, listening and adjusting. The repeated fragments sounded strange to me, but they gave him information that a familiar melody might distract us from noticing.\n\nAfterwards, he let our music teacher try a piece. She asked about one passage, and he listened again. There was no dramatic announcement that the piano had become perfect forever. It was ready for the concert, with advice about its care and a reminder to report further changes.\n\nI had thought expertise would look like instant certainty. What I saw was a sequence of precise questions, focused listening and small decisions. The tuner did not know less because he examined the circumstances. His knowledge helped him recognise which circumstances were worth examining.",
+            "explanation": "Readiness plus care advice and reporting are explicit. Permanent perfection and ignoring changes are rejected.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The piano was prepared for the concert and needed ongoing care"
+              },
+              {
+                "id": "o1",
+                "text": "It would remain perfect forever"
+              },
+              {
+                "id": "o2",
+                "text": "No future change should ever be reported"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.repair-cafe-thread-049.piano.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How did the narrator’s view of expertise change?",
+            "material": "Listening to the room\n\nA piano tuner visited our school before a concert. I expected him to sit down, play a few notes and finish quickly. Instead, he first asked when the instrument had last been moved and whether the hall had been unusually warm or cold.\n\nHe explained that the piano was not separate from its surroundings. Conditions could affect the instrument, and moving it could change what needed attention. That did not mean every problem had the same cause. He needed to examine this piano rather than repair an imagined average one.\n\nWhile he worked, I waited for him to play a complete tune. He mostly played small groups of notes, listening and adjusting. The repeated fragments sounded strange to me, but they gave him information that a familiar melody might distract us from noticing.\n\nAfterwards, he let our music teacher try a piece. She asked about one passage, and he listened again. There was no dramatic announcement that the piano had become perfect forever. It was ready for the concert, with advice about its care and a reminder to report further changes.\n\nI had thought expertise would look like instant certainty. What I saw was a sequence of precise questions, focused listening and small decisions. The tuner did not know less because he examined the circumstances. His knowledge helped him recognise which circumstances were worth examining.",
+            "explanation": "The conclusion values targeted inquiry and decisions. Avoiding questions and dramatic guarantees contradict the observed expertise.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It became the ability to avoid all questions"
+              },
+              {
+                "id": "o1",
+                "text": "It came to include asking precise questions about the particular situation"
+              },
+              {
+                "id": "o2",
+                "text": "It required making a dramatic promise every time"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "c0d4ced485f766f5ddf73ad5e1caafaa1148882686fda07805ebce1d70289a7a",
+      "reviewNotes": "Three new complete junior practices: four four-choice written passages for junior2; a four-email thread and independent three-choice passage for junior3. Fictional cases, no invented research/statistics. Same-author evidence, message chronology and distractor review only. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
