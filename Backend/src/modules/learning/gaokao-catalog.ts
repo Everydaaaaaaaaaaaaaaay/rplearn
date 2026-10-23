@@ -21,6 +21,11 @@ export async function loadGaokaoCatalog() {
         throw new Error("高考题干或候选语言不符。");
       for (const image of q.materialImages ?? [])
         if (image.assetId !== metadata.id) throw new Error("高考必要图表未核验。");
+      if (q.type === "completion" && q.marking)
+        for (const text of q.marking.rejectedAnswers) {
+          if (gradeAnswer(q, { kind: "text", text }).outcome !== "incorrect")
+            throw new Error("原创填空反证回填失败。");
+        }
       if (q.type === "choice")
         for (const option of q.options) {
           if (

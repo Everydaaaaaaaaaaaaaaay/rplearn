@@ -27,8 +27,11 @@ try {
    const {LearningBankSession}=await import('/opt/lingotrip/current/dist/modules/learning/bank-repository.js');
    const catalog=gaokaoCatalog();
    const rows=await sql`select u.level_key,v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version where u.published and u.id like 'gaokao.%' order by u.id`;
-   if(rows.length!==12 || rows.some(r=>!isAdmittedGaokaoUnit(r.payload))) throw Error('Deployed admission mismatch');
+   if(rows.length!==catalog.practices.length || rows.some(r=>!isAdmittedGaokaoUnit(r.payload))) throw Error('Deployed admission mismatch');
    report.admittedUnits=rows.length;
+   report.pastPaperPractices=catalog.practices.filter(p=>p.kind==='past-paper').length;
+   report.authoredPractices=catalog.practices.filter(p=>p.kind==='authored').length;
+   if(catalog.practices.some(p=>p.kind==='authored'&&(!p.unit.title.startsWith('高考题型原创')||!p.unit.originalGroup.sourceNotice.includes('非高考真题'))))throw Error('Authored provenance label missing');
    report.uniqueSourceQuestions=new Set(rows.flatMap(r=>r.payload.questions.map(q=>q.id))).size;
    report.practiceResponsesByLevel={};
    const engine=new LearningEngineRepository(db);
@@ -39,7 +42,7 @@ try {
     report.practiceResponsesByLevel[level]=units.map(u=>u.questions.length).sort((a,b)=>a-b);
     for(const u of units){const p=publicUnit(u);if(p.questions.some(q=>!q.material||'answer'in q||'acceptedAnswers'in q))throw Error('Public input or answer leakage');}
     const list=await engine.read(user,s=>s.originals(level));
-    if(list.units.length!==4)throw Error('Listing contains nonadmitted content');
+    if(list.units.length!==catalog.practices.filter(p=>p.unit.level===level).length)throw Error('Listing contains nonadmitted content');
     if((await new LearningBankSession(sql,user).choices(level,'oliver')).length)throw Error('Legacy bank fallback');
     report.listingAndAvailabilityChecks++;
    }
@@ -47,7 +50,7 @@ try {
     const state=await engine.read(a.user_id,s=>s.character(a.character_id));
     if(state.activeAttemptId===a.id)report.legacyAdvertisedActive++;
     const available=await engine.read(a.user_id,s=>s.availability(a.role_key,a.level_key,a.character_id,true));
-    if(available.availableUnits<0||available.availableUnits>4)throw Error('Invalid availability');
+    if(available.availableUnits<0||available.availableUnits>catalog.practices.filter(p=>p.unit.level===a.level_key).length)throw Error('Invalid availability');
    }
    if(report.legacyAdvertisedActive)throw Error('Legacy active drill advertised');
    const imageIds=[...new Set(catalog.practices.flatMap(p=>p.unit.questions.flatMap(q=>(q.materialImages??[]).map(i=>i.assetId))))];

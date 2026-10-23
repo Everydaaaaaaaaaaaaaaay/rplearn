@@ -22,7 +22,7 @@ async function main() {
       "用法：learning-gaokao validate；learning-gaokao publish 已核目录哈希。",
     );
   await requireMaintenanceScope();
-  const catalog = await maintenanceStage("核验高考完整真题组", loadGaokaoCatalog);
+  const catalog = await maintenanceStage("核验高考题型完整练习", loadGaokaoCatalog);
   if (operation === "publish") {
     if (hash !== catalog.hash) throw new Error("高考目录哈希不符，已停止发布。");
     const config = loadConfig();
@@ -33,7 +33,7 @@ async function main() {
     );
     const db = createDatabase(config);
     try {
-      await maintenanceStage("发布高考真题事务", () =>
+      await maintenanceStage("发布高考题型练习事务", () =>
         new LearningEngineRepository(db).publishBatch(
           catalog.units,
           [],
@@ -49,7 +49,15 @@ async function main() {
       operation,
       hash: catalog.hash,
       units: catalog.units.length,
-      uniqueQuestions: 45,
+      pastPaperPractices: catalog.units.filter(
+        (u) => !u.id.startsWith("gaokao.authored."),
+      ).length,
+      authoredPractices: catalog.units.filter((u) =>
+        u.id.startsWith("gaokao.authored."),
+      ).length,
+      uniqueQuestions: new Set(
+        catalog.units.flatMap((u) => u.questions.map((q) => q.id)),
+      ).size,
     }),
   );
 }

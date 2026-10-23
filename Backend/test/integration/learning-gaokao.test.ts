@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
 import { beforeAll, afterAll, describe, it, expect } from "vitest";
 import { createDatabase, type DatabaseResource } from "../../src/db/client.js";
@@ -9,7 +10,11 @@ import {
 import { LearningBankSession } from "../../src/modules/learning/bank-repository.js";
 import { gaokaoCatalog } from "../../src/modules/learning/gaokao-policy.js";
 import { loadGaokaoCatalog } from "../../src/modules/learning/gaokao-catalog.js";
-import { contentHash, type LearningLevel } from "../../src/modules/learning/content.js";
+import {
+  contentHash,
+  type LearningLevel,
+  type LearningUnit,
+} from "../../src/modules/learning/content.js";
 import { learningFixture } from "../helpers/learning.js";
 import { integrationConfig } from "../helpers/integration.js";
 
@@ -21,6 +26,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
   "高中真题供给、退役与进度保留事务",
   () => {
     let db: DatabaseResource, engine: LearningEngineRepository;
+    let original: LearningUnit;
     const users: string[] = [];
     const legacy = {
       ...learningFixture("test.gaokao-legacy"),
@@ -36,13 +42,28 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         [],
         c.imageAssets.map((a) => a.metadata),
       );
-      await engine.publishBatch([legacy]);
+      const sourceId = required(
+        gaokaoCatalog().practices.find(
+          (p) =>
+            p.kind === "authored" &&
+            p.components.every((c) => c.family === "reading_choice"),
+        ),
+      ).components[0]?.sourceUnitId;
+      const originals = JSON.parse(
+        await readFile(
+          new URL("../../config/learning/originals/catalog.json", import.meta.url),
+          "utf8",
+        ),
+      ) as { units: { unit: LearningUnit }[] };
+      original = required(originals.units.find((e) => e.unit.id === sourceId)).unit;
+      await engine.publishBatch([legacy, original]);
     }, 30000);
     afterAll(async () => {
       for (const id of users) await db.sql`delete from app.users where id=${id}`;
       for (const id of [
         ...gaokaoCatalog().practices.map((p) => p.unit.id),
         legacy.id,
+        original.id,
       ]) {
         await db.sql`delete from app.learning_unit_versions where unit_id=${id}`;
         await db.sql`delete from app.learning_units where id=${id}`;
@@ -65,14 +86,16 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       for (const level of ["senior1", "senior2", "senior3"] as const) {
         expect(
           (await engine.read(a.user, (s) => s.originals(level))).units,
-        ).toHaveLength(4);
+        ).toHaveLength(
+          gaokaoCatalog().practices.filter((p) => p.unit.level === level).length,
+        );
         expect(
           (
             await engine.read(a.user, (s) =>
               s.availability("oliver", level, a.character, true),
             )
           ).availableUnits,
-        ).toBe(4);
+        ).toBe(gaokaoCatalog().practices.filter((p) => p.unit.level === level).length);
         expect(
           (
             await engine.read(a.user, (s) =>
@@ -102,7 +125,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       const content = await engine.read(a.user, (s) => s.publishedContent(true));
       expect(
         content.filter((r) => r.level.startsWith("senior")).map((r) => r.count),
-      ).toEqual([4, 4, 4]);
+      ).toEqual([16, 22, 22]);
     });
     it("旧18题练习退出活动入口，答案、冻结稿、完成时间及已得积分原样保留", async () => {
       const a = await account(),
@@ -153,7 +176,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         code: "LEARNING_PRACTICE_REPLACED",
       });
     });
-    it("四次练习完整交卷，不跨旅伴或年级重复原题，耗尽后不退回旧题库", async () => {
+    it("真题跨旅伴跨年级不重复，耗尽真题后仍仅供合格原创", async () => {
       const a = await account();
       for (const slug of ["reading-ab", "reading-cd", "cloze", "language"]) {
         await db.sql`update app.learning_characters set characters=1000 where user_id=${a.user}`;
@@ -177,12 +200,89 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
               s.availability("oliver", level, other, true),
             )
           ).availableUnits,
-        ).toBe(0);
+        ).toBe(
+          gaokaoCatalog().practices.filter(
+            (p) => p.kind === "authored" && p.unit.level === level,
+          ).length,
+        );
         expect(
-          (await a.command((s) => s.start(other, level, { completeGroups: true })))
-            .status,
+          (
+            await a.command((s) =>
+              s.start(other, level, {
+                completeGroups: true,
+                originalUnitId: `gaokao.${level}.2025-national1.cloze`,
+              }),
+            )
+          ).status,
         ).toBe("preparing");
       }
+    });
+    it("旧完整原创练习的曝光不会因重新分成两篇而重抽，未作答账号可正常作答获分", async () => {
+      const pair = required(
+        gaokaoCatalog().practices.find(
+          (p) =>
+            p.kind === "authored" &&
+            p.components.some((c) => c.sourceUnitId === original.id),
+        ),
+      );
+      const a = await account();
+      const [state] = await db.sql<
+        { cycle_id: string }[]
+      >`select cycle_id from app.learning_characters where user_id=${a.user}`;
+      await db.sql`insert into app.learning_attempts(id,user_id,character_id,cycle_id,unit_id,unit_version,level_key,first_completed_at) values(${randomUUID()},${a.user},${a.character},${required(state).cycle_id},${original.id},${original.version},${original.level},now())`;
+      await db.sql`update app.learning_characters set cycle_id=${randomUUID()} where user_id=${a.user}`;
+      expect(
+        (
+          await a.command((s) =>
+            s.start(a.character, original.level, {
+              completeGroups: true,
+              originalUnitId: pair.unit.id,
+            }),
+          )
+        ).status,
+      ).toBe("preparing");
+      const fresh = await account();
+      const started = await fresh.command((s) =>
+        s.start(fresh.character, pair.unit.level, {
+          completeGroups: true,
+          originalUnitId: pair.unit.id,
+        }),
+      );
+      const attempt = required(started.attempt);
+      const q = required(pair.unit.questions[0]);
+      if (q.type !== "choice") throw new Error("Missing reading fixture");
+      const receipt = await fresh.command((s) =>
+        s.submit({
+          attemptId: attempt.id,
+          roundId: attempt.round.id,
+          questionId: q.id,
+          answer: { kind: "choice", optionId: q.answer },
+        }),
+      );
+      expect(receipt.awardedPoints).toBe(1);
+      expect(receipt.attempt.unit.title).toContain("高考题型原创");
+      await fresh.command((s) => s.finish(attempt.id, true));
+      await db.sql`update app.learning_characters set characters=1000 where user_id=${fresh.user}`;
+      const otherHalf = required(
+        gaokaoCatalog().practices.find(
+          (p) =>
+            p.kind === "authored" &&
+            p.unit.id !== pair.unit.id &&
+            p.components.some((c) => c.sourceUnitId === original.id),
+        ),
+      );
+      const next = await fresh.command((s) =>
+        s.start(fresh.character, otherHalf.unit.level, {
+          completeGroups: true,
+          originalUnitId: otherHalf.unit.id,
+        }),
+      );
+      expect(next.status).toBe("started");
+      expect(
+        required(next.attempt).unit.questions.every(
+          (q) => !pair.unit.questions.some((seen) => seen.id === q.id),
+        ),
+      ).toBe(true);
     });
   },
 );

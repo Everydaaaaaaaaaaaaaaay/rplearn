@@ -503,9 +503,10 @@ export class LearningSession {
         and (${originalUnitId ?? null}::text is null or u.id=${originalUnitId ?? null})
         and not exists (
           select 1 from app.learning_attempts a left join app.learning_unit_versions av on av.unit_id=a.unit_id and av.version=a.unit_version
-          where a.user_id=${this.userId} and a.unit_id=any(${ids})
-            and (coalesce(a.snapshot,av.payload)->'originalGroup'->'sourceGroupIds') ?|
+          where a.user_id=${this.userId} and (
+            (a.unit_id=any(${ids}) and (coalesce(a.snapshot,av.payload)->'originalGroup'->'sourceGroupIds') ?|
               array(select jsonb_array_elements_text(v.payload->'originalGroup'->'sourceGroupIds')))
+            or a.unit_id=any(array(select split_part(jsonb_array_elements_text(v.payload->'originalGroup'->'sourceGroupIds'),'#',1)))))
       order by random()`;
     return rows.filter((r) => isAdmittedGaokaoUnit(r.payload));
   }

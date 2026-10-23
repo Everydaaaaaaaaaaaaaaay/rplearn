@@ -15,9 +15,11 @@ function required<T>(v: T | undefined): T {
 describe("高中高考真题完整组准入", () => {
   it("高一至高三仅绑定可追溯真题；每档四次练习、45个独立原题", async () => {
     const c = await loadGaokaoCatalog();
-    expect(c.units).toHaveLength(12);
+    expect(c.units).toHaveLength(60);
     for (const level of ["senior1", "senior2", "senior3"]) {
-      const units = c.units.filter((u) => u.level === level);
+      const units = c.units.filter(
+        (u) => u.level === level && !u.id.startsWith("gaokao.authored."),
+      );
       expect(units.map((u) => u.questions.length)).toEqual([7, 8, 15, 15]);
       expect(new Set(units.flatMap((u) => u.questions.map((q) => q.id))).size).toBe(45);
       expect(
@@ -30,6 +32,43 @@ describe("高中高考真题完整组准入", () => {
       ).toBe(true);
       expect(units.every(isAdmittedGaokaoUnit)).toBe(true);
     }
+  });
+  it("原创须明确标注并按完整高考题型组合；不恢复十空完形和独立配对", () => {
+    const authored = gaokaoCatalog().practices.filter((p) => p.kind === "authored");
+    expect(authored).toHaveLength(48);
+    expect(
+      new Set(authored.flatMap((p) => p.unit.questions.map((q) => q.id))).size,
+    ).toBe(477);
+    expect(
+      authored.every(
+        (p) =>
+          p.unit.title.startsWith("高考题型原创") &&
+          p.unit.originalGroup?.sourceNotice.includes("非高考真题"),
+      ),
+    ).toBe(true);
+    expect(
+      authored.every((p) =>
+        p.components.every((c) => Boolean(c.sourceUnitId && c.sourceContentHash)),
+      ),
+    ).toBe(true);
+    expect(
+      authored.every((p) =>
+        p.unit.questions.every((q) => q.type === "choice" || q.type === "completion"),
+      ),
+    ).toBe(true);
+    expect(
+      authored
+        .filter((p) => p.components[0]?.family === "choice_cloze")
+        .every((p) => p.unit.questions.length === 15),
+    ).toBe(true);
+    const reading = authored.find((p) =>
+      p.components.every((c) => c.family === "reading_choice"),
+    );
+    const p = required(reading);
+    const first = required(p.unit.questions[0]);
+    const second = required(p.unit.questions[p.components[0]?.questionIds.length ?? 0]);
+    expect(first.material).not.toEqual(second.material);
+    expect(first.prompt).not.toMatch(/^[A-Z]组/);
   });
   it("篡改正文、答案、选项、年级或只贴真题标签不能取得准入", () => {
     const u = required(gaokaoCatalog().practices[0]).unit;
@@ -64,7 +103,7 @@ describe("高中高考真题完整组准入", () => {
     expect(contentHash(u)).toBe(frozenHash);
   });
   it("完形十五空、七选五五空和语法十空保留完整数字化空位", () => {
-    const practices = gaokaoCatalog().practices;
+    const practices = gaokaoCatalog().practices.filter((p) => p.kind === "past-paper");
     for (const p of practices)
       for (const c of p.components) {
         expect(c.questionIds).toHaveLength(c.sourceNumbers.length);
