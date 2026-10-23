@@ -44,7 +44,7 @@ describe("live listening scripts", () => {
     );
     expect(availableForNewLearning(early, "primary1")).toBe(true);
     expect(availableForNewLearning(early, "senior3")).toBe(false);
-    expect(availableForNewLearning(question, "senior3")).toBe(true);
+    expect(availableForNewLearning(question, "senior3")).toBe(false);
   });
   it("binds all 547 original tracks to a single material pass", async () => {
     const registry = z

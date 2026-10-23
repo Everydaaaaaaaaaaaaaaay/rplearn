@@ -40,7 +40,7 @@ describe("reviewed learning question language", () => {
     const shown = publicQuestion(old);
     expect(shown.prompt).toBe(original.prompt);
     expect("options" in shown && shown.options).toEqual(original.options);
-    expect(availableForNewLearning(old, "senior3")).toBe(true);
+    expect(availableForNewLearning(old, "senior3")).toBe(false);
     const script = await questionListeningScript(old, old.audio.assetId);
     expect(script?.segments.at(-1)?.text).toBe(`Question: ${original.prompt}`);
     expect(script?.segments[0]?.pauseAfterMs).toBe(3000);

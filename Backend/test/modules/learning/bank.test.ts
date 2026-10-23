@@ -306,6 +306,10 @@ describe("公共题库内容与组卷", () => {
         new Set(),
         () => 0,
       );
+      if (/^senior[123]$/.test(b.level)) {
+        expect(selected, b.id).toBeNull();
+        continue;
+      }
       expect(selected, b.id).toHaveLength(b.slots.length);
       expect(new Set(required(selected).map((q) => q.id)).size).toBe(b.slots.length);
       const unit = bankUnit(

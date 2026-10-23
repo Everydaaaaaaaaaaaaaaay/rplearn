@@ -35,6 +35,21 @@ struct LearningReadingPlanTests {
         #expect(plans.allSatisfy { $0.usesPane })
     }
 
+    @Test("两篇独立材料只统计本篇题目，不把另一篇混入阅读和计数")
+    func separateMaterials() throws {
+        let base = try unit(material: "First passage.", prompts: ["One?", "Two?", "Three?", "Four?"])
+        var object = try JSONSerialization.jsonObject(with: JSONEncoder().encode(base)) as! [String: Any]
+        var questions = object["questions"] as! [[String: Any]]
+        for index in 2..<4 { questions[index]["material"] = "Second passage." }
+        object["questions"] = questions
+        let combined = try JSONDecoder().decode(LearningUnit.self, from: JSONSerialization.data(withJSONObject: object))
+        let plan = LearningReadingPlan(unit: combined, question: combined.questions[2])
+        #expect(plan.originalText == "Second passage.")
+        #expect(plan.sections[0].questionIDs == ["q3", "q4"])
+        #expect(plan.progress(questionID: "q3") == "本篇第 1 / 2 题")
+        #expect(plan.progress(questionID: "q4") == "本篇第 2 / 2 题")
+    }
+
     @Test("Passage前缀定位；跨文比较不根据题中提到的字母猜材料")
     func passagesAndCrossText() throws {
         let unit = try unit(material: "Read.\n\nPassage 1\n\nFirst text.\n\nPassage 2\n\nNext text.",

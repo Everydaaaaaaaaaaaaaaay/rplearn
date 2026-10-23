@@ -1,3 +1,4 @@
+import { isHighSchool } from "./gaokao-policy.js";
 import { z } from "zod";
 import { hasAppropriateQuestionLanguage } from "./presentation.js";
 import {
@@ -152,7 +153,9 @@ export function availableForNewLearning(
   level: string,
 ): boolean {
   return (
-    question.type !== "dictation" && hasAppropriateQuestionLanguage(question, level)
+    !isHighSchool(level) &&
+    question.type !== "dictation" &&
+    hasAppropriateQuestionLanguage(question, level)
   );
 }
 

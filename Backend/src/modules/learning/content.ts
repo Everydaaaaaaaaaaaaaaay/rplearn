@@ -565,7 +565,8 @@ export function publicUnit(unit: LearningUnit, attemptId?: string) {
     beats: unit.beats,
     questions: unit.questions.map((question) => {
       const projected = publicQuestion(question);
-      if (unit.originalGroup) projected.material = unit.originalGroup.material;
+      if (unit.originalGroup)
+        projected.material = question.material ?? unit.originalGroup.material;
       if (attemptId && "audioOptions" in projected) {
         // 挑战身份决定稳定的显示顺序；补答和重进不换编号，答案仍以选项身份判定。
         projected.audioOptions.sort((a, b) =>

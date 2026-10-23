@@ -19,6 +19,12 @@ case "${action}" in
   originals-media)
     [[ "$#" = 3 && "$3" =~ ^[a-f0-9]{64}$ ]] || exit 2
     command=("${script_dir}/install-original-media.sh" "$(realpath "$2")" "$3") ;;
+  gaokao-validate)
+    [[ "$#" = 1 ]] || exit 2
+    command=(/opt/lingotrip/runtime/bin/node --max-old-space-size=128 --env-file=/etc/lingotrip/backend.env --env-file=/etc/lingotrip/release.env dist/cli/learning-gaokao.js validate) ;;
+  gaokao-publish)
+    [[ "$#" = 2 && "$2" =~ ^[a-f0-9]{64}$ ]] || exit 2
+    command=(/opt/lingotrip/runtime/bin/node --max-old-space-size=128 --env-file=/etc/lingotrip/backend.env --env-file=/etc/lingotrip/release.env dist/cli/learning-gaokao.js publish "$2") ;;
   catalog-publish|bank-publish)
     [[ "$#" = 2 && "$2" =~ ^[a-f0-9]{64}$ ]] || exit 2
     name="${action%-publish}"

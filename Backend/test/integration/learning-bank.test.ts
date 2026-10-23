@@ -108,7 +108,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
   }
   it("旧中文听力快照通过真实读取链路显示英文，存储和原答案保持不变", async () => {
     const c = await account();
-    const attempt = await c.start(await c.character(), "senior3");
+    const attempt = await c.start(await c.character());
     const frozen = await privateUnit(attempt.id);
     const original = required(
       authored.units.find((u) => u.id === "companion.senior3.paper-boat")?.questions[0],
@@ -143,6 +143,12 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
     const c = await account();
     for (const level of new Set(catalog.blueprints.map((b) => b.level))) {
       const id = await c.character();
+      if (/^senior[123]$/.test(level)) {
+        expect(
+          (await c.command((s) => s.start(id, level, { completeGroups: true }))).status,
+        ).toBe("preparing");
+        continue;
+      }
       const a = await c.start(id, level);
       const hasLongUnit = [
         "senior1",
@@ -167,14 +173,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
   });
   it("主角色同样优先进入已发布十八题新单元及完整开场", async () => {
     for (const role of ["oliver", "ruby", "marcus"]) {
-      for (const level of [
-        "senior1",
-        "senior2",
-        "senior3",
-        "undergraduate",
-        "postgraduate",
-        "advanced",
-      ] as const) {
+      for (const level of ["undergraduate", "postgraduate", "advanced"] as const) {
         const c = await account();
         const a = await c.start(await c.character(role), level);
         expect(a.unit.questions, `${role}/${level}`).toHaveLength(18);
@@ -239,23 +238,21 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
     ]);
     expect(reused.unit.questions.every((q) => seenByFirst.has(q.id))).toBe(true);
   });
-  it("公共库暂停时保留专属单元，恢复后旧挑战冻结而新挑战进入长单元", async () => {
+  it("高中公共库开关不能恢复旧专属题或十八题混合练习", async () => {
     const c = await account();
     const character = await c.character("oliver");
-    await bank.setEnabled(false);
-    let old: Awaited<ReturnType<typeof c.start>>;
     try {
-      old = await c.start(character, "senior1");
-      expect(old.unit.id).toMatch(/^oliver\./);
-      expect(old.unit.questions).toHaveLength(6);
+      for (const enabled of [false, true]) {
+        await bank.setEnabled(enabled);
+        const result = await c.command((s) =>
+          s.start(character, "senior3", { completeGroups: true }),
+        );
+        expect(result.status).toBe("preparing");
+        expect(result.attempt).toBeNull();
+      }
     } finally {
       await bank.setEnabled(true);
     }
-    expect(await c.start(character, "senior1")).toEqual(old);
-    const fresh = await account();
-    expect(
-      (await fresh.start(await fresh.character("oliver"), "senior1")).unit.questions,
-    ).toHaveLength(18);
   });
   it("并发跨角色不重复出题，其他账号可以使用相同公共库", async () => {
     const c = await account();
@@ -630,7 +627,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
     >`select enabled from app.learning_bank_control where id=true`;
     expect(control?.enabled).toBe(false);
   });
-  it("15档冻结原创整组进入真实事务、跨旅伴不重抽，未知填空不写错答", async () => {
+  it("非高中冻结原创整组进入真实事务、跨旅伴不重抽，未知填空不写错答", async () => {
     const manifest = JSON.parse(
       await readFile(`${directory}/originals/catalog.json`, "utf8"),
     ) as {
@@ -640,16 +637,18 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
     };
     const selected = [
       ...new Set(manifest.units.map((e: { unit: LearningUnit }) => e.unit.level)),
-    ].map(
-      (level) =>
-        required(
-          manifest.units.find((e: { unit: LearningUnit }) => e.unit.level === level),
-        ).unit,
-    );
+    ]
+      .filter((level) => !/^senior[123]$/.test(level))
+      .map(
+        (level) =>
+          required(
+            manifest.units.find((e: { unit: LearningUnit }) => e.unit.level === level),
+          ).unit,
+      );
     const grammar = required(
       manifest.units.find(
         (e: { unit: LearningUnit }) =>
-          e.unit.id === "original.grade12-grammar-tool-loans",
+          e.unit.id === "original.grade7-grammar-soup-saturday",
       ),
     ).unit;
     selected.push(grammar);
@@ -675,7 +674,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
       manifest.imageAssets.filter((a: { id: string }) => imageIDs.has(a.id)),
     );
     const c = await account();
-    for (const unit of selected.slice(0, 15)) {
+    for (const unit of selected.filter((u) => u.id !== grammar.id)) {
       const id = await c.character();
       const started = await c.command((s) =>
         s.start(id, unit.level, { completeGroups: true, originalUnitId: unit.id }),

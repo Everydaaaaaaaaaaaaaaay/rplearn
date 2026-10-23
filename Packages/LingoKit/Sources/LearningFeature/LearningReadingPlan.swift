@@ -17,7 +17,8 @@ struct LearningReadingPlan: Equatable {
     let usesPane: Bool
 
     init(unit: LearningUnit, question: LearningQuestion) {
-        originalText = question.material ?? ""
+        let currentMaterial = question.material ?? ""
+        originalText = currentMaterial
         let names = Self.compactLabels(unit: unit, question: question)
         // Remove a repeated trailing bank only from the reading preview. Sentence
         // answers stay complete on their cards; paragraph candidates get their
@@ -25,7 +26,10 @@ struct LearningReadingPlan: Equatable {
         let reading = names.isEmpty
             ? Self.withoutRepeatedBank(originalText, options: question.options ?? [])
             : originalText
-        let parsed = Self.split(reading, questions: unit.questions)
+        // Complete practices can contain two distinct passages. Scope the local
+        // question counter to this material, keeping source question identities.
+        let materialQuestions = unit.questions.filter { ($0.material ?? "") == currentMaterial }
+        let parsed = Self.split(reading, questions: materialQuestions.isEmpty ? unit.questions : materialQuestions)
         introduction = parsed.introduction
         if unit.originalGroup?.family == "paragraph_gap_insertion", reading != originalText,
            let options = question.options {

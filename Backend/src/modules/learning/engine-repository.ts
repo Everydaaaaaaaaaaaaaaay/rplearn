@@ -1,3 +1,9 @@
+import {
+  gaokaoCatalog,
+  gaokaoUnitIds,
+  isAdmittedGaokaoUnit,
+  isHighSchool,
+} from "./gaokao-policy.js";
 import { questionListeningScript } from "./listening-speech.js";
 import { LearningBankSession } from "./bank-repository.js";
 import { LearningDirectionSession } from "./direction-repository.js";
@@ -43,6 +49,7 @@ interface AttemptRow {
   revision: number;
   started_at: Date | string;
   first_completed_at: Date | string | null;
+  superseded_at: Date | string | null;
   payload: LearningUnit;
 }
 interface RoundRow {
@@ -309,6 +316,13 @@ export class LearningSession {
     // 备考稿尚未通过正式发布门槛，不回退到同一用户的普通年级题库。
     if (selectedDirection !== "general")
       return { availableUnits: 0, generationStatus: null };
+    if (isHighSchool(level))
+      return {
+        availableUnits: completeGroups
+          ? (await this.gaokaoCandidates(level)).length
+          : 0,
+        generationStatus: null,
+      };
     const [row] = await this.sql<
       { count: number }[]
     >`select count(*)::integer as count from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
@@ -413,8 +427,12 @@ export class LearningSession {
     if (!row) reject("LEARNING_CHARACTER_NOT_FOUND", "找不到这个角色的学习记录。", 404);
     const [active] = await this.sql<
       { id: string }[]
-    >`select id from app.learning_attempts
-      where user_id=${this.userId} and character_id=${characterId} and first_completed_at is null`;
+    >`select a.id from app.learning_attempts a
+      left join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version
+      where a.user_id=${this.userId} and a.character_id=${characterId} and a.first_completed_at is null and a.superseded_at is null
+        and (a.level_key not in ('senior1','senior2','senior3')
+          or (a.unit_id=any(${gaokaoUnitIds()}) and a.snapshot is null
+            and v.content_hash=any(${gaokaoCatalog().practices.map((p) => p.contentHash)})))`;
     return {
       characterId: row.character_id,
       roleKey: row.role_key,
@@ -451,6 +469,22 @@ export class LearningSession {
   }
 
   async originals(level: LearningLevel) {
+    if (isHighSchool(level)) {
+      const rows = await this.sql<{ payload: LearningUnit }[]>`
+        select v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
+        where u.published and u.level_key=${level} and u.id=any(${gaokaoUnitIds()}) order by u.id`;
+      return {
+        units: rows
+          .filter((r) => isAdmittedGaokaoUnit(r.payload))
+          .map(({ payload: u }) => ({
+            id: u.id,
+            title: u.title,
+            family: u.originalGroup?.family ?? "reading_choice",
+            label: u.originalGroup?.label ?? "高考真题",
+            questions: u.questions.length,
+          })),
+      };
+    }
     const rows = await this.sql<
       { id: string; title: string; family: string; label: string; questions: number }[]
     >`
@@ -461,6 +495,38 @@ export class LearningSession {
     return { units: rows };
   }
 
+  private async gaokaoCandidates(level: LearningLevel, originalUnitId?: string) {
+    const ids = gaokaoUnitIds();
+    const rows = await this.sql<{ payload: LearningUnit }[]>`
+      select v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
+      where u.published and u.level_key=${level} and u.id=any(${ids})
+        and (${originalUnitId ?? null}::text is null or u.id=${originalUnitId ?? null})
+        and not exists (
+          select 1 from app.learning_attempts a left join app.learning_unit_versions av on av.unit_id=a.unit_id and av.version=a.unit_version
+          where a.user_id=${this.userId} and a.unit_id=any(${ids})
+            and (coalesce(a.snapshot,av.payload)->'originalGroup'->'sourceGroupIds') ?|
+              array(select jsonb_array_elements_text(v.payload->'originalGroup'->'sourceGroupIds')))
+      order by random()`;
+    return rows.filter((r) => isAdmittedGaokaoUnit(r.payload));
+  }
+
+  /** Withdraw only obsolete active senior drills. Never rewrite answers, points or frozen payloads. */
+  private async supersedeObsoleteHighSchool(characterId: string) {
+    const rows = await this.sql<AttemptRow[]>`
+      select a.*,coalesce(a.snapshot,v.payload) as payload from app.learning_attempts a
+      left join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version
+      where a.user_id=${this.userId} and a.character_id=${characterId}
+        and a.level_key in ('senior1','senior2','senior3') and a.first_completed_at is null and a.superseded_at is null`;
+    for (const a of rows)
+      if (!isAdmittedGaokaoUnit(a.payload)) {
+        await this
+          .sql`update app.learning_attempts set superseded_at=now(),revision=revision+1 where id=${a.id}`;
+        await this
+          .sql`update app.learning_characters set cycle_id=${randomUUID()},revision=revision+1
+        where user_id=${this.userId} and character_id=${characterId} and cycle_id=${a.cycle_id}`;
+      }
+  }
+
   async start(
     characterId: string,
     level: LearningLevel,
@@ -468,7 +534,10 @@ export class LearningSession {
   ) {
     await this
       .sql`select pg_advisory_xact_lock_shared(hashtextextended('learning-publication',0))`;
+    await this.supersedeObsoleteHighSchool(characterId);
     const state = await this.character(characterId);
+    if (isHighSchool(level) && !options.completeGroups)
+      reject("LEARNING_CLIENT_UPDATE_REQUIRED", "高中高考完整题组需要新版 App。", 426);
     if (options.originalUnitId && !options.completeGroups)
       reject("LEARNING_CLIENT_UPDATE_REQUIRED", "完整题组需要新版 App。", 426);
     if (state.activeAttemptId && !options.completeGroups) {
@@ -493,7 +562,9 @@ export class LearningSession {
       );
     if (state.characters < learningPolicy.characterThreshold)
       reject("LEARNING_NOT_READY", "再聊一会儿，进度满后就能开启挑战。");
-    const [dedicated] = await this.sql<{ payload: LearningUnit }[]>`
+    const [dedicated] = isHighSchool(level)
+      ? await this.gaokaoCandidates(level, options.originalUnitId)
+      : await this.sql<{ payload: LearningUnit }[]>`
       select v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
       where u.published and u.level_key=${level}
         and not exists (select 1 from jsonb_array_elements(v.payload->'questions') q where q->>'type'='dictation')
@@ -518,7 +589,7 @@ export class LearningSession {
     );
     // 已有更完整的新练习时，不让早期短专属单元遮住公共长单元；纯复习不抢占未见专属题。
     const composed =
-      dedicated?.payload.originalGroup || options.originalUnitId
+      isHighSchool(level) || dedicated?.payload.originalGroup || options.originalUnitId
         ? null
         : await bank.compose(
             level,
@@ -617,6 +688,7 @@ export class LearningSession {
     await this
       .sql`select pg_advisory_xact_lock_shared(hashtextextended('learning-publication',0))`;
     const attempt = await this.rawAttempt(input.attemptId);
+    this.assertPracticeCurrent(attempt);
     const [round] = await this.sql<
       RoundRow[]
     >`select id,ordinal,question_ids,completed_at from app.learning_rounds
@@ -639,7 +711,7 @@ export class LearningSession {
       const priorOriginal = unit.originalGroup
         ? await this.sql`
         select 1 from app.learning_rewards r join app.learning_attempts a on a.id=r.attempt_id
-        where r.user_id=${this.userId} and a.unit_id=${unit.id} and r.question_id=${input.questionId} and r.points>0 limit 1`
+        where r.user_id=${this.userId} and (a.unit_id=${unit.id} or (${isHighSchool(unit.level)} and a.unit_id=any(${gaokaoUnitIds()}))) and r.question_id=${input.questionId} and r.points>0 limit 1`
         : [];
       const firstMastery = unit.originalGroup
         ? priorOriginal.length === 0
@@ -681,8 +753,20 @@ export class LearningSession {
     };
   }
 
+  private assertPracticeCurrent(attempt: AttemptRow) {
+    if (
+      attempt.superseded_at !== null ||
+      (isHighSchool(attempt.level_key) && !isAdmittedGaokaoUnit(attempt.payload))
+    )
+      reject(
+        "LEARNING_PRACTICE_REPLACED",
+        "高中练习已按高考题组更新，原作答和积分已保留。请退出并开启新练习。",
+      );
+  }
+
   async finish(id: string, skipRemaining: boolean) {
     const attempt = await this.rawAttempt(id);
+    this.assertPracticeCurrent(attempt);
     if (attempt.first_completed_at !== null) return this.attempt(id);
     const [round] = await this.sql<
       RoundRow[]
@@ -719,6 +803,7 @@ export class LearningSession {
 
   async retry(id: string) {
     const attempt = await this.rawAttempt(id);
+    this.assertPracticeCurrent(attempt);
     if (attempt.first_completed_at === null)
       reject("LEARNING_FIRST_ROUND_ACTIVE", "请先结束当前首轮挑战。");
     const [lastRound] = await this.sql<
@@ -744,7 +829,9 @@ export class LearningSession {
     return this.sql<{ level: LearningLevel; count: number }[]>`
       select u.level_key as level,count(*)::integer as count from app.learning_units u
       join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
-      where u.published and (${completeGroups} or not (v.payload ? 'originalGroup')) group by u.level_key`;
+      where u.published and (${completeGroups} or not (v.payload ? 'originalGroup'))
+        and (u.level_key not in ('senior1','senior2','senior3') or
+          (${completeGroups} and u.id=any(${gaokaoUnitIds()}) and v.content_hash=any(${gaokaoCatalog().practices.map((p) => p.contentHash)}))) group by u.level_key`;
   }
 
   async progress() {
