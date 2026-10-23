@@ -347,7 +347,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect(
         (await get(`/v1/learning/characters/${characterId}`)).json<Character>()
           .characters,
-      ).toBe(1000);
+      ).toBe(500);
     });
 
     it("开发者填满只改自己的当前循环，不伪造学习成绩或聊天记录", async () => {
@@ -406,7 +406,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       ).toBe(409);
       const filled = await post(url, command);
       expect(filled.statusCode).toBe(200);
-      expect(filled.json<Character>().characters).toBe(1000);
+      expect(filled.json<Character>().characters).toBe(500);
       expect((await post(url, command)).json()).toEqual(filled.json());
       expect(
         (await post(url, { ...command, cycleId: state.cycleId.toLowerCase() })).json(),

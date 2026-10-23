@@ -437,7 +437,8 @@ export class LearningSession {
       characterId: row.character_id,
       roleKey: row.role_key,
       cycleId: row.cycle_id,
-      characters: row.characters,
+      // A lower threshold makes existing progress ready without rewriting it.
+      characters: Math.min(row.characters, learningPolicy.characterThreshold),
       threshold: learningPolicy.characterThreshold,
       revision: row.revision,
       activeAttemptId: active?.id ?? null,
@@ -462,7 +463,7 @@ export class LearningSession {
       on conflict(user_id,message_id) do nothing returning message_id`;
     if (inserted.length > 0 && accepted && count > 0) {
       await this
-        .sql`update app.learning_characters set characters=least(1000, characters+${count}), revision=revision+1
+        .sql`update app.learning_characters set characters=least(${learningPolicy.characterThreshold}, characters+${count}), revision=revision+1
         where user_id=${this.userId} and character_id=${input.characterId}`;
     }
     return this.character(input.characterId);

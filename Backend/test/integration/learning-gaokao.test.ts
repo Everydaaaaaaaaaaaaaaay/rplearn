@@ -171,7 +171,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       ).toBe(1);
       expect(
         (await engine.read(a.user, (s) => s.character(a.character))).characters,
-      ).toBe(1000);
+      ).toBe(500);
       await expect(a.command((s) => s.finish(id, true))).rejects.toMatchObject({
         code: "LEARNING_PRACTICE_REPLACED",
       });

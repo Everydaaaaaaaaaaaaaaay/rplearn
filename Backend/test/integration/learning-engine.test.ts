@@ -9,7 +9,7 @@ import {
 import { gradeAnswer } from "../../src/modules/learning/grading.js";
 import { unitSchema } from "../../src/modules/learning/content.js";
 import { integrationConfig } from "../helpers/integration.js";
-import { learningFixture } from "../helpers/learning.js";
+import { freshLearningFixture as learningFixture } from "../helpers/learning.js";
 
 describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("单元学习事务引擎", () => {
   let database: DatabaseResource;
@@ -106,7 +106,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("单元学习事务
       characterId: c.character,
       cycleId: c.state.cycleId,
       messageId: randomUUID(),
-      text: "中".repeat(600),
+      text: "中".repeat(300),
     };
     await Promise.all([
       c.command(input, (s) => s.recordMessage(input)),
@@ -114,11 +114,11 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("单元学习事务
     ]);
     expect(
       (await repository.read(c.user, (s) => s.character(c.character))).characters,
-    ).toBe(600);
+    ).toBe(300);
     expect((await repository.read(c.user, (s) => s.character(other))).characters).toBe(
       0,
     );
-    expect((await c.fill()).characters).toBe(1000);
+    expect((await c.fill()).characters).toBe(500);
     const attempt = await c.start();
     await c.command({ finish: attempt.id }, (s) => s.finish(attempt.id, true));
     const staleInput = { ...input, messageId: randomUUID() };
@@ -139,7 +139,44 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("单元学习事务
     ).rejects.toMatchObject({ code: "LEARNING_ROUND_INCOMPLETE" });
     expect(
       (await repository.read(c.user, (s) => s.character(c.character))).characters,
-    ).toBe(1000);
+    ).toBe(500);
+  });
+
+  it("500个非空白字符即可开启，旧进度超出新门槛时保留原值", async () => {
+    const c = await setup();
+    const input = {
+      characterId: c.character,
+      cycleId: c.state.cycleId,
+      messageId: randomUUID(),
+      text: "a ".repeat(499) + "\n\t",
+    };
+    const almost = await c.command(input, (s) => s.recordMessage(input));
+    expect(almost).toMatchObject({ characters: 499, threshold: 500 });
+    await expect(c.start()).rejects.toMatchObject({ code: "LEARNING_NOT_READY" });
+    const last = { ...input, messageId: randomUUID(), text: " b\n" };
+    expect(await c.command(last, (s) => s.recordMessage(last))).toMatchObject({
+      characters: 500,
+      threshold: 500,
+    });
+    await c.start();
+
+    const old = await setup();
+    await database.sql`update app.learning_characters set characters=800 where user_id=${old.user} and character_id=${old.character}`;
+    expect(
+      await repository.read(old.user, (s) => s.character(old.character)),
+    ).toMatchObject({ characters: 500, threshold: 500 });
+    const ignored = {
+      ...input,
+      characterId: old.character,
+      cycleId: old.state.cycleId,
+      messageId: randomUUID(),
+      text: "extra",
+    };
+    await old.command(ignored, (s) => s.recordMessage(ignored));
+    const [stored] =
+      await database.sql`select characters from app.learning_characters where user_id=${old.user} and character_id=${old.character}`;
+    expect(stored?.characters).toBe(800);
+    await old.start();
   });
 
   it("部分得分、补答和旧档分数独立，重试不能重复领奖或重置新周期", async () => {
@@ -189,7 +226,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("单元学习事务
     expect(finished.round.completed).toBe(true);
     const state = await repository.read(c.user, (s) => s.character(c.character));
     expect(state.activeAttemptId).toBe(next.id);
-    expect(state.characters).toBe(1000);
+    expect(state.characters).toBe(500);
     await c.command({ retry: attempt.id }, (s) => s.retry(attempt.id));
     expect((await repository.read(c.user, (s) => s.progress()))[0]).toMatchObject({
       level: "primary3",
@@ -312,7 +349,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("单元学习事务
     }
     expect(
       (await repository.read(c.user, (s) => s.character(c.character))).characters,
-    ).toBe(1000);
+    ).toBe(500);
     const jobs =
       await database.sql`select id from app.learning_generation_jobs where role_key=${c.role}`;
     expect(jobs).toHaveLength(0);

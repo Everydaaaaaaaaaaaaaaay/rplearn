@@ -536,7 +536,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect(
         (await repository.read(user, (session) => session.character(characterId)))
           .characters,
-      ).toBe(1000);
+      ).toBe(500);
       await repository.command(user, randomUUID(), "finish", {}, (session) =>
         session.finish(attemptId, true),
       );

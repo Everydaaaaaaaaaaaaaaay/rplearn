@@ -2,7 +2,7 @@ import { levelKeys, type LearningLevel } from "./content.js";
 
 export const learningPolicy = Object.freeze({
   version: 1,
-  characterThreshold: 1000,
+  characterThreshold: 500,
   pointsPerQuestion: 1,
   pointsPerStar: 60,
   starsPerLevel: 9,
