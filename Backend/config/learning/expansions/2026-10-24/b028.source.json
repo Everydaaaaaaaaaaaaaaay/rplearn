@@ -1,0 +1,730 @@
+{
+  "createdAt": "2026-10-23T20:21:05.280364+00:00",
+  "reviewBoundary": "Three new complete senior mixed practices: a five-gap seven-sentence insertion text and a coherent ten-gap grammar passage each. Same-author cohesion, distractor and written-variant review. Not past-paper content or independent teacher/learner calibration; unlisted written forms stay reviewable.",
+  "units": [
+    {
+      "id": "senior1.book-advice-and-bus-trip-028",
+      "level": "senior1",
+      "title": "Book advice and a bus trip",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade10-sharing-rentals-insertion",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Book advice and a bus trip",
+          "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+          "text": "Asking for a book recommendation can help you discover something outside your usual reading. However, a helpful conversation needs more than the question, \"What is a good book?\" A few details can give the other person a much better starting point.\n\nMention a book you recently enjoyed and explain why. The title alone may not reveal what mattered to you. ____1____ Someone who liked the mystery may need a different suggestion from someone who loved the descriptions of a city.\n\nDescribe how much time you want to spend reading. You may want a long story for a holiday or short pieces for a daily journey. ____2____ A recommendation is more useful when it fits the situation in which you will actually read.\n\nAsk what makes the suggested book worth trying. Do not feel you must accept it simply because the person sounds enthusiastic. ____3____ That question can reveal whether you are both interested in the same features.\n\nRead a short sample before making a final choice. A summary tells you what happens, but not necessarily how the sentences feel. ____4____ You do not have to finish the whole book to discover whether its style invites you to continue.\n\nFinally, tell the person what you thought after trying it. ____5____ A recommendation can be the beginning of a conversation that becomes more useful as you learn about one another's reading.",
+          "candidates": [
+            "A. A few pages give you direct experience of the writing.",
+            "B. Say what you enjoyed about its plot, characters or descriptions.",
+            "C. That response can help them make a better suggestion next time.",
+            "D. Explain those practical needs as well as your favourite subjects.",
+            "E. A book praised loudly must be suitable for every reader.",
+            "F. You could ask, 'Which feature of this recommendation do you think I would enjoy?'",
+            "G. Never mention what you dislike, because all books require the same commitment."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 1,
+              "explanation": "B specifies features of the book the reader has already enjoyed, illustrated by mystery versus city description. A concerns a sample, C later feedback, D time needs and F a not-yet-read recommendation. E and G make unsupported universal claims."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 3,
+              "explanation": "D refers to the holiday versus daily-journey time requirements. A is sampling, B the previous favourite, C later response and F a feature question. E ignores individual fit and G falsely equates commitments."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 5,
+              "explanation": "F is a specific follow-up to enthusiasm, and the next sentence calls it that question. B concerns the already enjoyed book, A a sample, C feedback and D practical time. E and G remove useful individual choice."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 0,
+              "explanation": "A explains reading a sample as direct contact with style, leading to deciding whether to continue. B, C, D and F concern other stages. E and G impose the universal judgments this personalised method avoids."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 2,
+              "explanation": "C connects the response after reading to better future recommendations. A, B, D and F are earlier selection steps. E and G deny variation among readers rather than support continued conversation."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade10-slotgrammar-football-signatures",
+          "title": "B. Book advice and a bus trip",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "Last Wednesday, my uncle and I ____1____ (take) a bus to the town museum. After ____2____ (wait) for a few minutes, we saw it turn into our street. The bus ____3____ (drive) by a woman who greeted each passenger as they entered.\n\nI had checked the route on my phone, but my uncle carried an old paper timetable. He explained that it could still be useful when a phone had no power. I was not convinced until I noticed how little charge remained in mine.\n\nAt the museum stop, we met a volunteer ____4____ coat carried the museum's blue badge. She showed us a map and explained the quickest route through the building. It was such ____5____ interesting introduction that we stayed to ask several questions.\n\nThe exhibition included old tickets and photographs of local buses. Some children were looking ____6____ (careful) at a model of a double-decker. Their teacher asked them to compare it with the bus they had used that morning.\n\nBefore leaving, we decided ____7____ (buy) a small guidebook. It was ____8____ (cheap) than the large picture book, and easier to carry. My uncle put it beside his timetable. On the journey home, I thanked him ____9____ bringing me. The visit had shown ____10____ (we) something familiar from a different point of view.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of take.",
+              "acceptedAnswers": [
+                "took"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "take",
+                  "taked"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Last Wednesday requires the irregular past took. Take is present and taked is nonstandard."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of wait.",
+              "acceptedAnswers": [
+                "waiting"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "wait",
+                  "waited",
+                  "to wait"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "After is a preposition here, followed by waiting rather than a finite verb or to-infinitive."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of drive.",
+              "acceptedAnswers": [
+                "was driven"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "drove",
+                  "were driven",
+                  "is driven"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The singular bus receives the driving action in the past: was driven. Drove is active, were disagrees and is changes the narrative time."
+            },
+            {
+              "prompt": "Fill gap 4 with one appropriate word.",
+              "acceptedAnswers": [
+                "whose"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "which",
+                  "that"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whose supplies the possessive relation between volunteer and coat. Who, which and that cannot directly modify coat possessively."
+            },
+            {
+              "prompt": "Fill gap 5 with one appropriate word.",
+              "acceptedAnswers": [
+                "an"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "a",
+                  "the"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Such an interesting introduction uses an before the vowel sound. A has wrong sound agreement and such the does not fit this construction."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of careful.",
+              "acceptedAnswers": [
+                "carefully"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "careful",
+                  "carefulness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Carefully modifies looking. Careful is an adjective and carefulness a noun."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of buy.",
+              "acceptedAnswers": [
+                "to buy"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "buying",
+                  "buy",
+                  "bought"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Decided takes to buy. The -ing, bare and past forms do not directly complete decided."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of cheap.",
+              "acceptedAnswers": [
+                "cheaper",
+                "more cheap"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "cheap",
+                  "cheapest",
+                  "more cheaper"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Than requires a comparative. Cheaper and grammatical more cheap are accepted; cheap is not comparative, cheapest superlative and more cheaper double comparison."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "for"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "to",
+                  "at",
+                  "with"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Thanked him for bringing uses for before the -ing action. The other prepositions do not complete this construction."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of we.",
+              "acceptedAnswers": [
+                "us"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "our"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Shown takes object pronoun us. We is a subject form and our possessive."
+            }
+          ]
+        }
+      ],
+      "alignmentNote": "The recorded original is a level/family drafting reference only. The final practice follows the 2025 National I structure: five full-sentence insertion gaps with seven candidates plus one complete ten-gap grammar passage. No claim is made to reproduce any source-specific heading gap or original text."
+    },
+    {
+      "id": "senior2.trial-planning-and-model-boat-028",
+      "level": "senior2",
+      "title": "A small trial and a model boat",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade11-workshop-handover-insertion",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. A small trial and a model boat",
+          "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+          "text": "Before organising a large activity, you may want to try a small version. A trial can reveal difficulties while changes are still manageable. It is most useful when you decide in advance what you hope to learn, rather than simply asking whether everything went well.\n\nChoose a specific question. If you are planning a workshop, you might want to know whether the instructions are clear or whether there are enough materials. ____1____ The details you record should help answer that question.\n\nInvite people whose experience is relevant to the activity. A task may seem obvious to friends who helped design it. ____2____ Someone encountering it for the first time may notice a missing explanation that the designers no longer see.\n\nObserve before stepping in. It is tempting to rescue a participant as soon as they hesitate. ____3____ Their next action may show you whether they are thinking, searching for an item or misunderstanding a step.\n\nAfterwards, distinguish what you observed from what you think caused it. A person may stop working for several reasons. ____4____ Ask a short question rather than immediately deciding that the instructions were at fault.\n\nMake a small number of changes and keep a note of them. ____5____ Without that record, a later improvement may be welcome but difficult to connect to any particular decision. The point of a trial is not to guarantee a flawless event; it is to make the next plan better informed.",
+          "candidates": [
+            "A. That pause alone does not establish which explanation is correct.",
+            "B. But a little time can make the hesitation more informative.",
+            "C. Do not rely only on people who already know the plan.",
+            "D. Change everything at once and discard every earlier note.",
+            "E. Different questions may require different kinds of evidence.",
+            "F. This makes it easier to see what was different in the next attempt.",
+            "G. One successful trial proves that all future participants will have the same experience."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 4,
+              "explanation": "E links different trial questions to the evidence selected next. A is interpreting a pause, B observation time, C recruitment and F records. D destroys comparison and G overgeneralises from one trial."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 2,
+              "explanation": "C cautions against familiar designers and leads to the newcomer noticing missing explanations. A, B, E and F concern interpretation, observation, questions and records. D and G undermine a useful trial."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 1,
+              "explanation": "B explains why not rescuing immediately can reveal the nature of hesitation. A is later causal interpretation, C recruitment, E focus and F change records. D and G do not support observation."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 0,
+              "explanation": "A refers to the observed stop and its several possible causes. B concerns waiting before intervening, C recruitment, E initial focus and F records. D and G offer unwarranted certainty rather than a follow-up question."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 5,
+              "explanation": "F explains recording a few changes, developed by without that record. A, B, C and E belong earlier. D directly contradicts keeping notes and G falsely guarantees future success."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade11-slotgrammar-lantern-frame",
+          "title": "B. A small trial and a model boat",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "When our class built model boats, we expected the painting to be the ____1____ (enjoyable) part of the project. None of the other stages sounded as much fun. However, testing the first boat gave us a different problem to solve.\n\nWe placed it in a shallow tray ____2____ had been filled with water. The boat leaned to one side because we had attached a heavy decoration to its roof. Our teacher suggested ____3____ (remove) the decoration before making any other change.\n\nWe followed her advice and tested it again. The second trial was ____4____ (successful) than the first, but we still needed to check whether the boat could carry a small load. Each group was given several ____5____ (coin) to place inside.\n\nInstead ____6____ dropping them all in at once, we added them one by one. A classmate recorded the result after each addition. The model was tested ____7____ (careful), and we kept our hands away from it while it floated.\n\nBy the end of the lesson, we ____8____ (discover) that decoration and function had to be considered together. We wrote a short report ____9____ (explain) what we had changed. The teacher asked us to keep both the first drawing and the final notes, so the next class could learn from successes as well ____10____ mistakes.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of enjoyable.",
+              "acceptedAnswers": [
+                "most enjoyable",
+                "enjoyable"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "enjoyably",
+                  "enjoyment"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Most enjoyable explicitly ranks painting above the other stages. Enjoyable is also a grammatical descriptive reading of the enjoyable part and is accepted. Enjoyably and enjoyment do not supply the adjective needed here."
+            },
+            {
+              "prompt": "Fill gap 2 with one appropriate word.",
+              "acceptedAnswers": [
+                "that",
+                "which"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "where",
+                  "what"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The tray is the subject antecedent of a defining relative clause, allowing that or which. Who refers to people, where is not a subject and what lacks an expressed antecedent construction."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of remove.",
+              "acceptedAnswers": [
+                "removing"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "remove",
+                  "to remove",
+                  "removed"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Suggested takes removing. The bare verb, to-infinitive and past form do not directly fit this structure."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of successful.",
+              "acceptedAnswers": [
+                "more successful"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "successful",
+                  "most successful"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Than requires more successful. Successful is not comparative, and most successful is superlative."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of coin.",
+              "acceptedAnswers": [
+                "coins"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "coin",
+                  "coines"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Several requires plural coins. Coin is singular and coines is misspelt."
+            },
+            {
+              "prompt": "Fill gap 6 with one appropriate word.",
+              "acceptedAnswers": [
+                "of"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "to",
+                  "for",
+                  "with"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Instead of takes an -ing phrase. To, for and with do not complete instead here."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of careful.",
+              "acceptedAnswers": [
+                "carefully"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "careful",
+                  "carefulness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Carefully modifies was tested. The adjective and noun forms cannot fill the adverb slot."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of discover.",
+              "acceptedAnswers": [
+                "had discovered",
+                "discovered"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "discover",
+                  "has discovered"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "By the end of a past lesson favours had discovered; simple discovered is also a legitimate completed narrative event. Base discover and present-perfect singular has discovered do not fit we and the past setting."
+            },
+            {
+              "prompt": "Fill gap 9 with the correct form of explain.",
+              "acceptedAnswers": [
+                "explaining",
+                "to explain"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "explained"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Explaining describes the report's content, while to explain expresses its purpose; both fit. Explained would be passive and does not take the following content clause as an active explanation."
+            },
+            {
+              "prompt": "Fill gap 10 with one appropriate word.",
+              "acceptedAnswers": [
+                "as"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "than",
+                  "that",
+                  "and"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "As well as joins the parallel successes and mistakes. Than, that and and cannot complete the printed as well pattern."
+            }
+          ]
+        }
+      ],
+      "alignmentNote": "The recorded original is a level/family drafting reference only. The final practice follows the 2025 National I structure: five full-sentence insertion gaps with seven candidates plus one complete ten-gap grammar passage. No claim is made to reproduce any source-specific heading gap or original text."
+    },
+    {
+      "id": "senior3.diagram-reading-and-choir-028",
+      "level": "senior3",
+      "title": "Reading diagrams and a choir score",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade12-print-room-insertion",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Reading diagrams and a choir score",
+          "instruction": "Choose the best sentence for each gap. Two of the seven sentences are not needed.",
+          "text": "A diagram can make a complicated idea easier to understand, but it is still a constructed explanation. Before using it as evidence, take a moment to discover how it represents its subject. A few deliberate questions can prevent a quick impression from becoming a mistaken conclusion.\n\nBegin with the title and key. Colours, lines and symbols may have meanings that are not obvious from their appearance. ____1____ A thick line could indicate a main route, a greater quantity or simply a designer's way of separating sections.\n\nCheck what the diagram includes. A simplified picture may omit details in order to make one relationship clear. ____2____ Ask whether the missing details matter to the question you are trying to answer.\n\nNotice the difference between position on the page and position in the world. In some diagrams, nearby objects are drawn far apart to keep labels readable. ____3____ The layout may be designed for clarity rather than as a scale map.\n\nLook for information about time when the subject can change. A diagram of a transport network may show routes planned for a future year alongside those already operating. ____4____ Otherwise, a proposal may quietly become a present fact in your reading.\n\nFinally, compare the diagram's claim with another available account. ____5____ A disagreement may reveal an error, a different date or simply a different purpose. Understanding that difference is more useful than deciding that one attractive picture must contain the whole answer.",
+          "candidates": [
+            "A. Do not assume that every distance in the drawing can be measured as a real distance.",
+            "B. Check which features are current and which are proposed.",
+            "C. That omission does not by itself make the diagram wrong.",
+            "D. Use the explanation supplied rather than guessing what a mark stands for.",
+            "E. The most colourful diagram is always the most accurate.",
+            "F. This gives you a chance to identify where their descriptions differ.",
+            "G. A simplified image necessarily includes every detail of its subject."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 3,
+              "explanation": "D directs the reader to the key and is illustrated by several possible meanings of a thick line. A is scale, B time, C omission and F comparison. E equates colour with accuracy and G denies simplification."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 2,
+              "explanation": "C refers to omitted details, leading to asking whether they matter for the present purpose. A, B, D and F concern scale, time, symbols and comparison. G contradicts omission, while E makes an unsupported appearance claim."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 0,
+              "explanation": "A develops the warning that drawn spacing can differ from real spacing and prepares the scale-map distinction. B is time, C omission, D key and F comparison. E and G do not justify interpreting distances."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 1,
+              "explanation": "B distinguishes operating from planned routes, preventing a proposal becoming a present fact. A, C, D and F concern other representational issues. E and G offer false guarantees."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 5,
+              "explanation": "F explains comparing another account and leads to reasons for disagreement. A, B, C and D concern internal reading steps. E and G falsely make appearance or simplification a guarantee of completeness."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade12-grammar-station-clock",
+          "title": "B. Reading diagrams and a choir score",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "Having ____1____ (complete) the first rehearsal, our choir gathered around an old handwritten score. Some notes were clear, but a few markings were difficult to read. The conductor, ____2____ grandfather had copied the music many years earlier, explained that we should not simply guess.\n\nWhat impressed me most ____3____ (be) how patiently she compared the score with another copy. A familiar tune could make an incorrect note sound reasonable, so memory alone was not enough. We learned to distinguish what we expected ____4____ what the page actually showed.\n\nOne passage had been marked for a smaller group of singers. At first, that seemed like a chance to do ____5____ (little) work. In practice, hearing fewer voices made each person's entry more noticeable. We had to listen ____6____ (careful) to one another.\n\nThe conductor encouraged us ____7____ (practise) the passage in pairs before trying it with the whole group. We worked by ____8____ (we) for a few minutes, then returned to compare what we had noticed.\n\nBy the final rehearsal, the uncertain markings ____9____ (check) against the second copy. The performance still required concentration, but the notes no longer concealed an avoidable doubt. I left with a better understanding of ____10____ preparation could support the freedom to sing with confidence.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of complete.",
+              "acceptedAnswers": [
+                "completed"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "complete",
+                  "completing"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Having takes the past participle completed in this perfect participle clause. Complete is base form and completing would duplicate the -ing form."
+            },
+            {
+              "prompt": "Fill gap 2 with one appropriate word.",
+              "acceptedAnswers": [
+                "whose"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "which",
+                  "that"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whose modifies grandfather possessively in the non-defining clause. Who, which and that do not supply that possessive relation."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of be.",
+              "acceptedAnswers": [
+                "was"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "were",
+                  "been"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The subject clause is singular in the past narrative, normally taking was. Were disagrees and been lacks an auxiliary; other unlisted tense readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 4 with one appropriate word.",
+              "acceptedAnswers": [
+                "from"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "between",
+                  "of",
+                  "with"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Distinguish A from B uses from after the first object. Between would require the different pattern between A and B; of and with do not express the intended contrast."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of little.",
+              "acceptedAnswers": [
+                "less"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "little",
+                  "least",
+                  "fewer"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Less work is the comparative with uncountable work. Little is not comparative, least superlative and fewer requires countable plural items."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of careful.",
+              "acceptedAnswers": [
+                "carefully"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "careful",
+                  "carefulness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Carefully modifies listen. Careful and carefulness are adjective/noun forms."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of practise.",
+              "acceptedAnswers": [
+                "to practise",
+                "to practice"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "practising",
+                  "practise",
+                  "practised"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Encouraged us takes a to-infinitive. Both British practise and American practice spellings are accepted; -ing, bare and past forms do not fit."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of we.",
+              "acceptedAnswers": [
+                "ourselves"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "our",
+                  "ours"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "By ourselves means without the conductor's immediate help. We is subject form and our/ours are possessive rather than reflexive."
+            },
+            {
+              "prompt": "Fill gap 9 with the correct form of check.",
+              "acceptedAnswers": [
+                "had been checked",
+                "were checked"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "checked",
+                  "was checked"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The plural markings receive checking before the final rehearsal; past-perfect passive and simple past passive are accepted. Checked alone lacks a passive auxiliary; was disagrees with plural markings."
+            },
+            {
+              "prompt": "Fill gap 10 with one appropriate word.",
+              "acceptedAnswers": [
+                "how",
+                "why"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "what",
+                  "which"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "How introduces the manner of support, and why can introduce the reason preparation supports confident singing. Both are legitimate. What and which do not fill a constituent role in the otherwise complete clause."
+            }
+          ]
+        }
+      ],
+      "alignmentNote": "The recorded original is a level/family drafting reference only. The final practice follows the 2025 National I structure: five full-sentence insertion gaps with seven candidates plus one complete ten-gap grammar passage. No claim is made to reproduce any source-specific heading gap or original text."
+    }
+  ]
+}
