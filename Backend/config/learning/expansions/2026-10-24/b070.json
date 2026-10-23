@@ -1,0 +1,2656 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b070",
+  "createdAt": "2026-10-23T23:17:47.618249+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.undergraduate.room-reservation-070",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "undergraduate",
+        "title": "10·24新题 · A room that was really ready",
+        "summary": "A room that was really ready，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "cet4.2016.sample.wordbank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 形式参照已核官方2016四/六级相应样卷的一篇十空/十五词，词形不变、每项最多一次、五项不用；不混配听力或他档字数。完整内容为虚构，源键风险保留，未做独立教研、目标学生、商用、生产或产品等级标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four new adult whole-passage originals: two CET4 and one CET6 ten-gap/fifteen-word banks, plus one C1 eight-gap formation. Fictional meeting/exhibition cases and basic general process/astronomy discussion, no invented study or numbers. Same-author all-key/all-alternative and form review, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.undergraduate.room-reservation-070",
+          "family": "shared_bank",
+          "label": "A room that was really ready",
+          "candidateSHA256": "53e409fe105fbdfd94059abb15f01586d6ae0eca430149ec49e88ac87d426b2b",
+          "authorCheckSHA256": "25b81254b597996c29420ec4e7869152c5a91d95e64eb32293e90c243c72aedc",
+          "sourceGroupIds": [
+            "expansion.20261024.undergraduate.room-reservation-070#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b070；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A room that was really ready\n\nA student society began using a central calendar for its meeting ____1____. Members could ____2____ a space in advance rather than arrive and hope to find an empty one. The change reduced confusion, but entering a name on a calendar was not the whole task.\n\nEach room had a stated ____3____, the maximum number of people it could accommodate. A group expecting thirty visitors could not choose a room for ten merely because its photograph looked attractive. The organiser also checked whether the space was ____4____ at the required time, including time to set up and clear away.\n\nDifferent activities needed different ____5____. A discussion might require only chairs, while a presentation needed a working screen. Members were asked to ____6____ the room before confirming a complicated event, so that a missing connection or unsuitable layout would not become a surprise on the day.\n\nAfter use, groups reported any ____7____ instead of leaving the next users to discover a broken chair. They also considered ____8____: a loud rehearsal beside an examination session could cause problems even when both groups had valid bookings.\n\nIf a meeting was ____9____, its organiser removed the reservation from the calendar. That allowed another group to use the space. Everyone was encouraged to communicate changes ____10____ rather than wait until the original starting time.\n\nThe calendar made information visible, but people still had to keep it useful. A room was ready not because a box on a screen contained a name, but because the arrangement matched the activity and the information matched what would actually happen."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.undergraduate.room-reservation-070.whole.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 1.",
+            "material": "A room that was really ready\n\nA student society began using a central calendar for its meeting ____1____. Members could ____2____ a space in advance rather than arrive and hope to find an empty one. The change reduced confusion, but entering a name on a calendar was not the whole task.\n\nEach room had a stated ____3____, the maximum number of people it could accommodate. A group expecting thirty visitors could not choose a room for ten merely because its photograph looked attractive. The organiser also checked whether the space was ____4____ at the required time, including time to set up and clear away.\n\nDifferent activities needed different ____5____. A discussion might require only chairs, while a presentation needed a working screen. Members were asked to ____6____ the room before confirming a complicated event, so that a missing connection or unsuitable layout would not become a surprise on the day.\n\nAfter use, groups reported any ____7____ instead of leaving the next users to discover a broken chair. They also considered ____8____: a loud rehearsal beside an examination session could cause problems even when both groups had valid bookings.\n\nIf a meeting was ____9____, its organiser removed the reservation from the calendar. That allowed another group to use the space. Everyone was encouraged to communicate changes ____10____ rather than wait until the original starting time.\n\nThe calendar made information visible, but people still had to keep it useful. A room was ready not because a box on a screen contained a name, but because the arrangement matched the activity and the information matched what would actually happen.",
+            "explanation": "Rooms are the physical meeting spaces entered in the calendar. Equipment is apparatus, capacity a limit and damage/noise conditions; other nouns do not name the plural spaces.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. argue"
+              },
+              {
+                "id": "o1",
+                "text": "B. available"
+              },
+              {
+                "id": "o2",
+                "text": "C. cancelled"
+              },
+              {
+                "id": "o3",
+                "text": "D. capacity"
+              },
+              {
+                "id": "o4",
+                "text": "E. damage"
+              },
+              {
+                "id": "o5",
+                "text": "F. decorative"
+              },
+              {
+                "id": "o6",
+                "text": "G. equipment"
+              },
+              {
+                "id": "o7",
+                "text": "H. gradual"
+              },
+              {
+                "id": "o8",
+                "text": "I. inspect"
+              },
+              {
+                "id": "o9",
+                "text": "J. noise"
+              },
+              {
+                "id": "o10",
+                "text": "K. opinion"
+              },
+              {
+                "id": "o11",
+                "text": "L. promptly"
+              },
+              {
+                "id": "o12",
+                "text": "M. reserve"
+              },
+              {
+                "id": "o13",
+                "text": "N. rooms"
+              },
+              {
+                "id": "o14",
+                "text": "O. unlikely"
+              }
+            ],
+            "answer": "o13"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.room-reservation-070.whole.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 2.",
+            "material": "A room that was really ready\n\nA student society began using a central calendar for its meeting ____1____. Members could ____2____ a space in advance rather than arrive and hope to find an empty one. The change reduced confusion, but entering a name on a calendar was not the whole task.\n\nEach room had a stated ____3____, the maximum number of people it could accommodate. A group expecting thirty visitors could not choose a room for ten merely because its photograph looked attractive. The organiser also checked whether the space was ____4____ at the required time, including time to set up and clear away.\n\nDifferent activities needed different ____5____. A discussion might require only chairs, while a presentation needed a working screen. Members were asked to ____6____ the room before confirming a complicated event, so that a missing connection or unsuitable layout would not become a surprise on the day.\n\nAfter use, groups reported any ____7____ instead of leaving the next users to discover a broken chair. They also considered ____8____: a loud rehearsal beside an examination session could cause problems even when both groups had valid bookings.\n\nIf a meeting was ____9____, its organiser removed the reservation from the calendar. That allowed another group to use the space. Everyone was encouraged to communicate changes ____10____ rather than wait until the original starting time.\n\nThe calendar made information visible, but people still had to keep it useful. A room was ready not because a box on a screen contained a name, but because the arrangement matched the activity and the information matched what would actually happen.",
+            "explanation": "Reserve means book a space in advance. Inspect is checking its condition later, argue disputing; other entries are not base verbs for booking.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. argue"
+              },
+              {
+                "id": "o1",
+                "text": "B. available"
+              },
+              {
+                "id": "o2",
+                "text": "C. cancelled"
+              },
+              {
+                "id": "o3",
+                "text": "D. capacity"
+              },
+              {
+                "id": "o4",
+                "text": "E. damage"
+              },
+              {
+                "id": "o5",
+                "text": "F. decorative"
+              },
+              {
+                "id": "o6",
+                "text": "G. equipment"
+              },
+              {
+                "id": "o7",
+                "text": "H. gradual"
+              },
+              {
+                "id": "o8",
+                "text": "I. inspect"
+              },
+              {
+                "id": "o9",
+                "text": "J. noise"
+              },
+              {
+                "id": "o10",
+                "text": "K. opinion"
+              },
+              {
+                "id": "o11",
+                "text": "L. promptly"
+              },
+              {
+                "id": "o12",
+                "text": "M. reserve"
+              },
+              {
+                "id": "o13",
+                "text": "N. rooms"
+              },
+              {
+                "id": "o14",
+                "text": "O. unlikely"
+              }
+            ],
+            "answer": "o12"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.room-reservation-070.whole.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 3.",
+            "material": "A room that was really ready\n\nA student society began using a central calendar for its meeting ____1____. Members could ____2____ a space in advance rather than arrive and hope to find an empty one. The change reduced confusion, but entering a name on a calendar was not the whole task.\n\nEach room had a stated ____3____, the maximum number of people it could accommodate. A group expecting thirty visitors could not choose a room for ten merely because its photograph looked attractive. The organiser also checked whether the space was ____4____ at the required time, including time to set up and clear away.\n\nDifferent activities needed different ____5____. A discussion might require only chairs, while a presentation needed a working screen. Members were asked to ____6____ the room before confirming a complicated event, so that a missing connection or unsuitable layout would not become a surprise on the day.\n\nAfter use, groups reported any ____7____ instead of leaving the next users to discover a broken chair. They also considered ____8____: a loud rehearsal beside an examination session could cause problems even when both groups had valid bookings.\n\nIf a meeting was ____9____, its organiser removed the reservation from the calendar. That allowed another group to use the space. Everyone was encouraged to communicate changes ____10____ rather than wait until the original starting time.\n\nThe calendar made information visible, but people still had to keep it useful. A room was ready not because a box on a screen contained a name, but because the arrangement matched the activity and the information matched what would actually happen.",
+            "explanation": "Capacity is explicitly defined as the maximum people accommodated. Equipment is objects, opinion a view, damage harm and noise sound; none names the numerical occupancy limit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. argue"
+              },
+              {
+                "id": "o1",
+                "text": "B. available"
+              },
+              {
+                "id": "o2",
+                "text": "C. cancelled"
+              },
+              {
+                "id": "o3",
+                "text": "D. capacity"
+              },
+              {
+                "id": "o4",
+                "text": "E. damage"
+              },
+              {
+                "id": "o5",
+                "text": "F. decorative"
+              },
+              {
+                "id": "o6",
+                "text": "G. equipment"
+              },
+              {
+                "id": "o7",
+                "text": "H. gradual"
+              },
+              {
+                "id": "o8",
+                "text": "I. inspect"
+              },
+              {
+                "id": "o9",
+                "text": "J. noise"
+              },
+              {
+                "id": "o10",
+                "text": "K. opinion"
+              },
+              {
+                "id": "o11",
+                "text": "L. promptly"
+              },
+              {
+                "id": "o12",
+                "text": "M. reserve"
+              },
+              {
+                "id": "o13",
+                "text": "N. rooms"
+              },
+              {
+                "id": "o14",
+                "text": "O. unlikely"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.room-reservation-070.whole.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 4.",
+            "material": "A room that was really ready\n\nA student society began using a central calendar for its meeting ____1____. Members could ____2____ a space in advance rather than arrive and hope to find an empty one. The change reduced confusion, but entering a name on a calendar was not the whole task.\n\nEach room had a stated ____3____, the maximum number of people it could accommodate. A group expecting thirty visitors could not choose a room for ten merely because its photograph looked attractive. The organiser also checked whether the space was ____4____ at the required time, including time to set up and clear away.\n\nDifferent activities needed different ____5____. A discussion might require only chairs, while a presentation needed a working screen. Members were asked to ____6____ the room before confirming a complicated event, so that a missing connection or unsuitable layout would not become a surprise on the day.\n\nAfter use, groups reported any ____7____ instead of leaving the next users to discover a broken chair. They also considered ____8____: a loud rehearsal beside an examination session could cause problems even when both groups had valid bookings.\n\nIf a meeting was ____9____, its organiser removed the reservation from the calendar. That allowed another group to use the space. Everyone was encouraged to communicate changes ____10____ rather than wait until the original starting time.\n\nThe calendar made information visible, but people still had to keep it useful. A room was ready not because a box on a screen contained a name, but because the arrangement matched the activity and the information matched what would actually happen.",
+            "explanation": "Available means usable at the required time. Unlikely concerns probability, decorative appearance and gradual pace, not free access. Other entries have inappropriate roles.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. argue"
+              },
+              {
+                "id": "o1",
+                "text": "B. available"
+              },
+              {
+                "id": "o2",
+                "text": "C. cancelled"
+              },
+              {
+                "id": "o3",
+                "text": "D. capacity"
+              },
+              {
+                "id": "o4",
+                "text": "E. damage"
+              },
+              {
+                "id": "o5",
+                "text": "F. decorative"
+              },
+              {
+                "id": "o6",
+                "text": "G. equipment"
+              },
+              {
+                "id": "o7",
+                "text": "H. gradual"
+              },
+              {
+                "id": "o8",
+                "text": "I. inspect"
+              },
+              {
+                "id": "o9",
+                "text": "J. noise"
+              },
+              {
+                "id": "o10",
+                "text": "K. opinion"
+              },
+              {
+                "id": "o11",
+                "text": "L. promptly"
+              },
+              {
+                "id": "o12",
+                "text": "M. reserve"
+              },
+              {
+                "id": "o13",
+                "text": "N. rooms"
+              },
+              {
+                "id": "o14",
+                "text": "O. unlikely"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.room-reservation-070.whole.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 5.",
+            "material": "A room that was really ready\n\nA student society began using a central calendar for its meeting ____1____. Members could ____2____ a space in advance rather than arrive and hope to find an empty one. The change reduced confusion, but entering a name on a calendar was not the whole task.\n\nEach room had a stated ____3____, the maximum number of people it could accommodate. A group expecting thirty visitors could not choose a room for ten merely because its photograph looked attractive. The organiser also checked whether the space was ____4____ at the required time, including time to set up and clear away.\n\nDifferent activities needed different ____5____. A discussion might require only chairs, while a presentation needed a working screen. Members were asked to ____6____ the room before confirming a complicated event, so that a missing connection or unsuitable layout would not become a surprise on the day.\n\nAfter use, groups reported any ____7____ instead of leaving the next users to discover a broken chair. They also considered ____8____: a loud rehearsal beside an examination session could cause problems even when both groups had valid bookings.\n\nIf a meeting was ____9____, its organiser removed the reservation from the calendar. That allowed another group to use the space. Everyone was encouraged to communicate changes ____10____ rather than wait until the original starting time.\n\nThe calendar made information visible, but people still had to keep it useful. A room was ready not because a box on a screen contained a name, but because the arrangement matched the activity and the information matched what would actually happen.",
+            "explanation": "Chairs and a screen are equipment. Rooms are the surrounding spaces, capacity the limit and opinion/damage/noise not apparatus. Other entries do not name the needed tools.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. argue"
+              },
+              {
+                "id": "o1",
+                "text": "B. available"
+              },
+              {
+                "id": "o2",
+                "text": "C. cancelled"
+              },
+              {
+                "id": "o3",
+                "text": "D. capacity"
+              },
+              {
+                "id": "o4",
+                "text": "E. damage"
+              },
+              {
+                "id": "o5",
+                "text": "F. decorative"
+              },
+              {
+                "id": "o6",
+                "text": "G. equipment"
+              },
+              {
+                "id": "o7",
+                "text": "H. gradual"
+              },
+              {
+                "id": "o8",
+                "text": "I. inspect"
+              },
+              {
+                "id": "o9",
+                "text": "J. noise"
+              },
+              {
+                "id": "o10",
+                "text": "K. opinion"
+              },
+              {
+                "id": "o11",
+                "text": "L. promptly"
+              },
+              {
+                "id": "o12",
+                "text": "M. reserve"
+              },
+              {
+                "id": "o13",
+                "text": "N. rooms"
+              },
+              {
+                "id": "o14",
+                "text": "O. unlikely"
+              }
+            ],
+            "answer": "o6"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.room-reservation-070.whole.q6",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 6.",
+            "material": "A room that was really ready\n\nA student society began using a central calendar for its meeting ____1____. Members could ____2____ a space in advance rather than arrive and hope to find an empty one. The change reduced confusion, but entering a name on a calendar was not the whole task.\n\nEach room had a stated ____3____, the maximum number of people it could accommodate. A group expecting thirty visitors could not choose a room for ten merely because its photograph looked attractive. The organiser also checked whether the space was ____4____ at the required time, including time to set up and clear away.\n\nDifferent activities needed different ____5____. A discussion might require only chairs, while a presentation needed a working screen. Members were asked to ____6____ the room before confirming a complicated event, so that a missing connection or unsuitable layout would not become a surprise on the day.\n\nAfter use, groups reported any ____7____ instead of leaving the next users to discover a broken chair. They also considered ____8____: a loud rehearsal beside an examination session could cause problems even when both groups had valid bookings.\n\nIf a meeting was ____9____, its organiser removed the reservation from the calendar. That allowed another group to use the space. Everyone was encouraged to communicate changes ____10____ rather than wait until the original starting time.\n\nThe calendar made information visible, but people still had to keep it useful. A room was ready not because a box on a screen contained a name, but because the arrangement matched the activity and the information matched what would actually happen.",
+            "explanation": "Inspect means examine the actual room for practical suitability. Reserve is booking, argue disputing; the context calls for checking rather than holding the room.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. argue"
+              },
+              {
+                "id": "o1",
+                "text": "B. available"
+              },
+              {
+                "id": "o2",
+                "text": "C. cancelled"
+              },
+              {
+                "id": "o3",
+                "text": "D. capacity"
+              },
+              {
+                "id": "o4",
+                "text": "E. damage"
+              },
+              {
+                "id": "o5",
+                "text": "F. decorative"
+              },
+              {
+                "id": "o6",
+                "text": "G. equipment"
+              },
+              {
+                "id": "o7",
+                "text": "H. gradual"
+              },
+              {
+                "id": "o8",
+                "text": "I. inspect"
+              },
+              {
+                "id": "o9",
+                "text": "J. noise"
+              },
+              {
+                "id": "o10",
+                "text": "K. opinion"
+              },
+              {
+                "id": "o11",
+                "text": "L. promptly"
+              },
+              {
+                "id": "o12",
+                "text": "M. reserve"
+              },
+              {
+                "id": "o13",
+                "text": "N. rooms"
+              },
+              {
+                "id": "o14",
+                "text": "O. unlikely"
+              }
+            ],
+            "answer": "o8"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.room-reservation-070.whole.q7",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 7.",
+            "material": "A room that was really ready\n\nA student society began using a central calendar for its meeting ____1____. Members could ____2____ a space in advance rather than arrive and hope to find an empty one. The change reduced confusion, but entering a name on a calendar was not the whole task.\n\nEach room had a stated ____3____, the maximum number of people it could accommodate. A group expecting thirty visitors could not choose a room for ten merely because its photograph looked attractive. The organiser also checked whether the space was ____4____ at the required time, including time to set up and clear away.\n\nDifferent activities needed different ____5____. A discussion might require only chairs, while a presentation needed a working screen. Members were asked to ____6____ the room before confirming a complicated event, so that a missing connection or unsuitable layout would not become a surprise on the day.\n\nAfter use, groups reported any ____7____ instead of leaving the next users to discover a broken chair. They also considered ____8____: a loud rehearsal beside an examination session could cause problems even when both groups had valid bookings.\n\nIf a meeting was ____9____, its organiser removed the reservation from the calendar. That allowed another group to use the space. Everyone was encouraged to communicate changes ____10____ rather than wait until the original starting time.\n\nThe calendar made information visible, but people still had to keep it useful. A room was ready not because a box on a screen contained a name, but because the arrangement matched the activity and the information matched what would actually happen.",
+            "explanation": "Damage explains a broken chair that should be reported. Noise is sound, opinion a view and capacity a size limit; the other nouns do not identify physical harm.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. argue"
+              },
+              {
+                "id": "o1",
+                "text": "B. available"
+              },
+              {
+                "id": "o2",
+                "text": "C. cancelled"
+              },
+              {
+                "id": "o3",
+                "text": "D. capacity"
+              },
+              {
+                "id": "o4",
+                "text": "E. damage"
+              },
+              {
+                "id": "o5",
+                "text": "F. decorative"
+              },
+              {
+                "id": "o6",
+                "text": "G. equipment"
+              },
+              {
+                "id": "o7",
+                "text": "H. gradual"
+              },
+              {
+                "id": "o8",
+                "text": "I. inspect"
+              },
+              {
+                "id": "o9",
+                "text": "J. noise"
+              },
+              {
+                "id": "o10",
+                "text": "K. opinion"
+              },
+              {
+                "id": "o11",
+                "text": "L. promptly"
+              },
+              {
+                "id": "o12",
+                "text": "M. reserve"
+              },
+              {
+                "id": "o13",
+                "text": "N. rooms"
+              },
+              {
+                "id": "o14",
+                "text": "O. unlikely"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.room-reservation-070.whole.q8",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 8.",
+            "material": "A room that was really ready\n\nA student society began using a central calendar for its meeting ____1____. Members could ____2____ a space in advance rather than arrive and hope to find an empty one. The change reduced confusion, but entering a name on a calendar was not the whole task.\n\nEach room had a stated ____3____, the maximum number of people it could accommodate. A group expecting thirty visitors could not choose a room for ten merely because its photograph looked attractive. The organiser also checked whether the space was ____4____ at the required time, including time to set up and clear away.\n\nDifferent activities needed different ____5____. A discussion might require only chairs, while a presentation needed a working screen. Members were asked to ____6____ the room before confirming a complicated event, so that a missing connection or unsuitable layout would not become a surprise on the day.\n\nAfter use, groups reported any ____7____ instead of leaving the next users to discover a broken chair. They also considered ____8____: a loud rehearsal beside an examination session could cause problems even when both groups had valid bookings.\n\nIf a meeting was ____9____, its organiser removed the reservation from the calendar. That allowed another group to use the space. Everyone was encouraged to communicate changes ____10____ rather than wait until the original starting time.\n\nThe calendar made information visible, but people still had to keep it useful. A room was ready not because a box on a screen contained a name, but because the arrangement matched the activity and the information matched what would actually happen.",
+            "explanation": "Noise is the issue when a loud rehearsal neighbours an exam. Damage concerns physical breakage, opinion preference and equipment apparatus; none names sound disturbance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. argue"
+              },
+              {
+                "id": "o1",
+                "text": "B. available"
+              },
+              {
+                "id": "o2",
+                "text": "C. cancelled"
+              },
+              {
+                "id": "o3",
+                "text": "D. capacity"
+              },
+              {
+                "id": "o4",
+                "text": "E. damage"
+              },
+              {
+                "id": "o5",
+                "text": "F. decorative"
+              },
+              {
+                "id": "o6",
+                "text": "G. equipment"
+              },
+              {
+                "id": "o7",
+                "text": "H. gradual"
+              },
+              {
+                "id": "o8",
+                "text": "I. inspect"
+              },
+              {
+                "id": "o9",
+                "text": "J. noise"
+              },
+              {
+                "id": "o10",
+                "text": "K. opinion"
+              },
+              {
+                "id": "o11",
+                "text": "L. promptly"
+              },
+              {
+                "id": "o12",
+                "text": "M. reserve"
+              },
+              {
+                "id": "o13",
+                "text": "N. rooms"
+              },
+              {
+                "id": "o14",
+                "text": "O. unlikely"
+              }
+            ],
+            "answer": "o9"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.room-reservation-070.whole.q9",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 9.",
+            "material": "A room that was really ready\n\nA student society began using a central calendar for its meeting ____1____. Members could ____2____ a space in advance rather than arrive and hope to find an empty one. The change reduced confusion, but entering a name on a calendar was not the whole task.\n\nEach room had a stated ____3____, the maximum number of people it could accommodate. A group expecting thirty visitors could not choose a room for ten merely because its photograph looked attractive. The organiser also checked whether the space was ____4____ at the required time, including time to set up and clear away.\n\nDifferent activities needed different ____5____. A discussion might require only chairs, while a presentation needed a working screen. Members were asked to ____6____ the room before confirming a complicated event, so that a missing connection or unsuitable layout would not become a surprise on the day.\n\nAfter use, groups reported any ____7____ instead of leaving the next users to discover a broken chair. They also considered ____8____: a loud rehearsal beside an examination session could cause problems even when both groups had valid bookings.\n\nIf a meeting was ____9____, its organiser removed the reservation from the calendar. That allowed another group to use the space. Everyone was encouraged to communicate changes ____10____ rather than wait until the original starting time.\n\nThe calendar made information visible, but people still had to keep it useful. A room was ready not because a box on a screen contained a name, but because the arrangement matched the activity and the information matched what would actually happen.",
+            "explanation": "Cancelled meetings no longer need their reservation. Available describes a room, gradual a process and decorative appearance; none states that the planned meeting will not occur.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. argue"
+              },
+              {
+                "id": "o1",
+                "text": "B. available"
+              },
+              {
+                "id": "o2",
+                "text": "C. cancelled"
+              },
+              {
+                "id": "o3",
+                "text": "D. capacity"
+              },
+              {
+                "id": "o4",
+                "text": "E. damage"
+              },
+              {
+                "id": "o5",
+                "text": "F. decorative"
+              },
+              {
+                "id": "o6",
+                "text": "G. equipment"
+              },
+              {
+                "id": "o7",
+                "text": "H. gradual"
+              },
+              {
+                "id": "o8",
+                "text": "I. inspect"
+              },
+              {
+                "id": "o9",
+                "text": "J. noise"
+              },
+              {
+                "id": "o10",
+                "text": "K. opinion"
+              },
+              {
+                "id": "o11",
+                "text": "L. promptly"
+              },
+              {
+                "id": "o12",
+                "text": "M. reserve"
+              },
+              {
+                "id": "o13",
+                "text": "N. rooms"
+              },
+              {
+                "id": "o14",
+                "text": "O. unlikely"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.room-reservation-070.whole.q10",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 10.",
+            "material": "A room that was really ready\n\nA student society began using a central calendar for its meeting ____1____. Members could ____2____ a space in advance rather than arrive and hope to find an empty one. The change reduced confusion, but entering a name on a calendar was not the whole task.\n\nEach room had a stated ____3____, the maximum number of people it could accommodate. A group expecting thirty visitors could not choose a room for ten merely because its photograph looked attractive. The organiser also checked whether the space was ____4____ at the required time, including time to set up and clear away.\n\nDifferent activities needed different ____5____. A discussion might require only chairs, while a presentation needed a working screen. Members were asked to ____6____ the room before confirming a complicated event, so that a missing connection or unsuitable layout would not become a surprise on the day.\n\nAfter use, groups reported any ____7____ instead of leaving the next users to discover a broken chair. They also considered ____8____: a loud rehearsal beside an examination session could cause problems even when both groups had valid bookings.\n\nIf a meeting was ____9____, its organiser removed the reservation from the calendar. That allowed another group to use the space. Everyone was encouraged to communicate changes ____10____ rather than wait until the original starting time.\n\nThe calendar made information visible, but people still had to keep it useful. A room was ready not because a box on a screen contained a name, but because the arrangement matched the activity and the information matched what would actually happen.",
+            "explanation": "Promptly means without delay, directly contrasted with waiting until the start. The remaining adjectives/nouns/verbs do not provide the adverb of timely communication.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. argue"
+              },
+              {
+                "id": "o1",
+                "text": "B. available"
+              },
+              {
+                "id": "o2",
+                "text": "C. cancelled"
+              },
+              {
+                "id": "o3",
+                "text": "D. capacity"
+              },
+              {
+                "id": "o4",
+                "text": "E. damage"
+              },
+              {
+                "id": "o5",
+                "text": "F. decorative"
+              },
+              {
+                "id": "o6",
+                "text": "G. equipment"
+              },
+              {
+                "id": "o7",
+                "text": "H. gradual"
+              },
+              {
+                "id": "o8",
+                "text": "I. inspect"
+              },
+              {
+                "id": "o9",
+                "text": "J. noise"
+              },
+              {
+                "id": "o10",
+                "text": "K. opinion"
+              },
+              {
+                "id": "o11",
+                "text": "L. promptly"
+              },
+              {
+                "id": "o12",
+                "text": "M. reserve"
+              },
+              {
+                "id": "o13",
+                "text": "N. rooms"
+              },
+              {
+                "id": "o14",
+                "text": "O. unlikely"
+              }
+            ],
+            "answer": "o11"
+          }
+        ]
+      },
+      "contentHash": "1f856659823960060af2d49a51c8185394383b213b5c966291994aded4abdf43",
+      "reviewNotes": "Four new adult whole-passage originals: two CET4 and one CET6 ten-gap/fifteen-word banks, plus one C1 eight-gap formation. Fictional meeting/exhibition cases and basic general process/astronomy discussion, no invented study or numbers. Same-author all-key/all-alternative and form review, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.undergraduate.recipe-quantities-070",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "undergraduate",
+        "title": "10·24新题 · Reading quantities before cooking",
+        "summary": "Reading quantities before cooking，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "cet4.2016.sample.wordbank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 形式复用已核官方2016四级样卷，一篇10空/15词；不是新增来源或年度真卷，也未建立产品难度/CEFR标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four new adult whole-passage originals: two CET4 and one CET6 ten-gap/fifteen-word banks, plus one C1 eight-gap formation. Fictional meeting/exhibition cases and basic general process/astronomy discussion, no invented study or numbers. Same-author all-key/all-alternative and form review, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.undergraduate.recipe-quantities-070",
+          "family": "shared_bank",
+          "label": "Reading quantities before cooking",
+          "candidateSHA256": "208b89d7c2e3b5df926ed4a89a17bd258e46ae903187d0cce5014bd2c9358c1d",
+          "authorCheckSHA256": "a9b7c8e35df38f058ee9e47afe4b8bbfd3664b43e1f99be27e1cb613caab760a",
+          "sourceGroupIds": [
+            "expansion.20261024.undergraduate.recipe-quantities-070#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b070；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Reading quantities before cooking\n\nA recipe is a set of decisions as well as a list of food. Before beginning, read the ____1____ of each ingredient and the unit used to describe it. A number alone does not tell you whether the writer means grams, cups or individual items.\n\nSome recipes give ____2____ measured on scales, while others use containers of stated size. Switching between systems without checking can change the result. Keep the system ____3____ throughout a calculation: the same unit should mean the same amount each time it appears.\n\nIf the recipe serves twice as many people as required, you may be able to ____4____ the ingredient amounts by two. That does not establish that every other number should be halved. The oven's ____5____ is not a portion size, and the time needed may depend on the shape and depth of the food.\n\nMeasurements may also need to be ____6____ from one system to another. Use an appropriate reference rather than guessing that two differently named units are identical. The point is to understand what the number represents, not simply produce a neat calculation.\n\nRead any suggestion to ____7____ one ingredient for another with care. A decorative topping may be ____8____, while an ingredient that helps a mixture hold together may perform a function. Different choices can affect texture as well as taste.\n\nFinally, consider ____9____: some actions have to happen before others, so finding the next step only when you reach it may be inconvenient. With experience, a cook can ____10____ a plan to the actual conditions. That flexibility is helped by understanding the original instructions rather than by ignoring them."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.undergraduate.recipe-quantities-070.whole.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 1.",
+            "material": "Reading quantities before cooking\n\nA recipe is a set of decisions as well as a list of food. Before beginning, read the ____1____ of each ingredient and the unit used to describe it. A number alone does not tell you whether the writer means grams, cups or individual items.\n\nSome recipes give ____2____ measured on scales, while others use containers of stated size. Switching between systems without checking can change the result. Keep the system ____3____ throughout a calculation: the same unit should mean the same amount each time it appears.\n\nIf the recipe serves twice as many people as required, you may be able to ____4____ the ingredient amounts by two. That does not establish that every other number should be halved. The oven's ____5____ is not a portion size, and the time needed may depend on the shape and depth of the food.\n\nMeasurements may also need to be ____6____ from one system to another. Use an appropriate reference rather than guessing that two differently named units are identical. The point is to understand what the number represents, not simply produce a neat calculation.\n\nRead any suggestion to ____7____ one ingredient for another with care. A decorative topping may be ____8____, while an ingredient that helps a mixture hold together may perform a function. Different choices can affect texture as well as taste.\n\nFinally, consider ____9____: some actions have to happen before others, so finding the next step only when you reach it may be inconvenient. With experience, a cook can ____10____ a plan to the actual conditions. That flexibility is helped by understanding the original instructions rather than by ignoring them.",
+            "explanation": "Quantity is how much of each ingredient is needed. Temperature measures heat, timing order/time and privacy confidentiality; other nouns do not name amount.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. adjust"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. consistent"
+              },
+              {
+                "id": "o3",
+                "text": "D. converted"
+              },
+              {
+                "id": "o4",
+                "text": "E. depart"
+              },
+              {
+                "id": "o5",
+                "text": "F. desert"
+              },
+              {
+                "id": "o6",
+                "text": "G. distant"
+              },
+              {
+                "id": "o7",
+                "text": "H. divide"
+              },
+              {
+                "id": "o8",
+                "text": "I. optional"
+              },
+              {
+                "id": "o9",
+                "text": "J. privacy"
+              },
+              {
+                "id": "o10",
+                "text": "K. quantity"
+              },
+              {
+                "id": "o11",
+                "text": "L. substitute"
+              },
+              {
+                "id": "o12",
+                "text": "M. temperature"
+              },
+              {
+                "id": "o13",
+                "text": "N. timing"
+              },
+              {
+                "id": "o14",
+                "text": "O. weights"
+              }
+            ],
+            "answer": "o10"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.recipe-quantities-070.whole.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 2.",
+            "material": "Reading quantities before cooking\n\nA recipe is a set of decisions as well as a list of food. Before beginning, read the ____1____ of each ingredient and the unit used to describe it. A number alone does not tell you whether the writer means grams, cups or individual items.\n\nSome recipes give ____2____ measured on scales, while others use containers of stated size. Switching between systems without checking can change the result. Keep the system ____3____ throughout a calculation: the same unit should mean the same amount each time it appears.\n\nIf the recipe serves twice as many people as required, you may be able to ____4____ the ingredient amounts by two. That does not establish that every other number should be halved. The oven's ____5____ is not a portion size, and the time needed may depend on the shape and depth of the food.\n\nMeasurements may also need to be ____6____ from one system to another. Use an appropriate reference rather than guessing that two differently named units are identical. The point is to understand what the number represents, not simply produce a neat calculation.\n\nRead any suggestion to ____7____ one ingredient for another with care. A decorative topping may be ____8____, while an ingredient that helps a mixture hold together may perform a function. Different choices can affect texture as well as taste.\n\nFinally, consider ____9____: some actions have to happen before others, so finding the next step only when you reach it may be inconvenient. With experience, a cook can ____10____ a plan to the actual conditions. That flexibility is helped by understanding the original instructions rather than by ignoring them.",
+            "explanation": "Weights are the quantities measured on scales, contrasted with container measures. Quantity is singular overall amount, temperature heat and timing scheduling; the other entries do not name plural scale measurements.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. adjust"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. consistent"
+              },
+              {
+                "id": "o3",
+                "text": "D. converted"
+              },
+              {
+                "id": "o4",
+                "text": "E. depart"
+              },
+              {
+                "id": "o5",
+                "text": "F. desert"
+              },
+              {
+                "id": "o6",
+                "text": "G. distant"
+              },
+              {
+                "id": "o7",
+                "text": "H. divide"
+              },
+              {
+                "id": "o8",
+                "text": "I. optional"
+              },
+              {
+                "id": "o9",
+                "text": "J. privacy"
+              },
+              {
+                "id": "o10",
+                "text": "K. quantity"
+              },
+              {
+                "id": "o11",
+                "text": "L. substitute"
+              },
+              {
+                "id": "o12",
+                "text": "M. temperature"
+              },
+              {
+                "id": "o13",
+                "text": "N. timing"
+              },
+              {
+                "id": "o14",
+                "text": "O. weights"
+              }
+            ],
+            "answer": "o14"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.recipe-quantities-070.whole.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 3.",
+            "material": "Reading quantities before cooking\n\nA recipe is a set of decisions as well as a list of food. Before beginning, read the ____1____ of each ingredient and the unit used to describe it. A number alone does not tell you whether the writer means grams, cups or individual items.\n\nSome recipes give ____2____ measured on scales, while others use containers of stated size. Switching between systems without checking can change the result. Keep the system ____3____ throughout a calculation: the same unit should mean the same amount each time it appears.\n\nIf the recipe serves twice as many people as required, you may be able to ____4____ the ingredient amounts by two. That does not establish that every other number should be halved. The oven's ____5____ is not a portion size, and the time needed may depend on the shape and depth of the food.\n\nMeasurements may also need to be ____6____ from one system to another. Use an appropriate reference rather than guessing that two differently named units are identical. The point is to understand what the number represents, not simply produce a neat calculation.\n\nRead any suggestion to ____7____ one ingredient for another with care. A decorative topping may be ____8____, while an ingredient that helps a mixture hold together may perform a function. Different choices can affect texture as well as taste.\n\nFinally, consider ____9____: some actions have to happen before others, so finding the next step only when you reach it may be inconvenient. With experience, a cook can ____10____ a plan to the actual conditions. That flexibility is helped by understanding the original instructions rather than by ignoring them.",
+            "explanation": "Consistent is explained by one unit meaning the same thing throughout. Optional means not required, apparent seeming and distant far away; none expresses internal sameness.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. adjust"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. consistent"
+              },
+              {
+                "id": "o3",
+                "text": "D. converted"
+              },
+              {
+                "id": "o4",
+                "text": "E. depart"
+              },
+              {
+                "id": "o5",
+                "text": "F. desert"
+              },
+              {
+                "id": "o6",
+                "text": "G. distant"
+              },
+              {
+                "id": "o7",
+                "text": "H. divide"
+              },
+              {
+                "id": "o8",
+                "text": "I. optional"
+              },
+              {
+                "id": "o9",
+                "text": "J. privacy"
+              },
+              {
+                "id": "o10",
+                "text": "K. quantity"
+              },
+              {
+                "id": "o11",
+                "text": "L. substitute"
+              },
+              {
+                "id": "o12",
+                "text": "M. temperature"
+              },
+              {
+                "id": "o13",
+                "text": "N. timing"
+              },
+              {
+                "id": "o14",
+                "text": "O. weights"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.recipe-quantities-070.whole.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 4.",
+            "material": "Reading quantities before cooking\n\nA recipe is a set of decisions as well as a list of food. Before beginning, read the ____1____ of each ingredient and the unit used to describe it. A number alone does not tell you whether the writer means grams, cups or individual items.\n\nSome recipes give ____2____ measured on scales, while others use containers of stated size. Switching between systems without checking can change the result. Keep the system ____3____ throughout a calculation: the same unit should mean the same amount each time it appears.\n\nIf the recipe serves twice as many people as required, you may be able to ____4____ the ingredient amounts by two. That does not establish that every other number should be halved. The oven's ____5____ is not a portion size, and the time needed may depend on the shape and depth of the food.\n\nMeasurements may also need to be ____6____ from one system to another. Use an appropriate reference rather than guessing that two differently named units are identical. The point is to understand what the number represents, not simply produce a neat calculation.\n\nRead any suggestion to ____7____ one ingredient for another with care. A decorative topping may be ____8____, while an ingredient that helps a mixture hold together may perform a function. Different choices can affect texture as well as taste.\n\nFinally, consider ____9____: some actions have to happen before others, so finding the next step only when you reach it may be inconvenient. With experience, a cook can ____10____ a plan to the actual conditions. That flexibility is helped by understanding the original instructions rather than by ignoring them.",
+            "explanation": "Divide by two halves an amount. Adjust changes it generally, substitute replaces an ingredient and depart leaves; only divide fits the specified arithmetic operation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. adjust"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. consistent"
+              },
+              {
+                "id": "o3",
+                "text": "D. converted"
+              },
+              {
+                "id": "o4",
+                "text": "E. depart"
+              },
+              {
+                "id": "o5",
+                "text": "F. desert"
+              },
+              {
+                "id": "o6",
+                "text": "G. distant"
+              },
+              {
+                "id": "o7",
+                "text": "H. divide"
+              },
+              {
+                "id": "o8",
+                "text": "I. optional"
+              },
+              {
+                "id": "o9",
+                "text": "J. privacy"
+              },
+              {
+                "id": "o10",
+                "text": "K. quantity"
+              },
+              {
+                "id": "o11",
+                "text": "L. substitute"
+              },
+              {
+                "id": "o12",
+                "text": "M. temperature"
+              },
+              {
+                "id": "o13",
+                "text": "N. timing"
+              },
+              {
+                "id": "o14",
+                "text": "O. weights"
+              }
+            ],
+            "answer": "o7"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.recipe-quantities-070.whole.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 5.",
+            "material": "Reading quantities before cooking\n\nA recipe is a set of decisions as well as a list of food. Before beginning, read the ____1____ of each ingredient and the unit used to describe it. A number alone does not tell you whether the writer means grams, cups or individual items.\n\nSome recipes give ____2____ measured on scales, while others use containers of stated size. Switching between systems without checking can change the result. Keep the system ____3____ throughout a calculation: the same unit should mean the same amount each time it appears.\n\nIf the recipe serves twice as many people as required, you may be able to ____4____ the ingredient amounts by two. That does not establish that every other number should be halved. The oven's ____5____ is not a portion size, and the time needed may depend on the shape and depth of the food.\n\nMeasurements may also need to be ____6____ from one system to another. Use an appropriate reference rather than guessing that two differently named units are identical. The point is to understand what the number represents, not simply produce a neat calculation.\n\nRead any suggestion to ____7____ one ingredient for another with care. A decorative topping may be ____8____, while an ingredient that helps a mixture hold together may perform a function. Different choices can affect texture as well as taste.\n\nFinally, consider ____9____: some actions have to happen before others, so finding the next step only when you reach it may be inconvenient. With experience, a cook can ____10____ a plan to the actual conditions. That flexibility is helped by understanding the original instructions rather than by ignoring them.",
+            "explanation": "Temperature is the oven’s heat setting, not portions. Quantity/weights refer to amounts and timing duration/sequence rather than degrees of heat.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. adjust"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. consistent"
+              },
+              {
+                "id": "o3",
+                "text": "D. converted"
+              },
+              {
+                "id": "o4",
+                "text": "E. depart"
+              },
+              {
+                "id": "o5",
+                "text": "F. desert"
+              },
+              {
+                "id": "o6",
+                "text": "G. distant"
+              },
+              {
+                "id": "o7",
+                "text": "H. divide"
+              },
+              {
+                "id": "o8",
+                "text": "I. optional"
+              },
+              {
+                "id": "o9",
+                "text": "J. privacy"
+              },
+              {
+                "id": "o10",
+                "text": "K. quantity"
+              },
+              {
+                "id": "o11",
+                "text": "L. substitute"
+              },
+              {
+                "id": "o12",
+                "text": "M. temperature"
+              },
+              {
+                "id": "o13",
+                "text": "N. timing"
+              },
+              {
+                "id": "o14",
+                "text": "O. weights"
+              }
+            ],
+            "answer": "o12"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.recipe-quantities-070.whole.q6",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 6.",
+            "material": "Reading quantities before cooking\n\nA recipe is a set of decisions as well as a list of food. Before beginning, read the ____1____ of each ingredient and the unit used to describe it. A number alone does not tell you whether the writer means grams, cups or individual items.\n\nSome recipes give ____2____ measured on scales, while others use containers of stated size. Switching between systems without checking can change the result. Keep the system ____3____ throughout a calculation: the same unit should mean the same amount each time it appears.\n\nIf the recipe serves twice as many people as required, you may be able to ____4____ the ingredient amounts by two. That does not establish that every other number should be halved. The oven's ____5____ is not a portion size, and the time needed may depend on the shape and depth of the food.\n\nMeasurements may also need to be ____6____ from one system to another. Use an appropriate reference rather than guessing that two differently named units are identical. The point is to understand what the number represents, not simply produce a neat calculation.\n\nRead any suggestion to ____7____ one ingredient for another with care. A decorative topping may be ____8____, while an ingredient that helps a mixture hold together may perform a function. Different choices can affect texture as well as taste.\n\nFinally, consider ____9____: some actions have to happen before others, so finding the next step only when you reach it may be inconvenient. With experience, a cook can ____10____ a plan to the actual conditions. That flexibility is helped by understanding the original instructions rather than by ignoring them.",
+            "explanation": "Converted from one system to another means expressed in a different unit system. Other bank entries do not supply the required participle of conversion.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. adjust"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. consistent"
+              },
+              {
+                "id": "o3",
+                "text": "D. converted"
+              },
+              {
+                "id": "o4",
+                "text": "E. depart"
+              },
+              {
+                "id": "o5",
+                "text": "F. desert"
+              },
+              {
+                "id": "o6",
+                "text": "G. distant"
+              },
+              {
+                "id": "o7",
+                "text": "H. divide"
+              },
+              {
+                "id": "o8",
+                "text": "I. optional"
+              },
+              {
+                "id": "o9",
+                "text": "J. privacy"
+              },
+              {
+                "id": "o10",
+                "text": "K. quantity"
+              },
+              {
+                "id": "o11",
+                "text": "L. substitute"
+              },
+              {
+                "id": "o12",
+                "text": "M. temperature"
+              },
+              {
+                "id": "o13",
+                "text": "N. timing"
+              },
+              {
+                "id": "o14",
+                "text": "O. weights"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.recipe-quantities-070.whole.q7",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 7.",
+            "material": "Reading quantities before cooking\n\nA recipe is a set of decisions as well as a list of food. Before beginning, read the ____1____ of each ingredient and the unit used to describe it. A number alone does not tell you whether the writer means grams, cups or individual items.\n\nSome recipes give ____2____ measured on scales, while others use containers of stated size. Switching between systems without checking can change the result. Keep the system ____3____ throughout a calculation: the same unit should mean the same amount each time it appears.\n\nIf the recipe serves twice as many people as required, you may be able to ____4____ the ingredient amounts by two. That does not establish that every other number should be halved. The oven's ____5____ is not a portion size, and the time needed may depend on the shape and depth of the food.\n\nMeasurements may also need to be ____6____ from one system to another. Use an appropriate reference rather than guessing that two differently named units are identical. The point is to understand what the number represents, not simply produce a neat calculation.\n\nRead any suggestion to ____7____ one ingredient for another with care. A decorative topping may be ____8____, while an ingredient that helps a mixture hold together may perform a function. Different choices can affect texture as well as taste.\n\nFinally, consider ____9____: some actions have to happen before others, so finding the next step only when you reach it may be inconvenient. With experience, a cook can ____10____ a plan to the actual conditions. That flexibility is helped by understanding the original instructions rather than by ignoring them.",
+            "explanation": "Substitute one ingredient for another means replace it. Divide is arithmetic, adjust alter generally and depart leave; they do not fit this replacement construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. adjust"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. consistent"
+              },
+              {
+                "id": "o3",
+                "text": "D. converted"
+              },
+              {
+                "id": "o4",
+                "text": "E. depart"
+              },
+              {
+                "id": "o5",
+                "text": "F. desert"
+              },
+              {
+                "id": "o6",
+                "text": "G. distant"
+              },
+              {
+                "id": "o7",
+                "text": "H. divide"
+              },
+              {
+                "id": "o8",
+                "text": "I. optional"
+              },
+              {
+                "id": "o9",
+                "text": "J. privacy"
+              },
+              {
+                "id": "o10",
+                "text": "K. quantity"
+              },
+              {
+                "id": "o11",
+                "text": "L. substitute"
+              },
+              {
+                "id": "o12",
+                "text": "M. temperature"
+              },
+              {
+                "id": "o13",
+                "text": "N. timing"
+              },
+              {
+                "id": "o14",
+                "text": "O. weights"
+              }
+            ],
+            "answer": "o11"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.recipe-quantities-070.whole.q8",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 8.",
+            "material": "Reading quantities before cooking\n\nA recipe is a set of decisions as well as a list of food. Before beginning, read the ____1____ of each ingredient and the unit used to describe it. A number alone does not tell you whether the writer means grams, cups or individual items.\n\nSome recipes give ____2____ measured on scales, while others use containers of stated size. Switching between systems without checking can change the result. Keep the system ____3____ throughout a calculation: the same unit should mean the same amount each time it appears.\n\nIf the recipe serves twice as many people as required, you may be able to ____4____ the ingredient amounts by two. That does not establish that every other number should be halved. The oven's ____5____ is not a portion size, and the time needed may depend on the shape and depth of the food.\n\nMeasurements may also need to be ____6____ from one system to another. Use an appropriate reference rather than guessing that two differently named units are identical. The point is to understand what the number represents, not simply produce a neat calculation.\n\nRead any suggestion to ____7____ one ingredient for another with care. A decorative topping may be ____8____, while an ingredient that helps a mixture hold together may perform a function. Different choices can affect texture as well as taste.\n\nFinally, consider ____9____: some actions have to happen before others, so finding the next step only when you reach it may be inconvenient. With experience, a cook can ____10____ a plan to the actual conditions. That flexibility is helped by understanding the original instructions rather than by ignoring them.",
+            "explanation": "Optional describes a decorative addition that need not be used. Consistent concerns sameness, apparent appearance and distant separation, not whether required.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. adjust"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. consistent"
+              },
+              {
+                "id": "o3",
+                "text": "D. converted"
+              },
+              {
+                "id": "o4",
+                "text": "E. depart"
+              },
+              {
+                "id": "o5",
+                "text": "F. desert"
+              },
+              {
+                "id": "o6",
+                "text": "G. distant"
+              },
+              {
+                "id": "o7",
+                "text": "H. divide"
+              },
+              {
+                "id": "o8",
+                "text": "I. optional"
+              },
+              {
+                "id": "o9",
+                "text": "J. privacy"
+              },
+              {
+                "id": "o10",
+                "text": "K. quantity"
+              },
+              {
+                "id": "o11",
+                "text": "L. substitute"
+              },
+              {
+                "id": "o12",
+                "text": "M. temperature"
+              },
+              {
+                "id": "o13",
+                "text": "N. timing"
+              },
+              {
+                "id": "o14",
+                "text": "O. weights"
+              }
+            ],
+            "answer": "o8"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.recipe-quantities-070.whole.q9",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 9.",
+            "material": "Reading quantities before cooking\n\nA recipe is a set of decisions as well as a list of food. Before beginning, read the ____1____ of each ingredient and the unit used to describe it. A number alone does not tell you whether the writer means grams, cups or individual items.\n\nSome recipes give ____2____ measured on scales, while others use containers of stated size. Switching between systems without checking can change the result. Keep the system ____3____ throughout a calculation: the same unit should mean the same amount each time it appears.\n\nIf the recipe serves twice as many people as required, you may be able to ____4____ the ingredient amounts by two. That does not establish that every other number should be halved. The oven's ____5____ is not a portion size, and the time needed may depend on the shape and depth of the food.\n\nMeasurements may also need to be ____6____ from one system to another. Use an appropriate reference rather than guessing that two differently named units are identical. The point is to understand what the number represents, not simply produce a neat calculation.\n\nRead any suggestion to ____7____ one ingredient for another with care. A decorative topping may be ____8____, while an ingredient that helps a mixture hold together may perform a function. Different choices can affect texture as well as taste.\n\nFinally, consider ____9____: some actions have to happen before others, so finding the next step only when you reach it may be inconvenient. With experience, a cook can ____10____ a plan to the actual conditions. That flexibility is helped by understanding the original instructions rather than by ignoring them.",
+            "explanation": "Timing covers action order and when preparation occurs. Temperature is heat, quantity amount and privacy confidentiality; none describes scheduling the steps.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. adjust"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. consistent"
+              },
+              {
+                "id": "o3",
+                "text": "D. converted"
+              },
+              {
+                "id": "o4",
+                "text": "E. depart"
+              },
+              {
+                "id": "o5",
+                "text": "F. desert"
+              },
+              {
+                "id": "o6",
+                "text": "G. distant"
+              },
+              {
+                "id": "o7",
+                "text": "H. divide"
+              },
+              {
+                "id": "o8",
+                "text": "I. optional"
+              },
+              {
+                "id": "o9",
+                "text": "J. privacy"
+              },
+              {
+                "id": "o10",
+                "text": "K. quantity"
+              },
+              {
+                "id": "o11",
+                "text": "L. substitute"
+              },
+              {
+                "id": "o12",
+                "text": "M. temperature"
+              },
+              {
+                "id": "o13",
+                "text": "N. timing"
+              },
+              {
+                "id": "o14",
+                "text": "O. weights"
+              }
+            ],
+            "answer": "o13"
+          },
+          {
+            "id": "expansion.20261024.undergraduate.recipe-quantities-070.whole.q10",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 10.",
+            "material": "Reading quantities before cooking\n\nA recipe is a set of decisions as well as a list of food. Before beginning, read the ____1____ of each ingredient and the unit used to describe it. A number alone does not tell you whether the writer means grams, cups or individual items.\n\nSome recipes give ____2____ measured on scales, while others use containers of stated size. Switching between systems without checking can change the result. Keep the system ____3____ throughout a calculation: the same unit should mean the same amount each time it appears.\n\nIf the recipe serves twice as many people as required, you may be able to ____4____ the ingredient amounts by two. That does not establish that every other number should be halved. The oven's ____5____ is not a portion size, and the time needed may depend on the shape and depth of the food.\n\nMeasurements may also need to be ____6____ from one system to another. Use an appropriate reference rather than guessing that two differently named units are identical. The point is to understand what the number represents, not simply produce a neat calculation.\n\nRead any suggestion to ____7____ one ingredient for another with care. A decorative topping may be ____8____, while an ingredient that helps a mixture hold together may perform a function. Different choices can affect texture as well as taste.\n\nFinally, consider ____9____: some actions have to happen before others, so finding the next step only when you reach it may be inconvenient. With experience, a cook can ____10____ a plan to the actual conditions. That flexibility is helped by understanding the original instructions rather than by ignoring them.",
+            "explanation": "Adjust means adapt a plan to actual conditions. Divide needs an arithmetic amount, substitute a replacement object and depart would require a different from-construction. Other entries do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. adjust"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. consistent"
+              },
+              {
+                "id": "o3",
+                "text": "D. converted"
+              },
+              {
+                "id": "o4",
+                "text": "E. depart"
+              },
+              {
+                "id": "o5",
+                "text": "F. desert"
+              },
+              {
+                "id": "o6",
+                "text": "G. distant"
+              },
+              {
+                "id": "o7",
+                "text": "H. divide"
+              },
+              {
+                "id": "o8",
+                "text": "I. optional"
+              },
+              {
+                "id": "o9",
+                "text": "J. privacy"
+              },
+              {
+                "id": "o10",
+                "text": "K. quantity"
+              },
+              {
+                "id": "o11",
+                "text": "L. substitute"
+              },
+              {
+                "id": "o12",
+                "text": "M. temperature"
+              },
+              {
+                "id": "o13",
+                "text": "N. timing"
+              },
+              {
+                "id": "o14",
+                "text": "O. weights"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "d940be1cc56d75ce064be2c0327b6eaf740756b1de1d33cde5dbc5ada3129a41",
+      "reviewNotes": "Four new adult whole-passage originals: two CET4 and one CET6 ten-gap/fifteen-word banks, plus one C1 eight-gap formation. Fictional meeting/exhibition cases and basic general process/astronomy discussion, no invented study or numbers. Same-author all-key/all-alternative and form review, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.postgraduate.star-brightness-070",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "postgraduate",
+        "title": "10·24新题 · The star that only looked faint",
+        "summary": "The star that only looked faint，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "cet6.2016.sample.wordbank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 形式复用已核官方2016六级样卷，一篇10空/15词；不是新增来源或年度真卷，也未建立产品难度/CEFR标定。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four new adult whole-passage originals: two CET4 and one CET6 ten-gap/fifteen-word banks, plus one C1 eight-gap formation. Fictional meeting/exhibition cases and basic general process/astronomy discussion, no invented study or numbers. Same-author all-key/all-alternative and form review, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.postgraduate.star-brightness-070",
+          "family": "shared_bank",
+          "label": "The star that only looked faint",
+          "candidateSHA256": "c2e88eb4f1f00e0c007eabc5e7cae5161a6625f5d9e6885deb03b22180223145",
+          "authorCheckSHA256": "d9a511d7943382b7d5e3c595ddc595a404684b6fa4048f09dbbbc212fbc58b06",
+          "sourceGroupIds": [
+            "expansion.20261024.postgraduate.star-brightness-070#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b070；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The star that only looked faint\n\nThe brightness of a star in the night sky is not a direct measure of everything the star produces. What reaches an observer is its ____1____ brightness. Its total light output, described by its ____2____, is a different property. Keeping the distinction clear prevents a familiar visual impression from becoming an unjustified physical conclusion.\n\nOne important factor is ____3____. A powerful source can look faint when it is far away, while a less powerful nearby source can seem brighter. The amount of light ____4____ by the star and the amount received at a particular place are therefore related but not identical quantities.\n\nThe location of the ____5____ matters to the received view. Move that viewpoint, and the star does not need to change its own output for its appearance to change. Astronomers distinguish these viewing conditions from ____6____ properties belonging to the source itself.\n\nOther complications remain. Light can be ____7____ by material along its route, and observations made in different wavelength ranges may emphasise different features. For ground-based measurements, the atmosphere and instrument can affect the reading too. Recording those conditions helps explain the result rather than merely adding administrative detail.\n\nComparing two measurements requires knowing enough about how they were obtained to decide whether they are ____8____.\n\nEstimating a star's properties is therefore an ____9____ from evidence, not merely reading a value from its visible size in a photograph. More observations may reduce ____10____, but they do not make the method or its assumptions irrelevant.\n\nFor a beginner, the central idea is accessible without performing a calculation: looking bright and producing much light are different claims. A careful explanation connects them through information about the source, the journey of the light and the conditions under which it is observed."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.postgraduate.star-brightness-070.whole.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 1.",
+            "material": "The star that only looked faint\n\nThe brightness of a star in the night sky is not a direct measure of everything the star produces. What reaches an observer is its ____1____ brightness. Its total light output, described by its ____2____, is a different property. Keeping the distinction clear prevents a familiar visual impression from becoming an unjustified physical conclusion.\n\nOne important factor is ____3____. A powerful source can look faint when it is far away, while a less powerful nearby source can seem brighter. The amount of light ____4____ by the star and the amount received at a particular place are therefore related but not identical quantities.\n\nThe location of the ____5____ matters to the received view. Move that viewpoint, and the star does not need to change its own output for its appearance to change. Astronomers distinguish these viewing conditions from ____6____ properties belonging to the source itself.\n\nOther complications remain. Light can be ____7____ by material along its route, and observations made in different wavelength ranges may emphasise different features. For ground-based measurements, the atmosphere and instrument can affect the reading too. Recording those conditions helps explain the result rather than merely adding administrative detail.\n\nComparing two measurements requires knowing enough about how they were obtained to decide whether they are ____8____.\n\nEstimating a star's properties is therefore an ____9____ from evidence, not merely reading a value from its visible size in a photograph. More observations may reduce ____10____, but they do not make the method or its assumptions irrelevant.\n\nFor a beginner, the central idea is accessible without performing a calculation: looking bright and producing much light are different claims. A careful explanation connects them through information about the source, the journey of the light and the conditions under which it is observed.",
+            "explanation": "Apparent brightness is the received appearance, contrasted with total output. Intrinsic is the source property, comparable comparability, temporary duration and voluntary choice; none names the appearance distinction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. allocate"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. approval"
+              },
+              {
+                "id": "o3",
+                "text": "D. comparable"
+              },
+              {
+                "id": "o4",
+                "text": "E. conventional"
+              },
+              {
+                "id": "o5",
+                "text": "F. distance"
+              },
+              {
+                "id": "o6",
+                "text": "G. emitted"
+              },
+              {
+                "id": "o7",
+                "text": "H. inference"
+              },
+              {
+                "id": "o8",
+                "text": "I. intrinsic"
+              },
+              {
+                "id": "o9",
+                "text": "J. luminosity"
+              },
+              {
+                "id": "o10",
+                "text": "K. obscured"
+              },
+              {
+                "id": "o11",
+                "text": "L. observer"
+              },
+              {
+                "id": "o12",
+                "text": "M. temporary"
+              },
+              {
+                "id": "o13",
+                "text": "N. uncertainty"
+              },
+              {
+                "id": "o14",
+                "text": "O. voluntary"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.star-brightness-070.whole.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 2.",
+            "material": "The star that only looked faint\n\nThe brightness of a star in the night sky is not a direct measure of everything the star produces. What reaches an observer is its ____1____ brightness. Its total light output, described by its ____2____, is a different property. Keeping the distinction clear prevents a familiar visual impression from becoming an unjustified physical conclusion.\n\nOne important factor is ____3____. A powerful source can look faint when it is far away, while a less powerful nearby source can seem brighter. The amount of light ____4____ by the star and the amount received at a particular place are therefore related but not identical quantities.\n\nThe location of the ____5____ matters to the received view. Move that viewpoint, and the star does not need to change its own output for its appearance to change. Astronomers distinguish these viewing conditions from ____6____ properties belonging to the source itself.\n\nOther complications remain. Light can be ____7____ by material along its route, and observations made in different wavelength ranges may emphasise different features. For ground-based measurements, the atmosphere and instrument can affect the reading too. Recording those conditions helps explain the result rather than merely adding administrative detail.\n\nComparing two measurements requires knowing enough about how they were obtained to decide whether they are ____8____.\n\nEstimating a star's properties is therefore an ____9____ from evidence, not merely reading a value from its visible size in a photograph. More observations may reduce ____10____, but they do not make the method or its assumptions irrelevant.\n\nFor a beginner, the central idea is accessible without performing a calculation: looking bright and producing much light are different claims. A careful explanation connects them through information about the source, the journey of the light and the conditions under which it is observed.",
+            "explanation": "Luminosity names the star’s light output. Distance is separation, observer a viewer, inference a conclusion and uncertainty doubt; approval permission does not describe emitted power.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. allocate"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. approval"
+              },
+              {
+                "id": "o3",
+                "text": "D. comparable"
+              },
+              {
+                "id": "o4",
+                "text": "E. conventional"
+              },
+              {
+                "id": "o5",
+                "text": "F. distance"
+              },
+              {
+                "id": "o6",
+                "text": "G. emitted"
+              },
+              {
+                "id": "o7",
+                "text": "H. inference"
+              },
+              {
+                "id": "o8",
+                "text": "I. intrinsic"
+              },
+              {
+                "id": "o9",
+                "text": "J. luminosity"
+              },
+              {
+                "id": "o10",
+                "text": "K. obscured"
+              },
+              {
+                "id": "o11",
+                "text": "L. observer"
+              },
+              {
+                "id": "o12",
+                "text": "M. temporary"
+              },
+              {
+                "id": "o13",
+                "text": "N. uncertainty"
+              },
+              {
+                "id": "o14",
+                "text": "O. voluntary"
+              }
+            ],
+            "answer": "o9"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.star-brightness-070.whole.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 3.",
+            "material": "The star that only looked faint\n\nThe brightness of a star in the night sky is not a direct measure of everything the star produces. What reaches an observer is its ____1____ brightness. Its total light output, described by its ____2____, is a different property. Keeping the distinction clear prevents a familiar visual impression from becoming an unjustified physical conclusion.\n\nOne important factor is ____3____. A powerful source can look faint when it is far away, while a less powerful nearby source can seem brighter. The amount of light ____4____ by the star and the amount received at a particular place are therefore related but not identical quantities.\n\nThe location of the ____5____ matters to the received view. Move that viewpoint, and the star does not need to change its own output for its appearance to change. Astronomers distinguish these viewing conditions from ____6____ properties belonging to the source itself.\n\nOther complications remain. Light can be ____7____ by material along its route, and observations made in different wavelength ranges may emphasise different features. For ground-based measurements, the atmosphere and instrument can affect the reading too. Recording those conditions helps explain the result rather than merely adding administrative detail.\n\nComparing two measurements requires knowing enough about how they were obtained to decide whether they are ____8____.\n\nEstimating a star's properties is therefore an ____9____ from evidence, not merely reading a value from its visible size in a photograph. More observations may reduce ____10____, but they do not make the method or its assumptions irrelevant.\n\nFor a beginner, the central idea is accessible without performing a calculation: looking bright and producing much light are different claims. A careful explanation connects them through information about the source, the journey of the light and the conditions under which it is observed.",
+            "explanation": "Distance is defined by far away versus nearby. Luminosity output and uncertainty doubt do not name the separation responsible for this comparison.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. allocate"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. approval"
+              },
+              {
+                "id": "o3",
+                "text": "D. comparable"
+              },
+              {
+                "id": "o4",
+                "text": "E. conventional"
+              },
+              {
+                "id": "o5",
+                "text": "F. distance"
+              },
+              {
+                "id": "o6",
+                "text": "G. emitted"
+              },
+              {
+                "id": "o7",
+                "text": "H. inference"
+              },
+              {
+                "id": "o8",
+                "text": "I. intrinsic"
+              },
+              {
+                "id": "o9",
+                "text": "J. luminosity"
+              },
+              {
+                "id": "o10",
+                "text": "K. obscured"
+              },
+              {
+                "id": "o11",
+                "text": "L. observer"
+              },
+              {
+                "id": "o12",
+                "text": "M. temporary"
+              },
+              {
+                "id": "o13",
+                "text": "N. uncertainty"
+              },
+              {
+                "id": "o14",
+                "text": "O. voluntary"
+              }
+            ],
+            "answer": "o5"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.star-brightness-070.whole.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 4.",
+            "material": "The star that only looked faint\n\nThe brightness of a star in the night sky is not a direct measure of everything the star produces. What reaches an observer is its ____1____ brightness. Its total light output, described by its ____2____, is a different property. Keeping the distinction clear prevents a familiar visual impression from becoming an unjustified physical conclusion.\n\nOne important factor is ____3____. A powerful source can look faint when it is far away, while a less powerful nearby source can seem brighter. The amount of light ____4____ by the star and the amount received at a particular place are therefore related but not identical quantities.\n\nThe location of the ____5____ matters to the received view. Move that viewpoint, and the star does not need to change its own output for its appearance to change. Astronomers distinguish these viewing conditions from ____6____ properties belonging to the source itself.\n\nOther complications remain. Light can be ____7____ by material along its route, and observations made in different wavelength ranges may emphasise different features. For ground-based measurements, the atmosphere and instrument can affect the reading too. Recording those conditions helps explain the result rather than merely adding administrative detail.\n\nComparing two measurements requires knowing enough about how they were obtained to decide whether they are ____8____.\n\nEstimating a star's properties is therefore an ____9____ from evidence, not merely reading a value from its visible size in a photograph. More observations may reduce ____10____, but they do not make the method or its assumptions irrelevant.\n\nFor a beginner, the central idea is accessible without performing a calculation: looking bright and producing much light are different claims. A careful explanation connects them through information about the source, the journey of the light and the conditions under which it is observed.",
+            "explanation": "Light is emitted by the source. Obscured means blocked along the route, the later problem; other entries do not supply the required participle for production of light.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. allocate"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. approval"
+              },
+              {
+                "id": "o3",
+                "text": "D. comparable"
+              },
+              {
+                "id": "o4",
+                "text": "E. conventional"
+              },
+              {
+                "id": "o5",
+                "text": "F. distance"
+              },
+              {
+                "id": "o6",
+                "text": "G. emitted"
+              },
+              {
+                "id": "o7",
+                "text": "H. inference"
+              },
+              {
+                "id": "o8",
+                "text": "I. intrinsic"
+              },
+              {
+                "id": "o9",
+                "text": "J. luminosity"
+              },
+              {
+                "id": "o10",
+                "text": "K. obscured"
+              },
+              {
+                "id": "o11",
+                "text": "L. observer"
+              },
+              {
+                "id": "o12",
+                "text": "M. temporary"
+              },
+              {
+                "id": "o13",
+                "text": "N. uncertainty"
+              },
+              {
+                "id": "o14",
+                "text": "O. voluntary"
+              }
+            ],
+            "answer": "o6"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.star-brightness-070.whole.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 5.",
+            "material": "The star that only looked faint\n\nThe brightness of a star in the night sky is not a direct measure of everything the star produces. What reaches an observer is its ____1____ brightness. Its total light output, described by its ____2____, is a different property. Keeping the distinction clear prevents a familiar visual impression from becoming an unjustified physical conclusion.\n\nOne important factor is ____3____. A powerful source can look faint when it is far away, while a less powerful nearby source can seem brighter. The amount of light ____4____ by the star and the amount received at a particular place are therefore related but not identical quantities.\n\nThe location of the ____5____ matters to the received view. Move that viewpoint, and the star does not need to change its own output for its appearance to change. Astronomers distinguish these viewing conditions from ____6____ properties belonging to the source itself.\n\nOther complications remain. Light can be ____7____ by material along its route, and observations made in different wavelength ranges may emphasise different features. For ground-based measurements, the atmosphere and instrument can affect the reading too. Recording those conditions helps explain the result rather than merely adding administrative detail.\n\nComparing two measurements requires knowing enough about how they were obtained to decide whether they are ____8____.\n\nEstimating a star's properties is therefore an ____9____ from evidence, not merely reading a value from its visible size in a photograph. More observations may reduce ____10____, but they do not make the method or its assumptions irrelevant.\n\nFor a beginner, the central idea is accessible without performing a calculation: looking bright and producing much light are different claims. A careful explanation connects them through information about the source, the journey of the light and the conditions under which it is observed.",
+            "explanation": "Observer is the person/location from which the view is received, developed by move that viewpoint. Distance measures separation, not the viewer; other nouns do not identify the perceiving position.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. allocate"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. approval"
+              },
+              {
+                "id": "o3",
+                "text": "D. comparable"
+              },
+              {
+                "id": "o4",
+                "text": "E. conventional"
+              },
+              {
+                "id": "o5",
+                "text": "F. distance"
+              },
+              {
+                "id": "o6",
+                "text": "G. emitted"
+              },
+              {
+                "id": "o7",
+                "text": "H. inference"
+              },
+              {
+                "id": "o8",
+                "text": "I. intrinsic"
+              },
+              {
+                "id": "o9",
+                "text": "J. luminosity"
+              },
+              {
+                "id": "o10",
+                "text": "K. obscured"
+              },
+              {
+                "id": "o11",
+                "text": "L. observer"
+              },
+              {
+                "id": "o12",
+                "text": "M. temporary"
+              },
+              {
+                "id": "o13",
+                "text": "N. uncertainty"
+              },
+              {
+                "id": "o14",
+                "text": "O. voluntary"
+              }
+            ],
+            "answer": "o11"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.star-brightness-070.whole.q6",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 6.",
+            "material": "The star that only looked faint\n\nThe brightness of a star in the night sky is not a direct measure of everything the star produces. What reaches an observer is its ____1____ brightness. Its total light output, described by its ____2____, is a different property. Keeping the distinction clear prevents a familiar visual impression from becoming an unjustified physical conclusion.\n\nOne important factor is ____3____. A powerful source can look faint when it is far away, while a less powerful nearby source can seem brighter. The amount of light ____4____ by the star and the amount received at a particular place are therefore related but not identical quantities.\n\nThe location of the ____5____ matters to the received view. Move that viewpoint, and the star does not need to change its own output for its appearance to change. Astronomers distinguish these viewing conditions from ____6____ properties belonging to the source itself.\n\nOther complications remain. Light can be ____7____ by material along its route, and observations made in different wavelength ranges may emphasise different features. For ground-based measurements, the atmosphere and instrument can affect the reading too. Recording those conditions helps explain the result rather than merely adding administrative detail.\n\nComparing two measurements requires knowing enough about how they were obtained to decide whether they are ____8____.\n\nEstimating a star's properties is therefore an ____9____ from evidence, not merely reading a value from its visible size in a photograph. More observations may reduce ____10____, but they do not make the method or its assumptions irrelevant.\n\nFor a beginner, the central idea is accessible without performing a calculation: looking bright and producing much light are different claims. A careful explanation connects them through information about the source, the journey of the light and the conditions under which it is observed.",
+            "explanation": "Intrinsic properties belong to the source itself. Apparent concerns appearance, comparable comparison and conventional customary practice; temporary/voluntary do not express inherent source properties.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. allocate"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. approval"
+              },
+              {
+                "id": "o3",
+                "text": "D. comparable"
+              },
+              {
+                "id": "o4",
+                "text": "E. conventional"
+              },
+              {
+                "id": "o5",
+                "text": "F. distance"
+              },
+              {
+                "id": "o6",
+                "text": "G. emitted"
+              },
+              {
+                "id": "o7",
+                "text": "H. inference"
+              },
+              {
+                "id": "o8",
+                "text": "I. intrinsic"
+              },
+              {
+                "id": "o9",
+                "text": "J. luminosity"
+              },
+              {
+                "id": "o10",
+                "text": "K. obscured"
+              },
+              {
+                "id": "o11",
+                "text": "L. observer"
+              },
+              {
+                "id": "o12",
+                "text": "M. temporary"
+              },
+              {
+                "id": "o13",
+                "text": "N. uncertainty"
+              },
+              {
+                "id": "o14",
+                "text": "O. voluntary"
+              }
+            ],
+            "answer": "o8"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.star-brightness-070.whole.q7",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 7.",
+            "material": "The star that only looked faint\n\nThe brightness of a star in the night sky is not a direct measure of everything the star produces. What reaches an observer is its ____1____ brightness. Its total light output, described by its ____2____, is a different property. Keeping the distinction clear prevents a familiar visual impression from becoming an unjustified physical conclusion.\n\nOne important factor is ____3____. A powerful source can look faint when it is far away, while a less powerful nearby source can seem brighter. The amount of light ____4____ by the star and the amount received at a particular place are therefore related but not identical quantities.\n\nThe location of the ____5____ matters to the received view. Move that viewpoint, and the star does not need to change its own output for its appearance to change. Astronomers distinguish these viewing conditions from ____6____ properties belonging to the source itself.\n\nOther complications remain. Light can be ____7____ by material along its route, and observations made in different wavelength ranges may emphasise different features. For ground-based measurements, the atmosphere and instrument can affect the reading too. Recording those conditions helps explain the result rather than merely adding administrative detail.\n\nComparing two measurements requires knowing enough about how they were obtained to decide whether they are ____8____.\n\nEstimating a star's properties is therefore an ____9____ from evidence, not merely reading a value from its visible size in a photograph. More observations may reduce ____10____, but they do not make the method or its assumptions irrelevant.\n\nFor a beginner, the central idea is accessible without performing a calculation: looking bright and producing much light are different claims. A careful explanation connects them through information about the source, the journey of the light and the conditions under which it is observed.",
+            "explanation": "Obscured light is blocked or dimmed by intervening material. Emitted concerns leaving the star rather than obstruction en route; the other entries do not describe that passive effect.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. allocate"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. approval"
+              },
+              {
+                "id": "o3",
+                "text": "D. comparable"
+              },
+              {
+                "id": "o4",
+                "text": "E. conventional"
+              },
+              {
+                "id": "o5",
+                "text": "F. distance"
+              },
+              {
+                "id": "o6",
+                "text": "G. emitted"
+              },
+              {
+                "id": "o7",
+                "text": "H. inference"
+              },
+              {
+                "id": "o8",
+                "text": "I. intrinsic"
+              },
+              {
+                "id": "o9",
+                "text": "J. luminosity"
+              },
+              {
+                "id": "o10",
+                "text": "K. obscured"
+              },
+              {
+                "id": "o11",
+                "text": "L. observer"
+              },
+              {
+                "id": "o12",
+                "text": "M. temporary"
+              },
+              {
+                "id": "o13",
+                "text": "N. uncertainty"
+              },
+              {
+                "id": "o14",
+                "text": "O. voluntary"
+              }
+            ],
+            "answer": "o10"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.star-brightness-070.whole.q8",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 8.",
+            "material": "The star that only looked faint\n\nThe brightness of a star in the night sky is not a direct measure of everything the star produces. What reaches an observer is its ____1____ brightness. Its total light output, described by its ____2____, is a different property. Keeping the distinction clear prevents a familiar visual impression from becoming an unjustified physical conclusion.\n\nOne important factor is ____3____. A powerful source can look faint when it is far away, while a less powerful nearby source can seem brighter. The amount of light ____4____ by the star and the amount received at a particular place are therefore related but not identical quantities.\n\nThe location of the ____5____ matters to the received view. Move that viewpoint, and the star does not need to change its own output for its appearance to change. Astronomers distinguish these viewing conditions from ____6____ properties belonging to the source itself.\n\nOther complications remain. Light can be ____7____ by material along its route, and observations made in different wavelength ranges may emphasise different features. For ground-based measurements, the atmosphere and instrument can affect the reading too. Recording those conditions helps explain the result rather than merely adding administrative detail.\n\nComparing two measurements requires knowing enough about how they were obtained to decide whether they are ____8____.\n\nEstimating a star's properties is therefore an ____9____ from evidence, not merely reading a value from its visible size in a photograph. More observations may reduce ____10____, but they do not make the method or its assumptions irrelevant.\n\nFor a beginner, the central idea is accessible without performing a calculation: looking bright and producing much light are different claims. A careful explanation connects them through information about the source, the journey of the light and the conditions under which it is observed.",
+            "explanation": "Comparable measurements can meaningfully be compared after accounting for methods. Conventional means usual, apparent seeming, temporary short-lived and voluntary chosen; none ensures a valid basis of comparison.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. allocate"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. approval"
+              },
+              {
+                "id": "o3",
+                "text": "D. comparable"
+              },
+              {
+                "id": "o4",
+                "text": "E. conventional"
+              },
+              {
+                "id": "o5",
+                "text": "F. distance"
+              },
+              {
+                "id": "o6",
+                "text": "G. emitted"
+              },
+              {
+                "id": "o7",
+                "text": "H. inference"
+              },
+              {
+                "id": "o8",
+                "text": "I. intrinsic"
+              },
+              {
+                "id": "o9",
+                "text": "J. luminosity"
+              },
+              {
+                "id": "o10",
+                "text": "K. obscured"
+              },
+              {
+                "id": "o11",
+                "text": "L. observer"
+              },
+              {
+                "id": "o12",
+                "text": "M. temporary"
+              },
+              {
+                "id": "o13",
+                "text": "N. uncertainty"
+              },
+              {
+                "id": "o14",
+                "text": "O. voluntary"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.star-brightness-070.whole.q9",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 9.",
+            "material": "The star that only looked faint\n\nThe brightness of a star in the night sky is not a direct measure of everything the star produces. What reaches an observer is its ____1____ brightness. Its total light output, described by its ____2____, is a different property. Keeping the distinction clear prevents a familiar visual impression from becoming an unjustified physical conclusion.\n\nOne important factor is ____3____. A powerful source can look faint when it is far away, while a less powerful nearby source can seem brighter. The amount of light ____4____ by the star and the amount received at a particular place are therefore related but not identical quantities.\n\nThe location of the ____5____ matters to the received view. Move that viewpoint, and the star does not need to change its own output for its appearance to change. Astronomers distinguish these viewing conditions from ____6____ properties belonging to the source itself.\n\nOther complications remain. Light can be ____7____ by material along its route, and observations made in different wavelength ranges may emphasise different features. For ground-based measurements, the atmosphere and instrument can affect the reading too. Recording those conditions helps explain the result rather than merely adding administrative detail.\n\nComparing two measurements requires knowing enough about how they were obtained to decide whether they are ____8____.\n\nEstimating a star's properties is therefore an ____9____ from evidence, not merely reading a value from its visible size in a photograph. More observations may reduce ____10____, but they do not make the method or its assumptions irrelevant.\n\nFor a beginner, the central idea is accessible without performing a calculation: looking bright and producing much light are different claims. A careful explanation connects them through information about the source, the journey of the light and the conditions under which it is observed.",
+            "explanation": "An inference is a conclusion drawn from observations. Luminosity is a physical property, distance separation, observer a viewer and approval consent; none names the reasoning process.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. allocate"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. approval"
+              },
+              {
+                "id": "o3",
+                "text": "D. comparable"
+              },
+              {
+                "id": "o4",
+                "text": "E. conventional"
+              },
+              {
+                "id": "o5",
+                "text": "F. distance"
+              },
+              {
+                "id": "o6",
+                "text": "G. emitted"
+              },
+              {
+                "id": "o7",
+                "text": "H. inference"
+              },
+              {
+                "id": "o8",
+                "text": "I. intrinsic"
+              },
+              {
+                "id": "o9",
+                "text": "J. luminosity"
+              },
+              {
+                "id": "o10",
+                "text": "K. obscured"
+              },
+              {
+                "id": "o11",
+                "text": "L. observer"
+              },
+              {
+                "id": "o12",
+                "text": "M. temporary"
+              },
+              {
+                "id": "o13",
+                "text": "N. uncertainty"
+              },
+              {
+                "id": "o14",
+                "text": "O. voluntary"
+              }
+            ],
+            "answer": "o7"
+          },
+          {
+            "id": "expansion.20261024.postgraduate.star-brightness-070.whole.q10",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete passage. Use each word at most once; five words are not needed.",
+            "prompt": "Choose the word for blank 10.",
+            "material": "The star that only looked faint\n\nThe brightness of a star in the night sky is not a direct measure of everything the star produces. What reaches an observer is its ____1____ brightness. Its total light output, described by its ____2____, is a different property. Keeping the distinction clear prevents a familiar visual impression from becoming an unjustified physical conclusion.\n\nOne important factor is ____3____. A powerful source can look faint when it is far away, while a less powerful nearby source can seem brighter. The amount of light ____4____ by the star and the amount received at a particular place are therefore related but not identical quantities.\n\nThe location of the ____5____ matters to the received view. Move that viewpoint, and the star does not need to change its own output for its appearance to change. Astronomers distinguish these viewing conditions from ____6____ properties belonging to the source itself.\n\nOther complications remain. Light can be ____7____ by material along its route, and observations made in different wavelength ranges may emphasise different features. For ground-based measurements, the atmosphere and instrument can affect the reading too. Recording those conditions helps explain the result rather than merely adding administrative detail.\n\nComparing two measurements requires knowing enough about how they were obtained to decide whether they are ____8____.\n\nEstimating a star's properties is therefore an ____9____ from evidence, not merely reading a value from its visible size in a photograph. More observations may reduce ____10____, but they do not make the method or its assumptions irrelevant.\n\nFor a beginner, the central idea is accessible without performing a calculation: looking bright and producing much light are different claims. A careful explanation connects them through information about the source, the journey of the light and the conditions under which it is observed.",
+            "explanation": "Uncertainty is reduced by additional evidence. Approval is social permission, distance physical separation and luminosity the output; additional observations do not necessarily reduce those.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. allocate"
+              },
+              {
+                "id": "o1",
+                "text": "B. apparent"
+              },
+              {
+                "id": "o2",
+                "text": "C. approval"
+              },
+              {
+                "id": "o3",
+                "text": "D. comparable"
+              },
+              {
+                "id": "o4",
+                "text": "E. conventional"
+              },
+              {
+                "id": "o5",
+                "text": "F. distance"
+              },
+              {
+                "id": "o6",
+                "text": "G. emitted"
+              },
+              {
+                "id": "o7",
+                "text": "H. inference"
+              },
+              {
+                "id": "o8",
+                "text": "I. intrinsic"
+              },
+              {
+                "id": "o9",
+                "text": "J. luminosity"
+              },
+              {
+                "id": "o10",
+                "text": "K. obscured"
+              },
+              {
+                "id": "o11",
+                "text": "L. observer"
+              },
+              {
+                "id": "o12",
+                "text": "M. temporary"
+              },
+              {
+                "id": "o13",
+                "text": "N. uncertainty"
+              },
+              {
+                "id": "o14",
+                "text": "O. voluntary"
+              }
+            ],
+            "answer": "o13"
+          }
+        ]
+      },
+      "contentHash": "54edc6f4d15b2ef153203006150d52fa3374687bba19ef9b0e6a3cde9ac9b777",
+      "reviewNotes": "Four new adult whole-passage originals: two CET4 and one CET6 ten-gap/fifteen-word banks, plus one C1 eight-gap formation. Fictional meeting/exhibition cases and basic general process/astronomy discussion, no invented study or numbers. Same-author all-key/all-alternative and form review, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.advanced.exhibition-decisions-070",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "10·24新题 · Decisions before opening",
+        "summary": "Decisions before opening，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.c1.sample1.part3",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 完整形式参照已核普通卷/官方样卷；八空构形不等高级档与C1等值。作者自审与本机对照不等独立教研、学生、商用、生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four new adult whole-passage originals: two CET4 and one CET6 ten-gap/fifteen-word banks, plus one C1 eight-gap formation. Fictional meeting/exhibition cases and basic general process/astronomy discussion, no invented study or numbers. Same-author all-key/all-alternative and form review, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.advanced.exhibition-decisions-070",
+          "family": "passage_form",
+          "label": "Decisions before opening",
+          "candidateSHA256": "1df8f08d6258a3ba1241e3e8434008cf145530958cde4db91291df095a4a0892",
+          "authorCheckSHA256": "59a93b70e71d385234d299aec2a9d72b719376d775e066653266eff19e97081a",
+          "sourceGroupIds": [
+            "expansion.20261024.advanced.exhibition-decisions-070#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b070；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Decisions before opening\n\nOur small exhibition required careful ____1____ (PREPARE). Each participant had a role, but the organiser wanted us to develop greater ____2____ (INDEPENDENT) rather than ask her to make every minor decision.\n\nWe were certain the booked room would remain available. An ____3____ (EXPECT) change proved us wrong: the room we had booked became unavailable. The replacement was smaller and had no wall suitable for our original display. We showed ____4____ (FLEXIBLE) by trying a table-based arrangement instead of insisting that the first layout was the only possible one.\n\nBefore moving the objects, we agreed on a ____5____ (RELY) method of keeping each label with the right item. We also took visitors' movement into ____6____ (CONSIDER), leaving a clear route rather than filling every space with furniture.\n\nBy opening time, we could explain our choices ____7____ (CONFIDENT). That did not mean every choice was perfect. It meant we understood what we had done and could respond to a question without pretending that no alternative existed.\n\nThe result felt like a shared ____8____ (ACHIEVE). We had used guidance without making the organiser the only person responsible for thinking. The change of room had been inconvenient, but it had revealed what we could decide together."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.advanced.exhibition-decisions-070.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 1 with one word formed from PREPARE.",
+            "material": "Decisions before opening\n\nOur small exhibition required careful ____1____ (PREPARE). Each participant had a role, but the organiser wanted us to develop greater ____2____ (INDEPENDENT) rather than ask her to make every minor decision.\n\nWe were certain the booked room would remain available. An ____3____ (EXPECT) change proved us wrong: the room we had booked became unavailable. The replacement was smaller and had no wall suitable for our original display. We showed ____4____ (FLEXIBLE) by trying a table-based arrangement instead of insisting that the first layout was the only possible one.\n\nBefore moving the objects, we agreed on a ____5____ (RELY) method of keeping each label with the right item. We also took visitors' movement into ____6____ (CONSIDER), leaving a clear route rather than filling every space with furniture.\n\nBy opening time, we could explain our choices ____7____ (CONFIDENT). That did not mean every choice was perfect. It meant we understood what we had done and could respond to a question without pretending that no alternative existed.\n\nThe result felt like a shared ____8____ (ACHIEVE). We had used guidance without making the organiser the only person responsible for thinking. The change of room had been inconvenient, but it had revealed what we could decide together.",
+            "explanation": "Careful preparation requires a noun for planning work. Prepare is verb and prepared an adjective/participle.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "preparation"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "prepare",
+                "prepared"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.exhibition-decisions-070.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 2 with one word formed from INDEPENDENT.",
+            "material": "Decisions before opening\n\nOur small exhibition required careful ____1____ (PREPARE). Each participant had a role, but the organiser wanted us to develop greater ____2____ (INDEPENDENT) rather than ask her to make every minor decision.\n\nWe were certain the booked room would remain available. An ____3____ (EXPECT) change proved us wrong: the room we had booked became unavailable. The replacement was smaller and had no wall suitable for our original display. We showed ____4____ (FLEXIBLE) by trying a table-based arrangement instead of insisting that the first layout was the only possible one.\n\nBefore moving the objects, we agreed on a ____5____ (RELY) method of keeping each label with the right item. We also took visitors' movement into ____6____ (CONSIDER), leaving a clear route rather than filling every space with furniture.\n\nBy opening time, we could explain our choices ____7____ (CONFIDENT). That did not mean every choice was perfect. It meant we understood what we had done and could respond to a question without pretending that no alternative existed.\n\nThe result felt like a shared ____8____ (ACHIEVE). We had used guidance without making the organiser the only person responsible for thinking. The change of room had been inconvenient, but it had revealed what we could decide together.",
+            "explanation": "Greater independence names ability to act without constant direction. The adjective/adverb do not fill the noun object.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "independence"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "independent",
+                "independently"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.exhibition-decisions-070.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 3 with one word formed from EXPECT.",
+            "material": "Decisions before opening\n\nOur small exhibition required careful ____1____ (PREPARE). Each participant had a role, but the organiser wanted us to develop greater ____2____ (INDEPENDENT) rather than ask her to make every minor decision.\n\nWe were certain the booked room would remain available. An ____3____ (EXPECT) change proved us wrong: the room we had booked became unavailable. The replacement was smaller and had no wall suitable for our original display. We showed ____4____ (FLEXIBLE) by trying a table-based arrangement instead of insisting that the first layout was the only possible one.\n\nBefore moving the objects, we agreed on a ____5____ (RELY) method of keeping each label with the right item. We also took visitors' movement into ____6____ (CONSIDER), leaving a clear route rather than filling every space with furniture.\n\nBy opening time, we could explain our choices ____7____ (CONFIDENT). That did not mean every choice was perfect. It meant we understood what we had done and could respond to a question without pretending that no alternative existed.\n\nThe result felt like a shared ____8____ (ACHIEVE). We had used guidance without making the organiser the only person responsible for thinking. The change of room had been inconvenient, but it had revealed what we could decide together.",
+            "explanation": "The change contradicts their confident expectation that the room would remain available, so unexpected. Expectation is noun and unexpectedly adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "unexpected"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "expectation",
+                "unexpectedly"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.exhibition-decisions-070.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 4 with one word formed from FLEXIBLE.",
+            "material": "Decisions before opening\n\nOur small exhibition required careful ____1____ (PREPARE). Each participant had a role, but the organiser wanted us to develop greater ____2____ (INDEPENDENT) rather than ask her to make every minor decision.\n\nWe were certain the booked room would remain available. An ____3____ (EXPECT) change proved us wrong: the room we had booked became unavailable. The replacement was smaller and had no wall suitable for our original display. We showed ____4____ (FLEXIBLE) by trying a table-based arrangement instead of insisting that the first layout was the only possible one.\n\nBefore moving the objects, we agreed on a ____5____ (RELY) method of keeping each label with the right item. We also took visitors' movement into ____6____ (CONSIDER), leaving a clear route rather than filling every space with furniture.\n\nBy opening time, we could explain our choices ____7____ (CONFIDENT). That did not mean every choice was perfect. It meant we understood what we had done and could respond to a question without pretending that no alternative existed.\n\nThe result felt like a shared ____8____ (ACHIEVE). We had used guidance without making the organiser the only person responsible for thinking. The change of room had been inconvenient, but it had revealed what we could decide together.",
+            "explanation": "Showed flexibility names adaptable behaviour. Flexible is adjective and flexibly adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "flexibility"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "flexible",
+                "flexibly"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.exhibition-decisions-070.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 5 with one word formed from RELY.",
+            "material": "Decisions before opening\n\nOur small exhibition required careful ____1____ (PREPARE). Each participant had a role, but the organiser wanted us to develop greater ____2____ (INDEPENDENT) rather than ask her to make every minor decision.\n\nWe were certain the booked room would remain available. An ____3____ (EXPECT) change proved us wrong: the room we had booked became unavailable. The replacement was smaller and had no wall suitable for our original display. We showed ____4____ (FLEXIBLE) by trying a table-based arrangement instead of insisting that the first layout was the only possible one.\n\nBefore moving the objects, we agreed on a ____5____ (RELY) method of keeping each label with the right item. We also took visitors' movement into ____6____ (CONSIDER), leaving a clear route rather than filling every space with furniture.\n\nBy opening time, we could explain our choices ____7____ (CONFIDENT). That did not mean every choice was perfect. It meant we understood what we had done and could respond to a question without pretending that no alternative existed.\n\nThe result felt like a shared ____8____ (ACHIEVE). We had used guidance without making the organiser the only person responsible for thinking. The change of room had been inconvenient, but it had revealed what we could decide together.",
+            "explanation": "A reliable method needs an adjective for dependability. Reliability is noun and reliably adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "reliable"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "reliability",
+                "reliably"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.exhibition-decisions-070.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 6 with one word formed from CONSIDER.",
+            "material": "Decisions before opening\n\nOur small exhibition required careful ____1____ (PREPARE). Each participant had a role, but the organiser wanted us to develop greater ____2____ (INDEPENDENT) rather than ask her to make every minor decision.\n\nWe were certain the booked room would remain available. An ____3____ (EXPECT) change proved us wrong: the room we had booked became unavailable. The replacement was smaller and had no wall suitable for our original display. We showed ____4____ (FLEXIBLE) by trying a table-based arrangement instead of insisting that the first layout was the only possible one.\n\nBefore moving the objects, we agreed on a ____5____ (RELY) method of keeping each label with the right item. We also took visitors' movement into ____6____ (CONSIDER), leaving a clear route rather than filling every space with furniture.\n\nBy opening time, we could explain our choices ____7____ (CONFIDENT). That did not mean every choice was perfect. It meant we understood what we had done and could respond to a question without pretending that no alternative existed.\n\nThe result felt like a shared ____8____ (ACHIEVE). We had used guidance without making the organiser the only person responsible for thinking. The change of room had been inconvenient, but it had revealed what we could decide together.",
+            "explanation": "Taking into consideration requires the noun consideration. Consider is verb and considerate adjective.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "consideration"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "consider",
+                "considerate"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.exhibition-decisions-070.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 7 with one word formed from CONFIDENT.",
+            "material": "Decisions before opening\n\nOur small exhibition required careful ____1____ (PREPARE). Each participant had a role, but the organiser wanted us to develop greater ____2____ (INDEPENDENT) rather than ask her to make every minor decision.\n\nWe were certain the booked room would remain available. An ____3____ (EXPECT) change proved us wrong: the room we had booked became unavailable. The replacement was smaller and had no wall suitable for our original display. We showed ____4____ (FLEXIBLE) by trying a table-based arrangement instead of insisting that the first layout was the only possible one.\n\nBefore moving the objects, we agreed on a ____5____ (RELY) method of keeping each label with the right item. We also took visitors' movement into ____6____ (CONSIDER), leaving a clear route rather than filling every space with furniture.\n\nBy opening time, we could explain our choices ____7____ (CONFIDENT). That did not mean every choice was perfect. It meant we understood what we had done and could respond to a question without pretending that no alternative existed.\n\nThe result felt like a shared ____8____ (ACHIEVE). We had used guidance without making the organiser the only person responsible for thinking. The change of room had been inconvenient, but it had revealed what we could decide together.",
+            "explanation": "Confidently modifies explain. Confident is adjective and confidence noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "confidently"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "confident",
+                "confidence"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.exhibition-decisions-070.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form one word that fits each gap.",
+            "prompt": "Fill gap 8 with one word formed from ACHIEVE.",
+            "material": "Decisions before opening\n\nOur small exhibition required careful ____1____ (PREPARE). Each participant had a role, but the organiser wanted us to develop greater ____2____ (INDEPENDENT) rather than ask her to make every minor decision.\n\nWe were certain the booked room would remain available. An ____3____ (EXPECT) change proved us wrong: the room we had booked became unavailable. The replacement was smaller and had no wall suitable for our original display. We showed ____4____ (FLEXIBLE) by trying a table-based arrangement instead of insisting that the first layout was the only possible one.\n\nBefore moving the objects, we agreed on a ____5____ (RELY) method of keeping each label with the right item. We also took visitors' movement into ____6____ (CONSIDER), leaving a clear route rather than filling every space with furniture.\n\nBy opening time, we could explain our choices ____7____ (CONFIDENT). That did not mean every choice was perfect. It meant we understood what we had done and could respond to a question without pretending that no alternative existed.\n\nThe result felt like a shared ____8____ (ACHIEVE). We had used guidance without making the organiser the only person responsible for thinking. The change of room had been inconvenient, but it had revealed what we could decide together.",
+            "explanation": "A shared achievement requires a count noun for the completed result. Achieve is verb and achievable adjective.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "achievement"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "achieve",
+                "achievable"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "ae6bff3a53e7417551ab3eff10dc0b36b8b4884b2e64151b98131c4c8c2708b4",
+      "reviewNotes": "Four new adult whole-passage originals: two CET4 and one CET6 ten-gap/fifteen-word banks, plus one C1 eight-gap formation. Fictional meeting/exhibition cases and basic general process/astronomy discussion, no invented study or numbers. Same-author all-key/all-alternative and form review, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
