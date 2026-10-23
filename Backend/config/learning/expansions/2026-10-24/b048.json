@@ -1,0 +1,1094 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b048",
+  "createdAt": "2026-10-23T21:49:11.878882+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary4.pool-telephone-048",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "10·24新题 · Calling the swimming pool",
+        "summary": "Calling the swimming pool，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original five-question reading using the referenced dialogue, story or four-entry information structure. New contexts and vocabulary are provisional, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new whole-reading elementary practices: two phone dialogues, two explicitly fictional animal stories and two four-entry information tables. English assessment text, same-author evidence and distractor checks; provisional level adaptation, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary4.pool-telephone-048",
+          "family": "reading_choice",
+          "label": "Calling the swimming pool",
+          "candidateSHA256": "b9e76cc7505c285bcb2931ddf9ca9a16dffb70d6b63ed11c461d7f95e958fbcc",
+          "authorCheckSHA256": "7ca90559559f54fb46d552a85c261cd882c51d4c7d32e59e7df0544d3b151623",
+          "sourceGroupIds": [
+            "expansion.20261024.primary4.pool-telephone-048#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b048；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Calling the swimming pool\n\nMan: Green Lane Pool. Can I help?\nAmy: Hello. Is the pool open on Sunday morning?\nMan: Yes, from eight o'clock. Swimming lessons begin at nine, so free swimming stops then.\nAmy: Can my little brother come? He's six.\nMan: Yes, but an adult must be in the water with him. Children under eight cannot swim here alone.\nAmy: Dad will come with us. Do we need swimming hats?\nMan: Yes. If you do not have one, you can buy one at the desk.\nAmy: Can we bring a ball?\nMan: Not during free swimming. There is a ball session on Sunday afternoon.\nAmy: Is there somewhere to eat afterwards?\nMan: Our café opens at ten. You can take food to the picnic tables outside before that.\nAmy: Thank you. We'll bring our hats and a picnic."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary4.pool-telephone-048.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "When does free swimming stop on Sunday morning?",
+            "material": "Calling the swimming pool\n\nMan: Green Lane Pool. Can I help?\nAmy: Hello. Is the pool open on Sunday morning?\nMan: Yes, from eight o'clock. Swimming lessons begin at nine, so free swimming stops then.\nAmy: Can my little brother come? He's six.\nMan: Yes, but an adult must be in the water with him. Children under eight cannot swim here alone.\nAmy: Dad will come with us. Do we need swimming hats?\nMan: Yes. If you do not have one, you can buy one at the desk.\nAmy: Can we bring a ball?\nMan: Not during free swimming. There is a ball session on Sunday afternoon.\nAmy: Is there somewhere to eat afterwards?\nMan: Our café opens at ten. You can take food to the picnic tables outside before that.\nAmy: Thank you. We'll bring our hats and a picnic.",
+            "explanation": "Lessons begin at nine and free swimming stops then. Eight is opening; ten is café opening.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At eight"
+              },
+              {
+                "id": "o1",
+                "text": "At nine"
+              },
+              {
+                "id": "o2",
+                "text": "At ten"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.pool-telephone-048.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "What must Amy’s six-year-old brother do?",
+            "material": "Calling the swimming pool\n\nMan: Green Lane Pool. Can I help?\nAmy: Hello. Is the pool open on Sunday morning?\nMan: Yes, from eight o'clock. Swimming lessons begin at nine, so free swimming stops then.\nAmy: Can my little brother come? He's six.\nMan: Yes, but an adult must be in the water with him. Children under eight cannot swim here alone.\nAmy: Dad will come with us. Do we need swimming hats?\nMan: Yes. If you do not have one, you can buy one at the desk.\nAmy: Can we bring a ball?\nMan: Not during free swimming. There is a ball session on Sunday afternoon.\nAmy: Is there somewhere to eat afterwards?\nMan: Our café opens at ten. You can take food to the picnic tables outside before that.\nAmy: Thank you. We'll bring our hats and a picnic.",
+            "explanation": "Under-eight children require an adult in the water. They need not wait until ten and cannot swim alone.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Wait until he is ten to visit"
+              },
+              {
+                "id": "o1",
+                "text": "Have an adult in the water with him"
+              },
+              {
+                "id": "o2",
+                "text": "Swim alone"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.pool-telephone-048.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "Where can visitors buy a swimming hat?",
+            "material": "Calling the swimming pool\n\nMan: Green Lane Pool. Can I help?\nAmy: Hello. Is the pool open on Sunday morning?\nMan: Yes, from eight o'clock. Swimming lessons begin at nine, so free swimming stops then.\nAmy: Can my little brother come? He's six.\nMan: Yes, but an adult must be in the water with him. Children under eight cannot swim here alone.\nAmy: Dad will come with us. Do we need swimming hats?\nMan: Yes. If you do not have one, you can buy one at the desk.\nAmy: Can we bring a ball?\nMan: Not during free swimming. There is a ball session on Sunday afternoon.\nAmy: Is there somewhere to eat afterwards?\nMan: Our café opens at ten. You can take food to the picnic tables outside before that.\nAmy: Thank you. We'll bring our hats and a picnic.",
+            "explanation": "The man gives the desk as the purchase point; neither tables nor water is a shop.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At the picnic tables"
+              },
+              {
+                "id": "o1",
+                "text": "In the water"
+              },
+              {
+                "id": "o2",
+                "text": "At the desk"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary4.pool-telephone-048.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "May Amy use a ball during free swimming?",
+            "material": "Calling the swimming pool\n\nMan: Green Lane Pool. Can I help?\nAmy: Hello. Is the pool open on Sunday morning?\nMan: Yes, from eight o'clock. Swimming lessons begin at nine, so free swimming stops then.\nAmy: Can my little brother come? He's six.\nMan: Yes, but an adult must be in the water with him. Children under eight cannot swim here alone.\nAmy: Dad will come with us. Do we need swimming hats?\nMan: Yes. If you do not have one, you can buy one at the desk.\nAmy: Can we bring a ball?\nMan: Not during free swimming. There is a ball session on Sunday afternoon.\nAmy: Is there somewhere to eat afterwards?\nMan: Our café opens at ten. You can take food to the picnic tables outside before that.\nAmy: Thank you. We'll bring our hats and a picnic.",
+            "explanation": "Balls are prohibited during free swimming. The exception is a separate afternoon session, not early time or small size.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only if the ball is small"
+              },
+              {
+                "id": "o1",
+                "text": "Yes, before nine"
+              },
+              {
+                "id": "o2",
+                "text": "No, she may not"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary4.pool-telephone-048.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "What does Amy plan to bring?",
+            "material": "Calling the swimming pool\n\nMan: Green Lane Pool. Can I help?\nAmy: Hello. Is the pool open on Sunday morning?\nMan: Yes, from eight o'clock. Swimming lessons begin at nine, so free swimming stops then.\nAmy: Can my little brother come? He's six.\nMan: Yes, but an adult must be in the water with him. Children under eight cannot swim here alone.\nAmy: Dad will come with us. Do we need swimming hats?\nMan: Yes. If you do not have one, you can buy one at the desk.\nAmy: Can we bring a ball?\nMan: Not during free swimming. There is a ball session on Sunday afternoon.\nAmy: Is there somewhere to eat afterwards?\nMan: Our café opens at ten. You can take food to the picnic tables outside before that.\nAmy: Thank you. We'll bring our hats and a picnic.",
+            "explanation": "She explicitly plans hats and a picnic. Furniture is not requested and a ball cannot be used in free swimming.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A ball for free swimming"
+              },
+              {
+                "id": "o1",
+                "text": "A new desk and a chair"
+              },
+              {
+                "id": "o2",
+                "text": "Hats and a picnic"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "ae59e8693e17b049c20ed3420cf0bbb6f143f65b2f640d2b953f8f50d24775c7",
+      "reviewNotes": "Six new whole-reading elementary practices: two phone dialogues, two explicitly fictional animal stories and two four-entry information tables. English assessment text, same-author evidence and distractor checks; provisional level adaptation, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary4.tortoise-call-048",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "10·24新题 · A call about a tortoise",
+        "summary": "A call about a tortoise，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original five-question reading using the referenced dialogue, story or four-entry information structure. New contexts and vocabulary are provisional, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new whole-reading elementary practices: two phone dialogues, two explicitly fictional animal stories and two four-entry information tables. English assessment text, same-author evidence and distractor checks; provisional level adaptation, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary4.tortoise-call-048",
+          "family": "reading_choice",
+          "label": "A call about a tortoise",
+          "candidateSHA256": "c35b64121c33760a64dc99898b662e6b7e8ae931d5443d330ef0961c6174d2da",
+          "authorCheckSHA256": "3a8090d0d87e26eee083cc4dae06f844818845abd0432f725518ef982c0968c0",
+          "sourceGroupIds": [
+            "expansion.20261024.primary4.tortoise-call-048#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b048；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A call about a tortoise\n\nAunt: Hello, Ben. Can you look after my tortoise on Saturday?\nBen: Yes. What do I need to do?\nAunt: I'll leave his food in a green box. Give him the amount in the small cup, not the large one.\nBen: Shall I put him in the garden?\nAunt: No. Please leave him in his indoor enclosure. The garden gate is being repaired.\nBen: When should I come?\nAunt: After breakfast, about nine. Check that his water dish is clean and has fresh water.\nBen: Can my friend come and see him?\nAunt: Yes, but just watch. Please don't pick him up.\nBen: What if I have a question?\nAunt: My phone number is on the note beside the enclosure. You can call me.\nBen: Will you be home before dinner?\nAunt: Yes, at five. Thank you for helping."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary4.tortoise-call-048.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "Which cup should Ben use for the food?",
+            "material": "A call about a tortoise\n\nAunt: Hello, Ben. Can you look after my tortoise on Saturday?\nBen: Yes. What do I need to do?\nAunt: I'll leave his food in a green box. Give him the amount in the small cup, not the large one.\nBen: Shall I put him in the garden?\nAunt: No. Please leave him in his indoor enclosure. The garden gate is being repaired.\nBen: When should I come?\nAunt: After breakfast, about nine. Check that his water dish is clean and has fresh water.\nBen: Can my friend come and see him?\nAunt: Yes, but just watch. Please don't pick him up.\nBen: What if I have a question?\nAunt: My phone number is on the note beside the enclosure. You can call me.\nBen: Will you be home before dinner?\nAunt: Yes, at five. Thank you for helping.",
+            "explanation": "The aunt specifies the small cup and rejects the large one. Both would ignore the portion instruction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The large cup"
+              },
+              {
+                "id": "o1",
+                "text": "Both cups"
+              },
+              {
+                "id": "o2",
+                "text": "The small cup"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary4.tortoise-call-048.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "Where should the tortoise stay?",
+            "material": "A call about a tortoise\n\nAunt: Hello, Ben. Can you look after my tortoise on Saturday?\nBen: Yes. What do I need to do?\nAunt: I'll leave his food in a green box. Give him the amount in the small cup, not the large one.\nBen: Shall I put him in the garden?\nAunt: No. Please leave him in his indoor enclosure. The garden gate is being repaired.\nBen: When should I come?\nAunt: After breakfast, about nine. Check that his water dish is clean and has fresh water.\nBen: Can my friend come and see him?\nAunt: Yes, but just watch. Please don't pick him up.\nBen: What if I have a question?\nAunt: My phone number is on the note beside the enclosure. You can call me.\nBen: Will you be home before dinner?\nAunt: Yes, at five. Thank you for helping.",
+            "explanation": "The garden is unsuitable during gate repair. The enclosure is required; a school bag is never suggested.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Outside by the broken gate"
+              },
+              {
+                "id": "o1",
+                "text": "In the indoor enclosure"
+              },
+              {
+                "id": "o2",
+                "text": "In Ben’s school bag"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.tortoise-call-048.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "When should Ben arrive?",
+            "material": "A call about a tortoise\n\nAunt: Hello, Ben. Can you look after my tortoise on Saturday?\nBen: Yes. What do I need to do?\nAunt: I'll leave his food in a green box. Give him the amount in the small cup, not the large one.\nBen: Shall I put him in the garden?\nAunt: No. Please leave him in his indoor enclosure. The garden gate is being repaired.\nBen: When should I come?\nAunt: After breakfast, about nine. Check that his water dish is clean and has fresh water.\nBen: Can my friend come and see him?\nAunt: Yes, but just watch. Please don't pick him up.\nBen: What if I have a question?\nAunt: My phone number is on the note beside the enclosure. You can call me.\nBen: Will you be home before dinner?\nAunt: Yes, at five. Thank you for helping.",
+            "explanation": "After breakfast about nine is the visit time. Five is the aunt’s return; dinner is not his arrival.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "About five"
+              },
+              {
+                "id": "o1",
+                "text": "About nine"
+              },
+              {
+                "id": "o2",
+                "text": "At dinner time"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.tortoise-call-048.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "What may Ben’s friend do?",
+            "material": "A call about a tortoise\n\nAunt: Hello, Ben. Can you look after my tortoise on Saturday?\nBen: Yes. What do I need to do?\nAunt: I'll leave his food in a green box. Give him the amount in the small cup, not the large one.\nBen: Shall I put him in the garden?\nAunt: No. Please leave him in his indoor enclosure. The garden gate is being repaired.\nBen: When should I come?\nAunt: After breakfast, about nine. Check that his water dish is clean and has fresh water.\nBen: Can my friend come and see him?\nAunt: Yes, but just watch. Please don't pick him up.\nBen: What if I have a question?\nAunt: My phone number is on the note beside the enclosure. You can call me.\nBen: Will you be home before dinner?\nAunt: Yes, at five. Thank you for helping.",
+            "explanation": "The friend may watch but must not pick it up. Opening the repaired gate is not permitted.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Watch the tortoise"
+              },
+              {
+                "id": "o1",
+                "text": "Open the garden gate"
+              },
+              {
+                "id": "o2",
+                "text": "Pick the tortoise up"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.tortoise-call-048.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "How can Ben get help with a question?",
+            "material": "A call about a tortoise\n\nAunt: Hello, Ben. Can you look after my tortoise on Saturday?\nBen: Yes. What do I need to do?\nAunt: I'll leave his food in a green box. Give him the amount in the small cup, not the large one.\nBen: Shall I put him in the garden?\nAunt: No. Please leave him in his indoor enclosure. The garden gate is being repaired.\nBen: When should I come?\nAunt: After breakfast, about nine. Check that his water dish is clean and has fresh water.\nBen: Can my friend come and see him?\nAunt: Yes, but just watch. Please don't pick him up.\nBen: What if I have a question?\nAunt: My phone number is on the note beside the enclosure. You can call me.\nBen: Will you be home before dinner?\nAunt: Yes, at five. Thank you for helping.",
+            "explanation": "The note beside the enclosure gives a telephone number. Neither waiting a week nor asking an animal answers the arrangement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Call the number on the note"
+              },
+              {
+                "id": "o1",
+                "text": "Ask the tortoise"
+              },
+              {
+                "id": "o2",
+                "text": "Wait until next week"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "cc4dd7081f8742556c9c17dc577b871088f8a9f287676eb37306242ce8dbf4f4",
+      "reviewNotes": "Six new whole-reading elementary practices: two phone dialogues, two explicitly fictional animal stories and two four-entry information tables. English assessment text, same-author evidence and distractor checks; provisional level adaptation, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary5.snail-cart-048",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "10·24新题 · Snail’s shopping cart",
+        "summary": "Snail’s shopping cart，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.frog",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original five-question reading using the referenced dialogue, story or four-entry information structure. New contexts and vocabulary are provisional, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new whole-reading elementary practices: two phone dialogues, two explicitly fictional animal stories and two four-entry information tables. English assessment text, same-author evidence and distractor checks; provisional level adaptation, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary5.snail-cart-048",
+          "family": "reading_choice",
+          "label": "Snail’s shopping cart",
+          "candidateSHA256": "3a79bbffa47f93151aa91b340c933855fd3a2f52bf8592b79aa88f25d6a472e2",
+          "authorCheckSHA256": "610268e3792dfde2774bd5c323d1378fd04a0ce065b8e8b3c96f7bddad3d614a",
+          "sourceGroupIds": [
+            "expansion.20261024.primary5.snail-cart-048#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b048；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Snail’s shopping cart\n\nIn a village of talking animals, Snail borrowed Mouse's little cart to bring vegetables home. The cart moved easily on the flat path, and Snail was pleased. He bought a cabbage, three carrots and a bag of potatoes.\n\nOn the way back, the path went uphill. The cart became difficult to pull. Rabbit passed and offered to help, but Snail said, \"No, thank you. I borrowed it, so I must do everything myself.\"\n\nRabbit walked beside him. After a while, Snail stopped to rest. He was tired, and the vegetables were no nearer home.\n\n\"Borrowing the cart makes you responsible for returning it,\" Rabbit said. \"It doesn't mean you cannot ask for help.\"\n\nThis time, Snail accepted. Rabbit pulled while Snail pushed from behind. They reached Snail's house and shared a carrot snack. Then Snail cleaned the cart before taking it back.\n\nMouse asked whether it had been useful. \"Very useful,\" said Snail. \"But I needed another pair of paws on the hill.\" He thanked Mouse for the cart and Rabbit for the help. Next market day, he checked the route and asked Rabbit whether they could shop together."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary5.snail-cart-048.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "Why did Snail borrow the cart?",
+            "material": "Snail’s shopping cart\n\nIn a village of talking animals, Snail borrowed Mouse's little cart to bring vegetables home. The cart moved easily on the flat path, and Snail was pleased. He bought a cabbage, three carrots and a bag of potatoes.\n\nOn the way back, the path went uphill. The cart became difficult to pull. Rabbit passed and offered to help, but Snail said, \"No, thank you. I borrowed it, so I must do everything myself.\"\n\nRabbit walked beside him. After a while, Snail stopped to rest. He was tired, and the vegetables were no nearer home.\n\n\"Borrowing the cart makes you responsible for returning it,\" Rabbit said. \"It doesn't mean you cannot ask for help.\"\n\nThis time, Snail accepted. Rabbit pulled while Snail pushed from behind. They reached Snail's house and shared a carrot snack. Then Snail cleaned the cart before taking it back.\n\nMouse asked whether it had been useful. \"Very useful,\" said Snail. \"But I needed another pair of paws on the hill.\" He thanked Mouse for the cart and Rabbit for the help. Next market day, he checked the route and asked Rabbit whether they could shop together.",
+            "explanation": "The opening states the shopping purpose. Neither racing nor house-building is part of the plan.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To race Rabbit"
+              },
+              {
+                "id": "o1",
+                "text": "To carry vegetables home"
+              },
+              {
+                "id": "o2",
+                "text": "To give Mouse a new house"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary5.snail-cart-048.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "Where did pulling become difficult?",
+            "material": "Snail’s shopping cart\n\nIn a village of talking animals, Snail borrowed Mouse's little cart to bring vegetables home. The cart moved easily on the flat path, and Snail was pleased. He bought a cabbage, three carrots and a bag of potatoes.\n\nOn the way back, the path went uphill. The cart became difficult to pull. Rabbit passed and offered to help, but Snail said, \"No, thank you. I borrowed it, so I must do everything myself.\"\n\nRabbit walked beside him. After a while, Snail stopped to rest. He was tired, and the vegetables were no nearer home.\n\n\"Borrowing the cart makes you responsible for returning it,\" Rabbit said. \"It doesn't mean you cannot ask for help.\"\n\nThis time, Snail accepted. Rabbit pulled while Snail pushed from behind. They reached Snail's house and shared a carrot snack. Then Snail cleaned the cart before taking it back.\n\nMouse asked whether it had been useful. \"Very useful,\" said Snail. \"But I needed another pair of paws on the hill.\" He thanked Mouse for the cart and Rabbit for the help. Next market day, he checked the route and asked Rabbit whether they could shop together.",
+            "explanation": "The climb makes it hard; flat ground was easy and Mouse’s house is not the troublesome route.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Inside Mouse’s house"
+              },
+              {
+                "id": "o1",
+                "text": "On the uphill part of the path"
+              },
+              {
+                "id": "o2",
+                "text": "On the flat path at the start"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary5.snail-cart-048.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "Why did Snail first refuse help?",
+            "material": "Snail’s shopping cart\n\nIn a village of talking animals, Snail borrowed Mouse's little cart to bring vegetables home. The cart moved easily on the flat path, and Snail was pleased. He bought a cabbage, three carrots and a bag of potatoes.\n\nOn the way back, the path went uphill. The cart became difficult to pull. Rabbit passed and offered to help, but Snail said, \"No, thank you. I borrowed it, so I must do everything myself.\"\n\nRabbit walked beside him. After a while, Snail stopped to rest. He was tired, and the vegetables were no nearer home.\n\n\"Borrowing the cart makes you responsible for returning it,\" Rabbit said. \"It doesn't mean you cannot ask for help.\"\n\nThis time, Snail accepted. Rabbit pulled while Snail pushed from behind. They reached Snail's house and shared a carrot snack. Then Snail cleaned the cart before taking it back.\n\nMouse asked whether it had been useful. \"Very useful,\" said Snail. \"But I needed another pair of paws on the hill.\" He thanked Mouse for the cart and Rabbit for the help. Next market day, he checked the route and asked Rabbit whether they could shop together.",
+            "explanation": "His explanation explicitly links borrowing with doing everything himself. He knows Rabbit, and Mouse owns the cart.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He did not know Rabbit"
+              },
+              {
+                "id": "o1",
+                "text": "The cart belonged to Rabbit"
+              },
+              {
+                "id": "o2",
+                "text": "He thought borrowing meant doing all the work alone"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary5.snail-cart-048.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "How did they move the cart together?",
+            "material": "Snail’s shopping cart\n\nIn a village of talking animals, Snail borrowed Mouse's little cart to bring vegetables home. The cart moved easily on the flat path, and Snail was pleased. He bought a cabbage, three carrots and a bag of potatoes.\n\nOn the way back, the path went uphill. The cart became difficult to pull. Rabbit passed and offered to help, but Snail said, \"No, thank you. I borrowed it, so I must do everything myself.\"\n\nRabbit walked beside him. After a while, Snail stopped to rest. He was tired, and the vegetables were no nearer home.\n\n\"Borrowing the cart makes you responsible for returning it,\" Rabbit said. \"It doesn't mean you cannot ask for help.\"\n\nThis time, Snail accepted. Rabbit pulled while Snail pushed from behind. They reached Snail's house and shared a carrot snack. Then Snail cleaned the cart before taking it back.\n\nMouse asked whether it had been useful. \"Very useful,\" said Snail. \"But I needed another pair of paws on the hill.\" He thanked Mouse for the cart and Rabbit for the help. Next market day, he checked the route and asked Rabbit whether they could shop together.",
+            "explanation": "Their roles are explicitly pull and push. No riding or Mouse carrying occurs.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Snail pulled while Rabbit sat inside"
+              },
+              {
+                "id": "o1",
+                "text": "Mouse carried both animals"
+              },
+              {
+                "id": "o2",
+                "text": "Rabbit pulled and Snail pushed"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary5.snail-cart-048.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "What did Snail do before returning the cart?",
+            "material": "Snail’s shopping cart\n\nIn a village of talking animals, Snail borrowed Mouse's little cart to bring vegetables home. The cart moved easily on the flat path, and Snail was pleased. He bought a cabbage, three carrots and a bag of potatoes.\n\nOn the way back, the path went uphill. The cart became difficult to pull. Rabbit passed and offered to help, but Snail said, \"No, thank you. I borrowed it, so I must do everything myself.\"\n\nRabbit walked beside him. After a while, Snail stopped to rest. He was tired, and the vegetables were no nearer home.\n\n\"Borrowing the cart makes you responsible for returning it,\" Rabbit said. \"It doesn't mean you cannot ask for help.\"\n\nThis time, Snail accepted. Rabbit pulled while Snail pushed from behind. They reached Snail's house and shared a carrot snack. Then Snail cleaned the cart before taking it back.\n\nMouse asked whether it had been useful. \"Very useful,\" said Snail. \"But I needed another pair of paws on the hill.\" He thanked Mouse for the cart and Rabbit for the help. Next market day, he checked the route and asked Rabbit whether they could shop together.",
+            "explanation": "Cleaning prepares the borrowed cart’s return. Repainting and selling food to Mouse are absent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He sold the potatoes to Mouse"
+              },
+              {
+                "id": "o1",
+                "text": "He painted it blue"
+              },
+              {
+                "id": "o2",
+                "text": "He cleaned it"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "f6029d71f177a9a4500c5c3e421776085d03966af42a2cc10d9875b0cd81195d",
+      "reviewNotes": "Six new whole-reading elementary practices: two phone dialogues, two explicitly fictional animal stories and two four-entry information tables. English assessment text, same-author evidence and distractor checks; provisional level adaptation, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary5.owl-morning-concert-048",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "10·24新题 · Owl’s morning concert",
+        "summary": "Owl’s morning concert，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.frog",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original five-question reading using the referenced dialogue, story or four-entry information structure. New contexts and vocabulary are provisional, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new whole-reading elementary practices: two phone dialogues, two explicitly fictional animal stories and two four-entry information tables. English assessment text, same-author evidence and distractor checks; provisional level adaptation, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary5.owl-morning-concert-048",
+          "family": "reading_choice",
+          "label": "Owl’s morning concert",
+          "candidateSHA256": "6c55ea7c507890f9fcb15595df1ae517c3995eadac78614194228df281bd31b6",
+          "authorCheckSHA256": "58e9d6ec3e9534defed2c4aff3ce8838ed39528d931bf067ba61d63fcd8121c8",
+          "sourceGroupIds": [
+            "expansion.20261024.primary5.owl-morning-concert-048#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b048；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Owl’s morning concert\n\nIn a forest of talking animals, Owl wanted to hear the morning birds sing. He usually slept during the early hours, so he asked Squirrel to wake him before sunrise.\n\nSquirrel tapped on his door. Owl opened one eye and said, \"I can hear nothing. You are too early.\" He went back to sleep. A few minutes later, the birds began, but Owl missed their song.\n\nThe next day, Squirrel returned at the same time. Owl was annoyed. \"Yesterday there was no singing when you came!\"\n\n\"You asked to be ready before it began,\" Squirrel replied. \"Getting to the clearing takes time.\"\n\nOwl thought about that. This time, he followed Squirrel along the path. They sat quietly while the sky grew lighter. At first, they heard only leaves moving. Then one bird called, and another answered. Soon the clearing was full of song.\n\nOwl listened until the sun rose. He thanked Squirrel and went home for a long sleep. He had learned that an early invitation could lead to a better view of the beginning. Waiting quietly was part of the concert, not proof that they had come at the wrong time."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary5.owl-morning-concert-048.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "Why did Owl need Squirrel’s help?",
+            "material": "Owl’s morning concert\n\nIn a forest of talking animals, Owl wanted to hear the morning birds sing. He usually slept during the early hours, so he asked Squirrel to wake him before sunrise.\n\nSquirrel tapped on his door. Owl opened one eye and said, \"I can hear nothing. You are too early.\" He went back to sleep. A few minutes later, the birds began, but Owl missed their song.\n\nThe next day, Squirrel returned at the same time. Owl was annoyed. \"Yesterday there was no singing when you came!\"\n\n\"You asked to be ready before it began,\" Squirrel replied. \"Getting to the clearing takes time.\"\n\nOwl thought about that. This time, he followed Squirrel along the path. They sat quietly while the sky grew lighter. At first, they heard only leaves moving. Then one bird called, and another answered. Soon the clearing was full of song.\n\nOwl listened until the sun rose. He thanked Squirrel and went home for a long sleep. He had learned that an early invitation could lead to a better view of the beginning. Waiting quietly was part of the concert, not proof that they had come at the wrong time.",
+            "explanation": "His sleep schedule makes waking difficult. He can hear and actively wants the song.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He usually slept in the early hours"
+              },
+              {
+                "id": "o1",
+                "text": "He did not like music"
+              },
+              {
+                "id": "o2",
+                "text": "He could not hear any bird sounds"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.owl-morning-concert-048.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "What did Owl do on the first morning?",
+            "material": "Owl’s morning concert\n\nIn a forest of talking animals, Owl wanted to hear the morning birds sing. He usually slept during the early hours, so he asked Squirrel to wake him before sunrise.\n\nSquirrel tapped on his door. Owl opened one eye and said, \"I can hear nothing. You are too early.\" He went back to sleep. A few minutes later, the birds began, but Owl missed their song.\n\nThe next day, Squirrel returned at the same time. Owl was annoyed. \"Yesterday there was no singing when you came!\"\n\n\"You asked to be ready before it began,\" Squirrel replied. \"Getting to the clearing takes time.\"\n\nOwl thought about that. This time, he followed Squirrel along the path. They sat quietly while the sky grew lighter. At first, they heard only leaves moving. Then one bird called, and another answered. Soon the clearing was full of song.\n\nOwl listened until the sun rose. He thanked Squirrel and went home for a long sleep. He had learned that an early invitation could lead to a better view of the beginning. Waiting quietly was part of the concert, not proof that they had come at the wrong time.",
+            "explanation": "He returns to sleep and misses the song. The walk occurs the next day; he never joins the singing.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Went back to sleep"
+              },
+              {
+                "id": "o1",
+                "text": "Sang with the birds"
+              },
+              {
+                "id": "o2",
+                "text": "Walked to the clearing"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.owl-morning-concert-048.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "Why did Squirrel arrive before the singing?",
+            "material": "Owl’s morning concert\n\nIn a forest of talking animals, Owl wanted to hear the morning birds sing. He usually slept during the early hours, so he asked Squirrel to wake him before sunrise.\n\nSquirrel tapped on his door. Owl opened one eye and said, \"I can hear nothing. You are too early.\" He went back to sleep. A few minutes later, the birds began, but Owl missed their song.\n\nThe next day, Squirrel returned at the same time. Owl was annoyed. \"Yesterday there was no singing when you came!\"\n\n\"You asked to be ready before it began,\" Squirrel replied. \"Getting to the clearing takes time.\"\n\nOwl thought about that. This time, he followed Squirrel along the path. They sat quietly while the sky grew lighter. At first, they heard only leaves moving. Then one bird called, and another answered. Soon the clearing was full of song.\n\nOwl listened until the sun rose. He thanked Squirrel and went home for a long sleep. He had learned that an early invitation could lead to a better view of the beginning. Waiting quietly was part of the concert, not proof that they had come at the wrong time.",
+            "explanation": "Travel time explains the early wake-up. The birds remain and Squirrel helps rather than prevents attendance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They needed time to reach the clearing"
+              },
+              {
+                "id": "o1",
+                "text": "He wanted Owl to miss it"
+              },
+              {
+                "id": "o2",
+                "text": "The birds had left the forest"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.owl-morning-concert-048.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "What did they first hear in the clearing?",
+            "material": "Owl’s morning concert\n\nIn a forest of talking animals, Owl wanted to hear the morning birds sing. He usually slept during the early hours, so he asked Squirrel to wake him before sunrise.\n\nSquirrel tapped on his door. Owl opened one eye and said, \"I can hear nothing. You are too early.\" He went back to sleep. A few minutes later, the birds began, but Owl missed their song.\n\nThe next day, Squirrel returned at the same time. Owl was annoyed. \"Yesterday there was no singing when you came!\"\n\n\"You asked to be ready before it began,\" Squirrel replied. \"Getting to the clearing takes time.\"\n\nOwl thought about that. This time, he followed Squirrel along the path. They sat quietly while the sky grew lighter. At first, they heard only leaves moving. Then one bird called, and another answered. Soon the clearing was full of song.\n\nOwl listened until the sun rose. He thanked Squirrel and went home for a long sleep. He had learned that an early invitation could lead to a better view of the beginning. Waiting quietly was part of the concert, not proof that they had come at the wrong time.",
+            "explanation": "Leaves move before the first bird call. No drum or Owl’s singing is described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Leaves moving"
+              },
+              {
+                "id": "o1",
+                "text": "A loud drum"
+              },
+              {
+                "id": "o2",
+                "text": "Owl singing"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.owl-morning-concert-048.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "What did Owl learn?",
+            "material": "Owl’s morning concert\n\nIn a forest of talking animals, Owl wanted to hear the morning birds sing. He usually slept during the early hours, so he asked Squirrel to wake him before sunrise.\n\nSquirrel tapped on his door. Owl opened one eye and said, \"I can hear nothing. You are too early.\" He went back to sleep. A few minutes later, the birds began, but Owl missed their song.\n\nThe next day, Squirrel returned at the same time. Owl was annoyed. \"Yesterday there was no singing when you came!\"\n\n\"You asked to be ready before it began,\" Squirrel replied. \"Getting to the clearing takes time.\"\n\nOwl thought about that. This time, he followed Squirrel along the path. They sat quietly while the sky grew lighter. At first, they heard only leaves moving. Then one bird called, and another answered. Soon the clearing was full of song.\n\nOwl listened until the sun rose. He thanked Squirrel and went home for a long sleep. He had learned that an early invitation could lead to a better view of the beginning. Waiting quietly was part of the concert, not proof that they had come at the wrong time.",
+            "explanation": "The waiting lets him hear the beginning. Quietness does not preclude later song, and arriving after completion would miss it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A quiet place can never have a concert"
+              },
+              {
+                "id": "o1",
+                "text": "Friends should arrive only after every event has finished"
+              },
+              {
+                "id": "o2",
+                "text": "Being ready early can mean waiting before an event starts"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "1f8d8614c0adb22caa3bf62e7c52daa54ecc6c3a60997606643cd0af12dbd0d6",
+      "reviewNotes": "Six new whole-reading elementary practices: two phone dialogues, two explicitly fictional animal stories and two four-entry information tables. English assessment text, same-author evidence and distractor checks; provisional level adaptation, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary6.four-school-jobs-048",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "10·24新题 · Helping at the school fair",
+        "summary": "Helping at the school fair，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.dongcheng2025.booktable",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original five-question reading using the referenced dialogue, story or four-entry information structure. New contexts and vocabulary are provisional, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new whole-reading elementary practices: two phone dialogues, two explicitly fictional animal stories and two four-entry information tables. English assessment text, same-author evidence and distractor checks; provisional level adaptation, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary6.four-school-jobs-048",
+          "family": "reading_choice",
+          "label": "Helping at the school fair",
+          "candidateSHA256": "79889d69545b1e08f0e08de58688a0545584d96343d38d7e0275a28890c5578c",
+          "authorCheckSHA256": "3d7aa0c1ded7f47219368a178b0cece235f15cb6ccf29c7187b02fbb749d6e22",
+          "sourceGroupIds": [
+            "expansion.20261024.primary6.four-school-jobs-048#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b048；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Helping at the school fair\n\nThe school fair needs student helpers. Choose one job and sign up with Ms Reed by Wednesday. Helpers must attend a short meeting at 15:30 on Thursday. The fair is on Saturday.\n\nJob | Time | Place | Main task\nBook Corner | 9:00–11:00 | Library entrance | Put books into subject groups and help visitors find them\nGame Desk | 10:00–12:00 | Small hall | Explain two simple board games; instructions supplied\nPlant Table | 11:00–13:00 | Courtyard | Give visitors plant-care cards; do not offer advice beyond the cards\nWelcome Team | 9:30–11:30 | Main gate | Show visitors the map and direct them to activities\n\nHelpers should wear their school badges. Do not bring money to collect from visitors: all payments are handled by adult staff at a separate desk. If you cannot attend after signing up, tell Ms Reed as soon as possible so a replacement can be found.\n\nThe Plant Table will move inside the dining room if it rains. The other jobs will stay in their listed places. A sandwich and drink are provided after each helper's two-hour shift. Students are welcome to visit the fair before or after their work, but they must not leave their job early to join an activity."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary6.four-school-jobs-048.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "Who should a student contact to sign up?",
+            "material": "Helping at the school fair\n\nThe school fair needs student helpers. Choose one job and sign up with Ms Reed by Wednesday. Helpers must attend a short meeting at 15:30 on Thursday. The fair is on Saturday.\n\nJob | Time | Place | Main task\nBook Corner | 9:00–11:00 | Library entrance | Put books into subject groups and help visitors find them\nGame Desk | 10:00–12:00 | Small hall | Explain two simple board games; instructions supplied\nPlant Table | 11:00–13:00 | Courtyard | Give visitors plant-care cards; do not offer advice beyond the cards\nWelcome Team | 9:30–11:30 | Main gate | Show visitors the map and direct them to activities\n\nHelpers should wear their school badges. Do not bring money to collect from visitors: all payments are handled by adult staff at a separate desk. If you cannot attend after signing up, tell Ms Reed as soon as possible so a replacement can be found.\n\nThe Plant Table will move inside the dining room if it rains. The other jobs will stay in their listed places. A sandwich and drink are provided after each helper's two-hour shift. Students are welcome to visit the fair before or after their work, but they must not leave their job early to join an activity.",
+            "explanation": "Ms Reed handles sign-up by Wednesday. Visitors and an unspecified payment-desk parent do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A visitor at the gate"
+              },
+              {
+                "id": "o1",
+                "text": "Ms Reed"
+              },
+              {
+                "id": "o2",
+                "text": "A parent at the payment desk"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-school-jobs-048.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "Which job begins at ten?",
+            "material": "Helping at the school fair\n\nThe school fair needs student helpers. Choose one job and sign up with Ms Reed by Wednesday. Helpers must attend a short meeting at 15:30 on Thursday. The fair is on Saturday.\n\nJob | Time | Place | Main task\nBook Corner | 9:00–11:00 | Library entrance | Put books into subject groups and help visitors find them\nGame Desk | 10:00–12:00 | Small hall | Explain two simple board games; instructions supplied\nPlant Table | 11:00–13:00 | Courtyard | Give visitors plant-care cards; do not offer advice beyond the cards\nWelcome Team | 9:30–11:30 | Main gate | Show visitors the map and direct them to activities\n\nHelpers should wear their school badges. Do not bring money to collect from visitors: all payments are handled by adult staff at a separate desk. If you cannot attend after signing up, tell Ms Reed as soon as possible so a replacement can be found.\n\nThe Plant Table will move inside the dining room if it rains. The other jobs will stay in their listed places. A sandwich and drink are provided after each helper's two-hour shift. Students are welcome to visit the fair before or after their work, but they must not leave their job early to join an activity.",
+            "explanation": "Game Desk starts10:00. Book Corner starts9:00 and Welcome Team9:30.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Welcome Team"
+              },
+              {
+                "id": "o1",
+                "text": "Game Desk"
+              },
+              {
+                "id": "o2",
+                "text": "Book Corner"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-school-jobs-048.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "What should Plant Table helpers use to answer visitors?",
+            "material": "Helping at the school fair\n\nThe school fair needs student helpers. Choose one job and sign up with Ms Reed by Wednesday. Helpers must attend a short meeting at 15:30 on Thursday. The fair is on Saturday.\n\nJob | Time | Place | Main task\nBook Corner | 9:00–11:00 | Library entrance | Put books into subject groups and help visitors find them\nGame Desk | 10:00–12:00 | Small hall | Explain two simple board games; instructions supplied\nPlant Table | 11:00–13:00 | Courtyard | Give visitors plant-care cards; do not offer advice beyond the cards\nWelcome Team | 9:30–11:30 | Main gate | Show visitors the map and direct them to activities\n\nHelpers should wear their school badges. Do not bring money to collect from visitors: all payments are handled by adult staff at a separate desk. If you cannot attend after signing up, tell Ms Reed as soon as possible so a replacement can be found.\n\nThe Plant Table will move inside the dining room if it rains. The other jobs will stay in their listed places. A sandwich and drink are provided after each helper's two-hour shift. Students are welcome to visit the fair before or after their work, but they must not leave their job early to join an activity.",
+            "explanation": "They give care cards and must not go beyond them. Guessing and game rules do not meet this instruction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The supplied care cards"
+              },
+              {
+                "id": "o1",
+                "text": "A list of board-game rules"
+              },
+              {
+                "id": "o2",
+                "text": "Any advice they can guess"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-school-jobs-048.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "Where will the Plant Table be if it rains?",
+            "material": "Helping at the school fair\n\nThe school fair needs student helpers. Choose one job and sign up with Ms Reed by Wednesday. Helpers must attend a short meeting at 15:30 on Thursday. The fair is on Saturday.\n\nJob | Time | Place | Main task\nBook Corner | 9:00–11:00 | Library entrance | Put books into subject groups and help visitors find them\nGame Desk | 10:00–12:00 | Small hall | Explain two simple board games; instructions supplied\nPlant Table | 11:00–13:00 | Courtyard | Give visitors plant-care cards; do not offer advice beyond the cards\nWelcome Team | 9:30–11:30 | Main gate | Show visitors the map and direct them to activities\n\nHelpers should wear their school badges. Do not bring money to collect from visitors: all payments are handled by adult staff at a separate desk. If you cannot attend after signing up, tell Ms Reed as soon as possible so a replacement can be found.\n\nThe Plant Table will move inside the dining room if it rains. The other jobs will stay in their listed places. A sandwich and drink are provided after each helper's two-hour shift. Students are welcome to visit the fair before or after their work, but they must not leave their job early to join an activity.",
+            "explanation": "The rain arrangement explicitly moves it to the dining room. The other places belong to other jobs.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "In the dining room"
+              },
+              {
+                "id": "o1",
+                "text": "At the main gate"
+              },
+              {
+                "id": "o2",
+                "text": "At the library entrance"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-school-jobs-048.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "Which statement is correct?",
+            "material": "Helping at the school fair\n\nThe school fair needs student helpers. Choose one job and sign up with Ms Reed by Wednesday. Helpers must attend a short meeting at 15:30 on Thursday. The fair is on Saturday.\n\nJob | Time | Place | Main task\nBook Corner | 9:00–11:00 | Library entrance | Put books into subject groups and help visitors find them\nGame Desk | 10:00–12:00 | Small hall | Explain two simple board games; instructions supplied\nPlant Table | 11:00–13:00 | Courtyard | Give visitors plant-care cards; do not offer advice beyond the cards\nWelcome Team | 9:30–11:30 | Main gate | Show visitors the map and direct them to activities\n\nHelpers should wear their school badges. Do not bring money to collect from visitors: all payments are handled by adult staff at a separate desk. If you cannot attend after signing up, tell Ms Reed as soon as possible so a replacement can be found.\n\nThe Plant Table will move inside the dining room if it rains. The other jobs will stay in their listed places. A sandwich and drink are provided after each helper's two-hour shift. Students are welcome to visit the fair before or after their work, but they must not leave their job early to join an activity.",
+            "explanation": "Adults handle payments. Students do not bring collection money and must finish their shifts before activities.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Adult staff collect the payments"
+              },
+              {
+                "id": "o1",
+                "text": "Helpers may leave early whenever they want a game"
+              },
+              {
+                "id": "o2",
+                "text": "Student helpers must bring money to collect fees"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "cef66ce493e481c898b3a785184ea0695bbe43b7d95dc8d856868bd2f501f069",
+      "reviewNotes": "Six new whole-reading elementary practices: two phone dialogues, two explicitly fictional animal stories and two four-entry information tables. English assessment text, same-author evidence and distractor checks; provisional level adaptation, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary6.four-museum-packs-048",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "10·24新题 · Activity packs at the local museum",
+        "summary": "Activity packs at the local museum，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.dongcheng2025.booktable",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original five-question reading using the referenced dialogue, story or four-entry information structure. New contexts and vocabulary are provisional, not independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new whole-reading elementary practices: two phone dialogues, two explicitly fictional animal stories and two four-entry information tables. English assessment text, same-author evidence and distractor checks; provisional level adaptation, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary6.four-museum-packs-048",
+          "family": "reading_choice",
+          "label": "Activity packs at the local museum",
+          "candidateSHA256": "05ed494a620876badfd701b8bebd323fbf55eb862f04919d6d7b5f69c8671bca",
+          "authorCheckSHA256": "32bbb05dab7ac9e6cce17e09e04fbbf48a25bc8e5ab0775be1571619fb662c01",
+          "sourceGroupIds": [
+            "expansion.20261024.primary6.four-museum-packs-048#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b048；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Activity packs at the local museum\n\nVisitors aged ten to fourteen can borrow one activity pack from the museum desk. Packs are free, but an adult must leave a contact number. Return the pack before leaving the museum. Each contains instructions and reusable materials.\n\nPack | Main area | Time needed | Included materials\nPattern Finder | Pottery room | About 30 minutes | Drawing board, paper and pencils\nSound Trail | Music gallery | About 40 minutes | Headphones and an audio player\nObject Detective | History room | About 50 minutes | Clue cards and a magnifying glass\nShape Builder | Learning room | About 35 minutes | Wooden shapes and picture cards\n\nThe Sound Trail is not available during live music performances because visitors need to hear the player clearly. A notice at the desk gives performance times. Headphones from the pack must be used; do not connect your own equipment to the player.\n\nPattern Finder drawings may be taken home, but the board and pencils must be returned. Every other pack should come back with all its materials. If something is missing when you receive a pack, tell the desk before you begin. Visitors may borrow a second pack only after returning the first, so that other families have a chance to use them too."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary6.four-museum-packs-048.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "Which pack usually takes the longest?",
+            "material": "Activity packs at the local museum\n\nVisitors aged ten to fourteen can borrow one activity pack from the museum desk. Packs are free, but an adult must leave a contact number. Return the pack before leaving the museum. Each contains instructions and reusable materials.\n\nPack | Main area | Time needed | Included materials\nPattern Finder | Pottery room | About 30 minutes | Drawing board, paper and pencils\nSound Trail | Music gallery | About 40 minutes | Headphones and an audio player\nObject Detective | History room | About 50 minutes | Clue cards and a magnifying glass\nShape Builder | Learning room | About 35 minutes | Wooden shapes and picture cards\n\nThe Sound Trail is not available during live music performances because visitors need to hear the player clearly. A notice at the desk gives performance times. Headphones from the pack must be used; do not connect your own equipment to the player.\n\nPattern Finder drawings may be taken home, but the board and pencils must be returned. Every other pack should come back with all its materials. If something is missing when you receive a pack, tell the desk before you begin. Visitors may borrow a second pack only after returning the first, so that other families have a chance to use them too.",
+            "explanation": "50 minutes exceeds40 and30. Shape Builder is35 and would also be shorter.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Sound Trail"
+              },
+              {
+                "id": "o1",
+                "text": "Pattern Finder"
+              },
+              {
+                "id": "o2",
+                "text": "Object Detective"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-museum-packs-048.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "Where is Shape Builder used?",
+            "material": "Activity packs at the local museum\n\nVisitors aged ten to fourteen can borrow one activity pack from the museum desk. Packs are free, but an adult must leave a contact number. Return the pack before leaving the museum. Each contains instructions and reusable materials.\n\nPack | Main area | Time needed | Included materials\nPattern Finder | Pottery room | About 30 minutes | Drawing board, paper and pencils\nSound Trail | Music gallery | About 40 minutes | Headphones and an audio player\nObject Detective | History room | About 50 minutes | Clue cards and a magnifying glass\nShape Builder | Learning room | About 35 minutes | Wooden shapes and picture cards\n\nThe Sound Trail is not available during live music performances because visitors need to hear the player clearly. A notice at the desk gives performance times. Headphones from the pack must be used; do not connect your own equipment to the player.\n\nPattern Finder drawings may be taken home, but the board and pencils must be returned. Every other pack should come back with all its materials. If something is missing when you receive a pack, tell the desk before you begin. Visitors may borrow a second pack only after returning the first, so that other families have a chance to use them too.",
+            "explanation": "The table pairs Shape Builder with the learning room. The other rooms are for other packs.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "In the music gallery"
+              },
+              {
+                "id": "o1",
+                "text": "In the learning room"
+              },
+              {
+                "id": "o2",
+                "text": "In the pottery room"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-museum-packs-048.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "When is Sound Trail unavailable?",
+            "material": "Activity packs at the local museum\n\nVisitors aged ten to fourteen can borrow one activity pack from the museum desk. Packs are free, but an adult must leave a contact number. Return the pack before leaving the museum. Each contains instructions and reusable materials.\n\nPack | Main area | Time needed | Included materials\nPattern Finder | Pottery room | About 30 minutes | Drawing board, paper and pencils\nSound Trail | Music gallery | About 40 minutes | Headphones and an audio player\nObject Detective | History room | About 50 minutes | Clue cards and a magnifying glass\nShape Builder | Learning room | About 35 minutes | Wooden shapes and picture cards\n\nThe Sound Trail is not available during live music performances because visitors need to hear the player clearly. A notice at the desk gives performance times. Headphones from the pack must be used; do not connect your own equipment to the player.\n\nPattern Finder drawings may be taken home, but the board and pencils must be returned. Every other pack should come back with all its materials. If something is missing when you receive a pack, tell the desk before you begin. Visitors may borrow a second pack only after returning the first, so that other families have a chance to use them too.",
+            "explanation": "Only live-performance conflicts are stated. No daily afternoon ban or ownership-based restriction is given.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Whenever a visitor owns headphones"
+              },
+              {
+                "id": "o1",
+                "text": "During live music performances"
+              },
+              {
+                "id": "o2",
+                "text": "Every afternoon"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-museum-packs-048.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "What may Pattern Finder users keep?",
+            "material": "Activity packs at the local museum\n\nVisitors aged ten to fourteen can borrow one activity pack from the museum desk. Packs are free, but an adult must leave a contact number. Return the pack before leaving the museum. Each contains instructions and reusable materials.\n\nPack | Main area | Time needed | Included materials\nPattern Finder | Pottery room | About 30 minutes | Drawing board, paper and pencils\nSound Trail | Music gallery | About 40 minutes | Headphones and an audio player\nObject Detective | History room | About 50 minutes | Clue cards and a magnifying glass\nShape Builder | Learning room | About 35 minutes | Wooden shapes and picture cards\n\nThe Sound Trail is not available during live music performances because visitors need to hear the player clearly. A notice at the desk gives performance times. Headphones from the pack must be used; do not connect your own equipment to the player.\n\nPattern Finder drawings may be taken home, but the board and pencils must be returned. Every other pack should come back with all its materials. If something is missing when you receive a pack, tell the desk before you begin. Visitors may borrow a second pack only after returning the first, so that other families have a chance to use them too.",
+            "explanation": "Drawings may go home; board and pencils are reusable and must be returned.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The museum’s pencils"
+              },
+              {
+                "id": "o1",
+                "text": "The drawing board"
+              },
+              {
+                "id": "o2",
+                "text": "Their drawings"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-museum-packs-048.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "读完整材料，选择合适的答案。",
+            "prompt": "What must visitors do before borrowing a second pack?",
+            "material": "Activity packs at the local museum\n\nVisitors aged ten to fourteen can borrow one activity pack from the museum desk. Packs are free, but an adult must leave a contact number. Return the pack before leaving the museum. Each contains instructions and reusable materials.\n\nPack | Main area | Time needed | Included materials\nPattern Finder | Pottery room | About 30 minutes | Drawing board, paper and pencils\nSound Trail | Music gallery | About 40 minutes | Headphones and an audio player\nObject Detective | History room | About 50 minutes | Clue cards and a magnifying glass\nShape Builder | Learning room | About 35 minutes | Wooden shapes and picture cards\n\nThe Sound Trail is not available during live music performances because visitors need to hear the player clearly. A notice at the desk gives performance times. Headphones from the pack must be used; do not connect your own equipment to the player.\n\nPattern Finder drawings may be taken home, but the board and pencils must be returned. Every other pack should come back with all its materials. If something is missing when you receive a pack, tell the desk before you begin. Visitors may borrow a second pack only after returning the first, so that other families have a chance to use them too.",
+            "explanation": "One pack at a time ensures access for others. Packs are free and must be returned before leaving, not bought.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Return the first pack"
+              },
+              {
+                "id": "o1",
+                "text": "Buy the first pack"
+              },
+              {
+                "id": "o2",
+                "text": "Leave the museum"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "9574f329348ba33e19a875e533f3093436d6263692781bbf8d11542484a85e45",
+      "reviewNotes": "Six new whole-reading elementary practices: two phone dialogues, two explicitly fictional animal stories and two four-entry information tables. English assessment text, same-author evidence and distractor checks; provisional level adaptation, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
