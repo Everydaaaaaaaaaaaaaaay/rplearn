@@ -1,0 +1,920 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b025",
+  "createdAt": "2026-10-23T20:02:29.158839+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.garden-volunteers-and-kite-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · 阅读理解 · 花园志愿者与风筝",
+        "summary": "阅读理解 · 花园志愿者与风筝，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.2024.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new complete senior reading passages in three practices, each consisting of one three-question text and one four-question text. Invented events and a stated thought experiment are original examples; the echo passage uses general physical explanation without invented studies or statistics. Same-author evidence/distractor review, not independent learner or teacher calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.garden-volunteers-and-kite-025",
+          "family": "reading_choice",
+          "label": "阅读理解 · 花园志愿者与风筝",
+          "candidateSHA256": "80f5a4b7717521e2b7c08af97aaf7c7981e802c00a52d3c8c87c795fed093016",
+          "authorCheckSHA256": "63e0744b91c4cece70adbd2f2de9f4dacee9468e0e8dbff3c01c157ac3017908",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.garden-volunteers-and-kite-025#a",
+            "expansion.20261024.senior1.garden-volunteers-and-kite-025#b"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b025；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Become a garden welcome volunteer\n\nOak House Garden is looking for welcome volunteers for its summer opening season, from June to August. You do not need gardening knowledge. The main task is to greet visitors, explain the path choices and help them find the information they need.\n\nWho can apply?\nApplicants must be sixteen or older and able to attend at least four half-day sessions during the season. You may choose morning sessions, 9:30-12:30, or afternoon sessions, 13:30-16:30. We cannot offer accommodation or payment, but bus fares will be repaid when you show a ticket.\n\nTraining\nAll new volunteers must attend an in-person introduction on Saturday 24 May, 10:00-12:00. It includes a walk around the garden and practice answering common visitor questions. If you have already volunteered elsewhere, you must still attend because our routes and procedures are specific to this site.\n\nApplying\nSend a short email explaining why you would like to help and which dates you can offer. Include a contact number, but do not send identity documents at this stage. Applications close on 10 May. We will contact shortlisted applicants to arrange a brief conversation before confirming places.\n\nMost of the role is outdoors. If standing for a whole session may be difficult, tell us in your application so we can discuss seated duties. Please do not assume you are unable to apply before talking to us.\n\nB. The kite's tail\n\nWhen my cousin brought me a homemade kite, I admired its bright paper but disliked its long tail. It looked untidy beside the neat shape above it. Before our trip to the field, I untied half the cloth strips and left them on the kitchen table.\n\nThe wind was steady when we arrived. My cousin held the kite while I ran. It rose for a moment, then swung from side to side and fell. We tried three times. Each attempt ended in the grass. I blamed the wind, although other kites were flying nearby.\n\nMy cousin asked whether I had changed anything. I admitted removing the strips. She had tested this particular kite with its original tail and suggested restoring it before trying anything else. We found an old scarf in her bag and attached it carefully.\n\nThis time, the kite stayed in the air. It still moved, but its movements were smaller and easier to manage. My cousin explained that the tail was part of the design, not simply decoration. I had judged an unfamiliar object as though its appearance told me everything about its function.\n\nBack home, I put the removed strips beside a sketch of the kite. We did not conclude that every kite needed the same tail. My cousin showed me pictures of differently shaped designs that worked in other ways. What mattered was how the parts of this one worked together.\n\nThe following weekend, we tried a smaller change, testing one arrangement at a time and keeping the original materials nearby. Some changes helped; others did not. I began enjoying the trials almost as much as watching the kite fly. The long tail still looked a little untidy to me. But now, when I wanted to improve a design, I first asked what the apparently unnecessary part might be doing."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.garden-volunteers-and-kite-025.a.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which applicant meets the stated basic requirements?",
+            "material": "A. Become a garden welcome volunteer\n\nOak House Garden is looking for welcome volunteers for its summer opening season, from June to August. You do not need gardening knowledge. The main task is to greet visitors, explain the path choices and help them find the information they need.\n\nWho can apply?\nApplicants must be sixteen or older and able to attend at least four half-day sessions during the season. You may choose morning sessions, 9:30-12:30, or afternoon sessions, 13:30-16:30. We cannot offer accommodation or payment, but bus fares will be repaid when you show a ticket.\n\nTraining\nAll new volunteers must attend an in-person introduction on Saturday 24 May, 10:00-12:00. It includes a walk around the garden and practice answering common visitor questions. If you have already volunteered elsewhere, you must still attend because our routes and procedures are specific to this site.\n\nApplying\nSend a short email explaining why you would like to help and which dates you can offer. Include a contact number, but do not send identity documents at this stage. Applications close on 10 May. We will contact shortlisted applicants to arrange a brief conversation before confirming places.\n\nMost of the role is outdoors. If standing for a whole session may be difficult, tell us in your application so we can discuss seated duties. Please do not assume you are unable to apply before talking to us.",
+            "explanation": "Age17 and four half-days satisfy the minimum. Fifteen is too young, one session is insufficient, and accommodation/payment are unavailable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "An adult available for only one morning."
+              },
+              {
+                "id": "o1",
+                "text": "A fifteen-year-old available every afternoon."
+              },
+              {
+                "id": "o2",
+                "text": "A seventeen-year-old able to offer four half-day sessions."
+              },
+              {
+                "id": "o3",
+                "text": "A sixteen-year-old who requires paid accommodation."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.garden-volunteers-and-kite-025.a.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why must experienced volunteers attend the introduction?",
+            "material": "A. Become a garden welcome volunteer\n\nOak House Garden is looking for welcome volunteers for its summer opening season, from June to August. You do not need gardening knowledge. The main task is to greet visitors, explain the path choices and help them find the information they need.\n\nWho can apply?\nApplicants must be sixteen or older and able to attend at least four half-day sessions during the season. You may choose morning sessions, 9:30-12:30, or afternoon sessions, 13:30-16:30. We cannot offer accommodation or payment, but bus fares will be repaid when you show a ticket.\n\nTraining\nAll new volunteers must attend an in-person introduction on Saturday 24 May, 10:00-12:00. It includes a walk around the garden and practice answering common visitor questions. If you have already volunteered elsewhere, you must still attend because our routes and procedures are specific to this site.\n\nApplying\nSend a short email explaining why you would like to help and which dates you can offer. Include a contact number, but do not send identity documents at this stage. Applications close on 10 May. We will contact shortlisted applicants to arrange a brief conversation before confirming places.\n\nMost of the role is outdoors. If standing for a whole session may be difficult, tell us in your application so we can discuss seated duties. Please do not assume you are unable to apply before talking to us.",
+            "explanation": "Site-specific routes and procedures are the explicit reason. There is no gardening exam or blanket distrust of experience, and new volunteers also serve visitors.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They need to pass a gardening examination."
+              },
+              {
+                "id": "o1",
+                "text": "Only experienced volunteers may meet visitors."
+              },
+              {
+                "id": "o2",
+                "text": "The session covers this garden's own routes and procedures."
+              },
+              {
+                "id": "o3",
+                "text": "Their previous experience is assumed to be unreliable."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.garden-volunteers-and-kite-025.a.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should applicants do if prolonged standing is difficult?",
+            "material": "A. Become a garden welcome volunteer\n\nOak House Garden is looking for welcome volunteers for its summer opening season, from June to August. You do not need gardening knowledge. The main task is to greet visitors, explain the path choices and help them find the information they need.\n\nWho can apply?\nApplicants must be sixteen or older and able to attend at least four half-day sessions during the season. You may choose morning sessions, 9:30-12:30, or afternoon sessions, 13:30-16:30. We cannot offer accommodation or payment, but bus fares will be repaid when you show a ticket.\n\nTraining\nAll new volunteers must attend an in-person introduction on Saturday 24 May, 10:00-12:00. It includes a walk around the garden and practice answering common visitor questions. If you have already volunteered elsewhere, you must still attend because our routes and procedures are specific to this site.\n\nApplying\nSend a short email explaining why you would like to help and which dates you can offer. Include a contact number, but do not send identity documents at this stage. Applications close on 10 May. We will contact shortlisted applicants to arrange a brief conversation before confirming places.\n\nMost of the role is outdoors. If standing for a whole session may be difficult, tell us in your application so we can discuss seated duties. Please do not assume you are unable to apply before talking to us.",
+            "explanation": "The notice invites early discussion of seated duties. Documents are not requested, delaying communication is not advised, and automatic self-exclusion is discouraged.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Discuss possible seated duties in the application."
+              },
+              {
+                "id": "o1",
+                "text": "Wait until the first session before mentioning it."
+              },
+              {
+                "id": "o2",
+                "text": "Assume the role is closed to them."
+              },
+              {
+                "id": "o3",
+                "text": "Send medical identity documents immediately."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.garden-volunteers-and-kite-025.b.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the writer remove some cloth strips?",
+            "material": "B. The kite's tail\n\nWhen my cousin brought me a homemade kite, I admired its bright paper but disliked its long tail. It looked untidy beside the neat shape above it. Before our trip to the field, I untied half the cloth strips and left them on the kitchen table.\n\nThe wind was steady when we arrived. My cousin held the kite while I ran. It rose for a moment, then swung from side to side and fell. We tried three times. Each attempt ended in the grass. I blamed the wind, although other kites were flying nearby.\n\nMy cousin asked whether I had changed anything. I admitted removing the strips. She had tested this particular kite with its original tail and suggested restoring it before trying anything else. We found an old scarf in her bag and attached it carefully.\n\nThis time, the kite stayed in the air. It still moved, but its movements were smaller and easier to manage. My cousin explained that the tail was part of the design, not simply decoration. I had judged an unfamiliar object as though its appearance told me everything about its function.\n\nBack home, I put the removed strips beside a sketch of the kite. We did not conclude that every kite needed the same tail. My cousin showed me pictures of differently shaped designs that worked in other ways. What mattered was how the parts of this one worked together.\n\nThe following weekend, we tried a smaller change, testing one arrangement at a time and keeping the original materials nearby. Some changes helped; others did not. I began enjoying the trials almost as much as watching the kite fly. The long tail still looked a little untidy to me. But now, when I wanted to improve a design, I first asked what the apparently unnecessary part might be doing.",
+            "explanation": "The writer dislikes the untidy tail beside the neat kite. Wetness, an instruction and a doorway problem are not stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The writer preferred a neater appearance."
+              },
+              {
+                "id": "o1",
+                "text": "The kite could not fit through the kitchen door."
+              },
+              {
+                "id": "o2",
+                "text": "The cousin instructed the writer to shorten them."
+              },
+              {
+                "id": "o3",
+                "text": "They were too wet to carry."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.garden-volunteers-and-kite-025.b.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did the cousin suggest restoring the tail first?",
+            "material": "B. The kite's tail\n\nWhen my cousin brought me a homemade kite, I admired its bright paper but disliked its long tail. It looked untidy beside the neat shape above it. Before our trip to the field, I untied half the cloth strips and left them on the kitchen table.\n\nThe wind was steady when we arrived. My cousin held the kite while I ran. It rose for a moment, then swung from side to side and fell. We tried three times. Each attempt ended in the grass. I blamed the wind, although other kites were flying nearby.\n\nMy cousin asked whether I had changed anything. I admitted removing the strips. She had tested this particular kite with its original tail and suggested restoring it before trying anything else. We found an old scarf in her bag and attached it carefully.\n\nThis time, the kite stayed in the air. It still moved, but its movements were smaller and easier to manage. My cousin explained that the tail was part of the design, not simply decoration. I had judged an unfamiliar object as though its appearance told me everything about its function.\n\nBack home, I put the removed strips beside a sketch of the kite. We did not conclude that every kite needed the same tail. My cousin showed me pictures of differently shaped designs that worked in other ways. What mattered was how the parts of this one worked together.\n\nThe following weekend, we tried a smaller change, testing one arrangement at a time and keeping the original materials nearby. Some changes helped; others did not. I began enjoying the trials almost as much as watching the kite fly. The long tail still looked a little untidy to me. But now, when I wanted to improve a design, I first asked what the apparently unnecessary part might be doing.",
+            "explanation": "She had tested this kite with its original tail. The passage later rejects universal tail requirements; steady wind and other kites contradict C, and colour ownership is irrelevant.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "That configuration had already been tested with this kite."
+              },
+              {
+                "id": "o1",
+                "text": "Every kite must have an identical tail."
+              },
+              {
+                "id": "o2",
+                "text": "The scarf was the only colourful object they owned."
+              },
+              {
+                "id": "o3",
+                "text": "The wind had stopped completely."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.garden-volunteers-and-kite-025.b.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What mistake does the writer recognise?",
+            "material": "B. The kite's tail\n\nWhen my cousin brought me a homemade kite, I admired its bright paper but disliked its long tail. It looked untidy beside the neat shape above it. Before our trip to the field, I untied half the cloth strips and left them on the kitchen table.\n\nThe wind was steady when we arrived. My cousin held the kite while I ran. It rose for a moment, then swung from side to side and fell. We tried three times. Each attempt ended in the grass. I blamed the wind, although other kites were flying nearby.\n\nMy cousin asked whether I had changed anything. I admitted removing the strips. She had tested this particular kite with its original tail and suggested restoring it before trying anything else. We found an old scarf in her bag and attached it carefully.\n\nThis time, the kite stayed in the air. It still moved, but its movements were smaller and easier to manage. My cousin explained that the tail was part of the design, not simply decoration. I had judged an unfamiliar object as though its appearance told me everything about its function.\n\nBack home, I put the removed strips beside a sketch of the kite. We did not conclude that every kite needed the same tail. My cousin showed me pictures of differently shaped designs that worked in other ways. What mattered was how the parts of this one worked together.\n\nThe following weekend, we tried a smaller change, testing one arrangement at a time and keeping the original materials nearby. Some changes helped; others did not. I began enjoying the trials almost as much as watching the kite fly. The long tail still looked a little untidy to me. But now, when I wanted to improve a design, I first asked what the apparently unnecessary part might be doing.",
+            "explanation": "The writer had mistaken a functional tail for decoration. A, B and D describe useful evidence, questions or preservation rather than the error.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Asking the cousin about an unfamiliar object."
+              },
+              {
+                "id": "o1",
+                "text": "Treating appearance as a complete guide to function."
+              },
+              {
+                "id": "o2",
+                "text": "Trusting a test more than a photograph."
+              },
+              {
+                "id": "o3",
+                "text": "Keeping the original materials for future trials."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.garden-volunteers-and-kite-025.b.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How did the later trials differ from the first change?",
+            "material": "B. The kite's tail\n\nWhen my cousin brought me a homemade kite, I admired its bright paper but disliked its long tail. It looked untidy beside the neat shape above it. Before our trip to the field, I untied half the cloth strips and left them on the kitchen table.\n\nThe wind was steady when we arrived. My cousin held the kite while I ran. It rose for a moment, then swung from side to side and fell. We tried three times. Each attempt ended in the grass. I blamed the wind, although other kites were flying nearby.\n\nMy cousin asked whether I had changed anything. I admitted removing the strips. She had tested this particular kite with its original tail and suggested restoring it before trying anything else. We found an old scarf in her bag and attached it carefully.\n\nThis time, the kite stayed in the air. It still moved, but its movements were smaller and easier to manage. My cousin explained that the tail was part of the design, not simply decoration. I had judged an unfamiliar object as though its appearance told me everything about its function.\n\nBack home, I put the removed strips beside a sketch of the kite. We did not conclude that every kite needed the same tail. My cousin showed me pictures of differently shaped designs that worked in other ways. What mattered was how the parts of this one worked together.\n\nThe following weekend, we tried a smaller change, testing one arrangement at a time and keeping the original materials nearby. Some changes helped; others did not. I began enjoying the trials almost as much as watching the kite fly. The long tail still looked a little untidy to me. But now, when I wanted to improve a design, I first asked what the apparently unnecessary part might be doing.",
+            "explanation": "They change one arrangement at a time and keep original materials. A reverses the procedure; C ignores performance; D contradicts learning about different designs.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They judged success only by neatness."
+              },
+              {
+                "id": "o1",
+                "text": "They tested small changes while retaining a comparison point."
+              },
+              {
+                "id": "o2",
+                "text": "They replaced every part at once."
+              },
+              {
+                "id": "o3",
+                "text": "They assumed other kite designs were irrelevant."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "c2a703f03a547d4c512021ee6bce3380676695b48d261419b2d424bed7ddbdfe",
+      "reviewNotes": "Six new complete senior reading passages in three practices, each consisting of one three-question text and one four-question text. Invented events and a stated thought experiment are original examples; the echo passage uses general physical explanation without invented studies or statistics. Same-author evidence/distractor review, not independent learner or teacher calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.garden-volunteers-and-kite-025#a",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.garden-volunteers-and-kite-025.a.q1",
+            "expansion.20261024.senior1.garden-volunteers-and-kite-025.a.q2",
+            "expansion.20261024.senior1.garden-volunteers-and-kite-025.a.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.garden-volunteers-and-kite-025",
+          "sourceContentHash": "1ca881126d98c775647b00ebd0cab9b685afc8e9bca8c24999165f9149178eaf"
+        },
+        {
+          "id": "expansion.20261024.senior1.garden-volunteers-and-kite-025#b",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.garden-volunteers-and-kite-025.b.q1",
+            "expansion.20261024.senior1.garden-volunteers-and-kite-025.b.q2",
+            "expansion.20261024.senior1.garden-volunteers-and-kite-025.b.q3",
+            "expansion.20261024.senior1.garden-volunteers-and-kite-025.b.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.garden-volunteers-and-kite-025",
+          "sourceContentHash": "0ac6aa1a74cc9d77320dbc12af6c8215a005fa9ef896acae2972e90d2c328eec"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.library-studios-and-echoes-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · 阅读理解 · 图书馆工作间与回声",
+        "summary": "阅读理解 · 图书馆工作间与回声，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g11.2025.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new complete senior reading passages in three practices, each consisting of one three-question text and one four-question text. Invented events and a stated thought experiment are original examples; the echo passage uses general physical explanation without invented studies or statistics. Same-author evidence/distractor review, not independent learner or teacher calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.library-studios-and-echoes-025",
+          "family": "reading_choice",
+          "label": "阅读理解 · 图书馆工作间与回声",
+          "candidateSHA256": "8a1b5c8a3009a728af910744524e94b5e9c32dfa0f24942639120f3fd458a3bf",
+          "authorCheckSHA256": "3ffc30e479fd6c1500f9d926ee8f3db30a6bb1e2e158c34a5b4ef8143c1ef29f",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.library-studios-and-echoes-025#a",
+            "expansion.20261024.senior2.library-studios-and-echoes-025#b"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b025；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Library studio rooms: booking guidance\n\nThe central library has two studio rooms for community groups making recordings. They are intended for spoken-word projects such as oral histories, interviews and poetry. Amplified music is not permitted because the rooms share a wall with the reading area.\n\nBookings are free for non-commercial projects. A group may reserve up to two hours per week, including the time needed to arrange equipment and clear the room. Groups must have at least one member aged eighteen or above who takes responsibility for the booking. Younger participants are welcome when accompanied by that member.\n\nBefore the first session, the responsible member must complete a thirty-minute equipment introduction. This is offered on Tuesday evenings and Saturday mornings. Prior experience does not remove the requirement. The library lends microphones and headphones, but users should bring a storage device for their recordings. Files left on the library computer are removed at the end of the day.\n\nPlease cancel unwanted sessions at least twenty-four hours in advance. After two missed bookings without notice, a group may lose booking access for one month. If a library equipment failure prevents your session, staff will arrange a replacement slot; it will not count as a missed booking.\n\nThe studios reduce outside noise but are not completely soundproof. We recommend a short test recording before your main work. A librarian can explain the controls, but cannot edit your finished project for you.\n\nB. When a sound comes back\n\nAn echo begins with a journey. A sound reaches a listener directly, but some of its energy also travels towards a distant surface. If enough of that energy is reflected and returns after a noticeable delay, the listener may hear a repetition. The returning sound has followed a longer path than the direct one.\n\nThis description helps explain why simply entering a large room does not guarantee a clear echo. Distance matters, but so do the materials and arrangement of surfaces. Soft furnishings can absorb some sound energy. Several reflecting surfaces may return sound along different paths, producing a mixture that lasts after the original sound stops rather than one distinct repetition.\n\nThat mixture is not always undesirable. In a performance space, some reflected sound can contribute a sense of fullness. The problem is matching the room's response to its use. A sound that enriches a sustained musical note may make rapid speech harder to understand when later syllables overlap with the remains of earlier ones. A room is not acoustically good in exactly the same way for every activity.\n\nPeople change the room too. An empty hall and the same hall filled with an audience need not respond alike, because bodies and clothing absorb sound differently from empty seats and bare surfaces. This is one reason a recording made during an empty-room test may not fully predict a crowded performance.\n\nThere is still value in a simple test. Clapping or speaking at different positions can reveal striking differences and suggest where to investigate. Such a test is a beginning, however, rather than a substitute for all the work needed to design a venue.\n\nThinking of an echo as a delayed journey shifts attention away from the voice alone. If your words return strangely, you have not necessarily spoken badly. You are hearing an interaction among the sound, the space and the position from which you listen."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.library-studios-and-echoes-025.a.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which project is suitable for the studio rooms?",
+            "material": "A. Library studio rooms: booking guidance\n\nThe central library has two studio rooms for community groups making recordings. They are intended for spoken-word projects such as oral histories, interviews and poetry. Amplified music is not permitted because the rooms share a wall with the reading area.\n\nBookings are free for non-commercial projects. A group may reserve up to two hours per week, including the time needed to arrange equipment and clear the room. Groups must have at least one member aged eighteen or above who takes responsibility for the booking. Younger participants are welcome when accompanied by that member.\n\nBefore the first session, the responsible member must complete a thirty-minute equipment introduction. This is offered on Tuesday evenings and Saturday mornings. Prior experience does not remove the requirement. The library lends microphones and headphones, but users should bring a storage device for their recordings. Files left on the library computer are removed at the end of the day.\n\nPlease cancel unwanted sessions at least twenty-four hours in advance. After two missed bookings without notice, a group may lose booking access for one month. If a library equipment failure prevents your session, staff will arrange a replacement slot; it will not count as a missed booking.\n\nThe studios reduce outside noise but are not completely soundproof. We recommend a short test recording before your main work. A librarian can explain the controls, but cannot edit your finished project for you.",
+            "explanation": "A non-commercial spoken interview fits both use and fee rules. Amplified music is forbidden, and every group needs a responsible adult member.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A group recording with no adult member responsible."
+              },
+              {
+                "id": "o1",
+                "text": "A non-commercial interview with a local resident."
+              },
+              {
+                "id": "o2",
+                "text": "A loud band rehearsal during reading hours."
+              },
+              {
+                "id": "o3",
+                "text": "A paid advertisement requiring amplified music."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.library-studios-and-echoes-025.a.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must even an experienced first-time user do?",
+            "material": "A. Library studio rooms: booking guidance\n\nThe central library has two studio rooms for community groups making recordings. They are intended for spoken-word projects such as oral histories, interviews and poetry. Amplified music is not permitted because the rooms share a wall with the reading area.\n\nBookings are free for non-commercial projects. A group may reserve up to two hours per week, including the time needed to arrange equipment and clear the room. Groups must have at least one member aged eighteen or above who takes responsibility for the booking. Younger participants are welcome when accompanied by that member.\n\nBefore the first session, the responsible member must complete a thirty-minute equipment introduction. This is offered on Tuesday evenings and Saturday mornings. Prior experience does not remove the requirement. The library lends microphones and headphones, but users should bring a storage device for their recordings. Files left on the library computer are removed at the end of the day.\n\nPlease cancel unwanted sessions at least twenty-four hours in advance. After two missed bookings without notice, a group may lose booking access for one month. If a library equipment failure prevents your session, staff will arrange a replacement slot; it will not count as a missed booking.\n\nThe studios reduce outside noise but are not completely soundproof. We recommend a short test recording before your main work. A librarian can explain the controls, but cannot edit your finished project for you.",
+            "explanation": "The introduction is mandatory despite experience. Equipment is lent, files should be taken away before deletion, and weekly bookings are limited to two hours including setup.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Complete the equipment introduction."
+              },
+              {
+                "id": "o1",
+                "text": "Pay for a microphone."
+              },
+              {
+                "id": "o2",
+                "text": "Leave all files on the library computer."
+              },
+              {
+                "id": "o3",
+                "text": "Book a whole day for setup."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.library-studios-and-echoes-025.a.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happens if library equipment failure prevents a session?",
+            "material": "A. Library studio rooms: booking guidance\n\nThe central library has two studio rooms for community groups making recordings. They are intended for spoken-word projects such as oral histories, interviews and poetry. Amplified music is not permitted because the rooms share a wall with the reading area.\n\nBookings are free for non-commercial projects. A group may reserve up to two hours per week, including the time needed to arrange equipment and clear the room. Groups must have at least one member aged eighteen or above who takes responsibility for the booking. Younger participants are welcome when accompanied by that member.\n\nBefore the first session, the responsible member must complete a thirty-minute equipment introduction. This is offered on Tuesday evenings and Saturday mornings. Prior experience does not remove the requirement. The library lends microphones and headphones, but users should bring a storage device for their recordings. Files left on the library computer are removed at the end of the day.\n\nPlease cancel unwanted sessions at least twenty-four hours in advance. After two missed bookings without notice, a group may lose booking access for one month. If a library equipment failure prevents your session, staff will arrange a replacement slot; it will not count as a missed booking.\n\nThe studios reduce outside noise but are not completely soundproof. We recommend a short test recording before your main work. A librarian can explain the controls, but cannot edit your finished project for you.",
+            "explanation": "A replacement is provided and the failure does not count as a missed booking. The month's restriction concerns repeated unnotified absences, not library faults; editing help is a separate limitation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The group must edit its project without staff help."
+              },
+              {
+                "id": "o1",
+                "text": "It is recorded as the group's first missed booking."
+              },
+              {
+                "id": "o2",
+                "text": "The group automatically loses access for a month."
+              },
+              {
+                "id": "o3",
+                "text": "Staff arrange another slot without penalising the group."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.library-studios-and-echoes-025.b.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What makes a distinct echo possible?",
+            "material": "B. When a sound comes back\n\nAn echo begins with a journey. A sound reaches a listener directly, but some of its energy also travels towards a distant surface. If enough of that energy is reflected and returns after a noticeable delay, the listener may hear a repetition. The returning sound has followed a longer path than the direct one.\n\nThis description helps explain why simply entering a large room does not guarantee a clear echo. Distance matters, but so do the materials and arrangement of surfaces. Soft furnishings can absorb some sound energy. Several reflecting surfaces may return sound along different paths, producing a mixture that lasts after the original sound stops rather than one distinct repetition.\n\nThat mixture is not always undesirable. In a performance space, some reflected sound can contribute a sense of fullness. The problem is matching the room's response to its use. A sound that enriches a sustained musical note may make rapid speech harder to understand when later syllables overlap with the remains of earlier ones. A room is not acoustically good in exactly the same way for every activity.\n\nPeople change the room too. An empty hall and the same hall filled with an audience need not respond alike, because bodies and clothing absorb sound differently from empty seats and bare surfaces. This is one reason a recording made during an empty-room test may not fully predict a crowded performance.\n\nThere is still value in a simple test. Clapping or speaking at different positions can reveal striking differences and suggest where to investigate. Such a test is a beginning, however, rather than a substitute for all the work needed to design a venue.\n\nThinking of an echo as a delayed journey shifts attention away from the voice alone. If your words return strangely, you have not necessarily spoken badly. You are hearing an interaction among the sound, the space and the position from which you listen.",
+            "explanation": "A delayed reflection can be heard as repetition. Complete absorption prevents return; the shortest path is direct sound; identical arrival from all surfaces is neither required nor stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Reflected sound returning after a noticeable delay."
+              },
+              {
+                "id": "o1",
+                "text": "The listener hearing only the shortest sound path."
+              },
+              {
+                "id": "o2",
+                "text": "All sound energy being absorbed immediately."
+              },
+              {
+                "id": "o3",
+                "text": "Every surface sending sound back at exactly the same moment."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.library-studios-and-echoes-025.b.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does a large room not necessarily produce one clear repetition?",
+            "material": "B. When a sound comes back\n\nAn echo begins with a journey. A sound reaches a listener directly, but some of its energy also travels towards a distant surface. If enough of that energy is reflected and returns after a noticeable delay, the listener may hear a repetition. The returning sound has followed a longer path than the direct one.\n\nThis description helps explain why simply entering a large room does not guarantee a clear echo. Distance matters, but so do the materials and arrangement of surfaces. Soft furnishings can absorb some sound energy. Several reflecting surfaces may return sound along different paths, producing a mixture that lasts after the original sound stops rather than one distinct repetition.\n\nThat mixture is not always undesirable. In a performance space, some reflected sound can contribute a sense of fullness. The problem is matching the room's response to its use. A sound that enriches a sustained musical note may make rapid speech harder to understand when later syllables overlap with the remains of earlier ones. A room is not acoustically good in exactly the same way for every activity.\n\nPeople change the room too. An empty hall and the same hall filled with an audience need not respond alike, because bodies and clothing absorb sound differently from empty seats and bare surfaces. This is one reason a recording made during an empty-room test may not fully predict a crowded performance.\n\nThere is still value in a simple test. Clapping or speaking at different positions can reveal striking differences and suggest where to investigate. Such a test is a beginning, however, rather than a substitute for all the work needed to design a venue.\n\nThinking of an echo as a delayed journey shifts attention away from the voice alone. If your words return strangely, you have not necessarily spoken badly. You are hearing an interaction among the sound, the space and the position from which you listen.",
+            "explanation": "Absorption and varied paths can merge reflections. A and B are false general claims, while D omits the spatial and material factors explained throughout.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Large rooms contain no reflecting surfaces."
+              },
+              {
+                "id": "o1",
+                "text": "Echoes depend only on the loudness of a speaker."
+              },
+              {
+                "id": "o2",
+                "text": "Materials and multiple reflection paths affect what returns."
+              },
+              {
+                "id": "o3",
+                "text": "The human voice stops producing sound indoors."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.library-studios-and-echoes-025.b.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the music-and-speech comparison show?",
+            "material": "B. When a sound comes back\n\nAn echo begins with a journey. A sound reaches a listener directly, but some of its energy also travels towards a distant surface. If enough of that energy is reflected and returns after a noticeable delay, the listener may hear a repetition. The returning sound has followed a longer path than the direct one.\n\nThis description helps explain why simply entering a large room does not guarantee a clear echo. Distance matters, but so do the materials and arrangement of surfaces. Soft furnishings can absorb some sound energy. Several reflecting surfaces may return sound along different paths, producing a mixture that lasts after the original sound stops rather than one distinct repetition.\n\nThat mixture is not always undesirable. In a performance space, some reflected sound can contribute a sense of fullness. The problem is matching the room's response to its use. A sound that enriches a sustained musical note may make rapid speech harder to understand when later syllables overlap with the remains of earlier ones. A room is not acoustically good in exactly the same way for every activity.\n\nPeople change the room too. An empty hall and the same hall filled with an audience need not respond alike, because bodies and clothing absorb sound differently from empty seats and bare surfaces. This is one reason a recording made during an empty-room test may not fully predict a crowded performance.\n\nThere is still value in a simple test. Clapping or speaking at different positions can reveal striking differences and suggest where to investigate. Such a test is a beginning, however, rather than a substitute for all the work needed to design a venue.\n\nThinking of an echo as a delayed journey shifts attention away from the voice alone. If your words return strangely, you have not necessarily spoken badly. You are hearing an interaction among the sound, the space and the position from which you listen.",
+            "explanation": "Fullness can enrich music while overlap harms rapid speech. B and C reverse or absolutise those examples; D denies the use-dependent goal.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Speech is improved by every increase in lingering sound."
+              },
+              {
+                "id": "o1",
+                "text": "A venue must have identical acoustic goals for all uses."
+              },
+              {
+                "id": "o2",
+                "text": "The value of reflected sound depends on the activity."
+              },
+              {
+                "id": "o3",
+                "text": "Reflections are always harmful to music."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.library-studios-and-echoes-025.b.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How does the author regard a simple sound test?",
+            "material": "B. When a sound comes back\n\nAn echo begins with a journey. A sound reaches a listener directly, but some of its energy also travels towards a distant surface. If enough of that energy is reflected and returns after a noticeable delay, the listener may hear a repetition. The returning sound has followed a longer path than the direct one.\n\nThis description helps explain why simply entering a large room does not guarantee a clear echo. Distance matters, but so do the materials and arrangement of surfaces. Soft furnishings can absorb some sound energy. Several reflecting surfaces may return sound along different paths, producing a mixture that lasts after the original sound stops rather than one distinct repetition.\n\nThat mixture is not always undesirable. In a performance space, some reflected sound can contribute a sense of fullness. The problem is matching the room's response to its use. A sound that enriches a sustained musical note may make rapid speech harder to understand when later syllables overlap with the remains of earlier ones. A room is not acoustically good in exactly the same way for every activity.\n\nPeople change the room too. An empty hall and the same hall filled with an audience need not respond alike, because bodies and clothing absorb sound differently from empty seats and bare surfaces. This is one reason a recording made during an empty-room test may not fully predict a crowded performance.\n\nThere is still value in a simple test. Clapping or speaking at different positions can reveal striking differences and suggest where to investigate. Such a test is a beginning, however, rather than a substitute for all the work needed to design a venue.\n\nThinking of an echo as a delayed journey shifts attention away from the voice alone. If your words return strangely, you have not necessarily spoken badly. You are hearing an interaction among the sound, the space and the position from which you listen.",
+            "explanation": "Simple tests reveal differences and guide investigation, but do not replace venue design. The other options overstate their sufficiency, restrict their use or invent an ability to remove reflections.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "As proof that professional venue design is unnecessary."
+              },
+              {
+                "id": "o1",
+                "text": "As a way to remove every reflection instantly."
+              },
+              {
+                "id": "o2",
+                "text": "As useful only when nobody ever enters the room."
+              },
+              {
+                "id": "o3",
+                "text": "As a useful starting point with practical limits."
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "0b8dfa470a7655c91a722c898aa727e7ebe40e070526d49f98c708693989ea7e",
+      "reviewNotes": "Six new complete senior reading passages in three practices, each consisting of one three-question text and one four-question text. Invented events and a stated thought experiment are original examples; the echo passage uses general physical explanation without invented studies or statistics. Same-author evidence/distractor review, not independent learner or teacher calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.library-studios-and-echoes-025#a",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.library-studios-and-echoes-025.a.q1",
+            "expansion.20261024.senior2.library-studios-and-echoes-025.a.q2",
+            "expansion.20261024.senior2.library-studios-and-echoes-025.a.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.library-studios-and-echoes-025",
+          "sourceContentHash": "5c85a19a1b90716ad777a929c903bf1dec46eea18575cf090e71cc6f70ac5de8"
+        },
+        {
+          "id": "expansion.20261024.senior2.library-studios-and-echoes-025#b",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.library-studios-and-echoes-025.b.q1",
+            "expansion.20261024.senior2.library-studios-and-echoes-025.b.q2",
+            "expansion.20261024.senior2.library-studios-and-echoes-025.b.q3",
+            "expansion.20261024.senior2.library-studios-and-echoes-025.b.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.library-studios-and-echoes-025",
+          "sourceContentHash": "aada7457f6fe9314771529f72dea2fab4b21f55e9c6bf6d54e30ab841cf5d21c"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior3.travel-writing-and-painting-labels-025",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高考题型原创 · 10·24新题 · 阅读理解 · 旅行投稿与画作标题",
+        "summary": "阅读理解 · 旅行投稿与画作标题，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade12-tianjinlower2025-21cnjy22402528.reading.complete_section",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 参照天津二十五中标签公开转载高三阅读整节：A四编号建议步骤/B跨代完整私人信/C迁徙研究/D分量表调查，四篇各五题共20四选，每题2.5分共50分。原校施测未认证，原键非gold；原A40动作先后歧义、迁徙捕获56/采样50/有效跟踪41个体与151飞行不可混数，原D54提供/分享数据近义及真实调查归属风险保留。新人物、地点、活动、研究与所有数值均虚构；C用假想野外报告保观测与条件预测的任务，D学校参与/归属/学习自信是作者选用的新构念，不能当原卷实证或真实地区结果。两量表仍分别0至10/1至3，样本/构念分开，不合并评分；相关不等于因果。录音、图卡、器物等只是文中情境，完整学生材料已给，不需外访或音图配套。全部题键与候选依据为作者自审，不当独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six new complete senior reading passages in three practices, each consisting of one three-question text and one four-question text. Invented events and a stated thought experiment are original examples; the echo passage uses general physical explanation without invented studies or statistics. Same-author evidence/distractor review, not independent learner or teacher calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior3.travel-writing-and-painting-labels-025",
+          "family": "reading_choice",
+          "label": "阅读理解 · 旅行投稿与画作标题",
+          "candidateSHA256": "46588424cfefa2e85b3bb0795a3ab198251fd478f0a7dfb20e543954147eb9a1",
+          "authorCheckSHA256": "0bc283bb0587adf6ee1107b1b2743e4d21445dcea702907c524a0fe0b2a8be6b",
+          "sourceGroupIds": [
+            "expansion.20261024.senior3.travel-writing-and-painting-labels-025#a",
+            "expansion.20261024.senior3.travel-writing-and-painting-labels-025#b"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b025；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A. Submit a journey to Along the Line\n\nAlong the Line is a small magazine about journeys made by public transport. We welcome personal essays that connect a specific journey with a larger question about place, work or everyday life. A list of attractions or a description that could apply to any destination is unlikely to suit us.\n\nSend a completed essay of 800-1,200 words through our submission form. Include a brief note identifying the route and when you travelled. You do not need to be a professional writer. We accept previously unpublished work only; an essay posted publicly on your own website counts as published. Private workshop circulation does not.\n\nPhotographs are optional at the first stage. If an essay is selected, we may ask for images you own or have permission to use. Please do not send large image files with the initial submission. We will discuss a fee and any proposed editorial changes before asking you to approve publication.\n\nWe aim to reply within eight weeks. You may submit elsewhere during that period, but must tell us immediately if another publication accepts the piece. If you have heard nothing after eight weeks, a short enquiry is welcome.\n\nWe cannot provide individual feedback on every rejected submission. Rejection does not necessarily mean that the journey or essay lacks value: it may overlap with material already selected or fall outside the issue's planned focus. Read two recent issues before submitting to understand the range we publish.\n\nB. A title beside a painting\n\nImagine two labels beside the same painting. One reads 'A woman by a window'. The other reads 'Waiting for a son who never returns'. The painted marks have not changed, but the second label invites a particular story. A viewer may begin looking for grief in the woman's face rather than wondering what lies beyond the window.\n\nThis does not mean that titles control every response. A visitor may reject the suggested story or notice something the label does not mention. Nor is a neutral-sounding description entirely without influence. Naming the woman and window directs attention towards those elements, leaving other parts of the picture unnamed. The question is not whether language can be made to do nothing, but what kind of work it is being asked to do.\n\nA title supplied by an artist and an explanation written much later can also carry different claims. An artist's title may be part of the work's intended presentation. A later account might rely on a letter, a family memory or an interpretation of the scene. If a gallery presents both in the same confident tone, viewers may find it difficult to distinguish the kinds of evidence behind them.\n\nOne response is to make that distinction available without demanding that every visitor become a specialist. A label can identify the artist's title, then mark a later interpretation as a proposal rather than a recovered certainty. A fuller account can be offered nearby for readers who want it. Briefness need not require pretending that all knowledge has the same status.\n\nLabels remain useful. They can introduce unfamiliar subjects, connect a painting with its circumstances and open questions that a visitor might not otherwise ask. Yet a useful label should not make looking at the painting seem like checking an illustration of the label. In the thought experiment, the story about a missing son might deepen a viewer's engagement. It should also remain possible to ask whether the face actually supports that reading, and what else the image permits us to see."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior3.travel-writing-and-painting-labels-025.a.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which essay best fits the magazine's stated focus?",
+            "material": "A. Submit a journey to Along the Line\n\nAlong the Line is a small magazine about journeys made by public transport. We welcome personal essays that connect a specific journey with a larger question about place, work or everyday life. A list of attractions or a description that could apply to any destination is unlikely to suit us.\n\nSend a completed essay of 800-1,200 words through our submission form. Include a brief note identifying the route and when you travelled. You do not need to be a professional writer. We accept previously unpublished work only; an essay posted publicly on your own website counts as published. Private workshop circulation does not.\n\nPhotographs are optional at the first stage. If an essay is selected, we may ask for images you own or have permission to use. Please do not send large image files with the initial submission. We will discuss a fee and any proposed editorial changes before asking you to approve publication.\n\nWe aim to reply within eight weeks. You may submit elsewhere during that period, but must tell us immediately if another publication accepts the piece. If you have heard nothing after eight weeks, a short enquiry is welcome.\n\nWe cannot provide individual feedback on every rejected submission. Rejection does not necessarily mean that the journey or essay lacks value: it may overlap with material already selected or fall outside the issue's planned focus. Read two recent issues before submitting to understand the range we publish.",
+            "explanation": "A completed specific journey linked to a larger question matches the brief. A is the rejected generic-list approach, C is already published, and D lacks the required completed essay and ignores image guidance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A complete essay linking one bus journey to changes in local working life."
+              },
+              {
+                "id": "o1",
+                "text": "A travel essay already publicly available on the writer's website."
+              },
+              {
+                "id": "o2",
+                "text": "A short proposal accompanied by a folder of large photographs."
+              },
+              {
+                "id": "o3",
+                "text": "A general list of ten famous tourist attractions."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.travel-writing-and-painting-labels-025.a.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should a writer do if another publication accepts the essay?",
+            "material": "A. Submit a journey to Along the Line\n\nAlong the Line is a small magazine about journeys made by public transport. We welcome personal essays that connect a specific journey with a larger question about place, work or everyday life. A list of attractions or a description that could apply to any destination is unlikely to suit us.\n\nSend a completed essay of 800-1,200 words through our submission form. Include a brief note identifying the route and when you travelled. You do not need to be a professional writer. We accept previously unpublished work only; an essay posted publicly on your own website counts as published. Private workshop circulation does not.\n\nPhotographs are optional at the first stage. If an essay is selected, we may ask for images you own or have permission to use. Please do not send large image files with the initial submission. We will discuss a fee and any proposed editorial changes before asking you to approve publication.\n\nWe aim to reply within eight weeks. You may submit elsewhere during that period, but must tell us immediately if another publication accepts the piece. If you have heard nothing after eight weeks, a short enquiry is welcome.\n\nWe cannot provide individual feedback on every rejected submission. Rejection does not necessarily mean that the journey or essay lacks value: it may overlap with material already selected or fall outside the issue's planned focus. Read two recent issues before submitting to understand the range we publish.",
+            "explanation": "Simultaneous submission is allowed only with immediate notice of acceptance elsewhere. Waiting, assuming an automatic withdrawal and undisclosed double publication do not follow the rule.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Wait until the magazine's eight-week period ends."
+              },
+              {
+                "id": "o1",
+                "text": "Publish both versions without telling either editor."
+              },
+              {
+                "id": "o2",
+                "text": "Inform Along the Line immediately."
+              },
+              {
+                "id": "o3",
+                "text": "Assume the submission has been automatically withdrawn."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.travel-writing-and-painting-labels-025.a.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the notice suggest about rejection?",
+            "material": "A. Submit a journey to Along the Line\n\nAlong the Line is a small magazine about journeys made by public transport. We welcome personal essays that connect a specific journey with a larger question about place, work or everyday life. A list of attractions or a description that could apply to any destination is unlikely to suit us.\n\nSend a completed essay of 800-1,200 words through our submission form. Include a brief note identifying the route and when you travelled. You do not need to be a professional writer. We accept previously unpublished work only; an essay posted publicly on your own website counts as published. Private workshop circulation does not.\n\nPhotographs are optional at the first stage. If an essay is selected, we may ask for images you own or have permission to use. Please do not send large image files with the initial submission. We will discuss a fee and any proposed editorial changes before asking you to approve publication.\n\nWe aim to reply within eight weeks. You may submit elsewhere during that period, but must tell us immediately if another publication accepts the piece. If you have heard nothing after eight weeks, a short enquiry is welcome.\n\nWe cannot provide individual feedback on every rejected submission. Rejection does not necessarily mean that the journey or essay lacks value: it may overlap with material already selected or fall outside the issue's planned focus. Read two recent issues before submitting to understand the range we publish.",
+            "explanation": "Overlap and issue focus can lead to rejection of valuable work. Universal lack of interest is denied; feedback is not guaranteed and repeated weekly submission is not advised.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It always proves that the journey was uninteresting."
+              },
+              {
+                "id": "o1",
+                "text": "It guarantees a detailed individual explanation."
+              },
+              {
+                "id": "o2",
+                "text": "It may reflect the issue's editorial needs rather than the essay's overall worth."
+              },
+              {
+                "id": "o3",
+                "text": "It means the writer should submit the same essay every week."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.travel-writing-and-painting-labels-025.b.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the function of the opening thought experiment?",
+            "material": "B. A title beside a painting\n\nImagine two labels beside the same painting. One reads 'A woman by a window'. The other reads 'Waiting for a son who never returns'. The painted marks have not changed, but the second label invites a particular story. A viewer may begin looking for grief in the woman's face rather than wondering what lies beyond the window.\n\nThis does not mean that titles control every response. A visitor may reject the suggested story or notice something the label does not mention. Nor is a neutral-sounding description entirely without influence. Naming the woman and window directs attention towards those elements, leaving other parts of the picture unnamed. The question is not whether language can be made to do nothing, but what kind of work it is being asked to do.\n\nA title supplied by an artist and an explanation written much later can also carry different claims. An artist's title may be part of the work's intended presentation. A later account might rely on a letter, a family memory or an interpretation of the scene. If a gallery presents both in the same confident tone, viewers may find it difficult to distinguish the kinds of evidence behind them.\n\nOne response is to make that distinction available without demanding that every visitor become a specialist. A label can identify the artist's title, then mark a later interpretation as a proposal rather than a recovered certainty. A fuller account can be offered nearby for readers who want it. Briefness need not require pretending that all knowledge has the same status.\n\nLabels remain useful. They can introduce unfamiliar subjects, connect a painting with its circumstances and open questions that a visitor might not otherwise ask. Yet a useful label should not make looking at the painting seem like checking an illustration of the label. In the thought experiment, the story about a missing son might deepen a viewer's engagement. It should also remain possible to ask whether the face actually supports that reading, and what else the image permits us to see.",
+            "explanation": "Different labels invite different questions while marks stay the same. No actual woman's identity is established, uniform response is later rejected, and titles are not prohibited.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To explain why paintings should never have titles."
+              },
+              {
+                "id": "o1",
+                "text": "To illustrate how wording can guide attention without altering an image."
+              },
+              {
+                "id": "o2",
+                "text": "To establish the actual identity of a painted woman."
+              },
+              {
+                "id": "o3",
+                "text": "To prove that all viewers respond identically."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.travel-writing-and-painting-labels-025.b.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the first label not entirely neutral?",
+            "material": "B. A title beside a painting\n\nImagine two labels beside the same painting. One reads 'A woman by a window'. The other reads 'Waiting for a son who never returns'. The painted marks have not changed, but the second label invites a particular story. A viewer may begin looking for grief in the woman's face rather than wondering what lies beyond the window.\n\nThis does not mean that titles control every response. A visitor may reject the suggested story or notice something the label does not mention. Nor is a neutral-sounding description entirely without influence. Naming the woman and window directs attention towards those elements, leaving other parts of the picture unnamed. The question is not whether language can be made to do nothing, but what kind of work it is being asked to do.\n\nA title supplied by an artist and an explanation written much later can also carry different claims. An artist's title may be part of the work's intended presentation. A later account might rely on a letter, a family memory or an interpretation of the scene. If a gallery presents both in the same confident tone, viewers may find it difficult to distinguish the kinds of evidence behind them.\n\nOne response is to make that distinction available without demanding that every visitor become a specialist. A label can identify the artist's title, then mark a later interpretation as a proposal rather than a recovered certainty. A fuller account can be offered nearby for readers who want it. Briefness need not require pretending that all knowledge has the same status.\n\nLabels remain useful. They can introduce unfamiliar subjects, connect a painting with its circumstances and open questions that a visitor might not otherwise ask. Yet a useful label should not make looking at the painting seem like checking an illustration of the label. In the thought experiment, the story about a missing son might deepen a viewer's engagement. It should also remain possible to ask whether the face actually supports that reading, and what else the image permits us to see.",
+            "explanation": "Naming selected elements guides attention. No factual error is supplied; the missing-son story is the second label, and influence does not completely prevent other responses.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It tells viewers the full story of a missing son."
+              },
+              {
+                "id": "o1",
+                "text": "It contains a known factual error about the artist."
+              },
+              {
+                "id": "o2",
+                "text": "Even simple naming highlights some elements over others."
+              },
+              {
+                "id": "o3",
+                "text": "It prevents visitors from noticing any other feature."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.travel-writing-and-painting-labels-025.b.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What problem may arise when artist titles and later accounts use the same confident tone?",
+            "material": "B. A title beside a painting\n\nImagine two labels beside the same painting. One reads 'A woman by a window'. The other reads 'Waiting for a son who never returns'. The painted marks have not changed, but the second label invites a particular story. A viewer may begin looking for grief in the woman's face rather than wondering what lies beyond the window.\n\nThis does not mean that titles control every response. A visitor may reject the suggested story or notice something the label does not mention. Nor is a neutral-sounding description entirely without influence. Naming the woman and window directs attention towards those elements, leaving other parts of the picture unnamed. The question is not whether language can be made to do nothing, but what kind of work it is being asked to do.\n\nA title supplied by an artist and an explanation written much later can also carry different claims. An artist's title may be part of the work's intended presentation. A later account might rely on a letter, a family memory or an interpretation of the scene. If a gallery presents both in the same confident tone, viewers may find it difficult to distinguish the kinds of evidence behind them.\n\nOne response is to make that distinction available without demanding that every visitor become a specialist. A label can identify the artist's title, then mark a later interpretation as a proposal rather than a recovered certainty. A fuller account can be offered nearby for readers who want it. Briefness need not require pretending that all knowledge has the same status.\n\nLabels remain useful. They can introduce unfamiliar subjects, connect a painting with its circumstances and open questions that a visitor might not otherwise ask. Yet a useful label should not make looking at the painting seem like checking an illustration of the label. In the thought experiment, the story about a missing son might deepen a viewer's engagement. It should also remain possible to ask whether the face actually supports that reading, and what else the image permits us to see.",
+            "explanation": "A uniform tone can conceal differences in origin and support. A invents a reading difficulty, B wrongly makes all later interpretation false, and D proposes a necessity the text does not establish.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Visitors will be unable to read either label."
+              },
+              {
+                "id": "o1",
+                "text": "The gallery will have to remove all original titles."
+              },
+              {
+                "id": "o2",
+                "text": "Every later interpretation will become false."
+              },
+              {
+                "id": "o3",
+                "text": "Their different evidential status may be obscured."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.travel-writing-and-painting-labels-025.b.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which approach to labels does the author favour?",
+            "material": "B. A title beside a painting\n\nImagine two labels beside the same painting. One reads 'A woman by a window'. The other reads 'Waiting for a son who never returns'. The painted marks have not changed, but the second label invites a particular story. A viewer may begin looking for grief in the woman's face rather than wondering what lies beyond the window.\n\nThis does not mean that titles control every response. A visitor may reject the suggested story or notice something the label does not mention. Nor is a neutral-sounding description entirely without influence. Naming the woman and window directs attention towards those elements, leaving other parts of the picture unnamed. The question is not whether language can be made to do nothing, but what kind of work it is being asked to do.\n\nA title supplied by an artist and an explanation written much later can also carry different claims. An artist's title may be part of the work's intended presentation. A later account might rely on a letter, a family memory or an interpretation of the scene. If a gallery presents both in the same confident tone, viewers may find it difficult to distinguish the kinds of evidence behind them.\n\nOne response is to make that distinction available without demanding that every visitor become a specialist. A label can identify the artist's title, then mark a later interpretation as a proposal rather than a recovered certainty. A fuller account can be offered nearby for readers who want it. Briefness need not require pretending that all knowledge has the same status.\n\nLabels remain useful. They can introduce unfamiliar subjects, connect a painting with its circumstances and open questions that a visitor might not otherwise ask. Yet a useful label should not make looking at the painting seem like checking an illustration of the label. In the thought experiment, the story about a missing son might deepen a viewer's engagement. It should also remain possible to ask whether the face actually supports that reading, and what else the image permits us to see.",
+            "explanation": "The conclusion values context and questions while retaining scrutiny of proposed readings. A subordinates the image to the label, C removes accessible guidance, and D denies the distinctions the passage recommends.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Providing helpful context while leaving interpretations open to scrutiny."
+              },
+              {
+                "id": "o1",
+                "text": "Treating all written accounts as equally certain."
+              },
+              {
+                "id": "o2",
+                "text": "Replacing the need to look closely with a definitive story."
+              },
+              {
+                "id": "o3",
+                "text": "Offering no information unless visitors are specialists."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "dc7b746fe7c1c337107b24c09fd06f1040b5939890b6886bb60f98c4a770f836",
+      "reviewNotes": "Six new complete senior reading passages in three practices, each consisting of one three-question text and one four-question text. Invented events and a stated thought experiment are original examples; the echo passage uses general physical explanation without invented studies or statistics. Same-author evidence/distractor review, not independent learner or teacher calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior3.travel-writing-and-painting-labels-025#a",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.travel-writing-and-painting-labels-025.a.q1",
+            "expansion.20261024.senior3.travel-writing-and-painting-labels-025.a.q2",
+            "expansion.20261024.senior3.travel-writing-and-painting-labels-025.a.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.travel-writing-and-painting-labels-025",
+          "sourceContentHash": "e5b4462b66de52072c31efcf81b4c9a83a46c2103cf812b02b6acedfec449350"
+        },
+        {
+          "id": "expansion.20261024.senior3.travel-writing-and-painting-labels-025#b",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.travel-writing-and-painting-labels-025.b.q1",
+            "expansion.20261024.senior3.travel-writing-and-painting-labels-025.b.q2",
+            "expansion.20261024.senior3.travel-writing-and-painting-labels-025.b.q3",
+            "expansion.20261024.senior3.travel-writing-and-painting-labels-025.b.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.travel-writing-and-painting-labels-025",
+          "sourceContentHash": "487e7002de86ec6ef6c57ce8449d0543a350683670f9a83fa5dcfabf5c666bfa"
+        }
+      ]
+    }
+  ]
+}
