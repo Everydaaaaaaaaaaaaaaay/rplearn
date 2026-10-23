@@ -1,0 +1,730 @@
+{
+  "createdAt": "2026-10-23T21:21:12.757124+00:00",
+  "reviewBoundary": "Three original senior mixed practices. Same-author cohesion, key/distractor and accepted-form review. Fictional examples, not actual examination questions or independently calibrated difficulty. Unknown written forms remain reviewable.",
+  "units": [
+    {
+      "id": "senior1.knot-instructions-and-bakery-038",
+      "level": "senior1",
+      "title": "Learning a knot and delivering bread",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade10-club-routines-insertion",
+      "alignmentNote": "Old sources are drafting references for level and family only. Final structure follows National I: a complete five-gap seven-option insertion and a complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Learning a knot and delivering bread",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "Learning a knot from pictures can be surprisingly confusing. The rope in your hands may not seem to match the tidy lines on the page. Before abandoning the instructions, try changing the way you use them.\n\nChoose a short piece of rope that is easy to handle. If the directions show two colours, use two colours yourself when possible. ____1____ You can then follow the same end through several pictures without losing track of it.\n\nPlace the instructions beside your hands, facing the same way as the demonstration. ____2____ A loop that appears on the left in the drawing should appear on your left too, unless the directions say otherwise.\n\nWork through one movement at a time. Stop after each picture and compare the crossing points. ____3____ Pulling everything tight too soon can hide the point where your rope took a different path.\n\nOnce the knot looks correct, loosen it and try again. Keep the pictures nearby but look at them only when you need help. ____4____ Repeating the whole sequence helps connect the separate movements into a useful skill.\n\nFinally, remember that a practice knot is not proof that you can use it safely for any purpose. ____5____ For climbing or carrying a heavy load, get suitable instruction and have the equipment and knot checked by someone qualified.",
+          "candidates": [
+            "A. Leave the rope fairly loose while you are checking.",
+            "B. Colour makes the two ends easier to distinguish.",
+            "C. A neat appearance guarantees that any knot can hold a person.",
+            "D. This reduces the extra work of mentally turning the image around.",
+            "E. The aim is gradually to remember the steps without the page.",
+            "F. Different uses involve different demands and risks.",
+            "G. Complete every movement at top speed before looking at the pictures."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 1,
+              "explanation": "B explains the two-colour suggestion and the following reference to tracking one end. A is looseness, D orientation, E memory and F safe uses. C is an unsafe guarantee and G contradicts stepwise checking."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 3,
+              "explanation": "D explains aligning the picture with the hands and leads to the matching left side. A, B, E and F concern other stages. C and G provide neither orientation nor safe practice."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 0,
+              "explanation": "A prepares the warning about tightening too soon. B concerns colour, D orientation, E recall and F use conditions. G contradicts checking after each movement; C is an unsupported safety claim."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 4,
+              "explanation": "E explains reducing dependence on pictures through repetition. A is initial checking, B colour, D orientation and F application. C and G replace learning with false guarantees or speed."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 5,
+              "explanation": "F links different purposes to the qualified instruction needed for climbing and heavy loads. A, B, D and E concern learning mechanics. C directly contradicts the warning and G encourages haste."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade10-slotgrammar-group-photo",
+          "title": "B. Learning a knot and delivering bread",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "Every Saturday, my neighbour makes bread for a small community breakfast. Last week, she invited me ____1____ (help) with the delivery. The loaves had cooled on wooden shelves, and the room was filled ____2____ the smell of warm flour.\n\nBefore ____3____ (pack) them, we checked a list of orders. Each bag needed a name because several people had requested different kinds of bread. I wrote the labels as ____4____ (clear) as I could and placed the finished bags beside the door.\n\nOne customer, ____5____ house was at the end of our street, had asked us to leave her order with a neighbour. She had written the arrangement on the form, so we did not need to guess what to do if she was out.\n\nThe bags ____6____ (carry) to the breakfast hall in two large boxes. I walked beside my neighbour, holding the lighter one. When we arrived, some ____7____ (volunteer) were setting the tables while others checked the kitchen.\n\nIt was such ____8____ busy morning that I hardly noticed the time. Yet nobody hurried me when I asked where a bag should go. The route became ____9____ (easy) to remember than it had been at first. By noon, we had delivered all the bread and washed the empty boxes. My neighbour thanked me for giving up part of ____10____ (I) weekend.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of help.",
+              "acceptedAnswers": [
+                "to help"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "helping",
+                  "help",
+                  "helped"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Invited me takes a to-infinitive, to help; the bare, -ing and past forms do not fit this invitation construction."
+            },
+            {
+              "prompt": "Fill gap 2 with one appropriate word.",
+              "acceptedAnswers": [
+                "with"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "of",
+                  "by",
+                  "at"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Filled with names what occupies the room. Of, by and at do not complete this description of the smell filling it."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of pack.",
+              "acceptedAnswers": [
+                "packing"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "pack",
+                  "packed",
+                  "to pack"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Before functions as a preposition followed by packing. The other forms do not directly follow it in this non-finite construction."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of clear.",
+              "acceptedAnswers": [
+                "clearly"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "clear",
+                  "clearness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "As clearly as modifies wrote with an adverb. Clear is adjective, clearness noun."
+            },
+            {
+              "prompt": "Fill gap 5 with one appropriate word.",
+              "acceptedAnswers": [
+                "whose"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "which",
+                  "that"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whose supplies possession before house. Who, which and that cannot directly modify house possessively."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of carry.",
+              "acceptedAnswers": [
+                "were carried",
+                "had been carried"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "carried",
+                  "was carried"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The plural bags receive the carrying action. Past and past-perfect passive fit the delivery narrative. Carried alone lacks the passive auxiliary; was disagrees with bags."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of volunteer.",
+              "acceptedAnswers": [
+                "volunteers"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "volunteer",
+                  "volunteering"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Some people setting tables are plural volunteers. Singular volunteer and activity volunteering do not serve as that plural human subject."
+            },
+            {
+              "prompt": "Fill gap 8 with one appropriate word.",
+              "acceptedAnswers": [
+                "a"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "an",
+                  "the"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Such a busy morning uses a before the consonant sound. An has the wrong sound agreement, and such the does not fit."
+            },
+            {
+              "prompt": "Fill gap 9 with the correct form of easy.",
+              "acceptedAnswers": [
+                "easier",
+                "more easy"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "easy",
+                  "easiest",
+                  "more easier"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Than requires comparative easier or grammatical more easy. Easy is not comparative, easiest is superlative and more easier double comparison."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of I.",
+              "acceptedAnswers": [
+                "my"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "I",
+                  "me",
+                  "mine"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The possessive determiner my modifies weekend. I/me are subject/object forms and mine cannot directly precede the noun."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior2.telescope-and-roof-garden-038",
+      "level": "senior2",
+      "title": "Borrowing a telescope and recording plants",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade11-exhibition-labels-insertion",
+      "alignmentNote": "Old sources are drafting references for level and family only. Final structure follows National I: a complete five-gap seven-option insertion and a complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Borrowing a telescope and recording plants",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "A borrowed telescope may offer an exciting first view of the night sky. It also comes with controls that an experienced owner uses almost without thinking. A useful handover gives the borrower a chance to understand those controls before the first dark evening.\n\nAsk the owner to demonstrate setting it up in daylight. Find out which parts must be secured and which are meant to move. ____1____ That distinction prevents a natural attempt to adjust the view from loosening something important.\n\nTry repeating the setup while the owner watches. A demonstration can seem obvious until you have to choose the next action yourself. ____2____ Ask about any step at which you are relying on a guess.\n\nAgree on a simple first target and suitable viewing conditions. Searching at random can be frustrating when you are still learning to aim. ____3____ The Moon, when appropriately visible, may be easier to find than a faint object among many stars. Never point a telescope at the Sun without proper specialist solar equipment and guidance.\n\nFind out how to pack the instrument after use. ____4____ A photograph of the correctly arranged case can be more helpful than trying to remember where every small part belongs.\n\nFinally, settle practical details about returning it. ____5____ If the weather prevents your planned evening, contact the owner rather than assuming you may keep the instrument longer. Clear arrangements protect both the equipment and the relationship.",
+          "candidates": [
+            "A. Choose something you can recognise before attempting a difficult search.",
+            "B. Darkness makes it safe to point the instrument in every possible direction.",
+            "C. Decide on a date and a way of reporting any difficulty.",
+            "D. Watching is not the same as performing the sequence.",
+            "E. Learn which controls adjust the telescope and which hold it together.",
+            "F. A telescope never needs to be returned if clouds spoil one evening.",
+            "G. Small accessories need a definite place as well as the main tube."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 4,
+              "explanation": "E specifies the distinction between adjustable and securing controls, picked up by that distinction. A targets, C return, D rehearsal and G packing belong elsewhere. B and F make unsafe or unreasonable claims."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 3,
+              "explanation": "D develops the contrast between seeing a demonstration and carrying out its sequence. A, C, E and G concern targets, return, controls and storage. B and F do not support practising under supervision."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 0,
+              "explanation": "A introduces an identifiable first target, illustrated next by the Moon. C, D, E and G concern other handover steps. B ignores solar risk and F ignores ownership."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 6,
+              "explanation": "G leads directly to a case photograph showing every small part. A is viewing, C return, D repetition and E controls. B and F do not explain packing."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 2,
+              "explanation": "C supplies the return date and communication plan developed by the weather example. A, D, E and G concern use. F contradicts asking the owner; B has no connection to return arrangements."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade11-grammar-printroom-scraps",
+          "title": "B. Borrowing a telescope and recording plants",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "Our class was invited to record the plants in a roof garden. The gardener gave us a map ____1____ showed the different beds, but she warned us that the list of names was not completely up to date. Some plants had been moved since it was drawn.\n\nAfter ____2____ (divide) into pairs, we chose one bed each. My partner and I decided ____3____ (begin) with the labels rather than trying to identify everything from memory. We copied the names and noted whether a label was missing or ____4____ (damage).\n\nThere were more pots than we had expected. To avoid counting one twice, we moved ____5____ (slow) along a row and marked its end on the map. We also took photographs, making sure that each one could be linked to a particular position.\n\nAt the end, the gardener thanked us ____6____ our careful notes. She did not treat every copied name as a confirmed identification. Instead, the uncertain entries ____7____ (check) against her planting records the following day.\n\nThe task taught me that a useful record needs more than a neat appearance. Its limits must be described as ____8____ (careful) as its findings. We added a short explanation of ____9____ we had done, including the date and the beds we had covered. That made it easier for another group to continue without ____10____ (repeat) all our work.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with one appropriate word.",
+              "acceptedAnswers": [
+                "that",
+                "which"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "where",
+                  "what"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The map is subject of the defining relative clause: that or which showed. Who is human, where cannot be subject and what does not follow this expressed antecedent."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of divide.",
+              "acceptedAnswers": [
+                "dividing",
+                "being divided",
+                "having been divided"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "divide",
+                  "divided"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "After permits dividing for arranging ourselves, being divided for assignment, or having been divided for completed assignment. Bare divide and divided without an auxiliary do not fit."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of begin.",
+              "acceptedAnswers": [
+                "to begin"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "beginning",
+                  "begin",
+                  "began"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Decided takes to begin. The -ing, bare and past forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of damage.",
+              "acceptedAnswers": [
+                "damaged"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "damage",
+                  "damaging"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A label is damaged, receiving harm. Damage is noun/base verb; damaging would mean causing harm."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of slow.",
+              "acceptedAnswers": [
+                "slowly"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "slowness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Slowly modifies moved. Slowness is a noun. The less formal flat-adverb slow is not automatically rejected and remains reviewable."
+            },
+            {
+              "prompt": "Fill gap 6 with one appropriate word.",
+              "acceptedAnswers": [
+                "for"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "to",
+                  "at",
+                  "of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Thanked us for our notes uses for to give the reason. Other listed prepositions do not fit."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of check.",
+              "acceptedAnswers": [
+                "were checked"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "checked",
+                  "was checked",
+                  "are checked"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The following day in this completed narrative, plural entries were checked. Checked lacks passive auxiliary; was disagrees; are changes the narrated time."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of careful.",
+              "acceptedAnswers": [
+                "carefully"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "careful",
+                  "carefulness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "As carefully as requires the adverb modifying described. Adjective careful and noun carefulness do not fit."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "what",
+                "all",
+                "everything"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "that",
+                  "which"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "What, all or everything can supply the content of the actions done. That leaves done without an object, and which has no specified set."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of repeat.",
+              "acceptedAnswers": [
+                "repeating"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "repeat",
+                  "repeated",
+                  "to repeat"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Without takes the -ing form repeating. The bare, finite past and to-infinitive forms do not complete it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior3.subtitles-and-seed-labels-038",
+      "level": "senior3",
+      "title": "Reading subtitles and preserving labels",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade12-costume-librarian-insertion",
+      "alignmentNote": "Old sources are drafting references for level and family only. Final structure follows National I: a complete five-gap seven-option insertion and a complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Reading subtitles and preserving labels",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "Subtitles can make a film accessible across languages, yet they cannot reproduce every feature of a conversation. Speech, images and written lines operate together. Understanding that relationship helps viewers read a subtitle as a considered representation rather than a complete transcript.\n\nNotice how much can appear on screen at once. A speaker may talk faster than a viewer can comfortably read. ____1____ Reducing the wording can preserve the main point while leaving time to watch the scene.\n\nConsider information carried by the image. If a character is visibly pointing at a broken chair, a subtitle may not need to repeat every descriptive word. ____2____ What is omitted from the text may still be communicated clearly by another channel.\n\nBe cautious when judging a phrase in isolation. A short reply can express agreement, doubt or irritation depending on the voice and preceding exchange. ____3____ Reading only a screenshot can remove exactly the evidence that made the choice appropriate.\n\nRecognise that some choices involve a trade-off. A joke based on a particular sound may not work in another language. ____4____ Neither choice preserves every feature, so the purpose of the scene matters.\n\nFinally, distinguish a genuine error from a choice you would have made differently. ____5____ Looking at that evidence makes criticism more precise and gives due attention to the constraints under which the line was written.",
+          "candidates": [
+            "A. A translator might preserve its literal reference or seek a different joke with a similar effect.",
+            "B. The best subtitle must always contain every word the speaker says.",
+            "C. Check the scene, intended meaning and reading time before reaching a conclusion.",
+            "D. This creates a limit on the length of the written line.",
+            "E. Tone and context help determine which meaning is intended.",
+            "F. The visible action can share the explanatory work.",
+            "G. Every difference from a word-for-word translation proves carelessness."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 3,
+              "explanation": "D links speaking speed to limited reading space/time, followed by reducing wording. A is humour, C evaluation, E tone and F image. B denies the stated limit and G equates all departures with mistakes."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 5,
+              "explanation": "F explains the chair example as shared communication between image and writing. A, C, D and E concern humour, evaluation, timing and tone. B and G ignore visual information and constraints."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 4,
+              "explanation": "E connects reply meanings to voice and previous dialogue, preparing the screenshot warning. A is humour, C final criticism, D timing and F visible actions. B and G do not restore context."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 0,
+              "explanation": "A names two alternatives for translating a sound-based joke; neither choice refers back to them. C, D, E and F address other constraints. B and G deny the acknowledged trade-off."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 2,
+              "explanation": "C supplies the evidence referenced in the following sentence and grounds a precise criticism. A, D, E and F cover individual examples. B and G make absolute judgments without examining the scene."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade12-grammar-caption-check",
+          "title": "B. Reading subtitles and preserving labels",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "While sorting the papers in a community garden shed, I found a box of seed labels. They came from a gardener ____1____ had worked there before I joined. Some were still easy to read; others had faded almost completely.\n\nI wanted to replace them. But the current gardener suggested ____2____ (keep) the originals until we had recorded their information. An uncertain word should not become a confident guess because it was copied ____3____ (neat).\n\nWe photographed each label beside a ruler, then gave the image a number. The number was linked to the bed ____4____ which the label had been found. Where a plant name was unclear, we described the uncertainty instead of supplying one from memory.\n\nSeveral earlier photographs ____5____ (store) in a folder on the garden computer. Comparing them with our images helped us read two faded names. It also reminded us that a plant could have been moved since a picture was taken.\n\nThe final list contained fewer confirmed ____6____ (name) than I had hoped. Nevertheless, it was ____7____ (reliable) than a complete list based on guesses. We decided ____8____ (add) new observations as the plants developed, rather than pretending the work was finished.\n\nOnly after the record was complete ____9____ we put the labels into protective envelopes. Their handwriting was worth keeping. It was part of the garden's history, and we had a ____10____ (responsible) to preserve it.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with one appropriate word.",
+              "acceptedAnswers": [
+                "who",
+                "that"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "which",
+                  "whose"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Who or that is the human subject of a defining relative clause. Which is nonhuman; whose would need a possessed noun before the verb."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of keep.",
+              "acceptedAnswers": [
+                "keeping"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "keep",
+                  "to keep",
+                  "kept"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Suggested directly takes keeping. Bare, to-infinitive and finite past forms do not fit."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of neat.",
+              "acceptedAnswers": [
+                "neatly"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "neat",
+                  "neatness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Neatly modifies was copied. Neat is adjective and neatness noun."
+            },
+            {
+              "prompt": "Fill gap 4 with one appropriate word.",
+              "acceptedAnswers": [
+                "in"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "at",
+                  "from",
+                  "on"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The ordinary location construction is the bed in which a label was found. At/from/on do not express being inside the garden bed in this sentence."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of store.",
+              "acceptedAnswers": [
+                "were stored",
+                "had been stored"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "stored",
+                  "was stored"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Plural photographs receive storage. Past or past-perfect passive fits earlier stored images. Stored lacks passive auxiliary; was disagrees."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of name.",
+              "acceptedAnswers": [
+                "names"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "name",
+                  "naming"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Fewer requires countable plural names. Name is singular and naming denotes the activity."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of reliable.",
+              "acceptedAnswers": [
+                "more reliable"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "reliable",
+                  "most reliable"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Than requires comparative more reliable. The plain adjective and superlative do not fit."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of add.",
+              "acceptedAnswers": [
+                "to add"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "adding",
+                  "add",
+                  "added"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Decided takes to add. The other forms do not directly complete it."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "did"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "do",
+                  "does"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Fronted Only after triggers inversion: did we put in this completed past narrative. Do/does are present forms. Other auxiliary or tense readings are left reviewable rather than rejected automatically."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of responsible.",
+              "acceptedAnswers": [
+                "responsibility"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "responsible",
+                  "responsibly"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A requires a singular count noun, responsibility. Responsible is adjective and responsibly adverb."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
