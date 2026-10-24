@@ -1,0 +1,1922 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b110",
+  "createdAt": "2026-10-24T01:28:05.808Z",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.quantity-pictures-1-110",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · One and two pictures 1",
+        "summary": "One and two pictures 1，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. One/two-plus-noun is a provisional extension. Each pair of owned nouns is composed in counts1 and2. Counts are32 quantity-picture items, not32 independent nouns or stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.quantity-pictures-1-110",
+          "family": "word_picture_matching",
+          "label": "One and two pictures 1",
+          "candidateSHA256": "9941afafe140c2eaa62b30f179aba6cd5ed9ec427d35783337cb5e864ce0f388",
+          "authorCheckSHA256": "9381e7fbe44ae723f7bf2b00d5c1acebd3b73b306efdd493b9c3255b63f6f1fa",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.quantity-pictures-1-110#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b110；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-1-110.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one pencil.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one pencil. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.176c2d421a7bb688462dc9f283a03162e4f13d281ad63e3cce865a8834dd2fe3"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.8734506bdd2be9da187eff13f92bf7a0f5b32b82b912ec02002554281e43a123"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.b2cc833da37f8ef94a7d30b691c3bfe38cf6b392904fe63f2190c13c1584f7ed"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fbd3e236953302f183be1c35fa443be9c7307a5660787e1f5ffd864fba4d3542"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-1-110.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two pencils.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two pencils. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.176c2d421a7bb688462dc9f283a03162e4f13d281ad63e3cce865a8834dd2fe3"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.8734506bdd2be9da187eff13f92bf7a0f5b32b82b912ec02002554281e43a123"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.b2cc833da37f8ef94a7d30b691c3bfe38cf6b392904fe63f2190c13c1584f7ed"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fbd3e236953302f183be1c35fa443be9c7307a5660787e1f5ffd864fba4d3542"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-1-110.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one ruler.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one ruler. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.176c2d421a7bb688462dc9f283a03162e4f13d281ad63e3cce865a8834dd2fe3"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.8734506bdd2be9da187eff13f92bf7a0f5b32b82b912ec02002554281e43a123"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.b2cc833da37f8ef94a7d30b691c3bfe38cf6b392904fe63f2190c13c1584f7ed"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fbd3e236953302f183be1c35fa443be9c7307a5660787e1f5ffd864fba4d3542"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-1-110.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two rulers.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two rulers. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.176c2d421a7bb688462dc9f283a03162e4f13d281ad63e3cce865a8834dd2fe3"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.8734506bdd2be9da187eff13f92bf7a0f5b32b82b912ec02002554281e43a123"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.b2cc833da37f8ef94a7d30b691c3bfe38cf6b392904fe63f2190c13c1584f7ed"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fbd3e236953302f183be1c35fa443be9c7307a5660787e1f5ffd864fba4d3542"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "a56b9c3b7b0bb574a29b0810d7dcde048cc9575b599315d44c11d8827a4192f2",
+      "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.quantity-pictures-2-110",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · One and two pictures 2",
+        "summary": "One and two pictures 2，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. One/two-plus-noun is a provisional extension. Each pair of owned nouns is composed in counts1 and2. Counts are32 quantity-picture items, not32 independent nouns or stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.quantity-pictures-2-110",
+          "family": "word_picture_matching",
+          "label": "One and two pictures 2",
+          "candidateSHA256": "e4e5dc7cf3d4a65ecb34c45564a35f278fd6edc0743a8759e117040568175c7d",
+          "authorCheckSHA256": "b29da399cf72c45702e1fb8c3610ec6eac40d77a1fc976c6845687faa4fc3403",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.quantity-pictures-2-110#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b110；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-2-110.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one rope.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one rope. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.84da7b87a16e86b2e15322187be94082c61b8da4489341db10269e1c642a4557"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.a3e335931c19726200f94e9776d92821e6edbac0cdb9363fdeb8ad5039d28ad1"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d6c5a7cd76dbcbe81d9016173870c2b6029cc83f89dd30daea416f25669d66b4"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.deaa819164dd6fa3a191298cd255437f6dad167055b9b2b70172b57e5ecb9498"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-2-110.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two ropes.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two ropes. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.84da7b87a16e86b2e15322187be94082c61b8da4489341db10269e1c642a4557"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.a3e335931c19726200f94e9776d92821e6edbac0cdb9363fdeb8ad5039d28ad1"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d6c5a7cd76dbcbe81d9016173870c2b6029cc83f89dd30daea416f25669d66b4"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.deaa819164dd6fa3a191298cd255437f6dad167055b9b2b70172b57e5ecb9498"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-2-110.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one scarf.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one scarf. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.84da7b87a16e86b2e15322187be94082c61b8da4489341db10269e1c642a4557"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.a3e335931c19726200f94e9776d92821e6edbac0cdb9363fdeb8ad5039d28ad1"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d6c5a7cd76dbcbe81d9016173870c2b6029cc83f89dd30daea416f25669d66b4"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.deaa819164dd6fa3a191298cd255437f6dad167055b9b2b70172b57e5ecb9498"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-2-110.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two scarves.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two scarves. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.84da7b87a16e86b2e15322187be94082c61b8da4489341db10269e1c642a4557"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.a3e335931c19726200f94e9776d92821e6edbac0cdb9363fdeb8ad5039d28ad1"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d6c5a7cd76dbcbe81d9016173870c2b6029cc83f89dd30daea416f25669d66b4"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.deaa819164dd6fa3a191298cd255437f6dad167055b9b2b70172b57e5ecb9498"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "8663c02ba7633e24164a9b7fbb4140558de495bf6e17c95e77ecbfe5ff093edc",
+      "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.quantity-pictures-3-110",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · One and two pictures 3",
+        "summary": "One and two pictures 3，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. One/two-plus-noun is a provisional extension. Each pair of owned nouns is composed in counts1 and2. Counts are32 quantity-picture items, not32 independent nouns or stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.quantity-pictures-3-110",
+          "family": "word_picture_matching",
+          "label": "One and two pictures 3",
+          "candidateSHA256": "e3ee718518fb54a6d88a0c04a8c81671b4dee55afc73ff6e0d2f04902d109744",
+          "authorCheckSHA256": "130194d3e1f0cff73ab078f7aa111fd5fbf33998d49697d34d1f4c9ddc394ab4",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.quantity-pictures-3-110#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b110；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-3-110.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one train.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one train. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.094218f91df12f94c9db940409481f2961be7090acfbcc1812198e2310e6401c"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.3e279f1f77817584fc962d6a57e7ab636e361eb1bdf7611201125f24a01ba0f4"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.699c59747186a3e41b8fdf45abfe7c53359d69f758257bd7938f936b24f53ae1"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.c25adc0886b81f1f0e0f512771f570767d65e9be484e804bd7c1305f06f410c0"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-3-110.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two trains.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two trains. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.094218f91df12f94c9db940409481f2961be7090acfbcc1812198e2310e6401c"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.3e279f1f77817584fc962d6a57e7ab636e361eb1bdf7611201125f24a01ba0f4"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.699c59747186a3e41b8fdf45abfe7c53359d69f758257bd7938f936b24f53ae1"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.c25adc0886b81f1f0e0f512771f570767d65e9be484e804bd7c1305f06f410c0"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-3-110.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one ladder.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one ladder. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.094218f91df12f94c9db940409481f2961be7090acfbcc1812198e2310e6401c"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.3e279f1f77817584fc962d6a57e7ab636e361eb1bdf7611201125f24a01ba0f4"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.699c59747186a3e41b8fdf45abfe7c53359d69f758257bd7938f936b24f53ae1"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.c25adc0886b81f1f0e0f512771f570767d65e9be484e804bd7c1305f06f410c0"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-3-110.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two ladders.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two ladders. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.094218f91df12f94c9db940409481f2961be7090acfbcc1812198e2310e6401c"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.3e279f1f77817584fc962d6a57e7ab636e361eb1bdf7611201125f24a01ba0f4"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.699c59747186a3e41b8fdf45abfe7c53359d69f758257bd7938f936b24f53ae1"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.c25adc0886b81f1f0e0f512771f570767d65e9be484e804bd7c1305f06f410c0"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "6f0da401075e2868ffec77d5dac7abfb3477d03efa74406e5b2c2a795dc4d469",
+      "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.quantity-pictures-4-110",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · One and two pictures 4",
+        "summary": "One and two pictures 4，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. One/two-plus-noun is a provisional extension. Each pair of owned nouns is composed in counts1 and2. Counts are32 quantity-picture items, not32 independent nouns or stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.quantity-pictures-4-110",
+          "family": "word_picture_matching",
+          "label": "One and two pictures 4",
+          "candidateSHA256": "7ec7460443201aef9234cb26982619aa16d1c296b256e06f4179b47d0b6b4518",
+          "authorCheckSHA256": "c1a9b6bca3950e2f590e0f5be613c260c0bbb4b22b80bbf7cdce88b0d0350c8a",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.quantity-pictures-4-110#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b110；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-4-110.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one snake.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one snake. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1fe7f61f44ef60a6e6b67052a08355ea9f051bc00f113f32e731ab4a810509aa"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.cd897690f8d4200dbe73071a31f68352050c4c395483b9319527bad11dfe1dcf"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d56b3e3ec86f175d319730008fd900cb9c1cb6ff618ff053eb26e34e3c9842df"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.dc5ee11879afd34f5a504f77c21f82b92b48f7fe5a92b088aa27d156dab30063"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-4-110.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two snakes.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two snakes. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1fe7f61f44ef60a6e6b67052a08355ea9f051bc00f113f32e731ab4a810509aa"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.cd897690f8d4200dbe73071a31f68352050c4c395483b9319527bad11dfe1dcf"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d56b3e3ec86f175d319730008fd900cb9c1cb6ff618ff053eb26e34e3c9842df"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.dc5ee11879afd34f5a504f77c21f82b92b48f7fe5a92b088aa27d156dab30063"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-4-110.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one bridge.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one bridge. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1fe7f61f44ef60a6e6b67052a08355ea9f051bc00f113f32e731ab4a810509aa"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.cd897690f8d4200dbe73071a31f68352050c4c395483b9319527bad11dfe1dcf"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d56b3e3ec86f175d319730008fd900cb9c1cb6ff618ff053eb26e34e3c9842df"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.dc5ee11879afd34f5a504f77c21f82b92b48f7fe5a92b088aa27d156dab30063"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-4-110.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two bridges.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two bridges. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1fe7f61f44ef60a6e6b67052a08355ea9f051bc00f113f32e731ab4a810509aa"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.cd897690f8d4200dbe73071a31f68352050c4c395483b9319527bad11dfe1dcf"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.d56b3e3ec86f175d319730008fd900cb9c1cb6ff618ff053eb26e34e3c9842df"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.dc5ee11879afd34f5a504f77c21f82b92b48f7fe5a92b088aa27d156dab30063"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "3e2526eeaaa7e727d3ef3ed8aa6ba218eefb73934901559d140a667d78871ac4",
+      "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.quantity-pictures-5-110",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · One and two pictures 5",
+        "summary": "One and two pictures 5，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. One/two-plus-noun is a provisional extension. Each pair of owned nouns is composed in counts1 and2. Counts are32 quantity-picture items, not32 independent nouns or stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.quantity-pictures-5-110",
+          "family": "word_picture_matching",
+          "label": "One and two pictures 5",
+          "candidateSHA256": "0645f1a0532593a4cf635457af89fda018671f5b0badb112bd7f4ed2d42f627e",
+          "authorCheckSHA256": "250260f5d3e7e1579c8afa326515a0672c9b9ee8a89bde4bd32d9a121944e8bf",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.quantity-pictures-5-110#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b110；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-5-110.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one tree.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one tree. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.3709d9165e48dd125bbe4ed0c4d372d3bddf3c8c7d68ac518fa0cdf8c17f5165"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.ee1a709f4f03d9503bf755b58edab4112861a6e6265487348aa5737be3749263"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.ee7706c420fa14822e4f25db653f4bd3a76121c633dd6eab2f6cdc9ff0cfede2"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.ff1bde20a98f1f87c1b64f4bf2e36d928706fcd71efc96894de291237f336f6e"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-5-110.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two trees.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two trees. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.3709d9165e48dd125bbe4ed0c4d372d3bddf3c8c7d68ac518fa0cdf8c17f5165"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.ee1a709f4f03d9503bf755b58edab4112861a6e6265487348aa5737be3749263"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.ee7706c420fa14822e4f25db653f4bd3a76121c633dd6eab2f6cdc9ff0cfede2"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.ff1bde20a98f1f87c1b64f4bf2e36d928706fcd71efc96894de291237f336f6e"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-5-110.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one bottle.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one bottle. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.3709d9165e48dd125bbe4ed0c4d372d3bddf3c8c7d68ac518fa0cdf8c17f5165"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.ee1a709f4f03d9503bf755b58edab4112861a6e6265487348aa5737be3749263"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.ee7706c420fa14822e4f25db653f4bd3a76121c633dd6eab2f6cdc9ff0cfede2"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.ff1bde20a98f1f87c1b64f4bf2e36d928706fcd71efc96894de291237f336f6e"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-5-110.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two bottles.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two bottles. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.3709d9165e48dd125bbe4ed0c4d372d3bddf3c8c7d68ac518fa0cdf8c17f5165"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.ee1a709f4f03d9503bf755b58edab4112861a6e6265487348aa5737be3749263"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.ee7706c420fa14822e4f25db653f4bd3a76121c633dd6eab2f6cdc9ff0cfede2"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.ff1bde20a98f1f87c1b64f4bf2e36d928706fcd71efc96894de291237f336f6e"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "1fd7cde58d39a6f1a4e29eed8997467124e966567355d262e8bd34e18d9f1a15",
+      "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.quantity-pictures-6-110",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · One and two pictures 6",
+        "summary": "One and two pictures 6，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. One/two-plus-noun is a provisional extension. Each pair of owned nouns is composed in counts1 and2. Counts are32 quantity-picture items, not32 independent nouns or stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.quantity-pictures-6-110",
+          "family": "word_picture_matching",
+          "label": "One and two pictures 6",
+          "candidateSHA256": "e7c3344a9057835d9f7e9ec19b7c021d5c77f1acd0d1eb193ebb699438dc111b",
+          "authorCheckSHA256": "466c93cf19c2b832f981130e8dbf53b128599774fc0cee589518745a4684f6f6",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.quantity-pictures-6-110#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b110；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-6-110.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one glass.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one glass. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.281e6831ab6b8224eddf18932645dc05319a220353745a089f946bb7487d0a75"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.786a1263a70f7d1e92245ae5e5e9f2f490aa14b930db1f862dadd996e3da9301"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.e7e326a4ec9a10a2e197adf97e802382f9d5796596aef90d42b83a6aec09a2c9"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.ee852b4f9dc61911220eac4cd354667e746401ef3d8723956c2e52a5f7047895"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-6-110.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two glasses.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two glasses. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.281e6831ab6b8224eddf18932645dc05319a220353745a089f946bb7487d0a75"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.786a1263a70f7d1e92245ae5e5e9f2f490aa14b930db1f862dadd996e3da9301"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.e7e326a4ec9a10a2e197adf97e802382f9d5796596aef90d42b83a6aec09a2c9"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.ee852b4f9dc61911220eac4cd354667e746401ef3d8723956c2e52a5f7047895"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-6-110.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one candle.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one candle. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.281e6831ab6b8224eddf18932645dc05319a220353745a089f946bb7487d0a75"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.786a1263a70f7d1e92245ae5e5e9f2f490aa14b930db1f862dadd996e3da9301"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.e7e326a4ec9a10a2e197adf97e802382f9d5796596aef90d42b83a6aec09a2c9"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.ee852b4f9dc61911220eac4cd354667e746401ef3d8723956c2e52a5f7047895"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-6-110.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two candles.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two candles. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.281e6831ab6b8224eddf18932645dc05319a220353745a089f946bb7487d0a75"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.786a1263a70f7d1e92245ae5e5e9f2f490aa14b930db1f862dadd996e3da9301"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.e7e326a4ec9a10a2e197adf97e802382f9d5796596aef90d42b83a6aec09a2c9"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.ee852b4f9dc61911220eac4cd354667e746401ef3d8723956c2e52a5f7047895"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "e6c042bb7cfb9a5e0dcf14f026b9593572126613033b713f8460b62d018647b2",
+      "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.quantity-pictures-7-110",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · One and two pictures 7",
+        "summary": "One and two pictures 7，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. One/two-plus-noun is a provisional extension. Each pair of owned nouns is composed in counts1 and2. Counts are32 quantity-picture items, not32 independent nouns or stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.quantity-pictures-7-110",
+          "family": "word_picture_matching",
+          "label": "One and two pictures 7",
+          "candidateSHA256": "ef712aa878437ac13e43bee1362d4ad9cddc65685432513d5a666700bf462dff",
+          "authorCheckSHA256": "30365c289c102fc33c6e89297377a79847293c4963e16aef509ba0e85b2c4b0a",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.quantity-pictures-7-110#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b110；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-7-110.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one building.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one building. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.0ecc46874839686eb9fbc821f43f6c0259436677631ca2b9d81d311ca2ae8474"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.28404e9b95a52f55b5262557300ee361255f5a02c1306437bc425c3d4a6ce362"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.78445928fb0cb6961133a249f75333931aee9f0af92b8ba1dcd6d65903db2a6a"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.d49e356c588be6a377f52960e4708b77103ed3f81f1986737a9c8c2133d86e2c"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-7-110.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two buildings.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two buildings. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.0ecc46874839686eb9fbc821f43f6c0259436677631ca2b9d81d311ca2ae8474"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.28404e9b95a52f55b5262557300ee361255f5a02c1306437bc425c3d4a6ce362"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.78445928fb0cb6961133a249f75333931aee9f0af92b8ba1dcd6d65903db2a6a"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.d49e356c588be6a377f52960e4708b77103ed3f81f1986737a9c8c2133d86e2c"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-7-110.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one robot.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one robot. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.0ecc46874839686eb9fbc821f43f6c0259436677631ca2b9d81d311ca2ae8474"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.28404e9b95a52f55b5262557300ee361255f5a02c1306437bc425c3d4a6ce362"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.78445928fb0cb6961133a249f75333931aee9f0af92b8ba1dcd6d65903db2a6a"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.d49e356c588be6a377f52960e4708b77103ed3f81f1986737a9c8c2133d86e2c"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-7-110.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two robots.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two robots. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.0ecc46874839686eb9fbc821f43f6c0259436677631ca2b9d81d311ca2ae8474"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.28404e9b95a52f55b5262557300ee361255f5a02c1306437bc425c3d4a6ce362"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.78445928fb0cb6961133a249f75333931aee9f0af92b8ba1dcd6d65903db2a6a"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.d49e356c588be6a377f52960e4708b77103ed3f81f1986737a9c8c2133d86e2c"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "09b2a4111bfe321a4cf88534a144e3d7b0a474a06a83ccd4f90a7273c82365c4",
+      "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.quantity-pictures-8-110",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · One and two pictures 8",
+        "summary": "One and two pictures 8，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. One/two-plus-noun is a provisional extension. Each pair of owned nouns is composed in counts1 and2. Counts are32 quantity-picture items, not32 independent nouns or stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.quantity-pictures-8-110",
+          "family": "word_picture_matching",
+          "label": "One and two pictures 8",
+          "candidateSHA256": "ca746ec941c10b64be3166039457d607df5d242ace57245a3f5b9801813be942",
+          "authorCheckSHA256": "131507f12022bbf4b61098ce289376162fde400560bbf4beb9681971b2e3edca",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.quantity-pictures-8-110#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b110；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-8-110.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one tower.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one tower. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.157d8e61a2516548f76559619ef3766d6ebfff7d3f9de81692745fef2df9f9d6"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.1c94546e6482eff3ad5dab261e39a4c19b0fdb8240480d2477b8301b6317bd3d"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.28d236225c21b93e84a7697e71a7eb368f1e018220c3f2f3698777608b38d189"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.512717afcb6d5fc30e254bf3c00101363bb8debdfc558194f118342c703682c5"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-8-110.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two towers.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two towers. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.157d8e61a2516548f76559619ef3766d6ebfff7d3f9de81692745fef2df9f9d6"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.1c94546e6482eff3ad5dab261e39a4c19b0fdb8240480d2477b8301b6317bd3d"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.28d236225c21b93e84a7697e71a7eb368f1e018220c3f2f3698777608b38d189"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.512717afcb6d5fc30e254bf3c00101363bb8debdfc558194f118342c703682c5"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-8-110.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: one lamp.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match one lamp. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.157d8e61a2516548f76559619ef3766d6ebfff7d3f9de81692745fef2df9f9d6"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.1c94546e6482eff3ad5dab261e39a4c19b0fdb8240480d2477b8301b6317bd3d"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.28d236225c21b93e84a7697e71a7eb368f1e018220c3f2f3698777608b38d189"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.512717afcb6d5fc30e254bf3c00101363bb8debdfc558194f118342c703682c5"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary1.quantity-pictures-8-110.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the picture with the correct object and number.",
+            "prompt": "Choose: two lamps.",
+            "material": "Four quantity pictures\n\nLook at all four pictures. Match both the object name and the number: one or two.",
+            "explanation": "Match two lamps. One distractor has the same noun but the other count; one has the other noun at the requested count; one differs in both. Equal-scale separated objects make the quantity visible.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.157d8e61a2516548f76559619ef3766d6ebfff7d3f9de81692745fef2df9f9d6"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.1c94546e6482eff3ad5dab261e39a4c19b0fdb8240480d2477b8301b6317bd3d"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.28d236225c21b93e84a7697e71a7eb368f1e018220c3f2f3698777608b38d189"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.512717afcb6d5fc30e254bf3c00101363bb8debdfc558194f118342c703682c5"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "28191c0501d683187964178294def8b35e292578c51a6ed07c3b2c8ae0719636",
+      "reviewNotes": "Thirty-two new one/two-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with separate equal-scale objects. Contact-sheet identity/bounds/count/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ],
+  "imageAssets": [
+    {
+      "id": "image.176c2d421a7bb688462dc9f283a03162e4f13d281ad63e3cce865a8834dd2fe3",
+      "sha256": "176c2d421a7bb688462dc9f283a03162e4f13d281ad63e3cce865a8834dd2fe3",
+      "byteSize": 4167,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one pencil; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-pencil.svg, SVG SHA 636c41b5b4afd5b072bbef948844e25cdf640be725ab1c7699075c46b07950c4; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-pencil.svg, SHA 627b5869d4c4a40fcc670986f97ca7f0a662df94bd78e3ffefb0f3f3894a7f27. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.fbd3e236953302f183be1c35fa443be9c7307a5660787e1f5ffd864fba4d3542",
+      "sha256": "fbd3e236953302f183be1c35fa443be9c7307a5660787e1f5ffd864fba4d3542",
+      "byteSize": 4455,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two pencils; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-pencil.svg, SVG SHA 6b5bf3e121c2e000d00bc3a47996a1921122b698d80403f6b97c601b047bcf20; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-pencil.svg, SHA 627b5869d4c4a40fcc670986f97ca7f0a662df94bd78e3ffefb0f3f3894a7f27. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.8734506bdd2be9da187eff13f92bf7a0f5b32b82b912ec02002554281e43a123",
+      "sha256": "8734506bdd2be9da187eff13f92bf7a0f5b32b82b912ec02002554281e43a123",
+      "byteSize": 4197,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one ruler; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-ruler.svg, SVG SHA 6a31879123ff5909828a4f37f1df30935eb64b24b1e8503b09695ff9537f13ca; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-ruler.svg, SHA c2981f01d229089472d08037a87171b7b1f81a19faeb19c673f09bad47859f72. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.b2cc833da37f8ef94a7d30b691c3bfe38cf6b392904fe63f2190c13c1584f7ed",
+      "sha256": "b2cc833da37f8ef94a7d30b691c3bfe38cf6b392904fe63f2190c13c1584f7ed",
+      "byteSize": 4405,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two rulers; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-ruler.svg, SVG SHA 7c2143afa647dfd769b1287e5a2d3b1e94d826bae324115359cf40979dac7201; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-ruler.svg, SHA c2981f01d229089472d08037a87171b7b1f81a19faeb19c673f09bad47859f72. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.84da7b87a16e86b2e15322187be94082c61b8da4489341db10269e1c642a4557",
+      "sha256": "84da7b87a16e86b2e15322187be94082c61b8da4489341db10269e1c642a4557",
+      "byteSize": 6754,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one rope; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-rope.svg, SVG SHA 694ef3d1524e51e9563ef0e03128c10a34a63f38a28d8a95c8a3c89e93125ca6; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-rope.svg, SHA 767e4055b19d5d5d4eb12250034f30edf25febed9f30b829e6763a272eda3b97. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.a3e335931c19726200f94e9776d92821e6edbac0cdb9363fdeb8ad5039d28ad1",
+      "sha256": "a3e335931c19726200f94e9776d92821e6edbac0cdb9363fdeb8ad5039d28ad1",
+      "byteSize": 6902,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two ropes; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-rope.svg, SVG SHA 5c712b779124d27e7c9837609113ef38eede693c7d195405bc7a4e98ddff512f; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-rope.svg, SHA 767e4055b19d5d5d4eb12250034f30edf25febed9f30b829e6763a272eda3b97. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.deaa819164dd6fa3a191298cd255437f6dad167055b9b2b70172b57e5ecb9498",
+      "sha256": "deaa819164dd6fa3a191298cd255437f6dad167055b9b2b70172b57e5ecb9498",
+      "byteSize": 4129,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one scarf; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-scarf.svg, SVG SHA 62411e17473d53a2dbe0a3be919159c940202ce40ef2370119a97286c4da8398; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-scarf.svg, SHA ebc4db97c0c507bbc148cf2f72e818dd60dcc304fbc31bb296f8c52121134bc0. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.d6c5a7cd76dbcbe81d9016173870c2b6029cc83f89dd30daea416f25669d66b4",
+      "sha256": "d6c5a7cd76dbcbe81d9016173870c2b6029cc83f89dd30daea416f25669d66b4",
+      "byteSize": 4361,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two scarves; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-scarf.svg, SVG SHA b58bf8a8fd3bb94a6a2774690fe9f5ae14b24f4e7cc7998fd6a18776b664df07; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-scarf.svg, SHA ebc4db97c0c507bbc148cf2f72e818dd60dcc304fbc31bb296f8c52121134bc0. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.699c59747186a3e41b8fdf45abfe7c53359d69f758257bd7938f936b24f53ae1",
+      "sha256": "699c59747186a3e41b8fdf45abfe7c53359d69f758257bd7938f936b24f53ae1",
+      "byteSize": 7138,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one train; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-train.svg, SVG SHA 4de5ff486b5494056de46ed3c7a82c8e80f8df1a2781755d7586492673f93bac; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-train.svg, SHA e06a26f6aa36776ffce28b544fb12697c2aba45c146132e4035d062b40e8d139. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.c25adc0886b81f1f0e0f512771f570767d65e9be484e804bd7c1305f06f410c0",
+      "sha256": "c25adc0886b81f1f0e0f512771f570767d65e9be484e804bd7c1305f06f410c0",
+      "byteSize": 7280,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two trains; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-train.svg, SVG SHA 1e4423ffe20b78573cd0a09296dd736e82209faefd11bdc9a4f739715774cd44; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-train.svg, SHA e06a26f6aa36776ffce28b544fb12697c2aba45c146132e4035d062b40e8d139. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.094218f91df12f94c9db940409481f2961be7090acfbcc1812198e2310e6401c",
+      "sha256": "094218f91df12f94c9db940409481f2961be7090acfbcc1812198e2310e6401c",
+      "byteSize": 4720,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one ladder; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-ladder.svg, SVG SHA 0555cdea65ea53c7fd8e8a194e2dc481802ebf5174a9286615de1eb2d5697c86; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-ladder.svg, SHA c284c867cc2549d32f947fb254dfb447ec158ce04f877fda3c46b96271d368e4. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.3e279f1f77817584fc962d6a57e7ab636e361eb1bdf7611201125f24a01ba0f4",
+      "sha256": "3e279f1f77817584fc962d6a57e7ab636e361eb1bdf7611201125f24a01ba0f4",
+      "byteSize": 5236,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two ladders; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-ladder.svg, SVG SHA 8ce1628917cb7ef234a1c8eb2c067c20811f75ed3660288c89d639e6eff18d98; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-ladder.svg, SHA c284c867cc2549d32f947fb254dfb447ec158ce04f877fda3c46b96271d368e4. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.d56b3e3ec86f175d319730008fd900cb9c1cb6ff618ff053eb26e34e3c9842df",
+      "sha256": "d56b3e3ec86f175d319730008fd900cb9c1cb6ff618ff053eb26e34e3c9842df",
+      "byteSize": 5675,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one snake; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-snake.svg, SVG SHA 9d258b2727e6de0f64c587afc12cd92bbcdb405e16afc8bc496a8c23008c1eaf; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-snake.svg, SHA 72c6f1cf626b0a82dc2ddbe17d7d119089ce01f5483fd70b7a06b3dda5f4cf8d. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.1fe7f61f44ef60a6e6b67052a08355ea9f051bc00f113f32e731ab4a810509aa",
+      "sha256": "1fe7f61f44ef60a6e6b67052a08355ea9f051bc00f113f32e731ab4a810509aa",
+      "byteSize": 5859,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two snakes; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-snake.svg, SVG SHA 7c8c0f6693c4760284451dc1ec32a059374971d88ef09e4fe09c03889d0c9581; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-snake.svg, SHA 72c6f1cf626b0a82dc2ddbe17d7d119089ce01f5483fd70b7a06b3dda5f4cf8d. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.dc5ee11879afd34f5a504f77c21f82b92b48f7fe5a92b088aa27d156dab30063",
+      "sha256": "dc5ee11879afd34f5a504f77c21f82b92b48f7fe5a92b088aa27d156dab30063",
+      "byteSize": 8243,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one bridge; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-bridge.svg, SVG SHA 9177c71ddc3164b6e97083952e718e8b4aa6bd7c63a3f9b9763ce5fd2a2a3ce5; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-bridge.svg, SHA 67de2734237fbbaf8ea68619acb64b8f6c66e09e835dd81ac507f5f1dd2ece96. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.cd897690f8d4200dbe73071a31f68352050c4c395483b9319527bad11dfe1dcf",
+      "sha256": "cd897690f8d4200dbe73071a31f68352050c4c395483b9319527bad11dfe1dcf",
+      "byteSize": 8556,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two bridges; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-bridge.svg, SVG SHA d4f34e1faec46c15eb1dbb4318768a594e23da4104723206eb9df560ec50974b; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-bridge.svg, SHA 67de2734237fbbaf8ea68619acb64b8f6c66e09e835dd81ac507f5f1dd2ece96. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.ee7706c420fa14822e4f25db653f4bd3a76121c633dd6eab2f6cdc9ff0cfede2",
+      "sha256": "ee7706c420fa14822e4f25db653f4bd3a76121c633dd6eab2f6cdc9ff0cfede2",
+      "byteSize": 5763,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one tree; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-tree.svg, SVG SHA 5c9bb5fe6b9ab3524e9525547214c2f1a319646a65cdc6f4d7319b48cce53808; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-tree.svg, SHA 209ce35b7fe16b4c9aa51356e67fd8ad72b26f2ad4208a11976c4c26ca83c7f6. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.ee1a709f4f03d9503bf755b58edab4112861a6e6265487348aa5737be3749263",
+      "sha256": "ee1a709f4f03d9503bf755b58edab4112861a6e6265487348aa5737be3749263",
+      "byteSize": 6207,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two trees; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-tree.svg, SVG SHA 7144330bcfc78c6961cae857b842f2d40e42f6226130489682f952c0ae3252f0; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-tree.svg, SHA 209ce35b7fe16b4c9aa51356e67fd8ad72b26f2ad4208a11976c4c26ca83c7f6. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.ff1bde20a98f1f87c1b64f4bf2e36d928706fcd71efc96894de291237f336f6e",
+      "sha256": "ff1bde20a98f1f87c1b64f4bf2e36d928706fcd71efc96894de291237f336f6e",
+      "byteSize": 4726,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one bottle; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-bottle.svg, SVG SHA 54dc62494d802747805564ff5746d66589eaa06451cd09b61cdd928386614a62; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-bottle.svg, SHA c8eea892e9d95d74b89f337f1deef10f6c2888fffc29a74007511556e6275fb1. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.3709d9165e48dd125bbe4ed0c4d372d3bddf3c8c7d68ac518fa0cdf8c17f5165",
+      "sha256": "3709d9165e48dd125bbe4ed0c4d372d3bddf3c8c7d68ac518fa0cdf8c17f5165",
+      "byteSize": 5095,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two bottles; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-bottle.svg, SVG SHA 8b0223d3d879f06f546f71834b371fd77cd0984a0c9349b12f1093950062644d; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-bottle.svg, SHA c8eea892e9d95d74b89f337f1deef10f6c2888fffc29a74007511556e6275fb1. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.ee852b4f9dc61911220eac4cd354667e746401ef3d8723956c2e52a5f7047895",
+      "sha256": "ee852b4f9dc61911220eac4cd354667e746401ef3d8723956c2e52a5f7047895",
+      "byteSize": 8390,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one glass; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-glass.svg, SVG SHA 9a6ea15711cec59ece44d0e18ffc010e08c708f46b5246ce4459ef374c54661a; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-glass.svg, SHA eb3eaaca50bb298846f064332a9d66e3bbac02c7ea1ac6dd6c0ec2d4e23dd8b8. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.281e6831ab6b8224eddf18932645dc05319a220353745a089f946bb7487d0a75",
+      "sha256": "281e6831ab6b8224eddf18932645dc05319a220353745a089f946bb7487d0a75",
+      "byteSize": 8730,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two glasses; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-glass.svg, SVG SHA 1f8bacc07ea2668cb09eae4ae3465d8c2f1e6a3b17f1fe08571c9fc55be153ba; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-glass.svg, SHA eb3eaaca50bb298846f064332a9d66e3bbac02c7ea1ac6dd6c0ec2d4e23dd8b8. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.786a1263a70f7d1e92245ae5e5e9f2f490aa14b930db1f862dadd996e3da9301",
+      "sha256": "786a1263a70f7d1e92245ae5e5e9f2f490aa14b930db1f862dadd996e3da9301",
+      "byteSize": 4675,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one candle; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-candle.svg, SVG SHA 8c2c5d443eb3e410f7a6ee7b6046a00777de3ee449f3a1861e91d22d6175fc63; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-candle.svg, SHA 24bf234d85cc778f7206c4b02d428f7c37df875a65610553acb7035a59801b09. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.e7e326a4ec9a10a2e197adf97e802382f9d5796596aef90d42b83a6aec09a2c9",
+      "sha256": "e7e326a4ec9a10a2e197adf97e802382f9d5796596aef90d42b83a6aec09a2c9",
+      "byteSize": 5241,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two candles; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-candle.svg, SVG SHA 37c8f57d3ffd70e24ba43efb80eb3759ba150f77ca845b0466fa51332eb523f7; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-candle.svg, SHA 24bf234d85cc778f7206c4b02d428f7c37df875a65610553acb7035a59801b09. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.d49e356c588be6a377f52960e4708b77103ed3f81f1986737a9c8c2133d86e2c",
+      "sha256": "d49e356c588be6a377f52960e4708b77103ed3f81f1986737a9c8c2133d86e2c",
+      "byteSize": 5271,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one building; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-building.svg, SVG SHA 892d05c2c01961232e80e2ce95a75d26149a59947384694dcfdda3138000cf8b; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-building.svg, SHA 593e059ee34d48c70acc157b11ad0697b68025e71876a1146e5c89fe6db2814a. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.78445928fb0cb6961133a249f75333931aee9f0af92b8ba1dcd6d65903db2a6a",
+      "sha256": "78445928fb0cb6961133a249f75333931aee9f0af92b8ba1dcd6d65903db2a6a",
+      "byteSize": 5717,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two buildings; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-building.svg, SVG SHA 6c57f98b03c173402acbff8b00615c8388c2886ed9e0f0de3fdf29bcb0248d87; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-building.svg, SHA 593e059ee34d48c70acc157b11ad0697b68025e71876a1146e5c89fe6db2814a. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.28404e9b95a52f55b5262557300ee361255f5a02c1306437bc425c3d4a6ce362",
+      "sha256": "28404e9b95a52f55b5262557300ee361255f5a02c1306437bc425c3d4a6ce362",
+      "byteSize": 6551,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one robot; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-robot.svg, SVG SHA b051f001d9e5f7387a878c13280eff58e6095f73db63057cc89e771b920f3bc2; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-robot.svg, SHA 58798452e586259dc36d500a7958ff318f694aec4eb57c1a6e7cd52069c6778e. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.0ecc46874839686eb9fbc821f43f6c0259436677631ca2b9d81d311ca2ae8474",
+      "sha256": "0ecc46874839686eb9fbc821f43f6c0259436677631ca2b9d81d311ca2ae8474",
+      "byteSize": 7045,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two robots; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-robot.svg, SVG SHA 47faa8771796af1bb5313adfb3845d67be0e24a1252e3ec0073e011460113df3; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-robot.svg, SHA 58798452e586259dc36d500a7958ff318f694aec4eb57c1a6e7cd52069c6778e. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.1c94546e6482eff3ad5dab261e39a4c19b0fdb8240480d2477b8301b6317bd3d",
+      "sha256": "1c94546e6482eff3ad5dab261e39a4c19b0fdb8240480d2477b8301b6317bd3d",
+      "byteSize": 5449,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one tower; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-tower.svg, SVG SHA 0dbe6511b6bb377ae96622a31b2c5a3697624423ea7fbfa03d8a052203419634; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-tower.svg, SHA 5b92a8b42b08e5d3ef260c4f374657500506e89e3fee51f215d4f149610d6f36. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.28d236225c21b93e84a7697e71a7eb368f1e018220c3f2f3698777608b38d189",
+      "sha256": "28d236225c21b93e84a7697e71a7eb368f1e018220c3f2f3698777608b38d189",
+      "byteSize": 5786,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two towers; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-tower.svg, SVG SHA 3e849ca15c0a560fbd7b1dd966b2471c61c7b12804b5792647d1fc1ef43c3139; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-tower.svg, SHA 5b92a8b42b08e5d3ef260c4f374657500506e89e3fee51f215d4f149610d6f36. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.512717afcb6d5fc30e254bf3c00101363bb8debdfc558194f118342c703682c5",
+      "sha256": "512717afcb6d5fc30e254bf3c00101363bb8debdfc558194f118342c703682c5",
+      "byteSize": 5666,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: one lamp; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/1-lamp.svg, SVG SHA 010b9cb8661404146290776dc504983dee39067c95d102aa794a2b6a113ca5eb; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-lamp.svg, SHA eeeba7b9c292780966cd0333c4f335651fcf817cf780ceca77477a65ea086b57. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    },
+    {
+      "id": "image.157d8e61a2516548f76559619ef3766d6ebfff7d3f9de81692745fef2df9f9d6",
+      "sha256": "157d8e61a2516548f76559619ef3766d6ebfff7d3f9de81692745fef2df9f9d6",
+      "byteSize": 6113,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned quantity composition: two lamps; separated, equal-scale objects on white, without printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/quantity-picture-sources/2-lamp.svg, SVG SHA b1ee3983a49d66e8d8103e44e5e80063a28f31d5c681dbdfd463ed76ef5e7640; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-lamp.svg, SHA eeeba7b9c292780966cd0333c4f335651fcf817cf780ceca77477a65ea086b57. Composition authored in Scripts/author-primary1-quantity-expansion.mjs.",
+      "reviewedBy": "Codex quantity/identity geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "One/two count and noun identity checked. Reuses16 owned noun drawings in32 new quantity compositions; provisional vocabulary and number matching, not independent calibration."
+    }
+  ]
+}
