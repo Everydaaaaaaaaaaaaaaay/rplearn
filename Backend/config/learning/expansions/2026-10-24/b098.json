@@ -1,0 +1,1094 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b098",
+  "createdAt": "2026-10-24T00:31:29.141225+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary4.dance-class-call-098",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "10·24新题 · A call about the dance class",
+        "summary": "A call about the dance class，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original complete five-question reading. Dialogue, story and four-entry table task structures follow the source family; new contexts/vocabulary are provisional rather than independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete primary five-item readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author context/time/age/fee and all-option review, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary4.dance-class-call-098",
+          "family": "reading_choice",
+          "label": "A call about the dance class",
+          "candidateSHA256": "b2a2c3ef90819756c33d53b1c78b1a269ed8a9876f96a2158dc647410e4ee11a",
+          "authorCheckSHA256": "d2e7a84f5648bbd3955e3ff538e217d2904a1910958372f3c8bb6c4de378d537",
+          "sourceGroupIds": [
+            "expansion.20261024.primary4.dance-class-call-098#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b098；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A call about the dance class\n\nWoman: Park Hall Dance School. Good afternoon.\nRuby: Hello. Is there a class for children who have never danced before?\nWoman: Yes, on Wednesday. It begins at four fifteen and ends at five.\nRuby: I am ten. Can I come?\nWoman: The group is for children from nine to twelve. Your parent should book before Tuesday evening.\nRuby: Do I need special shoes for the first lesson?\nWoman: No. Clean indoor shoes are fine. Wear clothes you can move in easily.\nRuby: Can my brother wait for me inside?\nWoman: He can sit in the waiting room with an adult. Children must not wait alone in the car park.\nRuby: How much does the first class cost?\nWoman: Five pounds. Bring a water bottle; there is a place to fill it.\nRuby: Thank you. Mum will call to book.\nWoman: Please tell her about the Wednesday time and Tuesday booking deadline."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary4.dance-class-call-098.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When does the class start?",
+            "material": "A call about the dance class\n\nWoman: Park Hall Dance School. Good afternoon.\nRuby: Hello. Is there a class for children who have never danced before?\nWoman: Yes, on Wednesday. It begins at four fifteen and ends at five.\nRuby: I am ten. Can I come?\nWoman: The group is for children from nine to twelve. Your parent should book before Tuesday evening.\nRuby: Do I need special shoes for the first lesson?\nWoman: No. Clean indoor shoes are fine. Wear clothes you can move in easily.\nRuby: Can my brother wait for me inside?\nWoman: He can sit in the waiting room with an adult. Children must not wait alone in the car park.\nRuby: How much does the first class cost?\nWoman: Five pounds. Bring a water bottle; there is a place to fill it.\nRuby: Thank you. Mum will call to book.\nWoman: Please tell her about the Wednesday time and Tuesday booking deadline.",
+            "explanation": "Class starts16:15 Wednesday.17:00 is finish and Tuesday evening the booking deadline.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At 5:00 on Tuesday"
+              },
+              {
+                "id": "o1",
+                "text": "On Tuesday evening"
+              },
+              {
+                "id": "o2",
+                "text": "At 4:15 on Wednesday"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary4.dance-class-call-098.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Can ten-year-old Ruby join?",
+            "material": "A call about the dance class\n\nWoman: Park Hall Dance School. Good afternoon.\nRuby: Hello. Is there a class for children who have never danced before?\nWoman: Yes, on Wednesday. It begins at four fifteen and ends at five.\nRuby: I am ten. Can I come?\nWoman: The group is for children from nine to twelve. Your parent should book before Tuesday evening.\nRuby: Do I need special shoes for the first lesson?\nWoman: No. Clean indoor shoes are fine. Wear clothes you can move in easily.\nRuby: Can my brother wait for me inside?\nWoman: He can sit in the waiting room with an adult. Children must not wait alone in the car park.\nRuby: How much does the first class cost?\nWoman: Five pounds. Bring a water bottle; there is a place to fill it.\nRuby: Thank you. Mum will call to book.\nWoman: Please tell her about the Wednesday time and Tuesday booking deadline.",
+            "explanation": "Ten is within9–12. The other age rules contradict it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only after her twelfth birthday"
+              },
+              {
+                "id": "o1",
+                "text": "Yes, the age group is 9–12"
+              },
+              {
+                "id": "o2",
+                "text": "No, only children under nine"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.dance-class-call-098.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What shoes are suitable for the first lesson?",
+            "material": "A call about the dance class\n\nWoman: Park Hall Dance School. Good afternoon.\nRuby: Hello. Is there a class for children who have never danced before?\nWoman: Yes, on Wednesday. It begins at four fifteen and ends at five.\nRuby: I am ten. Can I come?\nWoman: The group is for children from nine to twelve. Your parent should book before Tuesday evening.\nRuby: Do I need special shoes for the first lesson?\nWoman: No. Clean indoor shoes are fine. Wear clothes you can move in easily.\nRuby: Can my brother wait for me inside?\nWoman: He can sit in the waiting room with an adult. Children must not wait alone in the car park.\nRuby: How much does the first class cost?\nWoman: Five pounds. Bring a water bottle; there is a place to fill it.\nRuby: Thank you. Mum will call to book.\nWoman: Please tell her about the Wednesday time and Tuesday booking deadline.",
+            "explanation": "Special shoes are not needed; clean indoor shoes are fine. Wet boots are not the stated suitable type.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Clean indoor shoes"
+              },
+              {
+                "id": "o1",
+                "text": "Wet outdoor boots"
+              },
+              {
+                "id": "o2",
+                "text": "Special shoes bought that day"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.dance-class-call-098.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where can Ruby’s brother wait?",
+            "material": "A call about the dance class\n\nWoman: Park Hall Dance School. Good afternoon.\nRuby: Hello. Is there a class for children who have never danced before?\nWoman: Yes, on Wednesday. It begins at four fifteen and ends at five.\nRuby: I am ten. Can I come?\nWoman: The group is for children from nine to twelve. Your parent should book before Tuesday evening.\nRuby: Do I need special shoes for the first lesson?\nWoman: No. Clean indoor shoes are fine. Wear clothes you can move in easily.\nRuby: Can my brother wait for me inside?\nWoman: He can sit in the waiting room with an adult. Children must not wait alone in the car park.\nRuby: How much does the first class cost?\nWoman: Five pounds. Bring a water bottle; there is a place to fill it.\nRuby: Thank you. Mum will call to book.\nWoman: Please tell her about the Wednesday time and Tuesday booking deadline.",
+            "explanation": "Waiting room plus adult is permitted. Alone in car park is prohibited and dance-floor waiting not offered.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "On the dance floor during class"
+              },
+              {
+                "id": "o1",
+                "text": "In the waiting room with an adult"
+              },
+              {
+                "id": "o2",
+                "text": "Alone in the car park"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.dance-class-call-098.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should Ruby bring?",
+            "material": "A call about the dance class\n\nWoman: Park Hall Dance School. Good afternoon.\nRuby: Hello. Is there a class for children who have never danced before?\nWoman: Yes, on Wednesday. It begins at four fifteen and ends at five.\nRuby: I am ten. Can I come?\nWoman: The group is for children from nine to twelve. Your parent should book before Tuesday evening.\nRuby: Do I need special shoes for the first lesson?\nWoman: No. Clean indoor shoes are fine. Wear clothes you can move in easily.\nRuby: Can my brother wait for me inside?\nWoman: He can sit in the waiting room with an adult. Children must not wait alone in the car park.\nRuby: How much does the first class cost?\nWoman: Five pounds. Bring a water bottle; there is a place to fill it.\nRuby: Thank you. Mum will call to book.\nWoman: Please tell her about the Wednesday time and Tuesday booking deadline.",
+            "explanation": "A refillable bottle is requested. Group meal/chair are not requirements.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A water bottle"
+              },
+              {
+                "id": "o1",
+                "text": "A meal for everyone"
+              },
+              {
+                "id": "o2",
+                "text": "A chair from home"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "0134b18ab03e761b5fb9fa67d63255475be219e13eed930f6fe125c064722920",
+      "reviewNotes": "Six complete primary five-item readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author context/time/age/fee and all-option review, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary4.party-room-call-098",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "10·24新题 · Booking a small party room",
+        "summary": "Booking a small party room，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original complete five-question reading. Dialogue, story and four-entry table task structures follow the source family; new contexts/vocabulary are provisional rather than independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete primary five-item readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author context/time/age/fee and all-option review, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary4.party-room-call-098",
+          "family": "reading_choice",
+          "label": "Booking a small party room",
+          "candidateSHA256": "d7098da385c0d1320aa01073cff392c8f196a147d1f83d4e906e1d1f9c609ed5",
+          "authorCheckSHA256": "8e9a5f9f323590c0aada9ed4a76b6c14213c53f7a09279c27d703e7b540ce2b4",
+          "sourceGroupIds": [
+            "expansion.20261024.primary4.party-room-call-098#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b098；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Booking a small party room\n\nMan: Town Centre Rooms. Can I help?\nBen: Hello. Our family wants a room for my sister's birthday on Sunday.\nMan: We have the Blue Room from two to five. It holds twelve people.\nBen: There will be ten of us. Can we bring a cake?\nMan: Yes. You may bring cold food and drinks, but no cooking is allowed in the room.\nBen: Are there plates and cups?\nMan: We provide tables and chairs only. Bring your own plates and cups.\nBen: Can we arrive at one thirty to decorate?\nMan: Yes, but the room will not be ready before then. Everything must be cleared away by five thirty.\nBen: How much is the room?\nMan: Thirty pounds, including the half-hour before and after. An adult must make the booking.\nBen: Thank you. I will tell Dad about the times and what we need to bring."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary4.party-room-call-098.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How many people can the Blue Room hold?",
+            "material": "Booking a small party room\n\nMan: Town Centre Rooms. Can I help?\nBen: Hello. Our family wants a room for my sister's birthday on Sunday.\nMan: We have the Blue Room from two to five. It holds twelve people.\nBen: There will be ten of us. Can we bring a cake?\nMan: Yes. You may bring cold food and drinks, but no cooking is allowed in the room.\nBen: Are there plates and cups?\nMan: We provide tables and chairs only. Bring your own plates and cups.\nBen: Can we arrive at one thirty to decorate?\nMan: Yes, but the room will not be ready before then. Everything must be cleared away by five thirty.\nBen: How much is the room?\nMan: Thirty pounds, including the half-hour before and after. An adult must make the booking.\nBen: Thank you. I will tell Dad about the times and what we need to bring.",
+            "explanation": "Capacity is12. Ten is their group size and30 the cost.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Twelve"
+              },
+              {
+                "id": "o1",
+                "text": "Ten"
+              },
+              {
+                "id": "o2",
+                "text": "Thirty"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.party-room-call-098.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What food arrangement is allowed?",
+            "material": "Booking a small party room\n\nMan: Town Centre Rooms. Can I help?\nBen: Hello. Our family wants a room for my sister's birthday on Sunday.\nMan: We have the Blue Room from two to five. It holds twelve people.\nBen: There will be ten of us. Can we bring a cake?\nMan: Yes. You may bring cold food and drinks, but no cooking is allowed in the room.\nBen: Are there plates and cups?\nMan: We provide tables and chairs only. Bring your own plates and cups.\nBen: Can we arrive at one thirty to decorate?\nMan: Yes, but the room will not be ready before then. Everything must be cleared away by five thirty.\nBen: How much is the room?\nMan: Thirty pounds, including the half-hour before and after. An adult must make the booking.\nBen: Thank you. I will tell Dad about the times and what we need to bring.",
+            "explanation": "Cold food/cake are allowed; cooking is not and no kitchen is provided.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Bringing a cake and cold food"
+              },
+              {
+                "id": "o1",
+                "text": "Cooking a hot meal in the room"
+              },
+              {
+                "id": "o2",
+                "text": "Using the room’s full kitchen"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.party-room-call-098.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which items must the family bring?",
+            "material": "Booking a small party room\n\nMan: Town Centre Rooms. Can I help?\nBen: Hello. Our family wants a room for my sister's birthday on Sunday.\nMan: We have the Blue Room from two to five. It holds twelve people.\nBen: There will be ten of us. Can we bring a cake?\nMan: Yes. You may bring cold food and drinks, but no cooking is allowed in the room.\nBen: Are there plates and cups?\nMan: We provide tables and chairs only. Bring your own plates and cups.\nBen: Can we arrive at one thirty to decorate?\nMan: Yes, but the room will not be ready before then. Everything must be cleared away by five thirty.\nBen: How much is the room?\nMan: Thirty pounds, including the half-hour before and after. An adult must make the booking.\nBen: Thank you. I will tell Dad about the times and what we need to bring.",
+            "explanation": "Only tables/chairs supplied, so plates/cups come from visitors. Door is not a party item.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The room’s door"
+              },
+              {
+                "id": "o1",
+                "text": "Plates and cups"
+              },
+              {
+                "id": "o2",
+                "text": "All tables and chairs"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.party-room-call-098.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When may decorating begin?",
+            "material": "Booking a small party room\n\nMan: Town Centre Rooms. Can I help?\nBen: Hello. Our family wants a room for my sister's birthday on Sunday.\nMan: We have the Blue Room from two to five. It holds twelve people.\nBen: There will be ten of us. Can we bring a cake?\nMan: Yes. You may bring cold food and drinks, but no cooking is allowed in the room.\nBen: Are there plates and cups?\nMan: We provide tables and chairs only. Bring your own plates and cups.\nBen: Can we arrive at one thirty to decorate?\nMan: Yes, but the room will not be ready before then. Everything must be cleared away by five thirty.\nBen: How much is the room?\nMan: Thirty pounds, including the half-hour before and after. An adult must make the booking.\nBen: Thank you. I will tell Dad about the times and what we need to bring.",
+            "explanation": "Earliest entry is13:30. Earlier is not ready,17:30 is cleanup deadline.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At 1:30"
+              },
+              {
+                "id": "o1",
+                "text": "At 1:00"
+              },
+              {
+                "id": "o2",
+                "text": "Only after 5:30"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.party-room-call-098.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who must book the room?",
+            "material": "Booking a small party room\n\nMan: Town Centre Rooms. Can I help?\nBen: Hello. Our family wants a room for my sister's birthday on Sunday.\nMan: We have the Blue Room from two to five. It holds twelve people.\nBen: There will be ten of us. Can we bring a cake?\nMan: Yes. You may bring cold food and drinks, but no cooking is allowed in the room.\nBen: Are there plates and cups?\nMan: We provide tables and chairs only. Bring your own plates and cups.\nBen: Can we arrive at one thirty to decorate?\nMan: Yes, but the room will not be ready before then. Everything must be cleared away by five thirty.\nBen: How much is the room?\nMan: Thirty pounds, including the half-hour before and after. An adult must make the booking.\nBen: Thank you. I will tell Dad about the times and what we need to bring.",
+            "explanation": "An adult makes the booking. The children are not authorized to book alone.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Any child arriving first"
+              },
+              {
+                "id": "o1",
+                "text": "Only Ben’s younger sister"
+              },
+              {
+                "id": "o2",
+                "text": "An adult"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "9b3dcecf891d72f0cc838e128945689cbaaa1f3f208262d0d50bd146708696d5",
+      "reviewNotes": "Six complete primary five-item readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author context/time/age/fee and all-option review, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary5.crab-line-098",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "10·24新题 · Crab and the straight line",
+        "summary": "Crab and the straight line，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.frog",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original complete five-question reading. Dialogue, story and four-entry table task structures follow the source family; new contexts/vocabulary are provisional rather than independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete primary five-item readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author context/time/age/fee and all-option review, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary5.crab-line-098",
+          "family": "reading_choice",
+          "label": "Crab and the straight line",
+          "candidateSHA256": "289bb9de1d53e563e9f22a05c8539aa486564d0dfa6276294cf9303116086de2",
+          "authorCheckSHA256": "62519d47579e11a7892d66cb6b1f4aa921bd0ea73e6d3c6ee223e305adca5be0",
+          "sourceGroupIds": [
+            "expansion.20261024.primary5.crab-line-098#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b098；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Crab and the straight line\n\nIn this story, Crab and Rabbit draw a line in the sand for a game. They want to roll a small ball from one end to the other without crossing the line.\n\nRabbit rolls first. His ball moves quickly, then turns and crosses the line. He says the sand must be unfair. Crab looks at the ground. A little stone sits in the ball's path.\n\nThey move to a clear patch and draw the line again. Rabbit rolls too hard, and the ball goes far beyond the end. Crab tries a gentle push. His ball stops halfway.\n\nFor the next turn, neither animal asks who is best. They change one thing at a time: where they start and how strongly they push. Soon both can stop close to the end.\n\nThen the tide reaches their lines. The water washes the game away. Rabbit looks disappointed, but Crab puts the ball in a bucket. \"We still have this,\" he says. \"We can draw another line tomorrow.\"\n\nThe next morning, Rabbit arrives with two balls. One is much larger. Crab laughs. \"Now we have a new question before we begin.\""
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary5.crab-line-098.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What do Crab and Rabbit first try to do?",
+            "material": "Crab and the straight line\n\nIn this story, Crab and Rabbit draw a line in the sand for a game. They want to roll a small ball from one end to the other without crossing the line.\n\nRabbit rolls first. His ball moves quickly, then turns and crosses the line. He says the sand must be unfair. Crab looks at the ground. A little stone sits in the ball's path.\n\nThey move to a clear patch and draw the line again. Rabbit rolls too hard, and the ball goes far beyond the end. Crab tries a gentle push. His ball stops halfway.\n\nFor the next turn, neither animal asks who is best. They change one thing at a time: where they start and how strongly they push. Soon both can stop close to the end.\n\nThen the tide reaches their lines. The water washes the game away. Rabbit looks disappointed, but Crab puts the ball in a bucket. \"We still have this,\" he says. \"We can draw another line tomorrow.\"\n\nThe next morning, Rabbit arrives with two balls. One is much larger. Crab laughs. \"Now we have a new question before we begin.\"",
+            "explanation": "They roll along the line. Sandcastles/fishing are not the game.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Catch fish in a bucket"
+              },
+              {
+                "id": "o1",
+                "text": "Build a tall sandcastle"
+              },
+              {
+                "id": "o2",
+                "text": "Roll a ball along a line"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary5.crab-line-098.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What changes the first ball’s direction?",
+            "material": "Crab and the straight line\n\nIn this story, Crab and Rabbit draw a line in the sand for a game. They want to roll a small ball from one end to the other without crossing the line.\n\nRabbit rolls first. His ball moves quickly, then turns and crosses the line. He says the sand must be unfair. Crab looks at the ground. A little stone sits in the ball's path.\n\nThey move to a clear patch and draw the line again. Rabbit rolls too hard, and the ball goes far beyond the end. Crab tries a gentle push. His ball stops halfway.\n\nFor the next turn, neither animal asks who is best. They change one thing at a time: where they start and how strongly they push. Soon both can stop close to the end.\n\nThen the tide reaches their lines. The water washes the game away. Rabbit looks disappointed, but Crab puts the ball in a bucket. \"We still have this,\" he says. \"We can draw another line tomorrow.\"\n\nThe next morning, Rabbit arrives with two balls. One is much larger. Crab laughs. \"Now we have a new question before we begin.\"",
+            "explanation": "Crab spots the stone in the path. Sea rabbit/bucket hole are not stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A rabbit hiding in the sea"
+              },
+              {
+                "id": "o1",
+                "text": "A hole in the bucket"
+              },
+              {
+                "id": "o2",
+                "text": "A small stone in its path"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary5.crab-line-098.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happens when Rabbit rolls too hard?",
+            "material": "Crab and the straight line\n\nIn this story, Crab and Rabbit draw a line in the sand for a game. They want to roll a small ball from one end to the other without crossing the line.\n\nRabbit rolls first. His ball moves quickly, then turns and crosses the line. He says the sand must be unfair. Crab looks at the ground. A little stone sits in the ball's path.\n\nThey move to a clear patch and draw the line again. Rabbit rolls too hard, and the ball goes far beyond the end. Crab tries a gentle push. His ball stops halfway.\n\nFor the next turn, neither animal asks who is best. They change one thing at a time: where they start and how strongly they push. Soon both can stop close to the end.\n\nThen the tide reaches their lines. The water washes the game away. Rabbit looks disappointed, but Crab puts the ball in a bucket. \"We still have this,\" he says. \"We can draw another line tomorrow.\"\n\nThe next morning, Rabbit arrives with two balls. One is much larger. Crab laughs. \"Now we have a new question before we begin.\"",
+            "explanation": "His hard push goes beyond the end. Halfway is Crab’s gentle attempt; tree is impossible here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The ball passes the far end"
+              },
+              {
+                "id": "o1",
+                "text": "The line becomes a tree"
+              },
+              {
+                "id": "o2",
+                "text": "The ball stops halfway"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.crab-line-098.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What removes the lines?",
+            "material": "Crab and the straight line\n\nIn this story, Crab and Rabbit draw a line in the sand for a game. They want to roll a small ball from one end to the other without crossing the line.\n\nRabbit rolls first. His ball moves quickly, then turns and crosses the line. He says the sand must be unfair. Crab looks at the ground. A little stone sits in the ball's path.\n\nThey move to a clear patch and draw the line again. Rabbit rolls too hard, and the ball goes far beyond the end. Crab tries a gentle push. His ball stops halfway.\n\nFor the next turn, neither animal asks who is best. They change one thing at a time: where they start and how strongly they push. Soon both can stop close to the end.\n\nThen the tide reaches their lines. The water washes the game away. Rabbit looks disappointed, but Crab puts the ball in a bucket. \"We still have this,\" he says. \"We can draw another line tomorrow.\"\n\nThe next morning, Rabbit arrives with two balls. One is much larger. Crab laughs. \"Now we have a new question before we begin.\"",
+            "explanation": "Water washes them away. No cleaner/tool appears.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The incoming tide"
+              },
+              {
+                "id": "o1",
+                "text": "A strong vacuum cleaner"
+              },
+              {
+                "id": "o2",
+                "text": "A classroom cleaner"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.crab-line-098.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is there a new question the next day?",
+            "material": "Crab and the straight line\n\nIn this story, Crab and Rabbit draw a line in the sand for a game. They want to roll a small ball from one end to the other without crossing the line.\n\nRabbit rolls first. His ball moves quickly, then turns and crosses the line. He says the sand must be unfair. Crab looks at the ground. A little stone sits in the ball's path.\n\nThey move to a clear patch and draw the line again. Rabbit rolls too hard, and the ball goes far beyond the end. Crab tries a gentle push. His ball stops halfway.\n\nFor the next turn, neither animal asks who is best. They change one thing at a time: where they start and how strongly they push. Soon both can stop close to the end.\n\nThen the tide reaches their lines. The water washes the game away. Rabbit looks disappointed, but Crab puts the ball in a bucket. \"We still have this,\" he says. \"We can draw another line tomorrow.\"\n\nThe next morning, Rabbit arrives with two balls. One is much larger. Crab laughs. \"Now we have a new question before we begin.\"",
+            "explanation": "The larger second ball changes the comparison. Balls remain and Rabbit comes to play.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The two balls are different sizes"
+              },
+              {
+                "id": "o1",
+                "text": "Both balls have disappeared"
+              },
+              {
+                "id": "o2",
+                "text": "Rabbit refuses to play"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "88cc09e0e370a4b442a7a90b9dd124d4e383c98a54ac610a7147309fab7398a5",
+      "reviewNotes": "Six complete primary five-item readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author context/time/age/fee and all-option review, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary5.owl-stage-voice-098",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "10·24新题 · Owl’s quiet part",
+        "summary": "Owl’s quiet part，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.frog",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original complete five-question reading. Dialogue, story and four-entry table task structures follow the source family; new contexts/vocabulary are provisional rather than independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete primary five-item readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author context/time/age/fee and all-option review, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary5.owl-stage-voice-098",
+          "family": "reading_choice",
+          "label": "Owl’s quiet part",
+          "candidateSHA256": "3e5c1faff42669425429d68a210492707fd5f714e85eba58fa6565c093acc24a",
+          "authorCheckSHA256": "cc9c5d969ec75e1e15beb02bbe28fb6647074ba7eda8160a8a92e9c9a514db97",
+          "sourceGroupIds": [
+            "expansion.20261024.primary5.owl-stage-voice-098#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b098；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Owl’s quiet part\n\nIn this fictional story, the forest animals prepare a play. Fox wants to be the traveller because that character speaks often. Mouse chooses a shopkeeper with a funny song. Owl is given the part of the night wind.\n\nOwl is unhappy. The wind has only three lines, and nobody will see her behind the painted trees. She asks Rabbit, the director, for a bigger part.\n\nRabbit suggests trying one rehearsal first. When Owl says her first line in a loud, cheerful voice, Fox laughs. The traveller is supposed to feel alone in the dark. Owl tries again, speaking slowly and softly. This time Fox stops smiling and looks around as though the forest has changed.\n\nAt the performance, Owl waits quietly for each cue. She cannot see much of the audience, but she can hear their sudden silence when the wind begins.\n\nAfterwards, Mouse says the night scene was her favourite. Owl still likes speaking more than three lines in ordinary conversation. For this play, however, the quiet part has given her something interesting to do. She keeps a tiny painted tree from the set beside her programme."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary5.owl-stage-voice-098.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which part does Owl first receive?",
+            "material": "Owl’s quiet part\n\nIn this fictional story, the forest animals prepare a play. Fox wants to be the traveller because that character speaks often. Mouse chooses a shopkeeper with a funny song. Owl is given the part of the night wind.\n\nOwl is unhappy. The wind has only three lines, and nobody will see her behind the painted trees. She asks Rabbit, the director, for a bigger part.\n\nRabbit suggests trying one rehearsal first. When Owl says her first line in a loud, cheerful voice, Fox laughs. The traveller is supposed to feel alone in the dark. Owl tries again, speaking slowly and softly. This time Fox stops smiling and looks around as though the forest has changed.\n\nAt the performance, Owl waits quietly for each cue. She cannot see much of the audience, but she can hear their sudden silence when the wind begins.\n\nAfterwards, Mouse says the night scene was her favourite. Owl still likes speaking more than three lines in ordinary conversation. For this play, however, the quiet part has given her something interesting to do. She keeps a tiny painted tree from the set beside her programme.",
+            "explanation": "Owl is wind; Fox traveller and Mouse shopkeeper.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The night wind"
+              },
+              {
+                "id": "o1",
+                "text": "The shopkeeper"
+              },
+              {
+                "id": "o2",
+                "text": "The traveller"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.owl-stage-voice-098.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is Owl unhappy at first?",
+            "material": "Owl’s quiet part\n\nIn this fictional story, the forest animals prepare a play. Fox wants to be the traveller because that character speaks often. Mouse chooses a shopkeeper with a funny song. Owl is given the part of the night wind.\n\nOwl is unhappy. The wind has only three lines, and nobody will see her behind the painted trees. She asks Rabbit, the director, for a bigger part.\n\nRabbit suggests trying one rehearsal first. When Owl says her first line in a loud, cheerful voice, Fox laughs. The traveller is supposed to feel alone in the dark. Owl tries again, speaking slowly and softly. This time Fox stops smiling and looks around as though the forest has changed.\n\nAt the performance, Owl waits quietly for each cue. She cannot see much of the audience, but she can hear their sudden silence when the wind begins.\n\nAfterwards, Mouse says the night scene was her favourite. Owl still likes speaking more than three lines in ordinary conversation. For this play, however, the quiet part has given her something interesting to do. She keeps a tiny painted tree from the set beside her programme.",
+            "explanation": "Only three unseen lines concern her. Script loss/all-songs duty are not stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She must sing every song alone"
+              },
+              {
+                "id": "o1",
+                "text": "She has few lines and is hidden"
+              },
+              {
+                "id": "o2",
+                "text": "She has lost the entire script"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary5.owl-stage-voice-098.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Rabbit suggest?",
+            "material": "Owl’s quiet part\n\nIn this fictional story, the forest animals prepare a play. Fox wants to be the traveller because that character speaks often. Mouse chooses a shopkeeper with a funny song. Owl is given the part of the night wind.\n\nOwl is unhappy. The wind has only three lines, and nobody will see her behind the painted trees. She asks Rabbit, the director, for a bigger part.\n\nRabbit suggests trying one rehearsal first. When Owl says her first line in a loud, cheerful voice, Fox laughs. The traveller is supposed to feel alone in the dark. Owl tries again, speaking slowly and softly. This time Fox stops smiling and looks around as though the forest has changed.\n\nAt the performance, Owl waits quietly for each cue. She cannot see much of the audience, but she can hear their sudden silence when the wind begins.\n\nAfterwards, Mouse says the night scene was her favourite. Owl still likes speaking more than three lines in ordinary conversation. For this play, however, the quiet part has given her something interesting to do. She keeps a tiny painted tree from the set beside her programme.",
+            "explanation": "Rabbit asks for one trial. Cancellation/one-actor plan are not proposed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Try a rehearsal before deciding"
+              },
+              {
+                "id": "o1",
+                "text": "Give every part to Fox"
+              },
+              {
+                "id": "o2",
+                "text": "Cancel the whole play"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.owl-stage-voice-098.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What changes when Owl speaks softly?",
+            "material": "Owl’s quiet part\n\nIn this fictional story, the forest animals prepare a play. Fox wants to be the traveller because that character speaks often. Mouse chooses a shopkeeper with a funny song. Owl is given the part of the night wind.\n\nOwl is unhappy. The wind has only three lines, and nobody will see her behind the painted trees. She asks Rabbit, the director, for a bigger part.\n\nRabbit suggests trying one rehearsal first. When Owl says her first line in a loud, cheerful voice, Fox laughs. The traveller is supposed to feel alone in the dark. Owl tries again, speaking slowly and softly. This time Fox stops smiling and looks around as though the forest has changed.\n\nAt the performance, Owl waits quietly for each cue. She cannot see much of the audience, but she can hear their sudden silence when the wind begins.\n\nAfterwards, Mouse says the night scene was her favourite. Owl still likes speaking more than three lines in ordinary conversation. For this play, however, the quiet part has given her something interesting to do. She keeps a tiny painted tree from the set beside her programme.",
+            "explanation": "Fox reacts as though the atmosphere changed. The set remains painted and he does not leave.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The traveller’s lonely night feels more convincing"
+              },
+              {
+                "id": "o1",
+                "text": "Fox leaves the forest forever"
+              },
+              {
+                "id": "o2",
+                "text": "The painted trees turn into real ones"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.owl-stage-voice-098.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Owl keep afterwards?",
+            "material": "Owl’s quiet part\n\nIn this fictional story, the forest animals prepare a play. Fox wants to be the traveller because that character speaks often. Mouse chooses a shopkeeper with a funny song. Owl is given the part of the night wind.\n\nOwl is unhappy. The wind has only three lines, and nobody will see her behind the painted trees. She asks Rabbit, the director, for a bigger part.\n\nRabbit suggests trying one rehearsal first. When Owl says her first line in a loud, cheerful voice, Fox laughs. The traveller is supposed to feel alone in the dark. Owl tries again, speaking slowly and softly. This time Fox stops smiling and looks around as though the forest has changed.\n\nAt the performance, Owl waits quietly for each cue. She cannot see much of the audience, but she can hear their sudden silence when the wind begins.\n\nAfterwards, Mouse says the night scene was her favourite. Owl still likes speaking more than three lines in ordinary conversation. For this play, however, the quiet part has given her something interesting to do. She keeps a tiny painted tree from the set beside her programme.",
+            "explanation": "She keeps a tiny set tree with programme. Chairs/shop are not her memento.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "All the audience chairs"
+              },
+              {
+                "id": "o1",
+                "text": "Mouse’s real shop"
+              },
+              {
+                "id": "o2",
+                "text": "A small painted tree"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "5d32a56f73ba0b8cc28df61169169a2920b98c7d9bccd1aa921cd02c823739dd",
+      "reviewNotes": "Six complete primary five-item readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author context/time/age/fee and all-option review, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary6.four-reading-groups-098",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "10·24新题 · Four library reading groups",
+        "summary": "Four library reading groups，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.dongcheng2025.booktable",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original complete five-question reading. Dialogue, story and four-entry table task structures follow the source family; new contexts/vocabulary are provisional rather than independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete primary five-item readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author context/time/age/fee and all-option review, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary6.four-reading-groups-098",
+          "family": "reading_choice",
+          "label": "Four library reading groups",
+          "candidateSHA256": "b04920d560455e47e6fdf3995ff71f1f0ce68de0331d4d94849f52175984f31b",
+          "authorCheckSHA256": "802d1de2b3dbe21c17a4823d874d653f3e506e2cafd9e98236dc697fba3b7bc4",
+          "sourceGroupIds": [
+            "expansion.20261024.primary6.four-reading-groups-098#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b098；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four library reading groups\n\nThe library offers four reading groups this month. Each meeting is for one age group, and booking is required. The price is for one meeting and includes the reading material.\n\n| Group | When | Age | Price | What happens |\n| --- | --- | --- | --- | --- |\n| Story Builders | Tuesday 16:00–17:00 | 8–10 | £3 | Read a short story and create another ending. |\n| Nature Pages | Wednesday 16:30–17:30 | 10–12 | £4 | Read about wildlife and discuss a photograph. |\n| Comic Corner | Saturday 10:00–11:15 | 9–12 | £5 | Compare pictures and speech bubbles in a comic. |\n| Family Tales | Sunday 14:00–15:00 | All ages | £2 | Each child comes with an adult; both need a ticket. |\n\nChildren should arrive ten minutes early. Pens and paper are provided. Family Tales allows children under eight; the other groups follow their listed ages. Meetings are indoors. Booking closes the day before each session, if places remain. The café sells snacks separately, and food should stay outside the reading rooms. A cancelled library meeting is refunded; visitors who cannot attend should contact the desk as early as possible."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary6.four-reading-groups-098.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which group can a seven-year-old attend?",
+            "material": "Four library reading groups\n\nThe library offers four reading groups this month. Each meeting is for one age group, and booking is required. The price is for one meeting and includes the reading material.\n\n| Group | When | Age | Price | What happens |\n| --- | --- | --- | --- | --- |\n| Story Builders | Tuesday 16:00–17:00 | 8–10 | £3 | Read a short story and create another ending. |\n| Nature Pages | Wednesday 16:30–17:30 | 10–12 | £4 | Read about wildlife and discuss a photograph. |\n| Comic Corner | Saturday 10:00–11:15 | 9–12 | £5 | Compare pictures and speech bubbles in a comic. |\n| Family Tales | Sunday 14:00–15:00 | All ages | £2 | Each child comes with an adult; both need a ticket. |\n\nChildren should arrive ten minutes early. Pens and paper are provided. Family Tales allows children under eight; the other groups follow their listed ages. Meetings are indoors. Booking closes the day before each session, if places remain. The café sells snacks separately, and food should stay outside the reading rooms. A cancelled library meeting is refunded; visitors who cannot attend should contact the desk as early as possible.",
+            "explanation": "Only Family Tales allows under-eight children, with adult attendance. Other groups exclude age7.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Nature Pages alone"
+              },
+              {
+                "id": "o1",
+                "text": "Family Tales with an adult"
+              },
+              {
+                "id": "o2",
+                "text": "Comic Corner alone"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-reading-groups-098.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When should Comic Corner participants arrive?",
+            "material": "Four library reading groups\n\nThe library offers four reading groups this month. Each meeting is for one age group, and booking is required. The price is for one meeting and includes the reading material.\n\n| Group | When | Age | Price | What happens |\n| --- | --- | --- | --- | --- |\n| Story Builders | Tuesday 16:00–17:00 | 8–10 | £3 | Read a short story and create another ending. |\n| Nature Pages | Wednesday 16:30–17:30 | 10–12 | £4 | Read about wildlife and discuss a photograph. |\n| Comic Corner | Saturday 10:00–11:15 | 9–12 | £5 | Compare pictures and speech bubbles in a comic. |\n| Family Tales | Sunday 14:00–15:00 | All ages | £2 | Each child comes with an adult; both need a ticket. |\n\nChildren should arrive ten minutes early. Pens and paper are provided. Family Tales allows children under eight; the other groups follow their listed ages. Meetings are indoors. Booking closes the day before each session, if places remain. The café sells snacks separately, and food should stay outside the reading rooms. A cancelled library meeting is refunded; visitors who cannot attend should contact the desk as early as possible.",
+            "explanation": "Ten minutes before10:00 Saturday is9:50. The others are late/wrong day.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At 10:10 on Saturday"
+              },
+              {
+                "id": "o1",
+                "text": "At 9:50 on Saturday"
+              },
+              {
+                "id": "o2",
+                "text": "At 11:15 on Sunday"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-reading-groups-098.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How much do one adult and one child pay for Family Tales?",
+            "material": "Four library reading groups\n\nThe library offers four reading groups this month. Each meeting is for one age group, and booking is required. The price is for one meeting and includes the reading material.\n\n| Group | When | Age | Price | What happens |\n| --- | --- | --- | --- | --- |\n| Story Builders | Tuesday 16:00–17:00 | 8–10 | £3 | Read a short story and create another ending. |\n| Nature Pages | Wednesday 16:30–17:30 | 10–12 | £4 | Read about wildlife and discuss a photograph. |\n| Comic Corner | Saturday 10:00–11:15 | 9–12 | £5 | Compare pictures and speech bubbles in a comic. |\n| Family Tales | Sunday 14:00–15:00 | All ages | £2 | Each child comes with an adult; both need a ticket. |\n\nChildren should arrive ten minutes early. Pens and paper are provided. Family Tales allows children under eight; the other groups follow their listed ages. Meetings are indoors. Booking closes the day before each session, if places remain. The café sells snacks separately, and food should stay outside the reading rooms. A cancelled library meeting is refunded; visitors who cannot attend should contact the desk as early as possible.",
+            "explanation": "Each needs a£2 ticket, so total£4. Two is one person and six not the two-ticket price.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "£2"
+              },
+              {
+                "id": "o1",
+                "text": "£6"
+              },
+              {
+                "id": "o2",
+                "text": "£4"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-reading-groups-098.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which group discusses a wildlife photograph?",
+            "material": "Four library reading groups\n\nThe library offers four reading groups this month. Each meeting is for one age group, and booking is required. The price is for one meeting and includes the reading material.\n\n| Group | When | Age | Price | What happens |\n| --- | --- | --- | --- | --- |\n| Story Builders | Tuesday 16:00–17:00 | 8–10 | £3 | Read a short story and create another ending. |\n| Nature Pages | Wednesday 16:30–17:30 | 10–12 | £4 | Read about wildlife and discuss a photograph. |\n| Comic Corner | Saturday 10:00–11:15 | 9–12 | £5 | Compare pictures and speech bubbles in a comic. |\n| Family Tales | Sunday 14:00–15:00 | All ages | £2 | Each child comes with an adult; both need a ticket. |\n\nChildren should arrive ten minutes early. Pens and paper are provided. Family Tales allows children under eight; the other groups follow their listed ages. Meetings are indoors. Booking closes the day before each session, if places remain. The café sells snacks separately, and food should stay outside the reading rooms. A cancelled library meeting is refunded; visitors who cannot attend should contact the desk as early as possible.",
+            "explanation": "Nature Pages explicitly combines wildlife reading/photo discussion.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Story Builders"
+              },
+              {
+                "id": "o1",
+                "text": "Family Tales"
+              },
+              {
+                "id": "o2",
+                "text": "Nature Pages"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-reading-groups-098.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is included in the meeting price?",
+            "material": "Four library reading groups\n\nThe library offers four reading groups this month. Each meeting is for one age group, and booking is required. The price is for one meeting and includes the reading material.\n\n| Group | When | Age | Price | What happens |\n| --- | --- | --- | --- | --- |\n| Story Builders | Tuesday 16:00–17:00 | 8–10 | £3 | Read a short story and create another ending. |\n| Nature Pages | Wednesday 16:30–17:30 | 10–12 | £4 | Read about wildlife and discuss a photograph. |\n| Comic Corner | Saturday 10:00–11:15 | 9–12 | £5 | Compare pictures and speech bubbles in a comic. |\n| Family Tales | Sunday 14:00–15:00 | All ages | £2 | Each child comes with an adult; both need a ticket. |\n\nChildren should arrive ten minutes early. Pens and paper are provided. Family Tales allows children under eight; the other groups follow their listed ages. Meetings are indoors. Booking closes the day before each session, if places remain. The café sells snacks separately, and food should stay outside the reading rooms. A cancelled library meeting is refunded; visitors who cannot attend should contact the desk as early as possible.",
+            "explanation": "Materials included; snacks separate and travel not included.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Travel from home"
+              },
+              {
+                "id": "o1",
+                "text": "Every café snack"
+              },
+              {
+                "id": "o2",
+                "text": "The reading material"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "a95d5f75c29d3faf47e855cc4ee7a57a636954783befc86048ef1025e9225ae0",
+      "reviewNotes": "Six complete primary five-item readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author context/time/age/fee and all-option review, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary6.four-try-sessions-098",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "10·24新题 · Four try-it sessions",
+        "summary": "Four try-it sessions，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.dongcheng2025.booktable",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original complete five-question reading. Dialogue, story and four-entry table task structures follow the source family; new contexts/vocabulary are provisional rather than independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete primary five-item readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author context/time/age/fee and all-option review, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary6.four-try-sessions-098",
+          "family": "reading_choice",
+          "label": "Four try-it sessions",
+          "candidateSHA256": "133bfc5a853b9376d87d4f18dfb94d00ccb87f0801446729baa8e9b1737c8663",
+          "authorCheckSHA256": "58745258cbf0e4928f5d0b31711c246a807d08b2b537b5ddd5c570cf90a7a730",
+          "sourceGroupIds": [
+            "expansion.20261024.primary6.four-try-sessions-098#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b098；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four try-it sessions\n\nThe youth centre has four beginner sessions. You may book one or more if the times do not overlap. Prices are per person. Each session provides basic equipment and a teacher.\n\n| Session | Day and time | Minimum age | Price | Bring |\n| --- | --- | --- | --- | --- |\n| Paper Buildings | Monday 10:00–11:30 | 8 | £4 | A box to carry the model home. |\n| Rhythm Games | Monday 13:00–14:00 | 7 | £3 | A water bottle. |\n| Nature Sketching | Tuesday 10:00–12:00 | 10 | £6 | A hat and suitable outdoor shoes. |\n| Shadow Theatre | Tuesday 14:00–15:30 | 9 | £5 | A short story idea; writing it out is optional. |\n\nArrive fifteen minutes early to register. Paper Buildings, Rhythm Games and Shadow Theatre are indoors. Nature Sketching moves to the covered courtyard if light rain is expected; the teacher may cancel in unsuitable conditions. Please tell the centre about access requirements before booking so the activity can be discussed. Children are collected by the named adult at the end. The centre does not provide lunch or supervision between separate sessions, so families must make their own arrangement for the gap."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary6.four-try-sessions-098.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which session can an eight-year-old join?",
+            "material": "Four try-it sessions\n\nThe youth centre has four beginner sessions. You may book one or more if the times do not overlap. Prices are per person. Each session provides basic equipment and a teacher.\n\n| Session | Day and time | Minimum age | Price | Bring |\n| --- | --- | --- | --- | --- |\n| Paper Buildings | Monday 10:00–11:30 | 8 | £4 | A box to carry the model home. |\n| Rhythm Games | Monday 13:00–14:00 | 7 | £3 | A water bottle. |\n| Nature Sketching | Tuesday 10:00–12:00 | 10 | £6 | A hat and suitable outdoor shoes. |\n| Shadow Theatre | Tuesday 14:00–15:30 | 9 | £5 | A short story idea; writing it out is optional. |\n\nArrive fifteen minutes early to register. Paper Buildings, Rhythm Games and Shadow Theatre are indoors. Nature Sketching moves to the covered courtyard if light rain is expected; the teacher may cancel in unsuitable conditions. Please tell the centre about access requirements before booking so the activity can be discussed. Children are collected by the named adult at the end. The centre does not provide lunch or supervision between separate sessions, so families must make their own arrangement for the gap.",
+            "explanation": "Paper Buildings minimum8 includes age8. Nature minimum10, shadows9 exclude it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Shadow Theatre"
+              },
+              {
+                "id": "o1",
+                "text": "Nature Sketching"
+              },
+              {
+                "id": "o2",
+                "text": "Paper Buildings"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-try-sessions-098.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When should Rhythm Games participants arrive?",
+            "material": "Four try-it sessions\n\nThe youth centre has four beginner sessions. You may book one or more if the times do not overlap. Prices are per person. Each session provides basic equipment and a teacher.\n\n| Session | Day and time | Minimum age | Price | Bring |\n| --- | --- | --- | --- | --- |\n| Paper Buildings | Monday 10:00–11:30 | 8 | £4 | A box to carry the model home. |\n| Rhythm Games | Monday 13:00–14:00 | 7 | £3 | A water bottle. |\n| Nature Sketching | Tuesday 10:00–12:00 | 10 | £6 | A hat and suitable outdoor shoes. |\n| Shadow Theatre | Tuesday 14:00–15:30 | 9 | £5 | A short story idea; writing it out is optional. |\n\nArrive fifteen minutes early to register. Paper Buildings, Rhythm Games and Shadow Theatre are indoors. Nature Sketching moves to the covered courtyard if light rain is expected; the teacher may cancel in unsuitable conditions. Please tell the centre about access requirements before booking so the activity can be discussed. Children are collected by the named adult at the end. The centre does not provide lunch or supervision between separate sessions, so families must make their own arrangement for the gap.",
+            "explanation": "Fifteen minutes before13:00 Monday is12:45. Other times are late or different session/day.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "At 9:45 on Tuesday"
+              },
+              {
+                "id": "o1",
+                "text": "At 13:15 on Monday"
+              },
+              {
+                "id": "o2",
+                "text": "At 12:45 on Monday"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-try-sessions-098.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is needed for Paper Buildings?",
+            "material": "Four try-it sessions\n\nThe youth centre has four beginner sessions. You may book one or more if the times do not overlap. Prices are per person. Each session provides basic equipment and a teacher.\n\n| Session | Day and time | Minimum age | Price | Bring |\n| --- | --- | --- | --- | --- |\n| Paper Buildings | Monday 10:00–11:30 | 8 | £4 | A box to carry the model home. |\n| Rhythm Games | Monday 13:00–14:00 | 7 | £3 | A water bottle. |\n| Nature Sketching | Tuesday 10:00–12:00 | 10 | £6 | A hat and suitable outdoor shoes. |\n| Shadow Theatre | Tuesday 14:00–15:30 | 9 | £5 | A short story idea; writing it out is optional. |\n\nArrive fifteen minutes early to register. Paper Buildings, Rhythm Games and Shadow Theatre are indoors. Nature Sketching moves to the covered courtyard if light rain is expected; the teacher may cancel in unsuitable conditions. Please tell the centre about access requirements before booking so the activity can be discussed. Children are collected by the named adult at the end. The centre does not provide lunch or supervision between separate sessions, so families must make their own arrangement for the gap.",
+            "explanation": "The Bring column specifies a carrying box. Basic equipment provided; hat is nature-sketch requirement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A box for taking the model home"
+              },
+              {
+                "id": "o1",
+                "text": "A hat for a long outdoor walk"
+              },
+              {
+                "id": "o2",
+                "text": "All teaching equipment"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-try-sessions-098.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happens to Nature Sketching in light rain?",
+            "material": "Four try-it sessions\n\nThe youth centre has four beginner sessions. You may book one or more if the times do not overlap. Prices are per person. Each session provides basic equipment and a teacher.\n\n| Session | Day and time | Minimum age | Price | Bring |\n| --- | --- | --- | --- | --- |\n| Paper Buildings | Monday 10:00–11:30 | 8 | £4 | A box to carry the model home. |\n| Rhythm Games | Monday 13:00–14:00 | 7 | £3 | A water bottle. |\n| Nature Sketching | Tuesday 10:00–12:00 | 10 | £6 | A hat and suitable outdoor shoes. |\n| Shadow Theatre | Tuesday 14:00–15:30 | 9 | £5 | A short story idea; writing it out is optional. |\n\nArrive fifteen minutes early to register. Paper Buildings, Rhythm Games and Shadow Theatre are indoors. Nature Sketching moves to the covered courtyard if light rain is expected; the teacher may cancel in unsuitable conditions. Please tell the centre about access requirements before booking so the activity can be discussed. Children are collected by the named adult at the end. The centre does not provide lunch or supervision between separate sessions, so families must make their own arrangement for the gap.",
+            "explanation": "The covered courtyard is the light-rain arrangement. Day change/swimming are not offered.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It always moves to Monday morning"
+              },
+              {
+                "id": "o1",
+                "text": "It becomes a swimming lesson"
+              },
+              {
+                "id": "o2",
+                "text": "It may use the covered courtyard"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary6.four-try-sessions-098.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must a family arrange between morning and afternoon sessions?",
+            "material": "Four try-it sessions\n\nThe youth centre has four beginner sessions. You may book one or more if the times do not overlap. Prices are per person. Each session provides basic equipment and a teacher.\n\n| Session | Day and time | Minimum age | Price | Bring |\n| --- | --- | --- | --- | --- |\n| Paper Buildings | Monday 10:00–11:30 | 8 | £4 | A box to carry the model home. |\n| Rhythm Games | Monday 13:00–14:00 | 7 | £3 | A water bottle. |\n| Nature Sketching | Tuesday 10:00–12:00 | 10 | £6 | A hat and suitable outdoor shoes. |\n| Shadow Theatre | Tuesday 14:00–15:30 | 9 | £5 | A short story idea; writing it out is optional. |\n\nArrive fifteen minutes early to register. Paper Buildings, Rhythm Games and Shadow Theatre are indoors. Nature Sketching moves to the covered courtyard if light rain is expected; the teacher may cancel in unsuitable conditions. Please tell the centre about access requirements before booking so the activity can be discussed. Children are collected by the named adult at the end. The centre does not provide lunch or supervision between separate sessions, so families must make their own arrangement for the gap.",
+            "explanation": "No lunch or gap supervision provided. Overnight stay is not part of day sessions.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Their own lunch and supervision"
+              },
+              {
+                "id": "o1",
+                "text": "A compulsory overnight stay"
+              },
+              {
+                "id": "o2",
+                "text": "Free centre supervision automatically"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "36245a405c968615f4cde4bd2522b59788a19f32678337ff0ff86e83f892a2bf",
+      "reviewNotes": "Six complete primary five-item readings: two calls, two explicitly fictional animal stories and two four-entry tables. Same-author context/time/age/fee and all-option review, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
