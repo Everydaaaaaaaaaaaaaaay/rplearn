@@ -14,6 +14,9 @@ public struct CharacterLearningView: View {
     private let audioSession: AudioSessionCoordinator
     private let beforePlayback: @Sendable () async -> Void
     @Environment(\.scenePhase) private var scenePhase
+    #if DEBUG
+    @State private var showsPracticePreview = false
+    #endif
     @State private var showJourney = false
     @State private var showDirections = false
     @State private var onlyUnfinished = false
@@ -41,6 +44,19 @@ public struct CharacterLearningView: View {
                         }
                     }
                 }
+                #if DEBUG
+                Button { showsPracticePreview = true } label: {
+                    HStack(spacing: 12) {
+                        Image(systemName: "book.pages")
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("新版练习体验").font(.subheadline.weight(.semibold))
+                            Text("完整语篇 · 可继续的学习任务").font(.caption).foregroundStyle(.secondary)
+                        }
+                        Spacer()
+                        Image(systemName: "arrow.up.right").font(.caption)
+                    }.padding(18).background(theme.tint.opacity(0.07), in: RoundedRectangle(cornerRadius: 18))
+                }.buttonStyle(.plain).accessibilityIdentifier("learning.practice-preview")
+                #endif
                 directionRow
                 if let state = model.state {
                     VStack(spacing: 0) {
@@ -74,6 +90,9 @@ public struct CharacterLearningView: View {
             LearningChallengeView(attempt: attempt, character: character, service: model.service, audioSession: audioSession, speech: speech,
                                   beforePlayback: beforePlayback, afterFinish: { await model.refreshCycle() })
         }
+        #if DEBUG
+        .fullScreenCover(isPresented: $showsPracticePreview) { LearningPracticePreview(character: character) }
+        #endif
         .sheet(isPresented: $showJourney) {
             NavigationStack {
                 LearningProgressOverview(service: model.service)

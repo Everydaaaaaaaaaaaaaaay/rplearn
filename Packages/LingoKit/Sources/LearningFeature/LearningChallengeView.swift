@@ -560,7 +560,7 @@ public struct LearningChallengeView: View {
             Text(model.attempt.unit.title).font(.title3).foregroundStyle(.secondary)
             HStack(alignment: .firstTextBaseline) {
                 Text("\(model.attempt.correctQuestionIds.count)").font(.system(size: 56, weight: .semibold, design: .rounded))
-                Text("/ \(model.attempt.unit.questions.count) 题已掌握").foregroundStyle(.secondary)
+                Text("/ \(model.attempt.unit.questions.count) 题已答对").foregroundStyle(.secondary)
             }
             VStack(alignment: .leading, spacing: 13) {
                 Text("本轮 +\(model.roundPoints) 点").font(.headline)

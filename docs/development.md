@@ -78,7 +78,7 @@ Scripts/preview.sh preview home           # 已构建/测试后：只安装和�
 重新生成工程，补齐新增文件的编译成员，再构建安装。只更新源码而未重新生成 `.xcodeproj`
 会造成此类报错；不要删除调用或复制定义来绕过，生成的工程文件不提交。
 
-页面可选 `messages`、`contacts`、`home`（活动首页）、`map`、`me`、`subscription`（会员订阅）、`learning`（全局英语旅程；可进入水平选择与校准）、`role-learning`（角色学习页的离线预览）、`unit-challenge`（挑战控件的工程预览）。产物固定取
+页面可选 `messages`、`contacts`、`home`（活动首页）、`map`、`me`、`subscription`（会员订阅）、`learning`（全局英语旅程；可进入水平选择与校准）、`role-learning`（角色学习页的离线预览）、`unit-challenge`（挑战控件的工程预览）、`practice-preview`（任务式练习交互预览）。产物固定取
 `build/DerivedData/Build/Products/Debug-iphonesimulator/LingoTrip.app`，可通过既有
 `LINGOTRIP_DERIVED_DATA_PATH` 覆盖；`preview` 不检查源码新旧，尚未构建的修改应使用 `build`。
 脚本自动选择完整 Xcode，无需修改系统 `xcode-select`。设备优先使用工作树绑定；未绑定时选择最新可用 iOS 运行时中的 iPhone，同一运行时优先复用已启动设备，
@@ -189,3 +189,8 @@ Scripts/preview.sh preview learning-test # 已构建后复用产物
 小一真实视听素材预览（Debug、未登录、离线）：在已有 `UI_TEST_LEARNING_UNIT_JSON` / `UI_TEST_LEARNING_QUESTION_ID` 公开题面上，设置 `UI_TEST_LEARNING_LOCAL_MEDIA=1` 和绝对路径 `UI_TEST_LEARNING_MEDIA_DIRECTORY=<工作树>/Backend/config/learning`。预览服务只读取题目实际引用的 `images/image.<sha256>.png` 或 `audio/audio.<sha256>.wav`，限制长度并核对摘要；不向服务器提交或写成绩。省略目录时读取应用文档目录的 `LearningPreviewMedia/`。不要传入供应商信息、答案或真实账号数据。Release 不包含这段代码。
 
 `Scripts/test-ui.sh -only-testing:LingoTripUITests/PrimaryChallengeMediaUITests` 在本机模拟器读取工作树中三个小一正式单元及素材，验证实际音频播放结束、三张图可选择、听完且选图后检查按钮解锁，以及最大辅助字号深色布局。它不是人耳音质评定，也不验证服务器计分；不用于连接真机的测试运行。
+
+任务式练习第一版可用 `Scripts/preview.sh build practice-preview` 打开，或从 Debug 角色学习页进入「新版练习体验」。
+包含两篇阅读、完整完形、七选五与语法填空的离线原创样例。题型分篇作答、整篇提交后回顾，
+答案、标记及阅读位置保存在独立的本机 `practice.preview.v1` 命名空间；不调用正式判分或奖励接口。
+该入口与答案夹具均仅编译进 Debug。七选五选项移动到另一空时会清除原空；语法未收录表达显示待核对。

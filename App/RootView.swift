@@ -175,6 +175,8 @@ struct RootView: View {
                             rosterStore: environment.rosterStore,
                             chatBuilder: { AnyView(ChatView(character: $0, deps: chatDeps)) },
                             callBuilder: { AnyView(ChatView(character: $0, deps: chatDeps, startsInRealtimeConversation: true)) })
+                    } else if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "practice-preview" {
+                        LearningPracticePreview(character: character)
                     } else if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "unit-challenge" {
                         let preview = DebugLearningPreviewService(characterID: character.id, roleKey: "oliver")
                         if let attempt = try? preview.previewAttempt(kind: ProcessInfo.processInfo.environment["UI_TEST_LEARNING_QUESTION"] ?? "choice") {
@@ -533,10 +535,10 @@ struct RootView: View {
            environment.workspace?.userID == accountID {
             tabs
             #if DEBUG
-            .task(id: accountID) {
-                // 等主界面挂载后再展示学习预览，避免启动页切换吞掉全屏展示。
-                guard ["role-learning", "unit-challenge"].contains(ProcessInfo.processInfo.environment["UI_TEST_TAB"] ?? ""),
-                      bypassesAuthenticationForUITesting else { return }
+            .task(id: "\(accountID.uuidString)-\(stateRevision)-\(environment.needsOnboarding == false)") {
+                // 内存账号可能先挂载、后导入角色；等导入完成，避免冷启动丢失预览展示。
+                guard ["role-learning", "unit-challenge", "practice-preview"].contains(ProcessInfo.processInfo.environment["UI_TEST_TAB"] ?? ""),
+                      bypassesAuthenticationForUITesting, environment.needsOnboarding == false else { return }
                 captureCharacter = try? await environment.rosterStore.allCharacters().first { $0.isMainCharacter }
             }
             #endif
