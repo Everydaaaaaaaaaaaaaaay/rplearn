@@ -1,0 +1,2014 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b114",
+  "createdAt": "2026-10-24T01:38:34.462291+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.choir-first-row-114",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · My first choir concert",
+        "summary": "My first choir concert，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade7-suzhou2025-21cnjy23303742.passageForm",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap form passage with seven prompted and three single-word gaps. Level/family reference only; no independent difficulty calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted and three one-word gaps each. Same-author full-context/form-variant review; no independent age or difficulty calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.choir-first-row-114",
+          "family": "passage_form",
+          "label": "My first choir concert",
+          "candidateSHA256": "a07f099f7f096195f1fe77c719e38e93a86d78874f3890260237b3a87baea871",
+          "authorCheckSHA256": "a403b848f7e2c4da17ddcbed76b71e232659f818f073ed7523ca9c3acbdbe78e",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.choir-first-row-114#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b114；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "My first choir concert\n\nOur school choir ____1____ (meet) every Tuesday after lunch. I joined in September because I enjoyed singing at home. At the first meeting, I knew nobody except a girl from my maths class, so I sat beside her.\n\nThe teacher gave each of us two ____2____ (song) to practise. One was slow and the other was cheerful. I put the pages in a folder so they would not disappear ____3____ my school bag among loose homework sheets.\n\nBefore our first concert, we practised standing in two rows. I was shorter than most of the others, so the teacher asked ____4____ (I) to stand at the front. That made me nervous because there would be nobody in front of me to follow.\n\nMy friend told me ____5____ (look) at the conductor, not at her. The conductor's hands would help everyone begin together. I watched ____6____ (careful) as the teacher showed us how a small movement could signal a quiet ending.\n\nOn the concert day, I wore ____7____ white shirt and dark trousers. My parents arrived early, but I could not see them clearly from the stage. The lights above us were ____8____ (bright) than the lights over the seats.\n\nWhen the music began, I forgot to search for familiar faces. I listened to the voices beside me and sang with them. After ____9____ (finish), we waited for the conductor to lower her hands. Only then did we turn ____10____ the audience and smile. My parents said they had heard me. I liked knowing that my voice had also belonged to a much larger sound."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.choir-first-row-114.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of meet.",
+            "material": "My first choir concert\n\nOur school choir ____1____ (meet) every Tuesday after lunch. I joined in September because I enjoyed singing at home. At the first meeting, I knew nobody except a girl from my maths class, so I sat beside her.\n\nThe teacher gave each of us two ____2____ (song) to practise. One was slow and the other was cheerful. I put the pages in a folder so they would not disappear ____3____ my school bag among loose homework sheets.\n\nBefore our first concert, we practised standing in two rows. I was shorter than most of the others, so the teacher asked ____4____ (I) to stand at the front. That made me nervous because there would be nobody in front of me to follow.\n\nMy friend told me ____5____ (look) at the conductor, not at her. The conductor's hands would help everyone begin together. I watched ____6____ (careful) as the teacher showed us how a small movement could signal a quiet ending.\n\nOn the concert day, I wore ____7____ white shirt and dark trousers. My parents arrived early, but I could not see them clearly from the stage. The lights above us were ____8____ (bright) than the lights over the seats.\n\nWhen the music began, I forgot to search for familiar faces. I listened to the voices beside me and sang with them. After ____9____ (finish), we waited for the conductor to lower her hands. Only then did we turn ____10____ the audience and smile. My parents said they had heard me. I liked knowing that my voice had also belonged to a much larger sound.",
+            "explanation": "Collective choir may take singular meets or British notional plural meet. Meeting alone lacks an auxiliary.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "meets",
+              "meet"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "meeting"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.choir-first-row-114.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of song.",
+            "material": "My first choir concert\n\nOur school choir ____1____ (meet) every Tuesday after lunch. I joined in September because I enjoyed singing at home. At the first meeting, I knew nobody except a girl from my maths class, so I sat beside her.\n\nThe teacher gave each of us two ____2____ (song) to practise. One was slow and the other was cheerful. I put the pages in a folder so they would not disappear ____3____ my school bag among loose homework sheets.\n\nBefore our first concert, we practised standing in two rows. I was shorter than most of the others, so the teacher asked ____4____ (I) to stand at the front. That made me nervous because there would be nobody in front of me to follow.\n\nMy friend told me ____5____ (look) at the conductor, not at her. The conductor's hands would help everyone begin together. I watched ____6____ (careful) as the teacher showed us how a small movement could signal a quiet ending.\n\nOn the concert day, I wore ____7____ white shirt and dark trousers. My parents arrived early, but I could not see them clearly from the stage. The lights above us were ____8____ (bright) than the lights over the seats.\n\nWhen the music began, I forgot to search for familiar faces. I listened to the voices beside me and sang with them. After ____9____ (finish), we waited for the conductor to lower her hands. Only then did we turn ____10____ the audience and smile. My parents said they had heard me. I liked knowing that my voice had also belonged to a much larger sound.",
+            "explanation": "Two requires plural songs. Singular/nonstandard spelling do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "songs"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "song",
+                "songes"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.choir-first-row-114.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "My first choir concert\n\nOur school choir ____1____ (meet) every Tuesday after lunch. I joined in September because I enjoyed singing at home. At the first meeting, I knew nobody except a girl from my maths class, so I sat beside her.\n\nThe teacher gave each of us two ____2____ (song) to practise. One was slow and the other was cheerful. I put the pages in a folder so they would not disappear ____3____ my school bag among loose homework sheets.\n\nBefore our first concert, we practised standing in two rows. I was shorter than most of the others, so the teacher asked ____4____ (I) to stand at the front. That made me nervous because there would be nobody in front of me to follow.\n\nMy friend told me ____5____ (look) at the conductor, not at her. The conductor's hands would help everyone begin together. I watched ____6____ (careful) as the teacher showed us how a small movement could signal a quiet ending.\n\nOn the concert day, I wore ____7____ white shirt and dark trousers. My parents arrived early, but I could not see them clearly from the stage. The lights above us were ____8____ (bright) than the lights over the seats.\n\nWhen the music began, I forgot to search for familiar faces. I listened to the voices beside me and sang with them. After ____9____ (finish), we waited for the conductor to lower her hands. Only then did we turn ____10____ the audience and smile. My parents said they had heard me. I liked knowing that my voice had also belonged to a much larger sound.",
+            "explanation": "Pages can disappear in/inside the bag among other sheets. Of/from do not express this location.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "in",
+              "inside"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of",
+                "from"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.choir-first-row-114.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of I.",
+            "material": "My first choir concert\n\nOur school choir ____1____ (meet) every Tuesday after lunch. I joined in September because I enjoyed singing at home. At the first meeting, I knew nobody except a girl from my maths class, so I sat beside her.\n\nThe teacher gave each of us two ____2____ (song) to practise. One was slow and the other was cheerful. I put the pages in a folder so they would not disappear ____3____ my school bag among loose homework sheets.\n\nBefore our first concert, we practised standing in two rows. I was shorter than most of the others, so the teacher asked ____4____ (I) to stand at the front. That made me nervous because there would be nobody in front of me to follow.\n\nMy friend told me ____5____ (look) at the conductor, not at her. The conductor's hands would help everyone begin together. I watched ____6____ (careful) as the teacher showed us how a small movement could signal a quiet ending.\n\nOn the concert day, I wore ____7____ white shirt and dark trousers. My parents arrived early, but I could not see them clearly from the stage. The lights above us were ____8____ (bright) than the lights over the seats.\n\nWhen the music began, I forgot to search for familiar faces. I listened to the voices beside me and sang with them. After ____9____ (finish), we waited for the conductor to lower her hands. Only then did we turn ____10____ the audience and smile. My parents said they had heard me. I liked knowing that my voice had also belonged to a much larger sound.",
+            "explanation": "Asked takes object me. Subject/possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "me"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "I",
+                "my",
+                "mine"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.choir-first-row-114.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of look.",
+            "material": "My first choir concert\n\nOur school choir ____1____ (meet) every Tuesday after lunch. I joined in September because I enjoyed singing at home. At the first meeting, I knew nobody except a girl from my maths class, so I sat beside her.\n\nThe teacher gave each of us two ____2____ (song) to practise. One was slow and the other was cheerful. I put the pages in a folder so they would not disappear ____3____ my school bag among loose homework sheets.\n\nBefore our first concert, we practised standing in two rows. I was shorter than most of the others, so the teacher asked ____4____ (I) to stand at the front. That made me nervous because there would be nobody in front of me to follow.\n\nMy friend told me ____5____ (look) at the conductor, not at her. The conductor's hands would help everyone begin together. I watched ____6____ (careful) as the teacher showed us how a small movement could signal a quiet ending.\n\nOn the concert day, I wore ____7____ white shirt and dark trousers. My parents arrived early, but I could not see them clearly from the stage. The lights above us were ____8____ (bright) than the lights over the seats.\n\nWhen the music began, I forgot to search for familiar faces. I listened to the voices beside me and sang with them. After ____9____ (finish), we waited for the conductor to lower her hands. Only then did we turn ____10____ the audience and smile. My parents said they had heard me. I liked knowing that my voice had also belonged to a much larger sound.",
+            "explanation": "Told me takes to look. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to look"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "look",
+                "looking",
+                "looked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.choir-first-row-114.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of careful.",
+            "material": "My first choir concert\n\nOur school choir ____1____ (meet) every Tuesday after lunch. I joined in September because I enjoyed singing at home. At the first meeting, I knew nobody except a girl from my maths class, so I sat beside her.\n\nThe teacher gave each of us two ____2____ (song) to practise. One was slow and the other was cheerful. I put the pages in a folder so they would not disappear ____3____ my school bag among loose homework sheets.\n\nBefore our first concert, we practised standing in two rows. I was shorter than most of the others, so the teacher asked ____4____ (I) to stand at the front. That made me nervous because there would be nobody in front of me to follow.\n\nMy friend told me ____5____ (look) at the conductor, not at her. The conductor's hands would help everyone begin together. I watched ____6____ (careful) as the teacher showed us how a small movement could signal a quiet ending.\n\nOn the concert day, I wore ____7____ white shirt and dark trousers. My parents arrived early, but I could not see them clearly from the stage. The lights above us were ____8____ (bright) than the lights over the seats.\n\nWhen the music began, I forgot to search for familiar faces. I listened to the voices beside me and sang with them. After ____9____ (finish), we waited for the conductor to lower her hands. Only then did we turn ____10____ the audience and smile. My parents said they had heard me. I liked knowing that my voice had also belonged to a much larger sound.",
+            "explanation": "Carefully modifies watched; carefulness is noun. Unlisted flat-adverb uses remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.choir-first-row-114.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "My first choir concert\n\nOur school choir ____1____ (meet) every Tuesday after lunch. I joined in September because I enjoyed singing at home. At the first meeting, I knew nobody except a girl from my maths class, so I sat beside her.\n\nThe teacher gave each of us two ____2____ (song) to practise. One was slow and the other was cheerful. I put the pages in a folder so they would not disappear ____3____ my school bag among loose homework sheets.\n\nBefore our first concert, we practised standing in two rows. I was shorter than most of the others, so the teacher asked ____4____ (I) to stand at the front. That made me nervous because there would be nobody in front of me to follow.\n\nMy friend told me ____5____ (look) at the conductor, not at her. The conductor's hands would help everyone begin together. I watched ____6____ (careful) as the teacher showed us how a small movement could signal a quiet ending.\n\nOn the concert day, I wore ____7____ white shirt and dark trousers. My parents arrived early, but I could not see them clearly from the stage. The lights above us were ____8____ (bright) than the lights over the seats.\n\nWhen the music began, I forgot to search for familiar faces. I listened to the voices beside me and sang with them. After ____9____ (finish), we waited for the conductor to lower her hands. Only then did we turn ____10____ the audience and smile. My parents said they had heard me. I liked knowing that my voice had also belonged to a much larger sound.",
+            "explanation": "White begins with consonant sound, so a. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.choir-first-row-114.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of bright.",
+            "material": "My first choir concert\n\nOur school choir ____1____ (meet) every Tuesday after lunch. I joined in September because I enjoyed singing at home. At the first meeting, I knew nobody except a girl from my maths class, so I sat beside her.\n\nThe teacher gave each of us two ____2____ (song) to practise. One was slow and the other was cheerful. I put the pages in a folder so they would not disappear ____3____ my school bag among loose homework sheets.\n\nBefore our first concert, we practised standing in two rows. I was shorter than most of the others, so the teacher asked ____4____ (I) to stand at the front. That made me nervous because there would be nobody in front of me to follow.\n\nMy friend told me ____5____ (look) at the conductor, not at her. The conductor's hands would help everyone begin together. I watched ____6____ (careful) as the teacher showed us how a small movement could signal a quiet ending.\n\nOn the concert day, I wore ____7____ white shirt and dark trousers. My parents arrived early, but I could not see them clearly from the stage. The lights above us were ____8____ (bright) than the lights over the seats.\n\nWhen the music began, I forgot to search for familiar faces. I listened to the voices beside me and sang with them. After ____9____ (finish), we waited for the conductor to lower her hands. Only then did we turn ____10____ the audience and smile. My parents said they had heard me. I liked knowing that my voice had also belonged to a much larger sound.",
+            "explanation": "Than requires brighter. Superlative/double comparative do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "brighter"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "brightest",
+                "more brighter"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.choir-first-row-114.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of finish.",
+            "material": "My first choir concert\n\nOur school choir ____1____ (meet) every Tuesday after lunch. I joined in September because I enjoyed singing at home. At the first meeting, I knew nobody except a girl from my maths class, so I sat beside her.\n\nThe teacher gave each of us two ____2____ (song) to practise. One was slow and the other was cheerful. I put the pages in a folder so they would not disappear ____3____ my school bag among loose homework sheets.\n\nBefore our first concert, we practised standing in two rows. I was shorter than most of the others, so the teacher asked ____4____ (I) to stand at the front. That made me nervous because there would be nobody in front of me to follow.\n\nMy friend told me ____5____ (look) at the conductor, not at her. The conductor's hands would help everyone begin together. I watched ____6____ (careful) as the teacher showed us how a small movement could signal a quiet ending.\n\nOn the concert day, I wore ____7____ white shirt and dark trousers. My parents arrived early, but I could not see them clearly from the stage. The lights above us were ____8____ (bright) than the lights over the seats.\n\nWhen the music began, I forgot to search for familiar faces. I listened to the voices beside me and sang with them. After ____9____ (finish), we waited for the conductor to lower her hands. Only then did we turn ____10____ the audience and smile. My parents said they had heard me. I liked knowing that my voice had also belonged to a much larger sound.",
+            "explanation": "After finishing/having finished both fit completion before waiting. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "finishing",
+              "having finished"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "finish",
+                "finished",
+                "to finish"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.choir-first-row-114.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "My first choir concert\n\nOur school choir ____1____ (meet) every Tuesday after lunch. I joined in September because I enjoyed singing at home. At the first meeting, I knew nobody except a girl from my maths class, so I sat beside her.\n\nThe teacher gave each of us two ____2____ (song) to practise. One was slow and the other was cheerful. I put the pages in a folder so they would not disappear ____3____ my school bag among loose homework sheets.\n\nBefore our first concert, we practised standing in two rows. I was shorter than most of the others, so the teacher asked ____4____ (I) to stand at the front. That made me nervous because there would be nobody in front of me to follow.\n\nMy friend told me ____5____ (look) at the conductor, not at her. The conductor's hands would help everyone begin together. I watched ____6____ (careful) as the teacher showed us how a small movement could signal a quiet ending.\n\nOn the concert day, I wore ____7____ white shirt and dark trousers. My parents arrived early, but I could not see them clearly from the stage. The lights above us were ____8____ (bright) than the lights over the seats.\n\nWhen the music began, I forgot to search for familiar faces. I listened to the voices beside me and sang with them. After ____9____ (finish), we waited for the conductor to lower her hands. Only then did we turn ____10____ the audience and smile. My parents said they had heard me. I liked knowing that my voice had also belonged to a much larger sound.",
+            "explanation": "Turn to/towards/toward the audience directs attention and body to them. Of/from do not express that turn.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to",
+              "towards",
+              "toward"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of",
+                "from"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "161deff22107daf8a80cc6e7c869350869cc1604a2205b7ff22a0e1850c93319",
+      "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted and three one-word gaps each. Same-author full-context/form-variant review; no independent age or difficulty calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.rabbit-card-114",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · A birthday card for the rabbit",
+        "summary": "A birthday card for the rabbit，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade7-suzhou2025-21cnjy23303742.passageForm",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap form passage with seven prompted and three single-word gaps. Level/family reference only; no independent difficulty calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted and three one-word gaps each. Same-author full-context/form-variant review; no independent age or difficulty calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.rabbit-card-114",
+          "family": "passage_form",
+          "label": "A birthday card for the rabbit",
+          "candidateSHA256": "f76de00174ba99417db6d42ecc280097014337d007b594f8185931ae023d9f32",
+          "authorCheckSHA256": "ee6916ec8c51b79a2617ca7e69440d183e566e7b6c02f470b094d2e010511fa0",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.rabbit-card-114#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b114；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A birthday card for the rabbit\n\nMy little brother ____1____ (love) our pet rabbit, Snow. He says Snow should have a birthday like everyone else in the family. We do not know the rabbit's real birthday, so we use the day she came to live with us.\n\nThis year, my brother made three little ____2____ (card). One was from him, one from me and one from our parents. I helped him write the names, but he drew all the pictures ____3____ himself. Each picture showed Snow eating or sleeping.\n\nMum reminded ____4____ (we) that a rabbit could not read a card. My brother said the pictures were for Snow and the words were for us. He put the cards on a shelf outside her enclosure, where she could not chew them.\n\nWe decided ____5____ (spend) some time making her play area interesting. Mum checked the materials and helped us arrange a cardboard tunnel. Snow moved through it ____6____ (slow), stopping at the far end to look around.\n\nMy brother wanted to give her ____7____ enormous piece of birthday cake. Mum explained that human cake was not suitable rabbit food. We kept her ordinary feeding routine and enjoyed the cake ourselves instead.\n\nThe tunnel was ____8____ (long) than the old one. Before ____9____ (leave) Snow to explore, we made sure she could move through and out comfortably. My brother sat quietly nearby rather than lifting her into it. He was pleased when she chose to enter again.\n\nAt the end of the day, the cards were still ____10____ the shelf. Snow had not read a word, but my brother had spent a happy afternoon thinking about what she actually liked. That seemed a good way to mark her special day."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.rabbit-card-114.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of love.",
+            "material": "A birthday card for the rabbit\n\nMy little brother ____1____ (love) our pet rabbit, Snow. He says Snow should have a birthday like everyone else in the family. We do not know the rabbit's real birthday, so we use the day she came to live with us.\n\nThis year, my brother made three little ____2____ (card). One was from him, one from me and one from our parents. I helped him write the names, but he drew all the pictures ____3____ himself. Each picture showed Snow eating or sleeping.\n\nMum reminded ____4____ (we) that a rabbit could not read a card. My brother said the pictures were for Snow and the words were for us. He put the cards on a shelf outside her enclosure, where she could not chew them.\n\nWe decided ____5____ (spend) some time making her play area interesting. Mum checked the materials and helped us arrange a cardboard tunnel. Snow moved through it ____6____ (slow), stopping at the far end to look around.\n\nMy brother wanted to give her ____7____ enormous piece of birthday cake. Mum explained that human cake was not suitable rabbit food. We kept her ordinary feeding routine and enjoyed the cake ourselves instead.\n\nThe tunnel was ____8____ (long) than the old one. Before ____9____ (leave) Snow to explore, we made sure she could move through and out comfortably. My brother sat quietly nearby rather than lifting her into it. He was pleased when she chose to enter again.\n\nAt the end of the day, the cards were still ____10____ the shelf. Snow had not read a word, but my brother had spent a happy afternoon thinking about what she actually liked. That seemed a good way to mark her special day.",
+            "explanation": "Singular brother in present habit takes loves. Base disagrees and loving lacks auxiliary.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "loves"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "love",
+                "loving"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rabbit-card-114.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of card.",
+            "material": "A birthday card for the rabbit\n\nMy little brother ____1____ (love) our pet rabbit, Snow. He says Snow should have a birthday like everyone else in the family. We do not know the rabbit's real birthday, so we use the day she came to live with us.\n\nThis year, my brother made three little ____2____ (card). One was from him, one from me and one from our parents. I helped him write the names, but he drew all the pictures ____3____ himself. Each picture showed Snow eating or sleeping.\n\nMum reminded ____4____ (we) that a rabbit could not read a card. My brother said the pictures were for Snow and the words were for us. He put the cards on a shelf outside her enclosure, where she could not chew them.\n\nWe decided ____5____ (spend) some time making her play area interesting. Mum checked the materials and helped us arrange a cardboard tunnel. Snow moved through it ____6____ (slow), stopping at the far end to look around.\n\nMy brother wanted to give her ____7____ enormous piece of birthday cake. Mum explained that human cake was not suitable rabbit food. We kept her ordinary feeding routine and enjoyed the cake ourselves instead.\n\nThe tunnel was ____8____ (long) than the old one. Before ____9____ (leave) Snow to explore, we made sure she could move through and out comfortably. My brother sat quietly nearby rather than lifting her into it. He was pleased when she chose to enter again.\n\nAt the end of the day, the cards were still ____10____ the shelf. Snow had not read a word, but my brother had spent a happy afternoon thinking about what she actually liked. That seemed a good way to mark her special day.",
+            "explanation": "Three requires plural cards. Singular/nonstandard plural do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "cards"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "card",
+                "cardes"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rabbit-card-114.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "A birthday card for the rabbit\n\nMy little brother ____1____ (love) our pet rabbit, Snow. He says Snow should have a birthday like everyone else in the family. We do not know the rabbit's real birthday, so we use the day she came to live with us.\n\nThis year, my brother made three little ____2____ (card). One was from him, one from me and one from our parents. I helped him write the names, but he drew all the pictures ____3____ himself. Each picture showed Snow eating or sleeping.\n\nMum reminded ____4____ (we) that a rabbit could not read a card. My brother said the pictures were for Snow and the words were for us. He put the cards on a shelf outside her enclosure, where she could not chew them.\n\nWe decided ____5____ (spend) some time making her play area interesting. Mum checked the materials and helped us arrange a cardboard tunnel. Snow moved through it ____6____ (slow), stopping at the far end to look around.\n\nMy brother wanted to give her ____7____ enormous piece of birthday cake. Mum explained that human cake was not suitable rabbit food. We kept her ordinary feeding routine and enjoyed the cake ourselves instead.\n\nThe tunnel was ____8____ (long) than the old one. Before ____9____ (leave) Snow to explore, we made sure she could move through and out comfortably. My brother sat quietly nearby rather than lifting her into it. He was pleased when she chose to enter again.\n\nAt the end of the day, the cards were still ____10____ the shelf. Snow had not read a word, but my brother had spent a happy afternoon thinking about what she actually liked. That seemed a good way to mark her special day.",
+            "explanation": "By himself means independently. With/of himself do not express that meaning here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "by"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "with",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rabbit-card-114.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of we.",
+            "material": "A birthday card for the rabbit\n\nMy little brother ____1____ (love) our pet rabbit, Snow. He says Snow should have a birthday like everyone else in the family. We do not know the rabbit's real birthday, so we use the day she came to live with us.\n\nThis year, my brother made three little ____2____ (card). One was from him, one from me and one from our parents. I helped him write the names, but he drew all the pictures ____3____ himself. Each picture showed Snow eating or sleeping.\n\nMum reminded ____4____ (we) that a rabbit could not read a card. My brother said the pictures were for Snow and the words were for us. He put the cards on a shelf outside her enclosure, where she could not chew them.\n\nWe decided ____5____ (spend) some time making her play area interesting. Mum checked the materials and helped us arrange a cardboard tunnel. Snow moved through it ____6____ (slow), stopping at the far end to look around.\n\nMy brother wanted to give her ____7____ enormous piece of birthday cake. Mum explained that human cake was not suitable rabbit food. We kept her ordinary feeding routine and enjoyed the cake ourselves instead.\n\nThe tunnel was ____8____ (long) than the old one. Before ____9____ (leave) Snow to explore, we made sure she could move through and out comfortably. My brother sat quietly nearby rather than lifting her into it. He was pleased when she chose to enter again.\n\nAt the end of the day, the cards were still ____10____ the shelf. Snow had not read a word, but my brother had spent a happy afternoon thinking about what she actually liked. That seemed a good way to mark her special day.",
+            "explanation": "Reminded takes object us. Subject/possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rabbit-card-114.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of spend.",
+            "material": "A birthday card for the rabbit\n\nMy little brother ____1____ (love) our pet rabbit, Snow. He says Snow should have a birthday like everyone else in the family. We do not know the rabbit's real birthday, so we use the day she came to live with us.\n\nThis year, my brother made three little ____2____ (card). One was from him, one from me and one from our parents. I helped him write the names, but he drew all the pictures ____3____ himself. Each picture showed Snow eating or sleeping.\n\nMum reminded ____4____ (we) that a rabbit could not read a card. My brother said the pictures were for Snow and the words were for us. He put the cards on a shelf outside her enclosure, where she could not chew them.\n\nWe decided ____5____ (spend) some time making her play area interesting. Mum checked the materials and helped us arrange a cardboard tunnel. Snow moved through it ____6____ (slow), stopping at the far end to look around.\n\nMy brother wanted to give her ____7____ enormous piece of birthday cake. Mum explained that human cake was not suitable rabbit food. We kept her ordinary feeding routine and enjoyed the cake ourselves instead.\n\nThe tunnel was ____8____ (long) than the old one. Before ____9____ (leave) Snow to explore, we made sure she could move through and out comfortably. My brother sat quietly nearby rather than lifting her into it. He was pleased when she chose to enter again.\n\nAt the end of the day, the cards were still ____10____ the shelf. Snow had not read a word, but my brother had spent a happy afternoon thinking about what she actually liked. That seemed a good way to mark her special day.",
+            "explanation": "Decided takes to spend. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to spend"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "spend",
+                "spending",
+                "spent"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rabbit-card-114.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of slow.",
+            "material": "A birthday card for the rabbit\n\nMy little brother ____1____ (love) our pet rabbit, Snow. He says Snow should have a birthday like everyone else in the family. We do not know the rabbit's real birthday, so we use the day she came to live with us.\n\nThis year, my brother made three little ____2____ (card). One was from him, one from me and one from our parents. I helped him write the names, but he drew all the pictures ____3____ himself. Each picture showed Snow eating or sleeping.\n\nMum reminded ____4____ (we) that a rabbit could not read a card. My brother said the pictures were for Snow and the words were for us. He put the cards on a shelf outside her enclosure, where she could not chew them.\n\nWe decided ____5____ (spend) some time making her play area interesting. Mum checked the materials and helped us arrange a cardboard tunnel. Snow moved through it ____6____ (slow), stopping at the far end to look around.\n\nMy brother wanted to give her ____7____ enormous piece of birthday cake. Mum explained that human cake was not suitable rabbit food. We kept her ordinary feeding routine and enjoyed the cake ourselves instead.\n\nThe tunnel was ____8____ (long) than the old one. Before ____9____ (leave) Snow to explore, we made sure she could move through and out comfortably. My brother sat quietly nearby rather than lifting her into it. He was pleased when she chose to enter again.\n\nAt the end of the day, the cards were still ____10____ the shelf. Snow had not read a word, but my brother had spent a happy afternoon thinking about what she actually liked. That seemed a good way to mark her special day.",
+            "explanation": "Slowly modifies moved; slowness is noun. Unlisted flat-adverb readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "slowly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "slowness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rabbit-card-114.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "A birthday card for the rabbit\n\nMy little brother ____1____ (love) our pet rabbit, Snow. He says Snow should have a birthday like everyone else in the family. We do not know the rabbit's real birthday, so we use the day she came to live with us.\n\nThis year, my brother made three little ____2____ (card). One was from him, one from me and one from our parents. I helped him write the names, but he drew all the pictures ____3____ himself. Each picture showed Snow eating or sleeping.\n\nMum reminded ____4____ (we) that a rabbit could not read a card. My brother said the pictures were for Snow and the words were for us. He put the cards on a shelf outside her enclosure, where she could not chew them.\n\nWe decided ____5____ (spend) some time making her play area interesting. Mum checked the materials and helped us arrange a cardboard tunnel. Snow moved through it ____6____ (slow), stopping at the far end to look around.\n\nMy brother wanted to give her ____7____ enormous piece of birthday cake. Mum explained that human cake was not suitable rabbit food. We kept her ordinary feeding routine and enjoyed the cake ourselves instead.\n\nThe tunnel was ____8____ (long) than the old one. Before ____9____ (leave) Snow to explore, we made sure she could move through and out comfortably. My brother sat quietly nearby rather than lifting her into it. He was pleased when she chose to enter again.\n\nAt the end of the day, the cards were still ____10____ the shelf. Snow had not read a word, but my brother had spent a happy afternoon thinking about what she actually liked. That seemed a good way to mark her special day.",
+            "explanation": "Enormous begins with vowel sound, so an. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rabbit-card-114.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of long.",
+            "material": "A birthday card for the rabbit\n\nMy little brother ____1____ (love) our pet rabbit, Snow. He says Snow should have a birthday like everyone else in the family. We do not know the rabbit's real birthday, so we use the day she came to live with us.\n\nThis year, my brother made three little ____2____ (card). One was from him, one from me and one from our parents. I helped him write the names, but he drew all the pictures ____3____ himself. Each picture showed Snow eating or sleeping.\n\nMum reminded ____4____ (we) that a rabbit could not read a card. My brother said the pictures were for Snow and the words were for us. He put the cards on a shelf outside her enclosure, where she could not chew them.\n\nWe decided ____5____ (spend) some time making her play area interesting. Mum checked the materials and helped us arrange a cardboard tunnel. Snow moved through it ____6____ (slow), stopping at the far end to look around.\n\nMy brother wanted to give her ____7____ enormous piece of birthday cake. Mum explained that human cake was not suitable rabbit food. We kept her ordinary feeding routine and enjoyed the cake ourselves instead.\n\nThe tunnel was ____8____ (long) than the old one. Before ____9____ (leave) Snow to explore, we made sure she could move through and out comfortably. My brother sat quietly nearby rather than lifting her into it. He was pleased when she chose to enter again.\n\nAt the end of the day, the cards were still ____10____ the shelf. Snow had not read a word, but my brother had spent a happy afternoon thinking about what she actually liked. That seemed a good way to mark her special day.",
+            "explanation": "Than requires longer. Superlative/double comparative do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "longer"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "longest",
+                "more longer"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rabbit-card-114.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of leave.",
+            "material": "A birthday card for the rabbit\n\nMy little brother ____1____ (love) our pet rabbit, Snow. He says Snow should have a birthday like everyone else in the family. We do not know the rabbit's real birthday, so we use the day she came to live with us.\n\nThis year, my brother made three little ____2____ (card). One was from him, one from me and one from our parents. I helped him write the names, but he drew all the pictures ____3____ himself. Each picture showed Snow eating or sleeping.\n\nMum reminded ____4____ (we) that a rabbit could not read a card. My brother said the pictures were for Snow and the words were for us. He put the cards on a shelf outside her enclosure, where she could not chew them.\n\nWe decided ____5____ (spend) some time making her play area interesting. Mum checked the materials and helped us arrange a cardboard tunnel. Snow moved through it ____6____ (slow), stopping at the far end to look around.\n\nMy brother wanted to give her ____7____ enormous piece of birthday cake. Mum explained that human cake was not suitable rabbit food. We kept her ordinary feeding routine and enjoyed the cake ourselves instead.\n\nThe tunnel was ____8____ (long) than the old one. Before ____9____ (leave) Snow to explore, we made sure she could move through and out comfortably. My brother sat quietly nearby rather than lifting her into it. He was pleased when she chose to enter again.\n\nAt the end of the day, the cards were still ____10____ the shelf. Snow had not read a word, but my brother had spent a happy afternoon thinking about what she actually liked. That seemed a good way to mark her special day.",
+            "explanation": "Before leaving uses -ing clause. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "leaving"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "leave",
+                "left",
+                "to leave"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rabbit-card-114.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "A birthday card for the rabbit\n\nMy little brother ____1____ (love) our pet rabbit, Snow. He says Snow should have a birthday like everyone else in the family. We do not know the rabbit's real birthday, so we use the day she came to live with us.\n\nThis year, my brother made three little ____2____ (card). One was from him, one from me and one from our parents. I helped him write the names, but he drew all the pictures ____3____ himself. Each picture showed Snow eating or sleeping.\n\nMum reminded ____4____ (we) that a rabbit could not read a card. My brother said the pictures were for Snow and the words were for us. He put the cards on a shelf outside her enclosure, where she could not chew them.\n\nWe decided ____5____ (spend) some time making her play area interesting. Mum checked the materials and helped us arrange a cardboard tunnel. Snow moved through it ____6____ (slow), stopping at the far end to look around.\n\nMy brother wanted to give her ____7____ enormous piece of birthday cake. Mum explained that human cake was not suitable rabbit food. We kept her ordinary feeding routine and enjoyed the cake ourselves instead.\n\nThe tunnel was ____8____ (long) than the old one. Before ____9____ (leave) Snow to explore, we made sure she could move through and out comfortably. My brother sat quietly nearby rather than lifting her into it. He was pleased when she chose to enter again.\n\nAt the end of the day, the cards were still ____10____ the shelf. Snow had not read a word, but my brother had spent a happy afternoon thinking about what she actually liked. That seemed a good way to mark her special day.",
+            "explanation": "Cards are located on the shelf. To/of do not express resting surface.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "2cd5bd9fe891cc102a27473f678bd8a2ba5b77cfc60bc952556dc3cd022448b1",
+      "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted and three one-word gaps each. Same-author full-context/form-variant review; no independent age or difficulty calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.skating-first-114",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · The lesson near the wall",
+        "summary": "The lesson near the wall，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap form passage with seven prompted and three single-word gaps. Level/family reference only; no independent difficulty calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted and three one-word gaps each. Same-author full-context/form-variant review; no independent age or difficulty calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.skating-first-114",
+          "family": "passage_form",
+          "label": "The lesson near the wall",
+          "candidateSHA256": "202860a58076f58f1cbcd2c0cb8d854e3621a11f25dbebb5e2dc3b768e560a73",
+          "authorCheckSHA256": "d8ff790c2b5ba2a67d714ee706ccc0db9c23d661a2b4c606de262349580c7771",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.skating-first-114#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b114；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The lesson near the wall\n\nI ____1____ (try) ice skating only once before my friend invited me to a lesson. My memory of that first visit was mostly of holding the wall. This time, I wanted to learn how to move without pulling myself along it.\n\nThe instructor asked everyone ____2____ (check) their skates before going onto the ice. A member of staff helped with the fit. We were divided into two groups so that people ____3____ had never skated could begin separately from those with some experience.\n\nMy group practised bending our knees and taking small steps. Falling was less frightening after we learned a suitable way to get up. The instructor gave the directions ____4____ (clear), then watched each person try instead of demonstrating once and disappearing.\n\nThere were several ____5____ (child) in the lesson as well as adults. Nobody was expected to move at exactly the same speed. I was more relaxed ____6____ I had been during my first visit, when I thought everyone else knew what to do.\n\nAfter ____7____ (practise) near the side, I moved a short distance towards the middle with the instructor's guidance. My arms ____8____ (hold) out for balance. I was not graceful, but I was no longer using the wall as a handle.\n\nMy friend waited ____9____ me beside the exit after her own lesson. We agreed to return the following week. It was an ____10____ (importance) beginning, not evidence that I could already do every movement safely. For the moment, a few independent steps were enough to make me want to learn more."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.skating-first-114.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of try.",
+            "material": "The lesson near the wall\n\nI ____1____ (try) ice skating only once before my friend invited me to a lesson. My memory of that first visit was mostly of holding the wall. This time, I wanted to learn how to move without pulling myself along it.\n\nThe instructor asked everyone ____2____ (check) their skates before going onto the ice. A member of staff helped with the fit. We were divided into two groups so that people ____3____ had never skated could begin separately from those with some experience.\n\nMy group practised bending our knees and taking small steps. Falling was less frightening after we learned a suitable way to get up. The instructor gave the directions ____4____ (clear), then watched each person try instead of demonstrating once and disappearing.\n\nThere were several ____5____ (child) in the lesson as well as adults. Nobody was expected to move at exactly the same speed. I was more relaxed ____6____ I had been during my first visit, when I thought everyone else knew what to do.\n\nAfter ____7____ (practise) near the side, I moved a short distance towards the middle with the instructor's guidance. My arms ____8____ (hold) out for balance. I was not graceful, but I was no longer using the wall as a handle.\n\nMy friend waited ____9____ me beside the exit after her own lesson. We agreed to return the following week. It was an ____10____ (importance) beginning, not evidence that I could already do every movement safely. For the moment, a few independent steps were enough to make me want to learn more.",
+            "explanation": "Only one experience before later invitation takes had tried in the intended prior-past account. Base and unaided -ing do not fit; unlisted tense readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "had tried"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "try",
+                "trying"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.skating-first-114.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of check.",
+            "material": "The lesson near the wall\n\nI ____1____ (try) ice skating only once before my friend invited me to a lesson. My memory of that first visit was mostly of holding the wall. This time, I wanted to learn how to move without pulling myself along it.\n\nThe instructor asked everyone ____2____ (check) their skates before going onto the ice. A member of staff helped with the fit. We were divided into two groups so that people ____3____ had never skated could begin separately from those with some experience.\n\nMy group practised bending our knees and taking small steps. Falling was less frightening after we learned a suitable way to get up. The instructor gave the directions ____4____ (clear), then watched each person try instead of demonstrating once and disappearing.\n\nThere were several ____5____ (child) in the lesson as well as adults. Nobody was expected to move at exactly the same speed. I was more relaxed ____6____ I had been during my first visit, when I thought everyone else knew what to do.\n\nAfter ____7____ (practise) near the side, I moved a short distance towards the middle with the instructor's guidance. My arms ____8____ (hold) out for balance. I was not graceful, but I was no longer using the wall as a handle.\n\nMy friend waited ____9____ me beside the exit after her own lesson. We agreed to return the following week. It was an ____10____ (importance) beginning, not evidence that I could already do every movement safely. For the moment, a few independent steps were enough to make me want to learn more.",
+            "explanation": "Asked everyone takes to check. Other forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to check"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "check",
+                "checking",
+                "checked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.skating-first-114.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "The lesson near the wall\n\nI ____1____ (try) ice skating only once before my friend invited me to a lesson. My memory of that first visit was mostly of holding the wall. This time, I wanted to learn how to move without pulling myself along it.\n\nThe instructor asked everyone ____2____ (check) their skates before going onto the ice. A member of staff helped with the fit. We were divided into two groups so that people ____3____ had never skated could begin separately from those with some experience.\n\nMy group practised bending our knees and taking small steps. Falling was less frightening after we learned a suitable way to get up. The instructor gave the directions ____4____ (clear), then watched each person try instead of demonstrating once and disappearing.\n\nThere were several ____5____ (child) in the lesson as well as adults. Nobody was expected to move at exactly the same speed. I was more relaxed ____6____ I had been during my first visit, when I thought everyone else knew what to do.\n\nAfter ____7____ (practise) near the side, I moved a short distance towards the middle with the instructor's guidance. My arms ____8____ (hold) out for balance. I was not graceful, but I was no longer using the wall as a handle.\n\nMy friend waited ____9____ me beside the exit after her own lesson. We agreed to return the following week. It was an ____10____ (importance) beginning, not evidence that I could already do every movement safely. For the moment, a few independent steps were enough to make me want to learn more.",
+            "explanation": "People is subject antecedent, who/that. Which normally nonhuman and where not subject.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "where"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.skating-first-114.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of clear.",
+            "material": "The lesson near the wall\n\nI ____1____ (try) ice skating only once before my friend invited me to a lesson. My memory of that first visit was mostly of holding the wall. This time, I wanted to learn how to move without pulling myself along it.\n\nThe instructor asked everyone ____2____ (check) their skates before going onto the ice. A member of staff helped with the fit. We were divided into two groups so that people ____3____ had never skated could begin separately from those with some experience.\n\nMy group practised bending our knees and taking small steps. Falling was less frightening after we learned a suitable way to get up. The instructor gave the directions ____4____ (clear), then watched each person try instead of demonstrating once and disappearing.\n\nThere were several ____5____ (child) in the lesson as well as adults. Nobody was expected to move at exactly the same speed. I was more relaxed ____6____ I had been during my first visit, when I thought everyone else knew what to do.\n\nAfter ____7____ (practise) near the side, I moved a short distance towards the middle with the instructor's guidance. My arms ____8____ (hold) out for balance. I was not graceful, but I was no longer using the wall as a handle.\n\nMy friend waited ____9____ me beside the exit after her own lesson. We agreed to return the following week. It was an ____10____ (importance) beginning, not evidence that I could already do every movement safely. For the moment, a few independent steps were enough to make me want to learn more.",
+            "explanation": "Clearly modifies gave directions; clearance is noun. Unlisted flat variants remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "clearly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "clearance"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.skating-first-114.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of child.",
+            "material": "The lesson near the wall\n\nI ____1____ (try) ice skating only once before my friend invited me to a lesson. My memory of that first visit was mostly of holding the wall. This time, I wanted to learn how to move without pulling myself along it.\n\nThe instructor asked everyone ____2____ (check) their skates before going onto the ice. A member of staff helped with the fit. We were divided into two groups so that people ____3____ had never skated could begin separately from those with some experience.\n\nMy group practised bending our knees and taking small steps. Falling was less frightening after we learned a suitable way to get up. The instructor gave the directions ____4____ (clear), then watched each person try instead of demonstrating once and disappearing.\n\nThere were several ____5____ (child) in the lesson as well as adults. Nobody was expected to move at exactly the same speed. I was more relaxed ____6____ I had been during my first visit, when I thought everyone else knew what to do.\n\nAfter ____7____ (practise) near the side, I moved a short distance towards the middle with the instructor's guidance. My arms ____8____ (hold) out for balance. I was not graceful, but I was no longer using the wall as a handle.\n\nMy friend waited ____9____ me beside the exit after her own lesson. We agreed to return the following week. It was an ____10____ (importance) beginning, not evidence that I could already do every movement safely. For the moment, a few independent steps were enough to make me want to learn more.",
+            "explanation": "Several requires children. Singular/nonstandard plural do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "children"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "child",
+                "childs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.skating-first-114.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "The lesson near the wall\n\nI ____1____ (try) ice skating only once before my friend invited me to a lesson. My memory of that first visit was mostly of holding the wall. This time, I wanted to learn how to move without pulling myself along it.\n\nThe instructor asked everyone ____2____ (check) their skates before going onto the ice. A member of staff helped with the fit. We were divided into two groups so that people ____3____ had never skated could begin separately from those with some experience.\n\nMy group practised bending our knees and taking small steps. Falling was less frightening after we learned a suitable way to get up. The instructor gave the directions ____4____ (clear), then watched each person try instead of demonstrating once and disappearing.\n\nThere were several ____5____ (child) in the lesson as well as adults. Nobody was expected to move at exactly the same speed. I was more relaxed ____6____ I had been during my first visit, when I thought everyone else knew what to do.\n\nAfter ____7____ (practise) near the side, I moved a short distance towards the middle with the instructor's guidance. My arms ____8____ (hold) out for balance. I was not graceful, but I was no longer using the wall as a handle.\n\nMy friend waited ____9____ me beside the exit after her own lesson. We agreed to return the following week. It was an ____10____ (importance) beginning, not evidence that I could already do every movement safely. For the moment, a few independent steps were enough to make me want to learn more.",
+            "explanation": "More relaxed than forms comparison. Then temporal and that not the comparative conjunction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "than"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "then",
+                "that"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.skating-first-114.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of practise.",
+            "material": "The lesson near the wall\n\nI ____1____ (try) ice skating only once before my friend invited me to a lesson. My memory of that first visit was mostly of holding the wall. This time, I wanted to learn how to move without pulling myself along it.\n\nThe instructor asked everyone ____2____ (check) their skates before going onto the ice. A member of staff helped with the fit. We were divided into two groups so that people ____3____ had never skated could begin separately from those with some experience.\n\nMy group practised bending our knees and taking small steps. Falling was less frightening after we learned a suitable way to get up. The instructor gave the directions ____4____ (clear), then watched each person try instead of demonstrating once and disappearing.\n\nThere were several ____5____ (child) in the lesson as well as adults. Nobody was expected to move at exactly the same speed. I was more relaxed ____6____ I had been during my first visit, when I thought everyone else knew what to do.\n\nAfter ____7____ (practise) near the side, I moved a short distance towards the middle with the instructor's guidance. My arms ____8____ (hold) out for balance. I was not graceful, but I was no longer using the wall as a handle.\n\nMy friend waited ____9____ me beside the exit after her own lesson. We agreed to return the following week. It was an ____10____ (importance) beginning, not evidence that I could already do every movement safely. For the moment, a few independent steps were enough to make me want to learn more.",
+            "explanation": "After -ing or perfect -ing fits. British/American variants both accepted; base/past/to-infinitive do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "practising",
+              "practicing",
+              "having practised",
+              "having practiced"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "practise",
+                "practised",
+                "to practise"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.skating-first-114.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of hold.",
+            "material": "The lesson near the wall\n\nI ____1____ (try) ice skating only once before my friend invited me to a lesson. My memory of that first visit was mostly of holding the wall. This time, I wanted to learn how to move without pulling myself along it.\n\nThe instructor asked everyone ____2____ (check) their skates before going onto the ice. A member of staff helped with the fit. We were divided into two groups so that people ____3____ had never skated could begin separately from those with some experience.\n\nMy group practised bending our knees and taking small steps. Falling was less frightening after we learned a suitable way to get up. The instructor gave the directions ____4____ (clear), then watched each person try instead of demonstrating once and disappearing.\n\nThere were several ____5____ (child) in the lesson as well as adults. Nobody was expected to move at exactly the same speed. I was more relaxed ____6____ I had been during my first visit, when I thought everyone else knew what to do.\n\nAfter ____7____ (practise) near the side, I moved a short distance towards the middle with the instructor's guidance. My arms ____8____ (hold) out for balance. I was not graceful, but I was no longer using the wall as a handle.\n\nMy friend waited ____9____ me beside the exit after her own lesson. We agreed to return the following week. It was an ____10____ (importance) beginning, not evidence that I could already do every movement safely. For the moment, a few independent steps were enough to make me want to learn more.",
+            "explanation": "Plural arms receive holding, were held. Held lacks auxiliary and was disagrees; other valid tense readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "were held"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "held",
+                "was held"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.skating-first-114.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "The lesson near the wall\n\nI ____1____ (try) ice skating only once before my friend invited me to a lesson. My memory of that first visit was mostly of holding the wall. This time, I wanted to learn how to move without pulling myself along it.\n\nThe instructor asked everyone ____2____ (check) their skates before going onto the ice. A member of staff helped with the fit. We were divided into two groups so that people ____3____ had never skated could begin separately from those with some experience.\n\nMy group practised bending our knees and taking small steps. Falling was less frightening after we learned a suitable way to get up. The instructor gave the directions ____4____ (clear), then watched each person try instead of demonstrating once and disappearing.\n\nThere were several ____5____ (child) in the lesson as well as adults. Nobody was expected to move at exactly the same speed. I was more relaxed ____6____ I had been during my first visit, when I thought everyone else knew what to do.\n\nAfter ____7____ (practise) near the side, I moved a short distance towards the middle with the instructor's guidance. My arms ____8____ (hold) out for balance. I was not graceful, but I was no longer using the wall as a handle.\n\nMy friend waited ____9____ me beside the exit after her own lesson. We agreed to return the following week. It was an ____10____ (importance) beginning, not evidence that I could already do every movement safely. For the moment, a few independent steps were enough to make me want to learn more.",
+            "explanation": "Waited for me takes for. Of/to do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of",
+                "to"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.skating-first-114.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of importance.",
+            "material": "The lesson near the wall\n\nI ____1____ (try) ice skating only once before my friend invited me to a lesson. My memory of that first visit was mostly of holding the wall. This time, I wanted to learn how to move without pulling myself along it.\n\nThe instructor asked everyone ____2____ (check) their skates before going onto the ice. A member of staff helped with the fit. We were divided into two groups so that people ____3____ had never skated could begin separately from those with some experience.\n\nMy group practised bending our knees and taking small steps. Falling was less frightening after we learned a suitable way to get up. The instructor gave the directions ____4____ (clear), then watched each person try instead of demonstrating once and disappearing.\n\nThere were several ____5____ (child) in the lesson as well as adults. Nobody was expected to move at exactly the same speed. I was more relaxed ____6____ I had been during my first visit, when I thought everyone else knew what to do.\n\nAfter ____7____ (practise) near the side, I moved a short distance towards the middle with the instructor's guidance. My arms ____8____ (hold) out for balance. I was not graceful, but I was no longer using the wall as a handle.\n\nMy friend waited ____9____ me beside the exit after her own lesson. We agreed to return the following week. It was an ____10____ (importance) beginning, not evidence that I could already do every movement safely. For the moment, a few independent steps were enough to make me want to learn more.",
+            "explanation": "Important is the adjective modifying beginning. Importance is a noun and importantly an adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "important"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "importance",
+                "importantly"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "1dacc019988d8dce3b8c2248755f4c476df82c338aea48b9cb0c39a955b84418",
+      "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted and three one-word gaps each. Same-author full-context/form-variant review; no independent age or difficulty calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.stamp-small-world-114",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · The stamp with a strange animal",
+        "summary": "The stamp with a strange animal，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap form passage with seven prompted and three single-word gaps. Level/family reference only; no independent difficulty calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted and three one-word gaps each. Same-author full-context/form-variant review; no independent age or difficulty calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.stamp-small-world-114",
+          "family": "passage_form",
+          "label": "The stamp with a strange animal",
+          "candidateSHA256": "5f2566c0ff1e432b7077a0e04464f8f5e429e213365c9f1f0c5cc6976c6daafc",
+          "authorCheckSHA256": "86a76d35cec555cf1af2758891bc8ceecfd7e33acda25b8067f2b23135986c8d",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.stamp-small-world-114#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b114；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The stamp with a strange animal\n\nMy uncle ____1____ (collect) stamps since he was at school. When I visited him last month, he showed me an album arranged by country. Some stamps were brightly coloured, while others used only two or three shades.\n\nI noticed an animal ____2____ I could not name. It had a long nose and a heavy-looking body. My uncle did not ask me to guess forever. He showed me where the country's name was printed and suggested ____3____ (look) for reliable information about its wildlife.\n\nWe found several ____4____ (picture) of the animal, a tapir. The stamp was a simplified design rather than a photograph. It made the shape recognisable without showing every detail that a wildlife guide might include.\n\nMy uncle asked me to handle the album ____5____ (careful). Some pages had old paper that could tear. We looked at the stamp without peeling it from its place, and he used a pointer rather than pressing a finger onto its surface.\n\nThe album ____6____ (keep) in a closed cupboard when it was not in use. I had expected a collection to be mainly about buying things, but he spent a great deal of time reading ____7____ the places and events shown on them.\n\nBefore ____8____ (leave), I chose one modern spare stamp to start a small page of my own. It was ____9____ ordinary stamp, not a rare or valuable one. I wrote down where it came from and what its design showed. The first entry made ____10____ (I) curious about the next, although I knew a collection would need room and care as well as enthusiasm."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.stamp-small-world-114.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of collect.",
+            "material": "The stamp with a strange animal\n\nMy uncle ____1____ (collect) stamps since he was at school. When I visited him last month, he showed me an album arranged by country. Some stamps were brightly coloured, while others used only two or three shades.\n\nI noticed an animal ____2____ I could not name. It had a long nose and a heavy-looking body. My uncle did not ask me to guess forever. He showed me where the country's name was printed and suggested ____3____ (look) for reliable information about its wildlife.\n\nWe found several ____4____ (picture) of the animal, a tapir. The stamp was a simplified design rather than a photograph. It made the shape recognisable without showing every detail that a wildlife guide might include.\n\nMy uncle asked me to handle the album ____5____ (careful). Some pages had old paper that could tear. We looked at the stamp without peeling it from its place, and he used a pointer rather than pressing a finger onto its surface.\n\nThe album ____6____ (keep) in a closed cupboard when it was not in use. I had expected a collection to be mainly about buying things, but he spent a great deal of time reading ____7____ the places and events shown on them.\n\nBefore ____8____ (leave), I chose one modern spare stamp to start a small page of my own. It was ____9____ ordinary stamp, not a rare or valuable one. I wrote down where it came from and what its design showed. The first entry made ____10____ (I) curious about the next, although I knew a collection would need room and care as well as enthusiasm.",
+            "explanation": "Since school continuing collection takes present perfect/simple or progressive. Base/unaided -ing do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "has collected",
+              "has been collecting"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "collect",
+                "collecting"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.stamp-small-world-114.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "The stamp with a strange animal\n\nMy uncle ____1____ (collect) stamps since he was at school. When I visited him last month, he showed me an album arranged by country. Some stamps were brightly coloured, while others used only two or three shades.\n\nI noticed an animal ____2____ I could not name. It had a long nose and a heavy-looking body. My uncle did not ask me to guess forever. He showed me where the country's name was printed and suggested ____3____ (look) for reliable information about its wildlife.\n\nWe found several ____4____ (picture) of the animal, a tapir. The stamp was a simplified design rather than a photograph. It made the shape recognisable without showing every detail that a wildlife guide might include.\n\nMy uncle asked me to handle the album ____5____ (careful). Some pages had old paper that could tear. We looked at the stamp without peeling it from its place, and he used a pointer rather than pressing a finger onto its surface.\n\nThe album ____6____ (keep) in a closed cupboard when it was not in use. I had expected a collection to be mainly about buying things, but he spent a great deal of time reading ____7____ the places and events shown on them.\n\nBefore ____8____ (leave), I chose one modern spare stamp to start a small page of my own. It was ____9____ ordinary stamp, not a rare or valuable one. I wrote down where it came from and what its design showed. The first entry made ____10____ (I) curious about the next, although I knew a collection would need room and care as well as enthusiasm.",
+            "explanation": "Animal is object antecedent of could not name, that/which. Who normally person and where not object.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.stamp-small-world-114.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of look.",
+            "material": "The stamp with a strange animal\n\nMy uncle ____1____ (collect) stamps since he was at school. When I visited him last month, he showed me an album arranged by country. Some stamps were brightly coloured, while others used only two or three shades.\n\nI noticed an animal ____2____ I could not name. It had a long nose and a heavy-looking body. My uncle did not ask me to guess forever. He showed me where the country's name was printed and suggested ____3____ (look) for reliable information about its wildlife.\n\nWe found several ____4____ (picture) of the animal, a tapir. The stamp was a simplified design rather than a photograph. It made the shape recognisable without showing every detail that a wildlife guide might include.\n\nMy uncle asked me to handle the album ____5____ (careful). Some pages had old paper that could tear. We looked at the stamp without peeling it from its place, and he used a pointer rather than pressing a finger onto its surface.\n\nThe album ____6____ (keep) in a closed cupboard when it was not in use. I had expected a collection to be mainly about buying things, but he spent a great deal of time reading ____7____ the places and events shown on them.\n\nBefore ____8____ (leave), I chose one modern spare stamp to start a small page of my own. It was ____9____ ordinary stamp, not a rare or valuable one. I wrote down where it came from and what its design showed. The first entry made ____10____ (I) curious about the next, although I knew a collection would need room and care as well as enthusiasm.",
+            "explanation": "Suggested takes looking as the activity. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "looking"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "look",
+                "to look",
+                "looked"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.stamp-small-world-114.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of picture.",
+            "material": "The stamp with a strange animal\n\nMy uncle ____1____ (collect) stamps since he was at school. When I visited him last month, he showed me an album arranged by country. Some stamps were brightly coloured, while others used only two or three shades.\n\nI noticed an animal ____2____ I could not name. It had a long nose and a heavy-looking body. My uncle did not ask me to guess forever. He showed me where the country's name was printed and suggested ____3____ (look) for reliable information about its wildlife.\n\nWe found several ____4____ (picture) of the animal, a tapir. The stamp was a simplified design rather than a photograph. It made the shape recognisable without showing every detail that a wildlife guide might include.\n\nMy uncle asked me to handle the album ____5____ (careful). Some pages had old paper that could tear. We looked at the stamp without peeling it from its place, and he used a pointer rather than pressing a finger onto its surface.\n\nThe album ____6____ (keep) in a closed cupboard when it was not in use. I had expected a collection to be mainly about buying things, but he spent a great deal of time reading ____7____ the places and events shown on them.\n\nBefore ____8____ (leave), I chose one modern spare stamp to start a small page of my own. It was ____9____ ordinary stamp, not a rare or valuable one. I wrote down where it came from and what its design showed. The first entry made ____10____ (I) curious about the next, although I knew a collection would need room and care as well as enthusiasm.",
+            "explanation": "Several requires pictures. Singular/nonstandard plural do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "pictures"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "picture",
+                "picturees"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.stamp-small-world-114.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of careful.",
+            "material": "The stamp with a strange animal\n\nMy uncle ____1____ (collect) stamps since he was at school. When I visited him last month, he showed me an album arranged by country. Some stamps were brightly coloured, while others used only two or three shades.\n\nI noticed an animal ____2____ I could not name. It had a long nose and a heavy-looking body. My uncle did not ask me to guess forever. He showed me where the country's name was printed and suggested ____3____ (look) for reliable information about its wildlife.\n\nWe found several ____4____ (picture) of the animal, a tapir. The stamp was a simplified design rather than a photograph. It made the shape recognisable without showing every detail that a wildlife guide might include.\n\nMy uncle asked me to handle the album ____5____ (careful). Some pages had old paper that could tear. We looked at the stamp without peeling it from its place, and he used a pointer rather than pressing a finger onto its surface.\n\nThe album ____6____ (keep) in a closed cupboard when it was not in use. I had expected a collection to be mainly about buying things, but he spent a great deal of time reading ____7____ the places and events shown on them.\n\nBefore ____8____ (leave), I chose one modern spare stamp to start a small page of my own. It was ____9____ ordinary stamp, not a rare or valuable one. I wrote down where it came from and what its design showed. The first entry made ____10____ (I) curious about the next, although I knew a collection would need room and care as well as enthusiasm.",
+            "explanation": "Carefully modifies handle. Carefulness is noun; unlisted flat uses remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.stamp-small-world-114.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of keep.",
+            "material": "The stamp with a strange animal\n\nMy uncle ____1____ (collect) stamps since he was at school. When I visited him last month, he showed me an album arranged by country. Some stamps were brightly coloured, while others used only two or three shades.\n\nI noticed an animal ____2____ I could not name. It had a long nose and a heavy-looking body. My uncle did not ask me to guess forever. He showed me where the country's name was printed and suggested ____3____ (look) for reliable information about its wildlife.\n\nWe found several ____4____ (picture) of the animal, a tapir. The stamp was a simplified design rather than a photograph. It made the shape recognisable without showing every detail that a wildlife guide might include.\n\nMy uncle asked me to handle the album ____5____ (careful). Some pages had old paper that could tear. We looked at the stamp without peeling it from its place, and he used a pointer rather than pressing a finger onto its surface.\n\nThe album ____6____ (keep) in a closed cupboard when it was not in use. I had expected a collection to be mainly about buying things, but he spent a great deal of time reading ____7____ the places and events shown on them.\n\nBefore ____8____ (leave), I chose one modern spare stamp to start a small page of my own. It was ____9____ ordinary stamp, not a rare or valuable one. I wrote down where it came from and what its design showed. The first entry made ____10____ (I) curious about the next, although I knew a collection would need room and care as well as enthusiasm.",
+            "explanation": "Singular album receives keeping. Kept lacks auxiliary and were disagrees; other tenses remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was kept",
+              "had been kept"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "kept",
+                "were kept"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.stamp-small-world-114.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "The stamp with a strange animal\n\nMy uncle ____1____ (collect) stamps since he was at school. When I visited him last month, he showed me an album arranged by country. Some stamps were brightly coloured, while others used only two or three shades.\n\nI noticed an animal ____2____ I could not name. It had a long nose and a heavy-looking body. My uncle did not ask me to guess forever. He showed me where the country's name was printed and suggested ____3____ (look) for reliable information about its wildlife.\n\nWe found several ____4____ (picture) of the animal, a tapir. The stamp was a simplified design rather than a photograph. It made the shape recognisable without showing every detail that a wildlife guide might include.\n\nMy uncle asked me to handle the album ____5____ (careful). Some pages had old paper that could tear. We looked at the stamp without peeling it from its place, and he used a pointer rather than pressing a finger onto its surface.\n\nThe album ____6____ (keep) in a closed cupboard when it was not in use. I had expected a collection to be mainly about buying things, but he spent a great deal of time reading ____7____ the places and events shown on them.\n\nBefore ____8____ (leave), I chose one modern spare stamp to start a small page of my own. It was ____9____ ordinary stamp, not a rare or valuable one. I wrote down where it came from and what its design showed. The first entry made ____10____ (I) curious about the next, although I knew a collection would need room and care as well as enthusiasm.",
+            "explanation": "Reading about/on places and events identifies the subject studied. With does not directly introduce that subject; unlisted variants remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "about",
+              "on"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "with"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.stamp-small-world-114.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of leave.",
+            "material": "The stamp with a strange animal\n\nMy uncle ____1____ (collect) stamps since he was at school. When I visited him last month, he showed me an album arranged by country. Some stamps were brightly coloured, while others used only two or three shades.\n\nI noticed an animal ____2____ I could not name. It had a long nose and a heavy-looking body. My uncle did not ask me to guess forever. He showed me where the country's name was printed and suggested ____3____ (look) for reliable information about its wildlife.\n\nWe found several ____4____ (picture) of the animal, a tapir. The stamp was a simplified design rather than a photograph. It made the shape recognisable without showing every detail that a wildlife guide might include.\n\nMy uncle asked me to handle the album ____5____ (careful). Some pages had old paper that could tear. We looked at the stamp without peeling it from its place, and he used a pointer rather than pressing a finger onto its surface.\n\nThe album ____6____ (keep) in a closed cupboard when it was not in use. I had expected a collection to be mainly about buying things, but he spent a great deal of time reading ____7____ the places and events shown on them.\n\nBefore ____8____ (leave), I chose one modern spare stamp to start a small page of my own. It was ____9____ ordinary stamp, not a rare or valuable one. I wrote down where it came from and what its design showed. The first entry made ____10____ (I) curious about the next, although I knew a collection would need room and care as well as enthusiasm.",
+            "explanation": "Before leaving takes an -ing clause. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "leaving"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "leave",
+                "left",
+                "to leave"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.stamp-small-world-114.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "The stamp with a strange animal\n\nMy uncle ____1____ (collect) stamps since he was at school. When I visited him last month, he showed me an album arranged by country. Some stamps were brightly coloured, while others used only two or three shades.\n\nI noticed an animal ____2____ I could not name. It had a long nose and a heavy-looking body. My uncle did not ask me to guess forever. He showed me where the country's name was printed and suggested ____3____ (look) for reliable information about its wildlife.\n\nWe found several ____4____ (picture) of the animal, a tapir. The stamp was a simplified design rather than a photograph. It made the shape recognisable without showing every detail that a wildlife guide might include.\n\nMy uncle asked me to handle the album ____5____ (careful). Some pages had old paper that could tear. We looked at the stamp without peeling it from its place, and he used a pointer rather than pressing a finger onto its surface.\n\nThe album ____6____ (keep) in a closed cupboard when it was not in use. I had expected a collection to be mainly about buying things, but he spent a great deal of time reading ____7____ the places and events shown on them.\n\nBefore ____8____ (leave), I chose one modern spare stamp to start a small page of my own. It was ____9____ ordinary stamp, not a rare or valuable one. I wrote down where it came from and what its design showed. The first entry made ____10____ (I) curious about the next, although I knew a collection would need room and care as well as enthusiasm.",
+            "explanation": "Ordinary begins with vowel sound, so an. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.stamp-small-world-114.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of I.",
+            "material": "The stamp with a strange animal\n\nMy uncle ____1____ (collect) stamps since he was at school. When I visited him last month, he showed me an album arranged by country. Some stamps were brightly coloured, while others used only two or three shades.\n\nI noticed an animal ____2____ I could not name. It had a long nose and a heavy-looking body. My uncle did not ask me to guess forever. He showed me where the country's name was printed and suggested ____3____ (look) for reliable information about its wildlife.\n\nWe found several ____4____ (picture) of the animal, a tapir. The stamp was a simplified design rather than a photograph. It made the shape recognisable without showing every detail that a wildlife guide might include.\n\nMy uncle asked me to handle the album ____5____ (careful). Some pages had old paper that could tear. We looked at the stamp without peeling it from its place, and he used a pointer rather than pressing a finger onto its surface.\n\nThe album ____6____ (keep) in a closed cupboard when it was not in use. I had expected a collection to be mainly about buying things, but he spent a great deal of time reading ____7____ the places and events shown on them.\n\nBefore ____8____ (leave), I chose one modern spare stamp to start a small page of my own. It was ____9____ ordinary stamp, not a rare or valuable one. I wrote down where it came from and what its design showed. The first entry made ____10____ (I) curious about the next, although I knew a collection would need room and care as well as enthusiasm.",
+            "explanation": "Made me curious takes object me. Subject/possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "me"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "I",
+                "my",
+                "mine"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "9402d2baf9387dabd70e451933698b0f376b519352df38782971e0e9b2449fa1",
+      "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted and three one-word gaps each. Same-author full-context/form-variant review; no independent age or difficulty calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.forecast-window-114",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · The forecast before the match",
+        "summary": "The forecast before the match，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap form passage with seven prompted and three single-word gaps. Level/family reference only; no independent difficulty calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted and three one-word gaps each. Same-author full-context/form-variant review; no independent age or difficulty calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.forecast-window-114",
+          "family": "passage_form",
+          "label": "The forecast before the match",
+          "candidateSHA256": "7845f1f28ac6c71bb7d98fa317807c832600919a36a3c3874bb8af662f6a31ac",
+          "authorCheckSHA256": "d0d38fa2b04449c5f7de7331795a40836f78e4a411ac3e32e40e4807988cb530",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.forecast-window-114#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b114；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The forecast before the match\n\nOur school football match ____1____ (postpone) after heavy rain made the field unsuitable for play. I had seen a forecast showing only a small chance of rain and felt annoyed. I thought the forecast had promised us a dry afternoon.\n\nThe geography teacher asked me ____2____ (read) the wording again. A probability was not a promise that an event could never happen. Even a low chance did not rule ____3____ rain on some occasions. The meaning was less simple than the picture of a small sun had suggested.\n\nWe compared several weather ____4____ (report), noting their locations and publication times. A forecast made earlier could differ from a later update. We also checked whether the area described was the whole district or the particular place where our school stood.\n\nAfter ____5____ (discuss) the examples, I understood why a screenshot without a time could be misleading. The teacher explained the distinction ____6____ (patient), without suggesting that every forecast was equally useful or that prediction was pointless.\n\nThe rescheduled match was arranged ____7____ the following Wednesday. This time, I checked the latest information and listened to the school's decision about the field. A dry sky at one moment did not automatically make the ground suitable.\n\nWe brought ____8____ (we) equipment only after the teacher confirmed the plan. It was ____9____ sensible arrangement because the people responsible could assess conditions we could not judge from a symbol on a screen. I still wanted accurate forecasts, but I now checked ____10____ (exact) what they said before turning them into a guarantee about my own afternoon."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.forecast-window-114.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of postpone.",
+            "material": "The forecast before the match\n\nOur school football match ____1____ (postpone) after heavy rain made the field unsuitable for play. I had seen a forecast showing only a small chance of rain and felt annoyed. I thought the forecast had promised us a dry afternoon.\n\nThe geography teacher asked me ____2____ (read) the wording again. A probability was not a promise that an event could never happen. Even a low chance did not rule ____3____ rain on some occasions. The meaning was less simple than the picture of a small sun had suggested.\n\nWe compared several weather ____4____ (report), noting their locations and publication times. A forecast made earlier could differ from a later update. We also checked whether the area described was the whole district or the particular place where our school stood.\n\nAfter ____5____ (discuss) the examples, I understood why a screenshot without a time could be misleading. The teacher explained the distinction ____6____ (patient), without suggesting that every forecast was equally useful or that prediction was pointless.\n\nThe rescheduled match was arranged ____7____ the following Wednesday. This time, I checked the latest information and listened to the school's decision about the field. A dry sky at one moment did not automatically make the ground suitable.\n\nWe brought ____8____ (we) equipment only after the teacher confirmed the plan. It was ____9____ sensible arrangement because the people responsible could assess conditions we could not judge from a symbol on a screen. I still wanted accurate forecasts, but I now checked ____10____ (exact) what they said before turning them into a guarantee about my own afternoon.",
+            "explanation": "Singular match receives postponement. Postponed lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was postponed",
+              "had been postponed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "postponed",
+                "were postponed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.forecast-window-114.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of read.",
+            "material": "The forecast before the match\n\nOur school football match ____1____ (postpone) after heavy rain made the field unsuitable for play. I had seen a forecast showing only a small chance of rain and felt annoyed. I thought the forecast had promised us a dry afternoon.\n\nThe geography teacher asked me ____2____ (read) the wording again. A probability was not a promise that an event could never happen. Even a low chance did not rule ____3____ rain on some occasions. The meaning was less simple than the picture of a small sun had suggested.\n\nWe compared several weather ____4____ (report), noting their locations and publication times. A forecast made earlier could differ from a later update. We also checked whether the area described was the whole district or the particular place where our school stood.\n\nAfter ____5____ (discuss) the examples, I understood why a screenshot without a time could be misleading. The teacher explained the distinction ____6____ (patient), without suggesting that every forecast was equally useful or that prediction was pointless.\n\nThe rescheduled match was arranged ____7____ the following Wednesday. This time, I checked the latest information and listened to the school's decision about the field. A dry sky at one moment did not automatically make the ground suitable.\n\nWe brought ____8____ (we) equipment only after the teacher confirmed the plan. It was ____9____ sensible arrangement because the people responsible could assess conditions we could not judge from a symbol on a screen. I still wanted accurate forecasts, but I now checked ____10____ (exact) what they said before turning them into a guarantee about my own afternoon.",
+            "explanation": "Asked me takes to read. Base/-ing do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to read"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "read",
+                "reading"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.forecast-window-114.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "The forecast before the match\n\nOur school football match ____1____ (postpone) after heavy rain made the field unsuitable for play. I had seen a forecast showing only a small chance of rain and felt annoyed. I thought the forecast had promised us a dry afternoon.\n\nThe geography teacher asked me ____2____ (read) the wording again. A probability was not a promise that an event could never happen. Even a low chance did not rule ____3____ rain on some occasions. The meaning was less simple than the picture of a small sun had suggested.\n\nWe compared several weather ____4____ (report), noting their locations and publication times. A forecast made earlier could differ from a later update. We also checked whether the area described was the whole district or the particular place where our school stood.\n\nAfter ____5____ (discuss) the examples, I understood why a screenshot without a time could be misleading. The teacher explained the distinction ____6____ (patient), without suggesting that every forecast was equally useful or that prediction was pointless.\n\nThe rescheduled match was arranged ____7____ the following Wednesday. This time, I checked the latest information and listened to the school's decision about the field. A dry sky at one moment did not automatically make the ground suitable.\n\nWe brought ____8____ (we) equipment only after the teacher confirmed the plan. It was ____9____ sensible arrangement because the people responsible could assess conditions we could not judge from a symbol on a screen. I still wanted accurate forecasts, but I now checked ____10____ (exact) what they said before turning them into a guarantee about my own afternoon.",
+            "explanation": "Rule out rain means exclude its possibility. Rule in would mean include it, contrary to the not-excluded point.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "in"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.forecast-window-114.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of report.",
+            "material": "The forecast before the match\n\nOur school football match ____1____ (postpone) after heavy rain made the field unsuitable for play. I had seen a forecast showing only a small chance of rain and felt annoyed. I thought the forecast had promised us a dry afternoon.\n\nThe geography teacher asked me ____2____ (read) the wording again. A probability was not a promise that an event could never happen. Even a low chance did not rule ____3____ rain on some occasions. The meaning was less simple than the picture of a small sun had suggested.\n\nWe compared several weather ____4____ (report), noting their locations and publication times. A forecast made earlier could differ from a later update. We also checked whether the area described was the whole district or the particular place where our school stood.\n\nAfter ____5____ (discuss) the examples, I understood why a screenshot without a time could be misleading. The teacher explained the distinction ____6____ (patient), without suggesting that every forecast was equally useful or that prediction was pointless.\n\nThe rescheduled match was arranged ____7____ the following Wednesday. This time, I checked the latest information and listened to the school's decision about the field. A dry sky at one moment did not automatically make the ground suitable.\n\nWe brought ____8____ (we) equipment only after the teacher confirmed the plan. It was ____9____ sensible arrangement because the people responsible could assess conditions we could not judge from a symbol on a screen. I still wanted accurate forecasts, but I now checked ____10____ (exact) what they said before turning them into a guarantee about my own afternoon.",
+            "explanation": "Several requires plural reports. Singular/process noun do not count multiple forecasts.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "reports"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "report",
+                "reporting"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.forecast-window-114.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of discuss.",
+            "material": "The forecast before the match\n\nOur school football match ____1____ (postpone) after heavy rain made the field unsuitable for play. I had seen a forecast showing only a small chance of rain and felt annoyed. I thought the forecast had promised us a dry afternoon.\n\nThe geography teacher asked me ____2____ (read) the wording again. A probability was not a promise that an event could never happen. Even a low chance did not rule ____3____ rain on some occasions. The meaning was less simple than the picture of a small sun had suggested.\n\nWe compared several weather ____4____ (report), noting their locations and publication times. A forecast made earlier could differ from a later update. We also checked whether the area described was the whole district or the particular place where our school stood.\n\nAfter ____5____ (discuss) the examples, I understood why a screenshot without a time could be misleading. The teacher explained the distinction ____6____ (patient), without suggesting that every forecast was equally useful or that prediction was pointless.\n\nThe rescheduled match was arranged ____7____ the following Wednesday. This time, I checked the latest information and listened to the school's decision about the field. A dry sky at one moment did not automatically make the ground suitable.\n\nWe brought ____8____ (we) equipment only after the teacher confirmed the plan. It was ____9____ sensible arrangement because the people responsible could assess conditions we could not judge from a symbol on a screen. I still wanted accurate forecasts, but I now checked ____10____ (exact) what they said before turning them into a guarantee about my own afternoon.",
+            "explanation": "After discussing/having discussed fit prior consideration. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "discussing",
+              "having discussed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "discuss",
+                "discussed",
+                "to discuss"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.forecast-window-114.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of patient.",
+            "material": "The forecast before the match\n\nOur school football match ____1____ (postpone) after heavy rain made the field unsuitable for play. I had seen a forecast showing only a small chance of rain and felt annoyed. I thought the forecast had promised us a dry afternoon.\n\nThe geography teacher asked me ____2____ (read) the wording again. A probability was not a promise that an event could never happen. Even a low chance did not rule ____3____ rain on some occasions. The meaning was less simple than the picture of a small sun had suggested.\n\nWe compared several weather ____4____ (report), noting their locations and publication times. A forecast made earlier could differ from a later update. We also checked whether the area described was the whole district or the particular place where our school stood.\n\nAfter ____5____ (discuss) the examples, I understood why a screenshot without a time could be misleading. The teacher explained the distinction ____6____ (patient), without suggesting that every forecast was equally useful or that prediction was pointless.\n\nThe rescheduled match was arranged ____7____ the following Wednesday. This time, I checked the latest information and listened to the school's decision about the field. A dry sky at one moment did not automatically make the ground suitable.\n\nWe brought ____8____ (we) equipment only after the teacher confirmed the plan. It was ____9____ sensible arrangement because the people responsible could assess conditions we could not judge from a symbol on a screen. I still wanted accurate forecasts, but I now checked ____10____ (exact) what they said before turning them into a guarantee about my own afternoon.",
+            "explanation": "Patiently modifies explained. Patience is noun; unlisted flat-adverb readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "patiently"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "patience"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.forecast-window-114.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "The forecast before the match\n\nOur school football match ____1____ (postpone) after heavy rain made the field unsuitable for play. I had seen a forecast showing only a small chance of rain and felt annoyed. I thought the forecast had promised us a dry afternoon.\n\nThe geography teacher asked me ____2____ (read) the wording again. A probability was not a promise that an event could never happen. Even a low chance did not rule ____3____ rain on some occasions. The meaning was less simple than the picture of a small sun had suggested.\n\nWe compared several weather ____4____ (report), noting their locations and publication times. A forecast made earlier could differ from a later update. We also checked whether the area described was the whole district or the particular place where our school stood.\n\nAfter ____5____ (discuss) the examples, I understood why a screenshot without a time could be misleading. The teacher explained the distinction ____6____ (patient), without suggesting that every forecast was equally useful or that prediction was pointless.\n\nThe rescheduled match was arranged ____7____ the following Wednesday. This time, I checked the latest information and listened to the school's decision about the field. A dry sky at one moment did not automatically make the ground suitable.\n\nWe brought ____8____ (we) equipment only after the teacher confirmed the plan. It was ____9____ sensible arrangement because the people responsible could assess conditions we could not judge from a symbol on a screen. I still wanted accurate forecasts, but I now checked ____10____ (exact) what they said before turning them into a guarantee about my own afternoon.",
+            "explanation": "Arranged for/on the following Wednesday gives scheduled date. Of does not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for",
+              "on"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.forecast-window-114.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of we.",
+            "material": "The forecast before the match\n\nOur school football match ____1____ (postpone) after heavy rain made the field unsuitable for play. I had seen a forecast showing only a small chance of rain and felt annoyed. I thought the forecast had promised us a dry afternoon.\n\nThe geography teacher asked me ____2____ (read) the wording again. A probability was not a promise that an event could never happen. Even a low chance did not rule ____3____ rain on some occasions. The meaning was less simple than the picture of a small sun had suggested.\n\nWe compared several weather ____4____ (report), noting their locations and publication times. A forecast made earlier could differ from a later update. We also checked whether the area described was the whole district or the particular place where our school stood.\n\nAfter ____5____ (discuss) the examples, I understood why a screenshot without a time could be misleading. The teacher explained the distinction ____6____ (patient), without suggesting that every forecast was equally useful or that prediction was pointless.\n\nThe rescheduled match was arranged ____7____ the following Wednesday. This time, I checked the latest information and listened to the school's decision about the field. A dry sky at one moment did not automatically make the ground suitable.\n\nWe brought ____8____ (we) equipment only after the teacher confirmed the plan. It was ____9____ sensible arrangement because the people responsible could assess conditions we could not judge from a symbol on a screen. I still wanted accurate forecasts, but I now checked ____10____ (exact) what they said before turning them into a guarantee about my own afternoon.",
+            "explanation": "Our modifies equipment. Personal/independent possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "our"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "us",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.forecast-window-114.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "The forecast before the match\n\nOur school football match ____1____ (postpone) after heavy rain made the field unsuitable for play. I had seen a forecast showing only a small chance of rain and felt annoyed. I thought the forecast had promised us a dry afternoon.\n\nThe geography teacher asked me ____2____ (read) the wording again. A probability was not a promise that an event could never happen. Even a low chance did not rule ____3____ rain on some occasions. The meaning was less simple than the picture of a small sun had suggested.\n\nWe compared several weather ____4____ (report), noting their locations and publication times. A forecast made earlier could differ from a later update. We also checked whether the area described was the whole district or the particular place where our school stood.\n\nAfter ____5____ (discuss) the examples, I understood why a screenshot without a time could be misleading. The teacher explained the distinction ____6____ (patient), without suggesting that every forecast was equally useful or that prediction was pointless.\n\nThe rescheduled match was arranged ____7____ the following Wednesday. This time, I checked the latest information and listened to the school's decision about the field. A dry sky at one moment did not automatically make the ground suitable.\n\nWe brought ____8____ (we) equipment only after the teacher confirmed the plan. It was ____9____ sensible arrangement because the people responsible could assess conditions we could not judge from a symbol on a screen. I still wanted accurate forecasts, but I now checked ____10____ (exact) what they said before turning them into a guarantee about my own afternoon.",
+            "explanation": "Sensible begins with consonant s, so a. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.forecast-window-114.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of exact.",
+            "material": "The forecast before the match\n\nOur school football match ____1____ (postpone) after heavy rain made the field unsuitable for play. I had seen a forecast showing only a small chance of rain and felt annoyed. I thought the forecast had promised us a dry afternoon.\n\nThe geography teacher asked me ____2____ (read) the wording again. A probability was not a promise that an event could never happen. Even a low chance did not rule ____3____ rain on some occasions. The meaning was less simple than the picture of a small sun had suggested.\n\nWe compared several weather ____4____ (report), noting their locations and publication times. A forecast made earlier could differ from a later update. We also checked whether the area described was the whole district or the particular place where our school stood.\n\nAfter ____5____ (discuss) the examples, I understood why a screenshot without a time could be misleading. The teacher explained the distinction ____6____ (patient), without suggesting that every forecast was equally useful or that prediction was pointless.\n\nThe rescheduled match was arranged ____7____ the following Wednesday. This time, I checked the latest information and listened to the school's decision about the field. A dry sky at one moment did not automatically make the ground suitable.\n\nWe brought ____8____ (we) equipment only after the teacher confirmed the plan. It was ____9____ sensible arrangement because the people responsible could assess conditions we could not judge from a symbol on a screen. I still wanted accurate forecasts, but I now checked ____10____ (exact) what they said before turning them into a guarantee about my own afternoon.",
+            "explanation": "Exactly modifies what they said, meaning the precise wording. Exactness is a noun; unlisted flat readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "exactly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "exactness"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "38fe9bcf31b40059545c3cba0c2737bf2c27d26f8bf76561e19ea0791ba633cf",
+      "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted and three one-word gaps each. Same-author full-context/form-variant review; no independent age or difficulty calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.beach-bottle-114",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · The bottle at the water’s edge",
+        "summary": "The bottle at the water’s edge，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap form passage with seven prompted and three single-word gaps. Level/family reference only; no independent difficulty calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted and three one-word gaps each. Same-author full-context/form-variant review; no independent age or difficulty calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.beach-bottle-114",
+          "family": "passage_form",
+          "label": "The bottle at the water’s edge",
+          "candidateSHA256": "b9f61a13e0d56e073e9da26d5ff395c3b65f3547095a67d39aefc2c1e93b2f00",
+          "authorCheckSHA256": "e1bbc9d350c37e56bdc6bd24c76c7b7004ccb1975f1e5b747b6fa9f89d3adebf",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.beach-bottle-114#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b114；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The bottle at the water’s edge\n\nDuring a supervised beach clean, our class ____1____ (find) a glass bottle near the water. At first I wanted to pick it up quickly, but the teacher reminded us to follow the collection instructions. We had been told which objects required an adult's help.\n\nThe pupil ____2____ gloves were beside the bag called the teacher over. The bottle was intact, yet the teacher checked the surrounding sand before lifting it. A clean-looking object did not prove that there were no sharp ____3____ (piece) nearby.\n\nWe recorded the categories of rubbish rather than everyone's name beside each item. That made it possible ____4____ (compare) the kinds of material collected without turning the task into a competition about who had found the most.\n\nSome objects ____5____ (leave) for trained staff because our group was not equipped to handle them. We marked their locations as instructed. Helping did not mean taking on every task ourselves, especially when the risks were different ____6____ those of ordinary litter.\n\nAfter ____7____ (finish) our section, we checked the bags with the organisers. The results were explained ____8____ (clear), including the fact that one morning's collection could not show all the rubbish arriving along the coast over a year.\n\nWe washed ____9____ (we) hands and looked back at the beach. It was ____10____ encouraging change in one place, not a complete solution to marine litter. The next step was to understand what could prevent some of those objects from reaching the shore. Carrying a bag had made the problem visible; it had also given us questions that a single cleanup could not answer."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.beach-bottle-114.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of find.",
+            "material": "The bottle at the water’s edge\n\nDuring a supervised beach clean, our class ____1____ (find) a glass bottle near the water. At first I wanted to pick it up quickly, but the teacher reminded us to follow the collection instructions. We had been told which objects required an adult's help.\n\nThe pupil ____2____ gloves were beside the bag called the teacher over. The bottle was intact, yet the teacher checked the surrounding sand before lifting it. A clean-looking object did not prove that there were no sharp ____3____ (piece) nearby.\n\nWe recorded the categories of rubbish rather than everyone's name beside each item. That made it possible ____4____ (compare) the kinds of material collected without turning the task into a competition about who had found the most.\n\nSome objects ____5____ (leave) for trained staff because our group was not equipped to handle them. We marked their locations as instructed. Helping did not mean taking on every task ourselves, especially when the risks were different ____6____ those of ordinary litter.\n\nAfter ____7____ (finish) our section, we checked the bags with the organisers. The results were explained ____8____ (clear), including the fact that one morning's collection could not show all the rubbish arriving along the coast over a year.\n\nWe washed ____9____ (we) hands and looked back at the beach. It was ____10____ encouraging change in one place, not a complete solution to marine litter. The next step was to understand what could prevent some of those objects from reaching the shore. Carrying a bag had made the problem visible; it had also given us questions that a single cleanup could not answer.",
+            "explanation": "Past supervised clean takes found. Base/unaided -ing do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "found"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "find",
+                "finding"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.beach-bottle-114.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "The bottle at the water’s edge\n\nDuring a supervised beach clean, our class ____1____ (find) a glass bottle near the water. At first I wanted to pick it up quickly, but the teacher reminded us to follow the collection instructions. We had been told which objects required an adult's help.\n\nThe pupil ____2____ gloves were beside the bag called the teacher over. The bottle was intact, yet the teacher checked the surrounding sand before lifting it. A clean-looking object did not prove that there were no sharp ____3____ (piece) nearby.\n\nWe recorded the categories of rubbish rather than everyone's name beside each item. That made it possible ____4____ (compare) the kinds of material collected without turning the task into a competition about who had found the most.\n\nSome objects ____5____ (leave) for trained staff because our group was not equipped to handle them. We marked their locations as instructed. Helping did not mean taking on every task ourselves, especially when the risks were different ____6____ those of ordinary litter.\n\nAfter ____7____ (finish) our section, we checked the bags with the organisers. The results were explained ____8____ (clear), including the fact that one morning's collection could not show all the rubbish arriving along the coast over a year.\n\nWe washed ____9____ (we) hands and looked back at the beach. It was ____10____ encouraging change in one place, not a complete solution to marine litter. The next step was to understand what could prevent some of those objects from reaching the shore. Carrying a bag had made the problem visible; it had also given us questions that a single cleanup could not answer.",
+            "explanation": "Whose shows possession before gloves. Other relative forms do not directly modify the noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "whose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "which",
+                "where"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.beach-bottle-114.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of piece.",
+            "material": "The bottle at the water’s edge\n\nDuring a supervised beach clean, our class ____1____ (find) a glass bottle near the water. At first I wanted to pick it up quickly, but the teacher reminded us to follow the collection instructions. We had been told which objects required an adult's help.\n\nThe pupil ____2____ gloves were beside the bag called the teacher over. The bottle was intact, yet the teacher checked the surrounding sand before lifting it. A clean-looking object did not prove that there were no sharp ____3____ (piece) nearby.\n\nWe recorded the categories of rubbish rather than everyone's name beside each item. That made it possible ____4____ (compare) the kinds of material collected without turning the task into a competition about who had found the most.\n\nSome objects ____5____ (leave) for trained staff because our group was not equipped to handle them. We marked their locations as instructed. Helping did not mean taking on every task ourselves, especially when the risks were different ____6____ those of ordinary litter.\n\nAfter ____7____ (finish) our section, we checked the bags with the organisers. The results were explained ____8____ (clear), including the fact that one morning's collection could not show all the rubbish arriving along the coast over a year.\n\nWe washed ____9____ (we) hands and looked back at the beach. It was ____10____ encouraging change in one place, not a complete solution to marine litter. The next step was to understand what could prevent some of those objects from reaching the shore. Carrying a bag had made the problem visible; it had also given us questions that a single cleanup could not answer.",
+            "explanation": "There were no sharp pieces uses plural agreement. Singular/nonstandard spelling do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "pieces"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "piece",
+                "piecees"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.beach-bottle-114.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of compare.",
+            "material": "The bottle at the water’s edge\n\nDuring a supervised beach clean, our class ____1____ (find) a glass bottle near the water. At first I wanted to pick it up quickly, but the teacher reminded us to follow the collection instructions. We had been told which objects required an adult's help.\n\nThe pupil ____2____ gloves were beside the bag called the teacher over. The bottle was intact, yet the teacher checked the surrounding sand before lifting it. A clean-looking object did not prove that there were no sharp ____3____ (piece) nearby.\n\nWe recorded the categories of rubbish rather than everyone's name beside each item. That made it possible ____4____ (compare) the kinds of material collected without turning the task into a competition about who had found the most.\n\nSome objects ____5____ (leave) for trained staff because our group was not equipped to handle them. We marked their locations as instructed. Helping did not mean taking on every task ourselves, especially when the risks were different ____6____ those of ordinary litter.\n\nAfter ____7____ (finish) our section, we checked the bags with the organisers. The results were explained ____8____ (clear), including the fact that one morning's collection could not show all the rubbish arriving along the coast over a year.\n\nWe washed ____9____ (we) hands and looked back at the beach. It was ____10____ encouraging change in one place, not a complete solution to marine litter. The next step was to understand what could prevent some of those objects from reaching the shore. Carrying a bag had made the problem visible; it had also given us questions that a single cleanup could not answer.",
+            "explanation": "Made it possible to compare uses extraposed infinitive. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to compare"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "compare",
+                "comparing",
+                "compared"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.beach-bottle-114.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of leave.",
+            "material": "The bottle at the water’s edge\n\nDuring a supervised beach clean, our class ____1____ (find) a glass bottle near the water. At first I wanted to pick it up quickly, but the teacher reminded us to follow the collection instructions. We had been told which objects required an adult's help.\n\nThe pupil ____2____ gloves were beside the bag called the teacher over. The bottle was intact, yet the teacher checked the surrounding sand before lifting it. A clean-looking object did not prove that there were no sharp ____3____ (piece) nearby.\n\nWe recorded the categories of rubbish rather than everyone's name beside each item. That made it possible ____4____ (compare) the kinds of material collected without turning the task into a competition about who had found the most.\n\nSome objects ____5____ (leave) for trained staff because our group was not equipped to handle them. We marked their locations as instructed. Helping did not mean taking on every task ourselves, especially when the risks were different ____6____ those of ordinary litter.\n\nAfter ____7____ (finish) our section, we checked the bags with the organisers. The results were explained ____8____ (clear), including the fact that one morning's collection could not show all the rubbish arriving along the coast over a year.\n\nWe washed ____9____ (we) hands and looked back at the beach. It was ____10____ encouraging change in one place, not a complete solution to marine litter. The next step was to understand what could prevent some of those objects from reaching the shore. Carrying a bag had made the problem visible; it had also given us questions that a single cleanup could not answer.",
+            "explanation": "Plural objects receive leaving. Left lacks auxiliary and was disagrees; other tenses remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "were left",
+              "had been left"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "left",
+                "was left"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.beach-bottle-114.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "The bottle at the water’s edge\n\nDuring a supervised beach clean, our class ____1____ (find) a glass bottle near the water. At first I wanted to pick it up quickly, but the teacher reminded us to follow the collection instructions. We had been told which objects required an adult's help.\n\nThe pupil ____2____ gloves were beside the bag called the teacher over. The bottle was intact, yet the teacher checked the surrounding sand before lifting it. A clean-looking object did not prove that there were no sharp ____3____ (piece) nearby.\n\nWe recorded the categories of rubbish rather than everyone's name beside each item. That made it possible ____4____ (compare) the kinds of material collected without turning the task into a competition about who had found the most.\n\nSome objects ____5____ (leave) for trained staff because our group was not equipped to handle them. We marked their locations as instructed. Helping did not mean taking on every task ourselves, especially when the risks were different ____6____ those of ordinary litter.\n\nAfter ____7____ (finish) our section, we checked the bags with the organisers. The results were explained ____8____ (clear), including the fact that one morning's collection could not show all the rubbish arriving along the coast over a year.\n\nWe washed ____9____ (we) hands and looked back at the beach. It was ____10____ encouraging change in one place, not a complete solution to marine litter. The next step was to understand what could prevent some of those objects from reaching the shore. Carrying a bag had made the problem visible; it had also given us questions that a single cleanup could not answer.",
+            "explanation": "Different from/to/than are established variants in relevant English varieties. Of does not fit this comparison.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "from",
+              "to",
+              "than"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.beach-bottle-114.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of finish.",
+            "material": "The bottle at the water’s edge\n\nDuring a supervised beach clean, our class ____1____ (find) a glass bottle near the water. At first I wanted to pick it up quickly, but the teacher reminded us to follow the collection instructions. We had been told which objects required an adult's help.\n\nThe pupil ____2____ gloves were beside the bag called the teacher over. The bottle was intact, yet the teacher checked the surrounding sand before lifting it. A clean-looking object did not prove that there were no sharp ____3____ (piece) nearby.\n\nWe recorded the categories of rubbish rather than everyone's name beside each item. That made it possible ____4____ (compare) the kinds of material collected without turning the task into a competition about who had found the most.\n\nSome objects ____5____ (leave) for trained staff because our group was not equipped to handle them. We marked their locations as instructed. Helping did not mean taking on every task ourselves, especially when the risks were different ____6____ those of ordinary litter.\n\nAfter ____7____ (finish) our section, we checked the bags with the organisers. The results were explained ____8____ (clear), including the fact that one morning's collection could not show all the rubbish arriving along the coast over a year.\n\nWe washed ____9____ (we) hands and looked back at the beach. It was ____10____ encouraging change in one place, not a complete solution to marine litter. The next step was to understand what could prevent some of those objects from reaching the shore. Carrying a bag had made the problem visible; it had also given us questions that a single cleanup could not answer.",
+            "explanation": "After finishing/having finished fit completed section. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "finishing",
+              "having finished"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "finish",
+                "finished",
+                "to finish"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.beach-bottle-114.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of clear.",
+            "material": "The bottle at the water’s edge\n\nDuring a supervised beach clean, our class ____1____ (find) a glass bottle near the water. At first I wanted to pick it up quickly, but the teacher reminded us to follow the collection instructions. We had been told which objects required an adult's help.\n\nThe pupil ____2____ gloves were beside the bag called the teacher over. The bottle was intact, yet the teacher checked the surrounding sand before lifting it. A clean-looking object did not prove that there were no sharp ____3____ (piece) nearby.\n\nWe recorded the categories of rubbish rather than everyone's name beside each item. That made it possible ____4____ (compare) the kinds of material collected without turning the task into a competition about who had found the most.\n\nSome objects ____5____ (leave) for trained staff because our group was not equipped to handle them. We marked their locations as instructed. Helping did not mean taking on every task ourselves, especially when the risks were different ____6____ those of ordinary litter.\n\nAfter ____7____ (finish) our section, we checked the bags with the organisers. The results were explained ____8____ (clear), including the fact that one morning's collection could not show all the rubbish arriving along the coast over a year.\n\nWe washed ____9____ (we) hands and looked back at the beach. It was ____10____ encouraging change in one place, not a complete solution to marine litter. The next step was to understand what could prevent some of those objects from reaching the shore. Carrying a bag had made the problem visible; it had also given us questions that a single cleanup could not answer.",
+            "explanation": "Clearly modifies explained. Clearance is noun; unlisted flat readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "clearly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "clearance"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.beach-bottle-114.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of we.",
+            "material": "The bottle at the water’s edge\n\nDuring a supervised beach clean, our class ____1____ (find) a glass bottle near the water. At first I wanted to pick it up quickly, but the teacher reminded us to follow the collection instructions. We had been told which objects required an adult's help.\n\nThe pupil ____2____ gloves were beside the bag called the teacher over. The bottle was intact, yet the teacher checked the surrounding sand before lifting it. A clean-looking object did not prove that there were no sharp ____3____ (piece) nearby.\n\nWe recorded the categories of rubbish rather than everyone's name beside each item. That made it possible ____4____ (compare) the kinds of material collected without turning the task into a competition about who had found the most.\n\nSome objects ____5____ (leave) for trained staff because our group was not equipped to handle them. We marked their locations as instructed. Helping did not mean taking on every task ourselves, especially when the risks were different ____6____ those of ordinary litter.\n\nAfter ____7____ (finish) our section, we checked the bags with the organisers. The results were explained ____8____ (clear), including the fact that one morning's collection could not show all the rubbish arriving along the coast over a year.\n\nWe washed ____9____ (we) hands and looked back at the beach. It was ____10____ encouraging change in one place, not a complete solution to marine litter. The next step was to understand what could prevent some of those objects from reaching the shore. Carrying a bag had made the problem visible; it had also given us questions that a single cleanup could not answer.",
+            "explanation": "Our modifies hands. Personal/independent possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "our"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "us",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.beach-bottle-114.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "The bottle at the water’s edge\n\nDuring a supervised beach clean, our class ____1____ (find) a glass bottle near the water. At first I wanted to pick it up quickly, but the teacher reminded us to follow the collection instructions. We had been told which objects required an adult's help.\n\nThe pupil ____2____ gloves were beside the bag called the teacher over. The bottle was intact, yet the teacher checked the surrounding sand before lifting it. A clean-looking object did not prove that there were no sharp ____3____ (piece) nearby.\n\nWe recorded the categories of rubbish rather than everyone's name beside each item. That made it possible ____4____ (compare) the kinds of material collected without turning the task into a competition about who had found the most.\n\nSome objects ____5____ (leave) for trained staff because our group was not equipped to handle them. We marked their locations as instructed. Helping did not mean taking on every task ourselves, especially when the risks were different ____6____ those of ordinary litter.\n\nAfter ____7____ (finish) our section, we checked the bags with the organisers. The results were explained ____8____ (clear), including the fact that one morning's collection could not show all the rubbish arriving along the coast over a year.\n\nWe washed ____9____ (we) hands and looked back at the beach. It was ____10____ encouraging change in one place, not a complete solution to marine litter. The next step was to understand what could prevent some of those objects from reaching the shore. Carrying a bag had made the problem visible; it had also given us questions that a single cleanup could not answer.",
+            "explanation": "Encouraging begins with vowel sound; an. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "891351390fbe451f171443355fc77824a0ba81aae53c745f77c00acaaa390a29",
+      "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted and three one-word gaps each. Same-author full-context/form-variant review; no independent age or difficulty calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
