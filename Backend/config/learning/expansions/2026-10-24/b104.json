@@ -1,0 +1,924 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b104",
+  "createdAt": "2026-10-24T01:00:15.269261+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.shop-dog-and-photo-104",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · A shop dog and a class photograph",
+        "summary": "A shop dog and a class photograph，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "xschu-bnu2026-paper-key20261014-record.reading.closed_picture_mixed_section11",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete written four-question passages for junior2 explicitly adapt the written-reading part of its source. Junior3 retains a four-email thread with five questions plus a separate five-question reading, all three-choice. No source prose copied."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete junior reading practices: four full four-question passages, plus a four-email five-question thread and independent five-question reading. Fictional cases; same-author all-option/evidence/time-update review, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.shop-dog-and-photo-104",
+          "family": "reading_choice",
+          "label": "A shop dog and a class photograph",
+          "candidateSHA256": "3755a5b922cac33889c71fcd2a52f85e8aad04c16f3dba0b5485a00f9d289415",
+          "authorCheckSHA256": "9f4d0f2dc4c5d7341d9f4766cd7d4befbc9e7f99d4a18f3ff424caab1fd64a1e",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.shop-dog-and-photo-104#dog",
+            "expansion.20261024.junior2.shop-dog-and-photo-104#photo"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b104；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Patch knows the closing time\n\nThe bicycle shop near our home has a dog called Patch. Every evening, just before closing, he brings his lead to Mr Lane at the counter. Customers often say the dog can tell the time better than they can.\n\nI believed it until one Saturday when the shop closed early. Mr Lane had a family party and put a notice on the door saying he would leave at two. At a quarter to two, Patch was still asleep under a chair. I watched the clock, waiting for him to fetch the lead.\n\nAt five to two, Mr Lane switched off the radio and began putting the display bicycles inside. Patch opened his eyes. When the last bicycle crossed the doorway, the dog walked to his basket, picked up the lead and brought it to the counter.\n\nI asked Mr Lane whether Patch had finally noticed the clock. He laughed and said the dog usually responded to the end-of-day routine. The quiet radio, moving bicycles and closing display were much more familiar signals than the hands on the wall.\n\nThe next week, I stayed until the normal closing time. Patch did not move when the clock reached the hour. He moved when Mr Lane finished the familiar jobs. I still liked the customers' story about a time-telling dog, but now I had another explanation to compare with it. Patch, meanwhile, seemed interested only in getting to the park.\n\nThe hat behind the class\n\nOur class photograph was scheduled for the last lesson on Friday. We arrived with clean uniforms and stood where the photographer asked. At the back, our teacher Mrs James wore a bright paper hat that one of the younger classes had made for her.\n\nThe photographer took a formal picture first. He asked us to look towards the camera and keep our hands still. I could hear a few people trying not to laugh at the hat, but Mrs James stood perfectly seriously.\n\nThen he said we could have a second, less formal picture. Mrs James took the hat off and placed it on the empty chair beside her. Everyone turned to see who would wear it next. At that exact moment, the camera clicked.\n\nThe second image showed thirty faces looking in different directions. Mine was turned almost completely away. I thought it would be deleted, but Mrs James asked for a copy along with the formal one.\n\nA week later, both photographs appeared on the classroom wall. The first showed our faces clearly; the second reminded us of the moment before we began laughing. Mrs James wrote the date under each, without calling either the only proper record of the class.\n\nWhen my parents saw them, they found me more quickly in the formal picture. In the other, they recognised my habit of turning towards whatever was happening. The photographs did different jobs, and I was glad that the photographer had not stopped after the first click."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.shop-dog-and-photo-104.dog.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What do customers often say about Patch?",
+            "material": "Patch knows the closing time\n\nThe bicycle shop near our home has a dog called Patch. Every evening, just before closing, he brings his lead to Mr Lane at the counter. Customers often say the dog can tell the time better than they can.\n\nI believed it until one Saturday when the shop closed early. Mr Lane had a family party and put a notice on the door saying he would leave at two. At a quarter to two, Patch was still asleep under a chair. I watched the clock, waiting for him to fetch the lead.\n\nAt five to two, Mr Lane switched off the radio and began putting the display bicycles inside. Patch opened his eyes. When the last bicycle crossed the doorway, the dog walked to his basket, picked up the lead and brought it to the counter.\n\nI asked Mr Lane whether Patch had finally noticed the clock. He laughed and said the dog usually responded to the end-of-day routine. The quiet radio, moving bicycles and closing display were much more familiar signals than the hands on the wall.\n\nThe next week, I stayed until the normal closing time. Patch did not move when the clock reached the hour. He moved when Mr Lane finished the familiar jobs. I still liked the customers' story about a time-telling dog, but now I had another explanation to compare with it. Patch, meanwhile, seemed interested only in getting to the park.",
+            "explanation": "Fetching the lead near closing prompts the time-telling claim. Repair/radio choices are not stated and he wants a walk.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He knows when the shop should close"
+              },
+              {
+                "id": "o1",
+                "text": "He repairs every bicycle himself"
+              },
+              {
+                "id": "o2",
+                "text": "He chooses the radio programmes"
+              },
+              {
+                "id": "o3",
+                "text": "He dislikes going for walks"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.shop-dog-and-photo-104.dog.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the shop close early one Saturday?",
+            "material": "Patch knows the closing time\n\nThe bicycle shop near our home has a dog called Patch. Every evening, just before closing, he brings his lead to Mr Lane at the counter. Customers often say the dog can tell the time better than they can.\n\nI believed it until one Saturday when the shop closed early. Mr Lane had a family party and put a notice on the door saying he would leave at two. At a quarter to two, Patch was still asleep under a chair. I watched the clock, waiting for him to fetch the lead.\n\nAt five to two, Mr Lane switched off the radio and began putting the display bicycles inside. Patch opened his eyes. When the last bicycle crossed the doorway, the dog walked to his basket, picked up the lead and brought it to the counter.\n\nI asked Mr Lane whether Patch had finally noticed the clock. He laughed and said the dog usually responded to the end-of-day routine. The quiet radio, moving bicycles and closing display were much more familiar signals than the hands on the wall.\n\nThe next week, I stayed until the normal closing time. Patch did not move when the clock reached the hour. He moved when Mr Lane finished the familiar jobs. I still liked the customers' story about a time-telling dog, but now I had another explanation to compare with it. Patch, meanwhile, seemed interested only in getting to the park.",
+            "explanation": "The owner’s family party is the stated reason. Dog sabotage/clock failure/park closure are invented.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Patch has hidden all the bicycles"
+              },
+              {
+                "id": "o1",
+                "text": "The clock has stopped"
+              },
+              {
+                "id": "o2",
+                "text": "The park is permanently closed"
+              },
+              {
+                "id": "o3",
+                "text": "Mr Lane has a family party"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.shop-dog-and-photo-104.dog.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happens just before Patch fetches the lead?",
+            "material": "Patch knows the closing time\n\nThe bicycle shop near our home has a dog called Patch. Every evening, just before closing, he brings his lead to Mr Lane at the counter. Customers often say the dog can tell the time better than they can.\n\nI believed it until one Saturday when the shop closed early. Mr Lane had a family party and put a notice on the door saying he would leave at two. At a quarter to two, Patch was still asleep under a chair. I watched the clock, waiting for him to fetch the lead.\n\nAt five to two, Mr Lane switched off the radio and began putting the display bicycles inside. Patch opened his eyes. When the last bicycle crossed the doorway, the dog walked to his basket, picked up the lead and brought it to the counter.\n\nI asked Mr Lane whether Patch had finally noticed the clock. He laughed and said the dog usually responded to the end-of-day routine. The quiet radio, moving bicycles and closing display were much more familiar signals than the hands on the wall.\n\nThe next week, I stayed until the normal closing time. Patch did not move when the clock reached the hour. He moved when Mr Lane finished the familiar jobs. I still liked the customers' story about a time-telling dog, but now I had another explanation to compare with it. Patch, meanwhile, seemed interested only in getting to the park.",
+            "explanation": "Radio off and display bikes inside precede fetching. No clock/watch change occurs, and the radio goes quiet.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The narrator changes the clock"
+              },
+              {
+                "id": "o1",
+                "text": "The radio becomes louder"
+              },
+              {
+                "id": "o2",
+                "text": "Mr Lane completes the familiar closing jobs"
+              },
+              {
+                "id": "o3",
+                "text": "A customer buys a watch"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.shop-dog-and-photo-104.dog.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the narrator conclude from the later visit?",
+            "material": "Patch knows the closing time\n\nThe bicycle shop near our home has a dog called Patch. Every evening, just before closing, he brings his lead to Mr Lane at the counter. Customers often say the dog can tell the time better than they can.\n\nI believed it until one Saturday when the shop closed early. Mr Lane had a family party and put a notice on the door saying he would leave at two. At a quarter to two, Patch was still asleep under a chair. I watched the clock, waiting for him to fetch the lead.\n\nAt five to two, Mr Lane switched off the radio and began putting the display bicycles inside. Patch opened his eyes. When the last bicycle crossed the doorway, the dog walked to his basket, picked up the lead and brought it to the counter.\n\nI asked Mr Lane whether Patch had finally noticed the clock. He laughed and said the dog usually responded to the end-of-day routine. The quiet radio, moving bicycles and closing display were much more familiar signals than the hands on the wall.\n\nThe next week, I stayed until the normal closing time. Patch did not move when the clock reached the hour. He moved when Mr Lane finished the familiar jobs. I still liked the customers' story about a time-telling dog, but now I had another explanation to compare with it. Patch, meanwhile, seemed interested only in getting to the park.",
+            "explanation": "The repeated sequence supports routine cues. Number-reading/scientific proof/general inability are not established.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Patch may respond to the routine rather than the clock alone"
+              },
+              {
+                "id": "o1",
+                "text": "Patch has learned every number on the wall"
+              },
+              {
+                "id": "o2",
+                "text": "The first customer’s story is scientifically proven"
+              },
+              {
+                "id": "o3",
+                "text": "Dogs can never notice human actions"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.shop-dog-and-photo-104.photo.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the teacher’s hat unusual?",
+            "material": "The hat behind the class\n\nOur class photograph was scheduled for the last lesson on Friday. We arrived with clean uniforms and stood where the photographer asked. At the back, our teacher Mrs James wore a bright paper hat that one of the younger classes had made for her.\n\nThe photographer took a formal picture first. He asked us to look towards the camera and keep our hands still. I could hear a few people trying not to laugh at the hat, but Mrs James stood perfectly seriously.\n\nThen he said we could have a second, less formal picture. Mrs James took the hat off and placed it on the empty chair beside her. Everyone turned to see who would wear it next. At that exact moment, the camera clicked.\n\nThe second image showed thirty faces looking in different directions. Mine was turned almost completely away. I thought it would be deleted, but Mrs James asked for a copy along with the formal one.\n\nA week later, both photographs appeared on the classroom wall. The first showed our faces clearly; the second reminded us of the moment before we began laughing. Mrs James wrote the date under each, without calling either the only proper record of the class.\n\nWhen my parents saw them, they found me more quickly in the formal picture. In the other, they recognised my habit of turning towards whatever was happening. The photographs did different jobs, and I was glad that the photographer had not stopped after the first click.",
+            "explanation": "The opening explains the handmade bright hat. Uniform/camera obstruction/horse ownership are not stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It belongs to the photographer’s horse"
+              },
+              {
+                "id": "o1",
+                "text": "It is a bright paper hat made by younger pupils"
+              },
+              {
+                "id": "o2",
+                "text": "It is part of every student’s uniform"
+              },
+              {
+                "id": "o3",
+                "text": "It hides the whole camera"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.shop-dog-and-photo-104.photo.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the first photograph intended to show?",
+            "material": "The hat behind the class\n\nOur class photograph was scheduled for the last lesson on Friday. We arrived with clean uniforms and stood where the photographer asked. At the back, our teacher Mrs James wore a bright paper hat that one of the younger classes had made for her.\n\nThe photographer took a formal picture first. He asked us to look towards the camera and keep our hands still. I could hear a few people trying not to laugh at the hat, but Mrs James stood perfectly seriously.\n\nThen he said we could have a second, less formal picture. Mrs James took the hat off and placed it on the empty chair beside her. Everyone turned to see who would wear it next. At that exact moment, the camera clicked.\n\nThe second image showed thirty faces looking in different directions. Mine was turned almost completely away. I thought it would be deleted, but Mrs James asked for a copy along with the formal one.\n\nA week later, both photographs appeared on the classroom wall. The first showed our faces clearly; the second reminded us of the moment before we began laughing. Mrs James wrote the date under each, without calling either the only proper record of the class.\n\nWhen my parents saw them, they found me more quickly in the formal picture. In the other, they recognised my habit of turning towards whatever was happening. The photographs did different jobs, and I was glad that the photographer had not stopped after the first click.",
+            "explanation": "The photographer requests camera-facing stillness. The other choices describe neither that request nor its result.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The paper hat without any people"
+              },
+              {
+                "id": "o1",
+                "text": "Everyone looking away at once"
+              },
+              {
+                "id": "o2",
+                "text": "Only an empty chair"
+              },
+              {
+                "id": "o3",
+                "text": "Clear formal faces looking towards the camera"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.shop-dog-and-photo-104.photo.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why do students turn in the second picture?",
+            "material": "The hat behind the class\n\nOur class photograph was scheduled for the last lesson on Friday. We arrived with clean uniforms and stood where the photographer asked. At the back, our teacher Mrs James wore a bright paper hat that one of the younger classes had made for her.\n\nThe photographer took a formal picture first. He asked us to look towards the camera and keep our hands still. I could hear a few people trying not to laugh at the hat, but Mrs James stood perfectly seriously.\n\nThen he said we could have a second, less formal picture. Mrs James took the hat off and placed it on the empty chair beside her. Everyone turned to see who would wear it next. At that exact moment, the camera clicked.\n\nThe second image showed thirty faces looking in different directions. Mine was turned almost completely away. I thought it would be deleted, but Mrs James asked for a copy along with the formal one.\n\nA week later, both photographs appeared on the classroom wall. The first showed our faces clearly; the second reminded us of the moment before we began laughing. Mrs James wrote the date under each, without calling either the only proper record of the class.\n\nWhen my parents saw them, they found me more quickly in the formal picture. In the other, they recognised my habit of turning towards whatever was happening. The photographs did different jobs, and I was glad that the photographer had not stopped after the first click.",
+            "explanation": "The hat goes onto an empty chair and attracts attention. Alarm/parents/disappearing equipment are absent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They are told the building is closing"
+              },
+              {
+                "id": "o1",
+                "text": "The camera has disappeared"
+              },
+              {
+                "id": "o2",
+                "text": "Their parents call from the door"
+              },
+              {
+                "id": "o3",
+                "text": "They wonder who will wear the hat next"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.shop-dog-and-photo-104.photo.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why are both pictures kept?",
+            "material": "The hat behind the class\n\nOur class photograph was scheduled for the last lesson on Friday. We arrived with clean uniforms and stood where the photographer asked. At the back, our teacher Mrs James wore a bright paper hat that one of the younger classes had made for her.\n\nThe photographer took a formal picture first. He asked us to look towards the camera and keep our hands still. I could hear a few people trying not to laugh at the hat, but Mrs James stood perfectly seriously.\n\nThen he said we could have a second, less formal picture. Mrs James took the hat off and placed it on the empty chair beside her. Everyone turned to see who would wear it next. At that exact moment, the camera clicked.\n\nThe second image showed thirty faces looking in different directions. Mine was turned almost completely away. I thought it would be deleted, but Mrs James asked for a copy along with the formal one.\n\nA week later, both photographs appeared on the classroom wall. The first showed our faces clearly; the second reminded us of the moment before we began laughing. Mrs James wrote the date under each, without calling either the only proper record of the class.\n\nWhen my parents saw them, they found me more quickly in the formal picture. In the other, they recognised my habit of turning towards whatever was happening. The photographs did different jobs, and I was glad that the photographer had not stopped after the first click.",
+            "explanation": "One clear record and one moment/habit record serve different purposes. The alternatives contradict the first picture’s success.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They show different aspects of the class and the event"
+              },
+              {
+                "id": "o1",
+                "text": "The first has no students in it"
+              },
+              {
+                "id": "o2",
+                "text": "The second is the only one with recognisable faces"
+              },
+              {
+                "id": "o3",
+                "text": "The photographer is unable to take any formal image"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "c417c1ebc4517c179fc5a417af9de01f19e3641fda7d0fa751cd160ac01904f4",
+      "reviewNotes": "Three complete junior reading practices: four full four-question passages, plus a four-email five-question thread and independent five-question reading. Fictional cases; same-author all-option/evidence/time-update review, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.letter-team-and-postcards-104",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · A letter team and a postcard stand",
+        "summary": "A letter team and a postcard stand，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "xschu-bnu2026-paper-key20261014-record.reading.closed_picture_mixed_section11",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete written four-question passages for junior2 explicitly adapt the written-reading part of its source. Junior3 retains a four-email thread with five questions plus a separate five-question reading, all three-choice. No source prose copied."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete junior reading practices: four full four-question passages, plus a four-email five-question thread and independent five-question reading. Fictional cases; same-author all-option/evidence/time-update review, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.letter-team-and-postcards-104",
+          "family": "reading_choice",
+          "label": "A letter team and a postcard stand",
+          "candidateSHA256": "f49a04c5006c4db7d2f9679f96ac8aa5ec118508a5eccf4b6709d37e9444bfe5",
+          "authorCheckSHA256": "b9bb11db6acc9bc204650b6e99e85d1fd71d452e0acbb3632c4aac9a328ef857",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.letter-team-and-postcards-104#letters",
+            "expansion.20261024.junior2.letter-team-and-postcards-104#postcards"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b104；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four letters on four shirts\n\nFor an English activity, four students wore large letter cards on their shirts: S, E, A and T. Their first task was to stand in a line to make a word for something we sit on. They quickly formed SEAT, and the class clapped.\n\nOur teacher then asked them to keep the same letters but show a direction. They looked puzzled until one student moved to the front. After a little rearranging, the line read EAST. Nobody had needed a new card.\n\nThe next challenge was to form a word about eating. The students changed places again and made EATS. A classmate asked whether they could make every English word by moving the four cards around. The teacher wrote BOOK on the board. We could not make it because the needed letters were not available.\n\nWe recorded the successful arrangements and their meanings. The activity was not just about moving quickly. A line could use all four letters and still fail to make the word the clue required. We had to check both the spelling and the meaning.\n\nAt the end, the four students mixed their cards on a table. We put them in an envelope labelled with the exact letters, not simply \"English game\". Another class could then choose suitable clues before using the set. The letters were a small resource; knowing what they could and could not do made the game easier to prepare.\n\nThe postcard stand outside the library\n\nA small stand outside our library offered postcards showing local buildings. Visitors could take one and leave a short note about the place on the back of another. The library staff planned to display a selection of the notes at the town festival.\n\nI chose a card showing the old swimming baths. My first message described how they looked from the road. Then I saw a note from a man who had learned to swim there fifty years earlier. He remembered the cold changing room and the sound of children calling across the water.\n\nThe two notes were about the same building, but one described a present-day view and the other a past experience. I added a date and made clear that I had never been inside. I did not need to borrow the man's memory to make my note worth keeping.\n\nA staff member checked that contributors understood which notes might be publicly displayed. People could choose not to add their names, and private contact details were not part of the display. The project collected stories, not a public list of everyone's address.\n\nAt the festival, my note appeared beside several very different ones. A drawing by a child showed the building as a giant blue fish. It was labelled as an imagined design. I liked the mixture because the labels allowed us to enjoy memory, observation and imagination without having to pretend they were the same kind of account."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.letter-team-and-postcards-104.letters.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What word is formed first?",
+            "material": "Four letters on four shirts\n\nFor an English activity, four students wore large letter cards on their shirts: S, E, A and T. Their first task was to stand in a line to make a word for something we sit on. They quickly formed SEAT, and the class clapped.\n\nOur teacher then asked them to keep the same letters but show a direction. They looked puzzled until one student moved to the front. After a little rearranging, the line read EAST. Nobody had needed a new card.\n\nThe next challenge was to form a word about eating. The students changed places again and made EATS. A classmate asked whether they could make every English word by moving the four cards around. The teacher wrote BOOK on the board. We could not make it because the needed letters were not available.\n\nWe recorded the successful arrangements and their meanings. The activity was not just about moving quickly. A line could use all four letters and still fail to make the word the clue required. We had to check both the spelling and the meaning.\n\nAt the end, the four students mixed their cards on a table. We put them in an envelope labelled with the exact letters, not simply \"English game\". Another class could then choose suitable clues before using the set. The letters were a small resource; knowing what they could and could not do made the game easier to prepare.",
+            "explanation": "The sitting clue produces SEAT first. EAST/EATS are later, BOOK impossible with these cards.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "EAST"
+              },
+              {
+                "id": "o1",
+                "text": "BOOK"
+              },
+              {
+                "id": "o2",
+                "text": "SEAT"
+              },
+              {
+                "id": "o3",
+                "text": "EATS"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.letter-team-and-postcards-104.letters.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What remains unchanged between SEAT and EAST?",
+            "material": "Four letters on four shirts\n\nFor an English activity, four students wore large letter cards on their shirts: S, E, A and T. Their first task was to stand in a line to make a word for something we sit on. They quickly formed SEAT, and the class clapped.\n\nOur teacher then asked them to keep the same letters but show a direction. They looked puzzled until one student moved to the front. After a little rearranging, the line read EAST. Nobody had needed a new card.\n\nThe next challenge was to form a word about eating. The students changed places again and made EATS. A classmate asked whether they could make every English word by moving the four cards around. The teacher wrote BOOK on the board. We could not make it because the needed letters were not available.\n\nWe recorded the successful arrangements and their meanings. The activity was not just about moving quickly. A line could use all four letters and still fail to make the word the clue required. We had to check both the spelling and the meaning.\n\nAt the end, the four students mixed their cards on a table. We put them in an envelope labelled with the exact letters, not simply \"English game\". Another class could then choose suitable clues before using the set. The letters were a small resource; knowing what they could and could not do made the game easier to prepare.",
+            "explanation": "Cards stay S/E/A/T while positions, order and meaning change.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every student’s position"
+              },
+              {
+                "id": "o1",
+                "text": "The order of the letters"
+              },
+              {
+                "id": "o2",
+                "text": "The available four letters"
+              },
+              {
+                "id": "o3",
+                "text": "The meaning of the word"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.letter-team-and-postcards-104.letters.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why can the group not form BOOK?",
+            "material": "Four letters on four shirts\n\nFor an English activity, four students wore large letter cards on their shirts: S, E, A and T. Their first task was to stand in a line to make a word for something we sit on. They quickly formed SEAT, and the class clapped.\n\nOur teacher then asked them to keep the same letters but show a direction. They looked puzzled until one student moved to the front. After a little rearranging, the line read EAST. Nobody had needed a new card.\n\nThe next challenge was to form a word about eating. The students changed places again and made EATS. A classmate asked whether they could make every English word by moving the four cards around. The teacher wrote BOOK on the board. We could not make it because the needed letters were not available.\n\nWe recorded the successful arrangements and their meanings. The activity was not just about moving quickly. A line could use all four letters and still fail to make the word the clue required. We had to check both the spelling and the meaning.\n\nAt the end, the four students mixed their cards on a table. We put them in an envelope labelled with the exact letters, not simply \"English game\". Another class could then choose suitable clues before using the set. The letters were a small resource; knowing what they could and could not do made the game easier to prepare.",
+            "explanation": "The available set lacks B/O/K. The alternatives are false or unsupported.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "BOOK is not an English word"
+              },
+              {
+                "id": "o1",
+                "text": "They have already used all English words"
+              },
+              {
+                "id": "o2",
+                "text": "Every card is blank"
+              },
+              {
+                "id": "o3",
+                "text": "They lack the required letters"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.letter-team-and-postcards-104.letters.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the envelope name the exact letters?",
+            "material": "Four letters on four shirts\n\nFor an English activity, four students wore large letter cards on their shirts: S, E, A and T. Their first task was to stand in a line to make a word for something we sit on. They quickly formed SEAT, and the class clapped.\n\nOur teacher then asked them to keep the same letters but show a direction. They looked puzzled until one student moved to the front. After a little rearranging, the line read EAST. Nobody had needed a new card.\n\nThe next challenge was to form a word about eating. The students changed places again and made EATS. A classmate asked whether they could make every English word by moving the four cards around. The teacher wrote BOOK on the board. We could not make it because the needed letters were not available.\n\nWe recorded the successful arrangements and their meanings. The activity was not just about moving quickly. A line could use all four letters and still fail to make the word the clue required. We had to check both the spelling and the meaning.\n\nAt the end, the four students mixed their cards on a table. We put them in an envelope labelled with the exact letters, not simply \"English game\". Another class could then choose suitable clues before using the set. The letters were a small resource; knowing what they could and could not do made the game easier to prepare.",
+            "explanation": "Resource details support suitable clue planning. Universality/prevention/shirt size are not the label’s purpose.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To help another class select possible clues"
+              },
+              {
+                "id": "o1",
+                "text": "To prevent anyone learning spelling"
+              },
+              {
+                "id": "o2",
+                "text": "To guarantee every possible word can be formed"
+              },
+              {
+                "id": "o3",
+                "text": "To show the students’ shirt sizes"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.letter-team-and-postcards-104.postcards.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the postcard project invite visitors to contribute?",
+            "material": "The postcard stand outside the library\n\nA small stand outside our library offered postcards showing local buildings. Visitors could take one and leave a short note about the place on the back of another. The library staff planned to display a selection of the notes at the town festival.\n\nI chose a card showing the old swimming baths. My first message described how they looked from the road. Then I saw a note from a man who had learned to swim there fifty years earlier. He remembered the cold changing room and the sound of children calling across the water.\n\nThe two notes were about the same building, but one described a present-day view and the other a past experience. I added a date and made clear that I had never been inside. I did not need to borrow the man's memory to make my note worth keeping.\n\nA staff member checked that contributors understood which notes might be publicly displayed. People could choose not to add their names, and private contact details were not part of the display. The project collected stories, not a public list of everyone's address.\n\nAt the festival, my note appeared beside several very different ones. A drawing by a child showed the building as a giant blue fish. It was labelled as an imagined design. I liked the mixture because the labels allowed us to enjoy memory, observation and imagination without having to pretend they were the same kind of account.",
+            "explanation": "Short local-place notes are invited. Passwords/contact lists/professional-only rules are not part of it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A complete address list for public display"
+              },
+              {
+                "id": "o1",
+                "text": "A short note about a local place"
+              },
+              {
+                "id": "o2",
+                "text": "Only professionally written histories"
+              },
+              {
+                "id": "o3",
+                "text": "Their private passwords"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.letter-team-and-postcards-104.postcards.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How does the older man’s note differ from the narrator’s first note?",
+            "material": "The postcard stand outside the library\n\nA small stand outside our library offered postcards showing local buildings. Visitors could take one and leave a short note about the place on the back of another. The library staff planned to display a selection of the notes at the town festival.\n\nI chose a card showing the old swimming baths. My first message described how they looked from the road. Then I saw a note from a man who had learned to swim there fifty years earlier. He remembered the cold changing room and the sound of children calling across the water.\n\nThe two notes were about the same building, but one described a present-day view and the other a past experience. I added a date and made clear that I had never been inside. I did not need to borrow the man's memory to make my note worth keeping.\n\nA staff member checked that contributors understood which notes might be publicly displayed. People could choose not to add their names, and private contact details were not part of the display. The project collected stories, not a public list of everyone's address.\n\nAt the festival, my note appeared beside several very different ones. A drawing by a child showed the building as a giant blue fish. It was labelled as an imagined design. I liked the mixture because the labels allowed us to enjoy memory, observation and imagination without having to pretend they were the same kind of account.",
+            "explanation": "The man recalls lessons fifty years earlier. The narrator’s own view is external/current.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It claims the narrator learned swimming there"
+              },
+              {
+                "id": "o1",
+                "text": "It contains only a current road view"
+              },
+              {
+                "id": "o2",
+                "text": "It describes a future building on another planet"
+              },
+              {
+                "id": "o3",
+                "text": "It recalls using the building in the past"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.letter-team-and-postcards-104.postcards.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the narrator say they have never been inside?",
+            "material": "The postcard stand outside the library\n\nA small stand outside our library offered postcards showing local buildings. Visitors could take one and leave a short note about the place on the back of another. The library staff planned to display a selection of the notes at the town festival.\n\nI chose a card showing the old swimming baths. My first message described how they looked from the road. Then I saw a note from a man who had learned to swim there fifty years earlier. He remembered the cold changing room and the sound of children calling across the water.\n\nThe two notes were about the same building, but one described a present-day view and the other a past experience. I added a date and made clear that I had never been inside. I did not need to borrow the man's memory to make my note worth keeping.\n\nA staff member checked that contributors understood which notes might be publicly displayed. People could choose not to add their names, and private contact details were not part of the display. The project collected stories, not a public list of everyone's address.\n\nAt the festival, my note appeared beside several very different ones. A drawing by a child showed the building as a giant blue fish. It was labelled as an imagined design. I liked the mixture because the labels allowed us to enjoy memory, observation and imagination without having to pretend they were the same kind of account.",
+            "explanation": "The statement identifies an observed outside view rather than borrowed memory. The other claims are not intended.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To prevent any other note being shown"
+              },
+              {
+                "id": "o1",
+                "text": "To make the basis of the note clear"
+              },
+              {
+                "id": "o2",
+                "text": "To prove the building never had an interior"
+              },
+              {
+                "id": "o3",
+                "text": "To copy the man’s experience exactly"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.letter-team-and-postcards-104.postcards.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why can the blue-fish drawing be included without confusion?",
+            "material": "The postcard stand outside the library\n\nA small stand outside our library offered postcards showing local buildings. Visitors could take one and leave a short note about the place on the back of another. The library staff planned to display a selection of the notes at the town festival.\n\nI chose a card showing the old swimming baths. My first message described how they looked from the road. Then I saw a note from a man who had learned to swim there fifty years earlier. He remembered the cold changing room and the sound of children calling across the water.\n\nThe two notes were about the same building, but one described a present-day view and the other a past experience. I added a date and made clear that I had never been inside. I did not need to borrow the man's memory to make my note worth keeping.\n\nA staff member checked that contributors understood which notes might be publicly displayed. People could choose not to add their names, and private contact details were not part of the display. The project collected stories, not a public list of everyone's address.\n\nAt the festival, my note appeared beside several very different ones. A drawing by a child showed the building as a giant blue fish. It was labelled as an imagined design. I liked the mixture because the labels allowed us to enjoy memory, observation and imagination without having to pretend they were the same kind of account.",
+            "explanation": "Explicit imaginative status separates it from observation/history. The alternatives erase or falsify that label.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Everyone is told it is a historical photograph"
+              },
+              {
+                "id": "o1",
+                "text": "All other labels have been removed"
+              },
+              {
+                "id": "o2",
+                "text": "It is labelled as an imagined design"
+              },
+              {
+                "id": "o3",
+                "text": "It proves the baths were a real fish"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "e575904b3cdb5713d8c2c19387863e4c5ed9178ba8b425e7a292f16bd748dc66",
+      "reviewNotes": "Three complete junior reading practices: four full four-question passages, plus a four-email five-question thread and independent five-question reading. Fictional cases; same-author all-option/evidence/time-update review, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.model-boat-mails-104",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · A model-boat workshop and a visitor’s question",
+        "summary": "A model-boat workshop and a visitor’s question，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-chengdu2025-21cnjy23208601.reading.complete_section10",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete written four-question passages for junior2 explicitly adapt the written-reading part of its source. Junior3 retains a four-email thread with five questions plus a separate five-question reading, all three-choice. No source prose copied."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete junior reading practices: four full four-question passages, plus a four-email five-question thread and independent five-question reading. Fictional cases; same-author all-option/evidence/time-update review, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.model-boat-mails-104",
+          "family": "reading_choice",
+          "label": "A model-boat workshop and a visitor’s question",
+          "candidateSHA256": "69c834f2c249d9c3e9724dd481f871aa086110e6b78e69f52effa72fef40b6fb",
+          "authorCheckSHA256": "4b7cc809439c4eb5d4e643f7fb5124979eb87a1983ca05e38fbd6fc303d028d8",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.model-boat-mails-104#emails",
+            "expansion.20261024.junior3.model-boat-mails-104#visitor"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b104；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four workshop messages\n\nFrom: Mr Cole\nSent: Monday, 09:10\nTo: Workshop helpers\nSubject: Saturday model boats\nOur model-boat workshop will run from 10:00 to 12:00 in the art room on Saturday. Please arrive at 9:20 to arrange materials. Twelve students are booked. We provide card, glue and the other equipment, but each participant should bring a box for carrying the model home. Helpers need their badges.\n\nFrom: Priya\nSent: Tuesday, 17:30\nTo: Mr Cole and helpers\nSubject: Re: Saturday model boats\nI can help prepare the room, but I have to leave at 11:30. Will that cause a problem for clearing up? I can still bring the display boat we made last term. It is already in a protective box, so I do not need anyone else to pack it.\n\nFrom: Mr Cole\nSent: Wednesday, 12:15\nTo: Workshop helpers\nSubject: Extra places and room change\nWe have accepted four more students, making sixteen altogether. The art room is being used for another event, so our workshop will be in Room 5. Times are unchanged. Lucas can stay to clear up, so Priya may leave as planned. Please use the new room number and total when making signs and setting out places.\n\nFrom: Lucas\nSent: Friday, 16:00\nTo: Workshop helpers\nSubject: Final reminder\nI have put sixteen sets of materials in Room 5. The main gate opens at 9:30, so helpers arriving at 9:20 should use the side gate beside the library. A teacher will meet us there. Participants arriving for 10:00 can use the main gate. Badges are still required. Please do not bring extra glue; the school has supplied the approved materials.\n\nThe question before the tour\n\nBefore our student guides led visitors around the school, we practised an introduction in the empty hall. I had memorised the date the building opened, the names of several past head teachers and a description of its architecture. I was proud that I could speak without looking at my notes.\n\nThe first visitor arrived carrying a small child. Before I could begin, she asked where she could leave a pushchair. I knew almost everything in my introduction except that. A member of staff showed her the suitable place, and I waited while she settled the child.\n\nOur teacher later asked us to list the questions visitors had actually asked. Toilets, seats, lifts and the end time appeared more often than historical dates. This did not make the history unimportant. It showed what people needed to know before they could comfortably listen to it.\n\nWe revised the opening. A brief practical explanation came first, followed by the story of the hall. Staff checked the access information so that we would not promise a route or facility that was unavailable. We also agreed to ask for help when unsure rather than fill a gap with a guess.\n\nOn the next tour, a visitor asked an unexpected question about the old stage. I said I did not know and offered to pass it to the history teacher. The tour continued without disaster. I had become a more useful guide by learning which answers to prepare and which questions to take elsewhere, not by memorising a speech that could never be interrupted."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.model-boat-mails-104.emails.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How many participants are expected?",
+            "material": "Four workshop messages\n\nFrom: Mr Cole\nSent: Monday, 09:10\nTo: Workshop helpers\nSubject: Saturday model boats\nOur model-boat workshop will run from 10:00 to 12:00 in the art room on Saturday. Please arrive at 9:20 to arrange materials. Twelve students are booked. We provide card, glue and the other equipment, but each participant should bring a box for carrying the model home. Helpers need their badges.\n\nFrom: Priya\nSent: Tuesday, 17:30\nTo: Mr Cole and helpers\nSubject: Re: Saturday model boats\nI can help prepare the room, but I have to leave at 11:30. Will that cause a problem for clearing up? I can still bring the display boat we made last term. It is already in a protective box, so I do not need anyone else to pack it.\n\nFrom: Mr Cole\nSent: Wednesday, 12:15\nTo: Workshop helpers\nSubject: Extra places and room change\nWe have accepted four more students, making sixteen altogether. The art room is being used for another event, so our workshop will be in Room 5. Times are unchanged. Lucas can stay to clear up, so Priya may leave as planned. Please use the new room number and total when making signs and setting out places.\n\nFrom: Lucas\nSent: Friday, 16:00\nTo: Workshop helpers\nSubject: Final reminder\nI have put sixteen sets of materials in Room 5. The main gate opens at 9:30, so helpers arriving at 9:20 should use the side gate beside the library. A teacher will meet us there. Participants arriving for 10:00 can use the main gate. Badges are still required. Please do not bring extra glue; the school has supplied the approved materials.",
+            "explanation": "Wednesday adds4 to12 for16, confirmed Friday. Twelve is old total and four the increase.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Four"
+              },
+              {
+                "id": "o1",
+                "text": "Twelve"
+              },
+              {
+                "id": "o2",
+                "text": "Sixteen"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.model-boat-mails-104.emails.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where will the workshop take place?",
+            "material": "Four workshop messages\n\nFrom: Mr Cole\nSent: Monday, 09:10\nTo: Workshop helpers\nSubject: Saturday model boats\nOur model-boat workshop will run from 10:00 to 12:00 in the art room on Saturday. Please arrive at 9:20 to arrange materials. Twelve students are booked. We provide card, glue and the other equipment, but each participant should bring a box for carrying the model home. Helpers need their badges.\n\nFrom: Priya\nSent: Tuesday, 17:30\nTo: Mr Cole and helpers\nSubject: Re: Saturday model boats\nI can help prepare the room, but I have to leave at 11:30. Will that cause a problem for clearing up? I can still bring the display boat we made last term. It is already in a protective box, so I do not need anyone else to pack it.\n\nFrom: Mr Cole\nSent: Wednesday, 12:15\nTo: Workshop helpers\nSubject: Extra places and room change\nWe have accepted four more students, making sixteen altogether. The art room is being used for another event, so our workshop will be in Room 5. Times are unchanged. Lucas can stay to clear up, so Priya may leave as planned. Please use the new room number and total when making signs and setting out places.\n\nFrom: Lucas\nSent: Friday, 16:00\nTo: Workshop helpers\nSubject: Final reminder\nI have put sixteen sets of materials in Room 5. The main gate opens at 9:30, so helpers arriving at 9:20 should use the side gate beside the library. A teacher will meet us there. Participants arriving for 10:00 can use the main gate. Badges are still required. Please do not bring extra glue; the school has supplied the approved materials.",
+            "explanation": "Wednesday changes venue to Room5. The library marks helper entrance location.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Room 5"
+              },
+              {
+                "id": "o1",
+                "text": "The art room"
+              },
+              {
+                "id": "o2",
+                "text": "The library entrance"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.model-boat-mails-104.emails.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When may Priya leave?",
+            "material": "Four workshop messages\n\nFrom: Mr Cole\nSent: Monday, 09:10\nTo: Workshop helpers\nSubject: Saturday model boats\nOur model-boat workshop will run from 10:00 to 12:00 in the art room on Saturday. Please arrive at 9:20 to arrange materials. Twelve students are booked. We provide card, glue and the other equipment, but each participant should bring a box for carrying the model home. Helpers need their badges.\n\nFrom: Priya\nSent: Tuesday, 17:30\nTo: Mr Cole and helpers\nSubject: Re: Saturday model boats\nI can help prepare the room, but I have to leave at 11:30. Will that cause a problem for clearing up? I can still bring the display boat we made last term. It is already in a protective box, so I do not need anyone else to pack it.\n\nFrom: Mr Cole\nSent: Wednesday, 12:15\nTo: Workshop helpers\nSubject: Extra places and room change\nWe have accepted four more students, making sixteen altogether. The art room is being used for another event, so our workshop will be in Room 5. Times are unchanged. Lucas can stay to clear up, so Priya may leave as planned. Please use the new room number and total when making signs and setting out places.\n\nFrom: Lucas\nSent: Friday, 16:00\nTo: Workshop helpers\nSubject: Final reminder\nI have put sixteen sets of materials in Room 5. The main gate opens at 9:30, so helpers arriving at 9:20 should use the side gate beside the library. A teacher will meet us there. Participants arriving for 10:00 can use the main gate. Badges are still required. Please do not bring extra glue; the school has supplied the approved materials.",
+            "explanation": "Lucas covers cleanup, allowing the11:30 departure. Other times are not agreed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Before 9:20"
+              },
+              {
+                "id": "o1",
+                "text": "Only after 12:30"
+              },
+              {
+                "id": "o2",
+                "text": "At 11:30 as planned"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.model-boat-mails-104.emails.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which entrance should helpers use at 9:20?",
+            "material": "Four workshop messages\n\nFrom: Mr Cole\nSent: Monday, 09:10\nTo: Workshop helpers\nSubject: Saturday model boats\nOur model-boat workshop will run from 10:00 to 12:00 in the art room on Saturday. Please arrive at 9:20 to arrange materials. Twelve students are booked. We provide card, glue and the other equipment, but each participant should bring a box for carrying the model home. Helpers need their badges.\n\nFrom: Priya\nSent: Tuesday, 17:30\nTo: Mr Cole and helpers\nSubject: Re: Saturday model boats\nI can help prepare the room, but I have to leave at 11:30. Will that cause a problem for clearing up? I can still bring the display boat we made last term. It is already in a protective box, so I do not need anyone else to pack it.\n\nFrom: Mr Cole\nSent: Wednesday, 12:15\nTo: Workshop helpers\nSubject: Extra places and room change\nWe have accepted four more students, making sixteen altogether. The art room is being used for another event, so our workshop will be in Room 5. Times are unchanged. Lucas can stay to clear up, so Priya may leave as planned. Please use the new room number and total when making signs and setting out places.\n\nFrom: Lucas\nSent: Friday, 16:00\nTo: Workshop helpers\nSubject: Final reminder\nI have put sixteen sets of materials in Room 5. The main gate opens at 9:30, so helpers arriving at 9:20 should use the side gate beside the library. A teacher will meet us there. Participants arriving for 10:00 can use the main gate. Badges are still required. Please do not bring extra glue; the school has supplied the approved materials.",
+            "explanation": "Friday explicitly directs early helpers to side gate. Main gate is not yet open, window not entry.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The side gate beside the library"
+              },
+              {
+                "id": "o1",
+                "text": "The main gate that opens at 9:30"
+              },
+              {
+                "id": "o2",
+                "text": "The art-room window"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.model-boat-mails-104.emails.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must a participant bring?",
+            "material": "Four workshop messages\n\nFrom: Mr Cole\nSent: Monday, 09:10\nTo: Workshop helpers\nSubject: Saturday model boats\nOur model-boat workshop will run from 10:00 to 12:00 in the art room on Saturday. Please arrive at 9:20 to arrange materials. Twelve students are booked. We provide card, glue and the other equipment, but each participant should bring a box for carrying the model home. Helpers need their badges.\n\nFrom: Priya\nSent: Tuesday, 17:30\nTo: Mr Cole and helpers\nSubject: Re: Saturday model boats\nI can help prepare the room, but I have to leave at 11:30. Will that cause a problem for clearing up? I can still bring the display boat we made last term. It is already in a protective box, so I do not need anyone else to pack it.\n\nFrom: Mr Cole\nSent: Wednesday, 12:15\nTo: Workshop helpers\nSubject: Extra places and room change\nWe have accepted four more students, making sixteen altogether. The art room is being used for another event, so our workshop will be in Room 5. Times are unchanged. Lucas can stay to clear up, so Priya may leave as planned. Please use the new room number and total when making signs and setting out places.\n\nFrom: Lucas\nSent: Friday, 16:00\nTo: Workshop helpers\nSubject: Final reminder\nI have put sixteen sets of materials in Room 5. The main gate opens at 9:30, so helpers arriving at 9:20 should use the side gate beside the library. A teacher will meet us there. Participants arriving for 10:00 can use the main gate. Badges are still required. Please do not bring extra glue; the school has supplied the approved materials.",
+            "explanation": "Monday requests a carrying box. Extra glue is prohibited and badges are for helpers.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Extra school glue"
+              },
+              {
+                "id": "o1",
+                "text": "A box to take the model home"
+              },
+              {
+                "id": "o2",
+                "text": "A helper badge for every family member"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.model-boat-mails-104.visitor.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the narrator initially proud of?",
+            "material": "The question before the tour\n\nBefore our student guides led visitors around the school, we practised an introduction in the empty hall. I had memorised the date the building opened, the names of several past head teachers and a description of its architecture. I was proud that I could speak without looking at my notes.\n\nThe first visitor arrived carrying a small child. Before I could begin, she asked where she could leave a pushchair. I knew almost everything in my introduction except that. A member of staff showed her the suitable place, and I waited while she settled the child.\n\nOur teacher later asked us to list the questions visitors had actually asked. Toilets, seats, lifts and the end time appeared more often than historical dates. This did not make the history unimportant. It showed what people needed to know before they could comfortably listen to it.\n\nWe revised the opening. A brief practical explanation came first, followed by the story of the hall. Staff checked the access information so that we would not promise a route or facility that was unavailable. We also agreed to ask for help when unsure rather than fill a gap with a guess.\n\nOn the next tour, a visitor asked an unexpected question about the old stage. I said I did not know and offered to pass it to the history teacher. The tour continued without disaster. I had become a more useful guide by learning which answers to prepare and which questions to take elsewhere, not by memorising a speech that could never be interrupted.",
+            "explanation": "The narrator has memorised history/architecture and can speak without notes. Universal needs/design/transport are not claimed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Providing all transport to the school"
+              },
+              {
+                "id": "o1",
+                "text": "Speaking a memorised introduction without notes"
+              },
+              {
+                "id": "o2",
+                "text": "Designing the whole building"
+              },
+              {
+                "id": "o3",
+                "text": "Knowing every practical need of every visitor"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.model-boat-mails-104.visitor.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the first visitor ask?",
+            "material": "The question before the tour\n\nBefore our student guides led visitors around the school, we practised an introduction in the empty hall. I had memorised the date the building opened, the names of several past head teachers and a description of its architecture. I was proud that I could speak without looking at my notes.\n\nThe first visitor arrived carrying a small child. Before I could begin, she asked where she could leave a pushchair. I knew almost everything in my introduction except that. A member of staff showed her the suitable place, and I waited while she settled the child.\n\nOur teacher later asked us to list the questions visitors had actually asked. Toilets, seats, lifts and the end time appeared more often than historical dates. This did not make the history unimportant. It showed what people needed to know before they could comfortably listen to it.\n\nWe revised the opening. A brief practical explanation came first, followed by the story of the hall. Staff checked the access information so that we would not promise a route or facility that was unavailable. We also agreed to ask for help when unsure rather than fill a gap with a guess.\n\nOn the next tour, a visitor asked an unexpected question about the old stage. I said I did not know and offered to pass it to the history teacher. The tour continued without disaster. I had become a more useful guide by learning which answers to prepare and which questions to take elsewhere, not by memorising a speech that could never be interrupted.",
+            "explanation": "The immediate pushchair question interrupts the prepared historical opening.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Whether she can be head teacher"
+              },
+              {
+                "id": "o1",
+                "text": "Who designed every past building"
+              },
+              {
+                "id": "o2",
+                "text": "For a copy of all school records"
+              },
+              {
+                "id": "o3",
+                "text": "Where to leave a pushchair"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.model-boat-mails-104.visitor.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is practical information moved to the beginning?",
+            "material": "The question before the tour\n\nBefore our student guides led visitors around the school, we practised an introduction in the empty hall. I had memorised the date the building opened, the names of several past head teachers and a description of its architecture. I was proud that I could speak without looking at my notes.\n\nThe first visitor arrived carrying a small child. Before I could begin, she asked where she could leave a pushchair. I knew almost everything in my introduction except that. A member of staff showed her the suitable place, and I waited while she settled the child.\n\nOur teacher later asked us to list the questions visitors had actually asked. Toilets, seats, lifts and the end time appeared more often than historical dates. This did not make the history unimportant. It showed what people needed to know before they could comfortably listen to it.\n\nWe revised the opening. A brief practical explanation came first, followed by the story of the hall. Staff checked the access information so that we would not promise a route or facility that was unavailable. We also agreed to ask for help when unsure rather than fill a gap with a guess.\n\nOn the next tour, a visitor asked an unexpected question about the old stage. I said I did not know and offered to pass it to the history teacher. The tour continued without disaster. I had become a more useful guide by learning which answers to prepare and which questions to take elsewhere, not by memorising a speech that could never be interrupted.",
+            "explanation": "Visitor needs enable attention, without declaring history unimportant or universally known.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The hall no longer exists"
+              },
+              {
+                "id": "o1",
+                "text": "It helps visitors settle before listening to history"
+              },
+              {
+                "id": "o2",
+                "text": "The school’s history has become forbidden"
+              },
+              {
+                "id": "o3",
+                "text": "Every visitor already knows all the dates"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.model-boat-mails-104.visitor.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why do staff check the access information?",
+            "material": "The question before the tour\n\nBefore our student guides led visitors around the school, we practised an introduction in the empty hall. I had memorised the date the building opened, the names of several past head teachers and a description of its architecture. I was proud that I could speak without looking at my notes.\n\nThe first visitor arrived carrying a small child. Before I could begin, she asked where she could leave a pushchair. I knew almost everything in my introduction except that. A member of staff showed her the suitable place, and I waited while she settled the child.\n\nOur teacher later asked us to list the questions visitors had actually asked. Toilets, seats, lifts and the end time appeared more often than historical dates. This did not make the history unimportant. It showed what people needed to know before they could comfortably listen to it.\n\nWe revised the opening. A brief practical explanation came first, followed by the story of the hall. Staff checked the access information so that we would not promise a route or facility that was unavailable. We also agreed to ask for help when unsure rather than fill a gap with a guess.\n\nOn the next tour, a visitor asked an unexpected question about the old stage. I said I did not know and offered to pass it to the history teacher. The tour continued without disaster. I had become a more useful guide by learning which answers to prepare and which questions to take elsewhere, not by memorising a speech that could never be interrupted.",
+            "explanation": "The text explicitly checks availability before promises. Invention/removal/seat prohibition contradict the process.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To stop all visitors using seats"
+              },
+              {
+                "id": "o1",
+                "text": "To remove every practical detail"
+              },
+              {
+                "id": "o2",
+                "text": "To avoid promising unavailable routes or facilities"
+              },
+              {
+                "id": "o3",
+                "text": "To make every guide invent an answer"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.model-boat-mails-104.visitor.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How does the narrator handle the stage question?",
+            "material": "The question before the tour\n\nBefore our student guides led visitors around the school, we practised an introduction in the empty hall. I had memorised the date the building opened, the names of several past head teachers and a description of its architecture. I was proud that I could speak without looking at my notes.\n\nThe first visitor arrived carrying a small child. Before I could begin, she asked where she could leave a pushchair. I knew almost everything in my introduction except that. A member of staff showed her the suitable place, and I waited while she settled the child.\n\nOur teacher later asked us to list the questions visitors had actually asked. Toilets, seats, lifts and the end time appeared more often than historical dates. This did not make the history unimportant. It showed what people needed to know before they could comfortably listen to it.\n\nWe revised the opening. A brief practical explanation came first, followed by the story of the hall. Staff checked the access information so that we would not promise a route or facility that was unavailable. We also agreed to ask for help when unsure rather than fill a gap with a guess.\n\nOn the next tour, a visitor asked an unexpected question about the old stage. I said I did not know and offered to pass it to the history teacher. The tour continued without disaster. I had become a more useful guide by learning which answers to prepare and which questions to take elsewhere, not by memorising a speech that could never be interrupted.",
+            "explanation": "The final paragraph describes honest referral. Invention/anger/ignoring are not the response.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Pretends the visitor said nothing"
+              },
+              {
+                "id": "o1",
+                "text": "Invents a date immediately"
+              },
+              {
+                "id": "o2",
+                "text": "Admits not knowing and offers to ask the history teacher"
+              },
+              {
+                "id": "o3",
+                "text": "Ends the tour in anger"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "f8bff2cf92c16e29e2837393d50cb2ef9add14041d8c2b9436a32fbc8dc0acb5",
+      "reviewNotes": "Three complete junior reading practices: four full four-question passages, plus a four-email five-question thread and independent five-question reading. Fictional cases; same-author all-option/evidence/time-update review, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
