@@ -1,0 +1,1922 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b090",
+  "createdAt": "2026-10-24T00:06:48.006Z",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.position-pictures-1-090",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · Left and right pictures 1",
+        "summary": "Left and right pictures 1，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. Viewer-relative left/right is a provisional extension. Each pair of owned nouns is recomposed on either side of a common centre divider. Counts are32 spatial picture-word items, not32 independent nouns/stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.position-pictures-1-090",
+          "family": "word_picture_matching",
+          "label": "Left and right pictures 1",
+          "candidateSHA256": "5bf97cdbc4254c36502342aefa1146300b189c37dc02238da6c4b0d927f75d9a",
+          "authorCheckSHA256": "1be364907184292fc597ae45291b070c72de0dea9fbcc2fc3b5feaa58e76f073",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.position-pictures-1-090#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b090；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.position-pictures-1-090.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a pencil on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a pencil on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1ddec2ea94f0bb2c4337795b607abfe10f181e388b86657aed710acd3e2af4f1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.8a7acf6b2b1586e5c1c46c5c4fec2aad61576d0565070e22c25be3e81fce7d3f"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.91841e821742764cd7fd74f1ee8a75677bed56db9291572fc7097b1ae76275f6"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.c2acbf1101c73d4b4060e01e41e42ebf87262800cec06ccdedbdb3986aec7315"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-1-090.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a pencil on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a pencil on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1ddec2ea94f0bb2c4337795b607abfe10f181e388b86657aed710acd3e2af4f1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.8a7acf6b2b1586e5c1c46c5c4fec2aad61576d0565070e22c25be3e81fce7d3f"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.91841e821742764cd7fd74f1ee8a75677bed56db9291572fc7097b1ae76275f6"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.c2acbf1101c73d4b4060e01e41e42ebf87262800cec06ccdedbdb3986aec7315"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-1-090.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a ruler on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a ruler on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1ddec2ea94f0bb2c4337795b607abfe10f181e388b86657aed710acd3e2af4f1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.8a7acf6b2b1586e5c1c46c5c4fec2aad61576d0565070e22c25be3e81fce7d3f"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.91841e821742764cd7fd74f1ee8a75677bed56db9291572fc7097b1ae76275f6"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.c2acbf1101c73d4b4060e01e41e42ebf87262800cec06ccdedbdb3986aec7315"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-1-090.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a ruler on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a ruler on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1ddec2ea94f0bb2c4337795b607abfe10f181e388b86657aed710acd3e2af4f1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.8a7acf6b2b1586e5c1c46c5c4fec2aad61576d0565070e22c25be3e81fce7d3f"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.91841e821742764cd7fd74f1ee8a75677bed56db9291572fc7097b1ae76275f6"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.c2acbf1101c73d4b4060e01e41e42ebf87262800cec06ccdedbdb3986aec7315"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "2cffece64314450416a1bb1417713095984bc3dc7f94e5d7a27f6c313a737650",
+      "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.position-pictures-2-090",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · Left and right pictures 2",
+        "summary": "Left and right pictures 2，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. Viewer-relative left/right is a provisional extension. Each pair of owned nouns is recomposed on either side of a common centre divider. Counts are32 spatial picture-word items, not32 independent nouns/stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.position-pictures-2-090",
+          "family": "word_picture_matching",
+          "label": "Left and right pictures 2",
+          "candidateSHA256": "994072104b9fbc93a59ff2bd7f54a9a46b137235fb53f63421aedf9a6609ba98",
+          "authorCheckSHA256": "8e7eac8035bc633c67375630e04d66eb361ef38dffe85d94bec1258e2bf8d406",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.position-pictures-2-090#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b090；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.position-pictures-2-090.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a rope on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a rope on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.00178c8440ee80b45af81bcbbe16726156117f988061c24206e9a8ffe01f5863"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.1a4a6f4256f382726c90b8740cdce0dfcecab9b728923653558ad0b1675df9cd"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.e70c526fdf381f6c5dbafb73dabd47534338a03e85c0a87bfc2be29517c07abc"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fb19b25a38d2e9daf7faa48f58a3726e3a7eb9205ca1222b53169264a4c858a7"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-2-090.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a rope on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a rope on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.00178c8440ee80b45af81bcbbe16726156117f988061c24206e9a8ffe01f5863"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.1a4a6f4256f382726c90b8740cdce0dfcecab9b728923653558ad0b1675df9cd"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.e70c526fdf381f6c5dbafb73dabd47534338a03e85c0a87bfc2be29517c07abc"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fb19b25a38d2e9daf7faa48f58a3726e3a7eb9205ca1222b53169264a4c858a7"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-2-090.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a scarf on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a scarf on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.00178c8440ee80b45af81bcbbe16726156117f988061c24206e9a8ffe01f5863"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.1a4a6f4256f382726c90b8740cdce0dfcecab9b728923653558ad0b1675df9cd"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.e70c526fdf381f6c5dbafb73dabd47534338a03e85c0a87bfc2be29517c07abc"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fb19b25a38d2e9daf7faa48f58a3726e3a7eb9205ca1222b53169264a4c858a7"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-2-090.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a scarf on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a scarf on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.00178c8440ee80b45af81bcbbe16726156117f988061c24206e9a8ffe01f5863"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.1a4a6f4256f382726c90b8740cdce0dfcecab9b728923653558ad0b1675df9cd"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.e70c526fdf381f6c5dbafb73dabd47534338a03e85c0a87bfc2be29517c07abc"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fb19b25a38d2e9daf7faa48f58a3726e3a7eb9205ca1222b53169264a4c858a7"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "861685800ef831b210e81f3bdd05cf94af59fe40dd42a5aac5517414f062c605",
+      "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.position-pictures-3-090",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · Left and right pictures 3",
+        "summary": "Left and right pictures 3，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. Viewer-relative left/right is a provisional extension. Each pair of owned nouns is recomposed on either side of a common centre divider. Counts are32 spatial picture-word items, not32 independent nouns/stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.position-pictures-3-090",
+          "family": "word_picture_matching",
+          "label": "Left and right pictures 3",
+          "candidateSHA256": "440d570756d85a865b2613c67b680b945a47694ea11977b08e3701b12683aa88",
+          "authorCheckSHA256": "aad13d89675b74a66471f23fd8decadd1757114eea3197f4817c711992a098e8",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.position-pictures-3-090#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b090；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.position-pictures-3-090.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a train on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a train on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.300c7d5fe610dfa8f9f7a3e9f2b32162e82df7417a3f9416ca5d8ae727257527"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.789c6b32eac9dcb9e86ac8181f1521b2d84e21b33fb8659892995a8fee63f571"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.a4feb5b52aaef2fbb954c2da301979042a29a9b3a80a5897e88e81fa30ff817b"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fd056cf86778932d4dec09d774d5f209e32bc3358326c40634ca575bb87d6fc5"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-3-090.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a train on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a train on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.300c7d5fe610dfa8f9f7a3e9f2b32162e82df7417a3f9416ca5d8ae727257527"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.789c6b32eac9dcb9e86ac8181f1521b2d84e21b33fb8659892995a8fee63f571"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.a4feb5b52aaef2fbb954c2da301979042a29a9b3a80a5897e88e81fa30ff817b"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fd056cf86778932d4dec09d774d5f209e32bc3358326c40634ca575bb87d6fc5"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-3-090.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a ladder on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a ladder on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.300c7d5fe610dfa8f9f7a3e9f2b32162e82df7417a3f9416ca5d8ae727257527"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.789c6b32eac9dcb9e86ac8181f1521b2d84e21b33fb8659892995a8fee63f571"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.a4feb5b52aaef2fbb954c2da301979042a29a9b3a80a5897e88e81fa30ff817b"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fd056cf86778932d4dec09d774d5f209e32bc3358326c40634ca575bb87d6fc5"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-3-090.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a ladder on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a ladder on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.300c7d5fe610dfa8f9f7a3e9f2b32162e82df7417a3f9416ca5d8ae727257527"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.789c6b32eac9dcb9e86ac8181f1521b2d84e21b33fb8659892995a8fee63f571"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.a4feb5b52aaef2fbb954c2da301979042a29a9b3a80a5897e88e81fa30ff817b"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fd056cf86778932d4dec09d774d5f209e32bc3358326c40634ca575bb87d6fc5"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "e098e0763d8777478d58dd358c0f66828a3d877239c5f6ed6cab5ab326b81f6e",
+      "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.position-pictures-4-090",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · Left and right pictures 4",
+        "summary": "Left and right pictures 4，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. Viewer-relative left/right is a provisional extension. Each pair of owned nouns is recomposed on either side of a common centre divider. Counts are32 spatial picture-word items, not32 independent nouns/stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.position-pictures-4-090",
+          "family": "word_picture_matching",
+          "label": "Left and right pictures 4",
+          "candidateSHA256": "aa8d4e3d5372f0793ecea21ea15e2098bacde8f3ae55ca190a9fc17ccad3c98c",
+          "authorCheckSHA256": "d51d2f893343540cef65e2a77067f3780e22b39e8075ef892187b8429a013ca3",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.position-pictures-4-090#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b090；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.position-pictures-4-090.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a snake on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a snake on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.2bcdddae67c69512679ff8d1711ff3821638d3e9fc9cdbdee2206437a827e627"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.91e5a91c7759d9ef78094dafbe481ae0de86d029d522227ead62d1f52977f7e9"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.ad4f080b1eedec9e0b0dd0105205afd5e28c80370d9582b7f8c1df828625fc05"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.b5db803a3a07d3186ad68ee8b91590bb96509ff088edcb7150a6134256effd71"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-4-090.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a snake on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a snake on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.2bcdddae67c69512679ff8d1711ff3821638d3e9fc9cdbdee2206437a827e627"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.91e5a91c7759d9ef78094dafbe481ae0de86d029d522227ead62d1f52977f7e9"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.ad4f080b1eedec9e0b0dd0105205afd5e28c80370d9582b7f8c1df828625fc05"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.b5db803a3a07d3186ad68ee8b91590bb96509ff088edcb7150a6134256effd71"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-4-090.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a bridge on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a bridge on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.2bcdddae67c69512679ff8d1711ff3821638d3e9fc9cdbdee2206437a827e627"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.91e5a91c7759d9ef78094dafbe481ae0de86d029d522227ead62d1f52977f7e9"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.ad4f080b1eedec9e0b0dd0105205afd5e28c80370d9582b7f8c1df828625fc05"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.b5db803a3a07d3186ad68ee8b91590bb96509ff088edcb7150a6134256effd71"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-4-090.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a bridge on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a bridge on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.2bcdddae67c69512679ff8d1711ff3821638d3e9fc9cdbdee2206437a827e627"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.91e5a91c7759d9ef78094dafbe481ae0de86d029d522227ead62d1f52977f7e9"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.ad4f080b1eedec9e0b0dd0105205afd5e28c80370d9582b7f8c1df828625fc05"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.b5db803a3a07d3186ad68ee8b91590bb96509ff088edcb7150a6134256effd71"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "276401791e21799f1e3226181816cebef73286bd8212ddb97bb3a84cfd4d43e9",
+      "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.position-pictures-5-090",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · Left and right pictures 5",
+        "summary": "Left and right pictures 5，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. Viewer-relative left/right is a provisional extension. Each pair of owned nouns is recomposed on either side of a common centre divider. Counts are32 spatial picture-word items, not32 independent nouns/stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.position-pictures-5-090",
+          "family": "word_picture_matching",
+          "label": "Left and right pictures 5",
+          "candidateSHA256": "8b1b78f23443618935f22a465e2bad98cfa836ea5453da6495bca257d627df8b",
+          "authorCheckSHA256": "efc526e75487c3a8cff533b8fb152d45a4a52e26e8fda15eebd9a9d5a98804e2",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.position-pictures-5-090#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b090；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.position-pictures-5-090.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a tree on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a tree on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.58ace274c4008d755948582bd5e81552133224b5dda043c0aef0400e4390e2db"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.70ee4b53392eaa6a5fd08a8a95b61a0d3b0bdb83c373ef218eceb815fedd2d2a"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.a00bf8090d4830979fa98648b42d8d69938abb2568b4bcd1fbb97635a1c77503"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.bd24c6ab321c7c72e77e18c1f8880c92eb89aaad1032731f5e9f469982cfce07"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-5-090.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a tree on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a tree on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.58ace274c4008d755948582bd5e81552133224b5dda043c0aef0400e4390e2db"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.70ee4b53392eaa6a5fd08a8a95b61a0d3b0bdb83c373ef218eceb815fedd2d2a"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.a00bf8090d4830979fa98648b42d8d69938abb2568b4bcd1fbb97635a1c77503"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.bd24c6ab321c7c72e77e18c1f8880c92eb89aaad1032731f5e9f469982cfce07"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-5-090.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a bottle on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a bottle on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.58ace274c4008d755948582bd5e81552133224b5dda043c0aef0400e4390e2db"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.70ee4b53392eaa6a5fd08a8a95b61a0d3b0bdb83c373ef218eceb815fedd2d2a"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.a00bf8090d4830979fa98648b42d8d69938abb2568b4bcd1fbb97635a1c77503"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.bd24c6ab321c7c72e77e18c1f8880c92eb89aaad1032731f5e9f469982cfce07"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-5-090.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a bottle on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a bottle on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.58ace274c4008d755948582bd5e81552133224b5dda043c0aef0400e4390e2db"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.70ee4b53392eaa6a5fd08a8a95b61a0d3b0bdb83c373ef218eceb815fedd2d2a"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.a00bf8090d4830979fa98648b42d8d69938abb2568b4bcd1fbb97635a1c77503"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.bd24c6ab321c7c72e77e18c1f8880c92eb89aaad1032731f5e9f469982cfce07"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "79d2b2e99076a244fdf7463aa727681b86786b5fef232fea986345e9aa8b29a3",
+      "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.position-pictures-6-090",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · Left and right pictures 6",
+        "summary": "Left and right pictures 6，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. Viewer-relative left/right is a provisional extension. Each pair of owned nouns is recomposed on either side of a common centre divider. Counts are32 spatial picture-word items, not32 independent nouns/stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.position-pictures-6-090",
+          "family": "word_picture_matching",
+          "label": "Left and right pictures 6",
+          "candidateSHA256": "13b7eb33c0daf3fa251539d8c57306acb66f655fb55f16f840bbf441aade7ae2",
+          "authorCheckSHA256": "3b44ccce361292c903b81f291b28ecbab89942aa41f26a5dfda075e46cf09a2f",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.position-pictures-6-090#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b090；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.position-pictures-6-090.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a glass on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a glass on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1ba473d34ae116a5d5cc47fe21b68643778040f52eed0e485ee56bdb11b0b0bd"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.91792fd8cb8fd556ff26092846af2acd4eda899b7b18370804f37d52f4d33b8b"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.e4720c406beb64094b25a1fe3eadd7463a45dce6acd91330f0d414fd4a205f44"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fdef18d3cea8b957cc07cd65465811bb75177dd57ad65071c9b1208ed1596fb3"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-6-090.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a glass on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a glass on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1ba473d34ae116a5d5cc47fe21b68643778040f52eed0e485ee56bdb11b0b0bd"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.91792fd8cb8fd556ff26092846af2acd4eda899b7b18370804f37d52f4d33b8b"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.e4720c406beb64094b25a1fe3eadd7463a45dce6acd91330f0d414fd4a205f44"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fdef18d3cea8b957cc07cd65465811bb75177dd57ad65071c9b1208ed1596fb3"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-6-090.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a candle on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a candle on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1ba473d34ae116a5d5cc47fe21b68643778040f52eed0e485ee56bdb11b0b0bd"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.91792fd8cb8fd556ff26092846af2acd4eda899b7b18370804f37d52f4d33b8b"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.e4720c406beb64094b25a1fe3eadd7463a45dce6acd91330f0d414fd4a205f44"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fdef18d3cea8b957cc07cd65465811bb75177dd57ad65071c9b1208ed1596fb3"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-6-090.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a candle on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a candle on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.1ba473d34ae116a5d5cc47fe21b68643778040f52eed0e485ee56bdb11b0b0bd"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.91792fd8cb8fd556ff26092846af2acd4eda899b7b18370804f37d52f4d33b8b"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.e4720c406beb64094b25a1fe3eadd7463a45dce6acd91330f0d414fd4a205f44"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fdef18d3cea8b957cc07cd65465811bb75177dd57ad65071c9b1208ed1596fb3"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "dff49f8e41109d48b5099c97d8dfa1eb7d6489d5d41e7472b05eb45f5d3ff668",
+      "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.position-pictures-7-090",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · Left and right pictures 7",
+        "summary": "Left and right pictures 7，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. Viewer-relative left/right is a provisional extension. Each pair of owned nouns is recomposed on either side of a common centre divider. Counts are32 spatial picture-word items, not32 independent nouns/stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.position-pictures-7-090",
+          "family": "word_picture_matching",
+          "label": "Left and right pictures 7",
+          "candidateSHA256": "6661dc31b116072e795051bc9c4627538465d357a290543c2d8ccd51ee2012bc",
+          "authorCheckSHA256": "5fafc011a34ffb728c02f24a1671df51f6b5a8464f5a3afb7ec02df1b0951fa1",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.position-pictures-7-090#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b090；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.position-pictures-7-090.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a building on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a building on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.128ec426bf869d80d0b89ad0580948be6a256ab818a322446ebda8c4802240f1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.49a6db1f83a358bff54603849169bae85e84f8a6ef3e50e9085a99945a178080"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.ddcb5307f211fb435b37577366ba2dd375231addce40a882d967aeec95410f32"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e2b56a3f4327a13796f1c0fa91a128b880a66092f03bfaa828644060cdeca132"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-7-090.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a building on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a building on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.128ec426bf869d80d0b89ad0580948be6a256ab818a322446ebda8c4802240f1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.49a6db1f83a358bff54603849169bae85e84f8a6ef3e50e9085a99945a178080"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.ddcb5307f211fb435b37577366ba2dd375231addce40a882d967aeec95410f32"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e2b56a3f4327a13796f1c0fa91a128b880a66092f03bfaa828644060cdeca132"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-7-090.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a robot on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a robot on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.128ec426bf869d80d0b89ad0580948be6a256ab818a322446ebda8c4802240f1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.49a6db1f83a358bff54603849169bae85e84f8a6ef3e50e9085a99945a178080"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.ddcb5307f211fb435b37577366ba2dd375231addce40a882d967aeec95410f32"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e2b56a3f4327a13796f1c0fa91a128b880a66092f03bfaa828644060cdeca132"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-7-090.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a robot on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a robot on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.128ec426bf869d80d0b89ad0580948be6a256ab818a322446ebda8c4802240f1"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.49a6db1f83a358bff54603849169bae85e84f8a6ef3e50e9085a99945a178080"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.ddcb5307f211fb435b37577366ba2dd375231addce40a882d967aeec95410f32"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.e2b56a3f4327a13796f1c0fa91a128b880a66092f03bfaa828644060cdeca132"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "35a3a5a7b500fadfe4384cee4b2cfd3fdcbbe6c01dc965b8513a971287a6d073",
+      "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary1.position-pictures-8-090",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary1",
+        "title": "10·24新题 · Left and right pictures 8",
+        "summary": "Left and right pictures 8，共4题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.word_picture_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p1.2016lower.picturematching",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Four-picture word matching retained. Viewer-relative left/right is a provisional extension. Each pair of owned nouns is recomposed on either side of a common centre divider. Counts are32 spatial picture-word items, not32 independent nouns/stories."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary1.position-pictures-8-090",
+          "family": "word_picture_matching",
+          "label": "Left and right pictures 8",
+          "candidateSHA256": "cd52b789705a3e266142985a9c7504c0681112009b648e799797aad4aead26b8",
+          "authorCheckSHA256": "432a965af7884268b99ad09d3d2d22d3c224cbe4f04870059fb7035b3e5af61e",
+          "sourceGroupIds": [
+            "expansion.20261024.primary1.position-pictures-8-090#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b090；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary1.position-pictures-8-090.whole.q1",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a tower on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a tower on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.2269bcf3dcd0cdf05a077d9ba81bef97190729d1a2a04dde0c64524bd4963c06"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.2e19c3dd1fc61e5a540bfc7366585a68832da7fb4f19eab1013db45ae762d463"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.489c47f5c1691ec89608fc3417d5b358bbb2e86220e11f8a3d2eadd36770100d"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fe34aed30ade7a625608652f48b40cb6e4f24fcf401a5057f39da15009f2bbd8"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-8-090.whole.q2",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a tower on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a tower on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.2269bcf3dcd0cdf05a077d9ba81bef97190729d1a2a04dde0c64524bd4963c06"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.2e19c3dd1fc61e5a540bfc7366585a68832da7fb4f19eab1013db45ae762d463"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.489c47f5c1691ec89608fc3417d5b358bbb2e86220e11f8a3d2eadd36770100d"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fe34aed30ade7a625608652f48b40cb6e4f24fcf401a5057f39da15009f2bbd8"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-8-090.whole.q3",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a lamp on the left.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a lamp on the left, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.2269bcf3dcd0cdf05a077d9ba81bef97190729d1a2a04dde0c64524bd4963c06"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.2e19c3dd1fc61e5a540bfc7366585a68832da7fb4f19eab1013db45ae762d463"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.489c47f5c1691ec89608fc3417d5b358bbb2e86220e11f8a3d2eadd36770100d"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fe34aed30ade7a625608652f48b40cb6e4f24fcf401a5057f39da15009f2bbd8"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary1.position-pictures-8-090.whole.q4",
+            "goalId": "original.word_picture_matching",
+            "instruction": "Choose the matching picture. Left and right mean the sides as you look at the picture.",
+            "prompt": "Choose: a lamp on the right.",
+            "material": "Four position pictures\n\nChoose the named object on the named side of the centre line. Left and right are from your viewpoint.",
+            "explanation": "Match a lamp on the right, using the viewer’s left/right. One distractor shows the same noun on the opposite side, one shows the other noun on the requested side, and one differs in both. The centre divider and fixed frame make the reference explicit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Picture A",
+                "imageAssetId": "image.2269bcf3dcd0cdf05a077d9ba81bef97190729d1a2a04dde0c64524bd4963c06"
+              },
+              {
+                "id": "o1",
+                "text": "Picture B",
+                "imageAssetId": "image.2e19c3dd1fc61e5a540bfc7366585a68832da7fb4f19eab1013db45ae762d463"
+              },
+              {
+                "id": "o2",
+                "text": "Picture C",
+                "imageAssetId": "image.489c47f5c1691ec89608fc3417d5b358bbb2e86220e11f8a3d2eadd36770100d"
+              },
+              {
+                "id": "o3",
+                "text": "Picture D",
+                "imageAssetId": "image.fe34aed30ade7a625608652f48b40cb6e4f24fcf401a5057f39da15009f2bbd8"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "3a0b3d07456abe1ca65a5cf3248b0ddeb704c063734ae6f9c0e1f26c592580ea",
+      "reviewNotes": "Thirty-two new left/right-plus-noun picture compositions in eight complete four-picture practices. Reuses16 owned noun illustrations from the earlier dimension batch, with explicit new viewer-relative position and fixed divider. Contact-sheet identity/bounds/side/no-answer-leakage review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ],
+  "imageAssets": [
+    {
+      "id": "image.91841e821742764cd7fd74f1ee8a75677bed56db9291572fc7097b1ae76275f6",
+      "sha256": "91841e821742764cd7fd74f1ee8a75677bed56db9291572fc7097b1ae76275f6",
+      "byteSize": 4606,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a pencil on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-pencil.svg, SVG SHA 321e3e06c22f88faacb1aab418f9fe3e95a3b33c6a621c2df15e6a435df71aa8; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-pencil.svg, SHA 627b5869d4c4a40fcc670986f97ca7f0a662df94bd78e3ffefb0f3f3894a7f27. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.c2acbf1101c73d4b4060e01e41e42ebf87262800cec06ccdedbdb3986aec7315",
+      "sha256": "c2acbf1101c73d4b4060e01e41e42ebf87262800cec06ccdedbdb3986aec7315",
+      "byteSize": 4627,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a pencil on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-pencil.svg, SVG SHA 40590fe25a12e6e11bc008aea76310430424ecb33e92bc4536e1277264ad3a52; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-pencil.svg, SHA 627b5869d4c4a40fcc670986f97ca7f0a662df94bd78e3ffefb0f3f3894a7f27. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.8a7acf6b2b1586e5c1c46c5c4fec2aad61576d0565070e22c25be3e81fce7d3f",
+      "sha256": "8a7acf6b2b1586e5c1c46c5c4fec2aad61576d0565070e22c25be3e81fce7d3f",
+      "byteSize": 4088,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a ruler on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-ruler.svg, SVG SHA d2f6fb15fd66dcc262a9d391dbdf766b67dea7b9283d28ef6e0f5641288819ac; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-ruler.svg, SHA c2981f01d229089472d08037a87171b7b1f81a19faeb19c673f09bad47859f72. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.1ddec2ea94f0bb2c4337795b607abfe10f181e388b86657aed710acd3e2af4f1",
+      "sha256": "1ddec2ea94f0bb2c4337795b607abfe10f181e388b86657aed710acd3e2af4f1",
+      "byteSize": 4137,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a ruler on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-ruler.svg, SVG SHA 69f3613b6a32cd78c14828a24b7bc1b52d1978715e20c297bd44dd81a9dd1078; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-ruler.svg, SHA c2981f01d229089472d08037a87171b7b1f81a19faeb19c673f09bad47859f72. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.e70c526fdf381f6c5dbafb73dabd47534338a03e85c0a87bfc2be29517c07abc",
+      "sha256": "e70c526fdf381f6c5dbafb73dabd47534338a03e85c0a87bfc2be29517c07abc",
+      "byteSize": 7903,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a rope on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-rope.svg, SVG SHA 0c7905338aff2c7125ab26ded8b7de4eb63340dab3bdfcff15f90fae64fc1a5e; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-rope.svg, SHA 767e4055b19d5d5d4eb12250034f30edf25febed9f30b829e6763a272eda3b97. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.1a4a6f4256f382726c90b8740cdce0dfcecab9b728923653558ad0b1675df9cd",
+      "sha256": "1a4a6f4256f382726c90b8740cdce0dfcecab9b728923653558ad0b1675df9cd",
+      "byteSize": 7910,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a rope on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-rope.svg, SVG SHA b83fe9d47c4b078870128f21acd24a3e1e17e8de854d0f77e837ac4e047c14f8; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-rope.svg, SHA 767e4055b19d5d5d4eb12250034f30edf25febed9f30b829e6763a272eda3b97. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.fb19b25a38d2e9daf7faa48f58a3726e3a7eb9205ca1222b53169264a4c858a7",
+      "sha256": "fb19b25a38d2e9daf7faa48f58a3726e3a7eb9205ca1222b53169264a4c858a7",
+      "byteSize": 4402,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a scarf on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-scarf.svg, SVG SHA a9b8c63a6975e7c81a76e9aae6fb7b699b1c1d7910aac972de7f683dd317c914; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-scarf.svg, SHA ebc4db97c0c507bbc148cf2f72e818dd60dcc304fbc31bb296f8c52121134bc0. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.00178c8440ee80b45af81bcbbe16726156117f988061c24206e9a8ffe01f5863",
+      "sha256": "00178c8440ee80b45af81bcbbe16726156117f988061c24206e9a8ffe01f5863",
+      "byteSize": 4482,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a scarf on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-scarf.svg, SVG SHA 9cb38cbc1185895168a249885f80865eb683e32a98538d7faf7447c1518c5183; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-scarf.svg, SHA ebc4db97c0c507bbc148cf2f72e818dd60dcc304fbc31bb296f8c52121134bc0. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.789c6b32eac9dcb9e86ac8181f1521b2d84e21b33fb8659892995a8fee63f571",
+      "sha256": "789c6b32eac9dcb9e86ac8181f1521b2d84e21b33fb8659892995a8fee63f571",
+      "byteSize": 6693,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a train on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-train.svg, SVG SHA d69cd3ddd8edce741fae2cb0611058712c34723dcc30c7693af19ea8790ea3be; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-train.svg, SHA e06a26f6aa36776ffce28b544fb12697c2aba45c146132e4035d062b40e8d139. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.a4feb5b52aaef2fbb954c2da301979042a29a9b3a80a5897e88e81fa30ff817b",
+      "sha256": "a4feb5b52aaef2fbb954c2da301979042a29a9b3a80a5897e88e81fa30ff817b",
+      "byteSize": 6781,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a train on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-train.svg, SVG SHA cc3e37f529e234b295874169ec1856a2ffb581e8b2901b5bd4e5a5e233e8cf43; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-train.svg, SHA e06a26f6aa36776ffce28b544fb12697c2aba45c146132e4035d062b40e8d139. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.300c7d5fe610dfa8f9f7a3e9f2b32162e82df7417a3f9416ca5d8ae727257527",
+      "sha256": "300c7d5fe610dfa8f9f7a3e9f2b32162e82df7417a3f9416ca5d8ae727257527",
+      "byteSize": 5070,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a ladder on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-ladder.svg, SVG SHA 3f92f66bc482b0875f51b4f82ee24ebbdbd98e08804a812a6aa0f3505032188f; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-ladder.svg, SHA c284c867cc2549d32f947fb254dfb447ec158ce04f877fda3c46b96271d368e4. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.fd056cf86778932d4dec09d774d5f209e32bc3358326c40634ca575bb87d6fc5",
+      "sha256": "fd056cf86778932d4dec09d774d5f209e32bc3358326c40634ca575bb87d6fc5",
+      "byteSize": 5075,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a ladder on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-ladder.svg, SVG SHA e6508dc75754b4560cd472a4594f4fd2c0fc4d5181bd3e6b61e0cd1e68c1a0c3; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-ladder.svg, SHA c284c867cc2549d32f947fb254dfb447ec158ce04f877fda3c46b96271d368e4. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.2bcdddae67c69512679ff8d1711ff3821638d3e9fc9cdbdee2206437a827e627",
+      "sha256": "2bcdddae67c69512679ff8d1711ff3821638d3e9fc9cdbdee2206437a827e627",
+      "byteSize": 6626,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a snake on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-snake.svg, SVG SHA 17c1537cd6f0bc40d68a483f865c067a8487833e77fca191e7b03565762e0d05; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-snake.svg, SHA 72c6f1cf626b0a82dc2ddbe17d7d119089ce01f5483fd70b7a06b3dda5f4cf8d. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.b5db803a3a07d3186ad68ee8b91590bb96509ff088edcb7150a6134256effd71",
+      "sha256": "b5db803a3a07d3186ad68ee8b91590bb96509ff088edcb7150a6134256effd71",
+      "byteSize": 6644,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a snake on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-snake.svg, SVG SHA 61e9eb53ca5410ce047611a297e1c32119d15ed739a394251836cce90bb8020d; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-snake.svg, SHA 72c6f1cf626b0a82dc2ddbe17d7d119089ce01f5483fd70b7a06b3dda5f4cf8d. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.91e5a91c7759d9ef78094dafbe481ae0de86d029d522227ead62d1f52977f7e9",
+      "sha256": "91e5a91c7759d9ef78094dafbe481ae0de86d029d522227ead62d1f52977f7e9",
+      "byteSize": 8426,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a bridge on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-bridge.svg, SVG SHA 6c20307b82b0bb07ffba00f6dbaade1891f6c50f85d142032fdb06cfe5e35620; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-bridge.svg, SHA 67de2734237fbbaf8ea68619acb64b8f6c66e09e835dd81ac507f5f1dd2ece96. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.ad4f080b1eedec9e0b0dd0105205afd5e28c80370d9582b7f8c1df828625fc05",
+      "sha256": "ad4f080b1eedec9e0b0dd0105205afd5e28c80370d9582b7f8c1df828625fc05",
+      "byteSize": 8443,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a bridge on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-bridge.svg, SVG SHA 1762ecfeb035beec22e9fc6fa5b8a4891cd0d46376b86251be3f8a61fd454e67; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/long-bridge.svg, SHA 67de2734237fbbaf8ea68619acb64b8f6c66e09e835dd81ac507f5f1dd2ece96. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.bd24c6ab321c7c72e77e18c1f8880c92eb89aaad1032731f5e9f469982cfce07",
+      "sha256": "bd24c6ab321c7c72e77e18c1f8880c92eb89aaad1032731f5e9f469982cfce07",
+      "byteSize": 6916,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a tree on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-tree.svg, SVG SHA a7152f2743c7ac950fac6505c350d1638cadc82d181b3ab78c0473e48b61925a; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-tree.svg, SHA 209ce35b7fe16b4c9aa51356e67fd8ad72b26f2ad4208a11976c4c26ca83c7f6. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.a00bf8090d4830979fa98648b42d8d69938abb2568b4bcd1fbb97635a1c77503",
+      "sha256": "a00bf8090d4830979fa98648b42d8d69938abb2568b4bcd1fbb97635a1c77503",
+      "byteSize": 6865,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a tree on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-tree.svg, SVG SHA db0f1a67aee74ea7edd72fb3d27f8a77f31a90dfcf43efd824b9d5bdb24bd382; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-tree.svg, SHA 209ce35b7fe16b4c9aa51356e67fd8ad72b26f2ad4208a11976c4c26ca83c7f6. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.58ace274c4008d755948582bd5e81552133224b5dda043c0aef0400e4390e2db",
+      "sha256": "58ace274c4008d755948582bd5e81552133224b5dda043c0aef0400e4390e2db",
+      "byteSize": 5558,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a bottle on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-bottle.svg, SVG SHA 83a343918808660e349b122d53bab24210316526b13e918cafe8b7cd6fe06452; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-bottle.svg, SHA c8eea892e9d95d74b89f337f1deef10f6c2888fffc29a74007511556e6275fb1. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.70ee4b53392eaa6a5fd08a8a95b61a0d3b0bdb83c373ef218eceb815fedd2d2a",
+      "sha256": "70ee4b53392eaa6a5fd08a8a95b61a0d3b0bdb83c373ef218eceb815fedd2d2a",
+      "byteSize": 5538,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a bottle on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-bottle.svg, SVG SHA a0a2fadf9b44640658e35afb607204e48043dcadb6cea1fb5e95fe180c3319cc; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-bottle.svg, SHA c8eea892e9d95d74b89f337f1deef10f6c2888fffc29a74007511556e6275fb1. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.91792fd8cb8fd556ff26092846af2acd4eda899b7b18370804f37d52f4d33b8b",
+      "sha256": "91792fd8cb8fd556ff26092846af2acd4eda899b7b18370804f37d52f4d33b8b",
+      "byteSize": 10266,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a glass on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-glass.svg, SVG SHA aecca4bee000afd1e2234c2b2097192531a802a70b6b71f0f2bb5ae78f764170; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-glass.svg, SHA eb3eaaca50bb298846f064332a9d66e3bbac02c7ea1ac6dd6c0ec2d4e23dd8b8. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.1ba473d34ae116a5d5cc47fe21b68643778040f52eed0e485ee56bdb11b0b0bd",
+      "sha256": "1ba473d34ae116a5d5cc47fe21b68643778040f52eed0e485ee56bdb11b0b0bd",
+      "byteSize": 10123,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a glass on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-glass.svg, SVG SHA ba016114675b6a3deb79624a38aa73e64f7d6282fed0fd991034c95dd539cbab; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-glass.svg, SHA eb3eaaca50bb298846f064332a9d66e3bbac02c7ea1ac6dd6c0ec2d4e23dd8b8. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.e4720c406beb64094b25a1fe3eadd7463a45dce6acd91330f0d414fd4a205f44",
+      "sha256": "e4720c406beb64094b25a1fe3eadd7463a45dce6acd91330f0d414fd4a205f44",
+      "byteSize": 5736,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a candle on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-candle.svg, SVG SHA 35c0d6a299a55f7720e5a2c755a0ec49e8cf771781a876e80ed1b82132e764fc; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-candle.svg, SHA 24bf234d85cc778f7206c4b02d428f7c37df875a65610553acb7035a59801b09. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.fdef18d3cea8b957cc07cd65465811bb75177dd57ad65071c9b1208ed1596fb3",
+      "sha256": "fdef18d3cea8b957cc07cd65465811bb75177dd57ad65071c9b1208ed1596fb3",
+      "byteSize": 5707,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a candle on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-candle.svg, SVG SHA bc9cdaea8bb935985fcbd0011402de14919eee4ac5125e44b9f17fb1676422c0; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-candle.svg, SHA 24bf234d85cc778f7206c4b02d428f7c37df875a65610553acb7035a59801b09. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.e2b56a3f4327a13796f1c0fa91a128b880a66092f03bfaa828644060cdeca132",
+      "sha256": "e2b56a3f4327a13796f1c0fa91a128b880a66092f03bfaa828644060cdeca132",
+      "byteSize": 5839,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a building on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-building.svg, SVG SHA 72387848e153b2b022c111a0a276c8b2547238a7cce6cb900cd99fed26efb76a; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-building.svg, SHA 593e059ee34d48c70acc157b11ad0697b68025e71876a1146e5c89fe6db2814a. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.49a6db1f83a358bff54603849169bae85e84f8a6ef3e50e9085a99945a178080",
+      "sha256": "49a6db1f83a358bff54603849169bae85e84f8a6ef3e50e9085a99945a178080",
+      "byteSize": 6230,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a building on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-building.svg, SVG SHA 7257a50c41907fd6d7c32a174f0a8d57c99b2ed9d7b33cc0af538312fb3fafea; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-building.svg, SHA 593e059ee34d48c70acc157b11ad0697b68025e71876a1146e5c89fe6db2814a. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.128ec426bf869d80d0b89ad0580948be6a256ab818a322446ebda8c4802240f1",
+      "sha256": "128ec426bf869d80d0b89ad0580948be6a256ab818a322446ebda8c4802240f1",
+      "byteSize": 7361,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a robot on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-robot.svg, SVG SHA 1a9024301f30ee1cb27c0abdf5de2e479c9d6aa2f35c541612c2647e2fb7f715; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-robot.svg, SHA 58798452e586259dc36d500a7958ff318f694aec4eb57c1a6e7cd52069c6778e. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.ddcb5307f211fb435b37577366ba2dd375231addce40a882d967aeec95410f32",
+      "sha256": "ddcb5307f211fb435b37577366ba2dd375231addce40a882d967aeec95410f32",
+      "byteSize": 7342,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a robot on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-robot.svg, SVG SHA aaf1e34054ded107ad0dfa2ae1d37eb07ad07ec6893632799f0792088ae57603; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-robot.svg, SHA 58798452e586259dc36d500a7958ff318f694aec4eb57c1a6e7cd52069c6778e. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.fe34aed30ade7a625608652f48b40cb6e4f24fcf401a5057f39da15009f2bbd8",
+      "sha256": "fe34aed30ade7a625608652f48b40cb6e4f24fcf401a5057f39da15009f2bbd8",
+      "byteSize": 5719,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a tower on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-tower.svg, SVG SHA 44de096c6ef3d01b4b7dd31435e7d00554df30230eeaedaff3df81527cf48572; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-tower.svg, SHA 5b92a8b42b08e5d3ef260c4f374657500506e89e3fee51f215d4f149610d6f36. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.2e19c3dd1fc61e5a540bfc7366585a68832da7fb4f19eab1013db45ae762d463",
+      "sha256": "2e19c3dd1fc61e5a540bfc7366585a68832da7fb4f19eab1013db45ae762d463",
+      "byteSize": 5720,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a tower on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-tower.svg, SVG SHA b068ba62b39fa6c6eeb472e585bda270e06fc8d1043f356a6bb4165c1d75431d; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-tower.svg, SHA 5b92a8b42b08e5d3ef260c4f374657500506e89e3fee51f215d4f149610d6f36. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.2269bcf3dcd0cdf05a077d9ba81bef97190729d1a2a04dde0c64524bd4963c06",
+      "sha256": "2269bcf3dcd0cdf05a077d9ba81bef97190729d1a2a04dde0c64524bd4963c06",
+      "byteSize": 6696,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a lamp on the left; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/left-lamp.svg, SVG SHA ab0189a554c7621974d8e0ed71e6195c3a616ee8a1b1a9599e18fd809b7f6233; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-lamp.svg, SHA eeeba7b9c292780966cd0333c4f335651fcf817cf780ceca77477a65ea086b57. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    },
+    {
+      "id": "image.489c47f5c1691ec89608fc3417d5b358bbb2e86220e11f8a3d2eadd36770100d",
+      "sha256": "489c47f5c1691ec89608fc3417d5b358bbb2e86220e11f8a3d2eadd36770100d",
+      "byteSize": 6640,
+      "width": 512,
+      "height": 512,
+      "contentType": "image/png",
+      "description": "Owned recomposed picture: a lamp on the right; side is relative to viewer, with visible centre divider and no printed answer words.",
+      "source": "New composition Backend/config/learning/expansions/2026-10-24/position-picture-sources/right-lamp.svg, SVG SHA a37cdf1260a1695513d39beb1d260aaaf2e97deed3a0e39d5b0cf9b390218732; noun drawing reused from Backend/config/learning/expansions/2026-10-24/dimension-picture-sources/tall-lamp.svg, SHA eeeba7b9c292780966cd0333c4f335651fcf817cf780ceca77477a65ea086b57. Composition authored in Scripts/author-primary1-position-expansion.mjs.",
+      "reviewedBy": "Codex geometry and contact-sheet inspection",
+      "reviewedAt": "2026-10-24",
+      "reviewNotes": "Viewer-relative left/right and noun identity checked. Reuses16 owned noun drawings in32 new spatial compositions; provisional vocabulary, not independent calibration."
+    }
+  ]
+}
