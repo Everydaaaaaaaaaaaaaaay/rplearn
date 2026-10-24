@@ -1,0 +1,1938 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b119",
+  "createdAt": "2026-10-24T02:00:12.576177+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary4.five-questions-119",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "10·24新题 · Five questions before the trip",
+        "summary": "Five questions before the trip，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.bank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete five-gap fixed shared bank, following the recorded primary4 source. New contexts, no independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary4.five-questions-119",
+          "family": "shared_bank",
+          "label": "Five questions before the trip",
+          "candidateSHA256": "7594b3067c793edabee83dc5b08795524b323ddd854d08f00734610244ebabfe",
+          "authorCheckSHA256": "219a096ea5f22f572878c0838ab909cf476591a25a5812cf5c853e79b03d3b34",
+          "sourceGroupIds": [
+            "expansion.20261024.primary4.five-questions-119#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b119；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Five questions before the trip\n\nShared bank: How much | How old | What time | Where | Whose\n\n1. ____ is your little brother? He is six years old.\n\n2. ____ is this blue coat? It is Emma’s.\n\n3. ____ is the station? It is beside the post office.\n\n4. ____ is one ticket? It is four pounds.\n\n5. ____ does the train leave? At ten thirty."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary4.five-questions-119.whole.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "____ is your little brother? He is six years old.",
+            "material": "Five questions before the trip\n\nShared bank: How much | How old | What time | Where | Whose\n\n1. ____ is your little brother? He is six years old.\n\n2. ____ is this blue coat? It is Emma’s.\n\n3. ____ is the station? It is beside the post office.\n\n4. ____ is one ticket? It is four pounds.\n\n5. ____ does the train leave? At ten thirty.",
+            "explanation": "How old asks age, answered by six years. Other entries ask place/time/owner/price.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "How much"
+              },
+              {
+                "id": "o1",
+                "text": "How old"
+              },
+              {
+                "id": "o2",
+                "text": "What time"
+              },
+              {
+                "id": "o3",
+                "text": "Where"
+              },
+              {
+                "id": "o4",
+                "text": "Whose"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.five-questions-119.whole.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "____ is this blue coat? It is Emma’s.",
+            "material": "Five questions before the trip\n\nShared bank: How much | How old | What time | Where | Whose\n\n1. ____ is your little brother? He is six years old.\n\n2. ____ is this blue coat? It is Emma’s.\n\n3. ____ is the station? It is beside the post office.\n\n4. ____ is one ticket? It is four pounds.\n\n5. ____ does the train leave? At ten thirty.",
+            "explanation": "Whose asks ownership, answered by Emma’s. Place/time/age/price questions do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "How much"
+              },
+              {
+                "id": "o1",
+                "text": "How old"
+              },
+              {
+                "id": "o2",
+                "text": "What time"
+              },
+              {
+                "id": "o3",
+                "text": "Where"
+              },
+              {
+                "id": "o4",
+                "text": "Whose"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.primary4.five-questions-119.whole.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "____ is the station? It is beside the post office.",
+            "material": "Five questions before the trip\n\nShared bank: How much | How old | What time | Where | Whose\n\n1. ____ is your little brother? He is six years old.\n\n2. ____ is this blue coat? It is Emma’s.\n\n3. ____ is the station? It is beside the post office.\n\n4. ____ is one ticket? It is four pounds.\n\n5. ____ does the train leave? At ten thirty.",
+            "explanation": "Where asks place, answered by beside post office. Other bank entries ask different facts.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "How much"
+              },
+              {
+                "id": "o1",
+                "text": "How old"
+              },
+              {
+                "id": "o2",
+                "text": "What time"
+              },
+              {
+                "id": "o3",
+                "text": "Where"
+              },
+              {
+                "id": "o4",
+                "text": "Whose"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary4.five-questions-119.whole.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "____ is one ticket? It is four pounds.",
+            "material": "Five questions before the trip\n\nShared bank: How much | How old | What time | Where | Whose\n\n1. ____ is your little brother? He is six years old.\n\n2. ____ is this blue coat? It is Emma’s.\n\n3. ____ is the station? It is beside the post office.\n\n4. ____ is one ticket? It is four pounds.\n\n5. ____ does the train leave? At ten thirty.",
+            "explanation": "How much asks cost, answered by pounds. Age/time/owner/place do not ask price.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "How much"
+              },
+              {
+                "id": "o1",
+                "text": "How old"
+              },
+              {
+                "id": "o2",
+                "text": "What time"
+              },
+              {
+                "id": "o3",
+                "text": "Where"
+              },
+              {
+                "id": "o4",
+                "text": "Whose"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.five-questions-119.whole.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "____ does the train leave? At ten thirty.",
+            "material": "Five questions before the trip\n\nShared bank: How much | How old | What time | Where | Whose\n\n1. ____ is your little brother? He is six years old.\n\n2. ____ is this blue coat? It is Emma’s.\n\n3. ____ is the station? It is beside the post office.\n\n4. ____ is one ticket? It is four pounds.\n\n5. ____ does the train leave? At ten thirty.",
+            "explanation": "What time asks clock time, answered10:30. Others ask unrelated facts.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "How much"
+              },
+              {
+                "id": "o1",
+                "text": "How old"
+              },
+              {
+                "id": "o2",
+                "text": "What time"
+              },
+              {
+                "id": "o3",
+                "text": "Where"
+              },
+              {
+                "id": "o4",
+                "text": "Whose"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "9d81888bbc0b3846cee00609eb508c9c75dd8c93a00759ed80fe6bfe0d7f5ee3",
+      "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary4.five-actions-119",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "10·24新题 · Five things we can do",
+        "summary": "Five things we can do，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.bank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete five-gap fixed shared bank, following the recorded primary4 source. New contexts, no independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary4.five-actions-119",
+          "family": "shared_bank",
+          "label": "Five things we can do",
+          "candidateSHA256": "7abaa4722e7e9b7f16d6de1ef343bae850bfea378c0639f4380892725e9bd36b",
+          "authorCheckSHA256": "2059b22e8e05fe6676442ad60be978ecf1b47e182a999795406431bb16f83386",
+          "sourceGroupIds": [
+            "expansion.20261024.primary4.five-actions-119#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b119；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Five things we can do\n\nShared bank: cook | draw | read | sing | swim\n\n1. I use my crayons to ____ a picture.\n\n2. Please ____ the words on this page aloud.\n\n3. The choir will ____ a song at the concert.\n\n4. We can ____ in the pool with our instructor.\n\n5. Dad will ____ soup for our lunch."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary4.five-actions-119.whole.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "I use my crayons to ____ a picture.",
+            "material": "Five things we can do\n\nShared bank: cook | draw | read | sing | swim\n\n1. I use my crayons to ____ a picture.\n\n2. Please ____ the words on this page aloud.\n\n3. The choir will ____ a song at the concert.\n\n4. We can ____ in the pool with our instructor.\n\n5. Dad will ____ soup for our lunch.",
+            "explanation": "Draw creates a picture with crayons. Read/sing/swim/cook do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cook"
+              },
+              {
+                "id": "o1",
+                "text": "draw"
+              },
+              {
+                "id": "o2",
+                "text": "read"
+              },
+              {
+                "id": "o3",
+                "text": "sing"
+              },
+              {
+                "id": "o4",
+                "text": "swim"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.five-actions-119.whole.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "Please ____ the words on this page aloud.",
+            "material": "Five things we can do\n\nShared bank: cook | draw | read | sing | swim\n\n1. I use my crayons to ____ a picture.\n\n2. Please ____ the words on this page aloud.\n\n3. The choir will ____ a song at the concert.\n\n4. We can ____ in the pool with our instructor.\n\n5. Dad will ____ soup for our lunch.",
+            "explanation": "Read words aloud; draw/sing/swim/cook do not match ordinary page-reading instruction. Singing would need a musical context absent here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cook"
+              },
+              {
+                "id": "o1",
+                "text": "draw"
+              },
+              {
+                "id": "o2",
+                "text": "read"
+              },
+              {
+                "id": "o3",
+                "text": "sing"
+              },
+              {
+                "id": "o4",
+                "text": "swim"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary4.five-actions-119.whole.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "The choir will ____ a song at the concert.",
+            "material": "Five things we can do\n\nShared bank: cook | draw | read | sing | swim\n\n1. I use my crayons to ____ a picture.\n\n2. Please ____ the words on this page aloud.\n\n3. The choir will ____ a song at the concert.\n\n4. We can ____ in the pool with our instructor.\n\n5. Dad will ____ soup for our lunch.",
+            "explanation": "A choir sings a song. Draw/read/swim/cook do not name the musical performance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cook"
+              },
+              {
+                "id": "o1",
+                "text": "draw"
+              },
+              {
+                "id": "o2",
+                "text": "read"
+              },
+              {
+                "id": "o3",
+                "text": "sing"
+              },
+              {
+                "id": "o4",
+                "text": "swim"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary4.five-actions-119.whole.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "We can ____ in the pool with our instructor.",
+            "material": "Five things we can do\n\nShared bank: cook | draw | read | sing | swim\n\n1. I use my crayons to ____ a picture.\n\n2. Please ____ the words on this page aloud.\n\n3. The choir will ____ a song at the concert.\n\n4. We can ____ in the pool with our instructor.\n\n5. Dad will ____ soup for our lunch.",
+            "explanation": "Swim is the pool activity with instructor. Other verbs do not name movement through water.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cook"
+              },
+              {
+                "id": "o1",
+                "text": "draw"
+              },
+              {
+                "id": "o2",
+                "text": "read"
+              },
+              {
+                "id": "o3",
+                "text": "sing"
+              },
+              {
+                "id": "o4",
+                "text": "swim"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.primary4.five-actions-119.whole.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "Dad will ____ soup for our lunch.",
+            "material": "Five things we can do\n\nShared bank: cook | draw | read | sing | swim\n\n1. I use my crayons to ____ a picture.\n\n2. Please ____ the words on this page aloud.\n\n3. The choir will ____ a song at the concert.\n\n4. We can ____ in the pool with our instructor.\n\n5. Dad will ____ soup for our lunch.",
+            "explanation": "Cook prepares soup. Draw/read/sing/swim do not make lunch.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "cook"
+              },
+              {
+                "id": "o1",
+                "text": "draw"
+              },
+              {
+                "id": "o2",
+                "text": "read"
+              },
+              {
+                "id": "o3",
+                "text": "sing"
+              },
+              {
+                "id": "o4",
+                "text": "swim"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "16c04952964e2aeb35150c153b21bdc6a06a1193d9e2f7471d493ce6e02edd3f",
+      "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary4.five-body-words-119",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "10·24新题 · Five body words",
+        "summary": "Five body words，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.bank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete five-gap fixed shared bank, following the recorded primary4 source. New contexts, no independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary4.five-body-words-119",
+          "family": "shared_bank",
+          "label": "Five body words",
+          "candidateSHA256": "3ae25dfb67822b9c964be685c5e77b494548b29e329dd2d31fdc67c1a3b0f762",
+          "authorCheckSHA256": "291cbbf1d866542cc1cf1d552e8ced1f6d9f18d21816598d05a2c6126a3a71ba",
+          "sourceGroupIds": [
+            "expansion.20261024.primary4.five-body-words-119#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b119；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Five body words\n\nShared bank: ears | eyes | feet | hands | teeth\n\n1. We wear mittens on our ____.\n\n2. We use our ____ to see the colours.\n\n3. We use our ____ to hear the music.\n\n4. We wear shoes on our ____.\n\n5. We clean our ____ with a toothbrush."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary4.five-body-words-119.whole.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "We wear mittens on our ____.",
+            "material": "Five body words\n\nShared bank: ears | eyes | feet | hands | teeth\n\n1. We wear mittens on our ____.\n\n2. We use our ____ to see the colours.\n\n3. We use our ____ to hear the music.\n\n4. We wear shoes on our ____.\n\n5. We clean our ____ with a toothbrush.",
+            "explanation": "Mittens cover hands. Other body parts do not normally wear mittens.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "ears"
+              },
+              {
+                "id": "o1",
+                "text": "eyes"
+              },
+              {
+                "id": "o2",
+                "text": "feet"
+              },
+              {
+                "id": "o3",
+                "text": "hands"
+              },
+              {
+                "id": "o4",
+                "text": "teeth"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary4.five-body-words-119.whole.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "We use our ____ to see the colours.",
+            "material": "Five body words\n\nShared bank: ears | eyes | feet | hands | teeth\n\n1. We wear mittens on our ____.\n\n2. We use our ____ to see the colours.\n\n3. We use our ____ to hear the music.\n\n4. We wear shoes on our ____.\n\n5. We clean our ____ with a toothbrush.",
+            "explanation": "Eyes support seeing. Hands/ears/feet/teeth do not perform vision.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "ears"
+              },
+              {
+                "id": "o1",
+                "text": "eyes"
+              },
+              {
+                "id": "o2",
+                "text": "feet"
+              },
+              {
+                "id": "o3",
+                "text": "hands"
+              },
+              {
+                "id": "o4",
+                "text": "teeth"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.five-body-words-119.whole.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "We use our ____ to hear the music.",
+            "material": "Five body words\n\nShared bank: ears | eyes | feet | hands | teeth\n\n1. We wear mittens on our ____.\n\n2. We use our ____ to see the colours.\n\n3. We use our ____ to hear the music.\n\n4. We wear shoes on our ____.\n\n5. We clean our ____ with a toothbrush.",
+            "explanation": "Ears support hearing. Other listed body parts do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "ears"
+              },
+              {
+                "id": "o1",
+                "text": "eyes"
+              },
+              {
+                "id": "o2",
+                "text": "feet"
+              },
+              {
+                "id": "o3",
+                "text": "hands"
+              },
+              {
+                "id": "o4",
+                "text": "teeth"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.five-body-words-119.whole.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "We wear shoes on our ____.",
+            "material": "Five body words\n\nShared bank: ears | eyes | feet | hands | teeth\n\n1. We wear mittens on our ____.\n\n2. We use our ____ to see the colours.\n\n3. We use our ____ to hear the music.\n\n4. We wear shoes on our ____.\n\n5. We clean our ____ with a toothbrush.",
+            "explanation": "Shoes cover feet. Other body parts do not normally wear shoes.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "ears"
+              },
+              {
+                "id": "o1",
+                "text": "eyes"
+              },
+              {
+                "id": "o2",
+                "text": "feet"
+              },
+              {
+                "id": "o3",
+                "text": "hands"
+              },
+              {
+                "id": "o4",
+                "text": "teeth"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary4.five-body-words-119.whole.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Choose the suitable word or phrase from the shared bank for each gap.",
+            "prompt": "We clean our ____ with a toothbrush.",
+            "material": "Five body words\n\nShared bank: ears | eyes | feet | hands | teeth\n\n1. We wear mittens on our ____.\n\n2. We use our ____ to see the colours.\n\n3. We use our ____ to hear the music.\n\n4. We wear shoes on our ____.\n\n5. We clean our ____ with a toothbrush.",
+            "explanation": "A toothbrush cleans teeth. Other listed body parts are not its intended target.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "ears"
+              },
+              {
+                "id": "o1",
+                "text": "eyes"
+              },
+              {
+                "id": "o2",
+                "text": "feet"
+              },
+              {
+                "id": "o3",
+                "text": "hands"
+              },
+              {
+                "id": "o4",
+                "text": "teeth"
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "09ecbdfd109ab3f89ad2c8cecfaa1d1a54ec545b92f25dfb1b6c3acb9f845b6f",
+      "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary4.categories-harbour-119",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "10·24新题 · Five word groups A",
+        "summary": "Five word groups A，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.word_category_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.repost.odd",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete three-option category questions. Explicit category remains an authoring clarification; English replaces the former Chinese cue, with provisional vocabulary difficulty."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary4.categories-harbour-119",
+          "family": "word_category_choice",
+          "label": "Five word groups A",
+          "candidateSHA256": "3ccdd14cf373bf98cd04227f7a1f2023f7158ab4e3a6a75fa65db89069107f4f",
+          "authorCheckSHA256": "db0d8cd6c5b5ae1c700cdb9af6a9703f04a8e6e930b6f146c115cfaf411aeb15",
+          "sourceGroupIds": [
+            "expansion.20261024.primary4.categories-harbour-119#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b119；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Five word groups A\n\nEach question names its category. Choose the one word that does not belong."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary4.categories-harbour-119.whole.q1",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a clothing word?",
+            "material": "Five word groups A\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "sandwich does not belong to the stated category; shirt and scarf do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "scarf"
+              },
+              {
+                "id": "o1",
+                "text": "shirt"
+              },
+              {
+                "id": "o2",
+                "text": "sandwich"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary4.categories-harbour-119.whole.q2",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a fruit word?",
+            "material": "Five word groups A\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "pencil does not belong to the stated category; peach and pear do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "pear"
+              },
+              {
+                "id": "o1",
+                "text": "pencil"
+              },
+              {
+                "id": "o2",
+                "text": "peach"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.categories-harbour-119.whole.q3",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a animal word?",
+            "material": "Five word groups A\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "chair does not belong to the stated category; whale and seal do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "whale"
+              },
+              {
+                "id": "o1",
+                "text": "seal"
+              },
+              {
+                "id": "o2",
+                "text": "chair"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary4.categories-harbour-119.whole.q4",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a furniture word?",
+            "material": "Five word groups A\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "rabbit does not belong to the stated category; sofa and stool do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "stool"
+              },
+              {
+                "id": "o1",
+                "text": "sofa"
+              },
+              {
+                "id": "o2",
+                "text": "rabbit"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary4.categories-harbour-119.whole.q5",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a body-part word?",
+            "material": "Five word groups A\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "kettle does not belong to the stated category; elbow and knee do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "kettle"
+              },
+              {
+                "id": "o1",
+                "text": "elbow"
+              },
+              {
+                "id": "o2",
+                "text": "knee"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "216286b99d701c08610ed0ed30ac861d53c78bbe5520aacb325b8418ba7b66a4",
+      "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary4.categories-garden-119",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "10·24新题 · Five word groups B",
+        "summary": "Five word groups B，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.word_category_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.repost.odd",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete three-option category questions. Explicit category remains an authoring clarification; English replaces the former Chinese cue, with provisional vocabulary difficulty."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary4.categories-garden-119",
+          "family": "word_category_choice",
+          "label": "Five word groups B",
+          "candidateSHA256": "97bf4eff2e878232f4a42bd274c3c46f744d7400fdd73262a00ce89b3487bd2f",
+          "authorCheckSHA256": "37d798440e9030e4f8db1c220e9f66444c6bffcc8c352fd3a1d1790c830b68b4",
+          "sourceGroupIds": [
+            "expansion.20261024.primary4.categories-garden-119#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b119；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Five word groups B\n\nEach question names its category. Choose the one word that does not belong."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary4.categories-garden-119.whole.q1",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a clothing word?",
+            "material": "Five word groups B\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "grape does not belong to the stated category; sock and glove do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "grape"
+              },
+              {
+                "id": "o1",
+                "text": "glove"
+              },
+              {
+                "id": "o2",
+                "text": "sock"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.categories-garden-119.whole.q2",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a fruit word?",
+            "material": "Five word groups B\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "mirror does not belong to the stated category; melon and plum do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "melon"
+              },
+              {
+                "id": "o1",
+                "text": "mirror"
+              },
+              {
+                "id": "o2",
+                "text": "plum"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.categories-garden-119.whole.q3",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a animal word?",
+            "material": "Five word groups B\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "carpet does not belong to the stated category; goat and camel do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "carpet"
+              },
+              {
+                "id": "o1",
+                "text": "goat"
+              },
+              {
+                "id": "o2",
+                "text": "camel"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.categories-garden-119.whole.q4",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a furniture word?",
+            "material": "Five word groups B\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "duck does not belong to the stated category; bed and desk do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "duck"
+              },
+              {
+                "id": "o1",
+                "text": "bed"
+              },
+              {
+                "id": "o2",
+                "text": "desk"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.categories-garden-119.whole.q5",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a body-part word?",
+            "material": "Five word groups B\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "shovel does not belong to the stated category; ankle and shoulder do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "ankle"
+              },
+              {
+                "id": "o1",
+                "text": "shoulder"
+              },
+              {
+                "id": "o2",
+                "text": "shovel"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "bd21b061646180410de07722c5fb543a895ed4c935984958861f158d12d95e1a",
+      "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary4.categories-school-119",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "10·24新题 · Five word groups C",
+        "summary": "Five word groups C，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.word_category_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.repost.odd",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete three-option category questions. Explicit category remains an authoring clarification; English replaces the former Chinese cue, with provisional vocabulary difficulty."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary4.categories-school-119",
+          "family": "word_category_choice",
+          "label": "Five word groups C",
+          "candidateSHA256": "f1cf213444bbdc93f58d1a1aa57f1f6f3a3d2ba6f4a86cb9be4386ca3686d8dc",
+          "authorCheckSHA256": "7dac0ba8f1b80c6631b0c111e5212df67c617a279ca87c544d7a1f7085542438",
+          "sourceGroupIds": [
+            "expansion.20261024.primary4.categories-school-119#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b119；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Five word groups C\n\nEach question names its category. Choose the one word that does not belong."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary4.categories-school-119.whole.q1",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a clothing word?",
+            "material": "Five word groups C\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "carrot does not belong to the stated category; coat and dress do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "carrot"
+              },
+              {
+                "id": "o1",
+                "text": "dress"
+              },
+              {
+                "id": "o2",
+                "text": "coat"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.categories-school-119.whole.q2",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a fruit word?",
+            "material": "Five word groups C\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "ladder does not belong to the stated category; apricot and lemon do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "lemon"
+              },
+              {
+                "id": "o1",
+                "text": "ladder"
+              },
+              {
+                "id": "o2",
+                "text": "apricot"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary4.categories-school-119.whole.q3",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a animal word?",
+            "material": "Five word groups C\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "zip does not belong to the stated category; tiger and zebra do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "zip"
+              },
+              {
+                "id": "o1",
+                "text": "tiger"
+              },
+              {
+                "id": "o2",
+                "text": "zebra"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.categories-school-119.whole.q4",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a furniture word?",
+            "material": "Five word groups C\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "otter does not belong to the stated category; cupboard and armchair do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "otter"
+              },
+              {
+                "id": "o1",
+                "text": "armchair"
+              },
+              {
+                "id": "o2",
+                "text": "cupboard"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary4.categories-school-119.whole.q5",
+            "goalId": "original.word_category_choice",
+            "instruction": "For each of the five groups, choose the word outside the named category.",
+            "prompt": "Which word is NOT a body-part word?",
+            "material": "Five word groups C\n\nEach question names its category. Choose the one word that does not belong.",
+            "explanation": "whistle does not belong to the stated category; chin and wrist do. Use ordinary meanings, not spelling or word length.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "whistle"
+              },
+              {
+                "id": "o1",
+                "text": "wrist"
+              },
+              {
+                "id": "o2",
+                "text": "chin"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "85f12f6e81f5ed448e01aab37fa357e3fc37255665ef69f385ba071b8fcb3bd6",
+      "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary5.mole-window-119",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "10·24新题 · Mole’s window",
+        "summary": "Mole’s window，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.frog",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original complete five-question reading. Dialogue, story and four-entry table task structures follow the source family; new contexts/vocabulary are provisional rather than independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary5.mole-window-119",
+          "family": "reading_choice",
+          "label": "Mole’s window",
+          "candidateSHA256": "814764ff26372068ae297f0b5972594919405bb25597736779e32d8a5b591b8a",
+          "authorCheckSHA256": "427c0cc857f3f8e8dc677a913d48c65cd88d2aa76ad5f9073a6a918cbe27fab9",
+          "sourceGroupIds": [
+            "expansion.20261024.primary5.mole-window-119#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b119；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Mole’s window\n\nIn this imaginary story, Mole wants a window for his little underground room. Fox offers to draw one on the wall. He paints blue sky, a yellow sun and a bird with a very long tail. Mole likes the picture, but the room is still dark when he closes his lamp.\n\n\"Your window does not let in light,\" Mole says. Fox agrees. It is a picture of a window, not a real opening. They ask Badger to help them find a better place for a workroom. Badger shows them a small room near the surface, with daylight coming through a real window.\n\nMole moves his drawing table there. He keeps his old room for sleeping and asks Fox to paint another picture on its wall. This time, he does not expect it to light the room. A picture can be lovely without doing the work of the thing it shows. Fox paints a night sky, and Mole puts his lamp beside the bed."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary5.mole-window-119.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Mole want at first?",
+            "material": "Mole’s window\n\nIn this imaginary story, Mole wants a window for his little underground room. Fox offers to draw one on the wall. He paints blue sky, a yellow sun and a bird with a very long tail. Mole likes the picture, but the room is still dark when he closes his lamp.\n\n\"Your window does not let in light,\" Mole says. Fox agrees. It is a picture of a window, not a real opening. They ask Badger to help them find a better place for a workroom. Badger shows them a small room near the surface, with daylight coming through a real window.\n\nMole moves his drawing table there. He keeps his old room for sleeping and asks Fox to paint another picture on its wall. This time, he does not expect it to light the room. A picture can be lovely without doing the work of the thing it shows. Fox paints a night sky, and Mole puts his lamp beside the bed.",
+            "explanation": "Opening states window request. Tail belongs drawing and bird not purchase request.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A new bird"
+              },
+              {
+                "id": "o1",
+                "text": "A longer tail"
+              },
+              {
+                "id": "o2",
+                "text": "A window for his underground room"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary5.mole-window-119.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the painted window not solve the problem?",
+            "material": "Mole’s window\n\nIn this imaginary story, Mole wants a window for his little underground room. Fox offers to draw one on the wall. He paints blue sky, a yellow sun and a bird with a very long tail. Mole likes the picture, but the room is still dark when he closes his lamp.\n\n\"Your window does not let in light,\" Mole says. Fox agrees. It is a picture of a window, not a real opening. They ask Badger to help them find a better place for a workroom. Badger shows them a small room near the surface, with daylight coming through a real window.\n\nMole moves his drawing table there. He keeps his old room for sleeping and asks Fox to paint another picture on its wall. This time, he does not expect it to light the room. A picture can be lovely without doing the work of the thing it shows. Fox paints a night sky, and Mole puts his lamp beside the bed.",
+            "explanation": "Painting is representation, not opening. Pigment amount/bird action not physical cause.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It does not let daylight into the room"
+              },
+              {
+                "id": "o1",
+                "text": "The painted bird closes the window"
+              },
+              {
+                "id": "o2",
+                "text": "Fox uses too much yellow for real sunlight"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.mole-window-119.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who helps find another room?",
+            "material": "Mole’s window\n\nIn this imaginary story, Mole wants a window for his little underground room. Fox offers to draw one on the wall. He paints blue sky, a yellow sun and a bird with a very long tail. Mole likes the picture, but the room is still dark when he closes his lamp.\n\n\"Your window does not let in light,\" Mole says. Fox agrees. It is a picture of a window, not a real opening. They ask Badger to help them find a better place for a workroom. Badger shows them a small room near the surface, with daylight coming through a real window.\n\nMole moves his drawing table there. He keeps his old room for sleeping and asks Fox to paint another picture on its wall. This time, he does not expect it to light the room. A picture can be lovely without doing the work of the thing it shows. Fox paints a night sky, and Mole puts his lamp beside the bed.",
+            "explanation": "Badger shows surface room. Bird imaginary drawing/teacher absent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Badger"
+              },
+              {
+                "id": "o1",
+                "text": "A visiting teacher"
+              },
+              {
+                "id": "o2",
+                "text": "The painted bird"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.mole-window-119.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the old room used for later?",
+            "material": "Mole’s window\n\nIn this imaginary story, Mole wants a window for his little underground room. Fox offers to draw one on the wall. He paints blue sky, a yellow sun and a bird with a very long tail. Mole likes the picture, but the room is still dark when he closes his lamp.\n\n\"Your window does not let in light,\" Mole says. Fox agrees. It is a picture of a window, not a real opening. They ask Badger to help them find a better place for a workroom. Badger shows them a small room near the surface, with daylight coming through a real window.\n\nMole moves his drawing table there. He keeps his old room for sleeping and asks Fox to paint another picture on its wall. This time, he does not expect it to light the room. A picture can be lovely without doing the work of the thing it shows. Fox paints a night sky, and Mole puts his lamp beside the bed.",
+            "explanation": "Mole keeps old room for sleep. Other uses unstated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Cooking for all the animals"
+              },
+              {
+                "id": "o1",
+                "text": "Growing fruit"
+              },
+              {
+                "id": "o2",
+                "text": "Sleeping"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary5.mole-window-119.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why can Mole enjoy the second painting?",
+            "material": "Mole’s window\n\nIn this imaginary story, Mole wants a window for his little underground room. Fox offers to draw one on the wall. He paints blue sky, a yellow sun and a bird with a very long tail. Mole likes the picture, but the room is still dark when he closes his lamp.\n\n\"Your window does not let in light,\" Mole says. Fox agrees. It is a picture of a window, not a real opening. They ask Badger to help them find a better place for a workroom. Badger shows them a small room near the surface, with daylight coming through a real window.\n\nMole moves his drawing table there. He keeps his old room for sleeping and asks Fox to paint another picture on its wall. This time, he does not expect it to light the room. A picture can be lovely without doing the work of the thing it shows. Fox paints a night sky, and Mole puts his lamp beside the bed.",
+            "explanation": "He separates picture pleasure from function. Sunlight/no lamp claims contradict night painting and lamp.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It produces sunlight all night"
+              },
+              {
+                "id": "o1",
+                "text": "It removes the need for any lamp"
+              },
+              {
+                "id": "o2",
+                "text": "He no longer expects it to act as a real window"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "70b056a49dba6adbc3ab54f2810d71ed863a22dbe4551070829ebc37f54ab79f",
+      "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary5.lost-drumstick-119",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "10·24新题 · The drumstick in the garden",
+        "summary": "The drumstick in the garden，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.frog",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original complete five-question reading. Dialogue, story and four-entry table task structures follow the source family; new contexts/vocabulary are provisional rather than independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary5.lost-drumstick-119",
+          "family": "reading_choice",
+          "label": "The drumstick in the garden",
+          "candidateSHA256": "8b06514e933a8ccf2c4da960650f0c2a95718798028cebe1a266a3a0b7c24643",
+          "authorCheckSHA256": "12a64dadfaa3acb0b2eb45ca1d233b23223f73cd4c67d1dbfe3e89b06912f52e",
+          "sourceGroupIds": [
+            "expansion.20261024.primary5.lost-drumstick-119#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b119；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The drumstick in the garden\n\nNina practises her small drum in the garden. One drumstick rolls under a bush. She looks for it but finds only a dry branch. The branch is about the same length, so she tries it on the drum. It makes a sound, but its rough end catches on the surface.\n\nNina stops and calls her uncle. He asks her to leave the branch aside while they search together. They lift the low leaves carefully and find the drumstick beside a stone. Nina is pleased, but she asks why the branch did not work well when it looked so similar.\n\nHer uncle shows her the smooth, rounded end of the drumstick. Its shape matters, not only its length. Nina puts both proper sticks into their bag before going inside. She keeps the branch for a nature drawing, where its rough edges are useful details to notice. It was the wrong tool for her drum, but it was not useless for everything."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary5.lost-drumstick-119.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where does the drumstick roll?",
+            "material": "The drumstick in the garden\n\nNina practises her small drum in the garden. One drumstick rolls under a bush. She looks for it but finds only a dry branch. The branch is about the same length, so she tries it on the drum. It makes a sound, but its rough end catches on the surface.\n\nNina stops and calls her uncle. He asks her to leave the branch aside while they search together. They lift the low leaves carefully and find the drumstick beside a stone. Nina is pleased, but she asks why the branch did not work well when it looked so similar.\n\nHer uncle shows her the smooth, rounded end of the drumstick. Its shape matters, not only its length. Nina puts both proper sticks into their bag before going inside. She keeps the branch for a nature drawing, where its rough edges are useful details to notice. It was the wrong tool for her drum, but it was not useless for everything.",
+            "explanation": "It rolls under bush. River/cupboard absent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Into a river"
+              },
+              {
+                "id": "o1",
+                "text": "Inside a kitchen cupboard"
+              },
+              {
+                "id": "o2",
+                "text": "Under a bush"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary5.lost-drumstick-119.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does Nina first try the branch?",
+            "material": "The drumstick in the garden\n\nNina practises her small drum in the garden. One drumstick rolls under a bush. She looks for it but finds only a dry branch. The branch is about the same length, so she tries it on the drum. It makes a sound, but its rough end catches on the surface.\n\nNina stops and calls her uncle. He asks her to leave the branch aside while they search together. They lift the low leaves carefully and find the drumstick beside a stone. Nina is pleased, but she asks why the branch did not work well when it looked so similar.\n\nHer uncle shows her the smooth, rounded end of the drumstick. Its shape matters, not only its length. Nina puts both proper sticks into their bag before going inside. She keeps the branch for a nature drawing, where its rough edges are useful details to notice. It was the wrong tool for her drum, but it was not useless for everything.",
+            "explanation": "Similar length prompts trial. Special manufacture/uncle approval not given.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is about the same length"
+              },
+              {
+                "id": "o1",
+                "text": "Her uncle says it is perfect"
+              },
+              {
+                "id": "o2",
+                "text": "It has been made for her drum"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary5.lost-drumstick-119.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What makes Nina stop?",
+            "material": "The drumstick in the garden\n\nNina practises her small drum in the garden. One drumstick rolls under a bush. She looks for it but finds only a dry branch. The branch is about the same length, so she tries it on the drum. It makes a sound, but its rough end catches on the surface.\n\nNina stops and calls her uncle. He asks her to leave the branch aside while they search together. They lift the low leaves carefully and find the drumstick beside a stone. Nina is pleased, but she asks why the branch did not work well when it looked so similar.\n\nHer uncle shows her the smooth, rounded end of the drumstick. Its shape matters, not only its length. Nina puts both proper sticks into their bag before going inside. She keeps the branch for a nature drawing, where its rough edges are useful details to notice. It was the wrong tool for her drum, but it was not useless for everything.",
+            "explanation": "Rough branch catches; other events invented.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The drumstick changes colour"
+              },
+              {
+                "id": "o1",
+                "text": "The bush begins to move away"
+              },
+              {
+                "id": "o2",
+                "text": "The rough end catches on the drum surface"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary5.lost-drumstick-119.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What detail does her uncle point out?",
+            "material": "The drumstick in the garden\n\nNina practises her small drum in the garden. One drumstick rolls under a bush. She looks for it but finds only a dry branch. The branch is about the same length, so she tries it on the drum. It makes a sound, but its rough end catches on the surface.\n\nNina stops and calls her uncle. He asks her to leave the branch aside while they search together. They lift the low leaves carefully and find the drumstick beside a stone. Nina is pleased, but she asks why the branch did not work well when it looked so similar.\n\nHer uncle shows her the smooth, rounded end of the drumstick. Its shape matters, not only its length. Nina puts both proper sticks into their bag before going inside. She keeps the branch for a nature drawing, where its rough edges are useful details to notice. It was the wrong tool for her drum, but it was not useless for everything.",
+            "explanation": "He contrasts end shape. Universal equality/length-only contradict explanation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Length is the only useful feature"
+              },
+              {
+                "id": "o1",
+                "text": "Every branch is the same as every drumstick"
+              },
+              {
+                "id": "o2",
+                "text": "The proper drumstick has a smooth rounded end"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary5.lost-drumstick-119.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happens to the branch?",
+            "material": "The drumstick in the garden\n\nNina practises her small drum in the garden. One drumstick rolls under a bush. She looks for it but finds only a dry branch. The branch is about the same length, so she tries it on the drum. It makes a sound, but its rough end catches on the surface.\n\nNina stops and calls her uncle. He asks her to leave the branch aside while they search together. They lift the low leaves carefully and find the drumstick beside a stone. Nina is pleased, but she asks why the branch did not work well when it looked so similar.\n\nHer uncle shows her the smooth, rounded end of the drumstick. Its shape matters, not only its length. Nina puts both proper sticks into their bag before going inside. She keeps the branch for a nature drawing, where its rough edges are useful details to notice. It was the wrong tool for her drum, but it was not useless for everything.",
+            "explanation": "Kept for observational drawing. It is not used again to strike or inserted as score.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It becomes her new drumstick"
+              },
+              {
+                "id": "o1",
+                "text": "Nina uses it as a subject for a nature drawing"
+              },
+              {
+                "id": "o2",
+                "text": "It is put into the drum’s musical score"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "9f29533d4a43197816a9ec0335d8646122887b53e0e1e5bc80dc90d4fa51e4d1",
+      "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary6.holiday-postcards-119",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "10·24新题 · Four holiday postcards",
+        "summary": "Four holiday postcards，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.dongcheng2025.booktable",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original complete five-question reading. Dialogue, story and four-entry table task structures follow the source family; new contexts/vocabulary are provisional rather than independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary6.holiday-postcards-119",
+          "family": "reading_choice",
+          "label": "Four holiday postcards",
+          "candidateSHA256": "13ee3f6229d95728b9160f5c0fca580e7786f2fd0c15e3ef04f89506456b2973",
+          "authorCheckSHA256": "db9a2f3bbc33563dd20e393a38cf5a52bda9ee4385f061d8caa6c74c04cf4ec7",
+          "sourceGroupIds": [
+            "expansion.20261024.primary6.holiday-postcards-119#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b119；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four holiday postcards\n\nFour postcards arrived at the class display. These are fictional messages.\n\nA. Leo — Lake Town, Tuesday. I am staying with my aunt for five days. We went out in a boat this morning. Tomorrow, if the weather is good, we will walk around the lake. I have drawn the boat on the front.\n\nB. Maya — Hill Village, Wednesday. We arrived by train yesterday. Our family is staying for a week. The small museum opens only in the afternoon, so we will visit after lunch. I chose a postcard showing the old bridge.\n\nC. Sam — Coast City, Friday. We came by coach on Monday and will leave on Sunday. The beach is windy today. Yesterday we visited an aquarium. My postcard has a picture of a sea turtle.\n\nD. Asha — River Farm, Sunday. I am here with my grandparents for the weekend. We fed the hens before breakfast and picked apples later. We will return home this evening. The picture on my card shows the red barn."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary6.holiday-postcards-119.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who is staying with an aunt?",
+            "material": "Four holiday postcards\n\nFour postcards arrived at the class display. These are fictional messages.\n\nA. Leo — Lake Town, Tuesday. I am staying with my aunt for five days. We went out in a boat this morning. Tomorrow, if the weather is good, we will walk around the lake. I have drawn the boat on the front.\n\nB. Maya — Hill Village, Wednesday. We arrived by train yesterday. Our family is staying for a week. The small museum opens only in the afternoon, so we will visit after lunch. I chose a postcard showing the old bridge.\n\nC. Sam — Coast City, Friday. We came by coach on Monday and will leave on Sunday. The beach is windy today. Yesterday we visited an aquarium. My postcard has a picture of a sea turtle.\n\nD. Asha — River Farm, Sunday. I am here with my grandparents for the weekend. We fed the hens before breakfast and picked apples later. We will return home this evening. The picture on my card shows the red barn.",
+            "explanation": "A Leo stays aunt5days. Maya family/Sam coach trip not aunt.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Maya"
+              },
+              {
+                "id": "o1",
+                "text": "Leo"
+              },
+              {
+                "id": "o2",
+                "text": "Sam"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary6.holiday-postcards-119.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When did Maya arrive in Hill Village?",
+            "material": "Four holiday postcards\n\nFour postcards arrived at the class display. These are fictional messages.\n\nA. Leo — Lake Town, Tuesday. I am staying with my aunt for five days. We went out in a boat this morning. Tomorrow, if the weather is good, we will walk around the lake. I have drawn the boat on the front.\n\nB. Maya — Hill Village, Wednesday. We arrived by train yesterday. Our family is staying for a week. The small museum opens only in the afternoon, so we will visit after lunch. I chose a postcard showing the old bridge.\n\nC. Sam — Coast City, Friday. We came by coach on Monday and will leave on Sunday. The beach is windy today. Yesterday we visited an aquarium. My postcard has a picture of a sea turtle.\n\nD. Asha — River Farm, Sunday. I am here with my grandparents for the weekend. We fed the hens before breakfast and picked apples later. We will return home this evening. The picture on my card shows the red barn.",
+            "explanation": "Wednesday message says yesterday, Tuesday. Wednesday writing and Friday Sam date.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Wednesday"
+              },
+              {
+                "id": "o1",
+                "text": "Friday"
+              },
+              {
+                "id": "o2",
+                "text": "Tuesday"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary6.holiday-postcards-119.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which place did Sam visit on Thursday?",
+            "material": "Four holiday postcards\n\nFour postcards arrived at the class display. These are fictional messages.\n\nA. Leo — Lake Town, Tuesday. I am staying with my aunt for five days. We went out in a boat this morning. Tomorrow, if the weather is good, we will walk around the lake. I have drawn the boat on the front.\n\nB. Maya — Hill Village, Wednesday. We arrived by train yesterday. Our family is staying for a week. The small museum opens only in the afternoon, so we will visit after lunch. I chose a postcard showing the old bridge.\n\nC. Sam — Coast City, Friday. We came by coach on Monday and will leave on Sunday. The beach is windy today. Yesterday we visited an aquarium. My postcard has a picture of a sea turtle.\n\nD. Asha — River Farm, Sunday. I am here with my grandparents for the weekend. We fed the hens before breakfast and picked apples later. We will return home this evening. The picture on my card shows the red barn.",
+            "explanation": "Friday card says aquarium yesterday, Thursday. Farm Asha/bridge Maya picture.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The farm"
+              },
+              {
+                "id": "o1",
+                "text": "The old bridge"
+              },
+              {
+                "id": "o2",
+                "text": "The aquarium"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary6.holiday-postcards-119.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which card shows a building used on a farm?",
+            "material": "Four holiday postcards\n\nFour postcards arrived at the class display. These are fictional messages.\n\nA. Leo — Lake Town, Tuesday. I am staying with my aunt for five days. We went out in a boat this morning. Tomorrow, if the weather is good, we will walk around the lake. I have drawn the boat on the front.\n\nB. Maya — Hill Village, Wednesday. We arrived by train yesterday. Our family is staying for a week. The small museum opens only in the afternoon, so we will visit after lunch. I chose a postcard showing the old bridge.\n\nC. Sam — Coast City, Friday. We came by coach on Monday and will leave on Sunday. The beach is windy today. Yesterday we visited an aquarium. My postcard has a picture of a sea turtle.\n\nD. Asha — River Farm, Sunday. I am here with my grandparents for the weekend. We fed the hens before breakfast and picked apples later. We will return home this evening. The picture on my card shows the red barn.",
+            "explanation": "Asha red barn. Leo boat, Sam turtle.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Asha’s card"
+              },
+              {
+                "id": "o1",
+                "text": "Leo’s card"
+              },
+              {
+                "id": "o2",
+                "text": "Sam’s card"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary6.holiday-postcards-119.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who plans to go home on the day the card is written?",
+            "material": "Four holiday postcards\n\nFour postcards arrived at the class display. These are fictional messages.\n\nA. Leo — Lake Town, Tuesday. I am staying with my aunt for five days. We went out in a boat this morning. Tomorrow, if the weather is good, we will walk around the lake. I have drawn the boat on the front.\n\nB. Maya — Hill Village, Wednesday. We arrived by train yesterday. Our family is staying for a week. The small museum opens only in the afternoon, so we will visit after lunch. I chose a postcard showing the old bridge.\n\nC. Sam — Coast City, Friday. We came by coach on Monday and will leave on Sunday. The beach is windy today. Yesterday we visited an aquarium. My postcard has a picture of a sea turtle.\n\nD. Asha — River Farm, Sunday. I am here with my grandparents for the weekend. We fed the hens before breakfast and picked apples later. We will return home this evening. The picture on my card shows the red barn.",
+            "explanation": "Sunday Asha returns this evening. Leo5days/Mayaweek not same-day departure.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Maya"
+              },
+              {
+                "id": "o1",
+                "text": "Asha"
+              },
+              {
+                "id": "o2",
+                "text": "Leo"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "45f91674f430daa41cafc7b72f57d2f8ec7d20404b883a3d7454bd893536eff6",
+      "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary6.try-four-clubs-119",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "10·24新题 · Four club taster sessions",
+        "summary": "Four club taster sessions，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.dongcheng2025.booktable",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Original complete five-question reading. Dialogue, story and four-entry table task structures follow the source family; new contexts/vocabulary are provisional rather than independent age calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary6.try-four-clubs-119",
+          "family": "reading_choice",
+          "label": "Four club taster sessions",
+          "candidateSHA256": "dae867ebdcf360b2f97cd62cf94a28d4802a2e7d3493ba361cbc4b3b8898bd9b",
+          "authorCheckSHA256": "d45a2eaa9069c5f447d0516003c3636042e704a011a486ed2e255d47d1eaff6d",
+          "sourceGroupIds": [
+            "expansion.20261024.primary6.try-four-clubs-119#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b119；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Four club taster sessions\n\nThe school offers four fictional taster sessions next Saturday. Each booking is for one session. Leave at least thirty minutes between sessions to move rooms and get ready. A parent books a place in advance.\n\nA. Paper Boats — 09:00–10:00, Art Room. Ages9–12. Cost£4. All paper is provided. Bring a box to carry the boat home.\n\nB. Junior Choir — 10:15–11:15, Music Room. Ages10–13. Free. No singing experience is needed. Bring water. No instrument is required.\n\nC. Story Pictures — 10:45–12:00, Library. Ages8–11. Cost£3. Draw one scene from a story. Bring your favourite short book; pencils and paper are supplied.\n\nD. Garden Watch — 13:00–14:00, Garden Room. Ages11–14. Cost£2. Observe garden wildlife with a teacher. Wear shoes suitable for outdoor paths. The meeting room is indoors, but part of the session is outside."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary6.try-four-clubs-119.whole.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which session is free?",
+            "material": "Four club taster sessions\n\nThe school offers four fictional taster sessions next Saturday. Each booking is for one session. Leave at least thirty minutes between sessions to move rooms and get ready. A parent books a place in advance.\n\nA. Paper Boats — 09:00–10:00, Art Room. Ages9–12. Cost£4. All paper is provided. Bring a box to carry the boat home.\n\nB. Junior Choir — 10:15–11:15, Music Room. Ages10–13. Free. No singing experience is needed. Bring water. No instrument is required.\n\nC. Story Pictures — 10:45–12:00, Library. Ages8–11. Cost£3. Draw one scene from a story. Bring your favourite short book; pencils and paper are supplied.\n\nD. Garden Watch — 13:00–14:00, Garden Room. Ages11–14. Cost£2. Observe garden wildlife with a teacher. Wear shoes suitable for outdoor paths. The meeting room is indoors, but part of the session is outside.",
+            "explanation": "B costs nothing. A£4,D£2.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Junior Choir"
+              },
+              {
+                "id": "o1",
+                "text": "Paper Boats"
+              },
+              {
+                "id": "o2",
+                "text": "Garden Watch"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary6.try-four-clubs-119.whole.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does a Paper Boats participant bring?",
+            "material": "Four club taster sessions\n\nThe school offers four fictional taster sessions next Saturday. Each booking is for one session. Leave at least thirty minutes between sessions to move rooms and get ready. A parent books a place in advance.\n\nA. Paper Boats — 09:00–10:00, Art Room. Ages9–12. Cost£4. All paper is provided. Bring a box to carry the boat home.\n\nB. Junior Choir — 10:15–11:15, Music Room. Ages10–13. Free. No singing experience is needed. Bring water. No instrument is required.\n\nC. Story Pictures — 10:45–12:00, Library. Ages8–11. Cost£3. Draw one scene from a story. Bring your favourite short book; pencils and paper are supplied.\n\nD. Garden Watch — 13:00–14:00, Garden Room. Ages11–14. Cost£2. Observe garden wildlife with a teacher. Wear shoes suitable for outdoor paths. The meeting room is indoors, but part of the session is outside.",
+            "explanation": "Box required; paper supplied, instrument irrelevant.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "All the paper"
+              },
+              {
+                "id": "o1",
+                "text": "A carrying box"
+              },
+              {
+                "id": "o2",
+                "text": "A musical instrument"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary6.try-four-clubs-119.whole.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which session can an eight-year-old attend?",
+            "material": "Four club taster sessions\n\nThe school offers four fictional taster sessions next Saturday. Each booking is for one session. Leave at least thirty minutes between sessions to move rooms and get ready. A parent books a place in advance.\n\nA. Paper Boats — 09:00–10:00, Art Room. Ages9–12. Cost£4. All paper is provided. Bring a box to carry the boat home.\n\nB. Junior Choir — 10:15–11:15, Music Room. Ages10–13. Free. No singing experience is needed. Bring water. No instrument is required.\n\nC. Story Pictures — 10:45–12:00, Library. Ages8–11. Cost£3. Draw one scene from a story. Bring your favourite short book; pencils and paper are supplied.\n\nD. Garden Watch — 13:00–14:00, Garden Room. Ages11–14. Cost£2. Observe garden wildlife with a teacher. Wear shoes suitable for outdoor paths. The meeting room is indoors, but part of the session is outside.",
+            "explanation": "C8–11 includes8. B starts10,D11.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Garden Watch"
+              },
+              {
+                "id": "o1",
+                "text": "Junior Choir"
+              },
+              {
+                "id": "o2",
+                "text": "Story Pictures"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary6.try-four-clubs-119.whole.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Can a ten-year-old book Paper Boats followed by Junior Choir under the movement rule?",
+            "material": "Four club taster sessions\n\nThe school offers four fictional taster sessions next Saturday. Each booking is for one session. Leave at least thirty minutes between sessions to move rooms and get ready. A parent books a place in advance.\n\nA. Paper Boats — 09:00–10:00, Art Room. Ages9–12. Cost£4. All paper is provided. Bring a box to carry the boat home.\n\nB. Junior Choir — 10:15–11:15, Music Room. Ages10–13. Free. No singing experience is needed. Bring water. No instrument is required.\n\nC. Story Pictures — 10:45–12:00, Library. Ages8–11. Cost£3. Draw one scene from a story. Bring your favourite short book; pencils and paper are supplied.\n\nD. Garden Watch — 13:00–14:00, Garden Room. Ages11–14. Cost£2. Observe garden wildlife with a teacher. Wear shoes suitable for outdoor paths. The meeting room is indoors, but part of the session is outside.",
+            "explanation": "A ends10:00 B starts10:15, less than30min. Age10 eligible, so transition fails.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "No, there are only fifteen minutes between them"
+              },
+              {
+                "id": "o1",
+                "text": "Yes, there is a full hour between them"
+              },
+              {
+                "id": "o2",
+                "text": "No, Paper Boats is only for adults"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary6.try-four-clubs-119.whole.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should a Garden Watch participant expect?",
+            "material": "Four club taster sessions\n\nThe school offers four fictional taster sessions next Saturday. Each booking is for one session. Leave at least thirty minutes between sessions to move rooms and get ready. A parent books a place in advance.\n\nA. Paper Boats — 09:00–10:00, Art Room. Ages9–12. Cost£4. All paper is provided. Bring a box to carry the boat home.\n\nB. Junior Choir — 10:15–11:15, Music Room. Ages10–13. Free. No singing experience is needed. Bring water. No instrument is required.\n\nC. Story Pictures — 10:45–12:00, Library. Ages8–11. Cost£3. Draw one scene from a story. Bring your favourite short book; pencils and paper are supplied.\n\nD. Garden Watch — 13:00–14:00, Garden Room. Ages11–14. Cost£2. Observe garden wildlife with a teacher. Wear shoes suitable for outdoor paths. The meeting room is indoors, but part of the session is outside.",
+            "explanation": "D explicitly includes outdoor observation with teacher. Indoor-only/singing not description.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A free singing lesson"
+              },
+              {
+                "id": "o1",
+                "text": "Only indoor drawing"
+              },
+              {
+                "id": "o2",
+                "text": "Some supervised activity outside"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "1f5a181d84ff19f6b45e63f99e99c0c21a43c444e670c10a17d8b2edf1da229c",
+      "reviewNotes": "Ten complete original primary practices: three five-gap fixed banks, three five-item category sets, two stories and two four-entry information texts. English questions/options; same-author category, response, time and evidence review only. Not independently age calibrated. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
