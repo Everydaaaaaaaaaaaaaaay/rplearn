@@ -1,0 +1,1095 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b125",
+  "createdAt": "2026-10-24T02:23:38.924232+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.advanced.spoken-guide-125",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "10·24新题 · A voice chosen for everyone",
+        "summary": "A voice chosen for everyone，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.c1.sample1.opencloze",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original eight-gap, one-word open cloze with fixed example 0. Recorded C1 sample is a task-format reference only; no C1 equivalence or independent learner calibration claimed."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete advanced original eight-gap passages: two one-word open clozes and two word formations, all with fixed unscored example0. Same-author idiom, word-form, context and variant review only; no independent C1 or learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.advanced.spoken-guide-125",
+          "family": "open_cloze",
+          "label": "A voice chosen for everyone",
+          "candidateSHA256": "2812480a7eabc0d627d0fda0f0a817f41d1b70dca7ca42c11ddacc1823c56954",
+          "authorCheckSHA256": "5fd30cabf0d169a71258cd0fbdff1ff8fb2b4b247034afd22bc6dac947b0e9eb",
+          "sourceGroupIds": [
+            "expansion.20261024.advanced.spoken-guide-125#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b125；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A voice chosen for everyone\n\nA spoken guide in a public building (0) IS often heard as the building's own voice. Yet its words are written and selected by particular people. In ____1____ of careful preparation, a guide may leave some visitors feeling that the account has no place for their experience.\n\nThe answer is not only to add more voices, ____2____ also to explain how they were chosen. A collection of recordings can sound varied while still reflecting a narrow invitation. No matter ____3____ the final number of contributors is, the process of selecting them remains worth describing.\n\nThere is little point ____4____ collecting different accounts if the presentation then removes every difference between them. One speaker may remember a room as welcoming; another may recall being unable to enter. Neither should be made to speak on ____5____ of everyone who used the building.\n\nThe editor can preserve disagreement as ____6____ as common ground. That requires enough context for listeners to understand what each account refers to. It is all ____7____ easy to overlook an important part of the story that remains unrecorded.\n\nTo some ____8____, every guide offers a route through a larger subject. Its value does not depend on pretending that the route is the territory. Clear information about selection can help visitors enjoy an account while recognising where further questions begin."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.advanced.spoken-guide-125.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 1 with ONE word.",
+            "material": "A voice chosen for everyone\n\nA spoken guide in a public building (0) IS often heard as the building's own voice. Yet its words are written and selected by particular people. In ____1____ of careful preparation, a guide may leave some visitors feeling that the account has no place for their experience.\n\nThe answer is not only to add more voices, ____2____ also to explain how they were chosen. A collection of recordings can sound varied while still reflecting a narrow invitation. No matter ____3____ the final number of contributors is, the process of selecting them remains worth describing.\n\nThere is little point ____4____ collecting different accounts if the presentation then removes every difference between them. One speaker may remember a room as welcoming; another may recall being unable to enter. Neither should be made to speak on ____5____ of everyone who used the building.\n\nThe editor can preserve disagreement as ____6____ as common ground. That requires enough context for listeners to understand what each account refers to. It is all ____7____ easy to overlook an important part of the story that remains unrecorded.\n\nTo some ____8____, every guide offers a route through a larger subject. Its value does not depend on pretending that the route is the territory. Clear information about selection can help visitors enjoy an account while recognising where further questions begin.",
+            "explanation": "In spite of forms the concessive expression. In despite of is not the required standard construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "spite"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "despite"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.spoken-guide-125.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 2 with ONE word.",
+            "material": "A voice chosen for everyone\n\nA spoken guide in a public building (0) IS often heard as the building's own voice. Yet its words are written and selected by particular people. In ____1____ of careful preparation, a guide may leave some visitors feeling that the account has no place for their experience.\n\nThe answer is not only to add more voices, ____2____ also to explain how they were chosen. A collection of recordings can sound varied while still reflecting a narrow invitation. No matter ____3____ the final number of contributors is, the process of selecting them remains worth describing.\n\nThere is little point ____4____ collecting different accounts if the presentation then removes every difference between them. One speaker may remember a room as welcoming; another may recall being unable to enter. Neither should be made to speak on ____5____ of everyone who used the building.\n\nThe editor can preserve disagreement as ____6____ as common ground. That requires enough context for listeners to understand what each account refers to. It is all ____7____ easy to overlook an important part of the story that remains unrecorded.\n\nTo some ____8____, every guide offers a route through a larger subject. Its value does not depend on pretending that the route is the territory. Clear information about selection can help visitors enjoy an account while recognising where further questions begin.",
+            "explanation": "Not only ... but also is the correlative pair. Than is comparative.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "but"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "than"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.spoken-guide-125.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 3 with ONE word.",
+            "material": "A voice chosen for everyone\n\nA spoken guide in a public building (0) IS often heard as the building's own voice. Yet its words are written and selected by particular people. In ____1____ of careful preparation, a guide may leave some visitors feeling that the account has no place for their experience.\n\nThe answer is not only to add more voices, ____2____ also to explain how they were chosen. A collection of recordings can sound varied while still reflecting a narrow invitation. No matter ____3____ the final number of contributors is, the process of selecting them remains worth describing.\n\nThere is little point ____4____ collecting different accounts if the presentation then removes every difference between them. One speaker may remember a room as welcoming; another may recall being unable to enter. Neither should be made to speak on ____5____ of everyone who used the building.\n\nThe editor can preserve disagreement as ____6____ as common ground. That requires enough context for listeners to understand what each account refers to. It is all ____7____ easy to overlook an important part of the story that remains unrecorded.\n\nTo some ____8____, every guide offers a route through a larger subject. Its value does not depend on pretending that the route is the territory. Clear information about selection can help visitors enjoy an account while recognising where further questions begin.",
+            "explanation": "No matter what the number is forms an embedded variable question. That does not supply the complement value.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "what"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "that"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.spoken-guide-125.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 4 with ONE word.",
+            "material": "A voice chosen for everyone\n\nA spoken guide in a public building (0) IS often heard as the building's own voice. Yet its words are written and selected by particular people. In ____1____ of careful preparation, a guide may leave some visitors feeling that the account has no place for their experience.\n\nThe answer is not only to add more voices, ____2____ also to explain how they were chosen. A collection of recordings can sound varied while still reflecting a narrow invitation. No matter ____3____ the final number of contributors is, the process of selecting them remains worth describing.\n\nThere is little point ____4____ collecting different accounts if the presentation then removes every difference between them. One speaker may remember a room as welcoming; another may recall being unable to enter. Neither should be made to speak on ____5____ of everyone who used the building.\n\nThe editor can preserve disagreement as ____6____ as common ground. That requires enough context for listeners to understand what each account refers to. It is all ____7____ easy to overlook an important part of the story that remains unrecorded.\n\nTo some ____8____, every guide offers a route through a larger subject. Its value does not depend on pretending that the route is the territory. Clear information about selection can help visitors enjoy an account while recognising where further questions begin.",
+            "explanation": "Little point in collecting uses in plus -ing. To collecting does not fit this construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.spoken-guide-125.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 5 with ONE word.",
+            "material": "A voice chosen for everyone\n\nA spoken guide in a public building (0) IS often heard as the building's own voice. Yet its words are written and selected by particular people. In ____1____ of careful preparation, a guide may leave some visitors feeling that the account has no place for their experience.\n\nThe answer is not only to add more voices, ____2____ also to explain how they were chosen. A collection of recordings can sound varied while still reflecting a narrow invitation. No matter ____3____ the final number of contributors is, the process of selecting them remains worth describing.\n\nThere is little point ____4____ collecting different accounts if the presentation then removes every difference between them. One speaker may remember a room as welcoming; another may recall being unable to enter. Neither should be made to speak on ____5____ of everyone who used the building.\n\nThe editor can preserve disagreement as ____6____ as common ground. That requires enough context for listeners to understand what each account refers to. It is all ____7____ easy to overlook an important part of the story that remains unrecorded.\n\nTo some ____8____, every guide offers a route through a larger subject. Its value does not depend on pretending that the route is the territory. Clear information about selection can help visitors enjoy an account while recognising where further questions begin.",
+            "explanation": "On behalf of means representing others. Half does not form this expression.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "behalf"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "half"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.spoken-guide-125.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 6 with ONE word.",
+            "material": "A voice chosen for everyone\n\nA spoken guide in a public building (0) IS often heard as the building's own voice. Yet its words are written and selected by particular people. In ____1____ of careful preparation, a guide may leave some visitors feeling that the account has no place for their experience.\n\nThe answer is not only to add more voices, ____2____ also to explain how they were chosen. A collection of recordings can sound varied while still reflecting a narrow invitation. No matter ____3____ the final number of contributors is, the process of selecting them remains worth describing.\n\nThere is little point ____4____ collecting different accounts if the presentation then removes every difference between them. One speaker may remember a room as welcoming; another may recall being unable to enter. Neither should be made to speak on ____5____ of everyone who used the building.\n\nThe editor can preserve disagreement as ____6____ as common ground. That requires enough context for listeners to understand what each account refers to. It is all ____7____ easy to overlook an important part of the story that remains unrecorded.\n\nTo some ____8____, every guide offers a route through a larger subject. Its value does not depend on pretending that the route is the territory. Clear information about selection can help visitors enjoy an account while recognising where further questions begin.",
+            "explanation": "As well as means in addition to. Good does not complete the phrase.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "well"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "good"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.spoken-guide-125.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 7 with ONE word.",
+            "material": "A voice chosen for everyone\n\nA spoken guide in a public building (0) IS often heard as the building's own voice. Yet its words are written and selected by particular people. In ____1____ of careful preparation, a guide may leave some visitors feeling that the account has no place for their experience.\n\nThe answer is not only to add more voices, ____2____ also to explain how they were chosen. A collection of recordings can sound varied while still reflecting a narrow invitation. No matter ____3____ the final number of contributors is, the process of selecting them remains worth describing.\n\nThere is little point ____4____ collecting different accounts if the presentation then removes every difference between them. One speaker may remember a room as welcoming; another may recall being unable to enter. Neither should be made to speak on ____5____ of everyone who used the building.\n\nThe editor can preserve disagreement as ____6____ as common ground. That requires enough context for listeners to understand what each account refers to. It is all ____7____ easy to overlook an important part of the story that remains unrecorded.\n\nTo some ____8____, every guide offers a route through a larger subject. Its value does not depend on pretending that the route is the territory. Clear information about selection can help visitors enjoy an account while recognising where further questions begin.",
+            "explanation": "All too easy means regrettably easy. To does not complete this degree expression.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "too"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.spoken-guide-125.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 8 with ONE word.",
+            "material": "A voice chosen for everyone\n\nA spoken guide in a public building (0) IS often heard as the building's own voice. Yet its words are written and selected by particular people. In ____1____ of careful preparation, a guide may leave some visitors feeling that the account has no place for their experience.\n\nThe answer is not only to add more voices, ____2____ also to explain how they were chosen. A collection of recordings can sound varied while still reflecting a narrow invitation. No matter ____3____ the final number of contributors is, the process of selecting them remains worth describing.\n\nThere is little point ____4____ collecting different accounts if the presentation then removes every difference between them. One speaker may remember a room as welcoming; another may recall being unable to enter. Neither should be made to speak on ____5____ of everyone who used the building.\n\nThe editor can preserve disagreement as ____6____ as common ground. That requires enough context for listeners to understand what each account refers to. It is all ____7____ easy to overlook an important part of the story that remains unrecorded.\n\nTo some ____8____, every guide offers a route through a larger subject. Its value does not depend on pretending that the route is the territory. Clear information about selection can help visitors enjoy an account while recognising where further questions begin.",
+            "explanation": "To some extent/degree qualifies the claim. Amount does not fit the fixed construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "extent",
+              "degree"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "amount"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "a3313a08da57663636c4e15315225a0c8bc3c5ad48ea4d35dc3d6e6387477c91",
+      "reviewNotes": "Four complete advanced original eight-gap passages: two one-word open clozes and two word formations, all with fixed unscored example0. Same-author idiom, word-form, context and variant review only; no independent C1 or learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.advanced.changed-train-125",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "10·24新题 · A plan that moved with the timetable",
+        "summary": "A plan that moved with the timetable，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.c1.sample1.opencloze",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original eight-gap, one-word open cloze with fixed example 0. Recorded C1 sample is a task-format reference only; no C1 equivalence or independent learner calibration claimed."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete advanced original eight-gap passages: two one-word open clozes and two word formations, all with fixed unscored example0. Same-author idiom, word-form, context and variant review only; no independent C1 or learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.advanced.changed-train-125",
+          "family": "open_cloze",
+          "label": "A plan that moved with the timetable",
+          "candidateSHA256": "fb474528e1fd4d846866fe45262d9c93e23f7200a8333589a0168fdeff582ea9",
+          "authorCheckSHA256": "0456dc2764217ebad098fc291d8364e57b648af5c02eb2ca7c5b3d73b7b2935a",
+          "sourceGroupIds": [
+            "expansion.20261024.advanced.changed-train-125#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b125；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A plan that moved with the timetable\n\nA successful group journey (0) IS sometimes remembered as a sequence in which nothing went wrong. Our trip was not like that. Had it ____1____ been for a railway notice sent the previous evening, we would have arrived at a platform from which no train was leaving.\n\nNo sooner had we read the notice ____2____ our organiser began checking alternatives. She did not promise that the original schedule could be preserved. She asked which parts of the visit mattered most and which could move. As long ____3____ we reached the exhibition before its final entry time, the morning's order was flexible.\n\nWe contacted the venue by ____4____ of the telephone number on its official booking page. The staff confirmed the entry conditions and advised us which entrance would remain open. That conversation settled a practical question; it did not give us control over the railway.\n\nA few members complained that we should be able to take the advertised train service ____5____ granted. The organiser agreed that reliable information mattered, but said repeating that expectation would not move us towards a working plan. Little ____6____ little, the group stopped comparing every alternative with an impossible original.\n\n____7____ other words, adaptation did not require pretending the disruption was welcome. It required deciding what could still be done. We reached the exhibition with time to look around, rather ____8____ spend the whole morning defending a timetable that no longer applied."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.advanced.changed-train-125.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 1 with ONE word.",
+            "material": "A plan that moved with the timetable\n\nA successful group journey (0) IS sometimes remembered as a sequence in which nothing went wrong. Our trip was not like that. Had it ____1____ been for a railway notice sent the previous evening, we would have arrived at a platform from which no train was leaving.\n\nNo sooner had we read the notice ____2____ our organiser began checking alternatives. She did not promise that the original schedule could be preserved. She asked which parts of the visit mattered most and which could move. As long ____3____ we reached the exhibition before its final entry time, the morning's order was flexible.\n\nWe contacted the venue by ____4____ of the telephone number on its official booking page. The staff confirmed the entry conditions and advised us which entrance would remain open. That conversation settled a practical question; it did not give us control over the railway.\n\nA few members complained that we should be able to take the advertised train service ____5____ granted. The organiser agreed that reliable information mattered, but said repeating that expectation would not move us towards a working plan. Little ____6____ little, the group stopped comparing every alternative with an impossible original.\n\n____7____ other words, adaptation did not require pretending the disruption was welcome. It required deciding what could still be done. We reached the exhibition with time to look around, rather ____8____ spend the whole morning defending a timetable that no longer applied.",
+            "explanation": "Had it not been for is inverted counterfactual condition. No cannot negate been in this construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "not"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "no"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.changed-train-125.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 2 with ONE word.",
+            "material": "A plan that moved with the timetable\n\nA successful group journey (0) IS sometimes remembered as a sequence in which nothing went wrong. Our trip was not like that. Had it ____1____ been for a railway notice sent the previous evening, we would have arrived at a platform from which no train was leaving.\n\nNo sooner had we read the notice ____2____ our organiser began checking alternatives. She did not promise that the original schedule could be preserved. She asked which parts of the visit mattered most and which could move. As long ____3____ we reached the exhibition before its final entry time, the morning's order was flexible.\n\nWe contacted the venue by ____4____ of the telephone number on its official booking page. The staff confirmed the entry conditions and advised us which entrance would remain open. That conversation settled a practical question; it did not give us control over the railway.\n\nA few members complained that we should be able to take the advertised train service ____5____ granted. The organiser agreed that reliable information mattered, but said repeating that expectation would not move us towards a working plan. Little ____6____ little, the group stopped comparing every alternative with an impossible original.\n\n____7____ other words, adaptation did not require pretending the disruption was welcome. It required deciding what could still be done. We reached the exhibition with time to look around, rather ____8____ spend the whole morning defending a timetable that no longer applied.",
+            "explanation": "No sooner ... than is the comparative temporal pair. Then does not complete the construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "than"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "then"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.changed-train-125.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 3 with ONE word.",
+            "material": "A plan that moved with the timetable\n\nA successful group journey (0) IS sometimes remembered as a sequence in which nothing went wrong. Our trip was not like that. Had it ____1____ been for a railway notice sent the previous evening, we would have arrived at a platform from which no train was leaving.\n\nNo sooner had we read the notice ____2____ our organiser began checking alternatives. She did not promise that the original schedule could be preserved. She asked which parts of the visit mattered most and which could move. As long ____3____ we reached the exhibition before its final entry time, the morning's order was flexible.\n\nWe contacted the venue by ____4____ of the telephone number on its official booking page. The staff confirmed the entry conditions and advised us which entrance would remain open. That conversation settled a practical question; it did not give us control over the railway.\n\nA few members complained that we should be able to take the advertised train service ____5____ granted. The organiser agreed that reliable information mattered, but said repeating that expectation would not move us towards a working plan. Little ____6____ little, the group stopped comparing every alternative with an impossible original.\n\n____7____ other words, adaptation did not require pretending the disruption was welcome. It required deciding what could still be done. We reached the exhibition with time to look around, rather ____8____ spend the whole morning defending a timetable that no longer applied.",
+            "explanation": "As long as introduces the condition. Than would not form it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "as"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "than"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.changed-train-125.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 4 with ONE word.",
+            "material": "A plan that moved with the timetable\n\nA successful group journey (0) IS sometimes remembered as a sequence in which nothing went wrong. Our trip was not like that. Had it ____1____ been for a railway notice sent the previous evening, we would have arrived at a platform from which no train was leaving.\n\nNo sooner had we read the notice ____2____ our organiser began checking alternatives. She did not promise that the original schedule could be preserved. She asked which parts of the visit mattered most and which could move. As long ____3____ we reached the exhibition before its final entry time, the morning's order was flexible.\n\nWe contacted the venue by ____4____ of the telephone number on its official booking page. The staff confirmed the entry conditions and advised us which entrance would remain open. That conversation settled a practical question; it did not give us control over the railway.\n\nA few members complained that we should be able to take the advertised train service ____5____ granted. The organiser agreed that reliable information mattered, but said repeating that expectation would not move us towards a working plan. Little ____6____ little, the group stopped comparing every alternative with an impossible original.\n\n____7____ other words, adaptation did not require pretending the disruption was welcome. It required deciding what could still be done. We reached the exhibition with time to look around, rather ____8____ spend the whole morning defending a timetable that no longer applied.",
+            "explanation": "By means of names the method. Mean singular is not the fixed expression.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "means"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "mean"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.changed-train-125.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 5 with ONE word.",
+            "material": "A plan that moved with the timetable\n\nA successful group journey (0) IS sometimes remembered as a sequence in which nothing went wrong. Our trip was not like that. Had it ____1____ been for a railway notice sent the previous evening, we would have arrived at a platform from which no train was leaving.\n\nNo sooner had we read the notice ____2____ our organiser began checking alternatives. She did not promise that the original schedule could be preserved. She asked which parts of the visit mattered most and which could move. As long ____3____ we reached the exhibition before its final entry time, the morning's order was flexible.\n\nWe contacted the venue by ____4____ of the telephone number on its official booking page. The staff confirmed the entry conditions and advised us which entrance would remain open. That conversation settled a practical question; it did not give us control over the railway.\n\nA few members complained that we should be able to take the advertised train service ____5____ granted. The organiser agreed that reliable information mattered, but said repeating that expectation would not move us towards a working plan. Little ____6____ little, the group stopped comparing every alternative with an impossible original.\n\n____7____ other words, adaptation did not require pretending the disruption was welcome. It required deciding what could still be done. We reached the exhibition with time to look around, rather ____8____ spend the whole morning defending a timetable that no longer applied.",
+            "explanation": "Take for granted is the established phrase. As does not fit it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "as"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.changed-train-125.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 6 with ONE word.",
+            "material": "A plan that moved with the timetable\n\nA successful group journey (0) IS sometimes remembered as a sequence in which nothing went wrong. Our trip was not like that. Had it ____1____ been for a railway notice sent the previous evening, we would have arrived at a platform from which no train was leaving.\n\nNo sooner had we read the notice ____2____ our organiser began checking alternatives. She did not promise that the original schedule could be preserved. She asked which parts of the visit mattered most and which could move. As long ____3____ we reached the exhibition before its final entry time, the morning's order was flexible.\n\nWe contacted the venue by ____4____ of the telephone number on its official booking page. The staff confirmed the entry conditions and advised us which entrance would remain open. That conversation settled a practical question; it did not give us control over the railway.\n\nA few members complained that we should be able to take the advertised train service ____5____ granted. The organiser agreed that reliable information mattered, but said repeating that expectation would not move us towards a working plan. Little ____6____ little, the group stopped comparing every alternative with an impossible original.\n\n____7____ other words, adaptation did not require pretending the disruption was welcome. It required deciding what could still be done. We reached the exhibition with time to look around, rather ____8____ spend the whole morning defending a timetable that no longer applied.",
+            "explanation": "Little by little means gradually. With does not complete the idiom.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "by"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "with"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.changed-train-125.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 7 with ONE word.",
+            "material": "A plan that moved with the timetable\n\nA successful group journey (0) IS sometimes remembered as a sequence in which nothing went wrong. Our trip was not like that. Had it ____1____ been for a railway notice sent the previous evening, we would have arrived at a platform from which no train was leaving.\n\nNo sooner had we read the notice ____2____ our organiser began checking alternatives. She did not promise that the original schedule could be preserved. She asked which parts of the visit mattered most and which could move. As long ____3____ we reached the exhibition before its final entry time, the morning's order was flexible.\n\nWe contacted the venue by ____4____ of the telephone number on its official booking page. The staff confirmed the entry conditions and advised us which entrance would remain open. That conversation settled a practical question; it did not give us control over the railway.\n\nA few members complained that we should be able to take the advertised train service ____5____ granted. The organiser agreed that reliable information mattered, but said repeating that expectation would not move us towards a working plan. Little ____6____ little, the group stopped comparing every alternative with an impossible original.\n\n____7____ other words, adaptation did not require pretending the disruption was welcome. It required deciding what could still be done. We reached the exhibition with time to look around, rather ____8____ spend the whole morning defending a timetable that no longer applied.",
+            "explanation": "In other words reformulates the point. On other words does not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "In"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "On"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.changed-train-125.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete passage. Write ONE word in each gap. Gap 0 is an example. Use capital letters; marking ignores case.",
+            "prompt": "Complete gap 8 with ONE word.",
+            "material": "A plan that moved with the timetable\n\nA successful group journey (0) IS sometimes remembered as a sequence in which nothing went wrong. Our trip was not like that. Had it ____1____ been for a railway notice sent the previous evening, we would have arrived at a platform from which no train was leaving.\n\nNo sooner had we read the notice ____2____ our organiser began checking alternatives. She did not promise that the original schedule could be preserved. She asked which parts of the visit mattered most and which could move. As long ____3____ we reached the exhibition before its final entry time, the morning's order was flexible.\n\nWe contacted the venue by ____4____ of the telephone number on its official booking page. The staff confirmed the entry conditions and advised us which entrance would remain open. That conversation settled a practical question; it did not give us control over the railway.\n\nA few members complained that we should be able to take the advertised train service ____5____ granted. The organiser agreed that reliable information mattered, but said repeating that expectation would not move us towards a working plan. Little ____6____ little, the group stopped comparing every alternative with an impossible original.\n\n____7____ other words, adaptation did not require pretending the disruption was welcome. It required deciding what could still be done. We reached the exhibition with time to look around, rather ____8____ spend the whole morning defending a timetable that no longer applied.",
+            "explanation": "Rather than contrasts visiting with defending obsolete timetable. Then is temporal, not the conjunction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "than"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "then"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "01164ff7670ca8c36efca95a2d220c18017e35b93f1282d747216369604ab14d",
+      "reviewNotes": "Four complete advanced original eight-gap passages: two one-word open clozes and two word formations, all with fixed unscored example0. Same-author idiom, word-form, context and variant review only; no independent C1 or learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.advanced.island-map-125",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "10·24新题 · The island that disappeared",
+        "summary": "The island that disappeared，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.c1.sample1.part3",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original eight-gap word formation with fixed unscored example0. English spelling variants accepted; source supplies C1 task form only, not equivalent difficulty."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete advanced original eight-gap passages: two one-word open clozes and two word formations, all with fixed unscored example0. Same-author idiom, word-form, context and variant review only; no independent C1 or learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.advanced.island-map-125",
+          "family": "passage_form",
+          "label": "The island that disappeared",
+          "candidateSHA256": "5f59c9be4e00ba7e998caffc753f5a32c510534ee0221d099f88e3ba5818b766",
+          "authorCheckSHA256": "74e611bb35a0a72f7acf4a1beee5b7fbfcb1a05fd99856fa3d75fd57ef005131",
+          "sourceGroupIds": [
+            "expansion.20261024.advanced.island-map-125#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b125；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The island that disappeared\n\nThe map in our novel-writing club began as an exercise in (0) IMAGINATION (IMAGINE). Each member added a place before writing a short scene set there. We did not need a real island, but we did need enough ____1____ (PRECISE) for readers to understand how the invented places related to one another.\n\nA river became an immediately ____2____ (RECOGNISE) feature. Different writers used it as a boundary, a route or a source of danger. When a later map omitted a small island at its mouth, several scenes suddenly became difficult to follow.\n\nThe island's ____3____ (APPEAR) was accidental. Nobody had intended it to vanish from the story. The artist had simplified the coastline and ____4____ (DELIBERATE) removed minor details, without realising that one apparent detail carried a whole episode.\n\nWe restored it and discussed the remaining ____5____ (CERTAIN) about distances. A journey described as a day's walk in one scene took an hour in another. Several ____6____ (COMPARE) between passages revealed that the problem extended beyond the drawing.\n\nIt would be a mistake to dismiss the map as ____7____ (RELY) merely because the setting was fictional. It could be consistent or inconsistent with the world the stories established. Its final ____8____ (INTERPRET) depended on those relationships, not on whether the island existed outside the pages. Revising the drawing helped us read the stories more carefully too."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.advanced.island-map-125.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 1 with one word formed from PRECISE.",
+            "material": "The island that disappeared\n\nThe map in our novel-writing club began as an exercise in (0) IMAGINATION (IMAGINE). Each member added a place before writing a short scene set there. We did not need a real island, but we did need enough ____1____ (PRECISE) for readers to understand how the invented places related to one another.\n\nA river became an immediately ____2____ (RECOGNISE) feature. Different writers used it as a boundary, a route or a source of danger. When a later map omitted a small island at its mouth, several scenes suddenly became difficult to follow.\n\nThe island's ____3____ (APPEAR) was accidental. Nobody had intended it to vanish from the story. The artist had simplified the coastline and ____4____ (DELIBERATE) removed minor details, without realising that one apparent detail carried a whole episode.\n\nWe restored it and discussed the remaining ____5____ (CERTAIN) about distances. A journey described as a day's walk in one scene took an hour in another. Several ____6____ (COMPARE) between passages revealed that the problem extended beyond the drawing.\n\nIt would be a mistake to dismiss the map as ____7____ (RELY) merely because the setting was fictional. It could be consistent or inconsistent with the world the stories established. Its final ____8____ (INTERPRET) depended on those relationships, not on whether the island existed outside the pages. Revising the drawing helped us read the stories more carefully too.",
+            "explanation": "Enough precision requires noun. Adjective/adverb do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "precision"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "precise",
+                "precisely"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.island-map-125.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 2 with one word formed from RECOGNISE.",
+            "material": "The island that disappeared\n\nThe map in our novel-writing club began as an exercise in (0) IMAGINATION (IMAGINE). Each member added a place before writing a short scene set there. We did not need a real island, but we did need enough ____1____ (PRECISE) for readers to understand how the invented places related to one another.\n\nA river became an immediately ____2____ (RECOGNISE) feature. Different writers used it as a boundary, a route or a source of danger. When a later map omitted a small island at its mouth, several scenes suddenly became difficult to follow.\n\nThe island's ____3____ (APPEAR) was accidental. Nobody had intended it to vanish from the story. The artist had simplified the coastline and ____4____ (DELIBERATE) removed minor details, without realising that one apparent detail carried a whole episode.\n\nWe restored it and discussed the remaining ____5____ (CERTAIN) about distances. A journey described as a day's walk in one scene took an hour in another. Several ____6____ (COMPARE) between passages revealed that the problem extended beyond the drawing.\n\nIt would be a mistake to dismiss the map as ____7____ (RELY) merely because the setting was fictional. It could be consistent or inconsistent with the world the stories established. Its final ____8____ (INTERPRET) depended on those relationships, not on whether the island existed outside the pages. Revising the drawing helped us read the stories more carefully too.",
+            "explanation": "Recognisable/recognizable modifies feature. Noun/adverb do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "recognisable",
+              "recognizable"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "recognition",
+                "recognisably"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.island-map-125.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 3 with one word formed from APPEAR.",
+            "material": "The island that disappeared\n\nThe map in our novel-writing club began as an exercise in (0) IMAGINATION (IMAGINE). Each member added a place before writing a short scene set there. We did not need a real island, but we did need enough ____1____ (PRECISE) for readers to understand how the invented places related to one another.\n\nA river became an immediately ____2____ (RECOGNISE) feature. Different writers used it as a boundary, a route or a source of danger. When a later map omitted a small island at its mouth, several scenes suddenly became difficult to follow.\n\nThe island's ____3____ (APPEAR) was accidental. Nobody had intended it to vanish from the story. The artist had simplified the coastline and ____4____ (DELIBERATE) removed minor details, without realising that one apparent detail carried a whole episode.\n\nWe restored it and discussed the remaining ____5____ (CERTAIN) about distances. A journey described as a day's walk in one scene took an hour in another. Several ____6____ (COMPARE) between passages revealed that the problem extended beyond the drawing.\n\nIt would be a mistake to dismiss the map as ____7____ (RELY) merely because the setting was fictional. It could be consistent or inconsistent with the world the stories established. Its final ____8____ (INTERPRET) depended on those relationships, not on whether the island existed outside the pages. Revising the drawing helped us read the stories more carefully too.",
+            "explanation": "Vanish context requires disappearance. Appearance reverses event and appear is verb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "disappearance"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "appearance",
+                "appear"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.island-map-125.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 4 with one word formed from DELIBERATE.",
+            "material": "The island that disappeared\n\nThe map in our novel-writing club began as an exercise in (0) IMAGINATION (IMAGINE). Each member added a place before writing a short scene set there. We did not need a real island, but we did need enough ____1____ (PRECISE) for readers to understand how the invented places related to one another.\n\nA river became an immediately ____2____ (RECOGNISE) feature. Different writers used it as a boundary, a route or a source of danger. When a later map omitted a small island at its mouth, several scenes suddenly became difficult to follow.\n\nThe island's ____3____ (APPEAR) was accidental. Nobody had intended it to vanish from the story. The artist had simplified the coastline and ____4____ (DELIBERATE) removed minor details, without realising that one apparent detail carried a whole episode.\n\nWe restored it and discussed the remaining ____5____ (CERTAIN) about distances. A journey described as a day's walk in one scene took an hour in another. Several ____6____ (COMPARE) between passages revealed that the problem extended beyond the drawing.\n\nIt would be a mistake to dismiss the map as ____7____ (RELY) merely because the setting was fictional. It could be consistent or inconsistent with the world the stories established. Its final ____8____ (INTERPRET) depended on those relationships, not on whether the island existed outside the pages. Revising the drawing helped us read the stories more carefully too.",
+            "explanation": "Deliberately modifies removed. Adjective/noun do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "deliberately"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "deliberate",
+                "deliberation"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.island-map-125.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 5 with one word formed from CERTAIN.",
+            "material": "The island that disappeared\n\nThe map in our novel-writing club began as an exercise in (0) IMAGINATION (IMAGINE). Each member added a place before writing a short scene set there. We did not need a real island, but we did need enough ____1____ (PRECISE) for readers to understand how the invented places related to one another.\n\nA river became an immediately ____2____ (RECOGNISE) feature. Different writers used it as a boundary, a route or a source of danger. When a later map omitted a small island at its mouth, several scenes suddenly became difficult to follow.\n\nThe island's ____3____ (APPEAR) was accidental. Nobody had intended it to vanish from the story. The artist had simplified the coastline and ____4____ (DELIBERATE) removed minor details, without realising that one apparent detail carried a whole episode.\n\nWe restored it and discussed the remaining ____5____ (CERTAIN) about distances. A journey described as a day's walk in one scene took an hour in another. Several ____6____ (COMPARE) between passages revealed that the problem extended beyond the drawing.\n\nIt would be a mistake to dismiss the map as ____7____ (RELY) merely because the setting was fictional. It could be consistent or inconsistent with the world the stories established. Its final ____8____ (INTERPRET) depended on those relationships, not on whether the island existed outside the pages. Revising the drawing helped us read the stories more carefully too.",
+            "explanation": "Conflicting travel times leave uncertainty, not certainty. Certain adjective does not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "uncertainty"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "certainty",
+                "certain"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.island-map-125.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 6 with one word formed from COMPARE.",
+            "material": "The island that disappeared\n\nThe map in our novel-writing club began as an exercise in (0) IMAGINATION (IMAGINE). Each member added a place before writing a short scene set there. We did not need a real island, but we did need enough ____1____ (PRECISE) for readers to understand how the invented places related to one another.\n\nA river became an immediately ____2____ (RECOGNISE) feature. Different writers used it as a boundary, a route or a source of danger. When a later map omitted a small island at its mouth, several scenes suddenly became difficult to follow.\n\nThe island's ____3____ (APPEAR) was accidental. Nobody had intended it to vanish from the story. The artist had simplified the coastline and ____4____ (DELIBERATE) removed minor details, without realising that one apparent detail carried a whole episode.\n\nWe restored it and discussed the remaining ____5____ (CERTAIN) about distances. A journey described as a day's walk in one scene took an hour in another. Several ____6____ (COMPARE) between passages revealed that the problem extended beyond the drawing.\n\nIt would be a mistake to dismiss the map as ____7____ (RELY) merely because the setting was fictional. It could be consistent or inconsistent with the world the stories established. Its final ____8____ (INTERPRET) depended on those relationships, not on whether the island existed outside the pages. Revising the drawing helped us read the stories more carefully too.",
+            "explanation": "Several requires plural comparisons. Singular/verb do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "comparisons"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "comparison",
+                "compare"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.island-map-125.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 7 with one word formed from RELY.",
+            "material": "The island that disappeared\n\nThe map in our novel-writing club began as an exercise in (0) IMAGINATION (IMAGINE). Each member added a place before writing a short scene set there. We did not need a real island, but we did need enough ____1____ (PRECISE) for readers to understand how the invented places related to one another.\n\nA river became an immediately ____2____ (RECOGNISE) feature. Different writers used it as a boundary, a route or a source of danger. When a later map omitted a small island at its mouth, several scenes suddenly became difficult to follow.\n\nThe island's ____3____ (APPEAR) was accidental. Nobody had intended it to vanish from the story. The artist had simplified the coastline and ____4____ (DELIBERATE) removed minor details, without realising that one apparent detail carried a whole episode.\n\nWe restored it and discussed the remaining ____5____ (CERTAIN) about distances. A journey described as a day's walk in one scene took an hour in another. Several ____6____ (COMPARE) between passages revealed that the problem extended beyond the drawing.\n\nIt would be a mistake to dismiss the map as ____7____ (RELY) merely because the setting was fictional. It could be consistent or inconsistent with the world the stories established. Its final ____8____ (INTERPRET) depended on those relationships, not on whether the island existed outside the pages. Revising the drawing helped us read the stories more carefully too.",
+            "explanation": "Unreliable is the negative adjective in dismiss as unreliable. The following consistent-or-inconsistent distinction rejects judging reliability merely from fictional status. Reliance noun/reliably adverb do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "unreliable"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "reliance",
+                "reliably"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.island-map-125.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 8 with one word formed from INTERPRET.",
+            "material": "The island that disappeared\n\nThe map in our novel-writing club began as an exercise in (0) IMAGINATION (IMAGINE). Each member added a place before writing a short scene set there. We did not need a real island, but we did need enough ____1____ (PRECISE) for readers to understand how the invented places related to one another.\n\nA river became an immediately ____2____ (RECOGNISE) feature. Different writers used it as a boundary, a route or a source of danger. When a later map omitted a small island at its mouth, several scenes suddenly became difficult to follow.\n\nThe island's ____3____ (APPEAR) was accidental. Nobody had intended it to vanish from the story. The artist had simplified the coastline and ____4____ (DELIBERATE) removed minor details, without realising that one apparent detail carried a whole episode.\n\nWe restored it and discussed the remaining ____5____ (CERTAIN) about distances. A journey described as a day's walk in one scene took an hour in another. Several ____6____ (COMPARE) between passages revealed that the problem extended beyond the drawing.\n\nIt would be a mistake to dismiss the map as ____7____ (RELY) merely because the setting was fictional. It could be consistent or inconsistent with the world the stories established. Its final ____8____ (INTERPRET) depended on those relationships, not on whether the island existed outside the pages. Revising the drawing helped us read the stories more carefully too.",
+            "explanation": "Its final interpretation names an act/result of reading. Verb/adjective do not fill noun slot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "interpretation"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "interpret",
+                "interpretative"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "f0740eeedbbfd3aa7a889603e6deaf359da8e79e11c1c94d7fa42ce0c3c222aa",
+      "reviewNotes": "Four complete advanced original eight-gap passages: two one-word open clozes and two word formations, all with fixed unscored example0. Same-author idiom, word-form, context and variant review only; no independent C1 or learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.advanced.meeting-turns-125",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "advanced",
+        "title": "10·24新题 · A meeting with more than one way to speak",
+        "summary": "A meeting with more than one way to speak，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "advanced.c1.sample1.part3",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original eight-gap word formation with fixed unscored example0. English spelling variants accepted; source supplies C1 task form only, not equivalent difficulty."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete advanced original eight-gap passages: two one-word open clozes and two word formations, all with fixed unscored example0. Same-author idiom, word-form, context and variant review only; no independent C1 or learner calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.advanced.meeting-turns-125",
+          "family": "passage_form",
+          "label": "A meeting with more than one way to speak",
+          "candidateSHA256": "80606a57a4ab25b5400077a4c221fc01abbfe475ac3a0c65840c94c3a3d05ef8",
+          "authorCheckSHA256": "7fb6c5151042685c186129b4441499c974d912beac1bffe040b4ea5054f7eecd",
+          "sourceGroupIds": [
+            "expansion.20261024.advanced.meeting-turns-125#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b125；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A meeting with more than one way to speak\n\nThe (0) PREPARATION (PREPARE) for our community meeting included a question about participation. The organiser wanted people to be heard without assuming that everyone would respond best to an open invitation to speak before a large group.\n\nAll twelve ____1____ (PARTICIPATE) received the main questions in advance. They could prepare a short note or simply think about the topic. Their ____2____ (WILLING) to contribute did not always appear as a hand raised in the first minute.\n\nOne member explained that she felt ____3____ (COMFORT) speaking without time to organise her thoughts. She could answer clearly in writing, but became anxious when asked for an immediate response. The organiser changed the format rather than label her uninterested.\n\nSmall groups spoke in turn, with time to finish a point without ____4____ (INTERRUPT). Written comments could be submitted ____5____ (ANONYMOUS), although contributors were asked to avoid including other people's private details.\n\nSeveral ____6____ (SUGGEST) concerned the meeting itself. The organiser kept enough ____7____ (FLEXIBLE) in the schedule to discuss them before returning to the main topic. This did not mean that every proposed change was accepted.\n\nThe final plan required ____8____ (COLLABORATE) between people who preferred different ways of working. No single arrangement removed every barrier, but the reasons for the choices were clearer. The meeting's success could not be measured only by counting how many people had spoken aloud."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.advanced.meeting-turns-125.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 1 with one word formed from PARTICIPATE.",
+            "material": "A meeting with more than one way to speak\n\nThe (0) PREPARATION (PREPARE) for our community meeting included a question about participation. The organiser wanted people to be heard without assuming that everyone would respond best to an open invitation to speak before a large group.\n\nAll twelve ____1____ (PARTICIPATE) received the main questions in advance. They could prepare a short note or simply think about the topic. Their ____2____ (WILLING) to contribute did not always appear as a hand raised in the first minute.\n\nOne member explained that she felt ____3____ (COMFORT) speaking without time to organise her thoughts. She could answer clearly in writing, but became anxious when asked for an immediate response. The organiser changed the format rather than label her uninterested.\n\nSmall groups spoke in turn, with time to finish a point without ____4____ (INTERRUPT). Written comments could be submitted ____5____ (ANONYMOUS), although contributors were asked to avoid including other people's private details.\n\nSeveral ____6____ (SUGGEST) concerned the meeting itself. The organiser kept enough ____7____ (FLEXIBLE) in the schedule to discuss them before returning to the main topic. This did not mean that every proposed change was accepted.\n\nThe final plan required ____8____ (COLLABORATE) between people who preferred different ways of working. No single arrangement removed every barrier, but the reasons for the choices were clearer. The meeting's success could not be measured only by counting how many people had spoken aloud.",
+            "explanation": "The participants received questions requires plural people. Verb/activity noun do not fit that recipient meaning.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "participants"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "participate",
+                "participation"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.meeting-turns-125.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 2 with one word formed from WILLING.",
+            "material": "A meeting with more than one way to speak\n\nThe (0) PREPARATION (PREPARE) for our community meeting included a question about participation. The organiser wanted people to be heard without assuming that everyone would respond best to an open invitation to speak before a large group.\n\nAll twelve ____1____ (PARTICIPATE) received the main questions in advance. They could prepare a short note or simply think about the topic. Their ____2____ (WILLING) to contribute did not always appear as a hand raised in the first minute.\n\nOne member explained that she felt ____3____ (COMFORT) speaking without time to organise her thoughts. She could answer clearly in writing, but became anxious when asked for an immediate response. The organiser changed the format rather than label her uninterested.\n\nSmall groups spoke in turn, with time to finish a point without ____4____ (INTERRUPT). Written comments could be submitted ____5____ (ANONYMOUS), although contributors were asked to avoid including other people's private details.\n\nSeveral ____6____ (SUGGEST) concerned the meeting itself. The organiser kept enough ____7____ (FLEXIBLE) in the schedule to discuss them before returning to the main topic. This did not mean that every proposed change was accepted.\n\nThe final plan required ____8____ (COLLABORATE) between people who preferred different ways of working. No single arrangement removed every barrier, but the reasons for the choices were clearer. The meeting's success could not be measured only by counting how many people had spoken aloud.",
+            "explanation": "Their willingness to contribute is noun. Adjective/adverb do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "willingness"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "willing",
+                "willingly"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.meeting-turns-125.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 3 with one word formed from COMFORT.",
+            "material": "A meeting with more than one way to speak\n\nThe (0) PREPARATION (PREPARE) for our community meeting included a question about participation. The organiser wanted people to be heard without assuming that everyone would respond best to an open invitation to speak before a large group.\n\nAll twelve ____1____ (PARTICIPATE) received the main questions in advance. They could prepare a short note or simply think about the topic. Their ____2____ (WILLING) to contribute did not always appear as a hand raised in the first minute.\n\nOne member explained that she felt ____3____ (COMFORT) speaking without time to organise her thoughts. She could answer clearly in writing, but became anxious when asked for an immediate response. The organiser changed the format rather than label her uninterested.\n\nSmall groups spoke in turn, with time to finish a point without ____4____ (INTERRUPT). Written comments could be submitted ____5____ (ANONYMOUS), although contributors were asked to avoid including other people's private details.\n\nSeveral ____6____ (SUGGEST) concerned the meeting itself. The organiser kept enough ____7____ (FLEXIBLE) in the schedule to discuss them before returning to the main topic. This did not mean that every proposed change was accepted.\n\nThe final plan required ____8____ (COLLABORATE) between people who preferred different ways of working. No single arrangement removed every barrier, but the reasons for the choices were clearer. The meeting's success could not be measured only by counting how many people had spoken aloud.",
+            "explanation": "Felt uncomfortable describes anxious state. Comfort noun/uncomfortably adverb do not fit linking felt.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "uncomfortable"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "comfort",
+                "uncomfortably"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.meeting-turns-125.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 4 with one word formed from INTERRUPT.",
+            "material": "A meeting with more than one way to speak\n\nThe (0) PREPARATION (PREPARE) for our community meeting included a question about participation. The organiser wanted people to be heard without assuming that everyone would respond best to an open invitation to speak before a large group.\n\nAll twelve ____1____ (PARTICIPATE) received the main questions in advance. They could prepare a short note or simply think about the topic. Their ____2____ (WILLING) to contribute did not always appear as a hand raised in the first minute.\n\nOne member explained that she felt ____3____ (COMFORT) speaking without time to organise her thoughts. She could answer clearly in writing, but became anxious when asked for an immediate response. The organiser changed the format rather than label her uninterested.\n\nSmall groups spoke in turn, with time to finish a point without ____4____ (INTERRUPT). Written comments could be submitted ____5____ (ANONYMOUS), although contributors were asked to avoid including other people's private details.\n\nSeveral ____6____ (SUGGEST) concerned the meeting itself. The organiser kept enough ____7____ (FLEXIBLE) in the schedule to discuss them before returning to the main topic. This did not mean that every proposed change was accepted.\n\nThe final plan required ____8____ (COLLABORATE) between people who preferred different ways of working. No single arrangement removed every barrier, but the reasons for the choices were clearer. The meeting's success could not be measured only by counting how many people had spoken aloud.",
+            "explanation": "Without interruption/interruption plural names interruption events. Verb/adjective do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "interruption",
+              "interruptions"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "interrupt",
+                "interruptive"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.meeting-turns-125.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 5 with one word formed from ANONYMOUS.",
+            "material": "A meeting with more than one way to speak\n\nThe (0) PREPARATION (PREPARE) for our community meeting included a question about participation. The organiser wanted people to be heard without assuming that everyone would respond best to an open invitation to speak before a large group.\n\nAll twelve ____1____ (PARTICIPATE) received the main questions in advance. They could prepare a short note or simply think about the topic. Their ____2____ (WILLING) to contribute did not always appear as a hand raised in the first minute.\n\nOne member explained that she felt ____3____ (COMFORT) speaking without time to organise her thoughts. She could answer clearly in writing, but became anxious when asked for an immediate response. The organiser changed the format rather than label her uninterested.\n\nSmall groups spoke in turn, with time to finish a point without ____4____ (INTERRUPT). Written comments could be submitted ____5____ (ANONYMOUS), although contributors were asked to avoid including other people's private details.\n\nSeveral ____6____ (SUGGEST) concerned the meeting itself. The organiser kept enough ____7____ (FLEXIBLE) in the schedule to discuss them before returning to the main topic. This did not mean that every proposed change was accepted.\n\nThe final plan required ____8____ (COLLABORATE) between people who preferred different ways of working. No single arrangement removed every barrier, but the reasons for the choices were clearer. The meeting's success could not be measured only by counting how many people had spoken aloud.",
+            "explanation": "Submitted anonymously requires adverb. Adjective/noun do not modify submission manner.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "anonymously"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "anonymous",
+                "anonymity"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.meeting-turns-125.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 6 with one word formed from SUGGEST.",
+            "material": "A meeting with more than one way to speak\n\nThe (0) PREPARATION (PREPARE) for our community meeting included a question about participation. The organiser wanted people to be heard without assuming that everyone would respond best to an open invitation to speak before a large group.\n\nAll twelve ____1____ (PARTICIPATE) received the main questions in advance. They could prepare a short note or simply think about the topic. Their ____2____ (WILLING) to contribute did not always appear as a hand raised in the first minute.\n\nOne member explained that she felt ____3____ (COMFORT) speaking without time to organise her thoughts. She could answer clearly in writing, but became anxious when asked for an immediate response. The organiser changed the format rather than label her uninterested.\n\nSmall groups spoke in turn, with time to finish a point without ____4____ (INTERRUPT). Written comments could be submitted ____5____ (ANONYMOUS), although contributors were asked to avoid including other people's private details.\n\nSeveral ____6____ (SUGGEST) concerned the meeting itself. The organiser kept enough ____7____ (FLEXIBLE) in the schedule to discuss them before returning to the main topic. This did not mean that every proposed change was accepted.\n\nThe final plan required ____8____ (COLLABORATE) between people who preferred different ways of working. No single arrangement removed every barrier, but the reasons for the choices were clearer. The meeting's success could not be measured only by counting how many people had spoken aloud.",
+            "explanation": "Several requires plural suggestions. Singular/verb do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "suggestions"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "suggestion",
+                "suggest"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.meeting-turns-125.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 7 with one word formed from FLEXIBLE.",
+            "material": "A meeting with more than one way to speak\n\nThe (0) PREPARATION (PREPARE) for our community meeting included a question about participation. The organiser wanted people to be heard without assuming that everyone would respond best to an open invitation to speak before a large group.\n\nAll twelve ____1____ (PARTICIPATE) received the main questions in advance. They could prepare a short note or simply think about the topic. Their ____2____ (WILLING) to contribute did not always appear as a hand raised in the first minute.\n\nOne member explained that she felt ____3____ (COMFORT) speaking without time to organise her thoughts. She could answer clearly in writing, but became anxious when asked for an immediate response. The organiser changed the format rather than label her uninterested.\n\nSmall groups spoke in turn, with time to finish a point without ____4____ (INTERRUPT). Written comments could be submitted ____5____ (ANONYMOUS), although contributors were asked to avoid including other people's private details.\n\nSeveral ____6____ (SUGGEST) concerned the meeting itself. The organiser kept enough ____7____ (FLEXIBLE) in the schedule to discuss them before returning to the main topic. This did not mean that every proposed change was accepted.\n\nThe final plan required ____8____ (COLLABORATE) between people who preferred different ways of working. No single arrangement removed every barrier, but the reasons for the choices were clearer. The meeting's success could not be measured only by counting how many people had spoken aloud.",
+            "explanation": "Enough flexibility requires noun. Adjective/adverb do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "flexibility"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "flexible",
+                "flexibly"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.advanced.meeting-turns-125.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Use the word in brackets to form ONE word for each gap. Example0 is already answered and is not scored. Use capitals; marking ignores case.",
+            "prompt": "Complete gap 8 with one word formed from COLLABORATE.",
+            "material": "A meeting with more than one way to speak\n\nThe (0) PREPARATION (PREPARE) for our community meeting included a question about participation. The organiser wanted people to be heard without assuming that everyone would respond best to an open invitation to speak before a large group.\n\nAll twelve ____1____ (PARTICIPATE) received the main questions in advance. They could prepare a short note or simply think about the topic. Their ____2____ (WILLING) to contribute did not always appear as a hand raised in the first minute.\n\nOne member explained that she felt ____3____ (COMFORT) speaking without time to organise her thoughts. She could answer clearly in writing, but became anxious when asked for an immediate response. The organiser changed the format rather than label her uninterested.\n\nSmall groups spoke in turn, with time to finish a point without ____4____ (INTERRUPT). Written comments could be submitted ____5____ (ANONYMOUS), although contributors were asked to avoid including other people's private details.\n\nSeveral ____6____ (SUGGEST) concerned the meeting itself. The organiser kept enough ____7____ (FLEXIBLE) in the schedule to discuss them before returning to the main topic. This did not mean that every proposed change was accepted.\n\nThe final plan required ____8____ (COLLABORATE) between people who preferred different ways of working. No single arrangement removed every barrier, but the reasons for the choices were clearer. The meeting's success could not be measured only by counting how many people had spoken aloud.",
+            "explanation": "Required collaboration names cooperative work. Verb/adjective do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "collaboration"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "c1-word-formation",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "collaborate",
+                "collaborative"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "11bbf553cf0998e6acc70217dfd9e6408add0a6e3b6d530a03ca02bbffe1518b",
+      "reviewNotes": "Four complete advanced original eight-gap passages: two one-word open clozes and two word formations, all with fixed unscored example0. Same-author idiom, word-form, context and variant review only; no independent C1 or learner calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
