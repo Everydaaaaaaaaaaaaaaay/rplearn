@@ -1,0 +1,1818 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b111",
+  "createdAt": "2026-10-24T01:30:06.923253+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.piano-lesson-door-111",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · At the music room",
+        "summary": "At the music room，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.piano-lesson-door-111",
+          "family": "function_choice",
+          "label": "At the music room",
+          "candidateSHA256": "1222ccb8b74cdf13d1da38cd2a0d20718d4f43ccac26009894ef669d246a6a95",
+          "authorCheckSHA256": "c3ba901e8282f2df7f2560e6ba300944cf98023f2de8f201cca53d0f0689b71c",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.piano-lesson-door-111#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b111；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "At the music room\n\nChoose the best reply in each conversation.\n\n1. Teacher: Is this your first piano lesson?\nChild: ____\n\n2. Child: Where should I put my bag?\nTeacher: ____\n\n3. Teacher: Please listen before you try.\nChild: ____\n\n4. Teacher: Was that note high or low?\nChild: ____\n\n5. Child: May I try the short tune again?\nTeacher: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.piano-lesson-door-111.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Is this your first piano lesson?\nChild: ____",
+            "material": "At the music room\n\nChoose the best reply in each conversation.\n\n1. Teacher: Is this your first piano lesson?\nChild: ____\n\n2. Child: Where should I put my bag?\nTeacher: ____\n\n3. Teacher: Please listen before you try.\nChild: ____\n\n4. Teacher: Was that note high or low?\nChild: ____\n\n5. Child: May I try the short tune again?\nTeacher: ____",
+            "explanation": "Yes confirms first lesson and lack of previous playing. Place/count/coat colour do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes. I have not played before."
+              },
+              {
+                "id": "o1",
+                "text": "There are two windows."
+              },
+              {
+                "id": "o2",
+                "text": "It is beside the window."
+              },
+              {
+                "id": "o3",
+                "text": "My coat is blue."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.piano-lesson-door-111.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Where should I put my bag?\nTeacher: ____",
+            "material": "At the music room\n\nChoose the best reply in each conversation.\n\n1. Teacher: Is this your first piano lesson?\nChild: ____\n\n2. Child: Where should I put my bag?\nTeacher: ____\n\n3. Teacher: Please listen before you try.\nChild: ____\n\n4. Teacher: Was that note high or low?\nChild: ____\n\n5. Child: May I try the short tune again?\nTeacher: ____",
+            "explanation": "Under the chair supplies a bag location. Preference/day/family do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She is my aunt."
+              },
+              {
+                "id": "o1",
+                "text": "It is Tuesday."
+              },
+              {
+                "id": "o2",
+                "text": "Under this chair, please."
+              },
+              {
+                "id": "o3",
+                "text": "I like this song."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.piano-lesson-door-111.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Please listen before you try.\nChild: ____",
+            "material": "At the music room\n\nChoose the best reply in each conversation.\n\n1. Teacher: Is this your first piano lesson?\nChild: ____\n\n2. Child: Where should I put my bag?\nTeacher: ____\n\n3. Teacher: Please listen before you try.\nChild: ____\n\n4. Teacher: Was that note high or low?\nChild: ____\n\n5. Child: May I try the short tune again?\nTeacher: ____",
+            "explanation": "Waiting/listening follows the instruction. Age/vehicle/pet do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He has a dog."
+              },
+              {
+                "id": "o1",
+                "text": "All right. I will wait and listen."
+              },
+              {
+                "id": "o2",
+                "text": "The bus is red."
+              },
+              {
+                "id": "o3",
+                "text": "I am seven years old."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.piano-lesson-door-111.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Was that note high or low?\nChild: ____",
+            "material": "At the music room\n\nChoose the best reply in each conversation.\n\n1. Teacher: Is this your first piano lesson?\nChild: ____\n\n2. Child: Where should I put my bag?\nTeacher: ____\n\n3. Teacher: Please listen before you try.\nChild: ____\n\n4. Teacher: Was that note high or low?\nChild: ____\n\n5. Child: May I try the short tune again?\nTeacher: ____",
+            "explanation": "Low chooses one pitch category. Time/count/place do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "There are three."
+              },
+              {
+                "id": "o1",
+                "text": "At half past two."
+              },
+              {
+                "id": "o2",
+                "text": "It was low."
+              },
+              {
+                "id": "o3",
+                "text": "In the garden."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.piano-lesson-door-111.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: May I try the short tune again?\nTeacher: ____",
+            "material": "At the music room\n\nChoose the best reply in each conversation.\n\n1. Teacher: Is this your first piano lesson?\nChild: ____\n\n2. Child: Where should I put my bag?\nTeacher: ____\n\n3. Teacher: Please listen before you try.\nChild: ____\n\n4. Teacher: Was that note high or low?\nChild: ____\n\n5. Child: May I try the short tune again?\nTeacher: ____",
+            "explanation": "Permission to start answers may I. Colour/home/family do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She lives nearby."
+              },
+              {
+                "id": "o1",
+                "text": "Of course. Start when you are ready."
+              },
+              {
+                "id": "o2",
+                "text": "The door is brown."
+              },
+              {
+                "id": "o3",
+                "text": "I have two brothers."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "3d4e414b82362a8ad00f0aca3befe3ba3840a63ee96a4d4ffbd6104e7b820359",
+      "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.lost-mitten-desk-111",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · A mitten at the school desk",
+        "summary": "A mitten at the school desk，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.lost-mitten-desk-111",
+          "family": "function_choice",
+          "label": "A mitten at the school desk",
+          "candidateSHA256": "bbf02106bb87d6dcccb96583afdb334d9713bccd694974bc8e9e75bbd8c43ad0",
+          "authorCheckSHA256": "77d9b9d55ba9433965e841e56675a0efbf5b27f15a36de4b1c7ce177af79987b",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.lost-mitten-desk-111#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b111；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A mitten at the school desk\n\nChoose the best reply in each conversation.\n\n1. Teacher: You look worried. What have you lost?\nChild: ____\n\n2. Teacher: What colour is it?\nChild: ____\n\n3. Child: May I look in the lost-property box?\nTeacher: ____\n\n4. Teacher: Is this purple mitten yours?\nChild: ____\n\n5. Child: Here it is, behind the box!\nTeacher: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.lost-mitten-desk-111.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: You look worried. What have you lost?\nChild: ____",
+            "material": "A mitten at the school desk\n\nChoose the best reply in each conversation.\n\n1. Teacher: You look worried. What have you lost?\nChild: ____\n\n2. Teacher: What colour is it?\nChild: ____\n\n3. Child: May I look in the lost-property box?\nTeacher: ____\n\n4. Teacher: Is this purple mitten yours?\nChild: ____\n\n5. Child: Here it is, behind the box!\nTeacher: ____",
+            "explanation": "A missing mitten identifies the loss. Weather/place/person do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is very sunny."
+              },
+              {
+                "id": "o1",
+                "text": "He is my friend."
+              },
+              {
+                "id": "o2",
+                "text": "I am at school."
+              },
+              {
+                "id": "o3",
+                "text": "One of my mittens."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.lost-mitten-desk-111.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: What colour is it?\nChild: ____",
+            "material": "A mitten at the school desk\n\nChoose the best reply in each conversation.\n\n1. Teacher: You look worried. What have you lost?\nChild: ____\n\n2. Teacher: What colour is it?\nChild: ____\n\n3. Child: May I look in the lost-property box?\nTeacher: ____\n\n4. Teacher: Is this purple mitten yours?\nChild: ____\n\n5. Child: Here it is, behind the box!\nTeacher: ____",
+            "explanation": "Purple/white answers colour. Size/use/time-location do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is very small."
+              },
+              {
+                "id": "o1",
+                "text": "Purple, with a white star."
+              },
+              {
+                "id": "o2",
+                "text": "I wear it outside."
+              },
+              {
+                "id": "o3",
+                "text": "In my bag yesterday."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.lost-mitten-desk-111.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: May I look in the lost-property box?\nTeacher: ____",
+            "material": "A mitten at the school desk\n\nChoose the best reply in each conversation.\n\n1. Teacher: You look worried. What have you lost?\nChild: ____\n\n2. Teacher: What colour is it?\nChild: ____\n\n3. Child: May I look in the lost-property box?\nTeacher: ____\n\n4. Teacher: Is this purple mitten yours?\nChild: ____\n\n5. Child: Here it is, behind the box!\nTeacher: ____",
+            "explanation": "Looking together grants permission. Day count/taste/ability do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The soup is hot."
+              },
+              {
+                "id": "o1",
+                "text": "Yes. Let’s look together."
+              },
+              {
+                "id": "o2",
+                "text": "There are seven days."
+              },
+              {
+                "id": "o3",
+                "text": "She can dance."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.lost-mitten-desk-111.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Is this purple mitten yours?\nChild: ____",
+            "material": "A mitten at the school desk\n\nChoose the best reply in each conversation.\n\n1. Teacher: You look worried. What have you lost?\nChild: ____\n\n2. Teacher: What colour is it?\nChild: ____\n\n3. Child: May I look in the lost-property box?\nTeacher: ____\n\n4. Teacher: Is this purple mitten yours?\nChild: ____\n\n5. Child: Here it is, behind the box!\nTeacher: ____",
+            "explanation": "A distinguishing feature answers ownership. Time/preference/travel do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "No. Mine has a white star."
+              },
+              {
+                "id": "o1",
+                "text": "He goes by bus."
+              },
+              {
+                "id": "o2",
+                "text": "It is nine o’clock."
+              },
+              {
+                "id": "o3",
+                "text": "I like that bird."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.lost-mitten-desk-111.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Here it is, behind the box!\nTeacher: ____",
+            "material": "A mitten at the school desk\n\nChoose the best reply in each conversation.\n\n1. Teacher: You look worried. What have you lost?\nChild: ____\n\n2. Teacher: What colour is it?\nChild: ____\n\n3. Child: May I look in the lost-property box?\nTeacher: ____\n\n4. Teacher: Is this purple mitten yours?\nChild: ____\n\n5. Child: Here it is, behind the box!\nTeacher: ____",
+            "explanation": "Safe storage follows finding the missing mitten. Name/water/moon are unrelated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "My name is Mrs Bell."
+              },
+              {
+                "id": "o1",
+                "text": "Good. Put both mittens in your pocket."
+              },
+              {
+                "id": "o2",
+                "text": "I can see the moon."
+              },
+              {
+                "id": "o3",
+                "text": "The water is cold."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "560c6a7b57d1890756723136e27bd97d4c07316a9328a46eedad7ca923e369cb",
+      "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.feeding-guinea-pig-111",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · Helping with the guinea pig",
+        "summary": "Helping with the guinea pig，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.feeding-guinea-pig-111",
+          "family": "function_choice",
+          "label": "Helping with the guinea pig",
+          "candidateSHA256": "426460035526db1a6fb57d523a9698c410539f3053132a516fe745557311e4d5",
+          "authorCheckSHA256": "77a1741069a576c82dc0eafd37ad70cd69bb00c3c619c36de4ab8ec9111b833b",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.feeding-guinea-pig-111#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b111；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Helping with the guinea pig\n\nChoose the best reply in each conversation.\n\n1. Parent: Do you want to help feed the guinea pig?\nChild: ____\n\n2. Child: Is this its food?\nParent: ____\n\n3. Parent: Please do not give it your biscuit.\nChild: ____\n\n4. Child: Does it need clean water too?\nParent: ____\n\n5. Parent: We have finished. What should we do now?\nChild: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.feeding-guinea-pig-111.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Parent: Do you want to help feed the guinea pig?\nChild: ____",
+            "material": "Helping with the guinea pig\n\nChoose the best reply in each conversation.\n\n1. Parent: Do you want to help feed the guinea pig?\nChild: ____\n\n2. Child: Is this its food?\nParent: ____\n\n3. Parent: Please do not give it your biscuit.\nChild: ____\n\n4. Child: Does it need clean water too?\nParent: ____\n\n5. Parent: We have finished. What should we do now?\nChild: ____",
+            "explanation": "Accepting with request for guidance answers the offer. Location/colour/count do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is under the table."
+              },
+              {
+                "id": "o1",
+                "text": "My shoes are yellow."
+              },
+              {
+                "id": "o2",
+                "text": "Yes, please. Show me what to do."
+              },
+              {
+                "id": "o3",
+                "text": "There are ten fingers."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.feeding-guinea-pig-111.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Is this its food?\nParent: ____",
+            "material": "Helping with the guinea pig\n\nChoose the best reply in each conversation.\n\n1. Parent: Do you want to help feed the guinea pig?\nChild: ____\n\n2. Child: Is this its food?\nParent: ____\n\n3. Parent: Please do not give it your biscuit.\nChild: ____\n\n4. Child: Does it need clean water too?\nParent: ____\n\n5. Parent: We have finished. What should we do now?\nChild: ____",
+            "explanation": "Confirmation identifies proper food. Day/height/person location do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes. Use the food in this small bag."
+              },
+              {
+                "id": "o1",
+                "text": "I am very tall."
+              },
+              {
+                "id": "o2",
+                "text": "It is Wednesday."
+              },
+              {
+                "id": "o3",
+                "text": "She is at work."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.feeding-guinea-pig-111.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Parent: Please do not give it your biscuit.\nChild: ____",
+            "material": "Helping with the guinea pig\n\nChoose the best reply in each conversation.\n\n1. Parent: Do you want to help feed the guinea pig?\nChild: ____\n\n2. Child: Is this its food?\nParent: ____\n\n3. Parent: Please do not give it your biscuit.\nChild: ____\n\n4. Child: Does it need clean water too?\nParent: ____\n\n5. Parent: We have finished. What should we do now?\nChild: ____",
+            "explanation": "Keeping human biscuit follows instruction. Date/shape/ability do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is my birthday."
+              },
+              {
+                "id": "o1",
+                "text": "The ball is round."
+              },
+              {
+                "id": "o2",
+                "text": "He can read."
+              },
+              {
+                "id": "o3",
+                "text": "All right. I will keep it for myself."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.feeding-guinea-pig-111.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Does it need clean water too?\nParent: ____",
+            "material": "Helping with the guinea pig\n\nChoose the best reply in each conversation.\n\n1. Parent: Do you want to help feed the guinea pig?\nChild: ____\n\n2. Child: Is this its food?\nParent: ____\n\n3. Parent: Please do not give it your biscuit.\nChild: ____\n\n4. Child: Does it need clean water too?\nParent: ____\n\n5. Parent: We have finished. What should we do now?\nChild: ____",
+            "explanation": "Changing clean water answers the care question. Travel/shape/colour do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It has four corners."
+              },
+              {
+                "id": "o1",
+                "text": "Yes. I will change the water with you."
+              },
+              {
+                "id": "o2",
+                "text": "Her bag is red."
+              },
+              {
+                "id": "o3",
+                "text": "The bus is late."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.feeding-guinea-pig-111.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Parent: We have finished. What should we do now?\nChild: ____",
+            "material": "Helping with the guinea pig\n\nChoose the best reply in each conversation.\n\n1. Parent: Do you want to help feed the guinea pig?\nChild: ____\n\n2. Child: Is this its food?\nParent: ____\n\n3. Parent: Please do not give it your biscuit.\nChild: ____\n\n4. Child: Does it need clean water too?\nParent: ____\n\n5. Parent: We have finished. What should we do now?\nChild: ____",
+            "explanation": "Handwashing is appropriate after animal care. Clouds/bed coats/painting food do not follow the task.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Wash our hands."
+              },
+              {
+                "id": "o1",
+                "text": "Count the clouds."
+              },
+              {
+                "id": "o2",
+                "text": "Put on our coats for bed."
+              },
+              {
+                "id": "o3",
+                "text": "Paint the food."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "46212a89c0af45a801050d75d23d72addb69ed1e363ae6c6a25609794c71126d",
+      "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.choosing-puppet-voice-111",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · Voices for the puppet show",
+        "summary": "Voices for the puppet show，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.choosing-puppet-voice-111",
+          "family": "function_choice",
+          "label": "Voices for the puppet show",
+          "candidateSHA256": "dbbd2205e4725ad1984d3c829f9c34fd470a9d8e589fb4fd84c903e44c886b4b",
+          "authorCheckSHA256": "1eafa9fe8dd79aaa51c98e144b1729f3bda013ae1d89710f85ca5e72b9723a18",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.choosing-puppet-voice-111#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b111；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Voices for the puppet show\n\nChoose the best reply in each conversation.\n\n1. Teacher: Which puppet would you like to use?\nChild: ____\n\n2. Child: Should the fox speak loudly here?\nTeacher: ____\n\n3. Teacher: Can everyone see your puppet?\nChild: ____\n\n4. Child: I have forgotten my next line.\nTeacher: ____\n\n5. Teacher: That was a good show. Thank you, everyone.\nChild: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.choosing-puppet-voice-111.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Which puppet would you like to use?\nChild: ____",
+            "material": "Voices for the puppet show\n\nChoose the best reply in each conversation.\n\n1. Teacher: Which puppet would you like to use?\nChild: ____\n\n2. Child: Should the fox speak loudly here?\nTeacher: ____\n\n3. Teacher: Can everyone see your puppet?\nChild: ____\n\n4. Child: I have forgotten my next line.\nTeacher: ____\n\n5. Teacher: That was a good show. Thank you, everyone.\nChild: ____",
+            "explanation": "Choosing fox answers which puppet. Time/place/shoes do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "My shoes are wet."
+              },
+              {
+                "id": "o1",
+                "text": "The little fox, please."
+              },
+              {
+                "id": "o2",
+                "text": "It is six o’clock."
+              },
+              {
+                "id": "o3",
+                "text": "I am in the hall."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.choosing-puppet-voice-111.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: Should the fox speak loudly here?\nTeacher: ____",
+            "material": "Voices for the puppet show\n\nChoose the best reply in each conversation.\n\n1. Teacher: Which puppet would you like to use?\nChild: ____\n\n2. Child: Should the fox speak loudly here?\nTeacher: ____\n\n3. Teacher: Can everyone see your puppet?\nChild: ____\n\n4. Child: I have forgotten my next line.\nTeacher: ____\n\n5. Teacher: That was a good show. Thank you, everyone.\nChild: ____",
+            "explanation": "Quiet voice answers delivery choice with scene reason. Tail/door/preference do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I like fruit."
+              },
+              {
+                "id": "o1",
+                "text": "No. It is hiding, so use a quiet voice."
+              },
+              {
+                "id": "o2",
+                "text": "The door is open."
+              },
+              {
+                "id": "o3",
+                "text": "It has a long tail."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.choosing-puppet-voice-111.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: Can everyone see your puppet?\nChild: ____",
+            "material": "Voices for the puppet show\n\nChoose the best reply in each conversation.\n\n1. Teacher: Which puppet would you like to use?\nChild: ____\n\n2. Child: Should the fox speak loudly here?\nTeacher: ____\n\n3. Teacher: Can everyone see your puppet?\nChild: ____\n\n4. Child: I have forgotten my next line.\nTeacher: ____\n\n5. Teacher: That was a good show. Thank you, everyone.\nChild: ____",
+            "explanation": "Raising visibility responds to seeing puppet. Taste/family/place do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Not yet. I will hold it a little higher."
+              },
+              {
+                "id": "o1",
+                "text": "She is my sister."
+              },
+              {
+                "id": "o2",
+                "text": "It is very sweet."
+              },
+              {
+                "id": "o3",
+                "text": "At the bus stop."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.choosing-puppet-voice-111.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: I have forgotten my next line.\nTeacher: ____",
+            "material": "Voices for the puppet show\n\nChoose the best reply in each conversation.\n\n1. Teacher: Which puppet would you like to use?\nChild: ____\n\n2. Child: Should the fox speak loudly here?\nTeacher: ____\n\n3. Teacher: Can everyone see your puppet?\nChild: ____\n\n4. Child: I have forgotten my next line.\nTeacher: ____\n\n5. Teacher: That was a good show. Thank you, everyone.\nChild: ____",
+            "explanation": "Cue card addresses forgotten line. Day/pet/colour do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I have two cats."
+              },
+              {
+                "id": "o1",
+                "text": "It is Monday."
+              },
+              {
+                "id": "o2",
+                "text": "The grass is green."
+              },
+              {
+                "id": "o3",
+                "text": "Look at the small card beside you."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.choosing-puppet-voice-111.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Teacher: That was a good show. Thank you, everyone.\nChild: ____",
+            "material": "Voices for the puppet show\n\nChoose the best reply in each conversation.\n\n1. Teacher: Which puppet would you like to use?\nChild: ____\n\n2. Child: Should the fox speak loudly here?\nTeacher: ____\n\n3. Teacher: Can everyone see your puppet?\nChild: ____\n\n4. Child: I have forgotten my next line.\nTeacher: ____\n\n5. Teacher: That was a good show. Thank you, everyone.\nChild: ____",
+            "explanation": "Thanks and shared enjoyment close show. Place/count/travel do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Thank you. We enjoyed it too."
+              },
+              {
+                "id": "o1",
+                "text": "I am going by train."
+              },
+              {
+                "id": "o2",
+                "text": "He has three pencils."
+              },
+              {
+                "id": "o3",
+                "text": "It is behind the tree."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "df724fab59d302f3187facb189039e4a05d4e3f30dcbb4bfd97ed883e29256da",
+      "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.choosing-soup-bowl-111",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · Lunch at the small café",
+        "summary": "Lunch at the small café，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.choosing-soup-bowl-111",
+          "family": "function_choice",
+          "label": "Lunch at the small café",
+          "candidateSHA256": "e0f961e378161a026a6d5ae4bc5dd75ac09aded4f28d0574720195681a7f3bd7",
+          "authorCheckSHA256": "9afef2bfd4239276bc6bdd4721d47d9a3dfc59e05869c8ec436733660ef6a7f0",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.choosing-soup-bowl-111#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b111；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Lunch at the small café\n\nChoose the best reply in each conversation.\n\n1. Server: Would you like soup or a sandwich?\nChild: ____\n\n2. Server: A small bowl or a large one?\nChild: ____\n\n3. Child: May I have a spoon too?\nServer: ____\n\n4. Parent: Be careful. The soup is hot.\nChild: ____\n\n5. Server: Did you enjoy your lunch?\nChild: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.choosing-soup-bowl-111.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Server: Would you like soup or a sandwich?\nChild: ____",
+            "material": "Lunch at the small café\n\nChoose the best reply in each conversation.\n\n1. Server: Would you like soup or a sandwich?\nChild: ____\n\n2. Server: A small bowl or a large one?\nChild: ____\n\n3. Child: May I have a spoon too?\nServer: ____\n\n4. Parent: Be careful. The soup is hot.\nChild: ____\n\n5. Server: Did you enjoy your lunch?\nChild: ____",
+            "explanation": "Soup selects offered lunch. Time/person/possession do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Soup, please."
+              },
+              {
+                "id": "o1",
+                "text": "She is my mum."
+              },
+              {
+                "id": "o2",
+                "text": "I have a bicycle."
+              },
+              {
+                "id": "o3",
+                "text": "It is two o’clock."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.choosing-soup-bowl-111.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Server: A small bowl or a large one?\nChild: ____",
+            "material": "Lunch at the small café\n\nChoose the best reply in each conversation.\n\n1. Server: Would you like soup or a sandwich?\nChild: ____\n\n2. Server: A small bowl or a large one?\nChild: ____\n\n3. Child: May I have a spoon too?\nServer: ____\n\n4. Parent: Be careful. The soup is hot.\nChild: ____\n\n5. Server: Did you enjoy your lunch?\nChild: ____",
+            "explanation": "Small bowl answers size choice. Place/day/age do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He is eight."
+              },
+              {
+                "id": "o1",
+                "text": "At school."
+              },
+              {
+                "id": "o2",
+                "text": "It is Friday."
+              },
+              {
+                "id": "o3",
+                "text": "A small bowl, please."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.choosing-soup-bowl-111.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Child: May I have a spoon too?\nServer: ____",
+            "material": "Lunch at the small café\n\nChoose the best reply in each conversation.\n\n1. Server: Would you like soup or a sandwich?\nChild: ____\n\n2. Server: A small bowl or a large one?\nChild: ____\n\n3. Child: May I have a spoon too?\nServer: ____\n\n4. Parent: Be careful. The soup is hot.\nChild: ____\n\n5. Server: Did you enjoy your lunch?\nChild: ____",
+            "explanation": "Providing spoon answers request. Bus/colour/table count do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "My bag is green."
+              },
+              {
+                "id": "o1",
+                "text": "The bus is outside."
+              },
+              {
+                "id": "o2",
+                "text": "Certainly. Here is a clean one."
+              },
+              {
+                "id": "o3",
+                "text": "There are five tables."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.choosing-soup-bowl-111.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Parent: Be careful. The soup is hot.\nChild: ____",
+            "material": "Lunch at the small café\n\nChoose the best reply in each conversation.\n\n1. Server: Would you like soup or a sandwich?\nChild: ____\n\n2. Server: A small bowl or a large one?\nChild: ____\n\n3. Child: May I have a spoon too?\nServer: ____\n\n4. Parent: Be careful. The soup is hot.\nChild: ____\n\n5. Server: Did you enjoy your lunch?\nChild: ____",
+            "explanation": "Waiting responds to hot soup. Ability/book/location do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is under the bed."
+              },
+              {
+                "id": "o1",
+                "text": "My book is new."
+              },
+              {
+                "id": "o2",
+                "text": "I will wait for it to cool a little."
+              },
+              {
+                "id": "o3",
+                "text": "I can jump high."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.choosing-soup-bowl-111.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "选择合适的应答。",
+            "prompt": "Server: Did you enjoy your lunch?\nChild: ____",
+            "material": "Lunch at the small café\n\nChoose the best reply in each conversation.\n\n1. Server: Would you like soup or a sandwich?\nChild: ____\n\n2. Server: A small bowl or a large one?\nChild: ____\n\n3. Child: May I have a spoon too?\nServer: ____\n\n4. Parent: Be careful. The soup is hot.\nChild: ____\n\n5. Server: Did you enjoy your lunch?\nChild: ____",
+            "explanation": "Enjoyment and soup opinion answer lunch feedback. Wheels/class/birthday do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It has two wheels."
+              },
+              {
+                "id": "o1",
+                "text": "I am in Class Two."
+              },
+              {
+                "id": "o2",
+                "text": "My birthday is in May."
+              },
+              {
+                "id": "o3",
+                "text": "Yes, thank you. The soup was lovely."
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "17384283a6ae740e66823571bb80976c0f5b06ba5638c34346d6545a256be64c",
+      "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.blue-kite-tail-111",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · The tail on the blue kite",
+        "summary": "The tail on the blue kite，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.blue-kite-tail-111",
+          "family": "reading_tf",
+          "label": "The tail on the blue kite",
+          "candidateSHA256": "e7276df9a2e24d847ce85017b3e685ac0eb590d92ea1b1505e95566c4730d081",
+          "authorCheckSHA256": "d133c843f255cfcd4f6a84d9cbd91ea65d3182c995b9e59a1d321a0a85d8e528",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.blue-kite-tail-111#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b111；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The tail on the blue kite\n\nBen has a blue kite. On Saturday, he takes it to the park with Dad. The kite has a long yellow tail. Ben runs across the grass, and the kite goes up. Then the tail catches on a low branch. Dad helps him bring the kite down without pulling hard. The yellow paper has a small hole. At home, Ben puts a patch over it. He uses red paper because there is no yellow paper left. On Sunday, the kite flies again. Its tail now has one red spot. Ben likes being able to recognise his kite in the sky."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.blue-kite-tail-111.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "Ben’s kite is blue.",
+            "material": "The tail on the blue kite\n\nBen has a blue kite. On Saturday, he takes it to the park with Dad. The kite has a long yellow tail. Ben runs across the grass, and the kite goes up. Then the tail catches on a low branch. Dad helps him bring the kite down without pulling hard. The yellow paper has a small hole. At home, Ben puts a patch over it. He uses red paper because there is no yellow paper left. On Sunday, the kite flies again. Its tail now has one red spot. Ben likes being able to recognise his kite in the sky.",
+            "explanation": "The first sentence states blue.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.blue-kite-tail-111.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "The whole tail is red at first.",
+            "material": "The tail on the blue kite\n\nBen has a blue kite. On Saturday, he takes it to the park with Dad. The kite has a long yellow tail. Ben runs across the grass, and the kite goes up. Then the tail catches on a low branch. Dad helps him bring the kite down without pulling hard. The yellow paper has a small hole. At home, Ben puts a patch over it. He uses red paper because there is no yellow paper left. On Sunday, the kite flies again. Its tail now has one red spot. Ben likes being able to recognise his kite in the sky.",
+            "explanation": "The original tail is yellow; only the repair adds a red spot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.blue-kite-tail-111.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "The tail catches on a branch.",
+            "material": "The tail on the blue kite\n\nBen has a blue kite. On Saturday, he takes it to the park with Dad. The kite has a long yellow tail. Ben runs across the grass, and the kite goes up. Then the tail catches on a low branch. Dad helps him bring the kite down without pulling hard. The yellow paper has a small hole. At home, Ben puts a patch over it. He uses red paper because there is no yellow paper left. On Sunday, the kite flies again. Its tail now has one red spot. Ben likes being able to recognise his kite in the sky.",
+            "explanation": "A low branch catches the tail.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.blue-kite-tail-111.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "Ben uses yellow paper for the patch.",
+            "material": "The tail on the blue kite\n\nBen has a blue kite. On Saturday, he takes it to the park with Dad. The kite has a long yellow tail. Ben runs across the grass, and the kite goes up. Then the tail catches on a low branch. Dad helps him bring the kite down without pulling hard. The yellow paper has a small hole. At home, Ben puts a patch over it. He uses red paper because there is no yellow paper left. On Sunday, the kite flies again. Its tail now has one red spot. Ben likes being able to recognise his kite in the sky.",
+            "explanation": "No yellow remains, so red is used.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.blue-kite-tail-111.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "Ben flies the kite again on Sunday.",
+            "material": "The tail on the blue kite\n\nBen has a blue kite. On Saturday, he takes it to the park with Dad. The kite has a long yellow tail. Ben runs across the grass, and the kite goes up. Then the tail catches on a low branch. Dad helps him bring the kite down without pulling hard. The yellow paper has a small hole. At home, Ben puts a patch over it. He uses red paper because there is no yellow paper left. On Sunday, the kite flies again. Its tail now has one red spot. Ben likes being able to recognise his kite in the sky.",
+            "explanation": "Sunday flight is explicitly stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "74e6678d75ec9bfff9553826bfd2637fbd0da260d286d8b04bac3b041f4dbae7",
+      "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.cucumber-in-bag-111",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · The cucumber in the shopping bag",
+        "summary": "The cucumber in the shopping bag，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.cucumber-in-bag-111",
+          "family": "reading_tf",
+          "label": "The cucumber in the shopping bag",
+          "candidateSHA256": "165976a486967e870da308ec439176895ae28b70f8a07fe182ec3add0d19914b",
+          "authorCheckSHA256": "13bfc0e7f3c0fcb586aeb6b3868867eeee3b519f52763f2df8901337f511804a",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.cucumber-in-bag-111#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b111；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The cucumber in the shopping bag\n\nMum asks Anna to help unpack the shopping. Anna puts apples in the fruit bowl and bread in the bread box. A long green cucumber is at the bottom of the bag. Anna thinks it is a strange banana and puts it with the apples. Mum smiles and shows her the label. They wash the cucumber and cut some for lunch. Anna likes the cool slices in her sandwich. She draws the cucumber on a small card and writes its name. The card goes on the fridge. Next time, Anna says, the cucumber will not have to visit the fruit bowl first."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.cucumber-in-bag-111.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "Anna helps unpack shopping.",
+            "material": "The cucumber in the shopping bag\n\nMum asks Anna to help unpack the shopping. Anna puts apples in the fruit bowl and bread in the bread box. A long green cucumber is at the bottom of the bag. Anna thinks it is a strange banana and puts it with the apples. Mum smiles and shows her the label. They wash the cucumber and cut some for lunch. Anna likes the cool slices in her sandwich. She draws the cucumber on a small card and writes its name. The card goes on the fridge. Next time, Anna says, the cucumber will not have to visit the fruit bowl first.",
+            "explanation": "Mum asks her to help unpack.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.cucumber-in-bag-111.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "The bread goes in the fruit bowl.",
+            "material": "The cucumber in the shopping bag\n\nMum asks Anna to help unpack the shopping. Anna puts apples in the fruit bowl and bread in the bread box. A long green cucumber is at the bottom of the bag. Anna thinks it is a strange banana and puts it with the apples. Mum smiles and shows her the label. They wash the cucumber and cut some for lunch. Anna likes the cool slices in her sandwich. She draws the cucumber on a small card and writes its name. The card goes on the fridge. Next time, Anna says, the cucumber will not have to visit the fruit bowl first.",
+            "explanation": "Apples go there; bread goes in bread box.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.cucumber-in-bag-111.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "Anna first puts the cucumber with the apples.",
+            "material": "The cucumber in the shopping bag\n\nMum asks Anna to help unpack the shopping. Anna puts apples in the fruit bowl and bread in the bread box. A long green cucumber is at the bottom of the bag. Anna thinks it is a strange banana and puts it with the apples. Mum smiles and shows her the label. They wash the cucumber and cut some for lunch. Anna likes the cool slices in her sandwich. She draws the cucumber on a small card and writes its name. The card goes on the fridge. Next time, Anna says, the cucumber will not have to visit the fruit bowl first.",
+            "explanation": "She mistakes it for a banana and puts it with apples.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.cucumber-in-bag-111.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "They use some cucumber for lunch.",
+            "material": "The cucumber in the shopping bag\n\nMum asks Anna to help unpack the shopping. Anna puts apples in the fruit bowl and bread in the bread box. A long green cucumber is at the bottom of the bag. Anna thinks it is a strange banana and puts it with the apples. Mum smiles and shows her the label. They wash the cucumber and cut some for lunch. Anna likes the cool slices in her sandwich. She draws the cucumber on a small card and writes its name. The card goes on the fridge. Next time, Anna says, the cucumber will not have to visit the fruit bowl first.",
+            "explanation": "They wash and cut some for lunch sandwiches.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.cucumber-in-bag-111.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "The drawing goes inside Anna’s shoe.",
+            "material": "The cucumber in the shopping bag\n\nMum asks Anna to help unpack the shopping. Anna puts apples in the fruit bowl and bread in the bread box. A long green cucumber is at the bottom of the bag. Anna thinks it is a strange banana and puts it with the apples. Mum smiles and shows her the label. They wash the cucumber and cut some for lunch. Anna likes the cool slices in her sandwich. She draws the cucumber on a small card and writes its name. The card goes on the fridge. Next time, Anna says, the cucumber will not have to visit the fruit bowl first.",
+            "explanation": "The card goes on the fridge.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "e3b6082395856382c2ef0ff9585b83252aff57ef19002edbddb4394f5ba2dcc3",
+      "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.chair-for-teddy-111",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · A chair for the teddy bear",
+        "summary": "A chair for the teddy bear，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.chair-for-teddy-111",
+          "family": "reading_tf",
+          "label": "A chair for the teddy bear",
+          "candidateSHA256": "aae3169a41388d753dedf3621c69c7e87b308359e3e8ccebf29d79b55bd328c1",
+          "authorCheckSHA256": "90cb266113eb04be5fcf963550a0aea18ca936ac1f4c5b29d85eb7b4ecf142b7",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.chair-for-teddy-111#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b111；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A chair for the teddy bear\n\nLeo makes a chair for his teddy bear from a small cardboard box. He cuts a back and two arms, then covers the seat with cloth. The chair looks good, but it falls over when Teddy sits down. Leo tries again with a wider piece of card under the box. This time, the chair stays up. His sister paints little flowers on the back. Leo does not paint the seat because the cloth is already soft and blue. At bedtime, Teddy sits in the chair beside Leo’s bed. Leo checks once more that it is steady before he turns off the light."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.chair-for-teddy-111.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "Leo makes the chair from cardboard.",
+            "material": "A chair for the teddy bear\n\nLeo makes a chair for his teddy bear from a small cardboard box. He cuts a back and two arms, then covers the seat with cloth. The chair looks good, but it falls over when Teddy sits down. Leo tries again with a wider piece of card under the box. This time, the chair stays up. His sister paints little flowers on the back. Leo does not paint the seat because the cloth is already soft and blue. At bedtime, Teddy sits in the chair beside Leo’s bed. Leo checks once more that it is steady before he turns off the light.",
+            "explanation": "The main box and supporting card are cardboard.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.chair-for-teddy-111.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "The chair stays up on the first try.",
+            "material": "A chair for the teddy bear\n\nLeo makes a chair for his teddy bear from a small cardboard box. He cuts a back and two arms, then covers the seat with cloth. The chair looks good, but it falls over when Teddy sits down. Leo tries again with a wider piece of card under the box. This time, the chair stays up. His sister paints little flowers on the back. Leo does not paint the seat because the cloth is already soft and blue. At bedtime, Teddy sits in the chair beside Leo’s bed. Leo checks once more that it is steady before he turns off the light.",
+            "explanation": "It initially falls when Teddy sits.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.chair-for-teddy-111.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "A wider piece of card helps it stand.",
+            "material": "A chair for the teddy bear\n\nLeo makes a chair for his teddy bear from a small cardboard box. He cuts a back and two arms, then covers the seat with cloth. The chair looks good, but it falls over when Teddy sits down. Leo tries again with a wider piece of card under the box. This time, the chair stays up. His sister paints little flowers on the back. Leo does not paint the seat because the cloth is already soft and blue. At bedtime, Teddy sits in the chair beside Leo’s bed. Leo checks once more that it is steady before he turns off the light.",
+            "explanation": "The added base steadies it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.chair-for-teddy-111.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "Leo’s sister paints flowers on the seat.",
+            "material": "A chair for the teddy bear\n\nLeo makes a chair for his teddy bear from a small cardboard box. He cuts a back and two arms, then covers the seat with cloth. The chair looks good, but it falls over when Teddy sits down. Leo tries again with a wider piece of card under the box. This time, the chair stays up. His sister paints little flowers on the back. Leo does not paint the seat because the cloth is already soft and blue. At bedtime, Teddy sits in the chair beside Leo’s bed. Leo checks once more that it is steady before he turns off the light.",
+            "explanation": "She paints back; seat stays blue cloth.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.chair-for-teddy-111.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "The chair is beside Leo’s bed at night.",
+            "material": "A chair for the teddy bear\n\nLeo makes a chair for his teddy bear from a small cardboard box. He cuts a back and two arms, then covers the seat with cloth. The chair looks good, but it falls over when Teddy sits down. Leo tries again with a wider piece of card under the box. This time, the chair stays up. His sister paints little flowers on the back. Leo does not paint the seat because the cloth is already soft and blue. At bedtime, Teddy sits in the chair beside Leo’s bed. Leo checks once more that it is steady before he turns off the light.",
+            "explanation": "Bedtime placement is beside bed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "d09dd038e8cdabcb17c4a27445d22d835046960a055d3f3ec35781cebe99130a",
+      "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.sunflower-tall-111",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · The tall flower by the gate",
+        "summary": "The tall flower by the gate，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.sunflower-tall-111",
+          "family": "reading_tf",
+          "label": "The tall flower by the gate",
+          "candidateSHA256": "5ae6d43c3f5ea7e83d095fbf8cee354558c288c6e2ddab5754cbf6f4290a457f",
+          "authorCheckSHA256": "51189e034c7e85491781831ee7a1b9778d2f6f1b7662938a7aeaf1ef18d7371a",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.sunflower-tall-111#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b111；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The tall flower by the gate\n\nThere is a tall sunflower beside our garden gate. My little sister calls it the garden sun. In the morning, she counts its big green leaves with me. We count eight, but one small leaf is hidden behind the stem. Mum shows it to us, and we change our number to nine. My sister wants to pick the flower for her room. Mum asks her to leave it for everyone to see. We draw a picture instead. My sister puts the picture above her desk. The real flower stays by the gate, where the post worker smiles at it every morning."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.sunflower-tall-111.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "The sunflower grows beside the gate.",
+            "material": "The tall flower by the gate\n\nThere is a tall sunflower beside our garden gate. My little sister calls it the garden sun. In the morning, she counts its big green leaves with me. We count eight, but one small leaf is hidden behind the stem. Mum shows it to us, and we change our number to nine. My sister wants to pick the flower for her room. Mum asks her to leave it for everyone to see. We draw a picture instead. My sister puts the picture above her desk. The real flower stays by the gate, where the post worker smiles at it every morning.",
+            "explanation": "Its location is garden gate.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.sunflower-tall-111.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "The children first count nine leaves.",
+            "material": "The tall flower by the gate\n\nThere is a tall sunflower beside our garden gate. My little sister calls it the garden sun. In the morning, she counts its big green leaves with me. We count eight, but one small leaf is hidden behind the stem. Mum shows it to us, and we change our number to nine. My sister wants to pick the flower for her room. Mum asks her to leave it for everyone to see. We draw a picture instead. My sister puts the picture above her desk. The real flower stays by the gate, where the post worker smiles at it every morning.",
+            "explanation": "They first count eight, then discover ninth.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.sunflower-tall-111.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "One small leaf is hidden behind the stem.",
+            "material": "The tall flower by the gate\n\nThere is a tall sunflower beside our garden gate. My little sister calls it the garden sun. In the morning, she counts its big green leaves with me. We count eight, but one small leaf is hidden behind the stem. Mum shows it to us, and we change our number to nine. My sister wants to pick the flower for her room. Mum asks her to leave it for everyone to see. We draw a picture instead. My sister puts the picture above her desk. The real flower stays by the gate, where the post worker smiles at it every morning.",
+            "explanation": "Mum points out that hidden leaf.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.sunflower-tall-111.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "They pick the flower for the bedroom.",
+            "material": "The tall flower by the gate\n\nThere is a tall sunflower beside our garden gate. My little sister calls it the garden sun. In the morning, she counts its big green leaves with me. We count eight, but one small leaf is hidden behind the stem. Mum shows it to us, and we change our number to nine. My sister wants to pick the flower for her room. Mum asks her to leave it for everyone to see. We draw a picture instead. My sister puts the picture above her desk. The real flower stays by the gate, where the post worker smiles at it every morning.",
+            "explanation": "They draw it instead and leave flower growing.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.sunflower-tall-111.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "The picture goes above the sister’s desk.",
+            "material": "The tall flower by the gate\n\nThere is a tall sunflower beside our garden gate. My little sister calls it the garden sun. In the morning, she counts its big green leaves with me. We count eight, but one small leaf is hidden behind the stem. Mum shows it to us, and we change our number to nine. My sister wants to pick the flower for her room. Mum asks her to leave it for everyone to see. We draw a picture instead. My sister puts the picture above her desk. The real flower stays by the gate, where the post worker smiles at it every morning.",
+            "explanation": "That is stated picture location.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "c345e9269ddec298b106f8a70c9f051d8e7807401ee4c0accd1ddedbc7d5ed5b",
+      "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.bus-driver-card-111",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · A card for the bus driver",
+        "summary": "A card for the bus driver，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Uses the recorded source for task and marking rules only. New text/questions and practice grouping; source sample count is not increased. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.bus-driver-card-111",
+          "family": "reading_tf",
+          "label": "A card for the bus driver",
+          "candidateSHA256": "d27d06937202e0fcbef6cded10750cf0599e7df01357a73751c59056d7e86245",
+          "authorCheckSHA256": "564dcccb44d196b223c2982ee7b5a8a601b3e0b6a129d54c22570dfc25de59bc",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.bus-driver-card-111#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b111；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A card for the bus driver\n\nOur school bus driver is Mr Green. On Friday, our class makes him a thank-you card. We draw a yellow bus on the front. Inside, every child writes a name. I write mine in blue, but my friend Sam uses green. We give the card to Mr Green after he parks the bus at school. He does not open it while driving. At lunchtime, our teacher shows us a photograph. Mr Green is holding the card and smiling. He has put it on the little table in the staff room. Sam says a green name was a good choice for Mr Green."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.bus-driver-card-111.whole.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "The class makes a card on Friday.",
+            "material": "A card for the bus driver\n\nOur school bus driver is Mr Green. On Friday, our class makes him a thank-you card. We draw a yellow bus on the front. Inside, every child writes a name. I write mine in blue, but my friend Sam uses green. We give the card to Mr Green after he parks the bus at school. He does not open it while driving. At lunchtime, our teacher shows us a photograph. Mr Green is holding the card and smiling. He has put it on the little table in the staff room. Sam says a green name was a good choice for Mr Green.",
+            "explanation": "Friday is stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.bus-driver-card-111.whole.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "The bus on the card is purple.",
+            "material": "A card for the bus driver\n\nOur school bus driver is Mr Green. On Friday, our class makes him a thank-you card. We draw a yellow bus on the front. Inside, every child writes a name. I write mine in blue, but my friend Sam uses green. We give the card to Mr Green after he parks the bus at school. He does not open it while driving. At lunchtime, our teacher shows us a photograph. Mr Green is holding the card and smiling. He has put it on the little table in the staff room. Sam says a green name was a good choice for Mr Green.",
+            "explanation": "The drawn bus is yellow.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.bus-driver-card-111.whole.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "Sam writes his name in green.",
+            "material": "A card for the bus driver\n\nOur school bus driver is Mr Green. On Friday, our class makes him a thank-you card. We draw a yellow bus on the front. Inside, every child writes a name. I write mine in blue, but my friend Sam uses green. We give the card to Mr Green after he parks the bus at school. He does not open it while driving. At lunchtime, our teacher shows us a photograph. Mr Green is holding the card and smiling. He has put it on the little table in the staff room. Sam says a green name was a good choice for Mr Green.",
+            "explanation": "Narrator blue, Sam green.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.bus-driver-card-111.whole.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "Mr Green opens the card while driving.",
+            "material": "A card for the bus driver\n\nOur school bus driver is Mr Green. On Friday, our class makes him a thank-you card. We draw a yellow bus on the front. Inside, every child writes a name. I write mine in blue, but my friend Sam uses green. We give the card to Mr Green after he parks the bus at school. He does not open it while driving. At lunchtime, our teacher shows us a photograph. Mr Green is holding the card and smiling. He has put it on the little table in the staff room. Sam says a green name was a good choice for Mr Green.",
+            "explanation": "He explicitly does not; card given after parking.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.bus-driver-card-111.whole.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the whole story. Choose True or False for each sentence.",
+            "prompt": "The card is on a table in the staff room.",
+            "material": "A card for the bus driver\n\nOur school bus driver is Mr Green. On Friday, our class makes him a thank-you card. We draw a yellow bus on the front. Inside, every child writes a name. I write mine in blue, but my friend Sam uses green. We give the card to Mr Green after he parks the bus at school. He does not open it while driving. At lunchtime, our teacher shows us a photograph. Mr Green is holding the card and smiling. He has put it on the little table in the staff room. Sam says a green name was a good choice for Mr Green.",
+            "explanation": "Photo shows its staff-room table location.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "ee1241d20a14d6e7b9b67b32210f400de833a38f4e4a7f95b53fabe9dbabe143",
+      "reviewNotes": "Five complete five-question four-option communicative practices and five complete five-statement true/false readings. Fictional child contexts, English questions/options, same-author response and statement-evidence review only. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
