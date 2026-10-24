@@ -1,0 +1,1832 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b128",
+  "createdAt": "2026-10-24T02:38:52.670526+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.night-walk-and-seat-128",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · An evening nature walk and a place on the coach",
+        "summary": "An evening nature walk and a place on the coach，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.2024.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original senior paired readings, two per level, each three-question information text plus four-question narrative/expository/argument text. Fictional event notices; common process explanations with explicit limits. Same-author all-option/evidence review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.night-walk-and-seat-128",
+          "family": "reading_choice",
+          "label": "An evening nature walk and a place on the coach",
+          "candidateSHA256": "1013a283ea176916887d8c33d819405dae30052d832b32930f3b929b66dece79",
+          "authorCheckSHA256": "1840a1cfa59cc72268710303bf3ee2b2d62fe4c58935b55c81404bb05188f262",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.night-walk-and-seat-128#walk",
+            "expansion.20261024.senior1.night-walk-and-seat-128#seat"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b128；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A first look at life after sunset\n\nPinebank Nature Centre offers an introductory evening walk on Friday, 16 July, for young people aged fifteen to eighteen. The group will look and listen for wildlife from established paths. This is a guided observation activity, not a promise that a particular animal will appear.\n\nMeet at the visitor centre at19:15. The briefing begins at19:30, and the walk runs from20:00 to21:30. Participants must stay with the guide. Places are limited to ten and must be booked in advance; a submitted form is not a confirmation until the centre replies.\n\nWear suitable closed shoes and bring a warm layer. The centre supplies the observation equipment needed for the session. Personal torches may be used only as directed, since extra light can disturb both wildlife and the group's observations. Do not bring food to attract animals.\n\nThe fee is twelve pounds. Under-eighteens need a parent or guardian consent form; eighteen-year-olds complete their own. Give an emergency contact when booking. Accompanying adults may wait at the centre, but are not automatically included in the walking group.\n\nIf weather makes the route unsuitable, the team will notify confirmed participants by16:00 and offer a choice of another date or a refund. Tell the organiser about access requirements before booking. Some paths are uneven, and the centre does not describe the whole route as step-free.\n\nThe seat beside the window\n\nOn the coach to our school camp, I saved the seat beside me for a friend. She arrived late and asked whether she could sit nearer the front because winding roads made her feel unwell. I said yes, but felt rejected as she moved away.\n\nThe boy who took the empty seat was new to our class. I answered his first questions briefly, still thinking about my friend. Then he noticed the paperback on my lap and asked whether its ending was as surprising as the cover claimed. He had read another book by the same writer.\n\nWe spent most of the journey comparing stories without revealing endings we had not both read. At a rest stop, my friend came back to ask how I was enjoying the trip. She looked pale and was carrying a bottle of water. Her earlier choice suddenly seemed less like a judgement about my company.\n\nI had known what she said, but had treated my own disappointment as a better explanation. I apologised for being quiet when she had asked about changing seats. She seemed surprised that I had taken it personally. She still wanted to share a tent, exactly as we had planned.\n\nWhen we returned to the coach, I did not ask her to move back. The front seat was useful to her, and the conversation beside the window had become enjoyable in its own right. At camp, the three of us joined the same walking group.\n\nI remember the journey partly because it began with a small misunderstanding that nobody needed to turn into a quarrel. My friend had asked for a different seat, not a different friendship. The empty place beside me had felt like evidence of one loss; it became the beginning of another conversation. I was glad I had eventually listened to the reason she had already given."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.night-walk-and-seat-128.walk.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When should participants meet?",
+            "material": "A first look at life after sunset\n\nPinebank Nature Centre offers an introductory evening walk on Friday, 16 July, for young people aged fifteen to eighteen. The group will look and listen for wildlife from established paths. This is a guided observation activity, not a promise that a particular animal will appear.\n\nMeet at the visitor centre at19:15. The briefing begins at19:30, and the walk runs from20:00 to21:30. Participants must stay with the guide. Places are limited to ten and must be booked in advance; a submitted form is not a confirmation until the centre replies.\n\nWear suitable closed shoes and bring a warm layer. The centre supplies the observation equipment needed for the session. Personal torches may be used only as directed, since extra light can disturb both wildlife and the group's observations. Do not bring food to attract animals.\n\nThe fee is twelve pounds. Under-eighteens need a parent or guardian consent form; eighteen-year-olds complete their own. Give an emergency contact when booking. Accompanying adults may wait at the centre, but are not automatically included in the walking group.\n\nIf weather makes the route unsuitable, the team will notify confirmed participants by16:00 and offer a choice of another date or a refund. Tell the organiser about access requirements before booking. Some paths are uneven, and the centre does not describe the whole route as step-free.",
+            "explanation": "19:15 meeting precedes19:30briefing/20:00walk;21:30end.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "19:15"
+              },
+              {
+                "id": "o1",
+                "text": "19:30"
+              },
+              {
+                "id": "o2",
+                "text": "20:00"
+              },
+              {
+                "id": "o3",
+                "text": "21:30"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.night-walk-and-seat-128.walk.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which action is within the stated rules?",
+            "material": "A first look at life after sunset\n\nPinebank Nature Centre offers an introductory evening walk on Friday, 16 July, for young people aged fifteen to eighteen. The group will look and listen for wildlife from established paths. This is a guided observation activity, not a promise that a particular animal will appear.\n\nMeet at the visitor centre at19:15. The briefing begins at19:30, and the walk runs from20:00 to21:30. Participants must stay with the guide. Places are limited to ten and must be booked in advance; a submitted form is not a confirmation until the centre replies.\n\nWear suitable closed shoes and bring a warm layer. The centre supplies the observation equipment needed for the session. Personal torches may be used only as directed, since extra light can disturb both wildlife and the group's observations. Do not bring food to attract animals.\n\nThe fee is twelve pounds. Under-eighteens need a parent or guardian consent form; eighteen-year-olds complete their own. Give an emergency contact when booking. Accompanying adults may wait at the centre, but are not automatically included in the walking group.\n\nIf weather makes the route unsuitable, the team will notify confirmed participants by16:00 and offer a choice of another date or a refund. Tell the organiser about access requirements before booking. Some paths are uneven, and the centre does not describe the whole route as step-free.",
+            "explanation": "Torch use subject to guide. Feeding/leaving/automaticadultplace denied.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Feeding animals to guarantee a sighting"
+              },
+              {
+                "id": "o1",
+                "text": "Leaving the group for a closer view"
+              },
+              {
+                "id": "o2",
+                "text": "Using a personal torch only when directed"
+              },
+              {
+                "id": "o3",
+                "text": "Assuming an accompanying adult has a walking place"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.night-walk-and-seat-128.walk.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is offered if weather prevents the walk?",
+            "material": "A first look at life after sunset\n\nPinebank Nature Centre offers an introductory evening walk on Friday, 16 July, for young people aged fifteen to eighteen. The group will look and listen for wildlife from established paths. This is a guided observation activity, not a promise that a particular animal will appear.\n\nMeet at the visitor centre at19:15. The briefing begins at19:30, and the walk runs from20:00 to21:30. Participants must stay with the guide. Places are limited to ten and must be booked in advance; a submitted form is not a confirmation until the centre replies.\n\nWear suitable closed shoes and bring a warm layer. The centre supplies the observation equipment needed for the session. Personal torches may be used only as directed, since extra light can disturb both wildlife and the group's observations. Do not bring food to attract animals.\n\nThe fee is twelve pounds. Under-eighteens need a parent or guardian consent form; eighteen-year-olds complete their own. Give an emergency contact when booking. Accompanying adults may wait at the centre, but are not automatically included in the walking group.\n\nIf weather makes the route unsuitable, the team will notify confirmed participants by16:00 and offer a choice of another date or a refund. Tell the organiser about access requirements before booking. Some paths are uneven, and the centre does not describe the whole route as step-free.",
+            "explanation": "Cancellation notification by16:00 with date/refund choice. Other promises unsupported.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Automatic participation without consent"
+              },
+              {
+                "id": "o1",
+                "text": "A guaranteed animal sighting indoors"
+              },
+              {
+                "id": "o2",
+                "text": "No contact until the next morning"
+              },
+              {
+                "id": "o3",
+                "text": "Another date or a refund"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.night-walk-and-seat-128.seat.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the friend move towards the front?",
+            "material": "The seat beside the window\n\nOn the coach to our school camp, I saved the seat beside me for a friend. She arrived late and asked whether she could sit nearer the front because winding roads made her feel unwell. I said yes, but felt rejected as she moved away.\n\nThe boy who took the empty seat was new to our class. I answered his first questions briefly, still thinking about my friend. Then he noticed the paperback on my lap and asked whether its ending was as surprising as the cover claimed. He had read another book by the same writer.\n\nWe spent most of the journey comparing stories without revealing endings we had not both read. At a rest stop, my friend came back to ask how I was enjoying the trip. She looked pale and was carrying a bottle of water. Her earlier choice suddenly seemed less like a judgement about my company.\n\nI had known what she said, but had treated my own disappointment as a better explanation. I apologised for being quiet when she had asked about changing seats. She seemed surprised that I had taken it personally. She still wanted to share a tent, exactly as we had planned.\n\nWhen we returned to the coach, I did not ask her to move back. The front seat was useful to her, and the conversation beside the window had become enjoyable in its own right. At camp, the three of us joined the same walking group.\n\nI remember the journey partly because it began with a small misunderstanding that nobody needed to turn into a quarrel. My friend had asked for a different seat, not a different friendship. The empty place beside me had felt like evidence of one loss; it became the beginning of another conversation. I was glad I had eventually listened to the reason she had already given.",
+            "explanation": "Explicit motion-discomfort reason, later pale appearance supports. Other motives not stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Winding roads make her feel unwell"
+              },
+              {
+                "id": "o1",
+                "text": "The narrator refuses to speak first"
+              },
+              {
+                "id": "o2",
+                "text": "She has ended the friendship"
+              },
+              {
+                "id": "o3",
+                "text": "She has promised to sit with the new boy"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.night-walk-and-seat-128.seat.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What starts the narrator’s longer conversation with the new boy?",
+            "material": "The seat beside the window\n\nOn the coach to our school camp, I saved the seat beside me for a friend. She arrived late and asked whether she could sit nearer the front because winding roads made her feel unwell. I said yes, but felt rejected as she moved away.\n\nThe boy who took the empty seat was new to our class. I answered his first questions briefly, still thinking about my friend. Then he noticed the paperback on my lap and asked whether its ending was as surprising as the cover claimed. He had read another book by the same writer.\n\nWe spent most of the journey comparing stories without revealing endings we had not both read. At a rest stop, my friend came back to ask how I was enjoying the trip. She looked pale and was carrying a bottle of water. Her earlier choice suddenly seemed less like a judgement about my company.\n\nI had known what she said, but had treated my own disappointment as a better explanation. I apologised for being quiet when she had asked about changing seats. She seemed surprised that I had taken it personally. She still wanted to share a tent, exactly as we had planned.\n\nWhen we returned to the coach, I did not ask her to move back. The front seat was useful to her, and the conversation beside the window had become enjoyable in its own right. At camp, the three of us joined the same walking group.\n\nI remember the journey partly because it began with a small misunderstanding that nobody needed to turn into a quarrel. My friend had asked for a different seat, not a different friendship. The empty place beside me had felt like evidence of one loss; it became the beginning of another conversation. I was glad I had eventually listened to the reason she had already given.",
+            "explanation": "Boy notices book/author and asks ending. Other events absent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A disagreement about the tent"
+              },
+              {
+                "id": "o1",
+                "text": "An argument over water"
+              },
+              {
+                "id": "o2",
+                "text": "A question about the paperback"
+              },
+              {
+                "id": "o3",
+                "text": "A demand to change coaches"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.night-walk-and-seat-128.seat.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the narrator realise at the rest stop?",
+            "material": "The seat beside the window\n\nOn the coach to our school camp, I saved the seat beside me for a friend. She arrived late and asked whether she could sit nearer the front because winding roads made her feel unwell. I said yes, but felt rejected as she moved away.\n\nThe boy who took the empty seat was new to our class. I answered his first questions briefly, still thinking about my friend. Then he noticed the paperback on my lap and asked whether its ending was as surprising as the cover claimed. He had read another book by the same writer.\n\nWe spent most of the journey comparing stories without revealing endings we had not both read. At a rest stop, my friend came back to ask how I was enjoying the trip. She looked pale and was carrying a bottle of water. Her earlier choice suddenly seemed less like a judgement about my company.\n\nI had known what she said, but had treated my own disappointment as a better explanation. I apologised for being quiet when she had asked about changing seats. She seemed surprised that I had taken it personally. She still wanted to share a tent, exactly as we had planned.\n\nWhen we returned to the coach, I did not ask her to move back. The front seat was useful to her, and the conversation beside the window had become enjoyable in its own right. At camp, the three of us joined the same walking group.\n\nI remember the journey partly because it began with a small misunderstanding that nobody needed to turn into a quarrel. My friend had asked for a different seat, not a different friendship. The empty place beside me had felt like evidence of one loss; it became the beginning of another conversation. I was glad I had eventually listened to the reason she had already given.",
+            "explanation": "Narrator recognises taking practical move personally. Other conclusions unsupported.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The new boy owned the coach"
+              },
+              {
+                "id": "o1",
+                "text": "The friend had invented every symptom"
+              },
+              {
+                "id": "o2",
+                "text": "The camp had been cancelled"
+              },
+              {
+                "id": "o3",
+                "text": "Personal disappointment had distorted an already stated reason"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.night-walk-and-seat-128.seat.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What changes by the return to the coach?",
+            "material": "The seat beside the window\n\nOn the coach to our school camp, I saved the seat beside me for a friend. She arrived late and asked whether she could sit nearer the front because winding roads made her feel unwell. I said yes, but felt rejected as she moved away.\n\nThe boy who took the empty seat was new to our class. I answered his first questions briefly, still thinking about my friend. Then he noticed the paperback on my lap and asked whether its ending was as surprising as the cover claimed. He had read another book by the same writer.\n\nWe spent most of the journey comparing stories without revealing endings we had not both read. At a rest stop, my friend came back to ask how I was enjoying the trip. She looked pale and was carrying a bottle of water. Her earlier choice suddenly seemed less like a judgement about my company.\n\nI had known what she said, but had treated my own disappointment as a better explanation. I apologised for being quiet when she had asked about changing seats. She seemed surprised that I had taken it personally. She still wanted to share a tent, exactly as we had planned.\n\nWhen we returned to the coach, I did not ask her to move back. The front seat was useful to her, and the conversation beside the window had become enjoyable in its own right. At camp, the three of us joined the same walking group.\n\nI remember the journey partly because it began with a small misunderstanding that nobody needed to turn into a quarrel. My friend had asked for a different seat, not a different friendship. The empty place beside me had felt like evidence of one loss; it became the beginning of another conversation. I was glad I had eventually listened to the reason she had already given.",
+            "explanation": "Acceptance and ongoing two friendships final. Coercion/silence/abandonment contradict.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The friend is forced back to the old seat"
+              },
+              {
+                "id": "o1",
+                "text": "All three stop speaking"
+              },
+              {
+                "id": "o2",
+                "text": "The tent plan is abandoned"
+              },
+              {
+                "id": "o3",
+                "text": "The narrator accepts the seating arrangement without treating it as rejection"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "a740f39e974511817134dfe34be44ca2785435d5b8f62a5f0e9202a00079f4e2",
+      "reviewNotes": "Six complete original senior paired readings, two per level, each three-question information text plus four-question narrative/expository/argument text. Fictional event notices; common process explanations with explicit limits. Same-author all-option/evidence review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.night-walk-and-seat-128#walk",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.night-walk-and-seat-128.walk.q1",
+            "expansion.20261024.senior1.night-walk-and-seat-128.walk.q2",
+            "expansion.20261024.senior1.night-walk-and-seat-128.walk.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.night-walk-and-seat-128",
+          "sourceContentHash": "3a4933f09bdb83ba24fd9a6ce7d9f1bd0e363036e3c74577251a6cdf5c7a8d31"
+        },
+        {
+          "id": "expansion.20261024.senior1.night-walk-and-seat-128#seat",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.night-walk-and-seat-128.seat.q1",
+            "expansion.20261024.senior1.night-walk-and-seat-128.seat.q2",
+            "expansion.20261024.senior1.night-walk-and-seat-128.seat.q3",
+            "expansion.20261024.senior1.night-walk-and-seat-128.seat.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.night-walk-and-seat-128",
+          "sourceContentHash": "ca5a626110476e338f79c994e5c0767536ef404365b91e18ce42817e026a2253"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.model-workshop-and-chest-128",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · A cardboard workshop and a chest of buttons",
+        "summary": "A cardboard workshop and a chest of buttons，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.2024.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original senior paired readings, two per level, each three-question information text plus four-question narrative/expository/argument text. Fictional event notices; common process explanations with explicit limits. Same-author all-option/evidence review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.model-workshop-and-chest-128",
+          "family": "reading_choice",
+          "label": "A cardboard workshop and a chest of buttons",
+          "candidateSHA256": "2d4c303b2a15f2c37e91dee2064380615bb653198fca8ce49e983bf79d6c3eda",
+          "authorCheckSHA256": "202d8f2b7284fa91f3f15f4aac0d05cdb9244e05586460609357e8e63abda4a4",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.model-workshop-and-chest-128#models",
+            "expansion.20261024.senior1.model-workshop-and-chest-128#buttons"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b128；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Cardboard creatures workshop\n\nThe Brook Lane Art Room will run a cardboard-creature workshop on Sunday from10:00 to12:30. Participants aged fifteen to eighteen will design a standing animal model using folded card and simple joints. Beginners are welcome, and the tutor will demonstrate each main technique.\n\nBook by Wednesday evening. The fee is nine pounds, including card, approved cutting tools and other materials. Payment confirms a place after the organiser has checked availability. Do not buy special materials before receiving confirmation; everyone begins with the same supplied set.\n\nBring a box to carry the finished model home. Wear clothes that can get marked. Personal powered tools are not used in this session. The tutor will supervise the supplied equipment and may adapt a design if it requires a technique outside the workshop's scope.\n\nArrive at09:45 for registration. Young people under eighteen need consent from a parent or guardian. Accompanying adults may use the waiting area, but should not expect to work on the participant's model. The aim is for each person to make their own design with appropriate guidance.\n\nThe room is reached by a short flight of steps. Contact the organiser before booking to discuss access. Models are decorative and are not certified as children's toys. A successful session offers an introduction to materials and construction, rather than a qualification for independent use of unfamiliar tools.\n\nThe buttons in the wooden chest\n\nMy aunt kept a small wooden chest full of spare buttons. As a child, I treated it as treasure. There were round ones, square ones and one shaped like a tiny blue flower. When she moved to a smaller home, I offered to sort the chest for her.\n\nI began by colour. Every red button went into one pile, every white one into another. The chest looked wonderfully organised after an hour. Then my aunt asked where I had put the three buttons from her green coat. Two were white and one was grey, because she had been collecting possible replacements rather than storing only the originals.\n\nMy neat categories had separated things that belonged together for a particular job. She showed me several small envelopes with notes: a jacket, a cushion cover and a shirt that needed matching cuffs. Some buttons were grouped by colour; others by the repair they were intended to support.\n\nWe began again. I kept the useful envelopes and made a few new ones, while leaving loose decorative buttons in colour groups. The flower button stayed by itself because neither of us wanted to attach it to anything yet. It could remain a small pleasure without needing an immediate purpose.\n\nBy evening, the chest was less visually tidy than my first arrangement but easier for my aunt to use. She could find a repair set without searching through several piles. I had not been wrong to notice colour. I had been wrong to assume it was the only relationship worth preserving.\n\nShe gave me the flower button when we finished. I put it in an envelope with a note about the afternoon, not because that was the most efficient way to classify blue objects. The note preserved the reason I wanted to keep this particular one. A box can be ordered in several sensible ways; choosing among them begins with asking what someone hopes to find."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.model-workshop-and-chest-128.models.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is included in the fee?",
+            "material": "Cardboard creatures workshop\n\nThe Brook Lane Art Room will run a cardboard-creature workshop on Sunday from10:00 to12:30. Participants aged fifteen to eighteen will design a standing animal model using folded card and simple joints. Beginners are welcome, and the tutor will demonstrate each main technique.\n\nBook by Wednesday evening. The fee is nine pounds, including card, approved cutting tools and other materials. Payment confirms a place after the organiser has checked availability. Do not buy special materials before receiving confirmation; everyone begins with the same supplied set.\n\nBring a box to carry the finished model home. Wear clothes that can get marked. Personal powered tools are not used in this session. The tutor will supervise the supplied equipment and may adapt a design if it requires a technique outside the workshop's scope.\n\nArrive at09:45 for registration. Young people under eighteen need consent from a parent or guardian. Accompanying adults may use the waiting area, but should not expect to work on the participant's model. The aim is for each person to make their own design with appropriate guidance.\n\nThe room is reached by a short flight of steps. Contact the organiser before booking to discuss access. Models are decorative and are not certified as children's toys. A successful session offers an introduction to materials and construction, rather than a qualification for independent use of unfamiliar tools.",
+            "explanation": "Materials/approvedtools included. Poweredtoolsnotused/boxbring/noqualification.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A carrying box"
+              },
+              {
+                "id": "o1",
+                "text": "The supplied card and approved tools"
+              },
+              {
+                "id": "o2",
+                "text": "A personal powered saw"
+              },
+              {
+                "id": "o3",
+                "text": "A professional equipment certificate"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.model-workshop-and-chest-128.models.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should participants do before buying special materials?",
+            "material": "Cardboard creatures workshop\n\nThe Brook Lane Art Room will run a cardboard-creature workshop on Sunday from10:00 to12:30. Participants aged fifteen to eighteen will design a standing animal model using folded card and simple joints. Beginners are welcome, and the tutor will demonstrate each main technique.\n\nBook by Wednesday evening. The fee is nine pounds, including card, approved cutting tools and other materials. Payment confirms a place after the organiser has checked availability. Do not buy special materials before receiving confirmation; everyone begins with the same supplied set.\n\nBring a box to carry the finished model home. Wear clothes that can get marked. Personal powered tools are not used in this session. The tutor will supervise the supplied equipment and may adapt a design if it requires a technique outside the workshop's scope.\n\nArrive at09:45 for registration. Young people under eighteen need consent from a parent or guardian. Accompanying adults may use the waiting area, but should not expect to work on the participant's model. The aim is for each person to make their own design with appropriate guidance.\n\nThe room is reached by a short flight of steps. Contact the organiser before booking to discuss access. Models are decorative and are not certified as children's toys. A successful session offers an introduction to materials and construction, rather than a qualification for independent use of unfamiliar tools.",
+            "explanation": "Explicit wait for confirmation and suppliedset. Other actions contradict availability/ownwork/supervision.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Bring every unfamiliar tool from home"
+              },
+              {
+                "id": "o1",
+                "text": "Wait for confirmation"
+              },
+              {
+                "id": "o2",
+                "text": "Ask an adult to make the model for them"
+              },
+              {
+                "id": "o3",
+                "text": "Assume any payment always secures a place"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.model-workshop-and-chest-128.models.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How are finished models described?",
+            "material": "Cardboard creatures workshop\n\nThe Brook Lane Art Room will run a cardboard-creature workshop on Sunday from10:00 to12:30. Participants aged fifteen to eighteen will design a standing animal model using folded card and simple joints. Beginners are welcome, and the tutor will demonstrate each main technique.\n\nBook by Wednesday evening. The fee is nine pounds, including card, approved cutting tools and other materials. Payment confirms a place after the organiser has checked availability. Do not buy special materials before receiving confirmation; everyone begins with the same supplied set.\n\nBring a box to carry the finished model home. Wear clothes that can get marked. Personal powered tools are not used in this session. The tutor will supervise the supplied equipment and may adapt a design if it requires a technique outside the workshop's scope.\n\nArrive at09:45 for registration. Young people under eighteen need consent from a parent or guardian. Accompanying adults may use the waiting area, but should not expect to work on the participant's model. The aim is for each person to make their own design with appropriate guidance.\n\nThe room is reached by a short flight of steps. Contact the organiser before booking to discuss access. Models are decorative and are not certified as children's toys. A successful session offers an introduction to materials and construction, rather than a qualification for independent use of unfamiliar tools.",
+            "explanation": "Final paragraph decorative notcertifiedtoys. Other claims overstate scope.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Guaranteed toys for all young children"
+              },
+              {
+                "id": "o1",
+                "text": "Decorative objects without toy certification"
+              },
+              {
+                "id": "o2",
+                "text": "Proof of professional training"
+              },
+              {
+                "id": "o3",
+                "text": "Equipment for independent cutting practice"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.model-workshop-and-chest-128.buttons.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How does the narrator first sort the buttons?",
+            "material": "The buttons in the wooden chest\n\nMy aunt kept a small wooden chest full of spare buttons. As a child, I treated it as treasure. There were round ones, square ones and one shaped like a tiny blue flower. When she moved to a smaller home, I offered to sort the chest for her.\n\nI began by colour. Every red button went into one pile, every white one into another. The chest looked wonderfully organised after an hour. Then my aunt asked where I had put the three buttons from her green coat. Two were white and one was grey, because she had been collecting possible replacements rather than storing only the originals.\n\nMy neat categories had separated things that belonged together for a particular job. She showed me several small envelopes with notes: a jacket, a cushion cover and a shirt that needed matching cuffs. Some buttons were grouped by colour; others by the repair they were intended to support.\n\nWe began again. I kept the useful envelopes and made a few new ones, while leaving loose decorative buttons in colour groups. The flower button stayed by itself because neither of us wanted to attach it to anything yet. It could remain a small pleasure without needing an immediate purpose.\n\nBy evening, the chest was less visually tidy than my first arrangement but easier for my aunt to use. She could find a repair set without searching through several piles. I had not been wrong to notice colour. I had been wrong to assume it was the only relationship worth preserving.\n\nShe gave me the flower button when we finished. I put it in an envelope with a note about the afternoon, not because that was the most efficient way to classify blue objects. The note preserved the reason I wanted to keep this particular one. A box can be ordered in several sensible ways; choosing among them begins with asking what someone hopes to find.",
+            "explanation": "Initial colour piles explicit. Repair projects discovered later; dates/names not initial.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "By repair project"
+              },
+              {
+                "id": "o1",
+                "text": "By the date purchased"
+              },
+              {
+                "id": "o2",
+                "text": "By their owners’ names"
+              },
+              {
+                "id": "o3",
+                "text": "By colour"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.model-workshop-and-chest-128.buttons.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the problem with that first arrangement?",
+            "material": "The buttons in the wooden chest\n\nMy aunt kept a small wooden chest full of spare buttons. As a child, I treated it as treasure. There were round ones, square ones and one shaped like a tiny blue flower. When she moved to a smaller home, I offered to sort the chest for her.\n\nI began by colour. Every red button went into one pile, every white one into another. The chest looked wonderfully organised after an hour. Then my aunt asked where I had put the three buttons from her green coat. Two were white and one was grey, because she had been collecting possible replacements rather than storing only the originals.\n\nMy neat categories had separated things that belonged together for a particular job. She showed me several small envelopes with notes: a jacket, a cushion cover and a shirt that needed matching cuffs. Some buttons were grouped by colour; others by the repair they were intended to support.\n\nWe began again. I kept the useful envelopes and made a few new ones, while leaving loose decorative buttons in colour groups. The flower button stayed by itself because neither of us wanted to attach it to anything yet. It could remain a small pleasure without needing an immediate purpose.\n\nBy evening, the chest was less visually tidy than my first arrangement but easier for my aunt to use. She could find a repair set without searching through several piles. I had not been wrong to notice colour. I had been wrong to assume it was the only relationship worth preserving.\n\nShe gave me the flower button when we finished. I put it in an envelope with a note about the afternoon, not because that was the most efficient way to classify blue objects. The note preserved the reason I wanted to keep this particular one. A box can be ordered in several sensible ways; choosing among them begins with asking what someone hopes to find.",
+            "explanation": "Greencoat candidates cross colours and needgrouping. Other outcomes not stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It makes loose decoration impossible"
+              },
+              {
+                "id": "o1",
+                "text": "It separates replacement sets needed for particular repairs"
+              },
+              {
+                "id": "o2",
+                "text": "It changes every button’s colour"
+              },
+              {
+                "id": "o3",
+                "text": "It destroys the chest"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.model-workshop-and-chest-128.buttons.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the final arrangement more useful?",
+            "material": "The buttons in the wooden chest\n\nMy aunt kept a small wooden chest full of spare buttons. As a child, I treated it as treasure. There were round ones, square ones and one shaped like a tiny blue flower. When she moved to a smaller home, I offered to sort the chest for her.\n\nI began by colour. Every red button went into one pile, every white one into another. The chest looked wonderfully organised after an hour. Then my aunt asked where I had put the three buttons from her green coat. Two were white and one was grey, because she had been collecting possible replacements rather than storing only the originals.\n\nMy neat categories had separated things that belonged together for a particular job. She showed me several small envelopes with notes: a jacket, a cushion cover and a shirt that needed matching cuffs. Some buttons were grouped by colour; others by the repair they were intended to support.\n\nWe began again. I kept the useful envelopes and made a few new ones, while leaving loose decorative buttons in colour groups. The flower button stayed by itself because neither of us wanted to attach it to anything yet. It could remain a small pleasure without needing an immediate purpose.\n\nBy evening, the chest was less visually tidy than my first arrangement but easier for my aunt to use. She could find a repair set without searching through several piles. I had not been wrong to notice colour. I had been wrong to assume it was the only relationship worth preserving.\n\nShe gave me the flower button when we finished. I put it in an envelope with a note about the afternoon, not because that was the most efficient way to classify blue objects. The note preserved the reason I wanted to keep this particular one. A box can be ordered in several sensible ways; choosing among them begins with asking what someone hopes to find.",
+            "explanation": "Hybrid grouping matches uses. Uniformcategories/no notes/discard contradict.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It throws away the flower button"
+              },
+              {
+                "id": "o1",
+                "text": "It forces every button into one identical category"
+              },
+              {
+                "id": "o2",
+                "text": "It removes all notes"
+              },
+              {
+                "id": "o3",
+                "text": "It preserves repair groups as well as some colour groups"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.model-workshop-and-chest-128.buttons.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the flower button’s envelope preserve?",
+            "material": "The buttons in the wooden chest\n\nMy aunt kept a small wooden chest full of spare buttons. As a child, I treated it as treasure. There were round ones, square ones and one shaped like a tiny blue flower. When she moved to a smaller home, I offered to sort the chest for her.\n\nI began by colour. Every red button went into one pile, every white one into another. The chest looked wonderfully organised after an hour. Then my aunt asked where I had put the three buttons from her green coat. Two were white and one was grey, because she had been collecting possible replacements rather than storing only the originals.\n\nMy neat categories had separated things that belonged together for a particular job. She showed me several small envelopes with notes: a jacket, a cushion cover and a shirt that needed matching cuffs. Some buttons were grouped by colour; others by the repair they were intended to support.\n\nWe began again. I kept the useful envelopes and made a few new ones, while leaving loose decorative buttons in colour groups. The flower button stayed by itself because neither of us wanted to attach it to anything yet. It could remain a small pleasure without needing an immediate purpose.\n\nBy evening, the chest was less visually tidy than my first arrangement but easier for my aunt to use. She could find a repair set without searching through several piles. I had not been wrong to notice colour. I had been wrong to assume it was the only relationship worth preserving.\n\nShe gave me the flower button when we finished. I put it in an envelope with a note about the afternoon, not because that was the most efficient way to classify blue objects. The note preserved the reason I wanted to keep this particular one. A box can be ordered in several sensible ways; choosing among them begins with asking what someone hopes to find.",
+            "explanation": "Narrator notes afternoon memory. Other interpretations unsupported.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A requirement to repair the green coat with it"
+              },
+              {
+                "id": "o1",
+                "text": "The personal reason for keeping that particular object"
+              },
+              {
+                "id": "o2",
+                "text": "A claim that all blue buttons are identical"
+              },
+              {
+                "id": "o3",
+                "text": "The price of a new chest"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "4aee2ec35dde713b2f64969d41f90a759b49be9d83055e82c9767191ac9d2e28",
+      "reviewNotes": "Six complete original senior paired readings, two per level, each three-question information text plus four-question narrative/expository/argument text. Fictional event notices; common process explanations with explicit limits. Same-author all-option/evidence review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.model-workshop-and-chest-128#models",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.model-workshop-and-chest-128.models.q1",
+            "expansion.20261024.senior1.model-workshop-and-chest-128.models.q2",
+            "expansion.20261024.senior1.model-workshop-and-chest-128.models.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.model-workshop-and-chest-128",
+          "sourceContentHash": "b50337e39c8a72d889db1507db0076e4e2efb7322a065cecab3d27bfa15f88b0"
+        },
+        {
+          "id": "expansion.20261024.senior1.model-workshop-and-chest-128#buttons",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.model-workshop-and-chest-128.buttons.q1",
+            "expansion.20261024.senior1.model-workshop-and-chest-128.buttons.q2",
+            "expansion.20261024.senior1.model-workshop-and-chest-128.buttons.q3",
+            "expansion.20261024.senior1.model-workshop-and-chest-128.buttons.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.model-workshop-and-chest-128",
+          "sourceContentHash": "e87f31a2f2fb6e4bfacf10dac34159486abf96bbb0066c7ae2c043ca978773f0"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.bread-workshop-and-rise-128",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · A bread workshop and the time dough needs",
+        "summary": "A bread workshop and the time dough needs，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g11.2025.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original senior paired readings, two per level, each three-question information text plus four-question narrative/expository/argument text. Fictional event notices; common process explanations with explicit limits. Same-author all-option/evidence review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.bread-workshop-and-rise-128",
+          "family": "reading_choice",
+          "label": "A bread workshop and the time dough needs",
+          "candidateSHA256": "903c9f134ea9953a8d4dabc688c0d3ba1c574b5a8e352ae58c8d74366b4a0ed3",
+          "authorCheckSHA256": "9627f02614e2948e36d087fff430df5ba6506b4ca2085b23bce407d1e9a8ed89",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.bread-workshop-and-rise-128#bread",
+            "expansion.20261024.senior2.bread-workshop-and-rise-128#rise"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b128；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A morning with bread dough\n\nThe Mill Room offers a beginner bread-making workshop on Saturday,22 May, from09:30 to13:00. Participants make a small wheat loaf under an instructor's supervision and take it home. The workshop is for people aged sixteen and over; no baking experience is necessary.\n\nThe fee is twenty pounds and covers ingredients, equipment and a reusable recipe sheet. Bring a container for the finished loaf and wear closed shoes. Aprons are supplied, but flour can still mark clothing. Participants should arrive at09:15 to register and wash their hands before the demonstration.\n\nThe session uses wheat and other ingredients listed on the booking page. Contact the organiser before paying if you need information about ingredients or the shared kitchen. The workshop cannot guarantee a setting free from particular allergens, and substitutions are not automatically available during the class.\n\nPlaces are confirmed by a reply after payment has been arranged. A request alone does not reserve a place. If a participant withdraws more than seven days before the session, a refund is available. Later withdrawals may be transferred to a named replacement after the organiser checks the arrangement.\n\nThe kitchen is on the ground floor, but some tasks involve standing. Tell the organiser about access requirements in advance. This is a practical introduction, not a food-business qualification. Participants keep the recipe sheet, including notes about the conditions used during the session, rather than a promise that every future loaf will rise on exactly the same timetable.\n\nA timetable written in dough\n\nA recipe may tell a baker to leave dough for an hour, yet the dough in the bowl does not read a clock. In a yeast bread, rising depends on living activity and the physical structure of the mixture. Time is useful information, but it works alongside temperature, ingredients and signs in the dough itself.\n\nYeast uses available sugars and releases gas. In a suitable dough, some of that gas is held in bubbles, helping the mixture expand. The result is not simply a balloon filled from outside. The material must be able to retain enough gas while changing shape. A mixture with different ingredients can behave differently even under a similar timetable.\n\nTemperature influences the activity. A cool room may slow a process that was faster in the warm kitchen where a recipe was tested. This does not mean warmer is always better. Living organisms and dough structures have limits, and excessive heat can be harmful. A general instruction should not be turned into a race to find the hottest possible place.\n\nExperienced bakers therefore read descriptions as well as numbers. They may look for a change in volume or other features specified by the method. Those observations do not remove the need for care with ingredients, handling or cooking. They help explain what a stated waiting period was intended to achieve.\n\nFor a beginner, the useful lesson is to record the conditions rather than blame every unexpected result on personal ability. A loaf can differ because the room, ingredients or process differed. Comparing notes may identify a practical adjustment worth trying next time.\n\nA timetable remains valuable. It helps organise work and gives an approximate expectation. Its value increases when the baker understands the process it describes. The printed hour is then a guide to examine alongside the dough, rather than an instruction to ignore the evidence in the bowl."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.bread-workshop-and-rise-128.bread.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When should a participant arrive?",
+            "material": "A morning with bread dough\n\nThe Mill Room offers a beginner bread-making workshop on Saturday,22 May, from09:30 to13:00. Participants make a small wheat loaf under an instructor's supervision and take it home. The workshop is for people aged sixteen and over; no baking experience is necessary.\n\nThe fee is twenty pounds and covers ingredients, equipment and a reusable recipe sheet. Bring a container for the finished loaf and wear closed shoes. Aprons are supplied, but flour can still mark clothing. Participants should arrive at09:15 to register and wash their hands before the demonstration.\n\nThe session uses wheat and other ingredients listed on the booking page. Contact the organiser before paying if you need information about ingredients or the shared kitchen. The workshop cannot guarantee a setting free from particular allergens, and substitutions are not automatically available during the class.\n\nPlaces are confirmed by a reply after payment has been arranged. A request alone does not reserve a place. If a participant withdraws more than seven days before the session, a refund is available. Later withdrawals may be transferred to a named replacement after the organiser checks the arrangement.\n\nThe kitchen is on the ground floor, but some tasks involve standing. Tell the organiser about access requirements in advance. This is a practical introduction, not a food-business qualification. Participants keep the recipe sheet, including notes about the conditions used during the session, rather than a promise that every future loaf will rise on exactly the same timetable.",
+            "explanation": "Arrival is09:15 for registration, before the09:30 start.13:00 is the end; seven days is a refund condition, not an arrival time.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "13:00"
+              },
+              {
+                "id": "o1",
+                "text": "09:30"
+              },
+              {
+                "id": "o2",
+                "text": "Seven days after the class"
+              },
+              {
+                "id": "o3",
+                "text": "09:15"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.bread-workshop-and-rise-128.bread.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should someone with ingredient concerns do?",
+            "material": "A morning with bread dough\n\nThe Mill Room offers a beginner bread-making workshop on Saturday,22 May, from09:30 to13:00. Participants make a small wheat loaf under an instructor's supervision and take it home. The workshop is for people aged sixteen and over; no baking experience is necessary.\n\nThe fee is twenty pounds and covers ingredients, equipment and a reusable recipe sheet. Bring a container for the finished loaf and wear closed shoes. Aprons are supplied, but flour can still mark clothing. Participants should arrive at09:15 to register and wash their hands before the demonstration.\n\nThe session uses wheat and other ingredients listed on the booking page. Contact the organiser before paying if you need information about ingredients or the shared kitchen. The workshop cannot guarantee a setting free from particular allergens, and substitutions are not automatically available during the class.\n\nPlaces are confirmed by a reply after payment has been arranged. A request alone does not reserve a place. If a participant withdraws more than seven days before the session, a refund is available. Later withdrawals may be transferred to a named replacement after the organiser checks the arrangement.\n\nThe kitchen is on the ground floor, but some tasks involve standing. Tell the organiser about access requirements in advance. This is a practical introduction, not a food-business qualification. Participants keep the recipe sheet, including notes about the conditions used during the session, rather than a promise that every future loaf will rise on exactly the same timetable.",
+            "explanation": "The notice requires ingredient questions before payment and does not guarantee an allergen-free shared kitchen or substitutions.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Treat the kitchen as guaranteed allergen-free"
+              },
+              {
+                "id": "o1",
+                "text": "Assume every substitution is available during class"
+              },
+              {
+                "id": "o2",
+                "text": "Contact the organiser before paying"
+              },
+              {
+                "id": "o3",
+                "text": "Wait until the loaf is finished"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.bread-workshop-and-rise-128.bread.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the recipe sheet provide?",
+            "material": "A morning with bread dough\n\nThe Mill Room offers a beginner bread-making workshop on Saturday,22 May, from09:30 to13:00. Participants make a small wheat loaf under an instructor's supervision and take it home. The workshop is for people aged sixteen and over; no baking experience is necessary.\n\nThe fee is twenty pounds and covers ingredients, equipment and a reusable recipe sheet. Bring a container for the finished loaf and wear closed shoes. Aprons are supplied, but flour can still mark clothing. Participants should arrive at09:15 to register and wash their hands before the demonstration.\n\nThe session uses wheat and other ingredients listed on the booking page. Contact the organiser before paying if you need information about ingredients or the shared kitchen. The workshop cannot guarantee a setting free from particular allergens, and substitutions are not automatically available during the class.\n\nPlaces are confirmed by a reply after payment has been arranged. A request alone does not reserve a place. If a participant withdraws more than seven days before the session, a refund is available. Later withdrawals may be transferred to a named replacement after the organiser checks the arrangement.\n\nThe kitchen is on the ground floor, but some tasks involve standing. Tell the organiser about access requirements in advance. This is a practical introduction, not a food-business qualification. Participants keep the recipe sheet, including notes about the conditions used during the session, rather than a promise that every future loaf will rise on exactly the same timetable.",
+            "explanation": "The sheet records the conditions used in class. It does not confer a business qualification, guarantee future timing or replace the carrying container.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A qualification to run a food business"
+              },
+              {
+                "id": "o1",
+                "text": "A replacement for the required carrying container"
+              },
+              {
+                "id": "o2",
+                "text": "A guarantee of identical rising time everywhere"
+              },
+              {
+                "id": "o3",
+                "text": "A record including the session’s conditions"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.bread-workshop-and-rise-128.rise.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the main point of the opening?",
+            "material": "A timetable written in dough\n\nA recipe may tell a baker to leave dough for an hour, yet the dough in the bowl does not read a clock. In a yeast bread, rising depends on living activity and the physical structure of the mixture. Time is useful information, but it works alongside temperature, ingredients and signs in the dough itself.\n\nYeast uses available sugars and releases gas. In a suitable dough, some of that gas is held in bubbles, helping the mixture expand. The result is not simply a balloon filled from outside. The material must be able to retain enough gas while changing shape. A mixture with different ingredients can behave differently even under a similar timetable.\n\nTemperature influences the activity. A cool room may slow a process that was faster in the warm kitchen where a recipe was tested. This does not mean warmer is always better. Living organisms and dough structures have limits, and excessive heat can be harmful. A general instruction should not be turned into a race to find the hottest possible place.\n\nExperienced bakers therefore read descriptions as well as numbers. They may look for a change in volume or other features specified by the method. Those observations do not remove the need for care with ingredients, handling or cooking. They help explain what a stated waiting period was intended to achieve.\n\nFor a beginner, the useful lesson is to record the conditions rather than blame every unexpected result on personal ability. A loaf can differ because the room, ingredients or process differed. Comparing notes may identify a practical adjustment worth trying next time.\n\nA timetable remains valuable. It helps organise work and gives an approximate expectation. Its value increases when the baker understands the process it describes. The printed hour is then a guide to examine alongside the dough, rather than an instruction to ignore the evidence in the bowl.",
+            "explanation": "The opening treats time as useful alongside conditions and the dough. It rejects neither recipes nor numbers.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every dough rises through exactly the same process"
+              },
+              {
+                "id": "o1",
+                "text": "Rising time must be interpreted alongside conditions and the dough"
+              },
+              {
+                "id": "o2",
+                "text": "Recipes should contain no numbers"
+              },
+              {
+                "id": "o3",
+                "text": "A clock is always useless in baking"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.bread-workshop-and-rise-128.rise.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the passage discuss gas retention?",
+            "material": "A timetable written in dough\n\nA recipe may tell a baker to leave dough for an hour, yet the dough in the bowl does not read a clock. In a yeast bread, rising depends on living activity and the physical structure of the mixture. Time is useful information, but it works alongside temperature, ingredients and signs in the dough itself.\n\nYeast uses available sugars and releases gas. In a suitable dough, some of that gas is held in bubbles, helping the mixture expand. The result is not simply a balloon filled from outside. The material must be able to retain enough gas while changing shape. A mixture with different ingredients can behave differently even under a similar timetable.\n\nTemperature influences the activity. A cool room may slow a process that was faster in the warm kitchen where a recipe was tested. This does not mean warmer is always better. Living organisms and dough structures have limits, and excessive heat can be harmful. A general instruction should not be turned into a race to find the hottest possible place.\n\nExperienced bakers therefore read descriptions as well as numbers. They may look for a change in volume or other features specified by the method. Those observations do not remove the need for care with ingredients, handling or cooking. They help explain what a stated waiting period was intended to achieve.\n\nFor a beginner, the useful lesson is to record the conditions rather than blame every unexpected result on personal ability. A loaf can differ because the room, ingredients or process differed. Comparing notes may identify a practical adjustment worth trying next time.\n\nA timetable remains valuable. It helps organise work and gives an approximate expectation. Its value increases when the baker understands the process it describes. The printed hour is then a guide to examine alongside the dough, rather than an instruction to ignore the evidence in the bowl.",
+            "explanation": "Produced gas must be retained by a suitable structure for expansion. The text explicitly distinguishes this from filling a balloon from outside.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Gas makes ingredients irrelevant"
+              },
+              {
+                "id": "o1",
+                "text": "Yeast simply pours air into a bowl from outside"
+              },
+              {
+                "id": "o2",
+                "text": "All mixtures have identical structures"
+              },
+              {
+                "id": "o3",
+                "text": "Expansion requires a structure that can hold bubbles"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.bread-workshop-and-rise-128.rise.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What caution is given about warmth?",
+            "material": "A timetable written in dough\n\nA recipe may tell a baker to leave dough for an hour, yet the dough in the bowl does not read a clock. In a yeast bread, rising depends on living activity and the physical structure of the mixture. Time is useful information, but it works alongside temperature, ingredients and signs in the dough itself.\n\nYeast uses available sugars and releases gas. In a suitable dough, some of that gas is held in bubbles, helping the mixture expand. The result is not simply a balloon filled from outside. The material must be able to retain enough gas while changing shape. A mixture with different ingredients can behave differently even under a similar timetable.\n\nTemperature influences the activity. A cool room may slow a process that was faster in the warm kitchen where a recipe was tested. This does not mean warmer is always better. Living organisms and dough structures have limits, and excessive heat can be harmful. A general instruction should not be turned into a race to find the hottest possible place.\n\nExperienced bakers therefore read descriptions as well as numbers. They may look for a change in volume or other features specified by the method. Those observations do not remove the need for care with ingredients, handling or cooking. They help explain what a stated waiting period was intended to achieve.\n\nFor a beginner, the useful lesson is to record the conditions rather than blame every unexpected result on personal ability. A loaf can differ because the room, ingredients or process differed. Comparing notes may identify a practical adjustment worth trying next time.\n\nA timetable remains valuable. It helps organise work and gives an approximate expectation. Its value increases when the baker understands the process it describes. The printed hour is then a guide to examine alongside the dough, rather than an instruction to ignore the evidence in the bowl.",
+            "explanation": "Excessive heat can harm the process, so faster activity does not justify unlimited warmth. A cool room does not prove lack of skill.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Faster activity does not make unlimited heat desirable"
+              },
+              {
+                "id": "o1",
+                "text": "A cool room proves the baker lacks skill"
+              },
+              {
+                "id": "o2",
+                "text": "The hottest place always produces the best loaf"
+              },
+              {
+                "id": "o3",
+                "text": "Temperature has no effect"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.bread-workshop-and-rise-128.rise.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How should a beginner respond to a differing result?",
+            "material": "A timetable written in dough\n\nA recipe may tell a baker to leave dough for an hour, yet the dough in the bowl does not read a clock. In a yeast bread, rising depends on living activity and the physical structure of the mixture. Time is useful information, but it works alongside temperature, ingredients and signs in the dough itself.\n\nYeast uses available sugars and releases gas. In a suitable dough, some of that gas is held in bubbles, helping the mixture expand. The result is not simply a balloon filled from outside. The material must be able to retain enough gas while changing shape. A mixture with different ingredients can behave differently even under a similar timetable.\n\nTemperature influences the activity. A cool room may slow a process that was faster in the warm kitchen where a recipe was tested. This does not mean warmer is always better. Living organisms and dough structures have limits, and excessive heat can be harmful. A general instruction should not be turned into a race to find the hottest possible place.\n\nExperienced bakers therefore read descriptions as well as numbers. They may look for a change in volume or other features specified by the method. Those observations do not remove the need for care with ingredients, handling or cooking. They help explain what a stated waiting period was intended to achieve.\n\nFor a beginner, the useful lesson is to record the conditions rather than blame every unexpected result on personal ability. A loaf can differ because the room, ingredients or process differed. Comparing notes may identify a practical adjustment worth trying next time.\n\nA timetable remains valuable. It helps organise work and gives an approximate expectation. Its value increases when the baker understands the process it describes. The printed hour is then a guide to examine alongside the dough, rather than an instruction to ignore the evidence in the bowl.",
+            "explanation": "Comparing conditions and notes can identify an adjustment. Blaming talent or ignoring the dough does not examine those differences.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Follow the clock while ignoring the dough"
+              },
+              {
+                "id": "o1",
+                "text": "Change every ingredient without recording it"
+              },
+              {
+                "id": "o2",
+                "text": "Compare relevant conditions and process notes"
+              },
+              {
+                "id": "o3",
+                "text": "Assume it proves a lack of talent"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "d23a3dab34d71eeb075d2b6a38adf8b9d69eb7292d0d01929df834d412cdd991",
+      "reviewNotes": "Six complete original senior paired readings, two per level, each three-question information text plus four-question narrative/expository/argument text. Fictional event notices; common process explanations with explicit limits. Same-author all-option/evidence review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.bread-workshop-and-rise-128#bread",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.bread-workshop-and-rise-128.bread.q1",
+            "expansion.20261024.senior2.bread-workshop-and-rise-128.bread.q2",
+            "expansion.20261024.senior2.bread-workshop-and-rise-128.bread.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.bread-workshop-and-rise-128",
+          "sourceContentHash": "6f00aa5565e74f8ad6eb4443581611461d3bb94b8999d3f45b7b4874d49d5518"
+        },
+        {
+          "id": "expansion.20261024.senior2.bread-workshop-and-rise-128#rise",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.bread-workshop-and-rise-128.rise.q1",
+            "expansion.20261024.senior2.bread-workshop-and-rise-128.rise.q2",
+            "expansion.20261024.senior2.bread-workshop-and-rise-128.rise.q3",
+            "expansion.20261024.senior2.bread-workshop-and-rise-128.rise.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.bread-workshop-and-rise-128",
+          "sourceContentHash": "5e3ae4ae3d9ca073caad6db1ad42ce201ea9bc9436f605f9cf8e2cbb8cbb8f85"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.railway-tour-and-expansion-128",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · A railway walk and room for a changing rail",
+        "summary": "A railway walk and room for a changing rail，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g11.2025.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original senior paired readings, two per level, each three-question information text plus four-question narrative/expository/argument text. Fictional event notices; common process explanations with explicit limits. Same-author all-option/evidence review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.railway-tour-and-expansion-128",
+          "family": "reading_choice",
+          "label": "A railway walk and room for a changing rail",
+          "candidateSHA256": "072a55ca0c01dbca21fd11780a0dc8640d65e9e4a02ce85e607125ef5b466b63",
+          "authorCheckSHA256": "0c0e14585391d1b834fd55a7ba214a1e95b19157bad98f2b9228398181341e29",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.railway-tour-and-expansion-128#tour",
+            "expansion.20261024.senior2.railway-tour-and-expansion-128#rail"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b128；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Walking the old railway route\n\nThe Valley Heritage Group offers a guided walk along a former railway route on Sunday,11 April. The three-hour walk begins at10:00 outside the old ticket office and ends at the same place. Participants should arrive at09:40 for registration and the route briefing.\n\nThe walk is open to people aged sixteen and over. Under-eighteens need an accompanying adult, and each person needs a separate booking. The fee is six pounds, including a printed route leaflet. The group is limited to fifteen participants; a place is confirmed only when the organiser replies.\n\nThe route uses public paths, some uneven and muddy. It includes two short sections with steps. Wear suitable walking shoes and bring water. A lunch stop is not included, although there will be a short rest. Contact the organiser before booking if you need more detail about access or the pace.\n\nThis walk follows a disused section. Participants must remain with the guide and must not enter operational railway land or closed structures. Historical interest does not provide permission to cross a barrier. The guide will show archival images from safe viewing points rather than lead the group inside unsafe remains.\n\nIf weather makes the route unsuitable, confirmed participants will be contacted by18:00 on Saturday. They may choose another date or a refund. The walk introduces local history; it does not train participants for railway work or give independent access to any restricted site.\n\nRoom for a changing rail\n\nA long metal rail is not a fixed length under every condition. Like many materials, it expands and contracts as its temperature changes. The movement may be small over a short piece, but it matters when a structure extends over a long distance and must remain correctly aligned.\n\nOn some jointed tracks, gaps help accommodate changes in length. A visitor may notice these spaces and assume they are simply imperfections in an otherwise continuous line. In fact, a planned discontinuity can be part of making the whole structure work under changing conditions.\n\nThis does not mean every modern railway should be imagined as a sequence of loose pieces separated by identical gaps. Continuously welded track uses other engineering arrangements to manage thermal forces. Installation, support and maintenance are part of the system. Removing a visible gap from the description does not remove the physical problem it once helped address.\n\nThe wider lesson concerns the relation between appearance and function. A perfectly continuous-looking surface can still contain forces that need management. Conversely, a visible joint may have a purpose that is not obvious from one photograph. Judging design only by whether it looks uninterrupted can therefore be misleading.\n\nCareful explanation must also recognise the limits of an everyday analogy. A classroom demonstration can help show expansion, but it does not provide the knowledge or authority to inspect or alter a railway. Real structures involve loads, materials and operating conditions beyond a simple model.\n\nFor a passenger, understanding the principle can enrich an ordinary journey. It connects the rail outside the window with a larger engineering task: allowing a system to remain dependable while its parts respond to the environment. Stability is not always achieved by preventing all movement. Sometimes it depends on anticipating movement and providing a controlled way for it to occur."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.railway-tour-and-expansion-128.tour.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must a seventeen-year-old arrange?",
+            "material": "Walking the old railway route\n\nThe Valley Heritage Group offers a guided walk along a former railway route on Sunday,11 April. The three-hour walk begins at10:00 outside the old ticket office and ends at the same place. Participants should arrive at09:40 for registration and the route briefing.\n\nThe walk is open to people aged sixteen and over. Under-eighteens need an accompanying adult, and each person needs a separate booking. The fee is six pounds, including a printed route leaflet. The group is limited to fifteen participants; a place is confirmed only when the organiser replies.\n\nThe route uses public paths, some uneven and muddy. It includes two short sections with steps. Wear suitable walking shoes and bring water. A lunch stop is not included, although there will be a short rest. Contact the organiser before booking if you need more detail about access or the pace.\n\nThis walk follows a disused section. Participants must remain with the guide and must not enter operational railway land or closed structures. Historical interest does not provide permission to cross a barrier. The guide will show archival images from safe viewing points rather than lead the group inside unsafe remains.\n\nIf weather makes the route unsuitable, confirmed participants will be contacted by18:00 on Saturday. They may choose another date or a refund. The walk introduces local history; it does not train participants for railway work or give independent access to any restricted site.",
+            "explanation": "A seventeen-year-old is under eighteen, so an adult must accompany them. Every person requires a separate booking.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "An automatic free adult place"
+              },
+              {
+                "id": "o1",
+                "text": "Permission to enter operational tracks"
+              },
+              {
+                "id": "o2",
+                "text": "A booking for only the guide"
+              },
+              {
+                "id": "o3",
+                "text": "An accompanying adult with a separate booking"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.railway-tour-and-expansion-128.tour.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which feature should participants expect?",
+            "material": "Walking the old railway route\n\nThe Valley Heritage Group offers a guided walk along a former railway route on Sunday,11 April. The three-hour walk begins at10:00 outside the old ticket office and ends at the same place. Participants should arrive at09:40 for registration and the route briefing.\n\nThe walk is open to people aged sixteen and over. Under-eighteens need an accompanying adult, and each person needs a separate booking. The fee is six pounds, including a printed route leaflet. The group is limited to fifteen participants; a place is confirmed only when the organiser replies.\n\nThe route uses public paths, some uneven and muddy. It includes two short sections with steps. Wear suitable walking shoes and bring water. A lunch stop is not included, although there will be a short rest. Contact the organiser before booking if you need more detail about access or the pace.\n\nThis walk follows a disused section. Participants must remain with the guide and must not enter operational railway land or closed structures. Historical interest does not provide permission to cross a barrier. The guide will show archival images from safe viewing points rather than lead the group inside unsafe remains.\n\nIf weather makes the route unsuitable, confirmed participants will be contacted by18:00 on Saturday. They may choose another date or a refund. The walk introduces local history; it does not train participants for railway work or give independent access to any restricted site.",
+            "explanation": "The notice names uneven muddy paths and two sections with steps. Lunch, step-free access and entry into closed structures are not promised.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Uneven paths and some steps"
+              },
+              {
+                "id": "o1",
+                "text": "A visit inside every closed structure"
+              },
+              {
+                "id": "o2",
+                "text": "A full lunch included in the fee"
+              },
+              {
+                "id": "o3",
+                "text": "A guaranteed step-free route"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.railway-tour-and-expansion-128.tour.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the walk authorise?",
+            "material": "Walking the old railway route\n\nThe Valley Heritage Group offers a guided walk along a former railway route on Sunday,11 April. The three-hour walk begins at10:00 outside the old ticket office and ends at the same place. Participants should arrive at09:40 for registration and the route briefing.\n\nThe walk is open to people aged sixteen and over. Under-eighteens need an accompanying adult, and each person needs a separate booking. The fee is six pounds, including a printed route leaflet. The group is limited to fifteen participants; a place is confirmed only when the organiser replies.\n\nThe route uses public paths, some uneven and muddy. It includes two short sections with steps. Wear suitable walking shoes and bring water. A lunch stop is not included, although there will be a short rest. Contact the organiser before booking if you need more detail about access or the pace.\n\nThis walk follows a disused section. Participants must remain with the guide and must not enter operational railway land or closed structures. Historical interest does not provide permission to cross a barrier. The guide will show archival images from safe viewing points rather than lead the group inside unsafe remains.\n\nIf weather makes the route unsuitable, confirmed participants will be contacted by18:00 on Saturday. They may choose another date or a refund. The walk introduces local history; it does not train participants for railway work or give independent access to any restricted site.",
+            "explanation": "The booking covers the guided public-path route only. It gives no permission for restricted land or professional railway work.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Participation on the guided public-path route"
+              },
+              {
+                "id": "o1",
+                "text": "Professional railway work"
+              },
+              {
+                "id": "o2",
+                "text": "Independent entry beyond railway barriers"
+              },
+              {
+                "id": "o3",
+                "text": "Access to operational land whenever desired"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.railway-tour-and-expansion-128.rail.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why can a small length change matter?",
+            "material": "Room for a changing rail\n\nA long metal rail is not a fixed length under every condition. Like many materials, it expands and contracts as its temperature changes. The movement may be small over a short piece, but it matters when a structure extends over a long distance and must remain correctly aligned.\n\nOn some jointed tracks, gaps help accommodate changes in length. A visitor may notice these spaces and assume they are simply imperfections in an otherwise continuous line. In fact, a planned discontinuity can be part of making the whole structure work under changing conditions.\n\nThis does not mean every modern railway should be imagined as a sequence of loose pieces separated by identical gaps. Continuously welded track uses other engineering arrangements to manage thermal forces. Installation, support and maintenance are part of the system. Removing a visible gap from the description does not remove the physical problem it once helped address.\n\nThe wider lesson concerns the relation between appearance and function. A perfectly continuous-looking surface can still contain forces that need management. Conversely, a visible joint may have a purpose that is not obvious from one photograph. Judging design only by whether it looks uninterrupted can therefore be misleading.\n\nCareful explanation must also recognise the limits of an everyday analogy. A classroom demonstration can help show expansion, but it does not provide the knowledge or authority to inspect or alter a railway. Real structures involve loads, materials and operating conditions beyond a simple model.\n\nFor a passenger, understanding the principle can enrich an ordinary journey. It connects the rail outside the window with a larger engineering task: allowing a system to remain dependable while its parts respond to the environment. Stability is not always achieved by preventing all movement. Sometimes it depends on anticipating movement and providing a controlled way for it to occur.",
+            "explanation": "Length changes matter across a long structure that must remain aligned. The other answers deny thermal change or confuse it with colour.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Short pieces cannot expand"
+              },
+              {
+                "id": "o1",
+                "text": "A long aligned structure accumulates important effects"
+              },
+              {
+                "id": "o2",
+                "text": "Metal has exactly one length forever"
+              },
+              {
+                "id": "o3",
+                "text": "Only colour changes with temperature"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.railway-tour-and-expansion-128.rail.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What role can gaps play on jointed tracks?",
+            "material": "Room for a changing rail\n\nA long metal rail is not a fixed length under every condition. Like many materials, it expands and contracts as its temperature changes. The movement may be small over a short piece, but it matters when a structure extends over a long distance and must remain correctly aligned.\n\nOn some jointed tracks, gaps help accommodate changes in length. A visitor may notice these spaces and assume they are simply imperfections in an otherwise continuous line. In fact, a planned discontinuity can be part of making the whole structure work under changing conditions.\n\nThis does not mean every modern railway should be imagined as a sequence of loose pieces separated by identical gaps. Continuously welded track uses other engineering arrangements to manage thermal forces. Installation, support and maintenance are part of the system. Removing a visible gap from the description does not remove the physical problem it once helped address.\n\nThe wider lesson concerns the relation between appearance and function. A perfectly continuous-looking surface can still contain forces that need management. Conversely, a visible joint may have a purpose that is not obvious from one photograph. Judging design only by whether it looks uninterrupted can therefore be misleading.\n\nCareful explanation must also recognise the limits of an everyday analogy. A classroom demonstration can help show expansion, but it does not provide the knowledge or authority to inspect or alter a railway. Real structures involve loads, materials and operating conditions beyond a simple model.\n\nFor a passenger, understanding the principle can enrich an ordinary journey. It connects the rail outside the window with a larger engineering task: allowing a system to remain dependable while its parts respond to the environment. Stability is not always achieved by preventing all movement. Sometimes it depends on anticipating movement and providing a controlled way for it to occur.",
+            "explanation": "Planned gaps on jointed track can accommodate length changes. They do not remove maintenance needs or make all track designs identical.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Accommodating changes in length"
+              },
+              {
+                "id": "o1",
+                "text": "Proving the railway was never planned"
+              },
+              {
+                "id": "o2",
+                "text": "Removing every need for maintenance"
+              },
+              {
+                "id": "o3",
+                "text": "Making all tracks identical"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.railway-tour-and-expansion-128.rail.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is continuously welded track mentioned?",
+            "material": "Room for a changing rail\n\nA long metal rail is not a fixed length under every condition. Like many materials, it expands and contracts as its temperature changes. The movement may be small over a short piece, but it matters when a structure extends over a long distance and must remain correctly aligned.\n\nOn some jointed tracks, gaps help accommodate changes in length. A visitor may notice these spaces and assume they are simply imperfections in an otherwise continuous line. In fact, a planned discontinuity can be part of making the whole structure work under changing conditions.\n\nThis does not mean every modern railway should be imagined as a sequence of loose pieces separated by identical gaps. Continuously welded track uses other engineering arrangements to manage thermal forces. Installation, support and maintenance are part of the system. Removing a visible gap from the description does not remove the physical problem it once helped address.\n\nThe wider lesson concerns the relation between appearance and function. A perfectly continuous-looking surface can still contain forces that need management. Conversely, a visible joint may have a purpose that is not obvious from one photograph. Judging design only by whether it looks uninterrupted can therefore be misleading.\n\nCareful explanation must also recognise the limits of an everyday analogy. A classroom demonstration can help show expansion, but it does not provide the knowledge or authority to inspect or alter a railway. Real structures involve loads, materials and operating conditions beyond a simple model.\n\nFor a passenger, understanding the principle can enrich an ordinary journey. It connects the rail outside the window with a larger engineering task: allowing a system to remain dependable while its parts respond to the environment. Stability is not always achieved by preventing all movement. Sometimes it depends on anticipating movement and providing a controlled way for it to occur.",
+            "explanation": "Welded track illustrates a different engineering response to the same physical forces. It does not abolish expansion or authorise visitor intervention.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The same physical problem can be managed by different engineering arrangements"
+              },
+              {
+                "id": "o1",
+                "text": "It gives visitors permission to alter rails"
+              },
+              {
+                "id": "o2",
+                "text": "It needs no supporting system"
+              },
+              {
+                "id": "o3",
+                "text": "It proves thermal expansion has stopped"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.railway-tour-and-expansion-128.rail.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What broader idea does the ending express?",
+            "material": "Room for a changing rail\n\nA long metal rail is not a fixed length under every condition. Like many materials, it expands and contracts as its temperature changes. The movement may be small over a short piece, but it matters when a structure extends over a long distance and must remain correctly aligned.\n\nOn some jointed tracks, gaps help accommodate changes in length. A visitor may notice these spaces and assume they are simply imperfections in an otherwise continuous line. In fact, a planned discontinuity can be part of making the whole structure work under changing conditions.\n\nThis does not mean every modern railway should be imagined as a sequence of loose pieces separated by identical gaps. Continuously welded track uses other engineering arrangements to manage thermal forces. Installation, support and maintenance are part of the system. Removing a visible gap from the description does not remove the physical problem it once helped address.\n\nThe wider lesson concerns the relation between appearance and function. A perfectly continuous-looking surface can still contain forces that need management. Conversely, a visible joint may have a purpose that is not obvious from one photograph. Judging design only by whether it looks uninterrupted can therefore be misleading.\n\nCareful explanation must also recognise the limits of an everyday analogy. A classroom demonstration can help show expansion, but it does not provide the knowledge or authority to inspect or alter a railway. Real structures involve loads, materials and operating conditions beyond a simple model.\n\nFor a passenger, understanding the principle can enrich an ordinary journey. It connects the rail outside the window with a larger engineering task: allowing a system to remain dependable while its parts respond to the environment. Stability is not always achieved by preventing all movement. Sometimes it depends on anticipating movement and providing a controlled way for it to occur.",
+            "explanation": "The ending links reliability with anticipating controlled movement. It explicitly rejects stability as preventing all movement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Stability always means no part may move"
+              },
+              {
+                "id": "o1",
+                "text": "A photograph supplies complete engineering knowledge"
+              },
+              {
+                "id": "o2",
+                "text": "A classroom model authorises real railway work"
+              },
+              {
+                "id": "o3",
+                "text": "Dependability may require anticipating controlled movement"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "c7415f827b20a58c50fe793d164feefda2fe165f0f0095a37c7bf3047cb7975b",
+      "reviewNotes": "Six complete original senior paired readings, two per level, each three-question information text plus four-question narrative/expository/argument text. Fictional event notices; common process explanations with explicit limits. Same-author all-option/evidence review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.railway-tour-and-expansion-128#tour",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.railway-tour-and-expansion-128.tour.q1",
+            "expansion.20261024.senior2.railway-tour-and-expansion-128.tour.q2",
+            "expansion.20261024.senior2.railway-tour-and-expansion-128.tour.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.railway-tour-and-expansion-128",
+          "sourceContentHash": "d70e8b7ee0e89f6628ff4ab693fdc923eaed55c5398d5154aed5a7989ce182a9"
+        },
+        {
+          "id": "expansion.20261024.senior2.railway-tour-and-expansion-128#rail",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.railway-tour-and-expansion-128.rail.q1",
+            "expansion.20261024.senior2.railway-tour-and-expansion-128.rail.q2",
+            "expansion.20261024.senior2.railway-tour-and-expansion-128.rail.q3",
+            "expansion.20261024.senior2.railway-tour-and-expansion-128.rail.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.railway-tour-and-expansion-128",
+          "sourceContentHash": "8e6ecaf024144c098e0c67a3d3b707d20e08b898be3c9339b80b4e85b5910923"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior3.reviewers-and-narrator-128",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高考题型原创 · 10·24新题 · Reading short stories and trusting a narrator",
+        "summary": "Reading short stories and trusting a narrator，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade12-tianjinlower2025-21cnjy22402528.reading.complete_section",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original senior paired readings, two per level, each three-question information text plus four-question narrative/expository/argument text. Fictional event notices; common process explanations with explicit limits. Same-author all-option/evidence review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior3.reviewers-and-narrator-128",
+          "family": "reading_choice",
+          "label": "Reading short stories and trusting a narrator",
+          "candidateSHA256": "9d7d20553e4ea3b86593505c2e5006680ef2b397eeb2c9cd3957c35063f5bdaa",
+          "authorCheckSHA256": "f5d3d2ae7b18df4d329325dc2184dcfa3dc7dc712b816b21d583c72fd9fd3075",
+          "sourceGroupIds": [
+            "expansion.20261024.senior3.reviewers-and-narrator-128#readers",
+            "expansion.20261024.senior3.reviewers-and-narrator-128#narrator"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b128；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Readers for a short-story review circle\n\nThe Southbank Writing Room is inviting volunteer readers to join its autumn short-story circle. Members read unpublished work and prepare private comments for the writer. These are workshop responses, not public reviews, and texts must not be shared outside the circle without permission.\n\nApplicants should be at least sixteen and submit a brief statement of reading interests plus a sample response of no more than600 words to a published story. The response should discuss particular features with reference to the text. Formal literary qualifications are not required; careful reading and dependable communication matter more.\n\nSelected members attend three Saturday meetings,10:00–12:00, over six weeks. Reading takes place between meetings. Before accepting a story, disclose any personal connection with its writer. A reader may decline work that is outside their knowledge or available time, but should do so promptly so another reader can be found.\n\nThere is no fee and no payment. The room supplies the assigned texts digitally; members may request a printed copy. Applicants should state access needs before the first meeting. A place is confirmed only by a written reply from the organiser.\n\nThe writer remains responsible for revision. A workshop recommendation is not an instruction the writer must follow, and the circle does not promise publication. Readers should distinguish their response from claims about what every reader will experience. The aim is a useful exchange in which a comment can be examined through the passage that prompted it.\n\nMistaken does not always mean dishonest\n\nA narrator who describes an event inaccurately is sometimes immediately called a liar. That response can miss an important distinction. A statement may fail to match what happened without having been made in order to deceive. Memory, limited knowledge and misunderstanding can all produce an inaccurate account.\n\nFiction can make this distinction visible. A child narrator may describe an adult conversation without understanding its implications. Readers notice more than the child can explain, not necessarily because the child is hiding anything. The distance between account and event becomes part of how the story creates meaning.\n\nDeliberate concealment is another possibility, but it requires evidence of intention. A contradiction may prompt suspicion; it does not automatically reveal why the contradiction exists. The reader must attend to context, patterns and the narrator's opportunities to know. Calling every discrepancy a lie can make interpretation simpler while making it less precise.\n\nThis does not mean that intention settles every question of reliability. An honest person can still be a poor source for a particular event. A narrator's sincerity and the accuracy of the information offered are related but separate matters. The reader may trust one while continuing to examine the other.\n\nNor does a mistaken narrator make the whole work a failed record. In fiction, the limits of the account may be deliberately arranged by the author. The reader's task includes noticing those limits and considering what they contribute. A narrator and an author occupy different positions, even when the language encourages a feeling of direct personal address.\n\nDiscussion becomes more useful when it names the issue: an error of fact, an omission, a mistaken interpretation or an attempt to mislead. These categories can overlap, but they should not be collapsed before the evidence is considered. Asking how an account goes wrong can reveal more than applying a single moral label to the voice telling it."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior3.reviewers-and-narrator-128.readers.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should the sample response demonstrate?",
+            "material": "Readers for a short-story review circle\n\nThe Southbank Writing Room is inviting volunteer readers to join its autumn short-story circle. Members read unpublished work and prepare private comments for the writer. These are workshop responses, not public reviews, and texts must not be shared outside the circle without permission.\n\nApplicants should be at least sixteen and submit a brief statement of reading interests plus a sample response of no more than600 words to a published story. The response should discuss particular features with reference to the text. Formal literary qualifications are not required; careful reading and dependable communication matter more.\n\nSelected members attend three Saturday meetings,10:00–12:00, over six weeks. Reading takes place between meetings. Before accepting a story, disclose any personal connection with its writer. A reader may decline work that is outside their knowledge or available time, but should do so promptly so another reader can be found.\n\nThere is no fee and no payment. The room supplies the assigned texts digitally; members may request a printed copy. Applicants should state access needs before the first meeting. A place is confirmed only by a written reply from the organiser.\n\nThe writer remains responsible for revision. A workshop recommendation is not an instruction the writer must follow, and the circle does not promise publication. Readers should distinguish their response from claims about what every reader will experience. The aim is a useful exchange in which a comment can be examined through the passage that prompted it.",
+            "explanation": "The application sample must discuss particular features using the published text. Mere approval, publication guarantees and public sharing are not requested.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Text-based discussion of particular features"
+              },
+              {
+                "id": "o1",
+                "text": "Permission to share unpublished work publicly"
+              },
+              {
+                "id": "o2",
+                "text": "A guarantee that the story will be published"
+              },
+              {
+                "id": "o3",
+                "text": "Only a statement of liking or dislike"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.reviewers-and-narrator-128.readers.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must a reader do before accepting a connected writer’s work?",
+            "material": "Readers for a short-story review circle\n\nThe Southbank Writing Room is inviting volunteer readers to join its autumn short-story circle. Members read unpublished work and prepare private comments for the writer. These are workshop responses, not public reviews, and texts must not be shared outside the circle without permission.\n\nApplicants should be at least sixteen and submit a brief statement of reading interests plus a sample response of no more than600 words to a published story. The response should discuss particular features with reference to the text. Formal literary qualifications are not required; careful reading and dependable communication matter more.\n\nSelected members attend three Saturday meetings,10:00–12:00, over six weeks. Reading takes place between meetings. Before accepting a story, disclose any personal connection with its writer. A reader may decline work that is outside their knowledge or available time, but should do so promptly so another reader can be found.\n\nThere is no fee and no payment. The room supplies the assigned texts digitally; members may request a printed copy. Applicants should state access needs before the first meeting. A place is confirmed only by a written reply from the organiser.\n\nThe writer remains responsible for revision. A workshop recommendation is not an instruction the writer must follow, and the circle does not promise publication. Readers should distinguish their response from claims about what every reader will experience. The aim is a useful exchange in which a comment can be examined through the passage that prompted it.",
+            "explanation": "A relevant personal connection must be disclosed before accepting work. Concealment and public reviewing contradict the stated process.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Assume a connection proves impartiality"
+              },
+              {
+                "id": "o1",
+                "text": "Hide it to save time"
+              },
+              {
+                "id": "o2",
+                "text": "Publish a review immediately"
+              },
+              {
+                "id": "o3",
+                "text": "Disclose the relationship"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.reviewers-and-narrator-128.readers.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How is advice from the circle treated?",
+            "material": "Readers for a short-story review circle\n\nThe Southbank Writing Room is inviting volunteer readers to join its autumn short-story circle. Members read unpublished work and prepare private comments for the writer. These are workshop responses, not public reviews, and texts must not be shared outside the circle without permission.\n\nApplicants should be at least sixteen and submit a brief statement of reading interests plus a sample response of no more than600 words to a published story. The response should discuss particular features with reference to the text. Formal literary qualifications are not required; careful reading and dependable communication matter more.\n\nSelected members attend three Saturday meetings,10:00–12:00, over six weeks. Reading takes place between meetings. Before accepting a story, disclose any personal connection with its writer. A reader may decline work that is outside their knowledge or available time, but should do so promptly so another reader can be found.\n\nThere is no fee and no payment. The room supplies the assigned texts digitally; members may request a printed copy. Applicants should state access needs before the first meeting. A place is confirmed only by a written reply from the organiser.\n\nThe writer remains responsible for revision. A workshop recommendation is not an instruction the writer must follow, and the circle does not promise publication. Readers should distinguish their response from claims about what every reader will experience. The aim is a useful exchange in which a comment can be examined through the passage that prompted it.",
+            "explanation": "The writer evaluates recommendations and remains responsible for revision. The circle supplies no compulsory order or publication contract.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "As a recommendation the writer evaluates"
+              },
+              {
+                "id": "o1",
+                "text": "As a claim about every reader"
+              },
+              {
+                "id": "o2",
+                "text": "As a publication contract"
+              },
+              {
+                "id": "o3",
+                "text": "As a compulsory revision order"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.reviewers-and-narrator-128.narrator.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What distinction does the opening emphasise?",
+            "material": "Mistaken does not always mean dishonest\n\nA narrator who describes an event inaccurately is sometimes immediately called a liar. That response can miss an important distinction. A statement may fail to match what happened without having been made in order to deceive. Memory, limited knowledge and misunderstanding can all produce an inaccurate account.\n\nFiction can make this distinction visible. A child narrator may describe an adult conversation without understanding its implications. Readers notice more than the child can explain, not necessarily because the child is hiding anything. The distance between account and event becomes part of how the story creates meaning.\n\nDeliberate concealment is another possibility, but it requires evidence of intention. A contradiction may prompt suspicion; it does not automatically reveal why the contradiction exists. The reader must attend to context, patterns and the narrator's opportunities to know. Calling every discrepancy a lie can make interpretation simpler while making it less precise.\n\nThis does not mean that intention settles every question of reliability. An honest person can still be a poor source for a particular event. A narrator's sincerity and the accuracy of the information offered are related but separate matters. The reader may trust one while continuing to examine the other.\n\nNor does a mistaken narrator make the whole work a failed record. In fiction, the limits of the account may be deliberately arranged by the author. The reader's task includes noticing those limits and considering what they contribute. A narrator and an author occupy different positions, even when the language encourages a feeling of direct personal address.\n\nDiscussion becomes more useful when it names the issue: an error of fact, an omission, a mistaken interpretation or an attempt to mislead. These categories can overlap, but they should not be collapsed before the evidence is considered. Asking how an account goes wrong can reveal more than applying a single moral label to the voice telling it.",
+            "explanation": "The opening separates inaccurate information from deliberate deception. It does not claim perfect memory or universal knowledge.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A sincere narrator knows everything"
+              },
+              {
+                "id": "o1",
+                "text": "Memory always records events perfectly"
+              },
+              {
+                "id": "o2",
+                "text": "Every inaccurate account is deliberately false"
+              },
+              {
+                "id": "o3",
+                "text": "Inaccuracy can occur without an intention to deceive"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.reviewers-and-narrator-128.narrator.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is a child narrator discussed?",
+            "material": "Mistaken does not always mean dishonest\n\nA narrator who describes an event inaccurately is sometimes immediately called a liar. That response can miss an important distinction. A statement may fail to match what happened without having been made in order to deceive. Memory, limited knowledge and misunderstanding can all produce an inaccurate account.\n\nFiction can make this distinction visible. A child narrator may describe an adult conversation without understanding its implications. Readers notice more than the child can explain, not necessarily because the child is hiding anything. The distance between account and event becomes part of how the story creates meaning.\n\nDeliberate concealment is another possibility, but it requires evidence of intention. A contradiction may prompt suspicion; it does not automatically reveal why the contradiction exists. The reader must attend to context, patterns and the narrator's opportunities to know. Calling every discrepancy a lie can make interpretation simpler while making it less precise.\n\nThis does not mean that intention settles every question of reliability. An honest person can still be a poor source for a particular event. A narrator's sincerity and the accuracy of the information offered are related but separate matters. The reader may trust one while continuing to examine the other.\n\nNor does a mistaken narrator make the whole work a failed record. In fiction, the limits of the account may be deliberately arranged by the author. The reader's task includes noticing those limits and considering what they contribute. A narrator and an author occupy different positions, even when the language encourages a feeling of direct personal address.\n\nDiscussion becomes more useful when it names the issue: an error of fact, an omission, a mistaken interpretation or an attempt to mislead. These categories can overlap, but they should not be collapsed before the evidence is considered. Asking how an account goes wrong can reveal more than applying a single moral label to the voice telling it.",
+            "explanation": "The child example shows how limited understanding can create meaning without concealment. Readers may understand more than the narrator.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A child’s words never require interpretation"
+              },
+              {
+                "id": "o1",
+                "text": "Limited understanding can create meaning without deliberate concealment"
+              },
+              {
+                "id": "o2",
+                "text": "Authors cannot design a narrator’s limits"
+              },
+              {
+                "id": "o3",
+                "text": "Children in fiction always know more than adults"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.reviewers-and-narrator-128.narrator.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the passage say about sincerity?",
+            "material": "Mistaken does not always mean dishonest\n\nA narrator who describes an event inaccurately is sometimes immediately called a liar. That response can miss an important distinction. A statement may fail to match what happened without having been made in order to deceive. Memory, limited knowledge and misunderstanding can all produce an inaccurate account.\n\nFiction can make this distinction visible. A child narrator may describe an adult conversation without understanding its implications. Readers notice more than the child can explain, not necessarily because the child is hiding anything. The distance between account and event becomes part of how the story creates meaning.\n\nDeliberate concealment is another possibility, but it requires evidence of intention. A contradiction may prompt suspicion; it does not automatically reveal why the contradiction exists. The reader must attend to context, patterns and the narrator's opportunities to know. Calling every discrepancy a lie can make interpretation simpler while making it less precise.\n\nThis does not mean that intention settles every question of reliability. An honest person can still be a poor source for a particular event. A narrator's sincerity and the accuracy of the information offered are related but separate matters. The reader may trust one while continuing to examine the other.\n\nNor does a mistaken narrator make the whole work a failed record. In fiction, the limits of the account may be deliberately arranged by the author. The reader's task includes noticing those limits and considering what they contribute. A narrator and an author occupy different positions, even when the language encourages a feeling of direct personal address.\n\nDiscussion becomes more useful when it names the issue: an error of fact, an omission, a mistaken interpretation or an attempt to mislead. These categories can overlap, but they should not be collapsed before the evidence is considered. Asking how an account goes wrong can reveal more than applying a single moral label to the voice telling it.",
+            "explanation": "Sincerity does not guarantee accurate knowledge of a particular event. The passage keeps those questions separate.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is the same as complete knowledge"
+              },
+              {
+                "id": "o1",
+                "text": "It makes context irrelevant"
+              },
+              {
+                "id": "o2",
+                "text": "It removes every possible omission"
+              },
+              {
+                "id": "o3",
+                "text": "It does not guarantee accurate information about every event"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.reviewers-and-narrator-128.narrator.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which reading practice is recommended?",
+            "material": "Mistaken does not always mean dishonest\n\nA narrator who describes an event inaccurately is sometimes immediately called a liar. That response can miss an important distinction. A statement may fail to match what happened without having been made in order to deceive. Memory, limited knowledge and misunderstanding can all produce an inaccurate account.\n\nFiction can make this distinction visible. A child narrator may describe an adult conversation without understanding its implications. Readers notice more than the child can explain, not necessarily because the child is hiding anything. The distance between account and event becomes part of how the story creates meaning.\n\nDeliberate concealment is another possibility, but it requires evidence of intention. A contradiction may prompt suspicion; it does not automatically reveal why the contradiction exists. The reader must attend to context, patterns and the narrator's opportunities to know. Calling every discrepancy a lie can make interpretation simpler while making it less precise.\n\nThis does not mean that intention settles every question of reliability. An honest person can still be a poor source for a particular event. A narrator's sincerity and the accuracy of the information offered are related but separate matters. The reader may trust one while continuing to examine the other.\n\nNor does a mistaken narrator make the whole work a failed record. In fiction, the limits of the account may be deliberately arranged by the author. The reader's task includes noticing those limits and considering what they contribute. A narrator and an author occupy different positions, even when the language encourages a feeling of direct personal address.\n\nDiscussion becomes more useful when it names the issue: an error of fact, an omission, a mistaken interpretation or an attempt to mislead. These categories can overlap, but they should not be collapsed before the evidence is considered. Asking how an account goes wrong can reveal more than applying a single moral label to the voice telling it.",
+            "explanation": "The ending recommends naming the kind of limitation and considering evidence. It rejects immediate moral labelling and conflating narrator with author.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Call every contradiction a lie immediately"
+              },
+              {
+                "id": "o1",
+                "text": "Identify how an account is limited before applying one label"
+              },
+              {
+                "id": "o2",
+                "text": "Ignore evidence of deliberate concealment"
+              },
+              {
+                "id": "o3",
+                "text": "Treat narrator and author as identical"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "b0f7a95530caa25380ddd8de782c5154ff63aef1f6a0ebbeb1d9247586c4adec",
+      "reviewNotes": "Six complete original senior paired readings, two per level, each three-question information text plus four-question narrative/expository/argument text. Fictional event notices; common process explanations with explicit limits. Same-author all-option/evidence review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior3.reviewers-and-narrator-128#readers",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.reviewers-and-narrator-128.readers.q1",
+            "expansion.20261024.senior3.reviewers-and-narrator-128.readers.q2",
+            "expansion.20261024.senior3.reviewers-and-narrator-128.readers.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.reviewers-and-narrator-128",
+          "sourceContentHash": "8d6d00eb08caf47dfb36db1a2ecf2273cd189491016728177429d6e94e9bbb44"
+        },
+        {
+          "id": "expansion.20261024.senior3.reviewers-and-narrator-128#narrator",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.reviewers-and-narrator-128.narrator.q1",
+            "expansion.20261024.senior3.reviewers-and-narrator-128.narrator.q2",
+            "expansion.20261024.senior3.reviewers-and-narrator-128.narrator.q3",
+            "expansion.20261024.senior3.reviewers-and-narrator-128.narrator.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.reviewers-and-narrator-128",
+          "sourceContentHash": "f1a801a25f10f2316315298923ff66fbcdc8c2d33cbef2f0ffe5625ceb7eac67"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior3.map-workshop-and-height-128",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高考题型原创 · 10·24新题 · A map-reading workshop and the height of a mountain",
+        "summary": "A map-reading workshop and the height of a mountain，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade12-tianjinlower2025-21cnjy22402528.reading.complete_section",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original senior paired readings, two per level, each three-question information text plus four-question narrative/expository/argument text. Fictional event notices; common process explanations with explicit limits. Same-author all-option/evidence review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior3.map-workshop-and-height-128",
+          "family": "reading_choice",
+          "label": "A map-reading workshop and the height of a mountain",
+          "candidateSHA256": "b5af54d76791d2b71e7f8555d9ac566a0ddb7e0edc89590ee4139b409537f198",
+          "authorCheckSHA256": "5879a8ca807a1637e0daba9d3ca88dd23f26c848310470b46917f38a37f1ec8c",
+          "sourceGroupIds": [
+            "expansion.20261024.senior3.map-workshop-and-height-128#maps",
+            "expansion.20261024.senior3.map-workshop-and-height-128#height"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b128；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Reading maps beyond the legend\n\nThe City Geography Forum offers a one-day map-reading workshop for students aged sixteen and over. It takes place on Saturday,6 November,09:30–16:00, in the ground-floor seminar room. The workshop examines how maps select, classify and represent information; it is not a qualification for independent navigation in hazardous terrain.\n\nApply with a short paragraph explaining one map you have found useful or confusing. No advanced mathematics or specialist software is required. Places are limited to eighteen, and an application is accepted only when the organiser confirms it. The fee is fifteen pounds, including printed materials and lunch.\n\nBring a pencil and, if possible, a map whose design you would like to discuss. A personal example is helpful but optional. Do not bring confidential maps or documents you lack permission to share. The forum supplies suitable examples for anyone without one.\n\nMorning activities compare symbols, scale and coverage. Afternoon groups prepare a short explanation of a design choice for a specified user. The aim is to justify the choice and identify its limits, rather than produce one map that serves every possible purpose.\n\nContact the organiser in advance about access or dietary needs. A cancellation more than five days before the workshop qualifies for a refund; later requests may be transferred to another suitable participant by agreement. The timetable includes breaks, and participants may request the main instructions in an accessible digital format before the day.\n\nThe reference hidden in a superlative\n\nAsk which mountain is tallest, and the question may appear to request one obvious number. Yet a comparison needs a definition of height. A summit's elevation above sea level is not the same quantity as the distance from a mountain's base to its top, or the distance of that summit from the centre of the Earth.\n\nThese measures can produce different rankings because their reference points differ. The Earth's surface is not a perfectly smooth sphere, and a mountain's base may be defined in more than one way. Choosing a measure therefore involves specifying what relationship the number is intended to describe.\n\nThis does not make the measurements arbitrary. Once a definition and method are stated, observations can be evaluated against them. Disagreement about a reported value may concern measurement error; disagreement about a ranking may instead arise because people are answering different questions. Treating both as one dispute can obscure the useful work needed to resolve either.\n\nOrdinary language often leaves the reference implicit. In a familiar context, that can be efficient. A school atlas may consistently use elevation above sea level, allowing readers to compare entries without repeating the definition beside every mountain. Problems arise when that convention is carried into another comparison without being named.\n\nA careful explanation can preserve the convenience of a simple claim while making its basis available. It can say what is being measured, where the measurement begins and which convention governs the list. The reader can then decide whether that is the measure relevant to the question they wanted to ask.\n\nThe lesson extends beyond mountains. Superlatives compress a comparison into a word such as highest, largest or fastest. The compression is useful when its conditions are understood. It becomes misleading when the word conceals a change in definition. Asking \"measured from where?\" does not avoid the original question. It helps establish which version of the question a numerical answer can actually settle."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior3.map-workshop-and-height-128.maps.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is required in the application?",
+            "material": "Reading maps beyond the legend\n\nThe City Geography Forum offers a one-day map-reading workshop for students aged sixteen and over. It takes place on Saturday,6 November,09:30–16:00, in the ground-floor seminar room. The workshop examines how maps select, classify and represent information; it is not a qualification for independent navigation in hazardous terrain.\n\nApply with a short paragraph explaining one map you have found useful or confusing. No advanced mathematics or specialist software is required. Places are limited to eighteen, and an application is accepted only when the organiser confirms it. The fee is fifteen pounds, including printed materials and lunch.\n\nBring a pencil and, if possible, a map whose design you would like to discuss. A personal example is helpful but optional. Do not bring confidential maps or documents you lack permission to share. The forum supplies suitable examples for anyone without one.\n\nMorning activities compare symbols, scale and coverage. Afternoon groups prepare a short explanation of a design choice for a specified user. The aim is to justify the choice and identify its limits, rather than produce one map that serves every possible purpose.\n\nContact the organiser in advance about access or dietary needs. A cancellation more than five days before the workshop qualifies for a refund; later requests may be transferred to another suitable participant by agreement. The timetable includes breaks, and participants may request the main instructions in an accessible digital format before the day.",
+            "explanation": "An application needs a paragraph about a useful or confusing map. Specialist qualifications and confidential documents are not requirements.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A completed hazardous navigation assessment"
+              },
+              {
+                "id": "o1",
+                "text": "An advanced mathematics certificate"
+              },
+              {
+                "id": "o2",
+                "text": "A confidential map from an employer"
+              },
+              {
+                "id": "o3",
+                "text": "A paragraph about a useful or confusing map"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.map-workshop-and-height-128.maps.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should someone without a personal map do?",
+            "material": "Reading maps beyond the legend\n\nThe City Geography Forum offers a one-day map-reading workshop for students aged sixteen and over. It takes place on Saturday,6 November,09:30–16:00, in the ground-floor seminar room. The workshop examines how maps select, classify and represent information; it is not a qualification for independent navigation in hazardous terrain.\n\nApply with a short paragraph explaining one map you have found useful or confusing. No advanced mathematics or specialist software is required. Places are limited to eighteen, and an application is accepted only when the organiser confirms it. The fee is fifteen pounds, including printed materials and lunch.\n\nBring a pencil and, if possible, a map whose design you would like to discuss. A personal example is helpful but optional. Do not bring confidential maps or documents you lack permission to share. The forum supplies suitable examples for anyone without one.\n\nMorning activities compare symbols, scale and coverage. Afternoon groups prepare a short explanation of a design choice for a specified user. The aim is to justify the choice and identify its limits, rather than produce one map that serves every possible purpose.\n\nContact the organiser in advance about access or dietary needs. A cancellation more than five days before the workshop qualifies for a refund; later requests may be transferred to another suitable participant by agreement. The timetable includes breaks, and participants may request the main instructions in an accessible digital format before the day.",
+            "explanation": "A personal map is optional because the forum supplies examples. No software purchase or unauthorised sharing is necessary.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Bring a document without sharing permission"
+              },
+              {
+                "id": "o1",
+                "text": "Use examples supplied by the forum"
+              },
+              {
+                "id": "o2",
+                "text": "Buy specialist software first"
+              },
+              {
+                "id": "o3",
+                "text": "Assume they cannot attend"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.map-workshop-and-height-128.maps.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the afternoon task?",
+            "material": "Reading maps beyond the legend\n\nThe City Geography Forum offers a one-day map-reading workshop for students aged sixteen and over. It takes place on Saturday,6 November,09:30–16:00, in the ground-floor seminar room. The workshop examines how maps select, classify and represent information; it is not a qualification for independent navigation in hazardous terrain.\n\nApply with a short paragraph explaining one map you have found useful or confusing. No advanced mathematics or specialist software is required. Places are limited to eighteen, and an application is accepted only when the organiser confirms it. The fee is fifteen pounds, including printed materials and lunch.\n\nBring a pencil and, if possible, a map whose design you would like to discuss. A personal example is helpful but optional. Do not bring confidential maps or documents you lack permission to share. The forum supplies suitable examples for anyone without one.\n\nMorning activities compare symbols, scale and coverage. Afternoon groups prepare a short explanation of a design choice for a specified user. The aim is to justify the choice and identify its limits, rather than produce one map that serves every possible purpose.\n\nContact the organiser in advance about access or dietary needs. A cancellation more than five days before the workshop qualifies for a refund; later requests may be transferred to another suitable participant by agreement. The timetable includes breaks, and participants may request the main instructions in an accessible digital format before the day.",
+            "explanation": "The afternoon task explains a design choice for a specified user and identifies its limits. It does not promise a universal map or navigation qualification.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Rank every participant by mathematical speed"
+              },
+              {
+                "id": "o1",
+                "text": "Explain and justify a map design for a specified user"
+              },
+              {
+                "id": "o2",
+                "text": "Create a universally perfect map"
+              },
+              {
+                "id": "o3",
+                "text": "Qualify for independent hazardous travel"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.map-workshop-and-height-128.height.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why might rankings of mountains differ?",
+            "material": "The reference hidden in a superlative\n\nAsk which mountain is tallest, and the question may appear to request one obvious number. Yet a comparison needs a definition of height. A summit's elevation above sea level is not the same quantity as the distance from a mountain's base to its top, or the distance of that summit from the centre of the Earth.\n\nThese measures can produce different rankings because their reference points differ. The Earth's surface is not a perfectly smooth sphere, and a mountain's base may be defined in more than one way. Choosing a measure therefore involves specifying what relationship the number is intended to describe.\n\nThis does not make the measurements arbitrary. Once a definition and method are stated, observations can be evaluated against them. Disagreement about a reported value may concern measurement error; disagreement about a ranking may instead arise because people are answering different questions. Treating both as one dispute can obscure the useful work needed to resolve either.\n\nOrdinary language often leaves the reference implicit. In a familiar context, that can be efficient. A school atlas may consistently use elevation above sea level, allowing readers to compare entries without repeating the definition beside every mountain. Problems arise when that convention is carried into another comparison without being named.\n\nA careful explanation can preserve the convenience of a simple claim while making its basis available. It can say what is being measured, where the measurement begins and which convention governs the list. The reader can then decide whether that is the measure relevant to the question they wanted to ask.\n\nThe lesson extends beyond mountains. Superlatives compress a comparison into a word such as highest, largest or fastest. The compression is useful when its conditions are understood. It becomes misleading when the word conceals a change in definition. Asking \"measured from where?\" does not avoid the original question. It helps establish which version of the question a numerical answer can actually settle.",
+            "explanation": "Sea-level elevation, base-to-top distance and distance from the Earth’s centre use different references. Different rankings do not make measurement meaningless.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "All measurement is meaningless"
+              },
+              {
+                "id": "o1",
+                "text": "Different definitions use different reference points"
+              },
+              {
+                "id": "o2",
+                "text": "Every summit has the same position"
+              },
+              {
+                "id": "o3",
+                "text": "A superlative requires no comparison"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.map-workshop-and-height-128.height.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What distinction is made about disagreements?",
+            "material": "The reference hidden in a superlative\n\nAsk which mountain is tallest, and the question may appear to request one obvious number. Yet a comparison needs a definition of height. A summit's elevation above sea level is not the same quantity as the distance from a mountain's base to its top, or the distance of that summit from the centre of the Earth.\n\nThese measures can produce different rankings because their reference points differ. The Earth's surface is not a perfectly smooth sphere, and a mountain's base may be defined in more than one way. Choosing a measure therefore involves specifying what relationship the number is intended to describe.\n\nThis does not make the measurements arbitrary. Once a definition and method are stated, observations can be evaluated against them. Disagreement about a reported value may concern measurement error; disagreement about a ranking may instead arise because people are answering different questions. Treating both as one dispute can obscure the useful work needed to resolve either.\n\nOrdinary language often leaves the reference implicit. In a familiar context, that can be efficient. A school atlas may consistently use elevation above sea level, allowing readers to compare entries without repeating the definition beside every mountain. Problems arise when that convention is carried into another comparison without being named.\n\nA careful explanation can preserve the convenience of a simple claim while making its basis available. It can say what is being measured, where the measurement begins and which convention governs the list. The reader can then decide whether that is the measure relevant to the question they wanted to ask.\n\nThe lesson extends beyond mountains. Superlatives compress a comparison into a word such as highest, largest or fastest. The compression is useful when its conditions are understood. It becomes misleading when the word conceals a change in definition. Asking \"measured from where?\" does not avoid the original question. It helps establish which version of the question a numerical answer can actually settle.",
+            "explanation": "A dispute can concern measurement error or different quantities being compared. The text does not equate disagreement with dishonesty.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every dispute proves dishonesty"
+              },
+              {
+                "id": "o1",
+                "text": "Rankings never depend on conventions"
+              },
+              {
+                "id": "o2",
+                "text": "Definitions eliminate all measurement error"
+              },
+              {
+                "id": "o3",
+                "text": "They may concern either measurement error or the question being measured"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.map-workshop-and-height-128.height.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why can an atlas leave the reference unstated beside each entry?",
+            "material": "The reference hidden in a superlative\n\nAsk which mountain is tallest, and the question may appear to request one obvious number. Yet a comparison needs a definition of height. A summit's elevation above sea level is not the same quantity as the distance from a mountain's base to its top, or the distance of that summit from the centre of the Earth.\n\nThese measures can produce different rankings because their reference points differ. The Earth's surface is not a perfectly smooth sphere, and a mountain's base may be defined in more than one way. Choosing a measure therefore involves specifying what relationship the number is intended to describe.\n\nThis does not make the measurements arbitrary. Once a definition and method are stated, observations can be evaluated against them. Disagreement about a reported value may concern measurement error; disagreement about a ranking may instead arise because people are answering different questions. Treating both as one dispute can obscure the useful work needed to resolve either.\n\nOrdinary language often leaves the reference implicit. In a familiar context, that can be efficient. A school atlas may consistently use elevation above sea level, allowing readers to compare entries without repeating the definition beside every mountain. Problems arise when that convention is carried into another comparison without being named.\n\nA careful explanation can preserve the convenience of a simple claim while making its basis available. It can say what is being measured, where the measurement begins and which convention governs the list. The reader can then decide whether that is the measure relevant to the question they wanted to ask.\n\nThe lesson extends beyond mountains. Superlatives compress a comparison into a word such as highest, largest or fastest. The compression is useful when its conditions are understood. It becomes misleading when the word conceals a change in definition. Asking \"measured from where?\" does not avoid the original question. It helps establish which version of the question a numerical answer can actually settle.",
+            "explanation": "A consistent familiar atlas convention can avoid repetitive definitions. Its usefulness depends on the reference still being understood.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The mountains are all equal"
+              },
+              {
+                "id": "o1",
+                "text": "A consistent familiar convention can make repetition unnecessary"
+              },
+              {
+                "id": "o2",
+                "text": "Sea level is the only imaginable reference"
+              },
+              {
+                "id": "o3",
+                "text": "Readers never need to know any basis"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.map-workshop-and-height-128.height.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the final question “measured from where?” achieve?",
+            "material": "The reference hidden in a superlative\n\nAsk which mountain is tallest, and the question may appear to request one obvious number. Yet a comparison needs a definition of height. A summit's elevation above sea level is not the same quantity as the distance from a mountain's base to its top, or the distance of that summit from the centre of the Earth.\n\nThese measures can produce different rankings because their reference points differ. The Earth's surface is not a perfectly smooth sphere, and a mountain's base may be defined in more than one way. Choosing a measure therefore involves specifying what relationship the number is intended to describe.\n\nThis does not make the measurements arbitrary. Once a definition and method are stated, observations can be evaluated against them. Disagreement about a reported value may concern measurement error; disagreement about a ranking may instead arise because people are answering different questions. Treating both as one dispute can obscure the useful work needed to resolve either.\n\nOrdinary language often leaves the reference implicit. In a familiar context, that can be efficient. A school atlas may consistently use elevation above sea level, allowing readers to compare entries without repeating the definition beside every mountain. Problems arise when that convention is carried into another comparison without being named.\n\nA careful explanation can preserve the convenience of a simple claim while making its basis available. It can say what is being measured, where the measurement begins and which convention governs the list. The reader can then decide whether that is the measure relevant to the question they wanted to ask.\n\nThe lesson extends beyond mountains. Superlatives compress a comparison into a word such as highest, largest or fastest. The compression is useful when its conditions are understood. It becomes misleading when the word conceals a change in definition. Asking \"measured from where?\" does not avoid the original question. It helps establish which version of the question a numerical answer can actually settle.",
+            "explanation": "The question identifies which comparison the number addresses. It clarifies numerical evidence rather than rejecting it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It clarifies which comparison a number can resolve"
+              },
+              {
+                "id": "o1",
+                "text": "It replaces measurement with popularity"
+              },
+              {
+                "id": "o2",
+                "text": "It proves all superlatives are false"
+              },
+              {
+                "id": "o3",
+                "text": "It rejects every numerical answer"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "751f0eb7a8ac9b05b0918ff1f43e99bb32fe10e7fd7a4cd4ea649ab1bb47c32b",
+      "reviewNotes": "Six complete original senior paired readings, two per level, each three-question information text plus four-question narrative/expository/argument text. Fictional event notices; common process explanations with explicit limits. Same-author all-option/evidence review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior3.map-workshop-and-height-128#maps",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.map-workshop-and-height-128.maps.q1",
+            "expansion.20261024.senior3.map-workshop-and-height-128.maps.q2",
+            "expansion.20261024.senior3.map-workshop-and-height-128.maps.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.map-workshop-and-height-128",
+          "sourceContentHash": "77f5526953d7fd63166df98151bc1ecc8a1e97b1cdaa0192bc6aa9588c8d79a4"
+        },
+        {
+          "id": "expansion.20261024.senior3.map-workshop-and-height-128#height",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.map-workshop-and-height-128.height.q1",
+            "expansion.20261024.senior3.map-workshop-and-height-128.height.q2",
+            "expansion.20261024.senior3.map-workshop-and-height-128.height.q3",
+            "expansion.20261024.senior3.map-workshop-and-height-128.height.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.map-workshop-and-height-128",
+          "sourceContentHash": "13d70bd4b7d844dda6781ac1f5cffec03b9454efb911d539448338c4592795d2"
+        }
+      ]
+    }
+  ]
+}
