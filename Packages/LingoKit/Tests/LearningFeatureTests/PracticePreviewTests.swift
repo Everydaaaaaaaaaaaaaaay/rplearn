@@ -6,8 +6,8 @@ import Testing
 @Suite("Task-based practice preview")
 @MainActor
 struct PracticePreviewTests {
-    private func model() -> PracticePreviewModel {
-        PracticePreviewModel(defaults: UserDefaults(suiteName: "PracticePreviewTests.\(UUID().uuidString)")!)
+    private func model() -> LearningPracticeModel {
+        LearningPracticeModel(tasks: PracticePreviewFixtures.tasks, defaults: UserDefaults(suiteName: "PracticePreviewTests.\(UUID().uuidString)")!)
     }
 
     @Test("Whole passages keep balanced task sizes and matching blank/option structure")
@@ -29,23 +29,23 @@ struct PracticePreviewTests {
     }
 
     @Test("No answer is graded before an entire passage is submitted; submitted work is locked")
-    func feedbackBoundary() {
+    func feedbackBoundary() async {
         let model = model(); model.start()
         let first = model.question
         model.setAnswer(first.correctOption!)
         #expect(model.result(for: first) == nil)
-        model.submitSection()
+        await model.submitSection()
         #expect(!model.draft.isReviewing)
         for index in model.section.questions.indices {
             model.selectQuestion(index); model.setAnswer(model.question.correctOption!)
         }
         #expect(model.section.questions.allSatisfy { model.result(for: $0) == nil })
-        model.submitSection()
+        await model.submitSection()
         #expect(model.draft.isReviewing)
         #expect(model.result(for: first) == .correct)
         model.setAnswer("wrong")
         #expect(model.answer(for: first) == first.correctOption)
-        model.finishReview()
+        await model.finishReview()
         #expect(model.draft.sectionIndex == 1)
         #expect(!model.draft.isReviewing)
         #expect(model.result(for: model.question) == nil)
@@ -62,13 +62,13 @@ struct PracticePreviewTests {
     }
 
     @Test("Draft reload restores answers, flags, current passage, review state and reading offset")
-    func resume() {
+    func resume() async {
         let defaults = UserDefaults(suiteName: "PracticePreviewTests.\(UUID().uuidString)")!
-        let model = PracticePreviewModel(defaults: defaults)
+        let model = LearningPracticeModel(tasks: PracticePreviewFixtures.tasks, defaults: defaults)
         model.start(); model.setAnswer("B"); model.toggleFlag(); model.selectQuestion(2)
         model.rememberReadingOffset(485, for: model.section.id)
         model.goToCover()
-        let reloaded = PracticePreviewModel(defaults: defaults)
+        let reloaded = LearningPracticeModel(tasks: PracticePreviewFixtures.tasks, defaults: defaults)
         #expect(reloaded.draft.questionIndex == 2)
         #expect(reloaded.draft.answers == model.draft.answers)
         #expect(reloaded.draft.flagged == model.draft.flagged)
@@ -82,19 +82,19 @@ struct PracticePreviewTests {
         for index in reloaded.section.questions.indices {
             reloaded.selectQuestion(index); reloaded.setAnswer(reloaded.question.correctOption!)
         }
-        reloaded.submitSection()
-        let reviewing = PracticePreviewModel(defaults: defaults)
+        await reloaded.submitSection()
+        let reviewing = LearningPracticeModel(tasks: PracticePreviewFixtures.tasks, defaults: defaults)
         #expect(reviewing.draft.isReviewing)
         #expect(reviewing.result(for: reviewing.question) == .correct)
     }
 
     @Test("Unlisted grammar expressions remain reviewable, with whitespace-normalized accepted answers")
-    func unlistedGrammar() {
+    func unlistedGrammar() async {
         let model = model(); model.selectTask(2); model.start()
         for index in model.section.questions.indices {
             model.selectQuestion(index); model.setAnswer(model.question.correctOption!)
         }
-        model.submitSection(); model.finishReview()
+        await model.submitSection(); await model.finishReview()
         #expect(model.section.kind == .grammar)
         model.setAnswer("   ")
         #expect(model.answeredCount == 0)
@@ -102,15 +102,15 @@ struct PracticePreviewTests {
             model.selectQuestion(index)
             model.setAnswer(index == 1 ? "unlisted expression" : "  \(model.question.acceptedAnswers[0].uppercased())  ")
         }
-        model.submitSection()
+        await model.submitSection()
         #expect(model.result(for: model.section.questions[0]) == .correct)
         #expect(model.result(for: model.section.questions[1]) == .needsReview)
-        model.finishReview()
+        await model.finishReview()
         #expect(model.draft.completed)
         #expect(model.correctCount == 14)
         #expect(model.needsReviewCount == 1)
         model.revisit(section: 0, question: 3)
-        model.finishReview()
+        await model.finishReview()
         #expect(model.page == .summary)
         #expect(model.draft.completed)
     }

@@ -7,6 +7,7 @@ import SpeechKit
 import SwiftUI
 
 public struct LearningChallengeView: View {
+    @State private var practice: LearningPracticeModel?
     @State private var model: LearningChallengeModel
     @State private var audio: LearningAudioModel
     @State private var audioOptions: LearningAudioOptionsModel
@@ -27,6 +28,7 @@ public struct LearningChallengeView: View {
                 speech: (any SpeechService)? = nil,
                 beforePlayback: @escaping @Sendable () async -> Void = {},
                 afterFinish: @escaping @Sendable () async -> Void = {}) {
+        _practice = State(initialValue: LearningPracticeModel(attempt: attempt, service: service, afterFinish: afterFinish))
         _model = State(initialValue: LearningChallengeModel(attempt: attempt, service: service, afterFinish: afterFinish)); self.character = character
         let listeningSpeech = speech ?? AdaptiveSpeechService(audioSession: audioSession)
         _pictures = State(initialValue: LearningImageModel(service: service))
@@ -37,8 +39,12 @@ public struct LearningChallengeView: View {
     }
     private var theme: LearningTheme { LearningTheme(role: model.attempt.unit.roleKey) }
     public var body: some View {
-        GeometryReader { geometry in
-            challenge(materialHeight: min(240, max(110, geometry.size.height * 0.27)))
+        if let practice {
+            LearningPracticeScreen(model: practice, character: character)
+        } else {
+            GeometryReader { geometry in
+                challenge(materialHeight: min(240, max(110, geometry.size.height * 0.27)))
+            }
         }
     }
     private func readingPlan(_ question: LearningQuestion) -> LearningReadingPlan {

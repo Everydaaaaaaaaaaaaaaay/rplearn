@@ -190,7 +190,14 @@ Scripts/preview.sh preview learning-test # 已构建后复用产物
 
 `Scripts/test-ui.sh -only-testing:LingoTripUITests/PrimaryChallengeMediaUITests` 在本机模拟器读取工作树中三个小一正式单元及素材，验证实际音频播放结束、三张图可选择、听完且选图后检查按钮解锁，以及最大辅助字号深色布局。它不是人耳音质评定，也不验证服务器计分；不用于连接真机的测试运行。
 
-任务式练习第一版可用 `Scripts/preview.sh build practice-preview` 打开，或从 Debug 角色学习页进入「新版练习体验」。
+任务式练习的离线设计夹具可用 `Scripts/preview.sh build practice-preview` 打开；此夹具不作为真实测试入口。
 包含两篇阅读、完整完形、七选五与语法填空的离线原创样例。题型分篇作答、整篇提交后回顾，
 答案、标记及阅读位置保存在独立的本机 `practice.preview.v1` 命名空间；不调用正式判分或奖励接口。
-该入口与答案夹具均仅编译进 Debug。七选五选项移动到另一空时会清除原空；语法未收录表达显示待核对。
+答案夹具仅编译进 Debug。七选五选项移动到另一空时会清除原空；离线语法未收录表达显示待核对。
+
+真实测试入口 `learning-test` 和正式角色练习共用 `LearningChallengeView`。完整阅读、完形、选句填空、
+语法填空由共享的 `LearningPracticeScreen` 呈现，其余正式题型沿用同一入口内对应的正式控件。
+七选五同时呈现完整文章、全部空号及一套共用候选；填满本篇后统一提交，再显示服务端解析。
+正式模式从公开题面构建页面，不含客户端答案；保留原 questionId/optionId、revision 和幂等请求。
+草稿与待确认命令按角色、attemptId、roundId 隔离保存，网络中断或补答只提交当前轮尚未确认的题。
+完成本轮仍调用正式 finish 接口及原有周期刷新回调。此改动需要构建并重启最新版 App，单独更新后端不会改变原生界面。

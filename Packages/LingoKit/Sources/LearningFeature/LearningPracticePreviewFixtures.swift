@@ -3,7 +3,7 @@ import Foundation
 
 // Existing original high-school materials, isolated from the release bundle and live grading.
 enum PracticePreviewFixtures {
-    static let tasks: [PracticePreviewTask] = {
+    static let tasks: [LearningPracticeTask] = {
         let source = #"""
 [
   {
@@ -1006,7 +1006,7 @@ enum PracticePreviewFixtures {
 ]
 """#
         // A malformed developer fixture is a build-time authoring mistake, never a server fallback.
-        return try! JSONDecoder().decode([PracticePreviewTask].self, from: Data(source.utf8))
+        return try! JSONDecoder().decode([LearningPracticeTask].self, from: Data(source.utf8))
     }()
 }
 #endif

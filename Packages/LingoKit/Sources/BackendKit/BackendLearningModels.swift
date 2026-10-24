@@ -194,7 +194,7 @@ public struct LearningAnswerReceipt: Codable, Sendable {
     public let attempt: LearningAttempt
     public let progress: [LearningLevelProgress]
 }
-public struct LearningAnswerCommand: Encodable, Sendable {
+public struct LearningAnswerCommand: Codable, Sendable {
     public let requestId: UUID
     public let roundId: UUID
     public let questionId: String

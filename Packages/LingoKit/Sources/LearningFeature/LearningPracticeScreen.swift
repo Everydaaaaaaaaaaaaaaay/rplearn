@@ -1,4 +1,3 @@
-#if DEBUG
 import DesignSystem
 import DomainKit
 import PersistenceKit
@@ -10,11 +9,11 @@ private enum PracticePaper {
     static let accent = Color(uiColor: UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.65, green: 0.79, blue: 0.70, alpha: 1) : UIColor(red: 0.25, green: 0.39, blue: 0.32, alpha: 1) })
 }
 
-/// Offline first-version interaction preview. Release builds contain neither this entry nor its answer fixtures.
+/// The shared task UI used by live practice, including the real testing entry.
 @MainActor
-public struct LearningPracticePreview: View {
+struct LearningPracticeScreen: View {
     private let character: CharacterDTO
-    @State private var model: PracticePreviewModel
+    @State private var model: LearningPracticeModel
     @State private var panel: Panel = .standard
     @State private var evidenceRequest = 0
     @State private var gapRequest = 0
@@ -27,13 +26,21 @@ public struct LearningPracticePreview: View {
     @ScaledMetric(relativeTo: .largeTitle) private var resultSize = 56
     private enum Panel { case collapsed, standard, expanded }
 
-    public init(character: CharacterDTO) {
+    init(model: LearningPracticeModel, character: CharacterDTO) {
         self.character = character
-        _model = State(initialValue: PracticePreviewModel(namespace: ProcessInfo.processInfo.environment["UI_TEST_PRACTICE_NAMESPACE"] ?? "practice.preview.v1"))
+        _model = State(initialValue: model)
     }
 
     public var body: some View {
         VStack(spacing: 0) {
+            if let error = model.error {
+                LearningErrorBanner(message: error) {
+                    Task {
+                        if model.draft.isReviewing { await model.finishReview() }
+                        else { await model.recover(); await model.submitSection() }
+                    }
+                }.padding(.horizontal, 20)
+            }
             switch model.page {
             case .cover: cover
             case .work: workspace
@@ -56,7 +63,7 @@ public struct LearningPracticePreview: View {
             HStack {
                 closeButton { model.save(); dismiss() }
                 Spacer()
-                Text("交互预览").font(.caption.weight(.medium)).foregroundStyle(.secondary)
+                Text(model.isProduction ? "练习" : "交互预览").font(.caption.weight(.medium)).foregroundStyle(.secondary)
             }.padding(.horizontal, 22).padding(.top, 8)
             ScrollView {
                 VStack(alignment: .leading, spacing: 28) {
@@ -66,6 +73,7 @@ public struct LearningPracticePreview: View {
                             .font(.system(.largeTitle, design: .serif, weight: .medium)).lineSpacing(5)
                             .fixedSize(horizontal: false, vertical: true)
                     }.padding(.top, 22)
+                    if model.tasks.count > 1 {
                     ScrollView(.horizontal) {
                         HStack(spacing: 8) {
                             ForEach(Array(model.tasks.enumerated()), id: \.element.id) { index, task in
@@ -80,6 +88,7 @@ public struct LearningPracticePreview: View {
                             }
                         }
                     }.scrollIndicators(.hidden).contentMargins(.trailing, 2)
+                    }
                     taskCard
                     HStack(alignment: .top, spacing: 12) {
                         avatar(size: 42)
@@ -96,7 +105,7 @@ public struct LearningPracticePreview: View {
             VStack(spacing: 12) {
                 primary(model.draft.completed ? "查看本次回顾" : model.hasProgress ? "继续练习" : "开始练习", symbol: "arrow.right") { model.start() }
                     .accessibilityIdentifier("practice.start")
-                Text("本地示例 · 进度单独保存 · 不计入正式成绩").font(.caption2).foregroundStyle(.secondary)
+                Text(model.isProduction ? "进度自动保存 · 完成整篇后查看讲解" : "本地示例 · 进度单独保存 · 不计入正式成绩").font(.caption2).foregroundStyle(.secondary)
             }.padding(.horizontal, 24).padding(.top, 12).padding(.bottom, 14).frame(maxWidth: 640)
         }
     }
@@ -104,13 +113,13 @@ public struct LearningPracticePreview: View {
     private var taskCard: some View {
         VStack(alignment: .leading, spacing: 23) {
             HStack {
-                Label("高中 · 原创语篇", systemImage: "book.pages")
+                Label(model.currentAttempt.map { learningLevelName($0.level) + " · 完整语篇" } ?? "高中 · 原创语篇", systemImage: "book.pages")
                 Spacer()
                 if model.hasProgress { Text(model.draft.completed ? "已完成" : "已答 \(model.totalAnswered) 题") }
             }.font(.caption).foregroundStyle(PracticePaper.accent)
             VStack(alignment: .leading, spacing: 9) {
                 Text(model.task.headline).font(.system(.title, design: .serif, weight: .medium))
-                Text("\(model.task.count) 题   ·   约 \(model.task.minutes) 分钟")
+                Text("\(model.questionCount) 题   ·   约 \(model.task.minutes) 分钟")
                     .font(.subheadline).foregroundStyle(.secondary)
             }
             Divider().overlay(PracticePaper.accent.opacity(0.06))
@@ -168,7 +177,7 @@ public struct LearningPracticePreview: View {
                 Rectangle().fill(PracticePaper.accent.opacity(0.10))
                     .overlay(alignment: .leading) {
                         Rectangle().fill(PracticePaper.accent)
-                            .frame(width: geometry.size.width * Double(model.totalAnswered) / Double(model.task.count))
+                            .frame(width: geometry.size.width * Double(model.totalAnswered) / Double(model.questionCount))
                     }
             }.frame(height: 2)
         }.padding(.top, 4)
@@ -187,9 +196,9 @@ public struct LearningPracticePreview: View {
                 VStack(spacing: 8) {
                     Capsule().fill(Color.secondary.opacity(0.28)).frame(width: 32, height: 4).padding(.top, 9)
                     HStack {
-                        Text(model.section.kind == .reading ? "第 \(model.draft.questionIndex + 1) 题" : "第 \(model.draft.questionIndex + 1) 空")
+                        Text(model.section.kind == .insertion && !model.draft.isReviewing ? (model.isSevenOfFive ? "七选五 · 整篇作答" : "选句填空 · 整篇作答") : model.section.kind == .reading ? "第 \(model.draft.questionIndex + 1) 题" : "第 \(model.draft.questionIndex + 1) 空")
                             .font(.subheadline.weight(.semibold))
-                        Text("\(model.answeredCount) / \(model.section.questions.count) 已答")
+                        Text("\(model.answeredCount) / \(model.sectionQuestionCount) 已答")
                             .font(.caption).foregroundStyle(.secondary)
                         Spacer()
                         Image(systemName: panel == .collapsed ? "chevron.up" : panel == .expanded ? "chevron.down" : "arrow.up.left.and.arrow.down.right")
@@ -209,7 +218,7 @@ public struct LearningPracticePreview: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 14) {
                         HStack(alignment: .top, spacing: 10) {
-                            Text(model.question.prompt).font(.body.weight(.medium)).lineSpacing(4)
+                            Text(model.section.kind == .insertion && !model.draft.isReviewing ? "共用选项 A–\(model.question.options.last?.id ?? "G")" : model.question.prompt).font(.body.weight(.medium)).lineSpacing(4)
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer(minLength: 0)
                             Button { model.toggleFlag() } label: {
@@ -219,10 +228,13 @@ public struct LearningPracticePreview: View {
                                 .accessibilityLabel(model.draft.flagged.contains(model.question.id) ? "取消稍后回看" : "标记稍后回看")
                         }
                         if model.draft.isReviewing { explanation }
-                        else if model.section.kind == .grammar { grammarInput }
+                        else if !model.isRequired(model.question) {
+                            Text("这一空本轮无需补答，保留完整文章供阅读。").font(.subheadline).foregroundStyle(.secondary)
+                        }
+                        else if model.section.kind == .grammar { grammarInput.disabled(model.isLocked(model.question) || model.isBusy || model.hasUnconfirmedAnswer) }
                         else {
                             if model.section.kind == .insertion {
-                                Text("七个选项中选择一句；已用句子可移到当前空。")
+                                Text("点击文章中的空位或上方空号，再选句子；填完 \(model.section.questions.count) 空后整篇提交。")
                                     .font(.caption).foregroundStyle(.secondary)
                             }
                             ForEach(model.question.options) { option in choice(option) }
@@ -251,7 +263,9 @@ public struct LearningPracticePreview: View {
                             if model.section.kind == .grammar && !model.draft.isReviewing { grammarFocused = true }
                         } label: {
                             VStack(spacing: 3) {
-                                Text("\(index + 1)").font(.caption.weight(.semibold)).monospacedDigit()
+                                Text(model.section.kind == .insertion && !model.answer(for: question).isEmpty
+                                     ? "\(index + 1) \(model.answer(for: question))" : "\(index + 1)")
+                                    .font(.caption.weight(.semibold)).monospacedDigit()
                                 Circle().fill(questionColor(question)).frame(width: 4, height: 4)
                             }.frame(width: 44, height: 44).contentShape(Rectangle())
                                 .background(index == model.draft.questionIndex ? PracticePaper.accent.opacity(0.12) : .clear, in: RoundedRectangle(cornerRadius: 11))
@@ -271,7 +285,7 @@ public struct LearningPracticePreview: View {
                 .onChange(of: model.question.id) { _, id in proxy.scrollTo(id, anchor: .center) }
         }
     }
-    private func questionColor(_ question: PracticePreviewQuestion) -> Color {
+    private func questionColor(_ question: LearningPracticeQuestion) -> Color {
         switch model.result(for: question) {
         case .correct: PracticePaper.accent
         case .incorrect: .orange
@@ -279,7 +293,7 @@ public struct LearningPracticePreview: View {
         case nil: model.answer(for: question).isEmpty ? Color.secondary.opacity(0.18) : PracticePaper.accent
         }
     }
-    private func choice(_ option: PracticePreviewQuestion.Option) -> some View {
+    private func choice(_ option: LearningPracticeQuestion.Option) -> some View {
         let selected = model.answer(for: model.question) == option.id
         let previous = model.section.kind == .insertion ? model.section.questions.firstIndex(where: { $0.id != model.question.id && model.answer(for: $0) == option.id }) : nil
         // Selecting a radio option is idempotent, including across two questions with the same letter.
@@ -298,6 +312,7 @@ public struct LearningPracticePreview: View {
                 .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(selected ? PracticePaper.accent.opacity(0.5) : Color.primary.opacity(0.10)))
                 .contentShape(RoundedRectangle(cornerRadius: 14))
         }.buttonStyle(.plain).accessibilityAddTraits(selected ? .isSelected : [])
+            .disabled(model.isBusy || model.hasUnconfirmedAnswer || model.isLocked(model.question) || (previous.map { model.isLocked(model.section.questions[$0]) } ?? false))
             .accessibilityIdentifier("practice.option.\(option.id)")
     }
     private var grammarInput: some View {
@@ -323,16 +338,16 @@ public struct LearningPracticePreview: View {
             if model.result(for: model.question) != .correct {
                 Text("参考答案  \(model.referenceLabel(model.question))").font(.subheadline.weight(.medium))
             }
-            Text(model.question.explanation).font(.subheadline).lineSpacing(5)
+            Text(model.explanation(for: model.question)).font(.subheadline).lineSpacing(5)
             if model.result(for: model.question) == .needsReview {
                 Text("此为预览参考答案，其他合理表达留待核对。").font(.caption).foregroundStyle(.secondary)
             }
             Button {
-                highlightedParagraph = model.question.evidenceParagraph
+                highlightedParagraph = model.isProduction && model.section.kind == .reading ? nil : model.question.evidenceParagraph
                 evidenceRequest += 1
                 animate { panel = .standard }
             } label: {
-                Label("定位原文依据", systemImage: "text.viewfinder").font(.subheadline.weight(.medium)).frame(minHeight: 44)
+                Label(model.isProduction ? "回看原文" : "定位原文依据", systemImage: "text.viewfinder").font(.subheadline.weight(.medium)).frame(minHeight: 44)
             }.buttonStyle(.plain).accessibilityIdentifier("practice.evidence")
         }.frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -346,34 +361,34 @@ public struct LearningPracticePreview: View {
                     }
                     Spacer(minLength: 0)
                     Button(model.returningToSummary ? "返回本次回顾" : model.draft.sectionIndex + 1 < model.task.sections.count ? "继续下一篇 →" : "完成练习 →") {
-                        grammarFocused = false; model.finishReview()
+                        grammarFocused = false; Task { await model.finishReview() }
                     }.font(.subheadline.weight(.semibold)).frame(minHeight: 48)
                         .accessibilityIdentifier("practice.continue")
                 }.padding(.horizontal, 24)
             } else {
                 HStack(spacing: 12) {
                     if model.section.kind != .reading && !model.answer(for: model.question).isEmpty {
-                        Button("清空本空") { model.setAnswer("") }.font(.caption).frame(minHeight: 44)
+                        Button("清空本空") { model.setAnswer("") }.font(.caption).frame(minHeight: 44).disabled(model.isBusy || model.hasUnconfirmedAnswer || model.isLocked(model.question))
                     } else if !model.canReview && !dynamicTypeSize.isAccessibilitySize {
                         Text("本篇完成后集中讲解").font(.caption2).foregroundStyle(.secondary)
                     }
                     Spacer(minLength: 0)
                     Button {
-                        if model.canReview { grammarFocused = false; model.submitSection() }
+                        if model.canReview { grammarFocused = false; Task { await model.submitSection() } }
                         else { nextQuestion() }
                     } label: {
-                        Text(model.canReview ? "完成本篇 · 看讲解" : "下一题 →")
+                        Text(model.isBusy ? "正在提交…" : model.canReview ? "完成本篇 · 看讲解" : model.section.kind == .insertion ? "填完本篇后提交" : "下一题 →")
                             .font(.subheadline.weight(.semibold)).padding(.horizontal, 18).frame(minHeight: 46)
                             .foregroundStyle(PracticePaper.sheet).background(PracticePaper.accent, in: Capsule())
-                    }.buttonStyle(.plain).accessibilityIdentifier("practice.next")
+                    }.buttonStyle(.plain).disabled(model.isBusy || (model.section.kind == .insertion && !model.canReview)).accessibilityIdentifier("practice.next")
                 }.padding(.horizontal, 24).padding(.vertical, 10)
             }
         }
     }
     private func nextQuestion() {
         let index = model.draft.questionIndex
-        if index + 1 < model.section.questions.count { model.selectQuestion(index + 1) }
-        else if let first = model.section.questions.firstIndex(where: { model.answer(for: $0).trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }) {
+        if let next = model.section.questions.indices.first(where: { $0 > index && model.isRequired(model.section.questions[$0]) }) { model.selectQuestion(next) }
+        else if let first = model.section.questions.firstIndex(where: { model.isRequired($0) && model.answer(for: $0).trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }) {
             model.selectQuestion(first)
         } else { model.selectQuestion(0) }
     }
@@ -396,7 +411,7 @@ public struct LearningPracticePreview: View {
                         .font(.system(.largeTitle, design: .serif, weight: .medium)).lineSpacing(5)
                     HStack(alignment: .firstTextBaseline, spacing: 7) {
                         Text("\(model.correctCount)").font(.system(size: resultSize, weight: .medium, design: .serif))
-                        Text("/ \(model.task.count) 题").font(.title3).foregroundStyle(.secondary)
+                        Text("/ \(model.questionCount) 题").font(.title3).foregroundStyle(.secondary)
                         Spacer()
                         Text("本次答对").font(.subheadline).foregroundStyle(PracticePaper.accent)
                     }
@@ -415,7 +430,7 @@ public struct LearningPracticePreview: View {
                         Label("本次全部答对，可以再读一遍喜欢的段落。", systemImage: "checkmark.circle")
                             .font(.subheadline).foregroundStyle(.secondary).lineSpacing(4)
                         ForEach(Array(model.task.sections.enumerated()), id: \.element.id) { index, section in
-                            Button { model.revisit(section: index, question: 0) } label: {
+                            Button { model.revisit(section: index, question: section.questions.firstIndex(where: model.isRequired) ?? 0) } label: {
                                 HStack { Text(section.title); Spacer(); Image(systemName: "arrow.up.right") }
                                     .font(.subheadline).frame(minHeight: 48)
                             }.buttonStyle(.plain)
@@ -443,22 +458,22 @@ public struct LearningPracticePreview: View {
                 .padding(.horizontal, 24).padding(.vertical, 12).frame(maxWidth: 640)
         }
     }
-    private var reviewItems: [(section: Int, index: Int, question: PracticePreviewQuestion)] {
+    private var reviewItems: [(section: Int, index: Int, question: LearningPracticeQuestion)] {
         model.task.sections.enumerated().flatMap { si, section in
             section.questions.enumerated().compactMap { qi, question in
-                model.result(for: question) != .correct || model.draft.flagged.contains(question.id) ? (si, qi, question) : nil
+                model.isRequired(question) && (model.result(for: question) != .correct || model.draft.flagged.contains(question.id)) ? (si, qi, question) : nil
             }
         }
     }
-    private func resultLabel(_ question: PracticePreviewQuestion) -> String {
+    private func resultLabel(_ question: LearningPracticeQuestion) -> String {
         switch model.result(for: question) {
         case .correct: "本次答对"
         case .incorrect: "这一题，再看一眼"
         case .needsReview: "表达待核对"
-        case nil: "尚未提交"
+        case nil: model.isRequired(question) ? "尚未提交" : "本轮无需补答"
         }
     }
-    private func resultSymbol(_ question: PracticePreviewQuestion) -> String {
+    private func resultSymbol(_ question: LearningPracticeQuestion) -> String {
         switch model.result(for: question) {
         case .correct: "checkmark.circle"
         case .incorrect: "arrow.counterclockwise.circle"
@@ -488,8 +503,8 @@ public struct LearningPracticePreview: View {
 }
 
 private struct PracticeArticleReader: View {
-    let model: PracticePreviewModel
-    let section: PracticePreviewSection
+    let model: LearningPracticeModel
+    let section: LearningPracticeSection
     let initialOffset: Double
     let highlightedParagraph: Int?
     let evidenceRequest: Int
@@ -498,7 +513,7 @@ private struct PracticeArticleReader: View {
     @State private var position: ScrollPosition
     @ScaledMetric(relativeTo: .body) private var readingSize = 19
 
-    init(model: PracticePreviewModel, highlightedParagraph: Int?, evidenceRequest: Int, gapRequest: Int, selectGap: @escaping (Int) -> Void) {
+    init(model: LearningPracticeModel, highlightedParagraph: Int?, evidenceRequest: Int, gapRequest: Int, selectGap: @escaping (Int) -> Void) {
         self.model = model; self.section = model.section
         self.initialOffset = model.readingOffset(for: model.section.id)
         self.highlightedParagraph = highlightedParagraph
@@ -542,6 +557,7 @@ private struct PracticeArticleReader: View {
         }
         .onChange(of: evidenceRequest) { _, _ in
             if let highlightedParagraph { position.scrollTo(id: highlightedParagraph, anchor: .top) }
+            else { position.scrollTo(y: 0) }
         }
         .environment(\.openURL, OpenURLAction { url in
             guard url.scheme == "practice-gap", let index = Int(url.host ?? ""), section.questions.indices.contains(index) else { return .discarded }
@@ -570,5 +586,19 @@ private struct PracticeArticleReader: View {
         output.append(AttributedString(source.substring(from: cursor)))
         return output
     }
+}
+
+#if DEBUG
+/// Isolated design fixture. Real practice and the testing entry use LearningChallengeView instead.
+@MainActor
+public struct LearningPracticePreview: View {
+    private let character: CharacterDTO
+    @State private var model: LearningPracticeModel
+    public init(character: CharacterDTO) {
+        self.character = character
+        _model = State(initialValue: LearningPracticeModel(tasks: PracticePreviewFixtures.tasks,
+            namespace: ProcessInfo.processInfo.environment["UI_TEST_PRACTICE_NAMESPACE"] ?? "practice.preview.v1"))
+    }
+    public var body: some View { LearningPracticeScreen(model: model, character: character) }
 }
 #endif
