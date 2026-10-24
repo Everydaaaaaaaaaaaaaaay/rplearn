@@ -1,0 +1,718 @@
+{
+  "createdAt": "2026-10-24T02:03:27.927437+00:00",
+  "reviewBoundary": "Three complete original senior five-of-seven plus ten-gap grammar practices. Adds explanatory cohesion passages, seven prompted/three single-word grammar gaps. Same-author cohesion/form/variant review only; no independent calibration.",
+  "units": [
+    {
+      "id": "senior1.seedpod-and-sundial-120",
+      "level": "senior1",
+      "title": "A seed’s journey and a shadow clock",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade10-club-routines-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. A seed’s journey and a shadow clock",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "A seed may fall close to the plant that produced it, but many plants have ways of sending seeds farther away. The method varies with the seed and its surroundings. Looking at its shape can suggest how a journey might begin.\n\nSome seeds carry light, wing-like parts. A moving stream of air can turn those structures and slow the fall. ____1____ The same breeze therefore has more time to carry the seed sideways before it reaches the ground.\n\nOther seeds have small hooks. ____2____ When an animal later moves away, the seed may travel with it. The attachment need not last forever to change where the seed finally lands.\n\nFruit offers another route. An animal may eat the fruit and carry seeds away from the parent plant. ____3____ Different fruits and seeds interact with animals in different ways, so one simple account cannot describe every case.\n\nWater can carry some seeds too. Their outer structures may help them float for a period. ____4____ Reaching land is still only one stage; the conditions there must also allow growth.\n\nThese journeys do not guarantee that a seed will become a plant. ____5____ Movement changes the possible starting place, but survival depends on what happens after arrival as well as on the journey itself.",
+          "candidates": [
+            "A. A river or current can then move them beyond their original location.",
+            "B. Many arrive in places where they will not grow successfully.",
+            "C. The outcome depends partly on what happens during and after feeding.",
+            "D. Leaves can change colour as the seasons pass.",
+            "E. Such seeds may remain in the air longer than heavier, compact ones.",
+            "F. A gardener may use a label to identify a newly planted variety.",
+            "G. Hooks can catch on fur or clothing that brushes against the plant."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 4,
+              "explanation": "E explains slower fall and leads to longer sideways wind transport. G hooks/C feeding/A water/B growth failure belong later; D/F change topic."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 6,
+              "explanation": "G explains the hooks and prepares transport on moving animals. E wind/C fruit/A water/B arrival do not introduce attachment; D/F irrelevant."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 2,
+              "explanation": "C qualifies fruit-feeding outcome, developed by varied interactions. Other options describe nonfeeding routes or separate matters."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 0,
+              "explanation": "A links floating structures to transport by water and later land arrival. E/G/C other mechanisms, B final success limit, D/F other plant topics."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 1,
+              "explanation": "B gives the failed-growth cases supporting no guarantee. E–A mechanisms do not explain unsuccessful arrival; D/F do not address survival."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade10-slotgrammar-football-signatures",
+          "title": "B. A seed’s journey and a shadow clock",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "Our science club built a simple shadow clock in the courtyard. ____1____ (make) one sounded easy, but we first needed a place where a fixed object would cast a shadow for several hours. A patch shaded by the building would not serve our purpose.\n\nThe teacher gave us a straight stick and asked us to place ____2____ upright. We checked its position before adding marks around the base. The first line ____3____ (draw) at ten o'clock, with the time written beside it.\n\nWe returned every hour, although the changing weather sometimes made the shadow's edge hard to see. There were several ____4____ (occasion) when we could record only an approximate end point. We marked that uncertainty rather than pretending every line was equally precise.\n\nThe student ____5____ had kept our notebook compared the results. The marks were not arranged exactly as the numbers on an ordinary clock face. This helped us understand that our model was an observation of one place and day, rather than a ready-made clock for every situation.\n\nBy afternoon, we had become ____6____ (good) at taking the measurements. We read the ruler ____7____ (careful) and kept the stick in the same position. The teacher asked us ____8____ (explain) which conditions would matter if another class repeated the task.\n\nOur notes included the date, location and weather. It was ____9____ useful beginning because it connected a visible pattern with questions about how that pattern had been recorded. We left the courtyard tidy, taking all our ____10____ (draw) back to the classroom.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of make.",
+              "acceptedAnswers": [
+                "Making",
+                "To make"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Made"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Making/To make can serve as subject of sounded easy. Made cannot name the activity in this position."
+            },
+            {
+              "prompt": "Fill gap 2 with one appropriate word.",
+              "acceptedAnswers": [
+                "it"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "its",
+                  "itself"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Place it upright takes object it referring to stick. Its possessive and itself would require reflexive reference not present."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of draw.",
+              "acceptedAnswers": [
+                "was drawn",
+                "had been drawn"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "drawn",
+                  "were drawn"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Singular first line receives drawing. Drawn lacks auxiliary and were disagrees."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of occasion.",
+              "acceptedAnswers": [
+                "occasions"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "occasion",
+                  "occasionally"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Several requires plural occasions. Singular and adverb do not fit."
+            },
+            {
+              "prompt": "Fill gap 5 with one appropriate word.",
+              "acceptedAnswers": [
+                "who",
+                "that"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "which",
+                  "where"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Student subject antecedent takes who/that. Which normally nonhuman and where not subject."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of good.",
+              "acceptedAnswers": [
+                "better",
+                "good"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "goodly",
+                  "goodness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Better expresses improvement; good also validly describes acquired skill. Goodly adjective/adverb with a different meaning and goodness noun do not fill this ability construction."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of careful.",
+              "acceptedAnswers": [
+                "carefully"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "carefulness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Carefully modifies read; carefulness noun does not fit. Unlisted flat uses remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of explain.",
+              "acceptedAnswers": [
+                "to explain"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "explain",
+                  "explaining",
+                  "explained"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Asked us takes to explain. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "a"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "an"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Useful begins with consonant /j/, so a. Other article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of draw.",
+              "acceptedAnswers": [
+                "drawings"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "draw",
+                  "drawn"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "All our drawings names recorded pictures. Verb/base/participle do not fill plural count noun slot."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior2.public-time-and-binding-120",
+      "level": "senior2",
+      "title": "Public clocks and repairing a book",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade11-exhibition-labels-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Public clocks and repairing a book",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "Before a small clock could be carried easily, people might depend on a shared clock to coordinate parts of the day. A public clock was therefore more than an object on a tower. It made one account of time visible to people moving through a common space.\n\nVisibility shaped its design. The face needed to be read from a distance, often from below. ____1____ An elegant detail that disappeared when viewed from the street could contribute little to that practical task.\n\nSound extended the clock's reach. A bell could mark an hour for people unable to see the face. ____2____ The sound could communicate a time signal without requiring everyone to stand in the same place.\n\nYet a shared display did not automatically settle every disagreement about time. Clocks required setting, maintenance and repair. ____3____ A stopped clock could remain prominent while no longer supplying a reliable reading.\n\nChanging habits also changed what people expected from public time. A journey or shift might demand closer coordination than a broad division of the day. ____4____ How precise a clock needed to be depended partly on the activities organised around it.\n\nPublic clocks can still be valued even when most visitors carry another time display. ____5____ Their practical history and their place in a familiar streetscape can give them significance beyond the number shown at a particular minute.",
+          "candidates": [
+            "A. That made clear shapes and contrast important to legibility.",
+            "B. Different uses could therefore create different demands for precision.",
+            "C. Their role need not be reduced to competing with a wristwatch.",
+            "D. The tower could also provide a place for nesting birds.",
+            "E. Hearing a strike offered access beyond the direct line of sight.",
+            "F. Nearby shop windows might reflect the tower on a bright day.",
+            "G. Being easy to see was not the same as always being accurate."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 0,
+              "explanation": "A links distant viewing to readable shapes/contrast, reinforced by lost decorative detail. F reflection/D birds do not address legibility; E/G/B/C later themes."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 4,
+              "explanation": "E explains bell access outside direct view. A visual design/G reliability/B precision/C later meaning and F/D surroundings do not connect hearing to access."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 6,
+              "explanation": "G contrasts prominent face with accuracy and prepares stopped-clock example. Other options do not distinguish visibility from reliability."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 1,
+              "explanation": "B generalises journey/shift coordination into precision demands. A legibility/E auditory reach/G maintenance/C heritage are separate arguments."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 2,
+              "explanation": "C frames surviving role beyond private-device competition, developed by streetscape/history value. Other options concern mechanisms or incidental tower uses."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade11-slotgrammar-lantern-frame",
+          "title": "B. Public clocks and repairing a book",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "A damaged book from our class collection became the subject of a repair workshop. Our teacher first asked us ____1____ (examine) how its pages were joined. We were practising on a modern spare copy, not experimenting on a rare or borrowed volume.\n\nThe cover had separated from the block of pages, ____2____ was still held together. A quick strip of tape across the outside would hide the gap, but it would not necessarily provide a lasting repair. The instructor showed us why the movement at the joint mattered.\n\nSeveral ____3____ (piece) of suitable material were prepared. We watched the demonstration before trying the method ourselves. The glue ____4____ (apply) sparingly, and the book was supported while the repair dried.\n\nAfter ____5____ (finish) the practical work, we wrote down the process. One pupil included only the visible steps. Another noted how long we had waited and which materials had been supplied. The second account was more useful ____6____ someone trying to understand the procedure later.\n\nThe instructor described the limits ____7____ (clear). A repair that worked on our copy should not automatically be used on every old book. Materials and construction differ, and a valuable item may need a qualified specialist.\n\nWe put ____8____ (we) practice copy on a separate shelf until it was ready. It was ____9____ encouraging result, although we knew one successful attempt did not make us experts. The main ____10____ (differ) between our first and final notes was that the final version explained the conditions, not merely the order in which our hands had moved.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of examine.",
+              "acceptedAnswers": [
+                "to examine"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "examine",
+                  "examining",
+                  "examined"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Asked us takes to examine. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 2 with one appropriate word.",
+              "acceptedAnswers": [
+                "which"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "where"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Comma relative which refers to page block and serves as subject. Who human and where not subject."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of piece.",
+              "acceptedAnswers": [
+                "pieces"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "piece",
+                  "piecees"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Several requires pieces. Singular/nonstandard plural do not fit."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of apply.",
+              "acceptedAnswers": [
+                "was applied",
+                "had been applied"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "applied",
+                  "were applied"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Singular mass glue receives application. Applied lacks auxiliary and were disagrees."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of finish.",
+              "acceptedAnswers": [
+                "finishing",
+                "having finished"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "finish",
+                  "finished",
+                  "to finish"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "After finishing/having finished fit completed practical work. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 6 with one appropriate word.",
+              "acceptedAnswers": [
+                "to",
+                "for"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Useful to/for someone describes the later reader benefiting. Of does not fit this beneficiary construction."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of clear.",
+              "acceptedAnswers": [
+                "clearly"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "clearance"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Clearly modifies described. Clearance noun does not fit; unlisted flat uses remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of we.",
+              "acceptedAnswers": [
+                "our"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "us",
+                  "ours"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Our modifies practice copy. Personal and independent possessive forms do not fit."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "an"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "a"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Encouraging begins with vowel sound, so an. Other article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of differ.",
+              "acceptedAnswers": [
+                "difference"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "different",
+                  "differently"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Main difference between requires noun. Adjective/adverb do not fit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior3.margin-and-translation-120",
+      "level": "senior3",
+      "title": "Marks in a margin and two drafts",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade12-print-room-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Marks in a margin and two drafts",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "A mark in a book's margin can look like a private interruption of a printed text. To a later reader, it may also preserve evidence of how someone once engaged with that page. Interpreting it requires care about both what is visible and what remains unknown.\n\nBegin with the mark itself. An underlined sentence shows selection, but not necessarily agreement. ____1____ Assuming approval from emphasis alone can turn a small piece of evidence into a much larger claim.\n\nHandwriting adds another question. Different notes in one volume may come from different people or periods. ____2____ Similar ink colour does not by itself establish a single author or one continuous reading session.\n\nLocation can be informative too. A comment may respond to the sentence beside it, or refer back to something earlier. ____3____ Its position is a clue to a relation, not always a complete explanation of that relation.\n\nA later reader should also resist treating one marked copy as typical of every reader. ____4____ The copy may preserve an unusual response, and many other responses may have left no surviving trace.\n\nThese limits do not make marginal notes worthless. ____5____ A carefully bounded account can show what this reader selected or questioned while leaving broader conclusions open for further evidence.",
+          "candidates": [
+            "A. Some publishers leave wider margins than others.",
+            "B. Examining the surrounding pages may help identify its target.",
+            "C. A clean page may be easier to reproduce in a new edition.",
+            "D. The selected line might have been a point the reader wanted to challenge.",
+            "E. A single surviving example cannot represent a whole reading public.",
+            "F. They make the scale of the conclusion especially important.",
+            "G. Establishing who wrote which note may require additional evidence."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 3,
+              "explanation": "D supplies disagreement as alternative to approval, preparing warning about emphasis. B target/G authorship/E representativeness/F conclusion-scale belong later; A/C production issues."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 6,
+              "explanation": "G follows possible different writers with need for authorship evidence. Other options do not resolve who made which mark."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 1,
+              "explanation": "B suggests wider textual context to locate target, fitting clue-versus-full-explanation warning. G authors/E sample/D disagreement do not address relation across pages."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 4,
+              "explanation": "E limits generalising from one marked copy to all readers. Other options concern content, production or authorship rather than representativeness."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 5,
+              "explanation": "F refers to interpretive limits and supports bounded conclusions in next sentence. A/C page production do not preserve evidentiary value; others describe specific earlier questions."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade12-grammar-station-clock",
+          "title": "B. Marks in a margin and two drafts",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "For a translation workshop, we were given two drafts of the same short scene. Both described a traveller arriving at a house, but their rhythms were different. The first draft ____1____ (complete) before the writer had seen the second, so neither was a correction of the other.\n\nOur task was to identify choices rather than announce a winner. We began by ____2____ (compare) the opening lines. One version placed the house first; the other began with the traveller. The change affected ____3____ the reader's attention initially rested.\n\nSeveral ____4____ (sentence) had been divided differently. A short sentence could create a pause, while a longer one connected actions more closely. We read both versions aloud, noticing effects that were less obvious when we looked only at the vocabulary.\n\nThe teacher asked us ____5____ (support) an observation with a specific example. Saying that one draft was better did not explain which feature we valued. A judgement became more useful ____6____ it showed the relation between the wording and the effect we described.\n\nWe recorded ____7____ (we) comments on separate sheets. The drafts themselves were preserved so the writer could inspect the exact words under discussion. Later, we read a revised version that kept some choices from each.\n\nIt was ____8____ interesting demonstration of revision as selection rather than simple replacement. The final discussion was conducted ____9____ (careful), because the writer was explaining decisions that might otherwise have remained invisible. We did not reach complete ____10____ (agree), but we became much clearer about what each disagreement concerned.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of complete.",
+              "acceptedAnswers": [
+                "had been completed",
+                "was completed"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "completed",
+                  "had completed"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Had been completed or was completed expresses passive completion before the other draft was seen. Completed lacks auxiliary and had completed is active with no object."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of compare.",
+              "acceptedAnswers": [
+                "comparing"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "compare",
+                  "compared",
+                  "to compare"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "By comparing introduces method. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 3 with one appropriate word.",
+              "acceptedAnswers": [
+                "where"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "which",
+                  "what"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Where attention rested asks the location/focus. Which/what cannot directly fill the complete intransitive rested clause."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of sentence.",
+              "acceptedAnswers": [
+                "sentences"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "sentence",
+                  "sentencing"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Several requires sentences. Singular/process noun do not count textual units."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of support.",
+              "acceptedAnswers": [
+                "to support"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "support",
+                  "supporting",
+                  "supported"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Asked us takes to support. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 6 with one appropriate word.",
+              "acceptedAnswers": [
+                "when",
+                "if",
+                "because",
+                "as",
+                "since"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "during"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "When/if state conditions; because/as/since state reason for usefulness. During cannot directly introduce a finite clause."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of we.",
+              "acceptedAnswers": [
+                "our"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "us",
+                  "ours"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Our modifies comments. Personal/independent possessive forms do not fit."
+            },
+            {
+              "prompt": "Fill gap 8 with one appropriate word.",
+              "acceptedAnswers": [
+                "an"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "a"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Interesting begins with vowel sound; an. Other article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 9 with the correct form of careful.",
+              "acceptedAnswers": [
+                "carefully"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "carefulness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Carefully modifies conducted. Carefulness noun does not fit; unlisted flat variants remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of agree.",
+              "acceptedAnswers": [
+                "agreement"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "agreeable",
+                  "agreeably"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Complete agreement is noun phrase. Adjective/adverb do not fit."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
