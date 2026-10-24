@@ -1,0 +1,920 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b138",
+  "createdAt": "2026-10-24T03:30:58.180643+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.stars-and-present-138",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · An evening with the stars and an unexpected book",
+        "summary": "An evening with the stars and an unexpected book，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.2024.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete original senior paired readings: each three-question information text and four-question narrative/expository/argument text. Fictional notices and bounded workshop examples. Same-author all-option/text-evidence review only, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.stars-and-present-138",
+          "family": "reading_choice",
+          "label": "An evening with the stars and an unexpected book",
+          "candidateSHA256": "630736bc1f9d2af856be4fce34b5d5433b04355eff2fc4a105e0fddd466c7421",
+          "authorCheckSHA256": "bd6fb7687289897a4014b1d35b9d61facb16724395a7b4834f51488fc03ad13b",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.stars-and-present-138#stars",
+            "expansion.20261024.senior1.stars-and-present-138#present"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b138；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A first evening of astronomy\n\nThe North Hill Learning Centre offers an introductory astronomy evening on Saturday,24 October, for students aged fifteen to eighteen. No knowledge of astronomy is required. Staff will begin indoors with a short explanation of the evening sky, then use the courtyard for observation if conditions allow.\n\nArrive at18:15 for registration. The indoor session starts at18:30, and the programme ends at21:00. Participants must remain with staff during the outdoor part. The centre supplies the equipment used in the session; personal telescopes are not needed and cannot be set up without agreement.\n\nThe fee is fourteen pounds. Book online by Wednesday, choosing one place for each participant. A request is confirmed only after the centre replies. Students under eighteen need parental or guardian consent; eighteen-year-olds complete their own form. Everyone provides an emergency contact.\n\nWear warm layers and suitable shoes. The courtyard may be colder than expected after the indoor talk. A hot drink is included, but participants should bring any personal water bottle they need. Food is not provided as a full evening meal.\n\nCloud does not automatically cancel the event. Staff may use prepared sky images and demonstrations indoors instead. The session introduces observation and interpretation, without guaranteeing a view of a particular object. If the centre itself cancels, confirmed participants receive a refund or another date. Contact staff before booking about access requirements.\n\nThe book I had not asked for\n\nFor my birthday, my aunt gave me a collection of travel writing. I had asked for a novel by my favourite author, and the unfamiliar book felt like evidence that she had not listened. I thanked her politely and put it beneath two books I already knew I wanted to read.\n\nA few weeks later, I needed something to read on a long journey. The novel was too large for my small bag, so I picked up my aunt's gift. I expected to read a few pages and fall asleep. Instead, I found an account of a town I had visited with my family.\n\nThe writer noticed things I remembered but had never put into words: the sound of shutters opening, the narrowness of a particular street, the way people waited outside a bakery. I did not agree with every judgement, but the familiar place made me curious about the next essay.\n\nBy the time I reached my destination, I had read half the book. I called my aunt to ask how she had chosen it. She said I often told detailed stories about places after trips. She had thought I might enjoy seeing how another person did something similar.\n\nHer choice had not been random, although it had differed from my request. That did not mean every unexpected present was automatically perfect. It meant I had judged this one before discovering the attention behind it.\n\nI finished the collection and lent it to a friend, then bought the novel I originally wanted with birthday money. There was room for both. My aunt's gift had not replaced my preference; it had added another possibility. Now, when I see its worn cover on the shelf, I remember the journey and the small surprise of discovering that someone had noticed a part of my interests I had not named myself."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.stars-and-present-138.stars.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should a beginner understand about the equipment?",
+            "material": "A first evening of astronomy\n\nThe North Hill Learning Centre offers an introductory astronomy evening on Saturday,24 October, for students aged fifteen to eighteen. No knowledge of astronomy is required. Staff will begin indoors with a short explanation of the evening sky, then use the courtyard for observation if conditions allow.\n\nArrive at18:15 for registration. The indoor session starts at18:30, and the programme ends at21:00. Participants must remain with staff during the outdoor part. The centre supplies the equipment used in the session; personal telescopes are not needed and cannot be set up without agreement.\n\nThe fee is fourteen pounds. Book online by Wednesday, choosing one place for each participant. A request is confirmed only after the centre replies. Students under eighteen need parental or guardian consent; eighteen-year-olds complete their own form. Everyone provides an emergency contact.\n\nWear warm layers and suitable shoes. The courtyard may be colder than expected after the indoor talk. A hot drink is included, but participants should bring any personal water bottle they need. Food is not provided as a full evening meal.\n\nCloud does not automatically cancel the event. Staff may use prepared sky images and demonstrations indoors instead. The session introduces observation and interpretation, without guaranteeing a view of a particular object. If the centre itself cancels, confirmed participants receive a refund or another date. Contact staff before booking about access requirements.",
+            "explanation": "Centre provides required equipment, personal setups need agreement. Other claims contradict access for beginners.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every participant must bring a telescope"
+              },
+              {
+                "id": "o1",
+                "text": "Equipment is available only to experts"
+              },
+              {
+                "id": "o2",
+                "text": "The centre supplies it"
+              },
+              {
+                "id": "o3",
+                "text": "Personal telescopes can be set up anywhere"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.stars-and-present-138.stars.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "When does registration begin for participants?",
+            "material": "A first evening of astronomy\n\nThe North Hill Learning Centre offers an introductory astronomy evening on Saturday,24 October, for students aged fifteen to eighteen. No knowledge of astronomy is required. Staff will begin indoors with a short explanation of the evening sky, then use the courtyard for observation if conditions allow.\n\nArrive at18:15 for registration. The indoor session starts at18:30, and the programme ends at21:00. Participants must remain with staff during the outdoor part. The centre supplies the equipment used in the session; personal telescopes are not needed and cannot be set up without agreement.\n\nThe fee is fourteen pounds. Book online by Wednesday, choosing one place for each participant. A request is confirmed only after the centre replies. Students under eighteen need parental or guardian consent; eighteen-year-olds complete their own form. Everyone provides an emergency contact.\n\nWear warm layers and suitable shoes. The courtyard may be colder than expected after the indoor talk. A hot drink is included, but participants should bring any personal water bottle they need. Food is not provided as a full evening meal.\n\nCloud does not automatically cancel the event. Staff may use prepared sky images and demonstrations indoors instead. The session introduces observation and interpretation, without guaranteeing a view of a particular object. If the centre itself cancels, confirmed participants receive a refund or another date. Contact staff before booking about access requirements.",
+            "explanation": "18:15 arrival registration,18:30session,21end,Wednesdaybooking deadline.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "21:00"
+              },
+              {
+                "id": "o1",
+                "text": "Wednesday midnight"
+              },
+              {
+                "id": "o2",
+                "text": "18:15"
+              },
+              {
+                "id": "o3",
+                "text": "18:30"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.stars-and-present-138.stars.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What may happen on a cloudy evening?",
+            "material": "A first evening of astronomy\n\nThe North Hill Learning Centre offers an introductory astronomy evening on Saturday,24 October, for students aged fifteen to eighteen. No knowledge of astronomy is required. Staff will begin indoors with a short explanation of the evening sky, then use the courtyard for observation if conditions allow.\n\nArrive at18:15 for registration. The indoor session starts at18:30, and the programme ends at21:00. Participants must remain with staff during the outdoor part. The centre supplies the equipment used in the session; personal telescopes are not needed and cannot be set up without agreement.\n\nThe fee is fourteen pounds. Book online by Wednesday, choosing one place for each participant. A request is confirmed only after the centre replies. Students under eighteen need parental or guardian consent; eighteen-year-olds complete their own form. Everyone provides an emergency contact.\n\nWear warm layers and suitable shoes. The courtyard may be colder than expected after the indoor talk. A hot drink is included, but participants should bring any personal water bottle they need. Food is not provided as a full evening meal.\n\nCloud does not automatically cancel the event. Staff may use prepared sky images and demonstrations indoors instead. The session introduces observation and interpretation, without guaranteeing a view of a particular object. If the centre itself cancels, confirmed participants receive a refund or another date. Contact staff before booking about access requirements.",
+            "explanation": "Prepared images/demonstrations can replace observation. No automatic cancellation/view/meal promise.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every participant receives a meal instead"
+              },
+              {
+                "id": "o1",
+                "text": "An indoor alternative is used"
+              },
+              {
+                "id": "o2",
+                "text": "A particular star view is guaranteed"
+              },
+              {
+                "id": "o3",
+                "text": "The event is always cancelled automatically"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.stars-and-present-138.present.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the narrator initially disappointed?",
+            "material": "The book I had not asked for\n\nFor my birthday, my aunt gave me a collection of travel writing. I had asked for a novel by my favourite author, and the unfamiliar book felt like evidence that she had not listened. I thanked her politely and put it beneath two books I already knew I wanted to read.\n\nA few weeks later, I needed something to read on a long journey. The novel was too large for my small bag, so I picked up my aunt's gift. I expected to read a few pages and fall asleep. Instead, I found an account of a town I had visited with my family.\n\nThe writer noticed things I remembered but had never put into words: the sound of shutters opening, the narrowness of a particular street, the way people waited outside a bakery. I did not agree with every judgement, but the familiar place made me curious about the next essay.\n\nBy the time I reached my destination, I had read half the book. I called my aunt to ask how she had chosen it. She said I often told detailed stories about places after trips. She had thought I might enjoy seeing how another person did something similar.\n\nHer choice had not been random, although it had differed from my request. That did not mean every unexpected present was automatically perfect. It meant I had judged this one before discovering the attention behind it.\n\nI finished the collection and lent it to a friend, then bought the novel I originally wanted with birthday money. There was room for both. My aunt's gift had not replaced my preference; it had added another possibility. Now, when I see its worn cover on the shelf, I remember the journey and the small surprise of discovering that someone had noticed a part of my interests I had not named myself.",
+            "explanation": "Expected favourite-author novel, received unfamiliar travel essays. Other reasons not stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The narrator has already read the collection"
+              },
+              {
+                "id": "o1",
+                "text": "The book contains no writing"
+              },
+              {
+                "id": "o2",
+                "text": "The aunt gives no present"
+              },
+              {
+                "id": "o3",
+                "text": "The gift differs from the requested novel"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.stars-and-present-138.present.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What first engages the narrator during the journey?",
+            "material": "The book I had not asked for\n\nFor my birthday, my aunt gave me a collection of travel writing. I had asked for a novel by my favourite author, and the unfamiliar book felt like evidence that she had not listened. I thanked her politely and put it beneath two books I already knew I wanted to read.\n\nA few weeks later, I needed something to read on a long journey. The novel was too large for my small bag, so I picked up my aunt's gift. I expected to read a few pages and fall asleep. Instead, I found an account of a town I had visited with my family.\n\nThe writer noticed things I remembered but had never put into words: the sound of shutters opening, the narrowness of a particular street, the way people waited outside a bakery. I did not agree with every judgement, but the familiar place made me curious about the next essay.\n\nBy the time I reached my destination, I had read half the book. I called my aunt to ask how she had chosen it. She said I often told detailed stories about places after trips. She had thought I might enjoy seeing how another person did something similar.\n\nHer choice had not been random, although it had differed from my request. That did not mean every unexpected present was automatically perfect. It meant I had judged this one before discovering the attention behind it.\n\nI finished the collection and lent it to a friend, then bought the novel I originally wanted with birthday money. There was room for both. My aunt's gift had not replaced my preference; it had added another possibility. Now, when I see its worn cover on the shelf, I remember the journey and the small surprise of discovering that someone had noticed a part of my interests I had not named myself.",
+            "explanation": "Familiar town and observed details draw interest. Other objects/promises absent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A letter written by the aunt on every page"
+              },
+              {
+                "id": "o1",
+                "text": "A blank page for sleeping"
+              },
+              {
+                "id": "o2",
+                "text": "An essay about a familiar town"
+              },
+              {
+                "id": "o3",
+                "text": "A guaranteed prize inside the book"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.stars-and-present-138.present.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How had the aunt chosen the book?",
+            "material": "The book I had not asked for\n\nFor my birthday, my aunt gave me a collection of travel writing. I had asked for a novel by my favourite author, and the unfamiliar book felt like evidence that she had not listened. I thanked her politely and put it beneath two books I already knew I wanted to read.\n\nA few weeks later, I needed something to read on a long journey. The novel was too large for my small bag, so I picked up my aunt's gift. I expected to read a few pages and fall asleep. Instead, I found an account of a town I had visited with my family.\n\nThe writer noticed things I remembered but had never put into words: the sound of shutters opening, the narrowness of a particular street, the way people waited outside a bakery. I did not agree with every judgement, but the familiar place made me curious about the next essay.\n\nBy the time I reached my destination, I had read half the book. I called my aunt to ask how she had chosen it. She said I often told detailed stories about places after trips. She had thought I might enjoy seeing how another person did something similar.\n\nHer choice had not been random, although it had differed from my request. That did not mean every unexpected present was automatically perfect. It meant I had judged this one before discovering the attention behind it.\n\nI finished the collection and lent it to a friend, then bought the novel I originally wanted with birthday money. There was room for both. My aunt's gift had not replaced my preference; it had added another possibility. Now, when I see its worn cover on the shelf, I remember the journey and the small surprise of discovering that someone had noticed a part of my interests I had not named myself.",
+            "explanation": "Aunt links existing travel storytelling interest. Other motives unsupported.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She noticed the narrator’s detailed stories about trips"
+              },
+              {
+                "id": "o1",
+                "text": "She believed every reader likes identical books"
+              },
+              {
+                "id": "o2",
+                "text": "She wanted the narrator to stop reading novels"
+              },
+              {
+                "id": "o3",
+                "text": "She selected the cheapest cover without thought"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.stars-and-present-138.present.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the ending suggest?",
+            "material": "The book I had not asked for\n\nFor my birthday, my aunt gave me a collection of travel writing. I had asked for a novel by my favourite author, and the unfamiliar book felt like evidence that she had not listened. I thanked her politely and put it beneath two books I already knew I wanted to read.\n\nA few weeks later, I needed something to read on a long journey. The novel was too large for my small bag, so I picked up my aunt's gift. I expected to read a few pages and fall asleep. Instead, I found an account of a town I had visited with my family.\n\nThe writer noticed things I remembered but had never put into words: the sound of shutters opening, the narrowness of a particular street, the way people waited outside a bakery. I did not agree with every judgement, but the familiar place made me curious about the next essay.\n\nBy the time I reached my destination, I had read half the book. I called my aunt to ask how she had chosen it. She said I often told detailed stories about places after trips. She had thought I might enjoy seeing how another person did something similar.\n\nHer choice had not been random, although it had differed from my request. That did not mean every unexpected present was automatically perfect. It meant I had judged this one before discovering the attention behind it.\n\nI finished the collection and lent it to a friend, then bought the novel I originally wanted with birthday money. There was room for both. My aunt's gift had not replaced my preference; it had added another possibility. Now, when I see its worn cover on the shelf, I remember the journey and the small surprise of discovering that someone had noticed a part of my interests I had not named myself.",
+            "explanation": "Narrator enjoys both gift and wanted novel. Other absolute replacements contradict.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Unexpected gifts must always replace chosen interests"
+              },
+              {
+                "id": "o1",
+                "text": "Attention can be judged only by exact requests"
+              },
+              {
+                "id": "o2",
+                "text": "The original novel becomes forbidden"
+              },
+              {
+                "id": "o3",
+                "text": "A new possibility can accompany an existing preference"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "578715f0c9e5c99e0b2e790c23a99ebec842d8dbb9b458bcab23104526dd716c",
+      "reviewNotes": "Three complete original senior paired readings: each three-question information text and four-question narrative/expository/argument text. Fictional notices and bounded workshop examples. Same-author all-option/text-evidence review only, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.stars-and-present-138#stars",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.stars-and-present-138.stars.q1",
+            "expansion.20261024.senior1.stars-and-present-138.stars.q2",
+            "expansion.20261024.senior1.stars-and-present-138.stars.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.stars-and-present-138",
+          "sourceContentHash": "df2c5681cb3fbdf58aff3ce3430ba686286b67461744d28cb9da46df893651dc"
+        },
+        {
+          "id": "expansion.20261024.senior1.stars-and-present-138#present",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.stars-and-present-138.present.q1",
+            "expansion.20261024.senior1.stars-and-present-138.present.q2",
+            "expansion.20261024.senior1.stars-and-present-138.present.q3",
+            "expansion.20261024.senior1.stars-and-present-138.present.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.stars-and-present-138",
+          "sourceContentHash": "b1ebf80c676301f55779bac92ac369d2ce02b60b38a18e1e5a5e8211456f1c0c"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.archive-sketch-and-sound-138",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · Sketching objects and describing a sound",
+        "summary": "Sketching objects and describing a sound，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g11.2025.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete original senior paired readings: each three-question information text and four-question narrative/expository/argument text. Fictional notices and bounded workshop examples. Same-author all-option/text-evidence review only, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.archive-sketch-and-sound-138",
+          "family": "reading_choice",
+          "label": "Sketching objects and describing a sound",
+          "candidateSHA256": "9ff8130262db1e87b92b21b7062df484a208f3e121c4b14545ae721db1ca8a6d",
+          "authorCheckSHA256": "627f0d2d5cd1046900ab7cacadd6e9bd350f5b64d6cda4e293ab8bec19840779",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.archive-sketch-and-sound-138#sketch",
+            "expansion.20261024.senior2.archive-sketch-and-sound-138#sound"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b138；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Sketching in the local collection\n\nThe Eastgate Collection invites students aged sixteen and over to a half-day object-sketching workshop on Sunday,14 March,09:30–13:00. Participants observe selected objects from the public display and prepare a drawing with a short descriptive note. Artistic experience is not required.\n\nApply by the previous Monday with your preferred contact details. Places are limited to twelve. A place is confirmed by the organiser's reply, not by sending the application alone. The fee is ten pounds, including paper, pencils and a simple support board. Bring no paints, inks or personal sharp cutting tools into the gallery.\n\nMeet at09:15 in the entrance hall. Bags larger than a small handbag must be left in the supervised storage area. Water can be kept there too; drinks are not taken into the object rooms. There is a break in the foyer halfway through the morning.\n\nAll observation takes place from the visitor side of barriers. The workshop does not provide handling access to original objects. Staff may supply a replica for one demonstration, clearly identified as such. A sketch should distinguish what you can see from details you have inferred.\n\nThe main rooms have step-free access, but contact the organiser in advance about other access needs. Participants keep their drawings. The collection may ask permission to reproduce selected work, but participation does not automatically transfer ownership or grant unlimited reuse rights.\n\nA sound without its picture\n\nAt a language workshop, the tutor played a short recording and asked us to describe it without naming what we thought caused it. I wrote, \"A train arriving at a station.\" She asked me to try again. That was an interpretation, she said, not yet a description of the audible pattern.\n\nI listened for a second time. There was a low continuous sound, several sharper clicks and a rise in volume followed by a gradual fading. Writing those features took more effort than supplying a familiar object. I had to separate what I heard from the story I had attached to it.\n\nOther participants described similar features but suggested different sources. One imagined machinery in a workshop; another heard something moving across a bridge. The tutor did not use our disagreement to claim that all interpretations were equally supported. She asked which features each explanation accounted for and what additional information would help distinguish them.\n\nThe recording turned out to have been made inside a moving train. My first answer was related to the real source, but its arrival at a station was something I had invented. I had combined a reasonable identification with an unsupported event.\n\nWe then heard the clip with a photograph of the recording position. The picture helped, but it also directed attention. A participant noticed a rhythm he had overlooked when imagining a factory. The additional source did not simply add information; it changed how existing information was organised.\n\nI left with a more precise vocabulary for sound and a better question about my own descriptions. What had I actually observed, and what had I supplied? The aim was not to remove interpretation from listening. It was to make the movement between observation and explanation clear enough to discuss."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.archive-sketch-and-sound-138.sketch.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is supplied for the workshop?",
+            "material": "Sketching in the local collection\n\nThe Eastgate Collection invites students aged sixteen and over to a half-day object-sketching workshop on Sunday,14 March,09:30–13:00. Participants observe selected objects from the public display and prepare a drawing with a short descriptive note. Artistic experience is not required.\n\nApply by the previous Monday with your preferred contact details. Places are limited to twelve. A place is confirmed by the organiser's reply, not by sending the application alone. The fee is ten pounds, including paper, pencils and a simple support board. Bring no paints, inks or personal sharp cutting tools into the gallery.\n\nMeet at09:15 in the entrance hall. Bags larger than a small handbag must be left in the supervised storage area. Water can be kept there too; drinks are not taken into the object rooms. There is a break in the foyer halfway through the morning.\n\nAll observation takes place from the visitor side of barriers. The workshop does not provide handling access to original objects. Staff may supply a replica for one demonstration, clearly identified as such. A sketch should distinguish what you can see from details you have inferred.\n\nThe main rooms have step-free access, but contact the organiser in advance about other access needs. Participants keep their drawings. The collection may ask permission to reproduce selected work, but participation does not automatically transfer ownership or grant unlimited reuse rights.",
+            "explanation": "Listed materials supplied. Paints barred/originals protected/bags storage not gift.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Unlimited handling of original objects"
+              },
+              {
+                "id": "o1",
+                "text": "A large personal bag for every participant"
+              },
+              {
+                "id": "o2",
+                "text": "Paper, pencils and a support board"
+              },
+              {
+                "id": "o3",
+                "text": "Paint and ink for use beside originals"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.archive-sketch-and-sound-138.sketch.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should a sketch distinguish?",
+            "material": "Sketching in the local collection\n\nThe Eastgate Collection invites students aged sixteen and over to a half-day object-sketching workshop on Sunday,14 March,09:30–13:00. Participants observe selected objects from the public display and prepare a drawing with a short descriptive note. Artistic experience is not required.\n\nApply by the previous Monday with your preferred contact details. Places are limited to twelve. A place is confirmed by the organiser's reply, not by sending the application alone. The fee is ten pounds, including paper, pencils and a simple support board. Bring no paints, inks or personal sharp cutting tools into the gallery.\n\nMeet at09:15 in the entrance hall. Bags larger than a small handbag must be left in the supervised storage area. Water can be kept there too; drinks are not taken into the object rooms. There is a break in the foyer halfway through the morning.\n\nAll observation takes place from the visitor side of barriers. The workshop does not provide handling access to original objects. Staff may supply a replica for one demonstration, clearly identified as such. A sketch should distinguish what you can see from details you have inferred.\n\nThe main rooms have step-free access, but contact the organiser in advance about other access needs. Participants keep their drawings. The collection may ask permission to reproduce selected work, but participation does not automatically transfer ownership or grant unlimited reuse rights.",
+            "explanation": "Explicit observation-versus-inference rule. Other options distort or overstate.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Public access from permission to touch everything"
+              },
+              {
+                "id": "o1",
+                "text": "Original objects from every possible replica without labels"
+              },
+              {
+                "id": "o2",
+                "text": "The artist’s name from all evidence"
+              },
+              {
+                "id": "o3",
+                "text": "Visible features from inferred ones"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.archive-sketch-and-sound-138.sketch.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does participation mean for reproduction rights?",
+            "material": "Sketching in the local collection\n\nThe Eastgate Collection invites students aged sixteen and over to a half-day object-sketching workshop on Sunday,14 March,09:30–13:00. Participants observe selected objects from the public display and prepare a drawing with a short descriptive note. Artistic experience is not required.\n\nApply by the previous Monday with your preferred contact details. Places are limited to twelve. A place is confirmed by the organiser's reply, not by sending the application alone. The fee is ten pounds, including paper, pencils and a simple support board. Bring no paints, inks or personal sharp cutting tools into the gallery.\n\nMeet at09:15 in the entrance hall. Bags larger than a small handbag must be left in the supervised storage area. Water can be kept there too; drinks are not taken into the object rooms. There is a break in the foyer halfway through the morning.\n\nAll observation takes place from the visitor side of barriers. The workshop does not provide handling access to original objects. Staff may supply a replica for one demonstration, clearly identified as such. A sketch should distinguish what you can see from details you have inferred.\n\nThe main rooms have step-free access, but contact the organiser in advance about other access needs. Participants keep their drawings. The collection may ask permission to reproduce selected work, but participation does not automatically transfer ownership or grant unlimited reuse rights.",
+            "explanation": "Participants keep work; reproduction requested by permission. Other transfers/requirements denied.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "All drawings must be published"
+              },
+              {
+                "id": "o1",
+                "text": "Ownership automatically transfers to the collection"
+              },
+              {
+                "id": "o2",
+                "text": "Permission must still be sought for selected work"
+              },
+              {
+                "id": "o3",
+                "text": "Unlimited reuse is included in the fee"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.archive-sketch-and-sound-138.sound.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the narrator asked to rewrite the first answer?",
+            "material": "A sound without its picture\n\nAt a language workshop, the tutor played a short recording and asked us to describe it without naming what we thought caused it. I wrote, \"A train arriving at a station.\" She asked me to try again. That was an interpretation, she said, not yet a description of the audible pattern.\n\nI listened for a second time. There was a low continuous sound, several sharper clicks and a rise in volume followed by a gradual fading. Writing those features took more effort than supplying a familiar object. I had to separate what I heard from the story I had attached to it.\n\nOther participants described similar features but suggested different sources. One imagined machinery in a workshop; another heard something moving across a bridge. The tutor did not use our disagreement to claim that all interpretations were equally supported. She asked which features each explanation accounted for and what additional information would help distinguish them.\n\nThe recording turned out to have been made inside a moving train. My first answer was related to the real source, but its arrival at a station was something I had invented. I had combined a reasonable identification with an unsupported event.\n\nWe then heard the clip with a photograph of the recording position. The picture helped, but it also directed attention. A participant noticed a rhythm he had overlooked when imagining a factory. The additional source did not simply add information; it changed how existing information was organised.\n\nI left with a more precise vocabulary for sound and a better question about my own descriptions. What had I actually observed, and what had I supplied? The aim was not to remove interpretation from listening. It was to make the movement between observation and explanation clear enough to discuss.",
+            "explanation": "Train arriving supplies source/event before feature description. Other reasons contradict first response.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It refuses any possible source"
+              },
+              {
+                "id": "o1",
+                "text": "It includes the exact recording position"
+              },
+              {
+                "id": "o2",
+                "text": "It names an interpreted event rather than audible features"
+              },
+              {
+                "id": "o3",
+                "text": "It is too detailed about clicks"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.archive-sketch-and-sound-138.sound.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the tutor do with differing interpretations?",
+            "material": "A sound without its picture\n\nAt a language workshop, the tutor played a short recording and asked us to describe it without naming what we thought caused it. I wrote, \"A train arriving at a station.\" She asked me to try again. That was an interpretation, she said, not yet a description of the audible pattern.\n\nI listened for a second time. There was a low continuous sound, several sharper clicks and a rise in volume followed by a gradual fading. Writing those features took more effort than supplying a familiar object. I had to separate what I heard from the story I had attached to it.\n\nOther participants described similar features but suggested different sources. One imagined machinery in a workshop; another heard something moving across a bridge. The tutor did not use our disagreement to claim that all interpretations were equally supported. She asked which features each explanation accounted for and what additional information would help distinguish them.\n\nThe recording turned out to have been made inside a moving train. My first answer was related to the real source, but its arrival at a station was something I had invented. I had combined a reasonable identification with an unsupported event.\n\nWe then heard the clip with a photograph of the recording position. The picture helped, but it also directed attention. A participant noticed a rhythm he had overlooked when imagining a factory. The additional source did not simply add information; it changed how existing information was organised.\n\nI left with a more precise vocabulary for sound and a better question about my own descriptions. What had I actually observed, and what had I supplied? The aim was not to remove interpretation from listening. It was to make the movement between observation and explanation clear enough to discuss.",
+            "explanation": "Evidence comparison explicit. Equality/no-listening/loudest rules not used.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Asks what each explains and what evidence could distinguish them"
+              },
+              {
+                "id": "o1",
+                "text": "Declares every interpretation equally supported"
+              },
+              {
+                "id": "o2",
+                "text": "Selects the loudest participant’s answer"
+              },
+              {
+                "id": "o3",
+                "text": "Forbids further listening"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.archive-sketch-and-sound-138.sound.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which part of the first answer was unsupported?",
+            "material": "A sound without its picture\n\nAt a language workshop, the tutor played a short recording and asked us to describe it without naming what we thought caused it. I wrote, \"A train arriving at a station.\" She asked me to try again. That was an interpretation, she said, not yet a description of the audible pattern.\n\nI listened for a second time. There was a low continuous sound, several sharper clicks and a rise in volume followed by a gradual fading. Writing those features took more effort than supplying a familiar object. I had to separate what I heard from the story I had attached to it.\n\nOther participants described similar features but suggested different sources. One imagined machinery in a workshop; another heard something moving across a bridge. The tutor did not use our disagreement to claim that all interpretations were equally supported. She asked which features each explanation accounted for and what additional information would help distinguish them.\n\nThe recording turned out to have been made inside a moving train. My first answer was related to the real source, but its arrival at a station was something I had invented. I had combined a reasonable identification with an unsupported event.\n\nWe then heard the clip with a photograph of the recording position. The picture helped, but it also directed attention. A participant noticed a rhythm he had overlooked when imagining a factory. The additional source did not simply add information; it changed how existing information was organised.\n\nI left with a more precise vocabulary for sound and a better question about my own descriptions. What had I actually observed, and what had I supplied? The aim was not to remove interpretation from listening. It was to make the movement between observation and explanation clear enough to discuss.",
+            "explanation": "Inside moving train true; station arrival invented. Features audible, train related.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The existence of audible clicks"
+              },
+              {
+                "id": "o1",
+                "text": "Arrival at a station"
+              },
+              {
+                "id": "o2",
+                "text": "Any connection with a train"
+              },
+              {
+                "id": "o3",
+                "text": "A change in volume"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.archive-sketch-and-sound-138.sound.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What role does the photograph play?",
+            "material": "A sound without its picture\n\nAt a language workshop, the tutor played a short recording and asked us to describe it without naming what we thought caused it. I wrote, \"A train arriving at a station.\" She asked me to try again. That was an interpretation, she said, not yet a description of the audible pattern.\n\nI listened for a second time. There was a low continuous sound, several sharper clicks and a rise in volume followed by a gradual fading. Writing those features took more effort than supplying a familiar object. I had to separate what I heard from the story I had attached to it.\n\nOther participants described similar features but suggested different sources. One imagined machinery in a workshop; another heard something moving across a bridge. The tutor did not use our disagreement to claim that all interpretations were equally supported. She asked which features each explanation accounted for and what additional information would help distinguish them.\n\nThe recording turned out to have been made inside a moving train. My first answer was related to the real source, but its arrival at a station was something I had invented. I had combined a reasonable identification with an unsupported event.\n\nWe then heard the clip with a photograph of the recording position. The picture helped, but it also directed attention. A participant noticed a rhythm he had overlooked when imagining a factory. The additional source did not simply add information; it changed how existing information was organised.\n\nI left with a more precise vocabulary for sound and a better question about my own descriptions. What had I actually observed, and what had I supplied? The aim was not to remove interpretation from listening. It was to make the movement between observation and explanation clear enough to discuss.",
+            "explanation": "Picture reorganises attention and reveals rhythm. Other absolute claims unsupported.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It proves listening was unnecessary"
+              },
+              {
+                "id": "o1",
+                "text": "It supplies a complete record of every journey"
+              },
+              {
+                "id": "o2",
+                "text": "It adds context and redirects attention to the sound"
+              },
+              {
+                "id": "o3",
+                "text": "It makes every earlier feature disappear"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "b54e0893d4031a58bbd1c7d8c002574179137e29f03b1855e9e02fbab2cb9372",
+      "reviewNotes": "Three complete original senior paired readings: each three-question information text and four-question narrative/expository/argument text. Fictional notices and bounded workshop examples. Same-author all-option/text-evidence review only, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.archive-sketch-and-sound-138#sketch",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.archive-sketch-and-sound-138.sketch.q1",
+            "expansion.20261024.senior2.archive-sketch-and-sound-138.sketch.q2",
+            "expansion.20261024.senior2.archive-sketch-and-sound-138.sketch.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.archive-sketch-and-sound-138",
+          "sourceContentHash": "405f1a35c1cf29f6a287819f62027768964585d9c2f23d7e49dd5285ecfe18f8"
+        },
+        {
+          "id": "expansion.20261024.senior2.archive-sketch-and-sound-138#sound",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.archive-sketch-and-sound-138.sound.q1",
+            "expansion.20261024.senior2.archive-sketch-and-sound-138.sound.q2",
+            "expansion.20261024.senior2.archive-sketch-and-sound-138.sound.q3",
+            "expansion.20261024.senior2.archive-sketch-and-sound-138.sound.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.archive-sketch-and-sound-138",
+          "sourceContentHash": "07a55860d58c317bf477f45d12deb1bc9a3250cb0437fa51d2f73b3def60d0fd"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior3.essay-call-and-footnote-138",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高考题型原创 · 10·24新题 · An essay call and a note below the page",
+        "summary": "An essay call and a note below the page，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade12-tianjinlower2025-21cnjy22402528.reading.complete_section",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete original senior paired readings: each three-question information text and four-question narrative/expository/argument text. Fictional notices and bounded workshop examples. Same-author all-option/text-evidence review only, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior3.essay-call-and-footnote-138",
+          "family": "reading_choice",
+          "label": "An essay call and a note below the page",
+          "candidateSHA256": "b66d52f9cc66f8a4d842b78ca88faf7b3c4ee20f55091d355f1a855a5f0ec76f",
+          "authorCheckSHA256": "39e8866f4da3f247302a823fe18cd0ffc098970ca309b2158b7de969bc32f263",
+          "sourceGroupIds": [
+            "expansion.20261024.senior3.essay-call-and-footnote-138#essays",
+            "expansion.20261024.senior3.essay-call-and-footnote-138#footnote"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b138；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Essays on a place in translation\n\nThe Crossing Pages journal invites original essays about encountering a place through translated writing. Submissions may discuss one work or compare several, but should identify the particular translations used. The journal is interested in a reasoned reading experience, not a general ranking of national literatures.\n\nEssays should be1,500–2,500 words, excluding references, and written in English. Include a brief biography of no more than80 words in a separate file. The main manuscript should omit the author's name for the first reading stage. This arrangement supports the review process; it does not promise that identity can never be inferred from content.\n\nSubmissions close on30 June. Acknowledgement of receipt is not acceptance. Contributors will normally receive an initial decision within eight weeks, although a request for revision may extend the process. The journal may decline an essay even after revision if it no longer fits the issue.\n\nThere is no submission fee. Authors retain copyright and grant publication rights under the agreement offered on acceptance. Quoted material must be referenced, and contributors are responsible for obtaining any permissions required for the proposed use. Finding a passage online does not settle that requirement.\n\nPreviously published essays are not considered. A short excerpt shared privately in a workshop is not treated as prior publication, but disclose any public posting when submitting. Questions about eligibility should be raised before the deadline. The editors will discuss uncertain cases rather than treat silence from an applicant as evidence that no issue exists.\n\nThe small note that changed the argument\n\nA footnote can appear to offer merely supplementary detail. A reader may therefore feel free to pass over it, especially when the main text seems complete. Yet the location of information does not by itself determine its importance to an argument.\n\nConsider a claim that a writer's position remained unchanged for decades. A note below the page may explain that the quotation comes from a revised edition rather than the first publication. That detail can affect the claim's historical basis. It is not decorative simply because smaller type and a lower position make it look secondary.\n\nThe reverse also matters. Not every footnote carries a hidden objection or essential correction. Some identify a source, define a term or acknowledge help. Reading responsibly does not mean treating every small note as a revelation that overturns the page. It means asking what work the note performs in relation to the claim above it.\n\nWriters have responsibilities too. If a qualification changes the central meaning of a statement, placing it where readers are likely to overlook it may preserve apparent simplicity at the expense of fair communication. The fact that a caveat exists somewhere does not automatically make its presentation adequate.\n\nA useful distinction is between keeping the main line readable and making a condition effectively invisible. These aims can be confused when a writer defends every omission from the paragraph by pointing to a note. The reader needs a reasonable opportunity to understand the scope of the claim, not merely a theoretical possibility of discovering its limit.\n\nFootnotes can therefore support precision without becoming a separate territory where inconvenient information is stored. Their value depends on the relationship they create with the main text. A small note can strengthen an argument by exposing its basis; it can also reveal that the argument above requires a different formulation."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior3.essay-call-and-footnote-138.essays.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What must an essay identify?",
+            "material": "Essays on a place in translation\n\nThe Crossing Pages journal invites original essays about encountering a place through translated writing. Submissions may discuss one work or compare several, but should identify the particular translations used. The journal is interested in a reasoned reading experience, not a general ranking of national literatures.\n\nEssays should be1,500–2,500 words, excluding references, and written in English. Include a brief biography of no more than80 words in a separate file. The main manuscript should omit the author's name for the first reading stage. This arrangement supports the review process; it does not promise that identity can never be inferred from content.\n\nSubmissions close on30 June. Acknowledgement of receipt is not acceptance. Contributors will normally receive an initial decision within eight weeks, although a request for revision may extend the process. The journal may decline an essay even after revision if it no longer fits the issue.\n\nThere is no submission fee. Authors retain copyright and grant publication rights under the agreement offered on acceptance. Quoted material must be referenced, and contributors are responsible for obtaining any permissions required for the proposed use. Finding a passage online does not settle that requirement.\n\nPreviously published essays are not considered. A short excerpt shared privately in a workshop is not treated as prior publication, but disclose any public posting when submitting. Questions about eligibility should be raised before the deadline. The editors will discuss uncertain cases rather than treat silence from an applicant as evidence that no issue exists.",
+            "explanation": "Call requires actual translations. Other conditions not requested or conflict with purpose.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only the original title without translator information"
+              },
+              {
+                "id": "o1",
+                "text": "A universal ranking of national literatures"
+              },
+              {
+                "id": "o2",
+                "text": "The particular translations it uses"
+              },
+              {
+                "id": "o3",
+                "text": "Every place the author has visited"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.essay-call-and-footnote-138.essays.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does receipt acknowledgement mean?",
+            "material": "Essays on a place in translation\n\nThe Crossing Pages journal invites original essays about encountering a place through translated writing. Submissions may discuss one work or compare several, but should identify the particular translations used. The journal is interested in a reasoned reading experience, not a general ranking of national literatures.\n\nEssays should be1,500–2,500 words, excluding references, and written in English. Include a brief biography of no more than80 words in a separate file. The main manuscript should omit the author's name for the first reading stage. This arrangement supports the review process; it does not promise that identity can never be inferred from content.\n\nSubmissions close on30 June. Acknowledgement of receipt is not acceptance. Contributors will normally receive an initial decision within eight weeks, although a request for revision may extend the process. The journal may decline an essay even after revision if it no longer fits the issue.\n\nThere is no submission fee. Authors retain copyright and grant publication rights under the agreement offered on acceptance. Quoted material must be referenced, and contributors are responsible for obtaining any permissions required for the proposed use. Finding a passage online does not settle that requirement.\n\nPreviously published essays are not considered. A short excerpt shared privately in a workshop is not treated as prior publication, but disclose any public posting when submitting. Questions about eligibility should be raised before the deadline. The editors will discuss uncertain cases rather than treat silence from an applicant as evidence that no issue exists.",
+            "explanation": "Receipt explicitly not acceptance. Timing/revision/copyright other claims overstate.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The author has transferred all copyright"
+              },
+              {
+                "id": "o1",
+                "text": "The submission has arrived, without acceptance guaranteed"
+              },
+              {
+                "id": "o2",
+                "text": "Revision guarantees publication"
+              },
+              {
+                "id": "o3",
+                "text": "The essay must be published within eight weeks"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.essay-call-and-footnote-138.essays.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should an author do about uncertain public posting?",
+            "material": "Essays on a place in translation\n\nThe Crossing Pages journal invites original essays about encountering a place through translated writing. Submissions may discuss one work or compare several, but should identify the particular translations used. The journal is interested in a reasoned reading experience, not a general ranking of national literatures.\n\nEssays should be1,500–2,500 words, excluding references, and written in English. Include a brief biography of no more than80 words in a separate file. The main manuscript should omit the author's name for the first reading stage. This arrangement supports the review process; it does not promise that identity can never be inferred from content.\n\nSubmissions close on30 June. Acknowledgement of receipt is not acceptance. Contributors will normally receive an initial decision within eight weeks, although a request for revision may extend the process. The journal may decline an essay even after revision if it no longer fits the issue.\n\nThere is no submission fee. Authors retain copyright and grant publication rights under the agreement offered on acceptance. Quoted material must be referenced, and contributors are responsible for obtaining any permissions required for the proposed use. Finding a passage online does not settle that requirement.\n\nPreviously published essays are not considered. A short excerpt shared privately in a workshop is not treated as prior publication, but disclose any public posting when submitting. Questions about eligibility should be raised before the deadline. The editors will discuss uncertain cases rather than treat silence from an applicant as evidence that no issue exists.",
+            "explanation": "Public posting disclosed; uncertain eligibility discussed. Other approaches contradict stated rules.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Omit the required references"
+              },
+              {
+                "id": "o1",
+                "text": "Assume silence proves no issue"
+              },
+              {
+                "id": "o2",
+                "text": "Treat every private workshop as automatic publication"
+              },
+              {
+                "id": "o3",
+                "text": "Disclose it and ask about eligibility"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.essay-call-and-footnote-138.footnote.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is the opening’s main point?",
+            "material": "The small note that changed the argument\n\nA footnote can appear to offer merely supplementary detail. A reader may therefore feel free to pass over it, especially when the main text seems complete. Yet the location of information does not by itself determine its importance to an argument.\n\nConsider a claim that a writer's position remained unchanged for decades. A note below the page may explain that the quotation comes from a revised edition rather than the first publication. That detail can affect the claim's historical basis. It is not decorative simply because smaller type and a lower position make it look secondary.\n\nThe reverse also matters. Not every footnote carries a hidden objection or essential correction. Some identify a source, define a term or acknowledge help. Reading responsibly does not mean treating every small note as a revelation that overturns the page. It means asking what work the note performs in relation to the claim above it.\n\nWriters have responsibilities too. If a qualification changes the central meaning of a statement, placing it where readers are likely to overlook it may preserve apparent simplicity at the expense of fair communication. The fact that a caveat exists somewhere does not automatically make its presentation adequate.\n\nA useful distinction is between keeping the main line readable and making a condition effectively invisible. These aims can be confused when a writer defends every omission from the paragraph by pointing to a note. The reader needs a reasonable opportunity to understand the scope of the claim, not merely a theoretical possibility of discovering its limit.\n\nFootnotes can therefore support precision without becoming a separate territory where inconvenient information is stored. Their value depends on the relationship they create with the main text. A small note can strengthen an argument by exposing its basis; it can also reveal that the argument above requires a different formulation.",
+            "explanation": "Position differs from evidentiary significance. Other universal claims rejected.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Small type always proves dishonesty"
+              },
+              {
+                "id": "o1",
+                "text": "Main text never appears complete"
+              },
+              {
+                "id": "o2",
+                "text": "Information’s position does not settle its argumentative importance"
+              },
+              {
+                "id": "o3",
+                "text": "Every footnote is unimportant"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior3.essay-call-and-footnote-138.footnote.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the revised-edition example used?",
+            "material": "The small note that changed the argument\n\nA footnote can appear to offer merely supplementary detail. A reader may therefore feel free to pass over it, especially when the main text seems complete. Yet the location of information does not by itself determine its importance to an argument.\n\nConsider a claim that a writer's position remained unchanged for decades. A note below the page may explain that the quotation comes from a revised edition rather than the first publication. That detail can affect the claim's historical basis. It is not decorative simply because smaller type and a lower position make it look secondary.\n\nThe reverse also matters. Not every footnote carries a hidden objection or essential correction. Some identify a source, define a term or acknowledge help. Reading responsibly does not mean treating every small note as a revelation that overturns the page. It means asking what work the note performs in relation to the claim above it.\n\nWriters have responsibilities too. If a qualification changes the central meaning of a statement, placing it where readers are likely to overlook it may preserve apparent simplicity at the expense of fair communication. The fact that a caveat exists somewhere does not automatically make its presentation adequate.\n\nA useful distinction is between keeping the main line readable and making a condition effectively invisible. These aims can be confused when a writer defends every omission from the paragraph by pointing to a note. The reader needs a reasonable opportunity to understand the scope of the claim, not merely a theoretical possibility of discovering its limit.\n\nFootnotes can therefore support precision without becoming a separate territory where inconvenient information is stored. Their value depends on the relationship they create with the main text. A small note can strengthen an argument by exposing its basis; it can also reveal that the argument above requires a different formulation.",
+            "explanation": "Version detail may undermine unchanged-position claim. Other choices contradict example.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Footnotes cannot identify versions"
+              },
+              {
+                "id": "o1",
+                "text": "Every revised edition repeats the first exactly"
+              },
+              {
+                "id": "o2",
+                "text": "Revision dates are always decorative"
+              },
+              {
+                "id": "o3",
+                "text": "A note can alter the basis of a historical claim"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.essay-call-and-footnote-138.footnote.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What caution is made about readers?",
+            "material": "The small note that changed the argument\n\nA footnote can appear to offer merely supplementary detail. A reader may therefore feel free to pass over it, especially when the main text seems complete. Yet the location of information does not by itself determine its importance to an argument.\n\nConsider a claim that a writer's position remained unchanged for decades. A note below the page may explain that the quotation comes from a revised edition rather than the first publication. That detail can affect the claim's historical basis. It is not decorative simply because smaller type and a lower position make it look secondary.\n\nThe reverse also matters. Not every footnote carries a hidden objection or essential correction. Some identify a source, define a term or acknowledge help. Reading responsibly does not mean treating every small note as a revelation that overturns the page. It means asking what work the note performs in relation to the claim above it.\n\nWriters have responsibilities too. If a qualification changes the central meaning of a statement, placing it where readers are likely to overlook it may preserve apparent simplicity at the expense of fair communication. The fact that a caveat exists somewhere does not automatically make its presentation adequate.\n\nA useful distinction is between keeping the main line readable and making a condition effectively invisible. These aims can be confused when a writer defends every omission from the paragraph by pointing to a note. The reader needs a reasonable opportunity to understand the scope of the claim, not merely a theoretical possibility of discovering its limit.\n\nFootnotes can therefore support precision without becoming a separate territory where inconvenient information is stored. Their value depends on the relationship they create with the main text. A small note can strengthen an argument by exposing its basis; it can also reveal that the argument above requires a different formulation.",
+            "explanation": "Thirdparagraph distinguishes routine notes from consequential ones. Other extremes rejected.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "They can infer importance only from font size"
+              },
+              {
+                "id": "o1",
+                "text": "They should identify a note’s function without assuming every note overturns the argument"
+              },
+              {
+                "id": "o2",
+                "text": "They should ignore all citations"
+              },
+              {
+                "id": "o3",
+                "text": "They must regard every note as a secret correction"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.essay-call-and-footnote-138.footnote.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What responsibility does the writer have?",
+            "material": "The small note that changed the argument\n\nA footnote can appear to offer merely supplementary detail. A reader may therefore feel free to pass over it, especially when the main text seems complete. Yet the location of information does not by itself determine its importance to an argument.\n\nConsider a claim that a writer's position remained unchanged for decades. A note below the page may explain that the quotation comes from a revised edition rather than the first publication. That detail can affect the claim's historical basis. It is not decorative simply because smaller type and a lower position make it look secondary.\n\nThe reverse also matters. Not every footnote carries a hidden objection or essential correction. Some identify a source, define a term or acknowledge help. Reading responsibly does not mean treating every small note as a revelation that overturns the page. It means asking what work the note performs in relation to the claim above it.\n\nWriters have responsibilities too. If a qualification changes the central meaning of a statement, placing it where readers are likely to overlook it may preserve apparent simplicity at the expense of fair communication. The fact that a caveat exists somewhere does not automatically make its presentation adequate.\n\nA useful distinction is between keeping the main line readable and making a condition effectively invisible. These aims can be confused when a writer defends every omission from the paragraph by pointing to a note. The reader needs a reasonable opportunity to understand the scope of the claim, not merely a theoretical possibility of discovering its limit.\n\nFootnotes can therefore support precision without becoming a separate territory where inconvenient information is stored. Their value depends on the relationship they create with the main text. A small note can strengthen an argument by exposing its basis; it can also reveal that the argument above requires a different formulation.",
+            "explanation": "Scope conditions need fair visibility, not mere theoretical discoverability. Other extremes not advocated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Hide all limitations to preserve readability"
+              },
+              {
+                "id": "o1",
+                "text": "Move every source into the main paragraph without judgement"
+              },
+              {
+                "id": "o2",
+                "text": "Assume a caveat anywhere always suffices"
+              },
+              {
+                "id": "o3",
+                "text": "Make central qualifications reasonably available to readers"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "56ff2a6c262717da10abda0c443ebdb77638ebd13c3bf872c977c834de0cb7df",
+      "reviewNotes": "Three complete original senior paired readings: each three-question information text and four-question narrative/expository/argument text. Fictional notices and bounded workshop examples. Same-author all-option/text-evidence review only, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior3.essay-call-and-footnote-138#essays",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.essay-call-and-footnote-138.essays.q1",
+            "expansion.20261024.senior3.essay-call-and-footnote-138.essays.q2",
+            "expansion.20261024.senior3.essay-call-and-footnote-138.essays.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.essay-call-and-footnote-138",
+          "sourceContentHash": "099195d24e4a5db48011fd9de3d6572226ef2ccc0b277f714522d6dc20db419c"
+        },
+        {
+          "id": "expansion.20261024.senior3.essay-call-and-footnote-138#footnote",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.essay-call-and-footnote-138.footnote.q1",
+            "expansion.20261024.senior3.essay-call-and-footnote-138.footnote.q2",
+            "expansion.20261024.senior3.essay-call-and-footnote-138.footnote.q3",
+            "expansion.20261024.senior3.essay-call-and-footnote-138.footnote.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.essay-call-and-footnote-138",
+          "sourceContentHash": "2a00107d929e09facdb717d274f98e74f5b5f30a8eafda3ac60d183d21e46841"
+        }
+      ]
+    }
+  ]
+}
