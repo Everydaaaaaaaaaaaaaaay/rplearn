@@ -1,0 +1,3700 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b154",
+  "createdAt": "2026-10-24T04:44:30.770740+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.sentence-train-154",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · Fifteen sentences: at the railway station",
+        "summary": "Fifteen sentences: at the railway station，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade7-jinan2025-21cnjy24695341.sentenceForms",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete fifteen-sentence form set. Five unprompted positions1/4/9/12/15 and ten supplied-word positions retained; no claim of distinct concepts for every scoring item."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.sentence-train-154",
+          "family": "sentence_form",
+          "label": "Fifteen sentences: at the railway station",
+          "candidateSHA256": "4abe1a1b43f0ae9eb8a4d3118374b2b42d9c8b4b2bb836f420aaf6d72f413112",
+          "authorCheckSHA256": "5c0cf96c429352d9afc2038d75136335496b50de6da4f6acc61d44d2c7ae3a97",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.sentence-train-154#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b154；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "Choose one way home: by train ____ by bus.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Or gives the two alternatives.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "or"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "because"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The children have tickets. ____ (they) tickets are in a small envelope.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Their determines tickets.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Their"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "They",
+                "Them",
+                "Theirs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "There ____ (be) one information desk beside the entrance now.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "One desk takes is.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "is"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "are",
+                "am"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The train leaves ____ ten thirty this morning.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "A clock time takes at.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "during"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "There are two ____ (woman) at the information desk.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Two requires irregular plural women.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "women"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "woman",
+                "womans"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The suitcase belongs to Felix. It is ____ (Felix) suitcase.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "The owner name needs a possessive ending.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Felix’s",
+              "Felix's"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Felix"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "We passed three ____ (bus) outside the station.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Three requires the accepted plural buses/busses.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "buses",
+              "busses"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "bus"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "Please ____ (keep) your ticket until the journey ends.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "The imperative uses base keep.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "keep"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "kept",
+                "keeping"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "—____ platform do we need, platform one or platform two? —Platform two.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Which selects between the two named platforms.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "When",
+                "Who"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The visitor is reading a ____ (Japan) newspaper.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Japanese modifies newspaper; Japan is a country noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Japanese"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Japan"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q11",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "Please speak ____ (quiet) in the waiting room.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Quietly or informal flat quiet modifies speak.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "quietly",
+              "quiet"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "quietness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q12",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "There is ____ information board above the doorway.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Information begins with a vowel sound.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q13",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The assistant showed ____ (we) the way to the platform.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Showed takes object us.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q14",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "We hope ____ (arrive) before lunchtime.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Hope takes to-infinitive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to arrive"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "arrive",
+                "arriving"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-train-154.whole.q15",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "We stayed together ____ the station was crowded.",
+            "material": "Fifteen sentences: at the railway station\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Reason conjunctions introduce the finite clause.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "because",
+              "as",
+              "since"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "during"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "bde5f4e11a2c54bad4ad3c030aad0e4cef04a07734976ea12a6b3d17c274cf09",
+      "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.sentence-farm-154",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · Fifteen sentences: a farm visit",
+        "summary": "Fifteen sentences: a farm visit，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade7-jinan2025-21cnjy24695341.sentenceForms",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete fifteen-sentence form set. Five unprompted positions1/4/9/12/15 and ten supplied-word positions retained; no claim of distinct concepts for every scoring item."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.sentence-farm-154",
+          "family": "sentence_form",
+          "label": "Fifteen sentences: a farm visit",
+          "candidateSHA256": "8191d6a9bbd33612055e678e5908d997118078487d92afb4fba7af21d6c0fffb",
+          "authorCheckSHA256": "6a7f2b901f3d494cbb351efab57f64e74b2c3f1352abcfba4de21e94f562d514",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.sentence-farm-154#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b154；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "Choose one activity: draw the sheep ____ sketch the barn.",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Or presents the alternatives.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "or"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "because"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The farmer has a dog. ____ (he) dog is beside the gate.",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "His determines dog.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "His"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "He",
+                "Him",
+                "Himself"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "There ____ (be) exactly four ducks beside the pond now.",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Four ducks requires are.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "are"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "is",
+                "am"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The small barn is ____ the two tall trees, with one tree on each side.",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Between matches the specified two-sided position.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "between"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "above"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "Two ____ (sheep) are standing under the tree.",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Sheep has the same singular and plural form.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "sheep"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "sheeps"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The green coat belongs to Sara. It is ____ (Sara) coat.",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "The owner name needs possessive form.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Sara’s",
+              "Sara's"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Sara"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "There are six ____ (tomato) in the basket.",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Six requires tomatoes.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "tomatoes"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "tomato",
+                "tomatos"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "Do not ____ (feed) the animals unless the guide permits it.",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Do not takes base feed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "feed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "fed",
+                "feeding"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "—____ is the little dog? —Behind the gate.",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "A location answers Where.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Where"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "When",
+                "Who"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "Our guide tells us about ____ (Australia) farms.",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Australian is the modifying adjective.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Australian"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Australia"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q11",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The farmer closed the gate ____ (careful).",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Carefully modifies closed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q12",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "We saw ____ unusual chicken with very curly feathers.",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Unusual starts with a vowel sound.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q13",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The guide gave ____ (they) a map of the farm.",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Gave takes object them.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "them"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "their",
+                "theirs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q14",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "I would like ____ (visit) the vegetable garden next.",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Would like takes a to-infinitive, including a possible progressive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to visit",
+              "to be visiting"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "visit",
+                "visiting"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-farm-154.whole.q15",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "We waited by the barn ____ the guide returned.",
+            "material": "Fifteen sentences: a farm visit\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Until/till marks the endpoint; before also describes prior waiting. During cannot introduce the clause.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "until",
+              "till",
+              "before"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "during"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "cf575df6dd053f0589031745ec7a6805bcb7499e2495de116d6b544032e454ad",
+      "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.sentence-cafe-154",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · Fifteen sentences: at the café",
+        "summary": "Fifteen sentences: at the café，共15题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade7-jinan2025-21cnjy24695341.sentenceForms",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete fifteen-sentence form set. Five unprompted positions1/4/9/12/15 and ten supplied-word positions retained; no claim of distinct concepts for every scoring item."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.sentence-cafe-154",
+          "family": "sentence_form",
+          "label": "Fifteen sentences: at the café",
+          "candidateSHA256": "1be553a56635020664ef2a12f072ef2ddc0998b73586ff419f46940de91cc7b0",
+          "authorCheckSHA256": "05f2f6c6e761ab4a4cea7aea4e2cc5ad332f14462275ae1d2002427e95277e58",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.sentence-cafe-154#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b154；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "Choose one drink: tea ____ apple juice.",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Or links the offered choices.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "or"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "because"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "Mira has a menu. ____ (she) menu is open on the table.",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Her determines menu.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Her"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "She",
+                "Hers",
+                "Herself"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "There ____ (be) two clean glasses on the tray now.",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Two glasses requires are.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "are"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "is",
+                "am"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The café opens ____ Sundays as well as weekdays.",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Named days take on.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "during"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "We ordered three ____ (sandwich).",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Three requires plural sandwiches.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "sandwiches"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "sandwich",
+                "sandwichs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The notebook belongs to Ravi. It is ____ (Ravi) notebook.",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Possessive Ravi’s determines notebook.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Ravi’s",
+              "Ravi's"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Ravi"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The table has four ____ (knife) beside the plates.",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Four requires knives.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "knives"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "knife",
+                "knifes"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "Please ____ (wait) here while the table is cleaned.",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "The imperative uses base wait.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "wait"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "waited",
+                "waiting"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "—____ is this umbrella? —It belongs to the woman at that table.",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Whose asks ownership before the noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Whose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "Who",
+                "Who’s"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The café serves ____ (Mexico) food on Fridays.",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Mexican modifies food.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Mexican"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Mexico"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q11",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The assistant carried the tray ____ (steady).",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Steadily modifies carried.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "steadily"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "steadiness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q12",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "I would like ____ orange from that bowl.",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Orange starts with a vowel sound.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q13",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "The assistant brought ____ (I) a glass of water.",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Brought takes object me.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "me"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "I",
+                "my",
+                "mine"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q14",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "We decided ____ (sit) at the table near the window.",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "Decide takes a to-infinitive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to sit"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "sit",
+                "sitting"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.sentence-cafe-154.whole.q15",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+            "prompt": "We moved the chair ____ the doorway would stay clear.",
+            "material": "Fifteen sentences: at the café\n\nThe fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+            "explanation": "So introduces the intended result; during does not join finite clauses.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "so"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "during"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "e75ea7402c53687b8a630c05334cd7e27087c3288c59679f5c7510991ccbc0d7",
+      "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.language-chess-154",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Twelve choices: the chess club",
+        "summary": "Twelve choices: the chess club，共12题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.2025fengtai.language",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.language-chess-154",
+          "family": "sentence_choice",
+          "label": "Twelve choices: the chess club",
+          "candidateSHA256": "906589c51f8fbbb0e4cc0926068f95b7886e67f25914869c492ae860bdef2389",
+          "authorCheckSHA256": "d7710cfb56c6e0154f0dfeae02b94de980e422eee18f91fb231890feea9aa0da",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.language-chess-154#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b154；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Twelve choices: the chess club\n\nRead each sentence or short conversation in full. Choose one complete option per item."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.language-chess-154.whole.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Lena has a chess set. ____ set is in the cupboard.",
+            "material": "Twelve choices: the chess club\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Her determines set; the other pronoun forms do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Her"
+              },
+              {
+                "id": "o1",
+                "text": "Hers"
+              },
+              {
+                "id": "o2",
+                "text": "She"
+              },
+              {
+                "id": "o3",
+                "text": "Herself"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-chess-154.whole.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The club meets ____ Friday evenings.",
+            "material": "Twelve choices: the chess club\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "A named day with evening takes on.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "on"
+              },
+              {
+                "id": "o1",
+                "text": "to"
+              },
+              {
+                "id": "o2",
+                "text": "at"
+              },
+              {
+                "id": "o3",
+                "text": "in"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-chess-154.whole.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The library room was busy, ____ we moved to the hall.",
+            "material": "Twelve choices: the chess club\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "So introduces the resulting move.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "so"
+              },
+              {
+                "id": "o1",
+                "text": "although"
+              },
+              {
+                "id": "o2",
+                "text": "because"
+              },
+              {
+                "id": "o3",
+                "text": "or"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-chess-154.whole.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "This board is much ____ than the travel board.",
+            "material": "Twelve choices: the chess club\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Much plus than requires comparative larger.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "the largest"
+              },
+              {
+                "id": "o1",
+                "text": "larger"
+              },
+              {
+                "id": "o2",
+                "text": "largest"
+              },
+              {
+                "id": "o3",
+                "text": "large"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-chess-154.whole.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—Must I bring my own set?\n—No, you ____. The club has enough.",
+            "material": "Twelve choices: the chess club\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Needn’t removes obligation; the alternatives have different meanings.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "needn’t"
+              },
+              {
+                "id": "o1",
+                "text": "mustn’t"
+              },
+              {
+                "id": "o2",
+                "text": "won’t"
+              },
+              {
+                "id": "o3",
+                "text": "couldn’t"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-chess-154.whole.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—____ did the match end?\n—At five o’clock.",
+            "material": "Twelve choices: the chess club\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "A clock time answers When.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "How many"
+              },
+              {
+                "id": "o1",
+                "text": "Why"
+              },
+              {
+                "id": "o2",
+                "text": "When"
+              },
+              {
+                "id": "o3",
+                "text": "Where"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-chess-154.whole.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Our coach usually ____ the rules before beginners play.",
+            "material": "Twelve choices: the chess club\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "A habitual present singular subject takes explains.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "explains"
+              },
+              {
+                "id": "o1",
+                "text": "explain"
+              },
+              {
+                "id": "o2",
+                "text": "explained"
+              },
+              {
+                "id": "o3",
+                "text": "is explaining"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-chess-154.whole.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Yesterday, we ____ a new strategy with the teacher.",
+            "material": "Twelve choices: the chess club\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Yesterday requires past tried.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "try"
+              },
+              {
+                "id": "o1",
+                "text": "will try"
+              },
+              {
+                "id": "o2",
+                "text": "are trying"
+              },
+              {
+                "id": "o3",
+                "text": "tried"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-chess-154.whole.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "At four yesterday, I ____ a game when the teacher arrived.",
+            "material": "Twelve choices: the chess club\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "The ongoing past action takes was watching.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "will watch"
+              },
+              {
+                "id": "o1",
+                "text": "have watched"
+              },
+              {
+                "id": "o2",
+                "text": "was watching"
+              },
+              {
+                "id": "o3",
+                "text": "watch"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-chess-154.whole.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "If the hall is free tomorrow, we ____ the final there.",
+            "material": "Twelve choices: the chess club\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Future real condition takes will play.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "were playing"
+              },
+              {
+                "id": "o1",
+                "text": "have played"
+              },
+              {
+                "id": "o2",
+                "text": "had played"
+              },
+              {
+                "id": "o3",
+                "text": "will play"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-chess-154.whole.q11",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Of all six players, Mia thought ____.",
+            "material": "Twelve choices: the chess club\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Six-person ranking calls for a superlative adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "more carefully"
+              },
+              {
+                "id": "o1",
+                "text": "the most carefully"
+              },
+              {
+                "id": "o2",
+                "text": "carefully than"
+              },
+              {
+                "id": "o3",
+                "text": "careful"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-chess-154.whole.q12",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The coach asked us ____ the pieces after the game.",
+            "material": "Twelve choices: the chess club\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Ask someone to collect takes infinitive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "to collect"
+              },
+              {
+                "id": "o1",
+                "text": "collecting"
+              },
+              {
+                "id": "o2",
+                "text": "collected"
+              },
+              {
+                "id": "o3",
+                "text": "collect"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "62466346e4808fa26aae80fb891e3764c8d8690fd554bb356ad1f0fcfcfea451",
+      "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.language-picnic-154",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Twelve choices: after the picnic",
+        "summary": "Twelve choices: after the picnic，共12题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.2025fengtai.language",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.language-picnic-154",
+          "family": "sentence_choice",
+          "label": "Twelve choices: after the picnic",
+          "candidateSHA256": "2e7b79fc590615b62c1c334f774f6da62bddfd10ceef9afe3f30e5c6a15c261b",
+          "authorCheckSHA256": "1dcf6c886623d4194fcf5e90cd0f3d06a6336f1c4e46d1519f8deae54d173146",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.language-picnic-154#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b154；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Twelve choices: after the picnic\n\nRead each sentence or short conversation in full. Choose one complete option per item."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.language-picnic-154.whole.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Please give the bottle to Omar. It belongs to ____.",
+            "material": "Twelve choices: after the picnic\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Belong to takes object him for the owner.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "him"
+              },
+              {
+                "id": "o1",
+                "text": "himself"
+              },
+              {
+                "id": "o2",
+                "text": "his"
+              },
+              {
+                "id": "o3",
+                "text": "he"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-picnic-154.whole.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The picnic took place ____ June.",
+            "material": "Twelve choices: after the picnic\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "A month takes in.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "on"
+              },
+              {
+                "id": "o1",
+                "text": "in"
+              },
+              {
+                "id": "o2",
+                "text": "to"
+              },
+              {
+                "id": "o3",
+                "text": "at"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-picnic-154.whole.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "We moved under the shelter ____ the rain had started.",
+            "material": "Twelve choices: after the picnic\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Because introduces the reason for moving.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "because"
+              },
+              {
+                "id": "o1",
+                "text": "unless"
+              },
+              {
+                "id": "o2",
+                "text": "or"
+              },
+              {
+                "id": "o3",
+                "text": "so"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-picnic-154.whole.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The empty bag is ____ than it was before lunch.",
+            "material": "Twelve choices: after the picnic\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Than requires lighter.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "lighter"
+              },
+              {
+                "id": "o1",
+                "text": "the lightest"
+              },
+              {
+                "id": "o2",
+                "text": "lightest"
+              },
+              {
+                "id": "o3",
+                "text": "light"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-picnic-154.whole.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—____ I carry every box myself?\n—No, you needn’t. We will share them.",
+            "material": "Twelve choices: after the picnic\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Needn’t directly answers obligation Must.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "May"
+              },
+              {
+                "id": "o1",
+                "text": "Can"
+              },
+              {
+                "id": "o2",
+                "text": "Would"
+              },
+              {
+                "id": "o3",
+                "text": "Must"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-picnic-154.whole.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—____ shall we put the empty bottles?\n—In this labelled bag.",
+            "material": "Twelve choices: after the picnic\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "A place answer requires Where.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Where"
+              },
+              {
+                "id": "o1",
+                "text": "How many"
+              },
+              {
+                "id": "o2",
+                "text": "Why"
+              },
+              {
+                "id": "o3",
+                "text": "When"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-picnic-154.whole.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Our class always ____ the picnic place before leaving.",
+            "material": "Twelve choices: after the picnic\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "The habitual singular collective class takes checks here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "checked"
+              },
+              {
+                "id": "o1",
+                "text": "is checking"
+              },
+              {
+                "id": "o2",
+                "text": "checks"
+              },
+              {
+                "id": "o3",
+                "text": "check"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-picnic-154.whole.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Last Saturday, we ____ the boxes back to school.",
+            "material": "Twelve choices: after the picnic\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Last Saturday requires past carried.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "will carry"
+              },
+              {
+                "id": "o1",
+                "text": "carry"
+              },
+              {
+                "id": "o2",
+                "text": "are carrying"
+              },
+              {
+                "id": "o3",
+                "text": "carried"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-picnic-154.whole.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "At two yesterday, we ____ the bags when the bus arrived.",
+            "material": "Twelve choices: after the picnic\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Past ongoing packing is interrupted by arrival.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "have packed"
+              },
+              {
+                "id": "o1",
+                "text": "pack"
+              },
+              {
+                "id": "o2",
+                "text": "will pack"
+              },
+              {
+                "id": "o3",
+                "text": "were packing"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-picnic-154.whole.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "If the weather is dry next week, we ____ another outdoor lesson.",
+            "material": "Twelve choices: after the picnic\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Future real condition takes will have.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "were having"
+              },
+              {
+                "id": "o1",
+                "text": "had had"
+              },
+              {
+                "id": "o2",
+                "text": "will have"
+              },
+              {
+                "id": "o3",
+                "text": "have had"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-picnic-154.whole.q11",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Of the four groups, ours worked ____.",
+            "material": "Twelve choices: after the picnic\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Four-group ranking requires superlative adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "the most quickly"
+              },
+              {
+                "id": "o1",
+                "text": "quickly than"
+              },
+              {
+                "id": "o2",
+                "text": "quick"
+              },
+              {
+                "id": "o3",
+                "text": "more quickly"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-picnic-154.whole.q12",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "We hope ____ the same place next month.",
+            "material": "Twelve choices: after the picnic\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Hope takes to-infinitive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "visiting"
+              },
+              {
+                "id": "o1",
+                "text": "visit"
+              },
+              {
+                "id": "o2",
+                "text": "visited"
+              },
+              {
+                "id": "o3",
+                "text": "to visit"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "03edc03be304e288cd92b265758139d41fd3f485b4b4a380dc1f5617883066eb",
+      "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.language-paint-154",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Twelve choices: painting scenery",
+        "summary": "Twelve choices: painting scenery，共12题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.2025fengtai.language",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.language-paint-154",
+          "family": "sentence_choice",
+          "label": "Twelve choices: painting scenery",
+          "candidateSHA256": "e04ade23338aab95da313f70a01b1ac2262fa3db51f78b1ae884703352d27d5b",
+          "authorCheckSHA256": "5a8d838c5724af25fdd907e8792762cbfd130637cebb17f1db77b9d4bd777a4b",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.language-paint-154#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b154；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Twelve choices: painting scenery\n\nRead each sentence or short conversation in full. Choose one complete option per item."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.language-paint-154.whole.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "We have a large sheet. ____ sheet is on the floor mat.",
+            "material": "Twelve choices: painting scenery\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Our determines sheet.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Us"
+              },
+              {
+                "id": "o1",
+                "text": "Ours"
+              },
+              {
+                "id": "o2",
+                "text": "We"
+              },
+              {
+                "id": "o3",
+                "text": "Our"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-paint-154.whole.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The workshop begins ____ two fifteen.",
+            "material": "Twelve choices: painting scenery\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "A clock time takes at.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "at"
+              },
+              {
+                "id": "o1",
+                "text": "on"
+              },
+              {
+                "id": "o2",
+                "text": "in"
+              },
+              {
+                "id": "o3",
+                "text": "to"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-paint-154.whole.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The first brush was too wide, ____ I chose a smaller one.",
+            "material": "Twelve choices: painting scenery\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "So expresses the resulting choice.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "so"
+              },
+              {
+                "id": "o1",
+                "text": "because"
+              },
+              {
+                "id": "o2",
+                "text": "although"
+              },
+              {
+                "id": "o3",
+                "text": "or"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-paint-154.whole.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The second outline is much ____ than the first.",
+            "material": "Twelve choices: painting scenery\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Much and than require clearer.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "clear"
+              },
+              {
+                "id": "o1",
+                "text": "the clearest"
+              },
+              {
+                "id": "o2",
+                "text": "clearest"
+              },
+              {
+                "id": "o3",
+                "text": "clearer"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-paint-154.whole.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—Must we paint the whole background today?\n—No, you ____. We have another session.",
+            "material": "Twelve choices: painting scenery\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Needn’t removes obligation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "needn’t"
+              },
+              {
+                "id": "o1",
+                "text": "couldn’t"
+              },
+              {
+                "id": "o2",
+                "text": "mustn’t"
+              },
+              {
+                "id": "o3",
+                "text": "won’t"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-paint-154.whole.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—____ did you choose blue?\n—Because the scene shows the sea.",
+            "material": "Twelve choices: painting scenery\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Because supplies the reason asked by Why.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "How many"
+              },
+              {
+                "id": "o1",
+                "text": "Where"
+              },
+              {
+                "id": "o2",
+                "text": "When"
+              },
+              {
+                "id": "o3",
+                "text": "Why"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-paint-154.whole.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Our teacher usually ____ a sample before we begin.",
+            "material": "Twelve choices: painting scenery\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "A present routine with singular teacher takes shows.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "show"
+              },
+              {
+                "id": "o1",
+                "text": "shows"
+              },
+              {
+                "id": "o2",
+                "text": "is showing"
+              },
+              {
+                "id": "o3",
+                "text": "showed"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-paint-154.whole.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Yesterday, I ____ the outlines before lunch.",
+            "material": "Twelve choices: painting scenery\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Yesterday requires past finished.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "finished"
+              },
+              {
+                "id": "o1",
+                "text": "am finishing"
+              },
+              {
+                "id": "o2",
+                "text": "will finish"
+              },
+              {
+                "id": "o3",
+                "text": "finish"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-paint-154.whole.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "At three yesterday, we ____ the sea when the bell rang.",
+            "material": "Twelve choices: painting scenery\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Ongoing past painting takes were painting.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "paint"
+              },
+              {
+                "id": "o1",
+                "text": "will paint"
+              },
+              {
+                "id": "o2",
+                "text": "were painting"
+              },
+              {
+                "id": "o3",
+                "text": "have painted"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-paint-154.whole.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "If the paint is dry tomorrow, we ____ the scenery to the hall with staff help.",
+            "material": "Twelve choices: painting scenery\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "The future real result takes will move.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "will move"
+              },
+              {
+                "id": "o1",
+                "text": "were moving"
+              },
+              {
+                "id": "o2",
+                "text": "had moved"
+              },
+              {
+                "id": "o3",
+                "text": "have moved"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-paint-154.whole.q11",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Of all five groups, ours cleaned the brushes ____.",
+            "material": "Twelve choices: painting scenery\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Five groups call for superlative adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "carefully than"
+              },
+              {
+                "id": "o1",
+                "text": "careful"
+              },
+              {
+                "id": "o2",
+                "text": "more carefully"
+              },
+              {
+                "id": "o3",
+                "text": "the most carefully"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-paint-154.whole.q12",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The teacher reminded us ____ our names on the work record.",
+            "material": "Twelve choices: painting scenery\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Remind someone to write takes infinitive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "write"
+              },
+              {
+                "id": "o1",
+                "text": "writing"
+              },
+              {
+                "id": "o2",
+                "text": "to write"
+              },
+              {
+                "id": "o3",
+                "text": "wrote"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "6f4ee074d406177fa057598c88c9425bca87e37ffd55d855ccde734fdc457cfb",
+      "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.language-museum-154",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Ten choices: a museum leaflet",
+        "summary": "Ten choices: a museum leaflet，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-boxing2025-21cnjy24857076.sentenceChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.language-museum-154",
+          "family": "sentence_choice",
+          "label": "Ten choices: a museum leaflet",
+          "candidateSHA256": "31810754952c2280d98005416b6e290431aa2a81fa17a83c210cd8aa40e42286",
+          "authorCheckSHA256": "984fc4a9c9eb5624b89c20b86ec733bb0b87d34732ccfdb5cc9c8d7331f54735",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.language-museum-154#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b154；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Ten choices: a museum leaflet\n\nRead each sentence or short conversation in full. Choose one complete option per item."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.language-museum-154.whole.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The leaflet describes ____ unusual object from ____ European collection.",
+            "material": "Ten choices: a museum leaflet\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Unusual takes an; European begins with /j/ and takes a.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "an; an"
+              },
+              {
+                "id": "o1",
+                "text": "an; a"
+              },
+              {
+                "id": "o2",
+                "text": "a; a"
+              },
+              {
+                "id": "o3",
+                "text": "a; an"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-museum-154.whole.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "If the leaflet ____ today, visitors will receive it tomorrow.",
+            "material": "Ten choices: a museum leaflet\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "The leaflet receives printing, present passive in a real condition.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "is printed"
+              },
+              {
+                "id": "o1",
+                "text": "will print it"
+              },
+              {
+                "id": "o2",
+                "text": "prints it"
+              },
+              {
+                "id": "o3",
+                "text": "printed it"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-museum-154.whole.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The leaflet gives clear ____ to the nearest accessible entrance.",
+            "material": "Ten choices: a museum leaflet\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Directions give a route to an entrance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "directions"
+              },
+              {
+                "id": "o1",
+                "text": "inventions"
+              },
+              {
+                "id": "o2",
+                "text": "celebrations"
+              },
+              {
+                "id": "o3",
+                "text": "conversations"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-museum-154.whole.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Please label the map ____ so visitors can read it.",
+            "material": "Ten choices: a museum leaflet\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Clearly means legibly and understandably.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "only"
+              },
+              {
+                "id": "o1",
+                "text": "clearly"
+              },
+              {
+                "id": "o2",
+                "text": "hardly"
+              },
+              {
+                "id": "o3",
+                "text": "nearly"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-museum-154.whole.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "This room ____ contain the exhibition, but we should check the current notice.",
+            "material": "Ten choices: a museum leaflet\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "May fits tentative location needing confirmation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "can’t"
+              },
+              {
+                "id": "o1",
+                "text": "may"
+              },
+              {
+                "id": "o2",
+                "text": "must"
+              },
+              {
+                "id": "o3",
+                "text": "need"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-museum-154.whole.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The staff printed exactly ____ leaflets:299 plus one.",
+            "material": "Ten choices: a museum leaflet\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Exact300 is three hundred without plural/of.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "three hundreds of"
+              },
+              {
+                "id": "o1",
+                "text": "three hundreds"
+              },
+              {
+                "id": "o2",
+                "text": "three hundred"
+              },
+              {
+                "id": "o3",
+                "text": "three hundred of"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-museum-154.whole.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "____ the leaflet is short, it includes the main access information.",
+            "material": "Ten choices: a museum leaflet\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Although marks concession between brevity and useful coverage.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Until"
+              },
+              {
+                "id": "o1",
+                "text": "Unless"
+              },
+              {
+                "id": "o2",
+                "text": "So that"
+              },
+              {
+                "id": "o3",
+                "text": "Although"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-museum-154.whole.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Don’t ____ the old map. If you ____ it, visitors may use the closed entrance.",
+            "material": "Ten choices: a museum leaflet\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Imperative and real-condition present use display.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "displayed; display"
+              },
+              {
+                "id": "o1",
+                "text": "displaying; display"
+              },
+              {
+                "id": "o2",
+                "text": "display; display"
+              },
+              {
+                "id": "o3",
+                "text": "display; displayed"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-museum-154.whole.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The staff member ____ checked the route approved the map.",
+            "material": "Ten choices: a museum leaflet\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Human subject relative who fits.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "who"
+              },
+              {
+                "id": "o1",
+                "text": "which"
+              },
+              {
+                "id": "o2",
+                "text": "what"
+              },
+              {
+                "id": "o3",
+                "text": "whom"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-museum-154.whole.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—Could you tell me ____?\n—At the north entrance.",
+            "material": "Ten choices: a museum leaflet\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "A place answer needs embedded where with statement order.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "where do visitors collect the leaflet"
+              },
+              {
+                "id": "o1",
+                "text": "whether do visitors collect the leaflet"
+              },
+              {
+                "id": "o2",
+                "text": "what time visitors collect the leaflet"
+              },
+              {
+                "id": "o3",
+                "text": "where visitors collect the leaflet"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "94e91cbb3fd3ba81335b2625823d0f326f190b47efacaae9a4b9d9cb1e8f68af",
+      "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.language-concert-154",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Ten choices: planning a concert",
+        "summary": "Ten choices: planning a concert，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-boxing2025-21cnjy24857076.sentenceChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.language-concert-154",
+          "family": "sentence_choice",
+          "label": "Ten choices: planning a concert",
+          "candidateSHA256": "e572c06b8c4be070c2ec3b58bdd87928090bc1e9a83f6a81cf9339d8f28615a8",
+          "authorCheckSHA256": "8da8153c1923840cd87d81b7969ac3ce56ca2e23798872c8b3c5052e641f6b32",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.language-concert-154#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b154；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Ten choices: planning a concert\n\nRead each sentence or short conversation in full. Choose one complete option per item."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.language-concert-154.whole.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "We invited ____ artist from ____ university music department.",
+            "material": "Ten choices: planning a concert\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Artist starts with a vowel sound; university begins with /j/.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "a; a"
+              },
+              {
+                "id": "o1",
+                "text": "an; a"
+              },
+              {
+                "id": "o2",
+                "text": "an; an"
+              },
+              {
+                "id": "o3",
+                "text": "a; an"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-concert-154.whole.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "If the programme ____ by noon, we will send it to the printer.",
+            "material": "Ten choices: planning a concert\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Programme receives approval, present passive in the condition.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "is approved"
+              },
+              {
+                "id": "o1",
+                "text": "approved it"
+              },
+              {
+                "id": "o2",
+                "text": "will approve it"
+              },
+              {
+                "id": "o3",
+                "text": "approves it"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-concert-154.whole.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The teacher offered useful ____ for improving our rehearsal plan.",
+            "material": "Ten choices: planning a concert\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Advice gives useful planning guidance.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "advice"
+              },
+              {
+                "id": "o1",
+                "text": "inventions"
+              },
+              {
+                "id": "o2",
+                "text": "celebrations"
+              },
+              {
+                "id": "o3",
+                "text": "competitions"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-concert-154.whole.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Announce the names ____ enough for the audience to hear them.",
+            "material": "Ten choices: planning a concert\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Clearly enough expresses intelligibility.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "clearly"
+              },
+              {
+                "id": "o1",
+                "text": "hardly"
+              },
+              {
+                "id": "o2",
+                "text": "only"
+              },
+              {
+                "id": "o3",
+                "text": "nearly"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-concert-154.whole.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "That case ____ belong to the violinist, but let’s ask before moving it.",
+            "material": "Ten choices: planning a concert\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "May expresses uncertain ownership.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "can’t"
+              },
+              {
+                "id": "o1",
+                "text": "must"
+              },
+              {
+                "id": "o2",
+                "text": "may"
+              },
+              {
+                "id": "o3",
+                "text": "need"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-concert-154.whole.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "There are exactly ____ seats, not199.",
+            "material": "Ten choices: planning a concert\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Exact200 uses two hundred.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "two hundreds"
+              },
+              {
+                "id": "o1",
+                "text": "two hundred of"
+              },
+              {
+                "id": "o2",
+                "text": "two hundreds of"
+              },
+              {
+                "id": "o3",
+                "text": "two hundred"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-concert-154.whole.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "____ one player was absent, the group continued with a different piece.",
+            "material": "Ten choices: planning a concert\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Even though introduces the concession.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Unless"
+              },
+              {
+                "id": "o1",
+                "text": "Until"
+              },
+              {
+                "id": "o2",
+                "text": "Even though"
+              },
+              {
+                "id": "o3",
+                "text": "So that"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-concert-154.whole.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Don’t ____ the entrance with the cases. If you ____ it, people cannot pass easily.",
+            "material": "Ten choices: planning a concert\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Negative imperative and real condition use block.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "blocking; block"
+              },
+              {
+                "id": "o1",
+                "text": "block; blocked"
+              },
+              {
+                "id": "o2",
+                "text": "block; block"
+              },
+              {
+                "id": "o3",
+                "text": "blocked; block"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-concert-154.whole.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The musician ____ led the workshop also performed in the concert.",
+            "material": "Ten choices: planning a concert\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Human subject relative who fits.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "what"
+              },
+              {
+                "id": "o1",
+                "text": "who"
+              },
+              {
+                "id": "o2",
+                "text": "whom"
+              },
+              {
+                "id": "o3",
+                "text": "which"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-concert-154.whole.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—Do you know ____?\n—At seven thirty.",
+            "material": "Ten choices: planning a concert\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "A time answer requires embedded what-time with statement order.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "what time do the doors open"
+              },
+              {
+                "id": "o1",
+                "text": "whether do the doors open"
+              },
+              {
+                "id": "o2",
+                "text": "where the doors open"
+              },
+              {
+                "id": "o3",
+                "text": "what time the doors open"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "57e0897ac9fcdc48dd97c754451079f376c822187ab0eb1e3a79a6edd1f0a592",
+      "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.language-town-154",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Ten choices: a town walking route",
+        "summary": "Ten choices: a town walking route，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-boxing2025-21cnjy24857076.sentenceChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.language-town-154",
+          "family": "sentence_choice",
+          "label": "Ten choices: a town walking route",
+          "candidateSHA256": "0319c719ad7ac89a4b3f84a470b02747241cb2d1714f5c7ef7d350603383ebb7",
+          "authorCheckSHA256": "774da2bb0a3d96338cbc3c2945c07eb4d2e4bd57ac98dc8ba2015f841d71cba5",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.language-town-154#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b154；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Ten choices: a town walking route\n\nRead each sentence or short conversation in full. Choose one complete option per item."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.language-town-154.whole.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The route includes ____ old bridge and ____ useful viewpoint.",
+            "material": "Ten choices: a town walking route\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Old begins with vowel sound; useful begins with /j/.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "a; an"
+              },
+              {
+                "id": "o1",
+                "text": "a; a"
+              },
+              {
+                "id": "o2",
+                "text": "an; an"
+              },
+              {
+                "id": "o3",
+                "text": "an; a"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-town-154.whole.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "If the path ____ tomorrow, the guide will choose another route.",
+            "material": "Ten choices: a town walking route\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "The path receives closure, present passive in the future condition.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "closes it"
+              },
+              {
+                "id": "o1",
+                "text": "closed it"
+              },
+              {
+                "id": "o2",
+                "text": "is closed"
+              },
+              {
+                "id": "o3",
+                "text": "will close it"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-town-154.whole.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The guide gave clear ____ about the change of meeting point.",
+            "material": "Ten choices: a town walking route\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Information supplies the changed arrangement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "congratulations"
+              },
+              {
+                "id": "o1",
+                "text": "competitions"
+              },
+              {
+                "id": "o2",
+                "text": "inventions"
+              },
+              {
+                "id": "o3",
+                "text": "information"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-town-154.whole.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Explain the route ____ enough for a new visitor to follow.",
+            "material": "Ten choices: a town walking route\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Clearly enough means understandably.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "only"
+              },
+              {
+                "id": "o1",
+                "text": "clearly"
+              },
+              {
+                "id": "o2",
+                "text": "nearly"
+              },
+              {
+                "id": "o3",
+                "text": "hardly"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-town-154.whole.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The building on the corner ____ be the old library, but the sign is hard to read.",
+            "material": "Ten choices: a town walking route\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "May fits an uncertain identification.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "need"
+              },
+              {
+                "id": "o1",
+                "text": "can’t"
+              },
+              {
+                "id": "o2",
+                "text": "may"
+              },
+              {
+                "id": "o3",
+                "text": "must"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-town-154.whole.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The guide has exactly ____ printed maps, not99.",
+            "material": "Ten choices: a town walking route\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Exact100 uses one hundred.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "one hundred of"
+              },
+              {
+                "id": "o1",
+                "text": "one hundreds of"
+              },
+              {
+                "id": "o2",
+                "text": "one hundred"
+              },
+              {
+                "id": "o3",
+                "text": "one hundreds"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-town-154.whole.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "____ the first route was unavailable, the walk still went ahead on the revised one.",
+            "material": "Ten choices: a town walking route\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Although contrasts closure with the walk continuing.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Until"
+              },
+              {
+                "id": "o1",
+                "text": "Unless"
+              },
+              {
+                "id": "o2",
+                "text": "Although"
+              },
+              {
+                "id": "o3",
+                "text": "So that"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-town-154.whole.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Don’t ____ behind without telling the guide. If you ____ behind, the group may not know where you are.",
+            "material": "Ten choices: a town walking route\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Imperative and real-condition present use stay.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "staying; stay"
+              },
+              {
+                "id": "o1",
+                "text": "stay; stay"
+              },
+              {
+                "id": "o2",
+                "text": "stay; stayed"
+              },
+              {
+                "id": "o3",
+                "text": "stayed; stay"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-town-154.whole.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "A guide is someone ____ helps visitors understand a place.",
+            "material": "Ten choices: a town walking route\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Someone takes human subject relative who among the choices.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "whom"
+              },
+              {
+                "id": "o1",
+                "text": "what"
+              },
+              {
+                "id": "o2",
+                "text": "which"
+              },
+              {
+                "id": "o3",
+                "text": "who"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-town-154.whole.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—Could you tell me ____?\n—Beside the clock tower.",
+            "material": "Ten choices: a town walking route\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "A location answer requires embedded where with statement order.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "where does the walk begin"
+              },
+              {
+                "id": "o1",
+                "text": "whether does the walk begin"
+              },
+              {
+                "id": "o2",
+                "text": "where the walk begins"
+              },
+              {
+                "id": "o3",
+                "text": "what time the walk begins"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "6c0ef2f3f0a15872d7453c0b912648fa31577e7cc56a75c2812d3365b207fb66",
+      "reviewNotes": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}

@@ -1,0 +1,1664 @@
+{
+  "createdAt": "2026-10-24T04:44:30.770740+00:00",
+  "reviewBoundary": "Three grade7 fifteen-sentence form sets, three grade8 twelve-choice sets and three grade9 ten-choice sets:111 scoring items in9 complete practices. Station/farm/cafe, chess/picnic/scenery, leaflet/concert/town contexts. Same-author complete-option and accepted-variant review; counts are scoring slots, not distinct grammar concepts; no independent calibration.",
+  "units": [
+    {
+      "id": "junior1.sentence-train-154",
+      "level": "junior1",
+      "title": "Fifteen sentences: at the railway station",
+      "family": "sentence_form",
+      "minutes": 16,
+      "sourceUnitId": "original.grade7-sentence-school-display",
+      "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+      "alignmentNote": "Complete fifteen-sentence form set. Five unprompted positions1/4/9/12/15 and ten supplied-word positions retained; no claim of distinct concepts for every scoring item.",
+      "materials": [
+        {
+          "id": "whole",
+          "family": "passage_form",
+          "title": "Fifteen sentences: at the railway station",
+          "text": "The fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+          "questions": [
+            {
+              "prompt": "Choose one way home: by train ____ by bus.",
+              "acceptedAnswers": [
+                "or"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "because"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Or gives the two alternatives."
+            },
+            {
+              "prompt": "The children have tickets. ____ (they) tickets are in a small envelope.",
+              "acceptedAnswers": [
+                "Their"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "They",
+                  "Them",
+                  "Theirs"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Their determines tickets."
+            },
+            {
+              "prompt": "There ____ (be) one information desk beside the entrance now.",
+              "acceptedAnswers": [
+                "is"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "are",
+                  "am"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "One desk takes is."
+            },
+            {
+              "prompt": "The train leaves ____ ten thirty this morning.",
+              "acceptedAnswers": [
+                "at"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "during"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A clock time takes at."
+            },
+            {
+              "prompt": "There are two ____ (woman) at the information desk.",
+              "acceptedAnswers": [
+                "women"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "woman",
+                  "womans"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Two requires irregular plural women."
+            },
+            {
+              "prompt": "The suitcase belongs to Felix. It is ____ (Felix) suitcase.",
+              "acceptedAnswers": [
+                "Felix’s",
+                "Felix's"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Felix"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The owner name needs a possessive ending."
+            },
+            {
+              "prompt": "We passed three ____ (bus) outside the station.",
+              "acceptedAnswers": [
+                "buses",
+                "busses"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "bus"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Three requires the accepted plural buses/busses."
+            },
+            {
+              "prompt": "Please ____ (keep) your ticket until the journey ends.",
+              "acceptedAnswers": [
+                "keep"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "kept",
+                  "keeping"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The imperative uses base keep."
+            },
+            {
+              "prompt": "—____ platform do we need, platform one or platform two? —Platform two.",
+              "acceptedAnswers": [
+                "Which"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "When",
+                  "Who"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Which selects between the two named platforms."
+            },
+            {
+              "prompt": "The visitor is reading a ____ (Japan) newspaper.",
+              "acceptedAnswers": [
+                "Japanese"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Japan"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Japanese modifies newspaper; Japan is a country noun."
+            },
+            {
+              "prompt": "Please speak ____ (quiet) in the waiting room.",
+              "acceptedAnswers": [
+                "quietly",
+                "quiet"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "quietness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Quietly or informal flat quiet modifies speak."
+            },
+            {
+              "prompt": "There is ____ information board above the doorway.",
+              "acceptedAnswers": [
+                "an"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "a"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Information begins with a vowel sound."
+            },
+            {
+              "prompt": "The assistant showed ____ (we) the way to the platform.",
+              "acceptedAnswers": [
+                "us"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "our",
+                  "ours"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Showed takes object us."
+            },
+            {
+              "prompt": "We hope ____ (arrive) before lunchtime.",
+              "acceptedAnswers": [
+                "to arrive"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "arrive",
+                  "arriving"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Hope takes to-infinitive."
+            },
+            {
+              "prompt": "We stayed together ____ the station was crowded.",
+              "acceptedAnswers": [
+                "because",
+                "as",
+                "since"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "during"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Reason conjunctions introduce the finite clause."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior1.sentence-farm-154",
+      "level": "junior1",
+      "title": "Fifteen sentences: a farm visit",
+      "family": "sentence_form",
+      "minutes": 16,
+      "sourceUnitId": "original.grade7-sentence-school-display",
+      "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+      "alignmentNote": "Complete fifteen-sentence form set. Five unprompted positions1/4/9/12/15 and ten supplied-word positions retained; no claim of distinct concepts for every scoring item.",
+      "materials": [
+        {
+          "id": "whole",
+          "family": "passage_form",
+          "title": "Fifteen sentences: a farm visit",
+          "text": "The fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+          "questions": [
+            {
+              "prompt": "Choose one activity: draw the sheep ____ sketch the barn.",
+              "acceptedAnswers": [
+                "or"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "because"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Or presents the alternatives."
+            },
+            {
+              "prompt": "The farmer has a dog. ____ (he) dog is beside the gate.",
+              "acceptedAnswers": [
+                "His"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "He",
+                  "Him",
+                  "Himself"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "His determines dog."
+            },
+            {
+              "prompt": "There ____ (be) exactly four ducks beside the pond now.",
+              "acceptedAnswers": [
+                "are"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "is",
+                  "am"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Four ducks requires are."
+            },
+            {
+              "prompt": "The small barn is ____ the two tall trees, with one tree on each side.",
+              "acceptedAnswers": [
+                "between"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "above"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Between matches the specified two-sided position."
+            },
+            {
+              "prompt": "Two ____ (sheep) are standing under the tree.",
+              "acceptedAnswers": [
+                "sheep"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "sheeps"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Sheep has the same singular and plural form."
+            },
+            {
+              "prompt": "The green coat belongs to Sara. It is ____ (Sara) coat.",
+              "acceptedAnswers": [
+                "Sara’s",
+                "Sara's"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Sara"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The owner name needs possessive form."
+            },
+            {
+              "prompt": "There are six ____ (tomato) in the basket.",
+              "acceptedAnswers": [
+                "tomatoes"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "tomato",
+                  "tomatos"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Six requires tomatoes."
+            },
+            {
+              "prompt": "Do not ____ (feed) the animals unless the guide permits it.",
+              "acceptedAnswers": [
+                "feed"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "fed",
+                  "feeding"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Do not takes base feed."
+            },
+            {
+              "prompt": "—____ is the little dog? —Behind the gate.",
+              "acceptedAnswers": [
+                "Where"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "When",
+                  "Who"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A location answers Where."
+            },
+            {
+              "prompt": "Our guide tells us about ____ (Australia) farms.",
+              "acceptedAnswers": [
+                "Australian"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Australia"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Australian is the modifying adjective."
+            },
+            {
+              "prompt": "The farmer closed the gate ____ (careful).",
+              "acceptedAnswers": [
+                "carefully"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "carefulness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Carefully modifies closed."
+            },
+            {
+              "prompt": "We saw ____ unusual chicken with very curly feathers.",
+              "acceptedAnswers": [
+                "an"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "a"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Unusual starts with a vowel sound."
+            },
+            {
+              "prompt": "The guide gave ____ (they) a map of the farm.",
+              "acceptedAnswers": [
+                "them"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "they",
+                  "their",
+                  "theirs"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Gave takes object them."
+            },
+            {
+              "prompt": "I would like ____ (visit) the vegetable garden next.",
+              "acceptedAnswers": [
+                "to visit",
+                "to be visiting"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "visit",
+                  "visiting"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Would like takes a to-infinitive, including a possible progressive."
+            },
+            {
+              "prompt": "We waited by the barn ____ the guide returned.",
+              "acceptedAnswers": [
+                "until",
+                "till",
+                "before"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "during"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Until/till marks the endpoint; before also describes prior waiting. During cannot introduce the clause."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior1.sentence-cafe-154",
+      "level": "junior1",
+      "title": "Fifteen sentences: at the café",
+      "family": "sentence_form",
+      "minutes": 16,
+      "sourceUnitId": "original.grade7-sentence-school-display",
+      "instruction": "Complete all fifteen independent sentences. Ungiven gaps take ONE word; supplied-word gaps take the correct form, without an extra one-word limit.",
+      "alignmentNote": "Complete fifteen-sentence form set. Five unprompted positions1/4/9/12/15 and ten supplied-word positions retained; no claim of distinct concepts for every scoring item.",
+      "materials": [
+        {
+          "id": "whole",
+          "family": "passage_form",
+          "title": "Fifteen sentences: at the café",
+          "text": "The fifteen sentences are independent. Use each sentence’s full context; a supplied word appears in brackets.",
+          "questions": [
+            {
+              "prompt": "Choose one drink: tea ____ apple juice.",
+              "acceptedAnswers": [
+                "or"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "because"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Or links the offered choices."
+            },
+            {
+              "prompt": "Mira has a menu. ____ (she) menu is open on the table.",
+              "acceptedAnswers": [
+                "Her"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "She",
+                  "Hers",
+                  "Herself"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Her determines menu."
+            },
+            {
+              "prompt": "There ____ (be) two clean glasses on the tray now.",
+              "acceptedAnswers": [
+                "are"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "is",
+                  "am"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Two glasses requires are."
+            },
+            {
+              "prompt": "The café opens ____ Sundays as well as weekdays.",
+              "acceptedAnswers": [
+                "on"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "during"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Named days take on."
+            },
+            {
+              "prompt": "We ordered three ____ (sandwich).",
+              "acceptedAnswers": [
+                "sandwiches"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "sandwich",
+                  "sandwichs"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Three requires plural sandwiches."
+            },
+            {
+              "prompt": "The notebook belongs to Ravi. It is ____ (Ravi) notebook.",
+              "acceptedAnswers": [
+                "Ravi’s",
+                "Ravi's"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Ravi"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Possessive Ravi’s determines notebook."
+            },
+            {
+              "prompt": "The table has four ____ (knife) beside the plates.",
+              "acceptedAnswers": [
+                "knives"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "knife",
+                  "knifes"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Four requires knives."
+            },
+            {
+              "prompt": "Please ____ (wait) here while the table is cleaned.",
+              "acceptedAnswers": [
+                "wait"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "waited",
+                  "waiting"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The imperative uses base wait."
+            },
+            {
+              "prompt": "—____ is this umbrella? —It belongs to the woman at that table.",
+              "acceptedAnswers": [
+                "Whose"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "Who",
+                  "Who’s"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whose asks ownership before the noun."
+            },
+            {
+              "prompt": "The café serves ____ (Mexico) food on Fridays.",
+              "acceptedAnswers": [
+                "Mexican"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Mexico"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Mexican modifies food."
+            },
+            {
+              "prompt": "The assistant carried the tray ____ (steady).",
+              "acceptedAnswers": [
+                "steadily"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "steadiness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Steadily modifies carried."
+            },
+            {
+              "prompt": "I would like ____ orange from that bowl.",
+              "acceptedAnswers": [
+                "an"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "a"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Orange starts with a vowel sound."
+            },
+            {
+              "prompt": "The assistant brought ____ (I) a glass of water.",
+              "acceptedAnswers": [
+                "me"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "I",
+                  "my",
+                  "mine"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Brought takes object me."
+            },
+            {
+              "prompt": "We decided ____ (sit) at the table near the window.",
+              "acceptedAnswers": [
+                "to sit"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "sit",
+                  "sitting"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Decide takes a to-infinitive."
+            },
+            {
+              "prompt": "We moved the chair ____ the doorway would stay clear.",
+              "acceptedAnswers": [
+                "so"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "during"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "So introduces the intended result; during does not join finite clauses."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior2.language-chess-154",
+      "level": "junior2",
+      "title": "Twelve choices: the chess club",
+      "family": "sentence_choice",
+      "minutes": 16,
+      "sourceUnitId": "original.grade8-language-choice-v0.1",
+      "instruction": "Choose the best option for every complete sentence or short conversation.",
+      "alignmentNote": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Twelve choices: the chess club",
+          "text": "Read each sentence or short conversation in full. Choose one complete option per item.",
+          "questions": [
+            {
+              "prompt": "Lena has a chess set. ____ set is in the cupboard.",
+              "options": [
+                "Her",
+                "Hers",
+                "She",
+                "Herself"
+              ],
+              "answer": 0,
+              "explanation": "Her determines set; the other pronoun forms do not."
+            },
+            {
+              "prompt": "The club meets ____ Friday evenings.",
+              "options": [
+                "on",
+                "to",
+                "at",
+                "in"
+              ],
+              "answer": 0,
+              "explanation": "A named day with evening takes on."
+            },
+            {
+              "prompt": "The library room was busy, ____ we moved to the hall.",
+              "options": [
+                "so",
+                "although",
+                "because",
+                "or"
+              ],
+              "answer": 0,
+              "explanation": "So introduces the resulting move."
+            },
+            {
+              "prompt": "This board is much ____ than the travel board.",
+              "options": [
+                "the largest",
+                "larger",
+                "largest",
+                "large"
+              ],
+              "answer": 1,
+              "explanation": "Much plus than requires comparative larger."
+            },
+            {
+              "prompt": "—Must I bring my own set?\n—No, you ____. The club has enough.",
+              "options": [
+                "needn’t",
+                "mustn’t",
+                "won’t",
+                "couldn’t"
+              ],
+              "answer": 0,
+              "explanation": "Needn’t removes obligation; the alternatives have different meanings."
+            },
+            {
+              "prompt": "—____ did the match end?\n—At five o’clock.",
+              "options": [
+                "How many",
+                "Why",
+                "When",
+                "Where"
+              ],
+              "answer": 2,
+              "explanation": "A clock time answers When."
+            },
+            {
+              "prompt": "Our coach usually ____ the rules before beginners play.",
+              "options": [
+                "explains",
+                "explain",
+                "explained",
+                "is explaining"
+              ],
+              "answer": 0,
+              "explanation": "A habitual present singular subject takes explains."
+            },
+            {
+              "prompt": "Yesterday, we ____ a new strategy with the teacher.",
+              "options": [
+                "try",
+                "will try",
+                "are trying",
+                "tried"
+              ],
+              "answer": 3,
+              "explanation": "Yesterday requires past tried."
+            },
+            {
+              "prompt": "At four yesterday, I ____ a game when the teacher arrived.",
+              "options": [
+                "will watch",
+                "have watched",
+                "was watching",
+                "watch"
+              ],
+              "answer": 2,
+              "explanation": "The ongoing past action takes was watching."
+            },
+            {
+              "prompt": "If the hall is free tomorrow, we ____ the final there.",
+              "options": [
+                "were playing",
+                "have played",
+                "had played",
+                "will play"
+              ],
+              "answer": 3,
+              "explanation": "Future real condition takes will play."
+            },
+            {
+              "prompt": "Of all six players, Mia thought ____.",
+              "options": [
+                "more carefully",
+                "the most carefully",
+                "carefully than",
+                "careful"
+              ],
+              "answer": 1,
+              "explanation": "Six-person ranking calls for a superlative adverb."
+            },
+            {
+              "prompt": "The coach asked us ____ the pieces after the game.",
+              "options": [
+                "to collect",
+                "collecting",
+                "collected",
+                "collect"
+              ],
+              "answer": 0,
+              "explanation": "Ask someone to collect takes infinitive."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior2.language-picnic-154",
+      "level": "junior2",
+      "title": "Twelve choices: after the picnic",
+      "family": "sentence_choice",
+      "minutes": 16,
+      "sourceUnitId": "original.grade8-language-choice-v0.1",
+      "instruction": "Choose the best option for every complete sentence or short conversation.",
+      "alignmentNote": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Twelve choices: after the picnic",
+          "text": "Read each sentence or short conversation in full. Choose one complete option per item.",
+          "questions": [
+            {
+              "prompt": "Please give the bottle to Omar. It belongs to ____.",
+              "options": [
+                "him",
+                "himself",
+                "his",
+                "he"
+              ],
+              "answer": 0,
+              "explanation": "Belong to takes object him for the owner."
+            },
+            {
+              "prompt": "The picnic took place ____ June.",
+              "options": [
+                "on",
+                "in",
+                "to",
+                "at"
+              ],
+              "answer": 1,
+              "explanation": "A month takes in."
+            },
+            {
+              "prompt": "We moved under the shelter ____ the rain had started.",
+              "options": [
+                "because",
+                "unless",
+                "or",
+                "so"
+              ],
+              "answer": 0,
+              "explanation": "Because introduces the reason for moving."
+            },
+            {
+              "prompt": "The empty bag is ____ than it was before lunch.",
+              "options": [
+                "lighter",
+                "the lightest",
+                "lightest",
+                "light"
+              ],
+              "answer": 0,
+              "explanation": "Than requires lighter."
+            },
+            {
+              "prompt": "—____ I carry every box myself?\n—No, you needn’t. We will share them.",
+              "options": [
+                "May",
+                "Can",
+                "Would",
+                "Must"
+              ],
+              "answer": 3,
+              "explanation": "Needn’t directly answers obligation Must."
+            },
+            {
+              "prompt": "—____ shall we put the empty bottles?\n—In this labelled bag.",
+              "options": [
+                "Where",
+                "How many",
+                "Why",
+                "When"
+              ],
+              "answer": 0,
+              "explanation": "A place answer requires Where."
+            },
+            {
+              "prompt": "Our class always ____ the picnic place before leaving.",
+              "options": [
+                "checked",
+                "is checking",
+                "checks",
+                "check"
+              ],
+              "answer": 2,
+              "explanation": "The habitual singular collective class takes checks here."
+            },
+            {
+              "prompt": "Last Saturday, we ____ the boxes back to school.",
+              "options": [
+                "will carry",
+                "carry",
+                "are carrying",
+                "carried"
+              ],
+              "answer": 3,
+              "explanation": "Last Saturday requires past carried."
+            },
+            {
+              "prompt": "At two yesterday, we ____ the bags when the bus arrived.",
+              "options": [
+                "have packed",
+                "pack",
+                "will pack",
+                "were packing"
+              ],
+              "answer": 3,
+              "explanation": "Past ongoing packing is interrupted by arrival."
+            },
+            {
+              "prompt": "If the weather is dry next week, we ____ another outdoor lesson.",
+              "options": [
+                "were having",
+                "had had",
+                "will have",
+                "have had"
+              ],
+              "answer": 2,
+              "explanation": "Future real condition takes will have."
+            },
+            {
+              "prompt": "Of the four groups, ours worked ____.",
+              "options": [
+                "the most quickly",
+                "quickly than",
+                "quick",
+                "more quickly"
+              ],
+              "answer": 0,
+              "explanation": "Four-group ranking requires superlative adverb."
+            },
+            {
+              "prompt": "We hope ____ the same place next month.",
+              "options": [
+                "visiting",
+                "visit",
+                "visited",
+                "to visit"
+              ],
+              "answer": 3,
+              "explanation": "Hope takes to-infinitive."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior2.language-paint-154",
+      "level": "junior2",
+      "title": "Twelve choices: painting scenery",
+      "family": "sentence_choice",
+      "minutes": 16,
+      "sourceUnitId": "original.grade8-language-choice-v0.1",
+      "instruction": "Choose the best option for every complete sentence or short conversation.",
+      "alignmentNote": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Twelve choices: painting scenery",
+          "text": "Read each sentence or short conversation in full. Choose one complete option per item.",
+          "questions": [
+            {
+              "prompt": "We have a large sheet. ____ sheet is on the floor mat.",
+              "options": [
+                "Us",
+                "Ours",
+                "We",
+                "Our"
+              ],
+              "answer": 3,
+              "explanation": "Our determines sheet."
+            },
+            {
+              "prompt": "The workshop begins ____ two fifteen.",
+              "options": [
+                "at",
+                "on",
+                "in",
+                "to"
+              ],
+              "answer": 0,
+              "explanation": "A clock time takes at."
+            },
+            {
+              "prompt": "The first brush was too wide, ____ I chose a smaller one.",
+              "options": [
+                "so",
+                "because",
+                "although",
+                "or"
+              ],
+              "answer": 0,
+              "explanation": "So expresses the resulting choice."
+            },
+            {
+              "prompt": "The second outline is much ____ than the first.",
+              "options": [
+                "clear",
+                "the clearest",
+                "clearest",
+                "clearer"
+              ],
+              "answer": 3,
+              "explanation": "Much and than require clearer."
+            },
+            {
+              "prompt": "—Must we paint the whole background today?\n—No, you ____. We have another session.",
+              "options": [
+                "needn’t",
+                "couldn’t",
+                "mustn’t",
+                "won’t"
+              ],
+              "answer": 0,
+              "explanation": "Needn’t removes obligation."
+            },
+            {
+              "prompt": "—____ did you choose blue?\n—Because the scene shows the sea.",
+              "options": [
+                "How many",
+                "Where",
+                "When",
+                "Why"
+              ],
+              "answer": 3,
+              "explanation": "Because supplies the reason asked by Why."
+            },
+            {
+              "prompt": "Our teacher usually ____ a sample before we begin.",
+              "options": [
+                "show",
+                "shows",
+                "is showing",
+                "showed"
+              ],
+              "answer": 1,
+              "explanation": "A present routine with singular teacher takes shows."
+            },
+            {
+              "prompt": "Yesterday, I ____ the outlines before lunch.",
+              "options": [
+                "finished",
+                "am finishing",
+                "will finish",
+                "finish"
+              ],
+              "answer": 0,
+              "explanation": "Yesterday requires past finished."
+            },
+            {
+              "prompt": "At three yesterday, we ____ the sea when the bell rang.",
+              "options": [
+                "paint",
+                "will paint",
+                "were painting",
+                "have painted"
+              ],
+              "answer": 2,
+              "explanation": "Ongoing past painting takes were painting."
+            },
+            {
+              "prompt": "If the paint is dry tomorrow, we ____ the scenery to the hall with staff help.",
+              "options": [
+                "will move",
+                "were moving",
+                "had moved",
+                "have moved"
+              ],
+              "answer": 0,
+              "explanation": "The future real result takes will move."
+            },
+            {
+              "prompt": "Of all five groups, ours cleaned the brushes ____.",
+              "options": [
+                "carefully than",
+                "careful",
+                "more carefully",
+                "the most carefully"
+              ],
+              "answer": 3,
+              "explanation": "Five groups call for superlative adverb."
+            },
+            {
+              "prompt": "The teacher reminded us ____ our names on the work record.",
+              "options": [
+                "write",
+                "writing",
+                "to write",
+                "wrote"
+              ],
+              "answer": 2,
+              "explanation": "Remind someone to write takes infinitive."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior3.language-museum-154",
+      "level": "junior3",
+      "title": "Ten choices: a museum leaflet",
+      "family": "sentence_choice",
+      "minutes": 16,
+      "sourceUnitId": "original.grade9-four-option-sentences",
+      "instruction": "Choose the best option for every complete sentence or short conversation.",
+      "alignmentNote": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Ten choices: a museum leaflet",
+          "text": "Read each sentence or short conversation in full. Choose one complete option per item.",
+          "questions": [
+            {
+              "prompt": "The leaflet describes ____ unusual object from ____ European collection.",
+              "options": [
+                "an; an",
+                "an; a",
+                "a; a",
+                "a; an"
+              ],
+              "answer": 1,
+              "explanation": "Unusual takes an; European begins with /j/ and takes a."
+            },
+            {
+              "prompt": "If the leaflet ____ today, visitors will receive it tomorrow.",
+              "options": [
+                "is printed",
+                "will print it",
+                "prints it",
+                "printed it"
+              ],
+              "answer": 0,
+              "explanation": "The leaflet receives printing, present passive in a real condition."
+            },
+            {
+              "prompt": "The leaflet gives clear ____ to the nearest accessible entrance.",
+              "options": [
+                "directions",
+                "inventions",
+                "celebrations",
+                "conversations"
+              ],
+              "answer": 0,
+              "explanation": "Directions give a route to an entrance."
+            },
+            {
+              "prompt": "Please label the map ____ so visitors can read it.",
+              "options": [
+                "only",
+                "clearly",
+                "hardly",
+                "nearly"
+              ],
+              "answer": 1,
+              "explanation": "Clearly means legibly and understandably."
+            },
+            {
+              "prompt": "This room ____ contain the exhibition, but we should check the current notice.",
+              "options": [
+                "can’t",
+                "may",
+                "must",
+                "need"
+              ],
+              "answer": 1,
+              "explanation": "May fits tentative location needing confirmation."
+            },
+            {
+              "prompt": "The staff printed exactly ____ leaflets:299 plus one.",
+              "options": [
+                "three hundreds of",
+                "three hundreds",
+                "three hundred",
+                "three hundred of"
+              ],
+              "answer": 2,
+              "explanation": "Exact300 is three hundred without plural/of."
+            },
+            {
+              "prompt": "____ the leaflet is short, it includes the main access information.",
+              "options": [
+                "Until",
+                "Unless",
+                "So that",
+                "Although"
+              ],
+              "answer": 3,
+              "explanation": "Although marks concession between brevity and useful coverage."
+            },
+            {
+              "prompt": "Don’t ____ the old map. If you ____ it, visitors may use the closed entrance.",
+              "options": [
+                "displayed; display",
+                "displaying; display",
+                "display; display",
+                "display; displayed"
+              ],
+              "answer": 2,
+              "explanation": "Imperative and real-condition present use display."
+            },
+            {
+              "prompt": "The staff member ____ checked the route approved the map.",
+              "options": [
+                "who",
+                "which",
+                "what",
+                "whom"
+              ],
+              "answer": 0,
+              "explanation": "Human subject relative who fits."
+            },
+            {
+              "prompt": "—Could you tell me ____?\n—At the north entrance.",
+              "options": [
+                "where do visitors collect the leaflet",
+                "whether do visitors collect the leaflet",
+                "what time visitors collect the leaflet",
+                "where visitors collect the leaflet"
+              ],
+              "answer": 3,
+              "explanation": "A place answer needs embedded where with statement order."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior3.language-concert-154",
+      "level": "junior3",
+      "title": "Ten choices: planning a concert",
+      "family": "sentence_choice",
+      "minutes": 16,
+      "sourceUnitId": "original.grade9-four-option-sentences",
+      "instruction": "Choose the best option for every complete sentence or short conversation.",
+      "alignmentNote": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Ten choices: planning a concert",
+          "text": "Read each sentence or short conversation in full. Choose one complete option per item.",
+          "questions": [
+            {
+              "prompt": "We invited ____ artist from ____ university music department.",
+              "options": [
+                "a; a",
+                "an; a",
+                "an; an",
+                "a; an"
+              ],
+              "answer": 1,
+              "explanation": "Artist starts with a vowel sound; university begins with /j/."
+            },
+            {
+              "prompt": "If the programme ____ by noon, we will send it to the printer.",
+              "options": [
+                "is approved",
+                "approved it",
+                "will approve it",
+                "approves it"
+              ],
+              "answer": 0,
+              "explanation": "Programme receives approval, present passive in the condition."
+            },
+            {
+              "prompt": "The teacher offered useful ____ for improving our rehearsal plan.",
+              "options": [
+                "advice",
+                "inventions",
+                "celebrations",
+                "competitions"
+              ],
+              "answer": 0,
+              "explanation": "Advice gives useful planning guidance."
+            },
+            {
+              "prompt": "Announce the names ____ enough for the audience to hear them.",
+              "options": [
+                "clearly",
+                "hardly",
+                "only",
+                "nearly"
+              ],
+              "answer": 0,
+              "explanation": "Clearly enough expresses intelligibility."
+            },
+            {
+              "prompt": "That case ____ belong to the violinist, but let’s ask before moving it.",
+              "options": [
+                "can’t",
+                "must",
+                "may",
+                "need"
+              ],
+              "answer": 2,
+              "explanation": "May expresses uncertain ownership."
+            },
+            {
+              "prompt": "There are exactly ____ seats, not199.",
+              "options": [
+                "two hundreds",
+                "two hundred of",
+                "two hundreds of",
+                "two hundred"
+              ],
+              "answer": 3,
+              "explanation": "Exact200 uses two hundred."
+            },
+            {
+              "prompt": "____ one player was absent, the group continued with a different piece.",
+              "options": [
+                "Unless",
+                "Until",
+                "Even though",
+                "So that"
+              ],
+              "answer": 2,
+              "explanation": "Even though introduces the concession."
+            },
+            {
+              "prompt": "Don’t ____ the entrance with the cases. If you ____ it, people cannot pass easily.",
+              "options": [
+                "blocking; block",
+                "block; blocked",
+                "block; block",
+                "blocked; block"
+              ],
+              "answer": 2,
+              "explanation": "Negative imperative and real condition use block."
+            },
+            {
+              "prompt": "The musician ____ led the workshop also performed in the concert.",
+              "options": [
+                "what",
+                "who",
+                "whom",
+                "which"
+              ],
+              "answer": 1,
+              "explanation": "Human subject relative who fits."
+            },
+            {
+              "prompt": "—Do you know ____?\n—At seven thirty.",
+              "options": [
+                "what time do the doors open",
+                "whether do the doors open",
+                "where the doors open",
+                "what time the doors open"
+              ],
+              "answer": 3,
+              "explanation": "A time answer requires embedded what-time with statement order."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior3.language-town-154",
+      "level": "junior3",
+      "title": "Ten choices: a town walking route",
+      "family": "sentence_choice",
+      "minutes": 16,
+      "sourceUnitId": "original.grade9-four-option-sentences",
+      "instruction": "Choose the best option for every complete sentence or short conversation.",
+      "alignmentNote": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Ten choices: a town walking route",
+          "text": "Read each sentence or short conversation in full. Choose one complete option per item.",
+          "questions": [
+            {
+              "prompt": "The route includes ____ old bridge and ____ useful viewpoint.",
+              "options": [
+                "a; an",
+                "a; a",
+                "an; an",
+                "an; a"
+              ],
+              "answer": 3,
+              "explanation": "Old begins with vowel sound; useful begins with /j/."
+            },
+            {
+              "prompt": "If the path ____ tomorrow, the guide will choose another route.",
+              "options": [
+                "closes it",
+                "closed it",
+                "is closed",
+                "will close it"
+              ],
+              "answer": 2,
+              "explanation": "The path receives closure, present passive in the future condition."
+            },
+            {
+              "prompt": "The guide gave clear ____ about the change of meeting point.",
+              "options": [
+                "congratulations",
+                "competitions",
+                "inventions",
+                "information"
+              ],
+              "answer": 3,
+              "explanation": "Information supplies the changed arrangement."
+            },
+            {
+              "prompt": "Explain the route ____ enough for a new visitor to follow.",
+              "options": [
+                "only",
+                "clearly",
+                "nearly",
+                "hardly"
+              ],
+              "answer": 1,
+              "explanation": "Clearly enough means understandably."
+            },
+            {
+              "prompt": "The building on the corner ____ be the old library, but the sign is hard to read.",
+              "options": [
+                "need",
+                "can’t",
+                "may",
+                "must"
+              ],
+              "answer": 2,
+              "explanation": "May fits an uncertain identification."
+            },
+            {
+              "prompt": "The guide has exactly ____ printed maps, not99.",
+              "options": [
+                "one hundred of",
+                "one hundreds of",
+                "one hundred",
+                "one hundreds"
+              ],
+              "answer": 2,
+              "explanation": "Exact100 uses one hundred."
+            },
+            {
+              "prompt": "____ the first route was unavailable, the walk still went ahead on the revised one.",
+              "options": [
+                "Until",
+                "Unless",
+                "Although",
+                "So that"
+              ],
+              "answer": 2,
+              "explanation": "Although contrasts closure with the walk continuing."
+            },
+            {
+              "prompt": "Don’t ____ behind without telling the guide. If you ____ behind, the group may not know where you are.",
+              "options": [
+                "staying; stay",
+                "stay; stay",
+                "stay; stayed",
+                "stayed; stay"
+              ],
+              "answer": 1,
+              "explanation": "Imperative and real-condition present use stay."
+            },
+            {
+              "prompt": "A guide is someone ____ helps visitors understand a place.",
+              "options": [
+                "whom",
+                "what",
+                "which",
+                "who"
+              ],
+              "answer": 3,
+              "explanation": "Someone takes human subject relative who among the choices."
+            },
+            {
+              "prompt": "—Could you tell me ____?\n—Beside the clock tower.",
+              "options": [
+                "where does the walk begin",
+                "whether does the walk begin",
+                "where the walk begins",
+                "what time the walk begins"
+              ],
+              "answer": 2,
+              "explanation": "A location answer requires embedded where with statement order."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
