@@ -1,0 +1,1448 @@
+{
+  "createdAt": "2026-10-24T00:50:12.071168+00:00",
+  "reviewBoundary": "Six complete senior mixed practices, two per grade. Five-gap/seven-option insertion plus ten-gap form each. Qualified natural/language/evidence explanations and fictional class cases. Same-author full-placement/form review, not independent calibration.",
+  "units": [
+    {
+      "id": "senior1.microscope-and-seed-102",
+      "level": "senior1",
+      "title": "A microscope view and a seed drawing",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade10-club-routines-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. A microscope view and a seed drawing",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "A first look through a classroom microscope can be surprising. A familiar object may become a pattern that is difficult to recognise. Using the instrument well involves learning how the view has been produced, not simply enjoying a larger picture.\n\nBegin with the teacher's instructions and the prepared material. A slide is a selected view, not the whole object placed before your eyes. ____1____ That connection helps you understand what the unfamiliar shapes belong to.\n\nNotice the stated magnification. A drawing made from one setting should not be compared casually with a view at another. ____2____ A larger-looking feature may reflect the setting rather than a larger original object.\n\nDistinguish what you can see from what you expected to see. Knowing a diagram in a textbook can make you search for its neat outline. ____3____ Real material may be less tidy, and a missing clear outline does not automatically mean you have found the wrong thing.\n\nUse a labelled sketch to preserve the important relationships. You do not need to colour every part as if making a poster. ____4____ The aim is a record another person can connect with the view and its setting.\n\nFinally, include uncertainty in the notes. ____5____ A question mark beside an uncertain feature is more useful than a confident name copied from memory without support.",
+          "candidates": [
+            "A. Do not let the expected picture replace the one in front of you.",
+            "B. State what you could not identify or see clearly.",
+            "C. Mark the features you actually observed and keep the labels clear.",
+            "D. Identify which part of the original material the slide represents.",
+            "E. The largest image always proves that the original object was largest.",
+            "F. Every microscope view must look exactly like the printed diagram.",
+            "G. Record the setting before comparing apparent sizes."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 3,
+              "explanation": "D connects the selected slide to its source, picked up by That connection. G settings, A expectation, C sketch and B uncertainty serve later gaps. F/E impose false sameness or size inference."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 6,
+              "explanation": "G records magnification before apparent-size comparison, explained next. D source, C sketch, A expectation and B uncertainty are other checks. E makes the error warned against."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 0,
+              "explanation": "A contrasts observed view with expected diagram, preparing real untidiness. G/D/C/B concern settings, source, record and uncertainty. F demands the false exact match."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 2,
+              "explanation": "C gives the sketch’s informative role, leading to a connectable labelled record. G/D/A/B concern other notes. F/E do not support faithful recording."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 1,
+              "explanation": "B names the limits followed by the uncertain-feature example. G/D/C/A are earlier observation steps. F/E substitute confidence for evidence."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade10-slotgrammar-football-signatures",
+          "title": "B. A microscope view and a seed drawing",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "During a nature lesson, we drew a seed that our teacher had placed on the table. I ____1____ (expect) a simple oval, but the seed had a pale mark and a curved edge. Looking at the actual object was different from drawing the idea of a seed from memory.\n\nOur teacher asked us ____2____ (describe) the parts before giving them names. We used plain words for shape and position. A classmate drew a line ____3____ showed where the mark lay in relation to the pointed end.\n\nWe compared the three ____4____ (drawing) without choosing the most attractive one as the only useful record. One showed the outline clearly, while another preserved a detail of the surface that I had missed. The differences gave us questions to check.\n\nBefore ____5____ (change) anything, I looked again at the seed. The pale area was ____6____ (small) than I had drawn it. I adjusted the line instead of copying my classmate's page, because the object itself remained available.\n\nThe teacher provided ____7____ explanation of the mark only after we had finished observing. That order helped us distinguish a visible feature from the function we later learned about. We could connect the two without pretending we had discovered the whole explanation ourselves.\n\nAt the end, the drawings ____8____ (keep) with the lesson notes. I wrote the date and the conditions ____9____ which we had looked at the seed. The activity had trained ____10____ (we) to attend to an ordinary object closely, and to leave room for the difference between seeing a mark and understanding it.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of expect.",
+              "acceptedAnswers": [
+                "expected",
+                "had expected"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "expect",
+                  "expecting"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Simple/past perfect both fit an earlier expectation in the narrative. Base and unaided -ing do not fit."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of describe.",
+              "acceptedAnswers": [
+                "to describe"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "describe",
+                  "describing",
+                  "described"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Asked us takes to describe. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 3 with one appropriate word.",
+              "acceptedAnswers": [
+                "that",
+                "which"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "where",
+                  "what"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Line is subject antecedent of that/which showed. Who is human, where not subject and what incompatible with the antecedent."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of drawing.",
+              "acceptedAnswers": [
+                "drawings"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "drawing",
+                  "drawn"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Three requires plural drawings. Singular drawing and participle drawn do not fit that explicit count slot."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of change.",
+              "acceptedAnswers": [
+                "changing"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "change",
+                  "changed",
+                  "to change"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Before changing takes an -ing clause. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of small.",
+              "acceptedAnswers": [
+                "smaller",
+                "more small"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "smallest",
+                  "more smaller"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Than requires comparative smaller/more small. Smallest is superlative and more smaller doubled."
+            },
+            {
+              "prompt": "Fill gap 7 with one appropriate word.",
+              "acceptedAnswers": [
+                "an"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "a"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "An explanation begins with a vowel sound. Other article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of keep.",
+              "acceptedAnswers": [
+                "were kept",
+                "had been kept"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "kept",
+                  "was kept"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Plural drawings receive keeping: were/had been kept. Kept lacks auxiliary and was disagrees."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "under",
+                "in"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Conditions under/in which expresses the circumstances of observation. Of does not form that locative/circumstantial relative construction."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of we.",
+              "acceptedAnswers": [
+                "us"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "our",
+                  "ours"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Trained takes object us. Subject/possessive forms do not fit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior1.water-marks-and-paint-102",
+      "level": "senior1",
+      "title": "Where water marks go and a painted sign",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade10-club-routines-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Where water marks go and a painted sign",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "Wet footprints on a dry path can fade while you watch. The water has not necessarily run away in a visible stream, and it does not need to boil before some leaves the surface. Understanding the change begins by distinguishing different ways water can move.\n\nSome water may enter the material beneath the mark. A porous surface contains spaces that can take up liquid. ____1____ The disappearing outline can partly reflect water moving into those spaces rather than only into the air.\n\nEvaporation is another process. Water at the surface can pass into the surrounding air as vapour. ____2____ A slowly drying puddle therefore does not need to become visibly hot or bubbly.\n\nConditions affect how quickly the surface changes. Air movement can carry moist air away, and warmth can influence the rate. ____3____ The same mark may remain longer on a cool still day than in warmer moving air.\n\nThe surface matters as well. A smooth sealed tile and an absorbent stone do not offer identical routes for the water. ____4____ Comparing drying time without noting the material may hide an important difference.\n\nA fading footprint is thus a small observation with several possible contributions. ____5____ Asking where the water can go, and under which conditions, is more informative than saying simply that the mark has vanished.",
+          "candidates": [
+            "A. Every surface absorbs water at exactly the same rate.",
+            "B. Part of the change may happen below the visible surface.",
+            "C. Keep the possible processes distinct when explaining what you see.",
+            "D. Every fading mark proves that all the water has boiled away.",
+            "E. Their different structures can change what happens to the liquid.",
+            "F. This process can occur below the temperature at which water boils.",
+            "G. These conditions help explain why the rate is not fixed."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 1,
+              "explanation": "B develops porous uptake below the surface, preparing movement into spaces. F evaporation temperature, G conditions, E materials and C synthesis serve later gaps. D/A impose false universals."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 5,
+              "explanation": "F explains evaporation without boiling, directly preparing no hot bubbling requirement. G/B/E/C concern conditions, absorption, material and final distinction. D contradicts the paragraph."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 6,
+              "explanation": "G links moving air/warmth to variable rate, developed by the contrasting days. B/F/E/C concern other mechanisms or synthesis. A denies variation."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 4,
+              "explanation": "E compares material structure and prepares material as an important factor. G/B/F/C are other processes/checks. A wrongly makes absorption identical."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 2,
+              "explanation": "C gathers the several processes into a careful account, developed by where/conditions. G/B/F/E are specific earlier points. D/A erase the distinctions."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade10-slotgrammar-football-signatures",
+          "title": "B. Where water marks go and a painted sign",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "Our class painted a temporary sign for the school fair. We used a thick board and planned the letters on paper before ____1____ (start). The teacher checked the materials and showed us how to protect the tables and clear up afterwards.\n\nI wanted to finish the colour first, but my partner asked whether the words could be read from a distance. The pale letters looked attractive close up, yet they were much ____2____ (difficult) to see from the end of the room.\n\nWe changed the contrast rather than simply making every letter bigger. A short line of text ____3____ (add) below the title, but we left enough space around it. The sign needed to guide visitors, not fill every part of the board.\n\nA classmate ____4____ spelling was usually reliable checked the final wording. We still compared it with the fair's programme instead of treating one person's confidence as a guarantee. The day and starting time had to match the agreed arrangement.\n\nAfter ____5____ (finish) the painting, we left the board in the place our teacher had chosen for drying. We did not carry it outside immediately. The written ____6____ (instruct) for the materials were part of the task, not an optional extra after the design.\n\nWhen the sign was ready, we stood ____7____ visitors would enter and checked the view. That check gave ____8____ (we) one last chance to notice a word hidden by a nearby poster. We moved the display and took ____9____ photograph for the project record. The clearest design was the one that worked in its setting, rather than only the one we had examined ____10____ (close) on our desks.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of start.",
+              "acceptedAnswers": [
+                "starting"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "start",
+                  "started",
+                  "to start"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Before starting takes an -ing clause. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of difficult.",
+              "acceptedAnswers": [
+                "more difficult"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "difficulter",
+                  "most difficult"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Much more difficult compares distant with close viewing. Difficulter is nonstandard and most is superlative."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of add.",
+              "acceptedAnswers": [
+                "was added",
+                "had been added"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "added",
+                  "were added"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Singular line receives addition: was/had been added. Added lacks auxiliary and were disagrees."
+            },
+            {
+              "prompt": "Fill gap 4 with one appropriate word.",
+              "acceptedAnswers": [
+                "whose"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "which",
+                  "where"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whose supplies possession before spelling. Who/which/where do not directly modify the noun."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of finish.",
+              "acceptedAnswers": [
+                "finishing",
+                "having finished"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "finish",
+                  "finished",
+                  "to finish"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "After finishing/having finished express prior completion. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of instruct.",
+              "acceptedAnswers": [
+                "instructions"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "instruct",
+                  "instructive"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Written instructions names the material guidance. Verb/adjective do not fit; unlisted singular remains reviewable."
+            },
+            {
+              "prompt": "Fill gap 7 with one appropriate word.",
+              "acceptedAnswers": [
+                "where"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "which",
+                  "what"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Where introduces the position at which we stood to inspect the view. Which/what do not introduce this locative clause."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of we.",
+              "acceptedAnswers": [
+                "us"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "our",
+                  "ours"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Gave takes object us. Subject/possessive forms do not fit."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "a"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "an"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A photograph begins with consonant f. Other article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of close.",
+              "acceptedAnswers": [
+                "closely"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "closeness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Closely modifies examined. Closeness is noun; unlisted flat-adverb close remains reviewable."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior2.time-lapse-and-stage-102",
+      "level": "senior2",
+      "title": "A time-lapse view and a rehearsal stage",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade11-exhibition-labels-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. A time-lapse view and a rehearsal stage",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "A time-lapse film can make slow change visible within a short viewing period. A plant seems to open quickly, or clouds race across a landscape. The effect comes from selecting images over time and displaying them at a different rhythm, not from making the original event happen faster.\n\nThe interval between recorded images matters. If the camera takes a picture only occasionally, some short events may happen between frames. ____1____ Absence from the film is therefore not always evidence that nothing happened.\n\nPlayback introduces another choice. The same collected images can be displayed more quickly or more slowly. ____2____ The speed you see is partly a property of the presentation, not simply of the recorded process.\n\nThe camera's position also shapes the account. A fixed view can preserve a useful comparison, while movement may make apparent changes harder to interpret. ____3____ Otherwise, a shift in the frame could be mistaken for movement in the subject itself.\n\nLook for interruptions in the record. A gap caused by weather or equipment may be important to a claim about continuity. ____4____ A smooth final sequence can hide uneven collection unless the method is described.\n\nThese films remain valuable ways to notice patterns. ____5____ Knowing the timing and limitations helps a viewer appreciate the visible change without treating the edited sequence as an unmediated view of every moment.",
+          "candidates": [
+            "A. A change in playback pace changes how fast the event appears to unfold.",
+            "B. A time-lapse camera forces the living plant to grow faster.",
+            "C. A brief action can be missed by the recording schedule.",
+            "D. Anything missing from a selected frame can never have occurred.",
+            "E. Check whether the viewpoint stayed stable across the sequence.",
+            "F. Find out whether the sequence covers the whole period claimed.",
+            "G. Ask how the images were selected and paced before inferring a real rate."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 2,
+              "explanation": "C explains the short event between frames and prepares the absence warning. A playback, E viewpoint, F continuity and G final method inquiry serve later gaps. D/B make false claims."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 0,
+              "explanation": "A directly links playback pacing to apparent unfolding speed. E/G/C/F concern viewpoint, method, missed event and coverage. B mistakes presentation for physical cause."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 4,
+              "explanation": "E checks fixed framing and leads to avoiding camera movement as subject movement. G/C/F/A are other timing/coverage questions. D/B do not address viewpoint."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 5,
+              "explanation": "F checks full coverage after collection gaps, preparing smooth versus uneven sequence. E/G/C/A concern viewpoint, summary method, missed brief actions and speed. D denies gaps’ meaning."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 6,
+              "explanation": "G synthesises selection/pacing before real-rate inference. E/C/F/A are particular earlier checks. D/B replace method awareness with false certainty."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade11-slotgrammar-lantern-frame",
+          "title": "B. A time-lapse view and a rehearsal stage",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "For the school play, we rehearsed the same scene in two rooms. In the classroom, our voices sounded clear, but the hall was much ____1____ (large). A line that seemed loud beside a desk could be hard to hear from the back row.\n\nOur teacher asked one student to listen ____2____ (careful) from several seats. We did not assume that the nearest listener's experience represented the whole audience. Her notes helped us identify where words became unclear.\n\nThe stage entrance also changed the timing. A character ____3____ had crossed only two steps in the classroom now had farther to walk. We revised the pause instead of blaming the actor for reaching the mark later.\n\nBefore ____4____ (repeat) the scene, we checked where props would be placed. A chair ____5____ (move) slightly so that it did not hide the person speaking. The adjustment was small, but its effect depended on the audience's view.\n\nOne performer suggested adding more movement. We asked whether it would support the meaning ____6____ simply make the stage busier. Every action did not need to be larger just because the room was larger.\n\nThe second rehearsal gave ____7____ (we) a more useful comparison. The story had stayed the same, while the conditions of presenting it had changed. We wrote a short ____8____ (explain) of those changes for the cast members who had been absent.\n\nBy the final practice, the arrangement felt ____9____ (natural) than our first attempt in the hall. That did not mean it would suit every stage. We had found a workable solution ____10____ this room, with these entrances, chairs and listening positions.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of large.",
+              "acceptedAnswers": [
+                "larger",
+                "more large"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "largest",
+                  "more larger"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Much larger/more large compares hall and classroom. Largest is superlative and more larger doubled."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of careful.",
+              "acceptedAnswers": [
+                "carefully"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "careful",
+                  "carefulness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Carefully modifies listen. Careful adjective and carefulness noun do not fit."
+            },
+            {
+              "prompt": "Fill gap 3 with one appropriate word.",
+              "acceptedAnswers": [
+                "who",
+                "that"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "which",
+                  "where",
+                  "whose"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Character is the defining human subject of who/that had crossed. Which is nonhuman, where not subject and whose needs a noun."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of repeat.",
+              "acceptedAnswers": [
+                "repeating"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "repeat",
+                  "repeated",
+                  "to repeat"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Before repeating takes an -ing clause. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of move.",
+              "acceptedAnswers": [
+                "was moved",
+                "had been moved"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "moved",
+                  "were moved"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Singular chair receives movement: was/had been moved. Moved lacks auxiliary and were disagrees."
+            },
+            {
+              "prompt": "Fill gap 6 with one appropriate word.",
+              "acceptedAnswers": [
+                "or"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "nor",
+                  "than"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whether support meaning or make it busier gives alternatives. Nor needs a different structure and than a comparison."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of we.",
+              "acceptedAnswers": [
+                "us"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "our",
+                  "ours"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Gave takes object us. Subject/possessive forms do not fit."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of explain.",
+              "acceptedAnswers": [
+                "explanation"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "explain",
+                  "explanatory"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A short explanation requires a noun. Explain verb and explanatory adjective do not fit."
+            },
+            {
+              "prompt": "Fill gap 9 with the correct form of natural.",
+              "acceptedAnswers": [
+                "more natural"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "naturalest",
+                  "most natural"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Than requires more natural. Naturalest is nonstandard and most natural superlative."
+            },
+            {
+              "prompt": "Fill gap 10 with one appropriate word.",
+              "acceptedAnswers": [
+                "for",
+                "in"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A solution for this room or in this room both fit the local setting. Of does not express the intended applicability/location."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior2.object-age-and-button-102",
+      "level": "senior2",
+      "title": "Dating an object and recording a button",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade11-exhibition-labels-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Dating an object and recording a button",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "An old-looking object does not carry a complete history on its surface. Style, material and wear may offer clues, but they answer different questions. A careful account distinguishes when something was made, when it was used and when it was later repaired or copied.\n\nBegin with the claim itself. Saying that a chair follows an eighteenth-century style is not identical to saying it was made in that century. ____1____ The difference matters before any other evidence is considered.\n\nLook for information about materials and construction. These can narrow possibilities, but a single feature may have been used across a long period. ____2____ Several independent clues may be needed before a firm date can be proposed.\n\nNotice repairs and replacement parts. A new handle does not necessarily mean the whole object is new. ____3____ Different parts may therefore need different descriptions within one account.\n\nConsider where the information came from. A family recollection, a maker's mark and a dated receipt do not have identical evidential roles. ____4____ A confident story should not silently replace a traceable record.\n\nFinally, leave uncertain dates uncertain. ____5____ A carefully stated range can be more honest than a single year chosen mainly because it looks complete on a label.",
+          "candidates": [
+            "A. The object may have been altered during its working life.",
+            "B. A style can be continued or imitated in a later period.",
+            "C. Do not make a broad dating clue more precise than it is.",
+            "D. Identify which part of the claim each source can actually support.",
+            "E. Explain what further evidence would be needed to narrow the range.",
+            "F. Every replacement part proves that every other part was made yesterday.",
+            "G. The most detailed-sounding story must always be the oldest."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 1,
+              "explanation": "B distinguishes style from production date and prepares why the claim matters. C clue precision, A repairs, D sources and E uncertainty serve later gaps. F/G make unsupported rules."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 2,
+              "explanation": "C limits a feature used over a long period, preparing the need for multiple clues. D/B/A/E concern source, style, alteration and final range. G confuses narrative detail with date."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 0,
+              "explanation": "A explains replacement as part of an object’s life, leading to different parts’ histories. D/B/C/E are other dating issues. F wrongly makes one new part date everything."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 3,
+              "explanation": "D ties each source to what it can support and prepares traceability versus story. B/C/A/E concern style, precision, repairs and future evidence. G replaces evidence with confidence."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 4,
+              "explanation": "E identifies what could reduce uncertainty, preparing the value of a range. D/B/C/A are earlier distinctions. F/G manufacture false certainty."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade11-slotgrammar-lantern-frame",
+          "title": "B. Dating an object and recording a button",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "At a local museum, our class was shown a small button from an old coat. The guide ____1____ (place) it beside an enlarged drawing so that we could see the design without handling the original. Its size made some details difficult to notice at first.\n\nWe were asked ____2____ (separate) visible features from the story on the label. The button was round and dark, with a pattern near its edge. The claim ____3____ it had belonged to a particular uniform depended on information beyond those features.\n\nA dated photograph showed a similar button, but similarity did not prove that this was the exact one in the picture. Our guide explained the ____4____ (different) between identifying a type and identifying one individual object.\n\nAfter ____5____ (compare) the evidence, we wrote two short notes. One described what we could see; the other explained which claims came from the museum's records. Treating either note as ____6____ (use) would have meant discarding relevant information.\n\nThe object ____7____ (keep) in a protective case while we worked from the drawing. There was no need to pass it around simply to make the activity feel more real. The guide thanked us ____8____ following the handling rules.\n\nAt the end, I chose ____9____ example from my own clothes to describe. My ordinary coat button had a history too, although I knew far less about its manufacture than I had assumed. The lesson made ____10____ (we) more careful about turning a familiar shape into a complete account of an object.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of place.",
+              "acceptedAnswers": [
+                "placed",
+                "had placed"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "place",
+                  "placing"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Past simple/perfect both fit placing before viewing. Base and unaided -ing do not fit the finite clause."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of separate.",
+              "acceptedAnswers": [
+                "to separate"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "separate",
+                  "separating",
+                  "separated"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Were asked takes to separate. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 3 with one appropriate word.",
+              "acceptedAnswers": [
+                "that"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "what",
+                  "which"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The claim that introduces its content as a complete clause. What/which do not supply the same content-clause link here."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of different.",
+              "acceptedAnswers": [
+                "difference"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "different",
+                  "differently"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The difference between requires a noun. Different adjective and differently adverb do not fit."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of compare.",
+              "acceptedAnswers": [
+                "comparing",
+                "having compared"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "compare",
+                  "compared",
+                  "to compare"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "After comparing/having compared both express prior comparison. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of use.",
+              "acceptedAnswers": [
+                "useless"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "use",
+                  "usefully"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Treating a note as useless would lead to discarding relevant evidence; the context retains both kinds. Use is noun/verb and usefully adverb. Other unlisted readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of keep.",
+              "acceptedAnswers": [
+                "was kept",
+                "had been kept"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "kept",
+                  "were kept"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Singular object receives keeping: was/had been kept. Kept lacks auxiliary and were disagrees."
+            },
+            {
+              "prompt": "Fill gap 8 with one appropriate word.",
+              "acceptedAnswers": [
+                "for"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "to",
+                  "at",
+                  "of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Thanked us for following uses for. Other listed prepositions do not fit."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "an"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "a"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "An example begins with a vowel sound. Other article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of we.",
+              "acceptedAnswers": [
+                "us"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "our",
+                  "ours"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Made takes object us. Subject/possessive forms do not fit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior3.translation-and-survey-102",
+      "level": "senior3",
+      "title": "Different translations and a survey definition",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade12-print-room-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Different translations and a survey definition",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "Two translations can differ even when both aim to represent the same passage faithfully. Languages do not divide meaning into perfectly matching boxes, and a sentence gains force from its situation as well as its words. Comparing translations therefore requires more than finding which one follows the original word order most closely.\n\nBegin with the purpose of the passage. A warning, a joke and a formal invitation do different work. ____1____ A phrase that preserves information may still change the relationship between speaker and reader.\n\nLook for choices that depend on context. A short pronoun or an unstated subject may be clear to the original audience but uncertain elsewhere. ____2____ Making that decision visible helps explain why two versions diverge.\n\nNotice rhythm and register as well as basic content. A relaxed remark translated into ceremonial language can acquire a new effect. ____3____ The question is what kind of voice the version gives the passage.\n\nDistinguish a defensible choice from an unnoticed error. More than one wording may preserve an important relation, while a mistaken date remains a different kind of problem. ____4____ Respect for alternatives does not remove the need to check factual details.\n\nFinally, use disagreement to identify the difficult point. ____5____ A comparison can show what each version preserves, changes or leaves open without pretending that one sentence can reproduce every feature of another language at once.",
+          "candidates": [
+            "A. A translator may have to choose a reference that the words alone do not settle.",
+            "B. Preserving the original word order automatically preserves every effect.",
+            "C. State the competing choices precisely before ranking them.",
+            "D. Keep those categories separate when evaluating the versions.",
+            "E. Different translations prove that factual accuracy no longer matters.",
+            "F. Similar dictionary meanings do not guarantee a similar tone.",
+            "G. Ask what the passage is trying to do for its audience."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 6,
+              "explanation": "G identifies communicative purpose, leading to speaker-reader relation. A reference, F tone, D error versus choice and C final comparison fit later gaps. B/E supply false guarantees."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 0,
+              "explanation": "A supplies a contextual reference choice, picked up by that decision. G purpose, F register, D categories and C ranking address other points. B ignores context."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 5,
+              "explanation": "F distinguishes lexical meaning from tone, preparing the version’s voice. G/A/D/C concern purpose, reference, evaluative categories and comparison. B reduces effects to word order."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 3,
+              "explanation": "D separates defensible wording from mistaken facts, reinforced next. G/A/F/C are earlier/other comparisons. E denies the factual check explicitly retained."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 2,
+              "explanation": "C makes disagreement precise before ranking, leading to balanced comparison of preserved/changed/open features. G/A/F/D are specific earlier checks. B/E erase important distinctions."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade12-grammar-station-clock",
+          "title": "B. Different translations and a survey definition",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "Our class planned a survey about journeys to school. We first asked how many students travelled by bus, but a discussion revealed that the word journey needed a clearer ____1____ (define). Some students used a bus only for part of the route.\n\nThe teacher asked us ____2____ (decide) what we wanted to measure before collecting answers. Was the question about the main mode of travel, any bus use, or the whole door-to-door trip? Each would require slightly different wording.\n\nWe tried the draft with classmates ____3____ routes included walking and public transport. Their answers showed that the original categories were not as clear as we had thought. We revised the form rather than forcing a complicated journey into an unsuitable box.\n\nAfter ____4____ (collect) the responses, we kept the stated definition with the results. A number without its question could be ____5____ (lead). Readers needed to know what counted as bus travel in this particular survey.\n\nThe data ____6____ (present) without students' names. Our aim was to describe the participating group, not to rank individual families. We also explained that not every class had taken part, ____7____ the findings could not simply stand for the whole school.\n\nThe revised process gave ____8____ (we) a stronger link between the words and the numbers. I wrote ____9____ short reflection on the difference between a neat table and a clear question. The table looked much the same, but its meaning could now be explained more ____10____ (precise).",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of define.",
+              "acceptedAnswers": [
+                "definition"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "define",
+                  "definite"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A clearer definition requires a noun. Define verb and definite adjective do not fit."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of decide.",
+              "acceptedAnswers": [
+                "to decide"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "decide",
+                  "deciding",
+                  "decided"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Asked us takes to decide. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 3 with one appropriate word.",
+              "acceptedAnswers": [
+                "whose"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "which",
+                  "where"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whose supplies possession before routes. Who/which/where do not directly modify the noun."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of collect.",
+              "acceptedAnswers": [
+                "collecting",
+                "having collected"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "collect",
+                  "collected",
+                  "to collect"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "After collecting/having collected both express prior collection. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of lead.",
+              "acceptedAnswers": [
+                "misleading"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "lead",
+                  "misled"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A number missing its question can be misleading. Lead is base verb and misled describes a deceived recipient, not the figure’s effect."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of present.",
+              "acceptedAnswers": [
+                "were presented",
+                "was presented",
+                "had been presented"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "presented"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Data can take plural agreement or modern singular collective agreement; both passives and past perfect are accepted. Presented alone lacks auxiliary."
+            },
+            {
+              "prompt": "Fill gap 7 with one appropriate word.",
+              "acceptedAnswers": [
+                "so",
+                "and"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "unless"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "So gives the resulting limit, and can coordinate the additional fact. Unless introduces a condition rather than the stated consequence; other readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of we.",
+              "acceptedAnswers": [
+                "us"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "our",
+                  "ours"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Gave takes object us. Subject/possessive forms do not fit."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "a"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "an"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A short reflection begins with consonant sh. Other article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of precise.",
+              "acceptedAnswers": [
+                "precisely"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "precise",
+                  "precision"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Precisely modifies explained. Precise adjective and precision noun do not fit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior3.references-and-music-102",
+      "level": "senior3",
+      "title": "Reference numbers and a music classification",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade12-print-room-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Reference numbers and a music classification",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "A reference number can look like a minor detail beside the words or image a reader wants. Yet it creates a link between a claim and the material supporting it. That link becomes especially useful when an item is copied, quoted or separated from the page where it first appeared.\n\nA title may be shared by several works or change between editions. A stable identifier can distinguish the particular item intended. ____1____ The number is useful because it points somewhere specific, not because it is impressive by itself.\n\nThe reference should travel with the relevant extract. Saving a quotation without its source can leave a future reader unable to check the surrounding passage. ____2____ Keeping them together reduces the work of reconstructing that connection later.\n\nDifferent versions need clear descriptions too. A revised report may retain its title while changing its content. ____3____ Otherwise, two readers can seem to disagree while using different states of the same work.\n\nThe link still needs to be checked. A copied digit or a reference attached to the wrong sentence can create false confidence. ____4____ An accurate-looking format does not repair an incorrect connection.\n\nFinally, remember what a reference cannot do. ____5____ It enables examination; it does not guarantee that the source is correct or that the claim made from it is justified. Good referencing begins a check rather than ending every question.",
+          "candidates": [
+            "A. Identify the edition or version when that affects the evidence.",
+            "B. A reference with many digits makes every interpretation correct.",
+            "C. It helps separate one object or record from another with a similar name.",
+            "D. A traceable source is not automatically a true conclusion.",
+            "E. The claim and its route back to evidence should remain connected.",
+            "F. Versions with the same title can never contain different wording.",
+            "G. Check that the reference leads to the material claimed."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 2,
+              "explanation": "C explains distinguishing shared titles through a specific identifier. E extract link, A version, G verification and D limits serve later gaps. B/F impose false certainty."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 4,
+              "explanation": "E retains source connection beside the quote, developed by reconstructing that connection. A/G/D/C concern other functions. B/F do not preserve the route."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 0,
+              "explanation": "A names relevant edition/version, preparing two readers with different states. G/D/C/E are other reference issues. F denies version change."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 6,
+              "explanation": "G checks the destination after possible wrong digits/sentence attachments. A/D/C/E concern edition, limits, identity and connection. B confuses format with truth."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 3,
+              "explanation": "D states the limit developed next: examination is enabled but truth not guaranteed. A/G/C/E are practical checks. B directly contradicts this distinction."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade12-grammar-station-clock",
+          "title": "B. Reference numbers and a music classification",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "In a music lesson, we sorted instruments into groups. The teacher began by asking how each instrument produced sound, rather than how expensive or familiar it looked. A useful ____1____ (classify) needed a stated basis.\n\nWe placed some instruments together because their strings vibrated. Others depended on vibrating air in a tube or on a stretched surface that ____2____ (strike). The categories helped us compare mechanisms without saying that instruments in the same group sounded identical.\n\nOne object caused a long discussion. It combined more than one way of producing sound, so the teacher asked us ____3____ (explain) our choice rather than rush to a label. A difficult case could reveal a limit of the system, not simply a failure by the student.\n\nAfter ____4____ (listen) to short examples, we added notes about what the categories left out. The same family could contain instruments with very different uses and histories. Those differences did not disappear ____5____ we had placed the names in one box.\n\nThe diagram ____6____ we made was a simplified guide. It was ____7____ (easy) to read than a complete history would have been, but it answered a narrower question. We wrote that question above it so a later reader would know its purpose.\n\nThe exercise made ____8____ (we) more careful with classification in other subjects. A neat division could be helpful without being the only possible one. At the end, we kept ____9____ diagram together with our notes, describing the uncertain cases ____10____ (honest) instead of moving them out of sight.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of classify.",
+              "acceptedAnswers": [
+                "classification"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "classify",
+                  "classifiable"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A useful classification requires a noun. Classify verb and classifiable adjective do not fit."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of strike.",
+              "acceptedAnswers": [
+                "was struck",
+                "had been struck"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "struck",
+                  "were struck"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Singular surface receives striking: was/had been struck. Struck lacks auxiliary and were disagrees."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of explain.",
+              "acceptedAnswers": [
+                "to explain"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "explain",
+                  "explaining",
+                  "explained"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Asked us takes to explain. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of listen.",
+              "acceptedAnswers": [
+                "listening",
+                "having listened"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "listen",
+                  "listened",
+                  "to listen"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "After listening/having listened both express prior hearing. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 5 with one appropriate word.",
+              "acceptedAnswers": [
+                "because",
+                "when",
+                "once",
+                "after"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "unless"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Because can state the rejected cause; when/once/after can state the timing. All preserve that grouping does not erase differences. Unless would suggest a different conditional relation; unlisted readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 6 with one appropriate word.",
+              "acceptedAnswers": [
+                "that",
+                "which"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "where",
+                  "what"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Diagram is object of that/which we made. Who is human, where not object and what incompatible with the antecedent."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of easy.",
+              "acceptedAnswers": [
+                "easier",
+                "more easy"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "easiest",
+                  "more easier"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Than gives comparative easier/more easy. Easiest is superlative and more easier doubled."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of we.",
+              "acceptedAnswers": [
+                "us"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "our",
+                  "ours"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Made takes object us. Subject/possessive forms do not fit."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "the",
+                "our"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "an"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The diagram identifies the shared artefact; our diagram also fits. An before consonant d is invalid."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of honest.",
+              "acceptedAnswers": [
+                "honestly"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "honest",
+                  "honesty"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Honestly modifies describing. Honest adjective and honesty noun do not fit."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
