@@ -1,0 +1,174 @@
+{
+  "createdAt": "2026-10-24T02:21:01.685468+00:00",
+  "reviewBoundary": "Two complete original long paragraph-matching articles: CET4-format11paragraphs and CET6-format15paragraphs, ten statements each. Explicitly fictional service cases. Repeated and unused paragraph choices retained; same-author all-paragraph evidence review only, no independent exam calibration.",
+  "units": [
+    {
+      "id": "undergraduate.tool-room-124",
+      "level": "undergraduate",
+      "title": "A room of things people rarely need",
+      "family": "paragraph_matching",
+      "minutes": 20,
+      "sourceUnitId": "original.cet4-pools-public-rooms-matching",
+      "instruction": "Read the whole article. Match each of the ten statements to its paragraph. A paragraph may be used more than once or not at all.",
+      "alignmentNote": "One complete original long article with ten statements. CET4 preserves11 lettered paragraphs A–K; CET6 preserves15 A–O. Candidates may be reused and left unused; no once-only assignment rule.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "A room of things people rarely need",
+          "text": "Fictional case: the institutions, events and outcomes below are invented for this original reading task.\n\nA\nWhen the town of Bracken opened a lending room for household tools, the first publicity photograph showed a ladder. The organisers had chosen it because many residents needed one occasionally but had nowhere convenient to store it. The project was not intended to persuade everyone to stop owning tools. It offered another arrangement for objects whose cost, size or infrequent use made individual ownership inconvenient. A resident might still prefer to own a frequently used screwdriver while borrowing a larger item once a year.\n\nB\nThe first monthly report counted forty-eight loans. A volunteer almost described that as forty-eight people helped, until the librarian noticed that several borrowers had returned more than once. Other visitors had asked questions without taking anything home. The revised report separated lending transactions, distinct borrowers and information enquiries. None of these figures was discarded. They answered different questions, and the team wanted to prevent a convenient total from acquiring a meaning it had never actually measured.\n\nC\nThe room began with a limited collection. It did not accept every donated object, even when a donor described it as useful. Staff considered condition, storage, maintenance and whether the team could supply appropriate guidance. An unfamiliar powered tool might be declined until a qualified person could assess it. Refusing a particular donation was not a judgement that its owner had been unkind. It recognised that taking responsibility for an object involved more than finding an empty shelf.\n\nD\nBefore a loan, staff and borrower checked the item together. A simple condition note accompanied the handover, and the borrower could point out a mark that had not yet been recorded. This was designed to establish a shared account of the object at departure, rather than assume every mark discovered later had been caused by the latest borrower. A signed receipt confirmed the handover. It did not demonstrate that the person had understood every instruction or was qualified for every possible use.\n\nE\nLoan periods varied with demand and the kind of object. An extension could be requested, but it was not automatic. If someone else had reserved the item, staff might need it back on the original date. The online page therefore distinguished the possibility of requesting more time from permission to keep the object longer. A borrower who had not received a reply was asked to telephone, not to interpret silence as approval. This made the terms less convenient to summarise but easier to follow.\n\nF\nNot every borrower wanted to read instructions on a phone. The lending room offered printed guides alongside digital copies, and staff could explain the main points at the desk. The team did not infer age or technical ability from a person's chosen format. A visitor with a new phone might still want paper while working outdoors. Providing more than one route was a way to support use, rather than a test that sorted people into fixed kinds of borrower.\n\nG\nOpening hours became the first major change. Initially, collection was possible only during weekday mornings, when the volunteer team found it easiest to attend. Several residents explained that this excluded them while they were at work. The room added one Saturday afternoon and a Thursday evening, with shifts arranged among volunteers. It did not promise continuous access. The revised hours addressed a specific barrier while keeping the staffing requirement visible, so a successful trial would not be mistaken for unlimited availability.\n\nH\nMaintenance was kept separate from ordinary lending work. Volunteers could record a reported fault and put an item aside, but only designated qualified people could approve certain repairs and return the item to circulation. A busy queue did not change that rule. An object marked for inspection remained unavailable until the required check had been completed. The system distinguished being physically present in the room from being ready to lend. This distinction mattered most when someone urgently wanted an item that was still awaiting assessment.\n\nI\nThe team collected contact information needed for loans, but it did not publish a list of who had borrowed what. Visitors could recommend an item without attaching their home address to the recommendation. Staff also avoided telling an enquirer which neighbour currently held a reserved tool. They could describe when a return was expected, while keeping the borrower’s details private. A shared collection did not require turning every act of borrowing into a public record of a household's activities.\n\nJ\nWhen a handle broke, the team reviewed what had happened before deciding on any charge. Ordinary wear, an existing fault and use contrary to agreed instructions were not treated as identical events. Borrowers were encouraged to report damage promptly, rather than hide it because they expected an automatic penalty. The room still needed rules about responsibility, but a charge was not used as a substitute for understanding the case. A report could begin an enquiry without already being a confession of blame.\n\nK\nAt the end of the first season, the organisers resisted ranking success by the largest possible number of loans. Some useful items had been borrowed rarely, while a popular item had generated repeated requests for better guidance. A high count could coexist with unresolved problems. The final account described transactions, changes made after comments, maintenance demands and requests the room could not yet meet. Its value lay in making an arrangement inspectable, not in declaring that a room full of tools had permanently solved the town's relationship with ownership.",
+          "candidates": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Paragraph E",
+            "Paragraph F",
+            "Paragraph G",
+            "Paragraph H",
+            "Paragraph I",
+            "Paragraph J",
+            "Paragraph K"
+          ],
+          "questions": [
+            {
+              "prompt": "A record made at collection was meant to distinguish earlier marks from possible later damage.",
+              "answer": 3,
+              "explanation": "D explicitly establishes shared condition at departure; J discusses damage review later, not handover documentation."
+            },
+            {
+              "prompt": "An object awaiting assessment was not made available simply because it was inside the lending room.",
+              "answer": 7,
+              "explanation": "H distinguishes physical presence from approval and says marked items remain unavailable. C donation acceptance and D handover are other stages."
+            },
+            {
+              "prompt": "Different totals were retained because transactions, people and enquiries represented different measures.",
+              "answer": 1,
+              "explanation": "B separates48loans from distinct borrowers and questions. Other paragraphs discuss service conditions, not these counting units."
+            },
+            {
+              "prompt": "The choice between paper and a screen was not used to infer a borrower’s personal characteristics.",
+              "answer": 5,
+              "explanation": "F rejects age/ability inferences from format. I privacy does not discuss format preferences."
+            },
+            {
+              "prompt": "Reporting a break did not automatically establish the reporter’s responsibility for it.",
+              "answer": 9,
+              "explanation": "J separates wear/fault/misuse and report from confession. D departure condition supports context but does not discuss automatic penalties."
+            },
+            {
+              "prompt": "The project addressed occasional need without arguing that every tool should be borrowed instead of owned.",
+              "answer": 0,
+              "explanation": "A explicitly retains individual ownership for frequent use. K evaluates outcomes rather than initial ownership rationale."
+            },
+            {
+              "prompt": "Availability was expanded at times that better suited people with weekday jobs.",
+              "answer": 6,
+              "explanation": "G adds Saturday afternoon and Thursday evening after work-time barrier. E loan extension is length of loan, not opening hours."
+            },
+            {
+              "prompt": "The final account included unmet requests and maintenance effort rather than only a high lending total.",
+              "answer": 10,
+              "explanation": "K lists limits and maintenance in final report. B distinguishes initial metrics but does not describe final evaluation content."
+            },
+            {
+              "prompt": "A request for extra time required a response and could be refused when another reservation existed.",
+              "answer": 4,
+              "explanation": "E says extension not automatic, reserved items may be due and silence not permission. Other paragraphs do not set extension terms."
+            },
+            {
+              "prompt": "Only designated people could approve some repairs, despite pressure from a waiting queue.",
+              "answer": 7,
+              "explanation": "H assigns qualified repair approval and explicitly denies queue pressure changing it. Reuse H is permitted; paragraph choices are not once-only."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "postgraduate.sound-archive-124",
+      "level": "postgraduate",
+      "title": "A sound archive without a single voice for the city",
+      "family": "paragraph_matching",
+      "minutes": 20,
+      "sourceUnitId": "original.cet6-editorial-change-records-matching",
+      "instruction": "Read the whole article. Match each of the ten statements to its paragraph. A paragraph may be used more than once or not at all.",
+      "alignmentNote": "One complete original long article with ten statements. CET4 preserves11 lettered paragraphs A–K; CET6 preserves15 A–O. Candidates may be reused and left unused; no once-only assignment rule.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "A sound archive without a single voice for the city",
+          "text": "Fictional case: the institutions, events and outcomes below are invented for this original reading task.\n\nA\nThe fictional city archive of Alder Quay began a sound collection with an apparently simple invitation: record a place you know. The first files included a station announcement, water beneath a bridge and a market closing at dusk. Curators soon realised that the collection would not become representative merely by growing larger. Every recording depended on a person choosing where to stand, when to begin and what to notice. The archive therefore described itself as a collection of situated encounters, not an unfiltered voice of the entire city.\n\nB\nThe invitation distinguished a place from a particular acoustic event. A contributor could submit the same square at dawn and at midday without one file replacing the other. The name of the square alone did not identify the conditions heard. Curators requested a date, approximate time and a description of the recording position. They avoided converting this request into a demand for contributors' home addresses. The purpose was to describe the circumstances of observation, not create an unnecessary personal tracking record.\n\nC\nEquipment created another source of variation. A phone could reduce background noise automatically, while a separate recorder might preserve it. Neither device guaranteed a more truthful account in every context. The archive asked contributors to name known processing and kept uncertainty visible when a device's behaviour was unclear. A recording that sounded cleaner might be easier to hear, but cleanliness was not treated as evidence that fewer choices had intervened between the environment and the listener.\n\nD\nPermissions were considered before public release. A contributor's ownership of a recording did not necessarily authorise publication of every identifiable conversation inside it. Staff could request a different excerpt, withhold access or decline the file. These decisions did not establish that the sound lacked historical interest. They recognised that interest and permission were different questions. An archive could preserve a description of a proposed contribution without making the audio publicly downloadable, provided the arrangement itself was appropriate and clearly recorded.\n\nE\nSome contributors wanted a score describing how noisy each neighbourhood was. The curators declined to derive one from the submitted files. Different devices, positions and durations prevented a simple comparison of recorded loudness. More importantly, a brief sound clip was not a calibrated assessment of all conditions in an area. The archive could support questions about what had been recorded; it could not silently turn a collection assembled for listening into a measurement programme designed for ranking residential districts.\n\nF\nPublic listening stations needed more than an audio player. A visitor unable to hear a clip could use a written account of its main audible events, while another might prefer to read that account before listening. These descriptions identified their own limits rather than claim complete equivalence with the sound. Curators separated an account of what was audible from a narrator's interpretation of its significance. The two could appear together, but a listener should know which kind of text was being offered.\n\nG\nA location tag also needed care. A market's name might refer to an administrative area, a building or an activity that moved between streets. The catalogue allowed a contributor to describe the intended reference instead of forcing every file into one apparently exact point. A precise coordinate could be useful, but it could also imply a certainty the original account did not support. The aim was to make location interpretable, not merely make every entry look equally exact on a map.\n\nH\nThe archive retained submitted originals alongside any processed listening versions. A shorter public excerpt pointed back to the file from which it had been selected, with the selection described. This preserved a route for later inspection without suggesting that every listener must download the full recording. Curators also recorded when the public excerpt began and ended within the original. The link made editing accountable; a smooth transition in the listening copy was not allowed to conceal the existence of a cut.\n\nI\nFor a school workshop, staff assembled a sequence of clips from different years. The sequence created a compelling journey from station to river, but no person had actually made that journey while recording all those sounds. The programme label made the construction explicit. Listeners could enjoy an arranged experience without mistaking it for a continuous documentary event. An effective presentation did not require hiding how the archive had brought separate encounters into a new relationship.\n\nJ\nContributors could challenge a description after publication. A correction request was logged and assessed rather than automatically accepted or dismissed. If a description changed, the archive recorded the earlier wording, the reason and the date of revision. A person who had quoted the earlier account could then understand the difference. The procedure treated a correction as a public change with a history, not simply an opportunity to make the current page appear as though it had always been accurate.\n\nK\nThe collection also preserved gaps in coverage. Few early recordings came from the industrial edge of the city, where the invitation had circulated less widely. Curators described that absence as a limitation of their collecting process, not evidence that the district had been silent or unimportant. They worked with local organisations to widen future participation. The new invitation could improve later coverage, but it could not retroactively create the observations that had never been made in the first period.\n\nL\nA popular clip of a demolished railway shed raised questions about loss. Listeners valued it because the building no longer existed, but the recording did not restore the shed or supply every experience associated with it. It preserved particular sounds from one position at one time. Curators encouraged accompanying memories while identifying them as later recollections. The recording and those accounts could illuminate one another without being merged into a claim that a complete vanished place had returned through the headphones.\n\nM\nMaintaining access required decisions about formats. The archive kept information about conversions and checked selected outputs for audible or descriptive problems. Successful conversion was not inferred solely from a file opening. A player might produce sound while a channel was missing, or a description might still refer to an earlier excerpt. Technical availability and fidelity were therefore recorded separately. This made a maintenance report more complex, but prevented the word accessible from concealing several different kinds of practical question.\n\nN\nWithdrawal was handled through an explicit process. Removing a clip from public listening did not necessarily mean deleting every appropriate internal record of its earlier availability. Staff documented what had been withdrawn, when and under which authority, while reviewing what could lawfully be retained. A public catalogue notice could acknowledge that an item had once been present without revealing restricted content. The aim was to respect the new access decision without silently rewriting the archive's public history.\n\nO\nAfter its first review, the archive described success as the ability to support well-bounded encounters and questions. Numbers of files, visitors and downloads remained useful operational measures, but none certified completeness. The collection depended on permissions, descriptions, maintenance and continued attention to who had not yet participated. It could make some aspects of urban life available for listening while leaving others unrecorded. That qualified promise was less dramatic than offering the city's authentic voice, but it identified work the archive could actually explain.",
+          "candidates": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Paragraph E",
+            "Paragraph F",
+            "Paragraph G",
+            "Paragraph H",
+            "Paragraph I",
+            "Paragraph J",
+            "Paragraph K",
+            "Paragraph L",
+            "Paragraph M",
+            "Paragraph N",
+            "Paragraph O"
+          ],
+          "questions": [
+            {
+              "prompt": "The written alternative to a clip distinguished audible content from an interpretation of its importance.",
+              "answer": 5,
+              "explanation": "F explicitly separates descriptions of audible events from interpretive significance. C processing/G location do not make this textual distinction."
+            },
+            {
+              "prompt": "A removal from public access could leave an appropriately limited record of previous availability.",
+              "answer": 13,
+              "explanation": "N defines withdrawal notice/internal retained history subject to authority. H originals/excerpts concerns active editing, not withdrawal."
+            },
+            {
+              "prompt": "A recording could be interesting yet unavailable publicly because permission was a separate issue.",
+              "answer": 3,
+              "explanation": "D separates historical interest from rights to publish identifiable conversations. Other sections do not decide pre-release permission."
+            },
+            {
+              "prompt": "Later memories were not presented as if they were all contained in a recording of a lost building.",
+              "answer": 11,
+              "explanation": "L keeps recollections distinct from one-position shed sounds. I edited journey is a separate construction example."
+            },
+            {
+              "prompt": "The requested metadata described when and where recording occurred without demanding a home address.",
+              "answer": 1,
+              "explanation": "B specifies date/time/position and excludes unnecessary home-address tracking. G discusses ambiguous place tags but not personal address request."
+            },
+            {
+              "prompt": "A listening excerpt retained an inspectable relationship with the original from which it was cut.",
+              "answer": 7,
+              "explanation": "H links processed excerpt to original and exact selection. M conversion checks technical fidelity, not editorial cut provenance."
+            },
+            {
+              "prompt": "A revised description preserved enough history for an earlier quotation to remain understandable.",
+              "answer": 9,
+              "explanation": "J records old wording/reason/date so earlier users can compare. N withdrawal history concerns access, not description corrections."
+            },
+            {
+              "prompt": "File, visitor and download totals remained useful for operations without certifying completeness.",
+              "answer": 14,
+              "explanation": "O explicitly discusses file/visitor/download counts without completeness certification. A opening notes growth not representativeness, but does not list those operational measures."
+            },
+            {
+              "prompt": "The collection’s opening purpose acknowledged that every recording involved a selection by an observer.",
+              "answer": 0,
+              "explanation": "A establishes situated encounters through choices of position/time/attention. Other paragraphs apply specific limits, not introductory purpose."
+            },
+            {
+              "prompt": "An apparently seamless public edit could not hide the fact that part of a source recording had been omitted.",
+              "answer": 7,
+              "explanation": "H requires cut boundaries and rejects smooth transition hiding an edit. Reusing H is permitted; matching is not a once-only allocation."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
