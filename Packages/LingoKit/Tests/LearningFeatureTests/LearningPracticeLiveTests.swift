@@ -54,6 +54,40 @@ private actor FormalPracticeService: LearningServing {
 
 @Suite("Formal whole-passage practice") @MainActor
 struct LearningPracticeLiveTests {
+    @Test("Shared text cleanup removes only exact repeated directions or material, preserving different questions")
+    func repeatedQuestionText() {
+        #expect(!LearningQuestionText.showsPrompt("Choose the answer.\n", instruction: " Choose the answer. ", material: nil))
+        #expect(!LearningQuestionText.showsPrompt("Listen and fill the gap.", instruction: "Complete the note.", material: "Listen and fill the gap."))
+        #expect(LearningQuestionText.showsPrompt("Why did the visitor ask for help?", instruction: "Read the passage.", material: "A visitor asked for help."))
+        #expect(LearningQuestionText.showsPrompt("Choose two answers.", instruction: "Choose one answer.", material: nil))
+    }
+
+    @Test("Passage codes are omitted and descriptive titles appear once without changing source material")
+    func cleanPassageHeadings() throws {
+        let original = try formalAttempt().unit
+        func project(_ material: String) throws -> (LearningUnit, LearningPracticeProjection) {
+            var object = try JSONSerialization.jsonObject(with: JSONEncoder().encode(original)) as! [String: Any]
+            object["originalGroup"] = ["id": "reading", "family": "reading_choice", "label": "阅读理解"]
+            var questions = object["questions"] as! [[String: Any]]
+            for index in questions.indices {
+                questions[index]["material"] = material; questions[index]["goalId"] = "original.reading_choice"
+            }
+            object["questions"] = questions
+            let unit = try JSONDecoder().decode(LearningUnit.self, from: JSONSerialization.data(withJSONObject: object))
+            return (unit, try #require(LearningPracticeProjection(unit: unit)))
+        }
+        let prose = "A reader visited the library and asked for help.\n\nThe librarian explained the available choices."
+        for code in ["B1", "A2", "b3", "Text A", "Passage2"] {
+            let (codedSource, coded) = try project(code + "\n\n" + prose)
+            #expect(coded.task.sections[0].title.isEmpty)
+            #expect(coded.task.sections[0].text == prose)
+            #expect(codedSource.questions[0].material?.hasPrefix(code) == true)
+        }
+        let (_, titled) = try project("A thoughtful library service\n\n" + prose)
+        #expect(titled.task.sections[0].title == "A thoughtful library service")
+        #expect(titled.task.sections[0].text == prose)
+    }
+
     @Test("The actual published fifteen-question public fixture projects to five insertion gaps and ten grammar gaps")
     func publishedPublicProjection() throws {
         var root = URL(fileURLWithPath: #filePath)

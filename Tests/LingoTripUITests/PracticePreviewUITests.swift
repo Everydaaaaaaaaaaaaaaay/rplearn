@@ -21,7 +21,6 @@ final class PracticePreviewUITests: XCTestCase {
         XCTAssertTrue(app.buttons["practice.start"].waitForExistence(timeout: 3))
         app.buttons["practice.start"].tap()
         XCTAssertEqual(article.frame.minY, before, accuracy: 5, "继续练习应恢复文章位置")
-        app.buttons["practice.panel"].tap() // larger answer area
         for (index, answer) in ["C", "C", "B"].enumerated() {
             app.buttons["practice.question.\(index + 1)"].tap()
             choose(answer, in: app)
@@ -35,7 +34,6 @@ final class PracticePreviewUITests: XCTestCase {
         capture(app, "整篇集中讲解与原文依据")
         app.buttons["practice.continue"].tap()
         XCTAssertTrue(app.staticTexts["The book I had not asked for"].waitForExistence(timeout: 3))
-        app.buttons["practice.panel"].tap()
         for (index, answer) in ["D", "C", "A", "D"].enumerated() {
             app.buttons["practice.question.\(index + 1)"].tap(); choose(answer, in: app)
         }
@@ -52,7 +50,6 @@ final class PracticePreviewUITests: XCTestCase {
         XCTAssertTrue(app.buttons["practice.task.insertion-grammar"].waitForExistence(timeout: 15))
         app.buttons["practice.task.insertion-grammar"].tap(); app.buttons["practice.start"].tap()
         XCTAssertTrue(app.buttons["practice.panel"].waitForExistence(timeout: 5))
-        app.buttons["practice.panel"].tap()
         choose("A", in: app)
         app.buttons["practice.question.2"].tap(); choose("A", in: app)
         app.buttons["practice.question.1"].tap()
@@ -79,7 +76,7 @@ final class PracticePreviewUITests: XCTestCase {
     private func choose(_ id: String, in app: XCUIApplication) {
         let choice = app.buttons["practice.option.\(id)"]
         let area = app.scrollViews["practice.answers"]
-        for _ in 0..<7 {
+        for _ in 0..<20 {
             let center = CGPoint(x: choice.frame.midX, y: choice.frame.midY)
             if choice.isHittable && area.frame.contains(center) {
                 choice.tap()
@@ -89,7 +86,10 @@ final class PracticePreviewUITests: XCTestCase {
                 XCTAssertTrue(choice.isSelected, "所选答案应保持选中：\(id)")
                 return
             }
-            if center.y < area.frame.minY { area.swipeDown() } else { area.swipeUp() }
+            let distance = min(area.frame.height * 0.45, max(24, center.y < area.frame.minY ? area.frame.minY - center.y + 20 : center.y - area.frame.maxY + 20))
+            let start = area.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+            start.press(forDuration: 0.05, thenDragTo: start.withOffset(CGVector(dx: 0, dy: center.y < area.frame.minY ? distance : -distance)),
+                        withVelocity: .slow, thenHoldForDuration: 0.05)
         }
         XCTFail("选项 \(id) 不可点击")
     }

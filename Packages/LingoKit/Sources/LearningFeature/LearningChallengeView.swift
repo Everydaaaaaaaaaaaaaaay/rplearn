@@ -205,7 +205,8 @@ public struct LearningChallengeView: View {
             }
             let instruction = plan.usesPane && plan.originalText.contains(question.instruction)
                 ? (model.attempt.unit.originalGroup?.label ?? question.instruction) : question.instruction
-            Text(question.type == .matching && dynamicTypeSize.isAccessibilitySize ? "将两组内容逐一配对。" : instruction)
+            let displayedInstruction = question.type == .matching && dynamicTypeSize.isAccessibilitySize ? "将两组内容逐一配对。" : instruction
+            Text(displayedInstruction)
                 .font(plan.usesPane ? .subheadline.weight(.semibold) : .title2.bold())
             if let progress = plan.progress(questionID: question.id) {
                 Text(progress).font(.caption.weight(.semibold)).foregroundStyle(.secondary)
@@ -223,7 +224,9 @@ public struct LearningChallengeView: View {
                     }
                 }
             }
-            Text(question.prompt).font(.system(.title3, design: .rounded)).lineSpacing(6).fixedSize(horizontal: false, vertical: true)
+            if LearningQuestionText.showsPrompt(question.prompt, instruction: displayedInstruction, material: question.material ?? question.passage) {
+                Text(question.prompt).font(.system(.title3, design: .rounded)).lineSpacing(6).fixedSize(horizontal: false, vertical: true)
+            }
             if showsHint && model.feedback == nil {
                 Text(question.hint).font(.subheadline).foregroundStyle(.secondary)
                     .accessibilityIdentifier("learning.hint.text")

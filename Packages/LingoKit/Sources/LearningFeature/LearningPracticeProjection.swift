@@ -33,8 +33,6 @@ struct LearningPracticeProjection {
                 }
             }
             if kind != .reading && !(1...group.count).allSatisfy({ text.contains("____\($0)____") }) { return nil }
-            let paragraphs = text.components(separatedBy: "\n\n")
-            let title = paragraphs.first.map { $0.count < 110 && !$0.contains("____") ? $0 : unit.originalGroup!.label } ?? unit.title
             var candidates = question.options ?? []
             if kind == .insertion {
                 guard candidates.count > group.count && candidates.count <= 12 else { return nil }
@@ -54,6 +52,9 @@ struct LearningPracticeProjection {
                     }
                 }
             }
+            let presentation = Self.contentForDisplay(text, instruction: question.instruction)
+            text = presentation.text
+            let title = presentation.title
             var questions: [LearningPracticeQuestion] = []
             for (index, source) in group.enumerated() {
                 let rawOptions = source.options ?? []
@@ -74,6 +75,17 @@ struct LearningPracticeProjection {
         task = .init(id: unit.id, label: unit.originalGroup?.label ?? "练习", headline: unit.originalGroup?.label ?? unit.title,
                      detail: unit.summary, minutes: unit.estimatedMinutes, sections: sections)
         optionIDs = maps
+    }
+    private static func contentForDisplay(_ text: String, instruction: String) -> (title: String, text: String) {
+        let paragraphs = text.components(separatedBy: "\n\n")
+        guard let first = paragraphs.first?.trimmingCharacters(in: .whitespacesAndNewlines), paragraphs.count > 1 else { return ("", text) }
+        let remainder = paragraphs.dropFirst().joined(separator: "\n\n")
+        // Passage codes duplicate the existing section counter; they are presentation metadata, not prose.
+        if first.range(of: #"(?i)^(?:[A-Z](?:[0-9]{1,2})?|(?:Passage|Text)\s*[A-Z0-9]+)$"#, options: .regularExpression) != nil
+            || !LearningQuestionText.showsPrompt(first, instruction: instruction, material: nil) { return ("", remainder) }
+        if first.count < 110, !first.contains("\n"), !first.contains("____"),
+           !".?!。？！".contains(first.last ?? ".") { return (first, remainder) }
+        return ("", text)
     }
     private static func withoutLetter(_ value: String) -> String {
         value.replacingOccurrences(of: #"^[A-G][.．]\s*"#, with: "", options: .regularExpression)

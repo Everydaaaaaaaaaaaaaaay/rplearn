@@ -17,3 +17,5 @@
 `7d3732f7c0d261d21d9333df33e7bffdb1c56268339dff203dbd9c733e09fd29`，快照 SHA-256 为 `897a17722ca06902dd74347f20638405c7cd8ca8e6701a933e48fa55012494e4`。
 用于检查真实测试入口所复用的正式页面：五空七选项整篇作答及后续十空语法填空。
 快照不含答案或解析；测试不向真实账号提交成绩。
+
+`learning-senior2-clean-reading.json` 是 `gaokao.authored.senior2.77a6034221f54d3b` 的公开题面，用于复现阅读页 B1 重复标题和紧凑答题面板，来源 `Backend/config/learning/gaokao/authored.json`。快照 SHA-256：`8bba2e9b37b998063ab2bec4ab875e4c7681a67f27885ca1eefe605498dfc694`；不含答案、解析或账号数据。

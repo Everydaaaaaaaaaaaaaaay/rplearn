@@ -16,17 +16,20 @@ final class LearningFormalPracticeUITests: XCTestCase {
         XCTAssertFalse(app.staticTexts["交互预览"].exists)
         XCTAssertFalse(app.staticTexts["本地示例 · 进度单独保存 · 不计入正式成绩"].exists)
         app.buttons["practice.start"].tap()
-        XCTAssertTrue(app.staticTexts["七选五 · 整篇作答"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.staticTexts["共用选项 A–G"].waitForExistence(timeout: 3))
         let submit = app.buttons["practice.next"]
         XCTAssertFalse(submit.isEnabled)
-        app.buttons["practice.panel"].tap()
         for (index, answer) in ["A", "C", "F", "D", "B"].enumerated() {
             app.buttons["practice.question.\(index + 1)"].tap()
             let option = app.buttons["practice.option.\(answer)"]
             let answers = app.scrollViews["practice.answers"]
-            for _ in 0..<8 {
-                if option.isHittable && answers.frame.contains(CGPoint(x: option.frame.midX, y: option.frame.midY)) { break }
-                answers.swipeUp()
+            for _ in 0..<20 {
+                let center = CGPoint(x: option.frame.midX, y: option.frame.midY)
+                if option.isHittable && answers.frame.contains(center) { break }
+                let distance = min(answers.frame.height * 0.45, max(24, center.y < answers.frame.minY ? answers.frame.minY - center.y + 20 : center.y - answers.frame.maxY + 20))
+                let start = answers.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+                start.press(forDuration: 0.05, thenDragTo: start.withOffset(CGVector(dx: 0, dy: center.y < answers.frame.minY ? distance : -distance)),
+                            withVelocity: .slow, thenHoldForDuration: 0.05)
             }
             option.tap()
             XCTAssertTrue(option.isSelected)
