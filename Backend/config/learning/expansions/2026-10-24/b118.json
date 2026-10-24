@@ -1,0 +1,1973 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b118",
+  "createdAt": "2026-10-24T01:56:14.717219+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.football-posters-118",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · Posters for the football afternoon",
+        "summary": "Posters for the football afternoon，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g7.2021.vocabularyB",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete ten-gap original word-bank passage with form changes. Grade7 follows B option as one complete alternative; grade8 retains one-word gaps; grade9 retains twelve choices with two unused. Source supplies task rules only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete junior form-changing ten-gap shared banks, two per grade. Grade7B complete alternative, grade8 one-word restriction, grade9 twelve choices/two unused kept distinct. Same-author full-bank and variant review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.football-posters-118",
+          "family": "shared_bank",
+          "label": "Posters for the football afternoon",
+          "candidateSHA256": "03ab59f4af4735ab24d665d975a46fb33c65f71ccecc93ffb5bc343362d221bf",
+          "authorCheckSHA256": "8fbc90dc2d85f7d57d0ac235b5e074f2059b6f09d381b5d580959c1265dd4fbf",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.football-posters-118#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b118；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Posters for the football afternoon\n\nShared bank: because | foot | happy | near | remember | slow | take | they | two | write\n\nOur class ____1____ invitations for a football afternoon last week. The event was for younger pupils and ____2____ parents, so the information needed to be easy to find. I drew a ball at the top of the page and left space for the time.\n\nWe held the activity on the ____3____ Saturday in May. The first Saturday was already the date of the school concert. Our teacher checked that the two events would not be confused, ____4____ some families wanted to attend both.\n\nOn the day, several pupils arrived ____5____ the side gate instead of the main entrance. A teacher met them there and showed the route to the field. We asked everyone to walk ____6____ through the crowded corridor.\n\nAfter the first game, my ____7____ were tired. I had spent most of the morning walking between the gate and the field. My friend ____8____ over my welcome job while I sat down for a short rest.\n\nThe younger children played ____9____, even when their team did not win. At closing time, we asked them to ____10____ their water bottles and coats. A clear invitation had brought families to the field; a final reminder helped them leave with the things they had brought."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.football-posters-118.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 1 from the shared bank.",
+            "material": "Posters for the football afternoon\n\nShared bank: because | foot | happy | near | remember | slow | take | they | two | write\n\nOur class ____1____ invitations for a football afternoon last week. The event was for younger pupils and ____2____ parents, so the information needed to be easy to find. I drew a ball at the top of the page and left space for the time.\n\nWe held the activity on the ____3____ Saturday in May. The first Saturday was already the date of the school concert. Our teacher checked that the two events would not be confused, ____4____ some families wanted to attend both.\n\nOn the day, several pupils arrived ____5____ the side gate instead of the main entrance. A teacher met them there and showed the route to the field. We asked everyone to walk ____6____ through the crowded corridor.\n\nAfter the first game, my ____7____ were tired. I had spent most of the morning walking between the gate and the field. My friend ____8____ over my welcome job while I sat down for a short rest.\n\nThe younger children played ____9____, even when their team did not win. At closing time, we asked them to ____10____ their water bottles and coats. A clear invitation had brought families to the field; a final reminder helped them leave with the things they had brought.",
+            "explanation": "Last week requires wrote from write. Other bank words cannot name composing invitations in this finite slot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "wrote"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "write",
+                "writing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.football-posters-118.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 2 from the shared bank.",
+            "material": "Posters for the football afternoon\n\nShared bank: because | foot | happy | near | remember | slow | take | they | two | write\n\nOur class ____1____ invitations for a football afternoon last week. The event was for younger pupils and ____2____ parents, so the information needed to be easy to find. I drew a ball at the top of the page and left space for the time.\n\nWe held the activity on the ____3____ Saturday in May. The first Saturday was already the date of the school concert. Our teacher checked that the two events would not be confused, ____4____ some families wanted to attend both.\n\nOn the day, several pupils arrived ____5____ the side gate instead of the main entrance. A teacher met them there and showed the route to the field. We asked everyone to walk ____6____ through the crowded corridor.\n\nAfter the first game, my ____7____ were tired. I had spent most of the morning walking between the gate and the field. My friend ____8____ over my welcome job while I sat down for a short rest.\n\nThe younger children played ____9____, even when their team did not win. At closing time, we asked them to ____10____ their water bottles and coats. A clear invitation had brought families to the field; a final reminder helped them leave with the things they had brought.",
+            "explanation": "Their from they modifies parents. Subject/object forms do not determine the noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "their"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "them"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.football-posters-118.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 3 from the shared bank.",
+            "material": "Posters for the football afternoon\n\nShared bank: because | foot | happy | near | remember | slow | take | they | two | write\n\nOur class ____1____ invitations for a football afternoon last week. The event was for younger pupils and ____2____ parents, so the information needed to be easy to find. I drew a ball at the top of the page and left space for the time.\n\nWe held the activity on the ____3____ Saturday in May. The first Saturday was already the date of the school concert. Our teacher checked that the two events would not be confused, ____4____ some families wanted to attend both.\n\nOn the day, several pupils arrived ____5____ the side gate instead of the main entrance. A teacher met them there and showed the route to the field. We asked everyone to walk ____6____ through the crowded corridor.\n\nAfter the first game, my ____7____ were tired. I had spent most of the morning walking between the gate and the field. My friend ____8____ over my welcome job while I sat down for a short rest.\n\nThe younger children played ____9____, even when their team did not win. At closing time, we asked them to ____10____ their water bottles and coats. A clear invitation had brought families to the field; a final reminder helped them leave with the things they had brought.",
+            "explanation": "Second Saturday follows unavailable first Saturday. Two/twice do not form ordinal date.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "second"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "two",
+                "twice"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.football-posters-118.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 4 from the shared bank.",
+            "material": "Posters for the football afternoon\n\nShared bank: because | foot | happy | near | remember | slow | take | they | two | write\n\nOur class ____1____ invitations for a football afternoon last week. The event was for younger pupils and ____2____ parents, so the information needed to be easy to find. I drew a ball at the top of the page and left space for the time.\n\nWe held the activity on the ____3____ Saturday in May. The first Saturday was already the date of the school concert. Our teacher checked that the two events would not be confused, ____4____ some families wanted to attend both.\n\nOn the day, several pupils arrived ____5____ the side gate instead of the main entrance. A teacher met them there and showed the route to the field. We asked everyone to walk ____6____ through the crowded corridor.\n\nAfter the first game, my ____7____ were tired. I had spent most of the morning walking between the gate and the field. My friend ____8____ over my welcome job while I sat down for a short rest.\n\nThe younger children played ____9____, even when their team did not win. At closing time, we asked them to ____10____ their water bottles and coats. A clear invitation had brought families to the field; a final reminder helped them leave with the things they had brought.",
+            "explanation": "Because introduces the reason for avoiding overlap. Near cannot introduce a finite clause.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "because"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "near"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.football-posters-118.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 5 from the shared bank.",
+            "material": "Posters for the football afternoon\n\nShared bank: because | foot | happy | near | remember | slow | take | they | two | write\n\nOur class ____1____ invitations for a football afternoon last week. The event was for younger pupils and ____2____ parents, so the information needed to be easy to find. I drew a ball at the top of the page and left space for the time.\n\nWe held the activity on the ____3____ Saturday in May. The first Saturday was already the date of the school concert. Our teacher checked that the two events would not be confused, ____4____ some families wanted to attend both.\n\nOn the day, several pupils arrived ____5____ the side gate instead of the main entrance. A teacher met them there and showed the route to the field. We asked everyone to walk ____6____ through the crowded corridor.\n\nAfter the first game, my ____7____ were tired. I had spent most of the morning walking between the gate and the field. My friend ____8____ over my welcome job while I sat down for a short rest.\n\nThe younger children played ____9____, even when their team did not win. At closing time, we asked them to ____10____ their water bottles and coats. A clear invitation had brought families to the field; a final reminder helped them leave with the things they had brought.",
+            "explanation": "Near the side gate gives arrival location using bank near. Because is not a place preposition.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "near"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "because"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.football-posters-118.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 6 from the shared bank.",
+            "material": "Posters for the football afternoon\n\nShared bank: because | foot | happy | near | remember | slow | take | they | two | write\n\nOur class ____1____ invitations for a football afternoon last week. The event was for younger pupils and ____2____ parents, so the information needed to be easy to find. I drew a ball at the top of the page and left space for the time.\n\nWe held the activity on the ____3____ Saturday in May. The first Saturday was already the date of the school concert. Our teacher checked that the two events would not be confused, ____4____ some families wanted to attend both.\n\nOn the day, several pupils arrived ____5____ the side gate instead of the main entrance. A teacher met them there and showed the route to the field. We asked everyone to walk ____6____ through the crowded corridor.\n\nAfter the first game, my ____7____ were tired. I had spent most of the morning walking between the gate and the field. My friend ____8____ over my welcome job while I sat down for a short rest.\n\nThe younger children played ____9____, even when their team did not win. At closing time, we asked them to ____10____ their water bottles and coats. A clear invitation had brought families to the field; a final reminder helped them leave with the things they had brought.",
+            "explanation": "Slowly, or informal flat slow, modifies walk through crowd. Slowness noun does not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "slowly",
+              "slow"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "slowness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.football-posters-118.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 7 from the shared bank.",
+            "material": "Posters for the football afternoon\n\nShared bank: because | foot | happy | near | remember | slow | take | they | two | write\n\nOur class ____1____ invitations for a football afternoon last week. The event was for younger pupils and ____2____ parents, so the information needed to be easy to find. I drew a ball at the top of the page and left space for the time.\n\nWe held the activity on the ____3____ Saturday in May. The first Saturday was already the date of the school concert. Our teacher checked that the two events would not be confused, ____4____ some families wanted to attend both.\n\nOn the day, several pupils arrived ____5____ the side gate instead of the main entrance. A teacher met them there and showed the route to the field. We asked everyone to walk ____6____ through the crowded corridor.\n\nAfter the first game, my ____7____ were tired. I had spent most of the morning walking between the gate and the field. My friend ____8____ over my welcome job while I sat down for a short rest.\n\nThe younger children played ____9____, even when their team did not win. At closing time, we asked them to ____10____ their water bottles and coats. A clear invitation had brought families to the field; a final reminder helped them leave with the things they had brought.",
+            "explanation": "Plural feet agrees with were and names body parts tired by walking. Singular/nonstandard plural do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "feet"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "foot",
+                "foots"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.football-posters-118.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 8 from the shared bank.",
+            "material": "Posters for the football afternoon\n\nShared bank: because | foot | happy | near | remember | slow | take | they | two | write\n\nOur class ____1____ invitations for a football afternoon last week. The event was for younger pupils and ____2____ parents, so the information needed to be easy to find. I drew a ball at the top of the page and left space for the time.\n\nWe held the activity on the ____3____ Saturday in May. The first Saturday was already the date of the school concert. Our teacher checked that the two events would not be confused, ____4____ some families wanted to attend both.\n\nOn the day, several pupils arrived ____5____ the side gate instead of the main entrance. A teacher met them there and showed the route to the field. We asked everyone to walk ____6____ through the crowded corridor.\n\nAfter the first game, my ____7____ were tired. I had spent most of the morning walking between the gate and the field. My friend ____8____ over my welcome job while I sat down for a short rest.\n\nThe younger children played ____9____, even when their team did not win. At closing time, we asked them to ____10____ their water bottles and coats. A clear invitation had brought families to the field; a final reminder helped them leave with the things they had brought.",
+            "explanation": "Past took over means assumed welcome task. Base/-ing do not fit past finite narrative.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "took"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "take",
+                "taking"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.football-posters-118.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 9 from the shared bank.",
+            "material": "Posters for the football afternoon\n\nShared bank: because | foot | happy | near | remember | slow | take | they | two | write\n\nOur class ____1____ invitations for a football afternoon last week. The event was for younger pupils and ____2____ parents, so the information needed to be easy to find. I drew a ball at the top of the page and left space for the time.\n\nWe held the activity on the ____3____ Saturday in May. The first Saturday was already the date of the school concert. Our teacher checked that the two events would not be confused, ____4____ some families wanted to attend both.\n\nOn the day, several pupils arrived ____5____ the side gate instead of the main entrance. A teacher met them there and showed the route to the field. We asked everyone to walk ____6____ through the crowded corridor.\n\nAfter the first game, my ____7____ were tired. I had spent most of the morning walking between the gate and the field. My friend ____8____ over my welcome job while I sat down for a short rest.\n\nThe younger children played ____9____, even when their team did not win. At closing time, we asked them to ____10____ their water bottles and coats. A clear invitation had brought families to the field; a final reminder helped them leave with the things they had brought.",
+            "explanation": "Happily from happy modifies played. Happiness is noun; unlisted flat readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "happily"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "happiness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.football-posters-118.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 10 from the shared bank.",
+            "material": "Posters for the football afternoon\n\nShared bank: because | foot | happy | near | remember | slow | take | they | two | write\n\nOur class ____1____ invitations for a football afternoon last week. The event was for younger pupils and ____2____ parents, so the information needed to be easy to find. I drew a ball at the top of the page and left space for the time.\n\nWe held the activity on the ____3____ Saturday in May. The first Saturday was already the date of the school concert. Our teacher checked that the two events would not be confused, ____4____ some families wanted to attend both.\n\nOn the day, several pupils arrived ____5____ the side gate instead of the main entrance. A teacher met them there and showed the route to the field. We asked everyone to walk ____6____ through the crowded corridor.\n\nAfter the first game, my ____7____ were tired. I had spent most of the morning walking between the gate and the field. My friend ____8____ over my welcome job while I sat down for a short rest.\n\nThe younger children played ____9____, even when their team did not win. At closing time, we asked them to ____10____ their water bottles and coats. A clear invitation had brought families to the field; a final reminder helped them leave with the things they had brought.",
+            "explanation": "Asked them to remember takes base after to. Other forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "remember"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "remembered",
+                "remembering"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "8dd2c329a91ce17884fef1ea121272666b84349714d6db7f7816087f62584a65",
+      "reviewNotes": "Six complete junior form-changing ten-gap shared banks, two per grade. Grade7B complete alternative, grade8 one-word restriction, grade9 twelve choices/two unused kept distinct. Same-author full-bank and variant review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.rainy-ticket-118",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · The wet ticket queue",
+        "summary": "The wet ticket queue，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g7.2021.vocabularyB",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete ten-gap original word-bank passage with form changes. Grade7 follows B option as one complete alternative; grade8 retains one-word gaps; grade9 retains twelve choices with two unused. Source supplies task rules only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete junior form-changing ten-gap shared banks, two per grade. Grade7B complete alternative, grade8 one-word restriction, grade9 twelve choices/two unused kept distinct. Same-author full-bank and variant review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.rainy-ticket-118",
+          "family": "shared_bank",
+          "label": "The wet ticket queue",
+          "candidateSHA256": "623d88a3107015535f6c799a1e1f921023e15f7df66cbb5caab24428154ec886",
+          "authorCheckSHA256": "321a4e8a946cdb280ba03454105ffaf93c3cd7310e570250aab18ad924835eb7",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.rainy-ticket-118#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b118；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The wet ticket queue\n\nShared bank: careful | child | five | good | know | make | rain | wait | we | with\n\nOur school ____1____ tickets for a family film afternoon. I was one of the helpers at the entrance. The teacher showed ____2____ how to check a ticket and point people towards their seats without blocking the door.\n\nThe weather became ____3____ just before the doors opened. Families waited under the covered path rather than standing outside in the wet playground. We moved slowly, and I checked the ticket numbers ____4____ before tearing off each small corner.\n\nTwo ____5____ arrived with their grandfather. One had dropped her ticket in a puddle. She looked worried, but her grandfather ____6____ the booking name. The teacher checked the list and found all three places.\n\nThe next family was the ____7____ group to arrive. Four earlier groups were already sitting down. I asked my friend whether a paper list was ____8____ than simply trying to remember every face. She said it helped, but only if we read it properly.\n\nAfter the film, we ____9____ until the busiest families had left before clearing the entrance. I carried the spare papers ____10____ both hands so they would not blow away. The afternoon had not been completely smooth, but the wet ticket had become a small problem with a calm solution."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.rainy-ticket-118.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 1 from the shared bank.",
+            "material": "The wet ticket queue\n\nShared bank: careful | child | five | good | know | make | rain | wait | we | with\n\nOur school ____1____ tickets for a family film afternoon. I was one of the helpers at the entrance. The teacher showed ____2____ how to check a ticket and point people towards their seats without blocking the door.\n\nThe weather became ____3____ just before the doors opened. Families waited under the covered path rather than standing outside in the wet playground. We moved slowly, and I checked the ticket numbers ____4____ before tearing off each small corner.\n\nTwo ____5____ arrived with their grandfather. One had dropped her ticket in a puddle. She looked worried, but her grandfather ____6____ the booking name. The teacher checked the list and found all three places.\n\nThe next family was the ____7____ group to arrive. Four earlier groups were already sitting down. I asked my friend whether a paper list was ____8____ than simply trying to remember every face. She said it helped, but only if we read it properly.\n\nAfter the film, we ____9____ until the busiest families had left before clearing the entrance. I carried the spare papers ____10____ both hands so they would not blow away. The afternoon had not been completely smooth, but the wet ticket had become a small problem with a calm solution.",
+            "explanation": "Past film preparations take made. Base/-ing do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "made"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "make",
+                "making"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rainy-ticket-118.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 2 from the shared bank.",
+            "material": "The wet ticket queue\n\nShared bank: careful | child | five | good | know | make | rain | wait | we | with\n\nOur school ____1____ tickets for a family film afternoon. I was one of the helpers at the entrance. The teacher showed ____2____ how to check a ticket and point people towards their seats without blocking the door.\n\nThe weather became ____3____ just before the doors opened. Families waited under the covered path rather than standing outside in the wet playground. We moved slowly, and I checked the ticket numbers ____4____ before tearing off each small corner.\n\nTwo ____5____ arrived with their grandfather. One had dropped her ticket in a puddle. She looked worried, but her grandfather ____6____ the booking name. The teacher checked the list and found all three places.\n\nThe next family was the ____7____ group to arrive. Four earlier groups were already sitting down. I asked my friend whether a paper list was ____8____ than simply trying to remember every face. She said it helped, but only if we read it properly.\n\nAfter the film, we ____9____ until the busiest families had left before clearing the entrance. I carried the spare papers ____10____ both hands so they would not blow away. The afternoon had not been completely smooth, but the wet ticket had become a small problem with a calm solution.",
+            "explanation": "Showed takes object us from we. Subject/possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rainy-ticket-118.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 3 from the shared bank.",
+            "material": "The wet ticket queue\n\nShared bank: careful | child | five | good | know | make | rain | wait | we | with\n\nOur school ____1____ tickets for a family film afternoon. I was one of the helpers at the entrance. The teacher showed ____2____ how to check a ticket and point people towards their seats without blocking the door.\n\nThe weather became ____3____ just before the doors opened. Families waited under the covered path rather than standing outside in the wet playground. We moved slowly, and I checked the ticket numbers ____4____ before tearing off each small corner.\n\nTwo ____5____ arrived with their grandfather. One had dropped her ticket in a puddle. She looked worried, but her grandfather ____6____ the booking name. The teacher checked the list and found all three places.\n\nThe next family was the ____7____ group to arrive. Four earlier groups were already sitting down. I asked my friend whether a paper list was ____8____ than simply trying to remember every face. She said it helped, but only if we read it properly.\n\nAfter the film, we ____9____ until the busiest families had left before clearing the entrance. I carried the spare papers ____10____ both hands so they would not blow away. The afternoon had not been completely smooth, but the wet ticket had become a small problem with a calm solution.",
+            "explanation": "Became rainy describes weather. Rain noun/verb and rainily adverb do not fit linking became.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "rainy"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "rain",
+                "rainily"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rainy-ticket-118.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 4 from the shared bank.",
+            "material": "The wet ticket queue\n\nShared bank: careful | child | five | good | know | make | rain | wait | we | with\n\nOur school ____1____ tickets for a family film afternoon. I was one of the helpers at the entrance. The teacher showed ____2____ how to check a ticket and point people towards their seats without blocking the door.\n\nThe weather became ____3____ just before the doors opened. Families waited under the covered path rather than standing outside in the wet playground. We moved slowly, and I checked the ticket numbers ____4____ before tearing off each small corner.\n\nTwo ____5____ arrived with their grandfather. One had dropped her ticket in a puddle. She looked worried, but her grandfather ____6____ the booking name. The teacher checked the list and found all three places.\n\nThe next family was the ____7____ group to arrive. Four earlier groups were already sitting down. I asked my friend whether a paper list was ____8____ than simply trying to remember every face. She said it helped, but only if we read it properly.\n\nAfter the film, we ____9____ until the busiest families had left before clearing the entrance. I carried the spare papers ____10____ both hands so they would not blow away. The afternoon had not been completely smooth, but the wet ticket had become a small problem with a calm solution.",
+            "explanation": "Carefully modifies checked. Carefulness noun does not fit; unlisted flat variants remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rainy-ticket-118.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 5 from the shared bank.",
+            "material": "The wet ticket queue\n\nShared bank: careful | child | five | good | know | make | rain | wait | we | with\n\nOur school ____1____ tickets for a family film afternoon. I was one of the helpers at the entrance. The teacher showed ____2____ how to check a ticket and point people towards their seats without blocking the door.\n\nThe weather became ____3____ just before the doors opened. Families waited under the covered path rather than standing outside in the wet playground. We moved slowly, and I checked the ticket numbers ____4____ before tearing off each small corner.\n\nTwo ____5____ arrived with their grandfather. One had dropped her ticket in a puddle. She looked worried, but her grandfather ____6____ the booking name. The teacher checked the list and found all three places.\n\nThe next family was the ____7____ group to arrive. Four earlier groups were already sitting down. I asked my friend whether a paper list was ____8____ than simply trying to remember every face. She said it helped, but only if we read it properly.\n\nAfter the film, we ____9____ until the busiest families had left before clearing the entrance. I carried the spare papers ____10____ both hands so they would not blow away. The afternoon had not been completely smooth, but the wet ticket had become a small problem with a calm solution.",
+            "explanation": "Two requires children. Singular/nonstandard plural do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "children"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "child",
+                "childs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rainy-ticket-118.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 6 from the shared bank.",
+            "material": "The wet ticket queue\n\nShared bank: careful | child | five | good | know | make | rain | wait | we | with\n\nOur school ____1____ tickets for a family film afternoon. I was one of the helpers at the entrance. The teacher showed ____2____ how to check a ticket and point people towards their seats without blocking the door.\n\nThe weather became ____3____ just before the doors opened. Families waited under the covered path rather than standing outside in the wet playground. We moved slowly, and I checked the ticket numbers ____4____ before tearing off each small corner.\n\nTwo ____5____ arrived with their grandfather. One had dropped her ticket in a puddle. She looked worried, but her grandfather ____6____ the booking name. The teacher checked the list and found all three places.\n\nThe next family was the ____7____ group to arrive. Four earlier groups were already sitting down. I asked my friend whether a paper list was ____8____ than simply trying to remember every face. She said it helped, but only if we read it properly.\n\nAfter the film, we ____9____ until the busiest families had left before clearing the entrance. I carried the spare papers ____10____ both hands so they would not blow away. The afternoon had not been completely smooth, but the wet ticket had become a small problem with a calm solution.",
+            "explanation": "Grandfather knew booking name in past scene. Base/-ing do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "knew"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "know",
+                "knowing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rainy-ticket-118.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 7 from the shared bank.",
+            "material": "The wet ticket queue\n\nShared bank: careful | child | five | good | know | make | rain | wait | we | with\n\nOur school ____1____ tickets for a family film afternoon. I was one of the helpers at the entrance. The teacher showed ____2____ how to check a ticket and point people towards their seats without blocking the door.\n\nThe weather became ____3____ just before the doors opened. Families waited under the covered path rather than standing outside in the wet playground. We moved slowly, and I checked the ticket numbers ____4____ before tearing off each small corner.\n\nTwo ____5____ arrived with their grandfather. One had dropped her ticket in a puddle. She looked worried, but her grandfather ____6____ the booking name. The teacher checked the list and found all three places.\n\nThe next family was the ____7____ group to arrive. Four earlier groups were already sitting down. I asked my friend whether a paper list was ____8____ than simply trying to remember every face. She said it helped, but only if we read it properly.\n\nAfter the film, we ____9____ until the busiest families had left before clearing the entrance. I carried the spare papers ____10____ both hands so they would not blow away. The afternoon had not been completely smooth, but the wet ticket had become a small problem with a calm solution.",
+            "explanation": "Four earlier groups make next fifth. Five cardinal and fifths fraction plural do not fit ordinal.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "fifth"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "five",
+                "fifths"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rainy-ticket-118.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 8 from the shared bank.",
+            "material": "The wet ticket queue\n\nShared bank: careful | child | five | good | know | make | rain | wait | we | with\n\nOur school ____1____ tickets for a family film afternoon. I was one of the helpers at the entrance. The teacher showed ____2____ how to check a ticket and point people towards their seats without blocking the door.\n\nThe weather became ____3____ just before the doors opened. Families waited under the covered path rather than standing outside in the wet playground. We moved slowly, and I checked the ticket numbers ____4____ before tearing off each small corner.\n\nTwo ____5____ arrived with their grandfather. One had dropped her ticket in a puddle. She looked worried, but her grandfather ____6____ the booking name. The teacher checked the list and found all three places.\n\nThe next family was the ____7____ group to arrive. Four earlier groups were already sitting down. I asked my friend whether a paper list was ____8____ than simply trying to remember every face. She said it helped, but only if we read it properly.\n\nAfter the film, we ____9____ until the busiest families had left before clearing the entrance. I carried the spare papers ____10____ both hands so they would not blow away. The afternoon had not been completely smooth, but the wet ticket had become a small problem with a calm solution.",
+            "explanation": "Than requires better from good. Best superlative and gooder nonstandard.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "better"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "best",
+                "gooder"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rainy-ticket-118.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 9 from the shared bank.",
+            "material": "The wet ticket queue\n\nShared bank: careful | child | five | good | know | make | rain | wait | we | with\n\nOur school ____1____ tickets for a family film afternoon. I was one of the helpers at the entrance. The teacher showed ____2____ how to check a ticket and point people towards their seats without blocking the door.\n\nThe weather became ____3____ just before the doors opened. Families waited under the covered path rather than standing outside in the wet playground. We moved slowly, and I checked the ticket numbers ____4____ before tearing off each small corner.\n\nTwo ____5____ arrived with their grandfather. One had dropped her ticket in a puddle. She looked worried, but her grandfather ____6____ the booking name. The teacher checked the list and found all three places.\n\nThe next family was the ____7____ group to arrive. Four earlier groups were already sitting down. I asked my friend whether a paper list was ____8____ than simply trying to remember every face. She said it helped, but only if we read it properly.\n\nAfter the film, we ____9____ until the busiest families had left before clearing the entrance. I carried the spare papers ____10____ both hands so they would not blow away. The afternoon had not been completely smooth, but the wet ticket had become a small problem with a calm solution.",
+            "explanation": "Past cleanup sequence takes waited. Base/-ing do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "waited"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "wait",
+                "waiting"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.rainy-ticket-118.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Do not assume that every answer is one word.",
+            "prompt": "Complete gap 10 from the shared bank.",
+            "material": "The wet ticket queue\n\nShared bank: careful | child | five | good | know | make | rain | wait | we | with\n\nOur school ____1____ tickets for a family film afternoon. I was one of the helpers at the entrance. The teacher showed ____2____ how to check a ticket and point people towards their seats without blocking the door.\n\nThe weather became ____3____ just before the doors opened. Families waited under the covered path rather than standing outside in the wet playground. We moved slowly, and I checked the ticket numbers ____4____ before tearing off each small corner.\n\nTwo ____5____ arrived with their grandfather. One had dropped her ticket in a puddle. She looked worried, but her grandfather ____6____ the booking name. The teacher checked the list and found all three places.\n\nThe next family was the ____7____ group to arrive. Four earlier groups were already sitting down. I asked my friend whether a paper list was ____8____ than simply trying to remember every face. She said it helped, but only if we read it properly.\n\nAfter the film, we ____9____ until the busiest families had left before clearing the entrance. I carried the spare papers ____10____ both hands so they would not blow away. The afternoon had not been completely smooth, but the wet ticket had become a small problem with a calm solution.",
+            "explanation": "With both hands expresses carrying manner. Rain cannot fill the preposition slot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "with"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "rain"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "624e2eb227a5ed9cb017d25c2d08c5cfffc82c14b5e60289f2e708efa37b4046",
+      "reviewNotes": "Six complete junior form-changing ten-gap shared banks, two per grade. Grade7B complete alternative, grade8 one-word restriction, grade9 twelve choices/two unused kept distinct. Same-author full-bank and variant review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.jam-label-118",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · The labels on the jam jars",
+        "summary": "The labels on the jam jars，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade8-hubei2026-21cnjy26105408.bank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete ten-gap original word-bank passage with form changes. Grade7 follows B option as one complete alternative; grade8 retains one-word gaps; grade9 retains twelve choices with two unused. Source supplies task rules only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete junior form-changing ten-gap shared banks, two per grade. Grade7B complete alternative, grade8 one-word restriction, grade9 twelve choices/two unused kept distinct. Same-author full-bank and variant review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.jam-label-118",
+          "family": "shared_bank",
+          "label": "The labels on the jam jars",
+          "candidateSHA256": "cdc9e7323a1e0aa2300eb074df8d28f990da705af4ae59d2c2b92cf3ede3fd29",
+          "authorCheckSHA256": "8a07dce3ec7219686ccf6517d59ae44fc17fdda9bf3bfdc7647ca9d3d4ee4034",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.jam-label-118#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b118；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The labels on the jam jars\n\nShared bank: because | careful | child | cold | cook | doubt | for | one | return | they\n\nOur cooking club prepared jars of fruit spread for a supervised school fair. Before opening the stall, the teacher asked everyone to check ____1____ labels. Each jar needed a list of ingredients and a date, not merely a pretty name.\n\nWe had ____2____ the fruit the previous afternoon. The jars were now cool, and we handled them ____3____ so they would not hit one another. Nothing was offered until the teacher had checked the preparation and storage arrangements.\n\nThe ____4____ visitor asked whether a jar contained strawberries. Nobody had bought anything before her. We showed her the list rather than guessing from the colour. It was important to answer accurately ____5____ people could have particular dietary needs.\n\nSeveral younger ____6____ chose labels for the display, but they did not change the information printed underneath. A drawing could make a jar attractive without replacing details needed for a decision.\n\nThe room became ____7____ after the organisers opened the doors to let in fresh air. We put on our jackets and continued. I felt no ____8____ about following the teacher's instructions: the display was less important than handling food properly. At closing time, we ____9____ the unsold jars to the supervised storage area and thanked the staff ____10____ their help. The fair had involved cooking, reading and careful organisation, not just collecting money."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.jam-label-118.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 1 from the shared bank.",
+            "material": "The labels on the jam jars\n\nShared bank: because | careful | child | cold | cook | doubt | for | one | return | they\n\nOur cooking club prepared jars of fruit spread for a supervised school fair. Before opening the stall, the teacher asked everyone to check ____1____ labels. Each jar needed a list of ingredients and a date, not merely a pretty name.\n\nWe had ____2____ the fruit the previous afternoon. The jars were now cool, and we handled them ____3____ so they would not hit one another. Nothing was offered until the teacher had checked the preparation and storage arrangements.\n\nThe ____4____ visitor asked whether a jar contained strawberries. Nobody had bought anything before her. We showed her the list rather than guessing from the colour. It was important to answer accurately ____5____ people could have particular dietary needs.\n\nSeveral younger ____6____ chose labels for the display, but they did not change the information printed underneath. A drawing could make a jar attractive without replacing details needed for a decision.\n\nThe room became ____7____ after the organisers opened the doors to let in fresh air. We put on our jackets and continued. I felt no ____8____ about following the teacher's instructions: the display was less important than handling food properly. At closing time, we ____9____ the unsold jars to the supervised storage area and thanked the staff ____10____ their help. The fair had involved cooking, reading and careful organisation, not just collecting money.",
+            "explanation": "Their modifies labels, referring to everyone’s labels. Subject/object forms do not determine noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "their"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "they",
+                "them"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jam-label-118.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 2 from the shared bank.",
+            "material": "The labels on the jam jars\n\nShared bank: because | careful | child | cold | cook | doubt | for | one | return | they\n\nOur cooking club prepared jars of fruit spread for a supervised school fair. Before opening the stall, the teacher asked everyone to check ____1____ labels. Each jar needed a list of ingredients and a date, not merely a pretty name.\n\nWe had ____2____ the fruit the previous afternoon. The jars were now cool, and we handled them ____3____ so they would not hit one another. Nothing was offered until the teacher had checked the preparation and storage arrangements.\n\nThe ____4____ visitor asked whether a jar contained strawberries. Nobody had bought anything before her. We showed her the list rather than guessing from the colour. It was important to answer accurately ____5____ people could have particular dietary needs.\n\nSeveral younger ____6____ chose labels for the display, but they did not change the information printed underneath. A drawing could make a jar attractive without replacing details needed for a decision.\n\nThe room became ____7____ after the organisers opened the doors to let in fresh air. We put on our jackets and continued. I felt no ____8____ about following the teacher's instructions: the display was less important than handling food properly. At closing time, we ____9____ the unsold jars to the supervised storage area and thanked the staff ____10____ their help. The fair had involved cooking, reading and careful organisation, not just collecting money.",
+            "explanation": "Had cooked requires past participle from cook. Base/-ing do not follow had for perfect here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "cooked"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "cook",
+                "cooking"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jam-label-118.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 3 from the shared bank.",
+            "material": "The labels on the jam jars\n\nShared bank: because | careful | child | cold | cook | doubt | for | one | return | they\n\nOur cooking club prepared jars of fruit spread for a supervised school fair. Before opening the stall, the teacher asked everyone to check ____1____ labels. Each jar needed a list of ingredients and a date, not merely a pretty name.\n\nWe had ____2____ the fruit the previous afternoon. The jars were now cool, and we handled them ____3____ so they would not hit one another. Nothing was offered until the teacher had checked the preparation and storage arrangements.\n\nThe ____4____ visitor asked whether a jar contained strawberries. Nobody had bought anything before her. We showed her the list rather than guessing from the colour. It was important to answer accurately ____5____ people could have particular dietary needs.\n\nSeveral younger ____6____ chose labels for the display, but they did not change the information printed underneath. A drawing could make a jar attractive without replacing details needed for a decision.\n\nThe room became ____7____ after the organisers opened the doors to let in fresh air. We put on our jackets and continued. I felt no ____8____ about following the teacher's instructions: the display was less important than handling food properly. At closing time, we ____9____ the unsold jars to the supervised storage area and thanked the staff ____10____ their help. The fair had involved cooking, reading and careful organisation, not just collecting money.",
+            "explanation": "Carefully modifies handled. Carefulness noun does not fit; unlisted flat reading remains reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jam-label-118.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 4 from the shared bank.",
+            "material": "The labels on the jam jars\n\nShared bank: because | careful | child | cold | cook | doubt | for | one | return | they\n\nOur cooking club prepared jars of fruit spread for a supervised school fair. Before opening the stall, the teacher asked everyone to check ____1____ labels. Each jar needed a list of ingredients and a date, not merely a pretty name.\n\nWe had ____2____ the fruit the previous afternoon. The jars were now cool, and we handled them ____3____ so they would not hit one another. Nothing was offered until the teacher had checked the preparation and storage arrangements.\n\nThe ____4____ visitor asked whether a jar contained strawberries. Nobody had bought anything before her. We showed her the list rather than guessing from the colour. It was important to answer accurately ____5____ people could have particular dietary needs.\n\nSeveral younger ____6____ chose labels for the display, but they did not change the information printed underneath. A drawing could make a jar attractive without replacing details needed for a decision.\n\nThe room became ____7____ after the organisers opened the doors to let in fresh air. We put on our jackets and continued. I felt no ____8____ about following the teacher's instructions: the display was less important than handling food properly. At closing time, we ____9____ the unsold jars to the supervised storage area and thanked the staff ____10____ their help. The fair had involved cooking, reading and careful organisation, not just collecting money.",
+            "explanation": "No prior buyer/visitor before her establishes first. Cardinal/adverb do not form ordinal visitor.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "first"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "one",
+                "once"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jam-label-118.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 5 from the shared bank.",
+            "material": "The labels on the jam jars\n\nShared bank: because | careful | child | cold | cook | doubt | for | one | return | they\n\nOur cooking club prepared jars of fruit spread for a supervised school fair. Before opening the stall, the teacher asked everyone to check ____1____ labels. Each jar needed a list of ingredients and a date, not merely a pretty name.\n\nWe had ____2____ the fruit the previous afternoon. The jars were now cool, and we handled them ____3____ so they would not hit one another. Nothing was offered until the teacher had checked the preparation and storage arrangements.\n\nThe ____4____ visitor asked whether a jar contained strawberries. Nobody had bought anything before her. We showed her the list rather than guessing from the colour. It was important to answer accurately ____5____ people could have particular dietary needs.\n\nSeveral younger ____6____ chose labels for the display, but they did not change the information printed underneath. A drawing could make a jar attractive without replacing details needed for a decision.\n\nThe room became ____7____ after the organisers opened the doors to let in fresh air. We put on our jackets and continued. I felt no ____8____ about following the teacher's instructions: the display was less important than handling food properly. At closing time, we ____9____ the unsold jars to the supervised storage area and thanked the staff ____10____ their help. The fair had involved cooking, reading and careful organisation, not just collecting money.",
+            "explanation": "Because introduces the dietary-needs reason clause. Carefully is an adverb, not a conjunction; unlisted grammatical links remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "because"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "carefully"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jam-label-118.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 6 from the shared bank.",
+            "material": "The labels on the jam jars\n\nShared bank: because | careful | child | cold | cook | doubt | for | one | return | they\n\nOur cooking club prepared jars of fruit spread for a supervised school fair. Before opening the stall, the teacher asked everyone to check ____1____ labels. Each jar needed a list of ingredients and a date, not merely a pretty name.\n\nWe had ____2____ the fruit the previous afternoon. The jars were now cool, and we handled them ____3____ so they would not hit one another. Nothing was offered until the teacher had checked the preparation and storage arrangements.\n\nThe ____4____ visitor asked whether a jar contained strawberries. Nobody had bought anything before her. We showed her the list rather than guessing from the colour. It was important to answer accurately ____5____ people could have particular dietary needs.\n\nSeveral younger ____6____ chose labels for the display, but they did not change the information printed underneath. A drawing could make a jar attractive without replacing details needed for a decision.\n\nThe room became ____7____ after the organisers opened the doors to let in fresh air. We put on our jackets and continued. I felt no ____8____ about following the teacher's instructions: the display was less important than handling food properly. At closing time, we ____9____ the unsold jars to the supervised storage area and thanked the staff ____10____ their help. The fair had involved cooking, reading and careful organisation, not just collecting money.",
+            "explanation": "Several requires children. Singular/nonstandard plural do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "children"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "child",
+                "childs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jam-label-118.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 7 from the shared bank.",
+            "material": "The labels on the jam jars\n\nShared bank: because | careful | child | cold | cook | doubt | for | one | return | they\n\nOur cooking club prepared jars of fruit spread for a supervised school fair. Before opening the stall, the teacher asked everyone to check ____1____ labels. Each jar needed a list of ingredients and a date, not merely a pretty name.\n\nWe had ____2____ the fruit the previous afternoon. The jars were now cool, and we handled them ____3____ so they would not hit one another. Nothing was offered until the teacher had checked the preparation and storage arrangements.\n\nThe ____4____ visitor asked whether a jar contained strawberries. Nobody had bought anything before her. We showed her the list rather than guessing from the colour. It was important to answer accurately ____5____ people could have particular dietary needs.\n\nSeveral younger ____6____ chose labels for the display, but they did not change the information printed underneath. A drawing could make a jar attractive without replacing details needed for a decision.\n\nThe room became ____7____ after the organisers opened the doors to let in fresh air. We put on our jackets and continued. I felt no ____8____ about following the teacher's instructions: the display was less important than handling food properly. At closing time, we ____9____ the unsold jars to the supervised storage area and thanked the staff ____10____ their help. The fair had involved cooking, reading and careful organisation, not just collecting money.",
+            "explanation": "Colder describes the change relative to before; cold also validly describes the resulting state. Coldly adverb/coldness noun do not fit this linking construction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "colder",
+              "cold"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "coldly",
+                "coldness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jam-label-118.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 8 from the shared bank.",
+            "material": "The labels on the jam jars\n\nShared bank: because | careful | child | cold | cook | doubt | for | one | return | they\n\nOur cooking club prepared jars of fruit spread for a supervised school fair. Before opening the stall, the teacher asked everyone to check ____1____ labels. Each jar needed a list of ingredients and a date, not merely a pretty name.\n\nWe had ____2____ the fruit the previous afternoon. The jars were now cool, and we handled them ____3____ so they would not hit one another. Nothing was offered until the teacher had checked the preparation and storage arrangements.\n\nThe ____4____ visitor asked whether a jar contained strawberries. Nobody had bought anything before her. We showed her the list rather than guessing from the colour. It was important to answer accurately ____5____ people could have particular dietary needs.\n\nSeveral younger ____6____ chose labels for the display, but they did not change the information printed underneath. A drawing could make a jar attractive without replacing details needed for a decision.\n\nThe room became ____7____ after the organisers opened the doors to let in fresh air. We put on our jackets and continued. I felt no ____8____ about following the teacher's instructions: the display was less important than handling food properly. At closing time, we ____9____ the unsold jars to the supervised storage area and thanked the staff ____10____ their help. The fair had involved cooking, reading and careful organisation, not just collecting money.",
+            "explanation": "No doubt about following takes noun doubt. Doubtful adjective does not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "doubt"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "doubtful"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jam-label-118.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 9 from the shared bank.",
+            "material": "The labels on the jam jars\n\nShared bank: because | careful | child | cold | cook | doubt | for | one | return | they\n\nOur cooking club prepared jars of fruit spread for a supervised school fair. Before opening the stall, the teacher asked everyone to check ____1____ labels. Each jar needed a list of ingredients and a date, not merely a pretty name.\n\nWe had ____2____ the fruit the previous afternoon. The jars were now cool, and we handled them ____3____ so they would not hit one another. Nothing was offered until the teacher had checked the preparation and storage arrangements.\n\nThe ____4____ visitor asked whether a jar contained strawberries. Nobody had bought anything before her. We showed her the list rather than guessing from the colour. It was important to answer accurately ____5____ people could have particular dietary needs.\n\nSeveral younger ____6____ chose labels for the display, but they did not change the information printed underneath. A drawing could make a jar attractive without replacing details needed for a decision.\n\nThe room became ____7____ after the organisers opened the doors to let in fresh air. We put on our jackets and continued. I felt no ____8____ about following the teacher's instructions: the display was less important than handling food properly. At closing time, we ____9____ the unsold jars to the supervised storage area and thanked the staff ____10____ their help. The fair had involved cooking, reading and careful organisation, not just collecting money.",
+            "explanation": "Past closing sequence takes returned. Base/-ing do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "returned"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "return",
+                "returning"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jam-label-118.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 10 from the shared bank.",
+            "material": "The labels on the jam jars\n\nShared bank: because | careful | child | cold | cook | doubt | for | one | return | they\n\nOur cooking club prepared jars of fruit spread for a supervised school fair. Before opening the stall, the teacher asked everyone to check ____1____ labels. Each jar needed a list of ingredients and a date, not merely a pretty name.\n\nWe had ____2____ the fruit the previous afternoon. The jars were now cool, and we handled them ____3____ so they would not hit one another. Nothing was offered until the teacher had checked the preparation and storage arrangements.\n\nThe ____4____ visitor asked whether a jar contained strawberries. Nobody had bought anything before her. We showed her the list rather than guessing from the colour. It was important to answer accurately ____5____ people could have particular dietary needs.\n\nSeveral younger ____6____ chose labels for the display, but they did not change the information printed underneath. A drawing could make a jar attractive without replacing details needed for a decision.\n\nThe room became ____7____ after the organisers opened the doors to let in fresh air. We put on our jackets and continued. I felt no ____8____ about following the teacher's instructions: the display was less important than handling food properly. At closing time, we ____9____ the unsold jars to the supervised storage area and thanked the staff ____10____ their help. The fair had involved cooking, reading and careful organisation, not just collecting money.",
+            "explanation": "Thanked for help takes for. Because cannot directly introduce noun phrase their help.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "because"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "f482b54ed765a55e973cac21804a87be49c5f895bc208ed6e91dfde7fd30f0de",
+      "reviewNotes": "Six complete junior form-changing ten-gap shared banks, two per grade. Grade7B complete alternative, grade8 one-word restriction, grade9 twelve choices/two unused kept distinct. Same-author full-bank and variant review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.hilltop-walk-118",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · The hilltop walk",
+        "summary": "The hilltop walk，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade8-hubei2026-21cnjy26105408.bank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete ten-gap original word-bank passage with form changes. Grade7 follows B option as one complete alternative; grade8 retains one-word gaps; grade9 retains twelve choices with two unused. Source supplies task rules only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete junior form-changing ten-gap shared banks, two per grade. Grade7B complete alternative, grade8 one-word restriction, grade9 twelve choices/two unused kept distinct. Same-author full-bank and variant review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.hilltop-walk-118",
+          "family": "shared_bank",
+          "label": "The hilltop walk",
+          "candidateSHA256": "e0596b0f53cbcab69441f5e7a9e4ae79efbfaab2f43df474418d1713a218e7be",
+          "authorCheckSHA256": "4bea1195091beca6bd96bb7b03c26c40754627599fdd9dbbdf42ee5909c0d065",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.hilltop-walk-118#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b118；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The hilltop walk\n\nShared bank: because | child | clean | clear | for | steep | take | three | we | win\n\nOur class visited a hilltop nature centre last month. The guide asked us to keep ____1____ bags closed while walking, because loose wrappers could blow away. I checked that my water bottle was secure before we left the meeting point.\n\nThe path was ____2____ than the road beside the school. We walked in a line and did not try to pass one another at the narrowest points. The guide explained the route ____3____, including where we would stop for a rest.\n\nAt the ____4____ stop, after two earlier breaks, we looked across the valley. Several ____5____ were drawing the shapes of fields in their notebooks. I wrote down colours instead, knowing that a quick sketch was not the only way to record the view.\n\nWe stayed together ____6____ mist had begun to cover the far side of the hill. The guide did not change the route merely because one pupil wanted a closer photograph. The planned path and conditions mattered more than our first preferences.\n\nBefore lunch, we had ____7____ our boots with a brush at the centre's entrance. Staff were keeping soil from the outdoor paths away from the eating area. I thanked the guide ____8____ waiting while I finished.\n\nThe return walk ____9____ less time because we no longer stopped for drawings. Back at school, we compared the notes and pictures. They described different details, not a contest with only one possible ____10____. Looking at them together helped us remember a view that no single page had recorded completely."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.hilltop-walk-118.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 1 from the shared bank.",
+            "material": "The hilltop walk\n\nShared bank: because | child | clean | clear | for | steep | take | three | we | win\n\nOur class visited a hilltop nature centre last month. The guide asked us to keep ____1____ bags closed while walking, because loose wrappers could blow away. I checked that my water bottle was secure before we left the meeting point.\n\nThe path was ____2____ than the road beside the school. We walked in a line and did not try to pass one another at the narrowest points. The guide explained the route ____3____, including where we would stop for a rest.\n\nAt the ____4____ stop, after two earlier breaks, we looked across the valley. Several ____5____ were drawing the shapes of fields in their notebooks. I wrote down colours instead, knowing that a quick sketch was not the only way to record the view.\n\nWe stayed together ____6____ mist had begun to cover the far side of the hill. The guide did not change the route merely because one pupil wanted a closer photograph. The planned path and conditions mattered more than our first preferences.\n\nBefore lunch, we had ____7____ our boots with a brush at the centre's entrance. Staff were keeping soil from the outdoor paths away from the eating area. I thanked the guide ____8____ waiting while I finished.\n\nThe return walk ____9____ less time because we no longer stopped for drawings. Back at school, we compared the notes and pictures. They described different details, not a contest with only one possible ____10____. Looking at them together helped us remember a view that no single page had recorded completely.",
+            "explanation": "Our modifies bags. Subject/object forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "our"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "we",
+                "us"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.hilltop-walk-118.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 2 from the shared bank.",
+            "material": "The hilltop walk\n\nShared bank: because | child | clean | clear | for | steep | take | three | we | win\n\nOur class visited a hilltop nature centre last month. The guide asked us to keep ____1____ bags closed while walking, because loose wrappers could blow away. I checked that my water bottle was secure before we left the meeting point.\n\nThe path was ____2____ than the road beside the school. We walked in a line and did not try to pass one another at the narrowest points. The guide explained the route ____3____, including where we would stop for a rest.\n\nAt the ____4____ stop, after two earlier breaks, we looked across the valley. Several ____5____ were drawing the shapes of fields in their notebooks. I wrote down colours instead, knowing that a quick sketch was not the only way to record the view.\n\nWe stayed together ____6____ mist had begun to cover the far side of the hill. The guide did not change the route merely because one pupil wanted a closer photograph. The planned path and conditions mattered more than our first preferences.\n\nBefore lunch, we had ____7____ our boots with a brush at the centre's entrance. Staff were keeping soil from the outdoor paths away from the eating area. I thanked the guide ____8____ waiting while I finished.\n\nThe return walk ____9____ less time because we no longer stopped for drawings. Back at school, we compared the notes and pictures. They described different details, not a contest with only one possible ____10____. Looking at them together helped us remember a view that no single page had recorded completely.",
+            "explanation": "Than requires steeper. Superlative/double comparative do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "steeper"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "steepest",
+                "more steeper"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.hilltop-walk-118.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 3 from the shared bank.",
+            "material": "The hilltop walk\n\nShared bank: because | child | clean | clear | for | steep | take | three | we | win\n\nOur class visited a hilltop nature centre last month. The guide asked us to keep ____1____ bags closed while walking, because loose wrappers could blow away. I checked that my water bottle was secure before we left the meeting point.\n\nThe path was ____2____ than the road beside the school. We walked in a line and did not try to pass one another at the narrowest points. The guide explained the route ____3____, including where we would stop for a rest.\n\nAt the ____4____ stop, after two earlier breaks, we looked across the valley. Several ____5____ were drawing the shapes of fields in their notebooks. I wrote down colours instead, knowing that a quick sketch was not the only way to record the view.\n\nWe stayed together ____6____ mist had begun to cover the far side of the hill. The guide did not change the route merely because one pupil wanted a closer photograph. The planned path and conditions mattered more than our first preferences.\n\nBefore lunch, we had ____7____ our boots with a brush at the centre's entrance. Staff were keeping soil from the outdoor paths away from the eating area. I thanked the guide ____8____ waiting while I finished.\n\nThe return walk ____9____ less time because we no longer stopped for drawings. Back at school, we compared the notes and pictures. They described different details, not a contest with only one possible ____10____. Looking at them together helped us remember a view that no single page had recorded completely.",
+            "explanation": "Clearly modifies explained; clearance is noun. Unlisted flat variants remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "clearly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "clearance"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.hilltop-walk-118.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 4 from the shared bank.",
+            "material": "The hilltop walk\n\nShared bank: because | child | clean | clear | for | steep | take | three | we | win\n\nOur class visited a hilltop nature centre last month. The guide asked us to keep ____1____ bags closed while walking, because loose wrappers could blow away. I checked that my water bottle was secure before we left the meeting point.\n\nThe path was ____2____ than the road beside the school. We walked in a line and did not try to pass one another at the narrowest points. The guide explained the route ____3____, including where we would stop for a rest.\n\nAt the ____4____ stop, after two earlier breaks, we looked across the valley. Several ____5____ were drawing the shapes of fields in their notebooks. I wrote down colours instead, knowing that a quick sketch was not the only way to record the view.\n\nWe stayed together ____6____ mist had begun to cover the far side of the hill. The guide did not change the route merely because one pupil wanted a closer photograph. The planned path and conditions mattered more than our first preferences.\n\nBefore lunch, we had ____7____ our boots with a brush at the centre's entrance. Staff were keeping soil from the outdoor paths away from the eating area. I thanked the guide ____8____ waiting while I finished.\n\nThe return walk ____9____ less time because we no longer stopped for drawings. Back at school, we compared the notes and pictures. They described different details, not a contest with only one possible ____10____. Looking at them together helped us remember a view that no single page had recorded completely.",
+            "explanation": "Two earlier stops establish third. Cardinal/fraction plural do not fit ordinal.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "third"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "three",
+                "thirds"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.hilltop-walk-118.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 5 from the shared bank.",
+            "material": "The hilltop walk\n\nShared bank: because | child | clean | clear | for | steep | take | three | we | win\n\nOur class visited a hilltop nature centre last month. The guide asked us to keep ____1____ bags closed while walking, because loose wrappers could blow away. I checked that my water bottle was secure before we left the meeting point.\n\nThe path was ____2____ than the road beside the school. We walked in a line and did not try to pass one another at the narrowest points. The guide explained the route ____3____, including where we would stop for a rest.\n\nAt the ____4____ stop, after two earlier breaks, we looked across the valley. Several ____5____ were drawing the shapes of fields in their notebooks. I wrote down colours instead, knowing that a quick sketch was not the only way to record the view.\n\nWe stayed together ____6____ mist had begun to cover the far side of the hill. The guide did not change the route merely because one pupil wanted a closer photograph. The planned path and conditions mattered more than our first preferences.\n\nBefore lunch, we had ____7____ our boots with a brush at the centre's entrance. Staff were keeping soil from the outdoor paths away from the eating area. I thanked the guide ____8____ waiting while I finished.\n\nThe return walk ____9____ less time because we no longer stopped for drawings. Back at school, we compared the notes and pictures. They described different details, not a contest with only one possible ____10____. Looking at them together helped us remember a view that no single page had recorded completely.",
+            "explanation": "Several requires children. Singular/nonstandard plural do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "children"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "child",
+                "childs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.hilltop-walk-118.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 6 from the shared bank.",
+            "material": "The hilltop walk\n\nShared bank: because | child | clean | clear | for | steep | take | three | we | win\n\nOur class visited a hilltop nature centre last month. The guide asked us to keep ____1____ bags closed while walking, because loose wrappers could blow away. I checked that my water bottle was secure before we left the meeting point.\n\nThe path was ____2____ than the road beside the school. We walked in a line and did not try to pass one another at the narrowest points. The guide explained the route ____3____, including where we would stop for a rest.\n\nAt the ____4____ stop, after two earlier breaks, we looked across the valley. Several ____5____ were drawing the shapes of fields in their notebooks. I wrote down colours instead, knowing that a quick sketch was not the only way to record the view.\n\nWe stayed together ____6____ mist had begun to cover the far side of the hill. The guide did not change the route merely because one pupil wanted a closer photograph. The planned path and conditions mattered more than our first preferences.\n\nBefore lunch, we had ____7____ our boots with a brush at the centre's entrance. Staff were keeping soil from the outdoor paths away from the eating area. I thanked the guide ____8____ waiting while I finished.\n\nThe return walk ____9____ less time because we no longer stopped for drawings. Back at school, we compared the notes and pictures. They described different details, not a contest with only one possible ____10____. Looking at them together helped us remember a view that no single page had recorded completely.",
+            "explanation": "Because introduces the mist as the reason for staying together. Our cannot link the finite clause; unlisted grammatical links remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "because"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "our"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.hilltop-walk-118.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 7 from the shared bank.",
+            "material": "The hilltop walk\n\nShared bank: because | child | clean | clear | for | steep | take | three | we | win\n\nOur class visited a hilltop nature centre last month. The guide asked us to keep ____1____ bags closed while walking, because loose wrappers could blow away. I checked that my water bottle was secure before we left the meeting point.\n\nThe path was ____2____ than the road beside the school. We walked in a line and did not try to pass one another at the narrowest points. The guide explained the route ____3____, including where we would stop for a rest.\n\nAt the ____4____ stop, after two earlier breaks, we looked across the valley. Several ____5____ were drawing the shapes of fields in their notebooks. I wrote down colours instead, knowing that a quick sketch was not the only way to record the view.\n\nWe stayed together ____6____ mist had begun to cover the far side of the hill. The guide did not change the route merely because one pupil wanted a closer photograph. The planned path and conditions mattered more than our first preferences.\n\nBefore lunch, we had ____7____ our boots with a brush at the centre's entrance. Staff were keeping soil from the outdoor paths away from the eating area. I thanked the guide ____8____ waiting while I finished.\n\nThe return walk ____9____ less time because we no longer stopped for drawings. Back at school, we compared the notes and pictures. They described different details, not a contest with only one possible ____10____. Looking at them together helped us remember a view that no single page had recorded completely.",
+            "explanation": "Had cleaned uses past participle. Base/-ing do not form this perfect.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "cleaned"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "clean",
+                "cleaning"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.hilltop-walk-118.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 8 from the shared bank.",
+            "material": "The hilltop walk\n\nShared bank: because | child | clean | clear | for | steep | take | three | we | win\n\nOur class visited a hilltop nature centre last month. The guide asked us to keep ____1____ bags closed while walking, because loose wrappers could blow away. I checked that my water bottle was secure before we left the meeting point.\n\nThe path was ____2____ than the road beside the school. We walked in a line and did not try to pass one another at the narrowest points. The guide explained the route ____3____, including where we would stop for a rest.\n\nAt the ____4____ stop, after two earlier breaks, we looked across the valley. Several ____5____ were drawing the shapes of fields in their notebooks. I wrote down colours instead, knowing that a quick sketch was not the only way to record the view.\n\nWe stayed together ____6____ mist had begun to cover the far side of the hill. The guide did not change the route merely because one pupil wanted a closer photograph. The planned path and conditions mattered more than our first preferences.\n\nBefore lunch, we had ____7____ our boots with a brush at the centre's entrance. Staff were keeping soil from the outdoor paths away from the eating area. I thanked the guide ____8____ waiting while I finished.\n\nThe return walk ____9____ less time because we no longer stopped for drawings. Back at school, we compared the notes and pictures. They described different details, not a contest with only one possible ____10____. Looking at them together helped us remember a view that no single page had recorded completely.",
+            "explanation": "Thanked for waiting takes for before -ing. Because does not directly take waiting clause without subject here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "because"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.hilltop-walk-118.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 9 from the shared bank.",
+            "material": "The hilltop walk\n\nShared bank: because | child | clean | clear | for | steep | take | three | we | win\n\nOur class visited a hilltop nature centre last month. The guide asked us to keep ____1____ bags closed while walking, because loose wrappers could blow away. I checked that my water bottle was secure before we left the meeting point.\n\nThe path was ____2____ than the road beside the school. We walked in a line and did not try to pass one another at the narrowest points. The guide explained the route ____3____, including where we would stop for a rest.\n\nAt the ____4____ stop, after two earlier breaks, we looked across the valley. Several ____5____ were drawing the shapes of fields in their notebooks. I wrote down colours instead, knowing that a quick sketch was not the only way to record the view.\n\nWe stayed together ____6____ mist had begun to cover the far side of the hill. The guide did not change the route merely because one pupil wanted a closer photograph. The planned path and conditions mattered more than our first preferences.\n\nBefore lunch, we had ____7____ our boots with a brush at the centre's entrance. Staff were keeping soil from the outdoor paths away from the eating area. I thanked the guide ____8____ waiting while I finished.\n\nThe return walk ____9____ less time because we no longer stopped for drawings. Back at school, we compared the notes and pictures. They described different details, not a contest with only one possible ____10____. Looking at them together helped us remember a view that no single page had recorded completely.",
+            "explanation": "Past return walk took time. Base/-ing do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "took"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "take",
+                "taking"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.hilltop-walk-118.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Write ONE word per gap.",
+            "prompt": "Complete gap 10 from the shared bank.",
+            "material": "The hilltop walk\n\nShared bank: because | child | clean | clear | for | steep | take | three | we | win\n\nOur class visited a hilltop nature centre last month. The guide asked us to keep ____1____ bags closed while walking, because loose wrappers could blow away. I checked that my water bottle was secure before we left the meeting point.\n\nThe path was ____2____ than the road beside the school. We walked in a line and did not try to pass one another at the narrowest points. The guide explained the route ____3____, including where we would stop for a rest.\n\nAt the ____4____ stop, after two earlier breaks, we looked across the valley. Several ____5____ were drawing the shapes of fields in their notebooks. I wrote down colours instead, knowing that a quick sketch was not the only way to record the view.\n\nWe stayed together ____6____ mist had begun to cover the far side of the hill. The guide did not change the route merely because one pupil wanted a closer photograph. The planned path and conditions mattered more than our first preferences.\n\nBefore lunch, we had ____7____ our boots with a brush at the centre's entrance. Staff were keeping soil from the outdoor paths away from the eating area. I thanked the guide ____8____ waiting while I finished.\n\nThe return walk ____9____ less time because we no longer stopped for drawings. Back at school, we compared the notes and pictures. They described different details, not a contest with only one possible ____10____. Looking at them together helped us remember a view that no single page had recorded completely.",
+            "explanation": "One possible winner is a person who wins; winning does not name countable participant in this slot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "winner"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "winning"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "d644efa707fdea0cb37805edb3bfc7efc1e54240fe87d385bdb5eda6b8ed8427",
+      "reviewNotes": "Six complete junior form-changing ten-gap shared banks, two per grade. Grade7B complete alternative, grade8 one-word restriction, grade9 twelve choices/two unused kept distinct. Same-author full-bank and variant review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.portable-exhibition-118",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · The exhibition that fitted in cases",
+        "summary": "The exhibition that fitted in cases，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-chengdu2025-21cnjy23208601.bank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete ten-gap original word-bank passage with form changes. Grade7 follows B option as one complete alternative; grade8 retains one-word gaps; grade9 retains twelve choices with two unused. Source supplies task rules only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete junior form-changing ten-gap shared banks, two per grade. Grade7B complete alternative, grade8 one-word restriction, grade9 twelve choices/two unused kept distinct. Same-author full-bank and variant review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.portable-exhibition-118",
+          "family": "shared_bank",
+          "label": "The exhibition that fitted in cases",
+          "candidateSHA256": "23399642e2dfe6e0cee00fd187afc86ad1509dbff21336e6aeb1602b663b4944",
+          "authorCheckSHA256": "46607017499b48483d1c7c4040f2aabc35261e1e0f6c996129b64393d68309bd",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.portable-exhibition-118#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b118；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The exhibition that fitted in cases\n\nShared bank: advantage | colour | cost | instead | interest | make | patient | rain | silent | then | they | three\n\nA travelling exhibition arrived at our school in four large cases. At first, we could not imagine how the displays would fit in the hall. The staff member ____1____ explained that the cases opened into stands, with panels stored inside.\n\nOur teacher asked us to follow ____2____ instructions rather than pull at anything that looked like a handle. Several parts were numbered. As we assembled the ____3____ stand, with the first two complete, the arrangement became easier to understand.\n\nSome pupils had ____4____ pictures for the exhibition during the previous term. Seeing their work beside other schools' contributions made the project feel larger than our own class. The displays were surprisingly ____5____, although the cases had looked plain from outside.\n\nVisitors moved ____6____ around the hall while a short presentation was recorded. Afterwards, questions were welcomed. A younger pupil asked why the panels were not fixed permanently to the walls. The guide described several ____7____: the exhibition could travel, the hall could be used again and damaged parts could be replaced separately.\n\nWe used free-standing signs ____8____ of putting tape on the newly painted walls. The plan took longer to arrange, but it respected the school's conditions. When the last class left, we ____9____ began packing the cases again. The task was less mysterious now. We were genuinely ____10____ in how the parts fitted, rather than merely waiting for someone else to finish. A temporary exhibition had taught us something about design that a finished wall display might have concealed."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.portable-exhibition-118.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 1 from the shared bank.",
+            "material": "The exhibition that fitted in cases\n\nShared bank: advantage | colour | cost | instead | interest | make | patient | rain | silent | then | they | three\n\nA travelling exhibition arrived at our school in four large cases. At first, we could not imagine how the displays would fit in the hall. The staff member ____1____ explained that the cases opened into stands, with panels stored inside.\n\nOur teacher asked us to follow ____2____ instructions rather than pull at anything that looked like a handle. Several parts were numbered. As we assembled the ____3____ stand, with the first two complete, the arrangement became easier to understand.\n\nSome pupils had ____4____ pictures for the exhibition during the previous term. Seeing their work beside other schools' contributions made the project feel larger than our own class. The displays were surprisingly ____5____, although the cases had looked plain from outside.\n\nVisitors moved ____6____ around the hall while a short presentation was recorded. Afterwards, questions were welcomed. A younger pupil asked why the panels were not fixed permanently to the walls. The guide described several ____7____: the exhibition could travel, the hall could be used again and damaged parts could be replaced separately.\n\nWe used free-standing signs ____8____ of putting tape on the newly painted walls. The plan took longer to arrange, but it respected the school's conditions. When the last class left, we ____9____ began packing the cases again. The task was less mysterious now. We were genuinely ____10____ in how the parts fitted, rather than merely waiting for someone else to finish. A temporary exhibition had taught us something about design that a finished wall display might have concealed.",
+            "explanation": "Patiently from patient modifies explained. Patience is a noun; unlisted flat-adverb uses remain reviewable. This avoids a second interchangeable time adverb in the bank.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "patiently"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "patience"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.portable-exhibition-118.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 2 from the shared bank.",
+            "material": "The exhibition that fitted in cases\n\nShared bank: advantage | colour | cost | instead | interest | make | patient | rain | silent | then | they | three\n\nA travelling exhibition arrived at our school in four large cases. At first, we could not imagine how the displays would fit in the hall. The staff member ____1____ explained that the cases opened into stands, with panels stored inside.\n\nOur teacher asked us to follow ____2____ instructions rather than pull at anything that looked like a handle. Several parts were numbered. As we assembled the ____3____ stand, with the first two complete, the arrangement became easier to understand.\n\nSome pupils had ____4____ pictures for the exhibition during the previous term. Seeing their work beside other schools' contributions made the project feel larger than our own class. The displays were surprisingly ____5____, although the cases had looked plain from outside.\n\nVisitors moved ____6____ around the hall while a short presentation was recorded. Afterwards, questions were welcomed. A younger pupil asked why the panels were not fixed permanently to the walls. The guide described several ____7____: the exhibition could travel, the hall could be used again and damaged parts could be replaced separately.\n\nWe used free-standing signs ____8____ of putting tape on the newly painted walls. The plan took longer to arrange, but it respected the school's conditions. When the last class left, we ____9____ began packing the cases again. The task was less mysterious now. We were genuinely ____10____ in how the parts fitted, rather than merely waiting for someone else to finish. A temporary exhibition had taught us something about design that a finished wall display might have concealed.",
+            "explanation": "Their modifies instructions, referring to exhibition staff. Subject/object forms do not determine noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "their"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "them"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.portable-exhibition-118.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 3 from the shared bank.",
+            "material": "The exhibition that fitted in cases\n\nShared bank: advantage | colour | cost | instead | interest | make | patient | rain | silent | then | they | three\n\nA travelling exhibition arrived at our school in four large cases. At first, we could not imagine how the displays would fit in the hall. The staff member ____1____ explained that the cases opened into stands, with panels stored inside.\n\nOur teacher asked us to follow ____2____ instructions rather than pull at anything that looked like a handle. Several parts were numbered. As we assembled the ____3____ stand, with the first two complete, the arrangement became easier to understand.\n\nSome pupils had ____4____ pictures for the exhibition during the previous term. Seeing their work beside other schools' contributions made the project feel larger than our own class. The displays were surprisingly ____5____, although the cases had looked plain from outside.\n\nVisitors moved ____6____ around the hall while a short presentation was recorded. Afterwards, questions were welcomed. A younger pupil asked why the panels were not fixed permanently to the walls. The guide described several ____7____: the exhibition could travel, the hall could be used again and damaged parts could be replaced separately.\n\nWe used free-standing signs ____8____ of putting tape on the newly painted walls. The plan took longer to arrange, but it respected the school's conditions. When the last class left, we ____9____ began packing the cases again. The task was less mysterious now. We were genuinely ____10____ in how the parts fitted, rather than merely waiting for someone else to finish. A temporary exhibition had taught us something about design that a finished wall display might have concealed.",
+            "explanation": "First two complete make next third. Cardinal/fraction plural do not fit ordinal.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "third"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "three",
+                "thirds"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.portable-exhibition-118.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 4 from the shared bank.",
+            "material": "The exhibition that fitted in cases\n\nShared bank: advantage | colour | cost | instead | interest | make | patient | rain | silent | then | they | three\n\nA travelling exhibition arrived at our school in four large cases. At first, we could not imagine how the displays would fit in the hall. The staff member ____1____ explained that the cases opened into stands, with panels stored inside.\n\nOur teacher asked us to follow ____2____ instructions rather than pull at anything that looked like a handle. Several parts were numbered. As we assembled the ____3____ stand, with the first two complete, the arrangement became easier to understand.\n\nSome pupils had ____4____ pictures for the exhibition during the previous term. Seeing their work beside other schools' contributions made the project feel larger than our own class. The displays were surprisingly ____5____, although the cases had looked plain from outside.\n\nVisitors moved ____6____ around the hall while a short presentation was recorded. Afterwards, questions were welcomed. A younger pupil asked why the panels were not fixed permanently to the walls. The guide described several ____7____: the exhibition could travel, the hall could be used again and damaged parts could be replaced separately.\n\nWe used free-standing signs ____8____ of putting tape on the newly painted walls. The plan took longer to arrange, but it respected the school's conditions. When the last class left, we ____9____ began packing the cases again. The task was less mysterious now. We were genuinely ____10____ in how the parts fitted, rather than merely waiting for someone else to finish. A temporary exhibition had taught us something about design that a finished wall display might have concealed.",
+            "explanation": "Had made takes past participle. Base/-ing do not fit perfect.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "made"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "make",
+                "making"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.portable-exhibition-118.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 5 from the shared bank.",
+            "material": "The exhibition that fitted in cases\n\nShared bank: advantage | colour | cost | instead | interest | make | patient | rain | silent | then | they | three\n\nA travelling exhibition arrived at our school in four large cases. At first, we could not imagine how the displays would fit in the hall. The staff member ____1____ explained that the cases opened into stands, with panels stored inside.\n\nOur teacher asked us to follow ____2____ instructions rather than pull at anything that looked like a handle. Several parts were numbered. As we assembled the ____3____ stand, with the first two complete, the arrangement became easier to understand.\n\nSome pupils had ____4____ pictures for the exhibition during the previous term. Seeing their work beside other schools' contributions made the project feel larger than our own class. The displays were surprisingly ____5____, although the cases had looked plain from outside.\n\nVisitors moved ____6____ around the hall while a short presentation was recorded. Afterwards, questions were welcomed. A younger pupil asked why the panels were not fixed permanently to the walls. The guide described several ____7____: the exhibition could travel, the hall could be used again and damaged parts could be replaced separately.\n\nWe used free-standing signs ____8____ of putting tape on the newly painted walls. The plan took longer to arrange, but it respected the school's conditions. When the last class left, we ____9____ began packing the cases again. The task was less mysterious now. We were genuinely ____10____ in how the parts fitted, rather than merely waiting for someone else to finish. A temporary exhibition had taught us something about design that a finished wall display might have concealed.",
+            "explanation": "Displays were colourful/colorful requires adjective. Adverbs do not follow were as description here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "colourful",
+              "colorful"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "colourfully",
+                "colorfully"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.portable-exhibition-118.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 6 from the shared bank.",
+            "material": "The exhibition that fitted in cases\n\nShared bank: advantage | colour | cost | instead | interest | make | patient | rain | silent | then | they | three\n\nA travelling exhibition arrived at our school in four large cases. At first, we could not imagine how the displays would fit in the hall. The staff member ____1____ explained that the cases opened into stands, with panels stored inside.\n\nOur teacher asked us to follow ____2____ instructions rather than pull at anything that looked like a handle. Several parts were numbered. As we assembled the ____3____ stand, with the first two complete, the arrangement became easier to understand.\n\nSome pupils had ____4____ pictures for the exhibition during the previous term. Seeing their work beside other schools' contributions made the project feel larger than our own class. The displays were surprisingly ____5____, although the cases had looked plain from outside.\n\nVisitors moved ____6____ around the hall while a short presentation was recorded. Afterwards, questions were welcomed. A younger pupil asked why the panels were not fixed permanently to the walls. The guide described several ____7____: the exhibition could travel, the hall could be used again and damaged parts could be replaced separately.\n\nWe used free-standing signs ____8____ of putting tape on the newly painted walls. The plan took longer to arrange, but it respected the school's conditions. When the last class left, we ____9____ began packing the cases again. The task was less mysterious now. We were genuinely ____10____ in how the parts fitted, rather than merely waiting for someone else to finish. A temporary exhibition had taught us something about design that a finished wall display might have concealed.",
+            "explanation": "Silently modifies moved during recording. Silence noun does not fit; unlisted flat reading remains reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "silently"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "silence"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.portable-exhibition-118.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 7 from the shared bank.",
+            "material": "The exhibition that fitted in cases\n\nShared bank: advantage | colour | cost | instead | interest | make | patient | rain | silent | then | they | three\n\nA travelling exhibition arrived at our school in four large cases. At first, we could not imagine how the displays would fit in the hall. The staff member ____1____ explained that the cases opened into stands, with panels stored inside.\n\nOur teacher asked us to follow ____2____ instructions rather than pull at anything that looked like a handle. Several parts were numbered. As we assembled the ____3____ stand, with the first two complete, the arrangement became easier to understand.\n\nSome pupils had ____4____ pictures for the exhibition during the previous term. Seeing their work beside other schools' contributions made the project feel larger than our own class. The displays were surprisingly ____5____, although the cases had looked plain from outside.\n\nVisitors moved ____6____ around the hall while a short presentation was recorded. Afterwards, questions were welcomed. A younger pupil asked why the panels were not fixed permanently to the walls. The guide described several ____7____: the exhibition could travel, the hall could be used again and damaged parts could be replaced separately.\n\nWe used free-standing signs ____8____ of putting tape on the newly painted walls. The plan took longer to arrange, but it respected the school's conditions. When the last class left, we ____9____ began packing the cases again. The task was less mysterious now. We were genuinely ____10____ in how the parts fitted, rather than merely waiting for someone else to finish. A temporary exhibition had taught us something about design that a finished wall display might have concealed.",
+            "explanation": "Several advantages names plural benefits. Advantageous adjective does not fill count noun slot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "advantages"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "advantageous"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.portable-exhibition-118.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 8 from the shared bank.",
+            "material": "The exhibition that fitted in cases\n\nShared bank: advantage | colour | cost | instead | interest | make | patient | rain | silent | then | they | three\n\nA travelling exhibition arrived at our school in four large cases. At first, we could not imagine how the displays would fit in the hall. The staff member ____1____ explained that the cases opened into stands, with panels stored inside.\n\nOur teacher asked us to follow ____2____ instructions rather than pull at anything that looked like a handle. Several parts were numbered. As we assembled the ____3____ stand, with the first two complete, the arrangement became easier to understand.\n\nSome pupils had ____4____ pictures for the exhibition during the previous term. Seeing their work beside other schools' contributions made the project feel larger than our own class. The displays were surprisingly ____5____, although the cases had looked plain from outside.\n\nVisitors moved ____6____ around the hall while a short presentation was recorded. Afterwards, questions were welcomed. A younger pupil asked why the panels were not fixed permanently to the walls. The guide described several ____7____: the exhibition could travel, the hall could be used again and damaged parts could be replaced separately.\n\nWe used free-standing signs ____8____ of putting tape on the newly painted walls. The plan took longer to arrange, but it respected the school's conditions. When the last class left, we ____9____ began packing the cases again. The task was less mysterious now. We were genuinely ____10____ in how the parts fitted, rather than merely waiting for someone else to finish. A temporary exhibition had taught us something about design that a finished wall display might have concealed.",
+            "explanation": "Instead of gives replacement action. Cost of would change meaning and not fit this route choice.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "instead"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "cost"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.portable-exhibition-118.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 9 from the shared bank.",
+            "material": "The exhibition that fitted in cases\n\nShared bank: advantage | colour | cost | instead | interest | make | patient | rain | silent | then | they | three\n\nA travelling exhibition arrived at our school in four large cases. At first, we could not imagine how the displays would fit in the hall. The staff member ____1____ explained that the cases opened into stands, with panels stored inside.\n\nOur teacher asked us to follow ____2____ instructions rather than pull at anything that looked like a handle. Several parts were numbered. As we assembled the ____3____ stand, with the first two complete, the arrangement became easier to understand.\n\nSome pupils had ____4____ pictures for the exhibition during the previous term. Seeing their work beside other schools' contributions made the project feel larger than our own class. The displays were surprisingly ____5____, although the cases had looked plain from outside.\n\nVisitors moved ____6____ around the hall while a short presentation was recorded. Afterwards, questions were welcomed. A younger pupil asked why the panels were not fixed permanently to the walls. The guide described several ____7____: the exhibition could travel, the hall could be used again and damaged parts could be replaced separately.\n\nWe used free-standing signs ____8____ of putting tape on the newly painted walls. The plan took longer to arrange, but it respected the school's conditions. When the last class left, we ____9____ began packing the cases again. The task was less mysterious now. We were genuinely ____10____ in how the parts fitted, rather than merely waiting for someone else to finish. A temporary exhibition had taught us something about design that a finished wall display might have concealed.",
+            "explanation": "Then advances sequence after last class. Than is comparative, not time adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "then"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "than"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.portable-exhibition-118.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 10 from the shared bank.",
+            "material": "The exhibition that fitted in cases\n\nShared bank: advantage | colour | cost | instead | interest | make | patient | rain | silent | then | they | three\n\nA travelling exhibition arrived at our school in four large cases. At first, we could not imagine how the displays would fit in the hall. The staff member ____1____ explained that the cases opened into stands, with panels stored inside.\n\nOur teacher asked us to follow ____2____ instructions rather than pull at anything that looked like a handle. Several parts were numbered. As we assembled the ____3____ stand, with the first two complete, the arrangement became easier to understand.\n\nSome pupils had ____4____ pictures for the exhibition during the previous term. Seeing their work beside other schools' contributions made the project feel larger than our own class. The displays were surprisingly ____5____, although the cases had looked plain from outside.\n\nVisitors moved ____6____ around the hall while a short presentation was recorded. Afterwards, questions were welcomed. A younger pupil asked why the panels were not fixed permanently to the walls. The guide described several ____7____: the exhibition could travel, the hall could be used again and damaged parts could be replaced separately.\n\nWe used free-standing signs ____8____ of putting tape on the newly painted walls. The plan took longer to arrange, but it respected the school's conditions. When the last class left, we ____9____ began packing the cases again. The task was less mysterious now. We were genuinely ____10____ in how the parts fitted, rather than merely waiting for someone else to finish. A temporary exhibition had taught us something about design that a finished wall display might have concealed.",
+            "explanation": "We were interested in how describes our attention. Interesting in would describe causing interest, not experiencing it. Cost/rain are unused bank entries.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "interested"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "interesting"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "f89ba2e09a09e6b22da46aa95a956f97085d79c2b8df8b51b7fe6243d31b4b14",
+      "reviewNotes": "Six complete junior form-changing ten-gap shared banks, two per grade. Grade7B complete alternative, grade8 one-word restriction, grade9 twelve choices/two unused kept distinct. Same-author full-bank and variant review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.watching-moth-118",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · The moth beside the noticeboard",
+        "summary": "The moth beside the noticeboard，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-chengdu2025-21cnjy23208601.bank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete ten-gap original word-bank passage with form changes. Grade7 follows B option as one complete alternative; grade8 retains one-word gaps; grade9 retains twelve choices with two unused. Source supplies task rules only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete junior form-changing ten-gap shared banks, two per grade. Grade7B complete alternative, grade8 one-word restriction, grade9 twelve choices/two unused kept distinct. Same-author full-bank and variant review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.watching-moth-118",
+          "family": "shared_bank",
+          "label": "The moth beside the noticeboard",
+          "candidateSHA256": "1edd41858abde5d18ac7fcc1d439d00e1fbcd523e69150f84db9c379bc1d0403",
+          "authorCheckSHA256": "6957d288f68a8ba64ae8179d9946d33778761c7e55de291aa9b47d368111d25b",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.watching-moth-118#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b118；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The moth beside the noticeboard\n\nShared bank: colour | cost | finally | five | instead | interest | make | question | rain | say | silent | they\n\nA large moth appeared beside the school noticeboard one morning. Its wing pattern attracted several pupils, and ____1____ science teacher asked everyone to leave it undisturbed. We could observe without touching or crowding it.\n\nBy lunchtime, one class had ____2____ three drawings of the moth. The drawings differed because the pupils had stood at different angles. Comparing them revealed several ____3____ about how the wings overlapped and which marks were visible.\n\nWe moved ____4____ while another pupil took a close photograph from a suitable distance. The corridor was not silent forever; we simply avoided sudden disturbance during that moment. On the ____5____ visit, after four earlier checks, the moth was no longer there.\n\nThe teacher asked us not to invent a story about its departure. It might have flown away when nobody was looking. We could record the last time it had been seen, ____6____ of claiming to know exactly when it moved.\n\nSomeone had ____7____ that the brown pattern looked dull. In the enlarged photograph, it was more complex and ____8____ than expected. The picture did not tell us everything about the moth, but it made the visible details easier to compare.\n\nWe ____9____ completed a short display with dates, drawings and the photograph. I had become much more ____10____ in the animal after looking carefully. Its absence left a limit in our record, not permission to fill the gap with certainty. The noticeboard now held an account of what we had seen and a clear note about what we had not."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.watching-moth-118.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 1 from the shared bank.",
+            "material": "The moth beside the noticeboard\n\nShared bank: colour | cost | finally | five | instead | interest | make | question | rain | say | silent | they\n\nA large moth appeared beside the school noticeboard one morning. Its wing pattern attracted several pupils, and ____1____ science teacher asked everyone to leave it undisturbed. We could observe without touching or crowding it.\n\nBy lunchtime, one class had ____2____ three drawings of the moth. The drawings differed because the pupils had stood at different angles. Comparing them revealed several ____3____ about how the wings overlapped and which marks were visible.\n\nWe moved ____4____ while another pupil took a close photograph from a suitable distance. The corridor was not silent forever; we simply avoided sudden disturbance during that moment. On the ____5____ visit, after four earlier checks, the moth was no longer there.\n\nThe teacher asked us not to invent a story about its departure. It might have flown away when nobody was looking. We could record the last time it had been seen, ____6____ of claiming to know exactly when it moved.\n\nSomeone had ____7____ that the brown pattern looked dull. In the enlarged photograph, it was more complex and ____8____ than expected. The picture did not tell us everything about the moth, but it made the visible details easier to compare.\n\nWe ____9____ completed a short display with dates, drawings and the photograph. I had become much more ____10____ in the animal after looking carefully. Its absence left a limit in our record, not permission to fill the gap with certainty. The noticeboard now held an account of what we had seen and a clear note about what we had not.",
+            "explanation": "Their modifies science teacher. Subject/object forms do not determine noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "their"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "them"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.watching-moth-118.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 2 from the shared bank.",
+            "material": "The moth beside the noticeboard\n\nShared bank: colour | cost | finally | five | instead | interest | make | question | rain | say | silent | they\n\nA large moth appeared beside the school noticeboard one morning. Its wing pattern attracted several pupils, and ____1____ science teacher asked everyone to leave it undisturbed. We could observe without touching or crowding it.\n\nBy lunchtime, one class had ____2____ three drawings of the moth. The drawings differed because the pupils had stood at different angles. Comparing them revealed several ____3____ about how the wings overlapped and which marks were visible.\n\nWe moved ____4____ while another pupil took a close photograph from a suitable distance. The corridor was not silent forever; we simply avoided sudden disturbance during that moment. On the ____5____ visit, after four earlier checks, the moth was no longer there.\n\nThe teacher asked us not to invent a story about its departure. It might have flown away when nobody was looking. We could record the last time it had been seen, ____6____ of claiming to know exactly when it moved.\n\nSomeone had ____7____ that the brown pattern looked dull. In the enlarged photograph, it was more complex and ____8____ than expected. The picture did not tell us everything about the moth, but it made the visible details easier to compare.\n\nWe ____9____ completed a short display with dates, drawings and the photograph. I had become much more ____10____ in the animal after looking carefully. Its absence left a limit in our record, not permission to fill the gap with certainty. The noticeboard now held an account of what we had seen and a clear note about what we had not.",
+            "explanation": "Had made requires past participle. Base/-ing do not fit perfect.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "made"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "make",
+                "making"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.watching-moth-118.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 3 from the shared bank.",
+            "material": "The moth beside the noticeboard\n\nShared bank: colour | cost | finally | five | instead | interest | make | question | rain | say | silent | they\n\nA large moth appeared beside the school noticeboard one morning. Its wing pattern attracted several pupils, and ____1____ science teacher asked everyone to leave it undisturbed. We could observe without touching or crowding it.\n\nBy lunchtime, one class had ____2____ three drawings of the moth. The drawings differed because the pupils had stood at different angles. Comparing them revealed several ____3____ about how the wings overlapped and which marks were visible.\n\nWe moved ____4____ while another pupil took a close photograph from a suitable distance. The corridor was not silent forever; we simply avoided sudden disturbance during that moment. On the ____5____ visit, after four earlier checks, the moth was no longer there.\n\nThe teacher asked us not to invent a story about its departure. It might have flown away when nobody was looking. We could record the last time it had been seen, ____6____ of claiming to know exactly when it moved.\n\nSomeone had ____7____ that the brown pattern looked dull. In the enlarged photograph, it was more complex and ____8____ than expected. The picture did not tell us everything about the moth, but it made the visible details easier to compare.\n\nWe ____9____ completed a short display with dates, drawings and the photograph. I had become much more ____10____ in the animal after looking carefully. Its absence left a limit in our record, not permission to fill the gap with certainty. The noticeboard now held an account of what we had seen and a clear note about what we had not.",
+            "explanation": "Several questions names countable issues raised by drawings. Questioning process does not fit several here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "questions"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "questioning"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.watching-moth-118.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 4 from the shared bank.",
+            "material": "The moth beside the noticeboard\n\nShared bank: colour | cost | finally | five | instead | interest | make | question | rain | say | silent | they\n\nA large moth appeared beside the school noticeboard one morning. Its wing pattern attracted several pupils, and ____1____ science teacher asked everyone to leave it undisturbed. We could observe without touching or crowding it.\n\nBy lunchtime, one class had ____2____ three drawings of the moth. The drawings differed because the pupils had stood at different angles. Comparing them revealed several ____3____ about how the wings overlapped and which marks were visible.\n\nWe moved ____4____ while another pupil took a close photograph from a suitable distance. The corridor was not silent forever; we simply avoided sudden disturbance during that moment. On the ____5____ visit, after four earlier checks, the moth was no longer there.\n\nThe teacher asked us not to invent a story about its departure. It might have flown away when nobody was looking. We could record the last time it had been seen, ____6____ of claiming to know exactly when it moved.\n\nSomeone had ____7____ that the brown pattern looked dull. In the enlarged photograph, it was more complex and ____8____ than expected. The picture did not tell us everything about the moth, but it made the visible details easier to compare.\n\nWe ____9____ completed a short display with dates, drawings and the photograph. I had become much more ____10____ in the animal after looking carefully. Its absence left a limit in our record, not permission to fill the gap with certainty. The noticeboard now held an account of what we had seen and a clear note about what we had not.",
+            "explanation": "Silently modifies moved. Silence noun does not fit; unlisted flat reading remains reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "silently"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "silence"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.watching-moth-118.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 5 from the shared bank.",
+            "material": "The moth beside the noticeboard\n\nShared bank: colour | cost | finally | five | instead | interest | make | question | rain | say | silent | they\n\nA large moth appeared beside the school noticeboard one morning. Its wing pattern attracted several pupils, and ____1____ science teacher asked everyone to leave it undisturbed. We could observe without touching or crowding it.\n\nBy lunchtime, one class had ____2____ three drawings of the moth. The drawings differed because the pupils had stood at different angles. Comparing them revealed several ____3____ about how the wings overlapped and which marks were visible.\n\nWe moved ____4____ while another pupil took a close photograph from a suitable distance. The corridor was not silent forever; we simply avoided sudden disturbance during that moment. On the ____5____ visit, after four earlier checks, the moth was no longer there.\n\nThe teacher asked us not to invent a story about its departure. It might have flown away when nobody was looking. We could record the last time it had been seen, ____6____ of claiming to know exactly when it moved.\n\nSomeone had ____7____ that the brown pattern looked dull. In the enlarged photograph, it was more complex and ____8____ than expected. The picture did not tell us everything about the moth, but it made the visible details easier to compare.\n\nWe ____9____ completed a short display with dates, drawings and the photograph. I had become much more ____10____ in the animal after looking carefully. Its absence left a limit in our record, not permission to fill the gap with certainty. The noticeboard now held an account of what we had seen and a clear note about what we had not.",
+            "explanation": "Four earlier checks establish fifth. Cardinal/fraction plural do not fit ordinal.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "fifth"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "five",
+                "fifths"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.watching-moth-118.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 6 from the shared bank.",
+            "material": "The moth beside the noticeboard\n\nShared bank: colour | cost | finally | five | instead | interest | make | question | rain | say | silent | they\n\nA large moth appeared beside the school noticeboard one morning. Its wing pattern attracted several pupils, and ____1____ science teacher asked everyone to leave it undisturbed. We could observe without touching or crowding it.\n\nBy lunchtime, one class had ____2____ three drawings of the moth. The drawings differed because the pupils had stood at different angles. Comparing them revealed several ____3____ about how the wings overlapped and which marks were visible.\n\nWe moved ____4____ while another pupil took a close photograph from a suitable distance. The corridor was not silent forever; we simply avoided sudden disturbance during that moment. On the ____5____ visit, after four earlier checks, the moth was no longer there.\n\nThe teacher asked us not to invent a story about its departure. It might have flown away when nobody was looking. We could record the last time it had been seen, ____6____ of claiming to know exactly when it moved.\n\nSomeone had ____7____ that the brown pattern looked dull. In the enlarged photograph, it was more complex and ____8____ than expected. The picture did not tell us everything about the moth, but it made the visible details easier to compare.\n\nWe ____9____ completed a short display with dates, drawings and the photograph. I had become much more ____10____ in the animal after looking carefully. Its absence left a limit in our record, not permission to fill the gap with certainty. The noticeboard now held an account of what we had seen and a clear note about what we had not.",
+            "explanation": "Instead of contrasts documented last sighting with invented exact departure. Rain does not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "instead"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "rain"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.watching-moth-118.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 7 from the shared bank.",
+            "material": "The moth beside the noticeboard\n\nShared bank: colour | cost | finally | five | instead | interest | make | question | rain | say | silent | they\n\nA large moth appeared beside the school noticeboard one morning. Its wing pattern attracted several pupils, and ____1____ science teacher asked everyone to leave it undisturbed. We could observe without touching or crowding it.\n\nBy lunchtime, one class had ____2____ three drawings of the moth. The drawings differed because the pupils had stood at different angles. Comparing them revealed several ____3____ about how the wings overlapped and which marks were visible.\n\nWe moved ____4____ while another pupil took a close photograph from a suitable distance. The corridor was not silent forever; we simply avoided sudden disturbance during that moment. On the ____5____ visit, after four earlier checks, the moth was no longer there.\n\nThe teacher asked us not to invent a story about its departure. It might have flown away when nobody was looking. We could record the last time it had been seen, ____6____ of claiming to know exactly when it moved.\n\nSomeone had ____7____ that the brown pattern looked dull. In the enlarged photograph, it was more complex and ____8____ than expected. The picture did not tell us everything about the moth, but it made the visible details easier to compare.\n\nWe ____9____ completed a short display with dates, drawings and the photograph. I had become much more ____10____ in the animal after looking carefully. Its absence left a limit in our record, not permission to fill the gap with certainty. The noticeboard now held an account of what we had seen and a clear note about what we had not.",
+            "explanation": "Had said uses past participle. Base/-ing do not fit perfect.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "said"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "say",
+                "saying"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.watching-moth-118.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 8 from the shared bank.",
+            "material": "The moth beside the noticeboard\n\nShared bank: colour | cost | finally | five | instead | interest | make | question | rain | say | silent | they\n\nA large moth appeared beside the school noticeboard one morning. Its wing pattern attracted several pupils, and ____1____ science teacher asked everyone to leave it undisturbed. We could observe without touching or crowding it.\n\nBy lunchtime, one class had ____2____ three drawings of the moth. The drawings differed because the pupils had stood at different angles. Comparing them revealed several ____3____ about how the wings overlapped and which marks were visible.\n\nWe moved ____4____ while another pupil took a close photograph from a suitable distance. The corridor was not silent forever; we simply avoided sudden disturbance during that moment. On the ____5____ visit, after four earlier checks, the moth was no longer there.\n\nThe teacher asked us not to invent a story about its departure. It might have flown away when nobody was looking. We could record the last time it had been seen, ____6____ of claiming to know exactly when it moved.\n\nSomeone had ____7____ that the brown pattern looked dull. In the enlarged photograph, it was more complex and ____8____ than expected. The picture did not tell us everything about the moth, but it made the visible details easier to compare.\n\nWe ____9____ completed a short display with dates, drawings and the photograph. I had become much more ____10____ in the animal after looking carefully. Its absence left a limit in our record, not permission to fill the gap with certainty. The noticeboard now held an account of what we had seen and a clear note about what we had not.",
+            "explanation": "More complex and colourful/colorful coordinates adjectives. Adverbs do not describe the pattern directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "colourful",
+              "colorful"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "colourfully",
+                "colorfully"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.watching-moth-118.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 9 from the shared bank.",
+            "material": "The moth beside the noticeboard\n\nShared bank: colour | cost | finally | five | instead | interest | make | question | rain | say | silent | they\n\nA large moth appeared beside the school noticeboard one morning. Its wing pattern attracted several pupils, and ____1____ science teacher asked everyone to leave it undisturbed. We could observe without touching or crowding it.\n\nBy lunchtime, one class had ____2____ three drawings of the moth. The drawings differed because the pupils had stood at different angles. Comparing them revealed several ____3____ about how the wings overlapped and which marks were visible.\n\nWe moved ____4____ while another pupil took a close photograph from a suitable distance. The corridor was not silent forever; we simply avoided sudden disturbance during that moment. On the ____5____ visit, after four earlier checks, the moth was no longer there.\n\nThe teacher asked us not to invent a story about its departure. It might have flown away when nobody was looking. We could record the last time it had been seen, ____6____ of claiming to know exactly when it moved.\n\nSomeone had ____7____ that the brown pattern looked dull. In the enlarged photograph, it was more complex and ____8____ than expected. The picture did not tell us everything about the moth, but it made the visible details easier to compare.\n\nWe ____9____ completed a short display with dates, drawings and the photograph. I had become much more ____10____ in the animal after looking carefully. Its absence left a limit in our record, not permission to fill the gap with certainty. The noticeboard now held an account of what we had seen and a clear note about what we had not.",
+            "explanation": "Finally modifies completed as eventual outcome. Final adjective does not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "finally"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "final"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.watching-moth-118.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Choose words from the shared bank and use their correct forms. Use each bank word at most once. Two bank words are not needed.",
+            "prompt": "Complete gap 10 from the shared bank.",
+            "material": "The moth beside the noticeboard\n\nShared bank: colour | cost | finally | five | instead | interest | make | question | rain | say | silent | they\n\nA large moth appeared beside the school noticeboard one morning. Its wing pattern attracted several pupils, and ____1____ science teacher asked everyone to leave it undisturbed. We could observe without touching or crowding it.\n\nBy lunchtime, one class had ____2____ three drawings of the moth. The drawings differed because the pupils had stood at different angles. Comparing them revealed several ____3____ about how the wings overlapped and which marks were visible.\n\nWe moved ____4____ while another pupil took a close photograph from a suitable distance. The corridor was not silent forever; we simply avoided sudden disturbance during that moment. On the ____5____ visit, after four earlier checks, the moth was no longer there.\n\nThe teacher asked us not to invent a story about its departure. It might have flown away when nobody was looking. We could record the last time it had been seen, ____6____ of claiming to know exactly when it moved.\n\nSomeone had ____7____ that the brown pattern looked dull. In the enlarged photograph, it was more complex and ____8____ than expected. The picture did not tell us everything about the moth, but it made the visible details easier to compare.\n\nWe ____9____ completed a short display with dates, drawings and the photograph. I had become much more ____10____ in the animal after looking carefully. Its absence left a limit in our record, not permission to fill the gap with certainty. The noticeboard now held an account of what we had seen and a clear note about what we had not.",
+            "explanation": "Become interested in describes attention. Interesting in would describe causing interest. Cost/rain remain unused.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "interested"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "interesting"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "97526d22ec83669fe8a880f82942adf45cf0464de4a6dca76f2366349ab606cf",
+      "reviewNotes": "Six complete junior form-changing ten-gap shared banks, two per grade. Grade7B complete alternative, grade8 one-word restriction, grade9 twelve choices/two unused kept distinct. Same-author full-bank and variant review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
