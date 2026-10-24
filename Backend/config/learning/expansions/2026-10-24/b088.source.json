@@ -1,0 +1,728 @@
+{
+  "createdAt": "2026-10-24T00:02:14.968133+00:00",
+  "reviewBoundary": "Three complete senior mixed originals, five-gap/seven-option insertion plus ten-gap form. Fictional class/nature/art cases and qualified reference/image discussion. Same-author coherence/variant review, not independent calibration.",
+  "units": [
+    {
+      "id": "senior1.observation-and-moths-088",
+      "level": "senior1",
+      "title": "Keeping an observation record and watching moths",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade10-club-routines-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Keeping an observation record and watching moths",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "An observation notebook is useful when it helps you return to what you actually noticed. It need not look like a finished textbook. Its value comes from clear records that another person, including your future self, can understand.\n\nBegin each entry with basic circumstances. A description of a wet path means more when the date and recent weather are known. ____1____ These details can explain why two visits to the same place produced different observations.\n\nUse ordinary precise words before searching for impressive ones. If you cannot identify a bird, you can still describe its size, colour and movement. ____2____ A guessed name presented as certain can make the record less useful than an honest description.\n\nKeep observations and possible explanations distinguishable. You may see leaves turning brown and suspect a lack of water. ____3____ Another reader should be able to see which part was witnessed and which part still needs checking.\n\nAdd a sketch when shape or position is difficult to describe. It does not have to be a beautiful drawing. ____4____ A rough labelled diagram can preserve a relationship that several vague sentences miss.\n\nFinally, revisit the notebook before the next observation. ____5____ A clear question can give the new visit a purpose without requiring you to predict the answer. The notebook then becomes a tool for continuing attention, not merely a collection of completed pages.",
+          "candidates": [
+            "A. Leave uncertainty visible rather than replacing it with a confident label.",
+            "B. Record the setting as well as the object you are watching.",
+            "C. Look for an unanswered question that you could investigate further.",
+            "D. State the visible change separately from your suggested cause.",
+            "E. Label the features that matter and show where they are.",
+            "F. Every unknown object should receive the first name you can think of.",
+            "G. A notebook is useful only if every page looks professionally printed."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 1,
+              "explanation": "B extends date/weather to the setting, referred to by These details. A names, D inference, E sketches and C next inquiry are later stages. F/G substitute false certainty or appearance."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 0,
+              "explanation": "A preserves uncertainty when identification is unknown, preparing the warning about a guessed name. B setting, C questions, D inference and E diagrams are other tasks. F does the opposite."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 3,
+              "explanation": "D separates brown leaves from the water hypothesis and prepares witnessed versus unverified. A/B/C/E concern labels, setting, future questions or sketches; F/G do not distinguish evidence."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 4,
+              "explanation": "E gives a practical purpose for the sketch and leads to a labelled diagram’s value. A/B/C/D concern other record types. G wrongly demands professional appearance."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 2,
+              "explanation": "C supplies the question picked up by A clear question. A/B/D/E concern current entry details. F/G do not support a purposeful return."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade10-slotgrammar-football-signatures",
+          "title": "B. Keeping an observation record and watching moths",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "At a nature-centre evening, we watched insects near a lighted screen. A trained leader ____1____ (explain) the activity before we went outside. We stayed on the path and followed the centre's rules about observing without collecting.\n\nSeveral moths settled on the screen, but they did not all look the same. One was much ____2____ (small) than the others. Its wings formed a narrow shape that I tried to draw in my notebook.\n\nThe leader asked us not to assume that every moth was plain or every butterfly colourful. Both groups include many ____3____ (kind), and a quick impression cannot replace careful identification. We were learning to notice differences, not to memorise an unreliable slogan.\n\nI wrote a description of one insect ____4____ markings were easy to see. A friend noticed a second colour that I had missed. By ____5____ (compare) our notes, we improved the description without touching the moth.\n\nThe screen gave us ____6____ useful place to observe, but it did not show every insect in the area. Some kinds were not attracted in the same way, and others might be active at a different time. Our record needed to mention those ____7____ (limit).\n\nBefore leaving, the leader encouraged us ____8____ (look) at familiar places with more patient attention. I thanked her ____9____ the explanation and carefully put my notebook away. The evening had changed ____10____ (I) idea of what a moth could look like, while reminding me how much remained to learn.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of explain.",
+              "acceptedAnswers": [
+                "explained",
+                "had explained"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "explain",
+                  "explaining"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Past simple/perfect both fit explanation before going out. Base and unaided -ing do not fit the finite clause."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of small.",
+              "acceptedAnswers": [
+                "smaller",
+                "more small"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "smallest",
+                  "more smaller"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Than gives comparative smaller/more small. Smallest is superlative and more smaller doubled."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of kind.",
+              "acceptedAnswers": [
+                "kinds"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "kind",
+                  "kindly"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Many requires plural kinds. Kind is singular and kindly adverb/adjective, not the plural type noun."
+            },
+            {
+              "prompt": "Fill gap 4 with one appropriate word.",
+              "acceptedAnswers": [
+                "whose"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "which",
+                  "where"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whose supplies possession before markings. Who/which/where do not directly modify that noun."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of compare.",
+              "acceptedAnswers": [
+                "comparing"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "compare",
+                  "compared",
+                  "to compare"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "By comparing takes an -ing clause. Other listed forms do not directly fit."
+            },
+            {
+              "prompt": "Fill gap 6 with one appropriate word.",
+              "acceptedAnswers": [
+                "a"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "an"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A useful place begins with consonant /j/. Other article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of limit.",
+              "acceptedAnswers": [
+                "limits",
+                "limitations"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "limit",
+                  "limiting"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Those requires plural limits/limitations. Limit is singular and limiting not the plural noun."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of look.",
+              "acceptedAnswers": [
+                "to look"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "look",
+                  "looking",
+                  "looked"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Encouraged us takes to look. Other listed forms do not directly fit."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "for"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "to",
+                  "at",
+                  "of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Thanked her for the explanation uses for. Other listed prepositions do not fit."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of I.",
+              "acceptedAnswers": [
+                "my"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "I",
+                  "me",
+                  "mine"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "My modifies idea. Personal and independent possessive forms do not fit directly."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior2.biography-and-mosaic-088",
+      "level": "senior2",
+      "title": "Reading a biography and making a mosaic",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade11-exhibition-labels-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Reading a biography and making a mosaic",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "A biography tells a life through selected events and surviving evidence. Even a long book cannot include every day, and the order of the telling can shape how a reader understands what follows. Reading critically does not mean refusing the story; it means noticing how it has been built.\n\nAsk what period the book covers. A childhood account and a full-life study answer different questions. ____1____ An event outside that period cannot be treated as an unexplained omission in the same way.\n\nNotice where the evidence changes. Letters, official records and a later recollection offer different kinds of access. ____2____ A vivid memory is not automatically worthless or automatically a complete record.\n\nWatch for explanations that make later events seem inevitable. A childhood hobby may look like an obvious beginning only because the reader knows the adult career. ____3____ Other possibilities existed at the time, even if they did not become the final story.\n\nLook at people who appear around the central figure. Their roles may be reduced when every achievement is attributed to one person alone. ____4____ This can widen understanding without denying the subject's own decisions.\n\nFinally, distinguish understanding a choice from approving it. ____5____ You can examine pressures and motives while still questioning what was done. A useful biography can make a life more comprehensible without making every action admirable.",
+          "candidates": [
+            "A. Consider who supplied help, opposition or opportunities.",
+            "B. Explanation and endorsement are different responses.",
+            "C. Establish the boundaries of the writer’s account.",
+            "D. Keep the available alternatives in view when reading such connections.",
+            "E. Ask which source supports a particular claim.",
+            "F. Every childhood event proves that the later career was unavoidable.",
+            "G. Understanding someone requires approval of every decision they made."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 2,
+              "explanation": "C identifies period boundaries, explaining what omissions mean. E evidence, D alternatives, A surrounding people and B judgment are later issues. F/G impose inevitable career or mandatory approval."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 4,
+              "explanation": "E directs each claim to its source, preparing evaluation of memory. A/B/C/D concern networks, endorsement, period and hindsight. F/G do not establish evidence."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 3,
+              "explanation": "D counters hindsight inevitability with alternatives, repeated in the next sentence. A/B/C/E are other checks. F directly makes the error described."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 0,
+              "explanation": "A supplies helpers/opponents/opportunities beyond the central figure. B/C/D/E concern judgment, coverage, alternatives and sources. F/G ignore wider contributions."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 1,
+              "explanation": "B makes the understanding/approval distinction and prepares pressures versus evaluation. A/C/D/E concern other questions. G equates the two responses the paragraph separates."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade11-slotgrammar-lantern-frame",
+          "title": "B. Reading a biography and making a mosaic",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "For an art-room project, our group made a small mosaic from coloured pieces. We began ____1____ (arrange) them on paper before attaching anything permanently. A rough pencil outline helped us keep the whole design in view.\n\nAt first, I wanted every piece to fit the outline exactly. Our teacher asked whether the drawing was a guide ____2____ a rule that could never change. Some spaces looked better when we adjusted the curve to suit the material.\n\nOne corner required several ____3____ (small) pieces than we had selected. We changed the arrangement rather than forcing a large piece into a narrow gap. The teacher handled any cutting with the appropriate equipment; the class did not improvise with unfamiliar tools.\n\nAfter ____4____ (choose) the final pattern, we photographed it. That image helped us remember where the pieces belonged while we worked on separate sections. A classmate numbered the sections ____5____ were easy to confuse.\n\nThe completed mosaic ____6____ (leave) to set under the teacher's instructions. We could look at it but did not move it before it was ready. The waiting was part of the process, not a sign that nobody was working.\n\nWhen it was placed upright, the design looked different from our table view. We noticed the ____7____ (important) of checking how a finished object would be seen. I wrote ____8____ short reflection on the change, using the first photograph as evidence. The project had made ____9____ (we) more flexible about a plan while also teaching us to follow the practical steps ____10____ (proper).",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of arrange.",
+              "acceptedAnswers": [
+                "arranging",
+                "to arrange"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "arrange",
+                  "arranged"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Began arranging/to arrange both fit. Base and finite past do not directly follow began."
+            },
+            {
+              "prompt": "Fill gap 2 with one appropriate word.",
+              "acceptedAnswers": [
+                "or"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "nor",
+                  "than"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whether ... or contrasts a guide with an unchangeable rule. Nor requires a different construction and than a comparison."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of small.",
+              "acceptedAnswers": [
+                "smaller",
+                "more small"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "smallest",
+                  "more smaller"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Than requires comparative smaller/more small. Smallest is superlative and more smaller doubled."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of choose.",
+              "acceptedAnswers": [
+                "choosing",
+                "having chosen"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "choose",
+                  "chose",
+                  "to choose"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "After choosing/having chosen both express prior choice. Other listed forms do not directly fit."
+            },
+            {
+              "prompt": "Fill gap 5 with one appropriate word.",
+              "acceptedAnswers": [
+                "that",
+                "which"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "where",
+                  "what"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Sections are subject antecedent of that/which were. Who is human, where not subject and what incompatible with the antecedent."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of leave.",
+              "acceptedAnswers": [
+                "was left",
+                "had been left"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "left",
+                  "were left"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Singular mosaic receives the leaving action, so was/had been left. Left alone lacks passive auxiliary and were disagrees."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of important.",
+              "acceptedAnswers": [
+                "importance"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "important",
+                  "importantly"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "The importance of requires a noun. Important is adjective and importantly adverb."
+            },
+            {
+              "prompt": "Fill gap 8 with one appropriate word.",
+              "acceptedAnswers": [
+                "a"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "an"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A short reflection uses consonant sh. Other article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 9 with the correct form of we.",
+              "acceptedAnswers": [
+                "us"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "our",
+                  "ours"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Made takes object us. Subject and possessive forms do not fit."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of proper.",
+              "acceptedAnswers": [
+                "properly"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "proper",
+                  "propriety"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Properly modifies follow. Proper is adjective and propriety noun."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior3.digital-image-and-dictionaries-088",
+      "level": "senior3",
+      "title": "Examining a digital image and a dictionary",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade12-print-room-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Examining a digital image and a dictionary",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "A digital image of an old photograph may seem to offer direct access to the original. Yet the file has been produced through a series of choices. Understanding those choices helps a viewer use the image as evidence without assuming that everything about the physical object has been transferred to the screen.\n\nBegin with the whole object when a view is available. A tightly cropped image may remove an edge, a handwritten note or part of the setting. ____1____ What lies outside the crop may change how the visible scene is understood.\n\nCheck the description of the digital process. Colour adjustment or contrast changes can make details easier to see. ____2____ Improved visibility and unchanged appearance are not always the same achievement.\n\nDistinguish damage to the original from marks introduced during copying. Dust on a scanner can resemble a spot on the photograph. ____3____ A second view or a record of the process may help resolve the uncertainty.\n\nNotice what the file cannot preserve. Size, texture and marks on the back may be unavailable in a single front-facing image. ____4____ The missing information need not make the file useless, but it limits particular claims.\n\nFinally, keep the source reference when saving or sharing a copy. ____5____ A useful image becomes stronger evidence when its connection to the original object remains traceable.",
+          "candidates": [
+            "A. Ask whether the feature belongs to the object or the reproduction.",
+            "B. Record where the file came from and which object it represents.",
+            "C. Look for the uncropped view before treating the frame as complete.",
+            "D. Do not infer those physical features from the screen alone.",
+            "E. Find out which changes have been made to the displayed version.",
+            "F. Every visible spot must have been present when the photograph was taken.",
+            "G. A downloaded copy no longer needs any link to its source."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 2,
+              "explanation": "C checks the crop against a whole view, preparing the importance of excluded content. E process, A copy marks, D unavailable properties and B provenance belong elsewhere. F/G erase necessary checks."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 4,
+              "explanation": "E asks what adjustments produced the visible version, preparing visibility versus sameness. A/B/C/D concern marks, source, crop and physical limits. F/G do not identify processing."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 0,
+              "explanation": "A separates object marks from reproduction artefacts, leading to a second view/process record. B/C/D/E concern source, crop, missing properties and adjustment. F assumes precisely what must be tested."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 3,
+              "explanation": "D prevents unsupported inference of size/texture/back marks from one view. A/B/C/E are other evidence checks. F/G make ungrounded assumptions or sever provenance."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 1,
+              "explanation": "B preserves source and object identity, supporting traceability in the next sentence. A/C/D/E concern image interpretation. G directly rejects the required link and F concerns spots."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade12-grammar-station-clock",
+          "title": "B. Examining a digital image and a dictionary",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "A dictionary can look like a fixed store of correct meanings, but its entries are made by people examining how language is used. In a class discussion, we compared two editions ____1____ (publish) several years apart and noticed changes in both wording and examples.\n\nOne entry had gained a new meaning, while another included an example ____2____ was absent from the earlier edition. Our teacher asked us not to assume that every difference meant the older book had been careless. The available evidence and editorial aims could change.\n\nWe looked at the ____3____ (explain) of abbreviations before reading the entries closely. A small label could indicate a field of use, a region or a degree of formality. Ignoring it might make a meaning seem appropriate in a context where it was unusual.\n\nThe exercise encouraged us ____4____ (distinguish) a description of usage from advice for a particular piece of writing. A dictionary could show that an expression existed without deciding whether it was the best choice for our essay.\n\nAfter ____5____ (read) the examples, we wrote sentences of our own. A classmate asked whether ____6____ unusual phrase sounded natural. Instead of relying on one entry alone, we examined the surrounding words and the purpose of the sentence.\n\nThe comparison made ____7____ (we) more aware of what reference books can do. We learned to consult them ____8____ (critical), checking the edition and labels rather than treating a page as an answer to every possible question. A useful reference did not remove the need ____9____ judgment. It gave us ____10____ (good) evidence on which to base it.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of publish.",
+              "acceptedAnswers": [
+                "published"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "publishing",
+                  "publish"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Editions published is reduced passive. Active publishing and base publish do not directly fit as the postmodifier."
+            },
+            {
+              "prompt": "Fill gap 2 with one appropriate word.",
+              "acceptedAnswers": [
+                "that",
+                "which"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "where",
+                  "what"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Example is subject antecedent of that/which was absent. Who is human, where not subject and what incompatible with the antecedent."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of explain.",
+              "acceptedAnswers": [
+                "explanation",
+                "explanations"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "explain",
+                  "explanatory"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Explanation names an overall guide; explanations can name several abbreviation notes. Explain is verb and explanatory adjective."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of distinguish.",
+              "acceptedAnswers": [
+                "to distinguish"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "distinguish",
+                  "distinguishing",
+                  "distinguished"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Encouraged us takes to distinguish. Other listed forms do not directly fit."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of read.",
+              "acceptedAnswers": [
+                "reading",
+                "having read"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "read",
+                  "to read"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "After reading/having read both express prior reading. Bare and to-infinitive do not directly fit."
+            },
+            {
+              "prompt": "Fill gap 6 with one appropriate word.",
+              "acceptedAnswers": [
+                "an"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "a"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "An unusual phrase begins with a vowel sound. Other article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of we.",
+              "acceptedAnswers": [
+                "us"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "our",
+                  "ours"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Made takes object us. Subject and possessive forms do not fit."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of critical.",
+              "acceptedAnswers": [
+                "critically"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "critical",
+                  "criticism"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Critically modifies consult. Critical is adjective and criticism noun."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "for"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "of",
+                  "at",
+                  "from"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Need for judgment uses for. Other listed prepositions do not fit the intended requirement."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of good.",
+              "acceptedAnswers": [
+                "better"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "best",
+                  "more better"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Better evidence expresses improvement over unexamined impressions. Best is superlative and more better doubled; unlisted plain adjective remains reviewable."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
