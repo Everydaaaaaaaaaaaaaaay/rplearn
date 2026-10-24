@@ -1,0 +1,771 @@
+{
+  "createdAt": "2026-10-24T00:54:46.297003+00:00",
+  "reviewBoundary": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration.",
+  "units": [
+    {
+      "id": "primary2.dentist-desk-103",
+      "level": "primary2",
+      "title": "At the dentist’s desk",
+      "family": "function_choice",
+      "minutes": 8,
+      "sourceUnitId": "original.primary2-five-small-functions",
+      "alignmentNote": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "At the dentist’s desk",
+          "text": "Choose the best reply in each conversation.\n\n1. Receptionist: Good morning. What is your name?\nChild: ____\n\n2. Receptionist: Is your appointment at ten?\nChild: ____\n\n3. Child: Where should we wait?\nReceptionist: ____\n\n4. Receptionist: Would you like a book while you wait?\nChild: ____\n\n5. Receptionist: It is your turn now. Please come with your mum.\nChild: ____",
+          "questions": [
+            {
+              "prompt": "Receptionist: Good morning. What is your name?\nChild: ____",
+              "options": [
+                "I have two pencils.",
+                "My name is Ella Brown.",
+                "The door is green.",
+                "It is under the chair."
+              ],
+              "answer": 1,
+              "explanation": "Giving a name answers the identity request. Location/count/colour do not."
+            },
+            {
+              "prompt": "Receptionist: Is your appointment at ten?\nChild: ____",
+              "options": [
+                "She is my sister.",
+                "Yes. Mum booked it for ten.",
+                "It can fly.",
+                "I like this picture."
+              ],
+              "answer": 1,
+              "explanation": "Confirming the appointment time answers the question. Family/preference/ability do not."
+            },
+            {
+              "prompt": "Child: Where should we wait?\nReceptionist: ____",
+              "options": [
+                "Please sit on the blue seats.",
+                "I am from here.",
+                "It is a little fish.",
+                "There are seven days."
+              ],
+              "answer": 0,
+              "explanation": "The seats are a waiting place. Object/origin/day count do not answer where."
+            },
+            {
+              "prompt": "Receptionist: Would you like a book while you wait?\nChild: ____",
+              "options": [
+                "It has four legs.",
+                "The bus is late.",
+                "Yes, please. This animal book looks fun.",
+                "He is my friend."
+              ],
+              "answer": 2,
+              "explanation": "Accepting and choosing a book responds to the offer. Other replies are unrelated."
+            },
+            {
+              "prompt": "Receptionist: It is your turn now. Please come with your mum.\nChild: ____",
+              "options": [
+                "All right. We are coming.",
+                "My birthday is in June.",
+                "I can see a boat.",
+                "It is a yellow ball."
+              ],
+              "answer": 0,
+              "explanation": "Coming with Mum follows the instruction. Object/date/sighting do not."
+            }
+          ]
+        }
+      ],
+      "instruction": "Choose the best reply in each conversation."
+    },
+    {
+      "id": "primary2.wrapping-present-103",
+      "level": "primary2",
+      "title": "Wrapping a birthday present",
+      "family": "function_choice",
+      "minutes": 8,
+      "sourceUnitId": "original.primary2-five-small-functions",
+      "alignmentNote": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Wrapping a birthday present",
+          "text": "Choose the best reply in each conversation.\n\n1. Dad: Which paper shall we use for the present?\nChild: ____\n\n2. Child: Can you hold this corner for me?\nDad: ____\n\n3. Dad: The ribbon is too long.\nChild: ____\n\n4. Child: Where should I write Grandma’s name?\nDad: ____\n\n5. Dad: Everything is ready. Thank you for helping.\nChild: ____",
+          "questions": [
+            {
+              "prompt": "Dad: Which paper shall we use for the present?\nChild: ____",
+              "options": [
+                "It is half past six.",
+                "She has a dog.",
+                "I can swim.",
+                "The paper with stars, please."
+              ],
+              "answer": 3,
+              "explanation": "Selecting paper answers which. Time/pet/ability do not."
+            },
+            {
+              "prompt": "Child: Can you hold this corner for me?\nDad: ____",
+              "options": [
+                "It is a bus.",
+                "Of course. I will keep it still.",
+                "The cake is sweet.",
+                "He lives in the city."
+              ],
+              "answer": 1,
+              "explanation": "Holding the corner still responds to help. Location/taste/vehicle identity do not."
+            },
+            {
+              "prompt": "Dad: The ribbon is too long.\nChild: ____",
+              "options": [
+                "Shall we use a shorter piece?",
+                "I am eight.",
+                "My shoes are black.",
+                "It is Monday."
+              ],
+              "answer": 0,
+              "explanation": "A shorter ribbon addresses length. Shoes/age/day do not."
+            },
+            {
+              "prompt": "Child: Where should I write Grandma’s name?\nDad: ____",
+              "options": [
+                "It has two wheels.",
+                "I like milk.",
+                "She can sing.",
+                "On the little card beside the bow."
+              ],
+              "answer": 3,
+              "explanation": "The card is a writing location. Wheels/ability/drink preference do not."
+            },
+            {
+              "prompt": "Dad: Everything is ready. Thank you for helping.\nChild: ____",
+              "options": [
+                "It is behind the tree.",
+                "You’re welcome. I hope she likes it.",
+                "He is my brother.",
+                "The water is cold."
+              ],
+              "answer": 1,
+              "explanation": "Acknowledging thanks and a wish fit. Location/family/water do not."
+            }
+          ]
+        }
+      ],
+      "instruction": "Choose the best reply in each conversation."
+    },
+    {
+      "id": "primary2.train-window-103",
+      "level": "primary2",
+      "title": "Finding our train seats",
+      "family": "function_choice",
+      "minutes": 8,
+      "sourceUnitId": "original.primary2-five-small-functions",
+      "alignmentNote": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Finding our train seats",
+          "text": "Choose the best reply in each conversation.\n\n1. Parent: What number is on your ticket?\nChild: ____\n\n2. Child: Is this our row?\nParent: ____\n\n3. Parent: Would you like the window seat?\nChild: ____\n\n4. Child: This bag is too big to go under my seat.\nParent: ____\n\n5. Parent: We are leaving the station now.\nChild: ____",
+          "questions": [
+            {
+              "prompt": "Parent: What number is on your ticket?\nChild: ____",
+              "options": [
+                "The sky is blue.",
+                "It is my aunt.",
+                "I like grapes.",
+                "Seat sixteen."
+              ],
+              "answer": 3,
+              "explanation": "A seat number answers the ticket-number question. Family/preference/colour do not."
+            },
+            {
+              "prompt": "Child: Is this our row?\nParent: ____",
+              "options": [
+                "It is Friday.",
+                "It has a long tail.",
+                "He can draw.",
+                "Not yet. Our seats are two rows farther along."
+              ],
+              "answer": 3,
+              "explanation": "The reply corrects row location. Animal/ability/day do not."
+            },
+            {
+              "prompt": "Parent: Would you like the window seat?\nChild: ____",
+              "options": [
+                "My bag has a star.",
+                "Yes, please. I want to watch the fields.",
+                "She is at school.",
+                "I have three cups."
+              ],
+              "answer": 1,
+              "explanation": "Accepting the window seat with reason fits. Bag/location/count do not."
+            },
+            {
+              "prompt": "Child: This bag is too big to go under my seat.\nParent: ____",
+              "options": [
+                "He is nine.",
+                "Let’s ask the staff where it can go safely.",
+                "The soup is hot.",
+                "It is a red fish."
+              ],
+              "answer": 1,
+              "explanation": "Asking for suitable storage addresses the bag. Other replies do not."
+            },
+            {
+              "prompt": "Parent: We are leaving the station now.\nChild: ____",
+              "options": [
+                "I like this spoon.",
+                "She has a new hat.",
+                "It is in my lunchbox.",
+                "I can see the platform moving past us!"
+              ],
+              "answer": 3,
+              "explanation": "Noticing the passing platform responds to departure. Other remarks are unrelated."
+            }
+          ]
+        }
+      ],
+      "instruction": "Choose the best reply in each conversation."
+    },
+    {
+      "id": "primary2.sports-hall-tidy-103",
+      "level": "primary2",
+      "title": "Tidying the sports hall",
+      "family": "function_choice",
+      "minutes": 8,
+      "sourceUnitId": "original.primary2-five-small-functions",
+      "alignmentNote": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Tidying the sports hall",
+          "text": "Choose the best reply in each conversation.\n\n1. Teacher: Please put the soft balls in this basket.\nChild: ____\n\n2. Child: This basketball will not fit.\nTeacher: ____\n\n3. Teacher: Have we collected all the beanbags?\nChild: ____\n\n4. Child: Shall I move this heavy bench alone?\nTeacher: ____\n\n5. Teacher: The hall is clear now. Well done.\nChild: ____",
+          "questions": [
+            {
+              "prompt": "Teacher: Please put the soft balls in this basket.\nChild: ____",
+              "options": [
+                "He is my uncle.",
+                "All right. These three are soft.",
+                "It is five o’clock.",
+                "My coat is red."
+              ],
+              "answer": 1,
+              "explanation": "Selecting soft balls follows the sorting instruction. Time/family/colour do not."
+            },
+            {
+              "prompt": "Child: This basketball will not fit.\nTeacher: ____",
+              "options": [
+                "I like orange juice.",
+                "She is ten.",
+                "It is a small bird.",
+                "Use the larger basket beside the door."
+              ],
+              "answer": 3,
+              "explanation": "A larger basket solves size mismatch. Drink/age/bird identity do not."
+            },
+            {
+              "prompt": "Teacher: Have we collected all the beanbags?\nChild: ____",
+              "options": [
+                "It can fly.",
+                "Not yet. One is under the bench.",
+                "My book is new.",
+                "It is Saturday."
+              ],
+              "answer": 1,
+              "explanation": "A remaining beanbag answers completeness. Other replies do not."
+            },
+            {
+              "prompt": "Child: Shall I move this heavy bench alone?\nTeacher: ____",
+              "options": [
+                "No. Leave it and ask an adult for help.",
+                "I have two rulers.",
+                "The flower is blue.",
+                "He can sing."
+              ],
+              "answer": 0,
+              "explanation": "Declining solo heavy moving and seeking help responds. Other sentences do not."
+            },
+            {
+              "prompt": "Teacher: The hall is clear now. Well done.\nChild: ____",
+              "options": [
+                "Thank you. May we wash our hands?",
+                "She is my cousin.",
+                "The clock is round.",
+                "It is a yellow bus."
+              ],
+              "answer": 0,
+              "explanation": "Acknowledgment and the next cleanup request fit. Vehicle/family/shape do not."
+            }
+          ]
+        }
+      ],
+      "instruction": "Choose the best reply in each conversation."
+    },
+    {
+      "id": "primary2.packing-small-picnic-103",
+      "level": "primary2",
+      "title": "Packing a small picnic",
+      "family": "function_choice",
+      "minutes": 8,
+      "sourceUnitId": "original.primary2-five-small-functions",
+      "alignmentNote": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Packing a small picnic",
+          "text": "Choose the best reply in each conversation.\n\n1. Parent: How many cups do we need for the four of us?\nChild: ____\n\n2. Child: Shall I put the fruit on top?\nParent: ____\n\n3. Parent: Where is the picnic blanket?\nChild: ____\n\n4. Child: May I bring my little storybook too?\nParent: ____\n\n5. Parent: We have everything. Are you ready to go?\nChild: ____",
+          "questions": [
+            {
+              "prompt": "Parent: How many cups do we need for the four of us?\nChild: ____",
+              "options": [
+                "The chair has four legs.",
+                "Four cups. One each.",
+                "It is four o’clock.",
+                "I am four years old."
+              ],
+              "answer": 1,
+              "explanation": "Four people need four individual cups. Time/age/legs do not count cups."
+            },
+            {
+              "prompt": "Child: Shall I put the fruit on top?\nParent: ____",
+              "options": [
+                "He is in the garden.",
+                "It is Monday.",
+                "Yes. Keep it where it will not be squashed.",
+                "She can run fast."
+              ],
+              "answer": 2,
+              "explanation": "Protecting fruit addresses packing position. Person/ability/day do not."
+            },
+            {
+              "prompt": "Parent: Where is the picnic blanket?\nChild: ____",
+              "options": [
+                "Folded beside the green bag.",
+                "I like this cake.",
+                "It is very warm.",
+                "There are two birds."
+              ],
+              "answer": 0,
+              "explanation": "The blanket’s location answers where. Preference/temperature/count do not."
+            },
+            {
+              "prompt": "Child: May I bring my little storybook too?\nParent: ____",
+              "options": [
+                "Yes, if you carry it in your own bag.",
+                "It has a red door.",
+                "She is my teacher.",
+                "The bus is here."
+              ],
+              "answer": 0,
+              "explanation": "Permission with a condition answers may I. Other replies do not."
+            },
+            {
+              "prompt": "Parent: We have everything. Are you ready to go?\nChild: ____",
+              "options": [
+                "He is seven.",
+                "Yes. I have my shoes and bag.",
+                "It is under the water.",
+                "I can see a star."
+              ],
+              "answer": 1,
+              "explanation": "Ready with belongings answers readiness. Location/age/sighting do not."
+            }
+          ]
+        }
+      ],
+      "instruction": "Choose the best reply in each conversation."
+    },
+    {
+      "id": "primary3.ruler-order-103",
+      "level": "primary3",
+      "title": "Borrowing a ruler",
+      "family": "dialogue_ordering",
+      "minutes": 8,
+      "sourceUnitId": "original.primary3-dialogue-ordering-green-pencil",
+      "alignmentNote": "One complete six-line ordering task with the first line fixed and five positions2–6 to fill. Five scoring slots form one dialogue task, not five independent conversations. New complete communicative chain.",
+      "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Borrowing a ruler",
+          "text": "The first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: May I use your ruler, please?\n\n(____) B: Of course. Is this short one long enough?\n\n(____) B: That is fine. I will not need it before then.\n\n(____) B: Then take this longer one.\n\n(____) A: No. I need to draw a line across this large page.\n\n(____) A: Thank you. I will bring it back after art class.",
+          "questions": [
+            {
+              "prompt": "What is the position of this line? “B: Of course. Is this short one long enough?”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 0,
+              "explanation": "Position2 grants the request and asks about length. The following No must answer that question."
+            },
+            {
+              "prompt": "What is the position of this line? “B: That is fine. I will not need it before then.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 4,
+              "explanation": "Position6 accepts the proposed return after art class; before then depends on the preceding return promise."
+            },
+            {
+              "prompt": "What is the position of this line? “B: Then take this longer one.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 2,
+              "explanation": "Position4 responds to the length problem with another ruler. Thanks follows receiving that solution."
+            },
+            {
+              "prompt": "What is the position of this line? “A: No. I need to draw a line across this large page.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 1,
+              "explanation": "Position3 answers the short-ruler question and explains needing a longer line, before a longer ruler is offered."
+            },
+            {
+              "prompt": "What is the position of this line? “A: Thank you. I will bring it back after art class.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 3,
+              "explanation": "Position5 thanks the lender and gives a return time. The final line refers back to that time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary3.picnic-order-103",
+      "level": "primary3",
+      "title": "A rainy picnic",
+      "family": "dialogue_ordering",
+      "minutes": 8,
+      "sourceUnitId": "original.primary3-dialogue-ordering-green-pencil",
+      "alignmentNote": "One complete six-line ordering task with the first line fixed and five positions2–6 to fill. Five scoring slots form one dialogue task, not five independent conversations. New complete communicative chain.",
+      "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "A rainy picnic",
+          "text": "The first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: We cannot eat our picnic outside. It is raining.\n\n(____) B: Then let’s ask the teacher about eating in our classroom.\n\n(____) A: She says yes, if we clear the desks afterwards.\n\n(____) A: No, that table is wet too.\n\n(____) B: Good. I will bring a cloth to wipe them.\n\n(____) B: Could we use the covered table by the hall?",
+          "questions": [
+            {
+              "prompt": "What is the position of this line? “B: Then let’s ask the teacher about eating in our classroom.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 2,
+              "explanation": "Position4 asks the teacher about the classroom after the table is rejected. She says yes follows that request."
+            },
+            {
+              "prompt": "What is the position of this line? “A: She says yes, if we clear the desks afterwards.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 3,
+              "explanation": "Position5 reports the teacher’s condition about desks. The cloth in the last line addresses cleaning them."
+            },
+            {
+              "prompt": "What is the position of this line? “A: No, that table is wet too.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 1,
+              "explanation": "Position3 says the proposed table is wet. Then in the next line introduces the alternative."
+            },
+            {
+              "prompt": "What is the position of this line? “B: Good. I will bring a cloth to wipe them.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 4,
+              "explanation": "Position6 responds to the desk-cleaning condition with a cloth; them refers to the desks."
+            },
+            {
+              "prompt": "What is the position of this line? “B: Could we use the covered table by the hall?”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 0,
+              "explanation": "Position2 proposes the covered table after the rain problem. The next line rejects that specific table."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary3.football-order-103",
+      "level": "primary3",
+      "title": "Changing the football time",
+      "family": "dialogue_ordering",
+      "minutes": 8,
+      "sourceUnitId": "original.primary3-dialogue-ordering-green-pencil",
+      "alignmentNote": "One complete six-line ordering task with the first line fixed and five positions2–6 to fill. Five scoring slots form one dialogue task, not five independent conversations. New complete communicative chain.",
+      "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Changing the football time",
+          "text": "The first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: I cannot come to football at four today.\n\n(____) A: Yes, my lesson finishes at half past four.\n\n(____) A: Which gate? The park has two.\n\n(____) B: Would five o’clock be better?\n\n(____) B: The one beside the bus stop.\n\n(____) B: Let’s meet by the park gate at five, then.",
+          "questions": [
+            {
+              "prompt": "What is the position of this line? “A: Yes, my lesson finishes at half past four.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 1,
+              "explanation": "Position3 confirms five and explains the lesson end. The meeting agreement then uses that time."
+            },
+            {
+              "prompt": "What is the position of this line? “A: Which gate? The park has two.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 3,
+              "explanation": "Position5 asks which of the two gates, immediately before a distinguishing location is supplied."
+            },
+            {
+              "prompt": "What is the position of this line? “B: Would five o’clock be better?”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 0,
+              "explanation": "Position2 proposes a later time to solve the four-o’clock problem. Yes answers this proposal next."
+            },
+            {
+              "prompt": "What is the position of this line? “B: The one beside the bus stop.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 4,
+              "explanation": "Position6 identifies the gate beside the bus stop and answers Which gate."
+            },
+            {
+              "prompt": "What is the position of this line? “B: Let’s meet by the park gate at five, then.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 2,
+              "explanation": "Position4 agrees time and a park-gate place. Which gate must follow that place proposal."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary3.story-order-103",
+      "level": "primary3",
+      "title": "Keeping the ending secret",
+      "family": "dialogue_ordering",
+      "minutes": 8,
+      "sourceUnitId": "original.primary3-dialogue-ordering-green-pencil",
+      "alignmentNote": "One complete six-line ordering task with the first line fixed and five positions2–6 to fill. Five scoring slots form one dialogue task, not five independent conversations. New complete communicative chain.",
+      "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Keeping the ending secret",
+          "text": "The first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: This story has a funny ending.\n\n(____) A: All right. Would you like to read my copy after lunch?\n\n(____) B: Yes, please. My copy is at home.\n\n(____) B: Don’t tell me! I am still on page ten.\n\n(____) A: You can keep it until tomorrow.\n\n(____) B: Thank you. That gives me time to finish.",
+          "questions": [
+            {
+              "prompt": "What is the position of this line? “A: All right. Would you like to read my copy after lunch?”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 1,
+              "explanation": "Position3 agrees to keep the ending secret and offers the book. Yes in the next line accepts the offer."
+            },
+            {
+              "prompt": "What is the position of this line? “B: Yes, please. My copy is at home.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 2,
+              "explanation": "Position4 accepts the offered copy and explains why it is needed. The following line sets the loan time."
+            },
+            {
+              "prompt": "What is the position of this line? “B: Don’t tell me! I am still on page ten.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 0,
+              "explanation": "Position2 asks not to reveal the ending mentioned first. All right accepts this request in the next turn."
+            },
+            {
+              "prompt": "What is the position of this line? “A: You can keep it until tomorrow.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 3,
+              "explanation": "Position5 allows keeping the offered book until tomorrow. That in the final line refers to the extra time."
+            },
+            {
+              "prompt": "What is the position of this line? “B: Thank you. That gives me time to finish.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 4,
+              "explanation": "Position6 thanks the lender for the return period, saying it gives time to finish."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary3.card-order-103",
+      "level": "primary3",
+      "title": "A boat on the card",
+      "family": "dialogue_ordering",
+      "minutes": 8,
+      "sourceUnitId": "original.primary3-dialogue-ordering-green-pencil",
+      "alignmentNote": "One complete six-line ordering task with the first line fixed and five positions2–6 to fill. Five scoring slots form one dialogue task, not five independent conversations. New complete communicative chain.",
+      "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "A boat on the card",
+          "text": "The first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: Let’s make a birthday card for Dad.\n\n(____) B: What shall we draw on the front?\n\n(____) A: How about his old sailing boat?\n\n(____) B: Great. We can use it to help with the shape.\n\n(____) A: Yes. Here is one from last summer.\n\n(____) B: Good idea. Do you have a photo of it?",
+          "questions": [
+            {
+              "prompt": "What is the position of this line? “B: What shall we draw on the front?”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 0,
+              "explanation": "Position2 asks for the card’s picture after the card proposal. The boat suggestion answers it."
+            },
+            {
+              "prompt": "What is the position of this line? “A: How about his old sailing boat?”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 1,
+              "explanation": "Position3 proposes the boat subject. Good idea and a photo request respond next."
+            },
+            {
+              "prompt": "What is the position of this line? “B: Great. We can use it to help with the shape.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 4,
+              "explanation": "Position6 says how the supplied photo will help, so it follows the photograph’s arrival."
+            },
+            {
+              "prompt": "What is the position of this line? “A: Yes. Here is one from last summer.”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 3,
+              "explanation": "Position5 supplies the requested photograph; one refers to a photo of the boat."
+            },
+            {
+              "prompt": "What is the position of this line? “B: Good idea. Do you have a photo of it?”",
+              "options": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "answer": 2,
+              "explanation": "Position4 accepts the boat and asks for a photo. Yes must answer that request."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

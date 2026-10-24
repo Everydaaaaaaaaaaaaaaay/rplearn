@@ -1,0 +1,2118 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b103",
+  "createdAt": "2026-10-24T00:54:46.297003+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.dentist-desk-103",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · At the dentist’s desk",
+        "summary": "At the dentist’s desk，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.dentist-desk-103",
+          "family": "function_choice",
+          "label": "At the dentist’s desk",
+          "candidateSHA256": "7ff82770ed8ee116b5e5014ef0348d1ed3fdc9603cd4943f2e5c432ac9339b34",
+          "authorCheckSHA256": "5f9e93ae77df522fab53fb02ef4222f6b38d7b638a88acbbc2fbd9609fb91198",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.dentist-desk-103#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b103；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "At the dentist’s desk\n\nChoose the best reply in each conversation.\n\n1. Receptionist: Good morning. What is your name?\nChild: ____\n\n2. Receptionist: Is your appointment at ten?\nChild: ____\n\n3. Child: Where should we wait?\nReceptionist: ____\n\n4. Receptionist: Would you like a book while you wait?\nChild: ____\n\n5. Receptionist: It is your turn now. Please come with your mum.\nChild: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.dentist-desk-103.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Receptionist: Good morning. What is your name?\nChild: ____",
+            "material": "At the dentist’s desk\n\nChoose the best reply in each conversation.\n\n1. Receptionist: Good morning. What is your name?\nChild: ____\n\n2. Receptionist: Is your appointment at ten?\nChild: ____\n\n3. Child: Where should we wait?\nReceptionist: ____\n\n4. Receptionist: Would you like a book while you wait?\nChild: ____\n\n5. Receptionist: It is your turn now. Please come with your mum.\nChild: ____",
+            "explanation": "Giving a name answers the identity request. Location/count/colour do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I have two pencils."
+              },
+              {
+                "id": "o1",
+                "text": "My name is Ella Brown."
+              },
+              {
+                "id": "o2",
+                "text": "The door is green."
+              },
+              {
+                "id": "o3",
+                "text": "It is under the chair."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.dentist-desk-103.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Receptionist: Is your appointment at ten?\nChild: ____",
+            "material": "At the dentist’s desk\n\nChoose the best reply in each conversation.\n\n1. Receptionist: Good morning. What is your name?\nChild: ____\n\n2. Receptionist: Is your appointment at ten?\nChild: ____\n\n3. Child: Where should we wait?\nReceptionist: ____\n\n4. Receptionist: Would you like a book while you wait?\nChild: ____\n\n5. Receptionist: It is your turn now. Please come with your mum.\nChild: ____",
+            "explanation": "Confirming the appointment time answers the question. Family/preference/ability do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She is my sister."
+              },
+              {
+                "id": "o1",
+                "text": "Yes. Mum booked it for ten."
+              },
+              {
+                "id": "o2",
+                "text": "It can fly."
+              },
+              {
+                "id": "o3",
+                "text": "I like this picture."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.dentist-desk-103.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Child: Where should we wait?\nReceptionist: ____",
+            "material": "At the dentist’s desk\n\nChoose the best reply in each conversation.\n\n1. Receptionist: Good morning. What is your name?\nChild: ____\n\n2. Receptionist: Is your appointment at ten?\nChild: ____\n\n3. Child: Where should we wait?\nReceptionist: ____\n\n4. Receptionist: Would you like a book while you wait?\nChild: ____\n\n5. Receptionist: It is your turn now. Please come with your mum.\nChild: ____",
+            "explanation": "The seats are a waiting place. Object/origin/day count do not answer where.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Please sit on the blue seats."
+              },
+              {
+                "id": "o1",
+                "text": "I am from here."
+              },
+              {
+                "id": "o2",
+                "text": "It is a little fish."
+              },
+              {
+                "id": "o3",
+                "text": "There are seven days."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.dentist-desk-103.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Receptionist: Would you like a book while you wait?\nChild: ____",
+            "material": "At the dentist’s desk\n\nChoose the best reply in each conversation.\n\n1. Receptionist: Good morning. What is your name?\nChild: ____\n\n2. Receptionist: Is your appointment at ten?\nChild: ____\n\n3. Child: Where should we wait?\nReceptionist: ____\n\n4. Receptionist: Would you like a book while you wait?\nChild: ____\n\n5. Receptionist: It is your turn now. Please come with your mum.\nChild: ____",
+            "explanation": "Accepting and choosing a book responds to the offer. Other replies are unrelated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It has four legs."
+              },
+              {
+                "id": "o1",
+                "text": "The bus is late."
+              },
+              {
+                "id": "o2",
+                "text": "Yes, please. This animal book looks fun."
+              },
+              {
+                "id": "o3",
+                "text": "He is my friend."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.dentist-desk-103.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Receptionist: It is your turn now. Please come with your mum.\nChild: ____",
+            "material": "At the dentist’s desk\n\nChoose the best reply in each conversation.\n\n1. Receptionist: Good morning. What is your name?\nChild: ____\n\n2. Receptionist: Is your appointment at ten?\nChild: ____\n\n3. Child: Where should we wait?\nReceptionist: ____\n\n4. Receptionist: Would you like a book while you wait?\nChild: ____\n\n5. Receptionist: It is your turn now. Please come with your mum.\nChild: ____",
+            "explanation": "Coming with Mum follows the instruction. Object/date/sighting do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "All right. We are coming."
+              },
+              {
+                "id": "o1",
+                "text": "My birthday is in June."
+              },
+              {
+                "id": "o2",
+                "text": "I can see a boat."
+              },
+              {
+                "id": "o3",
+                "text": "It is a yellow ball."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "3eca5759aede2d440d726583191f9e59f9ab5543bc2e4835662cde7ced2be0b2",
+      "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.wrapping-present-103",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · Wrapping a birthday present",
+        "summary": "Wrapping a birthday present，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.wrapping-present-103",
+          "family": "function_choice",
+          "label": "Wrapping a birthday present",
+          "candidateSHA256": "a80eb2566fb12a5e93dae4ee5e7ac659b4b28ae70ec27d4a6082fa3ee28be563",
+          "authorCheckSHA256": "321c258c8e3d47875ebbda1a28505369efa5fd2d5bec04151bb9c74f1cc88e99",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.wrapping-present-103#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b103；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Wrapping a birthday present\n\nChoose the best reply in each conversation.\n\n1. Dad: Which paper shall we use for the present?\nChild: ____\n\n2. Child: Can you hold this corner for me?\nDad: ____\n\n3. Dad: The ribbon is too long.\nChild: ____\n\n4. Child: Where should I write Grandma’s name?\nDad: ____\n\n5. Dad: Everything is ready. Thank you for helping.\nChild: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.wrapping-present-103.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Dad: Which paper shall we use for the present?\nChild: ____",
+            "material": "Wrapping a birthday present\n\nChoose the best reply in each conversation.\n\n1. Dad: Which paper shall we use for the present?\nChild: ____\n\n2. Child: Can you hold this corner for me?\nDad: ____\n\n3. Dad: The ribbon is too long.\nChild: ____\n\n4. Child: Where should I write Grandma’s name?\nDad: ____\n\n5. Dad: Everything is ready. Thank you for helping.\nChild: ____",
+            "explanation": "Selecting paper answers which. Time/pet/ability do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is half past six."
+              },
+              {
+                "id": "o1",
+                "text": "She has a dog."
+              },
+              {
+                "id": "o2",
+                "text": "I can swim."
+              },
+              {
+                "id": "o3",
+                "text": "The paper with stars, please."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.wrapping-present-103.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Child: Can you hold this corner for me?\nDad: ____",
+            "material": "Wrapping a birthday present\n\nChoose the best reply in each conversation.\n\n1. Dad: Which paper shall we use for the present?\nChild: ____\n\n2. Child: Can you hold this corner for me?\nDad: ____\n\n3. Dad: The ribbon is too long.\nChild: ____\n\n4. Child: Where should I write Grandma’s name?\nDad: ____\n\n5. Dad: Everything is ready. Thank you for helping.\nChild: ____",
+            "explanation": "Holding the corner still responds to help. Location/taste/vehicle identity do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is a bus."
+              },
+              {
+                "id": "o1",
+                "text": "Of course. I will keep it still."
+              },
+              {
+                "id": "o2",
+                "text": "The cake is sweet."
+              },
+              {
+                "id": "o3",
+                "text": "He lives in the city."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.wrapping-present-103.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Dad: The ribbon is too long.\nChild: ____",
+            "material": "Wrapping a birthday present\n\nChoose the best reply in each conversation.\n\n1. Dad: Which paper shall we use for the present?\nChild: ____\n\n2. Child: Can you hold this corner for me?\nDad: ____\n\n3. Dad: The ribbon is too long.\nChild: ____\n\n4. Child: Where should I write Grandma’s name?\nDad: ____\n\n5. Dad: Everything is ready. Thank you for helping.\nChild: ____",
+            "explanation": "A shorter ribbon addresses length. Shoes/age/day do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Shall we use a shorter piece?"
+              },
+              {
+                "id": "o1",
+                "text": "I am eight."
+              },
+              {
+                "id": "o2",
+                "text": "My shoes are black."
+              },
+              {
+                "id": "o3",
+                "text": "It is Monday."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.wrapping-present-103.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Child: Where should I write Grandma’s name?\nDad: ____",
+            "material": "Wrapping a birthday present\n\nChoose the best reply in each conversation.\n\n1. Dad: Which paper shall we use for the present?\nChild: ____\n\n2. Child: Can you hold this corner for me?\nDad: ____\n\n3. Dad: The ribbon is too long.\nChild: ____\n\n4. Child: Where should I write Grandma’s name?\nDad: ____\n\n5. Dad: Everything is ready. Thank you for helping.\nChild: ____",
+            "explanation": "The card is a writing location. Wheels/ability/drink preference do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It has two wheels."
+              },
+              {
+                "id": "o1",
+                "text": "I like milk."
+              },
+              {
+                "id": "o2",
+                "text": "She can sing."
+              },
+              {
+                "id": "o3",
+                "text": "On the little card beside the bow."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.wrapping-present-103.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Dad: Everything is ready. Thank you for helping.\nChild: ____",
+            "material": "Wrapping a birthday present\n\nChoose the best reply in each conversation.\n\n1. Dad: Which paper shall we use for the present?\nChild: ____\n\n2. Child: Can you hold this corner for me?\nDad: ____\n\n3. Dad: The ribbon is too long.\nChild: ____\n\n4. Child: Where should I write Grandma’s name?\nDad: ____\n\n5. Dad: Everything is ready. Thank you for helping.\nChild: ____",
+            "explanation": "Acknowledging thanks and a wish fit. Location/family/water do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is behind the tree."
+              },
+              {
+                "id": "o1",
+                "text": "You’re welcome. I hope she likes it."
+              },
+              {
+                "id": "o2",
+                "text": "He is my brother."
+              },
+              {
+                "id": "o3",
+                "text": "The water is cold."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "294ff1aaa8f947ce6975c687fa3e33acc285a6ff0585e7064efa168e84dc3a0f",
+      "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.train-window-103",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · Finding our train seats",
+        "summary": "Finding our train seats，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.train-window-103",
+          "family": "function_choice",
+          "label": "Finding our train seats",
+          "candidateSHA256": "80e40c03688dc36777140e7b56286df17bcd313c74966b63a662e8bb33608026",
+          "authorCheckSHA256": "fc5968a6880748cd499778ba7c213b5ef32f4b6c79ba063d9de92ea3d1d6217c",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.train-window-103#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b103；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Finding our train seats\n\nChoose the best reply in each conversation.\n\n1. Parent: What number is on your ticket?\nChild: ____\n\n2. Child: Is this our row?\nParent: ____\n\n3. Parent: Would you like the window seat?\nChild: ____\n\n4. Child: This bag is too big to go under my seat.\nParent: ____\n\n5. Parent: We are leaving the station now.\nChild: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.train-window-103.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Parent: What number is on your ticket?\nChild: ____",
+            "material": "Finding our train seats\n\nChoose the best reply in each conversation.\n\n1. Parent: What number is on your ticket?\nChild: ____\n\n2. Child: Is this our row?\nParent: ____\n\n3. Parent: Would you like the window seat?\nChild: ____\n\n4. Child: This bag is too big to go under my seat.\nParent: ____\n\n5. Parent: We are leaving the station now.\nChild: ____",
+            "explanation": "A seat number answers the ticket-number question. Family/preference/colour do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The sky is blue."
+              },
+              {
+                "id": "o1",
+                "text": "It is my aunt."
+              },
+              {
+                "id": "o2",
+                "text": "I like grapes."
+              },
+              {
+                "id": "o3",
+                "text": "Seat sixteen."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.train-window-103.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Child: Is this our row?\nParent: ____",
+            "material": "Finding our train seats\n\nChoose the best reply in each conversation.\n\n1. Parent: What number is on your ticket?\nChild: ____\n\n2. Child: Is this our row?\nParent: ____\n\n3. Parent: Would you like the window seat?\nChild: ____\n\n4. Child: This bag is too big to go under my seat.\nParent: ____\n\n5. Parent: We are leaving the station now.\nChild: ____",
+            "explanation": "The reply corrects row location. Animal/ability/day do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is Friday."
+              },
+              {
+                "id": "o1",
+                "text": "It has a long tail."
+              },
+              {
+                "id": "o2",
+                "text": "He can draw."
+              },
+              {
+                "id": "o3",
+                "text": "Not yet. Our seats are two rows farther along."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.train-window-103.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Parent: Would you like the window seat?\nChild: ____",
+            "material": "Finding our train seats\n\nChoose the best reply in each conversation.\n\n1. Parent: What number is on your ticket?\nChild: ____\n\n2. Child: Is this our row?\nParent: ____\n\n3. Parent: Would you like the window seat?\nChild: ____\n\n4. Child: This bag is too big to go under my seat.\nParent: ____\n\n5. Parent: We are leaving the station now.\nChild: ____",
+            "explanation": "Accepting the window seat with reason fits. Bag/location/count do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "My bag has a star."
+              },
+              {
+                "id": "o1",
+                "text": "Yes, please. I want to watch the fields."
+              },
+              {
+                "id": "o2",
+                "text": "She is at school."
+              },
+              {
+                "id": "o3",
+                "text": "I have three cups."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.train-window-103.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Child: This bag is too big to go under my seat.\nParent: ____",
+            "material": "Finding our train seats\n\nChoose the best reply in each conversation.\n\n1. Parent: What number is on your ticket?\nChild: ____\n\n2. Child: Is this our row?\nParent: ____\n\n3. Parent: Would you like the window seat?\nChild: ____\n\n4. Child: This bag is too big to go under my seat.\nParent: ____\n\n5. Parent: We are leaving the station now.\nChild: ____",
+            "explanation": "Asking for suitable storage addresses the bag. Other replies do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He is nine."
+              },
+              {
+                "id": "o1",
+                "text": "Let’s ask the staff where it can go safely."
+              },
+              {
+                "id": "o2",
+                "text": "The soup is hot."
+              },
+              {
+                "id": "o3",
+                "text": "It is a red fish."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.train-window-103.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Parent: We are leaving the station now.\nChild: ____",
+            "material": "Finding our train seats\n\nChoose the best reply in each conversation.\n\n1. Parent: What number is on your ticket?\nChild: ____\n\n2. Child: Is this our row?\nParent: ____\n\n3. Parent: Would you like the window seat?\nChild: ____\n\n4. Child: This bag is too big to go under my seat.\nParent: ____\n\n5. Parent: We are leaving the station now.\nChild: ____",
+            "explanation": "Noticing the passing platform responds to departure. Other remarks are unrelated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I like this spoon."
+              },
+              {
+                "id": "o1",
+                "text": "She has a new hat."
+              },
+              {
+                "id": "o2",
+                "text": "It is in my lunchbox."
+              },
+              {
+                "id": "o3",
+                "text": "I can see the platform moving past us!"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "a2bbee03102a94281ac086b1024ba52d65fefc9f4498c4f87d5da5895ea12cce",
+      "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.sports-hall-tidy-103",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · Tidying the sports hall",
+        "summary": "Tidying the sports hall，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.sports-hall-tidy-103",
+          "family": "function_choice",
+          "label": "Tidying the sports hall",
+          "candidateSHA256": "ce7abb97d39812f5ed1f4396d9435085af25c54118a9aaf3807662ec4008d1ce",
+          "authorCheckSHA256": "5fc0e8bd4684fb6dbbb1ad3cf816a86dfeda720ab2a7ba8a15113067da548c32",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.sports-hall-tidy-103#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b103；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Tidying the sports hall\n\nChoose the best reply in each conversation.\n\n1. Teacher: Please put the soft balls in this basket.\nChild: ____\n\n2. Child: This basketball will not fit.\nTeacher: ____\n\n3. Teacher: Have we collected all the beanbags?\nChild: ____\n\n4. Child: Shall I move this heavy bench alone?\nTeacher: ____\n\n5. Teacher: The hall is clear now. Well done.\nChild: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.sports-hall-tidy-103.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Teacher: Please put the soft balls in this basket.\nChild: ____",
+            "material": "Tidying the sports hall\n\nChoose the best reply in each conversation.\n\n1. Teacher: Please put the soft balls in this basket.\nChild: ____\n\n2. Child: This basketball will not fit.\nTeacher: ____\n\n3. Teacher: Have we collected all the beanbags?\nChild: ____\n\n4. Child: Shall I move this heavy bench alone?\nTeacher: ____\n\n5. Teacher: The hall is clear now. Well done.\nChild: ____",
+            "explanation": "Selecting soft balls follows the sorting instruction. Time/family/colour do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He is my uncle."
+              },
+              {
+                "id": "o1",
+                "text": "All right. These three are soft."
+              },
+              {
+                "id": "o2",
+                "text": "It is five o’clock."
+              },
+              {
+                "id": "o3",
+                "text": "My coat is red."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.sports-hall-tidy-103.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Child: This basketball will not fit.\nTeacher: ____",
+            "material": "Tidying the sports hall\n\nChoose the best reply in each conversation.\n\n1. Teacher: Please put the soft balls in this basket.\nChild: ____\n\n2. Child: This basketball will not fit.\nTeacher: ____\n\n3. Teacher: Have we collected all the beanbags?\nChild: ____\n\n4. Child: Shall I move this heavy bench alone?\nTeacher: ____\n\n5. Teacher: The hall is clear now. Well done.\nChild: ____",
+            "explanation": "A larger basket solves size mismatch. Drink/age/bird identity do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I like orange juice."
+              },
+              {
+                "id": "o1",
+                "text": "She is ten."
+              },
+              {
+                "id": "o2",
+                "text": "It is a small bird."
+              },
+              {
+                "id": "o3",
+                "text": "Use the larger basket beside the door."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary2.sports-hall-tidy-103.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Teacher: Have we collected all the beanbags?\nChild: ____",
+            "material": "Tidying the sports hall\n\nChoose the best reply in each conversation.\n\n1. Teacher: Please put the soft balls in this basket.\nChild: ____\n\n2. Child: This basketball will not fit.\nTeacher: ____\n\n3. Teacher: Have we collected all the beanbags?\nChild: ____\n\n4. Child: Shall I move this heavy bench alone?\nTeacher: ____\n\n5. Teacher: The hall is clear now. Well done.\nChild: ____",
+            "explanation": "A remaining beanbag answers completeness. Other replies do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It can fly."
+              },
+              {
+                "id": "o1",
+                "text": "Not yet. One is under the bench."
+              },
+              {
+                "id": "o2",
+                "text": "My book is new."
+              },
+              {
+                "id": "o3",
+                "text": "It is Saturday."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.sports-hall-tidy-103.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Child: Shall I move this heavy bench alone?\nTeacher: ____",
+            "material": "Tidying the sports hall\n\nChoose the best reply in each conversation.\n\n1. Teacher: Please put the soft balls in this basket.\nChild: ____\n\n2. Child: This basketball will not fit.\nTeacher: ____\n\n3. Teacher: Have we collected all the beanbags?\nChild: ____\n\n4. Child: Shall I move this heavy bench alone?\nTeacher: ____\n\n5. Teacher: The hall is clear now. Well done.\nChild: ____",
+            "explanation": "Declining solo heavy moving and seeking help responds. Other sentences do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "No. Leave it and ask an adult for help."
+              },
+              {
+                "id": "o1",
+                "text": "I have two rulers."
+              },
+              {
+                "id": "o2",
+                "text": "The flower is blue."
+              },
+              {
+                "id": "o3",
+                "text": "He can sing."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.sports-hall-tidy-103.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Teacher: The hall is clear now. Well done.\nChild: ____",
+            "material": "Tidying the sports hall\n\nChoose the best reply in each conversation.\n\n1. Teacher: Please put the soft balls in this basket.\nChild: ____\n\n2. Child: This basketball will not fit.\nTeacher: ____\n\n3. Teacher: Have we collected all the beanbags?\nChild: ____\n\n4. Child: Shall I move this heavy bench alone?\nTeacher: ____\n\n5. Teacher: The hall is clear now. Well done.\nChild: ____",
+            "explanation": "Acknowledgment and the next cleanup request fit. Vehicle/family/shape do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Thank you. May we wash our hands?"
+              },
+              {
+                "id": "o1",
+                "text": "She is my cousin."
+              },
+              {
+                "id": "o2",
+                "text": "The clock is round."
+              },
+              {
+                "id": "o3",
+                "text": "It is a yellow bus."
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "25f68d9df652d32daa64df7ad13286d4d0492a8cd7c1630c44b84b909365318a",
+      "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary2.packing-small-picnic-103",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "10·24新题 · Packing a small picnic",
+        "summary": "Packing a small picnic，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete communicative choices. Added vocabulary and difficulty are provisional, not independently calibrated."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary2.packing-small-picnic-103",
+          "family": "function_choice",
+          "label": "Packing a small picnic",
+          "candidateSHA256": "acfd10820ce7580b0683eb67eec307ad8158e2bb8c1543daee407705882867e7",
+          "authorCheckSHA256": "fa924a8a2c2627d6173f8dcb989f2bfb5522b3b9c5314ce44338193a1dcc0f80",
+          "sourceGroupIds": [
+            "expansion.20261024.primary2.packing-small-picnic-103#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b103；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Packing a small picnic\n\nChoose the best reply in each conversation.\n\n1. Parent: How many cups do we need for the four of us?\nChild: ____\n\n2. Child: Shall I put the fruit on top?\nParent: ____\n\n3. Parent: Where is the picnic blanket?\nChild: ____\n\n4. Child: May I bring my little storybook too?\nParent: ____\n\n5. Parent: We have everything. Are you ready to go?\nChild: ____"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary2.packing-small-picnic-103.whole.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Parent: How many cups do we need for the four of us?\nChild: ____",
+            "material": "Packing a small picnic\n\nChoose the best reply in each conversation.\n\n1. Parent: How many cups do we need for the four of us?\nChild: ____\n\n2. Child: Shall I put the fruit on top?\nParent: ____\n\n3. Parent: Where is the picnic blanket?\nChild: ____\n\n4. Child: May I bring my little storybook too?\nParent: ____\n\n5. Parent: We have everything. Are you ready to go?\nChild: ____",
+            "explanation": "Four people need four individual cups. Time/age/legs do not count cups.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The chair has four legs."
+              },
+              {
+                "id": "o1",
+                "text": "Four cups. One each."
+              },
+              {
+                "id": "o2",
+                "text": "It is four o’clock."
+              },
+              {
+                "id": "o3",
+                "text": "I am four years old."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary2.packing-small-picnic-103.whole.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Child: Shall I put the fruit on top?\nParent: ____",
+            "material": "Packing a small picnic\n\nChoose the best reply in each conversation.\n\n1. Parent: How many cups do we need for the four of us?\nChild: ____\n\n2. Child: Shall I put the fruit on top?\nParent: ____\n\n3. Parent: Where is the picnic blanket?\nChild: ____\n\n4. Child: May I bring my little storybook too?\nParent: ____\n\n5. Parent: We have everything. Are you ready to go?\nChild: ____",
+            "explanation": "Protecting fruit addresses packing position. Person/ability/day do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He is in the garden."
+              },
+              {
+                "id": "o1",
+                "text": "It is Monday."
+              },
+              {
+                "id": "o2",
+                "text": "Yes. Keep it where it will not be squashed."
+              },
+              {
+                "id": "o3",
+                "text": "She can run fast."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary2.packing-small-picnic-103.whole.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Parent: Where is the picnic blanket?\nChild: ____",
+            "material": "Packing a small picnic\n\nChoose the best reply in each conversation.\n\n1. Parent: How many cups do we need for the four of us?\nChild: ____\n\n2. Child: Shall I put the fruit on top?\nParent: ____\n\n3. Parent: Where is the picnic blanket?\nChild: ____\n\n4. Child: May I bring my little storybook too?\nParent: ____\n\n5. Parent: We have everything. Are you ready to go?\nChild: ____",
+            "explanation": "The blanket’s location answers where. Preference/temperature/count do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Folded beside the green bag."
+              },
+              {
+                "id": "o1",
+                "text": "I like this cake."
+              },
+              {
+                "id": "o2",
+                "text": "It is very warm."
+              },
+              {
+                "id": "o3",
+                "text": "There are two birds."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.packing-small-picnic-103.whole.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Child: May I bring my little storybook too?\nParent: ____",
+            "material": "Packing a small picnic\n\nChoose the best reply in each conversation.\n\n1. Parent: How many cups do we need for the four of us?\nChild: ____\n\n2. Child: Shall I put the fruit on top?\nParent: ____\n\n3. Parent: Where is the picnic blanket?\nChild: ____\n\n4. Child: May I bring my little storybook too?\nParent: ____\n\n5. Parent: We have everything. Are you ready to go?\nChild: ____",
+            "explanation": "Permission with a condition answers may I. Other replies do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Yes, if you carry it in your own bag."
+              },
+              {
+                "id": "o1",
+                "text": "It has a red door."
+              },
+              {
+                "id": "o2",
+                "text": "She is my teacher."
+              },
+              {
+                "id": "o3",
+                "text": "The bus is here."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary2.packing-small-picnic-103.whole.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Choose the best reply in each conversation.",
+            "prompt": "Parent: We have everything. Are you ready to go?\nChild: ____",
+            "material": "Packing a small picnic\n\nChoose the best reply in each conversation.\n\n1. Parent: How many cups do we need for the four of us?\nChild: ____\n\n2. Child: Shall I put the fruit on top?\nParent: ____\n\n3. Parent: Where is the picnic blanket?\nChild: ____\n\n4. Child: May I bring my little storybook too?\nParent: ____\n\n5. Parent: We have everything. Are you ready to go?\nChild: ____",
+            "explanation": "Ready with belongings answers readiness. Location/age/sighting do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "He is seven."
+              },
+              {
+                "id": "o1",
+                "text": "Yes. I have my shoes and bag."
+              },
+              {
+                "id": "o2",
+                "text": "It is under the water."
+              },
+              {
+                "id": "o3",
+                "text": "I can see a star."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "c7564b4037fcc6c65ab43ca1d8b14bb61b08a54fbcf96596e7ba7b57038d1f30",
+      "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.ruler-order-103",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · Borrowing a ruler",
+        "summary": "Borrowing a ruler，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.dialogue_ordering"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p3.panshi2023.dialogue-ordering",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete six-line ordering task with the first line fixed and five positions2–6 to fill. Five scoring slots form one dialogue task, not five independent conversations. New complete communicative chain."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.ruler-order-103",
+          "family": "dialogue_ordering",
+          "label": "Borrowing a ruler",
+          "candidateSHA256": "02521137df1011d499b7916502f0bef36b453dd5e54145a1c233f761a75b4325",
+          "authorCheckSHA256": "ee88212e286d68a1548739efc8f7ff393d9699644b24c55e3e7deb82dbb15a8c",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.ruler-order-103#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b103；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Borrowing a ruler\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: May I use your ruler, please?\n\n(____) B: Of course. Is this short one long enough?\n\n(____) B: That is fine. I will not need it before then.\n\n(____) B: Then take this longer one.\n\n(____) A: No. I need to draw a line across this large page.\n\n(____) A: Thank you. I will bring it back after art class."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.ruler-order-103.whole.q1",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: Of course. Is this short one long enough?”",
+            "material": "Borrowing a ruler\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: May I use your ruler, please?\n\n(____) B: Of course. Is this short one long enough?\n\n(____) B: That is fine. I will not need it before then.\n\n(____) B: Then take this longer one.\n\n(____) A: No. I need to draw a line across this large page.\n\n(____) A: Thank you. I will bring it back after art class.",
+            "explanation": "Position2 grants the request and asks about length. The following No must answer that question.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.ruler-order-103.whole.q2",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: That is fine. I will not need it before then.”",
+            "material": "Borrowing a ruler\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: May I use your ruler, please?\n\n(____) B: Of course. Is this short one long enough?\n\n(____) B: That is fine. I will not need it before then.\n\n(____) B: Then take this longer one.\n\n(____) A: No. I need to draw a line across this large page.\n\n(____) A: Thank you. I will bring it back after art class.",
+            "explanation": "Position6 accepts the proposed return after art class; before then depends on the preceding return promise.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.primary3.ruler-order-103.whole.q3",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: Then take this longer one.”",
+            "material": "Borrowing a ruler\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: May I use your ruler, please?\n\n(____) B: Of course. Is this short one long enough?\n\n(____) B: That is fine. I will not need it before then.\n\n(____) B: Then take this longer one.\n\n(____) A: No. I need to draw a line across this large page.\n\n(____) A: Thank you. I will bring it back after art class.",
+            "explanation": "Position4 responds to the length problem with another ruler. Thanks follows receiving that solution.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary3.ruler-order-103.whole.q4",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “A: No. I need to draw a line across this large page.”",
+            "material": "Borrowing a ruler\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: May I use your ruler, please?\n\n(____) B: Of course. Is this short one long enough?\n\n(____) B: That is fine. I will not need it before then.\n\n(____) B: Then take this longer one.\n\n(____) A: No. I need to draw a line across this large page.\n\n(____) A: Thank you. I will bring it back after art class.",
+            "explanation": "Position3 answers the short-ruler question and explains needing a longer line, before a longer ruler is offered.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.ruler-order-103.whole.q5",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “A: Thank you. I will bring it back after art class.”",
+            "material": "Borrowing a ruler\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: May I use your ruler, please?\n\n(____) B: Of course. Is this short one long enough?\n\n(____) B: That is fine. I will not need it before then.\n\n(____) B: Then take this longer one.\n\n(____) A: No. I need to draw a line across this large page.\n\n(____) A: Thank you. I will bring it back after art class.",
+            "explanation": "Position5 thanks the lender and gives a return time. The final line refers back to that time.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "48201759a05461ea817a7389e22deb6fb65899008207ba5aa31731ba42604b0a",
+      "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.picnic-order-103",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · A rainy picnic",
+        "summary": "A rainy picnic，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.dialogue_ordering"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p3.panshi2023.dialogue-ordering",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete six-line ordering task with the first line fixed and five positions2–6 to fill. Five scoring slots form one dialogue task, not five independent conversations. New complete communicative chain."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.picnic-order-103",
+          "family": "dialogue_ordering",
+          "label": "A rainy picnic",
+          "candidateSHA256": "5d148f594ba9a8f11aeb2b6595535976702bbb40c04e40a8d554d3a4965947cd",
+          "authorCheckSHA256": "3f3a622d3ecb6c0a9bfb988c2fa458fa1904c5c67252250544aed6a0b2cdf750",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.picnic-order-103#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b103；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A rainy picnic\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: We cannot eat our picnic outside. It is raining.\n\n(____) B: Then let’s ask the teacher about eating in our classroom.\n\n(____) A: She says yes, if we clear the desks afterwards.\n\n(____) A: No, that table is wet too.\n\n(____) B: Good. I will bring a cloth to wipe them.\n\n(____) B: Could we use the covered table by the hall?"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.picnic-order-103.whole.q1",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: Then let’s ask the teacher about eating in our classroom.”",
+            "material": "A rainy picnic\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: We cannot eat our picnic outside. It is raining.\n\n(____) B: Then let’s ask the teacher about eating in our classroom.\n\n(____) A: She says yes, if we clear the desks afterwards.\n\n(____) A: No, that table is wet too.\n\n(____) B: Good. I will bring a cloth to wipe them.\n\n(____) B: Could we use the covered table by the hall?",
+            "explanation": "Position4 asks the teacher about the classroom after the table is rejected. She says yes follows that request.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary3.picnic-order-103.whole.q2",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “A: She says yes, if we clear the desks afterwards.”",
+            "material": "A rainy picnic\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: We cannot eat our picnic outside. It is raining.\n\n(____) B: Then let’s ask the teacher about eating in our classroom.\n\n(____) A: She says yes, if we clear the desks afterwards.\n\n(____) A: No, that table is wet too.\n\n(____) B: Good. I will bring a cloth to wipe them.\n\n(____) B: Could we use the covered table by the hall?",
+            "explanation": "Position5 reports the teacher’s condition about desks. The cloth in the last line addresses cleaning them.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary3.picnic-order-103.whole.q3",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “A: No, that table is wet too.”",
+            "material": "A rainy picnic\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: We cannot eat our picnic outside. It is raining.\n\n(____) B: Then let’s ask the teacher about eating in our classroom.\n\n(____) A: She says yes, if we clear the desks afterwards.\n\n(____) A: No, that table is wet too.\n\n(____) B: Good. I will bring a cloth to wipe them.\n\n(____) B: Could we use the covered table by the hall?",
+            "explanation": "Position3 says the proposed table is wet. Then in the next line introduces the alternative.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.picnic-order-103.whole.q4",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: Good. I will bring a cloth to wipe them.”",
+            "material": "A rainy picnic\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: We cannot eat our picnic outside. It is raining.\n\n(____) B: Then let’s ask the teacher about eating in our classroom.\n\n(____) A: She says yes, if we clear the desks afterwards.\n\n(____) A: No, that table is wet too.\n\n(____) B: Good. I will bring a cloth to wipe them.\n\n(____) B: Could we use the covered table by the hall?",
+            "explanation": "Position6 responds to the desk-cleaning condition with a cloth; them refers to the desks.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.primary3.picnic-order-103.whole.q5",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: Could we use the covered table by the hall?”",
+            "material": "A rainy picnic\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: We cannot eat our picnic outside. It is raining.\n\n(____) B: Then let’s ask the teacher about eating in our classroom.\n\n(____) A: She says yes, if we clear the desks afterwards.\n\n(____) A: No, that table is wet too.\n\n(____) B: Good. I will bring a cloth to wipe them.\n\n(____) B: Could we use the covered table by the hall?",
+            "explanation": "Position2 proposes the covered table after the rain problem. The next line rejects that specific table.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "7095f84f2183521be74ff2f55ee6adfe44094615f0b5428cc8a413eb4986dae2",
+      "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.football-order-103",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · Changing the football time",
+        "summary": "Changing the football time，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.dialogue_ordering"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p3.panshi2023.dialogue-ordering",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete six-line ordering task with the first line fixed and five positions2–6 to fill. Five scoring slots form one dialogue task, not five independent conversations. New complete communicative chain."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.football-order-103",
+          "family": "dialogue_ordering",
+          "label": "Changing the football time",
+          "candidateSHA256": "9177a6b1903004abb699b15204fa77bef9455d5f71bbc9dd2822a6ac0fed050a",
+          "authorCheckSHA256": "6aa2ffb936b5f5b358e9124f6fc97d32ddd763d99235ff3b192bc52b6f11b986",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.football-order-103#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b103；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Changing the football time\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: I cannot come to football at four today.\n\n(____) A: Yes, my lesson finishes at half past four.\n\n(____) A: Which gate? The park has two.\n\n(____) B: Would five o’clock be better?\n\n(____) B: The one beside the bus stop.\n\n(____) B: Let’s meet by the park gate at five, then."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.football-order-103.whole.q1",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “A: Yes, my lesson finishes at half past four.”",
+            "material": "Changing the football time\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: I cannot come to football at four today.\n\n(____) A: Yes, my lesson finishes at half past four.\n\n(____) A: Which gate? The park has two.\n\n(____) B: Would five o’clock be better?\n\n(____) B: The one beside the bus stop.\n\n(____) B: Let’s meet by the park gate at five, then.",
+            "explanation": "Position3 confirms five and explains the lesson end. The meeting agreement then uses that time.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.football-order-103.whole.q2",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “A: Which gate? The park has two.”",
+            "material": "Changing the football time\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: I cannot come to football at four today.\n\n(____) A: Yes, my lesson finishes at half past four.\n\n(____) A: Which gate? The park has two.\n\n(____) B: Would five o’clock be better?\n\n(____) B: The one beside the bus stop.\n\n(____) B: Let’s meet by the park gate at five, then.",
+            "explanation": "Position5 asks which of the two gates, immediately before a distinguishing location is supplied.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary3.football-order-103.whole.q3",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: Would five o’clock be better?”",
+            "material": "Changing the football time\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: I cannot come to football at four today.\n\n(____) A: Yes, my lesson finishes at half past four.\n\n(____) A: Which gate? The park has two.\n\n(____) B: Would five o’clock be better?\n\n(____) B: The one beside the bus stop.\n\n(____) B: Let’s meet by the park gate at five, then.",
+            "explanation": "Position2 proposes a later time to solve the four-o’clock problem. Yes answers this proposal next.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.football-order-103.whole.q4",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: The one beside the bus stop.”",
+            "material": "Changing the football time\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: I cannot come to football at four today.\n\n(____) A: Yes, my lesson finishes at half past four.\n\n(____) A: Which gate? The park has two.\n\n(____) B: Would five o’clock be better?\n\n(____) B: The one beside the bus stop.\n\n(____) B: Let’s meet by the park gate at five, then.",
+            "explanation": "Position6 identifies the gate beside the bus stop and answers Which gate.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.primary3.football-order-103.whole.q5",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: Let’s meet by the park gate at five, then.”",
+            "material": "Changing the football time\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: I cannot come to football at four today.\n\n(____) A: Yes, my lesson finishes at half past four.\n\n(____) A: Which gate? The park has two.\n\n(____) B: Would five o’clock be better?\n\n(____) B: The one beside the bus stop.\n\n(____) B: Let’s meet by the park gate at five, then.",
+            "explanation": "Position4 agrees time and a park-gate place. Which gate must follow that place proposal.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "48b58e600f6afbc0868b12f6a288f3ae43d379feeb69f2c4a83ba09a99293862",
+      "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.story-order-103",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · Keeping the ending secret",
+        "summary": "Keeping the ending secret，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.dialogue_ordering"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p3.panshi2023.dialogue-ordering",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete six-line ordering task with the first line fixed and five positions2–6 to fill. Five scoring slots form one dialogue task, not five independent conversations. New complete communicative chain."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.story-order-103",
+          "family": "dialogue_ordering",
+          "label": "Keeping the ending secret",
+          "candidateSHA256": "a34ff8f1af213920449d6798f48ef5e82491925379df6eeaa74ea47a9e4a1906",
+          "authorCheckSHA256": "8776413e4052f41a3145bf4c2a5672c78b64a8ba5e7fc1173c604788edd46662",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.story-order-103#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b103；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Keeping the ending secret\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: This story has a funny ending.\n\n(____) A: All right. Would you like to read my copy after lunch?\n\n(____) B: Yes, please. My copy is at home.\n\n(____) B: Don’t tell me! I am still on page ten.\n\n(____) A: You can keep it until tomorrow.\n\n(____) B: Thank you. That gives me time to finish."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.story-order-103.whole.q1",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “A: All right. Would you like to read my copy after lunch?”",
+            "material": "Keeping the ending secret\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: This story has a funny ending.\n\n(____) A: All right. Would you like to read my copy after lunch?\n\n(____) B: Yes, please. My copy is at home.\n\n(____) B: Don’t tell me! I am still on page ten.\n\n(____) A: You can keep it until tomorrow.\n\n(____) B: Thank you. That gives me time to finish.",
+            "explanation": "Position3 agrees to keep the ending secret and offers the book. Yes in the next line accepts the offer.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.story-order-103.whole.q2",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: Yes, please. My copy is at home.”",
+            "material": "Keeping the ending secret\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: This story has a funny ending.\n\n(____) A: All right. Would you like to read my copy after lunch?\n\n(____) B: Yes, please. My copy is at home.\n\n(____) B: Don’t tell me! I am still on page ten.\n\n(____) A: You can keep it until tomorrow.\n\n(____) B: Thank you. That gives me time to finish.",
+            "explanation": "Position4 accepts the offered copy and explains why it is needed. The following line sets the loan time.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.primary3.story-order-103.whole.q3",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: Don’t tell me! I am still on page ten.”",
+            "material": "Keeping the ending secret\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: This story has a funny ending.\n\n(____) A: All right. Would you like to read my copy after lunch?\n\n(____) B: Yes, please. My copy is at home.\n\n(____) B: Don’t tell me! I am still on page ten.\n\n(____) A: You can keep it until tomorrow.\n\n(____) B: Thank you. That gives me time to finish.",
+            "explanation": "Position2 asks not to reveal the ending mentioned first. All right accepts this request in the next turn.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.story-order-103.whole.q4",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “A: You can keep it until tomorrow.”",
+            "material": "Keeping the ending secret\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: This story has a funny ending.\n\n(____) A: All right. Would you like to read my copy after lunch?\n\n(____) B: Yes, please. My copy is at home.\n\n(____) B: Don’t tell me! I am still on page ten.\n\n(____) A: You can keep it until tomorrow.\n\n(____) B: Thank you. That gives me time to finish.",
+            "explanation": "Position5 allows keeping the offered book until tomorrow. That in the final line refers to the extra time.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary3.story-order-103.whole.q5",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: Thank you. That gives me time to finish.”",
+            "material": "Keeping the ending secret\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: This story has a funny ending.\n\n(____) A: All right. Would you like to read my copy after lunch?\n\n(____) B: Yes, please. My copy is at home.\n\n(____) B: Don’t tell me! I am still on page ten.\n\n(____) A: You can keep it until tomorrow.\n\n(____) B: Thank you. That gives me time to finish.",
+            "explanation": "Position6 thanks the lender for the return period, saying it gives time to finish.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "9f490c7bd5b06029bf20c687062130428e24764240853eafc8a80a30b8d1a160",
+      "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.primary3.card-order-103",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "10·24新题 · A boat on the card",
+        "summary": "A boat on the card，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.dialogue_ordering"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p3.panshi2023.dialogue-ordering",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete six-line ordering task with the first line fixed and five positions2–6 to fill. Five scoring slots form one dialogue task, not five independent conversations. New complete communicative chain."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.primary3.card-order-103",
+          "family": "dialogue_ordering",
+          "label": "A boat on the card",
+          "candidateSHA256": "f627fe9f7c1ff78fb2b2f3743cccb94204c7e3875000f9373ab9743c793747f0",
+          "authorCheckSHA256": "95fc524f8f3b3616e906b3ca24dfcf134eef19e9968a21152e78172833802cbd",
+          "sourceGroupIds": [
+            "expansion.20261024.primary3.card-order-103#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b103；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A boat on the card\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: Let’s make a birthday card for Dad.\n\n(____) B: What shall we draw on the front?\n\n(____) A: How about his old sailing boat?\n\n(____) B: Great. We can use it to help with the shape.\n\n(____) A: Yes. Here is one from last summer.\n\n(____) B: Good idea. Do you have a photo of it?"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.primary3.card-order-103.whole.q1",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: What shall we draw on the front?”",
+            "material": "A boat on the card\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: Let’s make a birthday card for Dad.\n\n(____) B: What shall we draw on the front?\n\n(____) A: How about his old sailing boat?\n\n(____) B: Great. We can use it to help with the shape.\n\n(____) A: Yes. Here is one from last summer.\n\n(____) B: Good idea. Do you have a photo of it?",
+            "explanation": "Position2 asks for the card’s picture after the card proposal. The boat suggestion answers it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.primary3.card-order-103.whole.q2",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “A: How about his old sailing boat?”",
+            "material": "A boat on the card\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: Let’s make a birthday card for Dad.\n\n(____) B: What shall we draw on the front?\n\n(____) A: How about his old sailing boat?\n\n(____) B: Great. We can use it to help with the shape.\n\n(____) A: Yes. Here is one from last summer.\n\n(____) B: Good idea. Do you have a photo of it?",
+            "explanation": "Position3 proposes the boat subject. Good idea and a photo request respond next.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.primary3.card-order-103.whole.q3",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: Great. We can use it to help with the shape.”",
+            "material": "A boat on the card\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: Let’s make a birthday card for Dad.\n\n(____) B: What shall we draw on the front?\n\n(____) A: How about his old sailing boat?\n\n(____) B: Great. We can use it to help with the shape.\n\n(____) A: Yes. Here is one from last summer.\n\n(____) B: Good idea. Do you have a photo of it?",
+            "explanation": "Position6 says how the supplied photo will help, so it follows the photograph’s arrival.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.primary3.card-order-103.whole.q4",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “A: Yes. Here is one from last summer.”",
+            "material": "A boat on the card\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: Let’s make a birthday card for Dad.\n\n(____) B: What shall we draw on the front?\n\n(____) A: How about his old sailing boat?\n\n(____) B: Great. We can use it to help with the shape.\n\n(____) A: Yes. Here is one from last summer.\n\n(____) B: Good idea. Do you have a photo of it?",
+            "explanation": "Position5 supplies the requested photograph; one refers to a photo of the boat.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.primary3.card-order-103.whole.q5",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read all six lines. Speakers A and B take turns. The first line is given. Choose position 2, 3, 4, 5 or 6 for each remaining line.",
+            "prompt": "What is the position of this line? “B: Good idea. Do you have a photo of it?”",
+            "material": "A boat on the card\n\nThe first line is already in position 1. Put the other five lines in positions 2–6 to make one complete conversation.\n\n(1) A: Let’s make a birthday card for Dad.\n\n(____) B: What shall we draw on the front?\n\n(____) A: How about his old sailing boat?\n\n(____) B: Great. We can use it to help with the shape.\n\n(____) A: Yes. Here is one from last summer.\n\n(____) B: Good idea. Do you have a photo of it?",
+            "explanation": "Position4 accepts the boat and asks for a photo. Yes must answer that request.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "63329b42df5174412e824774d0018ef70c135e74394a2d786a44381d7bda6d51",
+      "reviewNotes": "Five complete primary2 response practices plus five complete six-line primary3 ordering dialogues. Each ordering dialogue has five scoring positions, not five separate conversations. English prompts/options, same-author context/unique-chain review, no independent age calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
