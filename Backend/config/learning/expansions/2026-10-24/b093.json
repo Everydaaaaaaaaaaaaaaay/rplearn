@@ -1,0 +1,1365 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b093",
+  "createdAt": "2026-10-24T00:14:45.937900+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.bowling-board-093",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Our first bowling game",
+        "summary": "Our first bowling game，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage with seven supplied-word and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior grammar originals. Fictional bowling/picture-book/museum/magazine cases, same-author variant/context review only, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.bowling-board-093",
+          "family": "passage_form",
+          "label": "Our first bowling game",
+          "candidateSHA256": "f0ccbefecf1cffe00d7d8c285f19a4f57467586c5fc4bfe53355d145e42672bc",
+          "authorCheckSHA256": "86e2c92e2f5fe317f67b7a1996118ed10024e4437872c007e797df860d51eb51",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.bowling-board-093#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b093；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Our first bowling game\n\nMy cousins invited me to go bowling during the holiday. I had never played before, so I listened ____1____ (careful) when the staff explained the equipment. We borrowed suitable shoes and followed the rules for staying behind the marked line.\n\nThe first ball I tried was too heavy ____2____ me to hold comfortably. A staff member helped me choose another one. It was ____3____ (light), and I could control it more easily without trying to copy my older cousin's choice.\n\nOur names appeared on a screen above the lane. I watched the numbers change after each turn, but did not understand all the marks. My cousin explained one symbol ____4____ appeared when a player knocked down every pin with the first ball.\n\nOn my third turn, the ball moved towards the side almost immediately. I felt disappointed, but everyone else had made mistakes too. My cousin suggested ____5____ (watch) where I began rather than only staring at the pins.\n\nThe next attempt was better. I did not win the game, but I hit more pins than before. The screen recorded each of my ____6____ (turn), so I could see the change instead of judging everything by the final total.\n\nAfter the game, we returned the shoes and thanked the staff for ____7____ (they) help. Our lane ____8____ (prepare) for the next group while we collected our bags. I left with ____9____ better idea of the sport and looked forward to ____10____ (try) again. Next time, I would ask about the scoring before the first turn rather than waiting until everyone was cheering at a symbol I could not read."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.bowling-board-093.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of careful.",
+            "material": "Our first bowling game\n\nMy cousins invited me to go bowling during the holiday. I had never played before, so I listened ____1____ (careful) when the staff explained the equipment. We borrowed suitable shoes and followed the rules for staying behind the marked line.\n\nThe first ball I tried was too heavy ____2____ me to hold comfortably. A staff member helped me choose another one. It was ____3____ (light), and I could control it more easily without trying to copy my older cousin's choice.\n\nOur names appeared on a screen above the lane. I watched the numbers change after each turn, but did not understand all the marks. My cousin explained one symbol ____4____ appeared when a player knocked down every pin with the first ball.\n\nOn my third turn, the ball moved towards the side almost immediately. I felt disappointed, but everyone else had made mistakes too. My cousin suggested ____5____ (watch) where I began rather than only staring at the pins.\n\nThe next attempt was better. I did not win the game, but I hit more pins than before. The screen recorded each of my ____6____ (turn), so I could see the change instead of judging everything by the final total.\n\nAfter the game, we returned the shoes and thanked the staff for ____7____ (they) help. Our lane ____8____ (prepare) for the next group while we collected our bags. I left with ____9____ better idea of the sport and looked forward to ____10____ (try) again. Next time, I would ask about the scoring before the first turn rather than waiting until everyone was cheering at a symbol I could not read.",
+            "explanation": "Carefully modifies listened. Careful is adjective and carefulness noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careful",
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bowling-board-093.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "Our first bowling game\n\nMy cousins invited me to go bowling during the holiday. I had never played before, so I listened ____1____ (careful) when the staff explained the equipment. We borrowed suitable shoes and followed the rules for staying behind the marked line.\n\nThe first ball I tried was too heavy ____2____ me to hold comfortably. A staff member helped me choose another one. It was ____3____ (light), and I could control it more easily without trying to copy my older cousin's choice.\n\nOur names appeared on a screen above the lane. I watched the numbers change after each turn, but did not understand all the marks. My cousin explained one symbol ____4____ appeared when a player knocked down every pin with the first ball.\n\nOn my third turn, the ball moved towards the side almost immediately. I felt disappointed, but everyone else had made mistakes too. My cousin suggested ____5____ (watch) where I began rather than only staring at the pins.\n\nThe next attempt was better. I did not win the game, but I hit more pins than before. The screen recorded each of my ____6____ (turn), so I could see the change instead of judging everything by the final total.\n\nAfter the game, we returned the shoes and thanked the staff for ____7____ (they) help. Our lane ____8____ (prepare) for the next group while we collected our bags. I left with ____9____ better idea of the sport and looked forward to ____10____ (try) again. Next time, I would ask about the scoring before the first turn rather than waiting until everyone was cheering at a symbol I could not read.",
+            "explanation": "Too heavy for me to hold uses for to introduce the person in the infinitive clause. Other listed prepositions do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "of",
+                "by"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bowling-board-093.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of light.",
+            "material": "Our first bowling game\n\nMy cousins invited me to go bowling during the holiday. I had never played before, so I listened ____1____ (careful) when the staff explained the equipment. We borrowed suitable shoes and followed the rules for staying behind the marked line.\n\nThe first ball I tried was too heavy ____2____ me to hold comfortably. A staff member helped me choose another one. It was ____3____ (light), and I could control it more easily without trying to copy my older cousin's choice.\n\nOur names appeared on a screen above the lane. I watched the numbers change after each turn, but did not understand all the marks. My cousin explained one symbol ____4____ appeared when a player knocked down every pin with the first ball.\n\nOn my third turn, the ball moved towards the side almost immediately. I felt disappointed, but everyone else had made mistakes too. My cousin suggested ____5____ (watch) where I began rather than only staring at the pins.\n\nThe next attempt was better. I did not win the game, but I hit more pins than before. The screen recorded each of my ____6____ (turn), so I could see the change instead of judging everything by the final total.\n\nAfter the game, we returned the shoes and thanked the staff for ____7____ (they) help. Our lane ____8____ (prepare) for the next group while we collected our bags. I left with ____9____ better idea of the sport and looked forward to ____10____ (try) again. Next time, I would ask about the scoring before the first turn rather than waiting until everyone was cheering at a symbol I could not read.",
+            "explanation": "The replacement is lighter/more light than the earlier ball. Lightest is superlative and more lighter doubled; unlisted plain readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "lighter",
+              "more light"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "lightest",
+                "more lighter"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bowling-board-093.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "Our first bowling game\n\nMy cousins invited me to go bowling during the holiday. I had never played before, so I listened ____1____ (careful) when the staff explained the equipment. We borrowed suitable shoes and followed the rules for staying behind the marked line.\n\nThe first ball I tried was too heavy ____2____ me to hold comfortably. A staff member helped me choose another one. It was ____3____ (light), and I could control it more easily without trying to copy my older cousin's choice.\n\nOur names appeared on a screen above the lane. I watched the numbers change after each turn, but did not understand all the marks. My cousin explained one symbol ____4____ appeared when a player knocked down every pin with the first ball.\n\nOn my third turn, the ball moved towards the side almost immediately. I felt disappointed, but everyone else had made mistakes too. My cousin suggested ____5____ (watch) where I began rather than only staring at the pins.\n\nThe next attempt was better. I did not win the game, but I hit more pins than before. The screen recorded each of my ____6____ (turn), so I could see the change instead of judging everything by the final total.\n\nAfter the game, we returned the shoes and thanked the staff for ____7____ (they) help. Our lane ____8____ (prepare) for the next group while we collected our bags. I left with ____9____ better idea of the sport and looked forward to ____10____ (try) again. Next time, I would ask about the scoring before the first turn rather than waiting until everyone was cheering at a symbol I could not read.",
+            "explanation": "Symbol is subject antecedent of that/which appeared. Who is human, where not subject and what incompatible with the antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bowling-board-093.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of watch.",
+            "material": "Our first bowling game\n\nMy cousins invited me to go bowling during the holiday. I had never played before, so I listened ____1____ (careful) when the staff explained the equipment. We borrowed suitable shoes and followed the rules for staying behind the marked line.\n\nThe first ball I tried was too heavy ____2____ me to hold comfortably. A staff member helped me choose another one. It was ____3____ (light), and I could control it more easily without trying to copy my older cousin's choice.\n\nOur names appeared on a screen above the lane. I watched the numbers change after each turn, but did not understand all the marks. My cousin explained one symbol ____4____ appeared when a player knocked down every pin with the first ball.\n\nOn my third turn, the ball moved towards the side almost immediately. I felt disappointed, but everyone else had made mistakes too. My cousin suggested ____5____ (watch) where I began rather than only staring at the pins.\n\nThe next attempt was better. I did not win the game, but I hit more pins than before. The screen recorded each of my ____6____ (turn), so I could see the change instead of judging everything by the final total.\n\nAfter the game, we returned the shoes and thanked the staff for ____7____ (they) help. Our lane ____8____ (prepare) for the next group while we collected our bags. I left with ____9____ better idea of the sport and looked forward to ____10____ (try) again. Next time, I would ask about the scoring before the first turn rather than waiting until everyone was cheering at a symbol I could not read.",
+            "explanation": "Suggested watching uses -ing; the listed base/past/to-infinitive forms do not follow suggested directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "watching"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "watch",
+                "watched",
+                "to watch"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bowling-board-093.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of turn.",
+            "material": "Our first bowling game\n\nMy cousins invited me to go bowling during the holiday. I had never played before, so I listened ____1____ (careful) when the staff explained the equipment. We borrowed suitable shoes and followed the rules for staying behind the marked line.\n\nThe first ball I tried was too heavy ____2____ me to hold comfortably. A staff member helped me choose another one. It was ____3____ (light), and I could control it more easily without trying to copy my older cousin's choice.\n\nOur names appeared on a screen above the lane. I watched the numbers change after each turn, but did not understand all the marks. My cousin explained one symbol ____4____ appeared when a player knocked down every pin with the first ball.\n\nOn my third turn, the ball moved towards the side almost immediately. I felt disappointed, but everyone else had made mistakes too. My cousin suggested ____5____ (watch) where I began rather than only staring at the pins.\n\nThe next attempt was better. I did not win the game, but I hit more pins than before. The screen recorded each of my ____6____ (turn), so I could see the change instead of judging everything by the final total.\n\nAfter the game, we returned the shoes and thanked the staff for ____7____ (they) help. Our lane ____8____ (prepare) for the next group while we collected our bags. I left with ____9____ better idea of the sport and looked forward to ____10____ (try) again. Next time, I would ask about the scoring before the first turn rather than waiting until everyone was cheering at a symbol I could not read.",
+            "explanation": "Each of my turns refers to multiple attempts, turns. Turning is not the count noun here; unlisted singular is reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "turns"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "turning"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bowling-board-093.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of they.",
+            "material": "Our first bowling game\n\nMy cousins invited me to go bowling during the holiday. I had never played before, so I listened ____1____ (careful) when the staff explained the equipment. We borrowed suitable shoes and followed the rules for staying behind the marked line.\n\nThe first ball I tried was too heavy ____2____ me to hold comfortably. A staff member helped me choose another one. It was ____3____ (light), and I could control it more easily without trying to copy my older cousin's choice.\n\nOur names appeared on a screen above the lane. I watched the numbers change after each turn, but did not understand all the marks. My cousin explained one symbol ____4____ appeared when a player knocked down every pin with the first ball.\n\nOn my third turn, the ball moved towards the side almost immediately. I felt disappointed, but everyone else had made mistakes too. My cousin suggested ____5____ (watch) where I began rather than only staring at the pins.\n\nThe next attempt was better. I did not win the game, but I hit more pins than before. The screen recorded each of my ____6____ (turn), so I could see the change instead of judging everything by the final total.\n\nAfter the game, we returned the shoes and thanked the staff for ____7____ (they) help. Our lane ____8____ (prepare) for the next group while we collected our bags. I left with ____9____ better idea of the sport and looked forward to ____10____ (try) again. Next time, I would ask about the scoring before the first turn rather than waiting until everyone was cheering at a symbol I could not read.",
+            "explanation": "Their modifies help. Personal and independent possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "their"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "them",
+                "theirs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bowling-board-093.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of prepare.",
+            "material": "Our first bowling game\n\nMy cousins invited me to go bowling during the holiday. I had never played before, so I listened ____1____ (careful) when the staff explained the equipment. We borrowed suitable shoes and followed the rules for staying behind the marked line.\n\nThe first ball I tried was too heavy ____2____ me to hold comfortably. A staff member helped me choose another one. It was ____3____ (light), and I could control it more easily without trying to copy my older cousin's choice.\n\nOur names appeared on a screen above the lane. I watched the numbers change after each turn, but did not understand all the marks. My cousin explained one symbol ____4____ appeared when a player knocked down every pin with the first ball.\n\nOn my third turn, the ball moved towards the side almost immediately. I felt disappointed, but everyone else had made mistakes too. My cousin suggested ____5____ (watch) where I began rather than only staring at the pins.\n\nThe next attempt was better. I did not win the game, but I hit more pins than before. The screen recorded each of my ____6____ (turn), so I could see the change instead of judging everything by the final total.\n\nAfter the game, we returned the shoes and thanked the staff for ____7____ (they) help. Our lane ____8____ (prepare) for the next group while we collected our bags. I left with ____9____ better idea of the sport and looked forward to ____10____ (try) again. Next time, I would ask about the scoring before the first turn rather than waiting until everyone was cheering at a symbol I could not read.",
+            "explanation": "Singular lane receives preparation. Ongoing/simple past passive fit; prepared lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was being prepared",
+              "was prepared"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "prepared",
+                "were being prepared"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bowling-board-093.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "Our first bowling game\n\nMy cousins invited me to go bowling during the holiday. I had never played before, so I listened ____1____ (careful) when the staff explained the equipment. We borrowed suitable shoes and followed the rules for staying behind the marked line.\n\nThe first ball I tried was too heavy ____2____ me to hold comfortably. A staff member helped me choose another one. It was ____3____ (light), and I could control it more easily without trying to copy my older cousin's choice.\n\nOur names appeared on a screen above the lane. I watched the numbers change after each turn, but did not understand all the marks. My cousin explained one symbol ____4____ appeared when a player knocked down every pin with the first ball.\n\nOn my third turn, the ball moved towards the side almost immediately. I felt disappointed, but everyone else had made mistakes too. My cousin suggested ____5____ (watch) where I began rather than only staring at the pins.\n\nThe next attempt was better. I did not win the game, but I hit more pins than before. The screen recorded each of my ____6____ (turn), so I could see the change instead of judging everything by the final total.\n\nAfter the game, we returned the shoes and thanked the staff for ____7____ (they) help. Our lane ____8____ (prepare) for the next group while we collected our bags. I left with ____9____ better idea of the sport and looked forward to ____10____ (try) again. Next time, I would ask about the scoring before the first turn rather than waiting until everyone was cheering at a symbol I could not read.",
+            "explanation": "A better idea begins with consonant b. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.bowling-board-093.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of try.",
+            "material": "Our first bowling game\n\nMy cousins invited me to go bowling during the holiday. I had never played before, so I listened ____1____ (careful) when the staff explained the equipment. We borrowed suitable shoes and followed the rules for staying behind the marked line.\n\nThe first ball I tried was too heavy ____2____ me to hold comfortably. A staff member helped me choose another one. It was ____3____ (light), and I could control it more easily without trying to copy my older cousin's choice.\n\nOur names appeared on a screen above the lane. I watched the numbers change after each turn, but did not understand all the marks. My cousin explained one symbol ____4____ appeared when a player knocked down every pin with the first ball.\n\nOn my third turn, the ball moved towards the side almost immediately. I felt disappointed, but everyone else had made mistakes too. My cousin suggested ____5____ (watch) where I began rather than only staring at the pins.\n\nThe next attempt was better. I did not win the game, but I hit more pins than before. The screen recorded each of my ____6____ (turn), so I could see the change instead of judging everything by the final total.\n\nAfter the game, we returned the shoes and thanked the staff for ____7____ (they) help. Our lane ____8____ (prepare) for the next group while we collected our bags. I left with ____9____ better idea of the sport and looked forward to ____10____ (try) again. Next time, I would ask about the scoring before the first turn rather than waiting until everyone was cheering at a symbol I could not read.",
+            "explanation": "Looked forward to takes a noun/-ing clause, trying. Other listed forms do not fit the preposition.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "trying"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "try",
+                "tried",
+                "to try"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "7ea313dbfe5650b38a6b9dc29c218f47fd5daa3dcb89dc1b1dbe3cfcd1caaef0",
+      "reviewNotes": "Four complete junior grammar originals. Fictional bowling/picture-book/museum/magazine cases, same-author variant/context review only, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.picture-book-sequence-093",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · The pages in the wrong order",
+        "summary": "The pages in the wrong order，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage with seven supplied-word and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior grammar originals. Fictional bowling/picture-book/museum/magazine cases, same-author variant/context review only, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.picture-book-sequence-093",
+          "family": "passage_form",
+          "label": "The pages in the wrong order",
+          "candidateSHA256": "e6a0477715cb06b7c9c12d8468eb6d68a1928b77763c0124ea49e3ad7000ea92",
+          "authorCheckSHA256": "ba819851fe8d2a2e69c67f857a0d7fbe9a948351a8e6fa4b2cbc331a6e934d8f",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.picture-book-sequence-093#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b093；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The pages in the wrong order\n\nOur class made a picture book for younger pupils. Each pair of students created one page, and our teacher asked us ____1____ (bring) the pages together on Friday. We had planned the story, but had not yet seen the whole book.\n\nAt first, the pictures looked wonderful. Then we read the story aloud and found a problem. A character thanked her friend before the friend had helped ____2____ (she). Two pages were in the wrong order.\n\nWe put the sheets on the floor and gave each one ____3____ number. Moving the pages was easy before they were joined. It would have been much ____4____ (hard) after the cover was attached.\n\nOne picture showed a blue bag, while the next showed a green one. The same character carried it, so we decided to make the colour consistent. Another page contained a word ____5____ the youngest readers might not know. We added a clear picture clue rather than simply telling them to guess.\n\nAfter ____6____ (check) the order, we invited a younger pupil to listen. He laughed at the ending, but asked why the dog had suddenly disappeared. We had forgotten to show it leaving the room. A small change to the final two ____7____ (picture) made that part easier to follow.\n\nThe pages ____8____ (join) by our teacher after everyone had agreed on the final version. We kept a copy of the plan ____9____ our folder. The finished book looked simple, but its ____10____ (simple) came from many small decisions about what a new reader needed to see."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.picture-book-sequence-093.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of bring.",
+            "material": "The pages in the wrong order\n\nOur class made a picture book for younger pupils. Each pair of students created one page, and our teacher asked us ____1____ (bring) the pages together on Friday. We had planned the story, but had not yet seen the whole book.\n\nAt first, the pictures looked wonderful. Then we read the story aloud and found a problem. A character thanked her friend before the friend had helped ____2____ (she). Two pages were in the wrong order.\n\nWe put the sheets on the floor and gave each one ____3____ number. Moving the pages was easy before they were joined. It would have been much ____4____ (hard) after the cover was attached.\n\nOne picture showed a blue bag, while the next showed a green one. The same character carried it, so we decided to make the colour consistent. Another page contained a word ____5____ the youngest readers might not know. We added a clear picture clue rather than simply telling them to guess.\n\nAfter ____6____ (check) the order, we invited a younger pupil to listen. He laughed at the ending, but asked why the dog had suddenly disappeared. We had forgotten to show it leaving the room. A small change to the final two ____7____ (picture) made that part easier to follow.\n\nThe pages ____8____ (join) by our teacher after everyone had agreed on the final version. We kept a copy of the plan ____9____ our folder. The finished book looked simple, but its ____10____ (simple) came from many small decisions about what a new reader needed to see.",
+            "explanation": "Asked us takes to bring. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to bring"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "bring",
+                "bringing",
+                "brought"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.picture-book-sequence-093.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of she.",
+            "material": "The pages in the wrong order\n\nOur class made a picture book for younger pupils. Each pair of students created one page, and our teacher asked us ____1____ (bring) the pages together on Friday. We had planned the story, but had not yet seen the whole book.\n\nAt first, the pictures looked wonderful. Then we read the story aloud and found a problem. A character thanked her friend before the friend had helped ____2____ (she). Two pages were in the wrong order.\n\nWe put the sheets on the floor and gave each one ____3____ number. Moving the pages was easy before they were joined. It would have been much ____4____ (hard) after the cover was attached.\n\nOne picture showed a blue bag, while the next showed a green one. The same character carried it, so we decided to make the colour consistent. Another page contained a word ____5____ the youngest readers might not know. We added a clear picture clue rather than simply telling them to guess.\n\nAfter ____6____ (check) the order, we invited a younger pupil to listen. He laughed at the ending, but asked why the dog had suddenly disappeared. We had forgotten to show it leaving the room. A small change to the final two ____7____ (picture) made that part easier to follow.\n\nThe pages ____8____ (join) by our teacher after everyone had agreed on the final version. We kept a copy of the plan ____9____ our folder. The finished book looked simple, but its ____10____ (simple) came from many small decisions about what a new reader needed to see.",
+            "explanation": "Helped takes object her for the other person. She/hers are not object forms and herself would refer back to the friend rather than the character.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "her"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "she",
+                "hers",
+                "herself"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.picture-book-sequence-093.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "The pages in the wrong order\n\nOur class made a picture book for younger pupils. Each pair of students created one page, and our teacher asked us ____1____ (bring) the pages together on Friday. We had planned the story, but had not yet seen the whole book.\n\nAt first, the pictures looked wonderful. Then we read the story aloud and found a problem. A character thanked her friend before the friend had helped ____2____ (she). Two pages were in the wrong order.\n\nWe put the sheets on the floor and gave each one ____3____ number. Moving the pages was easy before they were joined. It would have been much ____4____ (hard) after the cover was attached.\n\nOne picture showed a blue bag, while the next showed a green one. The same character carried it, so we decided to make the colour consistent. Another page contained a word ____5____ the youngest readers might not know. We added a clear picture clue rather than simply telling them to guess.\n\nAfter ____6____ (check) the order, we invited a younger pupil to listen. He laughed at the ending, but asked why the dog had suddenly disappeared. We had forgotten to show it leaving the room. A small change to the final two ____7____ (picture) made that part easier to follow.\n\nThe pages ____8____ (join) by our teacher after everyone had agreed on the final version. We kept a copy of the plan ____9____ our folder. The finished book looked simple, but its ____10____ (simple) came from many small decisions about what a new reader needed to see.",
+            "explanation": "A number begins with consonant n. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.picture-book-sequence-093.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of hard.",
+            "material": "The pages in the wrong order\n\nOur class made a picture book for younger pupils. Each pair of students created one page, and our teacher asked us ____1____ (bring) the pages together on Friday. We had planned the story, but had not yet seen the whole book.\n\nAt first, the pictures looked wonderful. Then we read the story aloud and found a problem. A character thanked her friend before the friend had helped ____2____ (she). Two pages were in the wrong order.\n\nWe put the sheets on the floor and gave each one ____3____ number. Moving the pages was easy before they were joined. It would have been much ____4____ (hard) after the cover was attached.\n\nOne picture showed a blue bag, while the next showed a green one. The same character carried it, so we decided to make the colour consistent. Another page contained a word ____5____ the youngest readers might not know. We added a clear picture clue rather than simply telling them to guess.\n\nAfter ____6____ (check) the order, we invited a younger pupil to listen. He laughed at the ending, but asked why the dog had suddenly disappeared. We had forgotten to show it leaving the room. A small change to the final two ____7____ (picture) made that part easier to follow.\n\nThe pages ____8____ (join) by our teacher after everyone had agreed on the final version. We kept a copy of the plan ____9____ our folder. The finished book looked simple, but its ____10____ (simple) came from many small decisions about what a new reader needed to see.",
+            "explanation": "Much harder/more hard gives the increased difficulty after binding. Hardest is superlative and more harder doubled.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "harder",
+              "more hard"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "hardest",
+                "more harder"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.picture-book-sequence-093.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with one appropriate word.",
+            "material": "The pages in the wrong order\n\nOur class made a picture book for younger pupils. Each pair of students created one page, and our teacher asked us ____1____ (bring) the pages together on Friday. We had planned the story, but had not yet seen the whole book.\n\nAt first, the pictures looked wonderful. Then we read the story aloud and found a problem. A character thanked her friend before the friend had helped ____2____ (she). Two pages were in the wrong order.\n\nWe put the sheets on the floor and gave each one ____3____ number. Moving the pages was easy before they were joined. It would have been much ____4____ (hard) after the cover was attached.\n\nOne picture showed a blue bag, while the next showed a green one. The same character carried it, so we decided to make the colour consistent. Another page contained a word ____5____ the youngest readers might not know. We added a clear picture clue rather than simply telling them to guess.\n\nAfter ____6____ (check) the order, we invited a younger pupil to listen. He laughed at the ending, but asked why the dog had suddenly disappeared. We had forgotten to show it leaving the room. A small change to the final two ____7____ (picture) made that part easier to follow.\n\nThe pages ____8____ (join) by our teacher after everyone had agreed on the final version. We kept a copy of the plan ____9____ our folder. The finished book looked simple, but its ____10____ (simple) came from many small decisions about what a new reader needed to see.",
+            "explanation": "Word is object of that/which the readers might not know. Who is human, where not object and whose needs a possessed noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "whose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.picture-book-sequence-093.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of check.",
+            "material": "The pages in the wrong order\n\nOur class made a picture book for younger pupils. Each pair of students created one page, and our teacher asked us ____1____ (bring) the pages together on Friday. We had planned the story, but had not yet seen the whole book.\n\nAt first, the pictures looked wonderful. Then we read the story aloud and found a problem. A character thanked her friend before the friend had helped ____2____ (she). Two pages were in the wrong order.\n\nWe put the sheets on the floor and gave each one ____3____ number. Moving the pages was easy before they were joined. It would have been much ____4____ (hard) after the cover was attached.\n\nOne picture showed a blue bag, while the next showed a green one. The same character carried it, so we decided to make the colour consistent. Another page contained a word ____5____ the youngest readers might not know. We added a clear picture clue rather than simply telling them to guess.\n\nAfter ____6____ (check) the order, we invited a younger pupil to listen. He laughed at the ending, but asked why the dog had suddenly disappeared. We had forgotten to show it leaving the room. A small change to the final two ____7____ (picture) made that part easier to follow.\n\nThe pages ____8____ (join) by our teacher after everyone had agreed on the final version. We kept a copy of the plan ____9____ our folder. The finished book looked simple, but its ____10____ (simple) came from many small decisions about what a new reader needed to see.",
+            "explanation": "After checking/having checked both express prior action. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "checking",
+              "having checked"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "check",
+                "checked",
+                "to check"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.picture-book-sequence-093.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of picture.",
+            "material": "The pages in the wrong order\n\nOur class made a picture book for younger pupils. Each pair of students created one page, and our teacher asked us ____1____ (bring) the pages together on Friday. We had planned the story, but had not yet seen the whole book.\n\nAt first, the pictures looked wonderful. Then we read the story aloud and found a problem. A character thanked her friend before the friend had helped ____2____ (she). Two pages were in the wrong order.\n\nWe put the sheets on the floor and gave each one ____3____ number. Moving the pages was easy before they were joined. It would have been much ____4____ (hard) after the cover was attached.\n\nOne picture showed a blue bag, while the next showed a green one. The same character carried it, so we decided to make the colour consistent. Another page contained a word ____5____ the youngest readers might not know. We added a clear picture clue rather than simply telling them to guess.\n\nAfter ____6____ (check) the order, we invited a younger pupil to listen. He laughed at the ending, but asked why the dog had suddenly disappeared. We had forgotten to show it leaving the room. A small change to the final two ____7____ (picture) made that part easier to follow.\n\nThe pages ____8____ (join) by our teacher after everyone had agreed on the final version. We kept a copy of the plan ____9____ our folder. The finished book looked simple, but its ____10____ (simple) came from many small decisions about what a new reader needed to see.",
+            "explanation": "Two requires plural pictures. Singular and participle do not fill the count slot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "pictures"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "picture",
+                "pictured"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.picture-book-sequence-093.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of join.",
+            "material": "The pages in the wrong order\n\nOur class made a picture book for younger pupils. Each pair of students created one page, and our teacher asked us ____1____ (bring) the pages together on Friday. We had planned the story, but had not yet seen the whole book.\n\nAt first, the pictures looked wonderful. Then we read the story aloud and found a problem. A character thanked her friend before the friend had helped ____2____ (she). Two pages were in the wrong order.\n\nWe put the sheets on the floor and gave each one ____3____ number. Moving the pages was easy before they were joined. It would have been much ____4____ (hard) after the cover was attached.\n\nOne picture showed a blue bag, while the next showed a green one. The same character carried it, so we decided to make the colour consistent. Another page contained a word ____5____ the youngest readers might not know. We added a clear picture clue rather than simply telling them to guess.\n\nAfter ____6____ (check) the order, we invited a younger pupil to listen. He laughed at the ending, but asked why the dog had suddenly disappeared. We had forgotten to show it leaving the room. A small change to the final two ____7____ (picture) made that part easier to follow.\n\nThe pages ____8____ (join) by our teacher after everyone had agreed on the final version. We kept a copy of the plan ____9____ our folder. The finished book looked simple, but its ____10____ (simple) came from many small decisions about what a new reader needed to see.",
+            "explanation": "Plural pages receive joining, so were/had been joined. Joined lacks auxiliary and was disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "were joined",
+              "had been joined"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "joined",
+                "was joined"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.picture-book-sequence-093.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "The pages in the wrong order\n\nOur class made a picture book for younger pupils. Each pair of students created one page, and our teacher asked us ____1____ (bring) the pages together on Friday. We had planned the story, but had not yet seen the whole book.\n\nAt first, the pictures looked wonderful. Then we read the story aloud and found a problem. A character thanked her friend before the friend had helped ____2____ (she). Two pages were in the wrong order.\n\nWe put the sheets on the floor and gave each one ____3____ number. Moving the pages was easy before they were joined. It would have been much ____4____ (hard) after the cover was attached.\n\nOne picture showed a blue bag, while the next showed a green one. The same character carried it, so we decided to make the colour consistent. Another page contained a word ____5____ the youngest readers might not know. We added a clear picture clue rather than simply telling them to guess.\n\nAfter ____6____ (check) the order, we invited a younger pupil to listen. He laughed at the ending, but asked why the dog had suddenly disappeared. We had forgotten to show it leaving the room. A small change to the final two ____7____ (picture) made that part easier to follow.\n\nThe pages ____8____ (join) by our teacher after everyone had agreed on the final version. We kept a copy of the plan ____9____ our folder. The finished book looked simple, but its ____10____ (simple) came from many small decisions about what a new reader needed to see.",
+            "explanation": "A plan kept in a folder is contained there. To/of/from do not express that storage location.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "of",
+                "from"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.picture-book-sequence-093.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of simple.",
+            "material": "The pages in the wrong order\n\nOur class made a picture book for younger pupils. Each pair of students created one page, and our teacher asked us ____1____ (bring) the pages together on Friday. We had planned the story, but had not yet seen the whole book.\n\nAt first, the pictures looked wonderful. Then we read the story aloud and found a problem. A character thanked her friend before the friend had helped ____2____ (she). Two pages were in the wrong order.\n\nWe put the sheets on the floor and gave each one ____3____ number. Moving the pages was easy before they were joined. It would have been much ____4____ (hard) after the cover was attached.\n\nOne picture showed a blue bag, while the next showed a green one. The same character carried it, so we decided to make the colour consistent. Another page contained a word ____5____ the youngest readers might not know. We added a clear picture clue rather than simply telling them to guess.\n\nAfter ____6____ (check) the order, we invited a younger pupil to listen. He laughed at the ending, but asked why the dog had suddenly disappeared. We had forgotten to show it leaving the room. A small change to the final two ____7____ (picture) made that part easier to follow.\n\nThe pages ____8____ (join) by our teacher after everyone had agreed on the final version. We kept a copy of the plan ____9____ our folder. The finished book looked simple, but its ____10____ (simple) came from many small decisions about what a new reader needed to see.",
+            "explanation": "Its simplicity requires a noun. Simple is adjective and simply adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "simplicity"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "simple",
+                "simply"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "dc6f9692ad533ed1bb640c3507a0398381f03f38a231a1c7a0db996cfb584fe2",
+      "reviewNotes": "Four complete junior grammar originals. Fictional bowling/picture-book/museum/magazine cases, same-author variant/context review only, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.tactile-model-093",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · The model we could touch",
+        "summary": "The model we could touch，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage with seven supplied-word and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior grammar originals. Fictional bowling/picture-book/museum/magazine cases, same-author variant/context review only, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.tactile-model-093",
+          "family": "passage_form",
+          "label": "The model we could touch",
+          "candidateSHA256": "636f865e9166df5c88d1ed1b0b37e963be92756b19ad39597028367aa8bf3911",
+          "authorCheckSHA256": "afd3d8b9f19979276fcdff066bc7e2170cc56291ad05eec1af229d3c3b7b1e35",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.tactile-model-093#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b093；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The model we could touch\n\nAt a museum visit, our group was shown a model of a historic building. Unlike the original object in the display case, this model could be touched under the guide's instructions. It ____1____ (make) to help visitors explore the arrangement of the building in another way.\n\nThe guide asked us to notice the difference ____2____ the model and the original. The model was smaller, used different materials and left out some details. Those choices did not make it pointless; they made its purpose easier ____3____ (understand).\n\nOne classmate followed a raised line from the entrance to the courtyard. Another noticed steps ____4____ were difficult to see in the photograph beside the case. The model and picture offered different kinds of information about the same place.\n\nWe were asked not to assume that a clear model told the whole history. It showed a selected arrangement at a particular period. Earlier repairs and later changes required further ____5____ (explain), which the guide provided with separate images.\n\nAfter ____6____ (examine) the model, we wrote short descriptions without looking at our notes. I remembered the courtyard ____7____ (clear) than the decoration on the roof. My classmate remembered a different feature, so we compared what had drawn our attention.\n\nThe activity gave ____8____ (we) a useful question for future visits: what does this representation help us notice, and what might it leave out? We thanked the guide ____9____ making the comparison practical. A museum label could describe access in general terms, but the model showed us ____10____ (direct) how one object could support more than one way of learning."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.tactile-model-093.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of make.",
+            "material": "The model we could touch\n\nAt a museum visit, our group was shown a model of a historic building. Unlike the original object in the display case, this model could be touched under the guide's instructions. It ____1____ (make) to help visitors explore the arrangement of the building in another way.\n\nThe guide asked us to notice the difference ____2____ the model and the original. The model was smaller, used different materials and left out some details. Those choices did not make it pointless; they made its purpose easier ____3____ (understand).\n\nOne classmate followed a raised line from the entrance to the courtyard. Another noticed steps ____4____ were difficult to see in the photograph beside the case. The model and picture offered different kinds of information about the same place.\n\nWe were asked not to assume that a clear model told the whole history. It showed a selected arrangement at a particular period. Earlier repairs and later changes required further ____5____ (explain), which the guide provided with separate images.\n\nAfter ____6____ (examine) the model, we wrote short descriptions without looking at our notes. I remembered the courtyard ____7____ (clear) than the decoration on the roof. My classmate remembered a different feature, so we compared what had drawn our attention.\n\nThe activity gave ____8____ (we) a useful question for future visits: what does this representation help us notice, and what might it leave out? We thanked the guide ____9____ making the comparison practical. A museum label could describe access in general terms, but the model showed us ____10____ (direct) how one object could support more than one way of learning.",
+            "explanation": "Singular model receives making. Was/had been made fit; made lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was made",
+              "had been made"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "made",
+                "were made"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.tactile-model-093.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "The model we could touch\n\nAt a museum visit, our group was shown a model of a historic building. Unlike the original object in the display case, this model could be touched under the guide's instructions. It ____1____ (make) to help visitors explore the arrangement of the building in another way.\n\nThe guide asked us to notice the difference ____2____ the model and the original. The model was smaller, used different materials and left out some details. Those choices did not make it pointless; they made its purpose easier ____3____ (understand).\n\nOne classmate followed a raised line from the entrance to the courtyard. Another noticed steps ____4____ were difficult to see in the photograph beside the case. The model and picture offered different kinds of information about the same place.\n\nWe were asked not to assume that a clear model told the whole history. It showed a selected arrangement at a particular period. Earlier repairs and later changes required further ____5____ (explain), which the guide provided with separate images.\n\nAfter ____6____ (examine) the model, we wrote short descriptions without looking at our notes. I remembered the courtyard ____7____ (clear) than the decoration on the roof. My classmate remembered a different feature, so we compared what had drawn our attention.\n\nThe activity gave ____8____ (we) a useful question for future visits: what does this representation help us notice, and what might it leave out? We thanked the guide ____9____ making the comparison practical. A museum label could describe access in general terms, but the model showed us ____10____ (direct) how one object could support more than one way of learning.",
+            "explanation": "Difference between two identified objects uses between. Among suggests a larger set and from does not complete this noun phrase directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "between"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "among",
+                "from"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.tactile-model-093.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of understand.",
+            "material": "The model we could touch\n\nAt a museum visit, our group was shown a model of a historic building. Unlike the original object in the display case, this model could be touched under the guide's instructions. It ____1____ (make) to help visitors explore the arrangement of the building in another way.\n\nThe guide asked us to notice the difference ____2____ the model and the original. The model was smaller, used different materials and left out some details. Those choices did not make it pointless; they made its purpose easier ____3____ (understand).\n\nOne classmate followed a raised line from the entrance to the courtyard. Another noticed steps ____4____ were difficult to see in the photograph beside the case. The model and picture offered different kinds of information about the same place.\n\nWe were asked not to assume that a clear model told the whole history. It showed a selected arrangement at a particular period. Earlier repairs and later changes required further ____5____ (explain), which the guide provided with separate images.\n\nAfter ____6____ (examine) the model, we wrote short descriptions without looking at our notes. I remembered the courtyard ____7____ (clear) than the decoration on the roof. My classmate remembered a different feature, so we compared what had drawn our attention.\n\nThe activity gave ____8____ (we) a useful question for future visits: what does this representation help us notice, and what might it leave out? We thanked the guide ____9____ making the comparison practical. A museum label could describe access in general terms, but the model showed us ____10____ (direct) how one object could support more than one way of learning.",
+            "explanation": "Easier to understand takes an infinitive. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to understand"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "understand",
+                "understanding",
+                "understood"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.tactile-model-093.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "The model we could touch\n\nAt a museum visit, our group was shown a model of a historic building. Unlike the original object in the display case, this model could be touched under the guide's instructions. It ____1____ (make) to help visitors explore the arrangement of the building in another way.\n\nThe guide asked us to notice the difference ____2____ the model and the original. The model was smaller, used different materials and left out some details. Those choices did not make it pointless; they made its purpose easier ____3____ (understand).\n\nOne classmate followed a raised line from the entrance to the courtyard. Another noticed steps ____4____ were difficult to see in the photograph beside the case. The model and picture offered different kinds of information about the same place.\n\nWe were asked not to assume that a clear model told the whole history. It showed a selected arrangement at a particular period. Earlier repairs and later changes required further ____5____ (explain), which the guide provided with separate images.\n\nAfter ____6____ (examine) the model, we wrote short descriptions without looking at our notes. I remembered the courtyard ____7____ (clear) than the decoration on the roof. My classmate remembered a different feature, so we compared what had drawn our attention.\n\nThe activity gave ____8____ (we) a useful question for future visits: what does this representation help us notice, and what might it leave out? We thanked the guide ____9____ making the comparison practical. A museum label could describe access in general terms, but the model showed us ____10____ (direct) how one object could support more than one way of learning.",
+            "explanation": "Steps are subject antecedent of that/which were difficult. Who is human, where not subject and what incompatible with the antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.tactile-model-093.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of explain.",
+            "material": "The model we could touch\n\nAt a museum visit, our group was shown a model of a historic building. Unlike the original object in the display case, this model could be touched under the guide's instructions. It ____1____ (make) to help visitors explore the arrangement of the building in another way.\n\nThe guide asked us to notice the difference ____2____ the model and the original. The model was smaller, used different materials and left out some details. Those choices did not make it pointless; they made its purpose easier ____3____ (understand).\n\nOne classmate followed a raised line from the entrance to the courtyard. Another noticed steps ____4____ were difficult to see in the photograph beside the case. The model and picture offered different kinds of information about the same place.\n\nWe were asked not to assume that a clear model told the whole history. It showed a selected arrangement at a particular period. Earlier repairs and later changes required further ____5____ (explain), which the guide provided with separate images.\n\nAfter ____6____ (examine) the model, we wrote short descriptions without looking at our notes. I remembered the courtyard ____7____ (clear) than the decoration on the roof. My classmate remembered a different feature, so we compared what had drawn our attention.\n\nThe activity gave ____8____ (we) a useful question for future visits: what does this representation help us notice, and what might it leave out? We thanked the guide ____9____ making the comparison practical. A museum label could describe access in general terms, but the model showed us ____10____ (direct) how one object could support more than one way of learning.",
+            "explanation": "Further explanation can be general, explanations several accounts. Verb/adjective do not fit the noun slot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "explanation",
+              "explanations"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "explain",
+                "explanatory"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.tactile-model-093.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of examine.",
+            "material": "The model we could touch\n\nAt a museum visit, our group was shown a model of a historic building. Unlike the original object in the display case, this model could be touched under the guide's instructions. It ____1____ (make) to help visitors explore the arrangement of the building in another way.\n\nThe guide asked us to notice the difference ____2____ the model and the original. The model was smaller, used different materials and left out some details. Those choices did not make it pointless; they made its purpose easier ____3____ (understand).\n\nOne classmate followed a raised line from the entrance to the courtyard. Another noticed steps ____4____ were difficult to see in the photograph beside the case. The model and picture offered different kinds of information about the same place.\n\nWe were asked not to assume that a clear model told the whole history. It showed a selected arrangement at a particular period. Earlier repairs and later changes required further ____5____ (explain), which the guide provided with separate images.\n\nAfter ____6____ (examine) the model, we wrote short descriptions without looking at our notes. I remembered the courtyard ____7____ (clear) than the decoration on the roof. My classmate remembered a different feature, so we compared what had drawn our attention.\n\nThe activity gave ____8____ (we) a useful question for future visits: what does this representation help us notice, and what might it leave out? We thanked the guide ____9____ making the comparison practical. A museum label could describe access in general terms, but the model showed us ____10____ (direct) how one object could support more than one way of learning.",
+            "explanation": "After examining/having examined expresses prior examination. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "examining",
+              "having examined"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "examine",
+                "examined",
+                "to examine"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.tactile-model-093.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of clear.",
+            "material": "The model we could touch\n\nAt a museum visit, our group was shown a model of a historic building. Unlike the original object in the display case, this model could be touched under the guide's instructions. It ____1____ (make) to help visitors explore the arrangement of the building in another way.\n\nThe guide asked us to notice the difference ____2____ the model and the original. The model was smaller, used different materials and left out some details. Those choices did not make it pointless; they made its purpose easier ____3____ (understand).\n\nOne classmate followed a raised line from the entrance to the courtyard. Another noticed steps ____4____ were difficult to see in the photograph beside the case. The model and picture offered different kinds of information about the same place.\n\nWe were asked not to assume that a clear model told the whole history. It showed a selected arrangement at a particular period. Earlier repairs and later changes required further ____5____ (explain), which the guide provided with separate images.\n\nAfter ____6____ (examine) the model, we wrote short descriptions without looking at our notes. I remembered the courtyard ____7____ (clear) than the decoration on the roof. My classmate remembered a different feature, so we compared what had drawn our attention.\n\nThe activity gave ____8____ (we) a useful question for future visits: what does this representation help us notice, and what might it leave out? We thanked the guide ____9____ making the comparison practical. A museum label could describe access in general terms, but the model showed us ____10____ (direct) how one object could support more than one way of learning.",
+            "explanation": "More clearly modifies remembered; flat-adverb clearer is also accepted. Most clearly is superlative and more clearer doubled.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "more clearly",
+              "clearer"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "most clearly",
+                "more clearer"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.tactile-model-093.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of we.",
+            "material": "The model we could touch\n\nAt a museum visit, our group was shown a model of a historic building. Unlike the original object in the display case, this model could be touched under the guide's instructions. It ____1____ (make) to help visitors explore the arrangement of the building in another way.\n\nThe guide asked us to notice the difference ____2____ the model and the original. The model was smaller, used different materials and left out some details. Those choices did not make it pointless; they made its purpose easier ____3____ (understand).\n\nOne classmate followed a raised line from the entrance to the courtyard. Another noticed steps ____4____ were difficult to see in the photograph beside the case. The model and picture offered different kinds of information about the same place.\n\nWe were asked not to assume that a clear model told the whole history. It showed a selected arrangement at a particular period. Earlier repairs and later changes required further ____5____ (explain), which the guide provided with separate images.\n\nAfter ____6____ (examine) the model, we wrote short descriptions without looking at our notes. I remembered the courtyard ____7____ (clear) than the decoration on the roof. My classmate remembered a different feature, so we compared what had drawn our attention.\n\nThe activity gave ____8____ (we) a useful question for future visits: what does this representation help us notice, and what might it leave out? We thanked the guide ____9____ making the comparison practical. A museum label could describe access in general terms, but the model showed us ____10____ (direct) how one object could support more than one way of learning.",
+            "explanation": "Gave takes object us. Subject and possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.tactile-model-093.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "The model we could touch\n\nAt a museum visit, our group was shown a model of a historic building. Unlike the original object in the display case, this model could be touched under the guide's instructions. It ____1____ (make) to help visitors explore the arrangement of the building in another way.\n\nThe guide asked us to notice the difference ____2____ the model and the original. The model was smaller, used different materials and left out some details. Those choices did not make it pointless; they made its purpose easier ____3____ (understand).\n\nOne classmate followed a raised line from the entrance to the courtyard. Another noticed steps ____4____ were difficult to see in the photograph beside the case. The model and picture offered different kinds of information about the same place.\n\nWe were asked not to assume that a clear model told the whole history. It showed a selected arrangement at a particular period. Earlier repairs and later changes required further ____5____ (explain), which the guide provided with separate images.\n\nAfter ____6____ (examine) the model, we wrote short descriptions without looking at our notes. I remembered the courtyard ____7____ (clear) than the decoration on the roof. My classmate remembered a different feature, so we compared what had drawn our attention.\n\nThe activity gave ____8____ (we) a useful question for future visits: what does this representation help us notice, and what might it leave out? We thanked the guide ____9____ making the comparison practical. A museum label could describe access in general terms, but the model showed us ____10____ (direct) how one object could support more than one way of learning.",
+            "explanation": "Thanked the guide for making uses for. Other listed prepositions do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "at",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.tactile-model-093.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of direct.",
+            "material": "The model we could touch\n\nAt a museum visit, our group was shown a model of a historic building. Unlike the original object in the display case, this model could be touched under the guide's instructions. It ____1____ (make) to help visitors explore the arrangement of the building in another way.\n\nThe guide asked us to notice the difference ____2____ the model and the original. The model was smaller, used different materials and left out some details. Those choices did not make it pointless; they made its purpose easier ____3____ (understand).\n\nOne classmate followed a raised line from the entrance to the courtyard. Another noticed steps ____4____ were difficult to see in the photograph beside the case. The model and picture offered different kinds of information about the same place.\n\nWe were asked not to assume that a clear model told the whole history. It showed a selected arrangement at a particular period. Earlier repairs and later changes required further ____5____ (explain), which the guide provided with separate images.\n\nAfter ____6____ (examine) the model, we wrote short descriptions without looking at our notes. I remembered the courtyard ____7____ (clear) than the decoration on the roof. My classmate remembered a different feature, so we compared what had drawn our attention.\n\nThe activity gave ____8____ (we) a useful question for future visits: what does this representation help us notice, and what might it leave out? We thanked the guide ____9____ making the comparison practical. A museum label could describe access in general terms, but the model showed us ____10____ (direct) how one object could support more than one way of learning.",
+            "explanation": "Directly modifies showed. Direction is noun; unlisted flat-adverb uses remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "directly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "direction"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "f940ee5c1507549150a8080b8fce72dac19c2d157d0aea8e26a5bf24e6e6ad30",
+      "reviewNotes": "Four complete junior grammar originals. Fictional bowling/picture-book/museum/magazine cases, same-author variant/context review only, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.school-magazine-cover-093",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · The cover that changed the reading",
+        "summary": "The cover that changed the reading，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage with seven supplied-word and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior grammar originals. Fictional bowling/picture-book/museum/magazine cases, same-author variant/context review only, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.school-magazine-cover-093",
+          "family": "passage_form",
+          "label": "The cover that changed the reading",
+          "candidateSHA256": "3c58c3f286ffa9432cb87778b8ceb67e00735da17e28ac50d840e5ba46cbe6ab",
+          "authorCheckSHA256": "3d6c9abc1258cc9c85b1fd3e326a43407f3e4b4d87e7ef2866d2d80c8538ecd4",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.school-magazine-cover-093#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b093；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The cover that changed the reading\n\nThe art club designed two possible covers for our school magazine. One showed a large sports photograph; the other used a pattern made from small images of many activities. The editor asked us ____1____ (compare) them with the contents rather than voting only for our favourite colour.\n\nThe issue contained one sports report, two stories, an interview and several reviews. A cover ____2____ suggested that every page was about sport could give a misleading first impression. The photograph was attractive, but attraction was not the only consideration.\n\nWe also checked the title's ____3____ (visible). Some letters disappeared against the dark part of the photograph. Making them larger did not solve every problem, so we tried a different position and a clearer background.\n\nThe second design included more activities, ____4____ its small pictures were difficult to recognise at the size of the printed magazine. A cover viewed on a large screen did not behave exactly like a copy held in the hand.\n\nBefore ____5____ (choose), we printed small test versions. The editor showed them to students who had not worked on the issue. They asked several ____6____ (question) that helped us identify what each cover seemed to promise.\n\nIn the end, we selected a revised design with fewer, ____7____ (large) images and a clear title. The final file ____8____ (save) separately from the drafts, so the printer would receive the correct version. We kept the earlier designs ____9____ our project record. They showed why the choices had changed, not simply which cover had won. The discussion made ____10____ (we) think of a cover as a guide into the magazine, rather than a prize awarded to the most striking picture."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.school-magazine-cover-093.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of compare.",
+            "material": "The cover that changed the reading\n\nThe art club designed two possible covers for our school magazine. One showed a large sports photograph; the other used a pattern made from small images of many activities. The editor asked us ____1____ (compare) them with the contents rather than voting only for our favourite colour.\n\nThe issue contained one sports report, two stories, an interview and several reviews. A cover ____2____ suggested that every page was about sport could give a misleading first impression. The photograph was attractive, but attraction was not the only consideration.\n\nWe also checked the title's ____3____ (visible). Some letters disappeared against the dark part of the photograph. Making them larger did not solve every problem, so we tried a different position and a clearer background.\n\nThe second design included more activities, ____4____ its small pictures were difficult to recognise at the size of the printed magazine. A cover viewed on a large screen did not behave exactly like a copy held in the hand.\n\nBefore ____5____ (choose), we printed small test versions. The editor showed them to students who had not worked on the issue. They asked several ____6____ (question) that helped us identify what each cover seemed to promise.\n\nIn the end, we selected a revised design with fewer, ____7____ (large) images and a clear title. The final file ____8____ (save) separately from the drafts, so the printer would receive the correct version. We kept the earlier designs ____9____ our project record. They showed why the choices had changed, not simply which cover had won. The discussion made ____10____ (we) think of a cover as a guide into the magazine, rather than a prize awarded to the most striking picture.",
+            "explanation": "Asked us takes to compare. Other listed forms do not directly fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to compare"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "compare",
+                "comparing",
+                "compared"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.school-magazine-cover-093.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "The cover that changed the reading\n\nThe art club designed two possible covers for our school magazine. One showed a large sports photograph; the other used a pattern made from small images of many activities. The editor asked us ____1____ (compare) them with the contents rather than voting only for our favourite colour.\n\nThe issue contained one sports report, two stories, an interview and several reviews. A cover ____2____ suggested that every page was about sport could give a misleading first impression. The photograph was attractive, but attraction was not the only consideration.\n\nWe also checked the title's ____3____ (visible). Some letters disappeared against the dark part of the photograph. Making them larger did not solve every problem, so we tried a different position and a clearer background.\n\nThe second design included more activities, ____4____ its small pictures were difficult to recognise at the size of the printed magazine. A cover viewed on a large screen did not behave exactly like a copy held in the hand.\n\nBefore ____5____ (choose), we printed small test versions. The editor showed them to students who had not worked on the issue. They asked several ____6____ (question) that helped us identify what each cover seemed to promise.\n\nIn the end, we selected a revised design with fewer, ____7____ (large) images and a clear title. The final file ____8____ (save) separately from the drafts, so the printer would receive the correct version. We kept the earlier designs ____9____ our project record. They showed why the choices had changed, not simply which cover had won. The discussion made ____10____ (we) think of a cover as a guide into the magazine, rather than a prize awarded to the most striking picture.",
+            "explanation": "Cover is subject antecedent of that/which suggested. Who is human, where not subject and what incompatible with the antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.school-magazine-cover-093.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of visible.",
+            "material": "The cover that changed the reading\n\nThe art club designed two possible covers for our school magazine. One showed a large sports photograph; the other used a pattern made from small images of many activities. The editor asked us ____1____ (compare) them with the contents rather than voting only for our favourite colour.\n\nThe issue contained one sports report, two stories, an interview and several reviews. A cover ____2____ suggested that every page was about sport could give a misleading first impression. The photograph was attractive, but attraction was not the only consideration.\n\nWe also checked the title's ____3____ (visible). Some letters disappeared against the dark part of the photograph. Making them larger did not solve every problem, so we tried a different position and a clearer background.\n\nThe second design included more activities, ____4____ its small pictures were difficult to recognise at the size of the printed magazine. A cover viewed on a large screen did not behave exactly like a copy held in the hand.\n\nBefore ____5____ (choose), we printed small test versions. The editor showed them to students who had not worked on the issue. They asked several ____6____ (question) that helped us identify what each cover seemed to promise.\n\nIn the end, we selected a revised design with fewer, ____7____ (large) images and a clear title. The final file ____8____ (save) separately from the drafts, so the printer would receive the correct version. We kept the earlier designs ____9____ our project record. They showed why the choices had changed, not simply which cover had won. The discussion made ____10____ (we) think of a cover as a guide into the magazine, rather than a prize awarded to the most striking picture.",
+            "explanation": "The title’s visibility requires a noun. Visible is adjective and visibly adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "visibility"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "visible",
+                "visibly"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.school-magazine-cover-093.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "The cover that changed the reading\n\nThe art club designed two possible covers for our school magazine. One showed a large sports photograph; the other used a pattern made from small images of many activities. The editor asked us ____1____ (compare) them with the contents rather than voting only for our favourite colour.\n\nThe issue contained one sports report, two stories, an interview and several reviews. A cover ____2____ suggested that every page was about sport could give a misleading first impression. The photograph was attractive, but attraction was not the only consideration.\n\nWe also checked the title's ____3____ (visible). Some letters disappeared against the dark part of the photograph. Making them larger did not solve every problem, so we tried a different position and a clearer background.\n\nThe second design included more activities, ____4____ its small pictures were difficult to recognise at the size of the printed magazine. A cover viewed on a large screen did not behave exactly like a copy held in the hand.\n\nBefore ____5____ (choose), we printed small test versions. The editor showed them to students who had not worked on the issue. They asked several ____6____ (question) that helped us identify what each cover seemed to promise.\n\nIn the end, we selected a revised design with fewer, ____7____ (large) images and a clear title. The final file ____8____ (save) separately from the drafts, so the printer would receive the correct version. We kept the earlier designs ____9____ our project record. They showed why the choices had changed, not simply which cover had won. The discussion made ____10____ (we) think of a cover as a guide into the magazine, rather than a prize awarded to the most striking picture.",
+            "explanation": "But/yet express contrast; although/though can introduce the following concession. Unless introduces an unprovided condition rather than the observed small-picture problem.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "but",
+              "yet",
+              "although",
+              "though"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "unless"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.school-magazine-cover-093.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of choose.",
+            "material": "The cover that changed the reading\n\nThe art club designed two possible covers for our school magazine. One showed a large sports photograph; the other used a pattern made from small images of many activities. The editor asked us ____1____ (compare) them with the contents rather than voting only for our favourite colour.\n\nThe issue contained one sports report, two stories, an interview and several reviews. A cover ____2____ suggested that every page was about sport could give a misleading first impression. The photograph was attractive, but attraction was not the only consideration.\n\nWe also checked the title's ____3____ (visible). Some letters disappeared against the dark part of the photograph. Making them larger did not solve every problem, so we tried a different position and a clearer background.\n\nThe second design included more activities, ____4____ its small pictures were difficult to recognise at the size of the printed magazine. A cover viewed on a large screen did not behave exactly like a copy held in the hand.\n\nBefore ____5____ (choose), we printed small test versions. The editor showed them to students who had not worked on the issue. They asked several ____6____ (question) that helped us identify what each cover seemed to promise.\n\nIn the end, we selected a revised design with fewer, ____7____ (large) images and a clear title. The final file ____8____ (save) separately from the drafts, so the printer would receive the correct version. We kept the earlier designs ____9____ our project record. They showed why the choices had changed, not simply which cover had won. The discussion made ____10____ (we) think of a cover as a guide into the magazine, rather than a prize awarded to the most striking picture.",
+            "explanation": "Before choosing takes an -ing clause after the preposition. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "choosing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "choose",
+                "chose",
+                "to choose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.school-magazine-cover-093.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of question.",
+            "material": "The cover that changed the reading\n\nThe art club designed two possible covers for our school magazine. One showed a large sports photograph; the other used a pattern made from small images of many activities. The editor asked us ____1____ (compare) them with the contents rather than voting only for our favourite colour.\n\nThe issue contained one sports report, two stories, an interview and several reviews. A cover ____2____ suggested that every page was about sport could give a misleading first impression. The photograph was attractive, but attraction was not the only consideration.\n\nWe also checked the title's ____3____ (visible). Some letters disappeared against the dark part of the photograph. Making them larger did not solve every problem, so we tried a different position and a clearer background.\n\nThe second design included more activities, ____4____ its small pictures were difficult to recognise at the size of the printed magazine. A cover viewed on a large screen did not behave exactly like a copy held in the hand.\n\nBefore ____5____ (choose), we printed small test versions. The editor showed them to students who had not worked on the issue. They asked several ____6____ (question) that helped us identify what each cover seemed to promise.\n\nIn the end, we selected a revised design with fewer, ____7____ (large) images and a clear title. The final file ____8____ (save) separately from the drafts, so the printer would receive the correct version. We kept the earlier designs ____9____ our project record. They showed why the choices had changed, not simply which cover had won. The discussion made ____10____ (we) think of a cover as a guide into the magazine, rather than a prize awarded to the most striking picture.",
+            "explanation": "Several requires plural count noun questions. Singular question and the activity noun questioning do not fit this explicit count slot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "questions"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "question",
+                "questioning"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.school-magazine-cover-093.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of large.",
+            "material": "The cover that changed the reading\n\nThe art club designed two possible covers for our school magazine. One showed a large sports photograph; the other used a pattern made from small images of many activities. The editor asked us ____1____ (compare) them with the contents rather than voting only for our favourite colour.\n\nThe issue contained one sports report, two stories, an interview and several reviews. A cover ____2____ suggested that every page was about sport could give a misleading first impression. The photograph was attractive, but attraction was not the only consideration.\n\nWe also checked the title's ____3____ (visible). Some letters disappeared against the dark part of the photograph. Making them larger did not solve every problem, so we tried a different position and a clearer background.\n\nThe second design included more activities, ____4____ its small pictures were difficult to recognise at the size of the printed magazine. A cover viewed on a large screen did not behave exactly like a copy held in the hand.\n\nBefore ____5____ (choose), we printed small test versions. The editor showed them to students who had not worked on the issue. They asked several ____6____ (question) that helped us identify what each cover seemed to promise.\n\nIn the end, we selected a revised design with fewer, ____7____ (large) images and a clear title. The final file ____8____ (save) separately from the drafts, so the printer would receive the correct version. We kept the earlier designs ____9____ our project record. They showed why the choices had changed, not simply which cover had won. The discussion made ____10____ (we) think of a cover as a guide into the magazine, rather than a prize awarded to the most striking picture.",
+            "explanation": "Fewer, larger images contrasts the previous many small ones. Largest is superlative and more larger doubled; plain large remains reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "larger",
+              "more large"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "largest",
+                "more larger"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.school-magazine-cover-093.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of save.",
+            "material": "The cover that changed the reading\n\nThe art club designed two possible covers for our school magazine. One showed a large sports photograph; the other used a pattern made from small images of many activities. The editor asked us ____1____ (compare) them with the contents rather than voting only for our favourite colour.\n\nThe issue contained one sports report, two stories, an interview and several reviews. A cover ____2____ suggested that every page was about sport could give a misleading first impression. The photograph was attractive, but attraction was not the only consideration.\n\nWe also checked the title's ____3____ (visible). Some letters disappeared against the dark part of the photograph. Making them larger did not solve every problem, so we tried a different position and a clearer background.\n\nThe second design included more activities, ____4____ its small pictures were difficult to recognise at the size of the printed magazine. A cover viewed on a large screen did not behave exactly like a copy held in the hand.\n\nBefore ____5____ (choose), we printed small test versions. The editor showed them to students who had not worked on the issue. They asked several ____6____ (question) that helped us identify what each cover seemed to promise.\n\nIn the end, we selected a revised design with fewer, ____7____ (large) images and a clear title. The final file ____8____ (save) separately from the drafts, so the printer would receive the correct version. We kept the earlier designs ____9____ our project record. They showed why the choices had changed, not simply which cover had won. The discussion made ____10____ (we) think of a cover as a guide into the magazine, rather than a prize awarded to the most striking picture.",
+            "explanation": "Singular file receives saving, so was/had been saved. Saved lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was saved",
+              "had been saved"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "saved",
+                "were saved"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.school-magazine-cover-093.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "The cover that changed the reading\n\nThe art club designed two possible covers for our school magazine. One showed a large sports photograph; the other used a pattern made from small images of many activities. The editor asked us ____1____ (compare) them with the contents rather than voting only for our favourite colour.\n\nThe issue contained one sports report, two stories, an interview and several reviews. A cover ____2____ suggested that every page was about sport could give a misleading first impression. The photograph was attractive, but attraction was not the only consideration.\n\nWe also checked the title's ____3____ (visible). Some letters disappeared against the dark part of the photograph. Making them larger did not solve every problem, so we tried a different position and a clearer background.\n\nThe second design included more activities, ____4____ its small pictures were difficult to recognise at the size of the printed magazine. A cover viewed on a large screen did not behave exactly like a copy held in the hand.\n\nBefore ____5____ (choose), we printed small test versions. The editor showed them to students who had not worked on the issue. They asked several ____6____ (question) that helped us identify what each cover seemed to promise.\n\nIn the end, we selected a revised design with fewer, ____7____ (large) images and a clear title. The final file ____8____ (save) separately from the drafts, so the printer would receive the correct version. We kept the earlier designs ____9____ our project record. They showed why the choices had changed, not simply which cover had won. The discussion made ____10____ (we) think of a cover as a guide into the magazine, rather than a prize awarded to the most striking picture.",
+            "explanation": "In our project record expresses inclusion in the saved record. Other listed prepositions do not express that storage relation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "from",
+                "by"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.school-magazine-cover-093.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of we.",
+            "material": "The cover that changed the reading\n\nThe art club designed two possible covers for our school magazine. One showed a large sports photograph; the other used a pattern made from small images of many activities. The editor asked us ____1____ (compare) them with the contents rather than voting only for our favourite colour.\n\nThe issue contained one sports report, two stories, an interview and several reviews. A cover ____2____ suggested that every page was about sport could give a misleading first impression. The photograph was attractive, but attraction was not the only consideration.\n\nWe also checked the title's ____3____ (visible). Some letters disappeared against the dark part of the photograph. Making them larger did not solve every problem, so we tried a different position and a clearer background.\n\nThe second design included more activities, ____4____ its small pictures were difficult to recognise at the size of the printed magazine. A cover viewed on a large screen did not behave exactly like a copy held in the hand.\n\nBefore ____5____ (choose), we printed small test versions. The editor showed them to students who had not worked on the issue. They asked several ____6____ (question) that helped us identify what each cover seemed to promise.\n\nIn the end, we selected a revised design with fewer, ____7____ (large) images and a clear title. The final file ____8____ (save) separately from the drafts, so the printer would receive the correct version. We kept the earlier designs ____9____ our project record. They showed why the choices had changed, not simply which cover had won. The discussion made ____10____ (we) think of a cover as a guide into the magazine, rather than a prize awarded to the most striking picture.",
+            "explanation": "Made takes object us. Subject and possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "52677ef183fa3686ee3819a451fcc523dd6541c05a23a5b0f4e1aced86896fd8",
+      "reviewNotes": "Four complete junior grammar originals. Fictional bowling/picture-book/museum/magazine cases, same-author variant/context review only, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
