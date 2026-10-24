@@ -1,0 +1,2507 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b122",
+  "createdAt": "2026-10-24T02:11:35.227373+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.transform-music-122",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · Music and a drawing",
+        "summary": "Music and a drawing，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade7-huangshan2026-21cnjy25150014.transform.sectionIX",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete two-gap transformations, preserving the source operation/output frames. Counts are10 slots in5 tasks, not10 independent sentence transformations. No extra one-word cap, What/How and different from/to/than kept."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.transform-music-122",
+          "family": "sentence_transformation",
+          "label": "Music and a drawing",
+          "candidateSHA256": "cec0e7407944b20a395243899967ac927c90203e1db7ac3638f2dfccb5ac3a71",
+          "authorCheckSHA256": "3bd3fba669cd8a74e5a640ec932f7f6b2a101e233931eb37c1434e14c735cc18",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.transform-music-122#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b122；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Music and a drawing\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Clara can play the violin. Owen can play the violin too.\nTarget: ____1____ Clara ____2____ Owen can play the violin.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not draw a forest?\nTarget: ____3____ ____4____ drawing a forest?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My poster is not the same as yours.\nTarget: My poster is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Lena’s] boots.\nTarget: ____7____ boots ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the nature club.\nTarget: ____9____ ____10____ in the nature club?"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.transform-music-122.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 1 in the printed target sentence.",
+            "material": "Music and a drawing\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Clara can play the violin. Owen can play the violin too.\nTarget: ____1____ Clara ____2____ Owen can play the violin.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not draw a forest?\nTarget: ____3____ ____4____ drawing a forest?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My poster is not the same as yours.\nTarget: My poster is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Lena’s] boots.\nTarget: ____7____ boots ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the nature club.\nTarget: ____9____ ____10____ in the nature club?",
+            "explanation": "Both with and joins two affirmative shared abilities. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Both"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Neither"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-music-122.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 2 in the printed target sentence.",
+            "material": "Music and a drawing\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Clara can play the violin. Owen can play the violin too.\nTarget: ____1____ Clara ____2____ Owen can play the violin.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not draw a forest?\nTarget: ____3____ ____4____ drawing a forest?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My poster is not the same as yours.\nTarget: My poster is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Lena’s] boots.\nTarget: ____7____ boots ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the nature club.\nTarget: ____9____ ____10____ in the nature club?",
+            "explanation": "Both requires and for the two people. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "and"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "or"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-music-122.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 3 in the printed target sentence.",
+            "material": "Music and a drawing\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Clara can play the violin. Owen can play the violin too.\nTarget: ____1____ Clara ____2____ Owen can play the violin.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not draw a forest?\nTarget: ____3____ ____4____ drawing a forest?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My poster is not the same as yours.\nTarget: My poster is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Lena’s] boots.\nTarget: ____7____ boots ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the nature club.\nTarget: ____9____ ____10____ in the nature club?",
+            "explanation": "What about/How about both make the same suggestion before -ing. Why about is not that form. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "What",
+              "How"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Why"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-music-122.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 4 in the printed target sentence.",
+            "material": "Music and a drawing\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Clara can play the violin. Owen can play the violin too.\nTarget: ____1____ Clara ____2____ Owen can play the violin.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not draw a forest?\nTarget: ____3____ ____4____ drawing a forest?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My poster is not the same as yours.\nTarget: My poster is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Lena’s] boots.\nTarget: ____7____ boots ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the nature club.\nTarget: ____9____ ____10____ in the nature club?",
+            "explanation": "What/How about takes the printed -ing phrase. To does not form that suggestion. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "about"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "to"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-music-122.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 5 in the printed target sentence.",
+            "material": "Music and a drawing\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Clara can play the violin. Owen can play the violin too.\nTarget: ____1____ Clara ____2____ Owen can play the violin.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not draw a forest?\nTarget: ____3____ ____4____ drawing a forest?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My poster is not the same as yours.\nTarget: My poster is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Lena’s] boots.\nTarget: ____7____ boots ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the nature club.\nTarget: ____9____ ____10____ in the nature club?",
+            "explanation": "Affirmative is different preserves not the same meaning. Same would reverse it. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "different"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "same"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-music-122.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 6 in the printed target sentence.",
+            "material": "Music and a drawing\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Clara can play the violin. Owen can play the violin too.\nTarget: ____1____ Clara ____2____ Owen can play the violin.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not draw a forest?\nTarget: ____3____ ____4____ drawing a forest?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My poster is not the same as yours.\nTarget: My poster is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Lena’s] boots.\nTarget: ____7____ boots ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the nature club.\nTarget: ____9____ ____10____ in the nature club?",
+            "explanation": "Different from/to/than are accepted English variety choices. Of does not form this comparison. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "from",
+              "to",
+              "than"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-music-122.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 7 in the printed target sentence.",
+            "material": "Music and a drawing\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Clara can play the violin. Owen can play the violin too.\nTarget: ____1____ Clara ____2____ Owen can play the violin.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not draw a forest?\nTarget: ____3____ ____4____ drawing a forest?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My poster is not the same as yours.\nTarget: My poster is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Lena’s] boots.\nTarget: ____7____ boots ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the nature club.\nTarget: ____9____ ____10____ in the nature club?",
+            "explanation": "Whose asks ownership before the printed plural noun. Who/Who’s do not directly determine it. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Whose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Who",
+                "Who’s"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-music-122.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 8 in the printed target sentence.",
+            "material": "Music and a drawing\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Clara can play the violin. Owen can play the violin too.\nTarget: ____1____ Clara ____2____ Owen can play the violin.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not draw a forest?\nTarget: ____3____ ____4____ drawing a forest?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My poster is not the same as yours.\nTarget: My poster is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Lena’s] boots.\nTarget: ____7____ boots ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the nature club.\nTarget: ____9____ ____10____ in the nature club?",
+            "explanation": "Plural those takes are. Is disagrees. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "are"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "is"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-music-122.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 9 in the printed target sentence.",
+            "material": "Music and a drawing\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Clara can play the violin. Owen can play the violin too.\nTarget: ____1____ Clara ____2____ Owen can play the violin.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not draw a forest?\nTarget: ____3____ ____4____ drawing a forest?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My poster is not the same as yours.\nTarget: My poster is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Lena’s] boots.\nTarget: ____7____ boots ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the nature club.\nTarget: ____9____ ____10____ in the nature club?",
+            "explanation": "You in a be-question takes Are. Is disagrees. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Are"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Is"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-music-122.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 10 in the printed target sentence.",
+            "material": "Music and a drawing\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Clara can play the violin. Owen can play the violin too.\nTarget: ____1____ Clara ____2____ Owen can play the violin.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not draw a forest?\nTarget: ____3____ ____4____ drawing a forest?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My poster is not the same as yours.\nTarget: My poster is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Lena’s] boots.\nTarget: ____7____ boots ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the nature club.\nTarget: ____9____ ____10____ in the nature club?",
+            "explanation": "Prompt explicitly changes speaker’s I to addressee you. I would not ask the speaker as required. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "you"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "I"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "a5bd14f3df4a50337db7777c04f658894cacd9d984a606149b1a627237325f9d",
+      "reviewNotes": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.transform-sports-122",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · Sport and a weekend plan",
+        "summary": "Sport and a weekend plan，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade7-huangshan2026-21cnjy25150014.transform.sectionIX",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete two-gap transformations, preserving the source operation/output frames. Counts are10 slots in5 tasks, not10 independent sentence transformations. No extra one-word cap, What/How and different from/to/than kept."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.transform-sports-122",
+          "family": "sentence_transformation",
+          "label": "Sport and a weekend plan",
+          "candidateSHA256": "0fd30ae80819bb6fbeb1e646a4778949c02e2e28052676abaaa5d1a270afe3d3",
+          "authorCheckSHA256": "ad5a3ee5a140806ecf226cdc3c664cf64ee3d0cf7597a09a7fdfe7b107f99495",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.transform-sports-122#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b122；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Sport and a weekend plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Iris can swim well. Noah can swim well too.\nTarget: ____1____ Iris ____2____ Noah can swim well.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not visit the sports centre?\nTarget: ____3____ ____4____ visiting the sports centre?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My timetable is not the same as yours.\nTarget: My timetable is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Daniel’s] gloves.\nTarget: ____7____ gloves ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the chess club.\nTarget: ____9____ ____10____ in the chess club?"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.transform-sports-122.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 1 in the printed target sentence.",
+            "material": "Sport and a weekend plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Iris can swim well. Noah can swim well too.\nTarget: ____1____ Iris ____2____ Noah can swim well.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not visit the sports centre?\nTarget: ____3____ ____4____ visiting the sports centre?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My timetable is not the same as yours.\nTarget: My timetable is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Daniel’s] gloves.\nTarget: ____7____ gloves ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the chess club.\nTarget: ____9____ ____10____ in the chess club?",
+            "explanation": "Both with and joins two affirmative shared abilities. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Both"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Neither"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-sports-122.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 2 in the printed target sentence.",
+            "material": "Sport and a weekend plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Iris can swim well. Noah can swim well too.\nTarget: ____1____ Iris ____2____ Noah can swim well.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not visit the sports centre?\nTarget: ____3____ ____4____ visiting the sports centre?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My timetable is not the same as yours.\nTarget: My timetable is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Daniel’s] gloves.\nTarget: ____7____ gloves ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the chess club.\nTarget: ____9____ ____10____ in the chess club?",
+            "explanation": "Both requires and for the two people. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "and"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "or"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-sports-122.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 3 in the printed target sentence.",
+            "material": "Sport and a weekend plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Iris can swim well. Noah can swim well too.\nTarget: ____1____ Iris ____2____ Noah can swim well.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not visit the sports centre?\nTarget: ____3____ ____4____ visiting the sports centre?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My timetable is not the same as yours.\nTarget: My timetable is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Daniel’s] gloves.\nTarget: ____7____ gloves ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the chess club.\nTarget: ____9____ ____10____ in the chess club?",
+            "explanation": "What about/How about both make the same suggestion before -ing. Why about is not that form. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "What",
+              "How"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Why"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-sports-122.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 4 in the printed target sentence.",
+            "material": "Sport and a weekend plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Iris can swim well. Noah can swim well too.\nTarget: ____1____ Iris ____2____ Noah can swim well.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not visit the sports centre?\nTarget: ____3____ ____4____ visiting the sports centre?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My timetable is not the same as yours.\nTarget: My timetable is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Daniel’s] gloves.\nTarget: ____7____ gloves ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the chess club.\nTarget: ____9____ ____10____ in the chess club?",
+            "explanation": "What/How about takes the printed -ing phrase. To does not form that suggestion. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "about"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "to"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-sports-122.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 5 in the printed target sentence.",
+            "material": "Sport and a weekend plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Iris can swim well. Noah can swim well too.\nTarget: ____1____ Iris ____2____ Noah can swim well.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not visit the sports centre?\nTarget: ____3____ ____4____ visiting the sports centre?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My timetable is not the same as yours.\nTarget: My timetable is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Daniel’s] gloves.\nTarget: ____7____ gloves ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the chess club.\nTarget: ____9____ ____10____ in the chess club?",
+            "explanation": "Affirmative is different preserves not the same meaning. Same would reverse it. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "different"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "same"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-sports-122.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 6 in the printed target sentence.",
+            "material": "Sport and a weekend plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Iris can swim well. Noah can swim well too.\nTarget: ____1____ Iris ____2____ Noah can swim well.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not visit the sports centre?\nTarget: ____3____ ____4____ visiting the sports centre?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My timetable is not the same as yours.\nTarget: My timetable is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Daniel’s] gloves.\nTarget: ____7____ gloves ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the chess club.\nTarget: ____9____ ____10____ in the chess club?",
+            "explanation": "Different from/to/than are accepted English variety choices. Of does not form this comparison. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "from",
+              "to",
+              "than"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-sports-122.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 7 in the printed target sentence.",
+            "material": "Sport and a weekend plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Iris can swim well. Noah can swim well too.\nTarget: ____1____ Iris ____2____ Noah can swim well.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not visit the sports centre?\nTarget: ____3____ ____4____ visiting the sports centre?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My timetable is not the same as yours.\nTarget: My timetable is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Daniel’s] gloves.\nTarget: ____7____ gloves ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the chess club.\nTarget: ____9____ ____10____ in the chess club?",
+            "explanation": "Whose asks ownership before the printed plural noun. Who/Who’s do not directly determine it. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Whose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Who",
+                "Who’s"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-sports-122.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 8 in the printed target sentence.",
+            "material": "Sport and a weekend plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Iris can swim well. Noah can swim well too.\nTarget: ____1____ Iris ____2____ Noah can swim well.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not visit the sports centre?\nTarget: ____3____ ____4____ visiting the sports centre?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My timetable is not the same as yours.\nTarget: My timetable is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Daniel’s] gloves.\nTarget: ____7____ gloves ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the chess club.\nTarget: ____9____ ____10____ in the chess club?",
+            "explanation": "Plural those takes are. Is disagrees. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "are"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "is"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-sports-122.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 9 in the printed target sentence.",
+            "material": "Sport and a weekend plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Iris can swim well. Noah can swim well too.\nTarget: ____1____ Iris ____2____ Noah can swim well.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not visit the sports centre?\nTarget: ____3____ ____4____ visiting the sports centre?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My timetable is not the same as yours.\nTarget: My timetable is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Daniel’s] gloves.\nTarget: ____7____ gloves ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the chess club.\nTarget: ____9____ ____10____ in the chess club?",
+            "explanation": "You in a be-question takes Are. Is disagrees. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Are"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Is"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-sports-122.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 10 in the printed target sentence.",
+            "material": "Sport and a weekend plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Iris can swim well. Noah can swim well too.\nTarget: ____1____ Iris ____2____ Noah can swim well.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not visit the sports centre?\nTarget: ____3____ ____4____ visiting the sports centre?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My timetable is not the same as yours.\nTarget: My timetable is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Daniel’s] gloves.\nTarget: ____7____ gloves ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the chess club.\nTarget: ____9____ ____10____ in the chess club?",
+            "explanation": "Prompt explicitly changes speaker’s I to addressee you. I would not ask the speaker as required. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "you"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "I"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "8b581dd2d06762970af972da7cf6986f2b6ea01d025488a02fbe79b64653deaa",
+      "reviewNotes": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.transform-stage-122",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · A stage and a picnic plan",
+        "summary": "A stage and a picnic plan，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade7-huangshan2026-21cnjy25150014.transform.sectionIX",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Five complete two-gap transformations, preserving the source operation/output frames. Counts are10 slots in5 tasks, not10 independent sentence transformations. No extra one-word cap, What/How and different from/to/than kept."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.transform-stage-122",
+          "family": "sentence_transformation",
+          "label": "A stage and a picnic plan",
+          "candidateSHA256": "dbab71ef61a1c8026678fb18827ecd83b7693c78cae77ac24875db3ec1fd877c",
+          "authorCheckSHA256": "85cbf9027220a8041bbe8d210b289bf0ab27ba3e5819a28bde279f8f48c28daa",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.transform-stage-122#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b122；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A stage and a picnic plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Maya can sing this song. Felix can sing this song too.\nTarget: ____1____ Maya ____2____ Felix can sing this song.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not make a picnic list?\nTarget: ____3____ ____4____ making a picnic list?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My costume is not the same as yours.\nTarget: My costume is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Rosa’s] trousers.\nTarget: ____7____ trousers ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the drama club.\nTarget: ____9____ ____10____ in the drama club?"
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.transform-stage-122.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 1 in the printed target sentence.",
+            "material": "A stage and a picnic plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Maya can sing this song. Felix can sing this song too.\nTarget: ____1____ Maya ____2____ Felix can sing this song.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not make a picnic list?\nTarget: ____3____ ____4____ making a picnic list?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My costume is not the same as yours.\nTarget: My costume is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Rosa’s] trousers.\nTarget: ____7____ trousers ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the drama club.\nTarget: ____9____ ____10____ in the drama club?",
+            "explanation": "Both with and joins two affirmative shared abilities. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Both"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Neither"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-stage-122.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 2 in the printed target sentence.",
+            "material": "A stage and a picnic plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Maya can sing this song. Felix can sing this song too.\nTarget: ____1____ Maya ____2____ Felix can sing this song.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not make a picnic list?\nTarget: ____3____ ____4____ making a picnic list?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My costume is not the same as yours.\nTarget: My costume is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Rosa’s] trousers.\nTarget: ____7____ trousers ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the drama club.\nTarget: ____9____ ____10____ in the drama club?",
+            "explanation": "Both requires and for the two people. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "and"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "or"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-stage-122.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 3 in the printed target sentence.",
+            "material": "A stage and a picnic plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Maya can sing this song. Felix can sing this song too.\nTarget: ____1____ Maya ____2____ Felix can sing this song.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not make a picnic list?\nTarget: ____3____ ____4____ making a picnic list?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My costume is not the same as yours.\nTarget: My costume is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Rosa’s] trousers.\nTarget: ____7____ trousers ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the drama club.\nTarget: ____9____ ____10____ in the drama club?",
+            "explanation": "What about/How about both make the same suggestion before -ing. Why about is not that form. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "What",
+              "How"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Why"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-stage-122.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 4 in the printed target sentence.",
+            "material": "A stage and a picnic plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Maya can sing this song. Felix can sing this song too.\nTarget: ____1____ Maya ____2____ Felix can sing this song.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not make a picnic list?\nTarget: ____3____ ____4____ making a picnic list?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My costume is not the same as yours.\nTarget: My costume is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Rosa’s] trousers.\nTarget: ____7____ trousers ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the drama club.\nTarget: ____9____ ____10____ in the drama club?",
+            "explanation": "What/How about takes the printed -ing phrase. To does not form that suggestion. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "about"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "to"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-stage-122.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 5 in the printed target sentence.",
+            "material": "A stage and a picnic plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Maya can sing this song. Felix can sing this song too.\nTarget: ____1____ Maya ____2____ Felix can sing this song.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not make a picnic list?\nTarget: ____3____ ____4____ making a picnic list?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My costume is not the same as yours.\nTarget: My costume is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Rosa’s] trousers.\nTarget: ____7____ trousers ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the drama club.\nTarget: ____9____ ____10____ in the drama club?",
+            "explanation": "Affirmative is different preserves not the same meaning. Same would reverse it. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "different"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "same"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-stage-122.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 6 in the printed target sentence.",
+            "material": "A stage and a picnic plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Maya can sing this song. Felix can sing this song too.\nTarget: ____1____ Maya ____2____ Felix can sing this song.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not make a picnic list?\nTarget: ____3____ ____4____ making a picnic list?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My costume is not the same as yours.\nTarget: My costume is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Rosa’s] trousers.\nTarget: ____7____ trousers ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the drama club.\nTarget: ____9____ ____10____ in the drama club?",
+            "explanation": "Different from/to/than are accepted English variety choices. Of does not form this comparison. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "from",
+              "to",
+              "than"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-stage-122.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 7 in the printed target sentence.",
+            "material": "A stage and a picnic plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Maya can sing this song. Felix can sing this song too.\nTarget: ____1____ Maya ____2____ Felix can sing this song.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not make a picnic list?\nTarget: ____3____ ____4____ making a picnic list?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My costume is not the same as yours.\nTarget: My costume is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Rosa’s] trousers.\nTarget: ____7____ trousers ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the drama club.\nTarget: ____9____ ____10____ in the drama club?",
+            "explanation": "Whose asks ownership before the printed plural noun. Who/Who’s do not directly determine it. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Whose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Who",
+                "Who’s"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-stage-122.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 8 in the printed target sentence.",
+            "material": "A stage and a picnic plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Maya can sing this song. Felix can sing this song too.\nTarget: ____1____ Maya ____2____ Felix can sing this song.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not make a picnic list?\nTarget: ____3____ ____4____ making a picnic list?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My costume is not the same as yours.\nTarget: My costume is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Rosa’s] trousers.\nTarget: ____7____ trousers ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the drama club.\nTarget: ____9____ ____10____ in the drama club?",
+            "explanation": "Plural those takes are. Is disagrees. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "are"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "is"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-stage-122.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 9 in the printed target sentence.",
+            "material": "A stage and a picnic plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Maya can sing this song. Felix can sing this song too.\nTarget: ____1____ Maya ____2____ Felix can sing this song.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not make a picnic list?\nTarget: ____3____ ____4____ making a picnic list?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My costume is not the same as yours.\nTarget: My costume is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Rosa’s] trousers.\nTarget: ____7____ trousers ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the drama club.\nTarget: ____9____ ____10____ in the drama club?",
+            "explanation": "You in a be-question takes Are. Is disagrees. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "Are"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "Is"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.transform-stage-122.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+            "prompt": "Complete gap 10 in the printed target sentence.",
+            "material": "A stage and a picnic plan\n\nFive transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Maya can sing this song. Felix can sing this song too.\nTarget: ____1____ Maya ____2____ Felix can sing this song.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not make a picnic list?\nTarget: ____3____ ____4____ making a picnic list?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My costume is not the same as yours.\nTarget: My costume is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Rosa’s] trousers.\nTarget: ____7____ trousers ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the drama club.\nTarget: ____9____ ____10____ in the drama club?",
+            "explanation": "Prompt explicitly changes speaker’s I to addressee you. I would not ask the speaker as required. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "you"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "english_phrase_v1",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "I"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "21d0a5aa95d50618017156d2cee701e23f5976927d7434a4c6e1523202b1271e",
+      "reviewNotes": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.language-station-122",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Twelve choices: journeys and home",
+        "summary": "Twelve choices: journeys and home，共12题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.2025fengtai.language",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.language-station-122",
+          "family": "sentence_choice",
+          "label": "Twelve choices: journeys and home",
+          "candidateSHA256": "c39598add782ed33f1861333ae9d46dbc876781aebb1c025c6fbffa075c7f5c5",
+          "authorCheckSHA256": "94ed0ea139b7d8a934bc304a4c6644e1d651d7b040f8f9067a06c5043484a59a",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.language-station-122#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b122；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Twelve choices: journeys and home\n\nRead each sentence or short conversation in full. Choose one complete option per item."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.language-station-122.whole.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Luca has a bicycle. ____ bicycle has a light on the front.",
+            "material": "Twelve choices: journeys and home\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "His determines bicycle. Subject/object/reflexive do not determine this noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "His"
+              },
+              {
+                "id": "o1",
+                "text": "Himself"
+              },
+              {
+                "id": "o2",
+                "text": "He"
+              },
+              {
+                "id": "o3",
+                "text": "Him"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-station-122.whole.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The new sports hall opened ____ September.",
+            "material": "Twelve choices: journeys and home\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Month September takes in. On dates/days, at clock time and to direction do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "on"
+              },
+              {
+                "id": "o1",
+                "text": "to"
+              },
+              {
+                "id": "o2",
+                "text": "at"
+              },
+              {
+                "id": "o3",
+                "text": "in"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-station-122.whole.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The road was closed, ____ we took another route.",
+            "material": "Twelve choices: journeys and home\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Closure causes alternative route, so. Because reverses cause, or alternative and although concession do not express stated result.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "because"
+              },
+              {
+                "id": "o1",
+                "text": "or"
+              },
+              {
+                "id": "o2",
+                "text": "so"
+              },
+              {
+                "id": "o3",
+                "text": "although"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-station-122.whole.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "This suitcase is much ____ than my old one.",
+            "material": "Twelve choices: journeys and home\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Much plus than requires comparative heavier, not positive/superlative.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "heavier"
+              },
+              {
+                "id": "o1",
+                "text": "heavy"
+              },
+              {
+                "id": "o2",
+                "text": "the heaviest"
+              },
+              {
+                "id": "o3",
+                "text": "heaviest"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-station-122.whole.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—____ I bring the form today?\n—No, you needn’t. Tomorrow is fine.",
+            "material": "Twelve choices: journeys and home\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Needn’t answers obligation Must. Permission/ability/willingness do not match this modal response.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Must"
+              },
+              {
+                "id": "o1",
+                "text": "Can"
+              },
+              {
+                "id": "o2",
+                "text": "Would"
+              },
+              {
+                "id": "o3",
+                "text": "May"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-station-122.whole.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—____ did you come to the museum?\n—By underground.",
+            "material": "Twelve choices: journeys and home\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "By underground answers travel method How. Time/reason/place do not.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Where"
+              },
+              {
+                "id": "o1",
+                "text": "Why"
+              },
+              {
+                "id": "o2",
+                "text": "When"
+              },
+              {
+                "id": "o3",
+                "text": "How"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-station-122.whole.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "My brother usually ____ breakfast before seven.",
+            "material": "Twelve choices: journeys and home\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Usually present habit with singular brother takes has. Other forms disagree/change tense/aspect.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "has"
+              },
+              {
+                "id": "o1",
+                "text": "had"
+              },
+              {
+                "id": "o2",
+                "text": "have"
+              },
+              {
+                "id": "o3",
+                "text": "is having"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-station-122.whole.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Yesterday, we ____ the river by ferry.",
+            "material": "Twelve choices: journeys and home\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Yesterday establishes simple past crossed. Other choices present/future.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "will cross"
+              },
+              {
+                "id": "o1",
+                "text": "crossed"
+              },
+              {
+                "id": "o2",
+                "text": "cross"
+              },
+              {
+                "id": "o3",
+                "text": "are crossing"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-station-122.whole.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—Why didn’t you hear the doorbell at nine last night?\n—I ____ the piano at that time.",
+            "material": "Twelve choices: journeys and home\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Ongoing action at past nine takes was practising. Others wrong tense.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "am practising"
+              },
+              {
+                "id": "o1",
+                "text": "will practise"
+              },
+              {
+                "id": "o2",
+                "text": "was practising"
+              },
+              {
+                "id": "o3",
+                "text": "practise"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-station-122.whole.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "If the sky is clear tomorrow, we ____ the stars from the garden.",
+            "material": "Twelve choices: journeys and home\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Future real condition pairs present if with will watch. Past/perfect alternatives do not express tomorrow result.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "had watched"
+              },
+              {
+                "id": "o1",
+                "text": "will watch"
+              },
+              {
+                "id": "o2",
+                "text": "were watching"
+              },
+              {
+                "id": "o3",
+                "text": "have watched"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-station-122.whole.q11",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Of the four students, Anna explained the rule ____.",
+            "material": "Twelve choices: journeys and home\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Of four ranks superlative adverb most clearly. Comparative/adj/incomplete comparative do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "the most clearly"
+              },
+              {
+                "id": "o1",
+                "text": "clearly than"
+              },
+              {
+                "id": "o2",
+                "text": "clear"
+              },
+              {
+                "id": "o3",
+                "text": "more clearly"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-station-122.whole.q12",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "We are planning ____ our grandparents next weekend.",
+            "material": "Twelve choices: journeys and home\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Plan to visit uses infinitive. Base/-ing/past do not follow planning directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "visited"
+              },
+              {
+                "id": "o1",
+                "text": "visit"
+              },
+              {
+                "id": "o2",
+                "text": "to visit"
+              },
+              {
+                "id": "o3",
+                "text": "visiting"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "cafb3cd22748a71f9464e15ac60ba32a078a25c67f962692c741b64d98349334",
+      "reviewNotes": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.language-garden-122",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Twelve choices: a garden afternoon",
+        "summary": "Twelve choices: a garden afternoon，共12题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.2025fengtai.language",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.language-garden-122",
+          "family": "sentence_choice",
+          "label": "Twelve choices: a garden afternoon",
+          "candidateSHA256": "3a1ce6d00a9724ffa6057c7bdfd2326dae728ba828742cfa652f624ff7144a60",
+          "authorCheckSHA256": "a450448dd35430b26f15d89d74078ebd220467bbed7cb29369cfa549d1755117",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.language-garden-122#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b122；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Twelve choices: a garden afternoon\n\nRead each sentence or short conversation in full. Choose one complete option per item."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.language-garden-122.whole.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Please give the spare gloves to Mia. I borrowed them from ____ yesterday.",
+            "material": "Twelve choices: a garden afternoon\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "From takes object her. Subject/independent possessive/reflexive not appropriate owner object here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "hers"
+              },
+              {
+                "id": "o1",
+                "text": "she"
+              },
+              {
+                "id": "o2",
+                "text": "her"
+              },
+              {
+                "id": "o3",
+                "text": "herself"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-garden-122.whole.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The gardening club meets ____ Friday afternoons.",
+            "material": "Twelve choices: a garden afternoon\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Named day afternoons take on. In general periods, at time, to direction do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "to"
+              },
+              {
+                "id": "o1",
+                "text": "at"
+              },
+              {
+                "id": "o2",
+                "text": "on"
+              },
+              {
+                "id": "o3",
+                "text": "in"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-garden-122.whole.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "We stayed inside ____ the wind was too strong for the outdoor activity.",
+            "material": "Twelve choices: a garden afternoon\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Wind gives reason for indoor choice, because. Result/alternative/exception do not express this causal relation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "unless"
+              },
+              {
+                "id": "o1",
+                "text": "so"
+              },
+              {
+                "id": "o2",
+                "text": "or"
+              },
+              {
+                "id": "o3",
+                "text": "because"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-garden-122.whole.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The new watering can is ____ than the metal one.",
+            "material": "Twelve choices: a garden afternoon\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Than requires lighter comparative. Positive/superlative do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "lighter"
+              },
+              {
+                "id": "o1",
+                "text": "light"
+              },
+              {
+                "id": "o2",
+                "text": "the lightest"
+              },
+              {
+                "id": "o3",
+                "text": "lightest"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-garden-122.whole.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—Must every pupil bring a spade?\n—No, you ____. The school has enough.",
+            "material": "Twelve choices: a garden afternoon\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "No obligation is needn’t. Mustn’t prohibits, couldn’t inability, won’t future refusal/prediction.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "couldn’t"
+              },
+              {
+                "id": "o1",
+                "text": "mustn’t"
+              },
+              {
+                "id": "o2",
+                "text": "won’t"
+              },
+              {
+                "id": "o3",
+                "text": "needn’t"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-garden-122.whole.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—____ do the plants need moving?\n—Because this corner gets too little light.",
+            "material": "Twelve choices: a garden afternoon\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Because reason answers Why. Other interrogatives ask location/count/time.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "When"
+              },
+              {
+                "id": "o1",
+                "text": "How many"
+              },
+              {
+                "id": "o2",
+                "text": "Where"
+              },
+              {
+                "id": "o3",
+                "text": "Why"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-garden-122.whole.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Every spring, our teacher ____ new seeds for the club.",
+            "material": "Twelve choices: a garden afternoon\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Regular habit singular teacher buys. Base disagrees, past/progressive not habit form here.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "bought"
+              },
+              {
+                "id": "o1",
+                "text": "buy"
+              },
+              {
+                "id": "o2",
+                "text": "buys"
+              },
+              {
+                "id": "o3",
+                "text": "is buying"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-garden-122.whole.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Last week, we ____ labels for all six pots.",
+            "material": "Twelve choices: a garden afternoon\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Last week past made. Other alternatives not past finite.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "will make"
+              },
+              {
+                "id": "o1",
+                "text": "are making"
+              },
+              {
+                "id": "o2",
+                "text": "made"
+              },
+              {
+                "id": "o3",
+                "text": "make"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-garden-122.whole.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "At three yesterday, I ____ the leaves when the teacher arrived.",
+            "material": "Twelve choices: a garden afternoon\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Past ongoing activity interrupted by arrival takes was drawing. Others wrong temporal relation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "was drawing"
+              },
+              {
+                "id": "o1",
+                "text": "have drawn"
+              },
+              {
+                "id": "o2",
+                "text": "draw"
+              },
+              {
+                "id": "o3",
+                "text": "will draw"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-garden-122.whole.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "If we finish early tomorrow, we ____ the equipment before going home.",
+            "material": "Twelve choices: a garden afternoon\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Future condition takes will clean result. Other choices past/perfect.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "were cleaning"
+              },
+              {
+                "id": "o1",
+                "text": "have cleaned"
+              },
+              {
+                "id": "o2",
+                "text": "will clean"
+              },
+              {
+                "id": "o3",
+                "text": "had cleaned"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-garden-122.whole.q11",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Of all five groups, ours worked ____.",
+            "material": "Twelve choices: a garden afternoon\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "All five groups establish superlative adverb. Comparative/adj/incomplete than form do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "patient"
+              },
+              {
+                "id": "o1",
+                "text": "more patiently"
+              },
+              {
+                "id": "o2",
+                "text": "the most patiently"
+              },
+              {
+                "id": "o3",
+                "text": "patiently than"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.language-garden-122.whole.q12",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The teacher asked us ____ the young plants gently.",
+            "material": "Twelve choices: a garden afternoon\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Asked us to carry uses infinitive. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "carrying"
+              },
+              {
+                "id": "o1",
+                "text": "carry"
+              },
+              {
+                "id": "o2",
+                "text": "carried"
+              },
+              {
+                "id": "o3",
+                "text": "to carry"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "e347312d8af6645cbe0f6c7bde9b8825d5b8c4d6381531e4d2ed7c7b60dcf077",
+      "reviewNotes": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.language-workshop-122",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Ten choices: the school workshop",
+        "summary": "Ten choices: the school workshop，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-boxing2025-21cnjy24857076.sentenceChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.language-workshop-122",
+          "family": "sentence_choice",
+          "label": "Ten choices: the school workshop",
+          "candidateSHA256": "7b38f81cb9492a5e4a591b77dbb2f97ae8f520acd995dea34fe75d4cff03bdb0",
+          "authorCheckSHA256": "f2f57c2dc47abd7246fb3b4d750662a9685c4f9f0ea3e8dc80799b379d82d64d",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.language-workshop-122#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b122；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Ten choices: the school workshop\n\nRead each sentence or short conversation in full. Choose one complete option per item."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.language-workshop-122.whole.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "This is ____ unusual design for ____ useful container.",
+            "material": "Ten choices: the school workshop\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Unusual starts vowel sound, an; useful starts consonant /j/, a. Other combinations mismatch one/both.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "a; an"
+              },
+              {
+                "id": "o1",
+                "text": "an; a"
+              },
+              {
+                "id": "o2",
+                "text": "a; a"
+              },
+              {
+                "id": "o3",
+                "text": "an; an"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-workshop-122.whole.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "If the model ____ by the teacher, we will display it tomorrow.",
+            "material": "Ten choices: the school workshop\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Model receives approval in future condition, present passive is approved. Active/future/base past do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "is approved"
+              },
+              {
+                "id": "o1",
+                "text": "approves"
+              },
+              {
+                "id": "o2",
+                "text": "will approve"
+              },
+              {
+                "id": "o3",
+                "text": "approved"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-workshop-122.whole.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Follow the ____ carefully; they tell you how to assemble each part.",
+            "material": "Ten choices: the school workshop\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Instructions give assembly steps. Other nouns do not provide procedure.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "competitions"
+              },
+              {
+                "id": "o1",
+                "text": "instructions"
+              },
+              {
+                "id": "o2",
+                "text": "congratulations"
+              },
+              {
+                "id": "o3",
+                "text": "invitations"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-workshop-122.whole.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Please write ____ so the labels can be read from a distance.",
+            "material": "Ten choices: the school workshop\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Clearly concerns legibility. Hardly/nearly/only do not express readable writing.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "clearly"
+              },
+              {
+                "id": "o1",
+                "text": "nearly"
+              },
+              {
+                "id": "o2",
+                "text": "only"
+              },
+              {
+                "id": "o3",
+                "text": "hardly"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-workshop-122.whole.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "This ruler ____ be Ali’s, but I am not sure. I will check.",
+            "material": "Ten choices: the school workshop\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Uncertain possibility may. Must certainty/can’t impossibility/need obligation not tentative identification.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "may"
+              },
+              {
+                "id": "o1",
+                "text": "must"
+              },
+              {
+                "id": "o2",
+                "text": "can’t"
+              },
+              {
+                "id": "o3",
+                "text": "need"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-workshop-122.whole.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "We printed exactly ____ cards:199 plus one.",
+            "material": "Ten choices: the school workshop\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Exact200 uses two hundred, no plural/of. Others malformed in this exact-number slot.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "two hundred"
+              },
+              {
+                "id": "o1",
+                "text": "two hundred of"
+              },
+              {
+                "id": "o2",
+                "text": "two hundreds"
+              },
+              {
+                "id": "o3",
+                "text": "two hundreds of"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-workshop-122.whole.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "____ the first attempt failed, the group completed the model successfully later.",
+            "material": "Ten choices: the school workshop\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Initial failure contrasts later success, concessive even though. Purpose/condition/time-until do not express stated contrast.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Until"
+              },
+              {
+                "id": "o1",
+                "text": "So that"
+              },
+              {
+                "id": "o2",
+                "text": "Even though"
+              },
+              {
+                "id": "o3",
+                "text": "Unless"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-workshop-122.whole.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Don’t ____ the wet paint. If you ____ it, you may leave a mark.",
+            "material": "Ten choices: the school workshop\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Negative imperative base touch; real condition present touch. Other combinations wrong forms.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "touch; touch"
+              },
+              {
+                "id": "o1",
+                "text": "touching; touch"
+              },
+              {
+                "id": "o2",
+                "text": "touch; touched"
+              },
+              {
+                "id": "o3",
+                "text": "touched; touch"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-workshop-122.whole.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "A guide is someone ____ helps visitors understand a place.",
+            "material": "Ten choices: the school workshop\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Person subject relative who. Whom object/which nonhuman/what without antecedent do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "who"
+              },
+              {
+                "id": "o1",
+                "text": "which"
+              },
+              {
+                "id": "o2",
+                "text": "what"
+              },
+              {
+                "id": "o3",
+                "text": "whom"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-workshop-122.whole.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—Do you know ____?\n—At half past four.",
+            "material": "Ten choices: the school workshop\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Embedded time question uses statement order ends. Others inverted/ungammatical/not asking supplied time.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "how the workshop end"
+              },
+              {
+                "id": "o1",
+                "text": "what time does the workshop end"
+              },
+              {
+                "id": "o2",
+                "text": "what time the workshop ends"
+              },
+              {
+                "id": "o3",
+                "text": "whether does the workshop end"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "0efaa2652c031e5641b0170413c4cb99952b936f437db727bea60c612457adbb",
+      "reviewNotes": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.language-trip-122",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Ten choices: preparing for a visit",
+        "summary": "Ten choices: preparing for a visit，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-boxing2025-21cnjy24857076.sentenceChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.language-trip-122",
+          "family": "sentence_choice",
+          "label": "Ten choices: preparing for a visit",
+          "candidateSHA256": "c8a74b490d88e0de03f824fe195d836494a1d7147866d8ac9625951c0ccc5dd7",
+          "authorCheckSHA256": "d55ef31771a408ceafbfad9194ecee7bf9d8fac641191a4bb99650a114b2d0c1",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.language-trip-122#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b122；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Ten choices: preparing for a visit\n\nRead each sentence or short conversation in full. Choose one complete option per item."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.language-trip-122.whole.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Our class chose ____ interesting activity in ____ university museum.",
+            "material": "Ten choices: preparing for a visit\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Interesting vowel gives an; university initial /j/ gives a. Other pairs wrong sound-based articles.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "a; an"
+              },
+              {
+                "id": "o1",
+                "text": "an; a"
+              },
+              {
+                "id": "o2",
+                "text": "an; an"
+              },
+              {
+                "id": "o3",
+                "text": "a; a"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-trip-122.whole.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "If permission ____ tomorrow, our group will visit the laboratory.",
+            "material": "Ten choices: preparing for a visit\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Permission receives giving in present passive condition is given. Active/future/past forms wrong structure.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "gives"
+              },
+              {
+                "id": "o1",
+                "text": "will give"
+              },
+              {
+                "id": "o2",
+                "text": "is given"
+              },
+              {
+                "id": "o3",
+                "text": "gave"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-trip-122.whole.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The notice gives clear ____ to the museum entrance, including two turns.",
+            "material": "Ten choices: preparing for a visit\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Directions tell route/turns. Other nouns do not guide navigation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "directions"
+              },
+              {
+                "id": "o1",
+                "text": "inventions"
+              },
+              {
+                "id": "o2",
+                "text": "celebrations"
+              },
+              {
+                "id": "o3",
+                "text": "conversations"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-trip-122.whole.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The guide spoke ____ enough for everyone to hear each word.",
+            "material": "Ten choices: preparing for a visit\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Clearly plus enough concerns intelligibility. Other adverbs do not express it.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "nearly"
+              },
+              {
+                "id": "o1",
+                "text": "only"
+              },
+              {
+                "id": "o2",
+                "text": "clearly"
+              },
+              {
+                "id": "o3",
+                "text": "hardly"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-trip-122.whole.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The closed door ____ lead to the office, but let’s ask before entering.",
+            "material": "Ten choices: preparing for a visit\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Tentative possible destination may. Must certainty/can’t impossibility/need obligation do not fit uncertainty.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "may"
+              },
+              {
+                "id": "o1",
+                "text": "need"
+              },
+              {
+                "id": "o2",
+                "text": "can’t"
+              },
+              {
+                "id": "o3",
+                "text": "must"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-trip-122.whole.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The collection contains exactly ____ postcards, not399.",
+            "material": "Ten choices: preparing for a visit\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Exact400 is four hundred without plural/of. Other numerical forms malformed.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "four hundred"
+              },
+              {
+                "id": "o1",
+                "text": "four hundred of"
+              },
+              {
+                "id": "o2",
+                "text": "four hundreds of"
+              },
+              {
+                "id": "o3",
+                "text": "four hundreds"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-trip-122.whole.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "____ the journey took longer than expected, we still arrived before the tour began.",
+            "material": "Ten choices: preparing for a visit\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Unexpected delay despite timely arrival forms concession although. Purpose/exception/until not this contrast.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Until"
+              },
+              {
+                "id": "o1",
+                "text": "Unless"
+              },
+              {
+                "id": "o2",
+                "text": "So that"
+              },
+              {
+                "id": "o3",
+                "text": "Although"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-trip-122.whole.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "Don’t ____ your ticket. If you ____ it, ask the teacher for help.",
+            "material": "Ten choices: preparing for a visit\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Imperative base lose and real-condition present lose. Other pairs wrong forms.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "lose; lost"
+              },
+              {
+                "id": "o1",
+                "text": "lost; lose"
+              },
+              {
+                "id": "o2",
+                "text": "losing; lose"
+              },
+              {
+                "id": "o3",
+                "text": "lose; lose"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-trip-122.whole.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "The volunteer ____ showed us the room answered our questions too.",
+            "material": "Ten choices: preparing for a visit\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Human subject relative who. Other relative forms do not fit subject antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "what"
+              },
+              {
+                "id": "o1",
+                "text": "whom"
+              },
+              {
+                "id": "o2",
+                "text": "who"
+              },
+              {
+                "id": "o3",
+                "text": "which"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.language-trip-122.whole.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "Choose the best option for every complete sentence or short conversation.",
+            "prompt": "—Could you tell me ____?\n—At the north gate.",
+            "material": "Ten choices: preparing for a visit\n\nRead each sentence or short conversation in full. Choose one complete option per item.",
+            "explanation": "Place answer requires embedded where with statement order. Inversion/time/whether-inverted wrong.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "where does the group meet"
+              },
+              {
+                "id": "o1",
+                "text": "what time the group meets"
+              },
+              {
+                "id": "o2",
+                "text": "where the group meets"
+              },
+              {
+                "id": "o3",
+                "text": "whether does the group meet"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "a02f4c2d59274cdae5432740304977e45f7baa7ca6e9b6345a5c5ae981892aca",
+      "reviewNotes": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}

@@ -1,0 +1,1118 @@
+{
+  "createdAt": "2026-10-24T02:11:35.227373+00:00",
+  "reviewBoundary": "Three complete grade7 five-task/two-gap transformation sets (30 scoring slots in15 tasks), two complete grade8 twelve-choice sets and two complete grade9 ten-choice sets. English prompts/options. Same-author operation, variant, grammar and all-option review; no independent calibration.",
+  "units": [
+    {
+      "id": "junior1.transform-music-122",
+      "level": "junior1",
+      "title": "Music and a drawing",
+      "family": "sentence_transformation",
+      "minutes": 16,
+      "sourceUnitId": "original.grade7-transform-paint-and-map",
+      "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+      "alignmentNote": "Five complete two-gap transformations, preserving the source operation/output frames. Counts are10 slots in5 tasks, not10 independent sentence transformations. No extra one-word cap, What/How and different from/to/than kept.",
+      "materials": [
+        {
+          "id": "whole",
+          "family": "passage_form",
+          "title": "Music and a drawing",
+          "text": "Five transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Clara can play the violin. Owen can play the violin too.\nTarget: ____1____ Clara ____2____ Owen can play the violin.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not draw a forest?\nTarget: ____3____ ____4____ drawing a forest?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My poster is not the same as yours.\nTarget: My poster is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Lena’s] boots.\nTarget: ____7____ boots ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the nature club.\nTarget: ____9____ ____10____ in the nature club?",
+          "questions": [
+            {
+              "prompt": "Complete gap 1 in the printed target sentence.",
+              "acceptedAnswers": [
+                "Both"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Neither"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Both with and joins two affirmative shared abilities. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 2 in the printed target sentence.",
+              "acceptedAnswers": [
+                "and"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "or"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Both requires and for the two people. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 3 in the printed target sentence.",
+              "acceptedAnswers": [
+                "What",
+                "How"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Why"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "What about/How about both make the same suggestion before -ing. Why about is not that form. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 4 in the printed target sentence.",
+              "acceptedAnswers": [
+                "about"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "to"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "What/How about takes the printed -ing phrase. To does not form that suggestion. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 5 in the printed target sentence.",
+              "acceptedAnswers": [
+                "different"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "same"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Affirmative is different preserves not the same meaning. Same would reverse it. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 6 in the printed target sentence.",
+              "acceptedAnswers": [
+                "from",
+                "to",
+                "than"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Different from/to/than are accepted English variety choices. Of does not form this comparison. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 7 in the printed target sentence.",
+              "acceptedAnswers": [
+                "Whose"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Who",
+                  "Who’s"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whose asks ownership before the printed plural noun. Who/Who’s do not directly determine it. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 8 in the printed target sentence.",
+              "acceptedAnswers": [
+                "are"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "is"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Plural those takes are. Is disagrees. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 9 in the printed target sentence.",
+              "acceptedAnswers": [
+                "Are"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Is"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "You in a be-question takes Are. Is disagrees. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 10 in the printed target sentence.",
+              "acceptedAnswers": [
+                "you"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "I"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Prompt explicitly changes speaker’s I to addressee you. I would not ask the speaker as required. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior1.transform-sports-122",
+      "level": "junior1",
+      "title": "Sport and a weekend plan",
+      "family": "sentence_transformation",
+      "minutes": 16,
+      "sourceUnitId": "original.grade7-transform-paint-and-map",
+      "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+      "alignmentNote": "Five complete two-gap transformations, preserving the source operation/output frames. Counts are10 slots in5 tasks, not10 independent sentence transformations. No extra one-word cap, What/How and different from/to/than kept.",
+      "materials": [
+        {
+          "id": "whole",
+          "family": "passage_form",
+          "title": "Sport and a weekend plan",
+          "text": "Five transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Iris can swim well. Noah can swim well too.\nTarget: ____1____ Iris ____2____ Noah can swim well.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not visit the sports centre?\nTarget: ____3____ ____4____ visiting the sports centre?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My timetable is not the same as yours.\nTarget: My timetable is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Daniel’s] gloves.\nTarget: ____7____ gloves ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the chess club.\nTarget: ____9____ ____10____ in the chess club?",
+          "questions": [
+            {
+              "prompt": "Complete gap 1 in the printed target sentence.",
+              "acceptedAnswers": [
+                "Both"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Neither"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Both with and joins two affirmative shared abilities. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 2 in the printed target sentence.",
+              "acceptedAnswers": [
+                "and"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "or"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Both requires and for the two people. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 3 in the printed target sentence.",
+              "acceptedAnswers": [
+                "What",
+                "How"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Why"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "What about/How about both make the same suggestion before -ing. Why about is not that form. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 4 in the printed target sentence.",
+              "acceptedAnswers": [
+                "about"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "to"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "What/How about takes the printed -ing phrase. To does not form that suggestion. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 5 in the printed target sentence.",
+              "acceptedAnswers": [
+                "different"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "same"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Affirmative is different preserves not the same meaning. Same would reverse it. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 6 in the printed target sentence.",
+              "acceptedAnswers": [
+                "from",
+                "to",
+                "than"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Different from/to/than are accepted English variety choices. Of does not form this comparison. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 7 in the printed target sentence.",
+              "acceptedAnswers": [
+                "Whose"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Who",
+                  "Who’s"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whose asks ownership before the printed plural noun. Who/Who’s do not directly determine it. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 8 in the printed target sentence.",
+              "acceptedAnswers": [
+                "are"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "is"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Plural those takes are. Is disagrees. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 9 in the printed target sentence.",
+              "acceptedAnswers": [
+                "Are"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Is"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "You in a be-question takes Are. Is disagrees. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 10 in the printed target sentence.",
+              "acceptedAnswers": [
+                "you"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "I"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Prompt explicitly changes speaker’s I to addressee you. I would not ask the speaker as required. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior1.transform-stage-122",
+      "level": "junior1",
+      "title": "A stage and a picnic plan",
+      "family": "sentence_transformation",
+      "minutes": 16,
+      "sourceUnitId": "original.grade7-transform-paint-and-map",
+      "instruction": "Complete all five transformations. Each has two gaps, for ten scoring gaps. Keep all printed words; the brackets mark the owner to ask about.",
+      "alignmentNote": "Five complete two-gap transformations, preserving the source operation/output frames. Counts are10 slots in5 tasks, not10 independent sentence transformations. No extra one-word cap, What/How and different from/to/than kept.",
+      "materials": [
+        {
+          "id": "whole",
+          "family": "passage_form",
+          "title": "A stage and a picnic plan",
+          "text": "Five transformations, with two scoring gaps each. Read every original and its target sentence.\n\n1. Join the two sentences without changing either person’s ability.\nOriginal: Maya can sing this song. Felix can sing this song too.\nTarget: ____1____ Maya ____2____ Felix can sing this song.\n\n2. Keep the same suggestion and the printed -ing phrase.\nOriginal: Why not make a picnic list?\nTarget: ____3____ ____4____ making a picnic list?\n\n3. Keep affirmative is and the printed yours.\nOriginal: My costume is not the same as yours.\nTarget: My costume is ____5____ ____6____ yours.\n\n4. Ask about the owner marked in brackets; keep the printed item.\nOriginal: Those are [Rosa’s] trousers.\nTarget: ____7____ trousers ____8____ those?\n\n5. Ask the speaker a yes/no question, changing I to you.\nOriginal: I am in the drama club.\nTarget: ____9____ ____10____ in the drama club?",
+          "questions": [
+            {
+              "prompt": "Complete gap 1 in the printed target sentence.",
+              "acceptedAnswers": [
+                "Both"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Neither"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Both with and joins two affirmative shared abilities. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 2 in the printed target sentence.",
+              "acceptedAnswers": [
+                "and"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "or"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Both requires and for the two people. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 3 in the printed target sentence.",
+              "acceptedAnswers": [
+                "What",
+                "How"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Why"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "What about/How about both make the same suggestion before -ing. Why about is not that form. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 4 in the printed target sentence.",
+              "acceptedAnswers": [
+                "about"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "to"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "What/How about takes the printed -ing phrase. To does not form that suggestion. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 5 in the printed target sentence.",
+              "acceptedAnswers": [
+                "different"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "same"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Affirmative is different preserves not the same meaning. Same would reverse it. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 6 in the printed target sentence.",
+              "acceptedAnswers": [
+                "from",
+                "to",
+                "than"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Different from/to/than are accepted English variety choices. Of does not form this comparison. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 7 in the printed target sentence.",
+              "acceptedAnswers": [
+                "Whose"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Who",
+                  "Who’s"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whose asks ownership before the printed plural noun. Who/Who’s do not directly determine it. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 8 in the printed target sentence.",
+              "acceptedAnswers": [
+                "are"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "is"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Plural those takes are. Is disagrees. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 9 in the printed target sentence.",
+              "acceptedAnswers": [
+                "Are"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "Is"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "You in a be-question takes Are. Is disagrees. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            },
+            {
+              "prompt": "Complete gap 10 in the printed target sentence.",
+              "acceptedAnswers": [
+                "you"
+              ],
+              "marking": {
+                "protocol": "english_phrase_v1",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "I"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Prompt explicitly changes speaker’s I to addressee you. I would not ask the speaker as required. Unlisted rewrites remain reviewable; accepted variants are not claimed exhaustive."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior2.language-station-122",
+      "level": "junior2",
+      "title": "Twelve choices: journeys and home",
+      "family": "sentence_choice",
+      "minutes": 16,
+      "sourceUnitId": "original.grade8-language-choice-v0.1",
+      "instruction": "Choose the best option for every complete sentence or short conversation.",
+      "alignmentNote": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Twelve choices: journeys and home",
+          "text": "Read each sentence or short conversation in full. Choose one complete option per item.",
+          "questions": [
+            {
+              "prompt": "Luca has a bicycle. ____ bicycle has a light on the front.",
+              "options": [
+                "His",
+                "Himself",
+                "He",
+                "Him"
+              ],
+              "answer": 0,
+              "explanation": "His determines bicycle. Subject/object/reflexive do not determine this noun."
+            },
+            {
+              "prompt": "The new sports hall opened ____ September.",
+              "options": [
+                "on",
+                "to",
+                "at",
+                "in"
+              ],
+              "answer": 3,
+              "explanation": "Month September takes in. On dates/days, at clock time and to direction do not fit."
+            },
+            {
+              "prompt": "The road was closed, ____ we took another route.",
+              "options": [
+                "because",
+                "or",
+                "so",
+                "although"
+              ],
+              "answer": 2,
+              "explanation": "Closure causes alternative route, so. Because reverses cause, or alternative and although concession do not express stated result."
+            },
+            {
+              "prompt": "This suitcase is much ____ than my old one.",
+              "options": [
+                "heavier",
+                "heavy",
+                "the heaviest",
+                "heaviest"
+              ],
+              "answer": 0,
+              "explanation": "Much plus than requires comparative heavier, not positive/superlative."
+            },
+            {
+              "prompt": "—____ I bring the form today?\n—No, you needn’t. Tomorrow is fine.",
+              "options": [
+                "Must",
+                "Can",
+                "Would",
+                "May"
+              ],
+              "answer": 0,
+              "explanation": "Needn’t answers obligation Must. Permission/ability/willingness do not match this modal response."
+            },
+            {
+              "prompt": "—____ did you come to the museum?\n—By underground.",
+              "options": [
+                "Where",
+                "Why",
+                "When",
+                "How"
+              ],
+              "answer": 3,
+              "explanation": "By underground answers travel method How. Time/reason/place do not."
+            },
+            {
+              "prompt": "My brother usually ____ breakfast before seven.",
+              "options": [
+                "has",
+                "had",
+                "have",
+                "is having"
+              ],
+              "answer": 0,
+              "explanation": "Usually present habit with singular brother takes has. Other forms disagree/change tense/aspect."
+            },
+            {
+              "prompt": "Yesterday, we ____ the river by ferry.",
+              "options": [
+                "will cross",
+                "crossed",
+                "cross",
+                "are crossing"
+              ],
+              "answer": 1,
+              "explanation": "Yesterday establishes simple past crossed. Other choices present/future."
+            },
+            {
+              "prompt": "—Why didn’t you hear the doorbell at nine last night?\n—I ____ the piano at that time.",
+              "options": [
+                "am practising",
+                "will practise",
+                "was practising",
+                "practise"
+              ],
+              "answer": 2,
+              "explanation": "Ongoing action at past nine takes was practising. Others wrong tense."
+            },
+            {
+              "prompt": "If the sky is clear tomorrow, we ____ the stars from the garden.",
+              "options": [
+                "had watched",
+                "will watch",
+                "were watching",
+                "have watched"
+              ],
+              "answer": 1,
+              "explanation": "Future real condition pairs present if with will watch. Past/perfect alternatives do not express tomorrow result."
+            },
+            {
+              "prompt": "Of the four students, Anna explained the rule ____.",
+              "options": [
+                "the most clearly",
+                "clearly than",
+                "clear",
+                "more clearly"
+              ],
+              "answer": 0,
+              "explanation": "Of four ranks superlative adverb most clearly. Comparative/adj/incomplete comparative do not fit."
+            },
+            {
+              "prompt": "We are planning ____ our grandparents next weekend.",
+              "options": [
+                "visited",
+                "visit",
+                "to visit",
+                "visiting"
+              ],
+              "answer": 2,
+              "explanation": "Plan to visit uses infinitive. Base/-ing/past do not follow planning directly."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior2.language-garden-122",
+      "level": "junior2",
+      "title": "Twelve choices: a garden afternoon",
+      "family": "sentence_choice",
+      "minutes": 16,
+      "sourceUnitId": "original.grade8-language-choice-v0.1",
+      "instruction": "Choose the best option for every complete sentence or short conversation.",
+      "alignmentNote": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Twelve choices: a garden afternoon",
+          "text": "Read each sentence or short conversation in full. Choose one complete option per item.",
+          "questions": [
+            {
+              "prompt": "Please give the spare gloves to Mia. I borrowed them from ____ yesterday.",
+              "options": [
+                "hers",
+                "she",
+                "her",
+                "herself"
+              ],
+              "answer": 2,
+              "explanation": "From takes object her. Subject/independent possessive/reflexive not appropriate owner object here."
+            },
+            {
+              "prompt": "The gardening club meets ____ Friday afternoons.",
+              "options": [
+                "to",
+                "at",
+                "on",
+                "in"
+              ],
+              "answer": 2,
+              "explanation": "Named day afternoons take on. In general periods, at time, to direction do not fit."
+            },
+            {
+              "prompt": "We stayed inside ____ the wind was too strong for the outdoor activity.",
+              "options": [
+                "unless",
+                "so",
+                "or",
+                "because"
+              ],
+              "answer": 3,
+              "explanation": "Wind gives reason for indoor choice, because. Result/alternative/exception do not express this causal relation."
+            },
+            {
+              "prompt": "The new watering can is ____ than the metal one.",
+              "options": [
+                "lighter",
+                "light",
+                "the lightest",
+                "lightest"
+              ],
+              "answer": 0,
+              "explanation": "Than requires lighter comparative. Positive/superlative do not fit."
+            },
+            {
+              "prompt": "—Must every pupil bring a spade?\n—No, you ____. The school has enough.",
+              "options": [
+                "couldn’t",
+                "mustn’t",
+                "won’t",
+                "needn’t"
+              ],
+              "answer": 3,
+              "explanation": "No obligation is needn’t. Mustn’t prohibits, couldn’t inability, won’t future refusal/prediction."
+            },
+            {
+              "prompt": "—____ do the plants need moving?\n—Because this corner gets too little light.",
+              "options": [
+                "When",
+                "How many",
+                "Where",
+                "Why"
+              ],
+              "answer": 3,
+              "explanation": "Because reason answers Why. Other interrogatives ask location/count/time."
+            },
+            {
+              "prompt": "Every spring, our teacher ____ new seeds for the club.",
+              "options": [
+                "bought",
+                "buy",
+                "buys",
+                "is buying"
+              ],
+              "answer": 2,
+              "explanation": "Regular habit singular teacher buys. Base disagrees, past/progressive not habit form here."
+            },
+            {
+              "prompt": "Last week, we ____ labels for all six pots.",
+              "options": [
+                "will make",
+                "are making",
+                "made",
+                "make"
+              ],
+              "answer": 2,
+              "explanation": "Last week past made. Other alternatives not past finite."
+            },
+            {
+              "prompt": "At three yesterday, I ____ the leaves when the teacher arrived.",
+              "options": [
+                "was drawing",
+                "have drawn",
+                "draw",
+                "will draw"
+              ],
+              "answer": 0,
+              "explanation": "Past ongoing activity interrupted by arrival takes was drawing. Others wrong temporal relation."
+            },
+            {
+              "prompt": "If we finish early tomorrow, we ____ the equipment before going home.",
+              "options": [
+                "were cleaning",
+                "have cleaned",
+                "will clean",
+                "had cleaned"
+              ],
+              "answer": 2,
+              "explanation": "Future condition takes will clean result. Other choices past/perfect."
+            },
+            {
+              "prompt": "Of all five groups, ours worked ____.",
+              "options": [
+                "patient",
+                "more patiently",
+                "the most patiently",
+                "patiently than"
+              ],
+              "answer": 2,
+              "explanation": "All five groups establish superlative adverb. Comparative/adj/incomplete than form do not fit."
+            },
+            {
+              "prompt": "The teacher asked us ____ the young plants gently.",
+              "options": [
+                "carrying",
+                "carry",
+                "carried",
+                "to carry"
+              ],
+              "answer": 3,
+              "explanation": "Asked us to carry uses infinitive. Other listed forms do not fit directly."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior3.language-workshop-122",
+      "level": "junior3",
+      "title": "Ten choices: the school workshop",
+      "family": "sentence_choice",
+      "minutes": 16,
+      "sourceUnitId": "original.grade9-four-option-sentences",
+      "instruction": "Choose the best option for every complete sentence or short conversation.",
+      "alignmentNote": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Ten choices: the school workshop",
+          "text": "Read each sentence or short conversation in full. Choose one complete option per item.",
+          "questions": [
+            {
+              "prompt": "This is ____ unusual design for ____ useful container.",
+              "options": [
+                "a; an",
+                "an; a",
+                "a; a",
+                "an; an"
+              ],
+              "answer": 1,
+              "explanation": "Unusual starts vowel sound, an; useful starts consonant /j/, a. Other combinations mismatch one/both."
+            },
+            {
+              "prompt": "If the model ____ by the teacher, we will display it tomorrow.",
+              "options": [
+                "is approved",
+                "approves",
+                "will approve",
+                "approved"
+              ],
+              "answer": 0,
+              "explanation": "Model receives approval in future condition, present passive is approved. Active/future/base past do not fit."
+            },
+            {
+              "prompt": "Follow the ____ carefully; they tell you how to assemble each part.",
+              "options": [
+                "competitions",
+                "instructions",
+                "congratulations",
+                "invitations"
+              ],
+              "answer": 1,
+              "explanation": "Instructions give assembly steps. Other nouns do not provide procedure."
+            },
+            {
+              "prompt": "Please write ____ so the labels can be read from a distance.",
+              "options": [
+                "clearly",
+                "nearly",
+                "only",
+                "hardly"
+              ],
+              "answer": 0,
+              "explanation": "Clearly concerns legibility. Hardly/nearly/only do not express readable writing."
+            },
+            {
+              "prompt": "This ruler ____ be Ali’s, but I am not sure. I will check.",
+              "options": [
+                "may",
+                "must",
+                "can’t",
+                "need"
+              ],
+              "answer": 0,
+              "explanation": "Uncertain possibility may. Must certainty/can’t impossibility/need obligation not tentative identification."
+            },
+            {
+              "prompt": "We printed exactly ____ cards:199 plus one.",
+              "options": [
+                "two hundred",
+                "two hundred of",
+                "two hundreds",
+                "two hundreds of"
+              ],
+              "answer": 0,
+              "explanation": "Exact200 uses two hundred, no plural/of. Others malformed in this exact-number slot."
+            },
+            {
+              "prompt": "____ the first attempt failed, the group completed the model successfully later.",
+              "options": [
+                "Until",
+                "So that",
+                "Even though",
+                "Unless"
+              ],
+              "answer": 2,
+              "explanation": "Initial failure contrasts later success, concessive even though. Purpose/condition/time-until do not express stated contrast."
+            },
+            {
+              "prompt": "Don’t ____ the wet paint. If you ____ it, you may leave a mark.",
+              "options": [
+                "touch; touch",
+                "touching; touch",
+                "touch; touched",
+                "touched; touch"
+              ],
+              "answer": 0,
+              "explanation": "Negative imperative base touch; real condition present touch. Other combinations wrong forms."
+            },
+            {
+              "prompt": "A guide is someone ____ helps visitors understand a place.",
+              "options": [
+                "who",
+                "which",
+                "what",
+                "whom"
+              ],
+              "answer": 0,
+              "explanation": "Person subject relative who. Whom object/which nonhuman/what without antecedent do not fit."
+            },
+            {
+              "prompt": "—Do you know ____?\n—At half past four.",
+              "options": [
+                "how the workshop end",
+                "what time does the workshop end",
+                "what time the workshop ends",
+                "whether does the workshop end"
+              ],
+              "answer": 2,
+              "explanation": "Embedded time question uses statement order ends. Others inverted/ungammatical/not asking supplied time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "junior3.language-trip-122",
+      "level": "junior3",
+      "title": "Ten choices: preparing for a visit",
+      "family": "sentence_choice",
+      "minutes": 16,
+      "sourceUnitId": "original.grade9-four-option-sentences",
+      "instruction": "Choose the best option for every complete sentence or short conversation.",
+      "alignmentNote": "Complete twelve-item grade8 or ten-item grade9 four-option language-use set. Standalone sentences are kept in junior levels only; no senior Gaokao claim.",
+      "materials": [
+        {
+          "id": "whole",
+          "title": "Ten choices: preparing for a visit",
+          "text": "Read each sentence or short conversation in full. Choose one complete option per item.",
+          "questions": [
+            {
+              "prompt": "Our class chose ____ interesting activity in ____ university museum.",
+              "options": [
+                "a; an",
+                "an; a",
+                "an; an",
+                "a; a"
+              ],
+              "answer": 1,
+              "explanation": "Interesting vowel gives an; university initial /j/ gives a. Other pairs wrong sound-based articles."
+            },
+            {
+              "prompt": "If permission ____ tomorrow, our group will visit the laboratory.",
+              "options": [
+                "gives",
+                "will give",
+                "is given",
+                "gave"
+              ],
+              "answer": 2,
+              "explanation": "Permission receives giving in present passive condition is given. Active/future/past forms wrong structure."
+            },
+            {
+              "prompt": "The notice gives clear ____ to the museum entrance, including two turns.",
+              "options": [
+                "directions",
+                "inventions",
+                "celebrations",
+                "conversations"
+              ],
+              "answer": 0,
+              "explanation": "Directions tell route/turns. Other nouns do not guide navigation."
+            },
+            {
+              "prompt": "The guide spoke ____ enough for everyone to hear each word.",
+              "options": [
+                "nearly",
+                "only",
+                "clearly",
+                "hardly"
+              ],
+              "answer": 2,
+              "explanation": "Clearly plus enough concerns intelligibility. Other adverbs do not express it."
+            },
+            {
+              "prompt": "The closed door ____ lead to the office, but let’s ask before entering.",
+              "options": [
+                "may",
+                "need",
+                "can’t",
+                "must"
+              ],
+              "answer": 0,
+              "explanation": "Tentative possible destination may. Must certainty/can’t impossibility/need obligation do not fit uncertainty."
+            },
+            {
+              "prompt": "The collection contains exactly ____ postcards, not399.",
+              "options": [
+                "four hundred",
+                "four hundred of",
+                "four hundreds of",
+                "four hundreds"
+              ],
+              "answer": 0,
+              "explanation": "Exact400 is four hundred without plural/of. Other numerical forms malformed."
+            },
+            {
+              "prompt": "____ the journey took longer than expected, we still arrived before the tour began.",
+              "options": [
+                "Until",
+                "Unless",
+                "So that",
+                "Although"
+              ],
+              "answer": 3,
+              "explanation": "Unexpected delay despite timely arrival forms concession although. Purpose/exception/until not this contrast."
+            },
+            {
+              "prompt": "Don’t ____ your ticket. If you ____ it, ask the teacher for help.",
+              "options": [
+                "lose; lost",
+                "lost; lose",
+                "losing; lose",
+                "lose; lose"
+              ],
+              "answer": 3,
+              "explanation": "Imperative base lose and real-condition present lose. Other pairs wrong forms."
+            },
+            {
+              "prompt": "The volunteer ____ showed us the room answered our questions too.",
+              "options": [
+                "what",
+                "whom",
+                "who",
+                "which"
+              ],
+              "answer": 2,
+              "explanation": "Human subject relative who. Other relative forms do not fit subject antecedent."
+            },
+            {
+              "prompt": "—Could you tell me ____?\n—At the north gate.",
+              "options": [
+                "where does the group meet",
+                "what time the group meets",
+                "where the group meets",
+                "whether does the group meet"
+              ],
+              "answer": 2,
+              "explanation": "Place answer requires embedded where with statement order. Inversion/time/whether-inverted wrong."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
