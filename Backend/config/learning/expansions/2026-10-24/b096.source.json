@@ -1,0 +1,736 @@
+{
+  "createdAt": "2026-10-24T00:27:07.352473+00:00",
+  "reviewBoundary": "Three complete senior mixed originals. Five-gap/seven-option insertion and ten-gap form each, qualified bird/language/estimation discussion and fictional class cases. Same-author all-placement/form review, no independent calibration.",
+  "units": [
+    {
+      "id": "senior1.birds-and-local-tour-096",
+      "level": "senior1",
+      "title": "Birds without flight and a local tour",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade10-club-routines-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Birds without flight and a local tour",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "A bird is not defined only by its ability to fly. Penguins, ostriches and several other living birds move through the world without taking to the air. Understanding them means looking at the whole animal rather than treating flight as the single test of what a bird can be.\n\nWings do not always perform the same job. A penguin's wings help it move through water, where they act differently from the broad wings of a soaring bird. ____1____ The familiar body part has a different role in another environment.\n\nBody size and movement matter too. An ostrich has powerful legs and can move rapidly on land. ____2____ Its way of life cannot be understood simply by imagining a flying bird with one ability removed.\n\nHistory also contributes to the explanation. Some flightless birds developed on islands where the pressures they faced differed from those elsewhere. ____3____ Different groups reached flightlessness through different histories, so one account will not fit every species.\n\nThe presence of unfamiliar risks can change their situation. A bird adapted to one set of surroundings may be vulnerable when conditions change. ____4____ Past success does not guarantee protection from a new threat.\n\nThese examples broaden what it means to compare animals. ____5____ Asking what the animal does, how its body works and which history shaped it gives a richer picture than asking only why it cannot fly.",
+          "candidates": [
+            "A. Swimming, rather than flying, is the movement those wings support.",
+            "B. That island history is one possibility, not a universal explanation.",
+            "C. The legs are central to how this bird travels and responds to its surroundings.",
+            "D. A newly introduced predator, for instance, may create a danger it did not previously face.",
+            "E. The oldest-looking bird must be unable to move in any useful way.",
+            "F. A feature makes more sense when considered alongside the rest of the animal’s life.",
+            "G. Every bird without flight has wings with exactly the same function."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 0,
+              "explanation": "A refers to penguin wings acting in water and explains a different role. C legs, B varied histories, D new risks and F overall comparison belong later. E/G make false universal claims."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 2,
+              "explanation": "C develops powerful ostrich legs and leads to a whole way of life rather than a missing ability. A swimming, B histories, D risk and F synthesis serve other gaps. E/G ignore diversity."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 1,
+              "explanation": "B refers specifically to the preceding island history and limits its reach; the next sentence develops different evolutionary histories. A/C/D/F concern swimming, legs, new risks and final comparison. E/G impose unsupported universals."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 3,
+              "explanation": "D gives a new predator as a changed risk, preparing the warning about past success. A/B/C/F concern other aspects. E/G do not identify a new threat."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 5,
+              "explanation": "F synthesises function, history and surroundings, developed by the final sentence. A/B/C/D are specific earlier examples. E/G reduce rather than broaden comparison."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade10-slotgrammar-football-signatures",
+          "title": "B. Birds without flight and a local tour",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "Our class ____1____ (arrive) at the old town hall before the guided tour began. I had passed the building many times, but had never noticed the small stone faces above its windows. Waiting outside gave me time to look closely.\n\nThe guide was a local resident ____2____ family had lived nearby for several generations. She made clear when she was describing a documented event and when she was sharing a family recollection. We did not need to treat the two as identical kinds of evidence.\n\nInside, we examined old ____3____ (photograph) of the square. A market stall stood where a bus stop was now located. Before ____4____ (decide) that the whole layout had changed, we compared the position of the building's main entrance.\n\nThe doorway ____5____ appeared in the oldest picture was still there. Its steps had been repaired, and the sign above it had changed, but it helped us connect the views. Our guide asked us to notice continuity as well as difference.\n\nAn ____6____ (early) map showed a smaller hall on the site. We needed the caption to understand which period it represented. The guide offered ____7____ (show) us a second map so that we could compare them.\n\nAt the end, I bought ____8____ postcard of the building. It was a familiar tourist ____9____ (attract), yet the tour had given ____10____ (we) more specific questions about what stood behind its appearance. On the walk home, I looked up at the stone faces again.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of arrive.",
+              "acceptedAnswers": [
+                "arrived",
+                "had arrived"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "arrive",
+                  "arriving"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Arrival precedes the tour in a past narrative; simple/past perfect both fit. Base and unaided -ing do not."
+            },
+            {
+              "prompt": "Fill gap 2 with one appropriate word.",
+              "acceptedAnswers": [
+                "whose"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "which",
+                  "where"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whose supplies possession before family. Who/which/where do not directly modify the noun."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of photograph.",
+              "acceptedAnswers": [
+                "photographs",
+                "photos"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "photograph",
+                  "photographing"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Old photographs/photos are the multiple images examined. Singular and activity form do not name the set."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of decide.",
+              "acceptedAnswers": [
+                "deciding"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "decide",
+                  "decided",
+                  "to decide"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Before deciding takes an -ing clause. Other listed forms do not follow the preposition directly."
+            },
+            {
+              "prompt": "Fill gap 5 with one appropriate word.",
+              "acceptedAnswers": [
+                "that",
+                "which"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "where",
+                  "what"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Doorway is subject antecedent of that/which appeared. Who is human, where not subject and what incompatible with the antecedent."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of early.",
+              "acceptedAnswers": [
+                "earlier"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "earliest",
+                  "more earlier"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "An earlier map compares an older period with those already seen. Earliest is superlative and more earlier doubled; plain early remains reviewable."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of show.",
+              "acceptedAnswers": [
+                "to show"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "show",
+                  "showing",
+                  "showed"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Offered to show uses an infinitive. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 8 with one appropriate word.",
+              "acceptedAnswers": [
+                "a"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "an"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A postcard begins with consonant p. Other article readings remain reviewable."
+            },
+            {
+              "prompt": "Fill gap 9 with the correct form of attract.",
+              "acceptedAnswers": [
+                "attraction"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "attract",
+                  "attractive"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A tourist attraction requires the place noun. Attract is verb and attractive adjective."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of we.",
+              "acceptedAnswers": [
+                "us"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "we",
+                  "our",
+                  "ours"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Gave takes object us. Subject and possessive forms do not fit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior2.borrowed-words-and-games-096",
+      "level": "senior2",
+      "title": "Borrowed words and a board game",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade11-exhibition-labels-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. Borrowed words and a board game",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "Languages often contain words that came through contact with other languages. These words can travel with objects, practices or social relationships. Their presence does not mean that a language has stopped being itself; it shows something about the contacts through which people use it.\n\nA new object can arrive with a name already attached. People may adopt that name rather than create one from existing words. ____1____ A borrowed word can therefore preserve a trace of the route by which something became familiar.\n\nThe sound may change as speakers use the word in a different system. A pronunciation that fits one language may be adjusted in another. ____2____ The borrowed form is not necessarily an untouched copy of its earlier sound.\n\nMeaning can shift as well. A word used broadly in one language may refer to a narrower thing elsewhere. ____3____ Looking only at similar spelling can hide that difference.\n\nNot every expression from another language becomes established. Some remain limited to a particular activity or disappear after a short period. ____4____ The history of one successful borrowing cannot predict the fate of every new arrival.\n\nFor a learner, these connections can be helpful and misleading in different ways. ____5____ It is useful to recognise a familiar shape, but still necessary to check how speakers actually use the word in the language being learned.",
+          "candidates": [
+            "A. What matters is whether people continue to use it across relevant situations.",
+            "B. Familiarity should become a clue to investigate rather than a guarantee of meaning.",
+            "C. The name may travel alongside the object or practice it describes.",
+            "D. The same-looking word can then have a different range of uses.",
+            "E. Speakers may adapt unfamiliar sounds to patterns they already use.",
+            "F. Similar spelling proves that every meaning is identical.",
+            "G. Every foreign expression becomes permanent as soon as someone says it."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 2,
+              "explanation": "C connects the arriving object with its name and prepares the trace of contact. E sounds, D meaning, A continued use and B learner response concern later points. F/G assert unsupported guarantees."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 4,
+              "explanation": "E explains adjustment to a language’s sound patterns and prepares not an untouched copy. C contact, D meaning, A survival and B learning fit elsewhere. F/G do not explain sound adaptation."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 3,
+              "explanation": "D states the narrower range arising from meaning shift, preparing the spelling warning. A/B/C/E concern use, learning, transport and sounds. F contradicts the paragraph."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 0,
+              "explanation": "A links establishment to continued use before the warning against universal prediction. B learner response, C travel, D meaning and E sound serve other gaps. G denies possible disappearance."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 1,
+              "explanation": "B gives the cautious learner response developed next: familiar form invites a usage check. A/C/D/E are earlier mechanisms. F/G supply the false certainty the conclusion rejects."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade11-slotgrammar-lantern-frame",
+          "title": "B. Borrowed words and a board game",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "A group of students designed a board game for the school language club. The first set of rules ____1____ (print) on a single sheet. We thought the game was ready until another group tried it without our help.\n\nThey moved pieces ____2____ (confident), but they did not all follow the same sequence. One student thought a player could take two turns after finding a matching word. Another read the sentence as permission to move two spaces instead.\n\nOur ____3____ (instruct) had created two possible readings. We knew what we meant, but that knowledge had not reached the page. The test gave us a chance to improve the rules before treating a misunderstanding as a player's fault.\n\nWe separated the movement rule ____4____ the turn-taking rule and added a short example. The wording became ____5____ (clear) than before, although it still needed another trial. A longer sheet was acceptable if it made the process easier to follow.\n\nBefore ____6____ (play) again, the new group read the revised version aloud. We listened without correcting every hesitation immediately. Their questions showed where the explanation still depended on something left unsaid.\n\nOne player found a combination we had not expected. We asked her ____7____ (explain) it, then checked whether it fitted the stated rules. The game did not need to prevent every surprising move. It needed a shared basis ____8____ deciding which moves were allowed.\n\nThe second trial went more smoothly ____9____ everyone had the same sequence to follow. We thanked the players for ____10____ (they) patience and kept both versions of the rules as a record of the design process.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of print.",
+              "acceptedAnswers": [
+                "was printed",
+                "had been printed"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "printed",
+                  "were printed"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Singular set receives printing: was/had been printed. Printed lacks auxiliary and were disagrees."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of confident.",
+              "acceptedAnswers": [
+                "confidently"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "confident",
+                  "confidence"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Confidently modifies moved. Confident is adjective and confidence noun."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of instruct.",
+              "acceptedAnswers": [
+                "instructions"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "instruct",
+                  "instructive"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Our instructions names the written rules. Instruct is verb and instructive adjective; unlisted singular instruction remains reviewable."
+            },
+            {
+              "prompt": "Fill gap 4 with one appropriate word.",
+              "acceptedAnswers": [
+                "from"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "to",
+                  "at",
+                  "of"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Separated one rule from the other takes from. Other listed prepositions do not fit."
+            },
+            {
+              "prompt": "Fill gap 5 with the correct form of clear.",
+              "acceptedAnswers": [
+                "clearer",
+                "more clear"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "clearest",
+                  "more clearer"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Than requires comparative clearer/more clear. Clearest is superlative and more clearer doubled."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of play.",
+              "acceptedAnswers": [
+                "playing"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "play",
+                  "played",
+                  "to play"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Before playing takes an -ing clause. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of explain.",
+              "acceptedAnswers": [
+                "to explain"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "explain",
+                  "explaining",
+                  "explained"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Asked her takes to explain. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 8 with one appropriate word.",
+              "acceptedAnswers": [
+                "for"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "of",
+                  "at",
+                  "from"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "A basis for deciding expresses a foundation for the decision. Other listed prepositions do not fit that relation."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "because",
+                "as",
+                "since"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "unless"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Because/as/since introduce the shared sequence as reason for the smoother trial. Unless reverses that relation."
+            },
+            {
+              "prompt": "Fill gap 10 with the correct form of they.",
+              "acceptedAnswers": [
+                "their"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "they",
+                  "them",
+                  "theirs"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Their modifies patience. Personal and independent possessive forms do not fit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "senior3.estimates-and-records-096",
+      "level": "senior3",
+      "title": "An estimate and a record of observations",
+      "family": "shared_insertion_passage_form",
+      "minutes": 20,
+      "sourceUnitId": "original.grade12-print-room-insertion",
+      "alignmentNote": "Old sources are level/family drafting references only. Final National I structure: complete five-gap seven-option insertion plus complete ten-gap grammar passage.",
+      "materials": [
+        {
+          "id": "insertion",
+          "family": "shared_insertion",
+          "title": "A. An estimate and a record of observations",
+          "instruction": "Choose the best sentence for each gap. Two sentences are not needed.",
+          "text": "An estimate can be useful even when the exact value is not yet available. Planning a journey, a budget or a project often begins with incomplete information. The important distinction is between a reasoned approximation and a precise-looking number whose basis nobody can explain.\n\nBegin by stating what is being estimated. A cost for materials alone is not the same as the cost of a whole event. ____1____ Otherwise, two people may appear to disagree while actually counting different things.\n\nIdentify the assumptions behind the number. A travel estimate may depend on the route, the time and the number of stops. ____2____ A change in those conditions can justify a change in the estimate without proving the earlier calculation dishonest.\n\nAvoid adding detail that the evidence cannot support. Reporting many decimal places can make a rough judgment look more certain than it is. ____3____ Useful precision should follow the method rather than the number of digits a screen can display.\n\nConsider a range when variation matters. The lowest possible outcome may not be a sensible value for planning everything else. ____4____ The range can make the uncertainty visible instead of hiding it inside one confident figure.\n\nFinally, update the estimate when relevant new information arrives. ____5____ Keeping the earlier basis visible helps explain why the number changed. An estimate becomes trustworthy through transparent reasoning and revision, not through a promise never to move.",
+          "candidates": [
+            "A. Specify the parts included and the parts left outside the calculation.",
+            "B. Keep the stated conditions alongside the value they produced.",
+            "C. A carefully described interval may be more useful than one unsupported point.",
+            "D. Distinguish a revised assessment from an unexplained replacement.",
+            "E. Do not let the appearance of exactness outrun the quality of the information.",
+            "F. The estimate should include every digit even if none can be justified.",
+            "G. A changed estimate always proves that the first person was lying."
+          ],
+          "questions": [
+            {
+              "prompt": "Choose the sentence for gap 1.",
+              "answer": 0,
+              "explanation": "A defines included scope, preventing disagreement about different totals. B assumptions, E precision, C range and D revision are later checks. F/G substitute false certainty or blame."
+            },
+            {
+              "prompt": "Choose the sentence for gap 2.",
+              "answer": 1,
+              "explanation": "B keeps conditions with their result and leads to legitimate changes when conditions change. A scope, E digits, C interval and D revision concern other distinctions. G falsely treats every change as dishonesty."
+            },
+            {
+              "prompt": "Choose the sentence for gap 3.",
+              "answer": 4,
+              "explanation": "E separates visible exactness from evidence quality, developed by the next sentence. A/B/C/D concern scope, assumptions, range and updating. F directly imposes unsupported digits."
+            },
+            {
+              "prompt": "Choose the sentence for gap 4.",
+              "answer": 2,
+              "explanation": "C offers an interval instead of an unsupported single value, picked up by The range. A/B/D/E concern other safeguards. F/G do not represent variation."
+            },
+            {
+              "prompt": "Choose the sentence for gap 5.",
+              "answer": 3,
+              "explanation": "D distinguishes reasoned revision from unexplained substitution, preparing visibility of the earlier basis. A/B/C/E concern earlier steps. G denies the conclusion that revision can be trustworthy."
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "family": "passage_form",
+          "sourceUnitId": "original.grade12-grammar-station-clock",
+          "title": "B. An estimate and a record of observations",
+          "instruction": "Fill each gap with one appropriate word or the correct form of the word in brackets.",
+          "text": "During a class project, we compared two accounts of the same public garden. One writer had visited in spring, while the other had gone in late summer. Before ____1____ (interpret) their different descriptions as a conflict, we checked when each visit had taken place.\n\nThe first account described flowers near the entrance. The second mentioned fruit and dry leaves. Both writers ____2____ (collect) details carefully, but they had observed different stages of the year. A contradiction could not be established simply by placing the sentences side by side.\n\nWe then looked for points where the accounts made ____3____ (broad) claims. One called a path quiet, without mentioning that the visit had been early in the morning. The other described a crowded afternoon. Time mattered as well as season.\n\nOur teacher asked for an ____4____ (explain) of what could actually be compared. We could examine whether a gate or fixed sign appeared in both accounts, while recognising that noise and visitor numbers were more variable.\n\nA classmate ____5____ notebook included a simple map helped us locate the places mentioned. We also checked whether a closed path had caused one writer to use another entrance. The texts were easier to understand when their routes were visible.\n\nWe were encouraged ____6____ (describe) the limits of our conclusion. Neither account became useless because it had a particular viewpoint. Both had ____7____ (limit), and those limits needed to be stated ____8____ (careful).\n\n____9____ the descriptions differed, they could contribute to one discussion without being forced into complete agreement. The project made room ____10____ uncertainty while still allowing specific comparisons. Our final report explained both the shared evidence and the conditions that could account for a difference.",
+          "questions": [
+            {
+              "prompt": "Fill gap 1 with the correct form of interpret.",
+              "acceptedAnswers": [
+                "interpreting"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "interpret",
+                  "interpreted",
+                  "to interpret"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Before interpreting takes an -ing clause after the preposition. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 2 with the correct form of collect.",
+              "acceptedAnswers": [
+                "collected",
+                "had collected"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "collect",
+                  "collecting"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Past simple/perfect both fit observations before the class comparison. Base and unaided -ing do not fit the finite subject clause."
+            },
+            {
+              "prompt": "Fill gap 3 with the correct form of broad.",
+              "acceptedAnswers": [
+                "broader",
+                "more broad"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "broadest",
+                  "more broader"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Broader/more broad compares general claims with the earlier specific seasonal details. Broadest is superlative and more broader doubled; plain broad remains reviewable."
+            },
+            {
+              "prompt": "Fill gap 4 with the correct form of explain.",
+              "acceptedAnswers": [
+                "explanation"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "explain",
+                  "explanatory"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "An explanation of takes a count noun. Explain is verb and explanatory adjective."
+            },
+            {
+              "prompt": "Fill gap 5 with one appropriate word.",
+              "acceptedAnswers": [
+                "whose"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "who",
+                  "which",
+                  "where"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Whose supplies possession before notebook. Who/which/where do not directly modify the noun."
+            },
+            {
+              "prompt": "Fill gap 6 with the correct form of describe.",
+              "acceptedAnswers": [
+                "to describe"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "describe",
+                  "describing",
+                  "described"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Encouraged takes passive complement to describe. Other listed forms do not fit directly."
+            },
+            {
+              "prompt": "Fill gap 7 with the correct form of limit.",
+              "acceptedAnswers": [
+                "limits",
+                "limitations"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "limited",
+                  "limiting"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Both accounts have limits/limitations as noun objects. Limited/limiting are participles; unlisted singular limit remains reviewable."
+            },
+            {
+              "prompt": "Fill gap 8 with the correct form of careful.",
+              "acceptedAnswers": [
+                "carefully"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": null,
+                "rejectedAnswers": [
+                  "careful",
+                  "carefulness"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Carefully modifies stated. Careful is adjective and carefulness noun."
+            },
+            {
+              "prompt": "Fill gap 9 with one appropriate word.",
+              "acceptedAnswers": [
+                "Although",
+                "Though",
+                "While",
+                "Whilst",
+                "Because",
+                "As",
+                "Since"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "Despite",
+                  "During"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Although/though/while/whilst can mark concession; because/as/since can give differing viewpoints as the reason for a productive discussion. Both readings are grammatical here. Despite/during cannot directly introduce this finite clause."
+            },
+            {
+              "prompt": "Fill gap 10 with one appropriate word.",
+              "acceptedAnswers": [
+                "for"
+              ],
+              "marking": {
+                "protocol": "gaokao-passage-form",
+                "minWords": 1,
+                "maxWords": 1,
+                "rejectedAnswers": [
+                  "of",
+                  "at",
+                  "from"
+                ],
+                "unlisted": "review"
+              },
+              "explanation": "Room for uncertainty expresses allowance. Other listed prepositions do not fit."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
