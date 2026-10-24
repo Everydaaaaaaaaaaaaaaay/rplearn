@@ -1,0 +1,2012 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b129",
+  "createdAt": "2026-10-24T02:42:38.433817+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.red-chair-129",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · The red chair in the garden",
+        "summary": "The red chair in the garden，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade7-suzhou2025-21cnjy23303742.passageForm",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap form passage with seven prompted and three single-word gaps. Level/family reference only; no independent difficulty calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted/three single-word slots each. Fictional garden/dragon/holiday/game/poem/station stories. Same-author context and grammatical-variant review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.red-chair-129",
+          "family": "passage_form",
+          "label": "The red chair in the garden",
+          "candidateSHA256": "ef5f40f3c40d1bb63a08497b4c165d241c27c5a92964ccc2b2a7790d2ed81cc5",
+          "authorCheckSHA256": "a730f447602568828d9e2eb30bf3c021aafdd7af82fb1a24219a035a529a9f32",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.red-chair-129#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b129；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The red chair in the garden\n\nDad ____1____ (paint) an old garden chair last Saturday. He chose bright red because he wanted to see it clearly from the kitchen window. I offered to help, but he asked me to begin with a small piece of spare wood.\n\nThere were two clean ____2____ (brush) beside the paint. I chose the narrower one and watched Dad dip only the end into the tin. Too much paint would run down the wood instead of staying ____3____ the surface.\n\nDad showed ____4____ (I) how to move the brush along the same direction. My first attempt left a thick patch. I wanted to cover it at once, but he asked me ____5____ (wait) and see how it looked after drying.\n\nThe afternoon became ____6____ (warm) than the morning. We moved into the shade and kept working. Our dog sat beside the door, watching as if he had been invited to judge every stroke. We kept him away from the paint and used materials as directed.\n\nAfter ____7____ (finish) my practice piece, I helped with one leg of the chair. It was ____8____ easy shape to reach without touching the parts Dad had already painted. We left the chair in a suitable place to dry.\n\nOn Sunday, Dad checked it ____9____ (careful) before anyone sat down. The red colour looked cheerful against the grass. Mum brought tea ____10____ us, and we sat in the garden for a while. The dog chose the patch of shade beneath the table rather than the newly painted chair. Perhaps he had his own opinion about the best seat."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.red-chair-129.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of paint.",
+            "material": "The red chair in the garden\n\nDad ____1____ (paint) an old garden chair last Saturday. He chose bright red because he wanted to see it clearly from the kitchen window. I offered to help, but he asked me to begin with a small piece of spare wood.\n\nThere were two clean ____2____ (brush) beside the paint. I chose the narrower one and watched Dad dip only the end into the tin. Too much paint would run down the wood instead of staying ____3____ the surface.\n\nDad showed ____4____ (I) how to move the brush along the same direction. My first attempt left a thick patch. I wanted to cover it at once, but he asked me ____5____ (wait) and see how it looked after drying.\n\nThe afternoon became ____6____ (warm) than the morning. We moved into the shade and kept working. Our dog sat beside the door, watching as if he had been invited to judge every stroke. We kept him away from the paint and used materials as directed.\n\nAfter ____7____ (finish) my practice piece, I helped with one leg of the chair. It was ____8____ easy shape to reach without touching the parts Dad had already painted. We left the chair in a suitable place to dry.\n\nOn Sunday, Dad checked it ____9____ (careful) before anyone sat down. The red colour looked cheerful against the grass. Mum brought tea ____10____ us, and we sat in the garden for a while. The dog chose the patch of shade beneath the table rather than the newly painted chair. Perhaps he had his own opinion about the best seat.",
+            "explanation": "Last Saturday past narrative takes painted. Base/-ing do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "painted"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "paint",
+                "painting"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.red-chair-129.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of brush.",
+            "material": "The red chair in the garden\n\nDad ____1____ (paint) an old garden chair last Saturday. He chose bright red because he wanted to see it clearly from the kitchen window. I offered to help, but he asked me to begin with a small piece of spare wood.\n\nThere were two clean ____2____ (brush) beside the paint. I chose the narrower one and watched Dad dip only the end into the tin. Too much paint would run down the wood instead of staying ____3____ the surface.\n\nDad showed ____4____ (I) how to move the brush along the same direction. My first attempt left a thick patch. I wanted to cover it at once, but he asked me ____5____ (wait) and see how it looked after drying.\n\nThe afternoon became ____6____ (warm) than the morning. We moved into the shade and kept working. Our dog sat beside the door, watching as if he had been invited to judge every stroke. We kept him away from the paint and used materials as directed.\n\nAfter ____7____ (finish) my practice piece, I helped with one leg of the chair. It was ____8____ easy shape to reach without touching the parts Dad had already painted. We left the chair in a suitable place to dry.\n\nOn Sunday, Dad checked it ____9____ (careful) before anyone sat down. The red colour looked cheerful against the grass. Mum brought tea ____10____ us, and we sat in the garden for a while. The dog chose the patch of shade beneath the table rather than the newly painted chair. Perhaps he had his own opinion about the best seat.",
+            "explanation": "Two requires brushes. Singular/nonstandard plural do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "brushes"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "brush",
+                "brushs"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.red-chair-129.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with one appropriate word.",
+            "material": "The red chair in the garden\n\nDad ____1____ (paint) an old garden chair last Saturday. He chose bright red because he wanted to see it clearly from the kitchen window. I offered to help, but he asked me to begin with a small piece of spare wood.\n\nThere were two clean ____2____ (brush) beside the paint. I chose the narrower one and watched Dad dip only the end into the tin. Too much paint would run down the wood instead of staying ____3____ the surface.\n\nDad showed ____4____ (I) how to move the brush along the same direction. My first attempt left a thick patch. I wanted to cover it at once, but he asked me ____5____ (wait) and see how it looked after drying.\n\nThe afternoon became ____6____ (warm) than the morning. We moved into the shade and kept working. Our dog sat beside the door, watching as if he had been invited to judge every stroke. We kept him away from the paint and used materials as directed.\n\nAfter ____7____ (finish) my practice piece, I helped with one leg of the chair. It was ____8____ easy shape to reach without touching the parts Dad had already painted. We left the chair in a suitable place to dry.\n\nOn Sunday, Dad checked it ____9____ (careful) before anyone sat down. The red colour looked cheerful against the grass. Mum brought tea ____10____ us, and we sat in the garden for a while. The dog chose the patch of shade beneath the table rather than the newly painted chair. Perhaps he had his own opinion about the best seat.",
+            "explanation": "Paint stays on the surface. To/of do not express resting location.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.red-chair-129.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of I.",
+            "material": "The red chair in the garden\n\nDad ____1____ (paint) an old garden chair last Saturday. He chose bright red because he wanted to see it clearly from the kitchen window. I offered to help, but he asked me to begin with a small piece of spare wood.\n\nThere were two clean ____2____ (brush) beside the paint. I chose the narrower one and watched Dad dip only the end into the tin. Too much paint would run down the wood instead of staying ____3____ the surface.\n\nDad showed ____4____ (I) how to move the brush along the same direction. My first attempt left a thick patch. I wanted to cover it at once, but he asked me ____5____ (wait) and see how it looked after drying.\n\nThe afternoon became ____6____ (warm) than the morning. We moved into the shade and kept working. Our dog sat beside the door, watching as if he had been invited to judge every stroke. We kept him away from the paint and used materials as directed.\n\nAfter ____7____ (finish) my practice piece, I helped with one leg of the chair. It was ____8____ easy shape to reach without touching the parts Dad had already painted. We left the chair in a suitable place to dry.\n\nOn Sunday, Dad checked it ____9____ (careful) before anyone sat down. The red colour looked cheerful against the grass. Mum brought tea ____10____ us, and we sat in the garden for a while. The dog chose the patch of shade beneath the table rather than the newly painted chair. Perhaps he had his own opinion about the best seat.",
+            "explanation": "Showed takes object me. Subject/possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "me"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "I",
+                "my",
+                "mine"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.red-chair-129.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of wait.",
+            "material": "The red chair in the garden\n\nDad ____1____ (paint) an old garden chair last Saturday. He chose bright red because he wanted to see it clearly from the kitchen window. I offered to help, but he asked me to begin with a small piece of spare wood.\n\nThere were two clean ____2____ (brush) beside the paint. I chose the narrower one and watched Dad dip only the end into the tin. Too much paint would run down the wood instead of staying ____3____ the surface.\n\nDad showed ____4____ (I) how to move the brush along the same direction. My first attempt left a thick patch. I wanted to cover it at once, but he asked me ____5____ (wait) and see how it looked after drying.\n\nThe afternoon became ____6____ (warm) than the morning. We moved into the shade and kept working. Our dog sat beside the door, watching as if he had been invited to judge every stroke. We kept him away from the paint and used materials as directed.\n\nAfter ____7____ (finish) my practice piece, I helped with one leg of the chair. It was ____8____ easy shape to reach without touching the parts Dad had already painted. We left the chair in a suitable place to dry.\n\nOn Sunday, Dad checked it ____9____ (careful) before anyone sat down. The red colour looked cheerful against the grass. Mum brought tea ____10____ us, and we sat in the garden for a while. The dog chose the patch of shade beneath the table rather than the newly painted chair. Perhaps he had his own opinion about the best seat.",
+            "explanation": "Asked me takes to wait. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to wait"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "wait",
+                "waiting",
+                "waited"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.red-chair-129.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of warm.",
+            "material": "The red chair in the garden\n\nDad ____1____ (paint) an old garden chair last Saturday. He chose bright red because he wanted to see it clearly from the kitchen window. I offered to help, but he asked me to begin with a small piece of spare wood.\n\nThere were two clean ____2____ (brush) beside the paint. I chose the narrower one and watched Dad dip only the end into the tin. Too much paint would run down the wood instead of staying ____3____ the surface.\n\nDad showed ____4____ (I) how to move the brush along the same direction. My first attempt left a thick patch. I wanted to cover it at once, but he asked me ____5____ (wait) and see how it looked after drying.\n\nThe afternoon became ____6____ (warm) than the morning. We moved into the shade and kept working. Our dog sat beside the door, watching as if he had been invited to judge every stroke. We kept him away from the paint and used materials as directed.\n\nAfter ____7____ (finish) my practice piece, I helped with one leg of the chair. It was ____8____ easy shape to reach without touching the parts Dad had already painted. We left the chair in a suitable place to dry.\n\nOn Sunday, Dad checked it ____9____ (careful) before anyone sat down. The red colour looked cheerful against the grass. Mum brought tea ____10____ us, and we sat in the garden for a while. The dog chose the patch of shade beneath the table rather than the newly painted chair. Perhaps he had his own opinion about the best seat.",
+            "explanation": "Than requires warmer. Superlative/double comparative do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "warmer"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "warmest",
+                "more warmer"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.red-chair-129.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of finish.",
+            "material": "The red chair in the garden\n\nDad ____1____ (paint) an old garden chair last Saturday. He chose bright red because he wanted to see it clearly from the kitchen window. I offered to help, but he asked me to begin with a small piece of spare wood.\n\nThere were two clean ____2____ (brush) beside the paint. I chose the narrower one and watched Dad dip only the end into the tin. Too much paint would run down the wood instead of staying ____3____ the surface.\n\nDad showed ____4____ (I) how to move the brush along the same direction. My first attempt left a thick patch. I wanted to cover it at once, but he asked me ____5____ (wait) and see how it looked after drying.\n\nThe afternoon became ____6____ (warm) than the morning. We moved into the shade and kept working. Our dog sat beside the door, watching as if he had been invited to judge every stroke. We kept him away from the paint and used materials as directed.\n\nAfter ____7____ (finish) my practice piece, I helped with one leg of the chair. It was ____8____ easy shape to reach without touching the parts Dad had already painted. We left the chair in a suitable place to dry.\n\nOn Sunday, Dad checked it ____9____ (careful) before anyone sat down. The red colour looked cheerful against the grass. Mum brought tea ____10____ us, and we sat in the garden for a while. The dog chose the patch of shade beneath the table rather than the newly painted chair. Perhaps he had his own opinion about the best seat.",
+            "explanation": "After finishing/having finished fit prior completion. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "finishing",
+              "having finished"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "finish",
+                "finished",
+                "to finish"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.red-chair-129.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "The red chair in the garden\n\nDad ____1____ (paint) an old garden chair last Saturday. He chose bright red because he wanted to see it clearly from the kitchen window. I offered to help, but he asked me to begin with a small piece of spare wood.\n\nThere were two clean ____2____ (brush) beside the paint. I chose the narrower one and watched Dad dip only the end into the tin. Too much paint would run down the wood instead of staying ____3____ the surface.\n\nDad showed ____4____ (I) how to move the brush along the same direction. My first attempt left a thick patch. I wanted to cover it at once, but he asked me ____5____ (wait) and see how it looked after drying.\n\nThe afternoon became ____6____ (warm) than the morning. We moved into the shade and kept working. Our dog sat beside the door, watching as if he had been invited to judge every stroke. We kept him away from the paint and used materials as directed.\n\nAfter ____7____ (finish) my practice piece, I helped with one leg of the chair. It was ____8____ easy shape to reach without touching the parts Dad had already painted. We left the chair in a suitable place to dry.\n\nOn Sunday, Dad checked it ____9____ (careful) before anyone sat down. The red colour looked cheerful against the grass. Mum brought tea ____10____ us, and we sat in the garden for a while. The dog chose the patch of shade beneath the table rather than the newly painted chair. Perhaps he had his own opinion about the best seat.",
+            "explanation": "Easy begins with vowel sound, so an. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.red-chair-129.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of careful.",
+            "material": "The red chair in the garden\n\nDad ____1____ (paint) an old garden chair last Saturday. He chose bright red because he wanted to see it clearly from the kitchen window. I offered to help, but he asked me to begin with a small piece of spare wood.\n\nThere were two clean ____2____ (brush) beside the paint. I chose the narrower one and watched Dad dip only the end into the tin. Too much paint would run down the wood instead of staying ____3____ the surface.\n\nDad showed ____4____ (I) how to move the brush along the same direction. My first attempt left a thick patch. I wanted to cover it at once, but he asked me ____5____ (wait) and see how it looked after drying.\n\nThe afternoon became ____6____ (warm) than the morning. We moved into the shade and kept working. Our dog sat beside the door, watching as if he had been invited to judge every stroke. We kept him away from the paint and used materials as directed.\n\nAfter ____7____ (finish) my practice piece, I helped with one leg of the chair. It was ____8____ easy shape to reach without touching the parts Dad had already painted. We left the chair in a suitable place to dry.\n\nOn Sunday, Dad checked it ____9____ (careful) before anyone sat down. The red colour looked cheerful against the grass. Mum brought tea ____10____ us, and we sat in the garden for a while. The dog chose the patch of shade beneath the table rather than the newly painted chair. Perhaps he had his own opinion about the best seat.",
+            "explanation": "Carefully modifies checked. Carefulness noun does not fit; unlisted flat readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.red-chair-129.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "The red chair in the garden\n\nDad ____1____ (paint) an old garden chair last Saturday. He chose bright red because he wanted to see it clearly from the kitchen window. I offered to help, but he asked me to begin with a small piece of spare wood.\n\nThere were two clean ____2____ (brush) beside the paint. I chose the narrower one and watched Dad dip only the end into the tin. Too much paint would run down the wood instead of staying ____3____ the surface.\n\nDad showed ____4____ (I) how to move the brush along the same direction. My first attempt left a thick patch. I wanted to cover it at once, but he asked me ____5____ (wait) and see how it looked after drying.\n\nThe afternoon became ____6____ (warm) than the morning. We moved into the shade and kept working. Our dog sat beside the door, watching as if he had been invited to judge every stroke. We kept him away from the paint and used materials as directed.\n\nAfter ____7____ (finish) my practice piece, I helped with one leg of the chair. It was ____8____ easy shape to reach without touching the parts Dad had already painted. We left the chair in a suitable place to dry.\n\nOn Sunday, Dad checked it ____9____ (careful) before anyone sat down. The red colour looked cheerful against the grass. Mum brought tea ____10____ us, and we sat in the garden for a while. The dog chose the patch of shade beneath the table rather than the newly painted chair. Perhaps he had his own opinion about the best seat.",
+            "explanation": "Brought tea to/for us both express recipient/beneficiary. Of does not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to",
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "6d966c1693ce3e303956ea535e313d9ef908315f9c2dbc88cb026054aac27608",
+      "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted/three single-word slots each. Fictional garden/dragon/holiday/game/poem/station stories. Same-author context and grammatical-variant review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.paper-dragon-129",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · A dragon on the bus",
+        "summary": "A dragon on the bus，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade7-suzhou2025-21cnjy23303742.passageForm",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap form passage with seven prompted and three single-word gaps. Level/family reference only; no independent difficulty calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted/three single-word slots each. Fictional garden/dragon/holiday/game/poem/station stories. Same-author context and grammatical-variant review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.paper-dragon-129",
+          "family": "passage_form",
+          "label": "A dragon on the bus",
+          "candidateSHA256": "dcb66e2774d1c2c3012178fe6d35f79fffb5eb73af6cc6fb6de384556ce964f2",
+          "authorCheckSHA256": "31d23f17aecb93c05eed53d2f7568e8ae5bff4c2dabeaa6850b520f4c5903ff5",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.paper-dragon-129#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b129；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A dragon on the bus\n\nMy brother ____1____ (make) a paper dragon for the school show last week. Its body was green and its tail was so long that we needed a box to keep it from bending on the way to school.\n\nThe dragon had two bright ____2____ (eye). My brother had drawn them carefully, but he forgot to put a name label on the box. Mum asked ____3____ (we) to add one before leaving the house.\n\nAt the bus stop, a little girl wanted to know what was inside. My brother lifted the lid ____4____ (slow) and showed her the head. She asked whether it could breathe fire. He said it could only breathe the air ____5____ the box.\n\nThe driver smiled when we got on. He asked us ____6____ (keep) the long box clear of the aisle. Mum helped us find a place where it would not block anyone's way. The tail stayed folded until we reached the school.\n\nOur art teacher thought the dragon was even ____7____ (long) than she had expected. She found ____8____ empty table where my brother could lay it out. Other pupils gathered around to look at the scales and paper teeth.\n\nBefore ____9____ (put) it on display, he attached his label. The little girl from the bus arrived later with her father and recognised it immediately. She pointed ____10____ the dragon and told him she had already met it that morning. My brother said that made her its first visitor, even though the show had only just opened."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.paper-dragon-129.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of make.",
+            "material": "A dragon on the bus\n\nMy brother ____1____ (make) a paper dragon for the school show last week. Its body was green and its tail was so long that we needed a box to keep it from bending on the way to school.\n\nThe dragon had two bright ____2____ (eye). My brother had drawn them carefully, but he forgot to put a name label on the box. Mum asked ____3____ (we) to add one before leaving the house.\n\nAt the bus stop, a little girl wanted to know what was inside. My brother lifted the lid ____4____ (slow) and showed her the head. She asked whether it could breathe fire. He said it could only breathe the air ____5____ the box.\n\nThe driver smiled when we got on. He asked us ____6____ (keep) the long box clear of the aisle. Mum helped us find a place where it would not block anyone's way. The tail stayed folded until we reached the school.\n\nOur art teacher thought the dragon was even ____7____ (long) than she had expected. She found ____8____ empty table where my brother could lay it out. Other pupils gathered around to look at the scales and paper teeth.\n\nBefore ____9____ (put) it on display, he attached his label. The little girl from the bus arrived later with her father and recognised it immediately. She pointed ____10____ the dragon and told him she had already met it that morning. My brother said that made her its first visitor, even though the show had only just opened.",
+            "explanation": "Last week requires made. Base/-ing do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "made"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "make",
+                "making"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-dragon-129.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of eye.",
+            "material": "A dragon on the bus\n\nMy brother ____1____ (make) a paper dragon for the school show last week. Its body was green and its tail was so long that we needed a box to keep it from bending on the way to school.\n\nThe dragon had two bright ____2____ (eye). My brother had drawn them carefully, but he forgot to put a name label on the box. Mum asked ____3____ (we) to add one before leaving the house.\n\nAt the bus stop, a little girl wanted to know what was inside. My brother lifted the lid ____4____ (slow) and showed her the head. She asked whether it could breathe fire. He said it could only breathe the air ____5____ the box.\n\nThe driver smiled when we got on. He asked us ____6____ (keep) the long box clear of the aisle. Mum helped us find a place where it would not block anyone's way. The tail stayed folded until we reached the school.\n\nOur art teacher thought the dragon was even ____7____ (long) than she had expected. She found ____8____ empty table where my brother could lay it out. Other pupils gathered around to look at the scales and paper teeth.\n\nBefore ____9____ (put) it on display, he attached his label. The little girl from the bus arrived later with her father and recognised it immediately. She pointed ____10____ the dragon and told him she had already met it that morning. My brother said that made her its first visitor, even though the show had only just opened.",
+            "explanation": "Two requires eyes. Singular/nonstandard plural do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "eyes"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "eye",
+                "eyees"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-dragon-129.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of we.",
+            "material": "A dragon on the bus\n\nMy brother ____1____ (make) a paper dragon for the school show last week. Its body was green and its tail was so long that we needed a box to keep it from bending on the way to school.\n\nThe dragon had two bright ____2____ (eye). My brother had drawn them carefully, but he forgot to put a name label on the box. Mum asked ____3____ (we) to add one before leaving the house.\n\nAt the bus stop, a little girl wanted to know what was inside. My brother lifted the lid ____4____ (slow) and showed her the head. She asked whether it could breathe fire. He said it could only breathe the air ____5____ the box.\n\nThe driver smiled when we got on. He asked us ____6____ (keep) the long box clear of the aisle. Mum helped us find a place where it would not block anyone's way. The tail stayed folded until we reached the school.\n\nOur art teacher thought the dragon was even ____7____ (long) than she had expected. She found ____8____ empty table where my brother could lay it out. Other pupils gathered around to look at the scales and paper teeth.\n\nBefore ____9____ (put) it on display, he attached his label. The little girl from the bus arrived later with her father and recognised it immediately. She pointed ____10____ the dragon and told him she had already met it that morning. My brother said that made her its first visitor, even though the show had only just opened.",
+            "explanation": "Asked takes object us. Subject/possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-dragon-129.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of slow.",
+            "material": "A dragon on the bus\n\nMy brother ____1____ (make) a paper dragon for the school show last week. Its body was green and its tail was so long that we needed a box to keep it from bending on the way to school.\n\nThe dragon had two bright ____2____ (eye). My brother had drawn them carefully, but he forgot to put a name label on the box. Mum asked ____3____ (we) to add one before leaving the house.\n\nAt the bus stop, a little girl wanted to know what was inside. My brother lifted the lid ____4____ (slow) and showed her the head. She asked whether it could breathe fire. He said it could only breathe the air ____5____ the box.\n\nThe driver smiled when we got on. He asked us ____6____ (keep) the long box clear of the aisle. Mum helped us find a place where it would not block anyone's way. The tail stayed folded until we reached the school.\n\nOur art teacher thought the dragon was even ____7____ (long) than she had expected. She found ____8____ empty table where my brother could lay it out. Other pupils gathered around to look at the scales and paper teeth.\n\nBefore ____9____ (put) it on display, he attached his label. The little girl from the bus arrived later with her father and recognised it immediately. She pointed ____10____ the dragon and told him she had already met it that morning. My brother said that made her its first visitor, even though the show had only just opened.",
+            "explanation": "Slowly or informal flat slow modifies lifted. Slowness noun does not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "slowly",
+              "slow"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "slowness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-dragon-129.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with one appropriate word.",
+            "material": "A dragon on the bus\n\nMy brother ____1____ (make) a paper dragon for the school show last week. Its body was green and its tail was so long that we needed a box to keep it from bending on the way to school.\n\nThe dragon had two bright ____2____ (eye). My brother had drawn them carefully, but he forgot to put a name label on the box. Mum asked ____3____ (we) to add one before leaving the house.\n\nAt the bus stop, a little girl wanted to know what was inside. My brother lifted the lid ____4____ (slow) and showed her the head. She asked whether it could breathe fire. He said it could only breathe the air ____5____ the box.\n\nThe driver smiled when we got on. He asked us ____6____ (keep) the long box clear of the aisle. Mum helped us find a place where it would not block anyone's way. The tail stayed folded until we reached the school.\n\nOur art teacher thought the dragon was even ____7____ (long) than she had expected. She found ____8____ empty table where my brother could lay it out. Other pupils gathered around to look at the scales and paper teeth.\n\nBefore ____9____ (put) it on display, he attached his label. The little girl from the bus arrived later with her father and recognised it immediately. She pointed ____10____ the dragon and told him she had already met it that morning. My brother said that made her its first visitor, even though the show had only just opened.",
+            "explanation": "Air in/inside the box gives location. Of/to do not fit that meaning.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "in",
+              "inside"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of",
+                "to"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-dragon-129.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of keep.",
+            "material": "A dragon on the bus\n\nMy brother ____1____ (make) a paper dragon for the school show last week. Its body was green and its tail was so long that we needed a box to keep it from bending on the way to school.\n\nThe dragon had two bright ____2____ (eye). My brother had drawn them carefully, but he forgot to put a name label on the box. Mum asked ____3____ (we) to add one before leaving the house.\n\nAt the bus stop, a little girl wanted to know what was inside. My brother lifted the lid ____4____ (slow) and showed her the head. She asked whether it could breathe fire. He said it could only breathe the air ____5____ the box.\n\nThe driver smiled when we got on. He asked us ____6____ (keep) the long box clear of the aisle. Mum helped us find a place where it would not block anyone's way. The tail stayed folded until we reached the school.\n\nOur art teacher thought the dragon was even ____7____ (long) than she had expected. She found ____8____ empty table where my brother could lay it out. Other pupils gathered around to look at the scales and paper teeth.\n\nBefore ____9____ (put) it on display, he attached his label. The little girl from the bus arrived later with her father and recognised it immediately. She pointed ____10____ the dragon and told him she had already met it that morning. My brother said that made her its first visitor, even though the show had only just opened.",
+            "explanation": "Asked us takes to keep. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to keep"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "keep",
+                "keeping",
+                "kept"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-dragon-129.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of long.",
+            "material": "A dragon on the bus\n\nMy brother ____1____ (make) a paper dragon for the school show last week. Its body was green and its tail was so long that we needed a box to keep it from bending on the way to school.\n\nThe dragon had two bright ____2____ (eye). My brother had drawn them carefully, but he forgot to put a name label on the box. Mum asked ____3____ (we) to add one before leaving the house.\n\nAt the bus stop, a little girl wanted to know what was inside. My brother lifted the lid ____4____ (slow) and showed her the head. She asked whether it could breathe fire. He said it could only breathe the air ____5____ the box.\n\nThe driver smiled when we got on. He asked us ____6____ (keep) the long box clear of the aisle. Mum helped us find a place where it would not block anyone's way. The tail stayed folded until we reached the school.\n\nOur art teacher thought the dragon was even ____7____ (long) than she had expected. She found ____8____ empty table where my brother could lay it out. Other pupils gathered around to look at the scales and paper teeth.\n\nBefore ____9____ (put) it on display, he attached his label. The little girl from the bus arrived later with her father and recognised it immediately. She pointed ____10____ the dragon and told him she had already met it that morning. My brother said that made her its first visitor, even though the show had only just opened.",
+            "explanation": "Than requires longer. Superlative/double comparative do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "longer"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "longest",
+                "more longer"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-dragon-129.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "A dragon on the bus\n\nMy brother ____1____ (make) a paper dragon for the school show last week. Its body was green and its tail was so long that we needed a box to keep it from bending on the way to school.\n\nThe dragon had two bright ____2____ (eye). My brother had drawn them carefully, but he forgot to put a name label on the box. Mum asked ____3____ (we) to add one before leaving the house.\n\nAt the bus stop, a little girl wanted to know what was inside. My brother lifted the lid ____4____ (slow) and showed her the head. She asked whether it could breathe fire. He said it could only breathe the air ____5____ the box.\n\nThe driver smiled when we got on. He asked us ____6____ (keep) the long box clear of the aisle. Mum helped us find a place where it would not block anyone's way. The tail stayed folded until we reached the school.\n\nOur art teacher thought the dragon was even ____7____ (long) than she had expected. She found ____8____ empty table where my brother could lay it out. Other pupils gathered around to look at the scales and paper teeth.\n\nBefore ____9____ (put) it on display, he attached his label. The little girl from the bus arrived later with her father and recognised it immediately. She pointed ____10____ the dragon and told him she had already met it that morning. My brother said that made her its first visitor, even though the show had only just opened.",
+            "explanation": "Empty begins with vowel sound, so an. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-dragon-129.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of put.",
+            "material": "A dragon on the bus\n\nMy brother ____1____ (make) a paper dragon for the school show last week. Its body was green and its tail was so long that we needed a box to keep it from bending on the way to school.\n\nThe dragon had two bright ____2____ (eye). My brother had drawn them carefully, but he forgot to put a name label on the box. Mum asked ____3____ (we) to add one before leaving the house.\n\nAt the bus stop, a little girl wanted to know what was inside. My brother lifted the lid ____4____ (slow) and showed her the head. She asked whether it could breathe fire. He said it could only breathe the air ____5____ the box.\n\nThe driver smiled when we got on. He asked us ____6____ (keep) the long box clear of the aisle. Mum helped us find a place where it would not block anyone's way. The tail stayed folded until we reached the school.\n\nOur art teacher thought the dragon was even ____7____ (long) than she had expected. She found ____8____ empty table where my brother could lay it out. Other pupils gathered around to look at the scales and paper teeth.\n\nBefore ____9____ (put) it on display, he attached his label. The little girl from the bus arrived later with her father and recognised it immediately. She pointed ____10____ the dragon and told him she had already met it that morning. My brother said that made her its first visitor, even though the show had only just opened.",
+            "explanation": "Before putting takes -ing clause. Base/to-infinitive do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "putting"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "put",
+                "to put"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior1.paper-dragon-129.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "A dragon on the bus\n\nMy brother ____1____ (make) a paper dragon for the school show last week. Its body was green and its tail was so long that we needed a box to keep it from bending on the way to school.\n\nThe dragon had two bright ____2____ (eye). My brother had drawn them carefully, but he forgot to put a name label on the box. Mum asked ____3____ (we) to add one before leaving the house.\n\nAt the bus stop, a little girl wanted to know what was inside. My brother lifted the lid ____4____ (slow) and showed her the head. She asked whether it could breathe fire. He said it could only breathe the air ____5____ the box.\n\nThe driver smiled when we got on. He asked us ____6____ (keep) the long box clear of the aisle. Mum helped us find a place where it would not block anyone's way. The tail stayed folded until we reached the school.\n\nOur art teacher thought the dragon was even ____7____ (long) than she had expected. She found ____8____ empty table where my brother could lay it out. Other pupils gathered around to look at the scales and paper teeth.\n\nBefore ____9____ (put) it on display, he attached his label. The little girl from the bus arrived later with her father and recognised it immediately. She pointed ____10____ the dragon and told him she had already met it that morning. My brother said that made her its first visitor, even though the show had only just opened.",
+            "explanation": "Pointed at/to/towards/toward the dragon all direct attention to it. Of does not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "at",
+              "to",
+              "towards",
+              "toward"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "d6771befcfb6b41b3787a49147dda3f21752bbd1e23481f8f6f6451ad8253d08",
+      "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted/three single-word slots each. Fictional garden/dragon/holiday/game/poem/station stories. Same-author context and grammatical-variant review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.jar-message-129",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · The message in our holiday jar",
+        "summary": "The message in our holiday jar，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap form passage with seven prompted and three single-word gaps. Level/family reference only; no independent difficulty calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted/three single-word slots each. Fictional garden/dragon/holiday/game/poem/station stories. Same-author context and grammatical-variant review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.jar-message-129",
+          "family": "passage_form",
+          "label": "The message in our holiday jar",
+          "candidateSHA256": "aa2f24569041308016612cb47a471114fcf43ae1b63a2ab55b037a19c7c46527",
+          "authorCheckSHA256": "6f69383345de51a3c7acddfa46e4017cae186cdc32a14b1b872e7ece33699e7e",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.jar-message-129#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b129；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The message in our holiday jar\n\nOn the last day of a family holiday, we ____1____ (write) messages to our future selves. Dad found a large jar, and we put the folded pages inside. Nobody expected the jar to change our lives; it was simply a way of saving a few thoughts.\n\nMy sister wrote about the friend ____2____ she had met at the campsite. I listed the things I hoped to remember, including a tiny bakery and the sound of rain on our tent. Mum suggested ____3____ (add) the date to every page.\n\nTwo years later, we opened the jar. There were several ____4____ (surprise), but none involved treasure or secret instructions. My sister could not remember writing half of her message. I had forgotten that I once wanted to become a baker.\n\nWe read the pages ____5____ (careful), taking turns so everyone could hear. The jar ____6____ (keep) on a shelf in Dad's cupboard since we returned from the trip. Its ordinary appearance had made it easy to overlook.\n\nOne message thanked Mum ____7____ rescuing a wet sleeping bag. She remembered the event differently: Dad had carried it, while she had found a dry place. We laughed and added a note rather than change the old wording.\n\nBefore ____8____ (close) the jar, we wrote new messages. It was ____9____ useful moment to compare our memories without deciding that one page contained the whole holiday. Dad put the jar back on the shelf and asked ____10____ (we) not to forget it for another twenty years."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.jar-message-129.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of write.",
+            "material": "The message in our holiday jar\n\nOn the last day of a family holiday, we ____1____ (write) messages to our future selves. Dad found a large jar, and we put the folded pages inside. Nobody expected the jar to change our lives; it was simply a way of saving a few thoughts.\n\nMy sister wrote about the friend ____2____ she had met at the campsite. I listed the things I hoped to remember, including a tiny bakery and the sound of rain on our tent. Mum suggested ____3____ (add) the date to every page.\n\nTwo years later, we opened the jar. There were several ____4____ (surprise), but none involved treasure or secret instructions. My sister could not remember writing half of her message. I had forgotten that I once wanted to become a baker.\n\nWe read the pages ____5____ (careful), taking turns so everyone could hear. The jar ____6____ (keep) on a shelf in Dad's cupboard since we returned from the trip. Its ordinary appearance had made it easy to overlook.\n\nOne message thanked Mum ____7____ rescuing a wet sleeping bag. She remembered the event differently: Dad had carried it, while she had found a dry place. We laughed and added a note rather than change the old wording.\n\nBefore ____8____ (close) the jar, we wrote new messages. It was ____9____ useful moment to compare our memories without deciding that one page contained the whole holiday. Dad put the jar back on the shelf and asked ____10____ (we) not to forget it for another twenty years.",
+            "explanation": "Past holiday narrative takes wrote. Base/-ing do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "wrote"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "write",
+                "writing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jar-message-129.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "The message in our holiday jar\n\nOn the last day of a family holiday, we ____1____ (write) messages to our future selves. Dad found a large jar, and we put the folded pages inside. Nobody expected the jar to change our lives; it was simply a way of saving a few thoughts.\n\nMy sister wrote about the friend ____2____ she had met at the campsite. I listed the things I hoped to remember, including a tiny bakery and the sound of rain on our tent. Mum suggested ____3____ (add) the date to every page.\n\nTwo years later, we opened the jar. There were several ____4____ (surprise), but none involved treasure or secret instructions. My sister could not remember writing half of her message. I had forgotten that I once wanted to become a baker.\n\nWe read the pages ____5____ (careful), taking turns so everyone could hear. The jar ____6____ (keep) on a shelf in Dad's cupboard since we returned from the trip. Its ordinary appearance had made it easy to overlook.\n\nOne message thanked Mum ____7____ rescuing a wet sleeping bag. She remembered the event differently: Dad had carried it, while she had found a dry place. We laughed and added a note rather than change the old wording.\n\nBefore ____8____ (close) the jar, we wrote new messages. It was ____9____ useful moment to compare our memories without deciding that one page contained the whole holiday. Dad put the jar back on the shelf and asked ____10____ (we) not to forget it for another twenty years.",
+            "explanation": "Human object relative permits who/whom/that. Where cannot be object of had met.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "who",
+              "whom",
+              "that"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "where"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jar-message-129.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of add.",
+            "material": "The message in our holiday jar\n\nOn the last day of a family holiday, we ____1____ (write) messages to our future selves. Dad found a large jar, and we put the folded pages inside. Nobody expected the jar to change our lives; it was simply a way of saving a few thoughts.\n\nMy sister wrote about the friend ____2____ she had met at the campsite. I listed the things I hoped to remember, including a tiny bakery and the sound of rain on our tent. Mum suggested ____3____ (add) the date to every page.\n\nTwo years later, we opened the jar. There were several ____4____ (surprise), but none involved treasure or secret instructions. My sister could not remember writing half of her message. I had forgotten that I once wanted to become a baker.\n\nWe read the pages ____5____ (careful), taking turns so everyone could hear. The jar ____6____ (keep) on a shelf in Dad's cupboard since we returned from the trip. Its ordinary appearance had made it easy to overlook.\n\nOne message thanked Mum ____7____ rescuing a wet sleeping bag. She remembered the event differently: Dad had carried it, while she had found a dry place. We laughed and added a note rather than change the old wording.\n\nBefore ____8____ (close) the jar, we wrote new messages. It was ____9____ useful moment to compare our memories without deciding that one page contained the whole holiday. Dad put the jar back on the shelf and asked ____10____ (we) not to forget it for another twenty years.",
+            "explanation": "Suggested adding uses -ing. Other listed forms do not follow suggested directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "adding"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "add",
+                "to add",
+                "added"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jar-message-129.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of surprise.",
+            "material": "The message in our holiday jar\n\nOn the last day of a family holiday, we ____1____ (write) messages to our future selves. Dad found a large jar, and we put the folded pages inside. Nobody expected the jar to change our lives; it was simply a way of saving a few thoughts.\n\nMy sister wrote about the friend ____2____ she had met at the campsite. I listed the things I hoped to remember, including a tiny bakery and the sound of rain on our tent. Mum suggested ____3____ (add) the date to every page.\n\nTwo years later, we opened the jar. There were several ____4____ (surprise), but none involved treasure or secret instructions. My sister could not remember writing half of her message. I had forgotten that I once wanted to become a baker.\n\nWe read the pages ____5____ (careful), taking turns so everyone could hear. The jar ____6____ (keep) on a shelf in Dad's cupboard since we returned from the trip. Its ordinary appearance had made it easy to overlook.\n\nOne message thanked Mum ____7____ rescuing a wet sleeping bag. She remembered the event differently: Dad had carried it, while she had found a dry place. We laughed and added a note rather than change the old wording.\n\nBefore ____8____ (close) the jar, we wrote new messages. It was ____9____ useful moment to compare our memories without deciding that one page contained the whole holiday. Dad put the jar back on the shelf and asked ____10____ (we) not to forget it for another twenty years.",
+            "explanation": "Several requires plural surprises. Singular/adjective do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "surprises"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "surprise",
+                "surprising"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jar-message-129.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of careful.",
+            "material": "The message in our holiday jar\n\nOn the last day of a family holiday, we ____1____ (write) messages to our future selves. Dad found a large jar, and we put the folded pages inside. Nobody expected the jar to change our lives; it was simply a way of saving a few thoughts.\n\nMy sister wrote about the friend ____2____ she had met at the campsite. I listed the things I hoped to remember, including a tiny bakery and the sound of rain on our tent. Mum suggested ____3____ (add) the date to every page.\n\nTwo years later, we opened the jar. There were several ____4____ (surprise), but none involved treasure or secret instructions. My sister could not remember writing half of her message. I had forgotten that I once wanted to become a baker.\n\nWe read the pages ____5____ (careful), taking turns so everyone could hear. The jar ____6____ (keep) on a shelf in Dad's cupboard since we returned from the trip. Its ordinary appearance had made it easy to overlook.\n\nOne message thanked Mum ____7____ rescuing a wet sleeping bag. She remembered the event differently: Dad had carried it, while she had found a dry place. We laughed and added a note rather than change the old wording.\n\nBefore ____8____ (close) the jar, we wrote new messages. It was ____9____ useful moment to compare our memories without deciding that one page contained the whole holiday. Dad put the jar back on the shelf and asked ____10____ (we) not to forget it for another twenty years.",
+            "explanation": "Carefully modifies read. Carefulness noun does not fit; unlisted flat uses remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jar-message-129.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of keep.",
+            "material": "The message in our holiday jar\n\nOn the last day of a family holiday, we ____1____ (write) messages to our future selves. Dad found a large jar, and we put the folded pages inside. Nobody expected the jar to change our lives; it was simply a way of saving a few thoughts.\n\nMy sister wrote about the friend ____2____ she had met at the campsite. I listed the things I hoped to remember, including a tiny bakery and the sound of rain on our tent. Mum suggested ____3____ (add) the date to every page.\n\nTwo years later, we opened the jar. There were several ____4____ (surprise), but none involved treasure or secret instructions. My sister could not remember writing half of her message. I had forgotten that I once wanted to become a baker.\n\nWe read the pages ____5____ (careful), taking turns so everyone could hear. The jar ____6____ (keep) on a shelf in Dad's cupboard since we returned from the trip. Its ordinary appearance had made it easy to overlook.\n\nOne message thanked Mum ____7____ rescuing a wet sleeping bag. She remembered the event differently: Dad had carried it, while she had found a dry place. We laughed and added a note rather than change the old wording.\n\nBefore ____8____ (close) the jar, we wrote new messages. It was ____9____ useful moment to compare our memories without deciding that one page contained the whole holiday. Dad put the jar back on the shelf and asked ____10____ (we) not to forget it for another twenty years.",
+            "explanation": "Jar receives keeping continuing to past opening. Kept lacks auxiliary, had kept active lacks object; unlisted tenses remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "had been kept"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "kept",
+                "had kept"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jar-message-129.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "The message in our holiday jar\n\nOn the last day of a family holiday, we ____1____ (write) messages to our future selves. Dad found a large jar, and we put the folded pages inside. Nobody expected the jar to change our lives; it was simply a way of saving a few thoughts.\n\nMy sister wrote about the friend ____2____ she had met at the campsite. I listed the things I hoped to remember, including a tiny bakery and the sound of rain on our tent. Mum suggested ____3____ (add) the date to every page.\n\nTwo years later, we opened the jar. There were several ____4____ (surprise), but none involved treasure or secret instructions. My sister could not remember writing half of her message. I had forgotten that I once wanted to become a baker.\n\nWe read the pages ____5____ (careful), taking turns so everyone could hear. The jar ____6____ (keep) on a shelf in Dad's cupboard since we returned from the trip. Its ordinary appearance had made it easy to overlook.\n\nOne message thanked Mum ____7____ rescuing a wet sleeping bag. She remembered the event differently: Dad had carried it, while she had found a dry place. We laughed and added a note rather than change the old wording.\n\nBefore ____8____ (close) the jar, we wrote new messages. It was ____9____ useful moment to compare our memories without deciding that one page contained the whole holiday. Dad put the jar back on the shelf and asked ____10____ (we) not to forget it for another twenty years.",
+            "explanation": "Thanked for rescuing takes for. To/of do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jar-message-129.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of close.",
+            "material": "The message in our holiday jar\n\nOn the last day of a family holiday, we ____1____ (write) messages to our future selves. Dad found a large jar, and we put the folded pages inside. Nobody expected the jar to change our lives; it was simply a way of saving a few thoughts.\n\nMy sister wrote about the friend ____2____ she had met at the campsite. I listed the things I hoped to remember, including a tiny bakery and the sound of rain on our tent. Mum suggested ____3____ (add) the date to every page.\n\nTwo years later, we opened the jar. There were several ____4____ (surprise), but none involved treasure or secret instructions. My sister could not remember writing half of her message. I had forgotten that I once wanted to become a baker.\n\nWe read the pages ____5____ (careful), taking turns so everyone could hear. The jar ____6____ (keep) on a shelf in Dad's cupboard since we returned from the trip. Its ordinary appearance had made it easy to overlook.\n\nOne message thanked Mum ____7____ rescuing a wet sleeping bag. She remembered the event differently: Dad had carried it, while she had found a dry place. We laughed and added a note rather than change the old wording.\n\nBefore ____8____ (close) the jar, we wrote new messages. It was ____9____ useful moment to compare our memories without deciding that one page contained the whole holiday. Dad put the jar back on the shelf and asked ____10____ (we) not to forget it for another twenty years.",
+            "explanation": "Before closing takes -ing clause. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "closing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "close",
+                "closed",
+                "to close"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jar-message-129.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "The message in our holiday jar\n\nOn the last day of a family holiday, we ____1____ (write) messages to our future selves. Dad found a large jar, and we put the folded pages inside. Nobody expected the jar to change our lives; it was simply a way of saving a few thoughts.\n\nMy sister wrote about the friend ____2____ she had met at the campsite. I listed the things I hoped to remember, including a tiny bakery and the sound of rain on our tent. Mum suggested ____3____ (add) the date to every page.\n\nTwo years later, we opened the jar. There were several ____4____ (surprise), but none involved treasure or secret instructions. My sister could not remember writing half of her message. I had forgotten that I once wanted to become a baker.\n\nWe read the pages ____5____ (careful), taking turns so everyone could hear. The jar ____6____ (keep) on a shelf in Dad's cupboard since we returned from the trip. Its ordinary appearance had made it easy to overlook.\n\nOne message thanked Mum ____7____ rescuing a wet sleeping bag. She remembered the event differently: Dad had carried it, while she had found a dry place. We laughed and added a note rather than change the old wording.\n\nBefore ____8____ (close) the jar, we wrote new messages. It was ____9____ useful moment to compare our memories without deciding that one page contained the whole holiday. Dad put the jar back on the shelf and asked ____10____ (we) not to forget it for another twenty years.",
+            "explanation": "Useful begins with consonant /j/, so a. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.jar-message-129.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of we.",
+            "material": "The message in our holiday jar\n\nOn the last day of a family holiday, we ____1____ (write) messages to our future selves. Dad found a large jar, and we put the folded pages inside. Nobody expected the jar to change our lives; it was simply a way of saving a few thoughts.\n\nMy sister wrote about the friend ____2____ she had met at the campsite. I listed the things I hoped to remember, including a tiny bakery and the sound of rain on our tent. Mum suggested ____3____ (add) the date to every page.\n\nTwo years later, we opened the jar. There were several ____4____ (surprise), but none involved treasure or secret instructions. My sister could not remember writing half of her message. I had forgotten that I once wanted to become a baker.\n\nWe read the pages ____5____ (careful), taking turns so everyone could hear. The jar ____6____ (keep) on a shelf in Dad's cupboard since we returned from the trip. Its ordinary appearance had made it easy to overlook.\n\nOne message thanked Mum ____7____ rescuing a wet sleeping bag. She remembered the event differently: Dad had carried it, while she had found a dry place. We laughed and added a note rather than change the old wording.\n\nBefore ____8____ (close) the jar, we wrote new messages. It was ____9____ useful moment to compare our memories without deciding that one page contained the whole holiday. Dad put the jar back on the shelf and asked ____10____ (we) not to forget it for another twenty years.",
+            "explanation": "Asked takes object us. Subject/possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "45a8a97d0270b76b10dd0a014debc81e3dc3a5ea9716040637fabd531acb3609",
+      "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted/three single-word slots each. Fictional garden/dragon/holiday/game/poem/station stories. Same-author context and grammatical-variant review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.two-boardgames-129",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · The game with two rule sheets",
+        "summary": "The game with two rule sheets，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap form passage with seven prompted and three single-word gaps. Level/family reference only; no independent difficulty calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted/three single-word slots each. Fictional garden/dragon/holiday/game/poem/station stories. Same-author context and grammatical-variant review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.two-boardgames-129",
+          "family": "passage_form",
+          "label": "The game with two rule sheets",
+          "candidateSHA256": "9d47267ef4237f7cda8689cdd727f981c725d232118478ec7f819ef2a8cc3640",
+          "authorCheckSHA256": "87655b629d990f69b5242760fe076ef3767e351f2719913b83e248b3323730d1",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.two-boardgames-129#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b129；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The game with two rule sheets\n\nOur family ____1____ (play) a new board game when my cousin noticed that his rule sheet differed from ours. His version allowed an extra move after collecting a blue card. Mine said that a player's turn ended immediately.\n\nThe box contained two ____2____ (version) of the rules. One was for the ordinary game and the other for a shorter introductory round. We had each read a complete page, but we were not following the same set.\n\nDad asked us ____3____ (choose) one version before continuing. We did not need to invent a compromise that would make both sheets partly correct. We needed an agreement ____4____ everyone at the table could understand.\n\nThe introductory round was ____5____ (short) than the full game, so we chose it for the afternoon. After ____6____ (finish), we had time to try the other version too. The second game felt different because the choices carried different consequences.\n\nAt first, I had blamed my cousin ____7____ changing a rule when he began to win. I apologised after seeing his sheet. He had not invented the extra move; he had read it in the instructions that lay beside him.\n\nThe two rule sheets ____8____ (place) in separate envelopes afterwards. We labelled them ____9____ (clear) so nobody would repeat the confusion next time. It was ____10____ ordinary mistake, but it had briefly made us suspicious of one another. A little attention to the materials had been more useful than another argument about who remembered the rules best."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.two-boardgames-129.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of play.",
+            "material": "The game with two rule sheets\n\nOur family ____1____ (play) a new board game when my cousin noticed that his rule sheet differed from ours. His version allowed an extra move after collecting a blue card. Mine said that a player's turn ended immediately.\n\nThe box contained two ____2____ (version) of the rules. One was for the ordinary game and the other for a shorter introductory round. We had each read a complete page, but we were not following the same set.\n\nDad asked us ____3____ (choose) one version before continuing. We did not need to invent a compromise that would make both sheets partly correct. We needed an agreement ____4____ everyone at the table could understand.\n\nThe introductory round was ____5____ (short) than the full game, so we chose it for the afternoon. After ____6____ (finish), we had time to try the other version too. The second game felt different because the choices carried different consequences.\n\nAt first, I had blamed my cousin ____7____ changing a rule when he began to win. I apologised after seeing his sheet. He had not invented the extra move; he had read it in the instructions that lay beside him.\n\nThe two rule sheets ____8____ (place) in separate envelopes afterwards. We labelled them ____9____ (clear) so nobody would repeat the confusion next time. It was ____10____ ordinary mistake, but it had briefly made us suspicious of one another. A little attention to the materials had been more useful than another argument about who remembered the rules best.",
+            "explanation": "Collective family may take singular/plural past progressive. Playing alone lacks auxiliary.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was playing",
+              "were playing"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "playing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.two-boardgames-129.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of version.",
+            "material": "The game with two rule sheets\n\nOur family ____1____ (play) a new board game when my cousin noticed that his rule sheet differed from ours. His version allowed an extra move after collecting a blue card. Mine said that a player's turn ended immediately.\n\nThe box contained two ____2____ (version) of the rules. One was for the ordinary game and the other for a shorter introductory round. We had each read a complete page, but we were not following the same set.\n\nDad asked us ____3____ (choose) one version before continuing. We did not need to invent a compromise that would make both sheets partly correct. We needed an agreement ____4____ everyone at the table could understand.\n\nThe introductory round was ____5____ (short) than the full game, so we chose it for the afternoon. After ____6____ (finish), we had time to try the other version too. The second game felt different because the choices carried different consequences.\n\nAt first, I had blamed my cousin ____7____ changing a rule when he began to win. I apologised after seeing his sheet. He had not invented the extra move; he had read it in the instructions that lay beside him.\n\nThe two rule sheets ____8____ (place) in separate envelopes afterwards. We labelled them ____9____ (clear) so nobody would repeat the confusion next time. It was ____10____ ordinary mistake, but it had briefly made us suspicious of one another. A little attention to the materials had been more useful than another argument about who remembered the rules best.",
+            "explanation": "Two requires plural versions. Singular/process noun do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "versions"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "version",
+                "versioning"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.two-boardgames-129.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of choose.",
+            "material": "The game with two rule sheets\n\nOur family ____1____ (play) a new board game when my cousin noticed that his rule sheet differed from ours. His version allowed an extra move after collecting a blue card. Mine said that a player's turn ended immediately.\n\nThe box contained two ____2____ (version) of the rules. One was for the ordinary game and the other for a shorter introductory round. We had each read a complete page, but we were not following the same set.\n\nDad asked us ____3____ (choose) one version before continuing. We did not need to invent a compromise that would make both sheets partly correct. We needed an agreement ____4____ everyone at the table could understand.\n\nThe introductory round was ____5____ (short) than the full game, so we chose it for the afternoon. After ____6____ (finish), we had time to try the other version too. The second game felt different because the choices carried different consequences.\n\nAt first, I had blamed my cousin ____7____ changing a rule when he began to win. I apologised after seeing his sheet. He had not invented the extra move; he had read it in the instructions that lay beside him.\n\nThe two rule sheets ____8____ (place) in separate envelopes afterwards. We labelled them ____9____ (clear) so nobody would repeat the confusion next time. It was ____10____ ordinary mistake, but it had briefly made us suspicious of one another. A little attention to the materials had been more useful than another argument about who remembered the rules best.",
+            "explanation": "Asked us takes to choose. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to choose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "choose",
+                "choosing",
+                "chose"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.two-boardgames-129.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "The game with two rule sheets\n\nOur family ____1____ (play) a new board game when my cousin noticed that his rule sheet differed from ours. His version allowed an extra move after collecting a blue card. Mine said that a player's turn ended immediately.\n\nThe box contained two ____2____ (version) of the rules. One was for the ordinary game and the other for a shorter introductory round. We had each read a complete page, but we were not following the same set.\n\nDad asked us ____3____ (choose) one version before continuing. We did not need to invent a compromise that would make both sheets partly correct. We needed an agreement ____4____ everyone at the table could understand.\n\nThe introductory round was ____5____ (short) than the full game, so we chose it for the afternoon. After ____6____ (finish), we had time to try the other version too. The second game felt different because the choices carried different consequences.\n\nAt first, I had blamed my cousin ____7____ changing a rule when he began to win. I apologised after seeing his sheet. He had not invented the extra move; he had read it in the instructions that lay beside him.\n\nThe two rule sheets ____8____ (place) in separate envelopes afterwards. We labelled them ____9____ (clear) so nobody would repeat the confusion next time. It was ____10____ ordinary mistake, but it had briefly made us suspicious of one another. A little attention to the materials had been more useful than another argument about who remembered the rules best.",
+            "explanation": "Agreement object antecedent of could understand takes that/which. Where not object, who human.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "where",
+                "who"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.two-boardgames-129.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of short.",
+            "material": "The game with two rule sheets\n\nOur family ____1____ (play) a new board game when my cousin noticed that his rule sheet differed from ours. His version allowed an extra move after collecting a blue card. Mine said that a player's turn ended immediately.\n\nThe box contained two ____2____ (version) of the rules. One was for the ordinary game and the other for a shorter introductory round. We had each read a complete page, but we were not following the same set.\n\nDad asked us ____3____ (choose) one version before continuing. We did not need to invent a compromise that would make both sheets partly correct. We needed an agreement ____4____ everyone at the table could understand.\n\nThe introductory round was ____5____ (short) than the full game, so we chose it for the afternoon. After ____6____ (finish), we had time to try the other version too. The second game felt different because the choices carried different consequences.\n\nAt first, I had blamed my cousin ____7____ changing a rule when he began to win. I apologised after seeing his sheet. He had not invented the extra move; he had read it in the instructions that lay beside him.\n\nThe two rule sheets ____8____ (place) in separate envelopes afterwards. We labelled them ____9____ (clear) so nobody would repeat the confusion next time. It was ____10____ ordinary mistake, but it had briefly made us suspicious of one another. A little attention to the materials had been more useful than another argument about who remembered the rules best.",
+            "explanation": "Than requires shorter. Superlative/double comparative do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "shorter"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "shortest",
+                "more shorter"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.two-boardgames-129.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of finish.",
+            "material": "The game with two rule sheets\n\nOur family ____1____ (play) a new board game when my cousin noticed that his rule sheet differed from ours. His version allowed an extra move after collecting a blue card. Mine said that a player's turn ended immediately.\n\nThe box contained two ____2____ (version) of the rules. One was for the ordinary game and the other for a shorter introductory round. We had each read a complete page, but we were not following the same set.\n\nDad asked us ____3____ (choose) one version before continuing. We did not need to invent a compromise that would make both sheets partly correct. We needed an agreement ____4____ everyone at the table could understand.\n\nThe introductory round was ____5____ (short) than the full game, so we chose it for the afternoon. After ____6____ (finish), we had time to try the other version too. The second game felt different because the choices carried different consequences.\n\nAt first, I had blamed my cousin ____7____ changing a rule when he began to win. I apologised after seeing his sheet. He had not invented the extra move; he had read it in the instructions that lay beside him.\n\nThe two rule sheets ____8____ (place) in separate envelopes afterwards. We labelled them ____9____ (clear) so nobody would repeat the confusion next time. It was ____10____ ordinary mistake, but it had briefly made us suspicious of one another. A little attention to the materials had been more useful than another argument about who remembered the rules best.",
+            "explanation": "After finishing/having finished fit completed round. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "finishing",
+              "having finished"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "finish",
+                "finished",
+                "to finish"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.two-boardgames-129.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "The game with two rule sheets\n\nOur family ____1____ (play) a new board game when my cousin noticed that his rule sheet differed from ours. His version allowed an extra move after collecting a blue card. Mine said that a player's turn ended immediately.\n\nThe box contained two ____2____ (version) of the rules. One was for the ordinary game and the other for a shorter introductory round. We had each read a complete page, but we were not following the same set.\n\nDad asked us ____3____ (choose) one version before continuing. We did not need to invent a compromise that would make both sheets partly correct. We needed an agreement ____4____ everyone at the table could understand.\n\nThe introductory round was ____5____ (short) than the full game, so we chose it for the afternoon. After ____6____ (finish), we had time to try the other version too. The second game felt different because the choices carried different consequences.\n\nAt first, I had blamed my cousin ____7____ changing a rule when he began to win. I apologised after seeing his sheet. He had not invented the extra move; he had read it in the instructions that lay beside him.\n\nThe two rule sheets ____8____ (place) in separate envelopes afterwards. We labelled them ____9____ (clear) so nobody would repeat the confusion next time. It was ____10____ ordinary mistake, but it had briefly made us suspicious of one another. A little attention to the materials had been more useful than another argument about who remembered the rules best.",
+            "explanation": "Blamed cousin for changing takes for. To/of do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.two-boardgames-129.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of place.",
+            "material": "The game with two rule sheets\n\nOur family ____1____ (play) a new board game when my cousin noticed that his rule sheet differed from ours. His version allowed an extra move after collecting a blue card. Mine said that a player's turn ended immediately.\n\nThe box contained two ____2____ (version) of the rules. One was for the ordinary game and the other for a shorter introductory round. We had each read a complete page, but we were not following the same set.\n\nDad asked us ____3____ (choose) one version before continuing. We did not need to invent a compromise that would make both sheets partly correct. We needed an agreement ____4____ everyone at the table could understand.\n\nThe introductory round was ____5____ (short) than the full game, so we chose it for the afternoon. After ____6____ (finish), we had time to try the other version too. The second game felt different because the choices carried different consequences.\n\nAt first, I had blamed my cousin ____7____ changing a rule when he began to win. I apologised after seeing his sheet. He had not invented the extra move; he had read it in the instructions that lay beside him.\n\nThe two rule sheets ____8____ (place) in separate envelopes afterwards. We labelled them ____9____ (clear) so nobody would repeat the confusion next time. It was ____10____ ordinary mistake, but it had briefly made us suspicious of one another. A little attention to the materials had been more useful than another argument about who remembered the rules best.",
+            "explanation": "Plural sheets receive placement. Placed lacks auxiliary and was disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "were placed",
+              "had been placed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "placed",
+                "was placed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.two-boardgames-129.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of clear.",
+            "material": "The game with two rule sheets\n\nOur family ____1____ (play) a new board game when my cousin noticed that his rule sheet differed from ours. His version allowed an extra move after collecting a blue card. Mine said that a player's turn ended immediately.\n\nThe box contained two ____2____ (version) of the rules. One was for the ordinary game and the other for a shorter introductory round. We had each read a complete page, but we were not following the same set.\n\nDad asked us ____3____ (choose) one version before continuing. We did not need to invent a compromise that would make both sheets partly correct. We needed an agreement ____4____ everyone at the table could understand.\n\nThe introductory round was ____5____ (short) than the full game, so we chose it for the afternoon. After ____6____ (finish), we had time to try the other version too. The second game felt different because the choices carried different consequences.\n\nAt first, I had blamed my cousin ____7____ changing a rule when he began to win. I apologised after seeing his sheet. He had not invented the extra move; he had read it in the instructions that lay beside him.\n\nThe two rule sheets ____8____ (place) in separate envelopes afterwards. We labelled them ____9____ (clear) so nobody would repeat the confusion next time. It was ____10____ ordinary mistake, but it had briefly made us suspicious of one another. A little attention to the materials had been more useful than another argument about who remembered the rules best.",
+            "explanation": "Clearly modifies labelled. Clearance noun does not fit; unlisted flat readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "clearly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "clearance"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.two-boardgames-129.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "The game with two rule sheets\n\nOur family ____1____ (play) a new board game when my cousin noticed that his rule sheet differed from ours. His version allowed an extra move after collecting a blue card. Mine said that a player's turn ended immediately.\n\nThe box contained two ____2____ (version) of the rules. One was for the ordinary game and the other for a shorter introductory round. We had each read a complete page, but we were not following the same set.\n\nDad asked us ____3____ (choose) one version before continuing. We did not need to invent a compromise that would make both sheets partly correct. We needed an agreement ____4____ everyone at the table could understand.\n\nThe introductory round was ____5____ (short) than the full game, so we chose it for the afternoon. After ____6____ (finish), we had time to try the other version too. The second game felt different because the choices carried different consequences.\n\nAt first, I had blamed my cousin ____7____ changing a rule when he began to win. I apologised after seeing his sheet. He had not invented the extra move; he had read it in the instructions that lay beside him.\n\nThe two rule sheets ____8____ (place) in separate envelopes afterwards. We labelled them ____9____ (clear) so nobody would repeat the confusion next time. It was ____10____ ordinary mistake, but it had briefly made us suspicious of one another. A little attention to the materials had been more useful than another argument about who remembered the rules best.",
+            "explanation": "Ordinary begins with vowel sound, so an. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "855b8f81327239f6a8595f94f2c33f34eb58c28de831e4fde03cada635461146",
+      "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted/three single-word slots each. Fictional garden/dragon/holiday/game/poem/station stories. Same-author context and grammatical-variant review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.twin-poems-129",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Two birthday poems",
+        "summary": "Two birthday poems，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap form passage with seven prompted and three single-word gaps. Level/family reference only; no independent difficulty calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted/three single-word slots each. Fictional garden/dragon/holiday/game/poem/station stories. Same-author context and grammatical-variant review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.twin-poems-129",
+          "family": "passage_form",
+          "label": "Two birthday poems",
+          "candidateSHA256": "b5fc0652c9f0f334de1f5cec8245a104ad16c8718eec1bcbbf9a6913522d76fe",
+          "authorCheckSHA256": "5e28428a617402559559f6535830c572dee6eedf7fba91f015e1b32a04284a60",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.twin-poems-129#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b129；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Two birthday poems\n\nFor our grandparents' birthday celebration, my twin cousins ____1____ (prepare) two short poems. Everyone expected them to perform together, but each wanted to read a separate piece. They had the same birthday and many shared interests, yet that did not mean every preference was identical.\n\nOne cousin, ____2____ poem described the garden, asked to speak first. The other had written about a train journey. Their mother suggested ____3____ (let) them decide the order themselves rather than turn it into a family vote.\n\nSeveral ____4____ (relative) offered advice. Some wanted alphabetical order, while others suggested drawing a name from a bowl. The twins listened ____5____ (patient) and then chose to begin with the shorter poem because lunch was almost ready.\n\nThe first performance ____6____ (follow) by a brief pause while the reader returned to her seat. Then her brother stood up. He had added a final line ____7____ nobody else had heard during rehearsal. Grandfather laughed before the rest of us understood the reference.\n\nAfter ____8____ (read), the cousins gave our grandparents the written copies. It was ____9____ unusual present, made from familiar words and particular memories. The poems did not have to match in length or style to belong to the same celebration.\n\nLater, I asked whether they would write together next year. They said they might, but first they wanted to hear what our grandparents remembered from this time. The question led to another conversation. I was glad we had allowed ____10____ (they) to make the performance their own instead of expecting two people to behave like one."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.twin-poems-129.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of prepare.",
+            "material": "Two birthday poems\n\nFor our grandparents' birthday celebration, my twin cousins ____1____ (prepare) two short poems. Everyone expected them to perform together, but each wanted to read a separate piece. They had the same birthday and many shared interests, yet that did not mean every preference was identical.\n\nOne cousin, ____2____ poem described the garden, asked to speak first. The other had written about a train journey. Their mother suggested ____3____ (let) them decide the order themselves rather than turn it into a family vote.\n\nSeveral ____4____ (relative) offered advice. Some wanted alphabetical order, while others suggested drawing a name from a bowl. The twins listened ____5____ (patient) and then chose to begin with the shorter poem because lunch was almost ready.\n\nThe first performance ____6____ (follow) by a brief pause while the reader returned to her seat. Then her brother stood up. He had added a final line ____7____ nobody else had heard during rehearsal. Grandfather laughed before the rest of us understood the reference.\n\nAfter ____8____ (read), the cousins gave our grandparents the written copies. It was ____9____ unusual present, made from familiar words and particular memories. The poems did not have to match in length or style to belong to the same celebration.\n\nLater, I asked whether they would write together next year. They said they might, but first they wanted to hear what our grandparents remembered from this time. The question led to another conversation. I was glad we had allowed ____10____ (they) to make the performance their own instead of expecting two people to behave like one.",
+            "explanation": "Prepared/had prepared fit past work before performance. Base/-ing do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "prepared",
+              "had prepared"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "prepare",
+                "preparing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.twin-poems-129.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "Two birthday poems\n\nFor our grandparents' birthday celebration, my twin cousins ____1____ (prepare) two short poems. Everyone expected them to perform together, but each wanted to read a separate piece. They had the same birthday and many shared interests, yet that did not mean every preference was identical.\n\nOne cousin, ____2____ poem described the garden, asked to speak first. The other had written about a train journey. Their mother suggested ____3____ (let) them decide the order themselves rather than turn it into a family vote.\n\nSeveral ____4____ (relative) offered advice. Some wanted alphabetical order, while others suggested drawing a name from a bowl. The twins listened ____5____ (patient) and then chose to begin with the shorter poem because lunch was almost ready.\n\nThe first performance ____6____ (follow) by a brief pause while the reader returned to her seat. Then her brother stood up. He had added a final line ____7____ nobody else had heard during rehearsal. Grandfather laughed before the rest of us understood the reference.\n\nAfter ____8____ (read), the cousins gave our grandparents the written copies. It was ____9____ unusual present, made from familiar words and particular memories. The poems did not have to match in length or style to belong to the same celebration.\n\nLater, I asked whether they would write together next year. They said they might, but first they wanted to hear what our grandparents remembered from this time. The question led to another conversation. I was glad we had allowed ____10____ (they) to make the performance their own instead of expecting two people to behave like one.",
+            "explanation": "Whose modifies poem to show possession. Other relatives do not directly determine noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "whose"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "which",
+                "where"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.twin-poems-129.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of let.",
+            "material": "Two birthday poems\n\nFor our grandparents' birthday celebration, my twin cousins ____1____ (prepare) two short poems. Everyone expected them to perform together, but each wanted to read a separate piece. They had the same birthday and many shared interests, yet that did not mean every preference was identical.\n\nOne cousin, ____2____ poem described the garden, asked to speak first. The other had written about a train journey. Their mother suggested ____3____ (let) them decide the order themselves rather than turn it into a family vote.\n\nSeveral ____4____ (relative) offered advice. Some wanted alphabetical order, while others suggested drawing a name from a bowl. The twins listened ____5____ (patient) and then chose to begin with the shorter poem because lunch was almost ready.\n\nThe first performance ____6____ (follow) by a brief pause while the reader returned to her seat. Then her brother stood up. He had added a final line ____7____ nobody else had heard during rehearsal. Grandfather laughed before the rest of us understood the reference.\n\nAfter ____8____ (read), the cousins gave our grandparents the written copies. It was ____9____ unusual present, made from familiar words and particular memories. The poems did not have to match in length or style to belong to the same celebration.\n\nLater, I asked whether they would write together next year. They said they might, but first they wanted to hear what our grandparents remembered from this time. The question led to another conversation. I was glad we had allowed ____10____ (they) to make the performance their own instead of expecting two people to behave like one.",
+            "explanation": "Suggested letting uses -ing. Base/to-infinitive/nonstandard past do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "letting"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "let",
+                "to let",
+                "letted"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.twin-poems-129.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of relative.",
+            "material": "Two birthday poems\n\nFor our grandparents' birthday celebration, my twin cousins ____1____ (prepare) two short poems. Everyone expected them to perform together, but each wanted to read a separate piece. They had the same birthday and many shared interests, yet that did not mean every preference was identical.\n\nOne cousin, ____2____ poem described the garden, asked to speak first. The other had written about a train journey. Their mother suggested ____3____ (let) them decide the order themselves rather than turn it into a family vote.\n\nSeveral ____4____ (relative) offered advice. Some wanted alphabetical order, while others suggested drawing a name from a bowl. The twins listened ____5____ (patient) and then chose to begin with the shorter poem because lunch was almost ready.\n\nThe first performance ____6____ (follow) by a brief pause while the reader returned to her seat. Then her brother stood up. He had added a final line ____7____ nobody else had heard during rehearsal. Grandfather laughed before the rest of us understood the reference.\n\nAfter ____8____ (read), the cousins gave our grandparents the written copies. It was ____9____ unusual present, made from familiar words and particular memories. The poems did not have to match in length or style to belong to the same celebration.\n\nLater, I asked whether they would write together next year. They said they might, but first they wanted to hear what our grandparents remembered from this time. The question led to another conversation. I was glad we had allowed ____10____ (they) to make the performance their own instead of expecting two people to behave like one.",
+            "explanation": "Several requires plural relatives. Singular/adverb do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "relatives"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "relative",
+                "relatively"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.twin-poems-129.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of patient.",
+            "material": "Two birthday poems\n\nFor our grandparents' birthday celebration, my twin cousins ____1____ (prepare) two short poems. Everyone expected them to perform together, but each wanted to read a separate piece. They had the same birthday and many shared interests, yet that did not mean every preference was identical.\n\nOne cousin, ____2____ poem described the garden, asked to speak first. The other had written about a train journey. Their mother suggested ____3____ (let) them decide the order themselves rather than turn it into a family vote.\n\nSeveral ____4____ (relative) offered advice. Some wanted alphabetical order, while others suggested drawing a name from a bowl. The twins listened ____5____ (patient) and then chose to begin with the shorter poem because lunch was almost ready.\n\nThe first performance ____6____ (follow) by a brief pause while the reader returned to her seat. Then her brother stood up. He had added a final line ____7____ nobody else had heard during rehearsal. Grandfather laughed before the rest of us understood the reference.\n\nAfter ____8____ (read), the cousins gave our grandparents the written copies. It was ____9____ unusual present, made from familiar words and particular memories. The poems did not have to match in length or style to belong to the same celebration.\n\nLater, I asked whether they would write together next year. They said they might, but first they wanted to hear what our grandparents remembered from this time. The question led to another conversation. I was glad we had allowed ____10____ (they) to make the performance their own instead of expecting two people to behave like one.",
+            "explanation": "Patiently modifies listened. Patience noun does not fit; unlisted flat readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "patiently"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "patience"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.twin-poems-129.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of follow.",
+            "material": "Two birthday poems\n\nFor our grandparents' birthday celebration, my twin cousins ____1____ (prepare) two short poems. Everyone expected them to perform together, but each wanted to read a separate piece. They had the same birthday and many shared interests, yet that did not mean every preference was identical.\n\nOne cousin, ____2____ poem described the garden, asked to speak first. The other had written about a train journey. Their mother suggested ____3____ (let) them decide the order themselves rather than turn it into a family vote.\n\nSeveral ____4____ (relative) offered advice. Some wanted alphabetical order, while others suggested drawing a name from a bowl. The twins listened ____5____ (patient) and then chose to begin with the shorter poem because lunch was almost ready.\n\nThe first performance ____6____ (follow) by a brief pause while the reader returned to her seat. Then her brother stood up. He had added a final line ____7____ nobody else had heard during rehearsal. Grandfather laughed before the rest of us understood the reference.\n\nAfter ____8____ (read), the cousins gave our grandparents the written copies. It was ____9____ unusual present, made from familiar words and particular memories. The poems did not have to match in length or style to belong to the same celebration.\n\nLater, I asked whether they would write together next year. They said they might, but first they wanted to hear what our grandparents remembered from this time. The question led to another conversation. I was glad we had allowed ____10____ (they) to make the performance their own instead of expecting two people to behave like one.",
+            "explanation": "Singular performance receives following by pause. Followed lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was followed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "followed",
+                "were followed"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.twin-poems-129.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "Two birthday poems\n\nFor our grandparents' birthday celebration, my twin cousins ____1____ (prepare) two short poems. Everyone expected them to perform together, but each wanted to read a separate piece. They had the same birthday and many shared interests, yet that did not mean every preference was identical.\n\nOne cousin, ____2____ poem described the garden, asked to speak first. The other had written about a train journey. Their mother suggested ____3____ (let) them decide the order themselves rather than turn it into a family vote.\n\nSeveral ____4____ (relative) offered advice. Some wanted alphabetical order, while others suggested drawing a name from a bowl. The twins listened ____5____ (patient) and then chose to begin with the shorter poem because lunch was almost ready.\n\nThe first performance ____6____ (follow) by a brief pause while the reader returned to her seat. Then her brother stood up. He had added a final line ____7____ nobody else had heard during rehearsal. Grandfather laughed before the rest of us understood the reference.\n\nAfter ____8____ (read), the cousins gave our grandparents the written copies. It was ____9____ unusual present, made from familiar words and particular memories. The poems did not have to match in length or style to belong to the same celebration.\n\nLater, I asked whether they would write together next year. They said they might, but first they wanted to hear what our grandparents remembered from this time. The question led to another conversation. I was glad we had allowed ____10____ (they) to make the performance their own instead of expecting two people to behave like one.",
+            "explanation": "Line is object of had heard, that/which. Where not object and who human.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "where",
+                "who"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.twin-poems-129.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of read.",
+            "material": "Two birthday poems\n\nFor our grandparents' birthday celebration, my twin cousins ____1____ (prepare) two short poems. Everyone expected them to perform together, but each wanted to read a separate piece. They had the same birthday and many shared interests, yet that did not mean every preference was identical.\n\nOne cousin, ____2____ poem described the garden, asked to speak first. The other had written about a train journey. Their mother suggested ____3____ (let) them decide the order themselves rather than turn it into a family vote.\n\nSeveral ____4____ (relative) offered advice. Some wanted alphabetical order, while others suggested drawing a name from a bowl. The twins listened ____5____ (patient) and then chose to begin with the shorter poem because lunch was almost ready.\n\nThe first performance ____6____ (follow) by a brief pause while the reader returned to her seat. Then her brother stood up. He had added a final line ____7____ nobody else had heard during rehearsal. Grandfather laughed before the rest of us understood the reference.\n\nAfter ____8____ (read), the cousins gave our grandparents the written copies. It was ____9____ unusual present, made from familiar words and particular memories. The poems did not have to match in length or style to belong to the same celebration.\n\nLater, I asked whether they would write together next year. They said they might, but first they wanted to hear what our grandparents remembered from this time. The question led to another conversation. I was glad we had allowed ____10____ (they) to make the performance their own instead of expecting two people to behave like one.",
+            "explanation": "After reading/having read fit completed recitation. Base/to-infinitive do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "reading",
+              "having read"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "read",
+                "to read"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.twin-poems-129.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with one appropriate word.",
+            "material": "Two birthday poems\n\nFor our grandparents' birthday celebration, my twin cousins ____1____ (prepare) two short poems. Everyone expected them to perform together, but each wanted to read a separate piece. They had the same birthday and many shared interests, yet that did not mean every preference was identical.\n\nOne cousin, ____2____ poem described the garden, asked to speak first. The other had written about a train journey. Their mother suggested ____3____ (let) them decide the order themselves rather than turn it into a family vote.\n\nSeveral ____4____ (relative) offered advice. Some wanted alphabetical order, while others suggested drawing a name from a bowl. The twins listened ____5____ (patient) and then chose to begin with the shorter poem because lunch was almost ready.\n\nThe first performance ____6____ (follow) by a brief pause while the reader returned to her seat. Then her brother stood up. He had added a final line ____7____ nobody else had heard during rehearsal. Grandfather laughed before the rest of us understood the reference.\n\nAfter ____8____ (read), the cousins gave our grandparents the written copies. It was ____9____ unusual present, made from familiar words and particular memories. The poems did not have to match in length or style to belong to the same celebration.\n\nLater, I asked whether they would write together next year. They said they might, but first they wanted to hear what our grandparents remembered from this time. The question led to another conversation. I was glad we had allowed ____10____ (they) to make the performance their own instead of expecting two people to behave like one.",
+            "explanation": "Unusual begins with vowel sound; an. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "a"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.twin-poems-129.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of they.",
+            "material": "Two birthday poems\n\nFor our grandparents' birthday celebration, my twin cousins ____1____ (prepare) two short poems. Everyone expected them to perform together, but each wanted to read a separate piece. They had the same birthday and many shared interests, yet that did not mean every preference was identical.\n\nOne cousin, ____2____ poem described the garden, asked to speak first. The other had written about a train journey. Their mother suggested ____3____ (let) them decide the order themselves rather than turn it into a family vote.\n\nSeveral ____4____ (relative) offered advice. Some wanted alphabetical order, while others suggested drawing a name from a bowl. The twins listened ____5____ (patient) and then chose to begin with the shorter poem because lunch was almost ready.\n\nThe first performance ____6____ (follow) by a brief pause while the reader returned to her seat. Then her brother stood up. He had added a final line ____7____ nobody else had heard during rehearsal. Grandfather laughed before the rest of us understood the reference.\n\nAfter ____8____ (read), the cousins gave our grandparents the written copies. It was ____9____ unusual present, made from familiar words and particular memories. The poems did not have to match in length or style to belong to the same celebration.\n\nLater, I asked whether they would write together next year. They said they might, but first they wanted to hear what our grandparents remembered from this time. The question led to another conversation. I was glad we had allowed ____10____ (they) to make the performance their own instead of expecting two people to behave like one.",
+            "explanation": "Allowed takes object them. Subject/possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "them"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "they",
+                "their",
+                "theirs"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "18a8f1cfc4e6a71567094e42ff00f718fc0d1563fbb3e03f95216e6766c825fe",
+      "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted/three single-word slots each. Fictional garden/dragon/holiday/game/poem/station stories. Same-author context and grammatical-variant review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.ticket-machine-129",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · The ticket machine beside the window",
+        "summary": "The ticket machine beside the window，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "One complete original ten-gap form passage with seven prompted and three single-word gaps. Level/family reference only; no independent difficulty calibration."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted/three single-word slots each. Fictional garden/dragon/holiday/game/poem/station stories. Same-author context and grammatical-variant review only; no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.ticket-machine-129",
+          "family": "passage_form",
+          "label": "The ticket machine beside the window",
+          "candidateSHA256": "83ce91e8280ff38c31e72ceed3f8c3e41da872b6784dd404281ab472479cf7ea",
+          "authorCheckSHA256": "668221ac96a1b37634326e3fc35f30417defcba98b95e0121b66d274c9637171",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.ticket-machine-129#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b129；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The ticket machine beside the window\n\nThe station installed a new ticket machine beside the waiting-room window. Its screen ____1____ (describe) as simple to use, and I expected buying a ticket to take only a moment. Then I noticed an older passenger standing in front of it with a puzzled expression.\n\nHe asked me ____2____ (help) find the return-ticket option. I could read the words, but the sunlight reflected from the screen made several ____3____ (button) hard to see. The difficulty was not necessarily his knowledge of the menu.\n\nWe moved slightly to one side, ____4____ the reflection was less strong. The option became clearer. I did not touch his payment card or enter any private information. A member of staff came over to provide the assistance he needed.\n\nAfter ____5____ (watch) the exchange, I bought my own ticket. I read each stage ____6____ (careful), noticing that the first screen and final confirmation did not present the information in exactly the same order.\n\nThe passenger thanked the staff member ____7____ her patience. She reported the reflection problem rather than simply tell him to practise more. A screen could have clear wording and still be difficult to use from a particular position at a particular time.\n\nIt was ____8____ useful reminder about the difference between a label and an experience. The designers' ____9____ (intend) had been to simplify the task, but that intention did not remove the need to observe actual use. We both caught ____10____ (we) trains. The machine remained by the window, with a practical issue now recorded for the people responsible to examine."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.ticket-machine-129.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of describe.",
+            "material": "The ticket machine beside the window\n\nThe station installed a new ticket machine beside the waiting-room window. Its screen ____1____ (describe) as simple to use, and I expected buying a ticket to take only a moment. Then I noticed an older passenger standing in front of it with a puzzled expression.\n\nHe asked me ____2____ (help) find the return-ticket option. I could read the words, but the sunlight reflected from the screen made several ____3____ (button) hard to see. The difficulty was not necessarily his knowledge of the menu.\n\nWe moved slightly to one side, ____4____ the reflection was less strong. The option became clearer. I did not touch his payment card or enter any private information. A member of staff came over to provide the assistance he needed.\n\nAfter ____5____ (watch) the exchange, I bought my own ticket. I read each stage ____6____ (careful), noticing that the first screen and final confirmation did not present the information in exactly the same order.\n\nThe passenger thanked the staff member ____7____ her patience. She reported the reflection problem rather than simply tell him to practise more. A screen could have clear wording and still be difficult to use from a particular position at a particular time.\n\nIt was ____8____ useful reminder about the difference between a label and an experience. The designers' ____9____ (intend) had been to simplify the task, but that intention did not remove the need to observe actual use. We both caught ____10____ (we) trains. The machine remained by the window, with a practical issue now recorded for the people responsible to examine.",
+            "explanation": "Singular screen receives description. Described lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was described",
+              "had been described"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "described",
+                "were described"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ticket-machine-129.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of help.",
+            "material": "The ticket machine beside the window\n\nThe station installed a new ticket machine beside the waiting-room window. Its screen ____1____ (describe) as simple to use, and I expected buying a ticket to take only a moment. Then I noticed an older passenger standing in front of it with a puzzled expression.\n\nHe asked me ____2____ (help) find the return-ticket option. I could read the words, but the sunlight reflected from the screen made several ____3____ (button) hard to see. The difficulty was not necessarily his knowledge of the menu.\n\nWe moved slightly to one side, ____4____ the reflection was less strong. The option became clearer. I did not touch his payment card or enter any private information. A member of staff came over to provide the assistance he needed.\n\nAfter ____5____ (watch) the exchange, I bought my own ticket. I read each stage ____6____ (careful), noticing that the first screen and final confirmation did not present the information in exactly the same order.\n\nThe passenger thanked the staff member ____7____ her patience. She reported the reflection problem rather than simply tell him to practise more. A screen could have clear wording and still be difficult to use from a particular position at a particular time.\n\nIt was ____8____ useful reminder about the difference between a label and an experience. The designers' ____9____ (intend) had been to simplify the task, but that intention did not remove the need to observe actual use. We both caught ____10____ (we) trains. The machine remained by the window, with a practical issue now recorded for the people responsible to examine.",
+            "explanation": "Asked me takes to help. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to help"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "help",
+                "helping",
+                "helped"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ticket-machine-129.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of button.",
+            "material": "The ticket machine beside the window\n\nThe station installed a new ticket machine beside the waiting-room window. Its screen ____1____ (describe) as simple to use, and I expected buying a ticket to take only a moment. Then I noticed an older passenger standing in front of it with a puzzled expression.\n\nHe asked me ____2____ (help) find the return-ticket option. I could read the words, but the sunlight reflected from the screen made several ____3____ (button) hard to see. The difficulty was not necessarily his knowledge of the menu.\n\nWe moved slightly to one side, ____4____ the reflection was less strong. The option became clearer. I did not touch his payment card or enter any private information. A member of staff came over to provide the assistance he needed.\n\nAfter ____5____ (watch) the exchange, I bought my own ticket. I read each stage ____6____ (careful), noticing that the first screen and final confirmation did not present the information in exactly the same order.\n\nThe passenger thanked the staff member ____7____ her patience. She reported the reflection problem rather than simply tell him to practise more. A screen could have clear wording and still be difficult to use from a particular position at a particular time.\n\nIt was ____8____ useful reminder about the difference between a label and an experience. The designers' ____9____ (intend) had been to simplify the task, but that intention did not remove the need to observe actual use. We both caught ____10____ (we) trains. The machine remained by the window, with a practical issue now recorded for the people responsible to examine.",
+            "explanation": "Several requires buttons. Singular/process form do not count screen controls.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "buttons"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "button",
+                "buttoning"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ticket-machine-129.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "The ticket machine beside the window\n\nThe station installed a new ticket machine beside the waiting-room window. Its screen ____1____ (describe) as simple to use, and I expected buying a ticket to take only a moment. Then I noticed an older passenger standing in front of it with a puzzled expression.\n\nHe asked me ____2____ (help) find the return-ticket option. I could read the words, but the sunlight reflected from the screen made several ____3____ (button) hard to see. The difficulty was not necessarily his knowledge of the menu.\n\nWe moved slightly to one side, ____4____ the reflection was less strong. The option became clearer. I did not touch his payment card or enter any private information. A member of staff came over to provide the assistance he needed.\n\nAfter ____5____ (watch) the exchange, I bought my own ticket. I read each stage ____6____ (careful), noticing that the first screen and final confirmation did not present the information in exactly the same order.\n\nThe passenger thanked the staff member ____7____ her patience. She reported the reflection problem rather than simply tell him to practise more. A screen could have clear wording and still be difficult to use from a particular position at a particular time.\n\nIt was ____8____ useful reminder about the difference between a label and an experience. The designers' ____9____ (intend) had been to simplify the task, but that intention did not remove the need to observe actual use. We both caught ____10____ (we) trains. The machine remained by the window, with a practical issue now recorded for the people responsible to examine.",
+            "explanation": "Where introduces position at which reflection weaker. Which/what do not supply locative relation to complete clause.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "where"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "which",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ticket-machine-129.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of watch.",
+            "material": "The ticket machine beside the window\n\nThe station installed a new ticket machine beside the waiting-room window. Its screen ____1____ (describe) as simple to use, and I expected buying a ticket to take only a moment. Then I noticed an older passenger standing in front of it with a puzzled expression.\n\nHe asked me ____2____ (help) find the return-ticket option. I could read the words, but the sunlight reflected from the screen made several ____3____ (button) hard to see. The difficulty was not necessarily his knowledge of the menu.\n\nWe moved slightly to one side, ____4____ the reflection was less strong. The option became clearer. I did not touch his payment card or enter any private information. A member of staff came over to provide the assistance he needed.\n\nAfter ____5____ (watch) the exchange, I bought my own ticket. I read each stage ____6____ (careful), noticing that the first screen and final confirmation did not present the information in exactly the same order.\n\nThe passenger thanked the staff member ____7____ her patience. She reported the reflection problem rather than simply tell him to practise more. A screen could have clear wording and still be difficult to use from a particular position at a particular time.\n\nIt was ____8____ useful reminder about the difference between a label and an experience. The designers' ____9____ (intend) had been to simplify the task, but that intention did not remove the need to observe actual use. We both caught ____10____ (we) trains. The machine remained by the window, with a practical issue now recorded for the people responsible to examine.",
+            "explanation": "After watching/having watched fit prior observation. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "watching",
+              "having watched"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "watch",
+                "watched",
+                "to watch"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ticket-machine-129.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of careful.",
+            "material": "The ticket machine beside the window\n\nThe station installed a new ticket machine beside the waiting-room window. Its screen ____1____ (describe) as simple to use, and I expected buying a ticket to take only a moment. Then I noticed an older passenger standing in front of it with a puzzled expression.\n\nHe asked me ____2____ (help) find the return-ticket option. I could read the words, but the sunlight reflected from the screen made several ____3____ (button) hard to see. The difficulty was not necessarily his knowledge of the menu.\n\nWe moved slightly to one side, ____4____ the reflection was less strong. The option became clearer. I did not touch his payment card or enter any private information. A member of staff came over to provide the assistance he needed.\n\nAfter ____5____ (watch) the exchange, I bought my own ticket. I read each stage ____6____ (careful), noticing that the first screen and final confirmation did not present the information in exactly the same order.\n\nThe passenger thanked the staff member ____7____ her patience. She reported the reflection problem rather than simply tell him to practise more. A screen could have clear wording and still be difficult to use from a particular position at a particular time.\n\nIt was ____8____ useful reminder about the difference between a label and an experience. The designers' ____9____ (intend) had been to simplify the task, but that intention did not remove the need to observe actual use. We both caught ____10____ (we) trains. The machine remained by the window, with a practical issue now recorded for the people responsible to examine.",
+            "explanation": "Carefully modifies read. Carefulness noun does not fit; unlisted flat readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ticket-machine-129.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "The ticket machine beside the window\n\nThe station installed a new ticket machine beside the waiting-room window. Its screen ____1____ (describe) as simple to use, and I expected buying a ticket to take only a moment. Then I noticed an older passenger standing in front of it with a puzzled expression.\n\nHe asked me ____2____ (help) find the return-ticket option. I could read the words, but the sunlight reflected from the screen made several ____3____ (button) hard to see. The difficulty was not necessarily his knowledge of the menu.\n\nWe moved slightly to one side, ____4____ the reflection was less strong. The option became clearer. I did not touch his payment card or enter any private information. A member of staff came over to provide the assistance he needed.\n\nAfter ____5____ (watch) the exchange, I bought my own ticket. I read each stage ____6____ (careful), noticing that the first screen and final confirmation did not present the information in exactly the same order.\n\nThe passenger thanked the staff member ____7____ her patience. She reported the reflection problem rather than simply tell him to practise more. A screen could have clear wording and still be difficult to use from a particular position at a particular time.\n\nIt was ____8____ useful reminder about the difference between a label and an experience. The designers' ____9____ (intend) had been to simplify the task, but that intention did not remove the need to observe actual use. We both caught ____10____ (we) trains. The machine remained by the window, with a practical issue now recorded for the people responsible to examine.",
+            "explanation": "Thanked for patience takes for. To/of do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "to",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ticket-machine-129.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "The ticket machine beside the window\n\nThe station installed a new ticket machine beside the waiting-room window. Its screen ____1____ (describe) as simple to use, and I expected buying a ticket to take only a moment. Then I noticed an older passenger standing in front of it with a puzzled expression.\n\nHe asked me ____2____ (help) find the return-ticket option. I could read the words, but the sunlight reflected from the screen made several ____3____ (button) hard to see. The difficulty was not necessarily his knowledge of the menu.\n\nWe moved slightly to one side, ____4____ the reflection was less strong. The option became clearer. I did not touch his payment card or enter any private information. A member of staff came over to provide the assistance he needed.\n\nAfter ____5____ (watch) the exchange, I bought my own ticket. I read each stage ____6____ (careful), noticing that the first screen and final confirmation did not present the information in exactly the same order.\n\nThe passenger thanked the staff member ____7____ her patience. She reported the reflection problem rather than simply tell him to practise more. A screen could have clear wording and still be difficult to use from a particular position at a particular time.\n\nIt was ____8____ useful reminder about the difference between a label and an experience. The designers' ____9____ (intend) had been to simplify the task, but that intention did not remove the need to observe actual use. We both caught ____10____ (we) trains. The machine remained by the window, with a practical issue now recorded for the people responsible to examine.",
+            "explanation": "Useful begins with consonant /j/, so a. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ticket-machine-129.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of intend.",
+            "material": "The ticket machine beside the window\n\nThe station installed a new ticket machine beside the waiting-room window. Its screen ____1____ (describe) as simple to use, and I expected buying a ticket to take only a moment. Then I noticed an older passenger standing in front of it with a puzzled expression.\n\nHe asked me ____2____ (help) find the return-ticket option. I could read the words, but the sunlight reflected from the screen made several ____3____ (button) hard to see. The difficulty was not necessarily his knowledge of the menu.\n\nWe moved slightly to one side, ____4____ the reflection was less strong. The option became clearer. I did not touch his payment card or enter any private information. A member of staff came over to provide the assistance he needed.\n\nAfter ____5____ (watch) the exchange, I bought my own ticket. I read each stage ____6____ (careful), noticing that the first screen and final confirmation did not present the information in exactly the same order.\n\nThe passenger thanked the staff member ____7____ her patience. She reported the reflection problem rather than simply tell him to practise more. A screen could have clear wording and still be difficult to use from a particular position at a particular time.\n\nIt was ____8____ useful reminder about the difference between a label and an experience. The designers' ____9____ (intend) had been to simplify the task, but that intention did not remove the need to observe actual use. We both caught ____10____ (we) trains. The machine remained by the window, with a practical issue now recorded for the people responsible to examine.",
+            "explanation": "The designers’ intention had been requires noun. Participle/adverb do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "intention"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "intended",
+                "intentionally"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior3.ticket-machine-129.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of we.",
+            "material": "The ticket machine beside the window\n\nThe station installed a new ticket machine beside the waiting-room window. Its screen ____1____ (describe) as simple to use, and I expected buying a ticket to take only a moment. Then I noticed an older passenger standing in front of it with a puzzled expression.\n\nHe asked me ____2____ (help) find the return-ticket option. I could read the words, but the sunlight reflected from the screen made several ____3____ (button) hard to see. The difficulty was not necessarily his knowledge of the menu.\n\nWe moved slightly to one side, ____4____ the reflection was less strong. The option became clearer. I did not touch his payment card or enter any private information. A member of staff came over to provide the assistance he needed.\n\nAfter ____5____ (watch) the exchange, I bought my own ticket. I read each stage ____6____ (careful), noticing that the first screen and final confirmation did not present the information in exactly the same order.\n\nThe passenger thanked the staff member ____7____ her patience. She reported the reflection problem rather than simply tell him to practise more. A screen could have clear wording and still be difficult to use from a particular position at a particular time.\n\nIt was ____8____ useful reminder about the difference between a label and an experience. The designers' ____9____ (intend) had been to simplify the task, but that intention did not remove the need to observe actual use. We both caught ____10____ (we) trains. The machine remained by the window, with a practical issue now recorded for the people responsible to examine.",
+            "explanation": "Our modifies trains. Personal/independent possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "our"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "us",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "b95d5f1377ea2d384c2e71f6c20411468d3eb4e7f96930a21206a56077ab5738",
+      "reviewNotes": "Six complete original junior ten-gap grammar passages, two per grade, seven prompted/three single-word slots each. Fictional garden/dragon/holiday/game/poem/station stories. Same-author context and grammatical-variant review only; no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
