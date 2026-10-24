@@ -7,7 +7,8 @@ supertonic_root="Packages/LingoKit/Sources/SpeechKit/Resources/Supertonic3/Model
 verification_stamp="${1:-}"
 
 fail() {
-  echo "错误：随包 Supertonic-3 模型不完整或校验不匹配。请先执行 git lfs pull。" >&2
+  echo "error: 随包 Supertonic-3 模型校验失败：$1" >&2
+  echo "若文件被误删，请从 Git 恢复报错路径；若 LFS 内容未展开，请执行 git lfs pull。" >&2
   exit 1
 }
 
@@ -18,10 +19,16 @@ verify_file() {
   local expected_sha256="$4"
   local path="$root/$relative_path"
 
-  [[ -f "$path" ]] || fail
-  [[ "$(stat -f '%z' "$path")" == "$expected_size" ]] || fail
-  [[ "$(shasum -a 256 "$path" | cut -d ' ' -f 1)" == "$expected_sha256" ]] || fail
+  [[ -f "$path" ]] || fail "缺少文件：$path"
+  local actual_size
+  actual_size="$(stat -f '%z' "$path")"
+  [[ "$actual_size" == "$expected_size" ]] \
+    || fail "文件大小不匹配：${path}（期望 ${expected_size} 字节，实际 ${actual_size} 字节）"
+  [[ "$(shasum -a 256 "$path" | cut -d ' ' -f 1)" == "$expected_sha256" ]] \
+    || fail "SHA-256 不匹配：$path"
 }
+
+[[ -d "$supertonic_root" ]] || fail "缺少模型目录：$supertonic_root"
 
 supertonic_file_count=$(find "$supertonic_root" -type f | wc -l | tr -d ' ')
 supertonic_byte_count=$(find "$supertonic_root" -type f -print0 \
@@ -64,8 +71,10 @@ verify_file "$supertonic_root" \
   "32168224" \
   "fd60d308e99c5be4796981f54bff2e0fe6983706bd31b48f331ddcd3239524a9"
 
-[[ "$supertonic_file_count" == "38" ]] || fail
-[[ "$supertonic_byte_count" == "171602494" ]] || fail
+[[ "$supertonic_file_count" == "38" ]] \
+  || fail "模型文件数量不匹配：${supertonic_root}（期望 38，实际 ${supertonic_file_count}）"
+[[ "$supertonic_byte_count" == "171602494" ]] \
+  || fail "模型总大小不匹配：${supertonic_root}（期望 171602494 字节，实际 ${supertonic_byte_count} 字节）"
 
 if [[ -n "$verification_stamp" ]]; then
   mkdir -p "$(dirname "$verification_stamp")"
