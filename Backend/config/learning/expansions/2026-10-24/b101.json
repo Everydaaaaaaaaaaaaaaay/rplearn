@@ -1,0 +1,1547 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b101",
+  "createdAt": "2026-10-24T00:44:37.919163+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior1.club-and-poster-dialogues-101",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior1",
+        "title": "10·24新题 · Two conversations: a club and a poster",
+        "summary": "Two conversations: a club and a poster，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.dialogue_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade7-hefei2025-21cnjy26607976.dialogue",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two full five-gap/seven-candidate conversations, two unused candidates each, following the recorded grade7 shared-dialogue structure. New functional contexts, not copied source sentences."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior practices: paired shared-dialogue matching for junior1 and junior3, two whole ten-gap grammar passages for junior2. Source-specific seven/five candidate rules retained. Same-author key/variant review, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior1.club-and-poster-dialogues-101",
+          "family": "dialogue_matching",
+          "label": "Two conversations: a club and a poster",
+          "candidateSHA256": "7540d2e5501be4ad5ecf07036af03038e2ff569d54fd77326bbb3add48c275c5",
+          "authorCheckSHA256": "b4c041a5c8638ff17e74c28d32fc7be6f8df3ba565e7627451b14b9c0548fa32",
+          "sourceGroupIds": [
+            "expansion.20261024.junior1.club-and-poster-dialogues-101#club",
+            "expansion.20261024.junior1.club-and-poster-dialogues-101#poster"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b101；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Finding the chess club\n\nA: Hi, Eva. I want to try the chess club, but I cannot find the room. ____1____\nB: It meets in Room8, next to the library.\nA: ____2____\nB: At four on Thursday. The first meeting finishes at five.\nA: I have never played before. ____3____\nB: Yes. Beginners are welcome, and the teacher will show us the pieces.\nA: Good. Do I need to buy a board?\nB: ____4____\nA: Then I only need my notebook. Can we go together after class?\nB: Of course. Wait for me by the library door.\nA: ____5____\nB: You’re welcome. I’m glad you want to try it.\n\nChecking a club poster\n\nA: I have finished the poster for our class book sale. Can you check it?\nB: ____1____\nA: The sale is on Friday, after school.\nB: But the poster says Thursday. Please change that first.\nA: Done. ____2____\nB: In the main hall, not our classroom. More people can come in there.\nA: I will add the hall. Is the title big enough?\nB: ____3____\nA: A darker pen will help. What about the little picture at the bottom?\nB: ____4____\nA: All right. The book picture can stay beside the title instead.\nB: Now it is clear. ____5____\nA: Yes. We will ask the teacher before putting it up there."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior1.club-and-poster-dialogues-101.club.q1",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation. Two options are not needed.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "Finding the chess club\n\nA: Hi, Eva. I want to try the chess club, but I cannot find the room. ____1____\nB: It meets in Room8, next to the library.\nA: ____2____\nB: At four on Thursday. The first meeting finishes at five.\nA: I have never played before. ____3____\nB: Yes. Beginners are welcome, and the teacher will show us the pieces.\nA: Good. Do I need to buy a board?\nB: ____4____\nA: Then I only need my notebook. Can we go together after class?\nB: Of course. Wait for me by the library door.\nA: ____5____\nB: You’re welcome. I’m glad you want to try it.",
+            "explanation": "C asks meeting location, answered by Room8. A time, B beginner admission, E equipment and D thanks fit other gaps. F/G do not locate the club.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. What time does it start?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Can I still join?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Where does the club meet?"
+              },
+              {
+                "id": "o3",
+                "text": "D. Thank you for helping me."
+              },
+              {
+                "id": "o4",
+                "text": "E. No. The club has boards we can use."
+              },
+              {
+                "id": "o5",
+                "text": "F. How much is your bicycle?"
+              },
+              {
+                "id": "o6",
+                "text": "G. My brother has already eaten lunch."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior1.club-and-poster-dialogues-101.club.q2",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation. Two options are not needed.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "Finding the chess club\n\nA: Hi, Eva. I want to try the chess club, but I cannot find the room. ____1____\nB: It meets in Room8, next to the library.\nA: ____2____\nB: At four on Thursday. The first meeting finishes at five.\nA: I have never played before. ____3____\nB: Yes. Beginners are welcome, and the teacher will show us the pieces.\nA: Good. Do I need to buy a board?\nB: ____4____\nA: Then I only need my notebook. Can we go together after class?\nB: Of course. Wait for me by the library door.\nA: ____5____\nB: You’re welcome. I’m glad you want to try it.",
+            "explanation": "A asks start time, answered by four Thursday. B/C/D/E concern permission/location/thanks/equipment; F/G unrelated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. What time does it start?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Can I still join?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Where does the club meet?"
+              },
+              {
+                "id": "o3",
+                "text": "D. Thank you for helping me."
+              },
+              {
+                "id": "o4",
+                "text": "E. No. The club has boards we can use."
+              },
+              {
+                "id": "o5",
+                "text": "F. How much is your bicycle?"
+              },
+              {
+                "id": "o6",
+                "text": "G. My brother has already eaten lunch."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior1.club-and-poster-dialogues-101.club.q3",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation. Two options are not needed.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "Finding the chess club\n\nA: Hi, Eva. I want to try the chess club, but I cannot find the room. ____1____\nB: It meets in Room8, next to the library.\nA: ____2____\nB: At four on Thursday. The first meeting finishes at five.\nA: I have never played before. ____3____\nB: Yes. Beginners are welcome, and the teacher will show us the pieces.\nA: Good. Do I need to buy a board?\nB: ____4____\nA: Then I only need my notebook. Can we go together after class?\nB: Of course. Wait for me by the library door.\nA: ____5____\nB: You’re welcome. I’m glad you want to try it.",
+            "explanation": "B asks whether a novice may join, followed by beginners welcome. A/C/D/E do not ask admission; F/G unrelated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. What time does it start?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Can I still join?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Where does the club meet?"
+              },
+              {
+                "id": "o3",
+                "text": "D. Thank you for helping me."
+              },
+              {
+                "id": "o4",
+                "text": "E. No. The club has boards we can use."
+              },
+              {
+                "id": "o5",
+                "text": "F. How much is your bicycle?"
+              },
+              {
+                "id": "o6",
+                "text": "G. My brother has already eaten lunch."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior1.club-and-poster-dialogues-101.club.q4",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation. Two options are not needed.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "Finding the chess club\n\nA: Hi, Eva. I want to try the chess club, but I cannot find the room. ____1____\nB: It meets in Room8, next to the library.\nA: ____2____\nB: At four on Thursday. The first meeting finishes at five.\nA: I have never played before. ____3____\nB: Yes. Beginners are welcome, and the teacher will show us the pieces.\nA: Good. Do I need to buy a board?\nB: ____4____\nA: Then I only need my notebook. Can we go together after class?\nB: Of course. Wait for me by the library door.\nA: ____5____\nB: You’re welcome. I’m glad you want to try it.",
+            "explanation": "E answers the need to buy a board, allowing only a notebook next. A/B/C/D belong elsewhere and F/G do not provide equipment.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. What time does it start?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Can I still join?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Where does the club meet?"
+              },
+              {
+                "id": "o3",
+                "text": "D. Thank you for helping me."
+              },
+              {
+                "id": "o4",
+                "text": "E. No. The club has boards we can use."
+              },
+              {
+                "id": "o5",
+                "text": "F. How much is your bicycle?"
+              },
+              {
+                "id": "o6",
+                "text": "G. My brother has already eaten lunch."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.junior1.club-and-poster-dialogues-101.club.q5",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation. Two options are not needed.",
+            "prompt": "Choose the best option for gap 5.",
+            "material": "Finding the chess club\n\nA: Hi, Eva. I want to try the chess club, but I cannot find the room. ____1____\nB: It meets in Room8, next to the library.\nA: ____2____\nB: At four on Thursday. The first meeting finishes at five.\nA: I have never played before. ____3____\nB: Yes. Beginners are welcome, and the teacher will show us the pieces.\nA: Good. Do I need to buy a board?\nB: ____4____\nA: Then I only need my notebook. Can we go together after class?\nB: Of course. Wait for me by the library door.\nA: ____5____\nB: You’re welcome. I’m glad you want to try it.",
+            "explanation": "D gives thanks answered by You’re welcome. A/B/C/E are information/permission/equipment turns; F/G do not express gratitude.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. What time does it start?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Can I still join?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Where does the club meet?"
+              },
+              {
+                "id": "o3",
+                "text": "D. Thank you for helping me."
+              },
+              {
+                "id": "o4",
+                "text": "E. No. The club has boards we can use."
+              },
+              {
+                "id": "o5",
+                "text": "F. How much is your bicycle?"
+              },
+              {
+                "id": "o6",
+                "text": "G. My brother has already eaten lunch."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior1.club-and-poster-dialogues-101.poster.q1",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation. Two options are not needed.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "Checking a club poster\n\nA: I have finished the poster for our class book sale. Can you check it?\nB: ____1____\nA: The sale is on Friday, after school.\nB: But the poster says Thursday. Please change that first.\nA: Done. ____2____\nB: In the main hall, not our classroom. More people can come in there.\nA: I will add the hall. Is the title big enough?\nB: ____3____\nA: A darker pen will help. What about the little picture at the bottom?\nB: ____4____\nA: All right. The book picture can stay beside the title instead.\nB: Now it is clear. ____5____\nA: Yes. We will ask the teacher before putting it up there.",
+            "explanation": "E agrees to check and asks the day, answered Friday. D location, C title contrast, A picture placement and B display site fit later. F/G unrelated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. It hides part of the time. Move it away from the words."
+              },
+              {
+                "id": "o1",
+                "text": "B. Could we put a copy by the school gate?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Yes, but it is hard to see in that pale colour."
+              },
+              {
+                "id": "o3",
+                "text": "D. Where are we having it?"
+              },
+              {
+                "id": "o4",
+                "text": "E. Sure. Which day is the sale?"
+              },
+              {
+                "id": "o5",
+                "text": "F. I have never visited that zoo."
+              },
+              {
+                "id": "o6",
+                "text": "G. He can swim very fast."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.junior1.club-and-poster-dialogues-101.poster.q2",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation. Two options are not needed.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "Checking a club poster\n\nA: I have finished the poster for our class book sale. Can you check it?\nB: ____1____\nA: The sale is on Friday, after school.\nB: But the poster says Thursday. Please change that first.\nA: Done. ____2____\nB: In the main hall, not our classroom. More people can come in there.\nA: I will add the hall. Is the title big enough?\nB: ____3____\nA: A darker pen will help. What about the little picture at the bottom?\nB: ____4____\nA: All right. The book picture can stay beside the title instead.\nB: Now it is clear. ____5____\nA: Yes. We will ask the teacher before putting it up there.",
+            "explanation": "D asks where the sale is, answered main hall. E day, C colour, A overlap and B poster site are different turns. F/G do not ask venue.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. It hides part of the time. Move it away from the words."
+              },
+              {
+                "id": "o1",
+                "text": "B. Could we put a copy by the school gate?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Yes, but it is hard to see in that pale colour."
+              },
+              {
+                "id": "o3",
+                "text": "D. Where are we having it?"
+              },
+              {
+                "id": "o4",
+                "text": "E. Sure. Which day is the sale?"
+              },
+              {
+                "id": "o5",
+                "text": "F. I have never visited that zoo."
+              },
+              {
+                "id": "o6",
+                "text": "G. He can swim very fast."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior1.club-and-poster-dialogues-101.poster.q3",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation. Two options are not needed.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "Checking a club poster\n\nA: I have finished the poster for our class book sale. Can you check it?\nB: ____1____\nA: The sale is on Friday, after school.\nB: But the poster says Thursday. Please change that first.\nA: Done. ____2____\nB: In the main hall, not our classroom. More people can come in there.\nA: I will add the hall. Is the title big enough?\nB: ____3____\nA: A darker pen will help. What about the little picture at the bottom?\nB: ____4____\nA: All right. The book picture can stay beside the title instead.\nB: Now it is clear. ____5____\nA: Yes. We will ask the teacher before putting it up there.",
+            "explanation": "C answers whether the title is big enough while identifying pale colour, leading to a darker pen. A picture, B copy location, D venue and E day serve other gaps.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. It hides part of the time. Move it away from the words."
+              },
+              {
+                "id": "o1",
+                "text": "B. Could we put a copy by the school gate?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Yes, but it is hard to see in that pale colour."
+              },
+              {
+                "id": "o3",
+                "text": "D. Where are we having it?"
+              },
+              {
+                "id": "o4",
+                "text": "E. Sure. Which day is the sale?"
+              },
+              {
+                "id": "o5",
+                "text": "F. I have never visited that zoo."
+              },
+              {
+                "id": "o6",
+                "text": "G. He can swim very fast."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior1.club-and-poster-dialogues-101.poster.q4",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation. Two options are not needed.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "Checking a club poster\n\nA: I have finished the poster for our class book sale. Can you check it?\nB: ____1____\nA: The sale is on Friday, after school.\nB: But the poster says Thursday. Please change that first.\nA: Done. ____2____\nB: In the main hall, not our classroom. More people can come in there.\nA: I will add the hall. Is the title big enough?\nB: ____3____\nA: A darker pen will help. What about the little picture at the bottom?\nB: ____4____\nA: All right. The book picture can stay beside the title instead.\nB: Now it is clear. ____5____\nA: Yes. We will ask the teacher before putting it up there.",
+            "explanation": "A explains why the bottom picture must move: it covers time. B/C/D/E concern other checks; F/G unrelated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. It hides part of the time. Move it away from the words."
+              },
+              {
+                "id": "o1",
+                "text": "B. Could we put a copy by the school gate?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Yes, but it is hard to see in that pale colour."
+              },
+              {
+                "id": "o3",
+                "text": "D. Where are we having it?"
+              },
+              {
+                "id": "o4",
+                "text": "E. Sure. Which day is the sale?"
+              },
+              {
+                "id": "o5",
+                "text": "F. I have never visited that zoo."
+              },
+              {
+                "id": "o6",
+                "text": "G. He can swim very fast."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior1.club-and-poster-dialogues-101.poster.q5",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation. Two options are not needed.",
+            "prompt": "Choose the best option for gap 5.",
+            "material": "Checking a club poster\n\nA: I have finished the poster for our class book sale. Can you check it?\nB: ____1____\nA: The sale is on Friday, after school.\nB: But the poster says Thursday. Please change that first.\nA: Done. ____2____\nB: In the main hall, not our classroom. More people can come in there.\nA: I will add the hall. Is the title big enough?\nB: ____3____\nA: A darker pen will help. What about the little picture at the bottom?\nB: ____4____\nA: All right. The book picture can stay beside the title instead.\nB: Now it is clear. ____5____\nA: Yes. We will ask the teacher before putting it up there.",
+            "explanation": "B proposes the school gate, picked up by ask permission before putting it there. A/C/D/E are earlier questions or corrections; F/G do not propose display.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. It hides part of the time. Move it away from the words."
+              },
+              {
+                "id": "o1",
+                "text": "B. Could we put a copy by the school gate?"
+              },
+              {
+                "id": "o2",
+                "text": "C. Yes, but it is hard to see in that pale colour."
+              },
+              {
+                "id": "o3",
+                "text": "D. Where are we having it?"
+              },
+              {
+                "id": "o4",
+                "text": "E. Sure. Which day is the sale?"
+              },
+              {
+                "id": "o5",
+                "text": "F. I have never visited that zoo."
+              },
+              {
+                "id": "o6",
+                "text": "G. He can swim very fast."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "2043eb370f29076e87a475932858f9f07a288cbeb793eda48e22419e545594d0",
+      "reviewNotes": "Four complete junior practices: paired shared-dialogue matching for junior1 and junior3, two whole ten-gap grammar passages for junior2. Source-specific seven/five candidate rules retained. Same-author key/variant review, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.trip-and-donation-dialogues-101",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Two conversations: a trip bag and donated books",
+        "summary": "Two conversations: a trip bag and donated books，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.dialogue_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade9-chengdu2025-21cnjy23208601.dialogueChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two full five-gap/five-candidate shared-dialogue conversations. All five responses fit the complete exchange in each. Source supplies response structure only; no extra unused options."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior practices: paired shared-dialogue matching for junior1 and junior3, two whole ten-gap grammar passages for junior2. Source-specific seven/five candidate rules retained. Same-author key/variant review, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.trip-and-donation-dialogues-101",
+          "family": "dialogue_matching",
+          "label": "Two conversations: a trip bag and donated books",
+          "candidateSHA256": "2acd2c430d5e904ca69baaa0559e260c9c689b9fccc8201850cba59ba15ebbbd",
+          "authorCheckSHA256": "9ffe884a3c18b8b0fcc20a5a115e7f412a27e6c8fce2c90675bc1269f1d9a496",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.trip-and-donation-dialogues-101#trip",
+            "expansion.20261024.junior3.trip-and-donation-dialogues-101#books"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b101；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Packing for the class trip\n\nA: My bag for tomorrow is already full, but I have not packed lunch yet. What should I do?\nB: ____1____\nA: Here it is. It says lunch, water, a coat and a notebook. I have added three games too.\nB: ____2____\nA: You're right. I only need one small game for the journey. Shall I put the water at the bottom?\nB: ____3____\nA: Then I can reach it without taking everything out. The coat is quite large.\nB: ____4____\nA: It does fold smaller than I thought. Now there is room for lunch. Am I finished?\nB: ____5____\nA: I will. A name card will help if someone else has the same bag.\n\nPreparing books for donation\n\nA: Our school is collecting books for the community reading room. I have a box of old ones. Can I bring them all?\nB: ____1____\nA: The notice asks for complete children's stories in good condition. Some of mine have missing pages.\nB: ____2____\nA: I have separated those. The remaining books look fine, but my address is written inside one.\nB: ____3____\nA: I will ask Mum to help me deal with that before giving it away. Should I put the books loose in a bag?\nB: ____4____\nA: A small strong box will protect them. Shall I leave it by the reading-room door tonight?\nB: ____5____\nA: Then I will take it to the school desk tomorrow, during the collection hours."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.trip-and-donation-dialogues-101.trip.q1",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation and choose the best option for each gap.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "Packing for the class trip\n\nA: My bag for tomorrow is already full, but I have not packed lunch yet. What should I do?\nB: ____1____\nA: Here it is. It says lunch, water, a coat and a notebook. I have added three games too.\nB: ____2____\nA: You're right. I only need one small game for the journey. Shall I put the water at the bottom?\nB: ____3____\nA: Then I can reach it without taking everything out. The coat is quite large.\nB: ____4____\nA: It does fold smaller than I thought. Now there is room for lunch. Am I finished?\nB: ____5____\nA: I will. A name card will help if someone else has the same bag.",
+            "explanation": "B requests the list that the next line reads. E extra games, A water access, C coat packing and D final label fit later turns.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Keep it where you can get it easily, with the lid secure."
+              },
+              {
+                "id": "o1",
+                "text": "B. Check the school list before deciding what to remove."
+              },
+              {
+                "id": "o2",
+                "text": "C. Fold it carefully and keep it separate from the food."
+              },
+              {
+                "id": "o3",
+                "text": "D. Label the bag and check the final list once more."
+              },
+              {
+                "id": "o4",
+                "text": "E. Those extra games may be taking the space you need."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.trip-and-donation-dialogues-101.trip.q2",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation and choose the best option for each gap.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "Packing for the class trip\n\nA: My bag for tomorrow is already full, but I have not packed lunch yet. What should I do?\nB: ____1____\nA: Here it is. It says lunch, water, a coat and a notebook. I have added three games too.\nB: ____2____\nA: You're right. I only need one small game for the journey. Shall I put the water at the bottom?\nB: ____3____\nA: Then I can reach it without taking everything out. The coat is quite large.\nB: ____4____\nA: It does fold smaller than I thought. Now there is room for lunch. Am I finished?\nB: ____5____\nA: I will. A name card will help if someone else has the same bag.",
+            "explanation": "E identifies the unrequired games, leading to keeping only one. A/B/C/D concern bottle/list/coat/final check rather than the extras.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Keep it where you can get it easily, with the lid secure."
+              },
+              {
+                "id": "o1",
+                "text": "B. Check the school list before deciding what to remove."
+              },
+              {
+                "id": "o2",
+                "text": "C. Fold it carefully and keep it separate from the food."
+              },
+              {
+                "id": "o3",
+                "text": "D. Label the bag and check the final list once more."
+              },
+              {
+                "id": "o4",
+                "text": "E. Those extra games may be taking the space you need."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.junior3.trip-and-donation-dialogues-101.trip.q3",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation and choose the best option for each gap.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "Packing for the class trip\n\nA: My bag for tomorrow is already full, but I have not packed lunch yet. What should I do?\nB: ____1____\nA: Here it is. It says lunch, water, a coat and a notebook. I have added three games too.\nB: ____2____\nA: You're right. I only need one small game for the journey. Shall I put the water at the bottom?\nB: ____3____\nA: Then I can reach it without taking everything out. The coat is quite large.\nB: ____4____\nA: It does fold smaller than I thought. Now there is room for lunch. Am I finished?\nB: ____5____\nA: I will. A name card will help if someone else has the same bag.",
+            "explanation": "A answers where water should go, picked up by easy access. B/C/D/E concern other tasks and do not respond to bottle placement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Keep it where you can get it easily, with the lid secure."
+              },
+              {
+                "id": "o1",
+                "text": "B. Check the school list before deciding what to remove."
+              },
+              {
+                "id": "o2",
+                "text": "C. Fold it carefully and keep it separate from the food."
+              },
+              {
+                "id": "o3",
+                "text": "D. Label the bag and check the final list once more."
+              },
+              {
+                "id": "o4",
+                "text": "E. Those extra games may be taking the space you need."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.trip-and-donation-dialogues-101.trip.q4",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation and choose the best option for each gap.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "Packing for the class trip\n\nA: My bag for tomorrow is already full, but I have not packed lunch yet. What should I do?\nB: ____1____\nA: Here it is. It says lunch, water, a coat and a notebook. I have added three games too.\nB: ____2____\nA: You're right. I only need one small game for the journey. Shall I put the water at the bottom?\nB: ____3____\nA: Then I can reach it without taking everything out. The coat is quite large.\nB: ____4____\nA: It does fold smaller than I thought. Now there is room for lunch. Am I finished?\nB: ____5____\nA: I will. A name card will help if someone else has the same bag.",
+            "explanation": "C folds the bulky coat while separating it from food, leading to its smaller size and lunch space. A/B/D/E do not address the coat.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Keep it where you can get it easily, with the lid secure."
+              },
+              {
+                "id": "o1",
+                "text": "B. Check the school list before deciding what to remove."
+              },
+              {
+                "id": "o2",
+                "text": "C. Fold it carefully and keep it separate from the food."
+              },
+              {
+                "id": "o3",
+                "text": "D. Label the bag and check the final list once more."
+              },
+              {
+                "id": "o4",
+                "text": "E. Those extra games may be taking the space you need."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.trip-and-donation-dialogues-101.trip.q5",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation and choose the best option for each gap.",
+            "prompt": "Choose the best option for gap 5.",
+            "material": "Packing for the class trip\n\nA: My bag for tomorrow is already full, but I have not packed lunch yet. What should I do?\nB: ____1____\nA: Here it is. It says lunch, water, a coat and a notebook. I have added three games too.\nB: ____2____\nA: You're right. I only need one small game for the journey. Shall I put the water at the bottom?\nB: ____3____\nA: Then I can reach it without taking everything out. The coat is quite large.\nB: ____4____\nA: It does fold smaller than I thought. Now there is room for lunch. Am I finished?\nB: ____5____\nA: I will. A name card will help if someone else has the same bag.",
+            "explanation": "D provides a final label/list check, and the reply mentions a name card. A/B/C/E are earlier packing actions.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Keep it where you can get it easily, with the lid secure."
+              },
+              {
+                "id": "o1",
+                "text": "B. Check the school list before deciding what to remove."
+              },
+              {
+                "id": "o2",
+                "text": "C. Fold it carefully and keep it separate from the food."
+              },
+              {
+                "id": "o3",
+                "text": "D. Label the bag and check the final list once more."
+              },
+              {
+                "id": "o4",
+                "text": "E. Those extra games may be taking the space you need."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.trip-and-donation-dialogues-101.books.q1",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation and choose the best option for each gap.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "Preparing books for donation\n\nA: Our school is collecting books for the community reading room. I have a box of old ones. Can I bring them all?\nB: ____1____\nA: The notice asks for complete children's stories in good condition. Some of mine have missing pages.\nB: ____2____\nA: I have separated those. The remaining books look fine, but my address is written inside one.\nB: ____3____\nA: I will ask Mum to help me deal with that before giving it away. Should I put the books loose in a bag?\nB: ____4____\nA: A small strong box will protect them. Shall I leave it by the reading-room door tonight?\nB: ____5____\nA: Then I will take it to the school desk tomorrow, during the collection hours.",
+            "explanation": "B asks for the acceptance notice, which the next turn reads. A separates damaged books, D personal information, E packing and C delivery timing follow later.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Keep the incomplete ones out of this collection."
+              },
+              {
+                "id": "o1",
+                "text": "B. First, read the collection notice so you know what is accepted."
+              },
+              {
+                "id": "o2",
+                "text": "C. No. Use the supervised collection point at the stated time."
+              },
+              {
+                "id": "o3",
+                "text": "D. Check personal information and ask an adult before passing it on."
+              },
+              {
+                "id": "o4",
+                "text": "E. Pack them so the covers and pages will not be damaged on the way."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.trip-and-donation-dialogues-101.books.q2",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation and choose the best option for each gap.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "Preparing books for donation\n\nA: Our school is collecting books for the community reading room. I have a box of old ones. Can I bring them all?\nB: ____1____\nA: The notice asks for complete children's stories in good condition. Some of mine have missing pages.\nB: ____2____\nA: I have separated those. The remaining books look fine, but my address is written inside one.\nB: ____3____\nA: I will ask Mum to help me deal with that before giving it away. Should I put the books loose in a bag?\nB: ____4____\nA: A small strong box will protect them. Shall I leave it by the reading-room door tonight?\nB: ____5____\nA: Then I will take it to the school desk tomorrow, during the collection hours.",
+            "explanation": "A excludes missing-page books under the notice’s complete-book requirement. B notice, D address, E transport and C collection point serve other turns.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Keep the incomplete ones out of this collection."
+              },
+              {
+                "id": "o1",
+                "text": "B. First, read the collection notice so you know what is accepted."
+              },
+              {
+                "id": "o2",
+                "text": "C. No. Use the supervised collection point at the stated time."
+              },
+              {
+                "id": "o3",
+                "text": "D. Check personal information and ask an adult before passing it on."
+              },
+              {
+                "id": "o4",
+                "text": "E. Pack them so the covers and pages will not be damaged on the way."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.trip-and-donation-dialogues-101.books.q3",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation and choose the best option for each gap.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "Preparing books for donation\n\nA: Our school is collecting books for the community reading room. I have a box of old ones. Can I bring them all?\nB: ____1____\nA: The notice asks for complete children's stories in good condition. Some of mine have missing pages.\nB: ____2____\nA: I have separated those. The remaining books look fine, but my address is written inside one.\nB: ____3____\nA: I will ask Mum to help me deal with that before giving it away. Should I put the books loose in a bag?\nB: ____4____\nA: A small strong box will protect them. Shall I leave it by the reading-room door tonight?\nB: ____5____\nA: Then I will take it to the school desk tomorrow, during the collection hours.",
+            "explanation": "D addresses the written home information, and the reply asks Mum for help. A/B/C/E do not resolve personal details.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Keep the incomplete ones out of this collection."
+              },
+              {
+                "id": "o1",
+                "text": "B. First, read the collection notice so you know what is accepted."
+              },
+              {
+                "id": "o2",
+                "text": "C. No. Use the supervised collection point at the stated time."
+              },
+              {
+                "id": "o3",
+                "text": "D. Check personal information and ask an adult before passing it on."
+              },
+              {
+                "id": "o4",
+                "text": "E. Pack them so the covers and pages will not be damaged on the way."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.trip-and-donation-dialogues-101.books.q4",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation and choose the best option for each gap.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "Preparing books for donation\n\nA: Our school is collecting books for the community reading room. I have a box of old ones. Can I bring them all?\nB: ____1____\nA: The notice asks for complete children's stories in good condition. Some of mine have missing pages.\nB: ____2____\nA: I have separated those. The remaining books look fine, but my address is written inside one.\nB: ____3____\nA: I will ask Mum to help me deal with that before giving it away. Should I put the books loose in a bag?\nB: ____4____\nA: A small strong box will protect them. Shall I leave it by the reading-room door tonight?\nB: ____5____\nA: Then I will take it to the school desk tomorrow, during the collection hours.",
+            "explanation": "E answers packing securely, leading to the protective box. A/B/C/D concern eligibility, notice, delivery and privacy.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Keep the incomplete ones out of this collection."
+              },
+              {
+                "id": "o1",
+                "text": "B. First, read the collection notice so you know what is accepted."
+              },
+              {
+                "id": "o2",
+                "text": "C. No. Use the supervised collection point at the stated time."
+              },
+              {
+                "id": "o3",
+                "text": "D. Check personal information and ask an adult before passing it on."
+              },
+              {
+                "id": "o4",
+                "text": "E. Pack them so the covers and pages will not be damaged on the way."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.junior3.trip-and-donation-dialogues-101.books.q5",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the whole conversation and choose the best option for each gap.",
+            "prompt": "Choose the best option for gap 5.",
+            "material": "Preparing books for donation\n\nA: Our school is collecting books for the community reading room. I have a box of old ones. Can I bring them all?\nB: ____1____\nA: The notice asks for complete children's stories in good condition. Some of mine have missing pages.\nB: ____2____\nA: I have separated those. The remaining books look fine, but my address is written inside one.\nB: ____3____\nA: I will ask Mum to help me deal with that before giving it away. Should I put the books loose in a bag?\nB: ____4____\nA: A small strong box will protect them. Shall I leave it by the reading-room door tonight?\nB: ____5____\nA: Then I will take it to the school desk tomorrow, during the collection hours.",
+            "explanation": "C rejects unattended night delivery and directs the supervised school desk. A/B/D/E are earlier preparation steps.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Keep the incomplete ones out of this collection."
+              },
+              {
+                "id": "o1",
+                "text": "B. First, read the collection notice so you know what is accepted."
+              },
+              {
+                "id": "o2",
+                "text": "C. No. Use the supervised collection point at the stated time."
+              },
+              {
+                "id": "o3",
+                "text": "D. Check personal information and ask an adult before passing it on."
+              },
+              {
+                "id": "o4",
+                "text": "E. Pack them so the covers and pages will not be damaged on the way."
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "ea368f00bf8ccd8793f4772e4f3d681e9341e26cb249f6556e2b9cd5024e53fa",
+      "reviewNotes": "Four complete junior practices: paired shared-dialogue matching for junior1 and junior3, two whole ten-gap grammar passages for junior2. Source-specific seven/five candidate rules retained. Same-author key/variant review, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.music-stand-101",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · The shared music stand",
+        "summary": "The shared music stand，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage with seven supplied-word and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior practices: paired shared-dialogue matching for junior1 and junior3, two whole ten-gap grammar passages for junior2. Source-specific seven/five candidate rules retained. Same-author key/variant review, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.music-stand-101",
+          "family": "passage_form",
+          "label": "The shared music stand",
+          "candidateSHA256": "719b88354dd0d66991f50b5fc1dd792292eb5cfb1709173bcaef84caa24d7629",
+          "authorCheckSHA256": "8720f442cde49110f32c0f832a118b484f22a95823865b473ddb1f3ef98e60e8",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.music-stand-101#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b101；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The shared music stand\n\nAt our school concert rehearsal, two students had to share one music stand. I thought that would be easy until I sat beside a player who was much ____1____ (tall) than I was. A position that suited him put part of the page too high for me.\n\nOur teacher asked us ____2____ (find) a position that both of us could use. We moved the stand slightly and checked the angle. The answer was not simply to let the first person choose and expect the other to manage.\n\nOne page contained a long repeat. My partner wanted to turn it ____3____ (quick), but I still needed the last line. We marked the place where the turn could happen and practised that moment without playing the whole piece.\n\nAfter ____4____ (agree) on the turn, we checked our pencils and spare pages. A loose sheet ____5____ (clip) to the stand so that it would not fall onto the floor. Our teacher made sure the clip did not cover any notes.\n\nDuring the next rehearsal, I lost my place for a moment. My partner pointed ____6____ the right line without stopping. Later, I helped him find a repeated section. Sharing involved small signals as well as shared equipment.\n\nThe arrangement became easier ____7____ we had discussed the difficult moments before the concert. We did not need identical habits to follow the same music. The most useful ____8____ (change) were ordinary ones: a better angle, a clear mark and a planned page turn. At the final rehearsal, we gave ____9____ (we) one last check from the audience's side. There was ____10____ small gap between the stand and the chair, leaving enough space to move safely."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.music-stand-101.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of tall.",
+            "material": "The shared music stand\n\nAt our school concert rehearsal, two students had to share one music stand. I thought that would be easy until I sat beside a player who was much ____1____ (tall) than I was. A position that suited him put part of the page too high for me.\n\nOur teacher asked us ____2____ (find) a position that both of us could use. We moved the stand slightly and checked the angle. The answer was not simply to let the first person choose and expect the other to manage.\n\nOne page contained a long repeat. My partner wanted to turn it ____3____ (quick), but I still needed the last line. We marked the place where the turn could happen and practised that moment without playing the whole piece.\n\nAfter ____4____ (agree) on the turn, we checked our pencils and spare pages. A loose sheet ____5____ (clip) to the stand so that it would not fall onto the floor. Our teacher made sure the clip did not cover any notes.\n\nDuring the next rehearsal, I lost my place for a moment. My partner pointed ____6____ the right line without stopping. Later, I helped him find a repeated section. Sharing involved small signals as well as shared equipment.\n\nThe arrangement became easier ____7____ we had discussed the difficult moments before the concert. We did not need identical habits to follow the same music. The most useful ____8____ (change) were ordinary ones: a better angle, a clear mark and a planned page turn. At the final rehearsal, we gave ____9____ (we) one last check from the audience's side. There was ____10____ small gap between the stand and the chair, leaving enough space to move safely.",
+            "explanation": "Than gives comparative taller/more tall. Tallest is superlative and more taller doubled.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "taller",
+              "more tall"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "tallest",
+                "more taller"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.music-stand-101.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with the correct form of find.",
+            "material": "The shared music stand\n\nAt our school concert rehearsal, two students had to share one music stand. I thought that would be easy until I sat beside a player who was much ____1____ (tall) than I was. A position that suited him put part of the page too high for me.\n\nOur teacher asked us ____2____ (find) a position that both of us could use. We moved the stand slightly and checked the angle. The answer was not simply to let the first person choose and expect the other to manage.\n\nOne page contained a long repeat. My partner wanted to turn it ____3____ (quick), but I still needed the last line. We marked the place where the turn could happen and practised that moment without playing the whole piece.\n\nAfter ____4____ (agree) on the turn, we checked our pencils and spare pages. A loose sheet ____5____ (clip) to the stand so that it would not fall onto the floor. Our teacher made sure the clip did not cover any notes.\n\nDuring the next rehearsal, I lost my place for a moment. My partner pointed ____6____ the right line without stopping. Later, I helped him find a repeated section. Sharing involved small signals as well as shared equipment.\n\nThe arrangement became easier ____7____ we had discussed the difficult moments before the concert. We did not need identical habits to follow the same music. The most useful ____8____ (change) were ordinary ones: a better angle, a clear mark and a planned page turn. At the final rehearsal, we gave ____9____ (we) one last check from the audience's side. There was ____10____ small gap between the stand and the chair, leaving enough space to move safely.",
+            "explanation": "Asked us takes to find. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to find"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "find",
+                "finding",
+                "found"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.music-stand-101.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of quick.",
+            "material": "The shared music stand\n\nAt our school concert rehearsal, two students had to share one music stand. I thought that would be easy until I sat beside a player who was much ____1____ (tall) than I was. A position that suited him put part of the page too high for me.\n\nOur teacher asked us ____2____ (find) a position that both of us could use. We moved the stand slightly and checked the angle. The answer was not simply to let the first person choose and expect the other to manage.\n\nOne page contained a long repeat. My partner wanted to turn it ____3____ (quick), but I still needed the last line. We marked the place where the turn could happen and practised that moment without playing the whole piece.\n\nAfter ____4____ (agree) on the turn, we checked our pencils and spare pages. A loose sheet ____5____ (clip) to the stand so that it would not fall onto the floor. Our teacher made sure the clip did not cover any notes.\n\nDuring the next rehearsal, I lost my place for a moment. My partner pointed ____6____ the right line without stopping. Later, I helped him find a repeated section. Sharing involved small signals as well as shared equipment.\n\nThe arrangement became easier ____7____ we had discussed the difficult moments before the concert. We did not need identical habits to follow the same music. The most useful ____8____ (change) were ordinary ones: a better angle, a clear mark and a planned page turn. At the final rehearsal, we gave ____9____ (we) one last check from the audience's side. There was ____10____ small gap between the stand and the chair, leaving enough space to move safely.",
+            "explanation": "Quickly modifies turn. Quickness is noun; unlisted flat-adverb uses remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "quickly"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "quickness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.music-stand-101.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with the correct form of agree.",
+            "material": "The shared music stand\n\nAt our school concert rehearsal, two students had to share one music stand. I thought that would be easy until I sat beside a player who was much ____1____ (tall) than I was. A position that suited him put part of the page too high for me.\n\nOur teacher asked us ____2____ (find) a position that both of us could use. We moved the stand slightly and checked the angle. The answer was not simply to let the first person choose and expect the other to manage.\n\nOne page contained a long repeat. My partner wanted to turn it ____3____ (quick), but I still needed the last line. We marked the place where the turn could happen and practised that moment without playing the whole piece.\n\nAfter ____4____ (agree) on the turn, we checked our pencils and spare pages. A loose sheet ____5____ (clip) to the stand so that it would not fall onto the floor. Our teacher made sure the clip did not cover any notes.\n\nDuring the next rehearsal, I lost my place for a moment. My partner pointed ____6____ the right line without stopping. Later, I helped him find a repeated section. Sharing involved small signals as well as shared equipment.\n\nThe arrangement became easier ____7____ we had discussed the difficult moments before the concert. We did not need identical habits to follow the same music. The most useful ____8____ (change) were ordinary ones: a better angle, a clear mark and a planned page turn. At the final rehearsal, we gave ____9____ (we) one last check from the audience's side. There was ____10____ small gap between the stand and the chair, leaving enough space to move safely.",
+            "explanation": "After agreeing/having agreed both express prior agreement. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "agreeing",
+              "having agreed"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "agree",
+                "agreed",
+                "to agree"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.music-stand-101.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of clip.",
+            "material": "The shared music stand\n\nAt our school concert rehearsal, two students had to share one music stand. I thought that would be easy until I sat beside a player who was much ____1____ (tall) than I was. A position that suited him put part of the page too high for me.\n\nOur teacher asked us ____2____ (find) a position that both of us could use. We moved the stand slightly and checked the angle. The answer was not simply to let the first person choose and expect the other to manage.\n\nOne page contained a long repeat. My partner wanted to turn it ____3____ (quick), but I still needed the last line. We marked the place where the turn could happen and practised that moment without playing the whole piece.\n\nAfter ____4____ (agree) on the turn, we checked our pencils and spare pages. A loose sheet ____5____ (clip) to the stand so that it would not fall onto the floor. Our teacher made sure the clip did not cover any notes.\n\nDuring the next rehearsal, I lost my place for a moment. My partner pointed ____6____ the right line without stopping. Later, I helped him find a repeated section. Sharing involved small signals as well as shared equipment.\n\nThe arrangement became easier ____7____ we had discussed the difficult moments before the concert. We did not need identical habits to follow the same music. The most useful ____8____ (change) were ordinary ones: a better angle, a clear mark and a planned page turn. At the final rehearsal, we gave ____9____ (we) one last check from the audience's side. There was ____10____ small gap between the stand and the chair, leaving enough space to move safely.",
+            "explanation": "Singular sheet receives clipping. Was/had been clipped fit; clipped lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was clipped",
+              "had been clipped"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "clipped",
+                "were clipped"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.music-stand-101.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with one appropriate word.",
+            "material": "The shared music stand\n\nAt our school concert rehearsal, two students had to share one music stand. I thought that would be easy until I sat beside a player who was much ____1____ (tall) than I was. A position that suited him put part of the page too high for me.\n\nOur teacher asked us ____2____ (find) a position that both of us could use. We moved the stand slightly and checked the angle. The answer was not simply to let the first person choose and expect the other to manage.\n\nOne page contained a long repeat. My partner wanted to turn it ____3____ (quick), but I still needed the last line. We marked the place where the turn could happen and practised that moment without playing the whole piece.\n\nAfter ____4____ (agree) on the turn, we checked our pencils and spare pages. A loose sheet ____5____ (clip) to the stand so that it would not fall onto the floor. Our teacher made sure the clip did not cover any notes.\n\nDuring the next rehearsal, I lost my place for a moment. My partner pointed ____6____ the right line without stopping. Later, I helped him find a repeated section. Sharing involved small signals as well as shared equipment.\n\nThe arrangement became easier ____7____ we had discussed the difficult moments before the concert. We did not need identical habits to follow the same music. The most useful ____8____ (change) were ordinary ones: a better angle, a clear mark and a planned page turn. At the final rehearsal, we gave ____9____ (we) one last check from the audience's side. There was ____10____ small gap between the stand and the chair, leaving enough space to move safely.",
+            "explanation": "Pointed to/at the right line both indicate it. Of/from do not fit this pointing-target relation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "to",
+              "at"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "of",
+                "from"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.music-stand-101.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with one appropriate word.",
+            "material": "The shared music stand\n\nAt our school concert rehearsal, two students had to share one music stand. I thought that would be easy until I sat beside a player who was much ____1____ (tall) than I was. A position that suited him put part of the page too high for me.\n\nOur teacher asked us ____2____ (find) a position that both of us could use. We moved the stand slightly and checked the angle. The answer was not simply to let the first person choose and expect the other to manage.\n\nOne page contained a long repeat. My partner wanted to turn it ____3____ (quick), but I still needed the last line. We marked the place where the turn could happen and practised that moment without playing the whole piece.\n\nAfter ____4____ (agree) on the turn, we checked our pencils and spare pages. A loose sheet ____5____ (clip) to the stand so that it would not fall onto the floor. Our teacher made sure the clip did not cover any notes.\n\nDuring the next rehearsal, I lost my place for a moment. My partner pointed ____6____ the right line without stopping. Later, I helped him find a repeated section. Sharing involved small signals as well as shared equipment.\n\nThe arrangement became easier ____7____ we had discussed the difficult moments before the concert. We did not need identical habits to follow the same music. The most useful ____8____ (change) were ordinary ones: a better angle, a clear mark and a planned page turn. At the final rehearsal, we gave ____9____ (we) one last check from the audience's side. There was ____10____ small gap between the stand and the chair, leaving enough space to move safely.",
+            "explanation": "Because/as/since introduce discussion as the reason for easier use. Unless would reverse that relation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "because",
+              "as",
+              "since"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "unless"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.music-stand-101.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with the correct form of change.",
+            "material": "The shared music stand\n\nAt our school concert rehearsal, two students had to share one music stand. I thought that would be easy until I sat beside a player who was much ____1____ (tall) than I was. A position that suited him put part of the page too high for me.\n\nOur teacher asked us ____2____ (find) a position that both of us could use. We moved the stand slightly and checked the angle. The answer was not simply to let the first person choose and expect the other to manage.\n\nOne page contained a long repeat. My partner wanted to turn it ____3____ (quick), but I still needed the last line. We marked the place where the turn could happen and practised that moment without playing the whole piece.\n\nAfter ____4____ (agree) on the turn, we checked our pencils and spare pages. A loose sheet ____5____ (clip) to the stand so that it would not fall onto the floor. Our teacher made sure the clip did not cover any notes.\n\nDuring the next rehearsal, I lost my place for a moment. My partner pointed ____6____ the right line without stopping. Later, I helped him find a repeated section. Sharing involved small signals as well as shared equipment.\n\nThe arrangement became easier ____7____ we had discussed the difficult moments before the concert. We did not need identical habits to follow the same music. The most useful ____8____ (change) were ordinary ones: a better angle, a clear mark and a planned page turn. At the final rehearsal, we gave ____9____ (we) one last check from the audience's side. There was ____10____ small gap between the stand and the chair, leaving enough space to move safely.",
+            "explanation": "The changes were uses plural changes; singular change disagrees with were and changing is not the intended count noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "changes"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "change",
+                "changing"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.music-stand-101.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of we.",
+            "material": "The shared music stand\n\nAt our school concert rehearsal, two students had to share one music stand. I thought that would be easy until I sat beside a player who was much ____1____ (tall) than I was. A position that suited him put part of the page too high for me.\n\nOur teacher asked us ____2____ (find) a position that both of us could use. We moved the stand slightly and checked the angle. The answer was not simply to let the first person choose and expect the other to manage.\n\nOne page contained a long repeat. My partner wanted to turn it ____3____ (quick), but I still needed the last line. We marked the place where the turn could happen and practised that moment without playing the whole piece.\n\nAfter ____4____ (agree) on the turn, we checked our pencils and spare pages. A loose sheet ____5____ (clip) to the stand so that it would not fall onto the floor. Our teacher made sure the clip did not cover any notes.\n\nDuring the next rehearsal, I lost my place for a moment. My partner pointed ____6____ the right line without stopping. Later, I helped him find a repeated section. Sharing involved small signals as well as shared equipment.\n\nThe arrangement became easier ____7____ we had discussed the difficult moments before the concert. We did not need identical habits to follow the same music. The most useful ____8____ (change) were ordinary ones: a better angle, a clear mark and a planned page turn. At the final rehearsal, we gave ____9____ (we) one last check from the audience's side. There was ____10____ small gap between the stand and the chair, leaving enough space to move safely.",
+            "explanation": "Gave ourselves a check is reflexive. Subject/possessive forms do not name the recipient.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "ourselves"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.music-stand-101.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with one appropriate word.",
+            "material": "The shared music stand\n\nAt our school concert rehearsal, two students had to share one music stand. I thought that would be easy until I sat beside a player who was much ____1____ (tall) than I was. A position that suited him put part of the page too high for me.\n\nOur teacher asked us ____2____ (find) a position that both of us could use. We moved the stand slightly and checked the angle. The answer was not simply to let the first person choose and expect the other to manage.\n\nOne page contained a long repeat. My partner wanted to turn it ____3____ (quick), but I still needed the last line. We marked the place where the turn could happen and practised that moment without playing the whole piece.\n\nAfter ____4____ (agree) on the turn, we checked our pencils and spare pages. A loose sheet ____5____ (clip) to the stand so that it would not fall onto the floor. Our teacher made sure the clip did not cover any notes.\n\nDuring the next rehearsal, I lost my place for a moment. My partner pointed ____6____ the right line without stopping. Later, I helped him find a repeated section. Sharing involved small signals as well as shared equipment.\n\nThe arrangement became easier ____7____ we had discussed the difficult moments before the concert. We did not need identical habits to follow the same music. The most useful ____8____ (change) were ordinary ones: a better angle, a clear mark and a planned page turn. At the final rehearsal, we gave ____9____ (we) one last check from the audience's side. There was ____10____ small gap between the stand and the chair, leaving enough space to move safely.",
+            "explanation": "A small gap begins with consonant s. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "7b5f0f89545f87481fdb6d8c8b96a8ee6872181a2ae953fba2e0dfe4f8ee7a9d",
+      "reviewNotes": "Four complete junior practices: paired shared-dialogue matching for junior1 and junior3, two whole ten-gap grammar passages for junior2. Source-specific seven/five candidate rules retained. Same-author key/variant review, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.school-coin-box-101",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · The coins in the classroom box",
+        "summary": "The coins in the classroom box，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 15,
+        "goalIds": [
+          "original.passage_form"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.grammar",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Complete original ten-gap passage with seven supplied-word and three one-word gaps. Source is a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior practices: paired shared-dialogue matching for junior1 and junior3, two whole ten-gap grammar passages for junior2. Source-specific seven/five candidate rules retained. Same-author key/variant review, not independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.school-coin-box-101",
+          "family": "passage_form",
+          "label": "The coins in the classroom box",
+          "candidateSHA256": "58f402260a2980a89f254c961bcfe7ed185d0f805bde4712136dc6ee47219572",
+          "authorCheckSHA256": "95a78318ed04bc465b21dc58a4d10b6c57efee6ab6e06d8eda1fdb271b1a7524",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.school-coin-box-101#whole"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b101；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "The coins in the classroom box\n\nOur class collected small coins for a community project. At first, we put every coin into one box and wrote down the number of people who had contributed. That record showed participation, but it did not tell us how much money ____1____ (collect).\n\nOn Friday, the teacher helped us count. We separated the coins ____2____ value and made a simple table. Ten coins of one kind could be worth less than two of another kind, so counting pieces alone was not enough.\n\nMy friend entered the totals ____3____ (careful). I checked the arithmetic with her. When our answers differed, we went back to the relevant row instead of changing one number simply to make them match.\n\nOne coin ____4____ looked unfamiliar came from another country. We kept it separate and asked the teacher how it should be recorded. Guessing its value would not make the total more reliable.\n\nAfter ____5____ (finish) the count, we compared the written record with the money itself. The total was ____6____ (large) than last week's, although fewer students had contributed on that particular day. Participation and amount were different measures.\n\nThe money ____7____ (keep) securely by the school under its usual procedure. We did not carry it around for display. Instead, we made ____8____ small chart showing the result without naming individual children or their contributions.\n\nThe project gave ____9____ (we) a practical reason to be clear about units, records and checking. Our teacher thanked the class for its ____10____ (patient). Accurate counting was not as exciting as the fundraising idea, but it was part of completing the shared task responsibly."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.school-coin-box-101.whole.q1",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 1 with the correct form of collect.",
+            "material": "The coins in the classroom box\n\nOur class collected small coins for a community project. At first, we put every coin into one box and wrote down the number of people who had contributed. That record showed participation, but it did not tell us how much money ____1____ (collect).\n\nOn Friday, the teacher helped us count. We separated the coins ____2____ value and made a simple table. Ten coins of one kind could be worth less than two of another kind, so counting pieces alone was not enough.\n\nMy friend entered the totals ____3____ (careful). I checked the arithmetic with her. When our answers differed, we went back to the relevant row instead of changing one number simply to make them match.\n\nOne coin ____4____ looked unfamiliar came from another country. We kept it separate and asked the teacher how it should be recorded. Guessing its value would not make the total more reliable.\n\nAfter ____5____ (finish) the count, we compared the written record with the money itself. The total was ____6____ (large) than last week's, although fewer students had contributed on that particular day. Participation and amount were different measures.\n\nThe money ____7____ (keep) securely by the school under its usual procedure. We did not carry it around for display. Instead, we made ____8____ small chart showing the result without naming individual children or their contributions.\n\nThe project gave ____9____ (we) a practical reason to be clear about units, records and checking. Our teacher thanked the class for its ____10____ (patient). Accurate counting was not as exciting as the fundraising idea, but it was part of completing the shared task responsibly.",
+            "explanation": "Money receives collection: had been/was collected fit. Collected lacks passive auxiliary and were disagrees with uncountable money.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "had been collected",
+              "was collected"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "collected",
+                "were collected"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.school-coin-box-101.whole.q2",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 2 with one appropriate word.",
+            "material": "The coins in the classroom box\n\nOur class collected small coins for a community project. At first, we put every coin into one box and wrote down the number of people who had contributed. That record showed participation, but it did not tell us how much money ____1____ (collect).\n\nOn Friday, the teacher helped us count. We separated the coins ____2____ value and made a simple table. Ten coins of one kind could be worth less than two of another kind, so counting pieces alone was not enough.\n\nMy friend entered the totals ____3____ (careful). I checked the arithmetic with her. When our answers differed, we went back to the relevant row instead of changing one number simply to make them match.\n\nOne coin ____4____ looked unfamiliar came from another country. We kept it separate and asked the teacher how it should be recorded. Guessing its value would not make the total more reliable.\n\nAfter ____5____ (finish) the count, we compared the written record with the money itself. The total was ____6____ (large) than last week's, although fewer students had contributed on that particular day. Participation and amount were different measures.\n\nThe money ____7____ (keep) securely by the school under its usual procedure. We did not carry it around for display. Instead, we made ____8____ small chart showing the result without naming individual children or their contributions.\n\nThe project gave ____9____ (we) a practical reason to be clear about units, records and checking. Our teacher thanked the class for its ____10____ (patient). Accurate counting was not as exciting as the fundraising idea, but it was part of completing the shared task responsibly.",
+            "explanation": "Separated by value gives the sorting basis. According requires to, so it cannot fit this one-word gap by itself; of does not express that sorting relation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "by"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "according",
+                "of"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.school-coin-box-101.whole.q3",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 3 with the correct form of careful.",
+            "material": "The coins in the classroom box\n\nOur class collected small coins for a community project. At first, we put every coin into one box and wrote down the number of people who had contributed. That record showed participation, but it did not tell us how much money ____1____ (collect).\n\nOn Friday, the teacher helped us count. We separated the coins ____2____ value and made a simple table. Ten coins of one kind could be worth less than two of another kind, so counting pieces alone was not enough.\n\nMy friend entered the totals ____3____ (careful). I checked the arithmetic with her. When our answers differed, we went back to the relevant row instead of changing one number simply to make them match.\n\nOne coin ____4____ looked unfamiliar came from another country. We kept it separate and asked the teacher how it should be recorded. Guessing its value would not make the total more reliable.\n\nAfter ____5____ (finish) the count, we compared the written record with the money itself. The total was ____6____ (large) than last week's, although fewer students had contributed on that particular day. Participation and amount were different measures.\n\nThe money ____7____ (keep) securely by the school under its usual procedure. We did not carry it around for display. Instead, we made ____8____ small chart showing the result without naming individual children or their contributions.\n\nThe project gave ____9____ (we) a practical reason to be clear about units, records and checking. Our teacher thanked the class for its ____10____ (patient). Accurate counting was not as exciting as the fundraising idea, but it was part of completing the shared task responsibly.",
+            "explanation": "Carefully modifies entered. Careful is adjective and carefulness noun.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "carefully"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "careful",
+                "carefulness"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.school-coin-box-101.whole.q4",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 4 with one appropriate word.",
+            "material": "The coins in the classroom box\n\nOur class collected small coins for a community project. At first, we put every coin into one box and wrote down the number of people who had contributed. That record showed participation, but it did not tell us how much money ____1____ (collect).\n\nOn Friday, the teacher helped us count. We separated the coins ____2____ value and made a simple table. Ten coins of one kind could be worth less than two of another kind, so counting pieces alone was not enough.\n\nMy friend entered the totals ____3____ (careful). I checked the arithmetic with her. When our answers differed, we went back to the relevant row instead of changing one number simply to make them match.\n\nOne coin ____4____ looked unfamiliar came from another country. We kept it separate and asked the teacher how it should be recorded. Guessing its value would not make the total more reliable.\n\nAfter ____5____ (finish) the count, we compared the written record with the money itself. The total was ____6____ (large) than last week's, although fewer students had contributed on that particular day. Participation and amount were different measures.\n\nThe money ____7____ (keep) securely by the school under its usual procedure. We did not carry it around for display. Instead, we made ____8____ small chart showing the result without naming individual children or their contributions.\n\nThe project gave ____9____ (we) a practical reason to be clear about units, records and checking. Our teacher thanked the class for its ____10____ (patient). Accurate counting was not as exciting as the fundraising idea, but it was part of completing the shared task responsibly.",
+            "explanation": "Coin is subject antecedent of that/which looked. Who is human, where not subject and what incompatible with the antecedent.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "that",
+              "which"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "who",
+                "where",
+                "what"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.school-coin-box-101.whole.q5",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 5 with the correct form of finish.",
+            "material": "The coins in the classroom box\n\nOur class collected small coins for a community project. At first, we put every coin into one box and wrote down the number of people who had contributed. That record showed participation, but it did not tell us how much money ____1____ (collect).\n\nOn Friday, the teacher helped us count. We separated the coins ____2____ value and made a simple table. Ten coins of one kind could be worth less than two of another kind, so counting pieces alone was not enough.\n\nMy friend entered the totals ____3____ (careful). I checked the arithmetic with her. When our answers differed, we went back to the relevant row instead of changing one number simply to make them match.\n\nOne coin ____4____ looked unfamiliar came from another country. We kept it separate and asked the teacher how it should be recorded. Guessing its value would not make the total more reliable.\n\nAfter ____5____ (finish) the count, we compared the written record with the money itself. The total was ____6____ (large) than last week's, although fewer students had contributed on that particular day. Participation and amount were different measures.\n\nThe money ____7____ (keep) securely by the school under its usual procedure. We did not carry it around for display. Instead, we made ____8____ small chart showing the result without naming individual children or their contributions.\n\nThe project gave ____9____ (we) a practical reason to be clear about units, records and checking. Our teacher thanked the class for its ____10____ (patient). Accurate counting was not as exciting as the fundraising idea, but it was part of completing the shared task responsibly.",
+            "explanation": "After finishing/having finished expresses prior completion. Other listed forms do not fit directly.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "finishing",
+              "having finished"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "finish",
+                "finished",
+                "to finish"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.school-coin-box-101.whole.q6",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 6 with the correct form of large.",
+            "material": "The coins in the classroom box\n\nOur class collected small coins for a community project. At first, we put every coin into one box and wrote down the number of people who had contributed. That record showed participation, but it did not tell us how much money ____1____ (collect).\n\nOn Friday, the teacher helped us count. We separated the coins ____2____ value and made a simple table. Ten coins of one kind could be worth less than two of another kind, so counting pieces alone was not enough.\n\nMy friend entered the totals ____3____ (careful). I checked the arithmetic with her. When our answers differed, we went back to the relevant row instead of changing one number simply to make them match.\n\nOne coin ____4____ looked unfamiliar came from another country. We kept it separate and asked the teacher how it should be recorded. Guessing its value would not make the total more reliable.\n\nAfter ____5____ (finish) the count, we compared the written record with the money itself. The total was ____6____ (large) than last week's, although fewer students had contributed on that particular day. Participation and amount were different measures.\n\nThe money ____7____ (keep) securely by the school under its usual procedure. We did not carry it around for display. Instead, we made ____8____ small chart showing the result without naming individual children or their contributions.\n\nThe project gave ____9____ (we) a practical reason to be clear about units, records and checking. Our teacher thanked the class for its ____10____ (patient). Accurate counting was not as exciting as the fundraising idea, but it was part of completing the shared task responsibly.",
+            "explanation": "Than gives comparative larger/more large. Largest is superlative and more larger doubled.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "larger",
+              "more large"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "largest",
+                "more larger"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.school-coin-box-101.whole.q7",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 7 with the correct form of keep.",
+            "material": "The coins in the classroom box\n\nOur class collected small coins for a community project. At first, we put every coin into one box and wrote down the number of people who had contributed. That record showed participation, but it did not tell us how much money ____1____ (collect).\n\nOn Friday, the teacher helped us count. We separated the coins ____2____ value and made a simple table. Ten coins of one kind could be worth less than two of another kind, so counting pieces alone was not enough.\n\nMy friend entered the totals ____3____ (careful). I checked the arithmetic with her. When our answers differed, we went back to the relevant row instead of changing one number simply to make them match.\n\nOne coin ____4____ looked unfamiliar came from another country. We kept it separate and asked the teacher how it should be recorded. Guessing its value would not make the total more reliable.\n\nAfter ____5____ (finish) the count, we compared the written record with the money itself. The total was ____6____ (large) than last week's, although fewer students had contributed on that particular day. Participation and amount were different measures.\n\nThe money ____7____ (keep) securely by the school under its usual procedure. We did not carry it around for display. Instead, we made ____8____ small chart showing the result without naming individual children or their contributions.\n\nThe project gave ____9____ (we) a practical reason to be clear about units, records and checking. Our teacher thanked the class for its ____10____ (patient). Accurate counting was not as exciting as the fundraising idea, but it was part of completing the shared task responsibly.",
+            "explanation": "Money is uncountable singular and receives keeping: was/had been kept. Kept lacks auxiliary and were disagrees.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "was kept",
+              "had been kept"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "kept",
+                "were kept"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.school-coin-box-101.whole.q8",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 8 with one appropriate word.",
+            "material": "The coins in the classroom box\n\nOur class collected small coins for a community project. At first, we put every coin into one box and wrote down the number of people who had contributed. That record showed participation, but it did not tell us how much money ____1____ (collect).\n\nOn Friday, the teacher helped us count. We separated the coins ____2____ value and made a simple table. Ten coins of one kind could be worth less than two of another kind, so counting pieces alone was not enough.\n\nMy friend entered the totals ____3____ (careful). I checked the arithmetic with her. When our answers differed, we went back to the relevant row instead of changing one number simply to make them match.\n\nOne coin ____4____ looked unfamiliar came from another country. We kept it separate and asked the teacher how it should be recorded. Guessing its value would not make the total more reliable.\n\nAfter ____5____ (finish) the count, we compared the written record with the money itself. The total was ____6____ (large) than last week's, although fewer students had contributed on that particular day. Participation and amount were different measures.\n\nThe money ____7____ (keep) securely by the school under its usual procedure. We did not carry it around for display. Instead, we made ____8____ small chart showing the result without naming individual children or their contributions.\n\nThe project gave ____9____ (we) a practical reason to be clear about units, records and checking. Our teacher thanked the class for its ____10____ (patient). Accurate counting was not as exciting as the fundraising idea, but it was part of completing the shared task responsibly.",
+            "explanation": "A small chart begins with consonant s. Other article readings remain reviewable.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": 1,
+              "rejectedAnswers": [
+                "an"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.school-coin-box-101.whole.q9",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 9 with the correct form of we.",
+            "material": "The coins in the classroom box\n\nOur class collected small coins for a community project. At first, we put every coin into one box and wrote down the number of people who had contributed. That record showed participation, but it did not tell us how much money ____1____ (collect).\n\nOn Friday, the teacher helped us count. We separated the coins ____2____ value and made a simple table. Ten coins of one kind could be worth less than two of another kind, so counting pieces alone was not enough.\n\nMy friend entered the totals ____3____ (careful). I checked the arithmetic with her. When our answers differed, we went back to the relevant row instead of changing one number simply to make them match.\n\nOne coin ____4____ looked unfamiliar came from another country. We kept it separate and asked the teacher how it should be recorded. Guessing its value would not make the total more reliable.\n\nAfter ____5____ (finish) the count, we compared the written record with the money itself. The total was ____6____ (large) than last week's, although fewer students had contributed on that particular day. Participation and amount were different measures.\n\nThe money ____7____ (keep) securely by the school under its usual procedure. We did not carry it around for display. Instead, we made ____8____ small chart showing the result without naming individual children or their contributions.\n\nThe project gave ____9____ (we) a practical reason to be clear about units, records and checking. Our teacher thanked the class for its ____10____ (patient). Accurate counting was not as exciting as the fundraising idea, but it was part of completing the shared task responsibly.",
+            "explanation": "Gave takes object us. Subject and possessive forms do not fit.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "we",
+                "our",
+                "ours"
+              ],
+              "unlisted": "review"
+            }
+          },
+          {
+            "id": "expansion.20261024.junior2.school-coin-box-101.whole.q10",
+            "goalId": "original.passage_form",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Fill gap 10 with the correct form of patient.",
+            "material": "The coins in the classroom box\n\nOur class collected small coins for a community project. At first, we put every coin into one box and wrote down the number of people who had contributed. That record showed participation, but it did not tell us how much money ____1____ (collect).\n\nOn Friday, the teacher helped us count. We separated the coins ____2____ value and made a simple table. Ten coins of one kind could be worth less than two of another kind, so counting pieces alone was not enough.\n\nMy friend entered the totals ____3____ (careful). I checked the arithmetic with her. When our answers differed, we went back to the relevant row instead of changing one number simply to make them match.\n\nOne coin ____4____ looked unfamiliar came from another country. We kept it separate and asked the teacher how it should be recorded. Guessing its value would not make the total more reliable.\n\nAfter ____5____ (finish) the count, we compared the written record with the money itself. The total was ____6____ (large) than last week's, although fewer students had contributed on that particular day. Participation and amount were different measures.\n\nThe money ____7____ (keep) securely by the school under its usual procedure. We did not carry it around for display. Instead, we made ____8____ small chart showing the result without naming individual children or their contributions.\n\nThe project gave ____9____ (we) a practical reason to be clear about units, records and checking. Our teacher thanked the class for its ____10____ (patient). Accurate counting was not as exciting as the fundraising idea, but it was part of completing the shared task responsibly.",
+            "explanation": "Its patience requires a noun. Patient is adjective/person noun with a different meaning, patiently adverb.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "completion",
+            "acceptedAnswers": [
+              "patience"
+            ],
+            "normalization": {
+              "ignoreCase": true,
+              "ignoreTerminalPunctuation": false
+            },
+            "marking": {
+              "protocol": "gaokao-passage-form",
+              "minWords": 1,
+              "maxWords": null,
+              "rejectedAnswers": [
+                "patient",
+                "patiently"
+              ],
+              "unlisted": "review"
+            }
+          }
+        ]
+      },
+      "contentHash": "1d920f27897ca6feed5ad53c5bb97a91d0307bda97ae5203deb5e6c56a7633a2",
+      "reviewNotes": "Four complete junior practices: paired shared-dialogue matching for junior1 and junior3, two whole ten-gap grammar passages for junior2. Source-specific seven/five candidate rules retained. Same-author key/variant review, not independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
