@@ -28,7 +28,7 @@ final class PrimaryCandidateUITests: XCTestCase {
             app.launchEnvironment["UI_TEST_CAPTURE_APPEARANCE"] = "dark"
         }
         app.launch()
-        XCTAssertTrue(app.buttons["退出挑战"].waitForExistence(timeout: 15))
+        XCTAssertTrue(app.buttons[story ? "practice.start" : "退出挑战"].waitForExistence(timeout: 15))
         return app
     }
 
@@ -39,8 +39,8 @@ final class PrimaryCandidateUITests: XCTestCase {
             let beats = try XCTUnwrap(snapshot["beats"] as? [[String: Any]])
             XCTAssertEqual(beats.count, 3)
             let app = try launch(snapshot, story: true, large: id.hasSuffix("b"))
-            XCTAssertTrue(app.buttons["开始故事"].waitForExistence(timeout: 5))
-            app.buttons["开始故事"].tap()
+            XCTAssertTrue(app.buttons["practice.start"].waitForExistence(timeout: 5))
+            app.buttons["practice.start"].tap()
             for (index, beat) in beats.enumerated() {
                 XCTAssertEqual(beat["afterQuestion"] as? Int, 0)
                 let text = try XCTUnwrap(beat["text"] as? String)

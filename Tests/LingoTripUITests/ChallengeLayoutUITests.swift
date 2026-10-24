@@ -73,8 +73,8 @@ final class ChallengeLayoutUITests: XCTestCase {
         app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
         app.launch()
         addTeardownBlock { app.terminate() }
-        XCTAssertTrue(app.buttons["开始故事"].waitForExistence(timeout: 15))
-        app.buttons["开始故事"].tap()
+        XCTAssertTrue(app.buttons["practice.start"].waitForExistence(timeout: 15))
+        app.buttons["practice.start"].tap()
         for (index, beat) in beats.enumerated() {
             let passage = app.staticTexts.matching(NSPredicate(format: "label == %@", try XCTUnwrap(beat["text"] as? String))).firstMatch
             XCTAssertTrue(passage.waitForExistence(timeout: 5))
@@ -136,8 +136,8 @@ final class ChallengeLayoutUITests: XCTestCase {
         app.launchEnvironment["UI_TEST_TAB"] = "unit-challenge"
         app.launchEnvironment["UI_TEST_LEARNING_STORY"] = "1"
         app.launch()
-        XCTAssertTrue(app.buttons["开始故事"].waitForExistence(timeout: 15))
-        app.buttons["开始故事"].tap()
+        XCTAssertTrue(app.buttons["practice.start"].waitForExistence(timeout: 15))
+        app.buttons["practice.start"].tap()
         XCTAssertTrue(app.staticTexts["工程界面预览"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["A book falls open. A blue bookmark is inside."].exists)
         app.buttons["查看中文"].tap()

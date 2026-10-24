@@ -3,16 +3,11 @@ import DomainKit
 import PersistenceKit
 import SwiftUI
 
-private enum PracticePaper {
-    static let canvas = Color(uiColor: UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.10, green: 0.12, blue: 0.11, alpha: 1) : UIColor(red: 0.96, green: 0.95, blue: 0.92, alpha: 1) })
-    static let sheet = Color(uiColor: UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.14, green: 0.16, blue: 0.15, alpha: 1) : UIColor(red: 1, green: 0.995, blue: 0.98, alpha: 1) })
-    static let accent = Color(uiColor: UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.65, green: 0.79, blue: 0.70, alpha: 1) : UIColor(red: 0.25, green: 0.39, blue: 0.32, alpha: 1) })
-}
-
 /// The shared task UI used by live practice, including the real testing entry.
 @MainActor
 struct LearningPracticeScreen: View {
     private let character: CharacterDTO
+    @State private var companion: PracticeCompanionPresentation
     @State private var model: LearningPracticeModel
     @State private var panel: Panel = .expanded
     @State private var evidenceRequest = 0
@@ -22,11 +17,11 @@ struct LearningPracticeScreen: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @ScaledMetric(relativeTo: .largeTitle) private var resultSize = 56
     private enum Panel { case collapsed, expanded }
 
-    init(model: LearningPracticeModel, character: CharacterDTO) {
+    init(model: LearningPracticeModel, character: CharacterDTO, companion: PracticeCompanionPresentation? = nil) {
         self.character = character
+        _companion = State(initialValue: companion ?? PracticeCompanionPresentation(character: character))
         _model = State(initialValue: model)
     }
 
@@ -58,83 +53,25 @@ struct LearningPracticeScreen: View {
     }
 
     private var cover: some View {
-        VStack(spacing: 0) {
-            HStack {
-                closeButton { model.save(); dismiss() }
-                Spacer()
-                Text(model.isProduction ? "练习" : "交互预览").font(.caption.weight(.medium)).foregroundStyle(.secondary)
-            }.padding(.horizontal, 22).padding(.top, 8)
-            ScrollView {
-                VStack(alignment: .leading, spacing: 28) {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("PRACTICE / 练习").font(.caption.weight(.semibold)).tracking(2).foregroundStyle(PracticePaper.accent)
-                        Text("给自己一段\n专注的时间。")
-                            .font(.system(.largeTitle, design: .serif, weight: .medium)).lineSpacing(5)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }.padding(.top, 22)
-                    if model.tasks.count > 1 {
-                    ScrollView(.horizontal) {
-                        HStack(spacing: 8) {
-                            ForEach(Array(model.tasks.enumerated()), id: \.element.id) { index, task in
-                                Button { model.selectTask(index) } label: {
-                                    Text(task.label).font(.subheadline.weight(model.taskIndex == index ? .semibold : .regular))
-                                        .padding(.horizontal, 17).frame(minHeight: 44)
-                                        .background(model.taskIndex == index ? PracticePaper.accent.opacity(0.12) : Color.clear, in: Capsule())
-                                        .overlay(Capsule().strokeBorder(model.taskIndex == index ? PracticePaper.accent.opacity(0.3) : Color.primary.opacity(0.1)))
-                                }.buttonStyle(.plain)
-                                    .accessibilityAddTraits(model.taskIndex == index ? .isSelected : [])
-                                    .accessibilityIdentifier("practice.task.\(task.id)")
-                            }
+        PracticeCoverPage(character: character, message: companion.opening, kind: model.task.kindTitle,
+                          minutes: model.task.minutes,
+                          buttonTitle: model.draft.completed ? "查看本次回顾" : model.hasProgress ? "继续作答" : "开始作答",
+                          start: { model.start() }, close: { model.save(); dismiss() }) {
+            // Multiple tasks only exist in the isolated design fixture.
+            if model.tasks.count > 1 {
+                ScrollView(.horizontal) {
+                    HStack(spacing: 8) {
+                        ForEach(Array(model.tasks.enumerated()), id: \.element.id) { index, task in
+                            Button { model.selectTask(index) } label: {
+                                Text(task.label).font(.subheadline)
+                                    .padding(.horizontal, 16).frame(minHeight: 44)
+                                    .background(model.taskIndex == index ? PracticePaper.accent.opacity(0.12) : .clear, in: Capsule())
+                            }.buttonStyle(.plain).accessibilityIdentifier("practice.task.\(task.id)")
                         }
-                    }.scrollIndicators(.hidden).contentMargins(.trailing, 2)
-                    }
-                    taskCard
-                    HStack(alignment: .top, spacing: 12) {
-                        avatar(size: 42)
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text(character.displayName).font(.caption.weight(.semibold)).foregroundStyle(PracticePaper.accent)
-                            Text("慢慢来，完成一篇后，我们再一起回看。")
-                                .font(.subheadline).foregroundStyle(.secondary).lineSpacing(4)
-                        }
-                    }
-                    Label("离开也没关系，回来可以接着做。", systemImage: "bookmark")
-                        .font(.caption).foregroundStyle(.secondary)
-                }.padding(.horizontal, 24).padding(.bottom, 24).frame(maxWidth: 640).frame(maxWidth: .infinity)
+                    }.padding(.horizontal, 24)
+                }.scrollIndicators(.hidden)
             }
-            VStack(spacing: 12) {
-                primary(model.draft.completed ? "查看本次回顾" : model.hasProgress ? "继续练习" : "开始练习", symbol: "arrow.right") { model.start() }
-                    .accessibilityIdentifier("practice.start")
-                Text(model.isProduction ? "进度自动保存 · 完成整篇后查看讲解" : "本地示例 · 进度单独保存 · 不计入正式成绩").font(.caption2).foregroundStyle(.secondary)
-            }.padding(.horizontal, 24).padding(.top, 12).padding(.bottom, 14).frame(maxWidth: 640)
         }
-    }
-
-    private var taskCard: some View {
-        VStack(alignment: .leading, spacing: 23) {
-            HStack {
-                Label(model.currentAttempt.map { learningLevelName($0.level) + " · 完整语篇" } ?? "高中 · 原创语篇", systemImage: "book.pages")
-                Spacer()
-                if model.hasProgress { Text(model.draft.completed ? "已完成" : "已答 \(model.totalAnswered) 题") }
-            }.font(.caption).foregroundStyle(PracticePaper.accent)
-            VStack(alignment: .leading, spacing: 9) {
-                Text(model.task.headline).font(.system(.title, design: .serif, weight: .medium))
-                Text("\(model.questionCount) 题   ·   约 \(model.task.minutes) 分钟")
-                    .font(.subheadline).foregroundStyle(.secondary)
-            }
-            Divider().overlay(PracticePaper.accent.opacity(0.06))
-            VStack(alignment: .leading, spacing: 16) {
-                ForEach(Array(model.task.sections.enumerated()), id: \.element.id) { index, section in
-                    HStack(alignment: .firstTextBaseline, spacing: 14) {
-                        Text(String(format: "%02d", index + 1)).font(.caption.monospacedDigit()).foregroundStyle(PracticePaper.accent)
-                        Text(section.title.isEmpty ? "第 \(index + 1) 篇" : section.title).font(.system(.body, design: .serif)).lineSpacing(3)
-                        Spacer(minLength: 0)
-                    }
-                }
-            }
-            Text(model.task.detail).font(.caption).foregroundStyle(.secondary).lineSpacing(4)
-        }.padding(24).frame(maxWidth: .infinity, alignment: .leading)
-            .background(PracticePaper.sheet, in: RoundedRectangle(cornerRadius: 24))
-            .overlay(RoundedRectangle(cornerRadius: 24).strokeBorder(Color.primary.opacity(0.05)))
     }
 
     private var workspace: some View {
@@ -388,74 +325,24 @@ struct LearningPracticeScreen: View {
     }
 
     private var summary: some View {
-        VStack(spacing: 0) {
-            HStack {
-                closeButton { model.goToCover() }
-                Spacer()
-                Text("本次回顾").font(.caption).foregroundStyle(.secondary)
-            }.padding(.horizontal, 22).padding(.top, 8)
-            ScrollView {
-                VStack(alignment: .leading, spacing: 26) {
-                    HStack(spacing: 12) {
-                        avatar(size: 46)
-                        Text("完成了。一起看看值得回看的地方。")
-                            .font(.subheadline).foregroundStyle(.secondary).lineSpacing(4)
-                    }.padding(.top, 22)
-                    Text("这一段，\n完成了。")
-                        .font(.system(.largeTitle, design: .serif, weight: .medium)).lineSpacing(5)
-                    HStack(alignment: .firstTextBaseline, spacing: 7) {
-                        Text("\(model.correctCount)").font(.system(size: resultSize, weight: .medium, design: .serif))
-                        Text("/ \(model.questionCount) 题").font(.title3).foregroundStyle(.secondary)
-                        Spacer()
-                        Text("本次答对").font(.subheadline).foregroundStyle(PracticePaper.accent)
-                    }
-                    if model.needsReviewCount > 0 {
-                        Text("另有 \(model.needsReviewCount) 题表达待核对，不直接判错。")
-                            .font(.caption).foregroundStyle(.secondary)
-                    }
-                    Divider()
-                    HStack {
-                        Text("值得再看一眼").font(.headline)
-                        Spacer()
-                        Text("错题与标记").font(.caption).foregroundStyle(.secondary)
-                    }
-                    let items = reviewItems
-                    if items.isEmpty {
-                        Label("本次全部答对，可以再读一遍喜欢的段落。", systemImage: "checkmark.circle")
-                            .font(.subheadline).foregroundStyle(.secondary).lineSpacing(4)
-                        ForEach(Array(model.task.sections.enumerated()), id: \.element.id) { index, section in
-                            Button { model.revisit(section: index, question: section.questions.firstIndex(where: model.isRequired) ?? 0) } label: {
-                                HStack { Text(section.title.isEmpty ? "第 \(index + 1) 篇" : section.title); Spacer(); Image(systemName: "arrow.up.right") }
-                                    .font(.subheadline).frame(minHeight: 48)
-                            }.buttonStyle(.plain)
-                        }
-                    } else {
-                        ForEach(items, id: \.question.id) { item in
-                            Button { model.revisit(section: item.section, question: item.index) } label: {
-                                VStack(alignment: .leading, spacing: 9) {
-                                    HStack {
-                                        Text("第 \(item.section + 1) 篇 · 第 \(item.index + 1) 题").font(.caption).foregroundStyle(.secondary)
-                                        Spacer()
-                                        Image(systemName: model.draft.flagged.contains(item.question.id) ? "bookmark.fill" : "arrow.up.right")
-                                            .font(.caption).foregroundStyle(PracticePaper.accent)
-                                    }
-                                    Text(item.question.prompt).font(.subheadline).lineSpacing(4)
-                                    Text(resultLabel(item.question)).font(.caption).foregroundStyle(questionColor(item.question))
-                                }.padding(18).frame(maxWidth: .infinity, alignment: .leading)
-                                    .background(PracticePaper.sheet, in: RoundedRectangle(cornerRadius: 18))
-                            }.buttonStyle(.plain)
-                        }
-                    }
-                }.padding(.horizontal, 24).padding(.bottom, 28).frame(maxWidth: 640).frame(maxWidth: .infinity)
-            }
-            primary("返回任务", symbol: "arrow.right") { model.goToCover() }
-                .padding(.horizontal, 24).padding(.vertical, 12).frame(maxWidth: 640)
-        }
+        PracticeSummaryPage(character: character, message: companion.closing,
+                            correct: model.correctCount, total: model.questionCount,
+                            items: reviewItems.map { item in
+                                PracticeReviewItem(id: item.question.id,
+                                    location: "第 \(item.section + 1) 篇 · 第 \(item.index + 1) 题",
+                                    prompt: item.question.prompt, answer: model.answerLabel(item.question),
+                                    reference: model.referenceLabel(item.question),
+                                    needsReview: model.result(for: item.question) == .needsReview)
+                            }, revisit: { id in
+                                if let item = reviewItems.first(where: { $0.question.id == id }) {
+                                    model.revisit(section: item.section, question: item.index)
+                                }
+                            }, finish: { model.save(); dismiss() })
     }
     private var reviewItems: [(section: Int, index: Int, question: LearningPracticeQuestion)] {
         model.task.sections.enumerated().flatMap { si, section in
             section.questions.enumerated().compactMap { qi, question in
-                model.isRequired(question) && (model.result(for: question) != .correct || model.draft.flagged.contains(question.id)) ? (si, qi, question) : nil
+                model.isRequired(question) && model.result(for: question) != .correct ? (si, qi, question) : nil
             }
         }
     }
@@ -473,23 +360,6 @@ struct LearningPracticeScreen: View {
         case .incorrect: "arrow.counterclockwise.circle"
         case .needsReview, nil: "questionmark.circle"
         }
-    }
-    private func avatar(size: CGFloat) -> some View {
-        AvatarBadge(name: character.displayName, size: size, imageName: character.card.avatarAssetName,
-                    remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)), usesPendingPlaceholder: true)
-    }
-    private func primary(_ title: String, symbol: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            HStack { Text(title); Spacer(); Image(systemName: symbol) }
-                .font(.body.weight(.semibold)).padding(.horizontal, 22).frame(minHeight: 56)
-                .foregroundStyle(PracticePaper.sheet).background(PracticePaper.accent, in: RoundedRectangle(cornerRadius: 18))
-        }.buttonStyle(LearningPressStyle())
-    }
-    private func closeButton(_ action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Image(systemName: "xmark").font(.system(size: 14, weight: .medium)).frame(width: 44, height: 44)
-                .background(Color.primary.opacity(0.045), in: Circle())
-        }.buttonStyle(.plain).accessibilityLabel(model.page == .summary ? "返回练习任务" : model.isProduction ? "关闭练习" : "关闭练习预览")
     }
     private func animate(_ changes: () -> Void) {
         withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.22), changes)
@@ -587,12 +457,14 @@ private struct PracticeArticleReader: View {
 @MainActor
 public struct LearningPracticePreview: View {
     private let character: CharacterDTO
+    @State private var companion: PracticeCompanionPresentation
     @State private var model: LearningPracticeModel
     public init(character: CharacterDTO) {
         self.character = character
+        _companion = State(initialValue: PracticeCompanionPresentation(character: character))
         _model = State(initialValue: LearningPracticeModel(tasks: PracticePreviewFixtures.tasks,
             namespace: ProcessInfo.processInfo.environment["UI_TEST_PRACTICE_NAMESPACE"] ?? "practice.preview.v1"))
     }
-    public var body: some View { LearningPracticeScreen(model: model, character: character) }
+    public var body: some View { LearningPracticeScreen(model: model, character: character, companion: companion) }
 }
 #endif

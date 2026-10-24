@@ -38,9 +38,86 @@ final class PracticePreviewUITests: XCTestCase {
             app.buttons["practice.question.\(index + 1)"].tap(); choose(answer, in: app)
         }
         app.buttons["practice.next"].tap(); app.buttons["practice.continue"].tap()
-        XCTAssertTrue(app.staticTexts["本次回顾"].waitForExistence(timeout: 3))
-        XCTAssertTrue(app.staticTexts["本次答对"].exists)
+        XCTAssertTrue(app.staticTexts["practice.result.score"].waitForExistence(timeout: 3))
+        XCTAssertEqual(app.staticTexts["practice.result.score"].label, "7/7题")
+        XCTAssertFalse(app.staticTexts["错题回顾"].exists)
+        XCTAssertTrue(app.buttons["practice.finish"].exists)
         capture(app, "完成与回顾")
+        app.terminate()
+    }
+
+    func testMinimalBookendsAndWrongAnswerReview() {
+        continueAfterFailure = false
+        let app = launch(dark: true)
+        XCTAssertTrue(app.buttons["practice.start"].waitForExistence(timeout: 15))
+        let avatar = app.descendants(matching: .any).matching(identifier: "practice.companion.avatar").firstMatch
+        let message = app.staticTexts["practice.companion.message"]
+        let kind = app.staticTexts["practice.task.kind"]
+        let time = app.staticTexts["practice.task.time"]
+        let start = app.buttons["practice.start"]
+        XCTAssertGreaterThanOrEqual(avatar.frame.width, 100)
+        XCTAssertEqual(avatar.frame.midX, app.frame.midX, accuracy: 2)
+        XCTAssertGreaterThan(message.frame.minY, avatar.frame.maxY + 15)
+        XCTAssertGreaterThan(kind.frame.minY, message.frame.maxY + 30)
+        XCTAssertGreaterThan(start.frame.minY, time.frame.maxY + 30)
+        XCTAssertEqual(start.label, "开始作答")
+        XCTAssertEqual(start.frame.midX, app.frame.midX, accuracy: 2)
+        XCTAssertFalse(app.staticTexts["PRACTICE / 练习"].exists)
+        XCTAssertFalse(app.staticTexts["给自己一段\n专注的时间。"].exists)
+        capture(app, "简洁开始页-头像台词题型时间")
+        start.tap()
+        for (index, answer) in ["A", "C", "B"].enumerated() {
+            app.buttons["practice.question.\(index + 1)"].tap(); choose(answer, in: app)
+        }
+        app.buttons["practice.next"].tap(); app.buttons["practice.continue"].tap()
+        for (index, answer) in ["D", "C", "A", "D"].enumerated() {
+            app.buttons["practice.question.\(index + 1)"].tap(); choose(answer, in: app)
+        }
+        app.buttons["practice.next"].tap(); app.buttons["practice.continue"].tap()
+        XCTAssertTrue(app.staticTexts["practice.result.score"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["practice.result.score"].label, "6/7题")
+        XCTAssertTrue(app.staticTexts["错题回顾"].exists)
+        XCTAssertFalse(app.staticTexts["错题与标记"].exists)
+        XCTAssertFalse(app.staticTexts["这一题，再看一眼"].exists)
+        capture(app, "简洁结束页-居中成绩与错题")
+        let userAnswer = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "你的答案：A.")).firstMatch
+        for _ in 0..<4 {
+            if userAnswer.isHittable { break }
+            app.swipeUp()
+        }
+        XCTAssertTrue(userAnswer.isHittable)
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "参考答案：C.")).firstMatch.exists)
+        capture(app, "错题回顾-用户答案与参考答案")
+        let finish = app.buttons["practice.finish"]
+        XCTAssertEqual(finish.label, "结束练习")
+        XCTAssertEqual(finish.frame.midX, app.frame.midX, accuracy: 2)
+        let review = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "practice.review.")).firstMatch
+        review.tap()
+        XCTAssertTrue(app.buttons["practice.continue"].waitForExistence(timeout: 3))
+        app.buttons["practice.continue"].tap()
+        XCTAssertTrue(finish.waitForExistence(timeout: 3))
+        finish.tap()
+        XCTAssertFalse(app.buttons["practice.finish"].exists)
+        app.terminate()
+    }
+
+    func testLegacyCoverUsesTheSameHierarchyAtLargestTextSize() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_REQUIRE_AUTHENTICATION": "0",
+            "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1", "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9",
+            "UI_TEST_TAB": "unit-challenge", "UI_TEST_LEARNING_STORY": "1", "UI_TEST_CAPTURE_APPEARANCE": "dark"]
+        app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launch()
+        let start = app.buttons["practice.start"]
+        XCTAssertTrue(start.waitForExistence(timeout: 15))
+        XCTAssertTrue(app.staticTexts["practice.companion.message"].exists)
+        XCTAssertTrue(app.staticTexts["practice.task.kind"].exists)
+        XCTAssertFalse(app.staticTexts["工程界面预览"].exists)
+        capture(app, "其他题型开始页-最大辅助字号")
+        for _ in 0..<5 { if start.isHittable { break }; app.swipeUp() }
+        start.tap()
+        XCTAssertTrue(app.staticTexts["A book falls open. A blue bookmark is inside."].waitForExistence(timeout: 5))
         app.terminate()
     }
 
@@ -93,11 +170,12 @@ final class PracticePreviewUITests: XCTestCase {
         }
         XCTFail("选项 \(id) 不可点击")
     }
-    private func launch() -> XCUIApplication {
+    private func launch(dark: Bool = false) -> XCUIApplication {
         let app = XCUIApplication()
         app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_REQUIRE_AUTHENTICATION": "0",
             "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1", "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9",
             "UI_TEST_TAB": "practice-preview", "UI_TEST_PRACTICE_NAMESPACE": "practice.uitest.\(UUID().uuidString)"]
+        if dark { app.launchEnvironment["UI_TEST_CAPTURE_APPEARANCE"] = "dark" }
         app.launch(); return app
     }
     private func capture(_ app: XCUIApplication, _ name: String) {

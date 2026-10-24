@@ -15,6 +15,9 @@ final class LearningFormalPracticeUITests: XCTestCase {
         XCTAssertTrue(app.buttons["practice.start"].waitForExistence(timeout: 20))
         XCTAssertFalse(app.staticTexts["交互预览"].exists)
         XCTAssertFalse(app.staticTexts["本地示例 · 进度单独保存 · 不计入正式成绩"].exists)
+        XCTAssertEqual(app.staticTexts["practice.task.kind"].label, "七选五 · 语法填空")
+        let cover = XCTAttachment(screenshot: app.screenshot())
+        cover.name = "正式练习开始页-七选五与语法填空"; cover.lifetime = .keepAlways; add(cover)
         app.buttons["practice.start"].tap()
         XCTAssertTrue(app.staticTexts["共用选项 A–G"].waitForExistence(timeout: 3))
         let submit = app.buttons["practice.next"]

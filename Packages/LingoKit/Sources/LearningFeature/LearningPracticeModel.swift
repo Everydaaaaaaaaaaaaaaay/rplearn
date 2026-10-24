@@ -82,7 +82,7 @@ final class LearningPracticeModel {
     var isSevenOfFive: Bool { section.kind == .insertion && section.questions.count == 5 && question.options.count == 7 }
     var sectionQuestionCount: Int { section.questions.filter(isRequired).count }
     var canReview: Bool { sectionQuestionCount > 0 && answeredCount == sectionQuestionCount }
-    var correctCount: Int { task.sections.flatMap(\.questions).filter { result(for: $0) == .correct }.count }
+    var correctCount: Int { task.sections.flatMap(\.questions).filter { isRequired($0) && result(for: $0) == .correct }.count }
     var needsReviewCount: Int { task.sections.flatMap(\.questions).filter { result(for: $0) == .needsReview }.count }
     var flaggedCount: Int { draft.flagged.count }
     var hasProgress: Bool { draft.started }
@@ -290,5 +290,43 @@ final class LearningPracticeModel {
     }
     private func normalized(_ value: String) -> String {
         value.split(whereSeparator: \.isWhitespace).joined(separator: " ").lowercased()
+    }
+}
+
+extension LearningPracticeTask {
+    var kindTitle: String {
+        var titles: [String] = []
+        for section in sections {
+            let title = switch section.kind {
+            case .reading: "阅读理解"
+            case .cloze: "完形填空"
+            case .grammar: "语法填空"
+            case .insertion: section.questions.count == 5 && section.questions.first?.options.count == 7 ? "七选五" : "选句填空"
+            }
+            if !titles.contains(title) { titles.append(title) }
+        }
+        return titles.joined(separator: " · ")
+    }
+}
+
+extension LearningUnit {
+    var practiceKindTitle: String {
+        var titles: [String] = []
+        for question in questions {
+            let title = switch question.type {
+            case .choice: "选择题"
+            case .listeningChoice, .audioChoice: "听力选择"
+            case .arrange: "语句排序"
+            case .audioArrange: "听力排序"
+            case .completion: "填空题"
+            case .dictation: "听写"
+            case .listeningCompletion: "听力填空"
+            case .matching: "配对题"
+            case .audioMatching: "听力配对"
+            case .cloze: "选词填空"
+            }
+            if !titles.contains(title) { titles.append(title) }
+        }
+        return titles.joined(separator: " · ")
     }
 }

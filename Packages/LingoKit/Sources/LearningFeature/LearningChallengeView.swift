@@ -1,12 +1,15 @@
-import BackendKit
 import AVFoundation
+import BackendKit
 import CoreKit
 import DesignSystem
+import LLMKit
 import PersistenceKit
 import SpeechKit
 import SwiftUI
 
 public struct LearningChallengeView: View {
+    @State private var companion: PracticeCompanionPresentation
+    private let companionService: PracticeCompanionMessageService?
     @State private var practice: LearningPracticeModel?
     @State private var model: LearningChallengeModel
     @State private var audio: LearningAudioModel
@@ -28,6 +31,8 @@ public struct LearningChallengeView: View {
                 speech: (any SpeechService)? = nil,
                 beforePlayback: @escaping @Sendable () async -> Void = {},
                 afterFinish: @escaping @Sendable () async -> Void = {}) {
+        _companion = State(initialValue: PracticeCompanionPresentation(character: character))
+        companionService = (service as? BackendClient).map { PracticeCompanionMessageService(llm: BackendLLMProvider(backend: $0)) }
         _practice = State(initialValue: LearningPracticeModel(attempt: attempt, service: service, afterFinish: afterFinish))
         _model = State(initialValue: LearningChallengeModel(attempt: attempt, service: service, afterFinish: afterFinish)); self.character = character
         let listeningSpeech = speech ?? AdaptiveSpeechService(audioSession: audioSession)
@@ -39,13 +44,26 @@ public struct LearningChallengeView: View {
     }
     private var theme: LearningTheme { LearningTheme(role: model.attempt.unit.roleKey) }
     public var body: some View {
-        if let practice {
-            LearningPracticeScreen(model: practice, character: character)
-        } else {
-            GeometryReader { geometry in
-                challenge(materialHeight: min(240, max(110, geometry.size.height * 0.27)))
+        Group {
+            if let practice {
+                LearningPracticeScreen(model: practice, character: character, companion: companion)
+            } else if model.stage == .cover {
+                cover
+            } else if model.stage == .summary {
+                VStack(spacing: 0) {
+                    if let error = model.error {
+                        LearningErrorBanner(message: error) { endPractice() }.padding(.horizontal, 24)
+                    }
+                    summary
+                }
+            } else {
+                GeometryReader { geometry in
+                    challenge(materialHeight: min(240, max(110, geometry.size.height * 0.27)))
+                }
             }
         }
+        .toolbar(.hidden, for: .navigationBar)
+        .task { await companion.prepare(character: character, service: companionService) }
     }
     private func readingPlan(_ question: LearningQuestion) -> LearningReadingPlan {
         LearningReadingPlan(unit: model.attempt.unit, question: question)
@@ -55,10 +73,9 @@ public struct LearningChallengeView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     switch model.stage {
-                    case .cover: cover
+                    case .cover, .summary: EmptyView()
                     case .story(let index): story(model.attempt.unit.beats[index])
                     case .question: if let question = model.question { questionBody(question) }
-                    case .summary: summary
                     }
                     if let error = model.error {
                         LearningErrorBanner(message: error) { Task { await model.recover() } }
@@ -150,21 +167,9 @@ public struct LearningChallengeView: View {
         }.padding(.horizontal, 14).padding(.vertical, 8)
     }
     private var cover: some View {
-        VStack(alignment: .leading, spacing: 22) {
-                HStack(spacing: 16) {
-                    AvatarBadge(name: character.displayName, size: 64, imageName: character.card.avatarAssetName,
-                                remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)), usesPendingPlaceholder: true)
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text(character.displayName).font(.headline)
-                        Text("\(model.attempt.round.questionIds.count) 道题 · 约 \(model.attempt.unit.estimatedMinutes) 分钟")
-                            .font(.subheadline).foregroundStyle(.secondary)
-                    }
-                }.padding(.vertical, 12)
-            Label(learningLevelName(model.attempt.level), systemImage: theme.symbol)
-                .font(.caption.weight(.medium)).foregroundStyle(theme.tint)
-            Text(model.attempt.unit.title).font(.system(.largeTitle, design: .serif).bold())
-            Text(model.attempt.unit.scene).font(.body).foregroundStyle(.secondary).lineSpacing(5)
-        }.frame(maxWidth: .infinity, alignment: .leading)
+        PracticeCoverPage(character: character, message: companion.opening, kind: model.attempt.unit.practiceKindTitle,
+                          minutes: model.attempt.unit.estimatedMinutes, buttonTitle: "开始作答",
+                          start: { model.advance() }, close: { dismiss() }) { EmptyView() }
     }
     private func story(_ beat: LearningBeat) -> some View {
         VStack(alignment: .leading, spacing: 26) {
@@ -562,31 +567,28 @@ public struct LearningChallengeView: View {
             .accessibilityElement(children: .combine)
     }
     private var summary: some View {
-        VStack(alignment: .leading, spacing: 24) {
-            Image(systemName: model.attempt.remainingCount == 0 ? "checkmark.seal" : "book.closed")
-                .font(.system(size: 56, weight: .light)).foregroundStyle(theme.tint).padding(.top, 28).accessibilityHidden(true)
-            Text("本轮结果").font(.system(.largeTitle, design: .serif).bold())
-            Text(model.attempt.unit.title).font(.title3).foregroundStyle(.secondary)
-            HStack(alignment: .firstTextBaseline) {
-                Text("\(model.attempt.correctQuestionIds.count)").font(.system(size: 56, weight: .semibold, design: .rounded))
-                Text("/ \(model.attempt.unit.questions.count) 题已答对").foregroundStyle(.secondary)
-            }
-            VStack(alignment: .leading, spacing: 13) {
-                Text("本轮 +\(model.roundPoints) 点").font(.headline)
-                Text(learningLevelName(model.attempt.level)).font(.subheadline)
-                Text(model.attempt.remainingCount > 0 ? "待补答 \(model.attempt.remainingCount) 题" : "全部完成")
-                    .font(.subheadline).foregroundStyle(.secondary)
-            }.modifier(LearningPaper())
-            if model.attempt.firstCompletedAt != nil && model.attempt.remainingCount > 0 {
-                Button("补答剩余题目") { Task { await model.retry() } }.font(.headline).padding(.vertical, 12).disabled(model.isBusy)
-            }
+        PracticeSummaryPage(character: character, message: companion.closing,
+                            correct: model.roundPoints, total: model.attempt.round.questionIds.count,
+                            items: model.attempt.round.answers.compactMap { submission in
+                                guard submission.result.outcome != .correct,
+                                      let index = model.attempt.unit.questions.firstIndex(where: { $0.id == submission.questionId }) else { return nil }
+                                let question = model.attempt.unit.questions[index]
+                                return PracticeReviewItem(id: question.id, location: "第 \(index + 1) 题", prompt: question.prompt,
+                                    answer: solutionText(submission.answer, question: question),
+                                    reference: solutionText(submission.result.solution, question: question))
+                            }, busy: model.isBusy, finish: endPractice)
+    }
+    private func endPractice() {
+        guard !model.isBusy else { return }
+        Task {
+            if model.attempt.firstCompletedAt == nil { await model.finish() }
+            if model.error == nil { dismiss() }
         }
     }
     private var bottomBar: some View {
         VStack(spacing: 10) {
             switch model.stage {
-            case .cover:
-                primary("进入") { model.advance() }.accessibilityLabel(model.attempt.unit.originalGroup == nil ? "开始故事" : "开始完整题组")
+            case .cover, .summary: EmptyView()
             case .story:
                 HStack(spacing: 12) {
                     primary(model.isLastOpeningBeat ? "开始挑战" : "继续") { model.advance() }
@@ -608,9 +610,6 @@ public struct LearningChallengeView: View {
                         } else if !dynamicTypeSize.isAccessibilitySize { skipQuestionButton }
                     }
                 }
-            case .summary:
-                if model.attempt.firstCompletedAt == nil { primary("完成本轮挑战") { Task { await model.finish() } } }
-                else { primary("回到学习页") { dismiss() } }
             }
         }.padding(.horizontal, 24).padding(.top, 16).padding(.bottom, 12).frame(maxWidth: 680).frame(maxWidth: .infinity)
             .background(.regularMaterial)
