@@ -1,0 +1,804 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b097",
+  "createdAt": "2026-10-24T00:29:28.208814+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.junior2.words-and-camera-diaries-097",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior2",
+        "title": "10·24新题 · Two diaries: a word game and a camera walk",
+        "summary": "Two diaries: a word game and a camera walk，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 16,
+        "goalIds": [
+          "original.shared_insertion"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g8.changjun2024.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete four-gap/five-candidate diaries. Each candidate at most once, one unused in each."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior insertion originals in two practices. Source-specific diary/guide candidate, quotation and heading structures retained. Fictional cases, same-author all-placement review, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior2.words-and-camera-diaries-097",
+          "family": "shared_insertion",
+          "label": "Two diaries: a word game and a camera walk",
+          "candidateSHA256": "52cae800b8db421228e020c3a4e9364db421167d1d4fd34d9c342ac8e2ca482c",
+          "authorCheckSHA256": "a1b8b01ebf298f648761a0bc41c215819181570d6bdc6d33ffca0791685420dc",
+          "sourceGroupIds": [
+            "expansion.20261024.junior2.words-and-camera-diaries-097#words",
+            "expansion.20261024.junior2.words-and-camera-diaries-097#camera"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b097；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A word I knew on paper\n\nTuesday, 6 May\n\nOur English club played a spelling game today. I had studied the word list carefully and recognised every word when I saw it. ____1____ Without the printed letters, I needed a moment to connect the sound with the word I knew.\n\nOn my first turn, I began spelling before the teacher had finished speaking. I had guessed the ending from the first sound. ____2____ The word she actually said was different from the one I expected.\n\nI asked if I could hear it in a sentence. The extra context helped, and I tried again. This time I listened to the whole word before starting. ____3____ I still spoke slowly, but I reached the end without changing my answer halfway through.\n\nAfter the game, my friend suggested practising from recordings as well as from a list. We took turns reading words while the other kept the paper hidden. ____4____ It was a useful way to prepare for what the game actually asked us to do.\n\nA walk with one photograph\n\nSaturday, 10 May\n\nFor our photography club, each member could submit only one picture from a walk by the river. I first thought the limit would make the task easy. ____1____ A bright boat, an old bridge and a reflection all seemed worth choosing.\n\nI took several photographs but kept the camera down between them. Our teacher had asked us to watch the place as well as the screen. ____2____ Its movement changed the reflection I had been trying to capture.\n\nMy favourite first image had a clear bridge but also a stranger's face close to the camera. I checked the club's rules about using identifiable people in a public display and asked the teacher for guidance. ____3____ The bridge remained the subject without requiring that person's face in the picture.\n\nBack in class, we compared what each single photograph left outside its frame. My chosen image did not show the boat or the whole riverbank. ____4____ The limit had made me think about selection, not just about collecting as many pictures as possible."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior2.words-and-camera-diaries-097.words.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "A word I knew on paper\n\nTuesday, 6 May\n\nOur English club played a spelling game today. I had studied the word list carefully and recognised every word when I saw it. ____1____ Without the printed letters, I needed a moment to connect the sound with the word I knew.\n\nOn my first turn, I began spelling before the teacher had finished speaking. I had guessed the ending from the first sound. ____2____ The word she actually said was different from the one I expected.\n\nI asked if I could hear it in a sentence. The extra context helped, and I tried again. This time I listened to the whole word before starting. ____3____ I still spoke slowly, but I reached the end without changing my answer halfway through.\n\nAfter the game, my friend suggested practising from recordings as well as from a list. We took turns reading words while the other kept the paper hidden. ____4____ It was a useful way to prepare for what the game actually asked us to do.",
+            "explanation": "B moves from printed knowledge to the spoken round, developed by Without the printed letters. C a premature guess, D correct spelling and A summary serve later gaps. E contradicts the spoken activity.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Knowing the written list had not automatically prepared me for every listening turn."
+              },
+              {
+                "id": "o1",
+                "text": "B. The first spoken round felt different."
+              },
+              {
+                "id": "o2",
+                "text": "C. That hurried guess sent me in the wrong direction."
+              },
+              {
+                "id": "o3",
+                "text": "D. I could then think about the letters in the correct word."
+              },
+              {
+                "id": "o4",
+                "text": "E. The teacher never spoke any words during the game."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior2.words-and-camera-diaries-097.words.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "A word I knew on paper\n\nTuesday, 6 May\n\nOur English club played a spelling game today. I had studied the word list carefully and recognised every word when I saw it. ____1____ Without the printed letters, I needed a moment to connect the sound with the word I knew.\n\nOn my first turn, I began spelling before the teacher had finished speaking. I had guessed the ending from the first sound. ____2____ The word she actually said was different from the one I expected.\n\nI asked if I could hear it in a sentence. The extra context helped, and I tried again. This time I listened to the whole word before starting. ____3____ I still spoke slowly, but I reached the end without changing my answer halfway through.\n\nAfter the game, my friend suggested practising from recordings as well as from a list. We took turns reading words while the other kept the paper hidden. ____4____ It was a useful way to prepare for what the game actually asked us to do.",
+            "explanation": "C refers to guessing before the teacher finished and prepares the actual-word contrast. A summary, B format and D later correction do not identify the initial error. E is false.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Knowing the written list had not automatically prepared me for every listening turn."
+              },
+              {
+                "id": "o1",
+                "text": "B. The first spoken round felt different."
+              },
+              {
+                "id": "o2",
+                "text": "C. That hurried guess sent me in the wrong direction."
+              },
+              {
+                "id": "o3",
+                "text": "D. I could then think about the letters in the correct word."
+              },
+              {
+                "id": "o4",
+                "text": "E. The teacher never spoke any words during the game."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.words-and-camera-diaries-097.words.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "A word I knew on paper\n\nTuesday, 6 May\n\nOur English club played a spelling game today. I had studied the word list carefully and recognised every word when I saw it. ____1____ Without the printed letters, I needed a moment to connect the sound with the word I knew.\n\nOn my first turn, I began spelling before the teacher had finished speaking. I had guessed the ending from the first sound. ____2____ The word she actually said was different from the one I expected.\n\nI asked if I could hear it in a sentence. The extra context helped, and I tried again. This time I listened to the whole word before starting. ____3____ I still spoke slowly, but I reached the end without changing my answer halfway through.\n\nAfter the game, my friend suggested practising from recordings as well as from a list. We took turns reading words while the other kept the paper hidden. ____4____ It was a useful way to prepare for what the game actually asked us to do.",
+            "explanation": "D follows listening to the complete word and leads to steady spelling. A/B/C concern preparation, format and earlier error. E denies the event.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Knowing the written list had not automatically prepared me for every listening turn."
+              },
+              {
+                "id": "o1",
+                "text": "B. The first spoken round felt different."
+              },
+              {
+                "id": "o2",
+                "text": "C. That hurried guess sent me in the wrong direction."
+              },
+              {
+                "id": "o3",
+                "text": "D. I could then think about the letters in the correct word."
+              },
+              {
+                "id": "o4",
+                "text": "E. The teacher never spoke any words during the game."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.words-and-camera-diaries-097.words.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "A word I knew on paper\n\nTuesday, 6 May\n\nOur English club played a spelling game today. I had studied the word list carefully and recognised every word when I saw it. ____1____ Without the printed letters, I needed a moment to connect the sound with the word I knew.\n\nOn my first turn, I began spelling before the teacher had finished speaking. I had guessed the ending from the first sound. ____2____ The word she actually said was different from the one I expected.\n\nI asked if I could hear it in a sentence. The extra context helped, and I tried again. This time I listened to the whole word before starting. ____3____ I still spoke slowly, but I reached the end without changing my answer halfway through.\n\nAfter the game, my friend suggested practising from recordings as well as from a list. We took turns reading words while the other kept the paper hidden. ____4____ It was a useful way to prepare for what the game actually asked us to do.",
+            "explanation": "A summarises why recordings supplement the list and prepares the final task-fit statement. B/C/D are earlier steps. E contradicts both teacher and friend speaking.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Knowing the written list had not automatically prepared me for every listening turn."
+              },
+              {
+                "id": "o1",
+                "text": "B. The first spoken round felt different."
+              },
+              {
+                "id": "o2",
+                "text": "C. That hurried guess sent me in the wrong direction."
+              },
+              {
+                "id": "o3",
+                "text": "D. I could then think about the letters in the correct word."
+              },
+              {
+                "id": "o4",
+                "text": "E. The teacher never spoke any words during the game."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.words-and-camera-diaries-097.camera.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "A walk with one photograph\n\nSaturday, 10 May\n\nFor our photography club, each member could submit only one picture from a walk by the river. I first thought the limit would make the task easy. ____1____ A bright boat, an old bridge and a reflection all seemed worth choosing.\n\nI took several photographs but kept the camera down between them. Our teacher had asked us to watch the place as well as the screen. ____2____ Its movement changed the reflection I had been trying to capture.\n\nMy favourite first image had a clear bridge but also a stranger's face close to the camera. I checked the club's rules about using identifiable people in a public display and asked the teacher for guidance. ____3____ The bridge remained the subject without requiring that person's face in the picture.\n\nBack in class, we compared what each single photograph left outside its frame. My chosen image did not show the boat or the whole riverbank. ____4____ The limit had made me think about selection, not just about collecting as many pictures as possible.",
+            "explanation": "C challenges the expectation of an easy limit and introduces the listed possible subjects. A attention, D a different view and B final selection insight follow later. E makes an impossible completeness claim.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. I noticed a bird landing on the water while the camera was lowered."
+              },
+              {
+                "id": "o1",
+                "text": "B. One image could represent my choice without representing the entire walk."
+              },
+              {
+                "id": "o2",
+                "text": "C. After a few minutes, I wanted to show several different things."
+              },
+              {
+                "id": "o3",
+                "text": "D. I selected another view that did not identify the visitor."
+              },
+              {
+                "id": "o4",
+                "text": "E. Taking one picture meant that the whole river and every visitor appeared in it."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior2.words-and-camera-diaries-097.camera.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "A walk with one photograph\n\nSaturday, 10 May\n\nFor our photography club, each member could submit only one picture from a walk by the river. I first thought the limit would make the task easy. ____1____ A bright boat, an old bridge and a reflection all seemed worth choosing.\n\nI took several photographs but kept the camera down between them. Our teacher had asked us to watch the place as well as the screen. ____2____ Its movement changed the reflection I had been trying to capture.\n\nMy favourite first image had a clear bridge but also a stranger's face close to the camera. I checked the club's rules about using identifiable people in a public display and asked the teacher for guidance. ____3____ The bridge remained the subject without requiring that person's face in the picture.\n\nBack in class, we compared what each single photograph left outside its frame. My chosen image did not show the boat or the whole riverbank. ____4____ The limit had made me think about selection, not just about collecting as many pictures as possible.",
+            "explanation": "A reports something seen off-screen and supplies Its movement in the next sentence. B selection, C many subjects and D replacement view belong elsewhere. E contradicts framing limits.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. I noticed a bird landing on the water while the camera was lowered."
+              },
+              {
+                "id": "o1",
+                "text": "B. One image could represent my choice without representing the entire walk."
+              },
+              {
+                "id": "o2",
+                "text": "C. After a few minutes, I wanted to show several different things."
+              },
+              {
+                "id": "o3",
+                "text": "D. I selected another view that did not identify the visitor."
+              },
+              {
+                "id": "o4",
+                "text": "E. Taking one picture meant that the whole river and every visitor appeared in it."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior2.words-and-camera-diaries-097.camera.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "A walk with one photograph\n\nSaturday, 10 May\n\nFor our photography club, each member could submit only one picture from a walk by the river. I first thought the limit would make the task easy. ____1____ A bright boat, an old bridge and a reflection all seemed worth choosing.\n\nI took several photographs but kept the camera down between them. Our teacher had asked us to watch the place as well as the screen. ____2____ Its movement changed the reflection I had been trying to capture.\n\nMy favourite first image had a clear bridge but also a stranger's face close to the camera. I checked the club's rules about using identifiable people in a public display and asked the teacher for guidance. ____3____ The bridge remained the subject without requiring that person's face in the picture.\n\nBack in class, we compared what each single photograph left outside its frame. My chosen image did not show the boat or the whole riverbank. ____4____ The limit had made me think about selection, not just about collecting as many pictures as possible.",
+            "explanation": "D gives the chosen response after checking rules and prepares the retained bridge subject. A/B/C address observation, conclusion and options. E would expose everyone rather than avoid an identifiable face.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. I noticed a bird landing on the water while the camera was lowered."
+              },
+              {
+                "id": "o1",
+                "text": "B. One image could represent my choice without representing the entire walk."
+              },
+              {
+                "id": "o2",
+                "text": "C. After a few minutes, I wanted to show several different things."
+              },
+              {
+                "id": "o3",
+                "text": "D. I selected another view that did not identify the visitor."
+              },
+              {
+                "id": "o4",
+                "text": "E. Taking one picture meant that the whole river and every visitor appeared in it."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior2.words-and-camera-diaries-097.camera.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole diary. Use each option at most once. One sentence is not needed.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "A walk with one photograph\n\nSaturday, 10 May\n\nFor our photography club, each member could submit only one picture from a walk by the river. I first thought the limit would make the task easy. ____1____ A bright boat, an old bridge and a reflection all seemed worth choosing.\n\nI took several photographs but kept the camera down between them. Our teacher had asked us to watch the place as well as the screen. ____2____ Its movement changed the reflection I had been trying to capture.\n\nMy favourite first image had a clear bridge but also a stranger's face close to the camera. I checked the club's rules about using identifiable people in a public display and asked the teacher for guidance. ____3____ The bridge remained the subject without requiring that person's face in the picture.\n\nBack in class, we compared what each single photograph left outside its frame. My chosen image did not show the boat or the whole riverbank. ____4____ The limit had made me think about selection, not just about collecting as many pictures as possible.",
+            "explanation": "B explains what a single frame can and cannot represent, leading to selection rather than collection. A/C/D are earlier events. E asserts complete coverage denied by the paragraph.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. I noticed a bird landing on the water while the camera was lowered."
+              },
+              {
+                "id": "o1",
+                "text": "B. One image could represent my choice without representing the entire walk."
+              },
+              {
+                "id": "o2",
+                "text": "C. After a few minutes, I wanted to show several different things."
+              },
+              {
+                "id": "o3",
+                "text": "D. I selected another view that did not identify the visitor."
+              },
+              {
+                "id": "o4",
+                "text": "E. Taking one picture meant that the whole river and every visitor appeared in it."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "e5b627a48cad560f2c42050fb2437a2c0ddfe5a0cc3ee407837571b8c02c3cc4",
+      "reviewNotes": "Four complete junior insertion originals in two practices. Source-specific diary/guide candidate, quotation and heading structures retained. Fictional cases, same-author all-placement review, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.junior3.borrowing-and-newgroup-guides-097",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "junior3",
+        "title": "10·24新题 · Two guides: borrowing and joining in",
+        "summary": "Two guides: borrowing and joining in，共10题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.shared_insertion"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g9.suzhou2024.insertion",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete five-gap/seven-option guides. Three printed headings; gap2 inside quotation marks and gap5 a heading. Two unused candidates each; no extra once-only rule."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Four complete junior insertion originals in two practices. Source-specific diary/guide candidate, quotation and heading structures retained. Fictional cases, same-author all-placement review, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.junior3.borrowing-and-newgroup-guides-097",
+          "family": "shared_insertion",
+          "label": "Two guides: borrowing and joining in",
+          "candidateSHA256": "700c14abb0d026402d001aca14e6ad8ef305b0f1dadd721c9e96ad6b1e695eb7",
+          "authorCheckSHA256": "289f2202162995c140cc11951949a383cb4793b2f06eabf0bf11206ead7efc0e",
+          "sourceGroupIds": [
+            "expansion.20261024.junior3.borrowing-and-newgroup-guides-097#borrow",
+            "expansion.20261024.junior3.borrowing-and-newgroup-guides-097#group"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b097；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Borrowing something with care\n\nBorrowing an object begins with recognising that its owner may have plans you do not know about. Being friendly does not make another person's belongings automatically available. ____1____ A clear answer should come before you take the item away.\n\nAsk about the arrangement\n\nGive enough detail for the owner to decide. You might say, \"____2____\" The time and purpose make the request easier to answer than a vague promise to bring it back sometime.\n\nCheck the condition together\n\nNotice any existing mark or loose part before use. ____3____ This protects both people from confusion about what changed while the item was away.\n\nKeep the owner informed\n\nIf a problem occurs, explain it promptly rather than hoping it will disappear. ____4____ A person may be able to suggest what to do, and should not have to discover the problem only after the return.\n\n____5____\n\nBring the object back at the agreed time and in the agreed way. Ask before leaving it somewhere different. A short confirmation that it has arrived safely completes the arrangement better than assuming the other person will eventually find it.\n\nJoining an established group\n\nEntering a group that already knows one another can feel awkward. Familiar jokes and routines may pass quickly, leaving a newcomer unsure how to take part. ____1____ You do not need to understand the group's whole history on the first afternoon.\n\nAsk one useful question\n\nA specific question can create an easier beginning than trying to impress everyone at once. You might say, \"____2____\" The answer gives you a practical place in the activity rather than only a place at the edge of the room.\n\nWatch the ordinary routine\n\nNotice how equipment is shared and how decisions are made. ____3____ An arrangement that looks obvious to a regular member may still need explaining to you.\n\nOffer something manageable\n\nChoose a contribution you can actually complete. ____4____ Taking on an enormous task to prove that you belong may create more uncertainty than a small reliable action.\n\n____5____\n\nOne quiet meeting does not settle whether you fit the group. Return if the activity interests you, and notice whether questions and participation become easier. At the same time, take persistent unkindness or exclusion seriously rather than assuming that every difficulty is your own failure."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.junior3.borrowing-and-newgroup-guides-097.borrow.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "Borrowing something with care\n\nBorrowing an object begins with recognising that its owner may have plans you do not know about. Being friendly does not make another person's belongings automatically available. ____1____ A clear answer should come before you take the item away.\n\nAsk about the arrangement\n\nGive enough detail for the owner to decide. You might say, \"____2____\" The time and purpose make the request easier to answer than a vague promise to bring it back sometime.\n\nCheck the condition together\n\nNotice any existing mark or loose part before use. ____3____ This protects both people from confusion about what changed while the item was away.\n\nKeep the owner informed\n\nIf a problem occurs, explain it promptly rather than hoping it will disappear. ____4____ A person may be able to suggest what to do, and should not have to discover the problem only after the return.\n\n____5____\n\nBring the object back at the agreed time and in the agreed way. Ask before leaving it somewhere different. A short confirmation that it has arrived safely completes the arrangement better than assuming the other person will eventually find it.",
+            "explanation": "B establishes actual permission and prepares A clear answer. A quoted request, D condition, E response to problems and C return heading belong later. F/G deny ownership or honest communication.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could I borrow your camera for the school walk and return it on Friday?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Ask permission rather than treating silence as agreement."
+              },
+              {
+                "id": "o2",
+                "text": "C. Return it as agreed"
+              },
+              {
+                "id": "o3",
+                "text": "D. Make sure you both understand its state before it leaves."
+              },
+              {
+                "id": "o4",
+                "text": "E. Do not attempt an unfamiliar repair without checking with the owner."
+              },
+              {
+                "id": "o5",
+                "text": "F. Anything borrowed becomes your property for as long as you want."
+              },
+              {
+                "id": "o6",
+                "text": "G. A hidden problem becomes harmless if nobody mentions it."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.borrowing-and-newgroup-guides-097.borrow.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "Borrowing something with care\n\nBorrowing an object begins with recognising that its owner may have plans you do not know about. Being friendly does not make another person's belongings automatically available. ____1____ A clear answer should come before you take the item away.\n\nAsk about the arrangement\n\nGive enough detail for the owner to decide. You might say, \"____2____\" The time and purpose make the request easier to answer than a vague promise to bring it back sometime.\n\nCheck the condition together\n\nNotice any existing mark or loose part before use. ____3____ This protects both people from confusion about what changed while the item was away.\n\nKeep the owner informed\n\nIf a problem occurs, explain it promptly rather than hoping it will disappear. ____4____ A person may be able to suggest what to do, and should not have to discover the problem only after the return.\n\n____5____\n\nBring the object back at the agreed time and in the agreed way. Ask before leaving it somewhere different. A short confirmation that it has arrived safely completes the arrangement better than assuming the other person will eventually find it.",
+            "explanation": "A is the quoted specific purpose and return date, picked up by time and purpose. B/D/E are general guidance and C a heading. F/G are not requests.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could I borrow your camera for the school walk and return it on Friday?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Ask permission rather than treating silence as agreement."
+              },
+              {
+                "id": "o2",
+                "text": "C. Return it as agreed"
+              },
+              {
+                "id": "o3",
+                "text": "D. Make sure you both understand its state before it leaves."
+              },
+              {
+                "id": "o4",
+                "text": "E. Do not attempt an unfamiliar repair without checking with the owner."
+              },
+              {
+                "id": "o5",
+                "text": "F. Anything borrowed becomes your property for as long as you want."
+              },
+              {
+                "id": "o6",
+                "text": "G. A hidden problem becomes harmless if nobody mentions it."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.borrowing-and-newgroup-guides-097.borrow.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "Borrowing something with care\n\nBorrowing an object begins with recognising that its owner may have plans you do not know about. Being friendly does not make another person's belongings automatically available. ____1____ A clear answer should come before you take the item away.\n\nAsk about the arrangement\n\nGive enough detail for the owner to decide. You might say, \"____2____\" The time and purpose make the request easier to answer than a vague promise to bring it back sometime.\n\nCheck the condition together\n\nNotice any existing mark or loose part before use. ____3____ This protects both people from confusion about what changed while the item was away.\n\nKeep the owner informed\n\nIf a problem occurs, explain it promptly rather than hoping it will disappear. ____4____ A person may be able to suggest what to do, and should not have to discover the problem only after the return.\n\n____5____\n\nBring the object back at the agreed time and in the agreed way. Ask before leaving it somewhere different. A short confirmation that it has arrived safely completes the arrangement better than assuming the other person will eventually find it.",
+            "explanation": "D confirms the initial condition, protecting both from later confusion. A/B/C/E address permission, request, return and problems. F/G do not record state.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could I borrow your camera for the school walk and return it on Friday?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Ask permission rather than treating silence as agreement."
+              },
+              {
+                "id": "o2",
+                "text": "C. Return it as agreed"
+              },
+              {
+                "id": "o3",
+                "text": "D. Make sure you both understand its state before it leaves."
+              },
+              {
+                "id": "o4",
+                "text": "E. Do not attempt an unfamiliar repair without checking with the owner."
+              },
+              {
+                "id": "o5",
+                "text": "F. Anything borrowed becomes your property for as long as you want."
+              },
+              {
+                "id": "o6",
+                "text": "G. A hidden problem becomes harmless if nobody mentions it."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.junior3.borrowing-and-newgroup-guides-097.borrow.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "Borrowing something with care\n\nBorrowing an object begins with recognising that its owner may have plans you do not know about. Being friendly does not make another person's belongings automatically available. ____1____ A clear answer should come before you take the item away.\n\nAsk about the arrangement\n\nGive enough detail for the owner to decide. You might say, \"____2____\" The time and purpose make the request easier to answer than a vague promise to bring it back sometime.\n\nCheck the condition together\n\nNotice any existing mark or loose part before use. ____3____ This protects both people from confusion about what changed while the item was away.\n\nKeep the owner informed\n\nIf a problem occurs, explain it promptly rather than hoping it will disappear. ____4____ A person may be able to suggest what to do, and should not have to discover the problem only after the return.\n\n____5____\n\nBring the object back at the agreed time and in the agreed way. Ask before leaving it somewhere different. A short confirmation that it has arrived safely completes the arrangement better than assuming the other person will eventually find it.",
+            "explanation": "E gives a careful response to a problem and prepares owner guidance. A/B/C/D concern other stages. G wrongly treats concealment as resolution.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could I borrow your camera for the school walk and return it on Friday?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Ask permission rather than treating silence as agreement."
+              },
+              {
+                "id": "o2",
+                "text": "C. Return it as agreed"
+              },
+              {
+                "id": "o3",
+                "text": "D. Make sure you both understand its state before it leaves."
+              },
+              {
+                "id": "o4",
+                "text": "E. Do not attempt an unfamiliar repair without checking with the owner."
+              },
+              {
+                "id": "o5",
+                "text": "F. Anything borrowed becomes your property for as long as you want."
+              },
+              {
+                "id": "o6",
+                "text": "G. A hidden problem becomes harmless if nobody mentions it."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.junior3.borrowing-and-newgroup-guides-097.borrow.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 5.",
+            "material": "Borrowing something with care\n\nBorrowing an object begins with recognising that its owner may have plans you do not know about. Being friendly does not make another person's belongings automatically available. ____1____ A clear answer should come before you take the item away.\n\nAsk about the arrangement\n\nGive enough detail for the owner to decide. You might say, \"____2____\" The time and purpose make the request easier to answer than a vague promise to bring it back sometime.\n\nCheck the condition together\n\nNotice any existing mark or loose part before use. ____3____ This protects both people from confusion about what changed while the item was away.\n\nKeep the owner informed\n\nIf a problem occurs, explain it promptly rather than hoping it will disappear. ____4____ A person may be able to suggest what to do, and should not have to discover the problem only after the return.\n\n____5____\n\nBring the object back at the agreed time and in the agreed way. Ask before leaving it somewhere different. A short confirmation that it has arrived safely completes the arrangement better than assuming the other person will eventually find it.",
+            "explanation": "C heads the agreed-time/way return paragraph. A/B/D/E concern earlier arrangements; F denies returning and G hides problems.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Could I borrow your camera for the school walk and return it on Friday?"
+              },
+              {
+                "id": "o1",
+                "text": "B. Ask permission rather than treating silence as agreement."
+              },
+              {
+                "id": "o2",
+                "text": "C. Return it as agreed"
+              },
+              {
+                "id": "o3",
+                "text": "D. Make sure you both understand its state before it leaves."
+              },
+              {
+                "id": "o4",
+                "text": "E. Do not attempt an unfamiliar repair without checking with the owner."
+              },
+              {
+                "id": "o5",
+                "text": "F. Anything borrowed becomes your property for as long as you want."
+              },
+              {
+                "id": "o6",
+                "text": "G. A hidden problem becomes harmless if nobody mentions it."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.borrowing-and-newgroup-guides-097.group.q1",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 1.",
+            "material": "Joining an established group\n\nEntering a group that already knows one another can feel awkward. Familiar jokes and routines may pass quickly, leaving a newcomer unsure how to take part. ____1____ You do not need to understand the group's whole history on the first afternoon.\n\nAsk one useful question\n\nA specific question can create an easier beginning than trying to impress everyone at once. You might say, \"____2____\" The answer gives you a practical place in the activity rather than only a place at the edge of the room.\n\nWatch the ordinary routine\n\nNotice how equipment is shared and how decisions are made. ____3____ An arrangement that looks obvious to a regular member may still need explaining to you.\n\nOffer something manageable\n\nChoose a contribution you can actually complete. ____4____ Taking on an enormous task to prove that you belong may create more uncertainty than a small reliable action.\n\n____5____\n\nOne quiet meeting does not settle whether you fit the group. Return if the activity interests you, and notice whether questions and participation become easier. At the same time, take persistent unkindness or exclusion seriously rather than assuming that every difficulty is your own failure.",
+            "explanation": "B allows gradual learning, developed by not needing the whole history immediately. E quote, A routine, C contribution and D review fit later gaps. F/G set impossible burdens.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Learn the pattern, and ask when an important step is unclear."
+              },
+              {
+                "id": "o1",
+                "text": "B. Give yourself time to learn how things work."
+              },
+              {
+                "id": "o2",
+                "text": "C. A modest useful job is enough for a beginning."
+              },
+              {
+                "id": "o3",
+                "text": "D. Review the experience over time"
+              },
+              {
+                "id": "o4",
+                "text": "E. Where should I put these materials before we start?"
+              },
+              {
+                "id": "o5",
+                "text": "F. Promise to do every job even when you have no time to finish."
+              },
+              {
+                "id": "o6",
+                "text": "G. A newcomer must know every private joke before joining any activity."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.junior3.borrowing-and-newgroup-guides-097.group.q2",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 2.",
+            "material": "Joining an established group\n\nEntering a group that already knows one another can feel awkward. Familiar jokes and routines may pass quickly, leaving a newcomer unsure how to take part. ____1____ You do not need to understand the group's whole history on the first afternoon.\n\nAsk one useful question\n\nA specific question can create an easier beginning than trying to impress everyone at once. You might say, \"____2____\" The answer gives you a practical place in the activity rather than only a place at the edge of the room.\n\nWatch the ordinary routine\n\nNotice how equipment is shared and how decisions are made. ____3____ An arrangement that looks obvious to a regular member may still need explaining to you.\n\nOffer something manageable\n\nChoose a contribution you can actually complete. ____4____ Taking on an enormous task to prove that you belong may create more uncertainty than a small reliable action.\n\n____5____\n\nOne quiet meeting does not settle whether you fit the group. Return if the activity interests you, and notice whether questions and participation become easier. At the same time, take persistent unkindness or exclusion seriously rather than assuming that every difficulty is your own failure.",
+            "explanation": "E is a specific quoted practical question about materials and starting. A/B/C are general instructions and D a heading. F/G do not request a useful entry point.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Learn the pattern, and ask when an important step is unclear."
+              },
+              {
+                "id": "o1",
+                "text": "B. Give yourself time to learn how things work."
+              },
+              {
+                "id": "o2",
+                "text": "C. A modest useful job is enough for a beginning."
+              },
+              {
+                "id": "o3",
+                "text": "D. Review the experience over time"
+              },
+              {
+                "id": "o4",
+                "text": "E. Where should I put these materials before we start?"
+              },
+              {
+                "id": "o5",
+                "text": "F. Promise to do every job even when you have no time to finish."
+              },
+              {
+                "id": "o6",
+                "text": "G. A newcomer must know every private joke before joining any activity."
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261024.junior3.borrowing-and-newgroup-guides-097.group.q3",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 3.",
+            "material": "Joining an established group\n\nEntering a group that already knows one another can feel awkward. Familiar jokes and routines may pass quickly, leaving a newcomer unsure how to take part. ____1____ You do not need to understand the group's whole history on the first afternoon.\n\nAsk one useful question\n\nA specific question can create an easier beginning than trying to impress everyone at once. You might say, \"____2____\" The answer gives you a practical place in the activity rather than only a place at the edge of the room.\n\nWatch the ordinary routine\n\nNotice how equipment is shared and how decisions are made. ____3____ An arrangement that looks obvious to a regular member may still need explaining to you.\n\nOffer something manageable\n\nChoose a contribution you can actually complete. ____4____ Taking on an enormous task to prove that you belong may create more uncertainty than a small reliable action.\n\n____5____\n\nOne quiet meeting does not settle whether you fit the group. Return if the activity interests you, and notice whether questions and participation become easier. At the same time, take persistent unkindness or exclusion seriously rather than assuming that every difficulty is your own failure.",
+            "explanation": "A combines observing routine with asking about unclear steps, preparing the difference between regular and new members. B/C/D/E concern time, contribution, review and quote. F/G do not clarify shared procedure.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Learn the pattern, and ask when an important step is unclear."
+              },
+              {
+                "id": "o1",
+                "text": "B. Give yourself time to learn how things work."
+              },
+              {
+                "id": "o2",
+                "text": "C. A modest useful job is enough for a beginning."
+              },
+              {
+                "id": "o3",
+                "text": "D. Review the experience over time"
+              },
+              {
+                "id": "o4",
+                "text": "E. Where should I put these materials before we start?"
+              },
+              {
+                "id": "o5",
+                "text": "F. Promise to do every job even when you have no time to finish."
+              },
+              {
+                "id": "o6",
+                "text": "G. A newcomer must know every private joke before joining any activity."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.junior3.borrowing-and-newgroup-guides-097.group.q4",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 4.",
+            "material": "Joining an established group\n\nEntering a group that already knows one another can feel awkward. Familiar jokes and routines may pass quickly, leaving a newcomer unsure how to take part. ____1____ You do not need to understand the group's whole history on the first afternoon.\n\nAsk one useful question\n\nA specific question can create an easier beginning than trying to impress everyone at once. You might say, \"____2____\" The answer gives you a practical place in the activity rather than only a place at the edge of the room.\n\nWatch the ordinary routine\n\nNotice how equipment is shared and how decisions are made. ____3____ An arrangement that looks obvious to a regular member may still need explaining to you.\n\nOffer something manageable\n\nChoose a contribution you can actually complete. ____4____ Taking on an enormous task to prove that you belong may create more uncertainty than a small reliable action.\n\n____5____\n\nOne quiet meeting does not settle whether you fit the group. Return if the activity interests you, and notice whether questions and participation become easier. At the same time, take persistent unkindness or exclusion seriously rather than assuming that every difficulty is your own failure.",
+            "explanation": "C matches a manageable contribution and contrasts with an enormous promise. A/B/D/E address other stages. F explicitly creates the burden the paragraph rejects.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Learn the pattern, and ask when an important step is unclear."
+              },
+              {
+                "id": "o1",
+                "text": "B. Give yourself time to learn how things work."
+              },
+              {
+                "id": "o2",
+                "text": "C. A modest useful job is enough for a beginning."
+              },
+              {
+                "id": "o3",
+                "text": "D. Review the experience over time"
+              },
+              {
+                "id": "o4",
+                "text": "E. Where should I put these materials before we start?"
+              },
+              {
+                "id": "o5",
+                "text": "F. Promise to do every job even when you have no time to finish."
+              },
+              {
+                "id": "o6",
+                "text": "G. A newcomer must know every private joke before joining any activity."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.junior3.borrowing-and-newgroup-guides-097.group.q5",
+            "goalId": "original.shared_insertion",
+            "instruction": "Read the whole guide. Two options are not needed. Keep the printed headings and quotation marks.",
+            "prompt": "Choose the best option for gap 5.",
+            "material": "Joining an established group\n\nEntering a group that already knows one another can feel awkward. Familiar jokes and routines may pass quickly, leaving a newcomer unsure how to take part. ____1____ You do not need to understand the group's whole history on the first afternoon.\n\nAsk one useful question\n\nA specific question can create an easier beginning than trying to impress everyone at once. You might say, \"____2____\" The answer gives you a practical place in the activity rather than only a place at the edge of the room.\n\nWatch the ordinary routine\n\nNotice how equipment is shared and how decisions are made. ____3____ An arrangement that looks obvious to a regular member may still need explaining to you.\n\nOffer something manageable\n\nChoose a contribution you can actually complete. ____4____ Taking on an enormous task to prove that you belong may create more uncertainty than a small reliable action.\n\n____5____\n\nOne quiet meeting does not settle whether you fit the group. Return if the activity interests you, and notice whether questions and participation become easier. At the same time, take persistent unkindness or exclusion seriously rather than assuming that every difficulty is your own failure.",
+            "explanation": "D heads the evaluation across meetings, including both patience and serious exclusion. A/B/C/E address earlier participation. F/G impose unrealistic joining tests.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Learn the pattern, and ask when an important step is unclear."
+              },
+              {
+                "id": "o1",
+                "text": "B. Give yourself time to learn how things work."
+              },
+              {
+                "id": "o2",
+                "text": "C. A modest useful job is enough for a beginning."
+              },
+              {
+                "id": "o3",
+                "text": "D. Review the experience over time"
+              },
+              {
+                "id": "o4",
+                "text": "E. Where should I put these materials before we start?"
+              },
+              {
+                "id": "o5",
+                "text": "F. Promise to do every job even when you have no time to finish."
+              },
+              {
+                "id": "o6",
+                "text": "G. A newcomer must know every private joke before joining any activity."
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "9f8d10cd215869240549f9112b1e79df9225e518974e3bf0f62ec8e79522c6f0",
+      "reviewNotes": "Four complete junior insertion originals in two practices. Source-specific diary/guide candidate, quotation and heading structures retained. Fictional cases, same-author all-placement review, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。"
+    }
+  ]
+}
