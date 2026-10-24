@@ -1,0 +1,920 @@
+{
+  "version": 1,
+  "run": "2026-10-24",
+  "batch": "b094",
+  "createdAt": "2026-10-24T00:18:24.344261+00:00",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261024.senior1.trail-and-drawing-094",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高考题型原创 · 10·24新题 · A town trail and a drawing from memory",
+        "summary": "A town trail and a drawing from memory，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g10.2024.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three paired senior reading originals. Fictional trail/drawing/nature-log/translation call and qualified soil/evidence discussion. Same-author all-option/evidence review, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior1.trail-and-drawing-094",
+          "family": "reading_choice",
+          "label": "A town trail and a drawing from memory",
+          "candidateSHA256": "8e353c7cedd224b218ceeddd3b87638f8f2271f5f1bae8e41bc3ac9e0ac5b2e7",
+          "authorCheckSHA256": "176bf78edf7e2d565eb3f4a7c53a7555bc01cbc1e311f35b742a7fe5fb2d3718",
+          "sourceGroupIds": [
+            "expansion.20261024.senior1.trail-and-drawing-094#trail",
+            "expansion.20261024.senior1.trail-and-drawing-094#drawing"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b094；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "A town trail in your own time\n\nWestford Visitor Centre offers a self-guided town trail linking six places associated with local working life. The route begins at the former station and finishes at the riverside warehouse. Walking the full route takes about ninety minutes, not including time spent listening or stopping for refreshments.\n\nCollect a free printed map from the centre between 9:00 and 16:00, Tuesday to Sunday. The centre is closed on Monday, but a downloadable map is available from its website. The trail itself follows public streets and does not require a visitor-centre booking.\n\nAt each stop, an audio clip tells a short story connected with the place. Download the clips before setting out if you do not wish to use mobile data. A printed transcript is available at the desk. Listening is optional: the map can be used without a phone.\n\nTwo short sections include steps. The map marks an alternative street route around each, adding about ten minutes in total. Access to the interiors of the buildings is not part of the trail. Please respect homes and businesses along the way and do not block doorways while listening.\n\nThe warehouse café closes at 15:30, earlier than the visitor centre. Its opening is separate from access to the outdoor trail, so arriving late may still allow a walk without a café visit. In poor conditions, choose a shorter route or another day rather than assume that a published trail guarantees suitable weather.\n\nThe window I remembered\n\nFor an art assignment, I drew the view from my grandmother's kitchen without looking at a photograph. I included a large tree, a low wall and a red shed. The picture felt accurate because I had spent many afternoons at that window.\n\nWhen I showed it to Grandma, she recognised the place immediately. Then she asked why the shed was red. I told her I remembered painting it with her one summer. She brought out two photographs. In the older one, the shed was red; in the newer one, it was grey. The colour had changed several years earlier.\n\nMy drawing combined the current tree with an earlier shed. I had not deliberately made a false picture. Familiar memories had joined together without dates attached. The result was a view that looked possible but had not existed in exactly that form.\n\nOur teacher asked me to keep the drawing rather than start again in embarrassment. I added a note about the two periods and made a second drawing from the recent photograph. The pair could show different things: one recorded how I remembered a place, while the other followed a particular image more closely.\n\nComparing them also revealed what the photograph left outside its frame. The old bench beneath the window was absent, though I knew it was there. Neither drawing nor photograph gave every possible detail about the kitchen and garden.\n\nAt the exhibition, Grandma enjoyed explaining the red shed. She did not call my first drawing wrong in every respect. It contained a real memory in an impossible combination. I began to think of accuracy as a question tied to purpose: accurate to which date, which view or which remembered experience? That question made the two pictures more interesting than pretending they were the same kind of record."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior1.trail-and-drawing-094.trail.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What can a visitor do on Monday?",
+            "material": "A town trail in your own time\n\nWestford Visitor Centre offers a self-guided town trail linking six places associated with local working life. The route begins at the former station and finishes at the riverside warehouse. Walking the full route takes about ninety minutes, not including time spent listening or stopping for refreshments.\n\nCollect a free printed map from the centre between 9:00 and 16:00, Tuesday to Sunday. The centre is closed on Monday, but a downloadable map is available from its website. The trail itself follows public streets and does not require a visitor-centre booking.\n\nAt each stop, an audio clip tells a short story connected with the place. Download the clips before setting out if you do not wish to use mobile data. A printed transcript is available at the desk. Listening is optional: the map can be used without a phone.\n\nTwo short sections include steps. The map marks an alternative street route around each, adding about ten minutes in total. Access to the interiors of the buildings is not part of the trail. Please respect homes and businesses along the way and do not block doorways while listening.\n\nThe warehouse café closes at 15:30, earlier than the visitor centre. Its opening is separate from access to the outdoor trail, so arriving late may still allow a walk without a café visit. In poor conditions, choose a shorter route or another day rather than assume that a published trail guarantees suitable weather.",
+            "explanation": "The centre closes Monday but download/public route remain. Interior entry/booked audio are not included.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Demand entry to every building"
+              },
+              {
+                "id": "o1",
+                "text": "Use the downloadable map to follow the outdoor trail"
+              },
+              {
+                "id": "o2",
+                "text": "Collect a map inside the open centre"
+              },
+              {
+                "id": "o3",
+                "text": "Attend a compulsory booked audio tour"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.trail-and-drawing-094.trail.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which statement about the audio is correct?",
+            "material": "A town trail in your own time\n\nWestford Visitor Centre offers a self-guided town trail linking six places associated with local working life. The route begins at the former station and finishes at the riverside warehouse. Walking the full route takes about ninety minutes, not including time spent listening or stopping for refreshments.\n\nCollect a free printed map from the centre between 9:00 and 16:00, Tuesday to Sunday. The centre is closed on Monday, but a downloadable map is available from its website. The trail itself follows public streets and does not require a visitor-centre booking.\n\nAt each stop, an audio clip tells a short story connected with the place. Download the clips before setting out if you do not wish to use mobile data. A printed transcript is available at the desk. Listening is optional: the map can be used without a phone.\n\nTwo short sections include steps. The map marks an alternative street route around each, adding about ten minutes in total. Access to the interiors of the buildings is not part of the trail. Please respect homes and businesses along the way and do not block doorways while listening.\n\nThe warehouse café closes at 15:30, earlier than the visitor centre. Its opening is separate from access to the outdoor trail, so arriving late may still allow a walk without a café visit. In poor conditions, choose a shorter route or another day rather than assume that a published trail guarantees suitable weather.",
+            "explanation": "Audio is optional and transcripts/downloads exist. The other options contradict these arrangements.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every walker must use mobile data"
+              },
+              {
+                "id": "o1",
+                "text": "No transcript is available"
+              },
+              {
+                "id": "o2",
+                "text": "The route can be followed without a phone"
+              },
+              {
+                "id": "o3",
+                "text": "Clips can only be heard inside the centre"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.trail-and-drawing-094.trail.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should someone arriving at16:00 expect?",
+            "material": "A town trail in your own time\n\nWestford Visitor Centre offers a self-guided town trail linking six places associated with local working life. The route begins at the former station and finishes at the riverside warehouse. Walking the full route takes about ninety minutes, not including time spent listening or stopping for refreshments.\n\nCollect a free printed map from the centre between 9:00 and 16:00, Tuesday to Sunday. The centre is closed on Monday, but a downloadable map is available from its website. The trail itself follows public streets and does not require a visitor-centre booking.\n\nAt each stop, an audio clip tells a short story connected with the place. Download the clips before setting out if you do not wish to use mobile data. A printed transcript is available at the desk. Listening is optional: the map can be used without a phone.\n\nTwo short sections include steps. The map marks an alternative street route around each, adding about ten minutes in total. Access to the interiors of the buildings is not part of the trail. Please respect homes and businesses along the way and do not block doorways while listening.\n\nThe warehouse café closes at 15:30, earlier than the visitor centre. Its opening is separate from access to the outdoor trail, so arriving late may still allow a walk without a café visit. In poor conditions, choose a shorter route or another day rather than assume that a published trail guarantees suitable weather.",
+            "explanation": "The café closes15:30. Outdoor access and interiors are separate, with no opening guarantee.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The café stays open until the centre closes"
+              },
+              {
+                "id": "o1",
+                "text": "The whole public trail must be locked"
+              },
+              {
+                "id": "o2",
+                "text": "The warehouse café has already closed"
+              },
+              {
+                "id": "o3",
+                "text": "All building interiors are guaranteed open"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior1.trail-and-drawing-094.drawing.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the shed’s colour initially convincing to the narrator?",
+            "material": "The window I remembered\n\nFor an art assignment, I drew the view from my grandmother's kitchen without looking at a photograph. I included a large tree, a low wall and a red shed. The picture felt accurate because I had spent many afternoons at that window.\n\nWhen I showed it to Grandma, she recognised the place immediately. Then she asked why the shed was red. I told her I remembered painting it with her one summer. She brought out two photographs. In the older one, the shed was red; in the newer one, it was grey. The colour had changed several years earlier.\n\nMy drawing combined the current tree with an earlier shed. I had not deliberately made a false picture. Familiar memories had joined together without dates attached. The result was a view that looked possible but had not existed in exactly that form.\n\nOur teacher asked me to keep the drawing rather than start again in embarrassment. I added a note about the two periods and made a second drawing from the recent photograph. The pair could show different things: one recorded how I remembered a place, while the other followed a particular image more closely.\n\nComparing them also revealed what the photograph left outside its frame. The old bench beneath the window was absent, though I knew it was there. Neither drawing nor photograph gave every possible detail about the kitchen and garden.\n\nAt the exhibition, Grandma enjoyed explaining the red shed. She did not call my first drawing wrong in every respect. It contained a real memory in an impossible combination. I began to think of accuracy as a question tied to purpose: accurate to which date, which view or which remembered experience? That question made the two pictures more interesting than pretending they were the same kind of record.",
+            "explanation": "The narrator recalls a past painting. Recent verification/repainting/teacher order are not stated.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The narrator checked a recent photo first"
+              },
+              {
+                "id": "o1",
+                "text": "It comes from a real earlier memory"
+              },
+              {
+                "id": "o2",
+                "text": "Grandma has just painted it red again"
+              },
+              {
+                "id": "o3",
+                "text": "The teacher ordered every shed to be red"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior1.trail-and-drawing-094.drawing.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does comparison with photographs reveal?",
+            "material": "The window I remembered\n\nFor an art assignment, I drew the view from my grandmother's kitchen without looking at a photograph. I included a large tree, a low wall and a red shed. The picture felt accurate because I had spent many afternoons at that window.\n\nWhen I showed it to Grandma, she recognised the place immediately. Then she asked why the shed was red. I told her I remembered painting it with her one summer. She brought out two photographs. In the older one, the shed was red; in the newer one, it was grey. The colour had changed several years earlier.\n\nMy drawing combined the current tree with an earlier shed. I had not deliberately made a false picture. Familiar memories had joined together without dates attached. The result was a view that looked possible but had not existed in exactly that form.\n\nOur teacher asked me to keep the drawing rather than start again in embarrassment. I added a note about the two periods and made a second drawing from the recent photograph. The pair could show different things: one recorded how I remembered a place, while the other followed a particular image more closely.\n\nComparing them also revealed what the photograph left outside its frame. The old bench beneath the window was absent, though I knew it was there. Neither drawing nor photograph gave every possible detail about the kitchen and garden.\n\nAt the exhibition, Grandma enjoyed explaining the red shed. She did not call my first drawing wrong in every respect. It contained a real memory in an impossible combination. I began to think of accuracy as a question tied to purpose: accurate to which date, which view or which remembered experience? That question made the two pictures more interesting than pretending they were the same kind of record.",
+            "explanation": "Current tree and earlier shed mix dates. Real memory remains, shed exists and photos are framed views.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "All details in the drawing are invented"
+              },
+              {
+                "id": "o1",
+                "text": "The garden never had a shed"
+              },
+              {
+                "id": "o2",
+                "text": "Every photograph shows the whole kitchen"
+              },
+              {
+                "id": "o3",
+                "text": "The drawing combines details from different periods"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior1.trail-and-drawing-094.drawing.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does the teacher ask the narrator to keep the first drawing?",
+            "material": "The window I remembered\n\nFor an art assignment, I drew the view from my grandmother's kitchen without looking at a photograph. I included a large tree, a low wall and a red shed. The picture felt accurate because I had spent many afternoons at that window.\n\nWhen I showed it to Grandma, she recognised the place immediately. Then she asked why the shed was red. I told her I remembered painting it with her one summer. She brought out two photographs. In the older one, the shed was red; in the newer one, it was grey. The colour had changed several years earlier.\n\nMy drawing combined the current tree with an earlier shed. I had not deliberately made a false picture. Familiar memories had joined together without dates attached. The result was a view that looked possible but had not existed in exactly that form.\n\nOur teacher asked me to keep the drawing rather than start again in embarrassment. I added a note about the two periods and made a second drawing from the recent photograph. The pair could show different things: one recorded how I remembered a place, while the other followed a particular image more closely.\n\nComparing them also revealed what the photograph left outside its frame. The old bench beneath the window was absent, though I knew it was there. Neither drawing nor photograph gave every possible detail about the kitchen and garden.\n\nAt the exhibition, Grandma enjoyed explaining the red shed. She did not call my first drawing wrong in every respect. It contained a real memory in an impossible combination. I began to think of accuracy as a question tied to purpose: accurate to which date, which view or which remembered experience? That question made the two pictures more interesting than pretending they were the same kind of record.",
+            "explanation": "Two drawings represent different kinds of record. Perfect current accuracy/replacement/useless memory are rejected.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It can show remembered experience alongside a dated view"
+              },
+              {
+                "id": "o1",
+                "text": "It should replace every photograph"
+              },
+              {
+                "id": "o2",
+                "text": "Its note proves no memory can ever be useful"
+              },
+              {
+                "id": "o3",
+                "text": "It is a perfect record of the current garden"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior1.trail-and-drawing-094.drawing.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What question guides the final understanding of accuracy?",
+            "material": "The window I remembered\n\nFor an art assignment, I drew the view from my grandmother's kitchen without looking at a photograph. I included a large tree, a low wall and a red shed. The picture felt accurate because I had spent many afternoons at that window.\n\nWhen I showed it to Grandma, she recognised the place immediately. Then she asked why the shed was red. I told her I remembered painting it with her one summer. She brought out two photographs. In the older one, the shed was red; in the newer one, it was grey. The colour had changed several years earlier.\n\nMy drawing combined the current tree with an earlier shed. I had not deliberately made a false picture. Familiar memories had joined together without dates attached. The result was a view that looked possible but had not existed in exactly that form.\n\nOur teacher asked me to keep the drawing rather than start again in embarrassment. I added a note about the two periods and made a second drawing from the recent photograph. The pair could show different things: one recorded how I remembered a place, while the other followed a particular image more closely.\n\nComparing them also revealed what the photograph left outside its frame. The old bench beneath the window was absent, though I knew it was there. Neither drawing nor photograph gave every possible detail about the kitchen and garden.\n\nAt the exhibition, Grandma enjoyed explaining the red shed. She did not call my first drawing wrong in every respect. It contained a real memory in an impossible combination. I began to think of accuracy as a question tied to purpose: accurate to which date, which view or which remembered experience? That question made the two pictures more interesting than pretending they were the same kind of record.",
+            "explanation": "The ending ties accuracy to date/view/memory. Cost/mandatory colour/selection-free photography are not the conclusion.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Which picture is the most expensive"
+              },
+              {
+                "id": "o1",
+                "text": "Whether photographs remove all selection"
+              },
+              {
+                "id": "o2",
+                "text": "Whether every picture must contain a red shed"
+              },
+              {
+                "id": "o3",
+                "text": "Which purpose, period or viewpoint the record concerns"
+              }
+            ],
+            "answer": "o3"
+          }
+        ]
+      },
+      "contentHash": "0a65b435bc9dd7b6d51bcefef103a38564a4f88f64b1b6e035d4381b2ff77ee7",
+      "reviewNotes": "Three paired senior reading originals. Fictional trail/drawing/nature-log/translation call and qualified soil/evidence discussion. Same-author all-option/evidence review, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior1.trail-and-drawing-094#trail",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.trail-and-drawing-094.trail.q1",
+            "expansion.20261024.senior1.trail-and-drawing-094.trail.q2",
+            "expansion.20261024.senior1.trail-and-drawing-094.trail.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.trail-and-drawing-094",
+          "sourceContentHash": "50da6c6b94f541f9892ccbc1d67de5b06cec416db6287026b3c044e2db7dee0e"
+        },
+        {
+          "id": "expansion.20261024.senior1.trail-and-drawing-094#drawing",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior1.trail-and-drawing-094.drawing.q1",
+            "expansion.20261024.senior1.trail-and-drawing-094.drawing.q2",
+            "expansion.20261024.senior1.trail-and-drawing-094.drawing.q3",
+            "expansion.20261024.senior1.trail-and-drawing-094.drawing.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior1.trail-and-drawing-094",
+          "sourceContentHash": "21293986abe99caa662ad1336886c26a46694fd65a6fd27c7b74a3654cd72eb4"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior2.observations-and-soil-094",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高考题型原创 · 10·24新题 · Submitting observations and reading the ground",
+        "summary": "Submitting observations and reading the ground，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "g11.2025.readingD",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three paired senior reading originals. Fictional trail/drawing/nature-log/translation call and qualified soil/evidence discussion. Same-author all-option/evidence review, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior2.observations-and-soil-094",
+          "family": "reading_choice",
+          "label": "Submitting observations and reading the ground",
+          "candidateSHA256": "766b5f47ab878eced59e3e009118e6497a763eef51a34e61cc50f73f59d4900d",
+          "authorCheckSHA256": "a2d25d889ad7ee9b9f720d56b389f61a3f681018157f310d0ed242c5095bbb0f",
+          "sourceGroupIds": [
+            "expansion.20261024.senior2.observations-and-soil-094#observations",
+            "expansion.20261024.senior2.observations-and-soil-094#soil"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b094；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Share a garden observation\n\nThe Neighbourhood Nature Log invites residents to submit observations from private gardens and shared green spaces. Its purpose is to gather clear local records, not to rank gardens or certify a complete account of wildlife in the district.\n\nEach submission should describe one observation, give its date and approximate location, and include a photograph if available. Do not enter private land without permission or disturb wildlife to obtain an image. If you are uncertain about identification, describe what you saw and mark the name as uncertain rather than guessing confidently.\n\nAn account is free and is required for submitting records. Readers may browse published entries without registering. Exact addresses are not shown on the public map; the project team retains the location detail needed to assess a record, under the stated privacy rules.\n\nA volunteer checks submissions before publication. A request for clarification does not mean that an observation has been rejected. Some records may remain unpublished if there is too little information to interpret them or if publication would expose sensitive locations. Contributors can see the status through their account.\n\nThe log does not provide urgent advice about injured animals or hazardous situations. Contact the appropriate local service for those needs. A published observation is a contribution to a growing record, not a guarantee that the species occurs everywhere nearby. The number of submitted entries also reflects participation, so a quiet area on the map does not necessarily mean that little wildlife is present there.\n\nA surface with a deeper story\n\nA patch of bare soil may seem less eventful than the plants growing above it. Yet soil is not simply a uniform brown substance supporting roots. It contains mineral particles, organic material, water, air and living organisms, arranged in ways that vary from place to place.\n\nThese components influence one another. Spaces between particles affect how water and air move. Organic material can contribute to structure and provide resources for organisms. Roots change the soil they grow through, while organisms break down and redistribute material. Describing soil as passive background misses these interactions.\n\nAppearance gives only a partial view. Two samples of similar colour may behave differently when wet because their particle sizes or structure differ. A darker surface can suggest organic material, but colour alone does not tell a gardener everything about nutrient availability or the suitability of a site for a particular plant.\n\nHistory matters too. Soil near a building may have been moved or compacted during construction. A garden bed can carry the effects of earlier care, planting and disturbance. The condition visible today is therefore not explained only by the weather of the past week. It can reflect processes operating over several timescales.\n\nFor a classroom investigation, comparing small samples can make these differences tangible. Students might observe texture or the way water passes through a prepared sample under a teacher's guidance. The observations should be linked to the method and the limits of the comparison. A simple exercise is not a complete analysis of a whole garden, still less a professional assessment of contamination or safety.\n\nThe value of looking closely is not that it turns every observer into a soil specialist. It is that familiar ground becomes a subject with its own questions. A plant's difficulty may prompt us to consider what lies below, rather than judge only the visible leaves. Soil then appears as part of a changing system, one whose local history and structure deserve attention alongside the life it supports."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior2.observations-and-soil-094.observations.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should a contributor do when unsure of a name?",
+            "material": "Share a garden observation\n\nThe Neighbourhood Nature Log invites residents to submit observations from private gardens and shared green spaces. Its purpose is to gather clear local records, not to rank gardens or certify a complete account of wildlife in the district.\n\nEach submission should describe one observation, give its date and approximate location, and include a photograph if available. Do not enter private land without permission or disturb wildlife to obtain an image. If you are uncertain about identification, describe what you saw and mark the name as uncertain rather than guessing confidently.\n\nAn account is free and is required for submitting records. Readers may browse published entries without registering. Exact addresses are not shown on the public map; the project team retains the location detail needed to assess a record, under the stated privacy rules.\n\nA volunteer checks submissions before publication. A request for clarification does not mean that an observation has been rejected. Some records may remain unpublished if there is too little information to interpret them or if publication would expose sensitive locations. Contributors can see the status through their account.\n\nThe log does not provide urgent advice about injured animals or hazardous situations. Contact the appropriate local service for those needs. A published observation is a contribution to a growing record, not a guarantee that the species occurs everywhere nearby. The number of submitted entries also reflects participation, so a quiet area on the map does not necessarily mean that little wildlife is present there.",
+            "explanation": "Description plus uncertainty is required. Guessing/disturbance/denial contradict the instructions.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Disturb the animal until a clearer image is obtained"
+              },
+              {
+                "id": "o1",
+                "text": "Choose the most impressive name without checking"
+              },
+              {
+                "id": "o2",
+                "text": "Describe the observation and mark identification uncertain"
+              },
+              {
+                "id": "o3",
+                "text": "Claim that no observation occurred"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.observations-and-soil-094.observations.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who needs an account?",
+            "material": "Share a garden observation\n\nThe Neighbourhood Nature Log invites residents to submit observations from private gardens and shared green spaces. Its purpose is to gather clear local records, not to rank gardens or certify a complete account of wildlife in the district.\n\nEach submission should describe one observation, give its date and approximate location, and include a photograph if available. Do not enter private land without permission or disturb wildlife to obtain an image. If you are uncertain about identification, describe what you saw and mark the name as uncertain rather than guessing confidently.\n\nAn account is free and is required for submitting records. Readers may browse published entries without registering. Exact addresses are not shown on the public map; the project team retains the location detail needed to assess a record, under the stated privacy rules.\n\nA volunteer checks submissions before publication. A request for clarification does not mean that an observation has been rejected. Some records may remain unpublished if there is too little information to interpret them or if publication would expose sensitive locations. Contributors can see the status through their account.\n\nThe log does not provide urgent advice about injured animals or hazardous situations. Contact the appropriate local service for those needs. A published observation is a contribution to a growing record, not a guarantee that the species occurs everywhere nearby. The number of submitted entries also reflects participation, so a quiet area on the map does not necessarily mean that little wildlife is present there.",
+            "explanation": "Submitting requires a free account; browsing does not. Urgent advice is outside the log’s purpose.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only people who need urgent animal advice"
+              },
+              {
+                "id": "o1",
+                "text": "Every person browsing public entries"
+              },
+              {
+                "id": "o2",
+                "text": "Someone submitting an observation"
+              },
+              {
+                "id": "o3",
+                "text": "Nobody under any circumstances"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.observations-and-soil-094.observations.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why should a quiet public-map area be interpreted cautiously?",
+            "material": "Share a garden observation\n\nThe Neighbourhood Nature Log invites residents to submit observations from private gardens and shared green spaces. Its purpose is to gather clear local records, not to rank gardens or certify a complete account of wildlife in the district.\n\nEach submission should describe one observation, give its date and approximate location, and include a photograph if available. Do not enter private land without permission or disturb wildlife to obtain an image. If you are uncertain about identification, describe what you saw and mark the name as uncertain rather than guessing confidently.\n\nAn account is free and is required for submitting records. Readers may browse published entries without registering. Exact addresses are not shown on the public map; the project team retains the location detail needed to assess a record, under the stated privacy rules.\n\nA volunteer checks submissions before publication. A request for clarification does not mean that an observation has been rejected. Some records may remain unpublished if there is too little information to interpret them or if publication would expose sensitive locations. Contributors can see the status through their account.\n\nThe log does not provide urgent advice about injured animals or hazardous situations. Contact the appropriate local service for those needs. A published observation is a contribution to a growing record, not a guarantee that the species occurs everywhere nearby. The number of submitted entries also reflects participation, so a quiet area on the map does not necessarily mean that little wildlife is present there.",
+            "explanation": "Submission activity affects entry density. Absence is not ecological proof; withholding does not imply falsehood and addresses are not public.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Every unpublished record is false"
+              },
+              {
+                "id": "o1",
+                "text": "Entry numbers reflect participation as well as observations"
+              },
+              {
+                "id": "o2",
+                "text": "It proves no living thing exists there"
+              },
+              {
+                "id": "o3",
+                "text": "All exact home addresses appear there"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior2.observations-and-soil-094.soil.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What assumption does the opening challenge?",
+            "material": "A surface with a deeper story\n\nA patch of bare soil may seem less eventful than the plants growing above it. Yet soil is not simply a uniform brown substance supporting roots. It contains mineral particles, organic material, water, air and living organisms, arranged in ways that vary from place to place.\n\nThese components influence one another. Spaces between particles affect how water and air move. Organic material can contribute to structure and provide resources for organisms. Roots change the soil they grow through, while organisms break down and redistribute material. Describing soil as passive background misses these interactions.\n\nAppearance gives only a partial view. Two samples of similar colour may behave differently when wet because their particle sizes or structure differ. A darker surface can suggest organic material, but colour alone does not tell a gardener everything about nutrient availability or the suitability of a site for a particular plant.\n\nHistory matters too. Soil near a building may have been moved or compacted during construction. A garden bed can carry the effects of earlier care, planting and disturbance. The condition visible today is therefore not explained only by the weather of the past week. It can reflect processes operating over several timescales.\n\nFor a classroom investigation, comparing small samples can make these differences tangible. Students might observe texture or the way water passes through a prepared sample under a teacher's guidance. The observations should be linked to the method and the limits of the comparison. A simple exercise is not a complete analysis of a whole garden, still less a professional assessment of contamination or safety.\n\nThe value of looking closely is not that it turns every observer into a soil specialist. It is that familiar ground becomes a subject with its own questions. A plant's difficulty may prompt us to consider what lies below, rather than judge only the visible leaves. Soil then appears as part of a changing system, one whose local history and structure deserve attention alongside the life it supports.",
+            "explanation": "The opening rejects uniform passive background. It accepts roots/water/place variation.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "That different places exist"
+              },
+              {
+                "id": "o1",
+                "text": "That plants have roots"
+              },
+              {
+                "id": "o2",
+                "text": "That water can ever enter ground"
+              },
+              {
+                "id": "o3",
+                "text": "That soil is a uniform passive support"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior2.observations-and-soil-094.soil.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why might similarly coloured samples behave differently?",
+            "material": "A surface with a deeper story\n\nA patch of bare soil may seem less eventful than the plants growing above it. Yet soil is not simply a uniform brown substance supporting roots. It contains mineral particles, organic material, water, air and living organisms, arranged in ways that vary from place to place.\n\nThese components influence one another. Spaces between particles affect how water and air move. Organic material can contribute to structure and provide resources for organisms. Roots change the soil they grow through, while organisms break down and redistribute material. Describing soil as passive background misses these interactions.\n\nAppearance gives only a partial view. Two samples of similar colour may behave differently when wet because their particle sizes or structure differ. A darker surface can suggest organic material, but colour alone does not tell a gardener everything about nutrient availability or the suitability of a site for a particular plant.\n\nHistory matters too. Soil near a building may have been moved or compacted during construction. A garden bed can carry the effects of earlier care, planting and disturbance. The condition visible today is therefore not explained only by the weather of the past week. It can reflect processes operating over several timescales.\n\nFor a classroom investigation, comparing small samples can make these differences tangible. Students might observe texture or the way water passes through a prepared sample under a teacher's guidance. The observations should be linked to the method and the limits of the comparison. A simple exercise is not a complete analysis of a whole garden, still less a professional assessment of contamination or safety.\n\nThe value of looking closely is not that it turns every observer into a soil specialist. It is that familiar ground becomes a subject with its own questions. A plant's difficulty may prompt us to consider what lies below, rather than judge only the visible leaves. Soil then appears as part of a changing system, one whose local history and structure deserve attention alongside the life it supports.",
+            "explanation": "Particle size/structure affect behaviour. Colour does not guarantee sameness and no origin or fixed speed is asserted.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Their particles or structures may differ"
+              },
+              {
+                "id": "o1",
+                "text": "All water moves at the same speed"
+              },
+              {
+                "id": "o2",
+                "text": "They necessarily come from the same garden"
+              },
+              {
+                "id": "o3",
+                "text": "Colour guarantees identical composition"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior2.observations-and-soil-094.soil.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the construction example illustrate?",
+            "material": "A surface with a deeper story\n\nA patch of bare soil may seem less eventful than the plants growing above it. Yet soil is not simply a uniform brown substance supporting roots. It contains mineral particles, organic material, water, air and living organisms, arranged in ways that vary from place to place.\n\nThese components influence one another. Spaces between particles affect how water and air move. Organic material can contribute to structure and provide resources for organisms. Roots change the soil they grow through, while organisms break down and redistribute material. Describing soil as passive background misses these interactions.\n\nAppearance gives only a partial view. Two samples of similar colour may behave differently when wet because their particle sizes or structure differ. A darker surface can suggest organic material, but colour alone does not tell a gardener everything about nutrient availability or the suitability of a site for a particular plant.\n\nHistory matters too. Soil near a building may have been moved or compacted during construction. A garden bed can carry the effects of earlier care, planting and disturbance. The condition visible today is therefore not explained only by the weather of the past week. It can reflect processes operating over several timescales.\n\nFor a classroom investigation, comparing small samples can make these differences tangible. Students might observe texture or the way water passes through a prepared sample under a teacher's guidance. The observations should be linked to the method and the limits of the comparison. A simple exercise is not a complete analysis of a whole garden, still less a professional assessment of contamination or safety.\n\nThe value of looking closely is not that it turns every observer into a soil specialist. It is that familiar ground becomes a subject with its own questions. A plant's difficulty may prompt us to consider what lies below, rather than judge only the visible leaves. Soil then appears as part of a changing system, one whose local history and structure deserve attention alongside the life it supports.",
+            "explanation": "Construction can leave historical effects. The other choices erase the history described.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Buildings make all soil identical"
+              },
+              {
+                "id": "o1",
+                "text": "Compaction has no lasting effect"
+              },
+              {
+                "id": "o2",
+                "text": "Earlier disturbance can influence present soil condition"
+              },
+              {
+                "id": "o3",
+                "text": "Only last week’s weather matters"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261024.senior2.observations-and-soil-094.soil.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What limit is placed on a class investigation?",
+            "material": "A surface with a deeper story\n\nA patch of bare soil may seem less eventful than the plants growing above it. Yet soil is not simply a uniform brown substance supporting roots. It contains mineral particles, organic material, water, air and living organisms, arranged in ways that vary from place to place.\n\nThese components influence one another. Spaces between particles affect how water and air move. Organic material can contribute to structure and provide resources for organisms. Roots change the soil they grow through, while organisms break down and redistribute material. Describing soil as passive background misses these interactions.\n\nAppearance gives only a partial view. Two samples of similar colour may behave differently when wet because their particle sizes or structure differ. A darker surface can suggest organic material, but colour alone does not tell a gardener everything about nutrient availability or the suitability of a site for a particular plant.\n\nHistory matters too. Soil near a building may have been moved or compacted during construction. A garden bed can carry the effects of earlier care, planting and disturbance. The condition visible today is therefore not explained only by the weather of the past week. It can reflect processes operating over several timescales.\n\nFor a classroom investigation, comparing small samples can make these differences tangible. Students might observe texture or the way water passes through a prepared sample under a teacher's guidance. The observations should be linked to the method and the limits of the comparison. A simple exercise is not a complete analysis of a whole garden, still less a professional assessment of contamination or safety.\n\nThe value of looking closely is not that it turns every observer into a soil specialist. It is that familiar ground becomes a subject with its own questions. A plant's difficulty may prompt us to consider what lies below, rather than judge only the visible leaves. Soil then appears as part of a changing system, one whose local history and structure deserve attention alongside the life it supports.",
+            "explanation": "The exercise is useful but limited, explicitly not professional site/safety certification or replacement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It is not a complete site or safety assessment"
+              },
+              {
+                "id": "o1",
+                "text": "It cannot produce any useful observations"
+              },
+              {
+                "id": "o2",
+                "text": "It automatically certifies land free from contamination"
+              },
+              {
+                "id": "o3",
+                "text": "It replaces every specialist method"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "b8214f183f6547422ce3f38c70c616bf65b7430018121d063e7a36f31bbdb0f6",
+      "reviewNotes": "Three paired senior reading originals. Fictional trail/drawing/nature-log/translation call and qualified soil/evidence discussion. Same-author all-option/evidence review, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior2.observations-and-soil-094#observations",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.observations-and-soil-094.observations.q1",
+            "expansion.20261024.senior2.observations-and-soil-094.observations.q2",
+            "expansion.20261024.senior2.observations-and-soil-094.observations.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.observations-and-soil-094",
+          "sourceContentHash": "e73ba5ddbde9b96ac4a540ac18e7b86393f5f350642cac249c4d93284a9d0243"
+        },
+        {
+          "id": "expansion.20261024.senior2.observations-and-soil-094#soil",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior2.observations-and-soil-094.soil.q1",
+            "expansion.20261024.senior2.observations-and-soil-094.soil.q2",
+            "expansion.20261024.senior2.observations-and-soil-094.soil.q3",
+            "expansion.20261024.senior2.observations-and-soil-094.soil.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior2.observations-and-soil-094",
+          "sourceContentHash": "cfd0fc879dcd043bcf3dfd1e7e41f9e9f1ded4e1d276ff18eb94804714991633"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261024.senior3.translation-and-proof-094",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高考题型原创 · 10·24新题 · A translation call and a convincing example",
+        "summary": "A translation call and a convincing example，共7题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 18,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "gaokao.2025.national1",
+            "unit": "2025 National I complete reading task structure",
+            "pages": "Reading section",
+            "alignment": "Two complete original readings; the source paper supplies task rules, not copied text or answer keys."
+          },
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade12-tianjinlower2025-21cnjy22402528.reading.complete_section",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Two complete original passages, three and four four-choice questions, following National I final structure. Old source supplies a level/family reference only."
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-24 new authoring",
+          "reviewedBy": "Same author content review; not independent teacher review",
+          "reviewedAt": "2026-10-24",
+          "reviewNotes": "Three paired senior reading originals. Fictional trail/drawing/nature-log/translation call and qualified soil/evidence discussion. Same-author all-option/evidence review, no independent calibration."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261024.senior3.translation-and-proof-094",
+          "family": "reading_choice",
+          "label": "A translation call and a convincing example",
+          "candidateSHA256": "01b57a8da23ea6765320b27467471f031ea3e33286938ad676bca6b99ee8ce35",
+          "authorCheckSHA256": "df6c78fcaf0e647a0c96a2b76e8c466c9b527afc55c793e9840ad4a807f834f0",
+          "sourceGroupIds": [
+            "expansion.20261024.senior3.translation-and-proof-094#translation",
+            "expansion.20261024.senior3.translation-and-proof-094#example"
+          ],
+          "sourceNotice": "2026-10-24新题批次 b094；原创候选，非高考真题；自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Short essays in translation\n\nThe Lantern Review is accepting translations of short nonfiction essays for a special issue. Each submission must include the translated text and enough information to identify the original work and its author. The issue is interested in how a particular voice or argument travels between languages, rather than in anonymous exercises with no source context.\n\nTranslations should be between 1200 and 2000 English words. Submit a separate note of no more than 300 words describing a significant choice you made. The note may discuss a phrase, tone or structural problem; it should explain a decision rather than summarise the entire essay.\n\nYou must have the right to submit the translation for publication. If permission from the relevant rights holder is required, include evidence that it has been obtained. The review's acceptance cannot replace permission that the translator was responsible for securing.\n\nPreviously published translations are not eligible for this issue. A translation prepared for a class but not made publicly available may be submitted, provided the other requirements are met. Identify any assistance or collaboration in the submission note.\n\nThe deadline is 18:00 on 15 January. Selected translators will work with an editor before publication. Selection does not mean that every wording will remain unchanged, and editorial suggestions will be discussed rather than applied without consultation. The review may decline a piece even if it meets the length and permission rules; those rules establish eligibility, not guaranteed acceptance.\n\nWhen one example feels like enough\n\nAn example can make an abstract claim suddenly clear. A single well-described case gives a reader people, actions and consequences to imagine. That clarity is valuable, but it can also encourage a step the example has not justified: moving from this happened to this is what normally happens.\n\nThe distinction is easy to miss because detail feels evidentially rich. A story may explain exactly how a student used a new study method and why she found it helpful. In its own right, it offers evidence about this student’s reported experience, assuming the account is sound. It cannot alone show how common the outcome would be among students with different circumstances.\n\nA failed case has similar limits. One person abandoning an activity may reveal a real difficulty worth investigating. It does not automatically demonstrate that the activity never benefits anyone. Positive and negative anecdotes both need a clear account of the question they are being used to answer.\n\nThis is not an argument against stories. Examples can expose possibilities overlooked by an average, illustrate a mechanism or show why a broad category needs more detail. Their contribution may be precisely to complicate a general claim rather than settle it. A case that does not represent the majority can still matter greatly to the person it describes.\n\nThe problem arises when the role shifts without notice. A vivid illustration becomes a claim about frequency; a possible mechanism becomes proof of the dominant cause. Readers may remember the scene more easily than the qualification, especially when the example appears at the beginning or end of an argument.\n\nA careful writer can help by naming the role: this case illustrates a possible route, raises a question or shows an exception. A careful reader can ask what evidence would be needed for the larger conclusion. The aim is not to drain examples of their force, but to connect that force to the claim it can support. A story becomes more useful when we know what it is an example of."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261024.senior3.translation-and-proof-094.translation.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What should the separate note do?",
+            "material": "Short essays in translation\n\nThe Lantern Review is accepting translations of short nonfiction essays for a special issue. Each submission must include the translated text and enough information to identify the original work and its author. The issue is interested in how a particular voice or argument travels between languages, rather than in anonymous exercises with no source context.\n\nTranslations should be between 1200 and 2000 English words. Submit a separate note of no more than 300 words describing a significant choice you made. The note may discuss a phrase, tone or structural problem; it should explain a decision rather than summarise the entire essay.\n\nYou must have the right to submit the translation for publication. If permission from the relevant rights holder is required, include evidence that it has been obtained. The review's acceptance cannot replace permission that the translator was responsible for securing.\n\nPreviously published translations are not eligible for this issue. A translation prepared for a class but not made publicly available may be submitted, provided the other requirements are met. Identify any assistance or collaboration in the submission note.\n\nThe deadline is 18:00 on 15 January. Selected translators will work with an editor before publication. Selection does not mean that every wording will remain unchanged, and editorial suggestions will be discussed rather than applied without consultation. The review may decline a piece even if it meets the length and permission rules; those rules establish eligibility, not guaranteed acceptance.",
+            "explanation": "The note explains a phrase/tone/structure choice, not whole-summary or translation replacement.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Explain one significant translation decision"
+              },
+              {
+                "id": "o1",
+                "text": "List only the translator’s favourite authors"
+              },
+              {
+                "id": "o2",
+                "text": "Replace the translated essay"
+              },
+              {
+                "id": "o3",
+                "text": "Summarise every point in the original"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.translation-and-proof-094.translation.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which translation may be eligible?",
+            "material": "Short essays in translation\n\nThe Lantern Review is accepting translations of short nonfiction essays for a special issue. Each submission must include the translated text and enough information to identify the original work and its author. The issue is interested in how a particular voice or argument travels between languages, rather than in anonymous exercises with no source context.\n\nTranslations should be between 1200 and 2000 English words. Submit a separate note of no more than 300 words describing a significant choice you made. The note may discuss a phrase, tone or structural problem; it should explain a decision rather than summarise the entire essay.\n\nYou must have the right to submit the translation for publication. If permission from the relevant rights holder is required, include evidence that it has been obtained. The review's acceptance cannot replace permission that the translator was responsible for securing.\n\nPreviously published translations are not eligible for this issue. A translation prepared for a class but not made publicly available may be submitted, provided the other requirements are met. Identify any assistance or collaboration in the submission note.\n\nThe deadline is 18:00 on 15 January. Selected translators will work with an editor before publication. Selection does not mean that every wording will remain unchanged, and editorial suggestions will be discussed rather than applied without consultation. The review may decline a piece even if it meets the length and permission rules; those rules establish eligibility, not guaranteed acceptance.",
+            "explanation": "Unpublished class work is allowed with requirements met. Published/unsourced/unlicensed alternatives are excluded.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "An unpublished class translation meeting the other rules"
+              },
+              {
+                "id": "o1",
+                "text": "Any already published translation"
+              },
+              {
+                "id": "o2",
+                "text": "A translation lacking required publication rights"
+              },
+              {
+                "id": "o3",
+                "text": "An anonymous text with no source information"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.translation-and-proof-094.translation.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does meeting the stated rules guarantee?",
+            "material": "Short essays in translation\n\nThe Lantern Review is accepting translations of short nonfiction essays for a special issue. Each submission must include the translated text and enough information to identify the original work and its author. The issue is interested in how a particular voice or argument travels between languages, rather than in anonymous exercises with no source context.\n\nTranslations should be between 1200 and 2000 English words. Submit a separate note of no more than 300 words describing a significant choice you made. The note may discuss a phrase, tone or structural problem; it should explain a decision rather than summarise the entire essay.\n\nYou must have the right to submit the translation for publication. If permission from the relevant rights holder is required, include evidence that it has been obtained. The review's acceptance cannot replace permission that the translator was responsible for securing.\n\nPreviously published translations are not eligible for this issue. A translation prepared for a class but not made publicly available may be submitted, provided the other requirements are met. Identify any assistance or collaboration in the submission note.\n\nThe deadline is 18:00 on 15 January. Selected translators will work with an editor before publication. Selection does not mean that every wording will remain unchanged, and editorial suggestions will be discussed rather than applied without consultation. The review may decline a piece even if it meets the length and permission rules; those rules establish eligibility, not guaranteed acceptance.",
+            "explanation": "The ending separates eligibility from acceptance. Editing and rights remain separate responsibilities.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Publication with no editing"
+              },
+              {
+                "id": "o1",
+                "text": "Eligibility for consideration rather than acceptance"
+              },
+              {
+                "id": "o2",
+                "text": "Selection of every submitted piece"
+              },
+              {
+                "id": "o3",
+                "text": "Permission from every rights holder automatically"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261024.senior3.translation-and-proof-094.example.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What unjustified step does the opening identify?",
+            "material": "When one example feels like enough\n\nAn example can make an abstract claim suddenly clear. A single well-described case gives a reader people, actions and consequences to imagine. That clarity is valuable, but it can also encourage a step the example has not justified: moving from this happened to this is what normally happens.\n\nThe distinction is easy to miss because detail feels evidentially rich. A story may explain exactly how a student used a new study method and why she found it helpful. In its own right, it offers evidence about this student’s reported experience, assuming the account is sound. It cannot alone show how common the outcome would be among students with different circumstances.\n\nA failed case has similar limits. One person abandoning an activity may reveal a real difficulty worth investigating. It does not automatically demonstrate that the activity never benefits anyone. Positive and negative anecdotes both need a clear account of the question they are being used to answer.\n\nThis is not an argument against stories. Examples can expose possibilities overlooked by an average, illustrate a mechanism or show why a broad category needs more detail. Their contribution may be precisely to complicate a general claim rather than settle it. A case that does not represent the majority can still matter greatly to the person it describes.\n\nThe problem arises when the role shifts without notice. A vivid illustration becomes a claim about frequency; a possible mechanism becomes proof of the dominant cause. Readers may remember the scene more easily than the qualification, especially when the example appears at the beginning or end of an argument.\n\nA careful writer can help by naming the role: this case illustrates a possible route, raises a question or shows an exception. A careful reader can ask what evidence would be needed for the larger conclusion. The aim is not to drain examples of their force, but to connect that force to the claim it can support. A story becomes more useful when we know what it is an example of.",
+            "explanation": "The leap is occurrence to typical frequency. Clarity/detail/imagination are valued, not prohibited.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Treating one occurrence as evidence of what normally happens"
+              },
+              {
+                "id": "o1",
+                "text": "Describing a consequence"
+              },
+              {
+                "id": "o2",
+                "text": "Using detail to make an abstract point clearer"
+              },
+              {
+                "id": "o3",
+                "text": "Imagining an event while reading"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.translation-and-proof-094.example.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does one sound study-method story offer directly?",
+            "material": "When one example feels like enough\n\nAn example can make an abstract claim suddenly clear. A single well-described case gives a reader people, actions and consequences to imagine. That clarity is valuable, but it can also encourage a step the example has not justified: moving from this happened to this is what normally happens.\n\nThe distinction is easy to miss because detail feels evidentially rich. A story may explain exactly how a student used a new study method and why she found it helpful. In its own right, it offers evidence about this student’s reported experience, assuming the account is sound. It cannot alone show how common the outcome would be among students with different circumstances.\n\nA failed case has similar limits. One person abandoning an activity may reveal a real difficulty worth investigating. It does not automatically demonstrate that the activity never benefits anyone. Positive and negative anecdotes both need a clear account of the question they are being used to answer.\n\nThis is not an argument against stories. Examples can expose possibilities overlooked by an average, illustrate a mechanism or show why a broad category needs more detail. Their contribution may be precisely to complicate a general claim rather than settle it. A case that does not represent the majority can still matter greatly to the person it describes.\n\nThe problem arises when the role shifts without notice. A vivid illustration becomes a claim about frequency; a possible mechanism becomes proof of the dominant cause. Readers may remember the scene more easily than the qualification, especially when the example appears at the beginning or end of an argument.\n\nA careful writer can help by naming the role: this case illustrates a possible route, raises a question or shows an exception. A careful reader can ask what evidence would be needed for the larger conclusion. The aim is not to drain examples of their force, but to connect that force to the claim it can support. A story becomes more useful when we know what it is an example of.",
+            "explanation": "The story directly supplies an individual reported experience, not outcome frequency, universal invariance or an unchangeable causal conclusion.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Evidence about the student’s reported experience"
+              },
+              {
+                "id": "o1",
+                "text": "The frequency of benefits for all students"
+              },
+              {
+                "id": "o2",
+                "text": "Proof that every different circumstance is irrelevant"
+              },
+              {
+                "id": "o3",
+                "text": "A conclusion that no other evidence could change"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261024.senior3.translation-and-proof-094.example.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How does a negative anecdote compare with a positive one?",
+            "material": "When one example feels like enough\n\nAn example can make an abstract claim suddenly clear. A single well-described case gives a reader people, actions and consequences to imagine. That clarity is valuable, but it can also encourage a step the example has not justified: moving from this happened to this is what normally happens.\n\nThe distinction is easy to miss because detail feels evidentially rich. A story may explain exactly how a student used a new study method and why she found it helpful. In its own right, it offers evidence about this student’s reported experience, assuming the account is sound. It cannot alone show how common the outcome would be among students with different circumstances.\n\nA failed case has similar limits. One person abandoning an activity may reveal a real difficulty worth investigating. It does not automatically demonstrate that the activity never benefits anyone. Positive and negative anecdotes both need a clear account of the question they are being used to answer.\n\nThis is not an argument against stories. Examples can expose possibilities overlooked by an average, illustrate a mechanism or show why a broad category needs more detail. Their contribution may be precisely to complicate a general claim rather than settle it. A case that does not represent the majority can still matter greatly to the person it describes.\n\nThe problem arises when the role shifts without notice. A vivid illustration becomes a claim about frequency; a possible mechanism becomes proof of the dominant cause. Readers may remember the scene more easily than the qualification, especially when the example appears at the beginning or end of an argument.\n\nA careful writer can help by naming the role: this case illustrates a possible route, raises a question or shows an exception. A careful reader can ask what evidence would be needed for the larger conclusion. The aim is not to drain examples of their force, but to connect that force to the claim it can support. A story becomes more useful when we know what it is an example of.",
+            "explanation": "Both need a defined evidential role. The universal success/failure claims are exactly the overreach criticised.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A failure proves nobody can benefit"
+              },
+              {
+                "id": "o1",
+                "text": "A success proves every reader will succeed"
+              },
+              {
+                "id": "o2",
+                "text": "Only negative anecdotes need evidence"
+              },
+              {
+                "id": "o3",
+                "text": "Both have limits when used to support broad conclusions"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261024.senior3.translation-and-proof-094.example.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the author recommend?",
+            "material": "When one example feels like enough\n\nAn example can make an abstract claim suddenly clear. A single well-described case gives a reader people, actions and consequences to imagine. That clarity is valuable, but it can also encourage a step the example has not justified: moving from this happened to this is what normally happens.\n\nThe distinction is easy to miss because detail feels evidentially rich. A story may explain exactly how a student used a new study method and why she found it helpful. In its own right, it offers evidence about this student’s reported experience, assuming the account is sound. It cannot alone show how common the outcome would be among students with different circumstances.\n\nA failed case has similar limits. One person abandoning an activity may reveal a real difficulty worth investigating. It does not automatically demonstrate that the activity never benefits anyone. Positive and negative anecdotes both need a clear account of the question they are being used to answer.\n\nThis is not an argument against stories. Examples can expose possibilities overlooked by an average, illustrate a mechanism or show why a broad category needs more detail. Their contribution may be precisely to complicate a general claim rather than settle it. A case that does not represent the majority can still matter greatly to the person it describes.\n\nThe problem arises when the role shifts without notice. A vivid illustration becomes a claim about frequency; a possible mechanism becomes proof of the dominant cause. Readers may remember the scene more easily than the qualification, especially when the example appears at the beginning or end of an argument.\n\nA careful writer can help by naming the role: this case illustrates a possible route, raises a question or shows an exception. A careful reader can ask what evidence would be needed for the larger conclusion. The aim is not to drain examples of their force, but to connect that force to the claim it can support. A story becomes more useful when we know what it is an example of.",
+            "explanation": "Naming the role connects force to support. Banning stories, substituting vividness and promoting possibility to dominance are rejected.",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Treat every possible mechanism as the main cause"
+              },
+              {
+                "id": "o1",
+                "text": "Remove every story from serious writing"
+              },
+              {
+                "id": "o2",
+                "text": "State whether an example illustrates a possibility, question or exception"
+              },
+              {
+                "id": "o3",
+                "text": "Let vividness establish frequency without further support"
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "05e84aeb02581a8057fbe85eced8aa5cc9d7edec82842cc3ad33df4e37fc9b6c",
+      "reviewNotes": "Three paired senior reading originals. Fictional trail/drawing/nature-log/translation call and qualified soil/evidence discussion. Same-author all-option/evidence review, no independent calibration. 每道题保存了正确键和所有干扰项的具体辨析。",
+      "components": [
+        {
+          "id": "expansion.20261024.senior3.translation-and-proof-094#translation",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.translation-and-proof-094.translation.q1",
+            "expansion.20261024.senior3.translation-and-proof-094.translation.q2",
+            "expansion.20261024.senior3.translation-and-proof-094.translation.q3"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.translation-and-proof-094",
+          "sourceContentHash": "f234b2fbfcc56b353206690e55044cff1275d92a5694f7d5dd68c1b32f34ba52"
+        },
+        {
+          "id": "expansion.20261024.senior3.translation-and-proof-094#example",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261024.senior3.translation-and-proof-094.example.q1",
+            "expansion.20261024.senior3.translation-and-proof-094.example.q2",
+            "expansion.20261024.senior3.translation-and-proof-094.example.q3",
+            "expansion.20261024.senior3.translation-and-proof-094.example.q4"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceUnitId": "expansion.20261024.senior3.translation-and-proof-094",
+          "sourceContentHash": "41531cb0a57620fcf7e8a8f74e2f9cd03c29b3e2702bdb249c148961fff41835"
+        }
+      ]
+    }
+  ]
+}
