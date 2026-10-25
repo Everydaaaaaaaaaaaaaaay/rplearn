@@ -70,7 +70,7 @@ struct LearningPracticeProjection {
             }
             let presentation = Self.contentForDisplay(text, instruction: question.instruction)
             text = presentation.text
-            let title = presentation.title
+            let title = kind == .grammar ? "" : presentation.title
             var questions: [LearningPracticeQuestion] = []
             for (index, source) in group.enumerated() {
                 let rawOptions = source.options ?? []

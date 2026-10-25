@@ -390,7 +390,7 @@ private struct PracticeArticleReader: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 22) {
                 VStack(alignment: .leading, spacing: 12) {
-                    if !section.title.isEmpty {
+                    if section.kind != .grammar && !section.title.isEmpty {
                         Text(section.title).font(.system(.title, design: .serif, weight: .medium)).lineSpacing(3)
                             .fixedSize(horizontal: false, vertical: true)
                     }

@@ -56,6 +56,25 @@ private actor FormalPracticeService: LearningServing {
 
 @Suite("Formal whole-passage practice") @MainActor
 struct LearningPracticeLiveTests {
+    @Test("Grammar omits the old combined-section title while retaining the full passage, gaps and bracketed words")
+    func grammarWithoutHeading() throws {
+        var root = URL(fileURLWithPath: #filePath)
+        for _ in 0..<5 { root.deleteLastPathComponent() }
+        let data = try Data(contentsOf: root.appending(path: "Tests/LingoTripUITests/Fixtures/learning-reported-grammar-heading.json"))
+        let unit = try JSONDecoder().decode(LearningUnit.self, from: data)
+        let projection = try #require(LearningPracticeProjection(unit: unit))
+        let section = try #require(projection.task.sections.first)
+        #expect(projection.task.sections.count == 1)
+        #expect(section.kind == .grammar)
+        #expect(section.title.isEmpty)
+        #expect(section.text.hasPrefix("A letter in our fictional history exercise ____1____ (write)"))
+        #expect(!section.text.contains("Quoting a translation and reading a letter"))
+        #expect(section.questions.map(\.id) == unit.questions.map(\.id))
+        for number in 1...10 { #expect(section.text.contains("____\(number)____")) }
+        #expect(section.instruction == "Fill each gap with ONE word or the correct form of the word in brackets.")
+        #expect(unit.questions[0].material?.hasPrefix("B. Quoting a translation and reading a letter\n\n") == true)
+    }
+
     @Test("独立七选五和语法填空保留完整题量，将原卷题号投影为本篇空号")
     func independentExamSections() throws {
         var root = URL(fileURLWithPath: #filePath)

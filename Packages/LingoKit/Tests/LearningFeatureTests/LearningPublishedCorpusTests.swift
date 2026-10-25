@@ -24,6 +24,7 @@ struct LearningPublishedCorpusTests {
                 #expect(projection.task.sections.flatMap(\.questions).map(\.id) == unit.questions.map(\.id))
                 for section in projection.task.sections {
                     #expect(!section.text.isEmpty)
+                    if section.kind == .grammar { #expect(section.title.isEmpty) }
                     for q in section.questions {
                         let source = try #require(unit.questions.first { $0.id == q.id })
                         #expect(q.options.count == (source.options ?? []).count)

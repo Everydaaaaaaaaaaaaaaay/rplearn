@@ -2,6 +2,26 @@ import XCTest
 
 @MainActor
 final class LearningFormalPracticeUITests: XCTestCase {
+    func testReportedGrammarHasNoHeadingOrSectionLetter() throws {
+        continueAfterFailure = false
+        let fixture = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+            .appending(path: "Fixtures/learning-reported-grammar-heading.json")
+        let app = XCUIApplication()
+        app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_REQUIRE_AUTHENTICATION": "0",
+            "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1", "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9",
+            "UI_TEST_TAB": "unit-challenge", "UI_TEST_LEARNING_STORY": "1", "UI_TEST_LEARNING_QUESTION": "completion",
+            "UI_TEST_LEARNING_UNIT_JSON": try String(contentsOf: fixture, encoding: .utf8)]
+        app.launch()
+        XCTAssertTrue(app.buttons["practice.start"].waitForExistence(timeout: 20))
+        app.buttons["practice.start"].tap()
+        XCTAssertTrue(app.textFields["practice.grammar.answer"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.staticTexts["B. Quoting a translation and reading a letter"].exists)
+        XCTAssertEqual(app.staticTexts["practice.instruction"].label, "Fill each gap with ONE word or the correct form of the word in brackets.")
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = "实测语法填空-无标题和分节字母"; attachment.lifetime = .keepAlways; add(attachment)
+        app.terminate()
+    }
+
     func testIndependentGrammarPromptUsesLocalNumber() throws {
         continueAfterFailure = false
         let fixture = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
