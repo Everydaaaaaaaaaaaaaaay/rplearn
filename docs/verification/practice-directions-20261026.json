@@ -1,0 +1,104 @@
+{
+  "verifiedAt": "2026-10-26",
+  "codeCommits": [
+    "4dfbeeac",
+    "16706fef"
+  ],
+  "problem": "Single-choice directions repeated verbose Chinese authoring notes from group material; previous language correction checked prompts/options but omitted instructions and embedded direction paragraphs.",
+  "behavior": {
+    "singleChoice": "Choose the best answer.",
+    "paperPolicy": "Use concise English paper requirements. Chinese printed requirements are translated; preserve word limits, form rules, unused options and explicit reuse rules. Do not present authored questions as true-paper items.",
+    "scope": "All 48 current complete-practice families plus source-bound historical groups; question prose, choices, source glosses and scoring stay intact.",
+    "splitComponents": "Recover directions from their bound original components rather than the generic composition header.",
+    "nativeSpacing": "Restore the printed space in The cafe closes at 9 pm every day. through five exact presentation bindings."
+  },
+  "registry": {
+    "reviewedVariants": 326,
+    "rules": 346,
+    "exactQuestionAndMaterialBindings": 13254,
+    "longestDirectionCharacters": 146,
+    "sourceGroupsProcessedIncludingHistory": 2048
+  },
+  "sourceEvidence": [
+    {
+      "path": "build/english-benchmark-research-20261012/grade12-national2025-native-pages20261014.json",
+      "pages": [
+        5,
+        6,
+        7
+      ],
+      "use": "Retained national-I written directions; two unused insertion options, four-option cloze and one-word-or-supplied-form grammar. Printed Chinese requirements translated to English."
+    },
+    {
+      "path": "build/english-benchmark-research-20261012/c1-paper1-selected-native20261016-v0.1.json",
+      "use": "Retained Cambridge C1 sample-paper directions and gap-task wording."
+    },
+    {
+      "path": "Scripts/data/practice-direction-copy.json",
+      "use": "Reviewed exact original instruction/opening-block to English-direction mapping. Bound source component references remain in the frozen catalogs."
+    }
+  ],
+  "checks": {
+    "backendTestsPassed": 13,
+    "backendTestFiles": 3,
+    "typecheck": "passed",
+    "focusedESLint": "passed",
+    "architecture": "passed: 272 modules, 801 dependencies",
+    "uiTestsPassed": 1,
+    "uiFamilies": [
+      "sentence_choice",
+      "shared_insertion",
+      "passage_form"
+    ],
+    "sourceContentHashes": "unchanged throughout projection tests",
+    "diffCheck": "passed"
+  },
+  "release": {
+    "id": "practice-directions-final-20261026",
+    "archiveSHA256": "2a235253cd7efa5e83c3ba46612356cadb8eccefe485bef9e80dd63d218333ea",
+    "status": "success",
+    "stableObservation": "passed",
+    "memoryPeakMiB": 224.4,
+    "swapBytes": 0,
+    "readiness": "ready",
+    "api": "active",
+    "worker": "active",
+    "transactionMarker": "clear",
+    "rollbackReleasesRetained": [
+      "senior-objective-20261025",
+      "practice-directions-20261026"
+    ]
+  },
+  "production": {
+    "readOnly": true,
+    "groups": 1418,
+    "responses": 11871,
+    "families": 48,
+    "seniorSingleChoiceResponses": 150,
+    "removedAdministrativeBlocks": 3664,
+    "frozenVersions": 1740,
+    "frozenVersionsPreserved": true,
+    "activeSnapshotsPreserved": 3,
+    "onlineDTOProjection": "passed"
+  },
+  "verificationMethod": "Read-only production projection in batches of 25 at a 96 MiB Node heap cap; no user answers, scores, snapshots or content versions written. Initial verifier comparison and memory issues were resolved in the verifier; final batch verification passed.",
+  "evidence": {
+    "unitTests": "build/practice-directions-unit-final.log",
+    "typecheck": "build/practice-directions-typecheck-final.log",
+    "lint": "build/practice-directions-lint-final.log",
+    "architecture": "build/practice-directions-architecture.log",
+    "ui": "build/DerivedData/VerificationResults/20261025T161239Z-45045.xcresult",
+    "screenshots": "build/practice-directions-ui-final-screens/manifest.json",
+    "production": "build/practice-directions-production-verify.json",
+    "deployment": "build/practice-directions-deploy-final.log",
+    "runtime": "build/practice-directions-production-runtime.log",
+    "preview": "build/practice-directions-preview-final.log"
+  },
+  "visualReview": "Focused UI test screenshots inspected for all three affected input paths. Device Hub computer-use attempt returned a blank surface; XCTest screenshot evidence used.",
+  "preview": "Latest built iOS host installed and left at real learning-test entry in simulator; login required.",
+  "delivery": "Backend presentation fix: exit and reopen the practice to refetch directions; no iOS reinstall or login reset required.",
+  "limits": [
+    "Complete-practice direction coverage is not a new independent editorial review of every question or a physical-device audit of every screen.",
+    "Legitimate Chinese question stimuli, source glosses, hints, explanations and app navigation labels are preserved."
+  ]
+}
