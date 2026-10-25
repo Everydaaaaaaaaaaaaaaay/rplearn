@@ -88,7 +88,7 @@ struct LearningTrialView: View {
                     }.accessibilityIdentifier("learning.trial.original")
                 } else if let error = model.originalsError {
                     Text(error).foregroundStyle(.red)
-                    Button("重新读取原创题组") { Task { await model.loadOriginals() } }
+                    Button("重新读取原创题组") { Task { originalFamily = ""; await model.loadOriginals() } }
                 } else { ProgressView("读取正式原创题库…") }
             }
             if let attempt = model.activeAttempt {
@@ -127,7 +127,7 @@ struct LearningTrialView: View {
                     }.frame(maxWidth: .infinity).padding(.vertical, 14)
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(model.isBusy || model.journey == nil || selectedCharacterID == nil)
+                .disabled(model.isBusy || model.journey == nil || model.originals == nil || selectedCharacterID == nil)
                 .accessibilityIdentifier("learning.trial.start")
                 Text("直接开始通用英语，略过聊天进度等待。已有挑战保留原档位。")
                     .font(.caption2).foregroundStyle(.secondary).multilineTextAlignment(.center)
@@ -136,7 +136,7 @@ struct LearningTrialView: View {
         .navigationTitle("学习实测")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            Button("刷新题库", systemImage: "arrow.clockwise") { Task { await load(); await model.loadOriginals() } }
+            Button("刷新题库", systemImage: "arrow.clockwise") { Task { originalFamily = ""; await load(); await model.loadOriginals() } }
                 .disabled(model.isBusy)
         }
         .task { await load() }
