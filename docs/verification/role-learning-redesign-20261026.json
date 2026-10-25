@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-26",
+  "scope": "Simplify character learning and display actual points for every challenge history record",
+  "commits": {
+    "backend": "eb78ce5c",
+    "ios": "3f3891da"
+  },
+  "behavior": {
+    "chatToolbar": "Removed DEBUG lightning action; developer fill-progress action remains in More menu. Swipe navigation is preserved.",
+    "learningPage": "Practice direction, current challenge card, compact journey progress and dated challenge records; explicit start/continue buttons.",
+    "points": "SUM of the attempt owner's learning_rewards.points across all rounds, including zero rewards; independent of correctCount.",
+    "compatibility": "Missing earnedPoints from older responses displays 积分待同步 rather than an inferred total."
+  },
+  "checks": {
+    "backendTypecheck": "passed; build/role-learning-typecheck.log",
+    "backendFocusedLint": "passed; build/role-learning-lint.log",
+    "backendIntegration": {
+      "passed": 8,
+      "log": "build/role-learning-integration/tests.log",
+      "coverage": "Owner isolation, pagination, zero rewards, repeated correct answers, retry accumulation and stable rereads",
+      "isolatedDatabase": "lingotrip_test_role_learning_20261026",
+      "databasePreserved": true,
+      "dedicatedServicesStopped": true
+    },
+    "swiftTests": {
+      "passed": 22,
+      "failed": 0,
+      "result": "build/DerivedData/VerificationResults/20261025T180716Z-56239.xcresult"
+    },
+    "uiTests": {
+      "passed": 3,
+      "failed": 0,
+      "result": "build/DerivedData/VerificationResults/20261025T180941Z-57509.xcresult",
+      "coverage": "History rewards including zero, pending filter, journey entry, maximum accessibility size in dark appearance, swipe navigation, draft preservation and developer menu"
+    },
+    "architecture": "passed; build/role-learning-ios-architecture.log",
+    "diffCheck": "passed"
+  },
+  "visualReview": {
+    "inspected": true,
+    "screenshots": [
+      "build/role-learning-preview.png",
+      "build/role-learning-ui-screens/28F8CAEB-C2EA-4666-AB2D-A6CF8D4DBC75.png",
+      "build/role-learning-ui-screens/4E374A30-69C8-4534-ADD5-162E7D7F00DD.png",
+      "build/role-learning-ui-screens/F62D1487-732A-4144-81B9-0A3558BC57E4.png"
+    ],
+    "result": "Normal preview shows distinct hierarchy, continue action and all three history rewards (2, 3, 0). Dark maximum-size screenshots retain readable wrapping and visible reward/action text.",
+    "computerUse": "Device Hub opened, but its screenshot was blank. Used XCTest attachments and simulator screenshot for visual inspection."
+  },
+  "production": {
+    "release": "role-history-points-20261026",
+    "archiveSha256": "989c49166c3ed0a564c1d55106bb13d0256826ec7e1873b1fcd30b0e5216d797",
+    "localAndRemoteArchiveHashesMatch": true,
+    "guardedDeployment": "success; build/role-learning-deploy.log",
+    "apiActive": true,
+    "workerActive": true,
+    "healthReady": true,
+    "releaseTransactionClosed": true,
+    "rollbackReleaseRetained": "grammar-heading-20261026",
+    "verification": {
+      "readOnly": true,
+      "ownerCharacterPairs": 4,
+      "pages": 4,
+      "records": 26,
+      "zeroPoints": 8,
+      "correctWithoutFullReward": 0,
+      "actualRewardLedgerMatches": true,
+      "noUserAttemptsOrRewardsCreated": true
+    },
+    "verificationLog": "build/role-learning-production-verify.json"
+  },
+  "preview": {
+    "command": "LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 SIMCTL_CHILD_UI_TEST_LEARNING_PAGE_STATE=active Scripts/preview.sh preview role-learning",
+    "installedAndLaunched": true,
+    "data": "Local sample progress, visibly marked as preview and not credited to an account",
+    "appStorePublished": false
+  }
+}
