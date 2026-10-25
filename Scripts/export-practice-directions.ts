@@ -75,6 +75,14 @@ if (process.argv.includes("--audit")) {
       "utf8",
     ),
   );
+  const grammarHeadings = new Set<string>(
+    JSON.parse(
+      readFileSync(
+        new URL("Scripts/data/practice-grammar-headings.json", root),
+        "utf8",
+      ),
+    ),
+  );
   const lookup = new Map(
     reviewed.map((r) => [
       JSON.stringify([r.family, r.sourceInstruction, r.sourcePrefix]),
@@ -163,6 +171,17 @@ if (process.argv.includes("--audit")) {
           "\n\n各题语境独立。",
         ])
           if (material.startsWith(removePrefix + note)) removePrefix += note;
+      if (family === "passage_form") {
+        const remainder = material.slice(removePrefix.length).trimStart();
+        const heading = remainder.split("\n\n", 1)[0] ?? "";
+        if (grammarHeadings.has(heading)) {
+          // Exact reviewed author/section headings only; never infer from prose length.
+          removePrefix = material.slice(
+            0,
+            material.length - remainder.length + heading.length,
+          );
+        }
+      }
       const sourceCopy = componentDirections.get(q.id);
       const instruction = sourceCopy?.instruction ?? copy.instruction;
       const sourceDirections =

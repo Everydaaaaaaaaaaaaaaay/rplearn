@@ -22,6 +22,39 @@ const active = [
 ];
 
 describe("source-bound paper directions", () => {
+  it("removes reviewed grammar headings, including the reported B section, without removing prose or bracketed words", () => {
+    const headings = new Set<string>(
+      JSON.parse(
+        readFileSync("../Scripts/data/practice-grammar-headings.json", "utf8"),
+      ),
+    );
+    const grammar = active.filter((u) => u.originalGroup?.family === "passage_form");
+    expect(grammar).toHaveLength(171);
+    for (const unit of grammar)
+      for (const q of publicUnit(unit).questions) {
+        expect(headings.has(q.material?.split("\n\n", 1)[0] ?? "")).toBe(false);
+        expect(q.instruction).not.toMatch(/\bworld\b/iu);
+      }
+    const reported = grammar.find((u) =>
+      u.questions[0]?.material?.startsWith(
+        "B. Quoting a translation and reading a letter\n\n",
+      ),
+    );
+    expect(reported).toBeDefined();
+    if (!reported) throw new Error("Missing reported practice");
+    const before = contentHash(reported);
+    for (const [index, q] of publicUnit(reported).questions.entries()) {
+      expect(q.material).toBe(
+        reported.questions[index]?.material?.split("\n\n").slice(1).join("\n\n"),
+      );
+      expect(q.material).toContain("____1____ (write)");
+      expect(q.instruction).toBe(
+        "Fill each gap with ONE word or the correct form of the word in brackets.",
+      );
+    }
+    expect(contentHash(reported)).toBe(before);
+  });
+
   it("covers all 48 current task families and frozen historical groups without changing source or question content", () => {
     expect(active).toHaveLength(1418);
     expect(new Set(active.map((u) => u.originalGroup?.family)).size).toBe(48);
@@ -55,7 +88,7 @@ describe("source-bound paper directions", () => {
       expect(contentHash(source)).toBe(before);
     }
     expect(responses).toBeGreaterThan(11871);
-  });
+  }, 15000);
 
   it("removes both single-choice administrative blocks, including group material fallback", () => {
     const singles = catalog.practices.filter(
