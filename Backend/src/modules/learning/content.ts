@@ -23,7 +23,8 @@ export const levelKeys = [
 ] as const;
 export const levelSchema = z.enum(levelKeys);
 export type LearningLevel = z.infer<typeof levelSchema>;
-const identifier = z.string().regex(/^[a-z][a-z0-9_.-]{0,119}$/);
+export const learningIdentifierSchema = z.string().regex(/^[a-z][a-z0-9_.-]{0,119}$/);
+const identifier = learningIdentifierSchema;
 const text = z.string().trim().min(1).max(1200);
 const option = z.strictObject({
   id: identifier,

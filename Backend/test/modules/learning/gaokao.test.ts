@@ -3,6 +3,8 @@ import { loadGaokaoCatalog } from "../../../src/modules/learning/gaokao-catalog.
 import {
   gaokaoCatalog,
   isAdmittedGaokaoUnit,
+  gaokaoPracticeFamily,
+  selectGaokaoCandidate,
 } from "../../../src/modules/learning/gaokao-policy.js";
 import { contentHash, publicUnit } from "../../../src/modules/learning/content.js";
 import { availableForNewLearning } from "../../../src/modules/learning/bank-content.js";
@@ -14,6 +16,50 @@ function required<T>(v: T | undefined): T {
 }
 
 describe("高中高考真题完整组准入", () => {
+  it("按真实组件公平抽题；有其他题型时避开上次，指定题和耗尽边界不丢失", () => {
+    const practices = gaokaoCatalog().practices.filter(
+      (p) => p.unit.level === "senior3",
+    );
+    const candidates = practices.map((p) => ({ payload: p.unit }));
+    const families = [
+      ...new Set(candidates.map((c) => gaokaoPracticeFamily(c.payload.id))),
+    ];
+    expect(families).toHaveLength(3);
+    for (const previous of candidates) {
+      for (const r of [0, 0.49, 0.99]) {
+        const chosen = required(
+          selectGaokaoCandidate(candidates, previous.payload.id, () => r),
+        );
+        expect(gaokaoPracticeFamily(chosen.payload.id)).not.toBe(
+          gaokaoPracticeFamily(previous.payload.id),
+        );
+      }
+      expect(selectGaokaoCandidate([previous], previous.payload.id)).toBe(previous);
+    }
+    expect(
+      selectGaokaoCandidate<{ payload: (typeof practices)[number]["unit"] }>([]),
+    ).toBeUndefined();
+    const firsts = families.map((f) =>
+      required(candidates.find((c) => gaokaoPracticeFamily(c.payload.id) === f)),
+    );
+    const unbalanced = [
+      ...Array.from({ length: 100 }, () => required(firsts[0])),
+      ...firsts.slice(1),
+    ];
+    for (let i = 0; i < families.length; i++) {
+      expect(
+        gaokaoPracticeFamily(
+          required(
+            selectGaokaoCandidate(
+              unbalanced,
+              undefined,
+              () => (i + 0.1) / families.length,
+            ),
+          ).payload.id,
+        ),
+      ).toBe(families[i]);
+    }
+  });
   it("高一至高三仅绑定可追溯真题；每档四次练习、45个独立原题", async () => {
     const c = await loadGaokaoCatalog();
     expect(c.units.filter((u) => !isExpansionUnit(u))).toHaveLength(60);

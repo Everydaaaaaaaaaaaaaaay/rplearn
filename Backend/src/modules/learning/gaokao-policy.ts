@@ -143,6 +143,35 @@ export function gaokaoCatalog() {
 export function gaokaoUnitIds() {
   return gaokaoCatalog().practices.map((p) => p.unit.id);
 }
+/** Group by the actual task components, never by a passage's topic label. */
+export function gaokaoPracticeFamily(unitId: string): string | undefined {
+  const practice = gaokaoCatalog().practices.find((p) => p.unit.id === unitId);
+  if (!practice) return undefined;
+  return [...new Set(practice.components.map((c) => c.family))].join("+");
+}
+
+/** Each available task family gets one draw; avoid the previous family when possible. */
+export function selectGaokaoCandidate<T extends { payload: LearningUnit }>(
+  candidates: readonly T[],
+  previousUnitId?: string,
+  random = Math.random,
+): T | undefined {
+  const groups = new Map<string, T[]>();
+  for (const candidate of candidates) {
+    const family = gaokaoPracticeFamily(candidate.payload.id);
+    if (!family) continue;
+    const group = groups.get(family) ?? [];
+    group.push(candidate);
+    groups.set(family, group);
+  }
+  const previous = previousUnitId ? gaokaoPracticeFamily(previousUnitId) : undefined;
+  const families = [...groups.keys()].filter(
+    (f) => groups.size === 1 || f !== previous,
+  );
+  const family = families[Math.floor(random() * families.length)];
+  const group = family ? groups.get(family) : undefined;
+  return group?.[Math.floor(random() * group.length)];
+}
 export function isAdmittedGaokaoUnit(unit: LearningUnit): boolean {
   return gaokaoCatalog().practices.some(
     (p) => p.unit.id === unit.id && p.contentHash === contentHash(unit),

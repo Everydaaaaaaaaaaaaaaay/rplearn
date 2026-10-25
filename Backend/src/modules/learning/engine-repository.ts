@@ -1,6 +1,8 @@
 import {
   gaokaoCatalog,
   gaokaoUnitIds,
+  gaokaoPracticeFamily,
+  selectGaokaoCandidate,
   isAdmittedGaokaoUnit,
   isHighSchool,
 } from "./gaokao-policy.js";
@@ -482,8 +484,21 @@ export class LearningSession {
           .map(({ payload: u }) => ({
             id: u.id,
             title: u.title,
-            family: u.originalGroup?.family ?? "reading_choice",
-            label: u.originalGroup?.label ?? "高考真题",
+            family: (gaokaoPracticeFamily(u.id) ?? "reading_choice").replaceAll(
+              "+",
+              "_",
+            ),
+            label:
+              (
+                {
+                  reading_choice: "阅读理解（两篇）",
+                  choice_cloze: "完形填空",
+                  shared_insertion_passage_form: "七选五与语法填空",
+                  reading_choice_shared_insertion: "阅读理解与七选五",
+                } as Record<string, string>
+              )[
+                (gaokaoPracticeFamily(u.id) ?? "reading_choice").replaceAll("+", "_")
+              ] ?? "高考完整题组",
             questions: u.questions.length,
           })),
       };
@@ -567,7 +582,7 @@ export class LearningSession {
     if (state.characters < learningPolicy.characterThreshold)
       reject("LEARNING_NOT_READY", "再聊一会儿，进度满后就能开启挑战。");
     const [dedicated] = isHighSchool(level)
-      ? await this.gaokaoCandidates(level, options.originalUnitId)
+      ? [await this.selectGaokaoPractice(level, options.originalUnitId)]
       : await this.sql<{ payload: LearningUnit }[]>`
       select v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
       where u.published and u.level_key=${level}
@@ -630,6 +645,16 @@ export class LearningSession {
     await this
       .sql`update app.learning_characters set revision=revision+1 where user_id=${this.userId} and character_id=${characterId}`;
     return { status: "started" as const, attempt: await this.attempt(attemptId) };
+  }
+
+  private async selectGaokaoPractice(level: LearningLevel, unitId?: string) {
+    const candidates = await this.gaokaoCandidates(level, unitId);
+    if (unitId) return candidates[0];
+    const [previous] = await this.sql<{ unit_id: string }[]>`
+      select unit_id from app.learning_attempts
+      where user_id=${this.userId} and level_key=${level} and unit_id=any(${gaokaoUnitIds()})
+      order by started_at desc,id desc limit 1`;
+    return selectGaokaoCandidate(candidates, previous?.unit_id);
   }
 
   private async rawAttempt(id: string): Promise<AttemptRow> {

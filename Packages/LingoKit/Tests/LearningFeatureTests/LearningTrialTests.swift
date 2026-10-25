@@ -17,6 +17,7 @@ private actor TrialService: LearningServing, LearningDirectionServing {
     var events: [String] = []
     var selectedDirection = "general"
     var directionRevision = 3
+    var unitID = "test.unit"
     func configure(published: Int = 2, active: String? = nil, preparing: Bool = false, lost: Bool = false) {
         self.published = published; activeLevel = active; self.preparing = preparing; loseStartResponse = lost
     }
@@ -35,7 +36,11 @@ private actor TrialService: LearningServing, LearningDirectionServing {
     func learningAttempt(_ id: UUID) async throws -> LearningAttempt {
         try decode(["id":id.uuidString,"characterId":characterID.uuidString,"level":activeLevel ?? level,"revision":1,"startedAt":"2026-10-19T00:00:00Z","correctQuestionIds":[],
                     "round":["id":cycleID.uuidString,"ordinal":0,"questionIds":[],"completed":false,"answers":[]],
-                    "unit":["id":"test.unit","version":1,"schemaVersion":1,"roleKey":"oliver","level":activeLevel ?? level,"title":"单元测试夹具","summary":"仅测试客户端流程","scene":"测试","estimatedMinutes":2,"goalIds":[],"beats":[],"questions":[]]])
+                    "unit":["id":unitID,"version":1,"schemaVersion":1,"roleKey":"oliver","level":activeLevel ?? level,"title":"单元测试夹具","summary":"仅测试客户端流程","scene":"测试","estimatedMinutes":2,"goalIds":[],"beats":[],"questions":[]]])
+    }
+    func startOriginalLearning(_ id: UUID, unitID: String, requestID: UUID) async throws -> LearningStart {
+        events.append("original:\(unitID)"); self.unitID = unitID
+        return try await startLearning(id, requestID: requestID)
     }
     func startLearning(_ id: UUID, requestID: UUID) async throws -> LearningStart {
         events.append("start")
@@ -77,6 +82,28 @@ struct LearningTrialTests {
         #expect(LearningTrialModel.levels.count == 15)
         #expect(!LearningTrialModel.levels.contains(.kindergarten))
     }
+    @Test("旧原创、高考与新扩展编号都原样传到具体题组开始接口")
+    func selectedOriginalNamespaces() async {
+        for id in ["original.test", "gaokao.senior3.test", "expansion.20261024.senior3.audio-archive-and-quotation-076"] {
+            let service = TrialService(); let model = model(service)
+            model.selectedLevel = .senior3; model.selectedOriginalID = id
+            await model.start(characterID: service.characterID)
+            #expect(model.error == nil)
+            #expect(model.presentedAttempt?.unit.id == id)
+            #expect(await service.events.contains("original:\(id)"))
+        }
+    }
+    @Test("选择其他题组不会把同档位的未完成练习冒充新抽题")
+    func activeDifferentUnit() async {
+        let service = TrialService(); await service.configure(active: "senior3")
+        let model = model(service); model.selectedLevel = .senior3
+        model.selectedOriginalID = "expansion.20261024.senior3.audio-archive-and-quotation-076"
+        await model.start(characterID: service.characterID)
+        #expect(model.presentedAttempt == nil)
+        #expect(!model.resumesSelectedAttempt)
+        #expect(model.notice?.contains("不会替换") == true)
+        #expect(await service.events.isEmpty)
+    }
     @Test("无已发布内容时不改档位、不填循环、不造挑战")
     func noSupply() async {
         let service = TrialService(); await service.configure(published:0)
@@ -103,6 +130,7 @@ struct LearningTrialTests {
         let model = model(service); model.selectedLevel = .senior3
         await model.start(characterID:service.characterID)
         #expect(model.presentedAttempt?.level == "senior3")
+        #expect(model.resumesSelectedAttempt)
         #expect(await service.events.isEmpty)
     }
     @Test("先确认服务端档位，再略过等待，最后调用正式开始接口")

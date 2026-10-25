@@ -23,7 +23,13 @@ public final class LearningTrialModel {
     private let service: any LearningServing & LearningDirectionServing
     private let changeLevel: @Sendable (DifficultyLevel) async throws -> Void
     private let fillCycle: @Sendable (UUID, UUID, UUID) async throws -> Void
-    private var startRequest: (characterID: UUID, unitID: String?, id: UUID)?
+    private var startRequest: (characterID: UUID, level: DifficultyLevel, unitID: String?, id: UUID)?
+    private var originalsRequestID = UUID()
+
+    public var resumesSelectedAttempt: Bool {
+        guard let activeAttempt else { return false }
+        return activeAttempt.level == selectedLevel.rawValue && (selectedOriginalID == nil || selectedOriginalID == activeAttempt.unit.id)
+    }
 
     public init(service: any LearningServing & LearningDirectionServing,
                 changeLevel: @escaping @Sendable (DifficultyLevel) async throws -> Void,
@@ -50,13 +56,14 @@ public final class LearningTrialModel {
 
     public func loadOriginals() async {
         let target = selectedLevel.rawValue
+        let requestID = UUID(); originalsRequestID = requestID
         originals = nil; originalsError = nil; selectedOriginalID = nil
         do {
             let catalog = try await service.learningOriginals(level: target)
-            guard selectedLevel.rawValue == target else { return }
+            guard selectedLevel.rawValue == target, originalsRequestID == requestID, !Task.isCancelled else { return }
             originals = catalog
         } catch {
-            guard selectedLevel.rawValue == target else { return }
+            guard selectedLevel.rawValue == target, originalsRequestID == requestID, !Task.isCancelled else { return }
             originalsError = error.localizedDescription
         }
     }
@@ -64,6 +71,7 @@ public final class LearningTrialModel {
     public func start(characterID: UUID) async {
         guard !isBusy, Self.levels.contains(selectedLevel) else { return }
         let target = selectedLevel
+        let originalID = selectedOriginalID
         isBusy = true; error = nil; notice = nil
         defer { isBusy = false }
         do {
@@ -75,7 +83,7 @@ public final class LearningTrialModel {
             if let id = state.activeAttemptId {
                 let attempt = try await service.learningAttempt(id)
                 activeAttempt = attempt
-                guard attempt.level == target.rawValue && (selectedOriginalID == nil || selectedOriginalID == attempt.unit.id) else {
+                guard attempt.level == target.rawValue && (originalID == nil || originalID == attempt.unit.id) else {
                     notice = "这位旅伴还有\(learningLevelName(attempt.level))的挑战。请先继续该挑战，或换一位旅伴；不会替换进行中的题组。"
                     return
                 }
@@ -108,10 +116,10 @@ public final class LearningTrialModel {
                 try await fillCycle(characterID, state.cycleId, UUID())
             }
             let request: UUID
-            if let previous = startRequest, previous.characterID == characterID && previous.unitID == selectedOriginalID { request = previous.id }
-            else { request = UUID(); startRequest = (characterID, selectedOriginalID, request) }
+            if let previous = startRequest, previous.characterID == characterID && previous.level == target && previous.unitID == originalID { request = previous.id }
+            else { request = UUID(); startRequest = (characterID, target, originalID, request) }
             let result: LearningStart
-            if let unitID = selectedOriginalID { result = try await service.startOriginalLearning(characterID, unitID: unitID, requestID: request) }
+            if let unitID = originalID { result = try await service.startOriginalLearning(characterID, unitID: unitID, requestID: request) }
             else { result = try await service.startLearning(characterID, requestID: request) }
             startRequest = nil
             if let attempt = result.attempt {
@@ -121,9 +129,13 @@ public final class LearningTrialModel {
                     notice = "服务器返回了已存在的\(learningLevelName(attempt.level))挑战。可从下方继续，未将它标成所选档位。"
                     return
                 }
+                guard originalID == nil || attempt.unit.id == originalID else {
+                    notice = "这位旅伴已有另一组进行中的挑战。请先继续该挑战，或换一位旅伴；不会替换原作答。"
+                    return
+                }
                 presentedAttempt = attempt
             } else if result.status == "preparing" {
-                notice = selectedOriginalID == nil
+                notice = originalID == nil
                     ? "当前档位暂时没有可用的新练习，可能已用完当前题库。可以换档位或从记录补答。"
                     : "这组原创练习目前无法开启，可能已做过。请换一组；已做题可在学习记录中补答。"
             } else { throw TrialError("服务器没有返回可用挑战，请刷新后重试。") }

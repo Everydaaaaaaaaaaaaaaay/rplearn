@@ -1,4 +1,4 @@
-import { levelSchema } from "./content.js";
+import { learningIdentifierSchema, levelSchema } from "./content.js";
 import { learningDirectionSchema } from "./direction.js";
 import type { FastifyInstance } from "fastify";
 import { z, type ZodType } from "zod";
@@ -145,10 +145,9 @@ export function registerLearningRoutes(
       async (request, reply) => {
         const body = parse(
           requestSchema.extend({
-            originalUnitId: z
-              .string()
-              .regex(/^original\.[a-z0-9_.-]{1,110}$/)
-              .optional(),
+            // Listings include reviewed original, gaokao and expansion units.
+            // Publication, level and admission remain enforced by the repository.
+            originalUnitId: learningIdentifierSchema.optional(),
           }),
           request.body,
         );

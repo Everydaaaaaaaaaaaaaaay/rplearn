@@ -2,6 +2,32 @@ import XCTest
 
 @MainActor
 final class LearningFormalPracticeUITests: XCTestCase {
+    func testReportedExpansionReadingGroupHasBothPassagesAndSelectableAnswers() throws {
+        continueAfterFailure = false
+        let fixture = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+            .appending(path: "Fixtures/learning-senior3-archive-reading.json")
+        let app = XCUIApplication()
+        app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_REQUIRE_AUTHENTICATION": "0",
+            "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1", "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9",
+            "UI_TEST_TAB": "unit-challenge", "UI_TEST_LEARNING_STORY": "1",
+            "UI_TEST_LEARNING_UNIT_JSON": try String(contentsOf: fixture, encoding: .utf8)]
+        app.launch()
+        XCTAssertTrue(app.buttons["practice.start"].waitForExistence(timeout: 20))
+        XCTAssertEqual(app.staticTexts["practice.task.kind"].label, "阅读理解")
+        app.buttons["practice.start"].tap()
+        XCTAssertTrue(app.buttons["practice.option.A"].waitForExistence(timeout: 5))
+        for index in 1...3 {
+            let question = app.buttons["practice.question.\(index)"]
+            XCTAssertTrue(question.exists); question.tap()
+            let option = app.buttons["practice.option.A"]
+            XCTAssertTrue(option.isHittable); option.tap(); XCTAssertTrue(option.isSelected)
+        }
+        XCTAssertTrue(app.buttons["practice.next"].isEnabled)
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = "截图报错题组-阅读材料与选项正常呈现"; attachment.lifetime = .keepAlways; add(attachment)
+        app.terminate()
+    }
+
     func testActualChallengeRoutesToWholePassageWithOneSharedBank() throws {
         continueAfterFailure = false
         let fixture = URL(fileURLWithPath: #filePath).deletingLastPathComponent()

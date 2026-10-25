@@ -8,6 +8,7 @@ import { LearningAdminService } from "../../src/modules/learning/admin-service.j
 import { LearningAdminRepository } from "../../src/modules/learning/admin-repository.js";
 import { LearningGenerationRepository } from "../../src/modules/learning/generation-repository.js";
 import { randomUUID } from "node:crypto";
+import { learningPolicy } from "../../src/modules/learning/policy.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { createDatabase, type DatabaseResource } from "../../src/db/client.js";
 import { runMigrations } from "../../src/db/migrate.js";
@@ -228,7 +229,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
       attempt: null,
     });
     expect((await engine.read(c.user, (s) => s.character(exhausted))).characters).toBe(
-      1000,
+      learningPolicy.characterThreshold,
     );
     const other = await account();
     const reused = await other.start(await other.character(), "undergraduate");

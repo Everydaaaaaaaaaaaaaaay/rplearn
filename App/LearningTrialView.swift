@@ -70,7 +70,7 @@ struct LearningTrialView: View {
                     .accessibilityAddTraits(model.selectedLevel == level ? .isSelected : [])
                 }
             }
-            Section("原创完整题组") {
+            Section("完整题组") {
                 if let originals = model.originals {
                     Text("已发布 \(originals.units.count) 组；保留全文、全部子题与配套输入。")
                         .font(.footnote).foregroundStyle(.secondary)
@@ -95,6 +95,8 @@ struct LearningTrialView: View {
                 Section("进行中的挑战") {
                     Text(attempt.unit.title)
                     Text("\(DifficultyLevel(rawValue: attempt.level)?.displayName ?? attempt.level) · \(attempt.unit.questions.count) 题")
+                        .font(.footnote).foregroundStyle(.secondary)
+                    Text("这位旅伴有未完成练习，开始按钮会继续原题组。完成后可抽取新题，也可换一位旅伴练习。")
                         .font(.footnote).foregroundStyle(.secondary)
                     Button("继续这次挑战") { Task { await model.resume() } }
                         .accessibilityIdentifier("learning.trial.resume")
@@ -121,7 +123,7 @@ struct LearningTrialView: View {
                 } label: {
                     HStack {
                         if model.isBusy { ProgressView().tint(.white) }
-                        Text("开始\(model.selectedLevel.displayName)练习").fontWeight(.semibold)
+                        Text(model.resumesSelectedAttempt ? "继续当前挑战" : "开始\(model.selectedLevel.displayName)练习").fontWeight(.semibold)
                     }.frame(maxWidth: .infinity).padding(.vertical, 14)
                 }
                 .buttonStyle(.borderedProminent)
