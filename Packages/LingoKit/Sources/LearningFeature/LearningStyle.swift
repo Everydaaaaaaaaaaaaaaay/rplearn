@@ -5,6 +5,8 @@ import SwiftUI
 import UIKit
 
 struct LearningTheme {
+    static let rewardTint = Color(light: UIColor(red: 0.16, green: 0.43, blue: 0.29, alpha: 1),
+                                  dark: UIColor(red: 0.54, green: 0.82, blue: 0.65, alpha: 1))
     let tint: Color
     let symbol: String
     let caption: String

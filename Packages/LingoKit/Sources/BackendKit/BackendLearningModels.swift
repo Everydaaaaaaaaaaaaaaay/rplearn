@@ -182,6 +182,8 @@ public struct LearningHistory: Codable, Sendable, Equatable {
         public let firstCompletedAt: String?
         public let correctCount: Int
         public let questionCount: Int
+        /// Actual rewards across all rounds of this practice; absent on older servers.
+        public let earnedPoints: Int?
     }
     public let items: [Item]
     public let nextCursor: String?

@@ -8,6 +8,9 @@ final class CharacterLearningLayoutTests: XCTestCase {
         let retry = app.buttons["learning.history.20000000-0000-4000-8000-000000000002"]
         let complete = app.buttons["learning.history.20000000-0000-4000-8000-000000000003"]
         XCTAssertTrue(ongoing.waitForExistence(timeout: 10))
+        XCTAssertTrue(ongoing.label.contains("获得 2 积分"))
+        XCTAssertTrue(retry.label.contains("获得 3 积分"))
+        XCTAssertTrue(complete.label.contains("获得 0 积分"))
         XCTAssertTrue(app.buttons["learning.start"].label.contains("继续挑战"))
         app.buttons["learning.history.filter"].tap()
         XCTAssertTrue(retry.exists)
@@ -37,6 +40,7 @@ final class CharacterLearningLayoutTests: XCTestCase {
         XCTAssertTrue(row.isHittable)
         XCTAssertTrue(row.label.contains("周末集市：询价、比较与表达偏好"))
         XCTAssertTrue(row.label.contains("补答 2 题"))
+        XCTAssertTrue(row.label.contains("获得 3 积分"))
         XCTAssertLessThanOrEqual(row.frame.maxX, app.frame.maxX)
         capture(app, name: "最大字号深色长标题与补答")
     }

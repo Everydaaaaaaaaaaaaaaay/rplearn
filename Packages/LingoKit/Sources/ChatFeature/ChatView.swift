@@ -135,7 +135,7 @@ public struct ChatView: View {
                     let presence = viewModel.presence(at: context.date)
                     ChatTitleView(
                         title: learningSelected ? "角色学习" : viewModel.character.displayName,
-                        subtitle: chatStatus(presence, at: context.date)
+                        subtitle: learningSelected ? viewModel.character.displayName : chatStatus(presence, at: context.date)
                     ) {
                         ZStack(alignment: .bottomTrailing) {
                             AvatarBadge(
@@ -157,26 +157,6 @@ public struct ChatView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 HStack(spacing: 0) {
-                    #if DEBUG
-                    if let fill = deps.debugFillLearning {
-                        Button {
-                            fillingLearning = true
-                            Task {
-                                defer { fillingLearning = false }
-                                do {
-                                    try await fill(viewModel.character.id)
-                                    learningSelected = true
-                                    NotificationCenter.default.post(name: .roleplayConversationDidChange, object: viewModel.character.id)
-                                } catch { learningDebugError = error.localizedDescription }
-                            }
-                        } label: {
-                            Image(systemName: "bolt.fill").frame(width: 44, height: 44)
-                        }
-                        .disabled(fillingLearning || recorder.state != .idle || chineseRecorder.state != .idle)
-                        .accessibilityLabel("填满单元挑战进度（开发者）")
-                        .accessibilityIdentifier("chat.debugFillLearning")
-                    }
-                    #endif
                     if learningSelected {
                         Button { learningSelected = false } label: {
                             Image(systemName: "bubble.left.and.bubble.right").frame(width: 44, height: 44)
@@ -203,6 +183,24 @@ public struct ChatView: View {
                                 voicePlayer.stop()
                                 showsContactDetails = true
                             } label: { Label("聊天设置", systemImage: "person.crop.circle") }
+                            #if DEBUG
+                            if let fill = deps.debugFillLearning {
+                                Divider()
+                                Button {
+                                    fillingLearning = true
+                                    Task {
+                                        defer { fillingLearning = false }
+                                        do {
+                                            try await fill(viewModel.character.id)
+                                            learningSelected = true
+                                            NotificationCenter.default.post(name: .roleplayConversationDidChange, object: viewModel.character.id)
+                                        } catch { learningDebugError = error.localizedDescription }
+                                    }
+                                } label: { Label("填满挑战进度（开发者）", systemImage: "hammer") }
+                                .disabled(fillingLearning || recorder.state != .idle || chineseRecorder.state != .idle)
+                                .accessibilityIdentifier("chat.debugFillLearning")
+                            }
+                            #endif
                         } label: {
                             Image(systemName: "ellipsis.circle").frame(width: 44, height: 44)
                         }.accessibilityLabel("更多聊天操作").accessibilityIdentifier("chat.more")

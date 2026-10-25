@@ -80,9 +80,9 @@ struct DebugLearningPreviewService: LearningServing, LearningDirectionServing, M
         let items: [[String: Any]] = titles.enumerated().map { index, title in
             ["id": index == 0 ? previewRecordID : "20000000-0000-4000-8000-00000000000\(index + 1)",
              "title": title, "level": index == 1 ? "junior3" : "primary3",
-             "startedAt": "2026-09-29T00:00:00Z",
-             "firstCompletedAt": index == 0 && pageState == "active" ? NSNull() : "2026-09-29T00:10:00Z",
-             "correctCount": [2, 4, 6][index], "questionCount": 6]
+             "startedAt": ["2026-10-25T17:00:00Z", "2026-10-25T16:20:00Z", "2026-10-25T10:30:00Z"][index],
+             "firstCompletedAt": index == 0 && pageState == "active" ? NSNull() : ["2026-10-25T17:10:00Z", "2026-10-25T16:30:00Z", "2026-10-25T10:40:00Z"][index],
+             "correctCount": [2, 4, 6][index], "questionCount": 6, "earnedPoints": [2, 3, 0][index]]
         }
         return try decode(["items": items, "nextCursor": NSNull()])
     }
