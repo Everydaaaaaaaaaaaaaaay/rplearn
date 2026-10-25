@@ -132,4 +132,30 @@ describe("source-bound paper directions", () => {
       practiceDirections({ ...q, instruction: "New task rules." }, material),
     ).toBeUndefined();
   });
+
+  it("retains source component constraints after splitting and preserves the printed option spacing", () => {
+    const byId = new Map(originals.map((u) => [u.id, u]));
+    for (const practice of catalog.practices)
+      for (const component of practice.components) {
+        const source = component.sourceUnitId && byId.get(component.sourceUnitId);
+        if (source) {
+          const originalDirections = publicUnit(source).questions;
+          const shown = publicUnit(practice.unit).questions;
+          for (const [index, id] of component.questionIds.entries()) {
+            const number = component.sourceNumbers[index];
+            expect(shown.find((q) => q.id === id)?.instruction).toBe(
+              originalDirections[(number ?? 1) - 1]?.instruction,
+            );
+          }
+        }
+        if (practice.kind === "past-paper" && component.family === "shared_insertion") {
+          for (const q of publicUnit(practice.unit).questions) {
+            expect(q.instruction).toContain("two extra options");
+            expect("options" in q && q.options[0]?.text).toBe(
+              "The cafe closes at 9 pm every day.",
+            );
+          }
+        }
+      }
+  });
 });

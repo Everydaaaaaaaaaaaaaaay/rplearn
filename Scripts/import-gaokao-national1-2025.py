@@ -101,7 +101,7 @@ for name,lo,hi,family in [('a',1,3,'reading_choice'),('b',4,7,'reading_choice'),
    q.update(type='completion',prompt=f'Complete gap {n+20}.',acceptedAnswers=[ans],normalization=dict(ignoreCase=True,ignoreTerminalPunctuation=False),marking=dict(protocol='gaokao_grammar_v1',rejectedAnswers=[],maxWords=2,unlisted='review'),explanation=f'参考答案：{ans}。结合本句结构和全文语义填写；未列形式进入复核，不凭相似度给分。')
   else:
    if name=='insertion':
-    block=span('\nA. The cafe closes','\n第三部分');opts=re.split(r'\n([A-G])\. ', '\nA. The cafe closes'+block)
+    block=span('\nA. The cafe closes','\n第三部分');opts=re.split(r'\n([A-G])\. ', '\nA. The cafe closes '+block)
     options=[dict(id=opts[i].lower(),text=flow(opts[i+1])) for i in range(1,len(opts),2)]
     assert len(options)==7
     prompt=f'Choose the sentence for gap {n+20}.'

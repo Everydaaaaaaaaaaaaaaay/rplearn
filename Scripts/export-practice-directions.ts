@@ -81,6 +81,60 @@ if (process.argv.includes("--audit")) {
       r,
     ]),
   );
+  const reviewedCopy = (
+    family: string,
+    instruction: string,
+    material: string,
+  ) =>
+    lookup.get(
+      JSON.stringify([family, instruction, material.split("\n\n", 1)[0] ?? ""]),
+    ) ?? lookup.get(JSON.stringify([family, instruction, ""]));
+  const originalById = new Map(
+    originals.units.map((e) => {
+      const unit = unitSchema.parse(e.unit);
+      return [unit.id, unit] as const;
+    }),
+  );
+  const componentDirections = new Map<
+    string,
+    { instruction: string; sourceDirections: string }
+  >();
+  for (const practice of [...catalog.practices, ...catalog.historicalPractices])
+    for (const component of practice.components) {
+      const source =
+        component.sourceUnitId && originalById.get(component.sourceUnitId);
+      for (const [index, id] of component.questionIds.entries()) {
+        const number = component.sourceNumbers[index];
+        const question =
+          source && number !== undefined
+            ? source.questions[number - 1]
+            : undefined;
+        const copy =
+          question &&
+          source &&
+          reviewedCopy(
+            component.family,
+            question.instruction,
+            question.material ?? source.originalGroup?.material ?? "",
+          );
+        if (copy)
+          componentDirections.set(id, {
+            instruction: copy.instruction,
+            sourceDirections: copy.sourceInstruction + "\n" + copy.sourcePrefix,
+          });
+        // The retained national-I paper explicitly prints two unused options.
+        if (
+          practice.kind === "past-paper" &&
+          component.family === "shared_insertion"
+        )
+          componentDirections.set(id, {
+            instruction:
+              "Choose the best option for each gap. There are two extra options.",
+            sourceDirections:
+              "阅读下面短文, 从短文后的选项中选出可以填入空白处的最佳选项。选项中有两项为多余选项。",
+          });
+      }
+    }
   const bindings = new Set<string>();
   const rules = new Map<
     string,
@@ -95,14 +149,7 @@ if (process.argv.includes("--audit")) {
     for (const q of unit.questions) {
       const material = q.material ?? unit.originalGroup?.material ?? "";
       const family = familyFor(unit, q);
-      const key = JSON.stringify([
-        family,
-        q.instruction,
-        material.split("\n\n", 1)[0] ?? "",
-      ]);
-      const copy =
-        lookup.get(key) ??
-        lookup.get(JSON.stringify([family, q.instruction, ""]));
+      const copy = reviewedCopy(family, q.instruction, material);
       if (!copy)
         throw new Error(`Unreviewed practice directions: ${unit.id}/${q.id}`);
       const hash = practiceDirectionSourceHash(q, material);
@@ -116,16 +163,20 @@ if (process.argv.includes("--audit")) {
           "\n\n各题语境独立。",
         ])
           if (material.startsWith(removePrefix + note)) removePrefix += note;
+      const sourceCopy = componentDirections.get(q.id);
+      const instruction = sourceCopy?.instruction ?? copy.instruction;
+      const sourceDirections =
+        sourceCopy?.sourceDirections ?? copy.sourceInstruction;
       const ruleKey = JSON.stringify([
-        copy.instruction,
+        instruction,
         removePrefix,
-        copy.sourceInstruction,
+        sourceDirections,
       ]);
       let rule = rules.get(ruleKey);
       if (!rule) {
         rule = {
-          instruction: copy.instruction,
-          sourceDirections: copy.sourceInstruction,
+          instruction,
+          sourceDirections,
           removePrefix,
           bindings: [],
         };
