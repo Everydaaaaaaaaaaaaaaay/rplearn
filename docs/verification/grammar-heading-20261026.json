@@ -1,0 +1,72 @@
+{
+  "verifiedAt": "2026-10-26",
+  "codeCommits": {
+    "backend": "b16a6cdd",
+    "ios": "bc1aebe7"
+  },
+  "reportedUnit": "gaokao.independent.senior3.09b4e034bc54e9c8c1ff",
+  "rootCause": "The independent grammar component retained its former B-section author heading; iOS promoted that first paragraph into a large passage title.",
+  "changes": {
+    "backend": "Remove only the exact reviewed grammar heading prefix through full question-and-material presentation bindings. Frozen source payloads remain intact.",
+    "reviewedGrammarHeadings": 150,
+    "ios": "Grammar projections have no title, and the article reader suppresses grammar title metadata even for older snapshots or locally constructed tasks.",
+    "preserved": "Whole prose, all ten blanks, bracketed base words, answer identities, marking and practice history."
+  },
+  "languageCheck": {
+    "actualText": "Fill each gap with ONE word or the correct form of the word in brackets.",
+    "word": "Correct in the screenshot and source; not world.",
+    "brackets": "Correct: refers to supplied words such as (write). Blanks refers to the gaps and is not a replacement in this phrase.",
+    "ocr": "These words contain no OCR error; the heading issue came from combined-section metadata."
+  },
+  "checks": {
+    "backendTestsPassed": 14,
+    "swiftLogicAndCorpusTestsPassed": 11,
+    "reportedGrammarUITestsPassed": 1,
+    "typecheck": "passed",
+    "focusedESLint": "passed",
+    "iosArchitecture": "passed",
+    "diffCheck": "passed"
+  },
+  "production": {
+    "grammarGroups": 171,
+    "grammarResponses": 1682,
+    "reportedVerified": true,
+    "readOnly": true,
+    "groups": 1418,
+    "responses": 11871,
+    "families": 48,
+    "seniorSingleChoiceResponses": 150,
+    "removedAdministrativeBlocks": 5142,
+    "frozenVersions": 1740,
+    "frozenVersionsPreserved": true,
+    "activeSnapshotsPreserved": 3,
+    "onlineDTOProjection": "passed"
+  },
+  "release": {
+    "id": "grammar-heading-20261026",
+    "sourceCommit": "b16a6cdd",
+    "archiveSHA256": "0db3308cb92d5b5f570672962b232e957d27c34f30a7559d9d27fb061a444f9d",
+    "status": "success",
+    "stableObservation": "passed",
+    "readiness": "ready",
+    "api": "active",
+    "worker": "active",
+    "transactionMarker": "clear",
+    "rollbackRetained": "practice-directions-final-20261026",
+    "memoryPeakMiB": 216.2,
+    "swapBytes": 0
+  },
+  "evidence": {
+    "backend": "build/grammar-heading-backend-tests-final.log",
+    "swift": "build/DerivedData/VerificationResults/20261025T164131Z-48185.xcresult",
+    "ui": "build/DerivedData/VerificationResults/20261025T164544Z-50106.xcresult",
+    "screenshot": "build/grammar-heading-ui-screens/70A21AE6-0CA8-4E10-AABA-FA243AB27561.png",
+    "production": "build/grammar-heading-production-verify.json",
+    "deployment": "build/grammar-heading-deploy.log",
+    "preview": "build/grammar-heading-preview.log"
+  },
+  "visualReview": "The reported legacy fixture was rendered without its title/section letter; instruction spelling and bracketed words were visually checked in the focused UI screenshot.",
+  "preview": "Latest iOS host installed and left in the simulator at the real learning-test entry; login required.",
+  "delivery": "Backend correction applies to the installed client after leaving and reopening the practice. iOS source includes a separate title suppression guard; no App Store publication claimed.",
+  "limits": "All 171 current grammar groups checked through read-only production DTO projection. This is not a new independent editorial audit of every question."
+}
