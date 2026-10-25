@@ -124,6 +124,10 @@ public final class LearningChallengeModel {
     public private(set) var feedback: LearningGrade?
     public private(set) var awardedPoints = 0
     public private(set) var roundPoints: Int
+    private var receiptPoints: [String: Int] = [:]
+    public var earnedPoints: Int {
+        attempt.round.answers.reduce(0) { $0 + ($1.awardedPoints ?? receiptPoints[$1.questionId] ?? 0) }
+    }
     public private(set) var hasUnconfirmedAnswer = false
     public var choice: String?
     public var tokens: [String] = []
@@ -216,6 +220,7 @@ public final class LearningChallengeModel {
         do {
             let receipt = try await service.answerLearning(attempt.id, command: command)
             attempt = receipt.attempt; feedback = receipt.result; awardedPoints = receipt.awardedPoints
+            receiptPoints[command.questionId] = receipt.awardedPoints
             roundPoints = attempt.round.answers.filter { $0.result.outcome == .correct }.count
             pendingAnswer = nil; hasUnconfirmedAnswer = false
         } catch BackendClientError.api(let code, let message, _, _) where code == "LEARNING_ANSWER_REVIEW_REQUIRED" {
@@ -265,6 +270,7 @@ public final class LearningChallengeModel {
         defer { isBusy = false }
         do {
             attempt = try await service.retryLearning(attempt, requestID: retryRequestID)
+            receiptPoints = [:]
             retryRequestID = UUID(); feedback = nil; roundPoints = attempt.round.answers.filter { $0.result.outcome == .correct }.count
             isBusy = false; advance()
         } catch { self.error = error.localizedDescription }

@@ -48,6 +48,7 @@ struct LearningPracticeDraft: Codable {
     var completed = false
     var pendingCommand: LearningAnswerCommand?
     var finishRequestID: UUID?
+    var awardedPoints: [String: Int]?
 }
 
 @MainActor @Observable
@@ -83,6 +84,9 @@ final class LearningPracticeModel {
     var sectionQuestionCount: Int { section.questions.filter(isRequired).count }
     var canReview: Bool { sectionQuestionCount > 0 && answeredCount == sectionQuestionCount }
     var correctCount: Int { task.sections.flatMap(\.questions).filter { isRequired($0) && result(for: $0) == .correct }.count }
+    var earnedPoints: Int {
+        currentAttempt?.round.answers.reduce(0) { $0 + ($1.awardedPoints ?? draft.awardedPoints?[$1.questionId] ?? 0) } ?? 0
+    }
     var needsReviewCount: Int { task.sections.flatMap(\.questions).filter { result(for: $0) == .needsReview }.count }
     var flaggedCount: Int { draft.flagged.count }
     var hasProgress: Bool { draft.started }
@@ -195,7 +199,10 @@ final class LearningPracticeModel {
                         error = "还有一份提交等待确认，请先重试。"; return
                     }
                     let receipt = try await backend.answerLearning(attempt.id, command: command)
-                    currentAttempt = receipt.attempt; draft.pendingCommand = nil; save()
+                    currentAttempt = receipt.attempt
+                    if draft.awardedPoints == nil { draft.awardedPoints = [:] }
+                    draft.awardedPoints?[question.id] = receipt.awardedPoints
+                    draft.pendingCommand = nil; save()
                 }
             } catch {
                 if case BackendClientError.api(let code, let message, _, _) = error {
@@ -280,13 +287,22 @@ final class LearningPracticeModel {
     }
     func explanation(for question: LearningPracticeQuestion) -> String { grade(for: question)?.explanation ?? question.explanation }
     func referenceLabel(_ question: LearningPracticeQuestion) -> String {
+        let content = referenceContent(question)
+        if let option = content.option { return "\(option). \(content.text)" }
+        return content.text
+    }
+    func referenceContent(_ question: LearningPracticeQuestion) -> (option: String?, text: String) {
         if isProduction, let solution = grade(for: question)?.solution {
             if let option = solution.optionId, let letter = optionIDs[question.id]?.first(where: { $0.value == option })?.key,
-               let display = question.options.first(where: { $0.id == letter }) { return "\(letter). \(display.text)" }
-            return solution.text ?? ""
+               let display = question.options.first(where: { $0.id == letter }) { return (letter, display.text) }
+            return (nil, solution.text ?? "")
         }
-        return question.options.first(where: { $0.id == question.correctOption }).map { "\($0.id). \($0.text)" }
-            ?? question.acceptedAnswers.joined(separator: " / ")
+        if let option = question.options.first(where: { $0.id == question.correctOption }) { return (option.id, option.text) }
+        return (nil, question.acceptedAnswers.joined(separator: " / "))
+    }
+    func reviewSentence(for question: LearningPracticeQuestion, in section: LearningPracticeSection) -> String? {
+        guard section.kind != .reading, let index = section.questions.firstIndex(where: { $0.id == question.id }) else { return nil }
+        return PracticePassageText.sentence(in: section.text, containingGap: index + 1)
     }
     private func normalized(_ value: String) -> String {
         value.split(whereSeparator: \.isWhitespace).joined(separator: " ").lowercased()

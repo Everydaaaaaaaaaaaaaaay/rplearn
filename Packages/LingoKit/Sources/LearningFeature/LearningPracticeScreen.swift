@@ -326,13 +326,15 @@ struct LearningPracticeScreen: View {
 
     private var summary: some View {
         PracticeSummaryPage(character: character, message: companion.closing,
-                            correct: model.correctCount, total: model.questionCount,
+                            correct: model.correctCount, total: model.questionCount, earnedPoints: model.earnedPoints,
                             items: reviewItems.map { item in
                                 PracticeReviewItem(id: item.question.id,
                                     location: "第 \(item.section + 1) 篇 · 第 \(item.index + 1) 题",
                                     prompt: item.question.prompt, answer: model.answerLabel(item.question),
                                     reference: model.referenceLabel(item.question),
-                                    needsReview: model.result(for: item.question) == .needsReview)
+                                    needsReview: model.result(for: item.question) == .needsReview,
+                                    sentence: model.reviewSentence(for: item.question, in: model.task.sections[item.section]),
+                                    gapNumber: item.index + 1, referenceContent: model.referenceContent(item.question).text)
                             }, revisit: { id in
                                 if let item = reviewItems.first(where: { $0.question.id == id }) {
                                     model.revisit(section: item.section, question: item.index)
@@ -397,7 +399,7 @@ private struct PracticeArticleReader: View {
                         .accessibilityIdentifier("practice.instruction")
                 }.padding(.top, 20).padding(.bottom, 4)
                 ForEach(Array(section.paragraphs.enumerated()), id: \.offset) { index, paragraph in
-                    Text(attributed(paragraph)).font(.system(size: readingSize, design: .serif)).lineSpacing(8)
+                    articleText(paragraph).textRenderer(PracticeGapTextRenderer()).font(.system(size: readingSize, design: .serif)).lineSpacing(8)
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(highlightedParagraph == index ? 12 : 0)
@@ -429,27 +431,26 @@ private struct PracticeArticleReader: View {
         })
         .accessibilityIdentifier("practice.article")
     }
-    private func attributed(_ paragraph: String) -> AttributedString {
-        guard let regex = try? NSRegularExpression(pattern: "____([0-9]+)____") else { return AttributedString(paragraph) }
-        let source = paragraph as NSString
-        let matches = regex.matches(in: paragraph, range: NSRange(location: 0, length: source.length))
-        var output = AttributedString(); var cursor = 0
-        for match in matches {
-            output.append(AttributedString(source.substring(with: NSRange(location: cursor, length: match.range.location - cursor))))
-            guard let number = Int(source.substring(with: match.range(at: 1))), section.questions.indices.contains(number - 1) else { continue }
-            let question = section.questions[number - 1]
-            let response = model.answer(for: question)
-            let content = question.options.first(where: { $0.id == response }).map { section.kind == .insertion ? "\($0.id). \($0.text)" : $0.text } ?? response
-            var gap = AttributedString(content.isEmpty ? "  \(number) ____  " : "  \(number) · \(content)  ")
-            gap.link = URL(string: "practice-gap://\(number - 1)")
-            gap.foregroundColor = PracticePaper.accent
-            gap.backgroundColor = PracticePaper.accent.opacity(model.draft.questionIndex == number - 1 ? 0.17 : 0.07)
-            gap.underlineStyle = .single
-            output.append(gap); cursor = match.range.location + match.range.length
+    private func articleText(_ paragraph: String) -> Text {
+        PracticePassageText.parts(paragraph).reduce(Text("")) { text, part in
+            switch part {
+            case .prose(let value): return text + Text(value)
+            case .gap(let number):
+                guard section.questions.indices.contains(number - 1) else { return text + Text("____\(number)____") }
+                let question = section.questions[number - 1]
+                let response = model.answer(for: question)
+                let content = question.options.first(where: { $0.id == response }).map {
+                    section.kind == .insertion ? "\($0.id).  \($0.text)" : $0.text
+                } ?? response
+                var gap = AttributedString(PracticePassageText.gapLabel(number, answer: content))
+                gap.link = URL(string: "practice-gap://\(number - 1)")
+                gap.foregroundColor = PracticePaper.accent
+                gap.backgroundColor = PracticePaper.accent.opacity(model.draft.questionIndex == number - 1 ? 0.17 : 0.07)
+                return text + Text(gap).underline(false).customAttribute(PracticeGapUnderline())
+            }
         }
-        output.append(AttributedString(source.substring(from: cursor)))
-        return output
     }
+
 }
 
 #if DEBUG

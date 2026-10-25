@@ -650,9 +650,18 @@ export class LearningSession {
       where attempt_id=${id} order by ordinal desc limit 1`;
     if (!round) throw new Error("挑战缺少作答轮次。");
     const answers = await this.sql<
-      { question_id: string; answer: LearningAnswer; result: GradeResult }[]
+      {
+        question_id: string;
+        answer: LearningAnswer;
+        result: GradeResult;
+        awarded_points: number;
+      }[]
     >`
-      select question_id,answer,result from app.learning_answers where round_id=${round.id} order by created_at,question_id`;
+      select a.question_id,a.answer,a.result,
+        case when a.result->>'outcome'='correct' then coalesce(r.points,0) else 0 end as awarded_points
+      from app.learning_answers a
+      left join app.learning_rewards r on r.attempt_id=${id} and r.question_id=a.question_id
+      where a.round_id=${round.id} order by a.created_at,a.question_id`;
     const rewarded = await this.sql<
       { question_id: string }[]
     >`select question_id from app.learning_rewards where attempt_id=${id}`;
@@ -678,6 +687,7 @@ export class LearningSession {
           questionId: a.question_id,
           answer: a.answer,
           result: a.result,
+          awardedPoints: a.awarded_points,
         })),
       },
     };

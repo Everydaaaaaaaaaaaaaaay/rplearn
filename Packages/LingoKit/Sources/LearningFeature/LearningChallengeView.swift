@@ -569,6 +569,7 @@ public struct LearningChallengeView: View {
     private var summary: some View {
         PracticeSummaryPage(character: character, message: companion.closing,
                             correct: model.roundPoints, total: model.attempt.round.questionIds.count,
+                            earnedPoints: model.earnedPoints,
                             items: model.attempt.round.answers.compactMap { submission in
                                 guard submission.result.outcome != .correct,
                                       let index = model.attempt.unit.questions.firstIndex(where: { $0.id == submission.questionId }) else { return nil }

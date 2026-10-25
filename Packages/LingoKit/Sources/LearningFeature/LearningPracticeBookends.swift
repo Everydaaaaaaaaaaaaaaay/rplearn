@@ -97,6 +97,9 @@ struct PracticeReviewItem: Identifiable {
     let answer: String
     let reference: String
     var needsReview = false
+    var sentence: String?
+    var gapNumber = 0
+    var referenceContent = ""
 }
 
 struct PracticeSummaryPage: View {
@@ -104,6 +107,7 @@ struct PracticeSummaryPage: View {
     let message: String
     let correct: Int
     let total: Int
+    let earnedPoints: Int
     let items: [PracticeReviewItem]
     var busy = false
     var revisit: ((String) -> Void)?
@@ -122,6 +126,9 @@ struct PracticeSummaryPage: View {
                         Text("\(correct)/\(total)题")
                             .font(.system(size: scoreSize, weight: .semibold, design: .rounded)).monospacedDigit()
                             .accessibilityIdentifier("practice.result.score")
+                        Text("获得\(earnedPoints)积分！")
+                            .font(.headline).foregroundStyle(PracticePaper.correct)
+                            .accessibilityIdentifier("practice.result.points")
                     }.frame(maxWidth: .infinity)
                     if !items.isEmpty {
                         VStack(alignment: .leading, spacing: 18) {
@@ -150,7 +157,12 @@ struct PracticeSummaryPage: View {
                 Spacer()
                 if opensDetail { Image(systemName: "arrow.up.right").font(.caption).foregroundStyle(PracticePaper.accent) }
             }
-            Text(item.prompt).font(.body).foregroundStyle(.primary).lineSpacing(4)
+            if let sentence = item.sentence {
+                PracticeReviewSentence(sentence: sentence, number: item.gapNumber, reference: item.referenceContent)
+                    .accessibilityIdentifier("practice.review.sentence.\(item.id)")
+            } else {
+                Text(item.prompt).font(.body).foregroundStyle(.primary).lineSpacing(4)
+            }
             VStack(alignment: .leading, spacing: 7) {
                 Text("你的答案：\(item.answer.isEmpty ? "未作答" : item.answer)")
                     .foregroundStyle(item.needsReview ? Color.secondary : PracticePaper.incorrect)

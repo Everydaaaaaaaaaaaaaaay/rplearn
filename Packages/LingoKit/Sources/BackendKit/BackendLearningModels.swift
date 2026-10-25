@@ -128,6 +128,8 @@ public struct LearningAttempt: Codable, Sendable, Equatable, Identifiable {
         public let questionId: String
         public let answer: LearningAnswer
         public let result: LearningGrade
+        /// Authoritative reward for this answer; older cached receipts may omit it.
+        public let awardedPoints: Int?
     }
     public struct Round: Codable, Sendable, Equatable {
         public let id: UUID

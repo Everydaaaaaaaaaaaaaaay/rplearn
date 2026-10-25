@@ -23,6 +23,8 @@ private actor FormalPracticeService: LearningServing {
     var receipts: [UUID: LearningAnswerReceipt] = [:]
     var loseResponse = false
     var finishCalls = 0
+    var pointsPerAnswer = 1
+    func setPoints(_ value: Int) { pointsPerAnswer = value }
     init(_ attempt: LearningAttempt) { self.attempt = attempt }
     func loseNextResponse() { loseResponse = true }
     func learningAttempt(_ id: UUID) async throws -> LearningAttempt { attempt }
@@ -33,11 +35,11 @@ private actor FormalPracticeService: LearningServing {
         var value = try JSONSerialization.jsonObject(with: JSONEncoder().encode(attempt)) as! [String: Any]
         var round = value["round"] as! [String: Any]; var answers = round["answers"] as! [[String: Any]]
         let grade: [String: Any] = ["outcome": "correct", "explanation": "Only the server supplied this explanation.", "solution": ["kind": "choice", "optionId": command.answer.optionId!]]
-        answers.append(["questionId": command.questionId, "answer": try JSONSerialization.jsonObject(with: JSONEncoder().encode(command.answer)), "result": grade])
+        answers.append(["questionId": command.questionId, "answer": try JSONSerialization.jsonObject(with: JSONEncoder().encode(command.answer)), "result": grade, "awardedPoints": pointsPerAnswer])
         round["answers"] = answers; value["round"] = round; value["revision"] = attempt.revision + 1
         value["correctQuestionIds"] = answers.map { $0["questionId"]! }
         attempt = try JSONDecoder().decode(LearningAttempt.self, from: JSONSerialization.data(withJSONObject: value))
-        let receipt = try JSONDecoder().decode(LearningAnswerReceipt.self, from: JSONSerialization.data(withJSONObject: ["attempt": value, "result": grade, "awardedPoints": 1, "progress": []]))
+        let receipt = try JSONDecoder().decode(LearningAnswerReceipt.self, from: JSONSerialization.data(withJSONObject: ["attempt": value, "result": grade, "awardedPoints": pointsPerAnswer, "progress": []]))
         receipts[command.requestId] = receipt
         if loseResponse { loseResponse = false; throw BackendClientError.transport("Lost response after commit") }
         return receipt
@@ -54,6 +56,34 @@ private actor FormalPracticeService: LearningServing {
 
 @Suite("Formal whole-passage practice") @MainActor
 struct LearningPracticeLiveTests {
+    @Test("Correct repeated answers may award zero; snapshots preserve actual points across relaunch")
+    func actualRewards() async throws {
+        let attempt = try formalAttempt(); let service = FormalPracticeService(attempt)
+        await service.setPoints(0)
+        let defaults = UserDefaults(suiteName: UUID().uuidString)!
+        let model = try #require(LearningPracticeModel(attempt: attempt, service: service, defaults: defaults))
+        model.start()
+        for index in 0..<5 { model.selectQuestion(index); model.setAnswer(String(UnicodeScalar(65 + index)!)) }
+        await model.submitSection()
+        #expect(model.correctCount == 5)
+        #expect(model.earnedPoints == 0)
+        let snapshot = await service.attempt
+        let reopened = try #require(LearningPracticeModel(attempt: snapshot, service: service, defaults: defaults))
+        #expect(reopened.earnedPoints == 0)
+        #expect(snapshot.round.answers.allSatisfy { $0.awardedPoints == 0 })
+    }
+
+    @Test("Review extracts the target sentence, keeping neighbouring blanks, quotes and abbreviations")
+    func gapSentence() throws {
+        let text = "Dr. Lee tested the key. It was ____1____, so she checked the ____2____. Next came ____3____."
+        let sentence = try #require(PracticePassageText.sentence(in: text, containingGap: 2))
+        #expect(sentence == "It was ____1____, so she checked the ____2____.")
+        #expect(PracticePassageText.sentence(in: text, containingGap: 8) == nil)
+        #expect(PracticePassageText.parts(sentence) == [.prose("It was "), .gap(1), .prose(", so she checked the "), .gap(2), .prose(".")])
+        #expect(PracticePassageText.gapLabel(2, answer: "defective") == "2.\u{00A0}\u{00A0}defective")
+        #expect(!PracticePassageText.gapLabel(2, answer: "").contains("_"))
+    }
+
     @Test("Shared text cleanup removes only exact repeated directions or material, preserving different questions")
     func repeatedQuestionText() {
         #expect(!LearningQuestionText.showsPrompt("Choose the answer.\n", instruction: " Choose the answer. ", material: nil))
@@ -145,6 +175,7 @@ struct LearningPracticeLiveTests {
         #expect(commands.map(\.expectedRevision) == [1, 2, 3, 4, 5])
         #expect(model.draft.isReviewing)
         #expect(model.correctCount == 5)
+        #expect(model.earnedPoints == 5)
         #expect(model.explanation(for: model.question) == "Only the server supplied this explanation.")
         await model.finishReview()
         #expect(await service.finishCalls == 1)
@@ -170,6 +201,7 @@ struct LearningPracticeLiveTests {
         #expect(commands[0].expectedRevision == commands[1].expectedRevision)
         #expect(await service.receipts.count == 5)
         #expect(reloaded.correctCount == 5)
+        #expect(reloaded.earnedPoints == 5)
         #expect(!reloaded.hasUnconfirmedAnswer)
     }
 }

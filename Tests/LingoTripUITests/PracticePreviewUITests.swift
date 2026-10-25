@@ -101,6 +101,35 @@ final class PracticePreviewUITests: XCTestCase {
         app.terminate()
     }
 
+    func testClozeGapFormattingAndSentenceReview() {
+        continueAfterFailure = false
+        let app = launch()
+        XCTAssertTrue(app.buttons["practice.task.cloze"].waitForExistence(timeout: 15))
+        app.buttons["practice.task.cloze"].tap(); app.buttons["practice.start"].tap()
+        XCTAssertTrue(app.buttons["practice.panel"].waitForExistence(timeout: 5))
+        app.buttons["practice.panel"].tap()
+        capture(app, "完形填空-连续横线与题号")
+        app.buttons["practice.panel"].tap()
+        for index in 0..<15 {
+            app.buttons["practice.question.\(index + 1)"].tap(); choose("A", in: app)
+        }
+        app.buttons["practice.panel"].tap()
+        capture(app, "已填答案-句点及两格间距")
+        app.buttons["practice.panel"].tap()
+        app.buttons["practice.next"].tap(); app.buttons["practice.continue"].tap()
+        XCTAssertTrue(app.staticTexts["practice.result.points"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["practice.result.points"].label, "获得0积分！", "离线练习不能伪造真实奖励")
+        capture(app, "结束页-实际积分")
+        let sentence = app.staticTexts.matching(NSPredicate(format: "identifier BEGINSWITH %@", "practice.review.sentence.")).firstMatch
+        for _ in 0..<4 { if sentence.isHittable { break }; app.swipeUp() }
+        XCTAssertTrue(sentence.isHittable)
+        XCTAssertFalse(sentence.label.contains("Choose the best"))
+        XCTAssertFalse(sentence.label.contains("____"))
+        XCTAssertTrue(sentence.label.contains("."))
+        capture(app, "完形错题回顾-原句及正确填词")
+        app.terminate()
+    }
+
     func testLegacyCoverUsesTheSameHierarchyAtLargestTextSize() {
         continueAfterFailure = false
         let app = XCUIApplication()
@@ -141,6 +170,8 @@ final class PracticePreviewUITests: XCTestCase {
         XCTAssertTrue(app.textFields["practice.grammar.answer"].waitForExistence(timeout: 3))
         let input = app.textFields["practice.grammar.answer"]
         input.tap(); input.typeText("brought")
+        let committed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "brought"), object: input)
+        XCTAssertEqual(XCTWaiter.wait(for: [committed], timeout: 3), .completed)
         XCTAssertEqual(input.value as? String, "brought")
         XCTAssertTrue(app.keyboards.firstMatch.exists)
         capture(app, "语法填空与键盘")
