@@ -32,6 +32,12 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("本轮实际积分
     await db.close();
   });
   it("答对不等于获分；补答只显示当前轮积分，重新读取不丢失", async () => {
+    const empty = await repository.read(user, (s) => s.history(character, 10));
+    expect(empty.items[0]).toMatchObject({
+      id: attempt,
+      correctCount: 0,
+      earnedPoints: 0,
+    });
     const first = randomUUID();
     await db.sql`insert into app.learning_rounds(id,attempt_id,ordinal,question_ids,completed_at)
       values(${first},${attempt},0,${["q.choice", "q.listen", "q.arrange"]},now())`;
@@ -48,6 +54,16 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("本轮实际积分
     }
     const snapshot = await repository.read(user, (s) => s.attempt(attempt));
     expect(snapshot.round.answers.map((a) => a.awardedPoints)).toEqual([1, 0, 0]);
+    const initialHistory = await repository.read(user, (s) => s.history(character, 10));
+    expect(initialHistory.items[0]).toMatchObject({
+      id: attempt,
+      correctCount: 2,
+      earnedPoints: 1,
+    });
+    const foreignHistory = await repository.read(randomUUID(), (s) =>
+      s.history(character, 10),
+    );
+    expect(foreignHistory.items).toEqual([]);
     const retry = randomUUID();
     await db.sql`insert into app.learning_rounds(id,attempt_id,ordinal,question_ids,completed_at)
       values(${retry},${attempt},1,${["q.arrange"]},now())`;
@@ -59,6 +75,12 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("本轮实际积分
       const fresh = await repository.read(user, (s) => s.attempt(attempt));
       expect(fresh.round.answers.map((a) => a.awardedPoints)).toEqual([1]);
       expect(fresh.correctQuestionIds).toHaveLength(3);
+      const history = await repository.read(user, (s) => s.history(character, 10));
+      expect(history.items[0]).toMatchObject({
+        id: attempt,
+        correctCount: 3,
+        earnedPoints: 2,
+      });
     }
   });
 });

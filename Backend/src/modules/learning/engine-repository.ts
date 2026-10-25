@@ -369,12 +369,17 @@ export class LearningSession {
         title: string;
         question_count: number;
         correct_count: number;
+        earned_points: number;
       }[]
     >`
       select a.id,a.level_key,a.started_at::text,a.first_completed_at::text,coalesce(a.snapshot,v.payload)->>'title' as title,
         jsonb_array_length(coalesce(a.snapshot,v.payload)->'questions') as question_count,
-        (select count(*)::integer from app.learning_rewards r where r.attempt_id=a.id) as correct_count
+        rewards.correct_count,rewards.earned_points
       from app.learning_attempts a left join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version
+      left join lateral (
+        select count(*)::integer as correct_count,coalesce(sum(r.points),0)::integer as earned_points
+        from app.learning_rewards r where r.attempt_id=a.id and r.user_id=${this.userId}
+      ) rewards on true
       where a.user_id=${this.userId} and a.character_id=${characterId}
         and (${cursor === undefined} or (a.started_at,a.id)<(${cursor?.startedAt ?? "9999-01-01T00:00:00Z"}::timestamptz,${cursor?.id ?? "ffffffff-ffff-ffff-ffff-ffffffffffff"}::uuid))
       order by a.started_at desc,a.id desc limit ${limit + 1}`;
@@ -389,6 +394,7 @@ export class LearningSession {
           ? null
           : new Date(row.first_completed_at).toISOString(),
       correctCount: row.correct_count,
+      earnedPoints: row.earned_points,
       questionCount: row.question_count,
     }));
     const last = rows[limit - 1];

@@ -325,6 +325,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         expect(finished.statusCode).toBe(200);
       }
       const seen: string[] = [];
+      const points: number[] = [];
       let cursor: string | null = null;
       do {
         const response = await get(
@@ -334,10 +335,12 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         expect(response.body).not.toContain('"solution"');
         const page = response.json<Awaited<ReturnType<LearningService["history"]>>>();
         seen.push(...page.items.map((item) => item.id));
+        points.push(...page.items.map((item) => item.earnedPoints));
         cursor = page.nextCursor;
       } while (cursor !== null);
       expect(new Set(seen).size).toBe(3);
       expect(seen).toHaveLength(3);
+      expect(points.sort()).toEqual([0, 0, 1]);
       await fill();
       const pending = await post(`/v1/learning/characters/${characterId}/attempts`, {
         requestId: randomUUID(),
