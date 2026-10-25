@@ -49,6 +49,9 @@ final class LearningFormalPracticeUITests: XCTestCase {
                 if family == "shared_insertion" {
                     XCTAssertTrue(app.buttons["practice.question.5"].exists)
                     XCTAssertFalse(app.buttons["practice.question.6"].exists)
+                } else {
+                    XCTAssertTrue(app.staticTexts["Choose the best answer."].exists)
+                    XCTAssertFalse(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "从每题所给的四个选项")).firstMatch.exists)
                 }
             }
             let attachment = XCTAttachment(screenshot: app.screenshot())
