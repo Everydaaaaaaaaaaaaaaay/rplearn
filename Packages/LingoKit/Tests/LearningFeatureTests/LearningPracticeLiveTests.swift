@@ -70,6 +70,8 @@ struct LearningPracticeLiveTests {
             #expect(projection.task.sections[0].questions.map(\.id) == unit.questions.map(\.id))
             for number in 1...count { #expect(projection.task.sections[0].text.contains("____\(number)____")) }
             #expect(unit.questions[0].material?.contains(kind == .grammar ? "____56____" : "____36____") == true)
+            #expect(projection.task.sections[0].questions[0].prompt.contains("gap 1"))
+            #expect(!projection.task.sections[0].questions[0].prompt.contains(kind == .grammar ? "56" : "36"))
         }
     }
     @Test("Correct repeated answers may award zero; snapshots preserve actual points across relaunch")

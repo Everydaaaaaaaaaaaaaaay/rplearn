@@ -81,7 +81,14 @@ struct LearningPracticeProjection {
                 }
                 maps[source.id] = Dictionary(uniqueKeysWithValues: zip(options, rawOptions).map { ($0.0.id, $0.1.id) })
                 let paragraph = text.components(separatedBy: "\n\n").firstIndex(where: { $0.contains("____\(index + 1)____") }) ?? 0
-                questions.append(.init(id: source.id, prompt: source.prompt, options: options,
+                var prompt = source.prompt
+                if kind != .reading,
+                   let regex = try? NSRegularExpression(pattern: #"(?i)(?:gap\s*|blank\s*|第\s*)([0-9]+)"#),
+                   let match = regex.firstMatch(in: prompt, range: NSRange(prompt.startIndex..., in: prompt)),
+                   let number = Range(match.range(at: 1), in: prompt) {
+                    prompt.replaceSubrange(number, with: String(index + 1))
+                }
+                questions.append(.init(id: source.id, prompt: prompt, options: options,
                                        correctOption: nil, acceptedAnswers: [], rejectedAnswers: [], explanation: "", evidenceParagraph: paragraph))
             }
             sections.append(.init(id: group[0].id + ".passage", kind: kind, title: title, text: text,
