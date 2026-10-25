@@ -1,0 +1,175 @@
+{
+  "verifiedAt": "2026-10-25",
+  "codeCommits": [
+    "776655f1",
+    "9f491fda"
+  ],
+  "scope": {
+    "independentSeniorTypes": [
+      "reading_choice",
+      "choice_cloze",
+      "shared_insertion",
+      "passage_form",
+      "sentence_choice"
+    ],
+    "singleChoiceAdded": {
+      "groups": 9,
+      "questions": 150
+    },
+    "insertionQuestionsPerPractice": 5,
+    "grammarQuestionsPerPractice": 10,
+    "subjectiveTasks": "permanently excluded by owner instruction",
+    "listening": "unchanged"
+  },
+  "production": {
+    "readOnly": true,
+    "oldContentVersionsPreserved": true,
+    "levels": {
+      "senior1": {
+        "choice_cloze": 41,
+        "reading_choice": 30,
+        "passage_form": 22,
+        "shared_insertion": 25,
+        "sentence_choice": 3
+      },
+      "senior2": {
+        "reading_choice": 29,
+        "choice_cloze": 39,
+        "shared_insertion": 25,
+        "passage_form": 25,
+        "sentence_choice": 3
+      },
+      "senior3": {
+        "choice_cloze": 39,
+        "reading_choice": 29,
+        "shared_insertion": 25,
+        "passage_form": 25,
+        "sentence_choice": 3
+      }
+    },
+    "groups": 363
+  },
+  "release": {
+    "id": "senior-objective-20261025",
+    "sourceCommit": "776655f1",
+    "archiveSHA256": "ea84721207de951ac3425ca40eef7f2c28b2639948bc556061df8a5a0f5dc625",
+    "catalogHash": "cb9b06aa42dbffa97b02499d76264ae09188cd247a6464a38f7ca7f270b0f2d7",
+    "publish": "success",
+    "stableObservation": "passed",
+    "readiness": "ready",
+    "api": "active",
+    "worker": "active",
+    "transactionMarker": "clear",
+    "rollbackReleaseRetained": "learning-supply-2f7c8547"
+  },
+  "corpus": {
+    "units": 1418,
+    "responses": 11871,
+    "retries": 1418,
+    "families": {
+      "word_picture_matching": 79,
+      "listening_picture_true_false": 12,
+      "listening_picture_choice": 6,
+      "dialogue_matching": 32,
+      "word_picture_choice": 3,
+      "picture_sentence_choice": 3,
+      "function_choice": 58,
+      "listening_word_phrase_choice": 6,
+      "listening_sentence_choice": 3,
+      "reading_tf": 61,
+      "shared_bank": 116,
+      "dialogue_ordering": 8,
+      "listening_picture_matching": 15,
+      "sentence_choice": 68,
+      "reading_choice": 249,
+      "word_category_choice": 9,
+      "listening_passage_choice": 18,
+      "listening_dialogue_choice": 9,
+      "listening_picture_ordering": 6,
+      "choice_cloze": 244,
+      "listening_passage_completion": 3,
+      "sentence_form": 18,
+      "marked_sound_tf": 3,
+      "sentence_picture_matching": 3,
+      "listening_passage_true_false": 3,
+      "word_order_sentence": 3,
+      "context_word_completion": 9,
+      "grammar_choice_cloze": 6,
+      "passage_form": 171,
+      "shared_insertion": 97,
+      "listening_long_conversation_choice": 12,
+      "listening_true_false": 3,
+      "listening_short_conversation_choice": 15,
+      "listening_table_completion": 6,
+      "sentence_transformation": 6,
+      "listening_multi_question_choice": 3,
+      "paragraph_matching": 8,
+      "listening_news_choice": 3,
+      "listening_lecture_choice": 3,
+      "open_cloze": 14,
+      "keyword_transformation": 3,
+      "cross_text_matching": 3,
+      "paragraph_gap_insertion": 3,
+      "multiple_text_information_matching": 3,
+      "listening_extract_choice": 3,
+      "listening_sentence_completion": 3,
+      "listening_interview_choice": 3,
+      "listening_double_matching": 3
+    },
+    "levels": {
+      "primary1": 76,
+      "primary2": 73,
+      "primary3": 72,
+      "primary4": 68,
+      "primary5": 81,
+      "primary6": 83,
+      "junior1": 159,
+      "junior2": 150,
+      "junior3": 146,
+      "undergraduate": 42,
+      "postgraduate": 41,
+      "advanced": 64,
+      "senior1": 121,
+      "senior2": 121,
+      "senior3": 121
+    }
+  },
+  "checks": {
+    "backendTypecheck": "passed",
+    "focusedESLint": "passed",
+    "backendUnitTests": 10,
+    "sourceBindingTests": 4,
+    "isolatedHTTPRegressions": 26,
+    "iosCorpusAndPracticeTests": 10,
+    "iosFinalNumberingTests": 9,
+    "independentInputUITests": 1,
+    "localNumberUITests": 1,
+    "iosArchitecture": "passed",
+    "diffCheck": "passed"
+  },
+  "evidence": {
+    "corpus": "build/senior-independent-corpus.log",
+    "backendRegressions": "build/senior-independent-regressions/report.json",
+    "numberingUI": "build/DerivedData/VerificationResults/20261025T153850Z-39905.xcresult",
+    "correctedGrammarScreenshot": "build/senior-independent-numbering-screens/005C2160-0AFF-4F22-8BD8-C4D242EB8429.png",
+    "production": "build/senior-independent-production-verify.json",
+    "publication": "build/senior-independent-publish.log",
+    "preview": "build/senior-independent-preview-restored.log"
+  },
+  "preservation": {
+    "priorSeniorVersions": 438,
+    "priorContentVersionsUnchanged": true,
+    "oldCombinedAttempts": "readable and resumable; excluded from new draws",
+    "questionIdentity": "original IDs retained for split sections; curated choice IDs namespaced",
+    "userData": "preserved"
+  },
+  "preview": {
+    "simulator": "659893A7-0822-43F4-8DA1-4A92E9C78814",
+    "entry": "real learning-test; login required",
+    "latestBuildInstalled": true
+  },
+  "limits": [
+    "Corpus checks cover software lifecycle and source binding, not independent editorial review or every physical-device screen.",
+    "Regional word-bank cloze and bounded vocabulary completion are not admitted without complete reviewed coverage."
+  ]
+}

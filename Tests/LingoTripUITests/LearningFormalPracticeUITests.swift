@@ -2,6 +2,26 @@ import XCTest
 
 @MainActor
 final class LearningFormalPracticeUITests: XCTestCase {
+    func testIndependentGrammarPromptUsesLocalNumber() throws {
+        continueAfterFailure = false
+        let fixture = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+            .appending(path: "Fixtures/learning-senior3-independent-passage_form.json")
+        let app = XCUIApplication()
+        app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_REQUIRE_AUTHENTICATION": "0",
+            "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1", "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9",
+            "UI_TEST_TAB": "unit-challenge", "UI_TEST_LEARNING_STORY": "1", "UI_TEST_LEARNING_QUESTION": "completion",
+            "UI_TEST_LEARNING_UNIT_JSON": try String(contentsOf: fixture, encoding: .utf8)]
+        app.launch()
+        XCTAssertTrue(app.buttons["practice.start"].waitForExistence(timeout: 20))
+        app.buttons["practice.start"].tap()
+        XCTAssertTrue(app.textFields["practice.grammar.answer"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Complete gap 1."].exists)
+        XCTAssertFalse(app.staticTexts["Complete gap 56."].exists)
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = "独立语法填空-本篇题号一致"; attachment.lifetime = .keepAlways; add(attachment)
+        app.terminate()
+    }
+
     func testIndependentSeniorObjectivePracticeInputs() throws {
         continueAfterFailure = false
         for (family, title) in [("shared_insertion", "七选五"), ("passage_form", "语法填空"), ("sentence_choice", "选择题")] {
