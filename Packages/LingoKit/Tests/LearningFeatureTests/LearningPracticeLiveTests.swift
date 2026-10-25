@@ -56,6 +56,22 @@ private actor FormalPracticeService: LearningServing {
 
 @Suite("Formal whole-passage practice") @MainActor
 struct LearningPracticeLiveTests {
+    @Test("独立七选五和语法填空保留完整题量，将原卷题号投影为本篇空号")
+    func independentExamSections() throws {
+        var root = URL(fileURLWithPath: #filePath)
+        for _ in 0..<5 { root.deleteLastPathComponent() }
+        for (family, kind, count) in [("shared_insertion", LearningPracticeSection.Kind.insertion, 5), ("passage_form", .grammar, 10)] {
+            let data = try Data(contentsOf: root.appending(path: "Tests/LingoTripUITests/Fixtures/learning-senior3-independent-\(family).json"))
+            let unit = try JSONDecoder().decode(LearningUnit.self, from: data)
+            let projection = try #require(LearningPracticeProjection(unit: unit))
+            #expect(projection.task.sections.count == 1)
+            #expect(projection.task.sections[0].kind == kind)
+            #expect(projection.task.count == count)
+            #expect(projection.task.sections[0].questions.map(\.id) == unit.questions.map(\.id))
+            for number in 1...count { #expect(projection.task.sections[0].text.contains("____\(number)____")) }
+            #expect(unit.questions[0].material?.contains(kind == .grammar ? "____56____" : "____36____") == true)
+        }
+    }
     @Test("Correct repeated answers may award zero; snapshots preserve actual points across relaunch")
     func actualRewards() async throws {
         let attempt = try formalAttempt(); let service = FormalPracticeService(attempt)

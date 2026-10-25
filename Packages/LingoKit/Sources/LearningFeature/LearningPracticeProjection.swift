@@ -32,6 +32,22 @@ struct LearningPracticeProjection {
                     text = text.replacingOccurrences(of: marker, with: "____\(number)____")
                 }
             }
+            // Independent exam sections retain source question numbers (e.g. 36–40).
+            // Only the displayed blanks become local ordinals; answer identities stay intact.
+            if kind != .reading, let pattern = try? NSRegularExpression(pattern: "____([0-9]+)____") {
+                let matches = pattern.matches(in: text, range: NSRange(text.startIndex..., in: text))
+                if matches.count == group.count {
+                    let original = text as NSString
+                    var rendered = ""; var cursor = 0
+                    for (index, match) in matches.enumerated() {
+                        rendered += original.substring(with: NSRange(location: cursor, length: match.range.location - cursor))
+                        rendered += "____\(index + 1)____"
+                        cursor = NSMaxRange(match.range)
+                    }
+                    rendered += original.substring(from: cursor)
+                    text = rendered
+                }
+            }
             if kind != .reading && !(1...group.count).allSatisfy({ text.contains("____\($0)____") }) { return nil }
             var candidates = question.options ?? []
             if kind == .insertion {

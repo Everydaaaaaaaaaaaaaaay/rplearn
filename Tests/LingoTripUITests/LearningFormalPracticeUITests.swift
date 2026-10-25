@@ -2,6 +2,41 @@ import XCTest
 
 @MainActor
 final class LearningFormalPracticeUITests: XCTestCase {
+    func testIndependentSeniorObjectivePracticeInputs() throws {
+        continueAfterFailure = false
+        for (family, title) in [("shared_insertion", "七选五"), ("passage_form", "语法填空"), ("sentence_choice", "选择题")] {
+            let fixture = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+                .appending(path: "Fixtures/learning-senior3-independent-\(family).json")
+            let app = XCUIApplication()
+            app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_REQUIRE_AUTHENTICATION": "0",
+                "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1", "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9",
+                "UI_TEST_TAB": "unit-challenge", "UI_TEST_LEARNING_STORY": "1",
+                "UI_TEST_LEARNING_QUESTION": family == "passage_form" ? "completion" : "choice",
+                "UI_TEST_LEARNING_UNIT_JSON": try String(contentsOf: fixture, encoding: .utf8)]
+            app.launch()
+            XCTAssertTrue(app.buttons["practice.start"].waitForExistence(timeout: 20))
+            XCTAssertEqual(app.staticTexts["practice.task.kind"].label, title)
+            app.buttons["practice.start"].tap()
+            if family == "passage_form" {
+                let input = app.textFields["practice.grammar.answer"]
+                XCTAssertTrue(input.waitForExistence(timeout: 5))
+                XCTAssertTrue(app.buttons["practice.question.10"].exists)
+                XCTAssertFalse(app.buttons["practice.option.A"].exists)
+            } else {
+                let option = app.buttons[family == "sentence_choice" ? "learning.option.o0" : "practice.option.A"]
+                XCTAssertTrue(option.waitForExistence(timeout: 5)); option.tap()
+                XCTAssertTrue(option.isSelected)
+                if family == "shared_insertion" {
+                    XCTAssertTrue(app.buttons["practice.question.5"].exists)
+                    XCTAssertFalse(app.buttons["practice.question.6"].exists)
+                }
+            }
+            let attachment = XCTAttachment(screenshot: app.screenshot())
+            attachment.name = "高中独立专项-\(family)"; attachment.lifetime = .keepAlways; add(attachment)
+            app.terminate()
+        }
+    }
+
     func testReportedExpansionReadingGroupHasBothPassagesAndSelectableAnswers() throws {
         continueAfterFailure = false
         let fixture = URL(fileURLWithPath: #filePath).deletingLastPathComponent()

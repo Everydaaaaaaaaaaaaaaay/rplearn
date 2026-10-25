@@ -1,3 +1,4 @@
+import { seniorPracticeCatalog } from "../../src/modules/learning/senior-practice-catalog.js";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { readFile, mkdir, writeFile } from "node:fs/promises";
@@ -15,11 +16,7 @@ import {
   type LearningUnit,
 } from "../../src/modules/learning/content.js";
 import { gradeAnswer } from "../../src/modules/learning/grading.js";
-import {
-  gaokaoCatalog,
-  isHighSchool,
-  gaokaoPracticeFamily,
-} from "../../src/modules/learning/gaokao-policy.js";
+import { isHighSchool } from "../../src/modules/learning/gaokao-policy.js";
 import { loadExpansionCatalog } from "../../src/modules/learning/expansion-catalog.js";
 import { LearningEngineRepository } from "../../src/modules/learning/engine-repository.js";
 import {
@@ -79,7 +76,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           .map((e: { unit: unknown }) => unitSchema.parse(e.unit))
           .filter((u: LearningUnit) => !isHighSchool(u.level)),
         ...expansions.units.filter((u) => !isHighSchool(u.level)),
-        ...gaokaoCatalog().practices.map((p) => p.unit),
+        ...seniorPracticeCatalog().practices.map((p) => p.unit),
       ];
       const images = new Map<string, ReturnType<typeof learningImageSchema.parse>>(
         original.imageAssets.map((a: unknown) => {
@@ -284,7 +281,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
               requestId: randomUUID(),
             })
           ).json<{ attempt: Attempt }>().attempt;
-          const family = gaokaoPracticeFamily(attempt.unit.id);
+          const family = attempt.unit.originalGroup?.family;
           assert.ok(family);
           assert.notEqual(family, previous);
           const resumed = (

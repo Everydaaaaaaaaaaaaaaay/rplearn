@@ -1,11 +1,11 @@
+import { isHighSchool } from "./gaokao-policy.js";
 import {
-  gaokaoCatalog,
-  gaokaoUnitIds,
-  gaokaoPracticeFamily,
-  selectGaokaoCandidate,
-  isAdmittedGaokaoUnit,
-  isHighSchool,
-} from "./gaokao-policy.js";
+  seniorPracticeIds,
+  seniorHistoryIds,
+  seniorPracticeHashes,
+  isAdmittedSeniorUnit,
+  selectSeniorCandidate,
+} from "./senior-practice-catalog.js";
 import { questionListeningScript } from "./listening-speech.js";
 import { LearningBankSession } from "./bank-repository.js";
 import { LearningDirectionSession } from "./direction-repository.js";
@@ -435,8 +435,8 @@ export class LearningSession {
       left join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version
       where a.user_id=${this.userId} and a.character_id=${characterId} and a.first_completed_at is null and a.superseded_at is null
         and (a.level_key not in ('senior1','senior2','senior3')
-          or (a.unit_id=any(${gaokaoUnitIds()}) and a.snapshot is null
-            and v.content_hash=any(${gaokaoCatalog().practices.map((p) => p.contentHash)})))`;
+          or (a.unit_id=any(${seniorHistoryIds()}) and a.snapshot is null
+            and v.content_hash=any(${seniorPracticeHashes()})))`;
     return {
       characterId: row.character_id,
       roleKey: row.role_key,
@@ -477,28 +477,26 @@ export class LearningSession {
     if (isHighSchool(level)) {
       const rows = await this.sql<{ payload: LearningUnit }[]>`
         select v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
-        where u.published and u.level_key=${level} and u.id=any(${gaokaoUnitIds()}) order by u.id`;
+        where u.published and u.level_key=${level} and u.id=any(${seniorPracticeIds()}) order by u.id`;
       return {
         units: rows
-          .filter((r) => isAdmittedGaokaoUnit(r.payload))
+          .filter((r) => isAdmittedSeniorUnit(r.payload))
           .map(({ payload: u }) => ({
             id: u.id,
             title: u.title,
-            family: (gaokaoPracticeFamily(u.id) ?? "reading_choice").replaceAll(
-              "+",
-              "_",
-            ),
+            family: u.originalGroup?.family ?? "reading_choice",
             label:
               (
                 {
-                  reading_choice: "阅读理解（两篇）",
+                  reading_choice: "阅读理解",
                   choice_cloze: "完形填空",
+                  shared_insertion: "七选五",
+                  passage_form: "语法填空",
+                  sentence_choice: "单项选择",
                   shared_insertion_passage_form: "七选五与语法填空",
                   reading_choice_shared_insertion: "阅读理解与七选五",
                 } as Record<string, string>
-              )[
-                (gaokaoPracticeFamily(u.id) ?? "reading_choice").replaceAll("+", "_")
-              ] ?? "高考完整题组",
+              )[u.originalGroup?.family ?? "reading_choice"] ?? "高考完整题组",
             questions: u.questions.length,
           })),
       };
@@ -514,7 +512,7 @@ export class LearningSession {
   }
 
   private async gaokaoCandidates(level: LearningLevel, originalUnitId?: string) {
-    const ids = gaokaoUnitIds();
+    const ids = seniorPracticeIds();
     const rows = await this.sql<{ payload: LearningUnit }[]>`
       select v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
       where u.published and u.level_key=${level} and u.id=any(${ids})
@@ -522,11 +520,11 @@ export class LearningSession {
         and not exists (
           select 1 from app.learning_attempts a left join app.learning_unit_versions av on av.unit_id=a.unit_id and av.version=a.unit_version
           where a.user_id=${this.userId} and (
-            (a.unit_id=any(${ids}) and (coalesce(a.snapshot,av.payload)->'originalGroup'->'sourceGroupIds') ?|
+            (a.unit_id=any(${seniorHistoryIds()}) and (coalesce(a.snapshot,av.payload)->'originalGroup'->'sourceGroupIds') ?|
               array(select jsonb_array_elements_text(v.payload->'originalGroup'->'sourceGroupIds')))
             or a.unit_id=any(array(select split_part(jsonb_array_elements_text(v.payload->'originalGroup'->'sourceGroupIds'),'#',1)))))
       order by random()`;
-    return rows.filter((r) => isAdmittedGaokaoUnit(r.payload));
+    return rows.filter((r) => isAdmittedSeniorUnit(r.payload));
   }
 
   /** Withdraw only obsolete active senior drills. Never rewrite answers, points or frozen payloads. */
@@ -537,7 +535,7 @@ export class LearningSession {
       where a.user_id=${this.userId} and a.character_id=${characterId}
         and a.level_key in ('senior1','senior2','senior3') and a.first_completed_at is null and a.superseded_at is null`;
     for (const a of rows)
-      if (!isAdmittedGaokaoUnit(a.payload)) {
+      if (!isAdmittedSeniorUnit(a.payload)) {
         await this
           .sql`update app.learning_attempts set superseded_at=now(),revision=revision+1 where id=${a.id}`;
         await this
@@ -652,9 +650,9 @@ export class LearningSession {
     if (unitId) return candidates[0];
     const [previous] = await this.sql<{ unit_id: string }[]>`
       select unit_id from app.learning_attempts
-      where user_id=${this.userId} and level_key=${level} and unit_id=any(${gaokaoUnitIds()})
+      where user_id=${this.userId} and level_key=${level} and unit_id=any(${seniorHistoryIds()})
       order by started_at desc,id desc limit 1`;
-    return selectGaokaoCandidate(candidates, previous?.unit_id);
+    return selectSeniorCandidate(candidates, previous?.unit_id);
   }
 
   private async rawAttempt(id: string): Promise<AttemptRow> {
@@ -750,7 +748,7 @@ export class LearningSession {
       const priorOriginal = unit.originalGroup
         ? await this.sql`
         select 1 from app.learning_rewards r join app.learning_attempts a on a.id=r.attempt_id
-        where r.user_id=${this.userId} and (a.unit_id=${unit.id} or (${isHighSchool(unit.level)} and a.unit_id=any(${gaokaoUnitIds()}))) and r.question_id=${input.questionId} and r.points>0 limit 1`
+        where r.user_id=${this.userId} and (a.unit_id=${unit.id} or (${isHighSchool(unit.level)} and a.unit_id=any(${seniorHistoryIds()}))) and r.question_id=${input.questionId} and r.points>0 limit 1`
         : [];
       const firstMastery = unit.originalGroup
         ? priorOriginal.length === 0
@@ -795,7 +793,7 @@ export class LearningSession {
   private assertPracticeCurrent(attempt: AttemptRow) {
     if (
       attempt.superseded_at !== null ||
-      (isHighSchool(attempt.level_key) && !isAdmittedGaokaoUnit(attempt.payload))
+      (isHighSchool(attempt.level_key) && !isAdmittedSeniorUnit(attempt.payload))
     )
       reject(
         "LEARNING_PRACTICE_REPLACED",
@@ -870,7 +868,7 @@ export class LearningSession {
       join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
       where u.published and (${completeGroups} or not (v.payload ? 'originalGroup'))
         and (u.level_key not in ('senior1','senior2','senior3') or
-          (${completeGroups} and u.id=any(${gaokaoUnitIds()}) and v.content_hash=any(${gaokaoCatalog().practices.map((p) => p.contentHash)}))) group by u.level_key`;
+          (${completeGroups} and u.id=any(${seniorPracticeIds()}) and v.content_hash=any(${seniorPracticeHashes()}))) group by u.level_key`;
   }
 
   async progress() {

@@ -1,12 +1,12 @@
 import { readFile } from "node:fs/promises";
 import { contentHash } from "./content.js";
-import { gaokaoCatalog } from "./gaokao-policy.js";
+import { seniorPracticeCatalog } from "./senior-practice-catalog.js";
 import { learningImageSchema, verifyLearningImage } from "./images.js";
 import { gradeAnswer } from "./grading.js";
 import { hasAppropriateQuestionLanguage } from "./presentation.js";
 
 export async function loadGaokaoCatalog() {
-  const catalog = gaokaoCatalog();
+  const catalog = seniorPracticeCatalog();
   const directory = new URL("../../../config/learning/gaokao/", import.meta.url);
   const metadata = learningImageSchema.parse(
     JSON.parse(await readFile(new URL("image.json", directory), "utf8")),
@@ -42,7 +42,13 @@ export async function loadGaokaoCatalog() {
         }
     }
   return {
-    hash: contentHash(catalog),
+    hash: contentHash(
+      catalog.practices.map((p) => ({
+        id: p.unit.id,
+        contentHash: p.contentHash,
+        components: p.components,
+      })),
+    ),
     units: catalog.practices.map((p) => p.unit),
     imageAssets: [{ metadata, bytes }],
   };

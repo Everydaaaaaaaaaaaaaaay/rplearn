@@ -1,3 +1,4 @@
+import { seniorPracticeCatalog } from "../../src/modules/learning/senior-practice-catalog.js";
 import { readFile } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
 import { beforeAll, afterAll, describe, it, expect } from "vitest";
@@ -38,7 +39,14 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       engine = new LearningEngineRepository(db);
       const c = await loadGaokaoCatalog();
       await engine.publishBatch(
-        c.units,
+        [
+          ...new Map(
+            [...gaokaoCatalog().practices.map((p) => p.unit), ...c.units].map((u) => [
+              u.id,
+              u,
+            ]),
+          ).values(),
+        ],
         [],
         c.imageAssets.map((a) => a.metadata),
       );
@@ -62,6 +70,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       for (const id of users) await db.sql`delete from app.users where id=${id}`;
       for (const id of [
         ...gaokaoCatalog().practices.map((p) => p.unit.id),
+        ...seniorPracticeCatalog().practices.map((p) => p.unit.id),
         legacy.id,
         original.id,
       ]) {
@@ -81,13 +90,111 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       await db.sql`update app.learning_characters set characters=1000 where user_id=${user}`;
       return { user, character, command };
     }
+    it("拆分后的题型不重抽旧组合；旧进行中组合仍可完成且原题获分只一次", async () => {
+      const a = await account();
+      const old = required(
+        gaokaoCatalog().practices.find(
+          (p) =>
+            p.unit.level === "senior3" &&
+            p.components.map((c) => c.family).join("+") ===
+              "shared_insertion+passage_form",
+        ),
+      );
+      const [state] = await db.sql<
+        { cycle_id: string }[]
+      >`select cycle_id from app.learning_characters where user_id=${a.user}`;
+      const id = randomUUID(),
+        round = randomUUID();
+      await db.sql`insert into app.learning_attempts(id,user_id,character_id,cycle_id,unit_id,unit_version,level_key)
+        values(${id},${a.user},${a.character},${required(state).cycle_id},${old.unit.id},1,'senior3')`;
+      await db.sql`insert into app.learning_rounds(id,attempt_id,ordinal,question_ids) values(${round},${id},0,${old.unit.questions.map((q) => q.id)})`;
+      expect(
+        (await engine.read(a.user, (s) => s.character(a.character))).activeAttemptId,
+      ).toBe(id);
+      const parts = seniorPracticeCatalog().practices.filter(
+        (p) =>
+          p.unit.level === "senior3" &&
+          p.components.length === 1 &&
+          old.components.some((c) => c.id === p.components[0]?.id),
+      );
+      expect(parts).toHaveLength(2);
+      expect(
+        (
+          await a.command((s) =>
+            s.start(a.character, "senior3", {
+              completeGroups: true,
+              originalUnitId: required(parts[0]).unit.id,
+            }),
+          )
+        ).attempt?.id,
+      ).toBe(id);
+      const q = required(old.unit.questions[0]);
+      const { gradeAnswer } = await import("../../src/modules/learning/grading.js");
+      const receipt = await a.command((s) =>
+        s.submit({
+          attemptId: id,
+          roundId: round,
+          questionId: q.id,
+          answer: gradeAnswer(q, { kind: "skip" }).solution,
+        }),
+      );
+      expect(receipt.awardedPoints).toBe(1);
+      await a.command((s) => s.finish(id, true));
+      await db.sql`update app.learning_characters set characters=1000 where user_id=${a.user}`;
+      for (const part of parts)
+        expect(
+          (
+            await a.command((s) =>
+              s.start(a.character, "senior3", {
+                completeGroups: true,
+                originalUnitId: part.unit.id,
+              }),
+            )
+          ).status,
+        ).toBe("preparing");
+      const saved = await engine.read(a.user, (s) => s.attempt(id));
+      expect(saved.unit.id).toBe(old.unit.id);
+      expect(saved.round.answers).toHaveLength(15);
+      expect(saved.round.answers.reduce((n, a) => n + a.awardedPoints, 0)).toBe(1);
+    });
+    it("先做独立七选五不会屏蔽尚未做的语法填空", async () => {
+      const a = await account();
+      const old = required(
+        gaokaoCatalog().practices.find(
+          (p) =>
+            p.unit.level === "senior3" &&
+            p.components.map((c) => c.family).join("+") ===
+              "shared_insertion+passage_form",
+        ),
+      );
+      for (const component of old.components) {
+        const p = required(
+          seniorPracticeCatalog().practices.find(
+            (p) =>
+              p.unit.level === "senior3" &&
+              p.components.length === 1 &&
+              p.components[0]?.id === component.id,
+          ),
+        );
+        await db.sql`update app.learning_characters set characters=1000 where user_id=${a.user}`;
+        const started = await a.command((s) =>
+          s.start(a.character, "senior3", {
+            completeGroups: true,
+            originalUnitId: p.unit.id,
+          }),
+        );
+        expect(started.status).toBe("started");
+        await a.command((s) => s.finish(required(started.attempt).id, true));
+      }
+    });
     it("所有入口排除旧高中混合题；旧客户端不能绕过完整题组协议", async () => {
       const a = await account();
       for (const level of ["senior1", "senior2", "senior3"] as const) {
         expect(
           (await engine.read(a.user, (s) => s.originals(level))).units,
         ).toHaveLength(
-          gaokaoCatalog().practices.filter((p) => p.unit.level === level).length,
+          seniorPracticeCatalog().practices.filter((p) => p.unit.level === level)
+            .length,
         );
         expect(
           (
@@ -95,7 +202,10 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
               s.availability("oliver", level, a.character, true),
             )
           ).availableUnits,
-        ).toBe(gaokaoCatalog().practices.filter((p) => p.unit.level === level).length);
+        ).toBe(
+          seniorPracticeCatalog().practices.filter((p) => p.unit.level === level)
+            .length,
+        );
         expect(
           (
             await engine.read(a.user, (s) =>
@@ -128,7 +238,8 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       ).toEqual(
         ["senior1", "senior2", "senior3"].map(
           (level) =>
-            gaokaoCatalog().practices.filter((p) => p.unit.level === level).length,
+            seniorPracticeCatalog().practices.filter((p) => p.unit.level === level)
+              .length,
         ),
       );
     });
@@ -183,12 +294,14 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
     });
     it("真题跨旅伴跨年级不重复，耗尽真题后仍仅供合格原创", async () => {
       const a = await account();
-      for (const slug of ["reading-ab", "reading-cd", "cloze", "language"]) {
+      for (const practice of seniorPracticeCatalog().practices.filter(
+        (p) => p.kind === "past-paper" && p.unit.level === "senior1",
+      )) {
         await db.sql`update app.learning_characters set characters=1000 where user_id=${a.user}`;
         const response = await a.command((s) =>
           s.start(a.character, "senior1", {
             completeGroups: true,
-            originalUnitId: `gaokao.senior1.2025-national1.${slug}`,
+            originalUnitId: practice.unit.id,
           }),
         );
         const attempt = required(response.attempt);
@@ -206,7 +319,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
             )
           ).availableUnits,
         ).toBe(
-          gaokaoCatalog().practices.filter(
+          seniorPracticeCatalog().practices.filter(
             (p) => p.kind === "authored" && p.unit.level === level,
           ).length,
         );

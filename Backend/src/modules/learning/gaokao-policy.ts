@@ -12,6 +12,7 @@ const componentSchema = z.strictObject({
     "choice_cloze",
     "shared_insertion",
     "passage_form",
+    "sentence_choice",
   ]),
   questionIds: z.array(z.string()).min(3).max(20),
   sourceNumbers: z.array(z.number().int().min(1).max(65)).min(3).max(20),

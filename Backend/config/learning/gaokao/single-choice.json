@@ -1,0 +1,4973 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "unit": {
+        "id": "gaokao.single-choice.senior1.c8c46711ce6597bb1206",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高中客观专项 · 单项选择 · 单项选择 · grade10-twenty-sentence-choices",
+        "summary": "完整20题单项选择；词汇、语法及交际用语，按地区卷型标注。",
+        "scene": "完整原创练习。阅读全部材料，按题面要求依次作答；答案由服务端判定。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade10-shenzhenlower2026-21cnjy26167651.sentenceChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "冻结研究作者稿",
+          "reviewedBy": "Codex复用作者逐题审核并核接入",
+          "reviewedAt": "2026-10-19",
+          "reviewNotes": "无损映射既有原创完整输入与逐题依据，不把模型自审升级为独立教研或学生验证。"
+        },
+        "beats": [],
+        "questions": [
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "Calling a classmate careless in front of everyone is a way to ________ that person, not to praise them.",
+            "explanation": "D：公开说同学粗心是在批评criticize，与praise构成明确对照；A：调整事物不表达公开批评同学；B：justify表示为人或行为辩护，不能表示公开指责同学粗心；C：获得与人作此宾语和语境不合",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. adjust"
+              },
+              {
+                "id": "o1",
+                "text": "B. justify"
+              },
+              {
+                "id": "o2",
+                "text": "C. obtain"
+              },
+              {
+                "id": "o3",
+                "text": "D. criticize"
+              }
+            ],
+            "answer": "o3",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "Lena meant to keep the plan secret, but she mentioned it ________ during lunch and immediately regretted it.",
+            "explanation": "B：本想保密而失言并后悔，表非故意by accident。；A：自在不表达失言的非故意性质；C：故意与原打算保密、立即后悔的失言语境相反；D：没有作为交换/回报的对应关系",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. at ease"
+              },
+              {
+                "id": "o1",
+                "text": "B. by accident"
+              },
+              {
+                "id": "o2",
+                "text": "C. on purpose"
+              },
+              {
+                "id": "o3",
+                "text": "D. in return"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "After a frustrating afternoon, Ben went for a quiet walk to ________ rather than arguing with his friends.",
+            "explanation": "C：通过平静活动释放怒气，对应let off steam。；A：令朋友失望不合避免争吵的缓和意图；B：突然笑起来不是此处释放郁闷的目的表达；D：从坐姿站起来与去散步目的不合",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. let his friends down"
+              },
+              {
+                "id": "o1",
+                "text": "B. break into a smile"
+              },
+              {
+                "id": "o2",
+                "text": "C. let off steam"
+              },
+              {
+                "id": "o3",
+                "text": "D. rise to his feet"
+              }
+            ],
+            "answer": "o2",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "Before the team could solve the problem, its leader had to ________ that her original plan was mistaken.",
+            "explanation": "A：承认计划有错后才便于解决，用admit that。；B：调整不能直接替代承认该事实的admit that；C：evaluate that不是此处承认错误的正常搭配；D：obtain通常不直接接此that内容从句",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. admit"
+              },
+              {
+                "id": "o1",
+                "text": "B. adjust"
+              },
+              {
+                "id": "o2",
+                "text": "C. evaluate"
+              },
+              {
+                "id": "o3",
+                "text": "D. obtain"
+              }
+            ],
+            "answer": "o0",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The library used ________ shelves during the repairs and removed them when the permanent ones were ready.",
+            "explanation": "A：与permanent相对且修好即撤，temporary。；B：典型的不表达临时性；C：太阳能/太阳的与使用期限无关；D：王室的与期限无关",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. temporary"
+              },
+              {
+                "id": "o1",
+                "text": "B. typical"
+              },
+              {
+                "id": "o2",
+                "text": "C. solar"
+              },
+              {
+                "id": "o3",
+                "text": "D. royal"
+              }
+            ],
+            "answer": "o0",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "In the adventure story, a violent tropical storm called a ________ forces the sailors to return to port.",
+            "explanation": "B：题干直接释为猛烈热带风暴，hurricane。；A：风景不是风暴种类；C：微风与violent tropical storm相反；D：阵雨不等这种强烈热带风暴",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. landscape"
+              },
+              {
+                "id": "o1",
+                "text": "B. hurricane"
+              },
+              {
+                "id": "o2",
+                "text": "C. breeze"
+              },
+              {
+                "id": "o3",
+                "text": "D. shower"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The students held a charity fair to ________ money for new books, asking visitors for small donations.",
+            "explanation": "C：义卖并征集捐款是在筹款raise money。；A：隐藏钱不是筹购新书的义卖目的；B：现场征集捐款是筹集而非花掉钱；D：欠款不是征集小额捐款的行为",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. hide"
+              },
+              {
+                "id": "o1",
+                "text": "B. spend"
+              },
+              {
+                "id": "o2",
+                "text": "C. raise"
+              },
+              {
+                "id": "o3",
+                "text": "D. owe"
+              }
+            ],
+            "answer": "o2",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The notice calls the change “significant”. Here “significant” is closest in meaning to ________.",
+            "explanation": "B：significant在此指重要、有意义，对应important。；A：频繁不是重要程度；C：敏感不是重要程度；D：次要与significant反义",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. frequent"
+              },
+              {
+                "id": "o1",
+                "text": "B. important"
+              },
+              {
+                "id": "o2",
+                "text": "C. sensitive"
+              },
+              {
+                "id": "o3",
+                "text": "D. minor"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "Removing every shelter from the garden could ________ the small animals that depend on those hiding places.",
+            "explanation": "C：失去依赖的藏身处对其构成威胁，用threaten。；A：ensure不直接以这些动物作所确保的事件；B：与移除全部藏身处的风险方向相反；D：援助不合失去庇护处的后果",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. ensure"
+              },
+              {
+                "id": "o1",
+                "text": "B. protect"
+              },
+              {
+                "id": "o2",
+                "text": "C. threaten"
+              },
+              {
+                "id": "o3",
+                "text": "D. assist"
+              }
+            ],
+            "answer": "o2",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The club wants to ________ waste, so members reuse the same display boards whenever possible.",
+            "explanation": "B：重复利用板材意在减少废弃量，reduce。；A：此处不是消费废弃物的搭配；C：不是忽视废弃物而是采取减量行动；D：与减少丢弃、重复利用方向相反",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. consume"
+              },
+              {
+                "id": "o1",
+                "text": "B. reduce"
+              },
+              {
+                "id": "o2",
+                "text": "C. ignore"
+              },
+              {
+                "id": "o3",
+                "text": "D. produce"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q11",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "In the 1980 story, the rain had just begun, and the workers did not yet know that it ________ for three more days.",
+            "explanation": "D：刚开始下雨，过去视点向后持续三天，用过去将来would last；A：当前进行式不合明确过去叙事视点；B：现在完成时不合1980过去视点的将来延续；C：had just begun排除已经持续三天的过去完成解释",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. is lasting"
+              },
+              {
+                "id": "o1",
+                "text": "B. has lasted"
+              },
+              {
+                "id": "o2",
+                "text": "C. had lasted"
+              },
+              {
+                "id": "o3",
+                "text": "D. would last"
+              }
+            ],
+            "answer": "o3",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q12",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The club offers an atmosphere ________ beginners can ask questions without embarrassment.",
+            "explanation": "B：从句主谓宾完整，缺在这种环境中的状语，用where。；A：从句不缺主语/宾语供which充当；C：先行词是atmosphere，非时间；D：此处需环境状语，不能用that作所需成分",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. which"
+              },
+              {
+                "id": "o1",
+                "text": "B. where"
+              },
+              {
+                "id": "o2",
+                "text": "C. when"
+              },
+              {
+                "id": "o3",
+                "text": "D. that"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q13",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The bench ________ beside the gate ________ as a waiting place for visitors.",
+            "explanation": "D：standing后置修饰bench；主句仍需单数谓语serves，一项填两空。；A：两个有限动词无连接，不能当一个主句；B：首空若作谓语，后面serving不能充当所需主句结构；C：两处均非谓语，整句没有有限谓语",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. stood; serves"
+              },
+              {
+                "id": "o1",
+                "text": "B. stood; serving"
+              },
+              {
+                "id": "o2",
+                "text": "C. standing; serving"
+              },
+              {
+                "id": "o3",
+                "text": "D. standing; serves"
+              }
+            ],
+            "answer": "o3",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q14",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The club ________ ten new members since September, and it is still growing.",
+            "explanation": "A：since September延续到现在，用现在完成时has welcomed。；B：当前进行不覆盖since起点至今的既成数量；C：未表达本句从九月延续到现在的时间跨度；D：一般习惯式不合已加入十人的累计量",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. has welcomed"
+              },
+              {
+                "id": "o1",
+                "text": "B. is welcoming"
+              },
+              {
+                "id": "o2",
+                "text": "C. welcomed"
+              },
+              {
+                "id": "o3",
+                "text": "D. welcomes"
+              }
+            ],
+            "answer": "o0",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q15",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The notes ________ by the librarian yesterday explain how each display should be stored.",
+            "explanation": "B：notes是被写对象，written by后置被动修饰。；A：to writing不能构成该名词的正常后置修饰；C：有限动词与主句explain无连接；D：主动现在分词会把notes当写作者",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. to writing"
+              },
+              {
+                "id": "o1",
+                "text": "B. written"
+              },
+              {
+                "id": "o2",
+                "text": "C. wrote"
+              },
+              {
+                "id": "o3",
+                "text": "D. writing"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q16",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The video clearly shows Nora entering the room before closing time, so she ________ inside before the door was locked.",
+            "explanation": "B：对已完成过去事件的强推测用must have been。；A：不能表达该过去时点已发生的状态；C：一般可能性不表达这次过去事实的强推断；D：表示应当或预期，不是由过去视频作完成推断",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. must be"
+              },
+              {
+                "id": "o1",
+                "text": "B. must have been"
+              },
+              {
+                "id": "o2",
+                "text": "C. can be"
+              },
+              {
+                "id": "o3",
+                "text": "D. should be"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q17",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "Unless ________ firmly, the frame may fall, ________ the display incomplete.",
+            "explanation": "B：frame为被固定对象，Unless secured；后半leaving表可能后果。；A：unless后不以此不定式代条件结构，后半leaves与may fall无连接；C：frame不是固定者，后半left也不能作此结果分词；D：secure形容词虽可表示牢固，firmly不能正常修饰此表语；to leave也不表达这里的自然后果",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. to secure; leaves"
+              },
+              {
+                "id": "o1",
+                "text": "B. secured; leaving"
+              },
+              {
+                "id": "o2",
+                "text": "C. securing; left"
+              },
+              {
+                "id": "o3",
+                "text": "D. secure; to leave"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q18",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "Two of the novels in this series ________ already been chosen for our book club.",
+            "explanation": "D：主语Two of the novels复数，have been chosen构成现在完成被动。；A：不配复数主语Two；B：不能接been chosen构成此完成式；C：不能与already been构成该谓语",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. has"
+              },
+              {
+                "id": "o1",
+                "text": "B. was"
+              },
+              {
+                "id": "o2",
+                "text": "C. is"
+              },
+              {
+                "id": "o3",
+                "text": "D. have"
+              }
+            ],
+            "answer": "o3",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q19",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "We use this logbook ________ an accurate record of every change.",
+            "explanation": "C：use sth to do表达使用目的，不定式to keep。；A：use this logbook keeping不构成此目的补足结构；B：过去分词不表达使用该本记录的目的；D：第二有限谓语没有连接",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. keeping"
+              },
+              {
+                "id": "o1",
+                "text": "B. kept"
+              },
+              {
+                "id": "o2",
+                "text": "C. to keep"
+              },
+              {
+                "id": "o3",
+                "text": "D. keeps"
+              }
+            ],
+            "answer": "o2",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.c8c46711ce6597bb1206.q20",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "________ with young children for a year, Maya now mentors two new volunteers, ________ are eager to learn.",
+            "explanation": "C：先前经历到现在，Having worked；volunteers为人且从句缺主语，who。一项同时满足两空。；A：Worked不表达Maya主动工作经历，whom也不能作are主语；B：Working本身可能表达伴随，但which不合这里的人的关系主语；D：they使逗号后成为无连接的另一有限句，整项不合正式结构",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Worked; whom"
+              },
+              {
+                "id": "o1",
+                "text": "B. Working; which"
+              },
+              {
+                "id": "o2",
+                "text": "C. Having worked; who"
+              },
+              {
+                "id": "o3",
+                "text": "D. To work; they"
+              }
+            ],
+            "answer": "o2",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          }
+        ],
+        "originalGroup": {
+          "id": "gaokao.single-choice.senior1.c8c46711ce6597bb1206",
+          "family": "sentence_choice",
+          "label": "单项选择",
+          "candidateSHA256": "222174d988da1d76121859a9ea708240af49c42d15b819979ae9c650fafa6f25",
+          "authorCheckSHA256": "818133e85b9491e11e2ae26b40f59ab31fc391f4ecff198fd1222a2d8fcc1319",
+          "sourceGroupIds": [
+            "original.grade10-twenty-sentence-choices#whole"
+          ],
+          "sourceNotice": " 完整单项选择专项；天津等地区卷型，不声称全国卷均设此节。",
+          "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+        }
+      },
+      "contentHash": "ea5333e0c0f9eccbe1746718edc892189d5bd250ad45a5be0adc409020f240ce",
+      "sourceUnitId": "original.grade10-twenty-sentence-choices",
+      "sourceContentHash": "b564856b848cf7341e54f18321ccbb98a5e5cd4c8e715d08a46198496851a2e9"
+    },
+    {
+      "unit": {
+        "id": "gaokao.single-choice.senior1.fcffbcaad2088c829314",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高中客观专项 · 单项选择 · 高1：独立语言选择第2稿",
+        "summary": "完整20题单项选择；词汇、语法及交际用语，按地区卷型标注。",
+        "scene": "完整原创练习。阅读全部材料，按题面要求依次作答；答案由服务端判定。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade10-shenzhenlower2026-21cnjy26167651.sentenceChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "完整形式复用普通考试具体独立句组：初一10题三选、初二12题四选、初三10题四选、高一20题四选、高二/高三各15题四选。高一前10语境词汇、后10语法，第13/17/20每选项配对填两空仍计一响应。各组只绑定各自源，不把结构或词数作年级等值；源转录/附加键/条件时态等风险保留。所有新语境/候选原创，已逐题词形/句法/搭配/施受/时点反证，但无独立教研、学生、商用、生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "冻结研究作者稿",
+          "reviewedBy": "Codex复用作者逐题审核并核接入",
+          "reviewedAt": "2026-10-19",
+          "reviewNotes": "无损映射既有原创完整输入与逐题依据，不把模型自审升级为独立教研或学生验证。"
+        },
+        "beats": [],
+        "questions": [
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The witness could not ____ the driver because it was dark and she had not seen his face.",
+            "explanation": "identify：identify辨认人对应未见face；appoint任命/consume消耗/borrow借不表辨身份。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. appoint"
+              },
+              {
+                "id": "o1",
+                "text": "B. identify"
+              },
+              {
+                "id": "o2",
+                "text": "C. borrow"
+              },
+              {
+                "id": "o3",
+                "text": "D. consume"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The concert was cancelled ____ because the roof was unsafe, not because ticket sales were low.",
+            "explanation": "for safety reasons：明确unsafe roof原因for safetyreasons；coincidence巧合与原因不合，onsale出售，insilence方式不解取消缘由。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. for safety reasons"
+              },
+              {
+                "id": "o1",
+                "text": "B. on sale"
+              },
+              {
+                "id": "o2",
+                "text": "C. by coincidence"
+              },
+              {
+                "id": "o3",
+                "text": "D. in silence"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "After waiting all morning, she finally ____ when her name was called. She had to stand to receive the award.",
+            "explanation": "rose to her feet：stand领奖对应rosefeet；发脾气/保持距离/视而不见无该起立动作。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. lost her temper"
+              },
+              {
+                "id": "o1",
+                "text": "B. kept her distance"
+              },
+              {
+                "id": "o2",
+                "text": "C. turned a blind eye"
+              },
+              {
+                "id": "o3",
+                "text": "D. rose to her feet"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The shop agreed to ____ the damaged item with a new one at no extra cost.",
+            "explanation": "replace：replaceAwithB以新换坏；predict预测/resist抵抗/deserve应得不构成该替换。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. resist"
+              },
+              {
+                "id": "o1",
+                "text": "B. predict"
+              },
+              {
+                "id": "o2",
+                "text": "C. replace"
+              },
+              {
+                "id": "o3",
+                "text": "D. deserve"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The curtains are ____, so people outside cannot see through them.",
+            "explanation": "opaque：opaque不透；transparent透明相反，portable可携/edible可食不解释看不穿。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. opaque"
+              },
+              {
+                "id": "o1",
+                "text": "B. edible"
+              },
+              {
+                "id": "o2",
+                "text": "C. portable"
+              },
+              {
+                "id": "o3",
+                "text": "D. transparent"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "A gentle ____ moved the leaves, but the air was not strong enough to disturb the papers.",
+            "explanation": "breeze：gentle轻风breeze；hurricane强风与gentle反，earthquake/flood不是此温和气流。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. flood"
+              },
+              {
+                "id": "o1",
+                "text": "B. hurricane"
+              },
+              {
+                "id": "o2",
+                "text": "C. earthquake"
+              },
+              {
+                "id": "o3",
+                "text": "D. breeze"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The group hopes to ____ awareness of the local collection by holding an open evening.",
+            "explanation": "raise：raiseawareness提升认知固定搭配；owe欠/hide隐蔽/spend花费不能表达该宣传意图。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. raise"
+              },
+              {
+                "id": "o1",
+                "text": "B. hide"
+              },
+              {
+                "id": "o2",
+                "text": "C. spend"
+              },
+              {
+                "id": "o3",
+                "text": "D. owe"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The note says the delay is “brief”. Here “brief” means ____.",
+            "explanation": "short：brief短暂short；permanent永久相反，frequent频次，dangerous危险非时长。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. permanent"
+              },
+              {
+                "id": "o1",
+                "text": "B. short"
+              },
+              {
+                "id": "o2",
+                "text": "C. frequent"
+              },
+              {
+                "id": "o3",
+                "text": "D. dangerous"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The cover is designed to ____ the screen from scratches during transport.",
+            "explanation": "protect：protectfrom保护免刮；accuse控告/threaten威胁/imitate模仿不表保护。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. imitate"
+              },
+              {
+                "id": "o1",
+                "text": "B. accuse"
+              },
+              {
+                "id": "o2",
+                "text": "C. threaten"
+              },
+              {
+                "id": "o3",
+                "text": "D. protect"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "To ____ unnecessary packaging, customers can bring their own containers.",
+            "explanation": "reduce：自带容器减少包装reduce；generate生成/expand扩大反，overlook忽略不等减少量。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. reduce"
+              },
+              {
+                "id": "o1",
+                "text": "B. overlook"
+              },
+              {
+                "id": "o2",
+                "text": "C. generate"
+              },
+              {
+                "id": "o3",
+                "text": "D. expand"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q11",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "In the 1990 story, Jo left home not knowing that she ____ return for ten years.",
+            "explanation": "would not：过去视角未发生未来10年，wouldnotreturn；hasnot/hadnot需returned非return，isnot接return不合。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. is not"
+              },
+              {
+                "id": "o1",
+                "text": "B. had not"
+              },
+              {
+                "id": "o2",
+                "text": "C. has not"
+              },
+              {
+                "id": "o3",
+                "text": "D. would not"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q12",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The club provides a setting ____ newcomers can ask basic questions without feeling foolish.",
+            "explanation": "where：setting作场景从句不缺主宾需where；which缺介词不充场所，whose需名词，when时间非setting地点。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. when"
+              },
+              {
+                "id": "o1",
+                "text": "B. where"
+              },
+              {
+                "id": "o2",
+                "text": "C. which"
+              },
+              {
+                "id": "o3",
+                "text": "D. whose"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q13",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The lamp ____ above the door ____ the entrance at night.",
+            "explanation": "hanging; lights：hanging修饰lamp+lights限定谓语；hung;lighting缺限定，hangs;lights两个无连接谓语，hanging;lighting也无限定。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. hanging; lighting"
+              },
+              {
+                "id": "o1",
+                "text": "B. hangs; lights"
+              },
+              {
+                "id": "o2",
+                "text": "C. hanging; lights"
+              },
+              {
+                "id": "o3",
+                "text": "D. hung; lighting"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q14",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The number of members ____ steadily since January.",
+            "explanation": "has grown：since至今、number单数hasgrown；grow数错，isgrow/willgrew结构错。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. will grew"
+              },
+              {
+                "id": "o1",
+                "text": "B. has grown"
+              },
+              {
+                "id": "o2",
+                "text": "C. grow"
+              },
+              {
+                "id": "o3",
+                "text": "D. is grow"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q15",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The forms ____ by the office last Friday contain the revised address.",
+            "explanation": "issued：forms被office发出过去分词issued作定语；issuing主动错，toissuing结构错，issues限定不作该定语。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. to issuing"
+              },
+              {
+                "id": "o1",
+                "text": "B. issued"
+              },
+              {
+                "id": "o2",
+                "text": "C. issues"
+              },
+              {
+                "id": "o3",
+                "text": "D. issuing"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q16",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The recording shows him at the meeting, so he ____ there when the decision was made.",
+            "explanation": "must have been：已发生会议录像回推过去musthavebeen；其余现在/未来/一般可能不表过去必然推断。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. can be"
+              },
+              {
+                "id": "o1",
+                "text": "B. will be"
+              },
+              {
+                "id": "o2",
+                "text": "C. must be"
+              },
+              {
+                "id": "o3",
+                "text": "D. must have been"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q17",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "Unless ____ in time, the invitation will arrive too late, ____ the visit impossible.",
+            "explanation": "sent; making：invitation被寄省略ifsent，结果making；sending主动错，send原形不作省略被动，tosend缺合理主语；后made/makes/make均不合结果分词。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. to send; make"
+              },
+              {
+                "id": "o1",
+                "text": "B. sending; made"
+              },
+              {
+                "id": "o2",
+                "text": "C. sent; making"
+              },
+              {
+                "id": "o3",
+                "text": "D. send; makes"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q18",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "Several of the paintings ____ already been returned to their owners.",
+            "explanation": "have：severalpaintings复数havebeen；has数错，is/was不能接alreadybeen组成此完成被动。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. has"
+              },
+              {
+                "id": "o1",
+                "text": "B. have"
+              },
+              {
+                "id": "o2",
+                "text": "C. was"
+              },
+              {
+                "id": "o3",
+                "text": "D. is"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q19",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The team added a contents page ____ readers find the right section.",
+            "explanation": "to help：目的tohelp接readersfind；helped/helps不作该目的，helpingto后接readersfind无此结构。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. to help"
+              },
+              {
+                "id": "o1",
+                "text": "B. helped"
+              },
+              {
+                "id": "o2",
+                "text": "C. helps"
+              },
+              {
+                "id": "o3",
+                "text": "D. helping to"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.fcffbcaad2088c829314.q20",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "____ the trial carefully, the researcher thanked the volunteers, ____ had given their time freely.",
+            "explanation": "Having observed; who：先观察完用Havingobserved，volunteers在非限从句作主语who；Observed被动不合研究者，which指物，whom宾格、whose后需名词。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Having observed; who"
+              },
+              {
+                "id": "o1",
+                "text": "B. Observing; whose"
+              },
+              {
+                "id": "o2",
+                "text": "C. To observe; whom"
+              },
+              {
+                "id": "o3",
+                "text": "D. Observed; which"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          }
+        ],
+        "originalGroup": {
+          "id": "gaokao.single-choice.senior1.fcffbcaad2088c829314",
+          "family": "sentence_choice",
+          "label": "单项选择",
+          "candidateSHA256": "95337f6f5b07825f85f360396d1349e4ae701b61820758a2e3569270d2c884f9",
+          "authorCheckSHA256": "eede074ee07e8c60d27f4358d00cce717b49fcf19609e20e324aac599b7cb2fe",
+          "sourceGroupIds": [
+            "original.grade10-independent-language-set2#whole"
+          ],
+          "sourceNotice": "完整形式复用普通考试具体独立句组：初一10题三选、初二12题四选、初三10题四选、高一20题四选、高二/高三各15题四选。高一前10语境词汇、后10语法，第13/17/20每选项配对填两空仍计一响应。各组只绑定各自源，不把结构或词数作年级等值；源转录/附加键/条件时态等风险保留。所有新语境/候选原创，已逐题词形/句法/搭配/施受/时点反证，但无独立教研、学生、商用、生产验证。 完整单项选择专项；天津等地区卷型，不声称全国卷均设此节。",
+          "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+        }
+      },
+      "contentHash": "3106372d82fc42585c44744373f956d4e7878476721c7462dcdf898dee061340",
+      "sourceUnitId": "original.grade10-independent-language-set2",
+      "sourceContentHash": "8a0249ad77ef04d9a48551ceb4555d648a6607615390a8ed5a0bdd4d66e99c1c"
+    },
+    {
+      "unit": {
+        "id": "gaokao.single-choice.senior1.68b113b1cfa857d0ab2c",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior1",
+        "title": "高中客观专项 · 单项选择 · 高1：独立语言选择第3稿",
+        "summary": "完整20题单项选择；词汇、语法及交际用语，按地区卷型标注。",
+        "scene": "完整原创练习。阅读全部材料，按题面要求依次作答；答案由服务端判定。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade10-shenzhenlower2026-21cnjy26167651.sentenceChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "完整形式复用普通考试具体独立句组：初一10题三选、初二12题四选、初三10题四选、高一20题四选、高二/高三各15题四选。高一前10语境词汇、后10语法，第13/17/20每选项配对填两空仍计一响应。各组只绑定各自源，不把结构或词数作年级等值；源转录/附加键/条件时态等风险保留。所有新语境/候选原创，已逐题词形/句法/搭配/施受/时点反证，但无独立教研、学生、商用、生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "冻结研究作者稿",
+          "reviewedBy": "Codex复用作者逐题审核并核接入",
+          "reviewedAt": "2026-10-19",
+          "reviewNotes": "无损映射既有原创完整输入与逐题依据，不把模型自审升级为独立教研或学生验证。"
+        },
+        "beats": [],
+        "questions": [
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The manager asked the witness to ____ the colour and model of the car, not guess who owned it.",
+            "explanation": "describe：描述colour/model用describe；consume消耗/purchase买/forgive原谅不承该信息要求。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. forgive"
+              },
+              {
+                "id": "o1",
+                "text": "B. purchase"
+              },
+              {
+                "id": "o2",
+                "text": "C. consume"
+              },
+              {
+                "id": "o3",
+                "text": "D. describe"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The two neighbours met at the station ____; neither knew the other was travelling that day.",
+            "explanation": "by chance：双方未知出行偶遇bychance；onpurpose故意反，incharge负责/atrisk危险无对应偶遇方式。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. by chance"
+              },
+              {
+                "id": "o1",
+                "text": "B. in charge"
+              },
+              {
+                "id": "o2",
+                "text": "C. at risk"
+              },
+              {
+                "id": "o3",
+                "text": "D. on purpose"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "Instead of shouting, he walked outside to ____ and returned when he felt calm.",
+            "explanation": "cool down：冷静后返cooldown；炫耀/破门/赠奖不说明平复情绪。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. break down the door"
+              },
+              {
+                "id": "o1",
+                "text": "B. show off"
+              },
+              {
+                "id": "o2",
+                "text": "C. cool down"
+              },
+              {
+                "id": "o3",
+                "text": "D. give away the prize"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The tutor encouraged us to ____ our answers against the text before handing them in.",
+            "explanation": "check：againsttext核答案check；invent编造/ignore无视反，owe欠不构成核对。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. invent"
+              },
+              {
+                "id": "o1",
+                "text": "B. ignore"
+              },
+              {
+                "id": "o2",
+                "text": "C. check"
+              },
+              {
+                "id": "o3",
+                "text": "D. owe"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The portable lamp is easy to carry. “Portable” means ____.",
+            "explanation": "movable：portable可携movable；invisible不可见/permanent永久/fragile易碎不是携带属性同义。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. movable"
+              },
+              {
+                "id": "o1",
+                "text": "B. fragile"
+              },
+              {
+                "id": "o2",
+                "text": "C. invisible"
+              },
+              {
+                "id": "o3",
+                "text": "D. permanent"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The warm afternoon ended with a short ____ of rain, not a long storm.",
+            "explanation": "shower：短阵雨shower；drought干旱反，landscape景/horizon地平线不是降水事件。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. shower"
+              },
+              {
+                "id": "o1",
+                "text": "B. landscape"
+              },
+              {
+                "id": "o2",
+                "text": "C. drought"
+              },
+              {
+                "id": "o3",
+                "text": "D. horizon"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The appeal asked residents to ____ books they no longer needed to the free reading room.",
+            "explanation": "donate：将不用书捐免费阅览donate；consume消耗/forbid禁止/owe欠不表无偿给。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. donate"
+              },
+              {
+                "id": "o1",
+                "text": "B. consume"
+              },
+              {
+                "id": "o2",
+                "text": "C. owe"
+              },
+              {
+                "id": "o3",
+                "text": "D. forbid"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The report calls the change “minor”, meaning it is ____.",
+            "explanation": "small：minor小small；enormous巨大反，permanent持续/inevitable必然不是程度同义。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. small"
+              },
+              {
+                "id": "o1",
+                "text": "B. permanent"
+              },
+              {
+                "id": "o2",
+                "text": "C. enormous"
+              },
+              {
+                "id": "o3",
+                "text": "D. inevitable"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The new lock will ____ access by people without the correct key.",
+            "explanation": "restrict：无钥锁限制restrict；encourage鼓励相反，celebrate庆/imitate仿不表控制进入。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. restrict"
+              },
+              {
+                "id": "o1",
+                "text": "B. imitate"
+              },
+              {
+                "id": "o2",
+                "text": "C. encourage"
+              },
+              {
+                "id": "o3",
+                "text": "D. celebrate"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The volunteers sorted the reusable paper to ____ it from ordinary rubbish.",
+            "explanation": "separate：separateAfromB分离；borrow借/deserve应得/accuse控告不表分类分开。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. accuse"
+              },
+              {
+                "id": "o1",
+                "text": "B. borrow"
+              },
+              {
+                "id": "o2",
+                "text": "C. separate"
+              },
+              {
+                "id": "o3",
+                "text": "D. deserve"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q11",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "In the 1975 story, she promised that she ____ write again before the summer ended.",
+            "explanation": "would：过去promised所引未来wouldwrite；has/had需written，is不能接write。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. is"
+              },
+              {
+                "id": "o1",
+                "text": "B. had"
+              },
+              {
+                "id": "o2",
+                "text": "C. would"
+              },
+              {
+                "id": "o3",
+                "text": "D. has"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q12",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "They reached a point ____ neither side was willing to continue the argument.",
+            "explanation": "where：point抽象阶段用where，从句无缺名词成分；which缺介词，whose需名词，whom人宾格不合。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. whom"
+              },
+              {
+                "id": "o1",
+                "text": "B. where"
+              },
+              {
+                "id": "o2",
+                "text": "C. whose"
+              },
+              {
+                "id": "o3",
+                "text": "D. which"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q13",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The boxes ____ against the wall ____ to the theatre group.",
+            "explanation": "standing; belong：standing非限定修饰boxes，belong作复数谓语；stood;belonging无限定，stand;belong两谓语无连接，standing;belonging无限定。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. standing; belong"
+              },
+              {
+                "id": "o1",
+                "text": "B. stood; belonging"
+              },
+              {
+                "id": "o2",
+                "text": "C. standing; belonging"
+              },
+              {
+                "id": "o3",
+                "text": "D. stand; belong"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q14",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "Our neighbourhood ____ three new bus stops since the route changed.",
+            "explanation": "has gained：since完成、neighbourhood单数hasgained；gain数错，gaining非限定，willgained结构错。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. gain"
+              },
+              {
+                "id": "o1",
+                "text": "B. will gained"
+              },
+              {
+                "id": "o2",
+                "text": "C. gaining"
+              },
+              {
+                "id": "o3",
+                "text": "D. has gained"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q15",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The plan ____ at yesterday’s meeting is on the website now.",
+            "explanation": "approved：plan被approved作后置定语；approving主动，approves限定，toapproving错构。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. approves"
+              },
+              {
+                "id": "o1",
+                "text": "B. approving"
+              },
+              {
+                "id": "o2",
+                "text": "C. to approving"
+              },
+              {
+                "id": "o3",
+                "text": "D. approved"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q16",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The empty envelope is in the bin, so someone ____ it before the parcel was sent.",
+            "explanation": "must have opened：过去已打开后寄，musthaveopened回推；mustopen现在义务，willopen未来，mayopening错。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. must have opened"
+              },
+              {
+                "id": "o1",
+                "text": "B. must open"
+              },
+              {
+                "id": "o2",
+                "text": "C. will open"
+              },
+              {
+                "id": "o3",
+                "text": "D. may opening"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q17",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "Unless ____ from the rain, the paper will become wet, ____ the writing unreadable.",
+            "explanation": "protected; leaving：paper被保护protected省略，后leaving结果；protecting主动不合，protect原形/tobare非该省略被动，后left/leaves/leave不作结果分词。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. protect; leaves"
+              },
+              {
+                "id": "o1",
+                "text": "B. to protect; leave"
+              },
+              {
+                "id": "o2",
+                "text": "C. protected; leaving"
+              },
+              {
+                "id": "o3",
+                "text": "D. protecting; left"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q18",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "Two of the windows ____ already been replaced.",
+            "explanation": "have：two复数havebeen；has数错，was/is不接been作完成。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. has"
+              },
+              {
+                "id": "o1",
+                "text": "B. is"
+              },
+              {
+                "id": "o2",
+                "text": "C. have"
+              },
+              {
+                "id": "o3",
+                "text": "D. was"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q19",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "The visitor paused ____ a photograph of the doorway.",
+            "explanation": "to take：停下来为了拍totake；takes/took非目的，totaking不定式后原形要求错。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. to taking"
+              },
+              {
+                "id": "o1",
+                "text": "B. to take"
+              },
+              {
+                "id": "o2",
+                "text": "C. takes"
+              },
+              {
+                "id": "o3",
+                "text": "D. took"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          },
+          {
+            "id": "senior.choice.68b113b1cfa857d0ab2c.q20",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。",
+            "prompt": "____ the instructions twice, Mira helped the new members, ____ were still unsure where to begin.",
+            "explanation": "Having read; who：先读两次再帮助Havingread，members主语who；Read被动不合，which物，whom宾格、whose需名词。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. To read; whom"
+              },
+              {
+                "id": "o1",
+                "text": "B. Reading; whose"
+              },
+              {
+                "id": "o2",
+                "text": "C. Having read; who"
+              },
+              {
+                "id": "o3",
+                "text": "D. Read; which"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+          }
+        ],
+        "originalGroup": {
+          "id": "gaokao.single-choice.senior1.68b113b1cfa857d0ab2c",
+          "family": "sentence_choice",
+          "label": "单项选择",
+          "candidateSHA256": "e1d4ca5e4d501b5d0ba8da2f0ffb1e89b68874068607932a1b2331d8143166e0",
+          "authorCheckSHA256": "b26db6c6d85f77ef2f0a99f961dbede1096abc8a853266d4175c6bad96666b3f",
+          "sourceGroupIds": [
+            "original.grade10-independent-language-set3#whole"
+          ],
+          "sourceNotice": "完整形式复用普通考试具体独立句组：初一10题三选、初二12题四选、初三10题四选、高一20题四选、高二/高三各15题四选。高一前10语境词汇、后10语法，第13/17/20每选项配对填两空仍计一响应。各组只绑定各自源，不把结构或词数作年级等值；源转录/附加键/条件时态等风险保留。所有新语境/候选原创，已逐题词形/句法/搭配/施受/时点反证，但无独立教研、学生、商用、生产验证。 完整单项选择专项；天津等地区卷型，不声称全国卷均设此节。",
+          "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部20题。\n\n各题语境独立。同一选项中有分号时，依次回填该题两个空，但只作答一次。"
+        }
+      },
+      "contentHash": "4066233e894a00b6f9d2b2ef23b4d06794cba7cac8b6b27f2415060e97942df9",
+      "sourceUnitId": "original.grade10-independent-language-set3",
+      "sourceContentHash": "ba8190d9f5dad5faf2c8c5bb90cf6f5675497f9789dda8f770c1b7dfa8b21c82"
+    },
+    {
+      "unit": {
+        "id": "gaokao.single-choice.senior2.8b52412d3f34569e36ae",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高中客观专项 · 单项选择 · 单项选择 · grade11-fifteen-sentence-choices",
+        "summary": "完整15题单项选择；词汇、语法及交际用语，按地区卷型标注。",
+        "scene": "完整原创练习。阅读全部材料，按题面要求依次作答；答案由服务端判定。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade11-tianjin2026-21cnjy26082071.sentenceChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "冻结研究作者稿",
+          "reviewedBy": "Codex复用作者逐题审核并核接入",
+          "reviewedAt": "2026-10-19",
+          "reviewNotes": "无损映射既有原创完整输入与逐题依据，不把模型自审升级为独立教研或学生验证。"
+        },
+        "beats": [],
+        "questions": [
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "—We have finished checking every file, and it is getting late.\n—Then ________. We can start the next task tomorrow.",
+            "explanation": "B：已完成且明日再继续，表示今天到此为止。；A：赞叹很好并不提出到此为止；C：表示被问住，不是结束今天工作；D：用于回应感谢，不合此议题",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. it couldn’t be better"
+              },
+              {
+                "id": "o1",
+                "text": "B. let’s call it a day"
+              },
+              {
+                "id": "o2",
+                "text": "C. you’ve got me there"
+              },
+              {
+                "id": "o3",
+                "text": "D. don’t mention it"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "We should judge the proposal by ________ it achieves, rather than by its attractive title.",
+            "explanation": "C：what兼任从句中achieves宾语，表示所实现的内容。；A：that不补achieves所需的内容宾语；B：why问原因，不指实现的内容；D：是否不等这里所实现的内容",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. that"
+              },
+              {
+                "id": "o1",
+                "text": "B. why"
+              },
+              {
+                "id": "o2",
+                "text": "C. what"
+              },
+              {
+                "id": "o3",
+                "text": "D. whether"
+              }
+            ],
+            "answer": "o2",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "Explaining an idea in your own words can reveal your ________ of it.",
+            "explanation": "A：用自己的话解释显露理解程度comprehension。；B：补偿不合语义；C：同情不等理解概念的程度；D：消耗/摄入不等理解程度",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. comprehension"
+              },
+              {
+                "id": "o1",
+                "text": "B. compensation"
+              },
+              {
+                "id": "o2",
+                "text": "C. compassion"
+              },
+              {
+                "id": "o3",
+                "text": "D. consumption"
+              }
+            ],
+            "answer": "o0",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The cabinet was locked, and only Sam had the key. With the notebook now on the desk, we conclude that he ________ it out.",
+            "explanation": "B：已发生的拿出动作、明确conclude及唯一钥匙线索，强推测过去must have taken。；A：原形形式不表达这次已完成的过去动作；C：表达原应当拿出，不是正在作事实结论；D：泛能力/可能不表达这里对过去事实的强推断",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. might take"
+              },
+              {
+                "id": "o1",
+                "text": "B. must have taken"
+              },
+              {
+                "id": "o2",
+                "text": "C. should have taken"
+              },
+              {
+                "id": "o3",
+                "text": "D. could take"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The notes ________ from the first trial, most of ________ were damaged, are still readable.",
+            "explanation": "B：dating主动后置修饰；most of which引非限制关系从句，整项同时配合。；A：首空可以，them处仍缺从句连接；C：whom指人而非notes，整项不合；D：them不能在此无连接嵌入独立有限句",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. dating; them"
+              },
+              {
+                "id": "o1",
+                "text": "B. dating; which"
+              },
+              {
+                "id": "o2",
+                "text": "C. dated; whom"
+              },
+              {
+                "id": "o3",
+                "text": "D. dated; them"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "Dust had ________ on the unused shelves during the long closure.",
+            "explanation": "A：灰尘在未用书架上逐渐积聚，accumulated可不及物。；B：预期不是灰尘自己实施的积聚行为；C：评估需相应施事和对象，不是灰尘积聚；D：分析不是灰尘的行为",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. accumulated"
+              },
+              {
+                "id": "o1",
+                "text": "B. anticipated"
+              },
+              {
+                "id": "o2",
+                "text": "C. assessed"
+              },
+              {
+                "id": "o3",
+                "text": "D. analyzed"
+              }
+            ],
+            "answer": "o0",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "As a precaution, save a copy on the local drive ________ the internet connection fails.",
+            "explanation": "A：as a precaution表预防可能发生的故障，用in case。；B：保存副本不是为了使网络失败；C：没有让步转折的意图；D：把故障当已成立原因，不是预防可能情况",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. in case"
+              },
+              {
+                "id": "o1",
+                "text": "B. so that"
+              },
+              {
+                "id": "o2",
+                "text": "C. even though"
+              },
+              {
+                "id": "o3",
+                "text": "D. now that"
+              }
+            ],
+            "answer": "o0",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "Maya’s action was intentional rather than automatic; she placed the label upside down ________.",
+            "explanation": "A：intentional与automatic对照，需要有意地deliberately。；B：正是前句排除的自动行为；C：只说明最终时序，没有回答有意/自动的对照；D：凭本能不表达经过意图的行动",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. deliberately"
+              },
+              {
+                "id": "o1",
+                "text": "B. automatically"
+              },
+              {
+                "id": "o2",
+                "text": "C. ultimately"
+              },
+              {
+                "id": "o3",
+                "text": "D. instinctively"
+              }
+            ],
+            "answer": "o0",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The briefing ________ by the project leaders next Tuesday will introduce the new borrowing rules.",
+            "explanation": "B：briefing为被举办者，明示by施事、将来日期，to be held。；A：主动不能在此与by施事共同表示被举办；C：主动进行把briefing当举行活动的施事，角色不合；D：主动完成分词把briefing当举办者",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. to hold"
+              },
+              {
+                "id": "o1",
+                "text": "B. to be held"
+              },
+              {
+                "id": "o2",
+                "text": "C. to be holding"
+              },
+              {
+                "id": "o3",
+                "text": "D. having held"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The procedure follows long-established routines without any new approach. It is strictly ________.",
+            "explanation": "A：沿用既有惯例的conventional最切合所述特征。；B：创新与没有新方法相反；C：当代只表时代，不说明遵循传统惯例；D：进步/革新取向不是这里的严格旧例",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. conventional"
+              },
+              {
+                "id": "o1",
+                "text": "B. innovative"
+              },
+              {
+                "id": "o2",
+                "text": "C. contemporary"
+              },
+              {
+                "id": "o3",
+                "text": "D. progressive"
+              }
+            ],
+            "answer": "o0",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q11",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "None of our usual solutions worked, so we need to ________ by looking at the problem in a completely new way.",
+            "explanation": "D：以全新视角思考对应think outside the box。；A：铺路/创造条件不等所释的全新思考方式；B：避开关注不等创新解题；C：阻挡/控制不等全新思考",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. pave the way"
+              },
+              {
+                "id": "o1",
+                "text": "B. shun the spotlight"
+              },
+              {
+                "id": "o2",
+                "text": "C. keep it at bay"
+              },
+              {
+                "id": "o3",
+                "text": "D. think outside the box"
+              }
+            ],
+            "answer": "o3",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q12",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "After leaving the football team, Mei ________ pottery and attended her first class.",
+            "explanation": "B：开始新的业余活动用take up。；A：举起/耽搁不合开始课程；C：编造/组成不表达开始该爱好；D：出现/调大不能表示开始陶艺爱好",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. held up"
+              },
+              {
+                "id": "o1",
+                "text": "B. took up"
+              },
+              {
+                "id": "o2",
+                "text": "C. made up"
+              },
+              {
+                "id": "o3",
+                "text": "D. turned up"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q13",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "We should thank the volunteers, without ________ help the event would not have been possible.",
+            "explanation": "D：whose作help的限定词，表示志愿者们的帮助。；A：地点副词不限定help；B：which不表达这里人的所有关系；C：whom不能直接作help的所有格限定",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. where"
+              },
+              {
+                "id": "o1",
+                "text": "B. which"
+              },
+              {
+                "id": "o2",
+                "text": "C. whom"
+              },
+              {
+                "id": "o3",
+                "text": "D. whose"
+              }
+            ],
+            "answer": "o3",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q14",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The instructions must remain clear. We must not improve speed ________ clarity.",
+            "explanation": "C：不能以牺牲清晰为代价换速度，at the expense of。；A：受其摆布不合此取舍；B：借助不表达代价；D：赞成/有利于不是牺牲的关系",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. at the mercy of"
+              },
+              {
+                "id": "o1",
+                "text": "B. by means of"
+              },
+              {
+                "id": "o2",
+                "text": "C. at the expense of"
+              },
+              {
+                "id": "o3",
+                "text": "D. in favour of"
+              }
+            ],
+            "answer": "o2",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          },
+          {
+            "id": "senior.choice.8b52412d3f34569e36ae.q15",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "—Let’s keep the two records separate; they measure different things.\n—________. Combining them would confuse everyone.",
+            "explanation": "B：后句解释赞同分开记录，That makes sense表达认为有道理。；A：一般否定/客套，不表达此明确赞同；C：不是回应感谢；D：也非回应感谢的场合",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Not at all"
+              },
+              {
+                "id": "o1",
+                "text": "B. That makes sense"
+              },
+              {
+                "id": "o2",
+                "text": "C. You’re welcome"
+              },
+              {
+                "id": "o3",
+                "text": "D. Don’t mention it"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+          }
+        ],
+        "originalGroup": {
+          "id": "gaokao.single-choice.senior2.8b52412d3f34569e36ae",
+          "family": "sentence_choice",
+          "label": "单项选择",
+          "candidateSHA256": "13a77b9a377c810c2fa626319bddbab640d0c46c30c4152b2bc9e973c899a4e4",
+          "authorCheckSHA256": "e0ddd5ed0364cd4a3bf41d08230591c843ba2769f309fdbdb6417387bd099b3c",
+          "sourceGroupIds": [
+            "original.grade11-fifteen-sentence-choices#whole"
+          ],
+          "sourceNotice": " 完整单项选择专项；天津等地区卷型，不声称全国卷均设此节。",
+          "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。有两个空的题，每个选项是一组完整搭配，只选择一项同时填入两空。"
+        }
+      },
+      "contentHash": "aaf13439b43f3ce9021e59b5c1c562ae98bfd643e62a84a1a8e793ce7b0dae91",
+      "sourceUnitId": "original.grade11-fifteen-sentence-choices",
+      "sourceContentHash": "be57d3d3f3c7f0d324ae59dcb6cc240cdfeb70150d19e13c917d9914999a0235"
+    },
+    {
+      "unit": {
+        "id": "gaokao.single-choice.senior2.8bb373ad1fe44c9a04b8",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高中客观专项 · 单项选择 · 高2：独立语言选择第2稿",
+        "summary": "完整15题单项选择；词汇、语法及交际用语，按地区卷型标注。",
+        "scene": "完整原创练习。阅读全部材料，按题面要求依次作答；答案由服务端判定。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade11-tianjin2026-21cnjy26082071.sentenceChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "完整形式复用普通考试具体独立句组：初一10题三选、初二12题四选、初三10题四选、高一20题四选、高二/高三各15题四选。高一前10语境词汇、后10语法，第13/17/20每选项配对填两空仍计一响应。各组只绑定各自源，不把结构或词数作年级等值；源转录/附加键/条件时态等风险保留。所有新语境/候选原创，已逐题词形/句法/搭配/施受/时点反证，但无独立教研、学生、商用、生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "冻结研究作者稿",
+          "reviewedBy": "Codex复用作者逐题审核并核接入",
+          "reviewedAt": "2026-10-19",
+          "reviewNotes": "无损映射既有原创完整输入与逐题依据，不把模型自审升级为独立教研或学生验证。"
+        },
+        "beats": [],
+        "questions": [
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The form is missing a signature, so the office cannot ____ the application yet. It remains unprocessed.",
+            "explanation": "process：process办理申请与unprocessed对应；consume消耗/forecast预测/forgive原谅不表办理手续。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. consume"
+              },
+              {
+                "id": "o1",
+                "text": "B. forecast"
+              },
+              {
+                "id": "o2",
+                "text": "C. process"
+              },
+              {
+                "id": "o3",
+                "text": "D. forgive"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The tutor asked for a ____ account: include the main steps, but leave out unrelated details.",
+            "explanation": "concise：保留mainsteps删无关细节=concise简洁；permanent永久/hostile敌对/accidental偶然不表篇幅精炼。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. hostile"
+              },
+              {
+                "id": "o1",
+                "text": "B. accidental"
+              },
+              {
+                "id": "o2",
+                "text": "C. permanent"
+              },
+              {
+                "id": "o3",
+                "text": "D. concise"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The note is marked “provisional”, which means the arrangement is ____. It may still change.",
+            "explanation": "temporary：maychange对应temporary暂定；irreversible不可逆反，compulsory强制/invisible不可见非暂定。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. irreversible"
+              },
+              {
+                "id": "o1",
+                "text": "B. compulsory"
+              },
+              {
+                "id": "o2",
+                "text": "C. invisible"
+              },
+              {
+                "id": "o3",
+                "text": "D. temporary"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "She decided to ____ the offer rather than accept work she could not complete.",
+            "explanation": "decline：ratherthanaccept拒绝decline；compose创作/preserve保留/estimate估算不表示拒offer。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. decline"
+              },
+              {
+                "id": "o1",
+                "text": "B. estimate"
+              },
+              {
+                "id": "o2",
+                "text": "C. preserve"
+              },
+              {
+                "id": "o3",
+                "text": "D. compose"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The new rule applies ____ all members, including those who joined last week.",
+            "explanation": "to：applyto适用于；applyat/for/of不能在此表示规则适用对象。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. at"
+              },
+              {
+                "id": "o1",
+                "text": "B. for"
+              },
+              {
+                "id": "o2",
+                "text": "C. of"
+              },
+              {
+                "id": "o3",
+                "text": "D. to"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The author, ____ first novel won a local prize, will speak on Friday.",
+            "explanation": "whose：从句firstnovel前需所属whose；who主格不修饰novel，which物，whom宾格。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. who"
+              },
+              {
+                "id": "o1",
+                "text": "B. whom"
+              },
+              {
+                "id": "o2",
+                "text": "C. which"
+              },
+              {
+                "id": "o3",
+                "text": "D. whose"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "____ in plain language, the instructions were easy for newcomers to follow.",
+            "explanation": "Written：instructions被写用Written分词；Writing主动主语不合，Towrite目的主语应写者，Writes限定不能作状语。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Writes"
+              },
+              {
+                "id": "o1",
+                "text": "B. To write"
+              },
+              {
+                "id": "o2",
+                "text": "C. Writing"
+              },
+              {
+                "id": "o3",
+                "text": "D. Written"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The hall was empty when we arrived because everyone ____ already left.",
+            "explanation": "had：到达过去之前已离开hadleft；has现在完成，will后left错，isleft被留非主动离开。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. will"
+              },
+              {
+                "id": "o1",
+                "text": "B. had"
+              },
+              {
+                "id": "o2",
+                "text": "C. has"
+              },
+              {
+                "id": "o3",
+                "text": "D. is"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "____ surprised the visitors was the small size of the original model.",
+            "explanation": "What：What引主语从句并作surprised主语；That不充缺少的主语，Whether不充名词角色，Who把让人惊讶的物误作人且后model非人。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. That"
+              },
+              {
+                "id": "o1",
+                "text": "B. What"
+              },
+              {
+                "id": "o2",
+                "text": "C. Whether"
+              },
+              {
+                "id": "o3",
+                "text": "D. Who"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The question is ____ we can finish before the room closes.",
+            "explanation": "whether：完整wecanfinish无名词缺口，whether引能否；what/who需句内成分，whose需所属名词。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. what"
+              },
+              {
+                "id": "o1",
+                "text": "B. whose"
+              },
+              {
+                "id": "o2",
+                "text": "C. whether"
+              },
+              {
+                "id": "o3",
+                "text": "D. who"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q11",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "We missed the train. If we had left ten minutes earlier, we ____ caught it.",
+            "explanation": "would have：已错过的过去反事实wouldhavecaught；will后caught错，are/is被捕与赶车施受反且主语we不配is。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. are"
+              },
+              {
+                "id": "o1",
+                "text": "B. is"
+              },
+              {
+                "id": "o2",
+                "text": "C. will"
+              },
+              {
+                "id": "o3",
+                "text": "D. would have"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q12",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "By next Friday, the team ____ completed all three interviews.",
+            "explanation": "will have：byfuture完成willhavecompleted；will后须complete，is/werecompleted被动主语team方向/数不合。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. will have"
+              },
+              {
+                "id": "o1",
+                "text": "B. will"
+              },
+              {
+                "id": "o2",
+                "text": "C. were"
+              },
+              {
+                "id": "o3",
+                "text": "D. is"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q13",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "Despite ____ tired, she checked the figures once more.",
+            "explanation": "being：despite介词后being动名词；was/were限定不能直接作介词宾语，be原形不合。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. be"
+              },
+              {
+                "id": "o1",
+                "text": "B. were"
+              },
+              {
+                "id": "o2",
+                "text": "C. being"
+              },
+              {
+                "id": "o3",
+                "text": "D. was"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q14",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "To her ____, the parcel contained the notebook she had lost.",
+            "explanation": "surprise：toonesurprise名词固定；surprised/surprising形容或分词，surprisingly副词不作her后的名词。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. surprisingly"
+              },
+              {
+                "id": "o1",
+                "text": "B. surprise"
+              },
+              {
+                "id": "o2",
+                "text": "C. surprised"
+              },
+              {
+                "id": "o3",
+                "text": "D. surprising"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.8bb373ad1fe44c9a04b8.q15",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The teacher asked me what ____ before the alarm rang.",
+            "explanation": "I had seen：宾语从句陈述序Ihadseen且过去此前；hadIseen/didIsee倒装问句序，have seeing结构错。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. had I seen"
+              },
+              {
+                "id": "o1",
+                "text": "B. I have seeing"
+              },
+              {
+                "id": "o2",
+                "text": "C. I had seen"
+              },
+              {
+                "id": "o3",
+                "text": "D. did I see"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          }
+        ],
+        "originalGroup": {
+          "id": "gaokao.single-choice.senior2.8bb373ad1fe44c9a04b8",
+          "family": "sentence_choice",
+          "label": "单项选择",
+          "candidateSHA256": "ffc3ecc1824de29fcb72527d85b7ced4859fc30aee70806633cde2eba33fc56d",
+          "authorCheckSHA256": "f5e1fda09e421206f21bafc2381af6e7706c01d87d5de6f09a414268f1e27972",
+          "sourceGroupIds": [
+            "original.grade11-independent-language-set2#whole"
+          ],
+          "sourceNotice": "完整形式复用普通考试具体独立句组：初一10题三选、初二12题四选、初三10题四选、高一20题四选、高二/高三各15题四选。高一前10语境词汇、后10语法，第13/17/20每选项配对填两空仍计一响应。各组只绑定各自源，不把结构或词数作年级等值；源转录/附加键/条件时态等风险保留。所有新语境/候选原创，已逐题词形/句法/搭配/施受/时点反证，但无独立教研、学生、商用、生产验证。 完整单项选择专项；天津等地区卷型，不声称全国卷均设此节。",
+          "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+        }
+      },
+      "contentHash": "f1f469a65d8573090817d5c4922dea57fc6f902ed15bb5f3917e75926a63c047",
+      "sourceUnitId": "original.grade11-independent-language-set2",
+      "sourceContentHash": "fff2ca689a567a3c6b4657793aca6c1148e8edbed22e315c00e015c1d1d21161"
+    },
+    {
+      "unit": {
+        "id": "gaokao.single-choice.senior2.ac8cbaca1d2500f18252",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior2",
+        "title": "高中客观专项 · 单项选择 · 高2：独立语言选择第3稿",
+        "summary": "完整15题单项选择；词汇、语法及交际用语，按地区卷型标注。",
+        "scene": "完整原创练习。阅读全部材料，按题面要求依次作答；答案由服务端判定。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade11-tianjin2026-21cnjy26082071.sentenceChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "完整形式复用普通考试具体独立句组：初一10题三选、初二12题四选、初三10题四选、高一20题四选、高二/高三各15题四选。高一前10语境词汇、后10语法，第13/17/20每选项配对填两空仍计一响应。各组只绑定各自源，不把结构或词数作年级等值；源转录/附加键/条件时态等风险保留。所有新语境/候选原创，已逐题词形/句法/搭配/施受/时点反证，但无独立教研、学生、商用、生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "冻结研究作者稿",
+          "reviewedBy": "Codex复用作者逐题审核并核接入",
+          "reviewedAt": "2026-10-19",
+          "reviewNotes": "无损映射既有原创完整输入与逐题依据，不把模型自审升级为独立教研或学生验证。"
+        },
+        "beats": [],
+        "questions": [
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The box was ____ during transport, so the shop sent a replacement.",
+            "explanation": "damaged：damaged损坏导致replacement；nominated提名/translated翻译/persuaded说服非盒子运输损坏。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. translated"
+              },
+              {
+                "id": "o1",
+                "text": "B. nominated"
+              },
+              {
+                "id": "o2",
+                "text": "C. persuaded"
+              },
+              {
+                "id": "o3",
+                "text": "D. damaged"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "Please make the instructions ____: name the exact button and say when to press it.",
+            "explanation": "specific：exactbutton/when具体specific；vague模糊反，permanent时间/silent声音非明确程度。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. vague"
+              },
+              {
+                "id": "o1",
+                "text": "B. specific"
+              },
+              {
+                "id": "o2",
+                "text": "C. silent"
+              },
+              {
+                "id": "o3",
+                "text": "D. permanent"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The offer is “optional”, so taking part is ____.",
+            "explanation": "a choice：optional可选择=achoice；requirement必须相反，penalty惩罚/certainty必然不合非必。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. a certainty"
+              },
+              {
+                "id": "o1",
+                "text": "B. a penalty"
+              },
+              {
+                "id": "o2",
+                "text": "C. a requirement"
+              },
+              {
+                "id": "o3",
+                "text": "D. a choice"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The committee will ____ the final decision until the missing information arrives.",
+            "explanation": "postpone：untilinfoarrives延后postpone；imitate模仿/consume消耗/decorate装饰不表延迟决策。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. decorate"
+              },
+              {
+                "id": "o1",
+                "text": "B. postpone"
+              },
+              {
+                "id": "o2",
+                "text": "C. consume"
+              },
+              {
+                "id": "o3",
+                "text": "D. imitate"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The guide prevented us ____ entering the closed room.",
+            "explanation": "from：preventsbfromdoing；to/of/at不构成该阻止结构。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. of"
+              },
+              {
+                "id": "o1",
+                "text": "B. at"
+              },
+              {
+                "id": "o2",
+                "text": "C. to"
+              },
+              {
+                "id": "o3",
+                "text": "D. from"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The museum, ____ roof was repaired last year, is open again.",
+            "explanation": "whose：roof前需物的所属whose；who/whom指人不修roof，where地点状语也不能直接修名词roof。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. who"
+              },
+              {
+                "id": "o1",
+                "text": "B. whom"
+              },
+              {
+                "id": "o2",
+                "text": "C. where"
+              },
+              {
+                "id": "o3",
+                "text": "D. whose"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "____ by the sudden noise, the cat ran under the sofa.",
+            "explanation": "Frightened：cat受到惊吓Frightened；Frightening主动吓别人非句意，Tofrighten表目的不表已受惊，Frightens限定不作状语。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Frightened"
+              },
+              {
+                "id": "o1",
+                "text": "B. Frightening"
+              },
+              {
+                "id": "o2",
+                "text": "C. To frighten"
+              },
+              {
+                "id": "o3",
+                "text": "D. Frightens"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "We found the gate locked. The caretaker ____ already gone home.",
+            "explanation": "had：过去found时已返hadgone；has现在基点不合该叙时，will后gone错，are主语单数且不能作gonehome过去完成。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. had"
+              },
+              {
+                "id": "o1",
+                "text": "B. will"
+              },
+              {
+                "id": "o2",
+                "text": "C. has"
+              },
+              {
+                "id": "o3",
+                "text": "D. are"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "____ matters most is whether the instructions can be followed.",
+            "explanation": "What：What既连接主语句又作matters主语；Whether/That不填句内主语缺，Whom宾格不作matters主语。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. What"
+              },
+              {
+                "id": "o1",
+                "text": "B. Whom"
+              },
+              {
+                "id": "o2",
+                "text": "C. That"
+              },
+              {
+                "id": "o3",
+                "text": "D. Whether"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "We have not decided ____ to hold the meeting indoors or outside.",
+            "explanation": "whether：whether to...or...表示选择；what需宾语角色而hold已有meeting，whose/whom不引此二选。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. what"
+              },
+              {
+                "id": "o1",
+                "text": "B. whether"
+              },
+              {
+                "id": "o2",
+                "text": "C. whose"
+              },
+              {
+                "id": "o3",
+                "text": "D. whom"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q11",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The vase broke. If I had carried it more carefully, I ____ dropped it.",
+            "explanation": "would not have：过去破了反事实wouldnothavedropped；willnot后dropped错，amnot被掉落施受不合，doesnot后原形且数人称不符。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. am not"
+              },
+              {
+                "id": "o1",
+                "text": "B. will not"
+              },
+              {
+                "id": "o2",
+                "text": "C. does not"
+              },
+              {
+                "id": "o3",
+                "text": "D. would not have"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q12",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "By this time tomorrow, I ____ finished the translation.",
+            "explanation": "will have：future完成willhavefinished；will缺have，was/arefinished被动不表达I主动完译且are数错。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. will have"
+              },
+              {
+                "id": "o1",
+                "text": "B. will"
+              },
+              {
+                "id": "o2",
+                "text": "C. are"
+              },
+              {
+                "id": "o3",
+                "text": "D. was"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q13",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "She left without ____ her name.",
+            "explanation": "giving：without介词后giving；gave/gives限定不作介词宾语，give原形不合。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. gave"
+              },
+              {
+                "id": "o1",
+                "text": "B. giving"
+              },
+              {
+                "id": "o2",
+                "text": "C. gives"
+              },
+              {
+                "id": "o3",
+                "text": "D. give"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q14",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "To our ____, the missing pages were found in the back of the folder.",
+            "explanation": "relief：toonesrelief名词宽慰；relieved形容词，relieve动词，relievingly非此名词位。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. relievingly"
+              },
+              {
+                "id": "o1",
+                "text": "B. relief"
+              },
+              {
+                "id": "o2",
+                "text": "C. relieved"
+              },
+              {
+                "id": "o3",
+                "text": "D. relieve"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.ac8cbaca1d2500f18252.q15",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "He wanted to know where ____ the previous evening.",
+            "explanation": "we had stayed：宾语从句陈述序wehadstayed、previous evening过去之前；倒装两项错，have staying错构。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. did we stay"
+              },
+              {
+                "id": "o1",
+                "text": "B. had we stayed"
+              },
+              {
+                "id": "o2",
+                "text": "C. we have staying"
+              },
+              {
+                "id": "o3",
+                "text": "D. we had stayed"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          }
+        ],
+        "originalGroup": {
+          "id": "gaokao.single-choice.senior2.ac8cbaca1d2500f18252",
+          "family": "sentence_choice",
+          "label": "单项选择",
+          "candidateSHA256": "f7a7b862624d7fc4f8bba6353fff76d49b741206a57d20ea4748dd3d0cc7c8ce",
+          "authorCheckSHA256": "82ca6b33e223ae9fb74c5cec9c9f6d3d6acea39216499c78d3099493a6e89ed0",
+          "sourceGroupIds": [
+            "original.grade11-independent-language-set3#whole"
+          ],
+          "sourceNotice": "完整形式复用普通考试具体独立句组：初一10题三选、初二12题四选、初三10题四选、高一20题四选、高二/高三各15题四选。高一前10语境词汇、后10语法，第13/17/20每选项配对填两空仍计一响应。各组只绑定各自源，不把结构或词数作年级等值；源转录/附加键/条件时态等风险保留。所有新语境/候选原创，已逐题词形/句法/搭配/施受/时点反证，但无独立教研、学生、商用、生产验证。 完整单项选择专项；天津等地区卷型，不声称全国卷均设此节。",
+          "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+        }
+      },
+      "contentHash": "fee39c9e68ae63859cb4de3a9105cc5071b3d58df1001333cc2e91ee26dac6ee",
+      "sourceUnitId": "original.grade11-independent-language-set3",
+      "sourceContentHash": "238d6557b0156a4fd561a34b7a0759edf40eb9adb89b8af019f86d8b0ba3c522"
+    },
+    {
+      "unit": {
+        "id": "gaokao.single-choice.senior3.b5d1f6dce413468676d7",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高中客观专项 · 单项选择 · 单项选择 · grade12-fifteen-sentence-choices",
+        "summary": "完整15题单项选择；词汇、语法及交际用语，按地区卷型标注。",
+        "scene": "完整原创练习。阅读全部材料，按题面要求依次作答；答案由服务端判定。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade12-tianjinlower2025-21cnjy22402528.sentenceChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "冻结研究作者稿",
+          "reviewedBy": "Codex复用作者逐题审核并核接入",
+          "reviewedAt": "2026-10-19",
+          "reviewNotes": "无损映射既有原创完整输入与逐题依据，不把模型自审升级为独立教研或学生验证。"
+        },
+        "beats": [],
+        "questions": [
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "—The visit we were looking forward to has been cancelled.\n—________! I really wanted to go.",
+            "explanation": "A：期待的访问取消且失望，对应遗憾。；B：接受请求的乐意回应，不合这里的坏消息；C：招呼自取不合情境；D：不是值得祝贺的结果",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. What a pity"
+              },
+              {
+                "id": "o1",
+                "text": "B. With pleasure"
+              },
+              {
+                "id": "o2",
+                "text": "C. Help yourself"
+              },
+              {
+                "id": "o3",
+                "text": "D. Congratulations"
+              }
+            ],
+            "answer": "o0",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          },
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "Before every workshop, the technician performs the same ________ check of the tools.",
+            "explanation": "A：每次都按同样流程的常规检查，routine。；B：题内实际执行的检查，不是虚构文本的类别；C：退休的不能说明检查性质；D：远程不由每次相同的流程支持",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. routine"
+              },
+              {
+                "id": "o1",
+                "text": "B. fictional"
+              },
+              {
+                "id": "o2",
+                "text": "C. retired"
+              },
+              {
+                "id": "o3",
+                "text": "D. remote"
+              }
+            ],
+            "answer": "o0",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          },
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The weight of the blue model is equal to ________ of the red one.",
+            "explanation": "C：that替代不可数抽象weight，后接of限定。；A：复数代词不配weight；B：it不能在此按that of结构接受of后置限定来替代weight；D：what不构成该名词替代比较结构",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. those"
+              },
+              {
+                "id": "o1",
+                "text": "B. it"
+              },
+              {
+                "id": "o2",
+                "text": "C. that"
+              },
+              {
+                "id": "o3",
+                "text": "D. what"
+              }
+            ],
+            "answer": "o2",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          },
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "She was clearly ________ at the repeated interruptions and asked everyone to listen for a moment.",
+            "explanation": "D：反复被打断而要求大家听，annoyed at表示恼怒。；A：strict通常不以at该事件表达被惹恼；B：sensitive to而非此处annoyed at的情绪搭配；C：正常不表达对打断的不满",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. strict"
+              },
+              {
+                "id": "o1",
+                "text": "B. sensitive"
+              },
+              {
+                "id": "o2",
+                "text": "C. normal"
+              },
+              {
+                "id": "o3",
+                "text": "D. annoyed"
+              }
+            ],
+            "answer": "o3",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          },
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "As a student, he ________ spend his lunch breaks in the library; it was his daily routine.",
+            "explanation": "C：would表过去反复发生的习惯；daily routine明确。；A：劝告不等过去习惯；B：不确定可能与明确每日惯常记录不合；D：应当不是陈述既成习惯",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. had better"
+              },
+              {
+                "id": "o1",
+                "text": "B. might"
+              },
+              {
+                "id": "o2",
+                "text": "C. would"
+              },
+              {
+                "id": "o3",
+                "text": "D. should"
+              }
+            ],
+            "answer": "o2",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          },
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The pattern is the same ________ the one we used last year.",
+            "explanation": "C：the same as表达与……相同。；A：what不能直接接the one构成该比较结构；B：时间关系不合；D：地点关系不合",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. what"
+              },
+              {
+                "id": "o1",
+                "text": "B. when"
+              },
+              {
+                "id": "o2",
+                "text": "C. as"
+              },
+              {
+                "id": "o3",
+                "text": "D. where"
+              }
+            ],
+            "answer": "o2",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          },
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The project has just been approved. The old noticeboard ________ next Monday.",
+            "explanation": "A：刚批准、未来日期，被替换对象noticeboard用计划被动。；B：主动过去进行不合板的受事角色；C：主动把板当替换者且缺所替换对象；D：主动第三人称不表达将被替换",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. is to be replaced"
+              },
+              {
+                "id": "o1",
+                "text": "B. was replacing"
+              },
+              {
+                "id": "o2",
+                "text": "C. has just replaced"
+              },
+              {
+                "id": "o3",
+                "text": "D. replaces"
+              }
+            ],
+            "answer": "o0",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          },
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "I ________ the final page when the lights suddenly went out last night.",
+            "explanation": "D：过去正在读时发生停电，过去进行作背景。；A：现在进行不合昨晚；B：现在完成与last night过去事件框架不合；C：将来不合作过去背景",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. am reading"
+              },
+              {
+                "id": "o1",
+                "text": "B. have read"
+              },
+              {
+                "id": "o2",
+                "text": "C. will read"
+              },
+              {
+                "id": "o3",
+                "text": "D. was reading"
+              }
+            ],
+            "answer": "o3",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          },
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "To match the five-pointed outline, the badge was made ________ a star.",
+            "explanation": "B：五角轮廓指定形状，in the shape of。；A：与某人在一起不表达轮廓；C：怀着希望不表达形状；D：以……名义不表达轮廓",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. in the company of"
+              },
+              {
+                "id": "o1",
+                "text": "B. in the shape of"
+              },
+              {
+                "id": "o2",
+                "text": "C. in the hope of"
+              },
+              {
+                "id": "o3",
+                "text": "D. in the name of"
+              }
+            ],
+            "answer": "o1",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          },
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The board includes a diagram ________ how the parts fit together.",
+            "explanation": "A：diagram为展示内容者，showing引主动后置修饰。；B：有限动词与includes无连接；C：主动完成后不能这样接被动施事by；D：被展示的diagram不能在此直接以how从句作其所展示对象",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. showing"
+              },
+              {
+                "id": "o1",
+                "text": "B. shows"
+              },
+              {
+                "id": "o2",
+                "text": "C. having shown by"
+              },
+              {
+                "id": "o3",
+                "text": "D. shown"
+              }
+            ],
+            "answer": "o0",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          },
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q11",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The project has reached the stage ________ every decision has to be recorded.",
+            "explanation": "C：stage为抽象进程点，从句成分完整，以where表在此阶段。；A：不是人，亦缺其宾语位置；B：从句不缺which可充当的主语/宾语；D：已有stage先行词，what不能作此关系副词",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. whom"
+              },
+              {
+                "id": "o1",
+                "text": "B. which"
+              },
+              {
+                "id": "o2",
+                "text": "C. where"
+              },
+              {
+                "id": "o3",
+                "text": "D. what"
+              }
+            ],
+            "answer": "o2",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          },
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q12",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "—We cannot decide yet; we still need the cost figures.\n—________. Let’s get those first.",
+            "explanation": "A：承认所指出的必要信息，后句同意先取数据。；B：自取东西的客套不合；C：不是回应感谢；D：尚未决定，没有祝贺结果",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. That’s a good point"
+              },
+              {
+                "id": "o1",
+                "text": "B. Help yourself"
+              },
+              {
+                "id": "o2",
+                "text": "C. You’re welcome"
+              },
+              {
+                "id": "o3",
+                "text": "D. Congratulations"
+              }
+            ],
+            "answer": "o0",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          },
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q13",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The list shows only who attended; it does not ________ that every visitor agreed to the change.",
+            "explanation": "D：名单只证明到场，不证明所有人同意；prove that表达证明该主张；A：approve that不表示证实该命题；B：meet不这样接that命题；C：resolve that作为决议不等证实，记录也非作决议的施事",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. approve"
+              },
+              {
+                "id": "o1",
+                "text": "B. meet"
+              },
+              {
+                "id": "o2",
+                "text": "C. resolve"
+              },
+              {
+                "id": "o3",
+                "text": "D. prove"
+              }
+            ],
+            "answer": "o3",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          },
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q14",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "Already ________ by the team to lead the project, Nora began by listening to everyone’s suggestions.",
+            "explanation": "D：Nora被团队选为负责人，用过去分词chosen及by施事。；A：主动把Nora当正在作选择的人，by施事不合；B：already及已被选身份不合这个不定式主动表达；C：主动完成仍缺被选的被动关系",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. choosing"
+              },
+              {
+                "id": "o1",
+                "text": "B. to choose"
+              },
+              {
+                "id": "o2",
+                "text": "C. having chosen"
+              },
+              {
+                "id": "o3",
+                "text": "D. chosen"
+              }
+            ],
+            "answer": "o3",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          },
+          {
+            "id": "senior.choice.b5d1f6dce413468676d7.q15",
+            "goalId": "original.sentence_choice",
+            "instruction": "单项选择",
+            "prompt": "The new display is intended to meet the audience’s high standards and ________ the promises made in our invitation.",
+            "explanation": "D：达到标准并兑现承诺，live up to。；A：用尽不是兑现承诺；B：屈服不是达到承诺标准；C：抛弃不合有意兑现的方向",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. run out of"
+              },
+              {
+                "id": "o1",
+                "text": "B. give in to"
+              },
+              {
+                "id": "o2",
+                "text": "C. walk out on"
+              },
+              {
+                "id": "o3",
+                "text": "D. live up to"
+              }
+            ],
+            "answer": "o3",
+            "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+          }
+        ],
+        "originalGroup": {
+          "id": "gaokao.single-choice.senior3.b5d1f6dce413468676d7",
+          "family": "sentence_choice",
+          "label": "单项选择",
+          "candidateSHA256": "d878a7acc694405995e92086c176afa1e4be765b22b15261b1156ad24106f4cd",
+          "authorCheckSHA256": "5b6a1ac2d6fb84c5aedb3fdbf4ae65ef0022a3229c7142a5591a46c0c769b882",
+          "sourceGroupIds": [
+            "original.grade12-fifteen-sentence-choices#whole"
+          ],
+          "sourceNotice": " 完整单项选择专项；天津等地区卷型，不声称全国卷均设此节。",
+          "material": "从每题所给的四个选项中选出最符合语境和语法的一个答案。"
+        }
+      },
+      "contentHash": "41703281d8f11c8f167f39fc93da73cd8c52827cdba23ab659f6bc11171e3b7c",
+      "sourceUnitId": "original.grade12-fifteen-sentence-choices",
+      "sourceContentHash": "897bddb4898307c38ba4b5051acbd19b6751c214886de314215b763ece047475"
+    },
+    {
+      "unit": {
+        "id": "gaokao.single-choice.senior3.abce695f55ea6b7bfea7",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高中客观专项 · 单项选择 · 高3：独立语言选择第2稿",
+        "summary": "完整15题单项选择；词汇、语法及交际用语，按地区卷型标注。",
+        "scene": "完整原创练习。阅读全部材料，按题面要求依次作答；答案由服务端判定。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade12-tianjinlower2025-21cnjy22402528.sentenceChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "完整形式复用普通考试具体独立句组：初一10题三选、初二12题四选、初三10题四选、高一20题四选、高二/高三各15题四选。高一前10语境词汇、后10语法，第13/17/20每选项配对填两空仍计一响应。各组只绑定各自源，不把结构或词数作年级等值；源转录/附加键/条件时态等风险保留。所有新语境/候选原创，已逐题词形/句法/搭配/施受/时点反证，但无独立教研、学生、商用、生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "冻结研究作者稿",
+          "reviewedBy": "Codex复用作者逐题审核并核接入",
+          "reviewedAt": "2026-10-19",
+          "reviewNotes": "无损映射既有原创完整输入与逐题依据，不把模型自审升级为独立教研或学生验证。"
+        },
+        "beats": [],
+        "questions": [
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The witness gave an ____ account, admitting where her memory was uncertain instead of inventing details.",
+            "explanation": "honest：承认不确定不编造=honest诚实；opaque不透/accidental偶然/edible可食不描述该诚实叙述。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. opaque"
+              },
+              {
+                "id": "o1",
+                "text": "B. honest"
+              },
+              {
+                "id": "o2",
+                "text": "C. accidental"
+              },
+              {
+                "id": "o3",
+                "text": "D. edible"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The apparent improvement was ____: it disappeared when the original conditions returned.",
+            "explanation": "temporary：条件恢复就消失，temporary暂时；permanent永久反，inevitable不可避/identical相同不表持续短。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. permanent"
+              },
+              {
+                "id": "o1",
+                "text": "B. temporary"
+              },
+              {
+                "id": "o2",
+                "text": "C. inevitable"
+              },
+              {
+                "id": "o3",
+                "text": "D. identical"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The editor asked the writer to ____ between a personal opinion and a claim supported by records.",
+            "explanation": "distinguish：distinguishbetween区分；consume消耗/appoint任命/borrow借不构成区分两类。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. distinguish"
+              },
+              {
+                "id": "o1",
+                "text": "B. consume"
+              },
+              {
+                "id": "o2",
+                "text": "C. appoint"
+              },
+              {
+                "id": "o3",
+                "text": "D. borrow"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "He tried to ____ responsibility by blaming a colleague, although the records showed that he alone had caused the error.",
+            "explanation": "evade：将自己的错误推给同事是evade responsibility逃避责任；calculate计算、transport运输、decorate装饰均不表达推责，且与抽象responsibility不构成此行为搭配。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. evade"
+              },
+              {
+                "id": "o1",
+                "text": "B. transport"
+              },
+              {
+                "id": "o2",
+                "text": "C. decorate"
+              },
+              {
+                "id": "o3",
+                "text": "D. calculate"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The new finding is consistent ____ the earlier observations.",
+            "explanation": "with：consistentwith一致；to/at/for不构成本搭配。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. for"
+              },
+              {
+                "id": "o1",
+                "text": "B. to"
+              },
+              {
+                "id": "o2",
+                "text": "C. at"
+              },
+              {
+                "id": "o3",
+                "text": "D. with"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "Only after the final check yesterday ____ the technician release the equipment.",
+            "explanation": "did：Onlyafter前置且yesterday明过去，did+release；does现在不合，has后应released，is不接release原形构成此倒装。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. did"
+              },
+              {
+                "id": "o1",
+                "text": "B. does"
+              },
+              {
+                "id": "o2",
+                "text": "C. has"
+              },
+              {
+                "id": "o3",
+                "text": "D. is"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "Had we checked the address, we ____ sent the parcel to the wrong building.",
+            "explanation": "would not have：Hadwechecked过去反事实，wouldnothavesent；will未来完成不合，arenot/do not不接sent此过去反事实。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. will not have"
+              },
+              {
+                "id": "o1",
+                "text": "B. would not have"
+              },
+              {
+                "id": "o2",
+                "text": "C. are not"
+              },
+              {
+                "id": "o3",
+                "text": "D. do not"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The report, ____ was published yesterday, includes all the revised figures.",
+            "explanation": "which：非限制从句指report物作主语which；that不能此非限，what不能有先行词，who人。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. that"
+              },
+              {
+                "id": "o1",
+                "text": "B. who"
+              },
+              {
+                "id": "o2",
+                "text": "C. which"
+              },
+              {
+                "id": "o3",
+                "text": "D. what"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "It is essential that every form ____ signed before submission.",
+            "explanation": "be：that从句必须有谓语，此虚拟要求be signed；being/been非限定，tobe不能独立作that从句限定谓语。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. been"
+              },
+              {
+                "id": "o1",
+                "text": "B. being"
+              },
+              {
+                "id": "o2",
+                "text": "C. to be"
+              },
+              {
+                "id": "o3",
+                "text": "D. be"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "No sooner had the talk ended ____ questions began.",
+            "explanation": "than：nosooner...than固定；when用于hardly/scarcely搭配，that/as不构成该关联。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. than"
+              },
+              {
+                "id": "o1",
+                "text": "B. as"
+              },
+              {
+                "id": "o2",
+                "text": "C. that"
+              },
+              {
+                "id": "o3",
+                "text": "D. when"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q11",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The two proposals differ not in cost ____ in the amount of time required.",
+            "explanation": "but：notin...butin...并列纠正，but；so/because/unless不能连接两个in介词短语作该对照。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. so"
+              },
+              {
+                "id": "o1",
+                "text": "B. but"
+              },
+              {
+                "id": "o2",
+                "text": "C. because"
+              },
+              {
+                "id": "o3",
+                "text": "D. unless"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q12",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The chair is believed ____ over a century ago.",
+            "explanation": "to have been made：isbelievedto且过去已被制造tohavebeenmade；tomaking错，havemade缺to且主动，beingmake错。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. being make"
+              },
+              {
+                "id": "o1",
+                "text": "B. have made"
+              },
+              {
+                "id": "o2",
+                "text": "C. to have been made"
+              },
+              {
+                "id": "o3",
+                "text": "D. to making"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q13",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "____ all the evidence, the panel postponed its judgement rather than announcing a conclusion that afternoon.",
+            "explanation": "Having considered：panel主动先考虑证据Havingconsidered；Considered被动与panel施受反，Toconsidering错，Considers限定不能作该状语。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Having considered"
+              },
+              {
+                "id": "o1",
+                "text": "B. Considers"
+              },
+              {
+                "id": "o2",
+                "text": "C. To considering"
+              },
+              {
+                "id": "o3",
+                "text": "D. Considered"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q14",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The aim is to make the process transparent, ____ to guarantee that everyone will agree with the result.",
+            "explanation": "not：并列不定式对照notto guarantee；no/none/nothing不能直接否定此to不定式功能。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. nothing"
+              },
+              {
+                "id": "o1",
+                "text": "B. not"
+              },
+              {
+                "id": "o2",
+                "text": "C. no"
+              },
+              {
+                "id": "o3",
+                "text": "D. none"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.abce695f55ea6b7bfea7.q15",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "I would rather you ____ the draft with me before sending it tomorrow.",
+            "explanation": "discussed：wouldrathersb对未来愿望从句用过去式discussed；discuss非该时态形式，willdiscuss不合该虚拟愿望，discussing缺谓语。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. discussing"
+              },
+              {
+                "id": "o1",
+                "text": "B. will discuss"
+              },
+              {
+                "id": "o2",
+                "text": "C. discussed"
+              },
+              {
+                "id": "o3",
+                "text": "D. discuss"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          }
+        ],
+        "originalGroup": {
+          "id": "gaokao.single-choice.senior3.abce695f55ea6b7bfea7",
+          "family": "sentence_choice",
+          "label": "单项选择",
+          "candidateSHA256": "c948af819d044bf4046152adeecd9bbbc9ce0cffe9ccf7f7851dfd4381a4b52c",
+          "authorCheckSHA256": "4163b640d7cb68a2928fd687ac7f79be9d8d7dd7a4b7078054222e9ab100bd76",
+          "sourceGroupIds": [
+            "original.grade12-independent-language-set2#whole"
+          ],
+          "sourceNotice": "完整形式复用普通考试具体独立句组：初一10题三选、初二12题四选、初三10题四选、高一20题四选、高二/高三各15题四选。高一前10语境词汇、后10语法，第13/17/20每选项配对填两空仍计一响应。各组只绑定各自源，不把结构或词数作年级等值；源转录/附加键/条件时态等风险保留。所有新语境/候选原创，已逐题词形/句法/搭配/施受/时点反证，但无独立教研、学生、商用、生产验证。 完整单项选择专项；天津等地区卷型，不声称全国卷均设此节。",
+          "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+        }
+      },
+      "contentHash": "b2a16a81126a049a29b727c550e7c09df255ae5d86f36895fd565afa41a3e507",
+      "sourceUnitId": "original.grade12-independent-language-set2",
+      "sourceContentHash": "054b013ddd95f981abb3a47d1500177b102371ef2bf51586b56d2bbeec572c1c"
+    },
+    {
+      "unit": {
+        "id": "gaokao.single-choice.senior3.9e058ea26805ed07f431",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "senior3",
+        "title": "高中客观专项 · 单项选择 · 高3：独立语言选择第3稿",
+        "summary": "完整15题单项选择；词汇、语法及交际用语，按地区卷型标注。",
+        "scene": "完整原创练习。阅读全部材料，按题面要求依次作答；答案由服务端判定。",
+        "estimatedMinutes": 20,
+        "goalIds": [
+          "original.sentence_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "grade12-tianjinlower2025-21cnjy22402528.sentenceChoice",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "完整形式复用普通考试具体独立句组：初一10题三选、初二12题四选、初三10题四选、高一20题四选、高二/高三各15题四选。高一前10语境词汇、后10语法，第13/17/20每选项配对填两空仍计一响应。各组只绑定各自源，不把结构或词数作年级等值；源转录/附加键/条件时态等风险保留。所有新语境/候选原创，已逐题词形/句法/搭配/施受/时点反证，但无独立教研、学生、商用、生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "冻结研究作者稿",
+          "reviewedBy": "Codex复用作者逐题审核并核接入",
+          "reviewedAt": "2026-10-19",
+          "reviewNotes": "无损映射既有原创完整输入与逐题依据，不把模型自审升级为独立教研或学生验证。"
+        },
+        "beats": [],
+        "questions": [
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q1",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The statement was ____ because it applied the result to every visitor, although only one small group had been studied.",
+            "explanation": "misleading：小样本外推所有游客使misleading误导；edible可食/portable可携/reversible可逆不说明该范围错误。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. portable"
+              },
+              {
+                "id": "o1",
+                "text": "B. reversible"
+              },
+              {
+                "id": "o2",
+                "text": "C. edible"
+              },
+              {
+                "id": "o3",
+                "text": "D. misleading"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q2",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The changes were ____: the original layout could be restored without replacing any parts.",
+            "explanation": "reversible：可还原= reversible；permanent永久反，inevitable必然/opaque不透非能恢复。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. inevitable"
+              },
+              {
+                "id": "o1",
+                "text": "B. opaque"
+              },
+              {
+                "id": "o2",
+                "text": "C. permanent"
+              },
+              {
+                "id": "o3",
+                "text": "D. reversible"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q3",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "Please ____ the source of each quotation rather than leaving readers to guess who said it.",
+            "explanation": "identify：identify辨明引语来源，猜who正需归属；consume消耗/appoint任命/owe欠不表示来源标明。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. identify"
+              },
+              {
+                "id": "o1",
+                "text": "B. appoint"
+              },
+              {
+                "id": "o2",
+                "text": "C. owe"
+              },
+              {
+                "id": "o3",
+                "text": "D. consume"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q4",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The team rejected the claim because the evidence was ____. It did not establish the proposed link.",
+            "explanation": "insufficient：不能建立link证据不足insufficient；transparent透明/portable可携/temporary暂时不等充分性不足。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. transparent"
+              },
+              {
+                "id": "o1",
+                "text": "B. insufficient"
+              },
+              {
+                "id": "o2",
+                "text": "C. temporary"
+              },
+              {
+                "id": "o3",
+                "text": "D. portable"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q5",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The decision should be based ____ the information actually available.",
+            "explanation": "on：basedon根据；at/for/of不构成本被动搭配。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. for"
+              },
+              {
+                "id": "o1",
+                "text": "B. on"
+              },
+              {
+                "id": "o2",
+                "text": "C. of"
+              },
+              {
+                "id": "o3",
+                "text": "D. at"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q6",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "Only when the meeting ended ____ we realise that the final page was missing.",
+            "explanation": "did：Onlywhen前置过去ended须did+realise；has后realised且we数不符，is/was后不接realise原形作该倒装。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. was"
+              },
+              {
+                "id": "o1",
+                "text": "B. has"
+              },
+              {
+                "id": "o2",
+                "text": "C. is"
+              },
+              {
+                "id": "o3",
+                "text": "D. did"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q7",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "Had she taken the earlier bus, she ____ arrived before the doors closed.",
+            "explanation": "would have：Had过去反事实配wouldhavearrived；will未来完成错基点，is/does不接arrived表达此假设。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. is"
+              },
+              {
+                "id": "o1",
+                "text": "B. would have"
+              },
+              {
+                "id": "o2",
+                "text": "C. does"
+              },
+              {
+                "id": "o3",
+                "text": "D. will have"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q8",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The applicants, ____ names appear below, should check the final schedule.",
+            "explanation": "whose：names前所属whose；who/whom不直接修名词，which为物选择不表达applicants所属。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. whom"
+              },
+              {
+                "id": "o1",
+                "text": "B. whose"
+              },
+              {
+                "id": "o2",
+                "text": "C. who"
+              },
+              {
+                "id": "o3",
+                "text": "D. which"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q9",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The committee recommended that the rule ____ reviewed every year.",
+            "explanation": "be：建议虚拟be reviewed完成that谓语；being/been分词非限定，tobe不定式不能独立作此that从句谓语。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. being"
+              },
+              {
+                "id": "o1",
+                "text": "B. been"
+              },
+              {
+                "id": "o2",
+                "text": "C. be"
+              },
+              {
+                "id": "o3",
+                "text": "D. to be"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q10",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "Hardly had we begun the rehearsal ____ the lights went out.",
+            "explanation": "when：hardly...when关联；than搭nosooner，that/as非该固定结构。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. when"
+              },
+              {
+                "id": "o1",
+                "text": "B. that"
+              },
+              {
+                "id": "o2",
+                "text": "C. than"
+              },
+              {
+                "id": "o3",
+                "text": "D. as"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q11",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The problem lies not in the number of records ____ in how they are selected.",
+            "explanation": "but：notin...butin...对照选取方式，but；其余不能并列两个in短语表达该纠正。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. because"
+              },
+              {
+                "id": "o1",
+                "text": "B. but"
+              },
+              {
+                "id": "o2",
+                "text": "C. unless"
+              },
+              {
+                "id": "o3",
+                "text": "D. so"
+              }
+            ],
+            "answer": "o1",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q12",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The manuscript is thought ____ in the previous century.",
+            "explanation": "to have been written：isthoughtto、过去被写tohavebeenwritten；towriting错，havewrote非正确完成且缺to，beingwrite错。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. to writing"
+              },
+              {
+                "id": "o1",
+                "text": "B. being write"
+              },
+              {
+                "id": "o2",
+                "text": "C. to have been written"
+              },
+              {
+                "id": "o3",
+                "text": "D. have wrote"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q13",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "____ the earlier version, the editor could explain exactly what had changed.",
+            "explanation": "Having read：editor主动先read用Havingread；Read被动不合施受，Toreading错，Reads限定不作该状语。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. Reads"
+              },
+              {
+                "id": "o1",
+                "text": "B. Read"
+              },
+              {
+                "id": "o2",
+                "text": "C. To reading"
+              },
+              {
+                "id": "o3",
+                "text": "D. Having read"
+              }
+            ],
+            "answer": "o3",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q14",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "The purpose is to describe the alternatives, ____ to choose on the reader’s behalf.",
+            "explanation": "not：not否定并列tochoose与describe对照；no/none/nothing不能在此作不定式否定副词。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. none"
+              },
+              {
+                "id": "o1",
+                "text": "B. nothing"
+              },
+              {
+                "id": "o2",
+                "text": "C. not"
+              },
+              {
+                "id": "o3",
+                "text": "D. no"
+              }
+            ],
+            "answer": "o2",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          },
+          {
+            "id": "senior.choice.9e058ea26805ed07f431.q15",
+            "goalId": "original.sentence_choice",
+            "instruction": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。",
+            "prompt": "I would rather they ____ the details before making a public announcement next week.",
+            "explanation": "checked：wouldratherthey对未来意愿用checked；check现在式非该虚拟结构，willcheck不用于此愿望，checking缺限定。",
+            "hint": "请结合完整材料与题目要求作答。",
+            "difficultyReason": "按已核源题完整形式创作；未声称全国年级等值。",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A. checked"
+              },
+              {
+                "id": "o1",
+                "text": "B. checking"
+              },
+              {
+                "id": "o2",
+                "text": "C. will check"
+              },
+              {
+                "id": "o3",
+                "text": "D. check"
+              }
+            ],
+            "answer": "o0",
+            "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+          }
+        ],
+        "originalGroup": {
+          "id": "gaokao.single-choice.senior3.9e058ea26805ed07f431",
+          "family": "sentence_choice",
+          "label": "单项选择",
+          "candidateSHA256": "9a5dc07404250a730b4177ae5bb3bdbb673e4dd3c38f7891c823f611b1cfdf75",
+          "authorCheckSHA256": "a49da60982cf8ab960443c86f22decf78cf5e2362644f4630b51ac61fc1163a8",
+          "sourceGroupIds": [
+            "original.grade12-independent-language-set3#whole"
+          ],
+          "sourceNotice": "完整形式复用普通考试具体独立句组：初一10题三选、初二12题四选、初三10题四选、高一20题四选、高二/高三各15题四选。高一前10语境词汇、后10语法，第13/17/20每选项配对填两空仍计一响应。各组只绑定各自源，不把结构或词数作年级等值；源转录/附加键/条件时态等风险保留。所有新语境/候选原创，已逐题词形/句法/搭配/施受/时点反证，但无独立教研、学生、商用、生产验证。 完整单项选择专项；天津等地区卷型，不声称全国卷均设此节。",
+          "material": "根据每题完整语境，从本题四个候选中选择一个最佳答案，完成全部15题。\n\n各题语境独立。"
+        }
+      },
+      "contentHash": "0fb0a7db55d2d399bb139d2fe5af83d86df2b64a94c6dfc293ede293846ca41e",
+      "sourceUnitId": "original.grade12-independent-language-set3",
+      "sourceContentHash": "425539982d709cb2ab502db887e0d04f7f47afa168f667af89aba6c3d49597c2"
+    }
+  ]
+}
