@@ -16,6 +16,10 @@ struct CitySceneAssetsTests {
                 DSCitySceneAssets.imageName(for: .contacts, regionID: regionID)
                     == "contacts_\(regionID)_glass"
             )
+            #expect(
+                DSCitySceneAssets.imageName(for: .learning, regionID: regionID)
+                    == "messages_\(regionID)_glass"
+            )
         }
     }
 
@@ -29,6 +33,8 @@ struct CitySceneAssetsTests {
             DSCitySceneAssets.imageName(for: .contacts, regionID: "  future-city  ")
                 == "contacts_london_glass"
         )
+        #expect(DSCitySceneAssets.imageName(for: .learning, regionID: nil) == "messages_london_glass")
+        #expect(DSCitySceneAssets.imageName(for: .learning, regionID: "future-city") == "messages_london_glass")
     }
 
     @Test("地区标识允许大小写和首尾空格")
@@ -37,5 +43,6 @@ struct CitySceneAssetsTests {
             DSCitySceneAssets.imageName(for: .messages, regionID: "  Sydney ")
                 == "messages_sydney_glass"
         )
+        #expect(DSCitySceneAssets.imageName(for: .learning, regionID: "  Sydney ") == "messages_sydney_glass")
     }
 }

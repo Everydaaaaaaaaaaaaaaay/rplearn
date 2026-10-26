@@ -3,9 +3,10 @@ import SwiftUI
 public enum DSCitySceneRole: String, Sendable {
     case messages
     case contacts
+    case learning
 }
 
-/// 将旅程地区映射到信息页、联系人页的城市摄影；未知地区安全回退到伦敦。
+/// 将当前旅程地区映射到已核验的城市摄影；学习页复用信息页地标摄影，避免重复入包。
 public enum DSCitySceneAssets {
     public static let supportedRegionIDs: Set<String> = [
         "auckland",
@@ -35,7 +36,8 @@ public enum DSCitySceneAssets {
         let resolvedRegionID = normalizedRegionID.flatMap { regionID in
             supportedRegionIDs.contains(regionID) ? regionID : nil
         } ?? "london"
-        return "\(role.rawValue)_\(resolvedRegionID)_glass"
+        let assetRole = role == .learning ? DSCitySceneRole.messages : role
+        return "\(assetRole.rawValue)_\(resolvedRegionID)_glass"
     }
 }
 

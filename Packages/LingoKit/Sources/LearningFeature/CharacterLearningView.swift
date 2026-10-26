@@ -13,18 +13,22 @@ public struct CharacterLearningView: View {
     private let speech: any SpeechService
     private let audioSession: AudioSessionCoordinator
     private let beforePlayback: @Sendable () async -> Void
+    private let currentRegionID: @Sendable () async -> String?
+    @State private var sceneRegionID: String?
     @Environment(\.scenePhase) private var scenePhase
     @State private var showJourney = false
-    @State private var onlyUnfinished = false
+    @State private var historyFilter = LearningHistoryFilter()
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     public init(character: CharacterDTO, service: any LearningServing & LearningDirectionServing, isVisible: Bool = true,
                 audioSession: AudioSessionCoordinator = AudioSessionCoordinator(),
                 speech: (any SpeechService)? = nil,
+                currentRegionID: @escaping @Sendable () async -> String? = { nil },
                 beforePlayback: @escaping @Sendable () async -> Void = {},
                 cycleChanged: @escaping @Sendable () async -> Void = {}) {
         self.character = character; self.isVisible = isVisible
         self.speech = speech ?? AdaptiveSpeechService(audioSession: audioSession)
         self.audioSession = audioSession; self.beforePlayback = beforePlayback
+        self.currentRegionID = currentRegionID
         _model = State(initialValue: CharacterLearningModel(characterID: character.id, service: service,
                                                            cycleChanged: cycleChanged))
     }
@@ -48,25 +52,26 @@ public struct CharacterLearningView: View {
                         }
                         progressCard(state)
                     }
-                    .modifier(LearningPaper())
+                    .modifier(LearningPaper(opacity: 0.96))
                     .accessibilityElement(children: .contain)
                     .accessibilityIdentifier("learning.challenge.card")
-                    historySection
+                    historySection.modifier(LearningPaper(opacity: 0.96))
                 } else if model.isBusy {
                     ProgressView("正在载入…")
                         .font(.subheadline).frame(maxWidth: .infinity).padding(.vertical, 32)
+                        .modifier(LearningPaper(opacity: 0.96))
                 }
             }
             .padding(.horizontal, 20).padding(.top, 12).padding(.bottom, 28)
             .frame(maxWidth: 600).frame(maxWidth: .infinity)
 
         }
-        .background(Color.dsBackground)
+        .background { LearningCityBackdrop(regionID: sceneRegionID) }
         .tint(theme.tint)
-        .refreshable { await model.load() }
-        .task(id: isVisible) { if isVisible { await model.load() } }
+        .refreshable { await reloadPage() }
+        .task(id: isVisible) { if isVisible { await reloadPage() } }
         .onChange(of: scenePhase) { _, phase in
-            if phase == .active && isVisible { Task { await model.load() } }
+            if phase == .active && isVisible { Task { await reloadPage() } }
         }
         .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { notification in
             if isVisible && notification.object as? UUID == character.id { Task { await model.load() } }
@@ -88,8 +93,14 @@ public struct CharacterLearningView: View {
         }
         .accessibilityIdentifier("learning.character")
     }
+    private func reloadPage() async {
+        async let load: Void = model.load()
+        if let regionID = await currentRegionID(), !Task.isCancelled { sceneRegionID = regionID }
+        await load
+    }
     private func progressCard(_ state: BackendLearningCharacter) -> some View {
         let unlocked = state.activeAttemptId != nil || state.characters >= state.threshold
+        let percentage = learningChatPercentage(characters: state.characters, threshold: state.threshold)
         return VStack(spacing: 22) {
             VStack(spacing: 14) {
                 Image(systemName: state.activeAttemptId != nil ? "book.fill" : unlocked ? "book.closed.fill" : "lock.fill")
@@ -102,13 +113,13 @@ public struct CharacterLearningView: View {
                     .accessibilityHidden(true)
                 VStack(spacing: 10) {
                     LearningMeter(value: state.characters, total: state.threshold, tint: theme.tint)
-                    Text("\(state.characters.formatted()) / \(state.threshold.formatted()) 聊天字符")
+                    Text("\(percentage)% 聊天进度")
                         .font(.caption).monospacedDigit().foregroundStyle(.secondary)
                 }
                 .padding(.top, 8)
                 .accessibilityElement(children: .ignore)
                 .accessibilityLabel("练习解锁进度")
-                .accessibilityValue("\(state.characters) / \(state.threshold) 字符")
+                .accessibilityValue("\(percentage)% 聊天进度")
                 .accessibilityIdentifier("learning.unlock.progress")
                 Text(challengeStatus(state)).font(.subheadline).foregroundStyle(.secondary)
                     .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
@@ -177,7 +188,7 @@ public struct CharacterLearningView: View {
             .font(.caption).monospacedDigit().foregroundStyle(.secondary)
     }
     private var visibleHistory: [LearningHistory.Item] {
-        onlyUnfinished ? model.history.filter { $0.firstCompletedAt != nil && $0.correctCount < $0.questionCount } : model.history
+        model.history.filter(historyFilter.matches)
     }
     private var historySection: some View {
         let items = visibleHistory
@@ -187,18 +198,13 @@ public struct CharacterLearningView: View {
                 Spacer()
                 if model.isBusy { ProgressView().controlSize(.small) }
                 if !model.history.isEmpty {
-                    Button { onlyUnfinished.toggle() } label: {
-                        Label("待补答", systemImage: onlyUnfinished ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease")
-                            .font(.caption.weight(.medium)).padding(.horizontal, 10).frame(minHeight: 44)
-                    }
-                    .buttonStyle(.plain).foregroundStyle(onlyUnfinished ? theme.tint : Color.secondary)
-                    .accessibilityLabel(onlyUnfinished ? "显示全部记录" : "仅看待补答")
-                    .accessibilityValue(onlyUnfinished ? "已筛选" : "未筛选")
-                    .accessibilityIdentifier("learning.history.filter")
+                    historyFilterMenu
                 }
             }.frame(minHeight: 44)
             if items.isEmpty {
-                Text(onlyUnfinished ? "暂时没有需要补答的练习" : "完成挑战后，在这里回顾。")
+                Text(historyFilter.isActive
+                     ? (model.nextCursor == nil ? "暂无符合筛选的记录" : "已载入的记录中暂无匹配项，可载入更多记录。")
+                     : "完成挑战后，在这里回顾。")
                     .font(.subheadline).foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 20)
             } else {
@@ -217,6 +223,34 @@ public struct CharacterLearningView: View {
                 .accessibilityLabel("载入更多记录").disabled(model.isBusy)
             }
         }
+    }
+    private var historyFilterMenu: some View {
+        Menu {
+            Toggle("待补答", isOn: $historyFilter.onlyUnfinished)
+            Section("答对比例") {
+                Picker("答对比例", selection: $historyFilter.accuracy) {
+                    ForEach(LearningHistoryAccuracyFilter.allCases) { filter in
+                        Text(filter.title).tag(filter)
+                    }
+                }.pickerStyle(.inline)
+            }
+            if historyFilter.isActive {
+                Button("清除筛选", systemImage: "xmark.circle") { historyFilter = LearningHistoryFilter() }
+            }
+        } label: {
+            HStack(spacing: 6) {
+                Image(systemName: historyFilter.isActive ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease")
+                if historyFilter.isActive {
+                    Text(historyFilter.summary).fixedSize(horizontal: false, vertical: true)
+                }
+            }
+            .font(.caption.weight(.medium))
+            .padding(.leading, 8).frame(minWidth: 44, minHeight: 44)
+        }
+        .foregroundStyle(historyFilter.isActive ? theme.tint : Color.secondary)
+        .accessibilityLabel("筛选挑战记录")
+        .accessibilityValue(historyFilter.isActive ? historyFilter.summary : "未筛选")
+        .accessibilityIdentifier("learning.history.filter")
     }
     private func historyRow(_ item: LearningHistory.Item) -> some View {
         let complete = item.firstCompletedAt != nil && item.correctCount == item.questionCount

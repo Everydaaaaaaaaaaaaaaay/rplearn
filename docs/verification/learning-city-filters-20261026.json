@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-26",
+  "scope": "Percentage chat progress, combined history filters and current-city learning backdrop",
+  "status": "passed independent review; latest preview installed",
+  "changes": {
+    "progress": "Display whole percentages as n% 聊天进度, clamped to 0...100; 100% is shown only once the actual threshold is reached. Original unlock thresholds and scoring remain unchanged.",
+    "filters": "Native menu combines 待补答 with all/high/medium/low accuracy. Boundaries reuse the display-color classifier: green >=70%, amber >=50% and <70%, red <50%. Inactive control displays only its icon; active text summarizes the selections. Clear resets both axes. Pending retains the existing meaning: a completed first round with unanswered/correctable questions, excluding ongoing first rounds.",
+    "pagination": "Filtering applies to loaded history. Existing 更多记录 remains available. An empty filtered page with a next cursor explicitly offers loading more, rather than claiming no history matches.",
+    "currentCity": "App injects an async profile.currentRegionID reader; the learning page refreshes it when visible, on foreground and on pull-to-refresh. It does not use the companion's hometown. Missing/unknown regions use the shared London fallback.",
+    "readability": "Challenge, history and loading content use 96% surface cards; Reduce Transparency makes these opaque. Header/bottom wash stabilizes contrast. Decorative static background ignores hit testing and accessibility, adds no gesture or animation, and retains light/dark dynamic text and accuracy colors.",
+    "attribution": "Existing photo credits now include learning-page use. No image edits, upscaling, new downloads or duplicate asset payloads."
+  },
+  "photography": {
+    "version": "learning-v1-20261026",
+    "selection": "Reuse each city's approved messages_<region>_glass photograph as its learning backdrop.",
+    "originalAcceptance": "Assets/CityTabScenes/Review-2026-09-12/acceptance-v2.md",
+    "sourcesAuthorsLicensesCropAndHashes": "Assets/CityTabScenes/Review-2026-09-12/after.json",
+    "reuse": "Original full-image/native-detail and source/license evidence remains applicable because runtime photos and processing are unchanged. This version reviews the new learning-page crop, foreground coverage, readability and interactions.",
+    "cities": [
+      "london",
+      "melbourne",
+      "newyork",
+      "capetown",
+      "singapore",
+      "dublin",
+      "edinburgh",
+      "vancouver",
+      "auckland",
+      "nairobi",
+      "toronto",
+      "sydney",
+      "neworleans",
+      "manchester",
+      "kingston"
+    ],
+    "assetsPresent": 15,
+    "selectionEvidence": "build/learning-city-filters-selected-photos.json",
+    "dynamicAndLoopChecks": "Not applicable: unchanged still photography; no new scene motion.",
+    "originalRuntimeAssetCommit": "4734d4a4"
+  },
+  "checks": {
+    "swift": {
+      "passed": 7,
+      "failed": 0,
+      "command": "Scripts/test.sh -only-testing:LingoTripTests/LearningHistoryPresentationTests -only-testing:LingoTripTests/CitySceneAssetsTests",
+      "result": "build/DerivedData/VerificationResults/20261026T153346Z-47987.xcresult",
+      "log": "build/learning-city-filters-swift-rerun.log",
+      "coverage": "Percentage example 56%, 58%, 99%/100%, invalid/excess counts; exact accuracy boundaries and every whole percent; combined pending/accuracy and reset; all 15 resource mappings and unknown/normalized region IDs.",
+      "initialInvocation": "Package test-target names are not members of the Xcode-hosted scheme. First invocation selected no tests and failed before execution; corrected to the LingoTripTests host target. build/learning-city-filters-swift.log"
+    },
+    "standardUI": {
+      "passed": 6,
+      "failed": 0,
+      "device": "iPhone 18 Pro, iOS 27.0 simulator, 402x874pt",
+      "result": "build/DerivedData/VerificationResults/20261026T153705Z-49875.xcresult",
+      "log": "build/learning-city-filters-ui.log",
+      "coverage": "All 15 city backdrops with real menu taps; three accuracy bands; pending/accuracy composition, empty combination, clear and inactive value; unlocked/locked percentage; large accessibility text in dark mode; journey navigation; vertical scroll, left/right paging and saved chat draft."
+    },
+    "compactUI": {
+      "status": "passed after focused test-navigation correction",
+      "device": "Task-created iPhone SE 3 simulator, iOS 27.0, 375x667pt",
+      "simulatorID": "49219AE2-1E62-4502-86E9-7AA54C484F21",
+      "result": "build/DerivedData/VerificationResults/20261026T154529Z-51234.xcresult",
+      "log": "build/learning-city-filters-compact.log",
+      "sourceTiming": "Includes the final loading-card legibility change and an additional menu screenshot attachment; loaded-state visuals and tested filter logic are unchanged from the standard run.",
+      "initialPassed": 1,
+      "initialFailed": 2,
+      "uniqueTestsPassed": 3,
+      "focusedRerunPassed": 2,
+      "focusedRerunFailed": 0,
+      "focusedRerunResult": "build/DerivedData/VerificationResults/20261026T160233Z-54853.xcresult",
+      "focusedRerunLog": "build/learning-city-filters-compact-rerun.log",
+      "initialFailure": "Tests looked for off-screen elements before scrolling in the smaller viewport. Changed readiness wait and scroll helper to reveal controls/rows in either direction, with oversized accessibility rows allowed to remain scrollable. No product change was required."
+    },
+    "architecture": "passed; build/learning-city-filters-architecture.log",
+    "diffCheck": "passed",
+    "uniqueTestsPassed": 13
+  },
+  "visualReview": {
+    "standardCityScreens": "build/learning-city-filters-standard-screens/city-map.json",
+    "standardCityReviewSheets": "build/learning-city-filters-review/standard-{1...5}.jpg",
+    "standardCityCountReviewed": 15,
+    "standardOtherScreensInspected": [
+      "build/learning-city-filters-first-preview.png",
+      "build/learning-city-filters-standard-screens/D39AF113-0423-4581-9106-6552FAA85FA2.png",
+      "build/learning-city-filters-standard-screens/D4C5854A-D0A4-4BA2-A125-CCF476DE444D.png",
+      "build/learning-city-filters-standard-screens/91E0AC5D-DBA8-44A4-BB3E-CCF8D483922B.png",
+      "build/learning-city-filters-standard-screens/9F28E5EC-360D-4C7F-A245-06DD5CA1FAE8.png",
+      "build/learning-city-filters-standard-screens/A6CA6888-8147-46E8-AA6F-05CA2ECBB510.png",
+      "build/learning-city-filters-standard-screens/5C3AE9EF-3959-4924-A725-D6E4E8C773B4.png"
+    ],
+    "standardResult": "Passed independent review: each city's photograph renders; foreground cards intentionally cover much of the landmark. Percentage, status, inactive icon and active labels remain readable; dark maximum-size history wraps and scrolls without horizontal clipping.",
+    "computerUse": "Selected current Device Hub simulator and requested a screenshot once; the interface again returned a blank image. Used XCTest attachments and simctl screenshots instead; Computer Use interaction verification was unavailable.",
+    "limitations": "No physical-device, live-account or App Store release verification. User aesthetic approval is not claimed.",
+    "compactCityScreens": "build/learning-city-filters-compact-screens/city-map.json",
+    "compactCityReviewSheets": "build/learning-city-filters-review/compact-{1...5}.jpg",
+    "compactCityCountReviewed": 15,
+    "compactOtherScreensInspected": [
+      "build/learning-city-filters-compact-rerun-screens/C9BE95BA-7D27-4E6D-956B-0CCE89DB0818.png",
+      "build/learning-city-filters-compact-rerun-screens/CE0F1052-E9CF-42B8-8A38-B77EF39EE1BE.png",
+      "build/learning-city-filters-compact-rerun-screens/7DB97E7C-6B76-4B16-B824-B4DFE466E720.png",
+      "build/learning-city-filters-preview.png"
+    ],
+    "compactResult": "Passed: all 15 city backdrops, clear menu labels on 375pt width, combined filter label, and scrollable maximum-size dark history without horizontal clipping."
+  },
+  "release": {
+    "backendChanged": false,
+    "productionDataWritten": false,
+    "appStorePublished": false,
+    "nativeAvailability": "Requires the updated iOS build."
+  },
+  "completedOn": "2026-10-27",
+  "preview": {
+    "command": "LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 SIMCTL_CHILD_UI_TEST_LEARNING_PAGE_STATE=ready SIMCTL_CHILD_UI_TEST_REGION=london Scripts/preview.sh preview role-learning",
+    "installedAndRunning": true,
+    "log": "build/learning-city-filters-preview.log",
+    "data": "Explicitly labeled local sample progress; no account scoring.",
+    "preservation": "After space pressure, build-product app was absent at inspection. Restored an APFS clone of the latest passing QA-installed app; main executable and debug-library SHA-256 matched. This exact build was installed and started successfully, and a fresh screenshot inspected."
+  },
+  "cleanup": "docs/verification/build-cleanup-20261027.json"
+}

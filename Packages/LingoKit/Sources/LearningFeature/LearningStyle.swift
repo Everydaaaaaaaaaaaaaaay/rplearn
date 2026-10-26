@@ -30,10 +30,33 @@ struct LearningTheme {
 func learningLevelName(_ value: String) -> String { DifficultyLevel(rawValue: value)?.displayName ?? value }
 
 struct LearningPaper: ViewModifier {
+    var opacity: Double = 1
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     func body(content: Content) -> some View {
         content.padding(22).frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: 24))
+            .background(Color.dsSurface.opacity(reduceTransparency ? 1 : opacity), in: RoundedRectangle(cornerRadius: 24))
             .overlay { RoundedRectangle(cornerRadius: 24).strokeBorder(Color.primary.opacity(0.06)) }
+    }
+}
+
+private struct LearningCityWash: View {
+    var body: some View {
+        LinearGradient(stops: [
+            .init(color: Color.dsBackground.opacity(0.92), location: 0),
+            .init(color: Color.dsBackground.opacity(0.12), location: 0.3),
+            .init(color: Color.dsBackground.opacity(0.08), location: 0.75),
+            .init(color: Color.dsBackground.opacity(0.36), location: 1)
+        ], startPoint: .top, endPoint: .bottom)
+    }
+}
+
+struct LearningCityBackdrop: View {
+    let regionID: String?
+    var body: some View {
+        DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .learning, regionID: regionID), tone: .cool)
+            .overlay { LearningCityWash().ignoresSafeArea() }
+            .allowsHitTesting(false)
+            .accessibilityHidden(true)
     }
 }
 struct LearningPressStyle: ButtonStyle {

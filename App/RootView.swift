@@ -1126,10 +1126,13 @@ struct RootView: View {
         let tracker = environment.workspace?.learningChat
         let learningAudioSession = environment.audioSession
         let learningSpeech = environment.speech
+        let learningEconomyStore = environment.economyStore
         if !bypassesAuthenticationForUITesting {
             dependencies.learningPage = { character, visible in
                 AnyView(CharacterLearningView(character: character, service: backend, isVisible: visible,
-                    audioSession: learningAudioSession, speech: learningSpeech, beforePlayback: { await learningSpeech.stopSpeaking() },
+                    audioSession: learningAudioSession, speech: learningSpeech,
+                    currentRegionID: { try? await learningEconomyStore.profile().currentRegionID },
+                    beforePlayback: { await learningSpeech.stopSpeaking() },
                     cycleChanged: { await tracker?.challengeCompleted(characterID: character.id) }))
             }
         }
@@ -1174,7 +1177,8 @@ struct RootView: View {
     #if DEBUG
     private static func debugLearningPage(_ character: CharacterDTO, isVisible: Bool = true) -> some View {
         CharacterLearningView(character: character, service: DebugLearningPreviewService(characterID: character.id,
-            roleKey: character.card.name.components(separatedBy: " ").first?.lowercased() ?? "oliver"), isVisible: isVisible)
+            roleKey: character.card.name.components(separatedBy: " ").first?.lowercased() ?? "oliver"), isVisible: isVisible,
+            currentRegionID: { ProcessInfo.processInfo.environment["UI_TEST_REGION"] ?? "london" })
             .safeAreaInset(edge: .top, spacing: 0) {
                 Text("界面预览 · 示例进度，不计入账号")
                     .font(.caption).foregroundStyle(.secondary).padding(8).frame(maxWidth: .infinity)

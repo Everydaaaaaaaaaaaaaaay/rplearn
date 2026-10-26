@@ -163,7 +163,7 @@ public struct CityScenePhotoCreditsView: View {
     ) -> Credit {
         Credit(
             city: city,
-            placement: placement,
+            placement: placement == "信息页" ? "信息页／学习页" : placement,
             author: author,
             license: license,
             sourceURL: URL(string: source)!
