@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-27",
+  "authorization": "User requested maximum safe cleanup of eng/build before continuing the learning-page task.",
+  "detailedLog": "build/maximum-build-cleanup-20261027.json",
+  "filesystemAvailableBytesBefore": 1587826688,
+  "filesystemAvailableBytesAfter": 3875758080,
+  "measuredAvailableBytesIncrease": 2287931392,
+  "measurement": "Filesystem statvfs; directory du counts are not treated as actual reclamation.",
+  "removed": [
+    "Project Xcode intermediates, module/SDK caches and index",
+    "Rebuildable link objects and Swift module outputs",
+    "Voice producer Swift build cache; wrapper source retained",
+    "Inactive uv Python environment; exact package versions and Python configuration retained in build/voice-review-env-rebuild.json"
+  ],
+  "preserved": [
+    "All source and uncommitted/untracked work outside proven generated caches",
+    "Current installed app bundles and native test/visual acceptance evidence",
+    "Research originals, author manuscripts, source snapshots, databases and unique history",
+    "Latest history-display and role-history-points recovery packages",
+    "SourcePackages checkouts: FluidAudio Git metadata could not be validated; retained rather than assuming no local changes."
+  ],
+  "verification": [
+    "No open build files or active compiler/test/transfer processes before deletion",
+    "Git-tracked paths excluded; explicit generated-cache roots only",
+    "Exact current app preserved/restored from passing QA app; executable hashes match",
+    "Latest app installed with Scripts/preview.sh and left running on original simulator"
+  ],
+  "constraints": "No database deletion/vacuum, research deduplication, unique-source removal, process termination, simulator-data removal, Trash emptying or business-code change for cleanup. SourcePackages retained because checkout integrity could not be established."
+}
