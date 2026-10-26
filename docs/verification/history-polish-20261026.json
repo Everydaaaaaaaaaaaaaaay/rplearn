@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-26",
+  "implementationCommits": ["87a84522", "0a9644e2"],
+  "scope": "Practice unlock progress, history accuracy colors and concrete history titles",
+  "changes": {
+    "learningCard": "Removed the practice-direction row including 通用英语. Replaced the 单元挑战 heading with a progress bar and n / 1,000 聊天字符. Exact status text is 单元练习已解锁 or 单元练习尚未解锁. Level, stars and start/continue action remain in the same card.",
+    "accuracy": "Only 答对 n/m uses green at >=70%, amber at >=50% and <70%, red below 50%. Continue/pending labels remain secondary; actual earned points are unchanged.",
+    "historyTitles": {
+      "format": "题型 · 具体内容主题",
+      "example": "阅读配对 · 为学习者选择英语学习工具",
+      "reviewedHistoricalContentSnapshots": 26,
+      "contentHashBindings": 27,
+      "extraBinding": "Current local learner-tools content differs from its historical snapshot.",
+      "isolation": "Bindings hash title, summary, scene, originalGroup and full questions, excluding role/attempt IDs. Changed question content cannot inherit a reviewed title merely through a matching unit ID.",
+      "fallback": "Unreviewed content uses a formatter that removes grade, quantity, release-date and internal-ID scaffolding, deriving type from originalGroup and topic from authored titles or material. The full source corpus was not semantically re-authored.",
+      "preservation": "Display projection only; frozen snapshots, raw titles, source catalog, grading and rewards are preserved."
+    }
+  },
+  "checks": {
+    "uniqueTestsPassed": 20,
+    "backendUnit": {"passed": 6, "log": "build/history-polish-backend-unit.log"},
+    "isolatedIntegration": {
+      "passed": 8,
+      "log": "build/history-polish-integration/tests.log",
+      "report": "build/history-polish-integration/report.json",
+      "databasePreserved": "lingotrip_test_history_polish_20261026",
+      "services": "Dedicated PostgreSQL and Redis stopped normally after verification."
+    },
+    "swift": {
+      "passed": 1,
+      "result": "build/DerivedData/VerificationResults/20261026T145129Z-39399.xcresult",
+      "coverage": "Exact 50% and 70% boundaries, 49%, 69%, 0/0 and 2/3."
+    },
+    "ui": {
+      "uniqueTestsPassed": 5,
+      "initialResult": "build/DerivedData/VerificationResults/20261026T145606Z-41287.xcresult",
+      "initialPassed": 3,
+      "initialFailed": 2,
+      "initialFailure": "Accessibility localized 1000 as 1,000. Assertions now normalize commas.",
+      "boundaryRerun": "build/DerivedData/VerificationResults/20261026T145846Z-42116.xcresult",
+      "boundaryRerunPassed": 2,
+      "colorRerun": "build/DerivedData/VerificationResults/20261026T150108Z-42912.xcresult",
+      "colorRerunPassed": 1,
+      "finalFullRowRerun": "build/DerivedData/VerificationResults/20261026T150407Z-43745.xcresult",
+      "finalFullRowRerunPassed": 1,
+      "finalTestChange": "Scroll helper ensures the complete history row is onscreen before capturing all three accuracy colors.",
+      "coverage": "Locked/ready progress, removed direction row, dark maximum accessibility text, pending history filtering, actual points and chat swipe/draft preservation."
+    },
+    "typecheck": "passed; build/history-polish-typecheck.log",
+    "lint": "passed; build/history-polish-lint.log",
+    "architecture": ["build/history-polish-architecture.log", "build/history-polish-backend-architecture.log"],
+    "diffCheck": "passed"
+  },
+  "visualReview": {
+    "inspected": [
+      "build/history-polish-boundary-screens/74475237-C625-4CB3-92A9-B1535E87E623.png",
+      "build/history-polish-boundary-screens/F259470B-0DC5-4D4F-A1BA-43395FEBB654.png",
+      "build/history-polish-ui-screens/334E4239-7508-40AA-996A-198915D07826.png",
+      "build/history-polish-ui-screens/3C7083E6-F0B6-45A3-AF0B-B91F482C8505.png",
+      "build/history-polish-full-record-screens/40E2355A-19DD-4CBD-8511-20BB59C12782.png",
+      "build/history-polish-preview.png"
+    ],
+    "result": "Unlock progress and exact status labels are visible; three full rows show red 2/6, amber 4/6 and green 6/6 alongside unchanged sample actual points. Long titles remain readable.",
+    "computerUse": "Device Hub selected the current iPhone 18 Pro simulator but returned a blank screenshot. Inspected XCTest attachments and a fresh simctl screenshot instead."
+  },
+  "preview": {
+    "command": "LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 SIMCTL_CHILD_UI_TEST_LEARNING_PAGE_STATE=ready Scripts/preview.sh preview role-learning",
+    "installedAndRunning": true,
+    "log": "build/history-polish-preview.log",
+    "data": "Explicitly labeled local sample progress; no account scoring."
+  },
+  "production": {
+    "release": "history-display-20261026",
+    "archiveSHA256": "d296fee85e8ad5eddc69da9c316a2189e12b9b65a7b8be57161b097dff1c44d6",
+    "localRemoteHashesMatched": true,
+    "deployment": "Guarded deployment succeeded after resource availability recovered; no thresholds bypassed.",
+    "rollbackRetained": "role-history-points-20261026",
+    "log": "build/history-polish-deploy.log",
+    "runtime": "Current release confirmed; API and worker active; health/ready reports ready; release transaction closed.",
+    "readOnlyVerification": "build/history-polish-production-verify.json",
+    "ownerCharacterPairs": 4,
+    "pages": 4,
+    "records": 26,
+    "distinctContentSnapshots": 26,
+    "reviewedTitleRecords": 26,
+    "zeroRewardRecords": 8,
+    "historyTitlesMatchContent": true,
+    "accuracyAndRewardLedgerUnchanged": true,
+    "noUserAttemptsOrRewardsCreated": true,
+    "appStorePublished": false,
+    "nativeAvailability": "Updated iOS build required; latest local preview installed and left running."
+  }
+}

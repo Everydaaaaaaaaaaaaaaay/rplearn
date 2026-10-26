@@ -84,7 +84,7 @@ final class CharacterLearningLayoutTests: XCTestCase {
 
     private func reveal(_ element: XCUIElement, in app: XCUIApplication) {
         for _ in 0..<6 {
-            if element.exists && element.isHittable { return }
+            if element.exists && element.isHittable && element.frame.maxY < app.frame.maxY - 40 { return }
             app.swipeUp()
         }
         XCTAssertTrue(element.exists)
