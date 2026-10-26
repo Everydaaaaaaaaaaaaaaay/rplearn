@@ -117,7 +117,11 @@ lingotrip_acquire_pipeline_lock() {
 }
 
 lingotrip_package_cache_ready() {
-  [[ -f "$LINGOTRIP_SOURCE_PACKAGES_PATH/checkouts/FluidAudio/Package.swift" ]]
+  local checkout="$LINGOTRIP_SOURCE_PACKAGES_PATH/checkouts/FluidAudio"
+  [[ -f "$checkout/Package.swift" ]] || return 1
+  [[ -d "$checkout/.git" || -f "$checkout/.git" ]] || return 1
+  # 清单文件可能在中断下载后仍然存在；提交/树对象缺失时不能禁止 Xcode 重新解析。
+  git -C "$checkout" cat-file -e 'HEAD^{tree}' >/dev/null 2>&1
 }
 
 lingotrip_prepare_workspace() {
@@ -236,7 +240,7 @@ lingotrip_xcodebuild() {
       -onlyUsePackageVersionsFromResolvedFile
     )
   else
-    echo "当前工作树首次准备 Swift Package 依赖；完成后后续构建将使用本地锁定缓存"
+    echo "Swift Package 缓存尚未就绪，正在按清单解析依赖；完整后将使用本地锁定缓存"
   fi
 
   if [[ "$is_test" == "1" && -z "$result_bundle" ]]; then

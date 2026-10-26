@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-27",
+  "issue": "Xcode reports Missing package product fluidaudio_FluidAudio.FluidAudio",
+  "cause": "FluidAudio checkout files survived but its shared Git object store lacked the locked commit and contained invalid branch references. The build helper incorrectly considered Package.swift alone sufficient to disable automatic resolution.",
+  "repair": {
+    "version": "0.15.5",
+    "officialTag": "v0.15.5",
+    "revision": "19600a485baa4998812e4654b70d2bab8f2c9949",
+    "source": "https://github.com/FluidInference/FluidAudio.git",
+    "metadata": "Fetched the exact locked commit into a separate verified Git store. Replaced only the active cache metadata, preserving old repository/checkout metadata in build/fluidaudio-preserved-20261027. Existing working-tree files were not reset or replaced.",
+    "sourceCheckoutStatus": "clean before and after metadata replacement",
+    "packageManifestAndVersionsChanged": false,
+    "modelsChanged": false,
+    "helper": "Cache readiness now requires a package-local Git directory/file and a readable HEAD tree; a leftover manifest alone no longer disables resolution."
+  },
+  "verification": {
+    "bashSyntax": "passed for Scripts/lib/ios-worktree.sh and Scripts/test-ios-package-cache.sh",
+    "cacheReadinessTests": "3 passed: manifest without Git metadata, complete checkout, missing HEAD object",
+    "resolvedPackages": "FluidAudio 0.15.5 and local LingoKit; build/fluidaudio-final-resolve.log",
+    "repositoryConnectivity": "passed; build/fluidaudio-final-repository-connectivity.log",
+    "checkoutConnectivity": "passed; build/fluidaudio-final-checkout-connectivity.log",
+    "rebuild": "Scripts/preview.sh build role-learning completed with exit code 0 after compiler/module/index caches had been cleared; build/fluidaudio-rebuild-preview.log",
+    "preview": "Latest rebuilt app installed and running on original iPhone 18 Pro simulator. Fresh screenshot inspected: build/fluidaudio-repair-preview.png",
+    "architecture": "passed; build/fluidaudio-repair-architecture.log",
+    "diffCheck": "passed",
+    "guiLimitation": "Computer Use could not attach to Xcode because ScreenCaptureKit returned error -3811. Verified dependency resolution and compilation through Xcode's command-line tools instead."
+  },
+  "scope": "Dependency cache repair and build-script guard only; no application behavior, database, backend deployment or App Store publication change."
+}
