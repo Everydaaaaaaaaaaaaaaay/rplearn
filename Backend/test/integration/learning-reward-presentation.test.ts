@@ -35,6 +35,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("本轮实际积分
     const empty = await repository.read(user, (s) => s.history(character, 10));
     expect(empty.items[0]).toMatchObject({
       id: attempt,
+      title: `综合练习 · ${unit.title}`,
       correctCount: 0,
       earnedPoints: 0,
     });
@@ -53,6 +54,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("本轮实际积分
         values(${attempt},${id},${user},'primary3','test.greetings',${points})`;
     }
     const snapshot = await repository.read(user, (s) => s.attempt(attempt));
+    expect(snapshot.unit.title).toBe(unit.title);
     expect(snapshot.round.answers.map((a) => a.awardedPoints)).toEqual([1, 0, 0]);
     const initialHistory = await repository.read(user, (s) => s.history(character, 10));
     expect(initialHistory.items[0]).toMatchObject({

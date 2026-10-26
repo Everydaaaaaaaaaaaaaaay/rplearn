@@ -1,3 +1,4 @@
+import { historyTitleForPresentation } from "./history-presentation.js";
 import { isHighSchool } from "./gaokao-policy.js";
 import {
   seniorPracticeIds,
@@ -366,13 +367,13 @@ export class LearningSession {
         level_key: LearningLevel;
         started_at: string;
         first_completed_at: string | null;
-        title: string;
+        payload: LearningUnit;
         question_count: number;
         correct_count: number;
         earned_points: number;
       }[]
     >`
-      select a.id,a.level_key,a.started_at::text,a.first_completed_at::text,coalesce(a.snapshot,v.payload)->>'title' as title,
+      select a.id,a.level_key,a.started_at::text,a.first_completed_at::text,coalesce(a.snapshot,v.payload) as payload,
         jsonb_array_length(coalesce(a.snapshot,v.payload)->'questions') as question_count,
         rewards.correct_count,rewards.earned_points
       from app.learning_attempts a left join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version
@@ -385,7 +386,7 @@ export class LearningSession {
       order by a.started_at desc,a.id desc limit ${limit + 1}`;
     const items = rows.slice(0, limit).map((row) => ({
       id: row.id,
-      title: row.title,
+      title: historyTitleForPresentation(row.payload),
       level: row.level_key,
       direction: "general" as const,
       startedAt: new Date(row.started_at).toISOString(),
