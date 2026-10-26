@@ -10,7 +10,9 @@ final class CharacterLearningLayoutTests: XCTestCase {
         XCTAssertTrue(ongoing.waitForExistence(timeout: 10))
         XCTAssertTrue(ongoing.label.contains("获得 2 积分"))
         XCTAssertTrue(retry.label.contains("获得 3 积分"))
+        reveal(complete, in: app)
         XCTAssertTrue(complete.label.contains("获得 0 积分"))
+        app.swipeDown()
         XCTAssertTrue(app.buttons["learning.start"].label.contains("继续挑战"))
         app.buttons["learning.history.filter"].tap()
         XCTAssertTrue(retry.exists)
@@ -18,7 +20,9 @@ final class CharacterLearningLayoutTests: XCTestCase {
         XCTAssertFalse(complete.exists)
         capture(app, name: "待补答筛选")
         app.buttons["learning.history.filter"].tap()
+        reveal(complete, in: app)
         XCTAssertTrue(complete.exists)
+        app.swipeDown()
         app.buttons["learning.journey"].tap()
         XCTAssertTrue(app.navigationBars["学习进度"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["0/60 点"].exists)
@@ -30,7 +34,11 @@ final class CharacterLearningLayoutTests: XCTestCase {
         let app = launch(state: "ready", large: true)
         let start = app.buttons["learning.start"]
         XCTAssertTrue(start.waitForExistence(timeout: 10))
-        XCTAssertTrue(start.label.contains("开始挑战"))
+        XCTAssertTrue(start.label.contains("开启单元挑战"))
+        let card = app.otherElements["learning.challenge.card"]
+        XCTAssertTrue(card.exists)
+        XCTAssertTrue(card.frame.contains(app.buttons["learning.journey"].frame))
+        XCTAssertTrue(card.frame.contains(start.frame))
         capture(app, name: "最大字号深色挑战进度")
         let row = app.buttons["learning.history.20000000-0000-4000-8000-000000000002"]
         for _ in 0..<8 {
@@ -43,6 +51,27 @@ final class CharacterLearningLayoutTests: XCTestCase {
         XCTAssertTrue(row.label.contains("获得 3 积分"))
         XCTAssertLessThanOrEqual(row.frame.maxX, app.frame.maxX)
         capture(app, name: "最大字号深色长标题与补答")
+    }
+
+    func testReadyCardCombinesLevelStarsAndChallenge() {
+        let app = launch(state: "ready")
+        let start = app.buttons["learning.start"]
+        XCTAssertTrue(start.waitForExistence(timeout: 10))
+        XCTAssertEqual(start.label, "开启单元挑战")
+        let card = app.otherElements["learning.challenge.card"]
+        XCTAssertTrue(card.exists)
+        XCTAssertTrue(card.frame.contains(app.buttons["learning.journey"].frame))
+        XCTAssertTrue(card.frame.contains(start.frame))
+        XCTAssertFalse(app.staticTexts["聊天进度已满"].exists)
+        capture(app, name: "档位星级与开启挑战合为一卡")
+    }
+
+    private func reveal(_ element: XCUIElement, in app: XCUIApplication) {
+        for _ in 0..<6 {
+            if element.exists && element.isHittable { return }
+            app.swipeUp()
+        }
+        XCTAssertTrue(element.exists)
     }
 
     private func launch(state: String, large: Bool = false) -> XCUIApplication {

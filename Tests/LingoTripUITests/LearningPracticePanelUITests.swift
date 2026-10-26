@@ -83,6 +83,42 @@ final class LearningPracticePanelUITests: XCTestCase {
         XCTAssertTrue(app.buttons["practice.next"].exists)
         app.terminate()
     }
+    func testPracticeBookendsUseEnglishCompanionMessages() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_REQUIRE_AUTHENTICATION": "0",
+            "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1", "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9",
+            "UI_TEST_TAB": "practice-preview", "UI_TEST_PRACTICE_NAMESPACE": "practice.bookends.\(UUID().uuidString)"]
+        app.launch()
+        addTeardownBlock { app.terminate() }
+        let message = app.staticTexts["practice.companion.message"]
+        XCTAssertTrue(message.waitForExistence(timeout: 15))
+        assertEnglish(message.label)
+        capture(app, "英文角色开场")
+        app.buttons["practice.start"].tap()
+        for count in [3, 4] {
+            for index in 1...count {
+                let question = app.buttons["practice.question.\(index)"]
+                XCTAssertTrue(question.waitForExistence(timeout: 5)); question.tap()
+                let option = app.buttons["practice.option.A"]
+                XCTAssertTrue(option.waitForExistence(timeout: 5)); option.tap()
+            }
+            app.buttons["practice.next"].tap()
+            let next = app.buttons["practice.continue"]
+            XCTAssertTrue(next.waitForExistence(timeout: 5)); next.tap()
+        }
+        XCTAssertTrue(app.staticTexts["practice.result.score"].waitForExistence(timeout: 5))
+        XCTAssertTrue(message.exists)
+        assertEnglish(message.label)
+        XCTAssertTrue(app.staticTexts["practice.result.points"].exists)
+        capture(app, "英文角色收尾与本次积分")
+    }
+
+    private func assertEnglish(_ message: String) {
+        XCTAssertNotNil(message.range(of: "[A-Za-z]", options: .regularExpression))
+        XCTAssertFalse(message.unicodeScalars.contains { CharacterSet.letters.contains($0) && !$0.isASCII })
+    }
+
     private func capture(_ app: XCUIApplication, _ name: String) {
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = name; attachment.lifetime = .keepAlways; add(attachment)
