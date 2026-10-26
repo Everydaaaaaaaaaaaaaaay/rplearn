@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-26",
+  "commit": "f7231ec0",
+  "scope": "English practice companion bookends and a unified character challenge card",
+  "changes": {
+    "companionMessages": "English opening and closing seeds for Oliver, Ruby and Marcus; English fallback for other companions; AI prompt requires concise English.",
+    "cache": "Language-specific practice.companion.v2.en namespace; responses containing non-ASCII letters are rejected. Old Chinese cache data is preserved but never read as the current contract.",
+    "challengeCard": "Current level, nine stars, next-star points and challenge action share one container. A book seal, centered title and full-width 开启单元挑战 action mark the unlocked state. Accumulating and active states retain their appropriate progress or continue action.",
+    "simplification": "Removed separate journey row, repeated character totals in unlocked/active states, status capsule and extra progress captions. Existing actual history rewards remain visible.",
+    "interaction": "Journey details, direction selection, pending history filter, swipe navigation and saved chat drafts remain available. Existing press feedback respects reduced motion."
+  },
+  "checks": {
+    "swift": {
+      "command": "Scripts/test.sh -only-testing:LingoTripTests/PracticeCompanionMessageTests",
+      "passed": 5,
+      "failed": 0,
+      "result": "build/DerivedData/VerificationResults/20261026T111647Z-23238.xcresult",
+      "coverage": "English seeds and length/sentence validation, persona cache reuse and invalidation, Chinese old/current cache rejection, invalid AI output retry and task labels"
+    },
+    "ui": {
+      "uniqueTestsPassed": 5,
+      "initialResult": "build/DerivedData/VerificationResults/20261026T111818Z-24876.xcresult",
+      "initialPassed": 4,
+      "initialFailed": 1,
+      "initialFailure": "Existing history test accessed a lazy third row before scrolling it into view after the card became taller. Added scrolling before record assertions; no product change required.",
+      "focusedRerun": "build/DerivedData/VerificationResults/20261026T112111Z-25802.xcresult",
+      "focusedRerunPassed": 1,
+      "focusedRerunFailed": 0,
+      "coverage": "Normal unified card containment, dark maximum accessibility text and long history titles, pending filter and journey navigation, swipe/draft preservation, and English cover/summary after completing both local reading sections"
+    },
+    "architecture": "passed; build/learning-ceremony-architecture.log",
+    "diffCheck": "passed"
+  },
+  "visualReview": {
+    "inspected": [
+      "build/learning-ceremony-preview.png",
+      "build/learning-ceremony-ui-screens/91215D04-DA86-4FD3-89B0-FFFFA76D9F94.png",
+      "build/learning-ceremony-ui-screens/47C2D4A4-7A21-421D-BBC7-34663E14DD8A.png",
+      "build/learning-ceremony-ui-screens/B198874E-FEC6-4D37-B4F6-235AE9C39965.png",
+      "build/learning-ceremony-ui-screens/3791F318-AAA2-44CF-9286-B11B55A088E7.png",
+      "build/learning-ceremony-ui-screens/4C90B882-FA4D-4438-B0CB-782C80537CC4.png"
+    ],
+    "result": "Normal card shows the integrated level/star hierarchy and clear primary action. English companion text wraps cleanly on both bookends. Dark maximum-size card and history remain scrollable and readable.",
+    "computerUse": "Device Hub selected the existing simulator, but returned a blank screenshot; inspected XCTest attachments and simctl screenshot instead."
+  },
+  "preview": {
+    "command": "LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 SIMCTL_CHILD_UI_TEST_LEARNING_PAGE_STATE=ready Scripts/preview.sh preview role-learning",
+    "installedAndRunning": true,
+    "data": "Explicitly labeled local sample progress; no account scoring",
+    "log": "build/learning-ceremony-preview.log"
+  },
+  "release": {
+    "backendChanges": false,
+    "liveAiEvaluation": false,
+    "productionUserDataWritten": false,
+    "appStorePublished": false,
+    "availability": "Native UI requires the updated iOS build."
+  }
+}
