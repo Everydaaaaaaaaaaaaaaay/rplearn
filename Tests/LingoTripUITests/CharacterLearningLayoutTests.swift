@@ -12,6 +12,7 @@ final class CharacterLearningLayoutTests: XCTestCase {
         XCTAssertTrue(retry.label.contains("获得 3 积分"))
         reveal(complete, in: app)
         XCTAssertTrue(complete.label.contains("获得 0 积分"))
+        capture(app, name: "记录答对比例三色与实际积分")
         app.swipeDown()
         XCTAssertTrue(app.buttons["learning.start"].label.contains("继续挑战"))
         app.buttons["learning.history.filter"].tap()
@@ -46,7 +47,7 @@ final class CharacterLearningLayoutTests: XCTestCase {
             app.swipeUp()
         }
         XCTAssertTrue(row.isHittable)
-        XCTAssertTrue(row.label.contains("周末集市：询价、比较与表达偏好"))
+        XCTAssertTrue(row.label.contains("周末集市询价与比较商品"))
         XCTAssertTrue(row.label.contains("补答 2 题"))
         XCTAssertTrue(row.label.contains("获得 3 积分"))
         XCTAssertLessThanOrEqual(row.frame.maxX, app.frame.maxX)
@@ -62,8 +63,23 @@ final class CharacterLearningLayoutTests: XCTestCase {
         XCTAssertTrue(card.exists)
         XCTAssertTrue(card.frame.contains(app.buttons["learning.journey"].frame))
         XCTAssertTrue(card.frame.contains(start.frame))
-        XCTAssertFalse(app.staticTexts["聊天进度已满"].exists)
+        XCTAssertFalse(app.staticTexts["单元挑战"].exists)
+        XCTAssertFalse(app.buttons["learning.direction"].exists)
+        XCTAssertTrue(app.staticTexts["单元练习已解锁"].exists)
+        XCTAssertEqual((app.otherElements["learning.unlock.progress"].value as? String)?.replacingOccurrences(of: ",", with: ""), "1000 / 1000 字符")
         capture(app, name: "档位星级与开启挑战合为一卡")
+    }
+
+    func testLockedPracticeShowsUnlockProgressWithoutDirectionRow() {
+        let app = launch(state: "empty")
+        let progress = app.otherElements["learning.unlock.progress"]
+        XCTAssertTrue(progress.waitForExistence(timeout: 10))
+        XCTAssertEqual((progress.value as? String)?.replacingOccurrences(of: ",", with: ""), "720 / 1000 字符")
+        XCTAssertTrue(app.staticTexts["单元练习尚未解锁"].exists)
+        XCTAssertFalse(app.staticTexts["单元挑战"].exists)
+        XCTAssertFalse(app.buttons["learning.direction"].exists)
+        XCTAssertFalse(app.buttons["learning.start"].exists)
+        capture(app, name: "未解锁练习进度")
     }
 
     private func reveal(_ element: XCUIElement, in app: XCUIApplication) {

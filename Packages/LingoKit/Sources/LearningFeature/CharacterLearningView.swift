@@ -15,7 +15,6 @@ public struct CharacterLearningView: View {
     private let beforePlayback: @Sendable () async -> Void
     @Environment(\.scenePhase) private var scenePhase
     @State private var showJourney = false
-    @State private var showDirections = false
     @State private var onlyUnfinished = false
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     public init(character: CharacterDTO, service: any LearningServing & LearningDirectionServing, isVisible: Bool = true,
@@ -41,7 +40,6 @@ public struct CharacterLearningView: View {
                         }
                     }
                 }
-                directionRow
                 if let state = model.state {
                     VStack(spacing: 24) {
                         if let journey = model.journey {
@@ -88,30 +86,7 @@ public struct CharacterLearningView: View {
                     }
             }
         }
-        .sheet(isPresented: $showDirections) {
-            LearningDirectionPicker(model: model)
-                .tint(theme.tint)
-        }
         .accessibilityIdentifier("learning.character")
-    }
-    private var directionRow: some View {
-        Button { showDirections = true } label: {
-            HStack(spacing: 10) {
-                Text("练习方向").font(.caption).foregroundStyle(.secondary)
-                Spacer(minLength: 8)
-                Text(model.selectedDirection?.title ?? "选择练习方向")
-                    .font(.subheadline.weight(.semibold))
-                    .multilineTextAlignment(.trailing)
-                if model.isBusy || model.isChangingDirection { ProgressView().controlSize(.small) }
-                else if model.selectedDirection?.status != "available", model.directions != nil {
-                    Text("准备中").font(.caption).foregroundStyle(.secondary)
-                }
-                Image(systemName: "chevron.down").font(.caption.weight(.semibold)).foregroundStyle(.tertiary)
-            }
-            .frame(minHeight: 44).contentShape(Rectangle())
-        }
-        .buttonStyle(.plain).foregroundStyle(.primary)
-        .accessibilityIdentifier("learning.direction")
     }
     private func progressCard(_ state: BackendLearningCharacter) -> some View {
         let unlocked = state.activeAttemptId != nil || state.characters >= state.threshold
@@ -125,19 +100,20 @@ public struct CharacterLearningView: View {
                     .padding(7)
                     .overlay { Circle().strokeBorder(theme.tint.opacity(0.18), lineWidth: 1) }
                     .accessibilityHidden(true)
-                Text("单元挑战").font(.system(.title2, design: .serif, weight: .semibold))
-                Text(challengeStatus(state)).font(.subheadline).foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
-            }
-            if !unlocked {
                 VStack(spacing: 10) {
                     LearningMeter(value: state.characters, total: state.threshold, tint: theme.tint)
                     Text("\(state.characters.formatted()) / \(state.threshold.formatted()) 聊天字符")
                         .font(.caption).monospacedDigit().foregroundStyle(.secondary)
                 }
+                .padding(.top, 8)
                 .accessibilityElement(children: .ignore)
-                .accessibilityLabel("挑战进度，\(state.characters) / \(state.threshold) 字符")
-            } else { challengeAction(state) }
+                .accessibilityLabel("练习解锁进度")
+                .accessibilityValue("\(state.characters) / \(state.threshold) 字符")
+                .accessibilityIdentifier("learning.unlock.progress")
+                Text(challengeStatus(state)).font(.subheadline).foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
+            }
+            if unlocked { challengeAction(state) }
         }
         .padding(.vertical, 6).frame(maxWidth: .infinity)
     }
@@ -163,12 +139,7 @@ public struct CharacterLearningView: View {
         .accessibilityIdentifier("learning.start")
     }
     private func challengeStatus(_ state: BackendLearningCharacter) -> String {
-        if state.activeAttemptId != nil { return "挑战进行中" }
-        if model.pendingDirection != nil { return "方向待确认" }
-        if model.directions == nil { return "方向未同步" }
-        if !model.canStartNewChallenge { return "题目准备中" }
-        if model.isPreparing { return "新单元正在准备" }
-        return state.characters >= state.threshold ? "新单元已解锁" : "在聊天中积累，开启下一程"
+        state.activeAttemptId != nil || state.characters >= state.threshold ? "单元练习已解锁" : "单元练习尚未解锁"
     }
     private func globalCard(_ journey: LearningJourney) -> some View {
         Button { showJourney = true } label: {
@@ -199,7 +170,7 @@ public struct CharacterLearningView: View {
     }
     private func generalProgressTitle(_ journey: LearningJourney) -> String {
         let level = learningLevelName(journey.currentLevel)
-        return model.directions?.selectedDirection == "general" ? level : "通用英语 · \(level)"
+        return level
     }
     private func nextStar(_ current: LearningLevelProgress?) -> some View {
         Text((current?.stars ?? 0) >= 9 ? "9 星已达成" : "下一星 \(current?.currentStarPoints ?? 0)/\(current?.pointsPerStar ?? 60) 积分")
@@ -280,8 +251,10 @@ public struct CharacterLearningView: View {
         .accessibilityIdentifier("learning.history.\(item.id.uuidString)")
     }
     private func historyMetadata(_ item: LearningHistory.Item) -> some View {
-        Text("答对 \(item.correctCount)/\(item.questionCount) · \(historyActionLabel(item))")
-            .font(.caption).monospacedDigit().foregroundStyle(.secondary)
+        (Text("答对 \(item.correctCount)/\(item.questionCount)")
+            .foregroundColor(LearningAccuracyBand(correct: item.correctCount, total: item.questionCount).tint)
+         + Text(" · \(historyActionLabel(item))").foregroundColor(.secondary))
+            .font(.caption).monospacedDigit()
     }
     private func historyPoints(_ item: LearningHistory.Item) -> some View {
         Text(historyPointsText(item)).font(.subheadline.weight(.semibold)).monospacedDigit()

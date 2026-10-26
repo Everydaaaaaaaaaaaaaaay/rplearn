@@ -88,3 +88,23 @@ struct LearningStars: View {
         }.accessibilityElement(children: .ignore).accessibilityLabel("已点亮 \(earned) 颗星，共 9 颗")
     }
 }
+
+/// Exact boundaries: 70% belongs to green; 50% belongs to yellow.
+enum LearningAccuracyBand: Equatable {
+    case high, medium, low
+
+    init(correct: Int, total: Int) {
+        let ratio = total > 0 ? Double(correct) / Double(total) : 0
+        self = ratio >= 0.7 ? .high : ratio >= 0.5 ? .medium : .low
+    }
+
+    var tint: Color {
+        switch self {
+        case .high: LearningTheme.rewardTint
+        case .medium: Color(light: UIColor(red: 0.53, green: 0.37, blue: 0.03, alpha: 1),
+                            dark: UIColor(red: 0.96, green: 0.78, blue: 0.30, alpha: 1))
+        case .low: Color(light: UIColor(red: 0.72, green: 0.19, blue: 0.23, alpha: 1),
+                         dark: UIColor(red: 1, green: 0.55, blue: 0.57, alpha: 1))
+        }
+    }
+}

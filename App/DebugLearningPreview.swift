@@ -76,7 +76,7 @@ struct DebugLearningPreviewService: LearningServing, LearningDirectionServing, M
         guard ["records", "ready", "active", "preparing"].contains(pageState) else {
             return try decode(["items": [], "nextCursor": NSNull()])
         }
-        let titles = ["在书店挑选一本新书", "周末集市：询价、比较与表达偏好", "去车站的路上"]
+        let titles = ["综合练习 · 在书店挑选一本新书", "综合练习 · 周末集市询价与比较商品", "综合练习 · 问路前往车站"]
         let items: [[String: Any]] = titles.enumerated().map { index, title in
             ["id": index == 0 ? previewRecordID : "20000000-0000-4000-8000-00000000000\(index + 1)",
              "title": title, "level": index == 1 ? "junior3" : "primary3",
