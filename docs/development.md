@@ -64,6 +64,16 @@ Swift 模块路径相对于 `Packages/LingoKit/Sources/`。需要符号地图时
 
 ## Device Hub 与免登录预览
 
+动效测试入口：“我的 → 学习实测 → 动效预览 → 升星与晋升特效”。正式题库加载期间也可进入。可选择 0 / 3 / 8 颗起始星，反复播放单星、连续三颗和晋升揭晓；预览状态只留在页面内存，不写入账号。
+
+```bash
+Scripts/preview.sh build achievement-preview   # 构建、安装并打开动效控制页
+Scripts/preview.sh preview achievement-preview # 复用已构建产物
+Scripts/preview.sh preview promotion-preview   # 内存夹具：剧情、取消/确认、成功揭晓
+```
+
+实际升星仅在本次挑战获得正积分回执、关闭挑战后成功读取同档位星数增长时播放；普通刷新、历史查看和切换档位不触发。晋升继续使用服务端资格、剧情修订号及最终确认，保存成功后才揭晓新档位。
+
 参考 ClassMind 的 `run-classmind` 驱动：固定构建目录、复用模拟器、读取产物 Bundle ID、
 重启 App 使启动参数生效。LingoTrip 使用现有 Debug 内存账号，不复制 ClassMind 的 onboarding defaults。
 

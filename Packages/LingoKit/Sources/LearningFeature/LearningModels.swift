@@ -16,6 +16,22 @@ public final class CharacterLearningModel {
     public private(set) var isChangingDirection = false
     public private(set) var pendingDirection: String?
     public var presentedAttempt: LearningAttempt?
+    public var presentedPromotion: LearningPromotion?
+    private(set) var starAward: LearningStarAward?
+    private struct RewardSession {
+        let level: String
+        let before: LearningJourney?
+        var didEarnPoints = false
+        var returned = false
+    }
+    private var rewardSession: RewardSession?
+    private var promotionRequestID = UUID()
+    private var reloadAfterBusy = false
+    var canOpenPromotion: Bool {
+        guard service is any LearningPromotionServing, let eligibility = journey?.promotion,
+              eligibility.level == journey?.currentLevel else { return false }
+        return eligibility.ready || eligibility.activePromotionId != nil
+    }
     public let characterID: UUID
     let service: any LearningServing & LearningDirectionServing
     private let cycleChanged: @Sendable () async -> Void
@@ -35,11 +51,17 @@ public final class CharacterLearningModel {
         self.cycleChanged = cycleChanged
     }
     public func load() async {
-        guard !isBusy, !isChangingDirection else { return }
+        guard !isBusy, !isChangingDirection else {
+            if rewardSession?.returned == true { reloadAfterBusy = true }
+            return
+        }
         isBusy = true; error = nil
         directions = nil
         directionError = pendingDirection == nil ? nil : "上次方向切换尚未确认，请重试。"
-        defer { isBusy = false }
+        defer {
+            isBusy = false
+            if reloadAfterBusy { reloadAfterBusy = false; Task { await load() } }
+        }
         do {
             async let character = service.learningCharacter(characterID)
             async let global = service.learningJourney()
@@ -47,6 +69,10 @@ public final class CharacterLearningModel {
             let values = try await (character, global, page)
             guard !Task.isCancelled else { return }
             state = values.0; journey = values.1; history = values.2.items; nextCursor = values.2.nextCursor
+            if let session = rewardSession, session.returned {
+                starAward = LearningStarAward(before: session.before, after: values.1, rewardedLevel: session.level, didEarnPoints: session.didEarnPoints)
+                rewardSession = nil
+            }
             isPreparing = ["pending", "running", "review"].contains(state?.generationStatus ?? "")
         } catch is CancellationError {} catch { self.error = error.localizedDescription }
         do {
@@ -99,19 +125,46 @@ public final class CharacterLearningModel {
         isBusy = true; error = nil
         defer { isBusy = false }
         do {
+            let opened: LearningAttempt?
             if let id = id ?? state?.activeAttemptId {
-                presentedAttempt = try await service.learningAttempt(id)
+                opened = try await service.learningAttempt(id)
             } else {
                 let response = try await service.startLearning(characterID, requestID: startRequestID)
                 // 202 也是已完成的幂等请求；下次查询可发起新的抽取。
                 startRequestID = UUID()
                 isPreparing = response.status == "preparing"
-                presentedAttempt = response.attempt
+                opened = response.attempt
+            }
+            if let opened {
+                let baseline = try? await service.learningJourney()
+                guard !Task.isCancelled else { return }
+                rewardSession = RewardSession(level: opened.level, before: baseline)
+                presentedAttempt = opened
             }
         } catch { self.error = error.localizedDescription }
     }
     public func refreshCycle() async { await cycleChanged() }
-    public func challengeClosed() async { await load() }
+    public func challengeClosed() async { rewardSession?.returned = true; await load() }
+    func recordReward(level: String, points: Int) {
+        guard points > 0, rewardSession?.level == level else { return }
+        rewardSession?.didEarnPoints = true
+    }
+    func consumeStarAward(_ id: UUID? = nil) {
+        if id == nil || starAward?.id == id { starAward = nil }
+    }
+    func openPromotion() async {
+        guard !isBusy, canOpenPromotion, let service = service as? any LearningPromotionServing,
+              let eligibility = journey?.promotion else { return }
+        isBusy = true; error = nil
+        defer { isBusy = false }
+        do {
+            let promotion: LearningPromotion
+            if let id = eligibility.activePromotionId { promotion = try await service.learningPromotion(id) }
+            else { promotion = try await service.beginLearningPromotion(level: eligibility.level, requestID: promotionRequestID) }
+            guard !Task.isCancelled else { return }
+            promotionRequestID = UUID(); consumeStarAward(); presentedPromotion = promotion
+        } catch { self.error = error.localizedDescription }
+    }
 }
 
 @MainActor @Observable
@@ -145,9 +198,11 @@ public final class LearningChallengeModel {
     private var retryRequestID = UUID()
     private var seenBeats: Set<String> = []
     private let afterFinish: @Sendable () async -> Void
+    private let didEarnPoints: @Sendable (String, Int) async -> Void
 
-    public init(attempt: LearningAttempt, service: any LearningServing, afterFinish: @escaping @Sendable () async -> Void = {}) {
-        self.attempt = attempt; self.service = service; self.afterFinish = afterFinish
+    public init(attempt: LearningAttempt, service: any LearningServing, afterFinish: @escaping @Sendable () async -> Void = {},
+                didEarnPoints: @escaping @Sendable (String, Int) async -> Void = { _, _ in }) {
+        self.attempt = attempt; self.service = service; self.afterFinish = afterFinish; self.didEarnPoints = didEarnPoints
         roundPoints = attempt.round.answers.filter { $0.result.outcome == .correct }.count
         if attempt.round.completed { stage = .summary }
         else if attempt.round.ordinal == 0 && attempt.round.answers.isEmpty { stage = .cover }
@@ -223,6 +278,7 @@ public final class LearningChallengeModel {
             receiptPoints[command.questionId] = receipt.awardedPoints
             roundPoints = attempt.round.answers.filter { $0.result.outcome == .correct }.count
             pendingAnswer = nil; hasUnconfirmedAnswer = false
+            if receipt.awardedPoints > 0 { await didEarnPoints(attempt.level, receipt.awardedPoints) }
         } catch BackendClientError.api(let code, let message, _, _) where code == "LEARNING_ANSWER_REVIEW_REQUIRED" {
             pendingAnswer = nil; hasUnconfirmedAnswer = false
             self.error = message
@@ -241,6 +297,7 @@ public final class LearningChallengeModel {
             if let command = pendingAnswer,
                let stored = fresh.round.answers.first(where: { $0.questionId == command.questionId }), fresh.round.id == command.roundId {
                 feedback = stored.result; awardedPoints = 0
+                if let points = stored.awardedPoints, points > 0 { await didEarnPoints(fresh.level, points) }
             } else {
                 stage = .summary
             }

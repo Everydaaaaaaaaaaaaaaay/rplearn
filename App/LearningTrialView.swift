@@ -34,76 +34,84 @@ struct LearningTrialView: View {
 
     var body: some View {
         Form {
-            Section {
-                Label("使用当前账号的正式题库", systemImage: "checkmark.shield")
-                Text("与旅伴学习使用同一套题面、播放器、答题、解析和补答界面。切换档位会同步到账号，答题与奖励照常记录。")
+            Section("动效预览") {
+                NavigationLink { LearningAchievementPreview() } label: {
+                    Label("升星与晋升特效", systemImage: "sparkles")
+                }.accessibilityIdentifier("learning.trial.achievement-preview")
+                Text("可重复播放，不改变账号的星星、积分或档位。")
                     .font(.footnote).foregroundStyle(.secondary)
             }
-            Section("旅伴") {
-                if characters.isEmpty {
-                    Text(rosterError ?? "请先在通讯录添加一位旅伴，再回来开始练习。")
-                        .foregroundStyle(.secondary)
-                } else {
-                    Picker("和谁一起练习", selection: $selectedCharacterID) {
-                        ForEach(characters) { character in
-                            Text(character.displayName).tag(Optional(character.id))
-                        }
-                    }.accessibilityIdentifier("learning.trial.character")
+            Group {
+                Section {
+                    Label("使用当前账号的正式题库", systemImage: "checkmark.shield")
+                    Text("与旅伴学习使用同一套题面、播放器、答题、解析和补答界面。切换档位会同步到账号，答题与奖励照常记录。")
+                        .font(.footnote).foregroundStyle(.secondary)
                 }
-            }
-            Section("选择档位") {
-                ForEach(LearningTrialModel.levels, id: \.rawValue) { level in
-                    Button { model.selectedLevel = level } label: {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(level.displayName).foregroundStyle(.primary)
-                                if let state = model.journey?.levels.first(where: { $0.level == level.rawValue }) {
-                                    Text(state.publishedUnitCount.map { $0 == 0 ? "暂无已发布练习" : "已发布 \($0) 套练习" } ?? "可抽取数量以开始时为准")
-                                        .font(.caption).foregroundStyle(.secondary)
-                                } else { Text("等待服务器确认").font(.caption).foregroundStyle(.secondary) }
+                Section("旅伴") {
+                    if characters.isEmpty {
+                        Text(rosterError ?? "请先在通讯录添加一位旅伴，再回来开始练习。")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        Picker("和谁一起练习", selection: $selectedCharacterID) {
+                            ForEach(characters) { character in
+                                Text(character.displayName).tag(Optional(character.id))
                             }
-                            Spacer()
-                            if model.selectedLevel == level { Image(systemName: "checkmark").foregroundStyle(Color.dsSkyDeep) }
-                        }
+                        }.accessibilityIdentifier("learning.trial.character")
                     }
-                    .accessibilityIdentifier("learning.trial.level.\(level.rawValue)")
-                    .accessibilityAddTraits(model.selectedLevel == level ? .isSelected : [])
                 }
-            }
-            Section("完整题组") {
-                if let originals = model.originals {
-                    Text("已发布 \(originals.units.count) 组；保留全文、全部子题与配套输入。")
-                        .font(.footnote).foregroundStyle(.secondary)
-                    Picker("题型", selection: $originalFamily) {
-                        Text("全部题型").tag("")
-                        ForEach(Array(Set(originals.units.map(\.family))).sorted(), id: \.self) { family in
-                            Text(originals.units.first(where: { $0.family == family })?.label ?? family).tag(family)
+                Section("选择档位") {
+                    ForEach(LearningTrialModel.levels, id: \.rawValue) { level in
+                        Button { model.selectedLevel = level } label: {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(level.displayName).foregroundStyle(.primary)
+                                    if let state = model.journey?.levels.first(where: { $0.level == level.rawValue }) {
+                                        Text(state.publishedUnitCount.map { $0 == 0 ? "暂无已发布练习" : "已发布 \($0) 套练习" } ?? "可抽取数量以开始时为准")
+                                            .font(.caption).foregroundStyle(.secondary)
+                                    } else { Text("等待服务器确认").font(.caption).foregroundStyle(.secondary) }
+                                }
+                                Spacer()
+                                if model.selectedLevel == level { Image(systemName: "checkmark").foregroundStyle(Color.dsSkyDeep) }
+                            }
                         }
-                    }.accessibilityIdentifier("learning.trial.family")
-                    Picker("选择题组", selection: $model.selectedOriginalID) {
-                        if originalFamily.isEmpty { Text("自动抽取").tag(Optional<String>.none) }
-                        ForEach(originals.units.filter { originalFamily.isEmpty || $0.family == originalFamily }) { unit in
-                            Text("\(unit.label) · \(unit.title)（\(unit.questions)题）").tag(Optional(unit.id))
-                        }
-                    }.accessibilityIdentifier("learning.trial.original")
-                } else if let error = model.originalsError {
-                    Text(error).foregroundStyle(.red)
-                    Button("重新读取原创题组") { Task { originalFamily = ""; await model.loadOriginals() } }
-                } else { ProgressView("读取正式原创题库…") }
-            }
-            if let attempt = model.activeAttempt {
-                Section("进行中的挑战") {
-                    Text(attempt.unit.title)
-                    Text("\(DifficultyLevel(rawValue: attempt.level)?.displayName ?? attempt.level) · \(attempt.unit.questions.count) 题")
-                        .font(.footnote).foregroundStyle(.secondary)
-                    Text("这位旅伴有未完成练习，开始按钮会继续原题组。完成后可抽取新题，也可换一位旅伴练习。")
-                        .font(.footnote).foregroundStyle(.secondary)
-                    Button("继续这次挑战") { Task { await model.resume() } }
-                        .accessibilityIdentifier("learning.trial.resume")
+                        .accessibilityIdentifier("learning.trial.level.\(level.rawValue)")
+                        .accessibilityAddTraits(model.selectedLevel == level ? .isSelected : [])
+                    }
                 }
-            }
+                Section("完整题组") {
+                    if let originals = model.originals {
+                        Text("已发布 \(originals.units.count) 组；保留全文、全部子题与配套输入。")
+                            .font(.footnote).foregroundStyle(.secondary)
+                        Picker("题型", selection: $originalFamily) {
+                            Text("全部题型").tag("")
+                            ForEach(Array(Set(originals.units.map(\.family))).sorted(), id: \.self) { family in
+                                Text(originals.units.first(where: { $0.family == family })?.label ?? family).tag(family)
+                            }
+                        }.accessibilityIdentifier("learning.trial.family")
+                        Picker("选择题组", selection: $model.selectedOriginalID) {
+                            if originalFamily.isEmpty { Text("自动抽取").tag(Optional<String>.none) }
+                            ForEach(originals.units.filter { originalFamily.isEmpty || $0.family == originalFamily }) { unit in
+                                Text("\(unit.label) · \(unit.title)（\(unit.questions)题）").tag(Optional(unit.id))
+                            }
+                        }.accessibilityIdentifier("learning.trial.original")
+                    } else if let error = model.originalsError {
+                        Text(error).foregroundStyle(.red)
+                        Button("重新读取原创题组") { Task { originalFamily = ""; await model.loadOriginals() } }
+                    } else { ProgressView("读取正式原创题库…") }
+                }
+                if let attempt = model.activeAttempt {
+                    Section("进行中的挑战") {
+                        Text(attempt.unit.title)
+                        Text("\(DifficultyLevel(rawValue: attempt.level)?.displayName ?? attempt.level) · \(attempt.unit.questions.count) 题")
+                            .font(.footnote).foregroundStyle(.secondary)
+                        Text("这位旅伴有未完成练习，开始按钮会继续原题组。完成后可抽取新题，也可换一位旅伴练习。")
+                            .font(.footnote).foregroundStyle(.secondary)
+                        Button("继续这次挑战") { Task { await model.resume() } }
+                            .accessibilityIdentifier("learning.trial.resume")
+                    }
+                }
+            }.disabled(model.isBusy)
         }
-        .disabled(model.isBusy)
         .safeAreaInset(edge: .bottom) {
             VStack(spacing: 8) {
                 if let message = model.error ?? rosterError {

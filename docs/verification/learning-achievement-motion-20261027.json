@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-27",
+  "scope": "Learning card spacing, rewarded star flight, authoritative promotion ceremony, Debug replay controls",
+  "implementation": {
+    "progressMeterHeightPt": 16,
+    "cardGroupSpacingPt": {"standard": 34, "compact": 24},
+    "starFlight": "Shared vector gold star, perspective approach, curved flight to actual slot anchor, landing ring and sparks; first star 1.4s, extra stars 0.36s each",
+    "promotion": "Existing eligibility and story/confirmation contract preserved; saved completion reveals nine-star convergence, crest, new level and English message in 2.7s",
+    "authority": "Positive local reward receipt plus fresh same-level server star increase; no celebration on ordinary load/history/level changes; promotion profile synchronized after saved completion",
+    "accessibility": "Reduced Motion uses settled result; skip/close remain available; Dynamic Type and compact layouts scroll; inactive scene and changed star-row layout settle flight",
+    "preview": "Me > Learning Trial > achievement preview; 0/3/8 starting stars, single/multiple/promotion replay; memory only and no account mutation"
+  },
+  "unitTests": {
+    "command": "Scripts/test.sh -collect-test-diagnostics never -only-testing:LingoTripTests/LearningAchievementTests -only-testing:LingoTripTests/LearningChallengeTests -only-testing:LingoTripTests/LearningPracticeLiveTests",
+    "result": "39 passed, 0 failed, 0 skipped",
+    "evidence": "build/learning-achievement-20261027/swift-verified.xcresult"
+  },
+  "uiTests": {
+    "standard": "4 passed, 0 failed, 0 skipped on iPhone 18 Pro / iOS 27",
+    "compact": "3 passed, 0 failed, 0 skipped on iPhone SE 3 / iOS 27: main card layout, maximum text and first/multiple/ninth star plus promotion replay",
+    "compactEvidence": "build/learning-achievement-20261027/ui-compact.xcresult",
+    "coverage": ["First, multiple and ninth star plus repeat playback", "Maximum accessibility text controls and promotion", "Real promotion view with in-memory story, cancel/confirm and saved completion", "Me to Learning Trial to replay page while real services are unavailable"],
+    "evidence": "build/learning-achievement-20261027/ui-verified.xcresult"
+  },
+  "visualReview": {
+    "rawRecording": "build/learning-achievement-20261027/achievement-verified-raw.mp4",
+    "durationSeconds": 206.195,
+    "review": "Inspected native screenshots of both completion variants and consecutive 250ms frames of single/multiple star approach, flight and landing. Geometry remains within the preview and ends in the actual empty slot.",
+    "computerUse": "Device Hub produced blank screenshots earlier in this task; used hosted UI interaction, native simulator capture and recording instead of repeating blank captures.",
+    "copyFollowUp": "Removed decorative preview slogan and in-flight status, including the user-rejected arrival text; also removed redundant promotion eyebrow. Only level/stars, useful status and controls remain. Final build and preview verify this copy-only follow-up."
+  },
+  "unchangedEvidence": ["docs/verification/learning-layout-independent-cities-20261027.json"],
+  "finalBuild": {
+    "command": "LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh build achievement-preview",
+    "result": "Succeeded after transient disk-full failure and cleanup of unused test-only compiler intermediates; installed latest app and left replay page open",
+    "log": "build/learning-achievement-20261027/final-build-retry.log",
+    "screenshot": "build/learning-achievement-20261027/final-preview.png"
+  },
+  "dataSafety": "No backend, database, account progress, research assets or production changes. Local replay is presentation only. Cleanup limited to this run's completed failed-test diagnostics, unusable generated recording and no-longer-open test-target compiler intermediates; stdout, current app, successful results and useful recording preserved in ignored build directory. Filesystem free-space measurements and reasons recorded there.",
+  "limitations": ["Simulator does not validate physical-device haptic feel or actual GPU frame rate.", "Recording was inspected as consecutive frames; no claim of continuous playback or measured 60fps performance."]
+}

@@ -30,11 +30,12 @@ public struct LearningChallengeView: View {
                 audioSession: AudioSessionCoordinator = AudioSessionCoordinator(),
                 speech: (any SpeechService)? = nil,
                 beforePlayback: @escaping @Sendable () async -> Void = {},
-                afterFinish: @escaping @Sendable () async -> Void = {}) {
+                afterFinish: @escaping @Sendable () async -> Void = {},
+                didEarnPoints: @escaping @Sendable (String, Int) async -> Void = { _, _ in }) {
         _companion = State(initialValue: PracticeCompanionPresentation(character: character))
         companionService = (service as? BackendClient).map { PracticeCompanionMessageService(llm: BackendLLMProvider(backend: $0)) }
-        _practice = State(initialValue: LearningPracticeModel(attempt: attempt, service: service, afterFinish: afterFinish))
-        _model = State(initialValue: LearningChallengeModel(attempt: attempt, service: service, afterFinish: afterFinish)); self.character = character
+        _practice = State(initialValue: LearningPracticeModel(attempt: attempt, service: service, afterFinish: afterFinish, didEarnPoints: didEarnPoints))
+        _model = State(initialValue: LearningChallengeModel(attempt: attempt, service: service, afterFinish: afterFinish, didEarnPoints: didEarnPoints)); self.character = character
         let listeningSpeech = speech ?? AdaptiveSpeechService(audioSession: audioSession)
         _pictures = State(initialValue: LearningImageModel(service: service))
         _audio = State(initialValue: LearningAudioModel(service: service, playback: NativeLearningAudioPlayback(session: audioSession, speech: listeningSpeech), beforePlayback: beforePlayback))

@@ -444,4 +444,22 @@ struct LearningChallengeTests {
         #expect(object["answer"] == nil)
         #expect(object["explanation"] == nil)
     }
+    @Test("Achievement callback waits for a positive confirmed answer receipt and does not replay feedback")
+    func confirmedRewardCallback() async throws {
+        actor RewardFlag {
+            var points = 0
+            func record(_ points: Int) { self.points += points }
+        }
+        let flag = RewardFlag()
+        let model = LearningChallengeModel(attempt: try learningAttemptFixture(), service: try ChallengeService(),
+            didEarnPoints: { _, points in await flag.record(points) })
+        model.skipStory(); model.choice = "a"
+        await model.submit()
+        #expect(await flag.points == 0)
+        await model.submit()
+        #expect(await flag.points == 1)
+        await model.submit()
+        #expect(await flag.points == 1)
+    }
+
 }

@@ -175,6 +175,10 @@ struct RootView: View {
                             rosterStore: environment.rosterStore,
                             chatBuilder: { AnyView(ChatView(character: $0, deps: chatDeps)) },
                             callBuilder: { AnyView(ChatView(character: $0, deps: chatDeps, startsInRealtimeConversation: true)) })
+                    } else if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "promotion-preview" {
+                        DebugLearningPromotionPreview()
+                    } else if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "achievement-preview" {
+                        LearningAchievementPreview()
                     } else if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "practice-preview" {
                         LearningPracticePreview(character: character)
                     } else if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "unit-challenge" {
@@ -538,7 +542,7 @@ struct RootView: View {
             #if DEBUG
             .task(id: "\(accountID.uuidString)-\(stateRevision)-\(environment.needsOnboarding == false)") {
                 // 内存账号可能先挂载、后导入角色；等导入完成，避免冷启动丢失预览展示。
-                guard ["role-learning", "unit-challenge", "practice-preview"].contains(ProcessInfo.processInfo.environment["UI_TEST_TAB"] ?? ""),
+                guard ["role-learning", "unit-challenge", "practice-preview", "achievement-preview", "promotion-preview"].contains(ProcessInfo.processInfo.environment["UI_TEST_TAB"] ?? ""),
                       bypassesAuthenticationForUITesting, environment.needsOnboarding == false else { return }
                 captureCharacter = try? await environment.rosterStore.allCharacters().first { $0.isMainCharacter }
             }
@@ -887,7 +891,7 @@ struct RootView: View {
         .id("me-root")
         #if DEBUG
         .safeAreaInset(edge: .bottom) {
-            if section == nil && !bypassesAuthenticationForUITesting {
+            if section == nil {
                 Button { openMe(.learningTrial) } label: {
                     Label("学习实测 · 切换档位做题", systemImage: "book.pages")
                         .font(.subheadline.weight(.semibold)).frame(maxWidth: .infinity).padding(12)
@@ -1128,13 +1132,21 @@ struct RootView: View {
         let learningAudioSession = environment.audioSession
         let learningSpeech = environment.speech
         let learningEconomyStore = environment.economyStore
+        let learningUserState = environment.userState
+        let learningWorkspace = environment.workspace
         if !bypassesAuthenticationForUITesting {
             dependencies.learningPage = { character, visible in
                 AnyView(CharacterLearningView(character: character, service: backend, isVisible: visible,
                     audioSession: learningAudioSession, speech: learningSpeech,
                     currentRegionID: { try? await learningEconomyStore.profile().currentRegionID },
                     beforePlayback: { await learningSpeech.stopSpeaking() },
-                    cycleChanged: { await tracker?.challengeCompleted(characterID: character.id) }))
+                    cycleChanged: { await tracker?.challengeCompleted(characterID: character.id) },
+                    promotionCompleted: {
+                        try await learningUserState.synchronize()
+                        guard environment.workspace === learningWorkspace else { throw CancellationError() }
+                        let profile = try await learningEconomyStore.profile()
+                        await environment.applyLearnerProfile(profile)
+                    }))
             }
         }
         #if DEBUG

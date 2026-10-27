@@ -13,10 +13,12 @@ public struct CharacterLearningView: View {
     private let speech: any SpeechService
     private let audioSession: AudioSessionCoordinator
     private let beforePlayback: @Sendable () async -> Void
+    private let promotionCompleted: @MainActor () async throws -> Void
     private let currentRegionID: @Sendable () async -> String?
     @State private var sceneRegionID: String?
     @Environment(\.scenePhase) private var scenePhase
     @State private var showJourney = false
+    @State private var displayedStarAward: LearningStarAward?
     @State private var historyExpanded = false
     @State private var historyFilter = LearningHistoryFilter()
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
@@ -25,17 +27,19 @@ public struct CharacterLearningView: View {
                 speech: (any SpeechService)? = nil,
                 currentRegionID: @escaping @Sendable () async -> String? = { nil },
                 beforePlayback: @escaping @Sendable () async -> Void = {},
-                cycleChanged: @escaping @Sendable () async -> Void = {}) {
+                cycleChanged: @escaping @Sendable () async -> Void = {},
+                promotionCompleted: @escaping @MainActor () async throws -> Void = {}) {
         self.character = character; self.isVisible = isVisible
         self.speech = speech ?? AdaptiveSpeechService(audioSession: audioSession)
         self.audioSession = audioSession; self.beforePlayback = beforePlayback
-        self.currentRegionID = currentRegionID
+        self.currentRegionID = currentRegionID; self.promotionCompleted = promotionCompleted
         _model = State(initialValue: CharacterLearningModel(characterID: character.id, service: service,
                                                            cycleChanged: cycleChanged))
     }
     private var theme: LearningTheme { LearningTheme(role: model.state?.roleKey ?? character.card.name.components(separatedBy: " ").first?.lowercased() ?? "") }
     public var body: some View {
         GeometryReader { viewport in
+            ScrollViewReader { reader in
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     if let error = model.error ?? model.directionError {
@@ -60,6 +64,15 @@ public struct CharacterLearningView: View {
                 .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 16)
                 .frame(maxWidth: 600).frame(maxWidth: .infinity)
             }
+            .task(id: isVisible ? model.starAward?.id : nil) {
+                displayedStarAward = nil
+                guard isVisible, let award = model.starAward else { return }
+                reader.scrollTo("learning.star.destination", anchor: .center)
+                do { try await Task.sleep(for: .milliseconds(100)) } catch { return }
+                guard !Task.isCancelled, model.starAward?.id == award.id else { return }
+                displayedStarAward = award
+            }
+            }
         }
         .background { LearningCityBackdrop(regionID: sceneRegionID) }
         .tint(theme.tint)
@@ -73,8 +86,17 @@ public struct CharacterLearningView: View {
         }
         .fullScreenCover(item: $model.presentedAttempt, onDismiss: { Task { await model.challengeClosed() } }) { attempt in
             LearningChallengeView(attempt: attempt, character: character, service: model.service, audioSession: audioSession, speech: speech,
-                                  beforePlayback: beforePlayback, afterFinish: { await model.refreshCycle() })
+                                  beforePlayback: beforePlayback, afterFinish: { await model.refreshCycle() },
+                                  didEarnPoints: { level, points in await model.recordReward(level: level, points: points) })
         }
+        .fullScreenCover(item: $model.presentedPromotion, onDismiss: { Task { await model.load() } }) { promotion in
+            if let service = model.service as? any LearningPromotionServing {
+                NavigationStack {
+                    LearningPromotionView(promotion: promotion, service: service, onProfileChanged: promotionCompleted)
+                }
+            }
+        }
+        .onChange(of: isVisible) { _, visible in if !visible { model.consumeStarAward() } }
         .sheet(isPresented: $showJourney) {
             NavigationStack {
                 LearningProgressOverview(service: model.service)
@@ -96,7 +118,7 @@ public struct CharacterLearningView: View {
     private func challengeCard(_ state: BackendLearningCharacter, compact: Bool) -> some View {
         let unlocked = state.activeAttemptId != nil || state.characters >= state.threshold
         let percentage = learningChatPercentage(characters: state.characters, threshold: state.threshold)
-        return VStack(spacing: compact ? 20 : 28) {
+        return VStack(spacing: compact ? 24 : 34) {
             VStack(spacing: compact ? 10 : 14) {
                 AvatarBadge(name: character.displayName, size: compact ? 64 : 88,
                             imageName: character.card.avatarAssetName,
@@ -110,7 +132,7 @@ public struct CharacterLearningView: View {
             .accessibilityElement(children: .combine)
             .accessibilityIdentifier("learning.character.identity")
 
-            VStack(spacing: 8) {
+            VStack(spacing: 10) {
                 LearningMeter(value: state.characters, total: state.threshold, tint: theme.tint)
                     .frame(maxWidth: 260)
                 Text("\(percentage)% 聊天进度")
@@ -126,6 +148,13 @@ public struct CharacterLearningView: View {
                 Text(challengeStatus(state)).font(.subheadline).foregroundStyle(.secondary)
                     .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
                 if unlocked { challengeAction(state) }
+                if model.canOpenPromotion {
+                    Button { Task { await model.openPromotion() } } label: {
+                        Label(model.journey?.promotion?.activePromotionId != nil ? "继续晋升仪式" : "开启晋升仪式", systemImage: "sparkles")
+                            .font(.subheadline.weight(.semibold)).frame(maxWidth: .infinity, minHeight: 44)
+                    }.buttonStyle(LearningPressStyle()).disabled(model.isBusy)
+                        .accessibilityIdentifier("learning.promotion.open")
+                }
             }
         }
         .padding(.vertical, compact ? 0 : 8)
@@ -172,9 +201,10 @@ public struct CharacterLearningView: View {
         .buttonStyle(LearningPressStyle()).foregroundStyle(.primary)
         .accessibilityHint("查看学习进度")
         .accessibilityIdentifier("learning.journey")
+        .id("learning.star.destination")
     }
     private func journeyStars(_ journey: LearningJourney) -> some View {
-        LearningMilestones(earned: journey.current?.stars ?? 0, tint: theme.tint)
+        LearningAchievementStars(earned: model.starAward?.from ?? journey.current?.stars ?? 0, award: displayedStarAward) { model.consumeStarAward($0) }
     }
     private func generalProgressTitle(_ journey: LearningJourney) -> String {
         let level = learningLevelName(journey.currentLevel)
@@ -376,23 +406,14 @@ private struct LearningMeter: View {
                     Capsule().fill(tint)
                         .frame(width: geometry.size.width * min(1, max(0, Double(value) / Double(max(1, total)))))
                 }
-        }.frame(height: 12)
+        }.frame(height: 16)
     }
 }
 
 private struct LearningMilestones: View {
     let earned: Int
     let tint: Color
-    var body: some View {
-        HStack(spacing: 7) {
-            ForEach(0..<9) { index in
-                Image(systemName: index < earned ? "star.fill" : "star")
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundStyle(index < earned ? tint : Color.secondary.opacity(0.6))
-            }
-        }
-        .accessibilityElement(children: .ignore).accessibilityLabel("已点亮 \(earned) 颗星，共 9 颗")
-    }
+    var body: some View { LearningAchievementStars(earned: earned) }
 }
 
 struct LearningPageError: View {

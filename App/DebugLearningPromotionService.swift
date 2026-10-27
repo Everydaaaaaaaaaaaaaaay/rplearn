@@ -1,6 +1,8 @@
 #if DEBUG
 import BackendKit
 import Foundation
+import LearningFeature
+import SwiftUI
 
 /// 仅用于免登录交互验收，所有剧情、分数、确认都留在进程内。
 actor DebugLearningPromotionService: LearningPromotionServing {
@@ -53,5 +55,18 @@ actor DebugLearningPromotionService: LearningPromotionServing {
         let value = try snapshot(); receipts[command.requestId] = value; return value
     }
     private func decode<T: Decodable>(_ object: [String: Any]) throws -> T { try JSONDecoder().decode(T.self, from: JSONSerialization.data(withJSONObject: object)) }
+}
+
+struct DebugLearningPromotionPreview: View {
+    @State private var promotion: LearningPromotion?
+    var body: some View {
+        NavigationStack {
+            if let promotion {
+                LearningPromotionView(promotion: promotion, service: DebugLearningPromotionService.shared, onProfileChanged: {})
+            } else { ProgressView("正在准备本地晋升预览…") }
+        }.task {
+            promotion = try? await DebugLearningPromotionService.shared.beginLearningPromotion(level: "primary3", requestID: UUID())
+        }
+    }
 }
 #endif

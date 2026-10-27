@@ -241,4 +241,34 @@ struct LearningPracticeLiveTests {
         #expect(reloaded.earnedPoints == 5)
         #expect(!reloaded.hasUnconfirmedAnswer)
     }
+    @Test("Only positive confirmed reward receipts notify the achievement presentation")
+    func positiveRewardNotification() async throws {
+        actor Rewards {
+            var points = 0
+            func record(level: String, points: Int) { if level == "senior1" { self.points += points } }
+        }
+        let attempt = try formalAttempt(), rewards = Rewards()
+        let service = FormalPracticeService(attempt)
+        let candidate = LearningPracticeModel(attempt: attempt, service: service,
+            defaults: UserDefaults(suiteName: UUID().uuidString)!,
+            didEarnPoints: { level, points in await rewards.record(level: level, points: points) })
+        let model = try #require(candidate)
+        model.start()
+        for index in 0..<5 { model.selectQuestion(index); model.setAnswer(String(Character(UnicodeScalar(65 + index)!))) }
+        await model.submitSection()
+        #expect(await rewards.points == 5)
+        await model.submitSection()
+        #expect(await rewards.points == 5)
+        let zeroService = FormalPracticeService(attempt)
+        await zeroService.setPoints(0)
+        let zeroCandidate = LearningPracticeModel(attempt: attempt, service: zeroService,
+            defaults: UserDefaults(suiteName: UUID().uuidString)!,
+            didEarnPoints: { level, points in await rewards.record(level: level, points: points) })
+        let zero = try #require(zeroCandidate)
+        zero.start()
+        for index in 0..<5 { zero.selectQuestion(index); zero.setAnswer(String(Character(UnicodeScalar(65 + index)!))) }
+        await zero.submitSection()
+        #expect(await rewards.points == 5)
+    }
+
 }

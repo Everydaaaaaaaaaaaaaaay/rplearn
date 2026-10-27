@@ -65,6 +65,7 @@ final class LearningPracticeModel {
     private(set) var currentAttempt: LearningAttempt?
     @ObservationIgnored private var backend: (any LearningServing)?
     @ObservationIgnored private var afterFinish: @Sendable () async -> Void = {}
+    @ObservationIgnored private var didEarnPoints: @Sendable (String, Int) async -> Void = { _, _ in }
     @ObservationIgnored private var optionIDs: [String: [String: String]] = [:]
     var isProduction: Bool { backend != nil }
     var hasUnconfirmedAnswer: Bool { draft.pendingCommand != nil }
@@ -100,12 +101,13 @@ final class LearningPracticeModel {
     }
     convenience init?(attempt: LearningAttempt, service: any LearningServing,
                       defaults: UserDefaults = .standard,
-                      afterFinish: @escaping @Sendable () async -> Void = {}) {
+                      afterFinish: @escaping @Sendable () async -> Void = {},
+                      didEarnPoints: @escaping @Sendable (String, Int) async -> Void = { _, _ in }) {
         guard let projection = LearningPracticeProjection(unit: attempt.unit) else { return nil }
         self.init(tasks: [projection.task], defaults: defaults,
                   namespace: "learning.practice.v1.\(attempt.characterId).\(attempt.id).\(attempt.round.id)")
         self.backend = service; self.currentAttempt = attempt
-        self.optionIDs = projection.optionIDs; self.afterFinish = afterFinish
+        self.optionIDs = projection.optionIDs; self.afterFinish = afterFinish; self.didEarnPoints = didEarnPoints
         reconcile(attempt)
     }
     private func reconcile(_ attempt: LearningAttempt) {
@@ -203,6 +205,7 @@ final class LearningPracticeModel {
                     if draft.awardedPoints == nil { draft.awardedPoints = [:] }
                     draft.awardedPoints?[question.id] = receipt.awardedPoints
                     draft.pendingCommand = nil; save()
+                    if receipt.awardedPoints > 0 { await didEarnPoints(receipt.attempt.level, receipt.awardedPoints) }
                 }
             } catch {
                 if case BackendClientError.api(let code, let message, _, _) = error {
@@ -232,7 +235,11 @@ final class LearningPracticeModel {
         do {
             let fresh = try await backend.learningAttempt(attempt.id)
             guard fresh.round.id == attempt.round.id else { error = "作答轮已更新，请退出后重新进入。"; return }
+            let pendingID = draft.pendingCommand?.questionId
             reconcile(fresh); error = nil
+            if let pendingID, let points = fresh.round.answers.first(where: { $0.questionId == pendingID })?.awardedPoints, points > 0 {
+                await didEarnPoints(fresh.level, points)
+            }
         } catch { self.error = error.localizedDescription }
     }
     func finishReview() async {
