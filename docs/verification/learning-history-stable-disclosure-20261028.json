@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-28",
+  "scope": "Role learning history proximity and stable disclosure position",
+  "change": {
+    "cardGapPt": 12,
+    "flow": "History follows the challenge card in normal scroll flow; no viewport-height spacer or page minimum height. Expansion adds records beneath the existing header.",
+    "default": "History remains collapsed."
+  },
+  "regression": {
+    "before": "New UI regression failed: expanding moved the header from y=758 to y=688.333 pt.",
+    "after": "Same regression passed: header and main card stay within 2 pt when expanding; header returns to the same position when collapsing."
+  },
+  "uiTests": {
+    "device": "iPhone 18 Pro / iOS 27.0",
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "coverage": [
+      "Stable expand/collapse header",
+      "Challenge card and adjacent collapsed history",
+      "Maximum accessibility text in dark appearance",
+      "Pending and all three accuracy filters, combined filters and progress overview"
+    ],
+    "beforeEvidence": "build/learning-history-layout-20261028/ui-before.xcresult",
+    "afterEvidence": "build/learning-history-layout-20261028/ui-after.xcresult"
+  },
+  "visualReview": {
+    "method": "Native simulator screenshots and Xcode-hosted UI interactions; Computer Use tools unavailable.",
+    "review": "Inspected collapsed and expanded layouts: 12 pt card gap and the same header position. Also inspected maximum-text dark history and the final installed preview.",
+    "screenshots": "build/learning-history-layout-20261028/after-attachments",
+    "unchangedCityPhotoEvidence": "docs/verification/learning-layout-independent-cities-20261027.json"
+  },
+  "preview": {
+    "command": "SIMCTL_CHILD_UI_TEST_LEARNING_PAGE_STATE=ready LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh build role-learning",
+    "result": "Build, installation and launch succeeded; left on role learning preview.",
+    "log": "build/learning-history-layout-20261028/final-preview.log",
+    "screenshot": "build/learning-history-layout-20261028/final-preview.png"
+  },
+  "scoring": "No change to points, star thresholds, promotion eligibility or multi-star animation preview. No backend, account or database changes."
+}

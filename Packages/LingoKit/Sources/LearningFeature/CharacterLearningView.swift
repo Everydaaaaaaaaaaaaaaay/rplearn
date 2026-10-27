@@ -41,7 +41,7 @@ public struct CharacterLearningView: View {
         GeometryReader { viewport in
             ScrollViewReader { reader in
             ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading, spacing: 12) {
                     if let error = model.error ?? model.directionError {
                         LearningPageError(message: error) {
                             Task {
@@ -52,7 +52,6 @@ public struct CharacterLearningView: View {
                     }
                     if let state = model.state {
                         challengeCard(state, compact: viewport.size.height < 650)
-                        Spacer(minLength: 0)
                         historySection.modifier(LearningPaper(opacity: 0.96))
                     } else if model.isBusy {
                         ProgressView("正在载入…")
@@ -60,7 +59,6 @@ public struct CharacterLearningView: View {
                             .modifier(LearningPaper(opacity: 0.96))
                     }
                 }
-                .frame(minHeight: max(0, viewport.size.height - 24), alignment: .top)
                 .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 16)
                 .frame(maxWidth: 600).frame(maxWidth: .infinity)
             }

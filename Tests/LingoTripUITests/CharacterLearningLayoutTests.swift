@@ -115,14 +115,34 @@ final class CharacterLearningLayoutTests: XCTestCase {
         XCTAssertFalse(app.buttons["learning.history.filter"].exists)
         XCTAssertFalse(app.buttons["learning.history.20000000-0000-4000-8000-000000000001"].exists)
         XCTAssertTrue(toggle.isHittable)
-        XCTAssertGreaterThan(toggle.frame.midY, app.frame.height * 0.75)
-        capture(app, name: "角色主卡片与底部折叠记录")
+        XCTAssertLessThanOrEqual(toggle.frame.minY - card.frame.maxY, 40,
+                                 "挑战记录应紧接主卡片，不固定在屏幕底部")
+        capture(app, name: "角色主卡片与相邻折叠记录")
         expandHistory(in: app)
         let filter = app.buttons["learning.history.filter"]
         XCTAssertTrue(filter.waitForExistence(timeout: 3))
         toggle.tap()
         XCTAssertFalse(filter.exists)
         XCTAssertEqual(toggle.value as? String, "已折叠")
+    }
+
+    func testHistoryExpandsDownwardWithoutMovingItsHeader() {
+        let app = launch(state: "ready")
+        let toggle = app.buttons["learning.history.toggle"]
+        XCTAssertTrue(toggle.waitForExistence(timeout: 10))
+        let card = app.otherElements["learning.challenge.card"]
+        let collapsedHeaderY = toggle.frame.minY
+        let collapsedCardY = card.frame.minY
+        capture(app, name: "展开前的记录位置")
+        toggle.tap()
+        XCTAssertTrue(app.buttons["learning.history.filter"].waitForExistence(timeout: 3))
+        XCTAssertEqual(toggle.frame.minY, collapsedHeaderY, accuracy: 2,
+                       "展开应向下延伸，记录标题不能自动上移")
+        XCTAssertEqual(card.frame.minY, collapsedCardY, accuracy: 2)
+        capture(app, name: "向下展开的挑战记录")
+        toggle.tap()
+        XCTAssertEqual(toggle.value as? String, "已折叠")
+        XCTAssertEqual(toggle.frame.minY, collapsedHeaderY, accuracy: 2)
     }
 
     func testLockedPracticeShowsUnlockProgressWithoutDirectionRow() {
