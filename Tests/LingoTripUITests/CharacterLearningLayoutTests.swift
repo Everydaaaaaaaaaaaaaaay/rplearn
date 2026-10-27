@@ -103,6 +103,10 @@ final class CharacterLearningLayoutTests: XCTestCase {
         XCTAssertEqual(app.otherElements["learning.unlock.progress"].value as? String, "100% 聊天进度")
         let identity = app.descendants(matching: .any)["learning.character.identity"].firstMatch
         XCTAssertTrue(card.frame.contains(identity.frame))
+        let progress = app.otherElements["learning.unlock.progress"]
+        XCTAssertLessThanOrEqual(card.frame.height, 540, "常规字号卡片应收紧，避免内部留白撑满屏幕")
+        XCTAssertLessThan(progress.frame.minY - identity.frame.maxY, 64)
+        XCTAssertLessThan(app.buttons["learning.journey"].frame.minY - progress.frame.maxY, 64)
         XCTAssertLessThan(identity.frame.maxY, app.buttons["learning.journey"].frame.minY)
         XCTAssertLessThan(app.buttons["learning.journey"].frame.maxY, start.frame.minY)
         XCTAssertFalse(app.staticTexts["角色学习"].exists)

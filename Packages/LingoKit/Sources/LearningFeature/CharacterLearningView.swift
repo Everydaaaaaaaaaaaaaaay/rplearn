@@ -47,7 +47,8 @@ public struct CharacterLearningView: View {
                         }
                     }
                     if let state = model.state {
-                        challengeCard(state, minimumHeight: max(340, viewport.size.height - 128), compact: viewport.size.height < 650)
+                        challengeCard(state, compact: viewport.size.height < 650)
+                        Spacer(minLength: 0)
                         historySection.modifier(LearningPaper(opacity: 0.96))
                     } else if model.isBusy {
                         ProgressView("正在载入…")
@@ -55,9 +56,9 @@ public struct CharacterLearningView: View {
                             .modifier(LearningPaper(opacity: 0.96))
                     }
                 }
+                .frame(minHeight: max(0, viewport.size.height - 24), alignment: .top)
                 .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 16)
                 .frame(maxWidth: 600).frame(maxWidth: .infinity)
-                .frame(minHeight: viewport.size.height, alignment: .top)
             }
         }
         .background { LearningCityBackdrop(regionID: sceneRegionID) }
@@ -92,10 +93,10 @@ public struct CharacterLearningView: View {
         if let regionID = await currentRegionID(), !Task.isCancelled { sceneRegionID = regionID }
         await load
     }
-    private func challengeCard(_ state: BackendLearningCharacter, minimumHeight: CGFloat, compact: Bool) -> some View {
+    private func challengeCard(_ state: BackendLearningCharacter, compact: Bool) -> some View {
         let unlocked = state.activeAttemptId != nil || state.characters >= state.threshold
         let percentage = learningChatPercentage(characters: state.characters, threshold: state.threshold)
-        return VStack(spacing: compact ? 14 : 28) {
+        return VStack(spacing: compact ? 20 : 28) {
             VStack(spacing: compact ? 10 : 14) {
                 AvatarBadge(name: character.displayName, size: compact ? 64 : 88,
                             imageName: character.card.avatarAssetName,
@@ -109,9 +110,7 @@ public struct CharacterLearningView: View {
             .accessibilityElement(children: .combine)
             .accessibilityIdentifier("learning.character.identity")
 
-            Spacer(minLength: compact ? 0 : 16)
-
-            VStack(spacing: 12) {
+            VStack(spacing: 8) {
                 LearningMeter(value: state.characters, total: state.threshold, tint: theme.tint)
                     .frame(maxWidth: 260)
                 Text("\(percentage)% 聊天进度")
@@ -122,17 +121,15 @@ public struct CharacterLearningView: View {
             .accessibilityValue("\(percentage)% 聊天进度")
             .accessibilityIdentifier("learning.unlock.progress")
 
-            Spacer(minLength: compact ? 0 : 16)
-
-            VStack(spacing: compact ? 12 : 20) {
+            VStack(spacing: compact ? 12 : 16) {
                 if let journey = model.journey { globalCard(journey) }
                 Text(challengeStatus(state)).font(.subheadline).foregroundStyle(.secondary)
                     .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
                 if unlocked { challengeAction(state) }
             }
         }
-        .padding(.vertical, compact ? 0 : 10)
-        .frame(maxWidth: .infinity, minHeight: minimumHeight - 44)
+        .padding(.vertical, compact ? 0 : 8)
+        .frame(maxWidth: .infinity, minHeight: compact ? 0 : 436)
         .modifier(LearningPaper(opacity: 0.96))
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("learning.challenge.card")
@@ -379,7 +376,7 @@ private struct LearningMeter: View {
                     Capsule().fill(tint)
                         .frame(width: geometry.size.width * min(1, max(0, Double(value) / Double(max(1, total)))))
                 }
-        }.frame(height: 7)
+        }.frame(height: 12)
     }
 }
 

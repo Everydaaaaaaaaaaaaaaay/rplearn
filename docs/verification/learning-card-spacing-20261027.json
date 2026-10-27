@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-27",
+  "baseCommit": "14221499",
+  "status": "layout verified; achievement motion is a proposal, not implemented",
+  "changes": {
+    "meter": "Increase shared learning meter from 7pt to 12pt. Unlock percentage gap from 12pt to 8pt.",
+    "card": "Remove the two internal expanding Spacers; fixed group gaps 28pt standard / 20pt compact. Standard minimum card height 480pt including surface padding. Compact content keeps natural height; large text expands and scrolls.",
+    "bottom": "Move flexible space outside the main card, between it and the collapsed history control. History stays at bottom while the exposed city photo provides separation.",
+    "behavior": "No changes to scoring, star thresholds, challenge unlock, account data, promotion eligibility or server state."
+  },
+  "checks": {
+    "standard": {
+      "passed": 2,
+      "failed": 0,
+      "result": "build/learning-compact-card-20261027/standard.xcresult",
+      "log": "build/learning-compact-card-20261027/standard.log"
+    },
+    "compact": {
+      "passed": 2,
+      "failed": 0,
+      "result": "build/learning-compact-card-20261027/compact.xcresult",
+      "log": "build/learning-compact-card-20261027/compact.log"
+    }
+  },
+  "testCoverage": "Ready-card bounds, identity/progress/journey gaps under 64pt, card height at most 540pt, default collapse/expand/collapse, filter visibility, contained controls, bottom disclosure; maximum accessibility text in dark mode with scrollable history. Run on 402x874pt iPhone 18 Pro and 375x667pt iPhone SE 3, iOS 27.0.",
+  "visualEvidence": [
+    "docs/verification/learning-card-spacing-20261027/compact-large.jpg",
+    "docs/verification/learning-card-spacing-20261027/compact.jpg",
+    "docs/verification/learning-card-spacing-20261027/melbourne-dark.jpg",
+    "docs/verification/learning-card-spacing-20261027/standard.jpg"
+  ],
+  "photography": "UI-only refinement. Independent city sources, licenses, hashes and full-image review unchanged from Assets/LearningCityScenes/Review-2026-10-27/acceptance-v2.md. Reviewed affected London standard/compact and maximum-text dark layout, plus Melbourne dark final preview; backgrounds still span the same viewport. Cards use the unchanged 96% surface with opaque Reduce Transparency fallback.",
+  "computerUse": "Selected Device Hub and requested current screenshot once; blank again. Used Xcode-hosted UI interactions and native simulator captures, with no repeated capture loop.",
+  "architecture": "passed; build/learning-compact-card-20261027/architecture.log",
+  "diffCheck": "passed",
+  "preview": {
+    "command": "LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 SIMCTL_CHILD_UI_TEST_LEARNING_PAGE_STATE=ready SIMCTL_CHILD_UI_TEST_REGION=melbourne SIMCTL_CHILD_UI_TEST_CAPTURE_APPEARANCE=dark Scripts/preview.sh preview role-learning",
+    "installedAndRunning": true,
+    "source": "Fresh hosted UI builds; reused their latest compiled App for preview installation.",
+    "log": "build/learning-compact-card-20261027/preview.log",
+    "screenshot": "build/learning-compact-card-20261027/final-preview.png"
+  },
+  "motionProposal": "docs/learning-program/achievement-motion-proposal-2026-10-27.md",
+  "limitations": "Celebration timelines, star arrival rendering, promotion entry and redesigned promotion presentation are proposed only. No claim of completed animation or real-device verification."
+}
