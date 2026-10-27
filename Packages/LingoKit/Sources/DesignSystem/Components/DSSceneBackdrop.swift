@@ -6,7 +6,7 @@ public enum DSCitySceneRole: String, Sendable {
     case learning
 }
 
-/// 将当前旅程地区映射到已核验的城市摄影；学习页复用信息页地标摄影，避免重复入包。
+/// 将当前旅程地区映射到各页面独立核验的城市摄影。
 public enum DSCitySceneAssets {
     public static let supportedRegionIDs: Set<String> = [
         "auckland",
@@ -36,8 +36,7 @@ public enum DSCitySceneAssets {
         let resolvedRegionID = normalizedRegionID.flatMap { regionID in
             supportedRegionIDs.contains(regionID) ? regionID : nil
         } ?? "london"
-        let assetRole = role == .learning ? DSCitySceneRole.messages : role
-        return "\(assetRole.rawValue)_\(resolvedRegionID)_glass"
+        return "\(role.rawValue)_\(resolvedRegionID)_glass"
     }
 }
 

@@ -8,6 +8,7 @@ final class CharacterLearningLayoutTests: XCTestCase {
         let retry = app.buttons["learning.history.20000000-0000-4000-8000-000000000002"]
         let complete = app.buttons["learning.history.20000000-0000-4000-8000-000000000003"]
         XCTAssertTrue(app.buttons["learning.journey"].waitForExistence(timeout: 10))
+        expandHistory(in: app)
         reveal(ongoing, in: app)
         XCTAssertTrue(ongoing.label.contains("获得 2 积分"))
         reveal(retry, in: app)
@@ -76,6 +77,7 @@ final class CharacterLearningLayoutTests: XCTestCase {
         XCTAssertTrue(card.frame.contains(app.buttons["learning.journey"].frame))
         XCTAssertTrue(card.frame.contains(start.frame))
         capture(app, name: "最大字号深色挑战进度")
+        expandHistory(in: app)
         let row = app.buttons["learning.history.20000000-0000-4000-8000-000000000002"]
         reveal(row, in: app)
         XCTAssertTrue(row.isHittable)
@@ -99,7 +101,24 @@ final class CharacterLearningLayoutTests: XCTestCase {
         XCTAssertFalse(app.buttons["learning.direction"].exists)
         XCTAssertTrue(app.staticTexts["单元练习已解锁"].exists)
         XCTAssertEqual(app.otherElements["learning.unlock.progress"].value as? String, "100% 聊天进度")
-        capture(app, name: "档位星级与开启挑战合为一卡")
+        let identity = app.descendants(matching: .any)["learning.character.identity"].firstMatch
+        XCTAssertTrue(card.frame.contains(identity.frame))
+        XCTAssertLessThan(identity.frame.maxY, app.buttons["learning.journey"].frame.minY)
+        XCTAssertLessThan(app.buttons["learning.journey"].frame.maxY, start.frame.minY)
+        XCTAssertFalse(app.staticTexts["角色学习"].exists)
+        let toggle = app.buttons["learning.history.toggle"]
+        XCTAssertEqual(toggle.value as? String, "已折叠")
+        XCTAssertFalse(app.buttons["learning.history.filter"].exists)
+        XCTAssertFalse(app.buttons["learning.history.20000000-0000-4000-8000-000000000001"].exists)
+        XCTAssertTrue(toggle.isHittable)
+        XCTAssertGreaterThan(toggle.frame.midY, app.frame.height * 0.75)
+        capture(app, name: "角色主卡片与底部折叠记录")
+        expandHistory(in: app)
+        let filter = app.buttons["learning.history.filter"]
+        XCTAssertTrue(filter.waitForExistence(timeout: 3))
+        toggle.tap()
+        XCTAssertFalse(filter.exists)
+        XCTAssertEqual(toggle.value as? String, "已折叠")
     }
 
     func testLockedPracticeShowsUnlockProgressWithoutDirectionRow() {
@@ -123,6 +142,7 @@ final class CharacterLearningLayoutTests: XCTestCase {
             XCTAssertTrue(app.buttons["learning.start"].waitForExistence(timeout: 10))
             XCTAssertEqual(app.otherElements["learning.unlock.progress"].value as? String, "100% 聊天进度")
             capture(app, name: "learning-city-\(city)")
+            expandHistory(in: app)
             let filter = app.buttons["learning.history.filter"]
             reveal(filter, in: app)
             filter.tap()
@@ -131,6 +151,12 @@ final class CharacterLearningLayoutTests: XCTestCase {
             XCTAssertEqual(filter.value as? String, "≥70%")
             app.terminate()
         }
+    }
+
+    private func expandHistory(in app: XCUIApplication) {
+        let toggle = app.buttons["learning.history.toggle"]
+        reveal(toggle, in: app)
+        if toggle.value as? String == "已折叠" { toggle.tap() }
     }
 
     private func reveal(_ element: XCUIElement, in app: XCUIApplication) {

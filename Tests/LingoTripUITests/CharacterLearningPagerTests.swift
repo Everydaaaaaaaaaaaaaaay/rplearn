@@ -21,6 +21,8 @@ final class CharacterLearningPagerTests: XCTestCase {
         let page = app.descendants(matching: .any)["learning.character"].firstMatch
         XCTAssertTrue(page.waitForExistence(timeout: 5))
         XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
+        XCTAssertFalse(app.staticTexts["角色学习"].exists)
+        XCTAssertTrue(app.descendants(matching: .any)["learning.character.identity"].firstMatch.waitForExistence(timeout: 5))
         let screenshot = XCTAttachment(screenshot: app.screenshot()); screenshot.name = "聊天左滑后的角色学习页"; screenshot.lifetime = .keepAlways; add(screenshot)
         app.swipeUp()
         XCTAssertTrue(page.exists)

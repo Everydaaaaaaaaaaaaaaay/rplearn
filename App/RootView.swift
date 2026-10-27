@@ -184,7 +184,8 @@ struct RootView: View {
                         }
                     } else if ProcessInfo.processInfo.environment["UI_TEST_TAB"] == "role-learning" {
                         Self.debugLearningPage(character)
-                            .navigationTitle("角色学习")
+                            .navigationTitle("")
+                            .toolbarBackground(.hidden, for: .navigationBar)
                             .navigationBarTitleDisplayMode(.inline)
                             .toolbar(.visible, for: .navigationBar)
                             .toolbar {
@@ -1182,7 +1183,7 @@ struct RootView: View {
             .safeAreaInset(edge: .top, spacing: 0) {
                 Text("界面预览 · 示例进度，不计入账号")
                     .font(.caption).foregroundStyle(.secondary).padding(8).frame(maxWidth: .infinity)
-                    .background(Color.dsBackground)
+                    .background(.ultraThinMaterial)
             }
     }
     #endif

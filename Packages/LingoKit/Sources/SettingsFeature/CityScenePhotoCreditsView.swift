@@ -13,7 +13,7 @@ public struct CityScenePhotoCreditsView: View {
     }
 
     private static let cityOrder = [
-        "伦敦", "伦敦", "墨尔本", "纽约", "开普敦", "新加坡", "都柏林", "爱丁堡", "温哥华",
+        "伦敦", "墨尔本", "纽约", "开普敦", "新加坡", "都柏林", "爱丁堡", "温哥华",
         "奥克兰", "内罗毕", "多伦多", "悉尼", "新奥尔良", "曼彻斯特", "金斯敦",
     ]
 
@@ -48,6 +48,24 @@ public struct CityScenePhotoCreditsView: View {
         credit("曼彻斯特", "联系人页", "Parrot of Doom", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Old_trafford_february_2010.jpg"),
         credit("金斯敦", "信息页", "Christina Xu", "CC BY-SA 2.0", "https://www.flickr.com/photos/crimsonninjagirl/1258754977/"),
         credit("金斯敦", "联系人页", "Avda", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Bob_Marley_-_Statue_-_Kingston_-_Jamaica.jpg"),
+    ]
+
+    private static let learningCredits: [Credit] = [
+        credit("金斯敦", "学习页", "Christina Xu", "CC BY-SA 2.0", "https://commons.wikimedia.org/wiki/File:Corner_Coxsone_Dodd_Kingston_Jamaica.jpg"),
+        credit("悉尼", "学习页", "Ymblanter", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Sydney_Tram_in_George_Street_north_of_Queen_Victoria_Building.jpg"),
+        credit("墨尔本", "学习页", "FotesEtc", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Shrine_of_Remembrance_06.02.16.jpg"),
+        credit("伦敦", "学习页", "Acabashi", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:St_Paul%27s_Cathedral_from_the_Churchyard_City_of_London_England_01.jpg"),
+        credit("纽约", "学习页", "Famartin", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:2024-06-15_09_53_30_View_from_the_middle_of_the_Brooklyn_Bridge_looking_northwest_along_the_pedestrian_walkway_in_Manhattan,_New_York_City,_New_York.jpg"),
+        credit("开普敦", "学习页", "Schavda", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Clock_Tower.jpg"),
+        credit("新加坡", "学习页", "Dietmar Rabich", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Singapore_(SG),_Gardens_By_The_Bay_--_2019_--_4831.jpg"),
+        credit("都柏林", "学习页", "stalked", "CC BY-SA 2.0", "https://commons.wikimedia.org/wiki/File:The_Trinity_College_Campanile_from_Parliament_Square,_Dublin_-_geograph.org.uk_-_5457964.jpg"),
+        credit("爱丁堡", "学习页", "Carlos Delgado", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Dugald_Stewart_Monument_-_05.jpg"),
+        credit("温哥华", "学习页", "Emma0mb", "CC BY 4.0", "https://commons.wikimedia.org/wiki/File:Lions_Gate_Bridge_south_side.jpg"),
+        credit("奥克兰", "学习页", "Alexander Klink", "CC BY 3.0", "https://commons.wikimedia.org/wiki/File:Auckland_Ferry_Terminal_from_Harbour.jpg"),
+        credit("内罗毕", "学习页", "Bahnfrend", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Jamia_Mosque_(Nairobi),_2025_(04).jpg"),
+        credit("多伦多", "学习页", "Maria Vasserman", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:The_Flat_Iron_building.jpg"),
+        credit("新奥尔良", "学习页", "Erica Fischer", "CC BY 2.0", "https://commons.wikimedia.org/wiki/File:Track_crossover_at_end_of_St_Charles_streetcar_line_-_New_Orleans_January_2015.jpg"),
+        credit("曼彻斯特", "学习页", "Doyle of London", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:John_Rylands_Library,_Deansgate_(Southwest_View_-_01).jpg"),
     ]
 
     private static let journeyCredits: [Credit] = [
@@ -113,7 +131,7 @@ public struct CityScenePhotoCreditsView: View {
     private var citySections: some View {
         ForEach(Self.cityOrder, id: \.self) { city in
             Section(city) {
-                ForEach(Self.credits.filter { $0.city == city }) { credit in
+                ForEach((Self.credits + Self.learningCredits).filter { $0.city == city }) { credit in
                     creditRow(credit)
                 }
             }
@@ -163,7 +181,7 @@ public struct CityScenePhotoCreditsView: View {
     ) -> Credit {
         Credit(
             city: city,
-            placement: placement == "信息页" ? "信息页／学习页" : placement,
+            placement: placement,
             author: author,
             license: license,
             sourceURL: URL(string: source)!

@@ -12,6 +12,7 @@ import UIKit
 
 /// 聊天页：消息列表 + 输入栏（文本/语音）+ 流式回复 + 点词查词。
 public struct ChatView: View {
+    @State private var learningRegionID: String?
     @State var viewModel: ChatViewModel
     @State private var learningSelected = false
     #if DEBUG
@@ -106,9 +107,18 @@ public struct ChatView: View {
             guard !Task.isCancelled else { return }
             isTextInputFocused = false; isChineseInputFocused = false
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            if learningSelected, let region = try? await deps.economyStore.profile().currentRegionID, !Task.isCancelled {
+                learningRegionID = region
+            }
         }
         .dsQuickNotice($viewModel.quickNotice)
-        .background(Color.dsBackground)
+        .background {
+            if learningSelected {
+                DSSceneBackdrop(imageName: DSCitySceneAssets.imageName(for: .learning, regionID: learningRegionID), tone: .cool)
+            } else {
+                Color.dsBackground
+            }
+        }
         .onReceive(NotificationCenter.default.publisher(for: .roleplayConversationDidChange)) { notification in
             guard notification.object as? UUID == viewModel.character.id else { return }
             Task { await viewModel.refreshMessages() }
@@ -128,31 +138,36 @@ public struct ChatView: View {
             Button("知道了", role: .cancel) { learningDebugError = nil }
         } message: { Text(learningDebugError ?? "") }
         #endif
+        .toolbarBackground(learningSelected ? .hidden : .automatic, for: .navigationBar)
+        .toolbarColorScheme(learningSelected ? .dark : nil, for: .navigationBar)
+        .tint(learningSelected ? .white : .accentColor)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                TimelineView(.periodic(from: .now, by: 15)) { context in
-                    let presence = viewModel.presence(at: context.date)
-                    ChatTitleView(
-                        title: learningSelected ? "角色学习" : viewModel.character.displayName,
-                        subtitle: learningSelected ? viewModel.character.displayName : chatStatus(presence, at: context.date)
-                    ) {
-                        ZStack(alignment: .bottomTrailing) {
-                            AvatarBadge(
-                                name: viewModel.character.displayName,
-                                size: 32,
-                                imageName: viewModel.character.card.avatarAssetName,
-                                remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
-                                usesPendingPlaceholder: true
-                            )
-                            Circle()
-                                .fill(presenceColor(presence))
-                                .frame(width: 9, height: 9)
-                                .overlay { Circle().stroke(Color.dsSurface, lineWidth: 1.5) }
-                                .accessibilityHidden(true)
+                if !learningSelected {
+                    TimelineView(.periodic(from: .now, by: 15)) { context in
+                        let presence = viewModel.presence(at: context.date)
+                        ChatTitleView(
+                            title: viewModel.character.displayName,
+                            subtitle: chatStatus(presence, at: context.date)
+                        ) {
+                            ZStack(alignment: .bottomTrailing) {
+                                AvatarBadge(
+                                    name: viewModel.character.displayName,
+                                    size: 32,
+                                    imageName: viewModel.character.card.avatarAssetName,
+                                    remoteURL: viewModel.character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                                    usesPendingPlaceholder: true
+                                )
+                                Circle()
+                                    .fill(presenceColor(presence))
+                                    .frame(width: 9, height: 9)
+                                    .overlay { Circle().stroke(Color.dsSurface, lineWidth: 1.5) }
+                                    .accessibilityHidden(true)
+                            }
                         }
+                        .accessibilityElement(children: .combine)
                     }
-                    .accessibilityElement(children: .combine)
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {

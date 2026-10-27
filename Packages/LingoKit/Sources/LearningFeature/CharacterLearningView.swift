@@ -17,6 +17,7 @@ public struct CharacterLearningView: View {
     @State private var sceneRegionID: String?
     @Environment(\.scenePhase) private var scenePhase
     @State private var showJourney = false
+    @State private var historyExpanded = false
     @State private var historyFilter = LearningHistoryFilter()
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     public init(character: CharacterDTO, service: any LearningServing & LearningDirectionServing, isVisible: Bool = true,
@@ -34,37 +35,30 @@ public struct CharacterLearningView: View {
     }
     private var theme: LearningTheme { LearningTheme(role: model.state?.roleKey ?? character.card.name.components(separatedBy: " ").first?.lowercased() ?? "") }
     public var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                if let error = model.error ?? model.directionError {
-                    LearningPageError(message: error) {
-                        Task {
-                            if let pending = model.pendingDirection { await model.selectDirection(pending) }
-                            else { await model.load() }
+        GeometryReader { viewport in
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    if let error = model.error ?? model.directionError {
+                        LearningPageError(message: error) {
+                            Task {
+                                if let pending = model.pendingDirection { await model.selectDirection(pending) }
+                                else { await model.load() }
+                            }
                         }
                     }
-                }
-                if let state = model.state {
-                    VStack(spacing: 24) {
-                        if let journey = model.journey {
-                            globalCard(journey)
-                            Divider()
-                        }
-                        progressCard(state)
+                    if let state = model.state {
+                        challengeCard(state, minimumHeight: max(340, viewport.size.height - 128), compact: viewport.size.height < 650)
+                        historySection.modifier(LearningPaper(opacity: 0.96))
+                    } else if model.isBusy {
+                        ProgressView("正在载入…")
+                            .font(.subheadline).frame(maxWidth: .infinity).padding(.vertical, 32)
+                            .modifier(LearningPaper(opacity: 0.96))
                     }
-                    .modifier(LearningPaper(opacity: 0.96))
-                    .accessibilityElement(children: .contain)
-                    .accessibilityIdentifier("learning.challenge.card")
-                    historySection.modifier(LearningPaper(opacity: 0.96))
-                } else if model.isBusy {
-                    ProgressView("正在载入…")
-                        .font(.subheadline).frame(maxWidth: .infinity).padding(.vertical, 32)
-                        .modifier(LearningPaper(opacity: 0.96))
                 }
+                .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 16)
+                .frame(maxWidth: 600).frame(maxWidth: .infinity)
+                .frame(minHeight: viewport.size.height, alignment: .top)
             }
-            .padding(.horizontal, 20).padding(.top, 12).padding(.bottom, 28)
-            .frame(maxWidth: 600).frame(maxWidth: .infinity)
-
         }
         .background { LearningCityBackdrop(regionID: sceneRegionID) }
         .tint(theme.tint)
@@ -98,35 +92,50 @@ public struct CharacterLearningView: View {
         if let regionID = await currentRegionID(), !Task.isCancelled { sceneRegionID = regionID }
         await load
     }
-    private func progressCard(_ state: BackendLearningCharacter) -> some View {
+    private func challengeCard(_ state: BackendLearningCharacter, minimumHeight: CGFloat, compact: Bool) -> some View {
         let unlocked = state.activeAttemptId != nil || state.characters >= state.threshold
         let percentage = learningChatPercentage(characters: state.characters, threshold: state.threshold)
-        return VStack(spacing: 22) {
-            VStack(spacing: 14) {
-                Image(systemName: state.activeAttemptId != nil ? "book.fill" : unlocked ? "book.closed.fill" : "lock.fill")
-                    .font(.system(size: 26, weight: .regular))
-                    .foregroundStyle(theme.tint)
-                    .frame(width: 68, height: 68)
-                    .background(theme.tint.opacity(0.08), in: Circle())
-                    .padding(7)
-                    .overlay { Circle().strokeBorder(theme.tint.opacity(0.18), lineWidth: 1) }
+        return VStack(spacing: compact ? 14 : 28) {
+            VStack(spacing: compact ? 10 : 14) {
+                AvatarBadge(name: character.displayName, size: compact ? 64 : 88,
+                            imageName: character.card.avatarAssetName,
+                            remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)),
+                            usesPendingPlaceholder: true)
                     .accessibilityHidden(true)
-                VStack(spacing: 10) {
-                    LearningMeter(value: state.characters, total: state.threshold, tint: theme.tint)
-                    Text("\(percentage)% 聊天进度")
-                        .font(.caption).monospacedDigit().foregroundStyle(.secondary)
-                }
-                .padding(.top, 8)
-                .accessibilityElement(children: .ignore)
-                .accessibilityLabel("练习解锁进度")
-                .accessibilityValue("\(percentage)% 聊天进度")
-                .accessibilityIdentifier("learning.unlock.progress")
-                Text(challengeStatus(state)).font(.subheadline).foregroundStyle(.secondary)
+                Text(character.displayName).font(.title2.weight(.semibold))
                     .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
             }
-            if unlocked { challengeAction(state) }
+            .frame(maxWidth: .infinity)
+            .accessibilityElement(children: .combine)
+            .accessibilityIdentifier("learning.character.identity")
+
+            Spacer(minLength: compact ? 0 : 16)
+
+            VStack(spacing: 12) {
+                LearningMeter(value: state.characters, total: state.threshold, tint: theme.tint)
+                    .frame(maxWidth: 260)
+                Text("\(percentage)% 聊天进度")
+                    .font(.caption).monospacedDigit().foregroundStyle(.secondary)
+            }
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("练习解锁进度")
+            .accessibilityValue("\(percentage)% 聊天进度")
+            .accessibilityIdentifier("learning.unlock.progress")
+
+            Spacer(minLength: compact ? 0 : 16)
+
+            VStack(spacing: compact ? 12 : 20) {
+                if let journey = model.journey { globalCard(journey) }
+                Text(challengeStatus(state)).font(.subheadline).foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
+                if unlocked { challengeAction(state) }
+            }
         }
-        .padding(.vertical, 6).frame(maxWidth: .infinity)
+        .padding(.vertical, compact ? 0 : 10)
+        .frame(maxWidth: .infinity, minHeight: minimumHeight - 44)
+        .modifier(LearningPaper(opacity: 0.96))
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("learning.challenge.card")
     }
     private func challengeAction(_ state: BackendLearningCharacter) -> some View {
         let preparing = model.isPreparing && state.activeAttemptId == nil
@@ -154,23 +163,14 @@ public struct CharacterLearningView: View {
     }
     private func globalCard(_ journey: LearningJourney) -> some View {
         Button { showJourney = true } label: {
-            VStack(alignment: .leading, spacing: 12) {
-                HStack(spacing: 12) {
-                    Text(generalProgressTitle(journey)).font(.headline)
-                        .fixedSize(horizontal: false, vertical: true)
-                    Spacer(minLength: 0)
-                    Image(systemName: "chevron.right").font(.caption.weight(.semibold)).foregroundStyle(.tertiary)
-                }
-                if dynamicTypeSize.isAccessibilitySize {
-                    VStack(alignment: .leading, spacing: 10) { journeyStars(journey); nextStar(journey.current) }
-                } else {
-                    ViewThatFits(in: .horizontal) {
-                        HStack(spacing: 16) { journeyStars(journey); Spacer(minLength: 0); nextStar(journey.current) }
-                        VStack(alignment: .leading, spacing: 10) { journeyStars(journey); nextStar(journey.current) }
-                    }
-                }
+            VStack(spacing: 12) {
+                Text(generalProgressTitle(journey)).font(.headline)
+                    .fixedSize(horizontal: false, vertical: true)
+                journeyStars(journey)
+                nextStar(journey.current)
             }
-            .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading).contentShape(Rectangle())
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: .infinity, minHeight: 44).contentShape(Rectangle())
         }
         .buttonStyle(LearningPressStyle()).foregroundStyle(.primary)
         .accessibilityHint("查看学习进度")
@@ -194,33 +194,49 @@ public struct CharacterLearningView: View {
         let items = visibleHistory
         return VStack(alignment: .leading, spacing: 0) {
             HStack {
-                Text("挑战记录").font(.headline)
+                Button {
+                    historyExpanded.toggle()
+                } label: {
+                    HStack(spacing: 10) {
+                        Text("挑战记录").font(.headline)
+                        Image(systemName: historyExpanded ? "chevron.up" : "chevron.down")
+                            .font(.caption.weight(.semibold)).foregroundStyle(.secondary)
+                    }
+                    .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(LearningPressStyle()).foregroundStyle(.primary)
+                .accessibilityValue(historyExpanded ? "已展开" : "已折叠")
+                .accessibilityHint(historyExpanded ? "收起挑战记录" : "展开挑战记录")
+                .accessibilityIdentifier("learning.history.toggle")
                 Spacer()
                 if model.isBusy { ProgressView().controlSize(.small) }
-                if !model.history.isEmpty {
+                if historyExpanded && !model.history.isEmpty {
                     historyFilterMenu
                 }
             }.frame(minHeight: 44)
-            if items.isEmpty {
-                Text(historyFilter.isActive
-                     ? (model.nextCursor == nil ? "暂无符合筛选的记录" : "已载入的记录中暂无匹配项，可载入更多记录。")
-                     : "完成挑战后，在这里回顾。")
-                    .font(.subheadline).foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 20)
-            } else {
-                LazyVStack(spacing: 0) {
-                    ForEach(items) { item in
-                        Divider()
-                        historyRow(item)
+            if historyExpanded {
+                if items.isEmpty {
+                    Text(historyFilter.isActive
+                         ? (model.nextCursor == nil ? "暂无符合筛选的记录" : "已载入的记录中暂无匹配项，可载入更多记录。")
+                         : "完成挑战后，在这里回顾。")
+                        .font(.subheadline).foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 20)
+                } else {
+                    LazyVStack(spacing: 0) {
+                        ForEach(items) { item in
+                            Divider()
+                            historyRow(item)
+                        }
                     }
                 }
-            }
-            if model.nextCursor != nil {
-                Button { Task { await model.loadMore() } } label: {
-                    Label("更多记录", systemImage: "chevron.down").font(.subheadline.weight(.medium))
-                        .frame(maxWidth: .infinity, minHeight: 44)
+                if model.nextCursor != nil {
+                    Button { Task { await model.loadMore() } } label: {
+                        Label("更多记录", systemImage: "chevron.down").font(.subheadline.weight(.medium))
+                            .frame(maxWidth: .infinity, minHeight: 44)
+                    }
+                    .accessibilityLabel("载入更多记录").disabled(model.isBusy)
                 }
-                .accessibilityLabel("载入更多记录").disabled(model.isBusy)
             }
         }
     }

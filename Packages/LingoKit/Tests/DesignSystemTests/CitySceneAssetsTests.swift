@@ -3,7 +3,7 @@ import Testing
 
 @Suite("城市摄影资源映射")
 struct CitySceneAssetsTests {
-    @Test("十五座城市均生成信息页与联系人页资源名")
+    @Test("十五座城市分别生成信息、联系人与学习页资源名")
     func supportedCitiesGenerateBothSceneNames() {
         #expect(DSCitySceneAssets.supportedRegionIDs.count == 15)
 
@@ -18,7 +18,7 @@ struct CitySceneAssetsTests {
             )
             #expect(
                 DSCitySceneAssets.imageName(for: .learning, regionID: regionID)
-                    == "messages_\(regionID)_glass"
+                    == "learning_\(regionID)_glass"
             )
         }
     }
@@ -33,8 +33,8 @@ struct CitySceneAssetsTests {
             DSCitySceneAssets.imageName(for: .contacts, regionID: "  future-city  ")
                 == "contacts_london_glass"
         )
-        #expect(DSCitySceneAssets.imageName(for: .learning, regionID: nil) == "messages_london_glass")
-        #expect(DSCitySceneAssets.imageName(for: .learning, regionID: "future-city") == "messages_london_glass")
+        #expect(DSCitySceneAssets.imageName(for: .learning, regionID: nil) == "learning_london_glass")
+        #expect(DSCitySceneAssets.imageName(for: .learning, regionID: "future-city") == "learning_london_glass")
     }
 
     @Test("地区标识允许大小写和首尾空格")
@@ -43,6 +43,6 @@ struct CitySceneAssetsTests {
             DSCitySceneAssets.imageName(for: .messages, regionID: "  Sydney ")
                 == "messages_sydney_glass"
         )
-        #expect(DSCitySceneAssets.imageName(for: .learning, regionID: "  Sydney ") == "messages_sydney_glass")
+        #expect(DSCitySceneAssets.imageName(for: .learning, regionID: "  Sydney ") == "learning_sydney_glass")
     }
 }

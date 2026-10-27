@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-27",
+  "version": "learning-v2-independent-cities-20261027",
+  "status": "passed independent review; current rebuilt preview installed",
+  "baseCommit": "140a9773",
+  "scope": "Independent photographs for all 15 cities; taller centered character challenge card; bottom collapsed challenge history; transparent header without role-learning title",
+  "changes": {
+    "photographs": "15 newly selected photographs and learning_<city>_glass assets; current user city mapping and London fallback retained. No message/contact image reuse. New sources and derivatives carry their original CC license and in-app attribution.",
+    "card": "Avatar and name at top center; percentage unlock progress in middle; centered level, nine-star glyphs and next-star progress immediately above unlock status and challenge action. Minimum card height uses available viewport after the bottom history control and page spacing; compact viewports use smaller avatar/spacing. Large text can scroll.",
+    "history": "Collapsed by default at bottom. Expanded records retain all existing combined filters, pagination, retry and journey actions. Collapsing preserves filter state; filter is hidden until records expand.",
+    "header": "Remove role-learning title and duplicated header identity. Real chat pager hides opaque toolbar background, keeps back/chat buttons and displays the current-city photograph behind navigation chrome.",
+    "accessibility": "Dynamic Type, dark semantic colors, shared press style and 44pt minimum controls retained. Decorative static background ignores hit testing/accessibility; cards become opaque with Reduce Transparency."
+  },
+  "photography": {
+    "manifest": "Assets/LearningCityScenes/Review-2026-10-27/photos.json",
+    "acceptance": "Assets/LearningCityScenes/Review-2026-10-27/acceptance-v2.md",
+    "sourceCount": 15,
+    "standardCitiesReviewed": 15,
+    "compactCitiesReviewed": 15,
+    "checks": "Source/runtime SHA-256, decoding, dimensions, downsample-only crop, asset manifests, supported licenses, distinct hashes among new images and versus the 30 existing message/contact derivatives all passed.",
+    "supersedes": "docs/verification/learning-city-filters-20261026.json photography reuse decision; original message/contact photography itself remains approved for its original use."
+  },
+  "checks": {
+    "standardInitial": {
+      "passed": 4,
+      "failed": 2,
+      "skipped": 0,
+      "result": "build/learning-redesign-20261027/ui-standard.xcresult",
+      "log": "build/learning-redesign-20261027/ui-standard.log"
+    },
+    "standardRerun": {
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "result": "build/learning-redesign-20261027/ui-standard-rerun.xcresult",
+      "log": "build/learning-redesign-20261027/ui-standard-rerun.log"
+    },
+    "swift": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "result": "build/learning-redesign-20261027/swift.xcresult",
+      "log": "build/learning-redesign-20261027/swift.log"
+    },
+    "compact": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "result": "build/learning-redesign-20261027/ui-compact.xcresult",
+      "log": "build/learning-redesign-20261027/ui-compact.log"
+    }
+  },
+  "uniqueTestsWithPassingEvidence": 9,
+  "initialFailures": "First UI invocation used the unit-test scheme and did not run. Correct UI invocation initially had two new identity lookups restricted to XCUI Other, while SwiftUI exposes the combined identity as StaticText. Corrected test lookup to any element by identifier; both targeted reruns passed without changing the product.",
+  "coverage": {
+    "standard": "6 UI cases: 15 city photographs with actual filter menu selections; pending/accuracy combinations, clear, empty combinations; journey; locked/unlocked progress; ready card geometry and collapsed/expanded/reset state; maximum text in dark mode; left/right chat paging with saved draft.",
+    "compact": "3 UI cases: 15 city/menu checks, ready card and bottom disclosure geometry, maximum accessibility text in dark mode and scrollable history.",
+    "swift": "3 resource-mapping tests covering 15 cities, all three independent scene roles, fallback, normalization.",
+    "architecture": "passed; build/learning-redesign-20261027/architecture.log",
+    "diffCheck": "passed"
+  },
+  "preview": {
+    "build": "Scripts/preview.sh build role-learning completed; build/learning-redesign-20261027/build.log. Subsequent hosted test builds also passed.",
+    "command": "LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 SIMCTL_CHILD_UI_TEST_LEARNING_PAGE_STATE=ready SIMCTL_CHILD_UI_TEST_REGION=london Scripts/preview.sh preview role-learning",
+    "installedAndRunning": true,
+    "simulator": "659893A7-0822-43F4-8DA1-4A92E9C78814",
+    "log": "build/learning-redesign-20261027/final-preview.log",
+    "screenshot": "build/learning-redesign-20261027/final-preview.png",
+    "reviewed": true
+  },
+  "computerUse": "Selected Device Hub and captured once; returned blank image. Used XCTest UI interactions and simulator-native screenshots; did not loop retries.",
+  "boundaries": "No backend, user data, scoring, package version, simulator runtime or production changes. No real-device or App Store verification; no user aesthetic acceptance claimed. Source photos and deliberate visual evidence are versioned; compiler output and test exports remain ignored."
+}
