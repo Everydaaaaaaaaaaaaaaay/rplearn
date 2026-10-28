@@ -43,7 +43,13 @@ struct DebugLearningPreviewService: LearningServing, LearningDirectionServing, M
     let characterID: UUID
     let roleKey: String
     var profile: EconomyStore? = nil
-    private var pageState: String { ProcessInfo.processInfo.environment["UI_TEST_LEARNING_PAGE_STATE"] ?? "empty" }
+    private var pageState: String {
+        let arguments = ProcessInfo.processInfo.arguments
+        if let flag = arguments.firstIndex(of: "--learning-preview-state"), arguments.indices.contains(flag + 1) {
+            return arguments[flag + 1]
+        }
+        return ProcessInfo.processInfo.environment["UI_TEST_LEARNING_PAGE_STATE"] ?? "empty"
+    }
     private var previewRecordID: String { "20000000-0000-4000-8000-000000000001" }
     func learningDirections() async throws -> LearningDirections { await DebugLearningDirectionStore.shared.read() }
     func selectLearningDirection(_ direction: String, requestID: UUID, expectedRevision: Int) async throws -> LearningDirections {

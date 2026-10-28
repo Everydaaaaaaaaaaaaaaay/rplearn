@@ -35,9 +35,23 @@ final class CharacterLearningPagerTests: XCTestCase {
         app.buttons["chat.debugFillLearning"].tap()
         XCTAssertTrue(page.waitForExistence(timeout: 3))
         XCTAssertTrue(app.buttons["learning.start"].waitForExistence(timeout: 5))
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.2, dy: 0.35))
-            .press(forDuration: 0.08, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.88, dy: 0.35)))
+        let stars = app.descendants(matching: .any)["learning.achievement.stars"].firstMatch
+        XCTAssertTrue(stars.waitForExistence(timeout: 5))
+        stars.tap()
+        XCTAssertFalse(app.navigationBars["学习进度"].exists)
+        let origin = app.coordinate(withNormalizedOffset: .zero)
+        let starY = stars.frame.midY
+        origin.withOffset(CGVector(dx: stars.frame.maxX - 15, dy: starY))
+            .press(forDuration: 0.08, thenDragTo: origin.withOffset(CGVector(dx: app.frame.width * 0.12, dy: starY)))
+        XCTAssertTrue(app.buttons["返回聊天"].exists, "学习页向外横滑不应打开其他页面")
+        XCTAssertFalse(app.navigationBars["学习进度"].exists)
+        origin.withOffset(CGVector(dx: stars.frame.minX + 15, dy: starY))
+            .press(forDuration: 0.08, thenDragTo: origin.withOffset(CGVector(dx: app.frame.width * 0.88, dy: starY)))
         XCTAssertTrue(composer.waitForExistence(timeout: 3))
         XCTAssertEqual(composer.value as? String, "my saved draft")
+        XCTAssertFalse(app.navigationBars["学习进度"].exists)
+        XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 3))
+        let returned = XCTAttachment(screenshot: app.screenshot())
+        returned.name = "从星级区域横滑返回聊天并保留草稿"; returned.lifetime = .keepAlways; add(returned)
     }
 }

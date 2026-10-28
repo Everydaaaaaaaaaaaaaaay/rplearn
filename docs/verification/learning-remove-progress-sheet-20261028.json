@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-28",
+  "scope": "Remove the redundant learning progress sheet and its level/star tap target",
+  "cause": "The level/stars/next-star block was a full-width Button presenting LearningProgressOverview. ChatLearningPager itself contains only chat and learning. The sheet and button were unnecessary secondary navigation in the horizontal gesture area.",
+  "change": {
+    "removed": [
+      "LearningProgressOverview",
+      "showJourney sheet state and presenter",
+      "Unused LearningMilestones wrapper",
+      "Level/star button action, press style and navigation accessibility hint"
+    ],
+    "retained": "Inline level, nine-star row, next-star points, star landing anchor, challenge entry, history and promotion flows. Progress now has a noninteractive accessibility container."
+  },
+  "regression": {
+    "before": "New test reproduced the extra page by tapping the star row; assertion failed because the learning progress navigation bar appeared.",
+    "evidence": "build/learning-remove-progress-sheet-20261028/ui-before.xcresult"
+  },
+  "testFixture": {
+    "issue": "XCTest requested the active fixture but the target process received UI_TEST_LEARNING_PAGE_STATE=ready. Confirmed the requested value in the test attachment and sampled only the relevant target environment key.",
+    "fix": "Debug preview service accepts an explicit --learning-preview-state launch argument before the environment fallback. Layout tests pass the selected state as an argument; the live service is unchanged.",
+    "requestedValueEvidence": "build/learning-remove-progress-sheet-20261028/launch-trace-attachments/647EFC7E-EA30-4D37-B4BB-34F0820D2488.txt"
+  },
+  "verification": {
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "device": "iPhone 18 Pro / iOS 27.0",
+    "evidence": "build/learning-remove-progress-sheet-20261028/ui-final.xcresult",
+    "coverage": [
+      "Tap star row without opening a sheet",
+      "Inline level/stars retain their layout within the challenge card",
+      "Maximum accessibility text in dark history",
+      "Pending, accuracy and combined history filters",
+      "Vertical scroll and both horizontal drag directions starting in the stars region; return button and swipe preserve chat draft without reopening the keyboard",
+      "Real-page star animation lands and updates points after removal of the button"
+    ]
+  },
+  "visualReview": {
+    "method": "Xcode-hosted interactions and native screenshots; Computer Use tools unavailable.",
+    "screenshots": "build/learning-remove-progress-sheet-20261028/final-attachments",
+    "review": "Inspected the unchanged main-card layout, tapping stars while remaining on the page, and the returned chat with its saved draft. No photo assets changed.",
+    "unchangedEvidence": [
+      "docs/verification/learning-history-stable-disclosure-20261028.json",
+      "docs/verification/learning-achievement-real-page-preview-20261028.json"
+    ]
+  },
+  "preview": {
+    "command": "SIMCTL_CHILD_UI_TEST_LEARNING_PAGE_STATE=ready LINGOTRIP_SIMULATOR_UDID=659893A7-0822-43F4-8DA1-4A92E9C78814 Scripts/preview.sh build role-learning",
+    "result": "Build, installation and launch succeeded; left latest role-learning preview on the existing iPhone 18 Pro.",
+    "log": "build/learning-remove-progress-sheet-20261028/final-preview.log",
+    "screenshot": "build/learning-remove-progress-sheet-20261028/final-preview.png"
+  },
+  "dataSafety": "No account data, scoring policy, backend, database, source assets or production services changed."
+}

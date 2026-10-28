@@ -17,7 +17,6 @@ public struct CharacterLearningView: View {
     private let currentRegionID: @Sendable () async -> String?
     @State private var sceneRegionID: String?
     @Environment(\.scenePhase) private var scenePhase
-    @State private var showJourney = false
     @State private var displayedStarAward: LearningStarAward?
     @State private var historyExpanded = false
     @State private var historyFilter = LearningHistoryFilter()
@@ -102,17 +101,6 @@ public struct CharacterLearningView: View {
             }
         }
         .onChange(of: isVisible) { _, visible in if !visible { model.consumeStarAward() } }
-        .sheet(isPresented: $showJourney) {
-            NavigationStack {
-                LearningProgressOverview(service: model.service)
-                    .toolbar {
-                        ToolbarItem(placement: .confirmationAction) {
-                            Button { showJourney = false } label: { Image(systemName: "xmark") }
-                                .accessibilityLabel("关闭学习进度")
-                        }
-                    }
-            }
-        }
         .accessibilityIdentifier("learning.character")
     }
     private func reloadPage() async {
@@ -149,7 +137,7 @@ public struct CharacterLearningView: View {
             .accessibilityIdentifier("learning.unlock.progress")
 
             VStack(spacing: compact ? 12 : 16) {
-                if let journey = model.journey { globalCard(journey) }
+                if let journey = model.journey { levelProgress(journey) }
                 Text(challengeStatus(state)).font(.subheadline).foregroundStyle(.secondary)
                     .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
                 if unlocked { challengeAction(state) }
@@ -192,20 +180,18 @@ public struct CharacterLearningView: View {
     private func challengeStatus(_ state: BackendLearningCharacter) -> String {
         state.activeAttemptId != nil || state.characters >= state.threshold ? "单元练习已解锁" : "单元练习尚未解锁"
     }
-    private func globalCard(_ journey: LearningJourney) -> some View {
-        Button { showJourney = true } label: {
-            VStack(spacing: 12) {
-                Text(generalProgressTitle(journey)).font(.headline)
-                    .fixedSize(horizontal: false, vertical: true)
-                journeyStars(journey)
-                nextStar(journey.current)
-            }
-            .multilineTextAlignment(.center)
-            .frame(maxWidth: .infinity, minHeight: 44).contentShape(Rectangle())
+    private func levelProgress(_ journey: LearningJourney) -> some View {
+        VStack(spacing: 12) {
+            Text(generalProgressTitle(journey)).font(.headline)
+                .fixedSize(horizontal: false, vertical: true)
+            journeyStars(journey)
+            nextStar(journey.current)
         }
-        .buttonStyle(LearningPressStyle()).foregroundStyle(.primary)
-        .accessibilityHint("查看学习进度")
-        .accessibilityIdentifier("learning.journey")
+        .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity, minHeight: 44)
+        .foregroundStyle(.primary)
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("learning.level.progress")
         .id("learning.star.destination")
     }
     private func journeyStars(_ journey: LearningJourney) -> some View {
@@ -357,49 +343,6 @@ public struct CharacterLearningView: View {
 
 }
 
-/// 角色页的全局摘要；英语水平调整入口由 App 装配。
-public struct LearningProgressOverview: View {
-    private let service: any LearningServing
-    @State private var journey: LearningJourney?
-    @State private var error: String?
-    public init(service: any LearningServing) { self.service = service }
-    public var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 18) {
-                if let error { LearningPageError(message: error) { Task { await load() } } }
-                if let journey, let current = journey.current {
-                    VStack(alignment: .leading, spacing: 20) {
-                        HStack(alignment: .firstTextBaseline) {
-                            Text(learningLevelName(journey.currentLevel)).font(.title2.weight(.semibold))
-                            Spacer()
-                            Text("\(current.stars)/9 星").font(.subheadline).monospacedDigit().foregroundStyle(.secondary)
-                        }
-                        LearningMilestones(earned: current.stars, tint: .dsSkyDeep)
-                        VStack(alignment: .leading, spacing: 10) {
-                            HStack {
-                                Text(current.stars >= 9 ? "本级累计" : "下一颗星").font(.subheadline)
-                                Spacer()
-                                Text(current.stars >= 9 ? "\(current.points) 点" : "\(current.currentStarPoints)/\(current.pointsPerStar) 点")
-                                    .font(.subheadline.weight(.semibold)).monospacedDigit()
-                            }
-                            LearningMeter(value: current.stars >= 9 ? current.targetPoints : current.currentStarPoints,
-                                          total: current.stars >= 9 ? current.targetPoints : current.pointsPerStar, tint: .dsSkyDeep)
-                        }
-                    }.padding(.vertical, 16)
-                } else if error == nil {
-                    ProgressView("正在载入…").frame(maxWidth: .infinity).padding(.vertical, 32)
-                }
-            }.padding(16).frame(maxWidth: 600).frame(maxWidth: .infinity)
-        }
-        .background(Color.dsBackground).navigationTitle("学习进度").navigationBarTitleDisplayMode(.inline)
-        .task { await load() }
-    }
-    private func load() async {
-        do { journey = try await service.learningJourney(); error = nil }
-        catch is CancellationError {} catch { self.error = error.localizedDescription }
-    }
-}
-
 private struct LearningMeter: View {
     let value: Int
     let total: Int
@@ -413,12 +356,6 @@ private struct LearningMeter: View {
                 }
         }.frame(height: 16)
     }
-}
-
-private struct LearningMilestones: View {
-    let earned: Int
-    let tint: Color
-    var body: some View { LearningAchievementStars(earned: earned) }
 }
 
 struct LearningPageError: View {

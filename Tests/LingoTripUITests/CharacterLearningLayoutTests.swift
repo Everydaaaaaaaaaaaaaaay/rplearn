@@ -2,12 +2,23 @@ import XCTest
 
 @MainActor
 final class CharacterLearningLayoutTests: XCTestCase {
-    func testPendingFilterAndJourneyEntry() {
+    func testLevelAndStarsDoNotOpenAProgressSheet() {
+        let app = launch(state: "ready")
+        let stars = app.descendants(matching: .any)["learning.achievement.stars"].firstMatch
+        XCTAssertTrue(stars.waitForExistence(timeout: 10))
+        stars.tap()
+        XCTAssertFalse(app.navigationBars["学习进度"].exists, "星级应只展示进度，不再打开额外页面")
+        XCTAssertFalse(app.buttons["关闭学习进度"].exists)
+        XCTAssertTrue(app.buttons["learning.start"].isHittable)
+        capture(app, name: "点按星级后仍留在学习页")
+    }
+
+    func testPendingFilterAndInlineProgress() {
         let app = launch(state: "active")
         let ongoing = app.buttons["learning.history.20000000-0000-4000-8000-000000000001"]
         let retry = app.buttons["learning.history.20000000-0000-4000-8000-000000000002"]
         let complete = app.buttons["learning.history.20000000-0000-4000-8000-000000000003"]
-        XCTAssertTrue(app.buttons["learning.journey"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.otherElements["learning.level.progress"].waitForExistence(timeout: 10))
         expandHistory(in: app)
         reveal(ongoing, in: app)
         XCTAssertTrue(ongoing.label.contains("获得 2 积分"))
@@ -57,24 +68,22 @@ final class CharacterLearningLayoutTests: XCTestCase {
         app.buttons["清除筛选"].tap()
         reveal(complete, in: app)
         XCTAssertTrue(complete.exists)
-        let journey = app.buttons["learning.journey"]
-        reveal(journey, in: app)
-        journey.tap()
-        XCTAssertTrue(app.navigationBars["学习进度"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["0/60 点"].exists)
-        app.buttons["关闭学习进度"].tap()
-        XCTAssertTrue(app.buttons["learning.journey"].waitForExistence(timeout: 5))
+        let progress = app.otherElements["learning.level.progress"]
+        reveal(progress, in: app)
+        XCTAssertTrue(app.staticTexts["下一星 0/60 积分"].exists)
+        XCTAssertFalse(app.buttons["learning.journey"].exists)
+        XCTAssertFalse(app.navigationBars["学习进度"].exists)
     }
 
     func testLargeTextDarkHistoryRemainsReadable() {
         let app = launch(state: "ready", large: true)
         let start = app.buttons["learning.start"]
-        XCTAssertTrue(app.buttons["learning.journey"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.otherElements["learning.level.progress"].waitForExistence(timeout: 10))
         reveal(start, in: app)
         XCTAssertTrue(start.label.contains("开启单元挑战"))
         let card = app.otherElements["learning.challenge.card"]
         XCTAssertTrue(card.exists)
-        XCTAssertTrue(card.frame.contains(app.buttons["learning.journey"].frame))
+        XCTAssertTrue(card.frame.contains(app.otherElements["learning.level.progress"].frame))
         XCTAssertTrue(card.frame.contains(start.frame))
         capture(app, name: "最大字号深色挑战进度")
         expandHistory(in: app)
@@ -95,7 +104,7 @@ final class CharacterLearningLayoutTests: XCTestCase {
         XCTAssertEqual(start.label, "开启单元挑战")
         let card = app.otherElements["learning.challenge.card"]
         XCTAssertTrue(card.exists)
-        XCTAssertTrue(card.frame.contains(app.buttons["learning.journey"].frame))
+        XCTAssertTrue(card.frame.contains(app.otherElements["learning.level.progress"].frame))
         XCTAssertTrue(card.frame.contains(start.frame))
         XCTAssertFalse(app.staticTexts["单元挑战"].exists)
         XCTAssertFalse(app.buttons["learning.direction"].exists)
@@ -106,9 +115,9 @@ final class CharacterLearningLayoutTests: XCTestCase {
         let progress = app.otherElements["learning.unlock.progress"]
         XCTAssertLessThanOrEqual(card.frame.height, 540, "常规字号卡片应收紧，避免内部留白撑满屏幕")
         XCTAssertLessThan(progress.frame.minY - identity.frame.maxY, 64)
-        XCTAssertLessThan(app.buttons["learning.journey"].frame.minY - progress.frame.maxY, 64)
-        XCTAssertLessThan(identity.frame.maxY, app.buttons["learning.journey"].frame.minY)
-        XCTAssertLessThan(app.buttons["learning.journey"].frame.maxY, start.frame.minY)
+        XCTAssertLessThan(app.otherElements["learning.level.progress"].frame.minY - progress.frame.maxY, 64)
+        XCTAssertLessThan(identity.frame.maxY, app.otherElements["learning.level.progress"].frame.minY)
+        XCTAssertLessThan(app.otherElements["learning.level.progress"].frame.maxY, start.frame.minY)
         XCTAssertFalse(app.staticTexts["角色学习"].exists)
         let toggle = app.buttons["learning.history.toggle"]
         XCTAssertEqual(toggle.value as? String, "已折叠")
@@ -207,8 +216,9 @@ final class CharacterLearningLayoutTests: XCTestCase {
         app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
             "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9", "UI_TEST_TAB": "role-learning",
             "UI_TEST_LEARNING_PAGE_STATE": state, "UI_TEST_REGION": city]
+        app.launchArguments = ["--learning-preview-state", state]
         if large {
-            app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+            app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
             app.launchEnvironment["UI_TEST_CAPTURE_APPEARANCE"] = "dark"
         }
         app.launch()
