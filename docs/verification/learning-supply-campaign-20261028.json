@@ -1,42 +1,42 @@
 {
   "checkedAt": "2026-10-28T16:36:32.084655+00:00",
   "run": "2026-10-28",
-  "stage": "Campaign active: 278 validated /164 published new groups; full 1282-group expansion remains in progress",
-  "groups": 278,
-  "responses": 1649,
+  "stage": "Active:296 validated /164 published groups; full1282-group expansion remains in progress",
+  "groups": 296,
+  "responses": 1776,
   "groupsByLevel": {
     "undergraduate": 24,
     "postgraduate": 24,
-    "primary2": 42,
-    "primary3": 41,
-    "primary4": 41,
-    "primary5": 38,
-    "primary6": 36,
+    "primary2": 44,
+    "primary3": 43,
+    "primary4": 43,
+    "primary5": 40,
+    "primary6": 38,
     "primary1": 16,
-    "advanced": 7,
+    "advanced": 9,
     "junior1": 2,
     "junior2": 2,
     "junior3": 2,
-    "senior1": 1,
-    "senior2": 1,
-    "senior3": 1
+    "senior1": 3,
+    "senior2": 3,
+    "senior3": 3
   },
   "responsesByLevel": {
     "undergraduate": 240,
     "postgraduate": 240,
-    "primary2": 210,
-    "primary3": 205,
-    "primary4": 205,
-    "primary5": 193,
-    "primary6": 180,
+    "primary2": 220,
+    "primary3": 215,
+    "primary4": 215,
+    "primary5": 203,
+    "primary6": 190,
     "primary1": 64,
-    "advanced": 50,
+    "advanced": 64,
     "junior1": 9,
     "junior2": 16,
     "junior3": 10,
-    "senior1": 6,
-    "senior2": 15,
-    "senior3": 6
+    "senior1": 27,
+    "senior2": 36,
+    "senior3": 27
   },
   "exactWholeMaterialDuplicates": [
     {
@@ -254,11 +254,25 @@
       "responses": 50
     },
     {
-      "batch": "b029",
-      "sourceSHA256": "27e578d185d0a6198a544fa77ec48b02ac93af343e464d2348c9e2ffac72bc3b",
-      "reviewSHA256": "711a6e5541c6b7f45c42bd893ca9f0dc6908661a97b1d50327d89fcd23c523ef",
+      "batch": "b030",
+      "sourceSHA256": "56243dd9085e73b463637a5543e80ce0debe788f6cc43b4a66069bbe6efff84c",
+      "reviewSHA256": "d13822587e80e92ac639153a2e88f9408e5f0aa751f5ccf72b32593818b17cf3",
+      "groups": 8,
+      "responses": 77
+    },
+    {
+      "batch": "b031",
+      "sourceSHA256": "48af0a8f3a1d30cd456e595cbc28550a0996d78b4c2098fb1e37548352e23062",
+      "reviewSHA256": "c6a1cfae4b4298c62a9f5718a7c02ad0f127e7daaeccdac34e8d50aff79f6a3a",
       "groups": 12,
       "responses": 63
+    },
+    {
+      "batch": "b032",
+      "sourceSHA256": "f7c50390917bbd5b45117fb9aac37e0de6434c52e3f54bb55e3f1ef10d7cbe49",
+      "reviewSHA256": "b8a03efde26825cf359bd98094fc9087b0b6fc4bae4423728ed4984db525d19f",
+      "groups": 10,
+      "responses": 50
     }
   ],
   "reviewBoundary": "Explicit author self-review and selected structural/media/grading checks; not independent teacher or learner calibration.",
@@ -282,20 +296,20 @@
   },
   "remainingGroupsByLevel": {
     "primary1": 88,
-    "primary2": 65,
-    "primary3": 67,
-    "primary4": 71,
-    "primary5": 61,
-    "primary6": 61,
+    "primary2": 63,
+    "primary3": 65,
+    "primary4": 69,
+    "primary5": 59,
+    "primary6": 59,
     "junior1": 19,
     "junior2": 28,
     "junior3": 32,
-    "senior1": 58,
-    "senior2": 58,
-    "senior3": 58,
+    "senior1": 56,
+    "senior2": 56,
+    "senior3": 56,
     "undergraduate": 114,
     "postgraduate": 115,
-    "advanced": 109
+    "advanced": 107
   },
   "productionBaselineEvidence": "build/learning-supply-audit-20261028/production.json",
   "publication": "First wave published; later candidate counts remain separate.",
@@ -474,17 +488,17 @@
     "realUserDataTouched": false
   },
   "noveltyScreen": {
-    "checkedAt": "2026-10-28T16:34:34.326589+00:00",
+    "checkedAt": "2026-10-28T16:39:26.846970+00:00",
     "oldGroupsRead": 1406,
-    "newGroupsScreened": 278,
-    "newInputDocuments": 280,
+    "newGroupsScreened": 296,
+    "newInputDocuments": 301,
     "threshold": 0.6,
     "flags": [],
     "boundary": "Read only selected new input and existing text metadata once. No old media checksum, full database scan, source rewrites or publication changes. Shared generic picture instructions include the declared image identity. This catches strong text overlap, not all paraphrase/semantic duplicates or learner calibration."
   },
   "secondWaveCandidates": {
-    "groups": 114,
-    "responses": 655,
+    "groups": 132,
+    "responses": 782,
     "batches": [
       "b018",
       "b019",
@@ -497,11 +511,22 @@
       "b026",
       "b027",
       "b028",
-      "b029"
+      "b030",
+      "b031",
+      "b032"
     ],
     "nativeLoaderGradingAndSelectedMediaChecks": "passed",
-    "status": "unpublished until next content release",
+    "status": "Corrected before deployment: rejected previous offline package retained; new verified package pending.",
     "newImages": 12,
     "independentArchiveRestores": 12
-  }
+  },
+  "supersededUnpublishedBatches": [
+    {
+      "batch": "b029",
+      "replacement": "b031",
+      "source": "primary2-6-019-v2.json",
+      "replacementSource": "primary2-6-019-v3.json",
+      "reason": "Explicitly specify British English for Tube/CUTE /ju:/ discrimination; old author source and frozen output retained, never published."
+    }
+  ]
 }

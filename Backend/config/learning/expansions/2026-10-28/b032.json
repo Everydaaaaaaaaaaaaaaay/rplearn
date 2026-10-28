@@ -1,0 +1,1982 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b032",
+  "createdAt": "2026-10-29T00:36:35.578729+08:00",
+  "sourceSHA256": "f7c50390917bbd5b45117fb9aac37e0de6434c52e3f54bb55e3f1ef10d7cbe49",
+  "reviewSHA256": "b8a03efde26825cf359bd98094fc9087b0b6fc4bae4423728ed4984db525d19f",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.grandpa-phone-call-020",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "给爷爷打电话时说清楚",
+        "summary": "给爷爷打电话时说清楚，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.grandpa-phone-call-020",
+          "family": "function_choice",
+          "label": "给爷爷打电话时说清楚",
+          "candidateSHA256": "5da1053243b5e2749af4bbebe4b8c02ada3b03443e51ae870dfc6e324e06dc89",
+          "authorCheckSHA256": "1be63cec0283256e13ab24eb5094d17930f7b57e045a16254a5e3075613ff44d",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.grandpa-phone-call-020.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b032；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Grandpa Phone Call 020\n\nA child calls Grandpa. Grandpa cannot hear well when there is noise. Choose the sentence that helps in each situation."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.grandpa-phone-call-020.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The television is loud beside you. You want Grandpa to hear. What do you say to Dad?",
+            "material": "Grandpa Phone Call 020\n\nA child calls Grandpa. Grandpa cannot hear well when there is noise. Choose the sentence that helps in each situation.",
+            "explanation": "A调低背景声帮助通话；B更响相反；C把电话放外不解决与爷爷交流。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Please turn the television down."
+              },
+              {
+                "id": "o1",
+                "text": "Please make the television louder."
+              },
+              {
+                "id": "o2",
+                "text": "Please put the phone outside."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.grandpa-phone-call-020.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Grandpa did not hear your meeting time. What do you say?",
+            "material": "Grandpa Phone Call 020\n\nA child calls Grandpa. Grandpa cannot hear well when there is noise. Choose the sentence that helps in each situation.",
+            "explanation": "B清楚重复具体时刻；A拒重复、C沙发色均不澄清时间。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I will not tell you again."
+              },
+              {
+                "id": "o1",
+                "text": "I said three o’clock. Three o’clock."
+              },
+              {
+                "id": "o2",
+                "text": "The sofa is green."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.grandpa-phone-call-020.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You cannot hear Grandpa’s last words. What do you ask?",
+            "material": "Grandpa Phone Call 020\n\nA child calls Grandpa. Grandpa cannot hear well when there is noise. Choose the sentence that helps in each situation.",
+            "explanation": "C礼貌请求重说未听清内容；A帽、B鞋均无关听漏话。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Why is my hat small?"
+              },
+              {
+                "id": "o1",
+                "text": "Can you see my shoes?"
+              },
+              {
+                "id": "o2",
+                "text": "Could you say that again, please?"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.grandpa-phone-call-020.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Grandpa thinks you will come today, but you mean tomorrow. What do you say?",
+            "material": "Grandpa Phone Call 020\n\nA child calls Grandpa. Grandpa cannot hear well when there is noise. Choose the sentence that helps in each situation.",
+            "explanation": "A明确纠正日期误解；B继续今日错误；C铅笔无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I mean tomorrow, not today."
+              },
+              {
+                "id": "o1",
+                "text": "Yes, today and never tomorrow."
+              },
+              {
+                "id": "o2",
+                "text": "I do not have a pencil."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.grandpa-phone-call-020.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You must end the call because dinner is ready. What do you say?",
+            "material": "Grandpa Phone Call 020\n\nA child calls Grandpa. Grandpa cannot hear well when there is noise. Choose the sentence that helps in each situation.",
+            "explanation": "B说明结束原因并告别；A藏电话不礼貌说明；C永久禁食不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "I will hide the phone."
+              },
+              {
+                "id": "o1",
+                "text": "Dinner is ready. Goodbye, Grandpa."
+              },
+              {
+                "id": "o2",
+                "text": "You must stop eating forever."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "b4ab859615d931ee905349dcebb8b8be5987a4916342cecceaefd8a87d2966ac",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.grandpa-phone-call-020.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.grandpa-phone-call-020.reading.q1",
+            "expansion.20261028.primary2.grandpa-phone-call-020.reading.q2",
+            "expansion.20261028.primary2.grandpa-phone-call-020.reading.q3",
+            "expansion.20261028.primary2.grandpa-phone-call-020.reading.q4",
+            "expansion.20261028.primary2.grandpa-phone-call-020.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.pottery-name-tags-020",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "陶土杯晾干时的姓名牌",
+        "summary": "陶土杯晾干时的姓名牌，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.pottery-name-tags-020",
+          "family": "function_choice",
+          "label": "陶土杯晾干时的姓名牌",
+          "candidateSHA256": "dec9bc524af906e95b99477d0a795f93b09a0d742f9d66f7f48dd1fcf3cf69df",
+          "authorCheckSHA256": "1be63cec0283256e13ab24eb5094d17930f7b57e045a16254a5e3075613ff44d",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.pottery-name-tags-020.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b032；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Pottery Name Tags 020\n\nOur clay cups are soft. Leave them on the drying shelf. Put a name card beside each cup, not inside it. Do not lift a cup by its handle yet. The teacher moves the shelf. If two cards get mixed up, ask their owners before changing them. Paint the cups next week, after they are dry."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.pottery-name-tags-020.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend wants to carry a soft cup by its handle. You say, \"____\"",
+            "material": "Pottery Name Tags 020\n\nOur clay cups are soft. Leave them on the drying shelf. Put a name card beside each cup, not inside it. Do not lift a cup by its handle yet. The teacher moves the shelf. If two cards get mixed up, ask their owners before changing them. Paint the cups next week, after they are dry.",
+            "explanation": "B软杯留架且暂不提把；A更拉、C装水均非晾干步骤。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Pull the handle harder."
+              },
+              {
+                "id": "o1",
+                "text": "Leave the soft cup on the shelf."
+              },
+              {
+                "id": "o2",
+                "text": "Put water in it now."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.pottery-name-tags-020.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend drops the name card into the wet cup. You say, \"____\"",
+            "material": "Pottery Name Tags 020\n\nOur clay cups are soft. Leave them on the drying shelf. Put a name card beside each cup, not inside it. Do not lift a cup by its handle yet. The teacher moves the shelf. If two cards get mixed up, ask their owners before changing them. Paint the cups next week, after they are dry.",
+            "explanation": "C名牌旁边非杯内；A违inside禁限；B把上未安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Leave it inside."
+              },
+              {
+                "id": "o1",
+                "text": "Glue it over the handle."
+              },
+              {
+                "id": "o2",
+                "text": "Put the card beside the cup."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.pottery-name-tags-020.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend starts to push the drying shelf. You say, \"____\"",
+            "material": "Pottery Name Tags 020\n\nOur clay cups are soft. Leave them on the drying shelf. Put a name card beside each cup, not inside it. Do not lift a cup by its handle yet. The teacher moves the shelf. If two cards get mixed up, ask their owners before changing them. Paint the cups next week, after they are dry.",
+            "explanation": "A架由教师移动；B学生推动到场外、C架压杯均不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Let the teacher move the shelf."
+              },
+              {
+                "id": "o1",
+                "text": "Push it to the playground."
+              },
+              {
+                "id": "o2",
+                "text": "Put the shelf on the cups."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.pottery-name-tags-020.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Two name cards are mixed up. Your friend guesses. You say, \"____\"",
+            "material": "Pottery Name Tags 020\n\nOur clay cups are soft. Leave them on the drying shelf. Put a name card beside each cup, not inside it. Do not lift a cup by its handle yet. The teacher moves the shelf. If two cards get mixed up, ask their owners before changing them. Paint the cups next week, after they are dry.",
+            "explanation": "B先问主人核对再换；A瞎猜、C丢杯都非解决方式。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Guess any name."
+              },
+              {
+                "id": "o1",
+                "text": "Ask the owners first."
+              },
+              {
+                "id": "o2",
+                "text": "Throw both cups away."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.pottery-name-tags-020.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend wants to paint a soft cup today. You say, \"____\"",
+            "material": "Pottery Name Tags 020\n\nOur clay cups are soft. Leave them on the drying shelf. Put a name card beside each cup, not inside it. Do not lift a cup by its handle yet. The teacher moves the shelf. If two cards get mixed up, ask their owners before changing them. Paint the cups next week, after they are dry.",
+            "explanation": "C下周干后上色；A今天、B保湿均违干燥条件。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Paint it before lunch today."
+              },
+              {
+                "id": "o1",
+                "text": "Keep it wet for painting."
+              },
+              {
+                "id": "o2",
+                "text": "Wait until next week when it is dry."
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "117acb4f4cc1ae10a014ae72146b6d2f02cce5f37f9008221940a5de672a26f7",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.pottery-name-tags-020.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.pottery-name-tags-020.reading.q1",
+            "expansion.20261028.primary2.pottery-name-tags-020.reading.q2",
+            "expansion.20261028.primary2.pottery-name-tags-020.reading.q3",
+            "expansion.20261028.primary2.pottery-name-tags-020.reading.q4",
+            "expansion.20261028.primary2.pottery-name-tags-020.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.umbrella-shadow-sun-020",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "晴天撑开的雨伞",
+        "summary": "晴天撑开的雨伞，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.umbrella-shadow-sun-020",
+          "family": "reading_tf",
+          "label": "晴天撑开的雨伞",
+          "candidateSHA256": "9e0f7a3ae3348583ce8c79447a888239423a00e83f314ea667ea44f3c16f03f3",
+          "authorCheckSHA256": "1be63cec0283256e13ab24eb5094d17930f7b57e045a16254a5e3075613ff44d",
+          "sourceGroupIds": [
+            "original.bens-bag-reading#primary3.umbrella-shadow-sun-020.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b032；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Umbrella Shadow Sun 020\n\nIt is sunny and hot. Mum opens an umbrella at the bus stop. My brother says, \"But there is no rain!\" Mum asks him to stand under it. He feels cooler in the shade. I can see a round dark patch on the ground. A dog lies at the edge of it. When the bus comes, Mum closes the umbrella before we get on."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.umbrella-shadow-sun-020.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "It is raining at the bus stop.",
+            "material": "Umbrella Shadow Sun 020\n\nIt is sunny and hot. Mum opens an umbrella at the bus stop. My brother says, \"But there is no rain!\" Mum asks him to stand under it. He feels cooler in the shade. I can see a round dark patch on the ground. A dog lies at the edge of it. When the bus comes, Mum closes the umbrella before we get on.",
+            "explanation": "B正确：sunny hot且no rain；A把雨伞存在当正在下雨。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.umbrella-shadow-sun-020.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The umbrella gives the family shade.",
+            "material": "Umbrella Shadow Sun 020\n\nIt is sunny and hot. Mum opens an umbrella at the bus stop. My brother says, \"But there is no rain!\" Mum asks him to stand under it. He feels cooler in the shade. I can see a round dark patch on the ground. A dog lies at the edge of it. When the bus comes, Mum closes the umbrella before we get on.",
+            "explanation": "A正确：under umbrella feels cooler in shade；B否认用途。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.umbrella-shadow-sun-020.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The dark patch on the ground is square.",
+            "material": "Umbrella Shadow Sun 020\n\nIt is sunny and hot. Mum opens an umbrella at the bus stop. My brother says, \"But there is no rain!\" Mum asks him to stand under it. He feels cooler in the shade. I can see a round dark patch on the ground. A dog lies at the edge of it. When the bus comes, Mum closes the umbrella before we get on.",
+            "explanation": "B正确：round dark patch；A圆改方。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.umbrella-shadow-sun-020.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A dog lies at the edge of the shade.",
+            "material": "Umbrella Shadow Sun 020\n\nIt is sunny and hot. Mum opens an umbrella at the bus stop. My brother says, \"But there is no rain!\" Mum asks him to stand under it. He feels cooler in the shade. I can see a round dark patch on the ground. A dog lies at the edge of it. When the bus comes, Mum closes the umbrella before we get on.",
+            "explanation": "A正确：dog edge of it指阴影；B否认位置。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.umbrella-shadow-sun-020.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Mum closes the umbrella before boarding the bus.",
+            "material": "Umbrella Shadow Sun 020\n\nIt is sunny and hot. Mum opens an umbrella at the bus stop. My brother says, \"But there is no rain!\" Mum asks him to stand under it. He feels cooler in the shade. I can see a round dark patch on the ground. A dog lies at the edge of it. When the bus comes, Mum closes the umbrella before we get on.",
+            "explanation": "A正确：before get on关闭；B否认先后。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "b769c119aad76a825e4ecfa32cfaa41ec71100d5c683faebe6f9191f307c96a2",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.bens-bag-reading#primary3.umbrella-shadow-sun-020.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.umbrella-shadow-sun-020.reading.q1",
+            "expansion.20261028.primary3.umbrella-shadow-sun-020.reading.q2",
+            "expansion.20261028.primary3.umbrella-shadow-sun-020.reading.q3",
+            "expansion.20261028.primary3.umbrella-shadow-sun-020.reading.q4",
+            "expansion.20261028.primary3.umbrella-shadow-sun-020.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.bens-bag-reading",
+          "sourceContentHash": "e1594f6d2c2c96de673832f2efe0847d6e8f968d3ed2c4833705aeba378b5517"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.cardboard-boat-captain-020",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "纸箱船长的椅子",
+        "summary": "纸箱船长的椅子，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.cardboard-boat-captain-020",
+          "family": "reading_tf",
+          "label": "纸箱船长的椅子",
+          "candidateSHA256": "cc10f8ccb33f7001f9ff5478d0a7ade735520c2f7764eb6063df3ddae9ea6b70",
+          "authorCheckSHA256": "1be63cec0283256e13ab24eb5094d17930f7b57e045a16254a5e3075613ff44d",
+          "sourceGroupIds": [
+            "original.primary3-toy-shelf-tf#primary3.cardboard-boat-captain-020.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b032；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Cardboard Boat Captain 020\n\nMy sister makes a boat from a big cardboard box. She puts a chair inside and calls it the captain’s seat. I make a paper hat for her. Our little brother brings a toy fish. He wants to put water in the box, but we say it must stay dry. We put blue cloth around the boat instead. Then we pretend to sail to an island under the dining table."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.cardboard-boat-captain-020.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The pretend boat is made from cardboard.",
+            "material": "Cardboard Boat Captain 020\n\nMy sister makes a boat from a big cardboard box. She puts a chair inside and calls it the captain’s seat. I make a paper hat for her. Our little brother brings a toy fish. He wants to put water in the box, but we say it must stay dry. We put blue cloth around the boat instead. Then we pretend to sail to an island under the dining table.",
+            "explanation": "A正确：big cardboard box成船；B否认材料。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.cardboard-boat-captain-020.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The chair stands outside the boat.",
+            "material": "Cardboard Boat Captain 020\n\nMy sister makes a boat from a big cardboard box. She puts a chair inside and calls it the captain’s seat. I make a paper hat for her. Our little brother brings a toy fish. He wants to put water in the box, but we say it must stay dry. We put blue cloth around the boat instead. Then we pretend to sail to an island under the dining table.",
+            "explanation": "B正确：chair inside；A内外反向。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.cardboard-boat-captain-020.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The little brother brings a toy fish.",
+            "material": "Cardboard Boat Captain 020\n\nMy sister makes a boat from a big cardboard box. She puts a chair inside and calls it the captain’s seat. I make a paper hat for her. Our little brother brings a toy fish. He wants to put water in the box, but we say it must stay dry. We put blue cloth around the boat instead. Then we pretend to sail to an island under the dining table.",
+            "explanation": "A正确：brings toy fish；B否认道具。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.cardboard-boat-captain-020.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The children fill the cardboard box with water.",
+            "material": "Cardboard Boat Captain 020\n\nMy sister makes a boat from a big cardboard box. She puts a chair inside and calls it the captain’s seat. I make a paper hat for her. Our little brother brings a toy fish. He wants to put water in the box, but we say it must stay dry. We put blue cloth around the boat instead. Then we pretend to sail to an island under the dining table.",
+            "explanation": "B正确：必须干，不加水；A把未采纳想法当行动。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.cardboard-boat-captain-020.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Blue cloth is used around the boat.",
+            "material": "Cardboard Boat Captain 020\n\nMy sister makes a boat from a big cardboard box. She puts a chair inside and calls it the captain’s seat. I make a paper hat for her. Our little brother brings a toy fish. He wants to put water in the box, but we say it must stay dry. We put blue cloth around the boat instead. Then we pretend to sail to an island under the dining table.",
+            "explanation": "A正确：blue cloth around instead；B否认替代造景方式。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "f3fe7ce88784bda5ff7581e63cfc1742357aea895088b91e1178b12cea6983a3",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-toy-shelf-tf#primary3.cardboard-boat-captain-020.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.cardboard-boat-captain-020.reading.q1",
+            "expansion.20261028.primary3.cardboard-boat-captain-020.reading.q2",
+            "expansion.20261028.primary3.cardboard-boat-captain-020.reading.q3",
+            "expansion.20261028.primary3.cardboard-boat-captain-020.reading.q4",
+            "expansion.20261028.primary3.cardboard-boat-captain-020.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-toy-shelf-tf",
+          "sourceContentHash": "187694907ceee4d8935c417bab8718ebd2a57d0db20d0e0f3d9842de64249cd1"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.classroom-door-hinge-020",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "会吱呀响的教室门",
+        "summary": "会吱呀响的教室门，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.classroom-door-hinge-020",
+          "family": "reading_choice",
+          "label": "会吱呀响的教室门",
+          "candidateSHA256": "41ae5bc7b7e1ec325477fbb8a7b5cc191c76b5cb76ff3143d0c4f6a89d0be161",
+          "authorCheckSHA256": "1be63cec0283256e13ab24eb5094d17930f7b57e045a16254a5e3075613ff44d",
+          "sourceGroupIds": [
+            "original.primary4-book-bus-call#primary4.classroom-door-hinge-020.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b032；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Classroom Door Hinge 020\n\nOur classroom door makes a loud noise when it opens. It interrupts the quiet reading time. We first ask people to keep the door shut, but late pupils still need to come in. The caretaker checks the hinges. He asks us to use the other door while he works. After he finishes, the door opens quietly. We remove the temporary sign from the other door. The teacher says the problem was with the door, not with pupils who needed to enter."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.classroom-door-hinge-020.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What problem does the class have?",
+            "material": "Classroom Door Hinge 020\n\nOur classroom door makes a loud noise when it opens. It interrupts the quiet reading time. We first ask people to keep the door shut, but late pupils still need to come in. The caretaker checks the hinges. He asks us to use the other door while he works. After he finishes, the door opens quietly. We remove the temporary sign from the other door. The teacher says the problem was with the door, not with pupils who needed to enter.",
+            "explanation": "A开门响打断静读；B无书、C缺墙均未提。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A noisy opening door."
+              },
+              {
+                "id": "o1",
+                "text": "No books to read."
+              },
+              {
+                "id": "o2",
+                "text": "A missing classroom wall."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.classroom-door-hinge-020.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is keeping the door shut not a full solution?",
+            "material": "Classroom Door Hinge 020\n\nOur classroom door makes a loud noise when it opens. It interrupts the quiet reading time. We first ask people to keep the door shut, but late pupils still need to come in. The caretaker checks the hinges. He asks us to use the other door while he works. After he finishes, the door opens quietly. We remove the temporary sign from the other door. The teacher says the problem was with the door, not with pupils who needed to enter.",
+            "explanation": "B迟到学生仍需进；A教室有人；C管理员意图未提。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Nobody uses the classroom."
+              },
+              {
+                "id": "o1",
+                "text": "Late pupils still need to enter."
+              },
+              {
+                "id": "o2",
+                "text": "The caretaker wants to read outside."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.classroom-door-hinge-020.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where do pupils enter while repairs happen?",
+            "material": "Classroom Door Hinge 020\n\nOur classroom door makes a loud noise when it opens. It interrupts the quiet reading time. We first ask people to keep the door shut, but late pupils still need to come in. The caretaker checks the hinges. He asks us to use the other door while he works. After he finishes, the door opens quietly. We remove the temporary sign from the other door. The teacher says the problem was with the door, not with pupils who needed to enter.",
+            "explanation": "C维修时另一门；A窗、B墙无此路线。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Through a window."
+              },
+              {
+                "id": "o1",
+                "text": "Over the wall."
+              },
+              {
+                "id": "o2",
+                "text": "Through the other door."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.classroom-door-hinge-020.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What happens after the repair?",
+            "material": "Classroom Door Hinge 020\n\nOur classroom door makes a loud noise when it opens. It interrupts the quiet reading time. We first ask people to keep the door shut, but late pupils still need to come in. The caretaker checks the hinges. He asks us to use the other door while he works. After he finishes, the door opens quietly. We remove the temporary sign from the other door. The teacher says the problem was with the door, not with pupils who needed to enter.",
+            "explanation": "A修后静开；B永久停读、C拆双门均非结果。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The door opens quietly."
+              },
+              {
+                "id": "o1",
+                "text": "The class stops reading forever."
+              },
+              {
+                "id": "o2",
+                "text": "Both doors are removed."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.classroom-door-hinge-020.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does the teacher emphasise?",
+            "material": "Classroom Door Hinge 020\n\nOur classroom door makes a loud noise when it opens. It interrupts the quiet reading time. We first ask people to keep the door shut, but late pupils still need to come in. The caretaker checks the hinges. He asks us to use the other door while he works. After he finishes, the door opens quietly. We remove the temporary sign from the other door. The teacher says the problem was with the door, not with pupils who needed to enter.",
+            "explanation": "B不是需要进的孩子问题，而门故障；A永不进、C孩子造铰链无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Pupils should never enter rooms."
+              },
+              {
+                "id": "o1",
+                "text": "The door itself caused the problem."
+              },
+              {
+                "id": "o2",
+                "text": "Every late pupil made the hinges."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "907b4a04db5b44fca276fa5b953f3e27c0fac72c9875341a99111354038173ae",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-book-bus-call#primary4.classroom-door-hinge-020.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.classroom-door-hinge-020.reading.q1",
+            "expansion.20261028.primary4.classroom-door-hinge-020.reading.q2",
+            "expansion.20261028.primary4.classroom-door-hinge-020.reading.q3",
+            "expansion.20261028.primary4.classroom-door-hinge-020.reading.q4",
+            "expansion.20261028.primary4.classroom-door-hinge-020.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-book-bus-call",
+          "sourceContentHash": "5237c2b519c0bea74c51656808b22df9c776e14bf36f397fcbd54a9367ed2198"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.holiday-pet-note-020",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "照顾金鱼的便条",
+        "summary": "照顾金鱼的便条，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.room_tf",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小四历史公开转载的完整文字组：一篇五判断／五独立句五共享词或短语／六中文情境六共享表达，分别绑定，不拼组合。上册正文2012—13与网页2021、下册未署年分开；学校施测与现行难度未认证。原读答F把未提当假的缺陷保留，原创F均明示反证；不添加未印的一次规则。图片/音频缺失任务未恢复。独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.holiday-pet-note-020",
+          "family": "reading_tf",
+          "label": "照顾金鱼的便条",
+          "candidateSHA256": "149a30dafc7e166f07ecb5a3ee87a23ccd080ad7fa55e93d29cf725199ada81d",
+          "authorCheckSHA256": "1be63cec0283256e13ab24eb5094d17930f7b57e045a16254a5e3075613ff44d",
+          "sourceGroupIds": [
+            "original.primary4-fruit-shop-tf#primary4.holiday-pet-note-020.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b032；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Holiday Pet Note 020\n\nOur neighbour asks us to feed her goldfish for two days. Her note says to give one small spoon of food each morning. We must not feed them again in the evening. On the first day, my brother thinks the fish still look hungry. Mum points to the note and puts the food tin away. We mark the morning feeding on the calendar. When the neighbour returns, she can see that both mornings have been recorded."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.holiday-pet-note-020.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The family looks after the fish for two days.",
+            "material": "Holiday Pet Note 020\n\nOur neighbour asks us to feed her goldfish for two days. Her note says to give one small spoon of food each morning. We must not feed them again in the evening. On the first day, my brother thinks the fish still look hungry. Mum points to the note and puts the food tin away. We mark the morning feeding on the calendar. When the neighbour returns, she can see that both mornings have been recorded.",
+            "explanation": "A正确：for two days；B否认照看时长。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.holiday-pet-note-020.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The note says to feed one small spoon each morning.",
+            "material": "Holiday Pet Note 020\n\nOur neighbour asks us to feed her goldfish for two days. Her note says to give one small spoon of food each morning. We must not feed them again in the evening. On the first day, my brother thinks the fish still look hungry. Mum points to the note and puts the food tin away. We mark the morning feeding on the calendar. When the neighbour returns, she can see that both mornings have been recorded.",
+            "explanation": "A正确：one small spoon every morning；B否认份量和频率。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.holiday-pet-note-020.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The brother’s guess leads the family to feed again that evening.",
+            "material": "Holiday Pet Note 020\n\nOur neighbour asks us to feed her goldfish for two days. Her note says to give one small spoon of food each morning. We must not feed them again in the evening. On the first day, my brother thinks the fish still look hungry. Mum points to the note and puts the food tin away. We mark the morning feeding on the calendar. When the neighbour returns, she can see that both mornings have been recorded.",
+            "explanation": "B正确：妈妈按便条收食，未晚间再喂；A把猜测当后续行动。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.holiday-pet-note-020.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The family records feeding on a calendar.",
+            "material": "Holiday Pet Note 020\n\nOur neighbour asks us to feed her goldfish for two days. Her note says to give one small spoon of food each morning. We must not feed them again in the evening. On the first day, my brother thinks the fish still look hungry. Mum points to the note and puts the food tin away. We mark the morning feeding on the calendar. When the neighbour returns, she can see that both mornings have been recorded.",
+            "explanation": "A正确：mark morning feeding calendar；B否认记录方法。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.holiday-pet-note-020.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The neighbour finds only one morning recorded after returning.",
+            "material": "Holiday Pet Note 020\n\nOur neighbour asks us to feed her goldfish for two days. Her note says to give one small spoon of food each morning. We must not feed them again in the evening. On the first day, my brother thinks the fish still look hungry. Mum points to the note and puts the food tin away. We mark the morning feeding on the calendar. When the neighbour returns, she can see that both mornings have been recorded.",
+            "explanation": "B正确：both mornings recorded；A把两次改一次。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "2e2e4ec42c6f002f1dfa5578375ea5b8b91dbff1eb0894c624767faa83a576c7",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-fruit-shop-tf#primary4.holiday-pet-note-020.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.holiday-pet-note-020.reading.q1",
+            "expansion.20261028.primary4.holiday-pet-note-020.reading.q2",
+            "expansion.20261028.primary4.holiday-pet-note-020.reading.q3",
+            "expansion.20261028.primary4.holiday-pet-note-020.reading.q4",
+            "expansion.20261028.primary4.holiday-pet-note-020.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-fruit-shop-tf",
+          "sourceContentHash": "e5aea54fd4e4c721453aaafdcc6ac21130d1baf871f067d4132a01e471e39993"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.knitting-row-story-020",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "围巾上少数的一行",
+        "summary": "围巾上少数的一行，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary5.yogor2024.frog",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 来源形式为公开模拟题，尚缺普通学校样本复现；不计真实考试认证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.knitting-row-story-020",
+          "family": "reading_choice",
+          "label": "围巾上少数的一行",
+          "candidateSHA256": "17ce74a9509851e3fbeb6c1b0eccdee85ca22171d6da0b86dfb58fda3ce28c94",
+          "authorCheckSHA256": "1be63cec0283256e13ab24eb5094d17930f7b57e045a16254a5e3075613ff44d",
+          "sourceGroupIds": [
+            "original.inside-the-book-reading#primary5.knitting-row-story-020.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b032；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Knitting Row Story 020\n\nMara knitted a scarf for her little brother with Grandma’s help. Near the end, she noticed one narrow row where she had used fewer stitches. She wanted to hide it inside the folded scarf. Grandma suggested asking whether the scarf still worked and whether the mistake should be fixed. Together they checked the loose thread. It could be secured, but the narrow row would remain unless several rows were undone.\nMara’s brother tried the scarf. He liked the soft wool and said the narrow part fitted neatly under his coat. Mara told him how it had happened instead of pretending it was planned. He asked her to keep it as it was. They secured the thread together. Later, Mara practised counting stitches on a small sample. Accepting this scarf did not mean she had stopped wanting to improve."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.knitting-row-story-020.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Mara notice?",
+            "material": "Knitting Row Story 020\n\nMara knitted a scarf for her little brother with Grandma’s help. Near the end, she noticed one narrow row where she had used fewer stitches. She wanted to hide it inside the folded scarf. Grandma suggested asking whether the scarf still worked and whether the mistake should be fixed. Together they checked the loose thread. It could be secured, but the narrow row would remain unless several rows were undone.\nMara’s brother tried the scarf. He liked the soft wool and said the narrow part fitted neatly under his coat. Mara told him how it had happened instead of pretending it was planned. He asked her to keep it as it was. They secured the thread together. Later, Mara practised counting stitches on a small sample. Accepting this scarf did not mean she had stopped wanting to improve.",
+            "explanation": "B一行针数少而窄；A材质变化、C归属、D全不喜欢均无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The wool has become paper."
+              },
+              {
+                "id": "o1",
+                "text": "One row has fewer stitches."
+              },
+              {
+                "id": "o2",
+                "text": "The whole scarf belongs to Grandma."
+              },
+              {
+                "id": "o3",
+                "text": "Her brother dislikes every scarf."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.knitting-row-story-020.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What is Grandma’s first suggestion?",
+            "material": "Knitting Row Story 020\n\nMara knitted a scarf for her little brother with Grandma’s help. Near the end, she noticed one narrow row where she had used fewer stitches. She wanted to hide it inside the folded scarf. Grandma suggested asking whether the scarf still worked and whether the mistake should be fixed. Together they checked the loose thread. It could be secured, but the narrow row would remain unless several rows were undone.\nMara’s brother tried the scarf. He liked the soft wool and said the narrow part fitted neatly under his coat. Mara told him how it had happened instead of pretending it was planned. He asked her to keep it as it was. They secured the thread together. Later, Mara practised counting stitches on a small sample. Accepting this scarf did not mean she had stopped wanting to improve.",
+            "explanation": "C一起检查功能与处理；A扔、B藏、D不看就拆非建议。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Throw away all the wool."
+              },
+              {
+                "id": "o1",
+                "text": "Hide every mistake."
+              },
+              {
+                "id": "o2",
+                "text": "Check how the scarf works and what needs fixing."
+              },
+              {
+                "id": "o3",
+                "text": "Undo it without looking."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.knitting-row-story-020.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why is the narrow row kept?",
+            "material": "Knitting Row Story 020\n\nMara knitted a scarf for her little brother with Grandma’s help. Near the end, she noticed one narrow row where she had used fewer stitches. She wanted to hide it inside the folded scarf. Grandma suggested asking whether the scarf still worked and whether the mistake should be fixed. Together they checked the loose thread. It could be secured, but the narrow row would remain unless several rows were undone.\nMara’s brother tried the scarf. He liked the soft wool and said the narrow part fitted neatly under his coat. Mara told him how it had happened instead of pretending it was planned. He asked her to keep it as it was. They secured the thread together. Later, Mara practised counting stitches on a small sample. Accepting this scarf did not mean she had stopped wanting to improve.",
+            "explanation": "A试戴适合外套且弟弟要求保留；B已可见；C可修线；D无博物馆。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The brother finds it useful and asks to keep it."
+              },
+              {
+                "id": "o1",
+                "text": "It cannot be seen by anyone at all."
+              },
+              {
+                "id": "o2",
+                "text": "Grandma forbids any repair."
+              },
+              {
+                "id": "o3",
+                "text": "The scarf is only for a museum."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.knitting-row-story-020.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How does Mara describe the narrow row to her brother?",
+            "material": "Knitting Row Story 020\n\nMara knitted a scarf for her little brother with Grandma’s help. Near the end, she noticed one narrow row where she had used fewer stitches. She wanted to hide it inside the folded scarf. Grandma suggested asking whether the scarf still worked and whether the mistake should be fixed. Together they checked the loose thread. It could be secured, but the narrow row would remain unless several rows were undone.\nMara’s brother tried the scarf. He liked the soft wool and said the narrow part fitted neatly under his coat. Mara told him how it had happened instead of pretending it was planned. He asked her to keep it as it was. They secured the thread together. Later, Mara practised counting stitches on a small sample. Accepting this scarf did not mean she had stopped wanting to improve.",
+            "explanation": "D如实说明非计划；A/C掩饰、B推责均非行为。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "She says it was a secret professional pattern."
+              },
+              {
+                "id": "o1",
+                "text": "She blames another pupil."
+              },
+              {
+                "id": "o2",
+                "text": "She refuses to explain."
+              },
+              {
+                "id": "o3",
+                "text": "She tells him what actually happened."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.knitting-row-story-020.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Mara do later?",
+            "material": "Knitting Row Story 020\n\nMara knitted a scarf for her little brother with Grandma’s help. Near the end, she noticed one narrow row where she had used fewer stitches. She wanted to hide it inside the folded scarf. Grandma suggested asking whether the scarf still worked and whether the mistake should be fixed. Together they checked the loose thread. It could be secured, but the narrow row would remain unless several rows were undone.\nMara’s brother tried the scarf. He liked the soft wool and said the narrow part fitted neatly under his coat. Mara told him how it had happened instead of pretending it was planned. He asked her to keep it as it was. They secured the thread together. Later, Mara practised counting stitches on a small sample. Accepting this scarf did not mean she had stopped wanting to improve.",
+            "explanation": "B另样练计针；A放弃、C隐藏、D禁穿与末段相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Stop learning to knit."
+              },
+              {
+                "id": "o1",
+                "text": "Practise counting stitches on a sample."
+              },
+              {
+                "id": "o2",
+                "text": "Hide the scarf forever."
+              },
+              {
+                "id": "o3",
+                "text": "Ask the brother never to wear it."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "43559632e2c43fa90e6ea4ae781d1c973abb05d639bde03036337ca88d443437",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.inside-the-book-reading#primary5.knitting-row-story-020.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.knitting-row-story-020.reading.q1",
+            "expansion.20261028.primary5.knitting-row-story-020.reading.q2",
+            "expansion.20261028.primary5.knitting-row-story-020.reading.q3",
+            "expansion.20261028.primary5.knitting-row-story-020.reading.q4",
+            "expansion.20261028.primary5.knitting-row-story-020.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.inside-the-book-reading",
+          "sourceContentHash": "46e509e87efeb15b94ac01cde6c90574c6c6a8d27bfcfc776298ff93969b0c6a"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.community-desk-return-slots-020",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "社区借物台的两个归还口",
+        "summary": "社区借物台的两个归还口，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.dongcheng2025.fourcards",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照2024-2025学年北京区卷公开原版任务；题面身份已核，发布方非原考试机构，原键/事实与学生难度仍分别待独立验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.community-desk-return-slots-020",
+          "family": "reading_tf",
+          "label": "社区借物台的两个归还口",
+          "candidateSHA256": "c734b1f42995782ee9e01270624ac227052ee873a29e715d2d3c9a2e0101f16c",
+          "authorCheckSHA256": "1be63cec0283256e13ab24eb5094d17930f7b57e045a16254a5e3075613ff44d",
+          "sourceGroupIds": [
+            "original.primary5-four-club-cards-tf#primary5.community-desk-return-slots-020.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b032；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Community Desk Return Slots 020\n\nThe community desk lent board games and small sports kits. A sign directed books to a narrow return slot and games to a staffed counter. One visitor put a game box through the book slot. Several pieces fell out inside. Staff found them, but they could not tell which set they belonged to immediately. The desk changed its sign to include the reason: boxes could open and loose pieces needed checking. It also placed a large arrow towards the game counter. The book slot stayed open after hours, but games still had to be returned while a helper was present. A later opening time was added on Thursday for people who worked during the day."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.community-desk-return-slots-020.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Games were meant to be returned through the narrow book slot.",
+            "material": "Community Desk Return Slots 020\n\nThe community desk lent board games and small sports kits. A sign directed books to a narrow return slot and games to a staffed counter. One visitor put a game box through the book slot. Several pieces fell out inside. Staff found them, but they could not tell which set they belonged to immediately. The desk changed its sign to include the reason: boxes could open and loose pieces needed checking. It also placed a large arrow towards the game counter. The book slot stayed open after hours, but games still had to be returned while a helper was present. A later opening time was added on Thursday for people who worked during the day.",
+            "explanation": "B正确：游戏有人柜台，书才窄槽；A用途交换。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.community-desk-return-slots-020.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Loose pieces made it harder to identify the correct set.",
+            "material": "Community Desk Return Slots 020\n\nThe community desk lent board games and small sports kits. A sign directed books to a narrow return slot and games to a staffed counter. One visitor put a game box through the book slot. Several pieces fell out inside. Staff found them, but they could not tell which set they belonged to immediately. The desk changed its sign to include the reason: boxes could open and loose pieces needed checking. It also placed a large arrow towards the game counter. The book slot stayed open after hours, but games still had to be returned while a helper was present. A later opening time was added on Thursday for people who worked during the day.",
+            "explanation": "A正确：散落后不能立即分套；B否认问题。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.community-desk-return-slots-020.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The revised sign explained why games needed the counter.",
+            "material": "Community Desk Return Slots 020\n\nThe community desk lent board games and small sports kits. A sign directed books to a narrow return slot and games to a staffed counter. One visitor put a game box through the book slot. Several pieces fell out inside. Staff found them, but they could not tell which set they belonged to immediately. The desk changed its sign to include the reason: boxes could open and loose pieces needed checking. It also placed a large arrow towards the game counter. The book slot stayed open after hours, but games still had to be returned while a helper was present. A later opening time was added on Thursday for people who worked during the day.",
+            "explanation": "A正确：盒会开、散件需核为理由；B否认补充解释。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.community-desk-return-slots-020.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Games could be returned unattended at any hour after the change.",
+            "material": "Community Desk Return Slots 020\n\nThe community desk lent board games and small sports kits. A sign directed books to a narrow return slot and games to a staffed counter. One visitor put a game box through the book slot. Several pieces fell out inside. Staff found them, but they could not tell which set they belonged to immediately. The desk changed its sign to include the reason: boxes could open and loose pieces needed checking. It also placed a large arrow towards the game counter. The book slot stayed open after hours, but games still had to be returned while a helper was present. A later opening time was added on Thursday for people who worked during the day.",
+            "explanation": "B正确：仍需helper在；A把书槽全天当游戏全天。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.community-desk-return-slots-020.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Thursday gained a later staffed opening time.",
+            "material": "Community Desk Return Slots 020\n\nThe community desk lent board games and small sports kits. A sign directed books to a narrow return slot and games to a staffed counter. One visitor put a game box through the book slot. Several pieces fell out inside. Staff found them, but they could not tell which set they belonged to immediately. The desk changed its sign to include the reason: boxes could open and loose pieces needed checking. It also placed a large arrow towards the game counter. The book slot stayed open after hours, but games still had to be returned while a helper was present. A later opening time was added on Thursday for people who worked during the day.",
+            "explanation": "A正确：later opening Thursday供日间工作者；B否认便利改进。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "33077be19c8237ea9a2df00caf597a6cc564f96e7f839f36a0d7c35e06387b19",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-four-club-cards-tf#primary5.community-desk-return-slots-020.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.community-desk-return-slots-020.reading.q1",
+            "expansion.20261028.primary5.community-desk-return-slots-020.reading.q2",
+            "expansion.20261028.primary5.community-desk-return-slots-020.reading.q3",
+            "expansion.20261028.primary5.community-desk-return-slots-020.reading.q4",
+            "expansion.20261028.primary5.community-desk-return-slots-020.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-four-club-cards-tf",
+          "sourceContentHash": "deec4eacce2111387e3dcf6fe049981e6ddfed77715d6df9fd944beb49bf2b92"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.river-sign-story-020",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "河边步道上留下的旧箭头",
+        "summary": "河边步道上留下的旧箭头，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.shenzhenexperiment2017.prose5x4",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 结构参照自署2016–17深圳实验学校小学部六下的历史教辅导出：单篇五题四选，第4题中有两处题面空，但只选一组两项组合，整组仍五回应。原卷末句缺文、Cody/Cady等印法及原键缺保留，原校/施测未认证；完整同文故事另在Spectrum公开缓存读者版本核读，非原卷补页，不把读者版覆盖原件，也不按其Grade2标签推中国小二适配。本文为全新完整作者材料，逐项自审，不声称源已完整、gold或能力等值。独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.river-sign-story-020",
+          "family": "reading_choice",
+          "label": "河边步道上留下的旧箭头",
+          "candidateSHA256": "ed4a75d02e8b49602670baab579ffb6b431e3ae9f54afa1fb6d35b59b0e76cc1",
+          "authorCheckSHA256": "1be63cec0283256e13ab24eb5094d17930f7b57e045a16254a5e3075613ff44d",
+          "sourceGroupIds": [
+            "original.primary6-reading5joint-route#primary6.river-sign-story-020.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b032；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "River Sign Story 020\n\nAfter a flood, a village walking path changed. The wooden bridge near the mill had been removed, and walkers had to use a wider bridge upstream. Sora helped paint a new direction sign. She wanted to cover every old arrow at once so no one would be confused.\nHer aunt stopped her beside a stone wall. One faded arrow pointed to the old mill path, which was still open for visitors who wanted to see the building. It was the river crossing beyond the mill that was closed. If Sora painted over the arrow without replacing its message, people might think the mill itself was closed too.\nThey made the signs more precise: one showed the mill entrance, another marked the closed crossing, and a third directed walkers upstream. They checked the route from a newcomer’s point of view before leaving. Sora learned that correcting information did not always mean erasing everything old. It meant finding exactly which part had changed and making the remaining choices clear."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.river-sign-story-020.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What had the flood changed?",
+            "material": "River Sign Story 020\n\nAfter a flood, a village walking path changed. The wooden bridge near the mill had been removed, and walkers had to use a wider bridge upstream. Sora helped paint a new direction sign. She wanted to cover every old arrow at once so no one would be confused.\nHer aunt stopped her beside a stone wall. One faded arrow pointed to the old mill path, which was still open for visitors who wanted to see the building. It was the river crossing beyond the mill that was closed. If Sora painted over the arrow without replacing its message, people might think the mill itself was closed too.\nThey made the signs more precise: one showed the mill entrance, another marked the closed crossing, and a third directed walkers upstream. They checked the route from a newcomer’s point of view before leaving. Sora learned that correcting information did not always mean erasing everything old. It meant finding exactly which part had changed and making the remaining choices clear.",
+            "explanation": "B磨坊旁木桥移除需上游桥；A无改名；C全村楼、D所有路永闭均夸大。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The river’s name only."
+              },
+              {
+                "id": "o1",
+                "text": "The availability of one bridge crossing."
+              },
+              {
+                "id": "o2",
+                "text": "Every building in the village."
+              },
+              {
+                "id": "o3",
+                "text": "All paths everywhere permanently."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.river-sign-story-020.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why does Sora’s aunt question covering the faded arrow?",
+            "material": "River Sign Story 020\n\nAfter a flood, a village walking path changed. The wooden bridge near the mill had been removed, and walkers had to use a wider bridge upstream. Sora helped paint a new direction sign. She wanted to cover every old arrow at once so no one would be confused.\nHer aunt stopped her beside a stone wall. One faded arrow pointed to the old mill path, which was still open for visitors who wanted to see the building. It was the river crossing beyond the mill that was closed. If Sora painted over the arrow without replacing its message, people might think the mill itself was closed too.\nThey made the signs more precise: one showed the mill entrance, another marked the closed crossing, and a third directed walkers upstream. They checked the route from a newcomer’s point of view before leaving. Sora learned that correcting information did not always mean erasing everything old. It meant finding exactly which part had changed and making the remaining choices clear.",
+            "explanation": "C箭头仍可指开放磨坊；A/B无据；D过河段确闭。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The paint has no colour."
+              },
+              {
+                "id": "o1",
+                "text": "Nobody ever visits the mill."
+              },
+              {
+                "id": "o2",
+                "text": "It still leads to an open mill path."
+              },
+              {
+                "id": "o3",
+                "text": "The old bridge is definitely open."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.river-sign-story-020.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which place remains open?",
+            "material": "River Sign Story 020\n\nAfter a flood, a village walking path changed. The wooden bridge near the mill had been removed, and walkers had to use a wider bridge upstream. Sora helped paint a new direction sign. She wanted to cover every old arrow at once so no one would be confused.\nHer aunt stopped her beside a stone wall. One faded arrow pointed to the old mill path, which was still open for visitors who wanted to see the building. It was the river crossing beyond the mill that was closed. If Sora painted over the arrow without replacing its message, people might think the mill itself was closed too.\nThey made the signs more precise: one showed the mill entrance, another marked the closed crossing, and a third directed walkers upstream. They checked the route from a newcomer’s point of view before leaving. Sora learned that correcting information did not always mean erasing everything old. It meant finding exactly which part had changed and making the remaining choices clear.",
+            "explanation": "A可到磨坊建筑；B木桥已撤；C全部水道、D秘密涉水路未提。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The mill building route."
+              },
+              {
+                "id": "o1",
+                "text": "The removed wooden bridge."
+              },
+              {
+                "id": "o2",
+                "text": "Every flooded crossing."
+              },
+              {
+                "id": "o3",
+                "text": "A secret path across the water."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.river-sign-story-020.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How do they check the revised signs?",
+            "material": "River Sign Story 020\n\nAfter a flood, a village walking path changed. The wooden bridge near the mill had been removed, and walkers had to use a wider bridge upstream. Sora helped paint a new direction sign. She wanted to cover every old arrow at once so no one would be confused.\nHer aunt stopped her beside a stone wall. One faded arrow pointed to the old mill path, which was still open for visitors who wanted to see the building. It was the river crossing beyond the mill that was closed. If Sora painted over the arrow without replacing its message, people might think the mill itself was closed too.\nThey made the signs more precise: one showed the mill entrance, another marked the closed crossing, and a third directed walkers upstream. They checked the route from a newcomer’s point of view before leaving. Sora learned that correcting information did not always mean erasing everything old. It meant finding exactly which part had changed and making the remaining choices clear.",
+            "explanation": "D以新来者视角走查；A仅亮色、B不查、C删全部均非方法。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Ask only whether the paint looks bright."
+              },
+              {
+                "id": "o1",
+                "text": "Leave without walking anywhere."
+              },
+              {
+                "id": "o2",
+                "text": "Erase all choices from the wall."
+              },
+              {
+                "id": "o3",
+                "text": "Follow the route as if they were newcomers."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary6.river-sign-story-020.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Sora learn?",
+            "material": "River Sign Story 020\n\nAfter a flood, a village walking path changed. The wooden bridge near the mill had been removed, and walkers had to use a wider bridge upstream. Sora helped paint a new direction sign. She wanted to cover every old arrow at once so no one would be confused.\nHer aunt stopped her beside a stone wall. One faded arrow pointed to the old mill path, which was still open for visitors who wanted to see the building. It was the river crossing beyond the mill that was closed. If Sora painted over the arrow without replacing its message, people might think the mill itself was closed too.\nThey made the signs more precise: one showed the mill entrance, another marked the closed crossing, and a third directed walkers upstream. They checked the route from a newcomer’s point of view before leaving. Sora learned that correcting information did not always mean erasing everything old. It meant finding exactly which part had changed and making the remaining choices clear.",
+            "explanation": "B精准指出变化保留有效选择；A拒改、C全废、D靠猜均与主旨相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Old information must always remain unchanged."
+              },
+              {
+                "id": "o1",
+                "text": "A correction should identify the part that actually changed."
+              },
+              {
+                "id": "o2",
+                "text": "Every old arrow is useless."
+              },
+              {
+                "id": "o3",
+                "text": "Visitors should guess without signs."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "d55e7393f3dcefe52495af24833af689e531c917f41251b143baa1392bff1d5b",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-reading5joint-route#primary6.river-sign-story-020.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.river-sign-story-020.reading.q1",
+            "expansion.20261028.primary6.river-sign-story-020.reading.q2",
+            "expansion.20261028.primary6.river-sign-story-020.reading.q3",
+            "expansion.20261028.primary6.river-sign-story-020.reading.q4",
+            "expansion.20261028.primary6.river-sign-story-020.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-reading5joint-route",
+          "sourceContentHash": "bf55c679f24c162c9dc66b20e0457e2063cb0562604ceed78992a872d580b806"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.lunchbox-temperature-record-020",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "保温盒比较里的开盖次数",
+        "summary": "保温盒比较里的开盖次数，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.wuwei2024.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照六年级期末标签的完整公开HTML转录：一封信、五道T/F。正文确认六年级；上册仅网页标题/文件名，学期未知。原PDF/视觉、学校施测及独立转录未核，原键不作gold。原创虚构；所有F都有明示冲突，不沿用源第1题隐含否定。独立教研、目标学生、商用及生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.lunchbox-temperature-record-020",
+          "family": "reading_tf",
+          "label": "保温盒比较里的开盖次数",
+          "candidateSHA256": "2f5184d88d4330499911a8b2695ba4b088b2faac516df3d2108f5b31bc219fb2",
+          "authorCheckSHA256": "1be63cec0283256e13ab24eb5094d17930f7b57e045a16254a5e3075613ff44d",
+          "sourceGroupIds": [
+            "original.primary6-bicycle-letter-tf#primary6.lunchbox-temperature-record-020.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b032；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Lunchbox Temperature Record 020\n\nFor a class investigation, pupils compared two insulated lunchboxes using warm water. Both began with the same amount of water at the same temperature. One group opened Box A every five minutes to look inside. The other left Box B closed until the end. Box B’s water stayed warmer. Some pupils wanted to say this proved its material was better.\nThe teacher asked them to list every difference in the method. Opening a box repeatedly could let heat escape, so the test had not compared materials alone. The class repeated the trial with matching opening times. They kept the first table and added a note about the unequal opening pattern. Their final report used the second trial for the material comparison and showed why the first one was limited."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.lunchbox-temperature-record-020.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The boxes started with equal water amounts and temperatures.",
+            "material": "Lunchbox Temperature Record 020\n\nFor a class investigation, pupils compared two insulated lunchboxes using warm water. Both began with the same amount of water at the same temperature. One group opened Box A every five minutes to look inside. The other left Box B closed until the end. Box B’s water stayed warmer. Some pupils wanted to say this proved its material was better.\nThe teacher asked them to list every difference in the method. Opening a box repeatedly could let heat escape, so the test had not compared materials alone. The class repeated the trial with matching opening times. They kept the first table and added a note about the unequal opening pattern. Their final report used the second trial for the material comparison and showed why the first one was limited.",
+            "explanation": "A正确：same amount same temperature；B否认起始控制。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.lunchbox-temperature-record-020.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Both boxes were opened equally often in the first trial.",
+            "material": "Lunchbox Temperature Record 020\n\nFor a class investigation, pupils compared two insulated lunchboxes using warm water. Both began with the same amount of water at the same temperature. One group opened Box A every five minutes to look inside. The other left Box B closed until the end. Box B’s water stayed warmer. Some pupils wanted to say this proved its material was better.\nThe teacher asked them to list every difference in the method. Opening a box repeatedly could let heat escape, so the test had not compared materials alone. The class repeated the trial with matching opening times. They kept the first table and added a note about the unequal opening pattern. Their final report used the second trial for the material comparison and showed why the first one was limited.",
+            "explanation": "B正确：A每五分开、B末次才开；A忽略程序差异。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.lunchbox-temperature-record-020.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Box B’s warmer result alone proved its material was better.",
+            "material": "Lunchbox Temperature Record 020\n\nFor a class investigation, pupils compared two insulated lunchboxes using warm water. Both began with the same amount of water at the same temperature. One group opened Box A every five minutes to look inside. The other left Box B closed until the end. Box B’s water stayed warmer. Some pupils wanted to say this proved its material was better.\nThe teacher asked them to list every difference in the method. Opening a box repeatedly could let heat escape, so the test had not compared materials alone. The class repeated the trial with matching opening times. They kept the first table and added a note about the unequal opening pattern. Their final report used the second trial for the material comparison and showed why the first one was limited.",
+            "explanation": "B正确：开盖次数不同可散热，不能只归材料；A越过证据边界。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.lunchbox-temperature-record-020.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The repeated trial used matching opening times.",
+            "material": "Lunchbox Temperature Record 020\n\nFor a class investigation, pupils compared two insulated lunchboxes using warm water. Both began with the same amount of water at the same temperature. One group opened Box A every five minutes to look inside. The other left Box B closed until the end. Box B’s water stayed warmer. Some pupils wanted to say this proved its material was better.\nThe teacher asked them to list every difference in the method. Opening a box repeatedly could let heat escape, so the test had not compared materials alone. The class repeated the trial with matching opening times. They kept the first table and added a note about the unequal opening pattern. Their final report used the second trial for the material comparison and showed why the first one was limited.",
+            "explanation": "A正确：matching opening times；B否认改进条件。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.lunchbox-temperature-record-020.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The class kept the first table with a note explaining its limit.",
+            "material": "Lunchbox Temperature Record 020\n\nFor a class investigation, pupils compared two insulated lunchboxes using warm water. Both began with the same amount of water at the same temperature. One group opened Box A every five minutes to look inside. The other left Box B closed until the end. Box B’s water stayed warmer. Some pupils wanted to say this proved its material was better.\nThe teacher asked them to list every difference in the method. Opening a box repeatedly could let heat escape, so the test had not compared materials alone. The class repeated the trial with matching opening times. They kept the first table and added a note about the unequal opening pattern. Their final report used the second trial for the material comparison and showed why the first one was limited.",
+            "explanation": "A正确：kept first table note unequal pattern；B否认保留异常试验。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "0ab536c4ec0ec46459182a638d02f9b3c0f0bc5f38221ff1a7dd21bd6e1e5a95",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-bicycle-letter-tf#primary6.lunchbox-temperature-record-020.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.lunchbox-temperature-record-020.reading.q1",
+            "expansion.20261028.primary6.lunchbox-temperature-record-020.reading.q2",
+            "expansion.20261028.primary6.lunchbox-temperature-record-020.reading.q3",
+            "expansion.20261028.primary6.lunchbox-temperature-record-020.reading.q4",
+            "expansion.20261028.primary6.lunchbox-temperature-record-020.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-bicycle-letter-tf",
+          "sourceContentHash": "506763bf9b8c813d9687e7a4a50a113ac760d167525861858c32488766c97532"
+        }
+      ]
+    }
+  ]
+}

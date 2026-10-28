@@ -1,0 +1,2592 @@
+{
+  "version": 1,
+  "run": "2026-10-28",
+  "batch": "b031",
+  "createdAt": "2026-10-29T00:37:45.493475+08:00",
+  "sourceSHA256": "48af0a8f3a1d30cd456e595cbc28550a0996d78b4c2098fb1e37548352e23062",
+  "reviewSHA256": "c6a1cfae4b4298c62a9f5718a7c02ad0f127e7daaeccdac34e8d50aff79f6a3a",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex primary2–6 author; same-author content and distractor review only",
+  "entries": [
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.broken-cup-classroom-019",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "教室里打碎杯子以后",
+        "summary": "教室里打碎杯子以后，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.broken-cup-classroom-019",
+          "family": "function_choice",
+          "label": "教室里打碎杯子以后",
+          "candidateSHA256": "fed729e90a6270fb45acc70cd2ea9c00b7646ed734d51407bdeb84472cfbf5be",
+          "authorCheckSHA256": "cc10aad743cd9f1232d297b55a90ba74e545a73babf42b0b6ade0d054d9df84f",
+          "sourceGroupIds": [
+            "original.primary2-functions-1#primary2.broken-cup-classroom-019.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b031；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Broken Cup Classroom 019\n\nA cup breaks near the sink. The teacher says to stand back. Do not pick up the pieces. Ask an adult to clean them. The class uses the other sink for now. Tell anyone coming in that the first sink area is closed. The teacher will say when it is clear again."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.broken-cup-classroom-019.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend reaches for a broken piece. You say, \"____\"",
+            "material": "Broken Cup Classroom 019\n\nA cup breaks near the sink. The teacher says to stand back. Do not pick up the pieces. Ask an adult to clean them. The class uses the other sink for now. Tell anyone coming in that the first sink area is closed. The teacher will say when it is clear again.",
+            "explanation": "A按要求退开不捡；B/C均让孩子处理碎片，违成人清理安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Please stand back and leave it."
+              },
+              {
+                "id": "o1",
+                "text": "Pick up every piece now."
+              },
+              {
+                "id": "o2",
+                "text": "Put the pieces in your pocket."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.broken-cup-classroom-019.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend asks who should clean the pieces. You say, \"____\"",
+            "material": "Broken Cup Classroom 019\n\nA cup breaks near the sink. The teacher says to stand back. Do not pick up the pieces. Ask an adult to clean them. The class uses the other sink for now. Tell anyone coming in that the first sink area is closed. The teacher will say when it is clear again.",
+            "explanation": "B成人清理；A最幼孩子、C无电玩具非指定人员。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The youngest child."
+              },
+              {
+                "id": "o1",
+                "text": "An adult."
+              },
+              {
+                "id": "o2",
+                "text": "A toy robot with no power."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.broken-cup-classroom-019.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A child wants to wash hands by the broken cup. You say, \"____\"",
+            "material": "Broken Cup Classroom 019\n\nA cup breaks near the sink. The teacher says to stand back. Do not pick up the pieces. Ask an adult to clean them. The class uses the other sink for now. Tell anyone coming in that the first sink area is closed. The teacher will say when it is clear again.",
+            "explanation": "C暂用另一水槽；A继续近碎杯、B踩碎片均与区域关闭相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Use that sink now."
+              },
+              {
+                "id": "o1",
+                "text": "Walk on the pieces."
+              },
+              {
+                "id": "o2",
+                "text": "Use the other sink for now."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.broken-cup-classroom-019.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend comes in and walks towards the first sink. You say, \"____\"",
+            "material": "Broken Cup Classroom 019\n\nA cup breaks near the sink. The teacher says to stand back. Do not pick up the pieces. Ask an adult to clean them. The class uses the other sink for now. Tell anyone coming in that the first sink area is closed. The teacher will say when it is clear again.",
+            "explanation": "A告知封区；B不告知、C催跑均违提醒要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "That sink area is closed for now."
+              },
+              {
+                "id": "o1",
+                "text": "There is nothing to tell you."
+              },
+              {
+                "id": "o2",
+                "text": "Please run to that sink."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.broken-cup-classroom-019.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The pieces look gone, and a friend wants to go back. You say, \"____\"",
+            "material": "Broken Cup Classroom 019\n\nA cup breaks near the sink. The teacher says to stand back. Do not pick up the pieces. Ask an adult to clean them. The class uses the other sink for now. Tell anyone coming in that the first sink area is closed. The teacher will say when it is clear again.",
+            "explanation": "B待教师确认；A自行未经确认进入、C搬水槽均非复开条件。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Go before anyone checks."
+              },
+              {
+                "id": "o1",
+                "text": "Wait until the teacher says it is clear."
+              },
+              {
+                "id": "o2",
+                "text": "Take away the other sink."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "303f9c26dd8c25a109418272180af59373e185356397c6b0167d1d0d010948e1",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-1#primary2.broken-cup-classroom-019.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.broken-cup-classroom-019.reading.q1",
+            "expansion.20261028.primary2.broken-cup-classroom-019.reading.q2",
+            "expansion.20261028.primary2.broken-cup-classroom-019.reading.q3",
+            "expansion.20261028.primary2.broken-cup-classroom-019.reading.q4",
+            "expansion.20261028.primary2.broken-cup-classroom-019.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-1",
+          "sourceContentHash": "77c25e57ad9c6d2617bd26613150f6a3f3a5499dc27432d632649dadedc79877"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary2.lost-friend-fair-desk-019",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary2",
+        "title": "义卖会上找不到同伴",
+        "summary": "义卖会上找不到同伴，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 6,
+        "goalIds": [
+          "original.function_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p2.2021shanghai.function",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式复用已核历史公开样本；不是新增真卷，不确认为现行低小测评蓝图。原创词项/图示另审，独立教研、学生难度、商用、生产均未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary2.lost-friend-fair-desk-019",
+          "family": "function_choice",
+          "label": "义卖会上找不到同伴",
+          "candidateSHA256": "ef41f6b1e517a0d859df3af902c5d8b15dd3afc4c787bb4a4960937f6375b9fd",
+          "authorCheckSHA256": "cc10aad743cd9f1232d297b55a90ba74e545a73babf42b0b6ade0d054d9df84f",
+          "sourceGroupIds": [
+            "original.primary2-functions-2#primary2.lost-friend-fair-desk-019.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b031；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Lost Friend Fair Desk 019\n\nAt the school fair, stay with your partner. If you cannot see your partner, go to the information desk. The desk has a yellow flag. Ask the helper there. Do not leave the school gate alone. Wait at the desk until the teacher comes. Give the helper your class name."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary2.lost-friend-fair-desk-019.reading.q1",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "You cannot find your partner. What should you say to the helper?",
+            "material": "Lost Friend Fair Desk 019\n\nAt the school fair, stay with your partner. If you cannot see your partner, go to the information desk. The desk has a yellow flag. Ask the helper there. Do not leave the school gate alone. Wait at the desk until the teacher comes. Give the helper your class name.",
+            "explanation": "B明确同伴失联并求助；A帽无关；C独离违反不出校门。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "My hat is nice."
+              },
+              {
+                "id": "o1",
+                "text": "I cannot find my partner. Please help."
+              },
+              {
+                "id": "o2",
+                "text": "I want to leave alone now."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.lost-friend-fair-desk-019.reading.q2",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend asks which desk gives help. You say, \"____\"",
+            "material": "Lost Friend Fair Desk 019\n\nAt the school fair, stay with your partner. If you cannot see your partner, go to the information desk. The desk has a yellow flag. Ask the helper there. Do not leave the school gate alone. Wait at the desk until the teacher comes. Give the helper your class name.",
+            "explanation": "C黄旗信息台；A红玩具标、B校外任台非明确地点。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The one with a red toy."
+              },
+              {
+                "id": "o1",
+                "text": "Any desk outside school."
+              },
+              {
+                "id": "o2",
+                "text": "The desk with the yellow flag."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary2.lost-friend-fair-desk-019.reading.q3",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend suggests looking outside the gate alone. You say, \"____\"",
+            "material": "Lost Friend Fair Desk 019\n\nAt the school fair, stay with your partner. If you cannot see your partner, go to the information desk. The desk has a yellow flag. Ask the helper there. Do not leave the school gate alone. Wait at the desk until the teacher comes. Give the helper your class name.",
+            "explanation": "A校内信息台求助；B/C离指定求助点且独行不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Stay here and ask the helper."
+              },
+              {
+                "id": "o1",
+                "text": "Yes, leave alone."
+              },
+              {
+                "id": "o2",
+                "text": "Hide in a shop."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary2.lost-friend-fair-desk-019.reading.q4",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The helper asks which class you are in. You say, \"____\"",
+            "material": "Lost Friend Fair Desk 019\n\nAt the school fair, stay with your partner. If you cannot see your partner, go to the information desk. The desk has a yellow flag. Ask the helper there. Do not leave the school gate alone. Wait at the desk until the teacher comes. Give the helper your class name.",
+            "explanation": "B提供班名供找人；A味道、C旗高均不答班级。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The cake is sweet."
+              },
+              {
+                "id": "o1",
+                "text": "I am in Class Two."
+              },
+              {
+                "id": "o2",
+                "text": "The flag is high."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary2.lost-friend-fair-desk-019.reading.q5",
+            "goalId": "original.function_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A friend wants to wander off while waiting. You say, \"____\"",
+            "material": "Lost Friend Fair Desk 019\n\nAt the school fair, stay with your partner. If you cannot see your partner, go to the information desk. The desk has a yellow flag. Ask the helper there. Do not leave the school gate alone. Wait at the desk until the teacher comes. Give the helper your class name.",
+            "explanation": "C教师来前留台；A乱走、B翻墙违等待要求。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Go wherever you like."
+              },
+              {
+                "id": "o1",
+                "text": "Climb over the wall."
+              },
+              {
+                "id": "o2",
+                "text": "Wait at the desk for the teacher."
+              }
+            ],
+            "answer": "o2"
+          }
+        ]
+      },
+      "contentHash": "dabc20583d11501403d981845969e1a0b7e3eb6b8c1fcac17a87d654fbc2c911",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary2-functions-2#primary2.lost-friend-fair-desk-019.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary2.lost-friend-fair-desk-019.reading.q1",
+            "expansion.20261028.primary2.lost-friend-fair-desk-019.reading.q2",
+            "expansion.20261028.primary2.lost-friend-fair-desk-019.reading.q3",
+            "expansion.20261028.primary2.lost-friend-fair-desk-019.reading.q4",
+            "expansion.20261028.primary2.lost-friend-fair-desk-019.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary2-functions-2",
+          "sourceContentHash": "5c7a7fdfb4679bdd02e2cd3816db969f1495bb1dd0407e1c4f187b6e40027000"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.long-vowels-garden-play-019",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "花园游戏里的长元音词",
+        "summary": "花园游戏里的长元音词，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.shared_bank"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p3.daoli2025.phonicsbank",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.long-vowels-garden-play-019",
+          "family": "shared_bank",
+          "label": "花园游戏里的长元音词",
+          "candidateSHA256": "a9a3738a2d23f1706e9fbf1b197b6ef90379096668fc867fccf2944fa353ffc6",
+          "authorCheckSHA256": "cc10aad743cd9f1232d297b55a90ba74e545a73babf42b0b6ade0d054d9df84f",
+          "sourceGroupIds": [
+            "original.primary3-marked-vowels-kite#primary3.long-vowels-garden-play-019.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b031；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Long Vowels Garden Play 019\n\nUse standard British English pronunciation for the vowel-sound comparisons. Match the vowel sound in the capitalised clue and complete each sentence. Use each bank word once. Bank: A. game B. rope C. white D. tube E. hide\n1. Jake (JAKE) plays a board ____1____ with his sister.\n2. Rose (ROSE) ties a toy to a long ____2____.\n3. My bike (BIKE) is the colour of milk. It is ____3____.\n4. The cute (CUTE) toy train goes through a round paper ____4____.\n5. Mike (MIKE) says, \"You look for me. I will ____5____ behind the tree.\""
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.long-vowels-garden-play-019.reading.q1",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 1?",
+            "material": "Long Vowels Garden Play 019\n\nUse standard British English pronunciation for the vowel-sound comparisons. Match the vowel sound in the capitalised clue and complete each sentence. Use each bank word once. Bank: A. game B. rope C. white D. tube E. hide\n1. Jake (JAKE) plays a board ____1____ with his sister.\n2. Rose (ROSE) ties a toy to a long ____2____.\n3. My bike (BIKE) is the colour of milk. It is ____3____.\n4. The cute (CUTE) toy train goes through a round paper ____4____.\n5. Mike (MIKE) says, \"You look for me. I will ____5____ behind the tree.\"",
+            "explanation": "A game与JAKE均/eɪ/且board game合义；B rope /əʊ/，C white和E hide /aɪ/，D tube /juː/不合元音和游戏名词搭配。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "game"
+              },
+              {
+                "id": "o1",
+                "text": "rope"
+              },
+              {
+                "id": "o2",
+                "text": "white"
+              },
+              {
+                "id": "o3",
+                "text": "tube"
+              },
+              {
+                "id": "o4",
+                "text": "hide"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.long-vowels-garden-play-019.reading.q2",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 2?",
+            "material": "Long Vowels Garden Play 019\n\nUse standard British English pronunciation for the vowel-sound comparisons. Match the vowel sound in the capitalised clue and complete each sentence. Use each bank word once. Bank: A. game B. rope C. white D. tube E. hide\n1. Jake (JAKE) plays a board ____1____ with his sister.\n2. Rose (ROSE) ties a toy to a long ____2____.\n3. My bike (BIKE) is the colour of milk. It is ____3____.\n4. The cute (CUTE) toy train goes through a round paper ____4____.\n5. Mike (MIKE) says, \"You look for me. I will ____5____ behind the tree.\"",
+            "explanation": "B rope与ROSE均/əʊ/且可用来绑玩具；A game /eɪ/，C white和E hide /aɪ/，D tube /juː/不合读音及所需绳义。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "game"
+              },
+              {
+                "id": "o1",
+                "text": "rope"
+              },
+              {
+                "id": "o2",
+                "text": "white"
+              },
+              {
+                "id": "o3",
+                "text": "tube"
+              },
+              {
+                "id": "o4",
+                "text": "hide"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.long-vowels-garden-play-019.reading.q3",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 3?",
+            "material": "Long Vowels Garden Play 019\n\nUse standard British English pronunciation for the vowel-sound comparisons. Match the vowel sound in the capitalised clue and complete each sentence. Use each bank word once. Bank: A. game B. rope C. white D. tube E. hide\n1. Jake (JAKE) plays a board ____1____ with his sister.\n2. Rose (ROSE) ties a toy to a long ____2____.\n3. My bike (BIKE) is the colour of milk. It is ____3____.\n4. The cute (CUTE) toy train goes through a round paper ____4____.\n5. Mike (MIKE) says, \"You look for me. I will ____5____ behind the tree.\"",
+            "explanation": "C white与BIKE均/aɪ/且奶色白；E hide同音但非颜色；A game /eɪ/、B rope /əʊ/、D tube /juː/不同音且不描述颜色。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "game"
+              },
+              {
+                "id": "o1",
+                "text": "rope"
+              },
+              {
+                "id": "o2",
+                "text": "white"
+              },
+              {
+                "id": "o3",
+                "text": "tube"
+              },
+              {
+                "id": "o4",
+                "text": "hide"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.long-vowels-garden-play-019.reading.q4",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 4?",
+            "material": "Long Vowels Garden Play 019\n\nUse standard British English pronunciation for the vowel-sound comparisons. Match the vowel sound in the capitalised clue and complete each sentence. Use each bank word once. Bank: A. game B. rope C. white D. tube E. hide\n1. Jake (JAKE) plays a board ____1____ with his sister.\n2. Rose (ROSE) ties a toy to a long ____2____.\n3. My bike (BIKE) is the colour of milk. It is ____3____.\n4. The cute (CUTE) toy train goes through a round paper ____4____.\n5. Mike (MIKE) says, \"You look for me. I will ____5____ behind the tree.\"",
+            "explanation": "D tube与CUTE含/juː/且纸管可穿过；A game /eɪ/，B rope /əʊ/，C white和E hide /aɪ/不合读音与通道名词。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "game"
+              },
+              {
+                "id": "o1",
+                "text": "rope"
+              },
+              {
+                "id": "o2",
+                "text": "white"
+              },
+              {
+                "id": "o3",
+                "text": "tube"
+              },
+              {
+                "id": "o4",
+                "text": "hide"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary3.long-vowels-garden-play-019.reading.q5",
+            "goalId": "original.shared_bank",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 5?",
+            "material": "Long Vowels Garden Play 019\n\nUse standard British English pronunciation for the vowel-sound comparisons. Match the vowel sound in the capitalised clue and complete each sentence. Use each bank word once. Bank: A. game B. rope C. white D. tube E. hide\n1. Jake (JAKE) plays a board ____1____ with his sister.\n2. Rose (ROSE) ties a toy to a long ____2____.\n3. My bike (BIKE) is the colour of milk. It is ____3____.\n4. The cute (CUTE) toy train goes through a round paper ____4____.\n5. Mike (MIKE) says, \"You look for me. I will ____5____ behind the tree.\"",
+            "explanation": "E hide与MIKE均/aɪ/且躲树后让人找；C white同音却不是躲藏动词；A game /eɪ/、B rope /əʊ/、D tube /juː/均不合。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "game"
+              },
+              {
+                "id": "o1",
+                "text": "rope"
+              },
+              {
+                "id": "o2",
+                "text": "white"
+              },
+              {
+                "id": "o3",
+                "text": "tube"
+              },
+              {
+                "id": "o4",
+                "text": "hide"
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "2e15fed349937f95f784926c6e948467328efdad0982e36d9e0d72f9ec54c599",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-marked-vowels-kite#primary3.long-vowels-garden-play-019.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.long-vowels-garden-play-019.reading.q1",
+            "expansion.20261028.primary3.long-vowels-garden-play-019.reading.q2",
+            "expansion.20261028.primary3.long-vowels-garden-play-019.reading.q3",
+            "expansion.20261028.primary3.long-vowels-garden-play-019.reading.q4",
+            "expansion.20261028.primary3.long-vowels-garden-play-019.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-marked-vowels-kite",
+          "sourceContentHash": "b3ffb7289cab651417811a5ec884536b933e05c9186435ecb214070061f67741"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.rainy-game-room-order-019",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "下雨时换一个游戏房间",
+        "summary": "下雨时换一个游戏房间，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.dialogue_ordering"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p3.panshi2023.dialogue-ordering",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照公开转载2022—2023三上卷文本：六句一对话，首句已给1，其余五个名次；网页标题磐石、原页仅核年级学期，未取得排序页原图或源键，不当原校/全国年级或学生难度认证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.rainy-game-room-order-019",
+          "family": "dialogue_ordering",
+          "label": "下雨时换一个游戏房间",
+          "candidateSHA256": "45bc4c35559539672af1912ce113d0a25daa1974b3161dea7e36529e0b3f8586",
+          "authorCheckSHA256": "cc10aad743cd9f1232d297b55a90ba74e545a73babf42b0b6ade0d054d9df84f",
+          "sourceGroupIds": [
+            "original.primary3-dialogue-ordering-paper-bird#primary3.rainy-game-room-order-019.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b031；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Rainy Game Room Order 019\n\nOrder the conversation. The fixed opening is: 1. Our board game is outside, but it is raining.\nA. Yes, it is empty. Let us take the game there.\nB. Shall I carry the game box?\nC. Can we play in the hall instead?\nD. Yes, please. I will bring the chairs.\nE. The hall is full. How about the art room?\nChoose the position of each line from 2 to 6."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.rainy-game-room-order-019.reading.q1",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What position does line A take?",
+            "material": "Rainy Game Room Order 019\n\nOrder the conversation. The fixed opening is: 1. Our board game is outside, but it is raining.\nA. Yes, it is empty. Let us take the game there.\nB. Shall I carry the game box?\nC. Can we play in the hall instead?\nD. Yes, please. I will bring the chairs.\nE. The hall is full. How about the art room?\nChoose the position of each line from 2 to 6.",
+            "explanation": "C第4步回答美术室提议并转移游戏；A第2步先问礼堂；B第3步答礼堂满并提美术室；D第5步问搬盒；E第6步分担椅子。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary3.rainy-game-room-order-019.reading.q2",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What position does line B take?",
+            "material": "Rainy Game Room Order 019\n\nOrder the conversation. The fixed opening is: 1. Our board game is outside, but it is raining.\nA. Yes, it is empty. Let us take the game there.\nB. Shall I carry the game box?\nC. Can we play in the hall instead?\nD. Yes, please. I will bring the chairs.\nE. The hall is full. How about the art room?\nChoose the position of each line from 2 to 6.",
+            "explanation": "D第5步场地定后提出搬游戏盒；A第2步尚问地点；B第3步提美术室；C第4步确认；E第6步应回应搬运提议。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary3.rainy-game-room-order-019.reading.q3",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What position does line C take?",
+            "material": "Rainy Game Room Order 019\n\nOrder the conversation. The fixed opening is: 1. Our board game is outside, but it is raining.\nA. Yes, it is empty. Let us take the game there.\nB. Shall I carry the game box?\nC. Can we play in the hall instead?\nD. Yes, please. I will bring the chairs.\nE. The hall is full. How about the art room?\nChoose the position of each line from 2 to 6.",
+            "explanation": "A第2步因雨先问可否礼堂；B第3步才能答礼堂满；C第4步美术室确认；D第5步搬盒；E第6步带椅均后于询礼堂。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.rainy-game-room-order-019.reading.q4",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What position does line D take?",
+            "material": "Rainy Game Room Order 019\n\nOrder the conversation. The fixed opening is: 1. Our board game is outside, but it is raining.\nA. Yes, it is empty. Let us take the game there.\nB. Shall I carry the game box?\nC. Can we play in the hall instead?\nD. Yes, please. I will bring the chairs.\nE. The hall is full. How about the art room?\nChoose the position of each line from 2 to 6.",
+            "explanation": "E第6步答Shall I carry并分工带椅；A第2步问礼堂；B第3步提替代；C第4步确认；D第5步才问搬盒。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o4"
+          },
+          {
+            "id": "expansion.20261028.primary3.rainy-game-room-order-019.reading.q5",
+            "goalId": "original.dialogue_ordering",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What position does line E take?",
+            "material": "Rainy Game Room Order 019\n\nOrder the conversation. The fixed opening is: 1. Our board game is outside, but it is raining.\nA. Yes, it is empty. Let us take the game there.\nB. Shall I carry the game box?\nC. Can we play in the hall instead?\nD. Yes, please. I will bring the chairs.\nE. The hall is full. How about the art room?\nChoose the position of each line from 2 to 6.",
+            "explanation": "B第3步回答礼堂请求并提美术室；A第2步应先问礼堂；C第4步确认美术室；D第5步问搬盒；E第6步应分工搬椅。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "2"
+              },
+              {
+                "id": "o1",
+                "text": "3"
+              },
+              {
+                "id": "o2",
+                "text": "4"
+              },
+              {
+                "id": "o3",
+                "text": "5"
+              },
+              {
+                "id": "o4",
+                "text": "6"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "299bf4d53742ade2e261f162cb3164dd1089dc962f684f23ff09be70c4b2ba85",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-dialogue-ordering-paper-bird#primary3.rainy-game-room-order-019.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.rainy-game-room-order-019.reading.q1",
+            "expansion.20261028.primary3.rainy-game-room-order-019.reading.q2",
+            "expansion.20261028.primary3.rainy-game-room-order-019.reading.q3",
+            "expansion.20261028.primary3.rainy-game-room-order-019.reading.q4",
+            "expansion.20261028.primary3.rainy-game-room-order-019.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-dialogue-ordering-paper-bird",
+          "sourceContentHash": "360d77ac51fe95d2badeb0e2c826027ab23f3fc7c69c22f1c84c9405d01fa19e"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary3.banana-muffin-label-019",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary3",
+        "title": "纸袋里不是香蕉",
+        "summary": "纸袋里不是香蕉，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary3.lower.undated.roomreading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式复用小三下册未署年公开卷的一篇五判断／五独立话语五共享应答，不因URL2019或搜索深圳标签补原校/年份。原判读第5题身份/位置风险保留；原创F均明示反证。新应答稿不加源未印的一次规则，各题局部问答独立成立；历史第1稿曾额外规定一次并借此排除OK局部重合，属于不同作者协议，不是三份相同复用合同。独立教研、目标儿童、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary3.banana-muffin-label-019",
+          "family": "reading_tf",
+          "label": "纸袋里不是香蕉",
+          "candidateSHA256": "912d3908e8d3ce5ef1595224f9d34fc9bf5bf4ee5d6dd62adacc6ce5acbc7841",
+          "authorCheckSHA256": "cc10aad743cd9f1232d297b55a90ba74e545a73babf42b0b6ade0d054d9df84f",
+          "sourceGroupIds": [
+            "original.primary3-picnic-bags-tf#primary3.banana-muffin-label-019.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b031；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Banana Muffin Label 019\n\nMy aunt gives me a paper bag. She says, \"There are bananas in these cakes.\" I look inside and see three small muffins, not whole bananas. I take one to my brother. He asks why it smells sweet. I tell him about the banana in it. We eat at the kitchen table. We keep the third muffin for Dad, who is still at work."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary3.banana-muffin-label-019.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The bag contains three small muffins.",
+            "material": "Banana Muffin Label 019\n\nMy aunt gives me a paper bag. She says, \"There are bananas in these cakes.\" I look inside and see three small muffins, not whole bananas. I take one to my brother. He asks why it smells sweet. I tell him about the banana in it. We eat at the kitchen table. We keep the third muffin for Dad, who is still at work.",
+            "explanation": "A正确：three muffins；B否认数量和内容。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.banana-muffin-label-019.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "There are three whole bananas in the bag instead of cakes.",
+            "material": "Banana Muffin Label 019\n\nMy aunt gives me a paper bag. She says, \"There are bananas in these cakes.\" I look inside and see three small muffins, not whole bananas. I take one to my brother. He asks why it smells sweet. I tell him about the banana in it. We eat at the kitchen table. We keep the third muffin for Dad, who is still at work.",
+            "explanation": "B正确：香蕉在糕里，并无完整香蕉；A误解aunt的话。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.banana-muffin-label-019.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The writer shares one muffin with the brother.",
+            "material": "Banana Muffin Label 019\n\nMy aunt gives me a paper bag. She says, \"There are bananas in these cakes.\" I look inside and see three small muffins, not whole bananas. I take one to my brother. He asks why it smells sweet. I tell him about the banana in it. We eat at the kitchen table. We keep the third muffin for Dad, who is still at work.",
+            "explanation": "A正确：take one to brother；B否认分享动作。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary3.banana-muffin-label-019.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "They eat in the garden.",
+            "material": "Banana Muffin Label 019\n\nMy aunt gives me a paper bag. She says, \"There are bananas in these cakes.\" I look inside and see three small muffins, not whole bananas. I take one to my brother. He asks why it smells sweet. I tell him about the banana in it. We eat at the kitchen table. We keep the third muffin for Dad, who is still at work.",
+            "explanation": "B正确：kitchen table；A厨房改花园。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary3.banana-muffin-label-019.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "One muffin is kept for Dad.",
+            "material": "Banana Muffin Label 019\n\nMy aunt gives me a paper bag. She says, \"There are bananas in these cakes.\" I look inside and see three small muffins, not whole bananas. I take one to my brother. He asks why it smells sweet. I tell him about the banana in it. We eat at the kitchen table. We keep the third muffin for Dad, who is still at work.",
+            "explanation": "A正确：third for Dad at work；B否认保留对象。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "f66a547a351f40c61f987c6b2091631c3508046569e314690ddb7acd81468580",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary3-picnic-bags-tf#primary3.banana-muffin-label-019.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary3.banana-muffin-label-019.reading.q1",
+            "expansion.20261028.primary3.banana-muffin-label-019.reading.q2",
+            "expansion.20261028.primary3.banana-muffin-label-019.reading.q3",
+            "expansion.20261028.primary3.banana-muffin-label-019.reading.q4",
+            "expansion.20261028.primary3.banana-muffin-label-019.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary3-picnic-bags-tf",
+          "sourceContentHash": "67f56ff4e81139dae433ca5cda205636f40e4e50b4d446edbb81ed2fff56a980"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.lost-library-key-ring-019",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "钥匙圈上的小铃声",
+        "summary": "钥匙圈上的小铃声，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p4.shijingshan2025.dialoguereading",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 完整形式参照本轮已核公开转载卷；原校施测、年级难度与源键均未独立认证。原创内容为虚构，尚无独立教研、学生、商用或生产验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.lost-library-key-ring-019",
+          "family": "reading_choice",
+          "label": "钥匙圈上的小铃声",
+          "candidateSHA256": "d636ce456ddce896dd675dcc014ac856e4f9900ee5ad5e83cd8ffb9ae95dd59e",
+          "authorCheckSHA256": "cc10aad743cd9f1232d297b55a90ba74e545a73babf42b0b6ade0d054d9df84f",
+          "sourceGroupIds": [
+            "original.primary4-book-bus-call#primary4.lost-library-key-ring-019.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b031；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Lost Library Key Ring 019\n\nAfter helping in the library, Anya cannot find the cupboard key. The librarian remembers hearing a little bell when Anya moved the book trolley. The key ring has a bell on it. They look under the trolley but find nothing. Anya pushes the trolley slowly, and they hear the sound again. A cloth bag hanging on its handle has a small side pocket. The key is inside. Anya remembers putting it there so she could carry books with both hands. She returns it to its hook and writes a reminder on her helper card."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.lost-library-key-ring-019.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What helps the librarian think about the key’s location?",
+            "material": "Lost Library Key Ring 019\n\nAfter helping in the library, Anya cannot find the cupboard key. The librarian remembers hearing a little bell when Anya moved the book trolley. The key ring has a bell on it. They look under the trolley but find nothing. Anya pushes the trolley slowly, and they hear the sound again. A cloth bag hanging on its handle has a small side pocket. The key is inside. Anya remembers putting it there so she could carry books with both hands. She returns it to its hook and writes a reminder on her helper card.",
+            "explanation": "A钥匙圈铃声线索；B蛋糕味、C车票无关。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A little bell sound."
+              },
+              {
+                "id": "o1",
+                "text": "A smell of cake."
+              },
+              {
+                "id": "o2",
+                "text": "A bus ticket."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.lost-library-key-ring-019.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where do they first look without success?",
+            "material": "Lost Library Key Ring 019\n\nAfter helping in the library, Anya cannot find the cupboard key. The librarian remembers hearing a little bell when Anya moved the book trolley. The key ring has a bell on it. They look under the trolley but find nothing. Anya pushes the trolley slowly, and they hear the sound again. A cloth bag hanging on its handle has a small side pocket. The key is inside. Anya remembers putting it there so she could carry books with both hands. She returns it to its hook and writes a reminder on her helper card.",
+            "explanation": "B先车底找未见；A/C没去。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Inside a cake box."
+              },
+              {
+                "id": "o1",
+                "text": "Under the trolley."
+              },
+              {
+                "id": "o2",
+                "text": "At the bus stop."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.lost-library-key-ring-019.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Where is the key found?",
+            "material": "Lost Library Key Ring 019\n\nAfter helping in the library, Anya cannot find the cupboard key. The librarian remembers hearing a little bell when Anya moved the book trolley. The key ring has a bell on it. They look under the trolley but find nothing. Anya pushes the trolley slowly, and they hear the sound again. A cloth bag hanging on its handle has a small side pocket. The key is inside. Anya remembers putting it there so she could carry books with both hands. She returns it to its hook and writes a reminder on her helper card.",
+            "explanation": "C挂车手柄布袋侧袋；A车底没找到；B书内无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "On the floor under the wheel."
+              },
+              {
+                "id": "o1",
+                "text": "In a book’s pages."
+              },
+              {
+                "id": "o2",
+                "text": "In a cloth bag’s side pocket."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary4.lost-library-key-ring-019.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why had Anya put the key there?",
+            "material": "Lost Library Key Ring 019\n\nAfter helping in the library, Anya cannot find the cupboard key. The librarian remembers hearing a little bell when Anya moved the book trolley. The key ring has a bell on it. They look under the trolley but find nothing. Anya pushes the trolley slowly, and they hear the sound again. A cloth bag hanging on its handle has a small side pocket. The key is inside. Anya remembers putting it there so she could carry books with both hands. She returns it to its hook and writes a reminder on her helper card.",
+            "explanation": "A腾双手抱书；B藏匿、C停读非动机。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "To free both hands for carrying books."
+              },
+              {
+                "id": "o1",
+                "text": "To hide it from the librarian."
+              },
+              {
+                "id": "o2",
+                "text": "To stop all reading."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.lost-library-key-ring-019.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What does Anya do after finding it?",
+            "material": "Lost Library Key Ring 019\n\nAfter helping in the library, Anya cannot find the cupboard key. The librarian remembers hearing a little bell when Anya moved the book trolley. The key ring has a bell on it. They look under the trolley but find nothing. Anya pushes the trolley slowly, and they hear the sound again. A cloth bag hanging on its handle has a small side pocket. The key is inside. Anya remembers putting it there so she could carry books with both hands. She returns it to its hook and writes a reminder on her helper card.",
+            "explanation": "B归钩并卡写提醒；A带家、C扔卡均与原文相反。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Take it home."
+              },
+              {
+                "id": "o1",
+                "text": "Return it to its hook and add a reminder."
+              },
+              {
+                "id": "o2",
+                "text": "Throw away the helper card."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "711e3c0ff71d68910a82a37dc85f6bd63f818c97f3cfe011d1495707953a2ddc",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary4-book-bus-call#primary4.lost-library-key-ring-019.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.lost-library-key-ring-019.reading.q1",
+            "expansion.20261028.primary4.lost-library-key-ring-019.reading.q2",
+            "expansion.20261028.primary4.lost-library-key-ring-019.reading.q3",
+            "expansion.20261028.primary4.lost-library-key-ring-019.reading.q4",
+            "expansion.20261028.primary4.lost-library-key-ring-019.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary4-book-bus-call",
+          "sourceContentHash": "5237c2b519c0bea74c51656808b22df9c776e14bf36f397fcbd54a9367ed2198"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary4.bike-pump-pressure-note-019",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary4",
+        "title": "自行车打气课的记录卡",
+        "summary": "自行车打气课的记录卡，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 8,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary4.xdf.lower.room_tf",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 源题只用于完整题型规则，正文和答案为原创。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary4.bike-pump-pressure-note-019",
+          "family": "reading_tf",
+          "label": "自行车打气课的记录卡",
+          "candidateSHA256": "04e826a49d8eae2391e835c74bf73166305b3b764cf994ad351dbea652b5bef7",
+          "authorCheckSHA256": "cc10aad743cd9f1232d297b55a90ba74e545a73babf42b0b6ade0d054d9df84f",
+          "sourceGroupIds": [
+            "original.class-garden-reading#primary4.bike-pump-pressure-note-019.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b031；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Bike Pump Pressure Note 019\n\nAt cycling club, an adult checks each tyre before pupils practise. A small card records the bike number and whether the tyres need air. Pupils do not decide by colour or size. Mei’s front tyre needs air, but the back tyre is fine. The adult adds air and checks again. Mei ticks only the front-tyre box after the check. At the end, the card goes back to the club folder, not into Mei’s bag, so the next helper can read it."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary4.bike-pump-pressure-note-019.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "An adult checks the tyres before practice.",
+            "material": "Bike Pump Pressure Note 019\n\nAt cycling club, an adult checks each tyre before pupils practise. A small card records the bike number and whether the tyres need air. Pupils do not decide by colour or size. Mei’s front tyre needs air, but the back tyre is fine. The adult adds air and checks again. Mei ticks only the front-tyre box after the check. At the end, the card goes back to the club folder, not into Mei’s bag, so the next helper can read it.",
+            "explanation": "A正确：adult checks before pupils practise；B否认先后和人员。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.bike-pump-pressure-note-019.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Tyre colour tells pupils how much air is needed.",
+            "material": "Bike Pump Pressure Note 019\n\nAt cycling club, an adult checks each tyre before pupils practise. A small card records the bike number and whether the tyres need air. Pupils do not decide by colour or size. Mei’s front tyre needs air, but the back tyre is fine. The adult adds air and checks again. Mei ticks only the front-tyre box after the check. At the end, the card goes back to the club folder, not into Mei’s bag, so the next helper can read it.",
+            "explanation": "B正确：do not decide by colour；A将禁止依据当判断规则。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.bike-pump-pressure-note-019.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Both of Mei’s tyres need air.",
+            "material": "Bike Pump Pressure Note 019\n\nAt cycling club, an adult checks each tyre before pupils practise. A small card records the bike number and whether the tyres need air. Pupils do not decide by colour or size. Mei’s front tyre needs air, but the back tyre is fine. The adult adds air and checks again. Mei ticks only the front-tyre box after the check. At the end, the card goes back to the club folder, not into Mei’s bag, so the next helper can read it.",
+            "explanation": "B正确：仅front，back fine；A把一轮扩大两轮。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary4.bike-pump-pressure-note-019.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Mei ticks the front-tyre box after the adult rechecks it.",
+            "material": "Bike Pump Pressure Note 019\n\nAt cycling club, an adult checks each tyre before pupils practise. A small card records the bike number and whether the tyres need air. Pupils do not decide by colour or size. Mei’s front tyre needs air, but the back tyre is fine. The adult adds air and checks again. Mei ticks only the front-tyre box after the check. At the end, the card goes back to the club folder, not into Mei’s bag, so the next helper can read it.",
+            "explanation": "A正确：adds air checks again后勾front；B否认操作顺序。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary4.bike-pump-pressure-note-019.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The card stays in the club folder for future helpers.",
+            "material": "Bike Pump Pressure Note 019\n\nAt cycling club, an adult checks each tyre before pupils practise. A small card records the bike number and whether the tyres need air. Pupils do not decide by colour or size. Mei’s front tyre needs air, but the back tyre is fine. The adult adds air and checks again. Mei ticks only the front-tyre box after the check. At the end, the card goes back to the club folder, not into Mei’s bag, so the next helper can read it.",
+            "explanation": "A正确：回folder供next helper；B否认共享记录目的。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "864d9dc83243416266e16c0b0e4f6fef3801e821f3abd0dae4d5ba086893a052",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.class-garden-reading#primary4.bike-pump-pressure-note-019.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary4.bike-pump-pressure-note-019.reading.q1",
+            "expansion.20261028.primary4.bike-pump-pressure-note-019.reading.q2",
+            "expansion.20261028.primary4.bike-pump-pressure-note-019.reading.q3",
+            "expansion.20261028.primary4.bike-pump-pressure-note-019.reading.q4",
+            "expansion.20261028.primary4.bike-pump-pressure-note-019.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.class-garden-reading",
+          "sourceContentHash": "c48d0add74ac202b6eee2f6cafe95556edd3c7176f1da3b56f14a6e7036dfdab"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.wet-school-notice-cloze-019",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "被雨打湿的校门通知",
+        "summary": "被雨打湿的校门通知，共8题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 11,
+        "goalIds": [
+          "original.choice_cloze"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.gcyls2024.attributed.yangzhou2022.monkey8",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照新核公开教辅中分别标注五年级统考期末出处的单篇6空或8空三选完整示例；仅二手归属标签，未取得原校卷，不能认证原考试整节范围/学校/年份或当普通原卷补缺完成。原源6空第5题性别候选信息不足、8空近义风险保留，均不当gold；原创全部子题/候选/回填另核，不按六题截断。历史第一稿为8空三选模拟参照，三稿不是三套真卷或同一具体配置。独立教研、学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.wet-school-notice-cloze-019",
+          "family": "choice_cloze",
+          "label": "被雨打湿的校门通知",
+          "candidateSHA256": "6dc3abb662e5c53faeb6a8b603370c4183e07c44e883ecf02a2c32f2468388bf",
+          "authorCheckSHA256": "cc10aad743cd9f1232d297b55a90ba74e545a73babf42b0b6ade0d054d9df84f",
+          "sourceGroupIds": [
+            "original.primary5-rainy-gate-eight-cloze#primary5.wet-school-notice-cloze-019.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b031；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Wet School Notice Cloze 019\n\nRead the whole passage and choose a word for each numbered gap.\nOne ____1____ morning, rain hit the school gate. The notice outside was wet, and we could not read the ____2____ because the ink had spread. Instead of guessing, we asked the office for a ____3____ copy. Before putting it up, we ____4____ the date with the secretary. The meeting was on Thursday, not Tuesday, so we ____5____ the old notice. The caretaker showed us ____6____ to attach a waterproof cover, explaining each step. We held the corners ____7____ he could work with both hands. Finally, we placed the notice at a ____8____ height so younger pupils could read it too."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q1",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 1?",
+            "material": "Wet School Notice Cloze 019\n\nRead the whole passage and choose a word for each numbered gap.\nOne ____1____ morning, rain hit the school gate. The notice outside was wet, and we could not read the ____2____ because the ink had spread. Instead of guessing, we asked the office for a ____3____ copy. Before putting it up, we ____4____ the date with the secretary. The meeting was on Thursday, not Tuesday, so we ____5____ the old notice. The caretaker showed us ____6____ to attach a waterproof cover, explaining each step. We held the corners ____7____ he could work with both hands. Finally, we placed the notice at a ____8____ height so younger pupils could read it too.",
+            "explanation": "A rainy与rain hit一致；B sunny阳光、C dry干燥均不符合给定下雨早晨。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "rainy"
+              },
+              {
+                "id": "o1",
+                "text": "sunny"
+              },
+              {
+                "id": "o2",
+                "text": "dry"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q2",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 2?",
+            "material": "Wet School Notice Cloze 019\n\nRead the whole passage and choose a word for each numbered gap.\nOne ____1____ morning, rain hit the school gate. The notice outside was wet, and we could not read the ____2____ because the ink had spread. Instead of guessing, we asked the office for a ____3____ copy. Before putting it up, we ____4____ the date with the secretary. The meeting was on Thursday, not Tuesday, so we ____5____ the old notice. The caretaker showed us ____6____ to attach a waterproof cover, explaining each step. We held the corners ____7____ he could work with both hands. Finally, we placed the notice at a ____8____ height so younger pupils could read it too.",
+            "explanation": "B墨散导致通知文字难读；A轮子、C窗子不是通知中供阅读内容。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "wheels"
+              },
+              {
+                "id": "o1",
+                "text": "words"
+              },
+              {
+                "id": "o2",
+                "text": "windows"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q3",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 3?",
+            "material": "Wet School Notice Cloze 019\n\nRead the whole passage and choose a word for each numbered gap.\nOne ____1____ morning, rain hit the school gate. The notice outside was wet, and we could not read the ____2____ because the ink had spread. Instead of guessing, we asked the office for a ____3____ copy. Before putting it up, we ____4____ the date with the secretary. The meeting was on Thursday, not Tuesday, so we ____5____ the old notice. The caretaker showed us ____6____ to attach a waterproof cover, explaining each step. We held the corners ____7____ he could work with both hands. Finally, we placed the notice at a ____8____ height so younger pupils could read it too.",
+            "explanation": "C新副本可替湿通知；A空白无会议信息；B损坏副本不解决问题。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "empty"
+              },
+              {
+                "id": "o1",
+                "text": "broken"
+              },
+              {
+                "id": "o2",
+                "text": "new"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q4",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 4?",
+            "material": "Wet School Notice Cloze 019\n\nRead the whole passage and choose a word for each numbered gap.\nOne ____1____ morning, rain hit the school gate. The notice outside was wet, and we could not read the ____2____ because the ink had spread. Instead of guessing, we asked the office for a ____3____ copy. Before putting it up, we ____4____ the date with the secretary. The meeting was on Thursday, not Tuesday, so we ____5____ the old notice. The caretaker showed us ____6____ to attach a waterproof cover, explaining each step. We held the corners ____7____ he could work with both hands. Finally, we placed the notice at a ____8____ height so younger pupils could read it too.",
+            "explanation": "A与秘书核日期；B擦掉日期无法确认；C丢日期不构成此搭配和目的。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "checked"
+              },
+              {
+                "id": "o1",
+                "text": "erased"
+              },
+              {
+                "id": "o2",
+                "text": "dropped"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q5",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 5?",
+            "material": "Wet School Notice Cloze 019\n\nRead the whole passage and choose a word for each numbered gap.\nOne ____1____ morning, rain hit the school gate. The notice outside was wet, and we could not read the ____2____ because the ink had spread. Instead of guessing, we asked the office for a ____3____ copy. Before putting it up, we ____4____ the date with the secretary. The meeting was on Thursday, not Tuesday, so we ____5____ the old notice. The caretaker showed us ____6____ to attach a waterproof cover, explaining each step. We held the corners ____7____ he could work with both hands. Finally, we placed the notice at a ____8____ height so younger pupils could read it too.",
+            "explanation": "B新日期替旧通知；A装框不改错误，C藏起不完成张贴新安排。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "framed"
+              },
+              {
+                "id": "o1",
+                "text": "replaced"
+              },
+              {
+                "id": "o2",
+                "text": "hid"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q6",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 6?",
+            "material": "Wet School Notice Cloze 019\n\nRead the whole passage and choose a word for each numbered gap.\nOne ____1____ morning, rain hit the school gate. The notice outside was wet, and we could not read the ____2____ because the ink had spread. Instead of guessing, we asked the office for a ____3____ copy. Before putting it up, we ____4____ the date with the secretary. The meeting was on Thursday, not Tuesday, so we ____5____ the old notice. The caretaker showed us ____6____ to attach a waterproof cover, explaining each step. We held the corners ____7____ he could work with both hands. Finally, we placed the notice at a ____8____ height so younger pupils could read it too.",
+            "explanation": "C show how to attach配逐步示范；A who不接此不定式表方法；B why说明原因而非given each step操作方式。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "who"
+              },
+              {
+                "id": "o1",
+                "text": "why"
+              },
+              {
+                "id": "o2",
+                "text": "how"
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q7",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 7?",
+            "material": "Wet School Notice Cloze 019\n\nRead the whole passage and choose a word for each numbered gap.\nOne ____1____ morning, rain hit the school gate. The notice outside was wet, and we could not read the ____2____ because the ink had spread. Instead of guessing, we asked the office for a ____3____ copy. Before putting it up, we ____4____ the date with the secretary. The meeting was on Thursday, not Tuesday, so we ____5____ the old notice. The caretaker showed us ____6____ to attach a waterproof cover, explaining each step. We held the corners ____7____ he could work with both hands. Finally, we placed the notice at a ____8____ height so younger pupils could read it too.",
+            "explanation": "A扶角使他可双手作业，so表结果目的；B转折、C选择不合此因果。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "so"
+              },
+              {
+                "id": "o1",
+                "text": "but"
+              },
+              {
+                "id": "o2",
+                "text": "or"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q8",
+            "goalId": "original.choice_cloze",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Which word completes gap 8?",
+            "material": "Wet School Notice Cloze 019\n\nRead the whole passage and choose a word for each numbered gap.\nOne ____1____ morning, rain hit the school gate. The notice outside was wet, and we could not read the ____2____ because the ink had spread. Instead of guessing, we asked the office for a ____3____ copy. Before putting it up, we ____4____ the date with the secretary. The meeting was on Thursday, not Tuesday, so we ____5____ the old notice. The caretaker showed us ____6____ to attach a waterproof cover, explaining each step. We held the corners ____7____ he could work with both hands. Finally, we placed the notice at a ____8____ height so younger pupils could read it too.",
+            "explanation": "B低处方便较小学生读；A隐藏不可读；C最高处与年轻学生可见目的冲突。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "hidden"
+              },
+              {
+                "id": "o1",
+                "text": "low"
+              },
+              {
+                "id": "o2",
+                "text": "highest"
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "a407aaee559474e4ca24bab3ece2754697cb9a9ecd825f4ec6c3c981568d3b9c",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-rainy-gate-eight-cloze#primary5.wet-school-notice-cloze-019.reading",
+          "family": "choice_cloze",
+          "questionIds": [
+            "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q1",
+            "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q2",
+            "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q3",
+            "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q4",
+            "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q5",
+            "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q6",
+            "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q7",
+            "expansion.20261028.primary5.wet-school-notice-cloze-019.reading.q8"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "sourceUnitId": "original.primary5-rainy-gate-eight-cloze",
+          "sourceContentHash": "8caa2c014a3c2684b37476b065bc5b6af01f2013bcd08773d2753d3a0f0a6fad"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.plant-swap-health-tags-019",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "植物交换会上的状态标签",
+        "summary": "植物交换会上的状态标签，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.dongcheng2025.fourcards",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 参照已核北京区卷公开转载的相应完整具体模式：一短文五判断／四完整信息卡五判断／两共享句空加三道三选，分别绑定，不截成单一子组。源原键非独立gold，东城两型尚无原键；节日日期等事实不沿用。原创虚构，独立教研、目标学生、商用、生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.plant-swap-health-tags-019",
+          "family": "reading_tf",
+          "label": "植物交换会上的状态标签",
+          "candidateSHA256": "955940d301ac94d710f9e7c65670981c0358494397d3040d1c6d43b98b46c5b8",
+          "authorCheckSHA256": "cc10aad743cd9f1232d297b55a90ba74e545a73babf42b0b6ade0d054d9df84f",
+          "sourceGroupIds": [
+            "original.primary5-green-camera-cards-tf#primary5.plant-swap-health-tags-019.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b031；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Plant Swap Health Tags 019\n\nThe plant club held a swap with clear labels. Each pot showed the plant’s name, the date of its last watering and any known problem. One pot had yellow leaves. Its owner wanted to remove them so the plant would look healthier. A helper asked her to leave the label’s note about the problem even if damaged leaves were removed. A pretty display should not hide useful information from the next owner. Some plants had no confirmed name. Those were marked \"Name not confirmed\" and kept on a separate table for advice. Visitors could choose them, but helpers did not promise a name they had not checked."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.plant-swap-health-tags-019.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Labels included the last watering date.",
+            "material": "Plant Swap Health Tags 019\n\nThe plant club held a swap with clear labels. Each pot showed the plant’s name, the date of its last watering and any known problem. One pot had yellow leaves. Its owner wanted to remove them so the plant would look healthier. A helper asked her to leave the label’s note about the problem even if damaged leaves were removed. A pretty display should not hide useful information from the next owner. Some plants had no confirmed name. Those were marked \"Name not confirmed\" and kept on a separate table for advice. Visitors could choose them, but helpers did not promise a name they had not checked.",
+            "explanation": "A正确：date last watering；B否认标签项目。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.plant-swap-health-tags-019.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Removing yellow leaves meant the problem note should also be removed.",
+            "material": "Plant Swap Health Tags 019\n\nThe plant club held a swap with clear labels. Each pot showed the plant’s name, the date of its last watering and any known problem. One pot had yellow leaves. Its owner wanted to remove them so the plant would look healthier. A helper asked her to leave the label’s note about the problem even if damaged leaves were removed. A pretty display should not hide useful information from the next owner. Some plants had no confirmed name. Those were marked \"Name not confirmed\" and kept on a separate table for advice. Visitors could choose them, but helpers did not promise a name they had not checked.",
+            "explanation": "B正确：即便剪掉叶仍留问题说明；A将外观改善当信息删除理由。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.plant-swap-health-tags-019.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The helper valued giving the next owner useful information.",
+            "material": "Plant Swap Health Tags 019\n\nThe plant club held a swap with clear labels. Each pot showed the plant’s name, the date of its last watering and any known problem. One pot had yellow leaves. Its owner wanted to remove them so the plant would look healthier. A helper asked her to leave the label’s note about the problem even if damaged leaves were removed. A pretty display should not hide useful information from the next owner. Some plants had no confirmed name. Those were marked \"Name not confirmed\" and kept on a separate table for advice. Visitors could choose them, but helpers did not promise a name they had not checked.",
+            "explanation": "A正确：不让漂亮展示掩信息；B否认明确理由。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.plant-swap-health-tags-019.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Every plant was given a confirmed name even when nobody knew it.",
+            "material": "Plant Swap Health Tags 019\n\nThe plant club held a swap with clear labels. Each pot showed the plant’s name, the date of its last watering and any known problem. One pot had yellow leaves. Its owner wanted to remove them so the plant would look healthier. A helper asked her to leave the label’s note about the problem even if damaged leaves were removed. A pretty display should not hide useful information from the next owner. Some plants had no confirmed name. Those were marked \"Name not confirmed\" and kept on a separate table for advice. Visitors could choose them, but helpers did not promise a name they had not checked.",
+            "explanation": "B正确：不知标Name not confirmed；A把未核强称已核。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.plant-swap-health-tags-019.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Visitors could still choose a plant from the advice table.",
+            "material": "Plant Swap Health Tags 019\n\nThe plant club held a swap with clear labels. Each pot showed the plant’s name, the date of its last watering and any known problem. One pot had yellow leaves. Its owner wanted to remove them so the plant would look healthier. A helper asked her to leave the label’s note about the problem even if damaged leaves were removed. A pretty display should not hide useful information from the next owner. Some plants had no confirmed name. Those were marked \"Name not confirmed\" and kept on a separate table for advice. Visitors could choose them, but helpers did not promise a name they had not checked.",
+            "explanation": "A正确：visitors could choose them；B把不确名误当禁止选择。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "475752089b3623e357a4c2e8bd15398d8d8151be35c90bde2453bf075881c02c",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-green-camera-cards-tf#primary5.plant-swap-health-tags-019.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.plant-swap-health-tags-019.reading.q1",
+            "expansion.20261028.primary5.plant-swap-health-tags-019.reading.q2",
+            "expansion.20261028.primary5.plant-swap-health-tags-019.reading.q3",
+            "expansion.20261028.primary5.plant-swap-health-tags-019.reading.q4",
+            "expansion.20261028.primary5.plant-swap-health-tags-019.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-green-camera-cards-tf",
+          "sourceContentHash": "7b0648f633b2958309753744d7b704cef838f30ed3e75804b0a226fa84cb820c"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary5.fair-team-arrangement-019",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary5",
+        "title": "义卖小组安排里的条件句",
+        "summary": "义卖小组安排里的条件句，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 10,
+        "goalIds": [
+          "original.dialogue_matching"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p5.fangshan2025.dialogue",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 改用已核房山2024-2025五上区卷的完整5空/5共享句模式；原5空/6句模拟参照稿保留为未选版本，不把两种候选数拼在一起。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary5.fair-team-arrangement-019",
+          "family": "dialogue_matching",
+          "label": "义卖小组安排里的条件句",
+          "candidateSHA256": "433a244d064a0d4e571942951ca6b2c3da318d2315010b7e18c8c7345e360b25",
+          "authorCheckSHA256": "cc10aad743cd9f1232d297b55a90ba74e545a73babf42b0b6ade0d054d9df84f",
+          "sourceGroupIds": [
+            "original.primary5-boat-desk-dialogue#primary5.fair-team-arrangement-019.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b031；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Fair Team Arrangement 019\n\nChoose the best reply for each question or situation. Use every reply once.\nA. Only if a leader has confirmed the space.\nB. Because the glue needs time to dry.\nC. Put your name beside the task you can do.\nD. I can take the later shift instead.\nE. Please tell the leader before you change it."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary5.fair-team-arrangement-019.reading.q1",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Can we set our stall anywhere in the hall?",
+            "material": "Fair Team Arrangement 019\n\nChoose the best reply for each question or situation. Use every reply once.\nA. Only if a leader has confirmed the space.\nB. Because the glue needs time to dry.\nC. Put your name beside the task you can do.\nD. I can take the later shift instead.\nE. Please tell the leader before you change it.",
+            "explanation": "A需负责人确认位置的条件答许可；B干胶原因、C登记、D改晚班、E换前告知均未直接设地点许可条件。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only if a leader has confirmed the space."
+              },
+              {
+                "id": "o1",
+                "text": "Because the glue needs time to dry."
+              },
+              {
+                "id": "o2",
+                "text": "Put your name beside the task you can do."
+              },
+              {
+                "id": "o3",
+                "text": "I can take the later shift instead."
+              },
+              {
+                "id": "o4",
+                "text": "Please tell the leader before you change it."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary5.fair-team-arrangement-019.reading.q2",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why must the display be finished the evening before?",
+            "material": "Fair Team Arrangement 019\n\nChoose the best reply for each question or situation. Use every reply once.\nA. Only if a leader has confirmed the space.\nB. Because the glue needs time to dry.\nC. Put your name beside the task you can do.\nD. I can take the later shift instead.\nE. Please tell the leader before you change it.",
+            "explanation": "B胶需干解释提前完成；A场地条件、C署名、D代班、E告知不答Why。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only if a leader has confirmed the space."
+              },
+              {
+                "id": "o1",
+                "text": "Because the glue needs time to dry."
+              },
+              {
+                "id": "o2",
+                "text": "Put your name beside the task you can do."
+              },
+              {
+                "id": "o3",
+                "text": "I can take the later shift instead."
+              },
+              {
+                "id": "o4",
+                "text": "Please tell the leader before you change it."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary5.fair-team-arrangement-019.reading.q3",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "How do I join a job on the volunteer sheet?",
+            "material": "Fair Team Arrangement 019\n\nChoose the best reply for each question or situation. Use every reply once.\nA. Only if a leader has confirmed the space.\nB. Because the glue needs time to dry.\nC. Put your name beside the task you can do.\nD. I can take the later shift instead.\nE. Please tell the leader before you change it.",
+            "explanation": "C可做任务旁写名答登记步骤；A许可、B干燥、D晚班、E变更告知均不答初次加入表。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only if a leader has confirmed the space."
+              },
+              {
+                "id": "o1",
+                "text": "Because the glue needs time to dry."
+              },
+              {
+                "id": "o2",
+                "text": "Put your name beside the task you can do."
+              },
+              {
+                "id": "o3",
+                "text": "I can take the later shift instead."
+              },
+              {
+                "id": "o4",
+                "text": "Please tell the leader before you change it."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary5.fair-team-arrangement-019.reading.q4",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Your friend needs the early shift, and you offer to move to a later one.",
+            "material": "Fair Team Arrangement 019\n\nChoose the best reply for each question or situation. Use every reply once.\nA. Only if a leader has confirmed the space.\nB. Because the glue needs time to dry.\nC. Put your name beside the task you can do.\nD. I can take the later shift instead.\nE. Please tell the leader before you change it.",
+            "explanation": "D主动改晚班让早班给朋友；A场地、B干胶、C署名、E提醒不等于此分班提议。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only if a leader has confirmed the space."
+              },
+              {
+                "id": "o1",
+                "text": "Because the glue needs time to dry."
+              },
+              {
+                "id": "o2",
+                "text": "Put your name beside the task you can do."
+              },
+              {
+                "id": "o3",
+                "text": "I can take the later shift instead."
+              },
+              {
+                "id": "o4",
+                "text": "Please tell the leader before you change it."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary5.fair-team-arrangement-019.reading.q5",
+            "goalId": "original.dialogue_matching",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "A teammate wants to change the checked volunteer sheet without telling anyone.",
+            "material": "Fair Team Arrangement 019\n\nChoose the best reply for each question or situation. Use every reply once.\nA. Only if a leader has confirmed the space.\nB. Because the glue needs time to dry.\nC. Put your name beside the task you can do.\nD. I can take the later shift instead.\nE. Please tell the leader before you change it.",
+            "explanation": "E修改已核志愿表前告诉负责人，回应未告知就改表；A仅涉及确认场地，与表格变更无关；B胶干原因、C初次署名、D主动调班都不要求修改前通知。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Only if a leader has confirmed the space."
+              },
+              {
+                "id": "o1",
+                "text": "Because the glue needs time to dry."
+              },
+              {
+                "id": "o2",
+                "text": "Put your name beside the task you can do."
+              },
+              {
+                "id": "o3",
+                "text": "I can take the later shift instead."
+              },
+              {
+                "id": "o4",
+                "text": "Please tell the leader before you change it."
+              }
+            ],
+            "answer": "o4"
+          }
+        ]
+      },
+      "contentHash": "989c17a38f092df72a45bc3e2756b3f842c9eaca25687e433780a05078d5ca6e",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary5-boat-desk-dialogue#primary5.fair-team-arrangement-019.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary5.fair-team-arrangement-019.reading.q1",
+            "expansion.20261028.primary5.fair-team-arrangement-019.reading.q2",
+            "expansion.20261028.primary5.fair-team-arrangement-019.reading.q3",
+            "expansion.20261028.primary5.fair-team-arrangement-019.reading.q4",
+            "expansion.20261028.primary5.fair-team-arrangement-019.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary5-boat-desk-dialogue",
+          "sourceContentHash": "e060771971cb9eae1ad06bfc275fe340f9b4bd5343ab5c681c5db51e440edc30"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.community-library-key-story-019",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "社区书屋的备用钥匙",
+        "summary": "社区书屋的备用钥匙，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_choice"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "primary6.shenzhenexperiment2017.prose5x4",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 结构参照自署2016–17深圳实验学校小学部六下的历史教辅导出：单篇五题四选，第4题中有两处题面空，但只选一组两项组合，整组仍五回应。原卷末句缺文、Cody/Cady等印法及原键缺保留，原校/施测未认证；完整同文故事另在Spectrum公开缓存读者版本核读，非原卷补页，不把读者版覆盖原件，也不按其Grade2标签推中国小二适配。本文为全新完整作者材料，逐项自审，不声称源已完整、gold或能力等值。独立教研、学生、商用和生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.community-library-key-story-019",
+          "family": "reading_choice",
+          "label": "社区书屋的备用钥匙",
+          "candidateSHA256": "b13a8b9ee2a7f35142dbe0a28ea6235595823a0a01df53497ba836c00235655c",
+          "authorCheckSHA256": "cc10aad743cd9f1232d297b55a90ba74e545a73babf42b0b6ade0d054d9df84f",
+          "sourceGroupIds": [
+            "original.primary6-reading5joint-models#primary6.community-library-key-story-019.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b031；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Community Library Key Story 019\n\nWhen the little community library’s caretaker was ill, volunteers could not find the main key. Ivo remembered a spare key hanging in his grandfather’s workshop. He ran to fetch it and was proud when it fitted the lock. Then he paused. His grandfather had once helped repair the door, but that did not explain whether the spare was still meant to be used by anyone.\nIvo phoned the library coordinator before turning it. She confirmed that his grandfather was an approved key holder and asked Ivo to wait until another volunteer arrived. Together they opened the library and recorded who had used the spare. Later, the coordinator made an up-to-date list of key holders and their contact details for authorised volunteers.\nIvo was still glad he had remembered the key. But he understood that having a way to open a door was only one part of solving the problem. Knowing who could authorise its use helped protect the shared space and the people responsible for it."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.community-library-key-story-019.reading.q1",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why could volunteers not open the library at first?",
+            "material": "Community Library Key Story 019\n\nWhen the little community library’s caretaker was ill, volunteers could not find the main key. Ivo remembered a spare key hanging in his grandfather’s workshop. He ran to fetch it and was proud when it fitted the lock. Then he paused. His grandfather had once helped repair the door, but that did not explain whether the spare was still meant to be used by anyone.\nIvo phoned the library coordinator before turning it. She confirmed that his grandfather was an approved key holder and asked Ivo to wait until another volunteer arrived. Together they opened the library and recorded who had used the spare. Later, the coordinator made an up-to-date list of key holders and their contact details for authorised volunteers.\nIvo was still glad he had remembered the key. But he understood that having a way to open a door was only one part of solving the problem. Knowing who could authorise its use helped protect the shared space and the people responsible for it.",
+            "explanation": "B看管人病且主钥找不到；A门仍在；C书未卖；D有志愿者。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The door had been removed."
+              },
+              {
+                "id": "o1",
+                "text": "The caretaker was ill and the main key was missing."
+              },
+              {
+                "id": "o2",
+                "text": "All books had been sold."
+              },
+              {
+                "id": "o3",
+                "text": "The library had no volunteers."
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.community-library-key-story-019.reading.q2",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Why did Ivo pause after testing the spare key?",
+            "material": "Community Library Key Story 019\n\nWhen the little community library’s caretaker was ill, volunteers could not find the main key. Ivo remembered a spare key hanging in his grandfather’s workshop. He ran to fetch it and was proud when it fitted the lock. Then he paused. His grandfather had once helped repair the door, but that did not explain whether the spare was still meant to be used by anyone.\nIvo phoned the library coordinator before turning it. She confirmed that his grandfather was an approved key holder and asked Ivo to wait until another volunteer arrived. Together they opened the library and recorded who had used the spare. Later, the coordinator made an up-to-date list of key holders and their contact details for authorised volunteers.\nIvo was still glad he had remembered the key. But he understood that having a way to open a door was only one part of solving the problem. Knowing who could authorise its use helped protect the shared space and the people responsible for it.",
+            "explanation": "C合锁不等于可自行使用；A已fits；B/D无据。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "It did not fit the lock."
+              },
+              {
+                "id": "o1",
+                "text": "He disliked reading."
+              },
+              {
+                "id": "o2",
+                "text": "He was unsure whether he had permission to use it."
+              },
+              {
+                "id": "o3",
+                "text": "His grandfather demanded money."
+              }
+            ],
+            "answer": "o2"
+          },
+          {
+            "id": "expansion.20261028.primary6.community-library-key-story-019.reading.q3",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "Who confirmed that the grandfather was an approved key holder?",
+            "material": "Community Library Key Story 019\n\nWhen the little community library’s caretaker was ill, volunteers could not find the main key. Ivo remembered a spare key hanging in his grandfather’s workshop. He ran to fetch it and was proud when it fitted the lock. Then he paused. His grandfather had once helped repair the door, but that did not explain whether the spare was still meant to be used by anyone.\nIvo phoned the library coordinator before turning it. She confirmed that his grandfather was an approved key holder and asked Ivo to wait until another volunteer arrived. Together they opened the library and recorded who had used the spare. Later, the coordinator made an up-to-date list of key holders and their contact details for authorised volunteers.\nIvo was still glad he had remembered the key. But he understood that having a way to open a door was only one part of solving the problem. Knowing who could authorise its use helped protect the shared space and the people responsible for it.",
+            "explanation": "A协调人确认；B路人、C全镇学生、D锁不能授权。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "The library coordinator."
+              },
+              {
+                "id": "o1",
+                "text": "An unknown passer-by."
+              },
+              {
+                "id": "o2",
+                "text": "Every pupil in town."
+              },
+              {
+                "id": "o3",
+                "text": "Only the lock itself."
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.community-library-key-story-019.reading.q4",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What did Ivo do before opening the door?",
+            "material": "Community Library Key Story 019\n\nWhen the little community library’s caretaker was ill, volunteers could not find the main key. Ivo remembered a spare key hanging in his grandfather’s workshop. He ran to fetch it and was proud when it fitted the lock. Then he paused. His grandfather had once helped repair the door, but that did not explain whether the spare was still meant to be used by anyone.\nIvo phoned the library coordinator before turning it. She confirmed that his grandfather was an approved key holder and asked Ivo to wait until another volunteer arrived. Together they opened the library and recorded who had used the spare. Later, the coordinator made an up-to-date list of key holders and their contact details for authorised volunteers.\nIvo was still glad he had remembered the key. But he understood that having a way to open a door was only one part of solving the problem. Knowing who could authorise its use helped protect the shared space and the people responsible for it.",
+            "explanation": "D按要求等第二志愿者；A卖、B藏来源、C独进均不符。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "Sell the spare key."
+              },
+              {
+                "id": "o1",
+                "text": "Hide the key’s source."
+              },
+              {
+                "id": "o2",
+                "text": "Enter alone immediately."
+              },
+              {
+                "id": "o3",
+                "text": "Wait for another volunteer as requested."
+              }
+            ],
+            "answer": "o3"
+          },
+          {
+            "id": "expansion.20261028.primary6.community-library-key-story-019.reading.q5",
+            "goalId": "original.reading_choice",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "What idea does the ending emphasise?",
+            "material": "Community Library Key Story 019\n\nWhen the little community library’s caretaker was ill, volunteers could not find the main key. Ivo remembered a spare key hanging in his grandfather’s workshop. He ran to fetch it and was proud when it fitted the lock. Then he paused. His grandfather had once helped repair the door, but that did not explain whether the spare was still meant to be used by anyone.\nIvo phoned the library coordinator before turning it. She confirmed that his grandfather was an approved key holder and asked Ivo to wait until another volunteer arrived. Together they opened the library and recorded who had used the spare. Later, the coordinator made an up-to-date list of key holders and their contact details for authorised volunteers.\nIvo was still glad he had remembered the key. But he understood that having a way to open a door was only one part of solving the problem. Knowing who could authorise its use helped protect the shared space and the people responsible for it.",
+            "explanation": "B能开门与授权两部分都重要；A否定叙事主旨；C未主张永闭；D实际通过电话核准。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "A fitting key gives unlimited permission."
+              },
+              {
+                "id": "o1",
+                "text": "Practical access and permission both matter."
+              },
+              {
+                "id": "o2",
+                "text": "Shared spaces should never open."
+              },
+              {
+                "id": "o3",
+                "text": "Records always replace human contact."
+              }
+            ],
+            "answer": "o1"
+          }
+        ]
+      },
+      "contentHash": "87a777a1ad440e0d1b1f01784f78b08f089912313207d13827f9bb8ea7bf330a",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-reading5joint-models#primary6.community-library-key-story-019.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.community-library-key-story-019.reading.q1",
+            "expansion.20261028.primary6.community-library-key-story-019.reading.q2",
+            "expansion.20261028.primary6.community-library-key-story-019.reading.q3",
+            "expansion.20261028.primary6.community-library-key-story-019.reading.q4",
+            "expansion.20261028.primary6.community-library-key-story-019.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-reading5joint-models",
+          "sourceContentHash": "5aa5fe33548304917f000925a15ce9829eb3f5adede5cee6522684b292e75d4a"
+        }
+      ]
+    },
+    {
+      "unit": {
+        "id": "expansion.20261028.primary6.train-model-scale-019",
+        "version": 1,
+        "schemaVersion": 1,
+        "scoringVersion": 1,
+        "roleKey": "companion",
+        "roleVersion": 1,
+        "level": "primary6",
+        "title": "模型火车展的比例说明",
+        "summary": "模型火车展的比例说明，共5题。",
+        "scene": "先阅读完整材料，再按题目要求作答。",
+        "estimatedMinutes": 12,
+        "goalIds": [
+          "original.reading_tf"
+        ],
+        "prerequisiteGoalIds": [],
+        "references": [
+          {
+            "sourceId": "research.exam-forms",
+            "unit": "p6.wuwei2024.readingTF",
+            "pages": "冻结来源组选节；以源绑定记录为准",
+            "alignment": "Recorded source supplies level and task rules only; passage, questions and keys are newly authored. 形式参照六年级期末标签的完整公开HTML转录：一封信、五道T/F。正文确认六年级；上册仅网页标题/文件名，学期未知。原PDF/视觉、学校施测及独立转录未核，原键不作gold。原创虚构；所有F都有明示冲突，不沿用源第1题隐含否定。独立教研、目标学生、商用及生产未验证。"
+          }
+        ],
+        "authorship": {
+          "kind": "authored",
+          "author": "Codex 2026-10-28 explicit authoring",
+          "reviewedBy": "Codex primary2–6 author; same-author content and distractor review onl (author self-review only)",
+          "reviewedAt": "2026-10-29",
+          "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval."
+        },
+        "beats": [],
+        "originalGroup": {
+          "id": "expansion.20261028.primary6.train-model-scale-019",
+          "family": "reading_tf",
+          "label": "模型火车展的比例说明",
+          "candidateSHA256": "4c143ba88298e2e583d887de79ff9c5cecd6eb132e251f1bfcb3b26784c23582",
+          "authorCheckSHA256": "cc10aad743cd9f1232d297b55a90ba74e545a73babf42b0b6ade0d054d9df84f",
+          "sourceGroupIds": [
+            "original.primary6-train-letter-tf#primary6.train-model-scale-019.reading"
+          ],
+          "sourceNotice": "2026-10-28新题批次 b031；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。",
+          "material": "Train Model Scale 019\n\nThe model club displayed two trains beside each other. One was longer, so visitors assumed the real train it represented must also be longer. In fact, the models used different scales. The shorter model represented a larger real train. The pupils had forgotten to put the scale labels on the display.\nThey added the labels and a small diagram explaining that models made at different scales cannot be compared by model length alone. They also placed a note saying which dimensions had been simplified for easier construction. The exhibition still showed the models together, but it invited visitors to read the labels before drawing conclusions. The pupils learned that accurate-looking objects could mislead when important context was left out."
+        },
+        "questions": [
+          {
+            "id": "expansion.20261028.primary6.train-model-scale-019.reading.q1",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The two model trains were built at the same scale.",
+            "material": "Train Model Scale 019\n\nThe model club displayed two trains beside each other. One was longer, so visitors assumed the real train it represented must also be longer. In fact, the models used different scales. The shorter model represented a larger real train. The pupils had forgotten to put the scale labels on the display.\nThey added the labels and a small diagram explaining that models made at different scales cannot be compared by model length alone. They also placed a note saying which dimensions had been simplified for easier construction. The exhibition still showed the models together, but it invited visitors to read the labels before drawing conclusions. The pupils learned that accurate-looking objects could mislead when important context was left out.",
+            "explanation": "B正确：different scales；A把不同改相同。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.train-model-scale-019.reading.q2",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The longer model necessarily represented the longer real train.",
+            "material": "Train Model Scale 019\n\nThe model club displayed two trains beside each other. One was longer, so visitors assumed the real train it represented must also be longer. In fact, the models used different scales. The shorter model represented a larger real train. The pupils had forgotten to put the scale labels on the display.\nThey added the labels and a small diagram explaining that models made at different scales cannot be compared by model length alone. They also placed a note saying which dimensions had been simplified for easier construction. The exhibition still showed the models together, but it invited visitors to read the labels before drawing conclusions. The pupils learned that accurate-looking objects could mislead when important context was left out.",
+            "explanation": "B正确：较短模型反代表更大实车；A重复游客误推。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o1"
+          },
+          {
+            "id": "expansion.20261028.primary6.train-model-scale-019.reading.q3",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The original display lacked scale labels.",
+            "material": "Train Model Scale 019\n\nThe model club displayed two trains beside each other. One was longer, so visitors assumed the real train it represented must also be longer. In fact, the models used different scales. The shorter model represented a larger real train. The pupils had forgotten to put the scale labels on the display.\nThey added the labels and a small diagram explaining that models made at different scales cannot be compared by model length alone. They also placed a note saying which dimensions had been simplified for easier construction. The exhibition still showed the models together, but it invited visitors to read the labels before drawing conclusions. The pupils learned that accurate-looking objects could mislead when important context was left out.",
+            "explanation": "A正确：forgot scale labels；B否认信息缺口。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.train-model-scale-019.reading.q4",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The pupils explained that some dimensions had been simplified.",
+            "material": "Train Model Scale 019\n\nThe model club displayed two trains beside each other. One was longer, so visitors assumed the real train it represented must also be longer. In fact, the models used different scales. The shorter model represented a larger real train. The pupils had forgotten to put the scale labels on the display.\nThey added the labels and a small diagram explaining that models made at different scales cannot be compared by model length alone. They also placed a note saying which dimensions had been simplified for easier construction. The exhibition still showed the models together, but it invited visitors to read the labels before drawing conclusions. The pupils learned that accurate-looking objects could mislead when important context was left out.",
+            "explanation": "A正确：added note simplified dimensions；B否认模型限制说明。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          },
+          {
+            "id": "expansion.20261028.primary6.train-model-scale-019.reading.q5",
+            "goalId": "original.reading_tf",
+            "instruction": "Read the complete material and choose the best answer.",
+            "prompt": "The final display kept both models while adding context.",
+            "material": "Train Model Scale 019\n\nThe model club displayed two trains beside each other. One was longer, so visitors assumed the real train it represented must also be longer. In fact, the models used different scales. The shorter model represented a larger real train. The pupils had forgotten to put the scale labels on the display.\nThey added the labels and a small diagram explaining that models made at different scales cannot be compared by model length alone. They also placed a note saying which dimensions had been simplified for easier construction. The exhibition still showed the models together, but it invited visitors to read the labels before drawing conclusions. The pupils learned that accurate-looking objects could mislead when important context was left out.",
+            "explanation": "A正确：still together但读标签；B把补说明误作撤展。",
+            "hint": "Use the complete material and the question together.",
+            "difficultyReason": "New provisional original for this level; no independent learner calibration claimed.",
+            "type": "choice",
+            "options": [
+              {
+                "id": "o0",
+                "text": "True"
+              },
+              {
+                "id": "o1",
+                "text": "False"
+              }
+            ],
+            "answer": "o0"
+          }
+        ]
+      },
+      "contentHash": "1c45cd1a9c9e537d49a59b16c7d2abd290096586e527db139378df99b32562fc",
+      "reviewNotes": "Newly authored provisional primary-school text practices. Exact answer evidence and every distractor were checked by the author only; this is not independent teacher review, learner calibration, an official examination or publication approval.",
+      "components": [
+        {
+          "id": "original.primary6-train-letter-tf#primary6.train-model-scale-019.reading",
+          "family": "reading_choice",
+          "questionIds": [
+            "expansion.20261028.primary6.train-model-scale-019.reading.q1",
+            "expansion.20261028.primary6.train-model-scale-019.reading.q2",
+            "expansion.20261028.primary6.train-model-scale-019.reading.q3",
+            "expansion.20261028.primary6.train-model-scale-019.reading.q4",
+            "expansion.20261028.primary6.train-model-scale-019.reading.q5"
+          ],
+          "sourceNumbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sourceUnitId": "original.primary6-train-letter-tf",
+          "sourceContentHash": "0aa9b6a3d172a400efc8cc3c785b092bbdf7d9dbb0f195850cf1167bbad992a8"
+        }
+      ]
+    }
+  ]
+}
