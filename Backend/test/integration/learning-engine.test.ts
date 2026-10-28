@@ -1,5 +1,7 @@
-import { randomUUID } from "node:crypto";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { randomUUID, randomInt } from "node:crypto";
+import type * as NodeCrypto from "node:crypto";
+import { readFileSync } from "node:fs";
+import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { createDatabase, type DatabaseResource } from "../../src/db/client.js";
 import { runMigrations } from "../../src/db/migrate.js";
 import {
@@ -7,9 +9,20 @@ import {
   type LearningSession,
 } from "../../src/modules/learning/engine-repository.js";
 import { gradeAnswer } from "../../src/modules/learning/grading.js";
-import { unitSchema } from "../../src/modules/learning/content.js";
+import {
+  contentHash,
+  questionImageIds,
+  unitSchema,
+  type LearningUnit,
+} from "../../src/modules/learning/content.js";
+import type { LearningImageAsset } from "../../src/modules/learning/images.js";
 import { integrationConfig } from "../helpers/integration.js";
 import { freshLearningFixture as learningFixture } from "../helpers/learning.js";
+
+vi.mock("node:crypto", async (original) => ({
+  ...(await original<typeof NodeCrypto>()),
+  randomInt: vi.fn(() => 0),
+}));
 
 describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("单元学习事务引擎", () => {
   let database: DatabaseResource;
@@ -73,6 +86,94 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("单元学习事务
     };
     return { user, character, role, command, state, fill, start };
   }
+
+  it("独立看图配词首轮保存随机题序，源图标签、键、重放和旧轮次保持稳定", async () => {
+    const catalog = JSON.parse(
+      readFileSync(
+        new URL("../../config/learning/originals/catalog.json", import.meta.url),
+        "utf8",
+      ),
+    ) as { units: { unit: LearningUnit }[]; imageAssets: LearningImageAsset[] };
+    const original = catalog.units.find(
+      (entry) =>
+        entry.unit.originalGroup?.family === "word_picture_matching" &&
+        entry.unit.questions.every((q) => q.type === "choice"),
+    )?.unit;
+    if (!original) throw new Error("Missing complete picture-matching original");
+    const unit = unitSchema.parse({ ...original, id: `test.picture.${randomUUID()}` });
+    const needed = new Set(unit.questions.flatMap(questionImageIds));
+    units.push(unit.id);
+    await repository.publishBatch(
+      [unit],
+      [],
+      catalog.imageAssets.filter((asset) => needed.has(asset.id)),
+    );
+    const c = await setup(0);
+    await c.fill();
+    const sourceIds = unit.questions.map((q) => q.id),
+      requestId = randomUUID();
+    const input = { pictureId: unit.id };
+    const start = () =>
+      c.command(
+        input,
+        (s) =>
+          s.start(c.character, unit.level, {
+            completeGroups: true,
+            originalUnitId: unit.id,
+          }),
+        requestId,
+      );
+    vi.mocked(randomInt).mockClear();
+    const first = await start(),
+      attempt = first.attempt;
+    if (!attempt) throw new Error("Missing picture practice");
+    expect(attempt.round.questionIds).toEqual([...sourceIds.slice(1), sourceIds[0]]);
+    expect(new Set(attempt.round.questionIds)).toEqual(new Set(sourceIds));
+    expect(attempt.unit.questions.map((q) => q.id)).toEqual(sourceIds);
+    expect(
+      attempt.unit.questions.map((q) => ("options" in q ? q.options : [])),
+    ).toEqual(unit.questions.map((q) => ("options" in q ? q.options : [])));
+    const draws = vi.mocked(randomInt).mock.calls.length;
+    expect(draws).toBeGreaterThan(0);
+    expect(await start()).toEqual(first);
+    const question = unit.questions.find((q) => q.id === attempt.round.questionIds[0]);
+    if (!question) throw new Error("Missing shuffled source question");
+    const answer = await c.command({ answer: question.id }, (s) =>
+      s.submit({
+        attemptId: attempt.id,
+        roundId: attempt.round.id,
+        questionId: question.id,
+        answer: gradeAnswer(question, { kind: "skip" }).solution,
+      }),
+    );
+    expect(answer.awardedPoints).toBe(1);
+    expect(answer.result.outcome).toBe("correct");
+    const reopened = await c.command({ reopen: unit.id }, (s) =>
+      s.start(c.character, unit.level, {
+        completeGroups: true,
+        originalUnitId: unit.id,
+      }),
+    );
+    expect(reopened.attempt?.round.questionIds).toEqual(attempt.round.questionIds);
+    expect(
+      (await repository.read(c.user, (s) => s.attempt(attempt.id))).round.questionIds,
+    ).toEqual(attempt.round.questionIds);
+    expect(vi.mocked(randomInt).mock.calls).toHaveLength(draws);
+    const [frozen] = await database.sql<
+      { payload: unknown }[]
+    >`select payload from app.learning_unit_versions where unit_id=${unit.id} and version=${unit.version}`;
+    expect(contentHash(frozen?.payload)).toBe(contentHash(unit));
+    // Simulate an already-existing pre-release authored round; opening it must not shuffle it.
+    await database.sql`update app.learning_rounds set question_ids=${sourceIds} where id=${attempt.round.id}`;
+    const legacy = await c.command({ legacy: unit.id }, (s) =>
+      s.start(c.character, unit.level, {
+        completeGroups: true,
+        originalUnitId: unit.id,
+      }),
+    );
+    expect(legacy.attempt?.round.questionIds).toEqual(sourceIds);
+    expect(vi.mocked(randomInt).mock.calls).toHaveLength(draws);
+  });
 
   it("调试填满不能覆盖进行中的挑战，也不能把旧循环请求用于新循环", async () => {
     const c = await setup();

@@ -12,6 +12,7 @@ import { LearningBankSession } from "./bank-repository.js";
 import { LearningDirectionSession } from "./direction-repository.js";
 import { LearningPromotionSession } from "./promotion-repository.js";
 import { automaticallyPromote } from "./automatic-promotion-repository.js";
+import { initialRoundQuestionIds } from "./round-order.js";
 import type { PromotionCourse } from "./promotion-content.js";
 import type { LearningContextReader } from "./context.js";
 import { randomUUID } from "node:crypto";
@@ -654,7 +655,7 @@ export class LearningSession {
       values(${attemptId},${this.userId},${characterId},${state.cycleId},${candidate ? unit.id : null},${candidate ? unit.version : null},${level},${composed ? JSON.stringify(unit) : null}::jsonb,${composed?.blueprintId ?? null})`;
     await bank.recordExposure(attemptId, unit, composed?.questions);
     await this.sql`insert into app.learning_rounds(id,attempt_id,ordinal,question_ids)
-      values(${randomUUID()},${attemptId},0,${unit.questions.map((q) => q.id)})`;
+      values(${randomUUID()},${attemptId},0,${initialRoundQuestionIds(unit)})`;
     await this
       .sql`update app.learning_characters set revision=revision+1 where user_id=${this.userId} and character_id=${characterId}`;
     return { status: "started" as const, attempt: await this.attempt(attemptId) };
