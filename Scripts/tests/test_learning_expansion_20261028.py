@@ -27,13 +27,83 @@ class ExpansionCompilerTests(unittest.TestCase):
                  {'prompt': prompt, 'options': ['Nine.', 'Five.', 'Seven.'], 'answer': 0, 'explanation': 'A正确：原文明说九点。B是关闭时间；C原文没有七点。'}
                  for prompt in ['When does the library open?', 'Which opening time is in the notice?', 'What time can you first enter?']]}]}]}
 
-    def compile(self, source=None, review_change=None):
+    def compile(self, source=None, review_change=None, previous_manifests=None):
         source = source or self.source
         raw = json.dumps(source, ensure_ascii=False).encode()
         review = {'sourceSHA256': hashlib.sha256(raw).hexdigest(), 'reviewKind': 'author-self-review', 'reviewer': 'Same author', 'units': [{'id': u['id'], 'status': 'approved', 'findings': []} for u in source['units']]}
+        for draft, checked in zip(source['units'], review['units']):
+            if 'version' in draft:
+                checked['version'] = draft['version']
+            if 'revises' in draft:
+                checked['revises'] = copy.deepcopy(draft['revises'])
         if review_change:
             review.update(review_change)
-        return self.compiler.compile_manifest(raw, json.dumps(review).encode(), self.originals, 'b000')
+        if previous_manifests is None:
+            return self.compiler.compile_manifest(raw, json.dumps(review).encode(), self.originals, 'b000')
+        return self.compiler.compile_manifest(raw, json.dumps(review).encode(), self.originals, 'b001', previous_manifests=previous_manifests)
+
+    def revised_source(self):
+        old = self.compile()
+        source = copy.deepcopy(self.source)
+        source['supersedesSourceSHA256'] = old['sourceSHA256']
+        draft = source['units'][0]
+        draft['version'] = 2
+        draft['revises'] = {'version': 1, 'contentHash': old['entries'][0]['contentHash']}
+        draft['materials'][0]['text'] += ' Please keep this reviewed instruction with the notice.'
+        return old, source
+
+    def test_reviewed_revision_binds_exact_previous_frozen_unit_and_source(self):
+        old, source = self.revised_source()
+        before = copy.deepcopy(old)
+        revised = self.compile(source, previous_manifests=[old])
+        entry = revised['entries'][0]
+        self.assertEqual(entry['unit']['version'], 2)
+        self.assertEqual(entry['revises'], {**source['units'][0]['revises'], 'sourceSHA256': old['sourceSHA256']})
+        self.assertEqual([q['id'] for q in entry['unit']['questions']], [q['id'] for q in old['entries'][0]['unit']['questions']])
+        self.assertEqual(old, before)
+        self.assertNotIn('revises', self.compile()['entries'][0])
+
+    def test_revision_rejects_invalid_versions_unbound_prior_and_mismatched_review(self):
+        old, source = self.revised_source()
+        for version in [True, 0, -1, 1.5, 2147483648]:
+            changed = copy.deepcopy(source)
+            changed['units'][0]['version'] = version
+            with self.subTest(version=version), self.assertRaisesRegex(ValueError, 'version|revision'):
+                self.compile(changed, previous_manifests=[old])
+        for field, value in [('supersedesSourceSHA256', '0' * 64), ('missing', None), ('contentHash', '0' * 64)]:
+            changed = copy.deepcopy(source)
+            if field == 'supersedesSourceSHA256':
+                changed[field] = value
+            elif field == 'missing':
+                del changed['units'][0]['revises']
+            else:
+                changed['units'][0]['revises'][field] = value
+            with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'revision|previous'):
+                self.compile(changed, previous_manifests=[old])
+        with self.assertRaisesRegex(ValueError, 'review|revision'):
+            self.compile(source, review_change={'units': [{'id': source['units'][0]['id'], 'status': 'approved', 'findings': [], 'version': 1}]}, previous_manifests=[old])
+        with self.assertRaisesRegex(ValueError, 'previous|revision'):
+            self.compile(source, previous_manifests=[])
+
+    def test_freezing_revision_keeps_old_batch_and_rejects_duplicate_or_unbound_upgrade(self):
+        old, source = self.revised_source()
+        revised = self.compile(source, previous_manifests=[old])
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            self.compiler.write_manifest(old, directory)
+            before = (directory / 'b000.json').read_bytes()
+            self.compiler.write_manifest(revised, directory)
+            self.compiler.write_manifest(revised, directory)
+            self.assertEqual((directory / 'b000.json').read_bytes(), before)
+            self.assertEqual(json.loads((directory / 'index.json').read_text())['batches'], ['b000', 'b001'])
+            duplicate = copy.deepcopy(revised)
+            duplicate['batch'] = 'b002'
+            with self.assertRaisesRegex(ValueError, 'duplicate|revision'):
+                self.compiler.write_manifest(duplicate, directory)
+            self.assertFalse((directory / 'b002.json').exists())
+        with tempfile.TemporaryDirectory() as temporary:
+            with self.assertRaisesRegex(ValueError, 'previous|revision'):
+                self.compiler.write_manifest(revised, Path(temporary))
 
     def test_deterministic_serialization_preserves_explicit_text_and_keys(self):
         a = self.compile()

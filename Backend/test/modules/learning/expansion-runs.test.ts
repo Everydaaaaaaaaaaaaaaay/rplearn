@@ -64,6 +64,120 @@ function installBatch(run = "2026-10-28", wrongNamespace = false) {
   return entries;
 }
 describe("explicit expansion runs", () => {
+  function installRevision() {
+    const entries = installBatch();
+    const first = entries[0];
+    if (!first) throw new Error("Missing previous unit");
+    const original = JSON.parse(
+      files.get(String(new URL("b000.json", base))) ?? "null",
+    ) as Record<string, unknown>;
+    const unit = {
+      ...structuredClone(first.unit),
+      version: 2,
+      title: first.unit.title + "（审核修订）",
+    };
+    const revised = {
+      ...first,
+      unit,
+      contentHash: contentHash(unit),
+      revises: {
+        version: 1,
+        contentHash: first.contentHash,
+        sourceSHA256: "a".repeat(64),
+      },
+    };
+    const next = {
+      ...original,
+      batch: "b001",
+      sourceSHA256: "c".repeat(64),
+      entries: [revised],
+    };
+    files.set(
+      String(new URL("index.json", base)),
+      JSON.stringify({
+        version: 1,
+        run: "2026-10-28",
+        batches: ["b000", "b001"],
+        gaokaoBatches: [],
+      }),
+    );
+    files.set(String(new URL("b001.json", base)), JSON.stringify(next));
+    return { entries, original, revised, next };
+  }
+  it("selects the highest reviewed revision once while retaining untouched siblings and old batch hashes", () => {
+    const { entries, original, revised } = installRevision();
+    const catalog = loadExpansionCatalog(undefined, false, "2026-10-28");
+    expect(catalog.entries).toHaveLength(entries.length);
+    expect(catalog.units.find((u) => u.id === revised.unit.id)).toEqual(revised.unit);
+    expect(catalog.entries.filter((e) => e.unit.id !== revised.unit.id)).toEqual(
+      entries.filter((e) => e.unit.id !== revised.unit.id),
+    );
+    const old = loadExpansionCatalog("b000", false, "2026-10-28");
+    expect(old.hash).toBe(contentHash([original]));
+    expect(old.entries).toEqual(entries);
+    expect(loadExpansionCatalog("b001", false, "2026-10-28").entries).toEqual([
+      revised,
+    ]);
+  });
+  it.each(["missing", "contentHash", "sourceSHA256", "version"])(
+    "rejects a revision with an invalid %s binding",
+    (field) => {
+      const { revised, next } = installRevision();
+      if (field === "missing") Reflect.deleteProperty(revised, "revises");
+      else if (field === "version") revised.revises.version = 0;
+      else revised.revises[field as "contentHash" | "sourceSHA256"] = "0".repeat(64);
+      files.set(String(new URL("b001.json", base)), JSON.stringify(next));
+      expect(() => loadExpansionCatalog(undefined, false, "2026-10-28")).toThrow();
+    },
+  );
+  it("rejects repeated same-version identities even when their hashes agree", () => {
+    const { revised, next } = installRevision();
+    files.set(
+      String(new URL("b002.json", base)),
+      JSON.stringify({ ...next, batch: "b002", entries: [revised] }),
+    );
+    files.set(
+      String(new URL("index.json", base)),
+      JSON.stringify({
+        version: 1,
+        run: "2026-10-28",
+        batches: ["b000", "b001", "b002"],
+        gaokaoBatches: [],
+      }),
+    );
+    expect(() => loadExpansionCatalog(undefined, false, "2026-10-28")).toThrow();
+  });
+  it("requires the frozen predecessor to remain indexed even for a selected correction batch", () => {
+    installRevision();
+    files.set(
+      String(new URL("index.json", base)),
+      JSON.stringify({
+        version: 1,
+        run: "2026-10-28",
+        batches: ["b001"],
+        gaokaoBatches: [],
+      }),
+    );
+    expect(() => loadExpansionCatalog("b001", false, "2026-10-28")).toThrow(
+      "previous unit/source",
+    );
+  });
+  it("does not enable forward revisions in the frozen old run", () => {
+    const old = loadExpansionCatalog("b000");
+    const first = old.entries[0];
+    if (!first) throw new Error("Missing old-run fixture");
+    first.unit.version = 2;
+    first.contentHash = contentHash(first.unit);
+    const oldBase = new URL(
+      "../../../config/learning/expansions/2026-10-24/",
+      import.meta.url,
+    );
+    files.set(
+      String(new URL("b000.json", oldBase)),
+      JSON.stringify({ ...old.manifests[0], entries: old.entries }),
+    );
+    expect(() => loadExpansionCatalog("b000")).toThrow("identity/digest");
+  });
   it("preserves the old default and admits a reviewed new-run namespace", () => {
     const old = loadExpansionCatalog("b000");
     const entries = installBatch();

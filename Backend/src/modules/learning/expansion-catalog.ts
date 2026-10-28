@@ -42,6 +42,13 @@ const entry = z.strictObject({
   contentHash: z.string().regex(/^[a-f0-9]{64}$/),
   reviewNotes: z.string().min(30),
   components: z.array(component).optional(),
+  revises: z
+    .strictObject({
+      version: z.number().int().min(1).max(2147483647),
+      contentHash: z.string().regex(/^[a-f0-9]{64}$/),
+      sourceSHA256: z.string().regex(/^[a-f0-9]{64}$/),
+    })
+    .optional(),
 });
 const manifestSchema = z.strictObject({
   version: z.literal(1),
@@ -91,12 +98,11 @@ export function loadExpansionCatalog(
     (batch && !index.batches.includes(batch))
   )
     throw new Error("Unknown or duplicate expansion batch");
-  const manifests = index.batches
-    .filter(
-      (id) =>
-        (!batch || id === batch) &&
-        (!highSchoolOnly || index.gaokaoBatches?.includes(id)),
-    )
+  // Revision predecessors may be in an unselected batch; verify the indexed chain.
+  const selectedBatch = (id: string) =>
+    (!batch || id === batch) && (!highSchoolOnly || index.gaokaoBatches?.includes(id));
+  const allManifests = index.batches
+    .filter((id) => run === "2026-10-28" || selectedBatch(id))
     .map((id) => {
       const manifest = manifestSchema.parse(
         JSON.parse(readFileSync(new URL(`${id}.json`, directory), "utf8")),
@@ -120,17 +126,25 @@ export function loadExpansionCatalog(
         throw new Error("Expansion selected new audio identity mismatch");
       return manifest;
     });
-  const entries = manifests.flatMap((m) => m.entries);
-  const manifestByUnit = new Map(
-    manifests.flatMap((m) => m.entries.map((e) => [e.unit.id, m] as const)),
+  const manifests = allManifests.filter((m) => selectedBatch(m.batch));
+  const allEntries = allManifests.flatMap((manifest) =>
+    manifest.entries.map((entry) => ({ entry, manifest })),
   );
-  const ids = new Set<string>();
-  for (const e of entries) {
+  const identity = (u: LearningUnit) => `${u.id}:${String(u.version)}`;
+  const byVersion = new Map(allEntries.map((row) => [identity(row.entry.unit), row]));
+  if (
+    byVersion.size !== allEntries.length ||
+    allManifests.some(
+      (m) => new Set(m.entries.map((e) => e.unit.id)).size !== m.entries.length,
+    )
+  )
+    throw new Error("Duplicate expansion unit version");
+  for (const { entry: e, manifest } of allEntries) {
     const u = e.unit;
     if (
       !u.id.startsWith(namespace) ||
-      u.version !== 1 ||
-      ids.has(u.id) ||
+      u.version > 2147483647 ||
+      (run !== "2026-10-28" && (u.version !== 1 || e.revises !== undefined)) ||
       !u.originalGroup ||
       u.roleKey !== "companion" ||
       u.authorship.kind !== "authored" ||
@@ -138,16 +152,32 @@ export function loadExpansionCatalog(
       !u.originalGroup.sourceNotice.includes(run)
     )
       throw new Error(`Expansion identity/digest mismatch: ${u.id}`);
-    ids.add(u.id);
+    if (u.version === 1 && e.revises !== undefined)
+      throw new Error(`Initial expansion version cannot revise another: ${u.id}`);
+    if (u.version > 1) {
+      const binding = e.revises;
+      const previous = binding
+        ? byVersion.get(`${u.id}:${String(binding.version)}`)
+        : undefined;
+      if (
+        binding?.version !== u.version - 1 ||
+        previous?.entry.contentHash !== binding.contentHash ||
+        previous.manifest.sourceSHA256 !== binding.sourceSHA256 ||
+        previous.entry.unit.level !== u.level ||
+        previous.entry.unit.roleKey !== u.roleKey
+      )
+        throw new Error(
+          `Expansion revision previous unit/source binding mismatch: ${u.id}`,
+        );
+    }
     for (const frozen of u.questions) {
       // Frozen hashes stay authoritative; probes use only explicitly reviewed effective forms.
       const q = questionForGrading(frozen);
       if (!q.material) throw new Error(`Incomplete expansion input: ${u.id}/${q.id}`);
       if (run === "2026-10-28") {
-        const manifest = manifestByUnit.get(u.id);
         for (const audio of questionAudios(q))
           if (
-            !manifest?.audioAssets?.some(
+            !manifest.audioAssets?.some(
               (a) =>
                 a.id === audio.assetId &&
                 a.transcript === audio.text &&
@@ -156,7 +186,7 @@ export function loadExpansionCatalog(
           )
             throw new Error(`Expansion audio binding mismatch: ${u.id}/${q.id}`);
         for (const imageId of questionImageIds(q))
-          if (!manifest?.imageAssets?.some((a) => a.id === imageId))
+          if (!manifest.imageAssets?.some((a) => a.id === imageId))
             throw new Error(`Expansion image binding mismatch: ${u.id}/${q.id}`);
       }
       if (q.type === "choice") {
@@ -186,6 +216,11 @@ export function loadExpansionCatalog(
     )
       throw new Error("Senior expansion needs complete Gaokao components");
   }
+  const latest = new Map<string, z.infer<typeof entry>>();
+  for (const e of manifests.flatMap((m) => m.entries))
+    if ((latest.get(e.unit.id)?.unit.version ?? 0) < e.unit.version)
+      latest.set(e.unit.id, e);
+  const entries = [...latest.values()];
   return {
     manifests,
     entries,

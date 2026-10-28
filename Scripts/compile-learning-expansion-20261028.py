@@ -23,6 +23,59 @@ def digest(value):
     return hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
 
 
+def checked_version(value):
+    if type(value) is not int or not 1 <= value <= 2147483647:
+        raise ValueError('Explicit unit version must be a positive database integer')
+    return value
+
+
+def indexed_manifests(directory):
+    directory = Path(directory)
+    index_path = directory / 'index.json'
+    if not index_path.exists():
+        return []
+    index = json.loads(index_path.read_text())
+    batches = index.get('batches', [])
+    if index.get('run') != RUN or len(set(batches)) != len(batches) or any(not re.fullmatch(r'b[0-9]{3}', b) for b in batches):
+        raise ValueError('Expansion index run or batch identity mismatch')
+    manifests = [json.loads((directory / (batch + '.json')).read_text()) for batch in batches]
+    if any(m.get('run') != RUN or m.get('batch') != b for b, m in zip(batches, manifests)):
+        raise ValueError('Expansion revision manifest identity mismatch')
+    return manifests
+
+
+def validate_revision_chain(manifests):
+    """Bindings live beside frozen units; revisions never edit prior unit payloads."""
+    identities = {}
+    for manifest in manifests:
+        if manifest.get('run') != RUN:
+            raise ValueError('Expansion revision cannot cross runs')
+        unit_ids = set()
+        for entry in manifest['entries']:
+            unit = entry['unit']
+            version = checked_version(unit['version'])
+            key = (unit['id'], version)
+            if unit['id'] in unit_ids or key in identities:
+                raise ValueError('Expansion revision contains a duplicate unit version')
+            if digest(unit) != entry['contentHash']:
+                raise ValueError('Expansion revision unit digest mismatch')
+            unit_ids.add(unit['id'])
+            identities[key] = (entry, manifest)
+    for (unit_id, version), (entry, manifest) in identities.items():
+        if version == 1:
+            if 'revises' in entry:
+                raise ValueError('Initial unit version cannot have a revision binding')
+            continue
+        binding = entry.get('revises')
+        if not isinstance(binding, dict) or set(binding) != {'version', 'contentHash', 'sourceSHA256'} or checked_version(binding['version']) != version - 1:
+            raise ValueError('Expansion revision requires its immediate previous version')
+        previous = identities.get((unit_id, binding['version']))
+        if not previous or previous[0]['contentHash'] != binding['contentHash'] or previous[1].get('sourceSHA256') != binding['sourceSHA256'] or not re.fullmatch(r'[a-f0-9]{64}', binding['sourceSHA256']):
+            raise ValueError('Expansion revision previous unit/source binding mismatch')
+        if any(entry['unit'][field] != previous[0]['unit'][field] for field in ('roleKey', 'level')):
+            raise ValueError('Expansion revision cannot change unit role or level')
+
+
 def bind_source(originals, source_id, level, family):
     original = originals.get(source_id)
     if not original or original['level'] != level or original.get('originalGroup', {}).get('family') != family:
@@ -118,7 +171,7 @@ def verify_declared_media(source):
     return images, audios, new_audio_ids
 
 
-def compile_manifest(source_bytes, review_bytes, originals, batch):
+def compile_manifest(source_bytes, review_bytes, originals, batch, previous_manifests=None):
     if not re.fullmatch(r'b[0-9]{3}', batch):
         raise ValueError('Expected b000-style batch')
     source, review = json.loads(source_bytes), json.loads(review_bytes)
@@ -145,11 +198,32 @@ def compile_manifest(source_bytes, review_bytes, originals, batch):
         raise ValueError('Review boundary must disclose the limits of author review')
     images, audios, new_audio_ids = verify_declared_media(source)
     used_images, used_audios = set(), set()
+    reviewed_units = {u['id']: u for u in reviewed}
     entries = []
     for draft in drafts:
         if not re.fullmatch(r'[a-z][a-z0-9_.-]{0,74}', draft['id']):
             raise ValueError('Invalid authored unit identity')
         unit_id = NAMESPACE + draft['id']
+        version = checked_version(draft.get('version', 1))
+        checked = reviewed_units[draft['id']]
+        if checked_version(checked.get('version', 1)) != version:
+            raise ValueError('Unit revision version must match its explicit review')
+        revision = None
+        if version == 1:
+            if 'revises' in draft or 'revises' in checked:
+                raise ValueError('Initial unit version cannot have a revision binding')
+        else:
+            binding = draft.get('revises')
+            if not isinstance(binding, dict) or set(binding) != {'version', 'contentHash'} or checked_version(binding['version']) != version - 1 or not re.fullmatch(r'[a-f0-9]{64}', binding.get('contentHash', '')):
+                raise ValueError('Unit revision requires an explicit previous version and content hash')
+            if checked.get('revises') != binding:
+                raise ValueError('Unit revision binding must match its explicit review')
+            previous_source = source.get('supersedesSourceSHA256', '')
+            if not re.fullmatch(r'[a-f0-9]{64}', previous_source):
+                raise ValueError('Unit revision requires its exact previous source SHA256')
+            revision = {**binding, 'sourceSHA256': previous_source}
+            if previous_manifests is None:
+                previous_manifests = indexed_manifests(DIRECTORY)
         family, level = draft['family'], draft['level']
         materials = draft['materials']
         if not materials or len({p['id'] for p in materials}) != len(materials):
@@ -264,12 +338,14 @@ def compile_manifest(source_bytes, review_bytes, originals, batch):
             reference['alignment'] = (draft.get('alignmentNote') or 'Recorded source supplies level and task rules only; passage, questions and keys are newly authored. ' + reference['alignment'])[:500]
         material = '\n\n'.join(p['title'] + '\n\n' + p['text'] for p in materials)
         notice = f'{RUN}新题批次 {batch}；原创候选，非高考真题；作者自审及程序检查，不声称独立教师或学生稳定性验证。'
-        unit = dict(id=unit_id, version=1, schemaVersion=1, scoringVersion=1, roleKey='companion', roleVersion=1, level=level,
+        unit = dict(id=unit_id, version=version, schemaVersion=1, scoringVersion=1, roleKey='companion', roleVersion=1, level=level,
             title=('高考题型原创 · ' if senior else '') + draft['title'], summary=draft['title'] + f'，共{len(questions)}题。', scene='先阅读完整材料，再按题目要求作答。', estimatedMinutes=draft['minutes'],
             goalIds=list(dict.fromkeys(q['goalId'] for q in questions)), prerequisiteGoalIds=[], references=references,
             authorship=dict(kind='authored', author='Codex 2026-10-28 explicit authoring', reviewedBy=review['reviewer'][:70] + ' (author self-review only)', reviewedAt=reviewed_at, reviewNotes=boundary), beats=[],
             originalGroup=dict(id=unit_id, family=family, label=draft['title'], candidateSHA256=digest(draft), authorCheckSHA256=digest(dict(sourceSHA256=source_sha, review=review)), sourceGroupIds=[c['id'] for c in components], sourceNotice=notice, material=material), questions=questions)
         entry = dict(unit=unit, contentHash=digest(unit), reviewNotes=boundary, components=components)
+        if revision:
+            entry['revises'] = revision
         entries.append(entry)
     if set(images) != used_images or set(audios) != used_audios:
         raise ValueError('Declared media must be exactly referenced by authored questions')
@@ -280,6 +356,8 @@ def compile_manifest(source_bytes, review_bytes, originals, batch):
         manifest['audioAssets'] = source['audioAssets']
     if new_audio_ids:
         manifest['newAudioAssetIds'] = new_audio_ids
+    if previous_manifests is not None:
+        validate_revision_chain([m for m in previous_manifests if m['batch'] != batch] + [manifest])
     return manifest
 
 
@@ -313,7 +391,8 @@ def write_manifest(manifest, directory=DIRECTORY):
     if target.exists():
         if target.read_text() != serialized:
             raise ValueError('Frozen batch already exists with different content; create a new batch')
-    else:
+    validate_revision_chain([m for m in indexed_manifests(directory) if m['batch'] != manifest['batch']] + [manifest])
+    if not target.exists():
         with target.open('x') as output:
             output.write(serialized)
     index_path = directory / 'index.json'
