@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-28",
+  "scope": "Keep visible points beside the compact next-star meter",
+  "supersedes": "docs/verification/learning-next-star-meter-20261028.json",
+  "change": "Label now reads 下一星 xx/xx分. Digits use monospaced spacing. The 136×5pt secondary meter and nine-star completion state are retained; VoiceOver avoids repeating the point fraction.",
+  "verification": [
+    {
+      "passed": 2,
+      "failed": 0,
+      "evidence": "build/learning-next-star-points-20261028/ui-standard.xcresult",
+      "coverage": "Maximum accessibility text in dark mode, and real-page star replay from 59/60 to 0/60."
+    },
+    {
+      "passed": 1,
+      "failed": 0,
+      "evidence": "build/learning-next-star-points-20261028/ui-compact.xcresult",
+      "coverage": "Compact ready-card geometry and controls."
+    }
+  ],
+  "visualReview": {
+    "result": "Passed independent screenshot review of standard near-full points, dark maximum text, and compact empty points. Fraction remains readable and the meter retains subordinate size.",
+    "evidence": [
+      "build/learning-next-star-points-20261028/standard-attachments",
+      "build/learning-next-star-points-20261028/compact-attachments"
+    ],
+    "unchangedPhotography": "Assets/LearningCityScenes/Review-2026-10-27/acceptance-v2.md",
+    "limits": "Simulator screenshots and hosted interactions; no physical-device review. Photo assets, scoring and stored data unchanged."
+  },
+  "preview": {
+    "result": "Installed latest tested build using Scripts/preview.sh preview achievement-preview and left it open on iPhone 18 Pro.",
+    "log": "build/learning-next-star-points-20261028/final-preview.log",
+    "screenshot": "build/learning-next-star-points-20261028/final-preview.png"
+  }
+}

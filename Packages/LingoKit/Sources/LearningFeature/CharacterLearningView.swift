@@ -208,14 +208,14 @@ public struct CharacterLearningView: View {
         let complete = (current?.stars ?? 0) >= 9
         let total = max(1, current?.pointsPerStar ?? 60)
         let points = complete ? total : min(total, max(0, current?.currentStarPoints ?? 0))
-        let label = complete ? "9 星已达成" : "下一星"
+        let label = complete ? "9 星已达成" : "下一星 \(points)/\(total)分"
         return HStack(spacing: 8) {
-            Text(label).font(.caption2).foregroundStyle(.secondary)
+            Text(label).font(.caption2).monospacedDigit().foregroundStyle(.secondary)
             LearningMeter(value: points, total: total, tint: theme.tint.opacity(0.72), height: 5)
                 .frame(width: 136)
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(label)
+        .accessibilityLabel(complete ? label : "下一星")
         .accessibilityValue(complete ? "已全部点亮" : "\(points)/\(total) 积分")
         .accessibilityIdentifier("learning.next-star.progress")
     }
