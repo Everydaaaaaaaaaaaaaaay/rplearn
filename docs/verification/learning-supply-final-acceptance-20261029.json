@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-28T21:12:06.692123+00:00",
-  "status": "Local acceptance passed; production reconciliation pending",
+  "checkedAt": "2026-10-28T22:08:38.649455+00:00",
+  "status": "Complete:localacceptance andguardedproductionpublication/read-onlyreconciliation passed",
   "quota": {
     "checkedAt": "2026-10-28T21:10:58.853Z",
     "uniqueNewPractices": 1282,
@@ -142,7 +142,134 @@
   "preservation": "Frozen old manifests/manuscripts retained; two unused frozen batches retired from index before publication; no source, databases, history or userattempts deleted",
   "cacheCleanup": [
     "docs/verification/compilation-cache-cleanup-20261029.json",
-    "docs/verification/idle-cache-followup-20261029.json"
+    "docs/verification/idle-cache-followup-20261029.json",
+    "docs/verification/completed-packaging-cleanup-20261029.json"
   ],
-  "verificationScope": "No iOS code changes in final content wave; reuse existing preview. Text-only final wave needs no media upload; prior media evidence retained."
+  "verificationScope": "No iOS code changes in final content wave; reuse existing preview. Text-only final wave needs no media upload; prior media evidence retained.",
+  "productionAcceptance": {
+    "checkedAt": "2026-10-28T22:06:33.011Z",
+    "readOnly": true,
+    "complete": [
+      {
+        "level_key": "primary1",
+        "groups": 180,
+        "responses": 744
+      },
+      {
+        "level_key": "primary2",
+        "groups": 180,
+        "responses": 927
+      },
+      {
+        "level_key": "primary3",
+        "groups": 180,
+        "responses": 1035
+      },
+      {
+        "level_key": "primary4",
+        "groups": 180,
+        "responses": 933
+      },
+      {
+        "level_key": "primary5",
+        "groups": 180,
+        "responses": 1005
+      },
+      {
+        "level_key": "primary6",
+        "groups": 180,
+        "responses": 987
+      },
+      {
+        "level_key": "junior1",
+        "groups": 180,
+        "responses": 1638
+      },
+      {
+        "level_key": "junior2",
+        "groups": 180,
+        "responses": 1722
+      },
+      {
+        "level_key": "junior3",
+        "groups": 180,
+        "responses": 1708
+      },
+      {
+        "level_key": "senior1",
+        "groups": 180,
+        "responses": 1677
+      },
+      {
+        "level_key": "senior2",
+        "groups": 180,
+        "responses": 1672
+      },
+      {
+        "level_key": "senior3",
+        "groups": 180,
+        "responses": 1663
+      },
+      {
+        "level_key": "undergraduate",
+        "groups": 180,
+        "responses": 1770
+      },
+      {
+        "level_key": "postgraduate",
+        "groups": 180,
+        "responses": 1770
+      },
+      {
+        "level_key": "advanced",
+        "groups": 180,
+        "responses": 1278
+      }
+    ],
+    "completePractices": 2700,
+    "completeResponses": 20529,
+    "newPractices": 1282,
+    "newResponses": 8658,
+    "newResponseIdentitiesUnique": true,
+    "incrementalCurrentHashesMatched": 218,
+    "revisionSupply": 0,
+    "scope": "All-level SQL count aggregates plus218final-wave practice metadata only. No real-user records or old-media checksum; no database writes."
+  },
+  "versionHistoryAcceptance": {
+    "checkedAt": "2026-10-28T22:06:34.159Z",
+    "readOnly": true,
+    "selectedUnits": 19,
+    "currentVersion2HashesMatched": 19,
+    "historicalVersion1HashesPreserved": 11,
+    "unpublished015Version1Rows": 0,
+    "newSupplyFromRevisions": 0,
+    "scope": "Only19 selected unit identities and their version metadata; no real-user data or full-library checksum."
+  },
+  "healthAcceptance": {
+    "checkedAt": "2026-10-28T22:07:36.060708+00:00",
+    "readOnly": true,
+    "currentRelease": "/opt/lingotrip/releases/originals-2865af945b5f",
+    "services": {
+      "lingotrip-api": "active",
+      "lingotrip-worker": "active"
+    },
+    "readiness": {
+      "status": "ready"
+    },
+    "pendingReleaseTransaction": false
+  },
+  "release": {
+    "version": "originals-2865af945b5f",
+    "sha256": "f3ff0bcd8587a447e73abcc98d5a942a36abd6842eb8f1080e1aa9c716d121c4",
+    "baseCommit": "10237fd4821d59aacd3fc1c7f679e0a9a432ea13",
+    "learningChangeCommits": [
+      "2865af945b5fb20a7957ca0409351417d642065c"
+    ],
+    "contentCommit": "10237fd4",
+    "allMediaEvidenceReused": true
+  },
+  "remainingRequiredWork": [],
+  "codeMemoryFixEvidence": "docs/verification/scoped-learning-publication-memory-20261029.json",
+  "testsAfterMemoryFix": "29focusedbackend tests; typecheck/scopedESLint/format/architecture278modules826dependencies passed. Existing19Python authoring tests passed; no Swiftchanges in this final content wave.",
+  "reviewBoundary": "Original authored content with author/self-review, selected same-AI peer review, native schemas and actual grading probes. No independent teacher or learner calibration claimed."
 }

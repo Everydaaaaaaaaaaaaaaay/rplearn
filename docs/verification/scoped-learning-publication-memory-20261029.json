@@ -149,7 +149,64 @@
     "contract": "Identical ID/version/content hashes against global old path plus pre-fix frozen expectations. No database or media work."
   },
   "sameAICodeReview": "NoCritical/Importantfindings; independent b128/b140 full-output hash comparison and6focusedtests passed.",
-  "deployment": "Pending guarded deployment and original-budget production verification",
+  "deployment": "originals-2865af945b5f active; guarded deploy completed; API/worker/readiness passed",
   "budgets": "Unchanged MemoryHigh224M,MemoryMax256M,Nodeheap128M,RuntimeMax600s; no user/app/database processes terminated",
-  "scheduler": "Own local next-batch scheduler paused withSIGSTOP while its already-running remote maintenance reached existing timer normally; resume withSIGCONT after deployment."
+  "scheduler": "Ownlocal schedulerresumedwithSIGCONT afterguardeddeployment/readiness. No app/device/databaseprocessmanuallystopped; originalremotetimeoutremainedenforced.",
+  "originalBudgetProductionAcceptance": {
+    "checkedAt": "2026-10-28T22:03:27.109260+00:00",
+    "b128": {
+      "result": "success",
+      "runtime": "3min1.957s includingresourceobservation",
+      "peakMiB": 224.5,
+      "swapMiB": 0
+    },
+    "b130": {
+      "result": "success",
+      "runtime": "1min46.270s includingresourceobservation",
+      "peakMiB": 224.2,
+      "swapMiB": 0
+    },
+    "nextMixedPair": {
+      "result": "success",
+      "runtime": "1min56.542s includingresourceobservation",
+      "peakMiB": 224.2,
+      "swapMiB": 0
+    },
+    "guardBudgetsUnchanged": true,
+    "evidence": [
+      "build/learning-supply-audit-20261028/scoped-memory-deploy.log",
+      "build/learning-supply-audit-20261028/final-wave-resume-b128.log",
+      "build/learning-supply-audit-20261028/final-wave-resume-b130.log",
+      "build/learning-supply-audit-20261028/final-wave-publish-07-resume1.log"
+    ]
+  },
+  "finalAcceptance": {
+    "checkedAt": "2026-10-28T22:08:38.649455+00:00",
+    "allRemainingPublicationCompleted": true,
+    "finalQuota": 2700,
+    "incrementalHashesMatched": 218,
+    "versionHistory": {
+      "checkedAt": "2026-10-28T22:06:34.159Z",
+      "readOnly": true,
+      "selectedUnits": 19,
+      "currentVersion2HashesMatched": 19,
+      "historicalVersion1HashesPreserved": 11,
+      "unpublished015Version1Rows": 0,
+      "newSupplyFromRevisions": 0,
+      "scope": "Only19 selected unit identities and their version metadata; no real-user data or full-library checksum."
+    },
+    "health": {
+      "checkedAt": "2026-10-28T22:07:36.060708+00:00",
+      "readOnly": true,
+      "currentRelease": "/opt/lingotrip/releases/originals-2865af945b5f",
+      "services": {
+        "lingotrip-api": "active",
+        "lingotrip-worker": "active"
+      },
+      "readiness": {
+        "status": "ready"
+      },
+      "pendingReleaseTransaction": false
+    }
+  }
 }

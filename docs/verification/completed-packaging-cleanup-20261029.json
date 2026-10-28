@@ -48,5 +48,27 @@
   "cacheCleanupRecords": [
     "docs/verification/compilation-cache-cleanup-20261029.json",
     "docs/verification/idle-cache-followup-20261029.json"
-  ]
+  ],
+  "followUpAfterMemoryFixDeployment": {
+    "checkedAt": "2026-10-28T22:02:47.696260+00:00",
+    "filesystemAvailableBytesBefore": 2756755456,
+    "filesystemAvailableBytesAfter": 2901786624,
+    "removed": [
+      {
+        "path": "/Users/tiantian/eng/build/original-backend-source-56501cba597e",
+        "gitCommit": "56501cba597e",
+        "verifiedGitFiles": 2152,
+        "category": "Completed reproducible packaging copy",
+        "basis": "All bytes matched retained Git objects; no open files/process references; regeneration script and all release archives retained"
+      }
+    ],
+    "preserved": [],
+    "measurement": "Actual filesystem statvfs; concurrent activity can affect delta. No APFS directory size claimed as actual reclamation.",
+    "scope": "Only verified completed copies inside ignoredbuild; no source/history, userwork, database, research/evidence, media/model, credentials, current app, live caches or simulator data removed; no processes stopped"
+  },
+  "retainedLatestSourceStages": [
+    "build/original-backend-source-10237fd4821d",
+    "build/original-backend-source-2865af945b5f"
+  ],
+  "releaseArchives": "All released archives retained; current and previous source stages retained. No recovery archive was deleted."
 }
